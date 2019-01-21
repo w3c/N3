@@ -11,11 +11,16 @@ How do we proceed?
   -> meet again in one month (around 21st of February)
   
  Do we reach out to other communities?
-  We (William) talk to the RuleML people and ask whether they are interested 
+  We (William) talk to the RuleML people and rules/reasoning community and ask whether they are interested 
   
 How do we organise the next meeting?
-  Meeting-minutes will be written using IRC (irc.w3.org, channel: #n3-dev)
+  Meeting-minutes will be written using IRC (irc.w3.org, channel: #n3-dev; w3c CommonScribe software?); each individual makes note of their own conversation topics
   The agenda will be communicated on time (at least 1 day in advance)
+  At this point, we aim to have a better idea of our goals / scope of our N3 proposal
+  
+Adherence to W3C community group policy (https://www.w3.org/community/about/agreements/):
+  Keep records of public communications
+  Adhere to rules on meetings - announced in timely fashion, disseminate agenda, publish meeting minutes
   
 Can we have a physical meeting?
   It was proposed to meet at the W3C Workshop on Web Standardization for Graph Data (https://github.com/w3c/N3/new/master/Meetings),
@@ -27,5 +32,5 @@ What is our goal?
     - a semantic web rule language on top of RDF that extends RDF and supports negation
     - staying close to the existing W3C team submission for N3 (ie keep the syntax and discuss cases which we want to change)
     - having a functional rule language (may be N3, but can also end up as something else)
-
+Agreed to use current N3 documentation as a starting point
 
