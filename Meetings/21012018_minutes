@@ -27,10 +27,12 @@ Can we have a physical meeting?
   but most of the people in the call will not be present there. But: if there is interest, a meeting can still be organised. 
 
 What is our goal?
-  To have a better view on this topic, we wait for the test cases and issues and fix the goal in our next meeting.
+  To have a better view on this topic, we wait for the test cases and issues and aim to fix the goal in our next meeting.
   Discussed so far (but answers open):
     - a semantic web rule language on top of RDF that extends RDF and supports negation
     - staying close to the existing W3C team submission for N3 (ie keep the syntax and discuss cases which we want to change)
     - having a functional rule language (may be N3, but can also end up as something else)
 Agreed to use current N3 documentation as a starting point
 
+General timeline?
+  Estimated at one year but subject to the agreed goal / scope - we hope to have more clarity on this at our next meeting
