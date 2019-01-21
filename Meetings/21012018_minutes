@@ -1,0 +1,31 @@
+Minutes (preleminary)
+
+Attending: Hans Cools, Jos De Roo, William Van Woensel, Gregg Kellogg, Jindrich Kolman, Dörthe Arndt
+
+Topics discussed:
+
+How do we proceed?
+  Set up test cases on our git which conatain input file, query, expected output.
+        Poblem: The output is not unique, when does an engine succeed?
+  Raise and discuss issues on the git
+  -> meet again in one month (around 21st of February)
+  
+ Do we reach out to other communities?
+  We (William) talk to the RuleML people and ask whether they are interested 
+  
+How do we organise the next meeting?
+  Meeting-minutes will be written using IRC (irc.w3.org, channel: #n3-dev)
+  The agenda will be communicated on time (at least 1 day in advance)
+  
+Can we have a physical meeting?
+  It was proposed to meet at the W3C Workshop on Web Standardization for Graph Data (https://github.com/w3c/N3/new/master/Meetings),
+  but most of the people in the call will not be present there. But: if there is interest, a meeting can still be organised. 
+
+What is our goal?
+  To have a better view on this topic, we wait for the test cases and issues and fix the goal in our next meeting.
+  Discussed so far (but answers open):
+    - a semantic web rule language on top of RDF that extends RDF and supports negation
+    - staying close to the existing W3C team submission for N3 (ie keep the syntax and discuss cases which we want to change)
+    - having a functional rule language (may be N3, but can also end up as something else)
+
+
