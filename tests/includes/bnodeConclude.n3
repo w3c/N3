@@ -1,0 +1,32 @@
+@prefix log: <http://www.w3.org/2000/10/swap/log#> .
+@forAll :X .
+
+{ {:a :b []} log:includes {:a :b :X} } => {:X a :Result} . 
+
+# Looks like the following:
+
+# (graph
+#   (universals ?X)
+#   (logImplies
+#     (universals ?X)
+#     (formula _:f0
+#       (universals ?X)
+#       (logIncludes
+#         (formula _:f1 (universals ?X) (pattern :a :b _:bn0))
+#         (formula _:f2 (universals ?X) (pattern :a :b ?X))
+#       )
+#     )
+#     (formula _:f3 (universals ?X) (pattern ?X rdf:type :Result))
+#   )
+# )
+# 
+# evaluate graph => evaluate all child operators
+#   evalutate log_implies => evaluate _:f0
+#     evaluate _:f0 => evaluate log_includes
+#       evaluate log_includes =>
+#         evaluate _:f1
+#         evaluate _:f2
+#           bind ?X against lhs
+#         evaluate _:f2 as bgp against _:f1 => true
+#     evaluate _:f3
+#       => iterate over solutions

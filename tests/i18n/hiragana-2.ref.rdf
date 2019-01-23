@@ -1,0 +1,22 @@
+
+
+
+<rdf:RDF xmlns="file:/devel/WWW/2000/10/swap/test/i18n/hiragana.n3#"
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:s="http://www.w3.org/2000/01/rdf-schema#">
+
+    <rdf:Description>
+        <script>ひらがな</script>
+        <s:label>Martin J Dürst</s:label>
+    </rdf:Description>
+
+    <rdf:Description>
+        <related rdf:resource="#ひらがな"/>
+        <s:label>A test with a non-ascii qname</s:label>
+    </rdf:Description>
+
+    <rdf:Description>
+        <related rdf:resource="#Dürst"/>
+        <s:label>A test with a non-ascii fragid</s:label>
+    </rdf:Description>
+</rdf:RDF>

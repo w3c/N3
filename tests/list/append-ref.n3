@@ -1,0 +1,5 @@
+@prefix :         <#> .
+
+:A0 :RESULT  [ :append ( ()  "only" ) ].
+:A1 :RESULT  [ :append  ((1) 2 ) ] .
+:B0 :append ( ()  "onlyB" ) .

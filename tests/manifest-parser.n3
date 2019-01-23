@@ -1,0 +1,195 @@
+# Notation3 Parser tests
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix mf:   <http://www.w3.org/2001/sw/DataAccess/tests/test-manifest#> .
+@prefix rdft: <http://www.w3.org/ns/rdftest#> .
+@prefix test: <test.n3#>.
+@prefix :     <#>.
+
+<>  a mf:Manifest ;
+    mf:name "Notation3 Parser tests" ;
+    mf:entries
+    (
+    :n3_10001 :n3_10002 :n3_10003 :n3_10004 :n3_10005 :n3_10006 :n3_10007 :n3_10008
+    :n3_10009 :n3_10010 :n3_10011 :n3_10012 :n3_10013 :n3_10014 :n3_10015 :n3_10016
+    :n3_10017 :n3_10018 :n3_10019 :n3_10020 :n3_10021 :n3_10025 :n3_10026 :n3_10028
+    # :n3_10027
+    :n3_20000 :n3_20001 :n3_20002 :n3_20003 :n3_20004 :n3_20005
+    ) .
+
+:n3_10001 a test:TestN3Eval;
+  mf:name "no-last-nl.n3";
+  rdfs:comment "An N3 file with no final newline character";
+  mf:action <syntax/no-last-nl.n3> ;
+  mf:result <n3/n3parser.tests_n3_10001.nt> .
+
+:n3_10002 a test:TestN3Eval;
+  mf:name "dot-dash.n3";
+  rdfs:comment  "combinations of - and _ in identifiers";
+  mf:result <n3/n3parser.tests_n3_10002.nt> ;
+  mf:action    <syntax/dot-dash.n3> .
+
+:n3_10003 a test:TestN3Eval;
+  mf:name "ords1.n3";
+  rdfs:comment  "@keywords in n3";
+  mf:result <n3/n3parser.tests_n3_10003.nt> ;
+  mf:action    <syntax/keywords1.n3> .
+
+:n3_10004 a test:TestN3Eval;
+  mf:name "keywords2.n3";
+  rdfs:comment  "using no keywords in n3";
+  mf:result <n3/n3parser.tests_n3_10004.nt> ;
+  mf:action    <syntax/keywords2.n3>.
+
+:n3_10005 a test:TestN3Eval;
+  mf:name "djb1a.n3";
+  rdfs:comment  "djb noticed a:b was parsed as rdf:type token";
+  mf:result <n3/n3parser.tests_n3_10005.nt> ;
+  mf:action    <syntax/djb1a.n3>.
+
+:n3_10006 a test:TestN3Eval;
+  mf:name "manifest-parser.n3";
+  rdfs:comment  "we might as well be nice and self-referential";
+  mf:result <n3/n3parser.tests_n3_10006.nt> ;
+  mf:action    <>.
+
+:n3_10007 a test:TestN3Eval;
+  mf:name "contexts.n3";
+  rdfs:comment    "Parse and generate simple contexts";
+  mf:result <n3/n3parser.tests_n3_10007.nt> ;
+  mf:action      <contexts.n3>.
+
+:n3_10008 a test:TestN3Eval;
+  mf:name "anon-prop.n3";
+  rdfs:comment   "Parse and regen anonymous property";
+  mf:result <n3/n3parser.tests_n3_10008.nt> ;
+  mf:action     <anon-prop.n3> .
+
+:n3_10009 a test:TestN3Eval;
+  mf:name "strquot.n3";
+  rdfs:comment   "N3 string quoting with escaping";
+  mf:result <n3/n3parser.tests_n3_10009.nt> ;
+  mf:action     <strquot.n3> .
+
+:n3_10010 a test:TestN3PositiveSyntax;
+  mf:name "hiragana.n3";
+  rdfs:comment   "N3 string, qname and IRI with utf-8 non-ascii characters";
+  mf:action     <i18n/hiragana.n3> .
+
+:n3_10011 a test:TestN3Eval;
+  mf:name "path1.n3";
+  rdfs:comment   "Path syntax, simple";
+  mf:result <n3/n3parser.tests_n3_10011.nt> ;
+  mf:action     <syntax/path1.n3> .
+
+:n3_10012 a test:TestN3Eval;
+  mf:name "path2.n3";
+  rdfs:comment   "Path syntax, more";
+  mf:result <n3/n3parser.tests_n3_10012.nt> ;
+  mf:action     <syntax/path2.n3> .
+
+:n3_10013 a test:TestN3Eval;
+  mf:name "numbers.n3";
+  rdfs:comment "Number syntax";
+  mf:result <n3/n3parser.tests_n3_10013.nt> ;
+  mf:action  <syntax/numbers.n3> .
+
+:n3_10014 a test:TestN3Eval;
+  mf:name "qvars1.n3";
+  rdfs:comment   "Quick variable syntax, simple";
+  mf:result <n3/n3parser.tests_n3_10014.nt> ;
+  mf:action  <syntax/qvars1.n3> .
+
+:n3_10015 a test:TestN3Eval;
+  mf:name "qvars2.n3";
+  rdfs:comment   "Quick variable syntax, more";
+  mf:result <n3/n3parser.tests_n3_10015.nt> ;
+  mf:action  <syntax/qvars2.n3> .
+
+:n3_10016 a test:TestN3Eval;
+  mf:name "lstring.n3";
+  rdfs:comment   "N3 string nested triple quoting";
+  mf:result <n3/n3parser.tests_n3_10016.nt> ;
+  mf:action  <syntax/lstring.n3> .
+
+:n3_10017 a test:TestN3Eval;
+  mf:name "lists.n3";
+  rdfs:comment    "parsing and generation of N3 list syntax";
+  mf:result <n3/n3parser.tests_n3_10017.nt> ;
+  mf:action  <lists.n3> .
+
+:n3_10018 a test:TestN3Eval;
+  mf:name "trailing-semicolon.n3";
+  rdfs:comment    "Propertylists can end in trailing semicolon.";
+  mf:result <n3/n3parser.tests_n3_10018.nt> ;
+  mf:action  <syntax/trailing-semicolon.n3> .
+
+:n3_10019 a test:TestN3NegativeSyntax;
+  mf:name "this-quantifiers.n3";
+  rdfs:comment    "Can still read the old 'this log:forSome' syntax?";
+  mf:result <n3/n3parser.tests_n3_10019.nt> ;
+  mf:action  <syntax/this-quantifiers.n3> .
+
+:n3_10020 a test:TestN3NegativeSyntax;
+  mf:name "this-rules.n3";
+  rdfs:comment    "Can still read the old 'this log:forAll' syntax";
+  mf:result <n3/n3parser.tests_n3_10020.nt> ;
+  mf:action  <syntax/this-rules.n3> .
+
+:n3_10021 a test:TestN3PositiveSyntax;
+  mf:name "too-nested.n3";
+  rdfs:comment "Are we exceeding a maximum recursion limit or two?";
+  mf:action <syntax/too-nested.n3> .
+
+:n3_10025 a test:TestN3Eval;
+  mf:name "equals1.n3";
+  rdfs:comment    "The = keyword";
+  mf:result <n3/n3parser.tests_n3_10025.nt> ;
+  mf:action  <syntax/equals1.n3> .
+
+:n3_10026 a test:TestN3Eval;
+  mf:name "equals2.n3";
+  rdfs:comment    "The = keyword";
+  mf:result <n3/n3parser.tests_n3_10026.nt> ;
+  mf:action  <syntax/equals2.n3> .
+
+#:n3_10027 a test:TestN3Eval;
+#  mf:name "zero-predicates.n3";
+#  rdfs:comment    "A statement that says nothing at all";
+#  mf:result <n3/n3parser.tests_n3_10027.nt> ;
+#  mf:action  <syntax/zero-predicates.n3> .
+
+:n3_10028 a test:TestN3NegativeSyntax;
+  mf:name "zero-objects.n3";
+  rdfs:comment    "A statement that says nothing at all";
+  mf:result <n3/n3parser.tests_n3_10028.nt> ;
+  mf:action  <syntax/zero-objects.n3> .
+
+:n3_20000 a test:TestN3NegativeSyntax;
+  mf:name "tests-work.n3";
+  rdfs:comment    "something that isn't n3";
+  mf:action  <tests-work.txt> .
+
+:n3_20001 a test:TestN3NegativeSyntax;
+  mf:name "neg-keywords3.n3";
+  rdfs:comment    "@keywords is not a valid predicate";
+  mf:action  <syntax/neg-keywords3.n3> .
+
+:n3_20002 a test:TestN3NegativeSyntax;
+  mf:name "neg-single-quote.n3";
+  rdfs:comment    "single quoted strings are illegal";
+  mf:action  <syntax/neg-single-quote.n3> .
+
+:n3_20003 a test:TestN3NegativeSyntax;
+  mf:name "neg-thisadoc.n3";
+  rdfs:comment    "The `this' keyword is no longer legal ";
+  mf:action  <syntax/neg-thisadoc.n3> .
+
+:n3_20004 a test:TestN3NegativeSyntax;
+  mf:name "neg-literal-predicate.n3";
+  rdfs:comment    "A predicate cannot be a literal, I hope";
+  mf:action  <syntax/neg-literal-predicate.n3> .
+
+:n3_20005 a test:TestN3NegativeSyntax;
+  mf:name "neg-formula-predicate.n3";
+  rdfs:comment    "A predicate cannot be a formula, I hope";
+  mf:action  <syntax/neg-formula-predicate.n3> .
