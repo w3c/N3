@@ -1,0 +1,71 @@
+Prefix(:=<http://www.semanticweb.org/william/ontologies/2019/0/untitled-ontology-336#>)
+Prefix(owl:=<http://www.w3.org/2002/07/owl#>)
+Prefix(rdf:=<http://www.w3.org/1999/02/22-rdf-syntax-ns#>)
+Prefix(xml:=<http://www.w3.org/XML/1998/namespace>)
+Prefix(xsd:=<http://www.w3.org/2001/XMLSchema#>)
+Prefix(rdfs:=<http://www.w3.org/2000/01/rdf-schema#>)
+
+
+Ontology(<http://www.semanticweb.org/william/ontologies/2019/0/untitled-ontology-336>
+
+Declaration(Class(:AllTasksCompleted))
+Declaration(Class(:AtomicTask))
+Declaration(Class(:CompletedTask))
+Declaration(Class(:CompositeTask))
+Declaration(ObjectProperty(:contains))
+Declaration(NamedIndividual(:atomicTask1))
+Declaration(NamedIndividual(:atomicTask2))
+Declaration(NamedIndividual(:atomicTask3))
+Declaration(NamedIndividual(:compositeTask1))
+############################
+#   Object Properties
+############################
+
+# Object Property: :contains (:contains)
+
+ObjectPropertyDomain(:contains :CompositeTask)
+ObjectPropertyRange(:contains :AtomicTask)
+
+
+############################
+#   Classes
+############################
+
+# Class: :AllTasksCompleted (:AllTasksCompleted)
+
+EquivalentClasses(:AllTasksCompleted ObjectAllValuesFrom(:contains :CompletedTask))
+SubClassOf(:AllTasksCompleted :CompositeTask)
+
+# Class: :CompletedTask (:CompletedTask)
+
+SubClassOf(:CompletedTask :AtomicTask)
+
+
+############################
+#   Named Individuals
+############################
+
+# Individual: :atomicTask1 (:atomicTask1)
+
+ClassAssertion(:AtomicTask :atomicTask1)
+ClassAssertion(:CompletedTask :atomicTask1)
+
+# Individual: :atomicTask2 (:atomicTask2)
+
+ClassAssertion(:AtomicTask :atomicTask2)
+ClassAssertion(:CompletedTask :atomicTask2)
+
+# Individual: :atomicTask3 (:atomicTask3)
+
+ClassAssertion(:AtomicTask :atomicTask3)
+ClassAssertion(:CompletedTask :atomicTask3)
+
+# Individual: :compositeTask1 (:compositeTask1)
+
+ClassAssertion(:CompositeTask :compositeTask1)
+ObjectPropertyAssertion(:contains :compositeTask1 :atomicTask1)
+ObjectPropertyAssertion(:contains :compositeTask1 :atomicTask2)
+ObjectPropertyAssertion(:contains :compositeTask1 :atomicTask3)
+
+
+)
