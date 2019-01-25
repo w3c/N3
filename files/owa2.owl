@@ -1,0 +1,39 @@
+Prefix(:=<http://www.semanticweb.org/william/ontologies/2019/0/untitled-ontology-337#>)
+Prefix(owl:=<http://www.w3.org/2002/07/owl#>)
+Prefix(rdf:=<http://www.w3.org/1999/02/22-rdf-syntax-ns#>)
+Prefix(xml:=<http://www.w3.org/XML/1998/namespace>)
+Prefix(xsd:=<http://www.w3.org/2001/XMLSchema#>)
+Prefix(rdfs:=<http://www.w3.org/2000/01/rdf-schema#>)
+
+
+Ontology(<http://www.semanticweb.org/william/ontologies/2019/0/untitled-ontology-337>
+
+Declaration(Class(:DiscardedTask))
+Declaration(Class(:NotDiscardedTask))
+Declaration(Class(:Task))
+Declaration(NamedIndividual(:task1))
+############################
+#   Classes
+############################
+
+# Class: :DiscardedTask (:DiscardedTask)
+
+SubClassOf(:DiscardedTask :Task)
+DisjointClasses(:DiscardedTask :NotDiscardedTask)
+
+# Class: :NotDiscardedTask (:NotDiscardedTask)
+
+EquivalentClasses(:NotDiscardedTask ObjectComplementOf(:DiscardedTask))
+SubClassOf(:NotDiscardedTask :Task)
+
+
+############################
+#   Named Individuals
+############################
+
+
+# Individual: :task2 (:task1)
+
+ClassAssertion(:Task :task1)
+
+)
