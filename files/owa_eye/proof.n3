@@ -1,0 +1,82 @@
+#Processed by EYE v18.0312.0936 josd
+#eye owa.n3 rule_eye.n3 --query query.n3
+
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX xml: <http://www.w3.org/XML/1998/namespace>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX log: <http://www.w3.org/2000/10/swap/log#>
+PREFIX list: <http://www.w3.org/2000/10/swap/list#>
+PREFIX e: <http://eulersharp.sourceforge.net/2003/03swap/log-rules#>
+PREFIX : <http://www.semanticweb.org/william/ontologies/2019/0/untitled-ontology-336#>
+PREFIX r: <http://www.w3.org/2000/10/swap/reason#>
+
+[] a r:Proof, r:Conjunction;
+  r:component <#lemma1>;
+  r:gives {
+    :compositeTask1 a :AllTasksCompleted.
+  }.
+
+<#lemma1> a r:Inference;
+  r:gives {
+    :compositeTask1 a :AllTasksCompleted.
+  };
+  r:evidence (
+    <#lemma2>
+  );
+  r:rule <#lemma3>.
+
+<#lemma2> a r:Inference;
+  r:gives {
+    :compositeTask1 a :AllTasksCompleted.
+  };
+  r:evidence (
+    <#lemma4>
+    <#lemma5>
+    [ a r:Fact; r:gives {((<file:///home/doerthe/william/N3/files/owa_eye/owa.n3> <file:///home/doerthe/william/N3/files/owa_eye/rule_eye.n3>) 1) e:findall (_:sk_1 {_:sk_1 list:in (:atomicTask1 :atomicTask2 :atomicTask3).
+     _:sk_1 a :CompletedTask} (:atomicTask1 :atomicTask2 :atomicTask3))}]
+  );
+  r:rule <#lemma6>.
+
+<#lemma3> a r:Extraction;
+  r:gives {
+    {?x_0_1 a :AllTasksCompleted} => {?x_0_1 a :AllTasksCompleted}.
+  };
+  r:because [ a r:Parsing; r:source <file:///home/doerthe/william/N3/files/owa_eye/query.n3>].
+
+<#lemma4> a r:Extraction;
+  r:gives {
+    :compositeTask1 a :CompositeTask.
+  };
+  r:because [ a r:Parsing; r:source <file:///home/doerthe/william/N3/files/owa_eye/owa.n3>].
+
+<#lemma5> a r:Inference;
+  r:gives {
+    :compositeTask1 :containsList (:atomicTask1 :atomicTask2 :atomicTask3).
+  };
+  r:evidence (
+    <#lemma4>
+    [ a r:Fact; r:gives {((<file:///home/doerthe/william/N3/files/owa_eye/owa.n3> <file:///home/doerthe/william/N3/files/owa_eye/rule_eye.n3>) 1) e:findall (_:sk_0 {:compositeTask1 :contains _:sk_0} (:atomicTask1 :atomicTask2 :atomicTask3))}]
+  );
+  r:rule <#lemma7>.
+
+<#lemma6> a r:Extraction;
+  r:gives {
+    {?x_0_2 a :CompositeTask.
+     ?x_0_2 :containsList ?x_1_2.
+     ?x_2_2 e:findall (?x_3_2 {?x_3_2 list:in ?x_1_2.
+      ?x_3_2 a :CompletedTask} ?x_1_2)} => {?x_0_2 a :AllTasksCompleted}.
+  };
+  r:because [ a r:Parsing; r:source <file:///home/doerthe/william/N3/files/owa_eye/rule_eye.n3>].
+
+<#lemma7> a r:Extraction;
+  r:gives {
+    {?x_0_3 a :CompositeTask.
+     ?x_1_3 e:findall (?x_2_3 {?x_0_3 :contains ?x_2_3} ?x_3_3)} => {?x_0_3 :containsList ?x_3_3}.
+  };
+  r:because [ a r:Parsing; r:source <file:///home/doerthe/william/N3/files/owa_eye/rule_eye.n3>].
+
+#2019-01-30T09:27:40.613Z in=43 out=1 ent=3 step=6 brake=4 inf=33561 sec=0.067 inf/sec=500910
+#ENDS
+
