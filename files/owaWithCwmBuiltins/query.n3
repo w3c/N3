@@ -1,0 +1,3 @@
+@prefix : <http://www.semanticweb.org/william/ontologies/2019/0/untitled-ontology-336#> .
+
+{ ?t a :NotAllTasksCompleted.} => { ?t a :NotAllTasksCompleted.}.

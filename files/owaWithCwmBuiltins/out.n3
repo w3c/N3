@@ -1,0 +1,16 @@
+#Processed by EYE v18.0312.0936 josd
+#eye owa.n3 rule.n3 --query query.n3 --nope
+
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX xml: <http://www.w3.org/XML/1998/namespace>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX log: <http://www.w3.org/2000/10/swap/log#>
+PREFIX : <http://www.semanticweb.org/william/ontologies/2019/0/untitled-ontology-336#>
+
+:compositeTask1 a :NotAllTasksCompleted.
+
+#2019-01-30T08:56:47.735Z in=64 out=1 ent=2 step=4 brake=1 inf=24351 sec=0.061 inf/sec=399197
+#ENDS
+
