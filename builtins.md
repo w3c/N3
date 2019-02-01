@@ -99,8 +99,8 @@ Iff the subject is a list and the obbject is in that list, then this is true.
 
 # Math
 
-## `math:absoluteValue`	(@william-vw)
-(source: [Cmw Builtin](https://www.w3.org/2000/10/swap/doc/CwmBuiltins))
+## `math:absoluteValue`
+(source: [Cmw Builtins](https://www.w3.org/2000/10/swap/doc/CwmBuiltins))
 
 The object is calulated as the absolute value of the subject.
 
