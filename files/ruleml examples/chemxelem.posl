@@ -1,0 +1,205 @@
+"last-atm"(107 : Real).
+atm(1 : Real, name[h : String, hydrogen : String], prop[g : String, eco[1 : Real, 0 : Real, 0 : Real], 1.00794 : Real, oxi[1 : Real, -1 : Real]]).
+atm(2 : Real, name[he : String, helium : String], prop[g : String, eco[2 : Real, 0 : Real, 0 : Real], 4.0020604 : Real, oxi[0 : Real]]).
+atm(3 : Real, name[li : String, lithium : String], prop[m : String, eco[2 : Real, 1 : Real, 0 : Real], 6.941 : Real, oxi[1 : Real]]).
+atm(4 : Real, name[be : String, beryllium : String], prop[m : String, eco[2 : Real, 2 : Real, 0 : Real], 9.012182 : Real, oxi[2 : Real]]).
+atm(5 : Real, name[b : String, boron : String], prop[sc : String, eco[2 : Real, 3 : Real, 0 : Real], 10.811 : Real, oxi[3 : Real]]).
+atm(6 : Real, name[c : String, carbon : String], prop[sc : String, eco[2 : Real, 4 : Real, 0 : Real], 12.011 : Real, oxi[2 : Real, 4 : Real, -4 : Real]]).
+atm(7 : Real, name[n : String, nitrogen : String], prop[g : String, eco[2 : Real, 5 : Real, 0 : Real], 14.00674 : Real, oxi[1 : Real, 2 : Real, 3 : Real, 4 : Real, 5 : Real, -1 : Real, -2 : Real, -3 : Real]]).
+atm(8 : Real, name[o : String, oxygen : String], prop[g : String, eco[2 : Real, 6 : Real, 0 : Real], 15.9994 : Real, oxi[-2 : Real]]).
+atm(9 : Real, name[f : String, fluorine : String], prop[g : String, eco[2 : Real, 7 : Real, 0 : Real], 18.998404 : Real, oxi[-1 : Real]]).
+atm(10 : Real, name[ne : String, neon : String], prop[g : String, eco[2 : Real, 8 : Real, 0 : Real], 20.1797 : Real, oxi[0 : Real]]).
+atm(11 : Real, name[na : String, sodium : String], prop[m : String, eco[2 : Real, 8 : Real, 1 : Real], 22.989767 : Real, oxi[1 : Real]]).
+atm(12 : Real, name[mg : String, magnesium : String], prop[m : String, eco[2 : Real, 8 : Real, 2 : Real], 24.305 : Real, oxi[2 : Real]]).
+atm(13 : Real, name[al : String, aluminium : String], prop[m : String, eco[2 : Real, 8 : Real, 3 : Real], 26.981539 : Real, oxi[3 : Real]]).
+atm(14 : Real, name[si : String, silicon : String], prop[sc : String, eco[2 : Real, 8 : Real, 4 : Real], 28.0855 : Real, oxi[2 : Real, 4 : Real, -4 : Real]]).
+atm(15 : Real, name[p : String, phosphorus : String], prop[sc : String, eco[2 : Real, 8 : Real, 5 : Real], 30.97362 : Real, oxi[3 : Real, 5 : Real, -3 : Real]]).
+atm(16 : Real, name[s : String, sulfur : String], prop[sc : String, eco[2 : Real, 8 : Real, 6 : Real], 32.066 : Real, oxi[4 : Real, 6 : Real, -2 : Real]]).
+atm(17 : Real, name[cl : String, chlorine : String], prop[g : String, eco[2 : Real, 8 : Real, 7 : Real], 35.4527 : Real, oxi[1 : Real, 5 : Real, 7 : Real, -1 : Real]]).
+atm(18 : Real, name[ar : String, argon : String], prop[g : String, eco[2 : Real, 8 : Real, 8 : Real], 39.948 : Real, oxi[0 : Real]]).
+atm(19 : Real, name[k : String, potassium : String], prop[m : String, eco[8 : Real, 8 : Real, 1 : Real], 39.0983 : Real, oxi[1 : Real]]).
+atm(20 : Real, name[ca : String, calcium : String], prop[m : String, eco[8 : Real, 8 : Real, 2 : Real], 40.078 : Real, oxi[2 : Real]]).
+atm(21 : Real, name[sc : String, scandium : String], prop[m : String, eco[8 : Real, 9 : Real, 2 : Real], 44.9559 : Real, oxi[3 : Real]]).
+atm(22 : Real, name[ti : String, titanium : String], prop[m : String, eco[8 : Real, 10 : Real, 2 : Real], 47.88 : Real, oxi[2 : Real, 3 : Real, 4 : Real]]).
+atm(23 : Real, name[v : String, vanadium : String], prop[m : String, eco[8 : Real, 11 : Real, 2 : Real], 50.9415 : Real, oxi[2 : Real, 3 : Real, 4 : Real, 5 : Real]]).
+atm(24 : Real, name[cr : String, chronium : String], prop[m : String, eco[8 : Real, 13 : Real, 1 : Real], 51.9961 : Real, oxi[2 : Real, 3 : Real, 6 : Real]]).
+atm(25 : Real, name[mn : String, manganese : String], prop[m : String, eco[8 : Real, 13 : Real, 2 : Real], 54.93085 : Real, oxi[2 : Real, 3 : Real, 4 : Real, 7 : Real]]).
+atm(26 : Real, name[fe : String, ferrum : String], prop[m : String, eco[8 : Real, 14 : Real, 2 : Real], 55.847 : Real, oxi[2 : Real, 3 : Real]]).
+atm(27 : Real, name[co : String, cobalt : String], prop[m : String, eco[8 : Real, 15 : Real, 2 : Real], 58.9332 : Real, oxi[2 : Real, 3 : Real]]).
+atm(28 : Real, name[ni : String, nickel : String], prop[m : String, eco[8 : Real, 16 : Real, 2 : Real], 58.69 : Real, oxi[2 : Real, 3 : Real]]).
+atm(29 : Real, name[cu : String, copper : String], prop[m : String, eco[8 : Real, 18 : Real, 1 : Real], 63.546 : Real, oxi[1 : Real, 2 : Real]]).
+atm(30 : Real, name[zn : String, zinc : String], prop[m : String, eco[8 : Real, 18 : Real, 2 : Real], 65.39 : Real, oxi[2 : Real]]).
+atm(31 : Real, name[ga : String, galium : String], prop[m : String, eco[8 : Real, 18 : Real, 3 : Real], 69.723 : Real, oxi[3 : Real]]).
+atm(32 : Real, name[ge : String, germanium : String], prop[sc : String, eco[8 : Real, 18 : Real, 4 : Real], 72.61 : Real, oxi[2 : Real, 4 : Real]]).
+atm(33 : Real, name[as : String, arsenic : String], prop[sm : String, eco[8 : Real, 18 : Real, 5 : Real], 74.92159 : Real, oxi[3 : Real, 5 : Real, -3 : Real]]).
+atm(34 : Real, name[se : String, selenium : String], prop[sc : String, eco[8 : Real, 18 : Real, 6 : Real], 78.96 : Real, oxi[4 : Real, 6 : Real, -2 : Real]]).
+atm(35 : Real, name[br : String, bromine : String], prop[g : String, eco[8 : Real, 18 : Real, 7 : Real], 79.904 : Real, oxi[1 : Real, 5 : Real, -1 : Real]]).
+atm(36 : Real, name[kr : String, krypton : String], prop[g : String, eco[8 : Real, 18 : Real, 8 : Real], 83.8 : Real, oxi[0 : Real]]).
+atm(37 : Real, name[rb : String, rubidium : String], prop[m : String, eco[18 : Real, 8 : Real, 1 : Real], 85.4678 : Real, oxi[1 : Real]]).
+atm(38 : Real, name[sr : String, strontium : String], prop[m : String, eco[18 : Real, 8 : Real, 2 : Real], 87.62 : Real, oxi[2 : Real]]).
+atm(39 : Real, name[y : String, yttrium : String], prop[m : String, eco[18 : Real, 9 : Real, 2 : Real], 88.90585 : Real, oxi[3 : Real]]).
+atm(40 : Real, name[zr : String, zirconium : String], prop[m : String, eco[18 : Real, 10 : Real, 2 : Real], 91.224 : Real, oxi[4 : Real]]).
+atm(41 : Real, name[nb : String, niobium : String], prop[m : String, eco[18 : Real, 12 : Real, 1 : Real], 92.90638 : Real, oxi[3 : Real, 5 : Real]]).
+atm(42 : Real, name[mo : String, molybdenum : String], prop[m : String, eco[18 : Real, 13 : Real, 1 : Real], 95.94 : Real, oxi[6 : Real]]).
+atm(43 : Real, name[tc : String, technetium : String], prop[m : String, eco[18 : Real, 13 : Real, 2 : Real], 98 : Real, oxi[4 : Real, 6 : Real, 7 : Real]]).
+atm(44 : Real, name[ru : String, ruthenium : String], prop[m : String, eco[18 : Real, 15 : Real, 1 : Real], 101.07 : Real, oxi[3 : Real]]).
+atm(45 : Real, name[rh : String, rhodium : String], prop[m : String, eco[18 : Real, 16 : Real, 1 : Real], 102.9055 : Real, oxi[3 : Real]]).
+atm(46 : Real, name[pd : String, palladium : String], prop[m : String, eco[18 : Real, 18 : Real, 0 : Real], 106.42 : Real, oxi[2 : Real, 4 : Real]]).
+atm(47 : Real, name[ag : String, silver : String], prop[m : String, eco[18 : Real, 18 : Real, 1 : Real], 107.8682 : Real, oxi[1 : Real]]).
+atm(48 : Real, name[cd : String, cadmium : String], prop[m : String, eco[18 : Real, 18 : Real, 2 : Real], 112.411 : Real, oxi[2 : Real]]).
+atm(49 : Real, name[in : String, indium : String], prop[m : String, eco[18 : Real, 18 : Real, 3 : Real], 114.82 : Real, oxi[3 : Real]]).
+atm(50 : Real, name[sn : String, tin : String], prop[m : String, eco[18 : Real, 18 : Real, 4 : Real], 118.71 : Real, oxi[2 : Real, 4 : Real]]).
+atm(51 : Real, name[sb : String, antimony : String], prop[sm : String, eco[18 : Real, 18 : Real, 5 : Real], 121.75 : Real, oxi[3 : Real, 5 : Real, -3 : Real]]).
+atm(52 : Real, name[te : String, tellurium : String], prop[sc : String, eco[18 : Real, 18 : Real, 6 : Real], 127.6 : Real, oxi[4 : Real, 6 : Real, -2 : Real]]).
+atm(53 : Real, name[i : String, iodine : String], prop[sc : String, eco[18 : Real, 18 : Real, 7 : Real], 126.90447 : Real, oxi[1 : Real, 5 : Real, 7 : Real, -1 : Real]]).
+atm(54 : Real, name[xe : String, xenon : String], prop[g : String, eco[18 : Real, 18 : Real, 8 : Real], 131.29 : Real, oxi[0 : Real]]).
+atm(55 : Real, name[cs : String, caesium : String], prop[m : String, eco[18 : Real, 8 : Real, 1 : Real], 132.90543 : Real, oxi[1 : Real]]).
+atm(56 : Real, name[ba : String, barium : String], prop[m : String, eco[18 : Real, 8 : Real, 2 : Real], 137.327 : Real, oxi[2 : Real]]).
+atm(57 : Real, name[la : String, lanthanum : String], prop[m : String, eco[18 : Real, 9 : Real, 2 : Real], 138.9055 : Real, oxi[3 : Real]]).
+atm(58 : Real, name[ce : String, cerium : String], prop[m : String, eco[20 : Real, 8 : Real, 2 : Real], 140.115 : Real, oxi[3 : Real, 4 : Real]]).
+atm(59 : Real, name[pr : String, praseodymium : String], prop[m : String, eco[21 : Real, 8 : Real, 2 : Real], 140.90765 : Real, oxi[3 : Real]]).
+atm(60 : Real, name[nd : String, nitrogen : String], prop[m : String, eco[22 : Real, 8 : Real, 2 : Real], 144.24 : Real, oxi[3 : Real]]).
+atm(61 : Real, name[pm : String, promethium : String], prop[m : String, eco[23 : Real, 8 : Real, 2 : Real], 145 : Real, oxi[3 : Real]]).
+atm(62 : Real, name[sm : String, samarium : String], prop[m : String, eco[24 : Real, 8 : Real, 2 : Real], 150.36 : Real, oxi[2 : Real, 3 : Real]]).
+atm(63 : Real, name[eu : String, europium : String], prop[m : String, eco[25 : Real, 8 : Real, 2 : Real], 151.965 : Real, oxi[2 : Real, 3 : Real]]).
+atm(64 : Real, name[gd : String, gadolinium : String], prop[m : String, eco[25 : Real, 9 : Real, 2 : Real], 157.25 : Real, oxi[3 : Real]]).
+atm(65 : Real, name[tb : String, terbium : String], prop[m : String, eco[27 : Real, 8 : Real, 2 : Real], 158.92534 : Real, oxi[3 : Real]]).
+atm(66 : Real, name[dy : String, dysprosium : String], prop[m : String, eco[28 : Real, 8 : Real, 2 : Real], 162.5 : Real, oxi[3 : Real]]).
+atm(67 : Real, name[ho : String, holmium : String], prop[m : String, eco[29 : Real, 8 : Real, 2 : Real], 164.93031 : Real, oxi[3 : Real]]).
+atm(68 : Real, name[er : String, erbium : String], prop[m : String, eco[30 : Real, 8 : Real, 2 : Real], 167.26 : Real, oxi[3 : Real]]).
+atm(69 : Real, name[tm : String, thullium : String], prop[m : String, eco[31 : Real, 8 : Real, 2 : Real], 168.9342 : Real, oxi[3 : Real]]).
+atm(70 : Real, name[yb : String, ytterbium : String], prop[m : String, eco[32 : Real, 8 : Real, 2 : Real], 173.04 : Real, oxi[2 : Real, 3 : Real]]).
+atm(71 : Real, name[lu : String, lutetium : String], prop[m : String, eco[32 : Real, 9 : Real, 2 : Real], 174.967 : Real, oxi[3 : Real]]).
+atm(72 : Real, name[hf : String, hafnium : String], prop[m : String, eco[32 : Real, 10 : Real, 2 : Real], 178.49 : Real, oxi[4 : Real]]).
+atm(73 : Real, name[ta : String, tantalum : String], prop[m : String, eco[32 : Real, 11 : Real, 2 : Real], 180.9479 : Real, oxi[5 : Real]]).
+atm(74 : Real, name[w : String, tungsten : String], prop[nyd : String, eco[32 : Real, 12 : Real, 2 : Real], 183.85 : Real, oxi[6 : Real]]).
+atm(75 : Real, name[re : String, rhenium : String], prop[m : String, eco[32 : Real, 13 : Real, 2 : Real], 186.207 : Real, oxi[4 : Real, 6 : Real, 7 : Real]]).
+atm(76 : Real, name[os : String, osmium : String], prop[m : String, eco[32 : Real, 14 : Real, 2 : Real], 190.2 : Real, oxi[3 : Real, 4 : Real]]).
+atm(77 : Real, name[ir : String, iridium : String], prop[m : String, eco[32 : Real, 15 : Real, 2 : Real], 192.22 : Real, oxi[3 : Real, 4 : Real]]).
+atm(78 : Real, name[pt : String, platinum : String], prop[m : String, eco[32 : Real, 16 : Real, 2 : Real], 195.08 : Real, oxi[2 : Real, 4 : Real]]).
+atm(79 : Real, name[au : String, gold : String], prop[m : String, eco[32 : Real, 18 : Real, 1 : Real], 196.96654 : Real, oxi[1 : Real, 3 : Real]]).
+atm(80 : Real, name[hg : String, mercury : String], prop[m : String, eco[32 : Real, 18 : Real, 2 : Real], 200.59 : Real, oxi[1 : Real, 2 : Real]]).
+atm(81 : Real, name[tl : String, thallium : String], prop[m : String, eco[32 : Real, 18 : Real, 3 : Real], 204.3833 : Real, oxi[1 : Real, 3 : Real]]).
+atm(82 : Real, name[pb : String, lead : String], prop[m : String, eco[32 : Real, 18 : Real, 4 : Real], 207.2 : Real, oxi[2 : Real, 4 : Real]]).
+atm(83 : Real, name[bi : String, bismuth : String], prop[sm : String, eco[32 : Real, 18 : Real, 5 : Real], 208.98038 : Real, oxi[3 : Real, 5 : Real]]).
+atm(84 : Real, name[po : String, polonium : String], prop[m : String, eco[32 : Real, 18 : Real, 6 : Real], 209 : Real, oxi[2 : Real, 4 : Real]]).
+atm(85 : Real, name[at : String, astatine : String], prop[m : String, eco[32 : Real, 18 : Real, 7 : Real], 210 : Real, oxi[]]).
+atm(86 : Real, name[rn : String, radon : String], prop[g : String, eco[32 : Real, 18 : Real, 8 : Real], 222 : Real, oxi[0 : Real]]).
+atm(87 : Real, name[fr : String, francium : String], prop[m : String, eco[18 : Real, 8 : Real, 1 : Real], 223 : Real, oxi[1 : Real]]).
+atm(88 : Real, name[ra : String, radium : String], prop[m : String, eco[18 : Real, 8 : Real, 2 : Real], 226.025 : Real, oxi[2 : Real]]).
+atm(89 : Real, name[ac : String, actinium : String], prop[m : String, eco[18 : Real, 9 : Real, 2 : Real], 227.028 : Real, oxi[3 : Real]]).
+atm(90 : Real, name[th : String, thorium : String], prop[m : String, eco[18 : Real, 10 : Real, 2 : Real], 232.0381 : Real, oxi[4 : Real]]).
+atm(91 : Real, name[pa : String, protoactinium : String], prop[m : String, eco[20 : Real, 9 : Real, 2 : Real], 231.03587 : Real, oxi[5 : Real, 4 : Real]]).
+atm(92 : Real, name[u : String, uranium : String], prop[m : String, eco[21 : Real, 9 : Real, 2 : Real], 238.0289 : Real, oxi[3 : Real, 4 : Real, 5 : Real, 6 : Real]]).
+atm(93 : Real, name[np : String, neptunium : String], prop[m : String, eco[22 : Real, 9 : Real, 2 : Real], 237.048 : Real, oxi[3 : Real, 4 : Real, 5 : Real, 6 : Real]]).
+atm(94 : Real, name[pu : String, plutonium : String], prop[m : String, eco[24 : Real, 8 : Real, 2 : Real], 244 : Real, oxi[3 : Real, 4 : Real, 5 : Real, 6 : Real]]).
+atm(95 : Real, name[am : String, americium : String], prop[m : String, eco[25 : Real, 8 : Real, 2 : Real], 243 : Real, oxi[3 : Real, 4 : Real, 5 : Real, 6 : Real]]).
+atm(96 : Real, name[cm : String, curium : String], prop[m : String, eco[25 : Real, 9 : Real, 2 : Real], 247 : Real, oxi[3 : Real]]).
+atm(97 : Real, name[bk : String, berkelium : String], prop[m : String, eco[27 : Real, 8 : Real, 2 : Real], 247 : Real, oxi[3 : Real, 4 : Real]]).
+atm(98 : Real, name[cf : String, californium : String], prop[m : String, eco[28 : Real, 8 : Real, 2 : Real], 251 : Real, oxi[3 : Real]]).
+atm(99 : Real, name[es : String, einsteinium : String], prop[m : String, eco[29 : Real, 8 : Real, 2 : Real], 252 : Real, oxi[3 : Real]]).
+atm(100 : Real, name[fm : String, fermium : String], prop[m : String, eco[30 : Real, 8 : Real, 2 : Real], 257 : Real, oxi[3 : Real]]).
+atm(101 : Real, name[md : String, mendelevium : String], prop[m : String, eco[31 : Real, 8 : Real, 2 : Real], 258 : Real, oxi[2 : Real, 3 : Real]]).
+atm(102 : Real, name[no : String, nobelium : String], prop[m : String, eco[32 : Real, 8 : Real, 2 : Real], 259 : Real, oxi[2 : Real, 3 : Real]]).
+atm(103 : Real, name[lr : String, lawrencium : String], prop[m : String, eco[32 : Real, 9 : Real, 2 : Real], 260 : Real, oxi[3 : Real]]).
+atm(104 : Real, name[unq : String, unnilquadium : String], prop[nyd : String, eco[32 : Real, 10 : Real, 2 : Real], 261 : Real, oxi[4 : Real]]).
+atm(105 : Real, name[unp : String, unnilpentium : String], prop[nyd : String, eco[32 : Real, 11 : Real, 2 : Real], 262 : Real, oxi[]]).
+atm(106 : Real, name[unh : String, unnihexium : String], prop[nyd : String, eco[32 : Real, 12 : Real, 2 : Real], 263 : Real, oxi[]]).
+atm(107 : Real, name[uns : String, unnilseptium : String], prop[nyd : String, eco[32 : Real, 13 : Real, 2 : Real], 262 : Real, oxi[]]).
+element(?eno) :- atm(?eno, ?, ?).
+metal([?eno, ?abbr, ?full]) :- atm(?eno, name[?abbr, ?full], prop[m : String, ?eco, ?weight, ?oxi]).
+englno(?n, ?engl) :- atm(?n, name[?, ?engl], ?).
+symbno(?eno, ?symb) :- atm(?eno, name[?symb, ?], ?).
+nosymb(?symb, ?eno) :- atm(?eno, name[?symb, ?], ?).
+"newgroup-sym"(?2, ?symb) :- symbno(?1, ?symb), "newgroup-num"(?2, ?1).
+"newgroup-num"(1 : Real, 1 : Real).
+"newgroup-num"(1 : Real, 3 : Real).
+"newgroup-num"(1 : Real, 11 : Real).
+"newgroup-num"(18 : Real, 2 : Real).
+"newgroup-num"(2 : Real, 4 : Real).
+"newgroup-num"(2 : Real, 12 : Real).
+"newgroup-num"(13 : Real, 5 : Real).
+"newgroup-num"(14 : Real, 6 : Real).
+"newgroup-num"(15 : Real, 7 : Real).
+"newgroup-num"(16 : Real, 8 : Real).
+"newgroup-num"(17 : Real, 9 : Real).
+"newgroup-num"(18 : Real, 10 : Real).
+"newgroup-num"(?3, ?eno) :- element(?eno), lessthanorequal(13 : Real, ?eno), lessthanorequal(?eno, 57 : Real), subtract(?2, ?eno, 1 : Real), modulo(?1, ?2, 18 : Real), add(?3, 1 : Real, ?1).
+"newgroup-num"(?3, ?eno) :- element(?eno), lessthanorequal(72 : Real, ?eno), lessthanorequal(?eno, 89 : Real), subtract(?2, ?eno, 69 : Real), modulo(?1, ?2, 18 : Real), add(?3, 1 : Real, ?1).
+"newgroup-num"(?1, ?eno) :- element(?eno), lessthanorequal(104 : Real, ?eno), lessthanorequal(?eno, 107 : Real), subtract(?1, ?eno, 100 : Real).
+"newgroup-elements"(?e, ?g) :- "newgroup-num"(?g, ?n), englno(?n, ?e).
+"oldgroup-sym"(?3, ?symb) :- symbno(?2, ?symb), "newgroup-num"(?1, ?2), new2old(?3, ?1).
+"oldgroup-sym"(lanthanide : String, ?symb) :- symbno(?eno, ?symb), greaterthanorequal(?eno, 58 : Real), lessthanorequal(?eno, 71 : Real).
+"oldgroup-sym"(actinide : String, ?symb) :- symbno(?eno, ?symb), greaterthanorequal(?eno, 90 : Real), lessthanorequal(?eno, 103 : Real).
+"oldgroup-num"(?1, ?eno) :- symbno(?eno, ?symb), "oldgroup-sym"(?1, ?symb).
+new2old(main[i : String], 1 : Real).
+new2old(main[ii : String], 2 : Real).
+new2old(auxiliary[iii : String], 3 : Real).
+new2old(auxiliary[iv : String], 4 : Real).
+new2old(auxiliary[v : String], 5 : Real).
+new2old(auxiliary[vi : String], 6 : Real).
+new2old(auxiliary[vii : String], 7 : Real).
+new2old(auxiliary[viii : String], 8 : Real).
+new2old(auxiliary[viii : String], 9 : Real).
+new2old(auxiliary[viii : String], 10 : Real).
+new2old(auxiliary[i : String], 11 : Real).
+new2old(auxiliary[ii : String], 12 : Real).
+new2old(main[iii : String], 13 : Real).
+new2old(main[iv : String], 14 : Real).
+new2old(main[v : String], 15 : Real).
+new2old(main[vi : String], 16 : Real).
+new2old(main[vii : String], 17 : Real).
+new2old(main[viii : String], 18 : Real).
+"light-metal"(?eno) :- notequal(?eno, 1 : Real), "newgroup-num"(1 : Real, ?eno).
+"light-metal"(?eno) :- notequal(?eno, 88 : Real), "newgroup-num"(2 : Real, ?eno).
+"light-metal"(13 : Real).
+"light-metal"(39 : Real).
+"light-metal"(21 : Real).
+"light-metal"(22 : Real).
+"insert-new"([group[?group, [?name]]], ?group, ?name, []).
+"insert-new"([group[?group, [?name|?elmts]]|?r], ?group, ?name, [group[?group, ?elmts]|?r]).
+"insert-new"(?2, ?group, ?name, [group[?gr, ?elmts]|?r]) :- greaterthan(?group, ?gr), "insert-new"(?1, ?group, ?name, ?r), plex(?2, group[?gr, ?elmts], ?1).
+"insert-new"([group[?group, [?name]], group[?gr, ?elmts]|?r], ?group, ?name, [group[?gr, ?elmts]|?r]).
+"insert-old"([group[?group, [?name]]], ?group, ?name, []).
+"insert-old"([group[?group, [?name|?elmts]]|?r], ?group, ?name, [group[?group, ?elmts]|?r]).
+"insert-old"(?2, ?group, ?name, [group[?gr, ?elmts]|?r]) :- "old-greaterthan"(?group, ?gr), "insert-old"(?1, ?group, ?name, ?r), plex(?2, group[?gr, ?elmts], ?1).
+"insert-old"([group[?group, [?name]], group[?gr, ?elmts]|?r], ?group, ?name, [group[?gr, ?elmts]|?r]).
+"old-greaterthan"(auxiliary[?oldno], main[?oldno]).
+"old-greaterthan"(main[?oldnof], main[?oldnos]) :- "string-greaterthan"(?oldnof, ?oldnos).
+"old-greaterthan"(main[?oldnof], auxiliary[?oldnos]) :- "string-greaterthan"(?oldnof, ?oldnos).
+"old-greaterthan"(auxiliary[?oldnof], main[?oldnos]) :- "string-greaterthan"(?oldnof, ?oldnos).
+"old-greaterthan"(auxiliary[?oldnof], auxiliary[?oldnos]) :- "string-greaterthan"(?oldnof, ?oldnos).
+"check-eleconf-num"(?eno) :- "eleconf-num"(?1, ?eno), sum(?eno, ?1).
+"check-eleconf-sym"(?symb) :- symbno(?1, ?symb), "check-eleconf-num"(?1).
+"corrupt-eleconf"(?eno) :- "eleconf-num"(?2, ?eno), sum(?1, ?2), notequal(?eno, ?1).
+"check-all-eleconfs"(inconsistent[?eno]) :- element(?eno), "corrupt-eleconf"(?eno).
+"check-all-eleconfs"(consistent[]).
+"eleconf-sym"(?2, ?symb) :- atm(?eno, name[?symb, ?], prop[?, eco[?l1, ?l2, ?l3], ?, ?]), "inner-shells"(?1, ?eno), "inner-shell-fill"(?2, [?l1, ?l2, ?l3], ?1).
+"eleconf-num"(?2, ?eno) :- atm(?eno, ?, prop[?, eco[?l1, ?l2, ?l3], ?, ?]), "inner-shells"(?1, ?eno), "inner-shell-fill"(?2, [?l1, ?l2, ?l3], ?1).
+"inner-shell-fill"(?l, ?l, 0 : Real).
+"inner-shell-fill"(?4, ?l, ?s) :- lessthan(0 : Real, ?s), maxelec(?3, ?s), plex(?1, ?3, ?l), subtract(?2, ?s, 1 : Real), "inner-shell-fill"(?4, ?1, ?2).
+"inner-shells"(0 : Real, ?eno) :- lessthanorequal(1 : Real, ?eno), lessthanorequal(?eno, 18 : Real).
+"inner-shells"(1 : Real, ?eno) :- lessthanorequal(19 : Real, ?eno), lessthanorequal(?eno, 36 : Real).
+"inner-shells"(2 : Real, ?eno) :- lessthanorequal(37 : Real, ?eno), lessthanorequal(?eno, 54 : Real).
+"inner-shells"(3 : Real, ?eno) :- lessthanorequal(55 : Real, ?eno), lessthanorequal(?eno, 86 : Real).
+"inner-shells"(4 : Real, ?eno) :- lessthanorequal(87 : Real, ?eno), "last-atm"(?1), lessthanorequal(?eno, ?1).
+maxelec(2 : Real, 1 : Real).
+maxelec(8 : Real, 2 : Real).
+maxelec(18 : Real, 3 : Real).
+maxelec(32 : Real, 4 : Real).
+maxelec(32 : Real, 5 : Real).
+missint([], []).
+missint([], [?e]).
+missint(?1, [?f, ?s|?r]) :- add(?s, ?f, 1 : Real), missint(?1, [?s|?r]).
+missint(?5, [?f, ?s|?r]) :- add(?1, ?f, 1 : Real), add(?4, ?f, 1 : Real), plex(?3, ?4, ?s, ?r), missint(?2, ?3), plex(?5, ?1, ?2).
+sum(0 : Real, []).
+sum(?2, [?h|?t]) :- sum(?1, ?t), add(?2, ?h, ?1).
+modulo(?x, ?x, ?y) :- lessthan(?x, ?y).
+modulo(?2, ?x, ?y) :- greaterthanorequal(?x, ?y), subtract(?1, ?x, ?y), modulo(?2, ?1, ?y).
+appfun(?l, [], ?l).
+appfun(?2, [?h|?r], ?l) :- appfun(?1, ?r, ?l), plex(?2, ?h, ?1).
+plex([|?r], ?r).
+lessthanorequal(X, Y) :- lessThanOrEqual(X, Y).
+lessthan(X, Y) :- lessThan(X, Y).
+greaterthanorequal(X, Y) :- greaterThanOrEqual(X, Y).
+greaterthan(X, Y) :- greaterThan(X, Y).

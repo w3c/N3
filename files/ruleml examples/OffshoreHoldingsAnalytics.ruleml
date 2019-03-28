@@ -1,0 +1,724 @@
+﻿<?xml-model href="http://deliberation.ruleml.org/1.01/relaxng/fologeq_relaxed.rnc"
+            href="http://deliberation.ruleml.org/1.01/relaxng/naffologeq_relaxed.rnc"
+?>
+<RuleML xmlns="http://ruleml.org/spec">
+  <!-- The examples are takes from 
+    "Offshore Holdings Analytics Using Datalog+ RuleML Rule",
+    Mohammad Sadnan Al Manir, Christopher J.O. Baker
+    (http://ceur-ws.org/Vol-1211/paper6.pdf).
+    -->
+  <!-- This RuleML Document incrementally asserts into, retracts from and 
+       queries a rulebase (within the <RuleML> element) for a total of
+       37 transactions: 14 Asserts, 3 Retracts and 20 distinct Queries.
+    -->
+  <Assert>
+    <!--
+        The president of Azerbaijan is Ilham.
+      -->
+    <Atom>
+      <Rel>president</Rel>
+      <Ind>Ilham</Ind>
+      <Ind>Azerbaijan</Ind>
+    </Atom>
+  </Assert>
+  <Query>
+    <!--
+        Who is the president of Azerbaijan?
+        Answer:
+        x: <Ind>Ilham</Ind>
+      -->
+    <Atom>
+      <Rel>president</Rel>
+      <Var>x</Var>
+      <Ind>Azerbaijan</Ind>
+    </Atom>
+  </Query>
+  <Query>
+    <!--
+        Which country does Ilham preside over?
+        Answer:
+        y: <Ind>Azerbaijan</Ind>
+      -->
+    <Atom>
+      <Rel>president</Rel>
+      <Ind>Ilham</Ind>
+      <Var>y</Var>
+    </Atom>
+  </Query>
+  <Query>
+    <!--
+        List all the individuals and countries where the individual is the president of a country.
+        Answers:
+        x: <Ind>Ilham</Ind>
+        y: <Ind>Azerbaijan</Ind>
+      -->
+    <Atom>
+      <Rel>president</Rel>
+      <Var>x</Var>
+      <Var>y</Var>
+    </Atom>
+  </Query>
+  <Assert>
+    <!--
+        No one is both the president and the prime minister of a country (empty <Or/> used for falsity).
+      -->
+    <Forall>
+      <Var>x</Var>
+      <Implies>
+        <if>
+          <And>
+            <Atom>
+              <Rel>president</Rel>
+              <Var>x</Var>
+              <Var>y</Var>
+            </Atom>
+            <Atom>
+              <Rel>primeMinister</Rel>
+              <Var>x</Var>
+              <Var>y</Var>
+            </Atom>
+          </And>
+        </if>
+        <then>
+          <Or/>
+        </then>
+      </Implies>
+    </Forall>
+  </Assert>
+  <Assert>
+    <!--
+        Ilham is the prime minister of Azerbaijan.
+      -->
+    <Atom>
+      <Rel>primeMinister</Rel>
+      <Ind>Ilham</Ind>
+      <Ind>Azerbaijan</Ind>
+    </Atom>
+  </Assert>
+  <Query>
+    <!--
+        Is there any inconsistency?
+        Succeeds, indicating inconsistency.
+      -->
+    <Or/>
+  </Query>
+  <Retract>
+    <!--
+        Remove "Ilham is the prime minister of Azerbaijan".
+      -->
+    <Atom>
+      <Rel>primeMinister</Rel>
+      <Ind>Ilham</Ind>
+      <Ind>Azerbaijan</Ind>
+    </Atom>
+  </Retract>
+  <Query>
+    <!--
+        Is there any inconsistency?
+        Fails, indicating consistency.
+      -->
+    <Or/>
+  </Query>
+  <Assert>
+    <!--
+        Two persons have family ties if they are either married to each other, 
+        or there is a parent-child relationship between them, 
+        or they are distant relatives.
+        Ilham is married to Mehriban.
+        Ilham has a daughter Arzu.
+        Ilham has a daughter Leyla.
+      -->
+    <Forall>
+      <Var>x</Var>
+      <Var>y</Var>
+      <Implies>
+        <if>
+          <Or>
+            <Atom>
+              <Rel>marriedTo</Rel>
+              <Var>x</Var>
+              <Var>y</Var>
+            </Atom>
+            <Atom>
+              <Rel>hasChild</Rel>
+              <Var>x</Var>
+              <Var>y</Var>
+            </Atom>
+            <Atom>
+              <Rel>hasDistantRelative</Rel>
+              <Var>x</Var>
+              <Var>y</Var>
+            </Atom>
+          </Or>
+        </if>
+        <then>
+          <Atom>
+            <Rel>hasFamilyTies</Rel>
+            <Var>x</Var>
+            <Var>y</Var>
+          </Atom>
+        </then>
+      </Implies>
+    </Forall>
+    <Atom>
+      <Rel>marriedTo</Rel>
+      <Ind>Ilham</Ind>
+      <Ind>Mehriban</Ind>
+    </Atom>
+    <Atom>
+      <Rel>hasChild</Rel>
+      <Ind>Ilham</Ind>
+      <Ind>Leyla</Ind>
+    </Atom>
+    <Atom>
+      <Rel>hasChild</Rel>
+      <Ind>Ilham</Ind>
+      <Ind>Arzu</Ind>
+    </Atom>
+  </Assert>
+  <Query>
+    <!--
+        List the individuals having family ties to Ilham.
+        Answers:
+        y: <Ind>Mehriban</Ind>
+        y: <Ind>Leyla</Ind>
+        y: <Ind>Arzu</Ind>
+      -->
+    <Atom>
+      <Rel>hasFamilyTies</Rel>
+      <Ind>Ilham</Ind>
+      <Var>y</Var>
+    </Atom>
+  </Query>
+  <Query>
+    <!--
+        Which individuals are tied to Mehriban as family members?
+        Answer:
+        x: <Ind>Ilham</Ind>
+      -->
+    <Atom>
+      <Rel>hasFamilyTies</Rel>
+      <Var>x</Var>
+      <Ind>Mehriban</Ind>
+    </Atom>
+  </Query>
+  <Query>
+    <!--
+        Which individuals are tied to Leyla as family members?
+        Answer:
+        x: <Ind>Ilham</Ind>
+      -->
+    <Atom>
+      <Rel>hasFamilyTies</Rel>
+      <Var>x</Var>
+      <Ind>Leyla</Ind>
+    </Atom>
+  </Query>
+  <Query>
+    <!--
+        Which individuals are tied to Arzu as family members?
+        Answer:
+        x: <Ind>Ilham</Ind>
+      -->
+    <Atom>
+      <Rel>hasFamilyTies</Rel>
+      <Var>x</Var>
+      <Ind>Arzu</Ind>
+    </Atom>
+  </Query>
+  <Query>
+    <!--
+        Find all individuals having family ties to each other.
+        Answers:
+        x: <Ind>Ilham</Ind>
+        y: <Ind>Mehriban</Ind>
+        x: <Ind>Ilham</Ind>
+        y: <Ind>Leyla</Ind>
+        x: <Ind>Ilham</Ind>
+        y: <Ind>Arzu</Ind>
+      -->
+    <Atom>
+      <Rel>hasFamilyTies</Rel>
+      <Var>x</Var>
+      <Var>y</Var>
+    </Atom>
+  </Query>
+  <Assert>
+    <!--
+        Everything that operates either as an intermediary company 
+        or as an offshore company is designated as a company.
+        ArborInvestmentsLtd operates as an intermediary company.
+        NaziqAndPartners operates as an intermediary company.
+        HarvardManagementLtd operates as an offshore company.
+      -->
+    <Forall>
+      <Var>x</Var>
+      <Implies>
+        <if>
+          <Or>
+            <Atom>
+              <Rel>intermediaryCompany</Rel>
+              <Var>x</Var>
+            </Atom>
+            <Atom>
+              <Rel>offshoreCompany</Rel>
+              <Var>x</Var>
+            </Atom>
+          </Or>
+        </if>
+        <then>
+          <Atom>
+            <Rel>company</Rel>
+            <Var>x</Var>
+          </Atom>
+        </then>
+      </Implies>
+    </Forall>
+    <Atom>
+      <Rel>intermediaryCompany</Rel>
+      <Ind>ArborInvestmentsLtd</Ind>
+    </Atom>
+    <Atom>
+      <Rel>intermediaryCompany</Rel>
+      <Ind>NaziqAndPartners</Ind>
+    </Atom>
+    <Atom>
+      <Rel>offshoreCompany</Rel>
+      <Ind>HarvardManagementLtd</Ind>
+    </Atom>
+  </Assert>
+  <Query>
+    <!--
+        Which entities are designated as companies?
+        Answers:
+        x: <Ind>ArborInvestmentsLtd</Ind>
+        x: <Ind>NaziqAndPartners</Ind>
+        x: <Ind>HarvardManagementLtd</Ind>
+      -->
+    <Atom>
+      <Rel>company</Rel>
+      <Var>x</Var>
+    </Atom>
+  </Query>
+  <Query>
+    <!--
+        Does ArborInvestmentsLtd operate as an intermediary company?
+        Answer:      
+        Succeeds.
+      -->
+    <Atom>
+      <Rel>intermediaryCompany</Rel>
+      <Ind>ArborInvestmentsLtd</Ind>
+    </Atom>
+  </Query>
+  <Query>
+    <!--
+        Does ArborInvestmentsLtd operate as an offshore company?
+        Answer:      
+        Fails.
+      -->
+    <Atom>
+      <Rel>offshoreCompany</Rel>
+      <Ind>ArborInvestmentsLtd</Ind>
+    </Atom>
+  </Query>
+  <Assert>
+    <!--
+        Nothing is both an onshore company and an offshore company.
+      -->
+    <Forall>
+      <Var>x</Var>
+      <Implies>
+        <if>
+          <And>
+            <Atom>
+              <Rel>onshoreCompany</Rel>
+              <Var>x</Var>
+            </Atom>
+            <Atom>
+              <Rel>offshoreCompany</Rel>
+              <Var>x</Var>
+            </Atom>
+          </And>
+        </if>
+        <then>
+          <Or/>
+        </then>
+      </Implies>
+    </Forall>
+  </Assert>
+  <Assert>
+    <!--
+        HarvardManagementLtd is an onshore company.
+      -->
+    <Atom>
+      <Rel>onshoreCompany</Rel>
+      <Ind>HarvardManagementLtd</Ind>
+    </Atom>
+  </Assert>
+  <Query>
+    <!--
+        Is there any inconsistency?
+        Succeeds, indicating inconsistency.
+      -->
+    <Or/>
+  </Query>
+  <Retract>
+    <!--
+        Remove "HarvardManagementLtd is an onshore company".
+      -->
+    <Atom>
+      <Rel>onshoreCompany</Rel>
+      <Ind>HarvardManagementLtd</Ind>
+    </Atom>
+  </Retract>
+  <Query>
+    <!--
+        Is there any inconsistency?
+        Fails, indicating consistency.
+      -->
+    <Or/>
+  </Query>
+  <Assert>
+    <!--
+        It is unlikely that an offshore company reveals their clients’ investment information.
+      -->
+    <Forall>
+      <Var>x</Var>
+      <Implies>
+        <if>
+          <And>
+            <Atom>
+              <Rel>offshoreCompany</Rel>
+              <Var>x</Var>
+            </Atom>
+            <Atom>
+              <Rel>revealInvestmentInfo</Rel>
+              <Var>x</Var>
+            </Atom>
+          </And>
+        </if>
+        <then>
+          <Or/>
+        </then>
+      </Implies>
+    </Forall>
+  </Assert>
+  <Assert>
+    <!--
+        HarvardManagementLtd reveals investment information.
+      -->
+    <Atom>
+      <Rel>revealInvestmentInfo</Rel>
+      <Ind>HarvardManagementLtd</Ind>
+    </Atom>
+  </Assert>
+  <Query>
+    <!--
+        Is there any inconsistency?
+        Succeeds, indicating inconsistency.
+      -->
+    <Or/>
+  </Query>
+  <Retract>
+    <!--
+        Remove "HarvardManagementLtd reveals investment information".
+      -->
+    <Atom>
+      <Rel>revealInvestmentInfo</Rel>
+      <Ind>HarvardManagementLtd</Ind>
+    </Atom>
+  </Retract>
+  <Query>
+    <!--
+        Is there any inconsistency?
+        Fails, indicating consistency.
+      -->
+    <Or/>
+  </Query>
+  <Assert>
+    <!--
+        Anyone is a shareholder of a company if and only if there exists a certain level of stocks of that 
+        company such as Small-cap level or Medium-cap level or Large-cap level, which he/she owns.
+        Arzu owns Medium-cap level of stocks in ArborInvestmentsLtd.
+      -->
+    <Forall>
+      <Var>x</Var>
+      <Var>y</Var>
+      <Equivalent>
+        <Atom>
+          <Rel>shareHolderOf</Rel>
+          <Var>x</Var>
+          <Var>y</Var>
+        </Atom>
+        <Exists>
+          <Var>z</Var>
+          <Atom>
+            <Rel>ownsStockin-atLevel</Rel>
+            <Var>x</Var>
+            <Var>y</Var>
+            <Var>z</Var>
+          </Atom>
+        </Exists>
+      </Equivalent>
+    </Forall>
+    <Atom>
+      <Rel>ownsStockin-atLevel</Rel>
+      <Ind>Arzu</Ind>
+      <Ind>ArborInvestmentsLtd</Ind>
+      <Ind>Medium-cap</Ind>
+    </Atom>
+  </Assert>
+  <Assert>
+    <!--
+        Every stock owner owns at most one level of stocks of a company. 
+      -->
+    <Forall>
+      <Var>x</Var>
+      <Var>y</Var>
+      <Var>z1</Var>
+      <Var>z2</Var>
+      <Implies>
+        <if>
+          <And>
+            <Atom>
+              <Rel>ownsStockin-atLevel</Rel>
+              <Var>x</Var>
+              <Var>y</Var>
+              <Var>z1</Var>
+            </Atom>
+            <Atom>
+              <Rel>ownsStockin-atLevel</Rel>
+              <Var>x</Var>
+              <Var>y</Var>
+              <Var>z2</Var>
+            </Atom>
+          </And>
+        </if>
+        <then>
+          <Equal>
+            <Var>z1</Var>
+            <Var>z2</Var>
+          </Equal>
+        </then>
+      </Implies>
+    </Forall>
+  </Assert>
+  <Query>
+    <!--
+        Is there any individual who owns Small-cap level of stocks in ArborInvestmentsLtd?
+        Answer:
+        fails.
+      -->
+    <Atom>
+      <Rel>ownsStockin-atLevel</Rel>
+      <Var>x</Var>
+      <Var>ArborInvestmentsLtd</Var>
+      <Var>Small-cap</Var>
+    </Atom>
+  </Query>
+  <Query>
+    <!--
+        Is there any individual who owns Medium-cap level of stocks in ArborInvestmentsLtd?
+        Answer:
+        x: <Ind>Arzu</Ind>
+      -->
+    <Atom>
+      <Rel>ownsStockin-atLevel</Rel>
+      <Var>x</Var>
+      <Var>ArborInvestmentsLtd</Var>
+      <Var>Medium-cap</Var>
+    </Atom>
+  </Query>
+  <Query>
+    <!--
+        List all shareholders of ArborInvestmentsLtd.
+        Answer:
+        x: <Ind>Arzu</Ind>
+      -->
+    <Atom>
+      <Rel>shareHolderOf</Rel>
+      <Var>x</Var>
+      <Var>ArborInvestmentsLtd</Var>
+    </Atom>
+  </Query>
+  <Assert>
+    <!--
+        There is a link between a person and a company if the person is a
+        director or a shareholder of that company or he/she owns a level of stocks in the company.
+      -->
+    <Forall>
+      <Var>x</Var>
+      <Var>y</Var>
+      <Implies>
+        <if>
+          <Or>
+            <Atom>
+              <Rel>directorOf</Rel>
+              <Var>x</Var>
+              <Var>y</Var>
+            </Atom>
+            <Atom>
+              <Rel>shareHolderOf</Rel>
+              <Var>x</Var>
+              <Var>y</Var>
+            </Atom>
+            <Exists>
+              <Var>z</Var>
+              <Atom>
+                <Rel>ownsStockin-atLevel</Rel>
+                <Var>x</Var>
+                <Var>y</Var>
+                <Var>z</Var>
+              </Atom>
+            </Exists>
+          </Or>
+        </if>
+        <then>
+          <Atom>
+            <Rel>hasLinksTo</Rel>
+            <Var>x</Var>
+            <Var>y</Var>
+          </Atom>
+        </then>
+      </Implies>
+    </Forall>
+  </Assert>
+  <Query>
+    <!--
+        Which individuals and companies are linked to each other?
+        Answers:
+        x: <Ind>Arzu</Ind>
+        y: <Ind>ArborInvestmentsLtd</Ind>
+      -->
+    <Atom>
+      <Rel>hasLinksTo</Rel>
+      <Var>x</Var>
+      <Var>y</Var>
+    </Atom>
+  </Query>
+  <Assert>
+    <!--
+        If a company C1 manages assets of another company C2 and 
+        the latter i.e. C2 manages assets of yet another company C3, 
+        then company C1 manages the assets of the company C3.
+        ArborInvestmentsLtd manages assets of NaziqAndPartners.
+        NaziqAndPartners manages assets of HarvardManagementLtd.
+      -->
+    <Forall>
+      <Var>x</Var>
+      <Var>y</Var>
+      <Var>z</Var>
+      <Implies>
+        <if>
+          <And>
+            <Atom>
+              <Rel>manageAssets</Rel>
+              <Var>x</Var>
+              <Var>y</Var>
+            </Atom>
+            <Atom>
+              <Rel>manageAssets</Rel>
+              <Var>y</Var>
+              <Var>z</Var>
+            </Atom>
+          </And>
+        </if>
+        <then>
+          <Atom>
+            <Rel>manageAssets</Rel>
+            <Var>x</Var>
+            <Var>z</Var>
+          </Atom>
+        </then>
+      </Implies>
+    </Forall>
+    <Atom>
+      <Rel>manageAssets</Rel>
+      <Ind>ArborInvestmentsLtd</Ind>
+      <Ind>NaziqAndPartners</Ind>
+    </Atom>
+    <Atom>
+      <Rel>manageAssets</Rel>
+      <Ind>NaziqAndPartners</Ind>
+      <Ind>HarvardManagementLtd</Ind>
+    </Atom>
+  </Assert>
+  <Query>
+    <!--
+        Find all the companies whose assets
+        are being managed and the companies managing them.
+        Answers:
+        x: <Ind>ArborInvestmentsLtd</Ind>
+        z: <Ind>NaziqAndPartners</Ind>
+        x: <Ind>NaziqAndPartners</Ind>
+        z: <Ind>HarvardManagementLtd</Ind>
+        x: <Ind>ArborInvestmentsLtd</Ind>
+        z: <Ind>HarvardManagementLtd</Ind>
+      -->
+    <Atom>
+      <Rel>manageAssets</Rel>
+      <Var>x</Var>
+      <Var>z</Var>
+    </Atom>
+  </Query>
+  <Assert>
+    <!--
+        The president of a country (possibly) hasoffshore investments in a company
+         if his family members have links to companies managing assets in that offshore company
+      -->
+    <Forall>
+      <Var>p</Var>
+      <Var>c</Var>
+      <Var>fm</Var>
+      <Var>ic</Var>
+      <Var>oc</Var>
+      <Implies>
+        <if>
+          <And>
+            <Atom>
+              <Rel>president</Rel>
+              <Var>p</Var>
+              <Var>c</Var>
+            </Atom>
+            <Atom>
+              <Rel>hasFamilyTies</Rel>
+              <Var>p</Var>
+              <Var>fm</Var>
+            </Atom>
+            <Atom>
+              <Rel>hasLinksTo</Rel>
+              <Var>fm</Var>
+              <Var>ic</Var>
+            </Atom>
+            <Atom>
+              <Rel>manageAssets</Rel>
+              <Var>ic</Var>
+              <Var>oc</Var>
+            </Atom>
+          </And>
+        </if>
+        <then>
+          <Atom>
+            <Rel>possiblyHasOffshoreInvestmentIn</Rel>
+            <Var>p</Var>
+            <Var>oc</Var>
+          </Atom>
+        </then>
+      </Implies>
+    </Forall>
+  </Assert>
+  <Query>
+    <!--
+        Find the presidents and companies in which the presidents possibly have offshore investments.
+        Answers:
+        p: <Ind>Ilham</Ind>
+        oc: <Ind>HarvardManagementLtd</Ind>
+      -->
+    <Atom>
+      <Rel>possiblyHasOffshoreInvestmentIn</Rel>
+      <Var>p</Var>
+      <Var>oc</Var>
+    </Atom>
+  </Query>
+</RuleML>

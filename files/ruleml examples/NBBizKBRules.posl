@@ -1,0 +1,93 @@
+Alert(NUMBER->?N; LANGUAGE_SPOK->ENGL; LANGUAGE_WRIT->FREN) :- 
+    BIZNET_ENT(NUMBER->?N; LANGUAGE_SPOK->ENGL; LANGUAGE_WRIT->FREN!?).
+Alert(NUMBER->?N; LANGUAGE_SPOK->FREN; LANGUAGE_WRIT->ENGL) :- 
+    BIZNET_ENT(NUMBER->?N; LANGUAGE_SPOK->FREN; LANGUAGE_WRIT->ENGL!?).
+Alert(NUMBER->?N; LANGUAGE_SPOK->?S; LANGUAGE_WRIT->BILI) :- 
+    BIZNET_ENT(NUMBER->?N; LANGUAGE_SPOK->?S; LANGUAGE_WRIT->BILI!?), 
+    notEqual(?S, BILI).
+Alert(NUMBER->?N; CURRENT_EMPLOYMENT->[MAX->?EMax; MIN->?EMin]) :- 
+    BIZNET_ENT(NUMBER->?N; CURRENT_EMPLOYMENT->[MAX->?EMax; MIN->?EMin]!?), 
+    greaterThan(?EMin, ?EMax).
+Alert(NUMBER->none; BIZNET->complete) :- 
+    naf( BIZNET_ENT(NUMBER->?No; LANGUAGE_SPOK->?LSpok; LANGUAGE_WRIT->?LWrit; 
+                    CURRENT_EMPLOYMENT->[MAX->?EMax; MIN->?EMin]; NAME->?Ne; 
+                    ESTABLISHED->?Est; INDUSTRIAL_REGION->?Reg; EXPORT->?X; 
+                    NAICS_INDUSTRY_SECTOR->?S; CONTACT->[PHONE->?P; FAX->?Fax; 
+                    E_MAIL->?Email; WEB_SITE->?URL; CONTACT_PERSON->[PERSON_TITLE->?Title; 
+                    FIRSTNAME->?First; LASTNAME->?Last; POSITION_ENG->?PosE; 
+                    POSITION_FR->?PosF]; MAILING_ADDRESS->[ADDRESS_LINE1_ENG->?MLe; 
+                    ADDRESS_LINE1_FR->?MLf; CITY->?MCity; PROVINCE->?MProv; 
+                    POSTAL_CODE->?MCode]; PLANT_ADDRESS->[ADDRESS_LINE1_ENG->?PLe; 
+                    ADDRESS_LINE1_FR->?PLf; CITY->?PCity; COUNTY->?PCounty]]!?) ).
+Alert(NUMBER->none; YAHOO->complete) :- 
+    naf( YAHOO_ENT(PHONE->?P; FAX->?Fax; WEB_SITE->?URL; OPER_NAME->?Ne; MAIL_ENG->?MLe; 
+                    MAIL_PLACE->?MCity; MAIL_PROV->?MProv; MAIL_POST->?MCode; CATEGORY->?C!?) ).
+
+YAHOO_ENT(PHONE->?P; KEY->?Pnorm!?Rest) :- 
+    YAHOO_ENT(PHONE->?P!?Rest), 
+    naf( YAHOO_ENT(PHONE->?P; KEY->?K!?Rest) ), 
+    normphone(?P, ?Pnorm).
+
+BIZNET_ENT(CONTACT[PHONE->?P!?Details]; KEY->?Pnorm!?Rest) :- 
+    BIZNET_ENT(CONTACT[PHONE->?P!?Details]!?Rest), 
+    naf( BIZNET_ENT(CONTACT[PHONE->?P!?Details]; KEY->?K!?Rest) ), 
+    normphone(?P, ?Pnorm).
+
+normphone(?Phone, ?Phone).
+
+YahooUniqEnt(PHONE->?P; CATEGORY->?C!?Rest) :- 
+    YAHOO_ENT(PHONE->?P; CATEGORY->?C!?Rest), 
+    naf( YahooUniqEnt(PHONE->?P; CATEGORY->?C!?) ).
+
+BiznetUniqEnt(CONTACT[PHONE->?P!?Details]; NAICS_INDUSTRY_SECTOR->?S!?Rest) :- 
+    BIZNET_ENT(CONTACT[PHONE->?P!?Details]; NAICS_INDUSTRY_SECTOR->?S!?Rest), 
+    naf( BiznetUniqEnt(CONTACT[PHONE->?P!?Details]; NAICS_INDUSTRY_SECTOR->?S!?) ).
+
+CSCPath([?Cfin|?SCList], ?Cfin, [?Cfin|?SCList]).
+CSCPath([?C|?SCList], ?Cfin, ?Path) :- 
+    notEqual(?C, ?Cfin), 
+    SectorCategory(?Snext, ?C), 
+    naf( member(?Snext, ?SCList) ), 
+    SectorCategory(?Snext, ?Cnext), 
+    naf( member(?Cnext, [?C|?SCList]) ), 
+    CSCPath([?Cnext, ?Snext, ?C|?SCList], ?Cfin, ?Path).
+
+uniqueCategory(?S, ?C, ?CategoryList) :- 
+    SectorCategory(?S, ?C), 
+    remove(?C, ?CategoryList, ?CategoryListprime), 
+    naf( checkCategoryList(?S, ?CategoryListprime) ).
+    
+checkCategoryList(?S, ?CategoryListprime) :- 
+    member(?Cprime, ?CategoryListprime), 
+    SectorCategory(?S, ?Cprime).
+
+SectorCategory(?S, ?C) :- 
+    IdSectorCategory(?K1, ?S, ?C), 
+    IdSectorCategory(?K2, ?S, ?C), 
+    notEqual(?K1, ?K2).
+    
+IdSectorCategory(?K, ?S, ?C) :- 
+    BIZNET_ENT(NAICS_INDUSTRY_SECTOR->?S; KEY->?K!?), 
+    YAHOO_ENT(CATEGORY->?C; KEY->?K!?).
+    
+NBEnterprise(KEY->?K!?Rest) :- 
+    BIZNET_ENT(KEY->?K!?Rest).
+NBEnterprise(NAME->?Ne; NAICS_INDUSTRY_SECTOR->?S; CONTACT->[PHONE->?P; FAX->?Fax; 
+                WEB_SITE->?URL; MAILING_ADDRESS->[ADDRESS_LINE1_ENG->?MLe; 
+                CITY->?MCity; PROVINCE->?MProv; POSTAL_CODE->?MCode]]; KEY->?K) :- 
+    YAHOO_ENT(PHONE->?P; FAX->?Fax; WEB_SITE->?URL; OPER_NAME->?Ne; MAIL_ENG->?MLe; 
+                MAIL_PLACE->?MCity; MAIL_PROV->?MProv; MAIL_POST->?MCode; 
+                CATEGORY->?C; KEY->?K), 
+    naf( BIZNET_ENT(KEY->?K!?) ), 
+    SectorCategory(?S, ?C).
+    
+member(?X, [?X|?Tail]).
+member(?X, [?Head|?Tail]) :- 
+    member(?X, ?Tail).
+
+remove(?X, [], []).
+remove(?X, [?X|?Tail], ?L) :- 
+    remove(?X, ?Tail, ?L).
+remove(?X, [?Head|?Tail], [?Head|?L2]) :- 
+    notEqual(?X, ?Head), 
+    remove(?X, ?Tail, ?L2).

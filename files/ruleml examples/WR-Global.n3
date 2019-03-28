@@ -1,0 +1,617 @@
+# GLOBAL WELLNESSRULES
+
+@prefix : <wellnessRules#>. 
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>. 
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix math: <http://www.w3.org/2000/10/swap/math#>.
+@prefix log: <http://www.w3.org/2000/10/swap/log#>.
+
+:Wellness rdf:type rdfs:Class.
+:Activity rdfs:subClassOf :Wellness.
+:Walking	rdfs:subClassOf	:Activity.
+:Running	rdfs:subClassOf	:Activity.
+:Swimming	rdfs:subClassOf	:Activity.
+:Skating	rdfs:subClassOf	:Activity.
+:Yoga	rdfs:subClassOf	:Activity.
+:Hiking	rdfs:subClassOf	:Activity.
+:Baseball	rdfs:subClassOf	:Activity.
+
+#######################
+# PARTICIPATION CHECK #
+#######################
+
+{
+ ?rsvpQuery
+	rdf:type	:RSVPQuery;
+	:profileID	?ProfileID;
+	:minRSVP	?MinRSVP;
+	:maxRSVP	?MaxRSVP.
+	
+ ?groupSize
+	rdf:type	:GroupSize;
+	:profileID	?ProfileID;
+	:activity	?Activity;
+	:inOut		?Ambience;
+	:min		?Min;
+	:max		?Max.
+	
+ ?MinRSVP math:notLessThan ?Min.
+ 
+ ?MaxRSVP math:notGreaterThan ?Max.
+}
+=>
+{
+ _:participation
+	rdf:type	:Participation;
+	:profileID	?ProfileID;
+	:activity	?Activity;
+	:inOut		?Ambience;
+	:min		?MinRSVP;
+	:max		?MaxRSVP.
+}.	
+	
+###########
+# SEASONS #
+###########
+
+:season_1
+	rdf:type	:Season;
+	:startTime	"2009-06-15T10:15:00";
+	:value		:summer.
+	
+:season_2
+	rdf:type	:Season;
+	:startTime	"2009-06-13T16:00:00";
+	:value		:summer.
+	
+:season_3
+	rdf:type	:Season;
+	:startTime	"2009-12-14T14:00:00";
+	:value		:winter.
+	
+:season_4
+	rdf:type	:Season;
+	:startTime	"2009-12-12T12:00:00";
+	:value		:winter.
+	
+:season_5
+	rdf:type	:Season;
+	:startTime	"2009-06-15T11:15:00";
+	:value		:summer.
+	
+:season_6
+	rdf:type	:Season;
+	:startTime	"2009-06-13T13:00:00";
+	:value		:fall.
+	
+:season_7
+	rdf:type	:Season;
+	:startTime	"2009-11-12T14:30:00";
+	:value		:winter.
+	
+:season_8
+	rdf:type	:Season;
+	:startTime	"2009-11-14T12:30:00";
+	:value		:winter.
+	
+:season_9
+	rdf:type	:Season;
+	:startTime	"2009-11-13T14:30:00";
+	:value		:winter.
+	
+:season_10
+	rdf:type	:Season;
+	:startTime	"2009-11-15T12:30:00";
+	:value		:winter.
+	
+#############
+# FORECASTS #
+#############
+
+:forecast_1
+	rdf:type	:Forecast;
+	:startTime	"2009-06-15T10:15:00";
+	:aspect		:sky;
+	:value		:sunny.
+
+:forecast_2
+	rdf:type	:Forecast;
+	:startTime	"2009-06-13T16:00:00";
+	:aspect		:sky;
+	:value		:raining.
+
+:forecast_3
+	rdf:type	:Forecast;
+	:startTime	"2009-12-14T14:00:00";
+	:aspect		:sky;
+	:value		:cloudy.
+
+:forecast_4
+	rdf:type	:Forecast;
+	:startTime	"2009-12-12T12:00:00";
+	:aspect		:sky;
+	:value		:snowing.
+	
+:forecast_5
+	rdf:type	:Forecast;
+	:startTime	"2009-06-15T10:15:00";
+	:aspect		:temperature;
+	:value		30.
+
+:forecast_6
+	rdf:type	:Forecast;
+	:startTime	"2009-06-13T16:00:00";
+	:aspect		:temperature;
+	:value		25.
+	
+:forecast_7
+	rdf:type	:Forecast;
+	:startTime	"2009-12-14T14:00:00";
+	:aspect		:temperature;
+	:value		-5.
+	
+:forecast_8
+	rdf:type	:Forecast;
+	:startTime	"2009-12-12T12:00:00";
+	:aspect		:temperature;
+	:value		1.
+	
+:forecast_9
+	rdf:type	:Forecast;
+	:startTime	"2009-06-15T11:15:00";
+	:aspect		:sky;
+	:value		:sunny.
+
+:forecast_10
+	rdf:type	:Forecast;
+	:startTime	"2009-06-13T13:00:00";
+	:aspect		:sky;
+	:value		:cloudy.
+
+:forecast_11
+	rdf:type	:Forecast;
+	:startTime	"2009-11-12T14:30:00";
+	:aspect		:sky;
+	:value		:partiallyCloudy.
+
+:forecast_12
+	rdf:type	:Forecast;
+	:startTime	"2009-11-14T12:30:00";
+	:aspect		:sky;
+	:value		:snowing.
+	
+:forecast_13
+	rdf:type	:Forecast;
+	:startTime	"2009-06-15T11:15:00";
+	:aspect		:temperature;
+	:value		31.
+
+:forecast_14
+	rdf:type	:Forecast;
+	:startTime	"2009-06-13T13:00:00";
+	:aspect		:temperature;
+	:value		20.
+	
+:forecast_15
+	rdf:type	:Forecast;
+	:startTime	"2009-11-12T14:30:00";
+	:aspect		:temperature;
+	:value		-6.
+	
+:forecast_16
+	rdf:type	:Forecast;
+	:startTime	"2009-11-14T12:30:00";
+	:aspect		:temperature;
+	:value		3.
+
+:forecast_17
+	rdf:type	:Forecast;
+	:startTime	"2009-11-13T14:30:00";
+	:aspect		:sky;
+	:value		:cloudy.
+
+:forecast_18
+	rdf:type	:Forecast;
+	:startTime	"2009-11-15T12:30:00";
+	:aspect		:sky;
+	:value		:snowing.
+	
+:forecast_19
+	rdf:type	:Forecast;
+	:startTime	"2009-11-13T14:30:00";
+	:aspect		:temperature;
+	:value		-10.
+	
+:forecast_20
+	rdf:type	:Forecast;
+	:startTime	"2009-11-15T12:30:00";
+	:aspect		:temperature;
+	:value		3.
+
+####################
+# MEETUP LOCATIONS #
+####################
+
+:meetup_1
+	rdf:type	:Meetup;
+	:mapID		:m0001;
+	:activity	:walk;
+	:inOut		:out;
+	:location	:conniesStation.
+	
+:meetup_2
+	rdf:type	:Meetup;
+	:mapID		:m0001;
+	:activity	:walk;
+	:inOut		:out;
+	:location	:debbiesValley.
+
+:meetup_3
+	rdf:type	:Meetup;
+	:mapID		:m0001;
+	:activity	:run;
+	:inOut		:out;
+	:location	:conniesStation.
+
+:meetup_4
+	rdf:type	:Meetup;
+	:mapID		:m0001;
+	:activity	:run;
+	:inOut		:out;
+	:location	:petersWagon.
+	
+:meetup_5
+	rdf:type	:Meetup;
+	:mapID		:m0001;
+	:activity	:run;
+	:inOut		:out;
+	:location	:allensBrook.
+
+:meetup_6
+	rdf:type	:Meetup;
+	:mapID		:m0001;
+	:activity	:run;
+	:inOut		:in;
+	:location	:joesGym.
+
+:meetup_7
+	rdf:type	:Meetup;
+	:mapID		:m0001;
+	:activity	:swim;
+	:inOut		:in;
+	:location	:johnsPool.
+	
+:meetup_8
+	rdf:type	:Meetup;
+	:mapID		:m0001;
+	:activity	:swim;
+	:inOut		:out;
+	:location	:sandrasLake.
+	
+:meetup_9
+	rdf:type	:Meetup;
+	:mapID		:m0001;
+	:activity	:skate;
+	:inOut		:out;
+	:location	:sandrasLake.
+	
+:meetup_10
+	rdf:type	:Meetup;
+	:mapID		:m0001;
+	:activity	:yoga;
+	:inOut		:in;
+	:location	:lukesHall.
+	
+:meetup_11
+	rdf:type	:Meetup;
+	:mapID		:m0001;
+	:activity	:hike;
+	:inOut		:out;
+	:location	:applePark.
+	
+:meetup_12
+	rdf:type	:Meetup;
+	:mapID		:m0001;
+	:activity	:baseball;
+	:inOut		:out;
+	:location	:fenway.
+	
+#######################
+# GOOD DURATION CHECK #
+#######################
+
+:goodDuration_1
+	rdf:type	:GoodDuration;
+	:duration	"P10M";
+	:startTime	"2009-06-15T10:15:00";
+	:endTime	"2009-06-15T11:15:00".
+	
+:goodDuration_2
+	rdf:type	:GoodDuration;
+	:duration	"P20M";
+	:startTime	"2009-06-15T10:15:00";
+	:endTime	"2009-06-15T11:15:00".
+	
+:goodDuration_3
+	rdf:type	:GoodDuration;
+	:duration	"P40M";
+	:startTime	"2009-06-15T10:15:00";
+	:endTime	"2009-06-15T11:15:00".
+	
+:goodDuration_4
+	rdf:type	:GoodDuration;
+	:duration	"P60M";
+	:startTime	"2009-06-15T10:15:00";
+	:endTime	"2009-06-15T11:15:00".
+	
+:goodDuration_5
+	rdf:type	:GoodDuration;
+	:duration	"P10M";
+	:startTime	"2009-06-13T16:00:00";
+	:endTime	"2009-06-13T17:00:00".
+	
+:goodDuration_6
+	rdf:type	:GoodDuration;
+	:duration	"P20M";
+	:startTime	"2009-06-13T16:00:00";
+	:endTime	"2009-06-13T17:00:00".
+	
+:goodDuration_7
+	rdf:type	:GoodDuration;
+	:duration	"P40M";
+	:startTime	"2009-06-13T16:00:00";
+	:endTime	"2009-06-13T17:00:00".
+	
+:goodDuration_8
+	rdf:type	:GoodDuration;
+	:duration	"P60M";
+	:startTime	"2009-06-13T16:00:00";
+	:endTime	"2009-06-13T17:00:00".
+	
+:goodDuration_9
+	rdf:type	:GoodDuration;
+	:duration	"P10M";
+	:startTime	"2009-12-14T14:00:00";
+	:endTime	"2009-12-14T15:30:00".
+	
+:goodDuration_10
+	rdf:type	:GoodDuration;
+	:duration	"P20M";
+	:startTime	"2009-12-14T14:00:00";
+	:endTime	"2009-12-14T15:30:00".
+	
+:goodDuration_11
+	rdf:type	:GoodDuration;
+	:duration	"P40M";
+	:startTime	"2009-12-14T14:00:00";
+	:endTime	"2009-12-14T15:30:00".
+	
+:goodDuration_12
+	rdf:type	:GoodDuration;
+	:duration	"P60M";
+	:startTime	"2009-12-14T14:00:00";
+	:endTime	"2009-12-14T15:30:00".
+	
+:goodDuration_13
+	rdf:type	:GoodDuration;
+	:duration	"P80M";
+	:startTime	"2009-12-14T14:00:00";
+	:endTime	"2009-12-14T15:30:00".
+	
+:goodDuration_14
+	rdf:type	:GoodDuration;
+	:duration	"P10M";
+	:startTime	"2009-12-12T12:00:00";
+	:endTime	"2009-12-12T17:00:00".
+	
+:goodDuration_15
+	rdf:type	:GoodDuration;
+	:duration	"P20M";
+	:startTime	"2009-12-12T12:00:00";
+	:endTime	"2009-12-12T17:00:00".
+	
+:goodDuration_16
+	rdf:type	:GoodDuration;
+	:duration	"P40M";
+	:startTime	"2009-12-12T12:00:00";
+	:endTime	"2009-12-12T17:00:00".
+	
+:goodDuration_17
+	rdf:type	:GoodDuration;
+	:duration	"P60M";
+	:startTime	"2009-12-12T12:00:00";
+	:endTime	"2009-12-12T17:00:00".
+	
+:goodDuration_18
+	rdf:type	:GoodDuration;
+	:duration	"P80M";
+	:startTime	"2009-12-12T12:00:00";
+	:endTime	"2009-12-12T17:00:00".
+	
+:goodDuration_19
+	rdf:type	:GoodDuration;
+	:duration	"P10M";
+	:startTime	"2009-06-15T11:15:00";
+	:endTime	"2009-06-22T11:45:00".
+	
+:goodDuration_20
+	rdf:type	:GoodDuration;
+	:duration	"P20M";
+	:startTime	"2009-06-15T11:15:00";
+	:endTime	"2009-06-22T11:45:00".
+	
+:goodDuration_21
+	rdf:type	:GoodDuration;
+	:duration	"P10M";
+	:startTime	"2009-06-13T13:00:00";
+	:endTime	"2009-06-13T14:00:00".
+	
+:goodDuration_22
+	rdf:type	:GoodDuration;
+	:duration	"P20M";
+	:startTime	"2009-06-13T13:00:00";
+	:endTime	"2009-06-13T14:00:00".
+	
+:goodDuration_23
+	rdf:type	:GoodDuration;
+	:duration	"P40M";
+	:startTime	"2009-06-13T13:00:00";
+	:endTime	"2009-06-13T14:00:00".
+	
+:goodDuration_24
+	rdf:type	:GoodDuration;
+	:duration	"P60M";
+	:startTime	"2009-06-13T13:00:00";
+	:endTime	"2009-06-13T14:00:00".
+	
+:goodDuration_25
+	rdf:type	:GoodDuration;
+	:duration	"P10M";
+	:startTime	"2009-11-12T14:30:00";
+	:endTime	"2009-11-12T16:00:00".
+	
+:goodDuration_26
+	rdf:type	:GoodDuration;
+	:duration	"P20M";
+	:startTime	"2009-11-12T14:30:00";
+	:endTime	"2009-11-12T16:00:00".
+	
+:goodDuration_27
+	rdf:type	:GoodDuration;
+	:duration	"P40M";
+	:startTime	"2009-11-12T14:30:00";
+	:endTime	"2009-11-12T16:00:00".
+	
+:goodDuration_28
+	rdf:type	:GoodDuration;
+	:duration	"P60M";
+	:startTime	"2009-11-12T14:30:00";
+	:endTime	"2009-11-12T16:00:00".
+	
+:goodDuration_29
+	rdf:type	:GoodDuration;
+	:duration	"P80M";
+	:startTime	"2009-11-12T14:30:00";
+	:endTime	"2009-11-12T16:00:00".
+	
+:goodDuration_30
+	rdf:type	:GoodDuration;
+	:duration	"P10M";
+	:startTime	"2009-11-14T12:30:00";
+	:endTime	"2009-11-14T15:00:00".
+	
+:goodDuration_31
+	rdf:type	:GoodDuration;
+	:duration	"P20M";
+	:startTime	"2009-11-14T12:30:00";
+	:endTime	"2009-11-14T15:00:00".
+	
+:goodDuration_32
+	rdf:type	:GoodDuration;
+	:duration	"P40M";
+	:startTime	"2009-11-14T12:30:00";
+	:endTime	"2009-11-14T15:00:00".
+	
+:goodDuration_33
+	rdf:type	:GoodDuration;
+	:duration	"P60M";
+	:startTime	"2009-11-14T12:30:00";
+	:endTime	"2009-11-14T15:00:00".
+	
+:goodDuration_34
+	rdf:type	:GoodDuration;
+	:duration	"P80M";
+	:startTime	"2009-11-14T12:30:00";
+	:endTime	"2009-11-14T15:00:00".
+	
+:goodDuration_35
+	rdf:type	:GoodDuration;
+	:duration	"P10M";
+	:startTime	"2009-11-13T14:30:00";
+	:endTime	"2009-11-13T16:00:00".
+	
+:goodDuration_36
+	rdf:type	:GoodDuration;
+	:duration	"P20M";
+	:startTime	"2009-11-13T14:30:00";
+	:endTime	"2009-11-13T16:00:00".
+	
+:goodDuration_37
+	rdf:type	:GoodDuration;
+	:duration	"P40M";
+	:startTime	"2009-11-13T14:30:00";
+	:endTime	"2009-11-13T16:00:00".
+	
+:goodDuration_38
+	rdf:type	:GoodDuration;
+	:duration	"P60M";
+	:startTime	"2009-11-13T14:30:00";
+	:endTime	"2009-11-13T16:00:00".
+	
+:goodDuration_39
+	rdf:type	:GoodDuration;
+	:duration	"P80M";
+	:startTime	"2009-11-13T14:30:00";
+	:endTime	"2009-11-13T16:00:00".
+	
+:goodDuration_40
+	rdf:type	:GoodDuration;
+	:duration	"P10M";
+	:startTime	"2009-11-15T12:30:00";
+	:endTime	"2009-11-15T15:00:00".
+	
+:goodDuration_41
+	rdf:type	:GoodDuration;
+	:duration	"P20M";
+	:startTime	"2009-11-15T12:30:00";
+	:endTime	"2009-11-15T15:00:00".
+	
+:goodDuration_42
+	rdf:type	:GoodDuration;
+	:duration	"P40M";
+	:startTime	"2009-11-15T12:30:00";
+	:endTime	"2009-11-15T15:00:00".
+	
+:goodDuration_43
+	rdf:type	:GoodDuration;
+	:duration	"P60M";
+	:startTime	"2009-11-15T12:30:00";
+	:endTime	"2009-11-15T15:00:00".
+	
+:goodDuration_44
+	rdf:type	:GoodDuration;
+	:duration	"P80M";
+	:startTime	"2009-11-15T12:30:00";
+	:endTime	"2009-11-15T15:00:00".
+	
+#############
+# YESTERDAY #
+#############
+
+:yesterday_1
+	rdf:type	:Yesterday;
+	:startTime	"2009-06-15T10:15:00";
+	:startTimeYDay	"2009-06-14T10:15:00";
+	:endTime	"2009-06-15T11:15:00";
+	:endTimeYDay	"2009-06-14T11:15:00".
+	
+:yesterday_2
+	rdf:type	:Yesterday;
+	:startTime	"2009-06-13T16:00:00";
+	:startTimeYDay	"2009-06-12T16:00:00";
+	:endTime	"2009-06-13T17:00:00";
+	:endTimeYDay	"2009-06-12T17:00:00".
+
+:yesterday_3
+	rdf:type	:Yesterday;
+	:startTime	"2009-12-14T14:00:00";
+	:startTimeYDay	"2009-12-13T14:00:00";
+	:endTime	"2009-12-14T15:30:00";
+	:endTimeYDay	"2009-12-13T15:30:00".
+
+:yesterday_4
+	rdf:type	:Yesterday;
+	:startTime	"2009-12-12T12:00:00";
+	:startTimeYDay	"2009-12-11T12:00:00";
+	:endTime	"2009-12-12T17:00:00";
+	:endTimeYDay	"2009-12-11T17:00:00".

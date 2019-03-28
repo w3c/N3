@@ -1,0 +1,665 @@
+%%%### File "elements-atm.rfp"
+
+%                                         March 1991 (Revised: Aug 2005)
+
+%------------------------------------------------------------------------
+%   Validation and Exploration of the Periodic System of the Elements:
+%
+%                       A Relfun Knowledge Base
+%
+%------------------------------------------------------------------------
+
+% Michael Sintek, Werner Stein, Ulrich Buhrmann, Harold Boley 
+% with contribution by Michael Christen, Dirk Blum,
+%                      Michael Herfert, Markus Perling
+
+% Modified for Relational RuleML by Jie Li(JL).
+
+% A lot of basic physics/chemistry knowledge is encoded in the
+% periodic system of the elements [1]. The ELEMENTS knowledge base
+% represents some properties of the atoms and groups of atoms
+% in a functional-logic style [2], employing Relfun's Prolog-like
+% syntax and non-deterministic, call-by-value operational semantics [3].
+% ELEMENTS is motivated by our work on enhanced WAM-like indexing,
+% modularization, knowledge sharing and evolution, as well as 
+% materials engineering.
+
+% Each atomic entry has the following form (the emphasis on
+% chemical properties derives from application considerations):
+
+% atm(<number>, 
+%     name[<symbol>, <engl>],
+%     prop[<m metal, g gaseous, sm semimetal, sc semiconductor,
+%                                                 nyd not yet determined>,
+%          eco[<electron configuration of last three shells>],
+%          <atom weight>,
+%          oxi[<sequence of possible oxidations>]]).
+
+% Representing domain knowledge as Relfun functions, we tabulate the
+% periodic system in the "old" and "new" notations (see [1]) from the
+% 'table-neutral' atm facts, verify the electron configurations of the
+% entire atom database (see check-all-eleconfs), and explore properties
+% of interesting atoms such as palladium, whose last 'three' shells are
+% eco[18, 18, 0] (see separate batch file elements.bat).
+
+% The ELEMENTS knowledge base's batch script and "Declarative Specification"
+% transparencies as well as (further information on) Relfun can currently be
+% found from URL http://www.dfki.uni-kl.de/~vega/relfun.html free of charge. 
+
+% This software is distributed for non-profit and research purposes only.
+% Non-profit redistribution of the current version or parts of the
+% current version is encouraged if this notice is included unchanged.
+% We give no warranty of any kind for this prototype. It may be further
+% improved as time permits.
+
+
+
+% Bibliography:
+
+% [1]   CRC Handbook of Chemistry and Physics
+%       70th Edition 1989-1990
+%       Editors: Robert C. Weast, David R. Lide,
+%                Melvin J. Astle, William H. Beyer
+%       CRC Press, Inc., Boca Raton, Florida, USA
+
+% [2]   M. Hanus. The Integration of Functions into Logic Programming:
+%       From Theory to Practice. Journal of Logic Programming,
+%       19/20:583-628, 1994.
+
+% [3]   H. Boley. Functional-Logic Integration via Minimal Extensions.
+%       In: S. Breitinger, H. Kroeger, and R. Loogen, Eds., Proc. of the
+%       5th International Workshop on Functional and Logic Programming,
+%       Rauischholzhausen, Germany, Philipps-Univ. Marburg and Justus-Liebig
+%       Univ. Giessen, Jan. 1996.
+
+
+
+%------------------------------------------------------------------------------
+% atm database:
+
+% global constant (nullary function) denoting our last atom or element 107
+% (the recently discovered 108 etc. are still missing):
+
+last-atm() :- & 107.    % Relfun's ":- &" infix represents
+% last-atm() = 107      % an unconditional (left-to-right) directed equation
+
+% signature declaration or 'schema' (nested atm pattern) for all elements:
+
+% atm($integerp,    % atomic number
+%     name[$symbolp,    % chemical symbol
+%          $symbolp],   % English term
+%     prop[dom[m,    % metal    % gaseous
+%              sm,   % semimetal
+%              sc,   % semiconductor
+%              nyd], % not yet determined
+%          eco[$integerp,  % electron configuration
+%              $integerp,  % of the last
+%              $integerp], % three shells
+%          $numberp,     % atomic weight
+%          oxi[ | _]])#  % oxidation states
+% atm($integerp,    % atomic number
+%     name[$symbolp,    % chemical symbol
+%          $symbolp],   % English term
+%     prop[ g], % gaseous
+%              % not yet determined
+%          eco[$integerp,  % electron configuration
+%              $integerp,  % of the last
+%              $integerp], % three shells
+%          $numberp,     % atomic weight
+%          oxi[ | _]])#  % oxidation states
+
+% the element 'instances' (nested atm facts):
+
+atm(1, name[h, hydrogen], prop[g, eco[1, 0, 0], 1.00794, oxi[1, -1]]).
+atm(2, name[he, helium], prop[g, eco[2, 0, 0], 4.0020602, oxi[0]]).
+atm(3, name[li, lithium], prop[m, eco[2, 1, 0], 6.941, oxi[1]]).
+atm(4, name[be, beryllium], prop[m, eco[2, 2, 0], 9.012182, oxi[2]]).
+atm(5, name[b, boron], prop[sc, eco[2, 3, 0], 10.811, oxi[3]]).
+atm(6, name[c, carbon], prop[sc, eco[2, 4, 0], 12.011, oxi[2, 4, -4]]).
+atm(7,
+    name[n, nitrogen],
+    prop[g,
+         eco[2, 5, 0],
+         14.00674,
+         oxi[1, 2, 3, 4, 5, -1, -2, -3]]).
+atm(8, name[o, oxygen], prop[g, eco[2, 6, 0], 15.9994, oxi[-2]]).
+atm(9, name[f, fluorine], prop[g, eco[2, 7, 0], 18.9984032, oxi[-1]]).
+atm(10, name[ne, neon], prop[g, eco[2, 8, 0], 20.1797, oxi[0]]).
+atm(11, name[na, sodium], prop[m, eco[2, 8, 1], 22.989768, oxi[1]]).
+atm(12, name[mg, magnesium], prop[m, eco[2, 8, 2], 24.305, oxi[2]]).
+atm(13, name[al, aluminium], prop[m, eco[2, 8, 3], 26.981539, oxi[3]]).
+atm(14, name[si, silicon], prop[sc, eco[2, 8, 4], 28.0855, oxi[2, 4, -4]]).
+atm(15, name[p, phosphorus], prop[sc, eco[2, 8, 5], 30.97362, oxi[3, 5, -3]]).
+atm(16, name[s, sulfur], prop[sc, eco[2, 8, 6], 32.066, oxi[4, 6, -2]]).
+atm(17, name[cl, chlorine], prop[g, eco[2, 8, 7], 35.4527, oxi[1, 5, 7, -1]]).
+atm(18, name[ar, argon], prop[g, eco[2, 8, 8], 39.948, oxi[0]]).
+atm(19, name[k, potassium], prop[m, eco[8, 8, 1], 39.0983, oxi[1]]).
+atm(20, name[ca, calcium], prop[m, eco[8, 8, 2], 40.078, oxi[2]]).
+atm(21, name[sc, scandium], prop[m, eco[8, 9, 2], 44.9559, oxi[3]]).
+atm(22, name[ti, titanium], prop[m, eco[8, 10, 2], 47.88, oxi[2, 3, 4]]).
+atm(23, name[v, vanadium], prop[m, eco[8, 11, 2], 50.9415, oxi[2, 3, 4, 5]]).
+atm(24, name[cr, chronium], prop[m, eco[8, 13, 1], 51.9961, oxi[2, 3, 6]]).
+atm(25, name[mn, manganese], prop[m, eco[8, 13,2], 54.93085, oxi[2, 3, 4, 7]]).
+atm(26, name[fe, ferrum], prop[m, eco[8, 14, 2], 55.847, oxi[2, 3]]).
+atm(27, name[co, cobalt], prop[m, eco[8, 15, 2], 58.9332, oxi[2, 3]]).
+atm(28, name[ni, nickel], prop[m, eco[8, 16, 2], 58.69, oxi[2, 3]]).
+atm(29, name[cu, copper], prop[m, eco[8, 18, 1], 63.546, oxi[1, 2]]).
+atm(30, name[zn, zinc], prop[m, eco[8, 18, 2], 65.39, oxi[2]]).
+atm(31, name[ga, galium], prop[m, eco[8, 18, 3], 69.723, oxi[3]]).
+atm(32, name[ge, germanium], prop[sc, eco[8, 18, 4], 72.61, oxi[2, 4]]).
+atm(33, name[as, arsenic], prop[sm, eco[8, 18, 5], 74.92159, oxi[3, 5, -3]]).
+atm(34, name[se, selenium], prop[sc, eco[8, 18, 6], 78.96, oxi[4, 6, -2]]).
+atm(35, name[br, bromine], prop[g, eco[8, 18, 7], 79.904, oxi[1, 5, -1]]).
+atm(36, name[kr, krypton], prop[g, eco[8, 18, 8], 83.8, oxi[0]]).
+atm(37, name[rb, rubidium], prop[m, eco[18, 8, 1], 85.4678, oxi[1]]).
+atm(38, name[sr, strontium], prop[m, eco[18, 8, 2], 87.62, oxi[2]]).
+atm(39, name[y, yttrium], prop[m, eco[18, 9, 2], 88.90585, oxi[3]]).
+atm(40, name[zr, zirconium], prop[m, eco[18, 10, 2], 91.224, oxi[4]]).
+atm(41, name[nb, niobium], prop[m, eco[18, 12, 1], 92.90638, oxi[3, 5]]).
+atm(42, name[mo, molybdenum], prop[m, eco[18, 13, 1], 95.94, oxi[6]]).
+atm(43, name[tc, technetium], prop[m, eco[18, 13, 2], 98, oxi[4, 6, 7]]).
+atm(44, name[ru, ruthenium], prop[m, eco[18, 15, 1], 101.07, oxi[3]]).
+atm(45, name[rh, rhodium], prop[m, eco[18, 16, 1], 102.9055, oxi[3]]).
+atm(46, name[pd, palladium], prop[m, eco[18, 18, 0], 106.42, oxi[2, 4]]).
+atm(47, name[ag, silver], prop[m, eco[18, 18, 1], 107.8682, oxi[1]]).
+atm(48, name[cd, cadmium], prop[m, eco[18, 18, 2], 112.411, oxi[2]]).
+atm(49, name[in, indium], prop[m, eco[18, 18, 3], 114.82, oxi[3]]).
+atm(50, name[sn, tin], prop[m, eco[18, 18, 4], 118.71, oxi[2, 4]]).
+atm(51, name[sb, antimony], prop[sm, eco[18, 18, 5], 121.75, oxi[3, 5, -3]]).
+atm(52, name[te, tellurium], prop[sc, eco[18, 18, 6], 127.6, oxi[4, 6, -2]]).
+atm(53, name[i, iodine], prop[sc, eco[18, 18,7], 126.90447, oxi[1, 5, 7, -1]]).
+atm(54, name[xe, xenon], prop[g, eco[18, 18, 8], 131.29, oxi[0]]).
+atm(55, name[cs, caesium], prop[m, eco[18, 8, 1], 132.90543, oxi[1]]).
+atm(56, name[ba, barium], prop[m, eco[18, 8, 2], 137.327, oxi[2]]).
+atm(57, name[la, lanthanum], prop[m, eco[18, 9, 2], 138.9055, oxi[3]]).
+atm(58, name[ce, cerium], prop[m, eco[20, 8, 2], 140.115, oxi[3, 4]]).
+atm(59, name[pr, praseodymium], prop[m, eco[21, 8, 2], 140.90765, oxi[3]]).
+atm(60, name[nd, nitrogen], prop[m, eco[22, 8, 2], 144.24, oxi[3]]).
+atm(61, name[pm, promethium], prop[m, eco[23, 8, 2], 145, oxi[3]]).
+atm(62, name[sm, samarium], prop[m, eco[24, 8, 2], 150.36, oxi[2, 3]]).
+atm(63, name[eu, europium], prop[m, eco[25, 8, 2], 151.965, oxi[2, 3]]).
+atm(64, name[gd, gadolinium], prop[m, eco[25, 9, 2], 157.25, oxi[3]]).
+atm(65, name[tb, terbium], prop[m, eco[27, 8, 2], 158.92534, oxi[3]]).
+atm(66, name[dy, dysprosium], prop[m, eco[28, 8, 2], 162.5, oxi[3]]).
+atm(67, name[ho, holmium], prop[m, eco[29, 8, 2], 164.93032, oxi[3]]).
+atm(68, name[er, erbium], prop[m, eco[30, 8, 2], 167.26, oxi[3]]).
+atm(69, name[tm, thullium], prop[m, eco[31, 8, 2], 168.93421, oxi[3]]).
+atm(70, name[yb, ytterbium], prop[m, eco[32, 8, 2], 173.04, oxi[2, 3]]).
+atm(71, name[lu, lutetium], prop[m, eco[32, 9, 2], 174.967, oxi[3]]).
+atm(72, name[hf, hafnium], prop[m, eco[32, 10, 2], 178.49, oxi[4]]).
+atm(73, name[ta, tantalum], prop[m, eco[32, 11, 2], 180.9479, oxi[5]]).
+atm(74, name[w, tungsten], prop[nyd, eco[32, 12, 2], 183.85, oxi[6]]).
+atm(75, name[re, rhenium], prop[m, eco[32, 13, 2], 186.207, oxi[4, 6, 7]]).
+atm(76, name[os, osmium], prop[m, eco[32, 14, 2], 190.2, oxi[3, 4]]).
+atm(77, name[ir, iridium], prop[m, eco[32, 15, 2], 192.22, oxi[3, 4]]).
+atm(78, name[pt, platinum], prop[m, eco[32, 16, 2], 195.08, oxi[2, 4]]).
+atm(79, name[au, gold], prop[m, eco[32, 18, 1], 196.96654, oxi[1, 3]]).
+atm(80, name[hg, mercury], prop[m, eco[32, 18, 2], 200.59, oxi[1, 2]]).
+atm(81, name[tl, thallium], prop[m, eco[32, 18, 3], 204.3833, oxi[1, 3]]).
+atm(82, name[pb, lead], prop[m, eco[32, 18, 4], 207.2, oxi[2, 4]]).
+atm(83, name[bi, bismuth], prop[sm, eco[32, 18, 5], 208.98037, oxi[3, 5]]).
+atm(84, name[po, polonium], prop[m, eco[32, 18, 6], 209, oxi[2, 4]]).
+atm(85, name[at, astatine], prop[m, eco[32, 18, 7], 210, oxi[]]).
+atm(86, name[rn, radon], prop[g, eco[32, 18, 8], 222, oxi[0]]).
+atm(87, name[fr, francium], prop[m, eco[18, 8, 1], 223, oxi[1]]).
+atm(88, name[ra, radium], prop[m, eco[18, 8, 2], 226.025, oxi[2]]).
+atm(89, name[ac, actinium], prop[m, eco[18, 9, 2], 227.028, oxi[3]]).
+atm(90, name[th, thorium], prop[m, eco[18, 10, 2], 232.0381, oxi[4]]).
+atm(91, name[pa, protoactinium], prop[m, eco[20, 9, 2], 231.03588, oxi[5, 4]]).
+atm(92, name[u, uranium], prop[m, eco[21, 9, 2], 238.0289, oxi[3, 4, 5, 6]]).
+atm(93, name[np, neptunium], prop[m, eco[22, 9, 2], 237.048, oxi[3, 4, 5, 6]]).
+atm(94, name[pu, plutonium], prop[m, eco[24, 8, 2], 244, oxi[3, 4, 5, 6]]).
+atm(95, name[am, americium], prop[m, eco[25, 8, 2], 243, oxi[3, 4, 5, 6]]).
+atm(96, name[cm, curium], prop[m, eco[25, 9, 2], 247, oxi[3]]).
+atm(97, name[bk, berkelium], prop[m, eco[27, 8, 2], 247, oxi[3, 4]]).
+atm(98, name[cf, californium], prop[m, eco[28, 8, 2], 251, oxi[3]]).
+atm(99, name[es, einsteinium], prop[m, eco[29, 8, 2], 252, oxi[3]]).
+atm(100, name[fm, fermium], prop[m, eco[30, 8, 2], 257, oxi[3]]).
+atm(101, name[md, mendelevium], prop[m, eco[31, 8, 2], 258, oxi[2, 3]]).
+atm(102, name[no, nobelium], prop[m, eco[32, 8, 2], 259, oxi[2, 3]]).
+atm(103, name[lr, lawrencium], prop[m, eco[32, 9, 2], 260, oxi[3]]).
+atm(104, name[unq, unnilquadium], prop[nyd, eco[32, 10, 2], 261, oxi[4]]).
+atm(105, name[unp, unnilpentium], prop[nyd, eco[32, 11, 2], 262, oxi[]]).
+atm(106, name[unh, unnihexium], prop[nyd, eco[32, 12, 2], 263, oxi[]]).
+atm(107, name[uns, unnilseptium], prop[nyd, eco[32, 13, 2], 262, oxi[]]).
+
+%%%### eof
+
+
+%%%### File "elements-access.rfp"
+
+%------------------------------------------------------------------------------
+% some simple access operations:
+
+% relation that tests or *generates* elements as Eno values
+% (e.g. to bind Eno prior to built-in calls):
+
+element(Eno) :-  atm(Eno, _, _).
+
+% function that returns metal names (enumerated non-deterministically):
+
+metal() :-  atm(Eno, name[Abbr, Full], prop[m, Eco, Weight, Oxi])  &
+            [Eno, Abbr, Full].       % Relfun's ":- ... &" mixfix represents
+
+% metal() = [Eno, Abbr, Full]  <-    % a conditional directed equation
+%           atm(Eno, name[Abbr, Full], prop[m, Eco, Weight, Oxi])
+
+
+% element number from English name:
+
+englno(Engl) :- atm(N, name[_, Engl], _) & N.
+
+% element number from symbol:
+
+symbno(Symb) :- atm(Eno, name[Symb, _], _) & Eno.
+
+% symbol from element number:
+
+nosymb(Eno) :- atm(Eno, name[Symb, _], _) & Symb.
+
+
+%%%### eof
+
+
+%%%### File "elements-groups.rfp"
+
+%------------------------------------------------------------------------------
+% compute new group of elements (lanthanides/actinides not regarded as groups):
+
+newgroup-sym(Symb) :- &                 % find group number of an element given
+         newgroup-num(symbno(Symb)).    % by its symbol
+
+newgroup-num(1) :- & 1.     
+newgroup-num(3) :- & 1. 
+newgroup-num(11) :- & 1.   % find group number of an element given
+newgroup-num(    2        ) :- & 18.    % by its number
+newgroup-num(4) :- & 2.    
+newgroup-num(12) :- & 2.                              %        ^
+newgroup-num(5):-&13. 
+newgroup-num(6):-&14.
+newgroup-num(7):-&15.
+newgroup-num(8):-&16.
+newgroup-num(9):-&17. 
+newgroup-num(10):-&18.      % "dom"-style
+% newgroup-num(Eno) :-  element(Eno),  lessThanOrEqual(5, Eno), lessThanOrEqual(Eno, 10) &  % "<="-style
+%                                                 add(Eno, 8).      %        |
+newgroup-num(Eno) :-                                              %        v
+        element(Eno), lessThanOrEqual(13, Eno), lessThanOrEqual(Eno, 57) & add(1, modulo(subtract(Eno, 1), 18)).
+                      % 58-71:   not defined here (see above)
+newgroup-num(Eno) :- 
+        element(Eno), lessThanOrEqual(72, Eno), lessThanOrEqual(Eno, 89) & add(1, modulo(subtract(Eno, 69), 18)).
+                      % 90-103:  not defined here (see above)
+newgroup-num(Eno) :-
+        element(Eno), lessThanOrEqual(104, Eno), lessThanOrEqual(Eno, 107) & subtract(Eno, 100).
+
+% enumerate elements of new group (inefficient because of multiple inversion!):
+
+newgroup-elements(G) :- G .= newgroup-num(N), N .= englno(E) & E.
+
+%------------------------------------------------------------------------------
+% compute old group of elements (lanthanides/actinides regarded as groups):
+
+oldgroup-sym(Symb) :- & new2old(newgroup-num(symbno(Symb))).
+oldgroup-sym(Symb) :- Eno .= symbno(Symb), greaterThanOrEqual(Eno, 58), lessThanOrEqual(Eno, 71) &
+                      lanthanide.          % 58-71:   defined here (see above)
+oldgroup-sym(Symb) :- Eno .= symbno(Symb), greaterThanOrEqual(Eno, 90), lessThanOrEqual(Eno, 103) &
+                      actinide.            % 90-103:  defined here (see above)
+
+oldgroup-num(Eno) :- Eno .= symbno(Symb) & oldgroup-sym(Symb). % multi-inverse!
+
+% mapping new to old groups:
+
+new2old(1) :- & main[i].
+new2old(2) :- & main[ii].
+new2old(3) :- & auxiliary[iii].
+new2old(4) :- & auxiliary[iv].
+new2old(5) :- & auxiliary[v].
+new2old(6) :- & auxiliary[vi].
+new2old(7) :- & auxiliary[vii].
+new2old(8) :- & auxiliary[viii].
+new2old(9) :- & auxiliary[viii].
+new2old(10) :- & auxiliary[viii].
+new2old(11) :- & auxiliary[i].
+new2old(12) :- & auxiliary[ii].
+new2old(13) :- & main[iii].
+new2old(14) :- & main[iv].
+new2old(15) :- & main[v].
+new2old(16) :- & main[vi].
+new2old(17) :- & main[vii].
+new2old(18) :- & main[viii].
+
+%------------------------------------------------------------------------------
+% compute the entire table, like newtable(select-all), using tupof:
+
+% table-elements-tupof() :- & for(1,18,lst-newgroup-elements).
+
+% lst-newgroup-elements(G) :- 
+%         Lst .= tupof(newgroup-elements(G)) & group[G|Lst].
+
+%------------------------------------------------------------------------------
+% compute the entire table, like newtable(select-all), using pairing:
+
+%table-elements-pair() :-       % using pairing of element name und group number
+    %     E-g .= for*(1, last-atm(), element-with-group),
+     %    pretty-print(E-g) &           % show pairing
+      %   for(1, 18, lst-newgroup-elements(E-g,G)).
+
+%element-with-group(E) :-               % returns [[<name> <group>]]
+%         E .= englno(Name), G.= newgroup-num(E),F.=plex(Name,G)& plex(F).
+
+%element-with-group(E) :- & [].
+
+%JL
+%element-in-group[G]([Name, G]) :- & [Name].
+%element-in-group[G](_) :- & [].
+
+%element-in-group(G,[Name, G]) :- & [Name].
+%element-in-group(G,_) :- & [].
+
+
+%JL
+%lst-newgroup-elements[E-g](G) :- 
+        % Elements .= mapcan(element-in-group[G], E-g) & group[G, Elements].
+
+
+%lst-newgroup-elements(E-g,G) :- 
+         %Elements .= mapcan(element-in-group(G,[Name, G]), E-g) & group[G, Elements].
+
+%lst-newgroup-elements(E-g,G) :- 
+      %   Elements .= mapcan(element-in-group(G,_), E-g) & group[G, Elements].
+
+
+%------------------------------------------------------------------------------
+% compute old and new tables, using direct inserting:
+
+%newtable(Filter-p) :- & list-new(last-atm(), Filter-p, []). 
+%oldtable(Filter-p) :- & list-old(last-atm(), Filter-p, []).
+
+% Filter predicates: Filter-p(Eno,prop[Cat, Eco, Weight, Oxi])
+
+%select-all(_, _).
+%select-metals(_, prop[m, _, _, _]).
+%select-light-metals(Eno, prop[m, _, _, _]):- light-metal(Eno).
+
+% group-with-exception (exc) and element-enumerating (dom) defs of light-metal:
+
+light-metal(Eno) :-        % alkali metals =  (old) main group i
+  notEqual(Eno,1),            %               =  (new) group 1
+  1 .= newgroup-num(Eno).  %               without hydrogen (1)
+light-metal(Eno) :-        % alkaline-earth metals = (old) main group ii
+  notEqual(Eno,88),         %                       = (new) group 2
+  2 .= newgroup-num(Eno).  %                       without radium (88)
+
+light-metal(13).       % aluminium
+light-metal(39).        % yttrium
+light-metal(21).       % scandium
+light-metal(22).      % titanium
+
+
+%------------------------------------------------------------------------------
+% compute tables of old main and auxiliary groups:
+
+%table-main() :- & list-main(last-atm(), []).
+
+%table-aux() :- & list-aux(last-atm(), []).
+
+%------------------------------------------------------------------------------
+% compute tables of lanthanides and actinides:
+
+%table-lan() :- & list-lan(71, []).
+
+%table-act() :- & list-act(103, []).
+
+%------------------------------------------------------------------------------
+% list elements in their groups if they qualify wrt a filter predicate:
+
+%list-new(0, Filter-p , Table) :- & Table.
+%list-new(Eno, Filter-p, Table) :-
+ %        atm(Eno, name[Abbr, Fullname], Prop),
+  %       Filter-p(Eno, Prop) &
+   %      list-new(subtract(Eno, 1),
+    %              Filter-p,
+     %             insert-new(newgroup-num(Eno), Fullname, Table)).
+%list-new(Eno, Filter-p, Table) :- &            % element did not exist/qualify:
+%         list-new(subtract(Eno, 1), Filter-p, Table).   % proceed with next element
+
+%list-old(0, Filter-p, Table) :- & Table.
+%list-old(Eno, Filter-p, Table) :- 
+ %        atm(Eno, name[Abbr, Fullname], Prop),
+  %       Filter-p(Eno, Prop) &
+   %      list-old(subtract(Eno, 1),
+    %              Filter-p,
+    %              insert-old(new2old(newgroup-num(Eno)), Fullname, Table)).
+%list-old(Eno, Filter-p, Table) :- & 
+%         list-old(subtract(Eno, 1), Filter-p, Table).
+
+%list-main(0, Table) :- & Table.
+%list-main(Eno, Table) :- 
+ %        atm(Eno, name[Abbr, Fullname], Prop),
+  %       Eno .= symbno(Symb),
+   %      main[_] .= oldgroup-sym(Symb) &
+    %     list-main(subtract(Eno, 1),
+     %              insert-old(new2old(newgroup-num(Eno)), Fullname, Table)).
+%list-main(Eno, Table) :- & list-main(subtract(Eno, 1), Table).
+
+%list-aux(0, Table) :- & Table.
+%list-aux(Eno, Table) :- 
+ %        atm(Eno, name[Abbr, Fullname], Prop),
+  %       Eno .= symbno(Symb),
+   %      auxiliary[_] .= oldgroup-sym(Symb) &
+    %     list-aux(subtract(Eno, 1),
+     %             insert-old(new2old(newgroup-num(Eno)), Fullname, Table)).
+%list-aux(Eno, Table) :- &               % element does not exist
+ %        list-aux(subtract(Eno, 1), Table).     % proceed with next element
+
+%list-lan(57, Table) :- & Table.
+%list-lan(Eno, Table) :- 
+ %        atm(Eno, name[Abbr, Fullname], Prop) &
+  %       list-lan(subtract(Eno, 1), [Fullname | Table]).
+%list-lan(Eno, Table) :- &               % element does not exist
+ %        list-lan(subtract(Eno, 1), Table).     % proceed with next element
+
+%list-act(89, Table) :- & Table.
+%list-act(Eno, Table) :- 
+ %        atm(Eno, name[Abbr, Fullname], Prop) &
+  %       list-act(subtract(Eno, 1), [Fullname | Table]).
+%list-act(Eno, Table) :- &               % element does not exist
+%         list-lan(subtract(Eno, 1), Table).     % proceed with next element
+
+%------------------------------------------------------------------------------
+%JL% inserting elements in their groups:
+
+% insert element in "old" or "new" group:
+
+%insert[Cr](Group, Name, []) :- & [group[Group, [Name]]].
+%insert[Cr](Group, Name, [group[Group, Elmts] | R]) :- & 
+ %        [group[Group, [Name | Elmts]] | R].
+%insert[Cr](Group, Name, [group[Gr, Elmts] | R]) :- 
+ %        Cr(Group, Gr) & plex(group[Gr, Elmts] | insert[Cr](Group, Name, R)).
+%insert[Cr](Group, Name, [group[Gr, Elmts] | R]) :- & 
+%        Cr(Gr, Group) holds
+   %      [group[Group, [Name]], group[Gr, Elmts] | R].
+
+
+% inserting elements in their groups:
+
+% insert element in "old" or "new" group:
+
+insert-new(Group, Name, []) :- & [group[Group, [Name]]].
+insert-new(Group, Name, [group[Group, Elmts] | R]) :- & 
+         [group[Group, [Name | Elmts]] | R].
+insert-new(Group, Name, [group[Gr, Elmts] | R]) :- 
+         greaterthan(Group, Gr) & plex(group[Gr, Elmts] | insert-new(Group, Name, R)).
+insert-new(Group, Name, [group[Gr, Elmts] | R]) :- & 
+%        Cr(Gr, Group) holds
+         [group[Group, [Name]], group[Gr, Elmts] | R].
+
+% insert element in "old" or "new" group:
+
+insert-old(Group, Name, []) :- & [group[Group, [Name]]].
+insert-old(Group, Name, [group[Group, Elmts] | R]) :- & 
+         [group[Group, [Name | Elmts]] | R].
+insert-old(Group, Name, [group[Gr, Elmts] | R]) :- 
+         old>(Group, Gr) & plex(group[Gr, Elmts] | insert-old(Group, Name, R)).
+insert-old(Group, Name, [group[Gr, Elmts] | R]) :- & 
+%        Cr(Gr, Group) holds
+         [group[Group, [Name]], group[Gr, Elmts] | R].
+
+%------------------------------------------------------------------------------
+%JL
+% comparison of "new" groups:
+
+%new>(Newnof,Newnos) :- greaterThan(Newnof,Newnos).  % arabic numbers: abstract&compilable
+
+% comparison of "old" (main and auxiliary) groups:
+
+old-greaterThan(auxiliary[Oldno], main[Oldno]).  % aux/main structures with roman numbers:
+old-greaterThan(main[Oldnof], main[Oldnos]) :- string>(Oldnof, Oldnos).  % viii > vii > vi
+old-greaterThan(main[Oldnof], auxiliary[Oldnos]) :- string>(Oldnof, Oldnos).  % > v   > iv
+old-greaterThan(auxiliary[Oldnof], main[Oldnos]) :- string>(Oldnof, Oldnos).  % > iii > ii
+old-greaterThan(auxiliary[Oldnof], auxiliary[Oldnos]) :- string>(Oldnof, Oldnos).  %  > i
+
+%%%### eof
+
+
+%%%### File "elements-validation.rfp"
+
+%------------------------------------------------------------------------------
+% verify electron configuration:
+
+check-eleconf-num(Eno) :-                  % element Eno. must be equal to the
+         Eno .= sum(eleconf-num(Eno)).     % sum of the eleconf list
+
+check-eleconf-sym(Symb) :-    % same as check-eleconf-num, atm chosen by symbol
+         check-eleconf-num(symbno(Symb)).
+
+
+corrupt-eleconf(Eno) :-                    % eleconf is corrupt
+         notEqual(Eno, sum(eleconf-num(Eno))).   % (relation to help relationalize)
+
+check-all-eleconfs() :-           % check knowledge base for inconsistencies
+         element(Eno),            % in electron configuration:
+         corrupt-eleconf(Eno) &   % element-no. enumeratation of inconsistent
+         inconsistent[Eno].       % atm entries as structures inconsistent[Eno]
+
+check-all-eleconfs() :- &          % return structure consistent[] if no
+         consistent[].            % (more) inconsistency is detected
+
+eleconf-sym(Symb) :-               % compute electron configuration of an
+         atm(Eno,                  % element chosen by symbol (returns a list)
+             name[Symb, _],
+             prop[_,
+                  eco[L1, L2, L3],
+                  _,
+                  _]) &
+         inner-shell-fill([L1, L2, L3], inner-shells(Eno)).
+
+eleconf-num(Eno) :-                     % compute electron configuration of an
+         atm(Eno,                       % element (returns a list)
+             _,
+             prop[_,
+                  eco[L1, L2, L3],
+                  _,
+                  _]) &
+         inner-shell-fill([L1, L2, L3], inner-shells(Eno)).
+
+inner-shell-fill(L, 0) :- & L.           % generate prefix of inner shells
+inner-shell-fill(L, S) :-               % before last three
+         lessThan(0, S) & inner-shell-fill(plex(maxelec(S) | L), subtract(S, 1)).
+
+inner-shells(Eno) :-               % number of inner shells before last three
+         lessThanOrEqual(1, Eno),               % (see atm/3)
+         lessThanOrEqual(Eno, 18) &
+         0.
+inner-shells(Eno) :- lessThanOrEqual(19, Eno), lessThanOrEqual(Eno, 36) & 1.
+inner-shells(Eno) :- lessThanOrEqual(37, Eno), lessThanOrEqual(Eno, 54) & 2.
+inner-shells(Eno) :- lessThanOrEqual(55, Eno), lessThanOrEqual(Eno, 86) & 3.
+inner-shells(Eno) :- lessThanOrEqual(87, Eno), lessThanOrEqual(Eno, last-atm()) & 4.
+
+% Relational specification of max. number of electrons on a shell:
+% maxelec(1, 2).                          % shell 1 uses max. 2 electrons
+% maxelec(2, 8).                          % ...
+% maxelec(3, 18).   
+% maxelec(dom[4, 5], 32).                 % shells 4, 5(non-excit.) use max. 32
+%% maxelec(Sh, 32) :- lessThan(3, Sh), lessThan(Sh, 6). % (non-invertible rule formulation)
+
+% Functional specification of max. number of electrons on a shell:
+maxelec(1) :- & 2.                        % max. electrons on shell 1 is 2
+maxelec(2) :- & 8.                        % ...
+maxelec(3) :- & 18.
+maxelec(4) :- & 32.        
+maxelec(5) :- & 32.       % max. on shells 4, 5(non-exc.) is 32
+% maxelec(Sh) :- lessThan(3, Sh), lessThan(Sh, 6) & 32. % (non-invertible rule formulation)
+
+%%%### eof
+
+
+%%%### File "elements-utility.rfp"
+
+
+%------------------------------------------------------------------------------
+% utility functions:
+
+missint([]) :- & [].    % list of integers missing in a strictly ascending list
+missint([E]) :- & [].
+missint([F, S | R]) :- S .= add(F, 1) & missint([S | R]).
+missint([F, S | R]) :- & plex(add(F, 1) | missint(plex(add(F, 1), S | R))).
+
+sum([]) :- & 0.                 % sum of a number list
+sum([H | T]) :- & add(H, sum(T)).
+
+modulo(X, Y) :- lessThan(X, Y) & X.
+modulo(X, Y) :- greaterThanOrEqual(X, Y) & modulo(subtract(X, Y), Y).
+
+%for(B, E, Fct) :-                   % return tup of Fct(I) for I = B to E
+ %        greaterThan(B, E) & [].
+%for(B, E, Fct) :- & plex(Fct(B) | for(add(B,1), E, Fct)).
+
+%for*(B, E, Fct) :-                  % same as for, but use appfun (as a filter)
+ %        greaterThan(B, E) & [].
+%for*(B, E, Fct) :- & appfun(Fct(B), for*(add(B,1), E, Fct)).
+
+%mapcan(Fct, []) :- & [].
+%mapcan(Fct, [H | T]) :- & appfun(Fct(H), mapcan(Fct, T)).
+
+appfun([], L) :- & L.                   % functional append
+appfun([H | R], L) :- & plex(H | appfun(R, L)).
+
+
+%------------------------------------------------------------------------------
+
+% RELFUN TO RULEML COMPATIBILITY
+% Compatibiliby clauses giving user names to Relfun built-ins, so that relationalize 
+% will generate relations rather than calling built-in functions on the right-hand side 
+% of the 'is' primitive (which through XSLT becomes <Equal>). 
+
+add(X,Y):&+(X,Y).
+subtract(X,Y):&-(X,Y).
+
+%JL
+%modulo(X,Y):&mod(X,Y).
+%plex(X,Y):& tup(X,Y).
+plex(|R) :& [|R].
+
+notEqual(X,Y):& X.= [Y].
+
+greaterThan(X,Y):->(X,Y).
+lessThan(X,Y):-<(X,Y).
+greaterThanOrEqual(X,Y):->=(X,Y).
+lessThanOrEqual(X,Y):-<=(X,Y).
+
+%------------------------------------------------------------------------------
+
+% JDREW TO RULEML COMPATIBILITY
+% Compatibiliby clauses giving user names to jDrew built-ins, so that the confliction
+% of built-ins that is case sensitive in jDrew and the result of RuleMLgenerated from case non-sensitive 
+% engine--RuleML can be matched.
+greaterthan(X,Y):-greaterThan(X,Y).
+lessthan(X,Y):-lessThan(X,Y).
+greaterthanorequal(X,Y):-greaterThanOrEqual(X,Y).
+lessthanorequal(X,Y):-lessThanOrEqual(X,Y).
+
+
+
+%%%### eof
+
