@@ -9,3 +9,4 @@ List of N3 implementations
 * [Henry](https://github.com/moustaki/henry) an [SWI-Prolog](http://swi-prolog.org/)
 * [swish](http://hackage.haskell.org/package/swish) implementation in Haskell of N3 (also Turtle,
   formal semantics, graph isomorphism, etc)
+* [Linked Data-Fu](http://linked-data-fu.github.io/) implementation in Java of a subset of N3's features (RDF assertions, deductions) with special semantics regarding HTTP requests in rule heads
