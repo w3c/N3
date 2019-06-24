@@ -9,3 +9,4 @@ List of N3 implementations
 * [Henry](https://github.com/moustaki/henry) an [SWI-Prolog](http://swi-prolog.org/)
 * [swish](http://hackage.haskell.org/package/swish) implementation in Haskell of N3 (also Turtle,
   formal semantics, graph isomorphism, etc)
+* [AutoNomic](https://github.com/koo5/AutoNomic-pyco) backchaining reasoner with AE rules
