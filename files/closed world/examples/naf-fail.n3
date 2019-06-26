@@ -1,0 +1,19 @@
+@base <http://example.com/test> .
+@prefix : <http://example.com/test#> .
+@prefix log: <http://www.w3.org/2000/10/swap/log#>.
+@prefix task: <http://example.com/task#>.
+PREFIX e: <http://eulersharp.sourceforge.net/2003/03swap/log-rules#>
+
+:task1 a :CompositeTask.
+# :task1 a :DiscardedTask.
+
+{
+    ?TASK a :CompositeTask. 
+    ?SCOPE e:fail {
+	    ?TASK a :DiscardedTask.
+    }
+} 
+    =>
+{
+	?TASK a :NotDiscardedTask.
+}.
