@@ -12,6 +12,7 @@
 		# :task1 a :DiscardedTask.
 		:task1 :subTask :task11.
 	} 
+	# normally the above would utilize log:semantics to get the parsed N3 from a file
 	log:notIncludes
 	{	
 		:t a :DiscardedTask.
