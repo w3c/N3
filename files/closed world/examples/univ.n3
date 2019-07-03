@@ -10,8 +10,9 @@
 	{ 
 		:task1 :subTask :task11. :task11 a :Completed.
 		:task1 :subTask :task12. :task12 a :Completed.
-	
-	} log:notIncludes 
+	} 
+	# normally the above would utilize log:semantics to get the parsed N3 from a file
+	log:notIncludes 
 	{ 
 		:t :subTask _:st. _:st a :NotCompleted. 
 	} 
