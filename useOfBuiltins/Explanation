@@ -1,0 +1,5 @@
+The current statistics takes the rule sets into account as used in the paper https://www.sciencedirect.com/science/article/pii/S1570826819300241
+
+I used a very simple bash script which checks for the occurences of builtins in all files (assuming they all use the same prefix declaration).
+
+
