@@ -1,0 +1,15 @@
+#Processed by EYE v19.0705.1450 josd
+#eye naf.n3 --pass --nope
+
+PREFIX : <http://example.com/test#>
+PREFIX log: <http://www.w3.org/2000/10/swap/log#>
+PREFIX task: <http://example.com/task#>
+PREFIX e: <http://eulersharp.sourceforge.net/2003/03swap/log-rules#>
+
+:task1 a :CompositeTask.
+:task1 a :NotDiscardedTask.
+:task1 :taskDescription <file:///home/doerthe/N3_examples/NAF/task.n3>.
+
+#2019-07-05T15:32:19.255Z in=6 out=3 ent=1 step=2 brake=2 inf=27572 sec=0.046 inf/sec=599391
+#ENDS
+
