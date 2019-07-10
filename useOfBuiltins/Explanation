@@ -1,4 +1,6 @@
-The current statistics takes the rule sets into account as used in the paper https://www.sciencedirect.com/science/article/pii/S1570826819300241
+The current statistics takes the rule sets into account as used in the paper 
+https://www.sciencedirect.com/science/article/pii/S1570826819300241
+with the difference that we used the latest version of eye files from here: https://github.com/josd/eye/tree/master/reasoning
 
 I used a very simple bash script which checks for the occurences of builtins in all files (assuming they all use the same prefix declaration).
 
