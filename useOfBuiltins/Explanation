@@ -1,7 +1,22 @@
 The current statistics takes the rule sets into account as used in the paper 
-https://www.sciencedirect.com/science/article/pii/S1570826819300241
-with the difference that we used the latest version of eye files from here: https://github.com/josd/eye/tree/master/reasoning
+https://www.sciencedirect.com/science/article/pii/S1570826819300241 -
+with the difference that we used the latest version of eye files 
+from here: https://github.com/josd/eye/tree/master/reasoning - 
+and the rule set of Cwm.
 
-I used a very simple bash script which checks for the occurences of builtins in all files (assuming they all use the same prefix declaration).
+As far as they are publicly available, the datasets can be accessed at:
+
+orca: not public, I check whether I am allowed to change that
+f4w: https://github.com/IDLabResearch/Facts4Workers/tree/master/n3
+dissect: https://github.com/IDLabResearch/data-validation
+eye: https://github.com/josd/eye/tree/master/reasoning
+cwm: https://github.com/linkeddata/swap
+
+
+
+
+I used a very simple bash script which checks for the occurences of builtins in all files
+(assuming they all use the same prefix declaration). If you add links of datasets you'd like to include below, I will ass the statistics 
+for these datasets. I also plan to make the script publicly available.
 
 
