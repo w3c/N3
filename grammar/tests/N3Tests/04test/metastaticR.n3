@@ -1,0 +1,401 @@
+#Consulting |: 
+#Processed by Id: euler.pl 1779 2007-12-21 01:04:04Z josd 
+
+@prefix math: <http://www.w3.org/2000/10/swap/math#>.
+@prefix nsp0: <http://eulersharp.sourceforge.net/2004/04test/metastaticP.n3#>.
+@prefix e: <http://eulersharp.sourceforge.net/2003/03swap/log-rules#>.
+@prefix list: <http://www.w3.org/2000/10/swap/list#>.
+@prefix q: <http://www.w3.org/2004/ql#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix log: <http://www.w3.org/2000/10/swap/log#>.
+@prefix r: <http://www.w3.org/2000/10/swap/reason#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix fn: <http://www.w3.org/2006/xpath-functions#>.
+@prefix time: <http://www.w3.org/2000/10/swap/time#>.
+@prefix : <http://eulersharp.sourceforge.net/2004/04test/metastatic#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix var: <http://localhost/var#>.
+@prefix str: <http://www.w3.org/2000/10/swap/string#>.
+@prefix owl: <http://www.w3.org/2002/07/owl#>.
+@prefix p0nsp0: <http://eulersharp.sourceforge.net/2004/04test/metastaticQ.n3#>.
+@prefix n3: <http://www.w3.org/2004/06/rei#>.
+
+_: owl:sameAs (<http://eulersharp.sourceforge.net/2004/04test/metastaticP.n3>!log:semantics <http://eulersharp.sourceforge.net/2004/04test/metastaticQ.n3>!log:semantics)!log:conjunction.
+
+[ e:proofID 1; e:proof {
+	{:Coma e:boolean e:F} e:because {
+		{:SerumCalcium e:boolean e:T} e:because {
+			{:MetastaticCancer e:boolean e:T} e:because {
+				{var:_G608 e:true 0.2} a e:Builtin.
+				}; e:source nsp0:pos_180_line_4.
+			{var:_G618 e:true 0.8} a e:Builtin.
+			}; e:source nsp0:pos_264_line_6.
+		{:BrainTumor e:boolean e:T} e:because {
+			{:MetastaticCancer e:boolean e:T} a e:Lemma.
+			{var:_G647 e:true 0.2} a e:Builtin.
+			}; e:source nsp0:pos_429_line_9.
+		{(1.0 0.8) math:difference 0.2} a e:Builtin.
+		{var:_G684 e:true 0.2} a e:Builtin.
+		}; e:source nsp0:pos_610_line_12.
+	{:HeadAche e:boolean e:T} e:because {
+		{:BrainTumor e:boolean e:T} a e:Lemma.
+		{var:_G713 e:true 0.8} a e:Builtin.
+		}; e:source nsp0:pos_979_line_17.
+	{:MetastaticCancer e:boolean e:T} a e:Lemma.
+	}; e:possibility 0.00512].
+
+[ e:proofID 3; e:proof {
+	{:Coma e:boolean e:F} e:because {
+		{:SerumCalcium e:boolean e:T} e:because {
+			{:MetastaticCancer e:boolean e:T} e:because {
+				{var:_G608 e:true 0.2} a e:Builtin.
+				}; e:source nsp0:pos_180_line_4.
+			{var:_G618 e:true 0.8} a e:Builtin.
+			}; e:source nsp0:pos_264_line_6.
+		{:BrainTumor e:boolean e:F} e:because {
+			{:MetastaticCancer e:boolean e:T} a e:Lemma.
+			{(1.0 0.2) math:difference 0.8} a e:Builtin.
+			{var:_G674 e:true 0.8} a e:Builtin.
+			}; e:source nsp0:pos_429_line_9.
+		{(1.0 0.8) math:difference 0.2} a e:Builtin.
+		{var:_G711 e:true 0.2} a e:Builtin.
+		}; e:source nsp0:pos_708_line_13.
+	{:HeadAche e:boolean e:T} e:because {
+		{:BrainTumor e:boolean e:F} a e:Lemma.
+		{var:_G740 e:true 0.6} a e:Builtin.
+		}; e:source nsp0:pos_1052_line_18.
+	{:MetastaticCancer e:boolean e:T} a e:Lemma.
+	}; e:possibility 0.01536].
+
+[ e:proofID 5; e:proof {
+	{:Coma e:boolean e:F} e:because {
+		{:SerumCalcium e:boolean e:F} e:because {
+			{:MetastaticCancer e:boolean e:T} e:because {
+				{var:_G608 e:true 0.2} a e:Builtin.
+				}; e:source nsp0:pos_180_line_4.
+			{(1.0 0.8) math:difference 0.2} a e:Builtin.
+			{var:_G645 e:true 0.2} a e:Builtin.
+			}; e:source nsp0:pos_264_line_6.
+		{:BrainTumor e:boolean e:T} e:because {
+			{:MetastaticCancer e:boolean e:T} a e:Lemma.
+			{var:_G674 e:true 0.2} a e:Builtin.
+			}; e:source nsp0:pos_429_line_9.
+		{(1.0 0.8) math:difference 0.2} a e:Builtin.
+		{var:_G711 e:true 0.2} a e:Builtin.
+		}; e:source nsp0:pos_806_line_14.
+	{:HeadAche e:boolean e:T} e:because {
+		{:BrainTumor e:boolean e:T} a e:Lemma.
+		{var:_G740 e:true 0.8} a e:Builtin.
+		}; e:source nsp0:pos_979_line_17.
+	{:MetastaticCancer e:boolean e:T} a e:Lemma.
+	}; e:possibility 0.00128].
+
+[ e:proofID 7; e:proof {
+	{:Coma e:boolean e:F} e:because {
+		{:SerumCalcium e:boolean e:F} e:because {
+			{:MetastaticCancer e:boolean e:T} e:because {
+				{var:_G608 e:true 0.2} a e:Builtin.
+				}; e:source nsp0:pos_180_line_4.
+			{(1.0 0.8) math:difference 0.2} a e:Builtin.
+			{var:_G645 e:true 0.2} a e:Builtin.
+			}; e:source nsp0:pos_264_line_6.
+		{:BrainTumor e:boolean e:F} e:because {
+			{:MetastaticCancer e:boolean e:T} a e:Lemma.
+			{(1.0 0.2) math:difference 0.8} a e:Builtin.
+			{var:_G701 e:true 0.8} a e:Builtin.
+			}; e:source nsp0:pos_429_line_9.
+		{(1.0 0.05) math:difference 0.95} a e:Builtin.
+		{var:_G738 e:true 0.95} a e:Builtin.
+		}; e:source nsp0:pos_905_line_15.
+	{:HeadAche e:boolean e:T} e:because {
+		{:BrainTumor e:boolean e:F} a e:Lemma.
+		{var:_G767 e:true 0.6} a e:Builtin.
+		}; e:source nsp0:pos_1052_line_18.
+	{:MetastaticCancer e:boolean e:T} a e:Lemma.
+	}; e:possibility 0.01824].
+
+[ e:proofID 2; e:proof {
+	{:Coma e:boolean e:F} e:because {
+		{:SerumCalcium e:boolean e:T} e:because {
+			{:MetastaticCancer e:boolean e:F} e:because {
+				{(1.0 0.2) math:difference 0.8} a e:Builtin.
+				{var:_G662 e:true 0.8} a e:Builtin.
+				}; e:source nsp0:pos_180_line_4.
+			{var:_G672 e:true 0.2} a e:Builtin.
+			}; e:source nsp0:pos_347_line_7.
+		{:BrainTumor e:boolean e:T} e:because {
+			{:MetastaticCancer e:boolean e:F} a e:Lemma.
+			{var:_G701 e:true 0.05} a e:Builtin.
+			}; e:source nsp0:pos_511_line_10.
+		{(1.0 0.8) math:difference 0.2} a e:Builtin.
+		{var:_G738 e:true 0.2} a e:Builtin.
+		}; e:source nsp0:pos_610_line_12.
+	{:HeadAche e:boolean e:T} e:because {
+		{:BrainTumor e:boolean e:T} a e:Lemma.
+		{var:_G767 e:true 0.8} a e:Builtin.
+		}; e:source nsp0:pos_979_line_17.
+	{:MetastaticCancer e:boolean e:F} a e:Lemma.
+	}; e:possibility 0.00128].
+
+[ e:proofID 4; e:proof {
+	{:Coma e:boolean e:F} e:because {
+		{:SerumCalcium e:boolean e:T} e:because {
+			{:MetastaticCancer e:boolean e:F} e:because {
+				{(1.0 0.2) math:difference 0.8} a e:Builtin.
+				{var:_G662 e:true 0.8} a e:Builtin.
+				}; e:source nsp0:pos_180_line_4.
+			{var:_G672 e:true 0.2} a e:Builtin.
+			}; e:source nsp0:pos_347_line_7.
+		{:BrainTumor e:boolean e:F} e:because {
+			{:MetastaticCancer e:boolean e:F} a e:Lemma.
+			{(1.0 0.05) math:difference 0.95} a e:Builtin.
+			{var:_G728 e:true 0.95} a e:Builtin.
+			}; e:source nsp0:pos_511_line_10.
+		{(1.0 0.8) math:difference 0.2} a e:Builtin.
+		{var:_G765 e:true 0.2} a e:Builtin.
+		}; e:source nsp0:pos_708_line_13.
+	{:HeadAche e:boolean e:T} e:because {
+		{:BrainTumor e:boolean e:F} a e:Lemma.
+		{var:_G794 e:true 0.6} a e:Builtin.
+		}; e:source nsp0:pos_1052_line_18.
+	{:MetastaticCancer e:boolean e:F} a e:Lemma.
+	}; e:possibility 0.01824].
+
+[ e:proofID 6; e:proof {
+	{:Coma e:boolean e:F} e:because {
+		{:SerumCalcium e:boolean e:F} e:because {
+			{:MetastaticCancer e:boolean e:F} e:because {
+				{(1.0 0.2) math:difference 0.8} a e:Builtin.
+				{var:_G662 e:true 0.8} a e:Builtin.
+				}; e:source nsp0:pos_180_line_4.
+			{(1.0 0.2) math:difference 0.8} a e:Builtin.
+			{var:_G699 e:true 0.8} a e:Builtin.
+			}; e:source nsp0:pos_347_line_7.
+		{:BrainTumor e:boolean e:T} e:because {
+			{:MetastaticCancer e:boolean e:F} a e:Lemma.
+			{var:_G728 e:true 0.05} a e:Builtin.
+			}; e:source nsp0:pos_511_line_10.
+		{(1.0 0.8) math:difference 0.2} a e:Builtin.
+		{var:_G765 e:true 0.2} a e:Builtin.
+		}; e:source nsp0:pos_806_line_14.
+	{:HeadAche e:boolean e:T} e:because {
+		{:BrainTumor e:boolean e:T} a e:Lemma.
+		{var:_G794 e:true 0.8} a e:Builtin.
+		}; e:source nsp0:pos_979_line_17.
+	{:MetastaticCancer e:boolean e:F} a e:Lemma.
+	}; e:possibility 0.00512].
+
+[ e:proofID 8; e:proof {
+	{:Coma e:boolean e:F} e:because {
+		{:SerumCalcium e:boolean e:F} e:because {
+			{:MetastaticCancer e:boolean e:F} e:because {
+				{(1.0 0.2) math:difference 0.8} a e:Builtin.
+				{var:_G662 e:true 0.8} a e:Builtin.
+				}; e:source nsp0:pos_180_line_4.
+			{(1.0 0.2) math:difference 0.8} a e:Builtin.
+			{var:_G699 e:true 0.8} a e:Builtin.
+			}; e:source nsp0:pos_347_line_7.
+		{:BrainTumor e:boolean e:F} e:because {
+			{:MetastaticCancer e:boolean e:F} a e:Lemma.
+			{(1.0 0.05) math:difference 0.95} a e:Builtin.
+			{var:_G755 e:true 0.95} a e:Builtin.
+			}; e:source nsp0:pos_511_line_10.
+		{(1.0 0.05) math:difference 0.95} a e:Builtin.
+		{var:_G792 e:true 0.95} a e:Builtin.
+		}; e:source nsp0:pos_905_line_15.
+	{:HeadAche e:boolean e:T} e:because {
+		{:BrainTumor e:boolean e:F} a e:Lemma.
+		{var:_G821 e:true 0.6} a e:Builtin.
+		}; e:source nsp0:pos_1052_line_18.
+	{:MetastaticCancer e:boolean e:F} a e:Lemma.
+	}; e:possibility 0.34656].
+
+[ e:proofID 9; e:proof {
+	{:Coma e:boolean e:F} e:because {
+		{:SerumCalcium e:boolean e:T} e:because {
+			{:MetastaticCancer e:boolean e:T} e:because {
+				{var:_G587 e:true 0.2} a e:Builtin.
+				}; e:source nsp0:pos_180_line_4.
+			{var:_G597 e:true 0.8} a e:Builtin.
+			}; e:source nsp0:pos_264_line_6.
+		{:BrainTumor e:boolean e:T} e:because {
+			{:MetastaticCancer e:boolean e:T} a e:Lemma.
+			{var:_G626 e:true 0.2} a e:Builtin.
+			}; e:source nsp0:pos_429_line_9.
+		{(1.0 0.8) math:difference 0.2} a e:Builtin.
+		{var:_G663 e:true 0.2} a e:Builtin.
+		}; e:source nsp0:pos_610_line_12.
+	{:HeadAche e:boolean e:T} e:because {
+		{:BrainTumor e:boolean e:T} a e:Lemma.
+		{var:_G689 e:true 0.8} a e:Builtin.
+		}; e:source nsp0:pos_979_line_17.
+	}; e:possibility 0.00512].
+
+[ e:proofID 10; e:proof {
+	{:Coma e:boolean e:F} e:because {
+		{:SerumCalcium e:boolean e:T} e:because {
+			{:MetastaticCancer e:boolean e:F} e:because {
+				{(1.0 0.2) math:difference 0.8} a e:Builtin.
+				{var:_G614 e:true 0.8} a e:Builtin.
+				}; e:source nsp0:pos_180_line_4.
+			{var:_G624 e:true 0.2} a e:Builtin.
+			}; e:source nsp0:pos_347_line_7.
+		{:BrainTumor e:boolean e:T} e:because {
+			{:MetastaticCancer e:boolean e:F} a e:Lemma.
+			{var:_G653 e:true 0.05} a e:Builtin.
+			}; e:source nsp0:pos_511_line_10.
+		{(1.0 0.8) math:difference 0.2} a e:Builtin.
+		{var:_G690 e:true 0.2} a e:Builtin.
+		}; e:source nsp0:pos_610_line_12.
+	{:HeadAche e:boolean e:T} e:because {
+		{:BrainTumor e:boolean e:T} a e:Lemma.
+		{var:_G716 e:true 0.8} a e:Builtin.
+		}; e:source nsp0:pos_979_line_17.
+	}; e:possibility 0.00128].
+
+[ e:proofID 11; e:proof {
+	{:Coma e:boolean e:F} e:because {
+		{:SerumCalcium e:boolean e:T} e:because {
+			{:MetastaticCancer e:boolean e:T} e:because {
+				{var:_G587 e:true 0.2} a e:Builtin.
+				}; e:source nsp0:pos_180_line_4.
+			{var:_G597 e:true 0.8} a e:Builtin.
+			}; e:source nsp0:pos_264_line_6.
+		{:BrainTumor e:boolean e:F} e:because {
+			{:MetastaticCancer e:boolean e:T} a e:Lemma.
+			{(1.0 0.2) math:difference 0.8} a e:Builtin.
+			{var:_G653 e:true 0.8} a e:Builtin.
+			}; e:source nsp0:pos_429_line_9.
+		{(1.0 0.8) math:difference 0.2} a e:Builtin.
+		{var:_G690 e:true 0.2} a e:Builtin.
+		}; e:source nsp0:pos_708_line_13.
+	{:HeadAche e:boolean e:T} e:because {
+		{:BrainTumor e:boolean e:F} a e:Lemma.
+		{var:_G716 e:true 0.6} a e:Builtin.
+		}; e:source nsp0:pos_1052_line_18.
+	}; e:possibility 0.01536].
+
+[ e:proofID 12; e:proof {
+	{:Coma e:boolean e:F} e:because {
+		{:SerumCalcium e:boolean e:T} e:because {
+			{:MetastaticCancer e:boolean e:F} e:because {
+				{(1.0 0.2) math:difference 0.8} a e:Builtin.
+				{var:_G614 e:true 0.8} a e:Builtin.
+				}; e:source nsp0:pos_180_line_4.
+			{var:_G624 e:true 0.2} a e:Builtin.
+			}; e:source nsp0:pos_347_line_7.
+		{:BrainTumor e:boolean e:F} e:because {
+			{:MetastaticCancer e:boolean e:F} a e:Lemma.
+			{(1.0 0.05) math:difference 0.95} a e:Builtin.
+			{var:_G680 e:true 0.95} a e:Builtin.
+			}; e:source nsp0:pos_511_line_10.
+		{(1.0 0.8) math:difference 0.2} a e:Builtin.
+		{var:_G717 e:true 0.2} a e:Builtin.
+		}; e:source nsp0:pos_708_line_13.
+	{:HeadAche e:boolean e:T} e:because {
+		{:BrainTumor e:boolean e:F} a e:Lemma.
+		{var:_G743 e:true 0.6} a e:Builtin.
+		}; e:source nsp0:pos_1052_line_18.
+	}; e:possibility 0.01824].
+
+[ e:proofID 13; e:proof {
+	{:Coma e:boolean e:F} e:because {
+		{:SerumCalcium e:boolean e:F} e:because {
+			{:MetastaticCancer e:boolean e:T} e:because {
+				{var:_G587 e:true 0.2} a e:Builtin.
+				}; e:source nsp0:pos_180_line_4.
+			{(1.0 0.8) math:difference 0.2} a e:Builtin.
+			{var:_G624 e:true 0.2} a e:Builtin.
+			}; e:source nsp0:pos_264_line_6.
+		{:BrainTumor e:boolean e:T} e:because {
+			{:MetastaticCancer e:boolean e:T} a e:Lemma.
+			{var:_G653 e:true 0.2} a e:Builtin.
+			}; e:source nsp0:pos_429_line_9.
+		{(1.0 0.8) math:difference 0.2} a e:Builtin.
+		{var:_G690 e:true 0.2} a e:Builtin.
+		}; e:source nsp0:pos_806_line_14.
+	{:HeadAche e:boolean e:T} e:because {
+		{:BrainTumor e:boolean e:T} a e:Lemma.
+		{var:_G716 e:true 0.8} a e:Builtin.
+		}; e:source nsp0:pos_979_line_17.
+	}; e:possibility 0.00128].
+
+[ e:proofID 14; e:proof {
+	{:Coma e:boolean e:F} e:because {
+		{:SerumCalcium e:boolean e:F} e:because {
+			{:MetastaticCancer e:boolean e:F} e:because {
+				{(1.0 0.2) math:difference 0.8} a e:Builtin.
+				{var:_G614 e:true 0.8} a e:Builtin.
+				}; e:source nsp0:pos_180_line_4.
+			{(1.0 0.2) math:difference 0.8} a e:Builtin.
+			{var:_G651 e:true 0.8} a e:Builtin.
+			}; e:source nsp0:pos_347_line_7.
+		{:BrainTumor e:boolean e:T} e:because {
+			{:MetastaticCancer e:boolean e:F} a e:Lemma.
+			{var:_G680 e:true 0.05} a e:Builtin.
+			}; e:source nsp0:pos_511_line_10.
+		{(1.0 0.8) math:difference 0.2} a e:Builtin.
+		{var:_G717 e:true 0.2} a e:Builtin.
+		}; e:source nsp0:pos_806_line_14.
+	{:HeadAche e:boolean e:T} e:because {
+		{:BrainTumor e:boolean e:T} a e:Lemma.
+		{var:_G743 e:true 0.8} a e:Builtin.
+		}; e:source nsp0:pos_979_line_17.
+	}; e:possibility 0.00512].
+
+[ e:proofID 15; e:proof {
+	{:Coma e:boolean e:F} e:because {
+		{:SerumCalcium e:boolean e:F} e:because {
+			{:MetastaticCancer e:boolean e:T} e:because {
+				{var:_G587 e:true 0.2} a e:Builtin.
+				}; e:source nsp0:pos_180_line_4.
+			{(1.0 0.8) math:difference 0.2} a e:Builtin.
+			{var:_G624 e:true 0.2} a e:Builtin.
+			}; e:source nsp0:pos_264_line_6.
+		{:BrainTumor e:boolean e:F} e:because {
+			{:MetastaticCancer e:boolean e:T} a e:Lemma.
+			{(1.0 0.2) math:difference 0.8} a e:Builtin.
+			{var:_G680 e:true 0.8} a e:Builtin.
+			}; e:source nsp0:pos_429_line_9.
+		{(1.0 0.05) math:difference 0.95} a e:Builtin.
+		{var:_G717 e:true 0.95} a e:Builtin.
+		}; e:source nsp0:pos_905_line_15.
+	{:HeadAche e:boolean e:T} e:because {
+		{:BrainTumor e:boolean e:F} a e:Lemma.
+		{var:_G743 e:true 0.6} a e:Builtin.
+		}; e:source nsp0:pos_1052_line_18.
+	}; e:possibility 0.01824].
+
+[ e:proofID 16; e:proof {
+	{:Coma e:boolean e:F} e:because {
+		{:SerumCalcium e:boolean e:F} e:because {
+			{:MetastaticCancer e:boolean e:F} e:because {
+				{(1.0 0.2) math:difference 0.8} a e:Builtin.
+				{var:_G614 e:true 0.8} a e:Builtin.
+				}; e:source nsp0:pos_180_line_4.
+			{(1.0 0.2) math:difference 0.8} a e:Builtin.
+			{var:_G651 e:true 0.8} a e:Builtin.
+			}; e:source nsp0:pos_347_line_7.
+		{:BrainTumor e:boolean e:F} e:because {
+			{:MetastaticCancer e:boolean e:F} a e:Lemma.
+			{(1.0 0.05) math:difference 0.95} a e:Builtin.
+			{var:_G707 e:true 0.95} a e:Builtin.
+			}; e:source nsp0:pos_511_line_10.
+		{(1.0 0.05) math:difference 0.95} a e:Builtin.
+		{var:_G744 e:true 0.95} a e:Builtin.
+		}; e:source nsp0:pos_905_line_15.
+	{:HeadAche e:boolean e:T} e:because {
+		{:BrainTumor e:boolean e:F} a e:Lemma.
+		{var:_G770 e:true 0.6} a e:Builtin.
+		}; e:source nsp0:pos_1052_line_18.
+	}; e:possibility 0.34656].
+
+[ e:bayesRule ((1 3 5 7) (9 10 11 12 13 14 15 16)); r:gives {
+	{:Coma e:boolean e:F. :HeadAche e:boolean e:T. _: e:true 0.0972762645914397} => {:MetastaticCancer e:boolean e:T}}].
+
+[ e:bayesRule ((2 4 6 8) (9 10 11 12 13 14 15 16)); r:gives {
+	{:Coma e:boolean e:F. :HeadAche e:boolean e:T. _: e:true 0.90272373540856} => {:MetastaticCancer e:boolean e:F}}].
+
+#ENDS 59 msec.
+
+
