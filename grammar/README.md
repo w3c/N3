@@ -13,7 +13,7 @@ Details can be found in `TESTS.txt`.
 
 Since running syntax tests is a bit more complex than usual, with a distinction between positive- and negative-tests 
 (i.e., tests with and without expected syntax errors) that in some cases must be loaded from a `manifest.ttl` file, 
-we opted for creating our own "test harnass" (`Test.java`).
+we opted for creating our own "test harnass" (see [Test.java](https://github.com/w3c/N3/blob/master/grammar/src/main/java/test/Test.java)).
 
 
 ## Running tests
@@ -43,7 +43,7 @@ For instance:
 
 
 ## Test summary
-See `tests/TESTS.txt` for details.
+See `TESTS.txt` for details.
 
 ### Turtle grammar
 
