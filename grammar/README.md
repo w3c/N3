@@ -21,21 +21,29 @@ we opted for creating our own "test harnass" (`Test.java`).
 To compile the lexer and parser (i.e., initially or after changes to a `.g4` file), run `mvn clean package`. 
 If all goes well this process should result in an `n3Grammar.jar` file under the `target` folder. 
 
+There is a distinction between **positive-tests** (i.e., no syntax errors expected) and **negative-tests** (i.e., syntax errors expected).
+
 Run `java -jar n3Grammar.jar` for usage info. 
+
+- In case a **folder** is given, the program will look for a `manifest.ttl` file utilizing the Turtle [manifest vocabulary](https://www.w3.org/2013/TurtleTests/) that lists all the positive and negative tests.
+
+    When no manifest is found, the program will treat all files in the folder ending with `.n3` or `.turtle` as tests (recursively). The program will expect a `pos`/`neg` flag indicating whether they are positive or negative tests.
+
+- In case an **individual file** is given, the program will always expect a `pos`/`neg` flag to indicate whether it is a  positive or negative test.
+
 For instance:
 
-* `java -jar n3Grammar.jar turtle ../tests/TurtleTests` runs all tests inside the `TurtleTests` folder. 
-To identify positive and negative syntax tests, the program parses `TurtleTests\manifest.ttl`. See section below for expected errors.
+* `java -jar n3Grammar.jar turtle ../tests/TurtleTests` runs all tests inside the `TurtleTests` folder as listed in its `manifest.ttl`. See section below for expected errors.
 
 * `java -jar n3Grammar.jar n3 ../tests/N3Tests pos` runs all files inside the `N3Tests` folder as positive-tests 
 (i.e., no syntax errors expected). Currently, the `N3Tests` folder only contains positive tests. See section below for expected errors.
 
-* `java -jar n3Grammar.jar n3 ../tests/N3Tests/04test/a.n3 pos` runs the individual `a.n3` file as a positive-test
-(i.e., no syntax errors expected).
+* `java -jar n3Grammar.jar n3 ../tests/N3Tests/04test/a.n3 pos` runs the individual `a.n3` file as a positive-test.
 
 
 
 ## Test summary
+See `tests/TESTS.txt` for details.
 
 ### Turtle grammar
 
