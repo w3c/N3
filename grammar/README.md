@@ -55,4 +55,4 @@ For the **Eye N3 test cases**, the N3 grammar passes for most of them. The faile
 
 2. quick-variables annotated with datatypes and language tags, e.g., `?v^^xsd:int`, `?v@en` 
 
-3. '\' chars in strings which does not seem allowed by either Turtle nor N3
+3. '\\' chars in strings which does not seem allowed by either Turtle nor N3
