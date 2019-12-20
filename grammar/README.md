@@ -55,4 +55,23 @@ For the **Eye N3 test cases**, the N3 grammar passes for most of them. The faile
 
 2. quick-variables annotated with datatypes and language tags, e.g., `?v^^xsd:int`, `?v@en` 
 
-3. '\' chars in strings which does not seem allowed by either Turtle nor N3
+3. '\\' chars in strings which does not seem allowed by either Turtle nor N3
+
+
+## TODOs
+
+The following are grammar updates that are not yet decided (just to try them out) so they may turn out not to be needed:
+
+-	Update the N3 grammar with “single inverse property” notation (extension of path sytax – see issue on GitHub)
+
+-	Update the N3 path syntax to be fully in line with SPARQL property paths ; including changing the ‘!’ symbol to ‘/’
+
+Also:
+
+-	Create an N3 visitor class that issues errors when:
+
+    - Non-prefixed qnames are listed and no base directive is given (turtle-syntax-bad-prefix-01.ttl)
+
+    - Prefixed qnames are listed without corresponding prefix declaration (turtle-syntax-bad-prefix-02.ttl)
+
+-	Outfit the “test harness” with fail or ignore lists ; i.e., tests that the grammar is supposed to fail (e.g., because it references @keywords) so those failures are no longer flagged. Currently the TESTS.txt file describes expected failures but they still show up in the output, which is quite confusing.

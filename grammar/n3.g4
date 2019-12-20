@@ -1,7 +1,8 @@
 /*
  [The "BSD licence"]
  Copyright (c) 2019, William Van Woensel (W3C N3 Community Group),
- 					 Łukasz Szeremeta (@ University of Bialystok, http://www.uwb.edu.pl/)
+ Łukasz Szeremeta (University of Bialystok, http://www.uwb.edu.pl/)
+ Dominik Tomaszuk (University of Bialystok, W3C N3 Community Group)
   					 
  All rights reserved.
 
@@ -29,11 +30,11 @@ grammar n3;
 n3Doc 
 	: (n3Statement '.' | sparqlDirective)*
 	;
-	
+
 COMMENT
-   : '#' (~[\n\r])* -> skip
-  /* N3 nor Turtle syntax actually allows for comments (?) */
-   ;
+	: '#' ~[\r\n\f]* -> skip
+  	/* N3 nor Turtle syntax actually allows for comments (?) */
+	;
 
 n3Statement 
 	: n3Directive
