@@ -8,7 +8,7 @@ In and of itself this came with its own set of issues - see comments in the gram
 The Turtle grammar was subsequently adapted and extended with N3 constructs (`n3.g4`).
 Aside from the `keywords` section, all current N3 constructs should be present.
 
-For testing, we are currently using the [Turtle test suite](https://www.w3.org/2013/TurtleTests/) and the [Eye N3 test cases](http://eulersharp.sourceforge.net/).
+For testing, we are currently using the [Turtle test suite](https://www.w3.org/2013/TurtleTests/), the [Eye N3 test cases](http://eulersharp.sourceforge.net/), and the [cwm N3 test cases](https://www.w3.org/2000/10/swap/doc/cwm.html).
 Details can be found in `TESTS.txt`.
 
 Since running syntax tests is a bit more complex than usual, with a distinction between positive- and negative-tests 
