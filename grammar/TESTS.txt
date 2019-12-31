@@ -86,7 +86,7 @@ failed tests (cwm):
 	(see "*_correction.txt" files for applied corrections to cwm test files)
 - current N3 grammar is more restrictive re allowed escapes (see cwm_other/strqout.n3)
 	(copied ECHAR production from Turtle grammar)
-- current N3 grammar does not allow spaces in grammar (see cwm_syntax/space-in-uri.n3)
+- current N3 grammar does not allow spaces in IRIs (see cwm_syntax/space-in-uri.n3)
 	restriction is also copied from Turtle grammar
 	but it doesn't seem like this is a strict test ("See what a parser does with a space")
-- found single occurrence of "this" keyword (deprecated according to https://www.w3.org/2000/10/swap/grammar/n3.n3) (see this-quantifiers-ref2.n3)
+- found single occurrence of "this" keyword (deprecated according to https://www.w3.org/2000/10/swap/grammar/n3.n3) (see cwm_syntax/this-quantifiers-ref2.n3)

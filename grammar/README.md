@@ -65,6 +65,16 @@ For the **Eye N3 test cases**, the N3 grammar passes for most of them. The faile
 
 3. '\\' chars in strings which does not seem allowed by either Turtle nor N3
 
+For the **cwm N3 test cases**, the N3 grammar passes for most of them. The failed ones involve the following:
+
+1. instances of `is .. of` instead of `@is .. @of`, and `has` instead of `@has`. These cases were manually corrected (see `*_correction.txt` files).
+
+2. escaped characters that are not supported by Turtle (i.e., aside from `tbnrf`) (see `cwm_other/strqout.n3`). Would it make sense to support escaping arbitrary characters? .. 
+
+3. non-encoded spaces in IRIs (see `cwm_syntax/space-in-uri.n3`)
+
+4. the `this` keyword (deprecated according to [here](https://www.w3.org/2000/10/swap/grammar/n3.n3)) (see `cwm_syntax/this-quantifiers-ref2.n3`)
+
 
 ## TODOs
 
