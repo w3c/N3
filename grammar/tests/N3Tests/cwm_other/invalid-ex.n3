@@ -11,6 +11,6 @@
 
 <#disjointTest> a ex:Man; a ex:Woman.  # Can't be both.
 
-<#joe> is ex:father of <#alex>; is ex:mother of <#bill>. # Same, but less direct.
+<#joe> @is ex:father @of <#alex>; @is ex:mother @of <#bill>. # Same, but less direct.
     
 #ENDS

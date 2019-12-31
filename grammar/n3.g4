@@ -70,8 +70,7 @@ base
 	;
 
 triples 
-	: subject predicateObjectList
-	| blankNodePropertyList predicateObjectList?
+	: (subject | blankNodePropertyList) predicateObjectList?
 	;
 	
 predicateObjectList 

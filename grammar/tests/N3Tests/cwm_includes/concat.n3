@@ -38,7 +38,7 @@
 
 { :x  string:concat ("World" :y "Web").
   :y  string:concat ( "W" "I" "D""E").
- } log:implies {:www3:is :x}.
+ } log:implies {:www3 :is :x}.
 { :www3 :is "WorldWIDEWeb" } log:implies { :test13f a :success }.
 
 
@@ -51,9 +51,9 @@
 { "one" log:equalTo [ string:concat ( "World" "Wide" "Web" ) ]}
     log:implies {:test13c_bis a :FAILURE}.
 
-{ :x is string:concatenation of (
+{ :x @is string:concatenation @of (
       "World"
-      [is string:concatenation of ("W" "i" "d" "e")]
+      [@is string:concatenation @of ("W" "i" "d" "e")]
       "Web") } log:implies {:www5 :is :x}.
 { :www5 :is "WorldWideWeb" } log:implies { :test13h a :success }.
 

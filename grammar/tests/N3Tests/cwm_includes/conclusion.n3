@@ -29,9 +29,9 @@
 # the set of statements which contains each of the statements in each of the
 # conjoined formulae.
 
-{ ( [ is log:semantics of <../daml-ex.n3> ] 
-    [ is log:semantics of <../invalid-ex.n3> ]
-    [ is log:semantics of <../schema-rules.n3> ] )
+{ ( [ @is log:semantics @of <../daml-ex.n3> ] 
+    [ @is log:semantics @of <../invalid-ex.n3> ]
+    [ @is log:semantics @of <../schema-rules.n3> ] )
         log:conjunction [ log:conclusion :G]}
                                  log:implies { :result :is :G }. 
 

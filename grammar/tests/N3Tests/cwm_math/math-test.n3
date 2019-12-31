@@ -27,11 +27,11 @@
 { ("8" "3") math:difference :x} => { :x :valueOf "8 - 3" } .
 { ("8") math:difference :x } => { :x :valueOf "8 - (error?)" } .
 { ("5" "3" "2") math:product :x} => { :x :valueOf "5 * 3 * 2" } .
-{ :x is math:quotient of ("7" "2") } => { :x :valueOf "7 / 2" } .
-{ :x is math:remainder of ("7" "2") } => { :x :valueOf "7 % 2" } .
+{ :x @is math:quotient @of ("7" "2") } => { :x :valueOf "7 / 2" } .
+{ :x @is math:remainder @of ("7" "2") } => { :x :valueOf "7 % 2" } .
 { :x math:negation "3" } => { :x :valueOf "3 negated" } .
 { "-3" math:negation :x } => { :x :valueOf "what -3's the - of" } .
-{ :x is math:exponentiation of ("2" "10") } => { :x :valueOf "2^10" } .
+{ :x @is math:exponentiation @of ("2" "10") } => { :x :valueOf "2^10" } .
 
 # using numbers:
 
@@ -41,11 +41,11 @@
 { (8 3) math:difference :x} => { :x :valueOf "8 - 3" } .
 # { (8) math:difference :x } => { :x :valueOf "8 - (error?)" } .
 { (5 3 2) math:product :x} => { :x :valueOf "5 * 3 * 2" } .
-{ :x is math:quotient of (7 2) } => { :x :valueOf "7 / 2" } .
-{ :x is math:remainder of (7 2) } => { :x :valueOf "7 % 2" } .
+{ :x @is math:quotient @of (7 2) } => { :x :valueOf "7 / 2" } .
+{ :x @is math:remainder @of (7 2) } => { :x :valueOf "7 % 2" } .
 { :x math:negation 3 } => { :x :valueOf "3 negated" } .
 { -3 math:negation :x } => { :x :valueOf "what -3's the - of" } .
-{ :x is math:exponentiation of (2 10) } => { :x :valueOf "2^10" } .
+{ :x @is math:exponentiation @of (2 10) } => { :x :valueOf "2^10" } .
 
 # Corner cases:
 
@@ -59,7 +59,7 @@
 
 # A nested rule
 
-{ :x is math:sum of (3 (8 3)!math:difference ) } 
+{ :x @is math:sum @of (3 (8 3)!math:difference ) } 
    => { :x :valueOf "3 + (8 - 3)" } .
 
 # Getting the amount of members in a list
@@ -96,10 +96,10 @@
 1.0e7 a :testValue.
 
 { :x a :testValue. :y a :testValue.
-  (:x [ is math:difference of (:y :x)]) math:sum :y } => {:x :worksWith :y}.
+  (:x [ @is math:difference @of (:y :x)]) math:sum :y } => {:x :worksWith :y}.
  
 { :x a :testValue. :y a :testValue.
-  :z is math:sum of (:x (:y :x)!math:difference).
+  :z @is math:sum @of (:x (:y :x)!math:difference).
   :z math:notEqualTo :y } => {(:x :y) :SumDifferenceFAILS :z}.
 
 { :x a :testValue. :y a :testValue.
