@@ -1,6 +1,6 @@
 # Notation 3 (N3) Community Group
 
-See Issues list
+See [Issues list](https://github.com/w3c/N3/issues)
 
 See [W3C Community Page (join here)](https://www.w3.org/community/n3-dev/)
 
