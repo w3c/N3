@@ -1,8 +1,8 @@
 #Processed by EYE v18.0417.2132 josd
 #eye --nope http://eulersharp.sourceforge.net/2007/07test/swetA.n3 http://eulersharp.sourceforge.net/2007/07test/swetD.n3 --query http://eulersharp.sourceforge.net/2007/07test/swetQ11.n3
 
-PREFIX e: <http://eulersharp.sourceforge.net/2003/03swap/log-rules#>
-PREFIX : <http://eulersharp.sourceforge.net/2003/03swap/etc#>
+@prefix e: <http://eulersharp.sourceforge.net/2003/03swap/log-rules#>.
+@prefix : <http://eulersharp.sourceforge.net/2003/03swap/etc#>.
 
 _:t_0 e:answer {:obs001 :ascribed :Rain. :obs001 :ascribed :WetGrass}.
 _:t_1 e:answer {:obs003 :ascribed :Rain. :obs003 :ascribed :WetGrass}.

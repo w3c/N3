@@ -1,8 +1,8 @@
 #Processed by Id: euler.yap 7292 2014-06-13 12:27:29Z josd
 #eye --nope --quiet --quick-false http://eulersharp.sourceforge.net/2007/07test/id.n3 --pass
 
-PREFIX e: <http://eulersharp.sourceforge.net/2003/03swap/log-rules#>
-PREFIX : <http://eulersharp.sourceforge.net/2007/07test/id#>
+@prefix e: <http://eulersharp.sourceforge.net/2003/03swap/log-rules#>.
+@prefix : <http://eulersharp.sourceforge.net/2007/07test/id#>.
 
 :a :r :b.
 :b :r :c.

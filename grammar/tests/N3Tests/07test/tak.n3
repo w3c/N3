@@ -1,5 +1,5 @@
 @prefix math: <http://www.w3.org/2000/10/swap/math#>.
-PREFIX e: <http://eulersharp.sourceforge.net/2003/03swap/log-rules#>
+@prefix e: <http://eulersharp.sourceforge.net/2003/03swap/log-rules#>.
 @prefix : <tak#>.
 
 {(?X ?Y ?Z) :tak ?Z} <= {

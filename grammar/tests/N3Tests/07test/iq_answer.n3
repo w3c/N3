@@ -1,7 +1,7 @@
 #Processed by EYE v18.0417.2132 josd
 #eye --nope http://eulersharp.sourceforge.net/2007/07test/iq.n3 --pass-all
 
-PREFIX : <http://example.org/test#>
+@prefix : <http://example.org/test#>.
 
 _:t_0 :says {_:t_1 :knows :Albert}.
 :s :p :o.

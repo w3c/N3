@@ -1,7 +1,7 @@
 #Processed by EYE v18.0417.2132 josd
 #eye --nope --tactic limited-answer 1 http://eulersharp.sourceforge.net/2007/07test/usmP.n3 --query http://eulersharp.sourceforge.net/2007/07test/usmQ.n3
 
-PREFIX : <http://eulersharp.sourceforge.net/2007/07test/monadic#>
+@prefix : <http://eulersharp.sourceforge.net/2007/07test/monadic#>.
 
 5 :state (_:sk_2 0).
 5 :instruction (:halt).

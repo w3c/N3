@@ -1,9 +1,9 @@
 #Processed by Id: euler.yap 7292 2014-06-13 12:27:29Z josd
 #eye --nope --quiet --quick-false --quick-answer http://eulersharp.sourceforge.net/2007/07test/pd_hes_tactic.n3 http://eulersharp.sourceforge.net/2007/07test/pd_hes_theory.n3 --query http://eulersharp.sourceforge.net/2007/07test/pd_hes_query.n3
 
-PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
-PREFIX e: <http://eulersharp.sourceforge.net/2003/03swap/log-rules#>
-PREFIX : <http://eulersharp.sourceforge.net/2007/07test/pd_hes#>
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix e: <http://eulersharp.sourceforge.net/2003/03swap/log-rules#>.
+@prefix : <http://eulersharp.sourceforge.net/2007/07test/pd_hes#>.
 
 
 [ e:falseModel {:a2 :p :ab. :a1 :p :ab. :a2b2 :l _:sk0}

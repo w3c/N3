@@ -1,9 +1,9 @@
 #Processed by Id: euler.yap 7292 2014-06-13 12:27:29Z josd
 #eye --nope --quiet --quick-false http://eulersharp.sourceforge.net/2007/07test/shubert.n3 --query http://eulersharp.sourceforge.net/2007/07test/shubertQ.n3
 
-PREFIX log: <http://www.w3.org/2000/10/swap/log#>
-PREFIX e: <http://eulersharp.sourceforge.net/2003/03swap/log-rules#>
-PREFIX : <http://eulersharp.sourceforge.net/2006/02swap/steamroller#>
+@prefix log: <http://www.w3.org/2000/10/swap/log#>.
+@prefix e: <http://eulersharp.sourceforge.net/2003/03swap/log-rules#>.
+@prefix : <http://eulersharp.sourceforge.net/2006/02swap/steamroller#>.
 
 
 [ e:falseModel {:wolf_1 :eats :grain_1. :fox_1 :eats :grain_1. :bird_1 :eats :grain_1}

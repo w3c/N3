@@ -1,7 +1,7 @@
 #Processed by EYE v18.0417.2132 josd
 #eye --nope http://eulersharp.sourceforge.net/2007/07test/witch.n3 --query http://eulersharp.sourceforge.net/2007/07test/witch-goal.n3
 
-PREFIX : <http://eulersharp.sourceforge.net/2007/07test/witch#>
+@prefix : <http://eulersharp.sourceforge.net/2007/07test/witch#>.
 
 :GIRL a :WITCH.
 

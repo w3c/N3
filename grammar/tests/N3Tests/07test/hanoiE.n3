@@ -8,9 +8,9 @@
 # Move top disk from <http://eulersharp.sourceforge.net/2007/07test/hanoi#center> to <http://eulersharp.sourceforge.net/2007/07test/hanoi#left>
 # Move top disk from <http://eulersharp.sourceforge.net/2007/07test/hanoi#center> to <http://eulersharp.sourceforge.net/2007/07test/hanoi#right>
 # Move top disk from <http://eulersharp.sourceforge.net/2007/07test/hanoi#left> to <http://eulersharp.sourceforge.net/2007/07test/hanoi#right>
-PREFIX math: <http://www.w3.org/2000/10/swap/math#>
-PREFIX e: <http://eulersharp.sourceforge.net/2003/03swap/log-rules#>
-PREFIX : <http://eulersharp.sourceforge.net/2007/07test/hanoi#>
+@prefix math: <http://www.w3.org/2000/10/swap/math#>.
+@prefix e: <http://eulersharp.sourceforge.net/2003/03swap/log-rules#>.
+@prefix : <http://eulersharp.sourceforge.net/2007/07test/hanoi#>.
 
 3 :answer (:left :right :center).
 

@@ -1,7 +1,7 @@
 #Processed by EYE v18.0417.2132 josd
 #eye --nope http://eulersharp.sourceforge.net/2007/07test/de.n3 http://eulersharp.sourceforge.net/2007/07test/deA.n3 --query http://eulersharp.sourceforge.net/2007/07test/deQ.n3
 
-PREFIX : <http://eulersharp.sourceforge.net/2007/07test/try#>
+@prefix : <http://eulersharp.sourceforge.net/2007/07test/try#>.
 
 _:t_0 :saying :C.
 

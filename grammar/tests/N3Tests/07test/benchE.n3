@@ -2,9 +2,9 @@
 #eye --nope --single-answer http://eulersharp.sourceforge.net/2007/07test/bench.n3 --query http://eulersharp.sourceforge.net/2007/07test/benchQ.n3
 
 # 17638691 lips (100000 nrevs in 2.812 sec)
-PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
-PREFIX prolog: <http://eulersharp.sourceforge.net/2003/03swap/prolog#>
-PREFIX : <http://eulersharp.sourceforge.net/2007/07test/bench#>
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix prolog: <http://eulersharp.sourceforge.net/2003/03swap/prolog#>.
+@prefix : <http://eulersharp.sourceforge.net/2007/07test/bench#>.
 
 100000 :bench 17638691 .
 
