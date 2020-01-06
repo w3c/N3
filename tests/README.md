@@ -14,9 +14,9 @@ More information and an RDFS definition of the test vocabulary can be found at [
 
 Tests are described as Positive or Negative Syntax tests, Evaluation Test, and Reason tests. Syntax tests simply check that the data can be parsed properly; negative syntax tests should generate an error.
 
-Evaluation tests test that the input (`action``) can be parsed into a dataset which is isomorphic to those described in `results`.`
+Evaluation tests test that the input (`action`) can be parsed into a dataset which is isomorphic to those described in `results`.
 
-Reason tests invoke the Notation3 reasoner, with various options, and check that the results are isomorphic to those described in `results`.`
+Reason tests invoke the Notation3 reasoner, with various options, and check that the results are isomorphic to those described in `results`.
 
 Tests should be run with an assumed base URI of `https://w3c.github.io/n3/tests/`
 
