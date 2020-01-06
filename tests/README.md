@@ -24,10 +24,3 @@ Tests should be run with an assumed base URI of `https://w3c.github.io/n3/tests/
 
 If you would like to contribute a new test or a fix to an existing test,
 please file an [issue](https://w3c.github.io/n3/issues) and/or create a [pull request](https://w3c.github.io/n3/pulls).
-
-1. File an issue ,
-   that you will be creating a new test or fix and the purpose of the
-   change.
-2. Clone the git repository: git://github.com/w3c/json-ld-wg.git
-3. Make your changes and submit them via github, or via a 'git format-patch'
-   to the [JSON-LD Working Group mailing list](mailto:json-ld-wg@w3.org).
