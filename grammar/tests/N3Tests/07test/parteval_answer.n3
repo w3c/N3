@@ -1,7 +1,7 @@
 #Processed by EYE v18.0417.2132 josd
 #eye --nope http://eulersharp.sourceforge.net/2007/07test/parteval.n3 --query http://eulersharp.sourceforge.net/2007/07test/parteval_query.n3
 
-PREFIX : <http://eulersharp.sourceforge.net/2007/07test/try#>
+@prefix : <http://eulersharp.sourceforge.net/2007/07test/try#>.
 
 :Xanthippe a :HumanFemale.
 :Xanthippe a :Human.

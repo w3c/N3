@@ -1,19 +1,19 @@
 #Processed by EYE v18.0417.2132 josd
 #eye --nope http://eulersharp.sourceforge.net/2006/02swap/fgcm-plugin.n3 http://eulersharp.sourceforge.net/2003/03swap/fl-rules.n3 http://eulersharp.sourceforge.net/2007/07test/patient.n3 http://eulersharp.sourceforge.net/2007/07test/fgcm-model.n3 --query http://eulersharp.sourceforge.net/2007/07test/fgcm-query.n3
 
-PREFIX fgcm: <http://eulersharp.sourceforge.net/2006/02swap/fgcm-plugin#>
-PREFIX log: <http://www.w3.org/2000/10/swap/log#>
-PREFIX math: <http://www.w3.org/2000/10/swap/math#>
-PREFIX list: <http://www.w3.org/2000/10/swap/list#>
-PREFIX owl: <http://www.w3.org/2002/07/owl#>
-PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
-PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
-PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
-PREFIX func: <http://www.w3.org/2007/rif-builtin-function#>
-PREFIX e: <http://eulersharp.sourceforge.net/2003/03swap/log-rules#>
-PREFIX : <http://www.example.org/patientdescriptions/>
-PREFIX dco: <http://www.debugit.eu/ontology/1.0/dco.owl#>
-PREFIX fl: <http://eulersharp.sourceforge.net/2003/03swap/fl-rules#>
+@prefix fgcm: <http://eulersharp.sourceforge.net/2006/02swap/fgcm-plugin#>.
+@prefix log: <http://www.w3.org/2000/10/swap/log#>.
+@prefix math: <http://www.w3.org/2000/10/swap/math#>.
+@prefix list: <http://www.w3.org/2000/10/swap/list#>.
+@prefix owl: <http://www.w3.org/2002/07/owl#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix func: <http://www.w3.org/2007/rif-builtin-function#>.
+@prefix e: <http://eulersharp.sourceforge.net/2003/03swap/log-rules#>.
+@prefix : <http://www.example.org/patientdescriptions/>.
+@prefix dco: <http://www.debugit.eu/ontology/1.0/dco.owl#>.
+@prefix fl: <http://eulersharp.sourceforge.net/2003/03swap/fl-rules#>.
 
 (:patient008 dco:SimpleUrinaryTractInfection false) fl:gpi (0.15609492798580316 0.24989839953254675).
 (:patient008 dco:SimpleAcuteCystitis false) fl:gpi (0.5 0.6818062399896525).

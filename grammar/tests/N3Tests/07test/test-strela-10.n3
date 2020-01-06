@@ -1,9 +1,9 @@
 #Processed by EYE-Autumn15 12111500Z josd
 #eye --nope --no-distinct http://eulersharp.sourceforge.net/2009/12dtb/test-dl-10.n3 --query http://eulersharp.sourceforge.net/2007/07test/parteval-subclass.n3
 
-PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
-PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
-PREFIX : <http://eulersharp.sourceforge.net/2009/12dtb/test#>
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix : <http://eulersharp.sourceforge.net/2009/12dtb/test#>.
 
 {?U0 a :N0} => {?U0 a :N1}.
 {?U1 a :N0} => {?U1 a :I1}.

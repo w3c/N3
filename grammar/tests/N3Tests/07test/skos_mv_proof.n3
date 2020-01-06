@@ -1,14 +1,14 @@
 #Processed by EYE v18.0417.2132 josd
 #eye http://eulersharp.sourceforge.net/2007/07test/skos-mapping-sample-snomed-icd10.n3 http://eulersharp.sourceforge.net/2003/03swap/skos-mapping-validation-rules.n3 --query http://eulersharp.sourceforge.net/2007/07test/skos-mapping-validation-query.n3
 
-PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
-PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
-PREFIX dce: <http://purl.org/dc/elements/1.1/>
-PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
-PREFIX e: <http://eulersharp.sourceforge.net/2003/03swap/log-rules#>
-PREFIX log: <http://www.w3.org/2000/10/swap/log#>
-PREFIX validation: <http://eulersharp.sourceforge.net/2003/03swap/skos-mapping-validation-rules#>
-PREFIX r: <http://www.w3.org/2000/10/swap/reason#>
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix skos: <http://www.w3.org/2004/02/skos/core#>.
+@prefix dce: <http://purl.org/dc/elements/1.1/>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix e: <http://eulersharp.sourceforge.net/2003/03swap/log-rules#>.
+@prefix log: <http://www.w3.org/2000/10/swap/log#>.
+@prefix validation: <http://eulersharp.sourceforge.net/2003/03swap/skos-mapping-validation-rules#>.
+@prefix r: <http://www.w3.org/2000/10/swap/reason#>.
 
 [] a r:Proof, r:Conjunction;
   r:component <#lemma1>;

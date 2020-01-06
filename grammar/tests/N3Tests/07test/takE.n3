@@ -1,9 +1,9 @@
 #Processed by EYE v18.0417.2132 josd
 #eye --nope --tactic limited-answer 1 http://eulersharp.sourceforge.net/2007/07test/tak.n3 --query http://eulersharp.sourceforge.net/2007/07test/takQ.n3
 
-PREFIX math: <http://www.w3.org/2000/10/swap/math#>
-PREFIX e: <http://eulersharp.sourceforge.net/2003/03swap/log-rules#>
-PREFIX : <http://eulersharp.sourceforge.net/2007/07test/tak#>
+@prefix math: <http://www.w3.org/2000/10/swap/math#>.
+@prefix e: <http://eulersharp.sourceforge.net/2003/03swap/log-rules#>.
+@prefix : <http://eulersharp.sourceforge.net/2007/07test/tak#>.
 
 (18 13 8) :tak 13 .
 

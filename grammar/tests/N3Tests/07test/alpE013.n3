@@ -1,8 +1,8 @@
 #Processed by Id: euler.yap 7292 2014-06-13 12:27:29Z josd
 #eye --nope --quiet --quick-possible http://eulersharp.sourceforge.net/2007/07test/alpP001.n3 http://eulersharp.sourceforge.net/2007/07test/alpA010.n3 --query http://eulersharp.sourceforge.net/2007/07test/alpQ003.n3
 
-PREFIX : <http://eulersharp.sourceforge.net/2007/07test/mona#>
-PREFIX e: <http://eulersharp.sourceforge.net/2003/03swap/log-rules#>
+@prefix : <http://eulersharp.sourceforge.net/2007/07test/mona#>.
+@prefix e: <http://eulersharp.sourceforge.net/2003/03swap/log-rules#>.
 
 
 [ e:counterModel {:Peter :ascribed :smokes}

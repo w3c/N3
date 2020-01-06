@@ -1,10 +1,10 @@
 #Processed by Id: euler.yap 7292 2014-06-13 12:27:29Z josd
 #eye --nope http://eulersharp.sourceforge.net/2007/07test/cd.n3 --pass
 
-PREFIX prolog: <http://eulersharp.sourceforge.net/2003/03swap/prolog#>
-PREFIX e: <http://eulersharp.sourceforge.net/2003/03swap/log-rules#>
-PREFIX var: <http://localhost/var#>
-PREFIX : <http://eulersharp.sourceforge.net/2007/07test/cd#>
+@prefix prolog: <http://eulersharp.sourceforge.net/2003/03swap/prolog#>.
+@prefix e: <http://eulersharp.sourceforge.net/2003/03swap/log-rules#>.
+@prefix var: <http://localhost/var#>.
+@prefix : <http://eulersharp.sourceforge.net/2007/07test/cd#>.
 
 
 [ e:possibleModel {_:qe1 a :HumanMale}

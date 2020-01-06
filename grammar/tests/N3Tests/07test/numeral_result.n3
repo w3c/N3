@@ -1,8 +1,8 @@
 #Processed by EYE v18.0417.2132 josd
 #eye --nope --strict --no-numerals --turtle http://eulersharp.sourceforge.net/2007/07test/numeral.n3 --pass
 
-PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
-PREFIX : <http://example.org/try#>
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix : <http://example.org/try#>.
 
 :s1 :p "99999999999999999999999999999999999999999999999999999999999999999999999999999999999"^^xsd:integer .
 :s2 :p "9999999999999999999999999999999999999999999999999999999999999999.0"^^xsd:decimal .

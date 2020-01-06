@@ -1,8 +1,8 @@
 #Processed by Id: euler.yap 7292 2014-06-13 12:27:29Z josd
 #eye --nope --quiet --quick-false --quick-possible http://eulersharp.sourceforge.net/2007/07test/wetP100.n3 http://eulersharp.sourceforge.net/2007/07test/wetC100.n3 --query http://eulersharp.sourceforge.net/2007/07test/wetQ102.n3
 
-PREFIX e: <http://eulersharp.sourceforge.net/2003/03swap/log-rules#>
-PREFIX : <http://eulersharp.sourceforge.net/2007/07test/wet#>
+@prefix e: <http://eulersharp.sourceforge.net/2003/03swap/log-rules#>.
+@prefix : <http://eulersharp.sourceforge.net/2007/07test/wet#>.
 
 
 [ e:possibleModel {:loc001 :ascribed :Cloudy. :loc001 :ascribed :NonSprinkler. :loc001 :ascribed :Rain. :loc001 :ascribed :WetGrass. :loc001 :ascribed _:sk0}

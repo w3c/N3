@@ -1,8 +1,8 @@
 #Processed by EYE v18.0417.2132 josd
 #eye --no-genid http://eulersharp.sourceforge.net/2007/07test/arc.n3 --proof http://eulersharp.sourceforge.net/2007/07test/witchE.n3 --query http://eulersharp.sourceforge.net/2007/07test/arc-goal.n3
 
-PREFIX r: <http://www.w3.org/2000/10/swap/reason#>
-PREFIX : <http://eulersharp.sourceforge.net/2007/07test/witch#>
+@prefix r: <http://www.w3.org/2000/10/swap/reason#>.
+@prefix : <http://eulersharp.sourceforge.net/2007/07test/witch#>.
 
 [] a r:Proof, r:Conjunction;
   r:component <#lemma1>;

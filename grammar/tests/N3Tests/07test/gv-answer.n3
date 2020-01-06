@@ -1,9 +1,9 @@
 #Processed by EYE v18.0417.2132 josd
 #eye --nope http://eulersharp.sourceforge.net/2007/07test/gv-example.n3 http://eulersharp.sourceforge.net/2007/07test/gv-mln.n3 http://eulersharp.sourceforge.net/2006/02swap/mmln-component.n3 --query http://eulersharp.sourceforge.net/2007/07test/gv-query.n3
 
-PREFIX math: <http://www.w3.org/2000/10/swap/math#>
-PREFIX e: <http://eulersharp.sourceforge.net/2003/03swap/log-rules#>
-PREFIX : <http://3dsa.metadata.net/3dsa/annotator/data/gv_ontology_v1.owl#>
+@prefix math: <http://www.w3.org/2000/10/swap/math#>.
+@prefix e: <http://eulersharp.sourceforge.net/2003/03swap/log-rules#>.
+@prefix : <http://3dsa.metadata.net/3dsa/annotator/data/gv_ontology_v1.owl#>.
 
 _:t_0 :has_shape (0.16666666666666666 :Neck_amphora).
 _:t_0 :has_shape (0.16666666666666666 :Nolan_amphora).

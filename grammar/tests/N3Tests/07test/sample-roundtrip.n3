@@ -1,7 +1,7 @@
 #Processed by EYE v18.0417.2132 josd
 #eye --nope --plugin http://eulersharp.sourceforge.net/2007/07test/sample.n3p --pass-all
 
-PREFIX : <http://example.org/try#>
+@prefix : <http://example.org/try#>.
 
 :s :p {:a :b :c}.
 :s :p {:a :b :c. :d :e :f}.

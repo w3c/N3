@@ -1,8 +1,8 @@
 #Processed by EYE v18.0417.2132 josd
 #eye http://eulersharp.sourceforge.net/2007/07test/iq.n3 --pass-all
 
-PREFIX : <http://example.org/test#>
-PREFIX r: <http://www.w3.org/2000/10/swap/reason#>
+@prefix : <http://example.org/test#>.
+@prefix r: <http://www.w3.org/2000/10/swap/reason#>.
 
 [] a r:Proof, r:Conjunction;
   r:component <#lemma1>;

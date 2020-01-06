@@ -1,11 +1,11 @@
 #Processed by Id: euler.yap 7292 2014-06-13 12:27:29Z josd
 #eye --quick-answer --no-branch http://eulersharp.sourceforge.net/2007/07test/desc_thumbnail.n3 http://eulersharp.sourceforge.net/2007/07test/desc_images.n3 http://eulersharp.sourceforge.net/2007/07test/agent_knowledge.n3 --query http://eulersharp.sourceforge.net/2007/07test/agent_goal.n3
 
-PREFIX dbpedia: <http://dbpedia.org/resource/>
-PREFIX dbpedia-owl: <http://dbpedia.org/ontology/>
-PREFIX ex: <http://example.org/image#>
-PREFIX http: <http://www.w3.org/2011/http#>
-PREFIX r: <http://www.w3.org/2000/10/swap/reason#>
+@prefix dbpedia: <http://dbpedia.org/resource/>.
+@prefix dbpedia-owl: <http://dbpedia.org/ontology/>.
+@prefix ex: <http://example.org/image#>.
+@prefix http: <http://www.w3.org/2011/http#>.
+@prefix r: <http://www.w3.org/2000/10/swap/reason#>.
 
 [ a r:Proof, r:Conjunction;
   r:component <#lemma1>;

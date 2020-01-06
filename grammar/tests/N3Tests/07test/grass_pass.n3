@@ -1,7 +1,7 @@
 #Processed by EYE v18.0417.2132 josd
 #eye --nope http://eulersharp.sourceforge.net/2007/07test/grass.n3 --pass
 
-PREFIX : <http://eulersharp.sourceforge.net/2007/07test/try#>
+@prefix : <http://eulersharp.sourceforge.net/2007/07test/try#>.
 
 :obs1 :wetgrass true.
 :obs1 :sunshine true.

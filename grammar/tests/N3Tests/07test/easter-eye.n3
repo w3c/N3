@@ -1,9 +1,9 @@
 #Processed by Id: euler.yap 7902 2015-04-02 11:01:27Z josd
 #eye --nope http://eulersharp.sourceforge.net/2007/07test/easterP.n3 --query http://eulersharp.sourceforge.net/2007/07test/easterF.n3
 
-PREFIX math: <http://www.w3.org/2000/10/swap/math#>
-PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
-PREFIX : <http://www.agfa.com/w3c/euler/easterP#>
+@prefix math: <http://www.w3.org/2000/10/swap/math#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix : <http://www.agfa.com/w3c/euler/easterP#>.
 
 (5 4) :easterFor 2015 .
 (27 3) :easterFor 2016 .

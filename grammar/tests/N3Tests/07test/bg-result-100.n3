@@ -1,7 +1,7 @@
 #Processed by EYE v18.0131.1211 josd
 #eye --nope http://eulersharp.sourceforge.net/2007/07test/bg-test-100.n3 --pass
 
-PREFIX : <http://eulersharp.sourceforge.net/2007/07test/bg#>
+@prefix : <http://eulersharp.sourceforge.net/2007/07test/bg#>.
 
 :s :p {:a :b :c.
  :a :b :c.

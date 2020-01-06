@@ -1,7 +1,7 @@
 #Processed by EYE v18.0417.2132 josd
 #eye --nope --tactic existing-path http://eulersharp.sourceforge.net/2007/07test/socrater.n3 --pass
 
-PREFIX : <http://eulersharp.sourceforge.net/2007/07test/socrates#>
+@prefix : <http://eulersharp.sourceforge.net/2007/07test/socrates#>.
 
 :Socrates a :human.
 _:sk_0 a :human.
