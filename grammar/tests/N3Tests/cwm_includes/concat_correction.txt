@@ -1,0 +1,14 @@
+line 41: 
+	} log:implies {:www3:is :x}.
+->
+	} log:implies {:www3 :is :x}.
+	
+line 54:
+	{ :x is string:concatenation of (
+->
+	{ :x @is string:concatenation @of (
+	
+line 56:
+	[is string:concatenation of ("W" "i" "d" "e")]
+->
+	[@is string:concatenation @of ("W" "i" "d" "e")]

@@ -1,0 +1,92 @@
+- turtle: based on turtle spec, Łukasz's n3 grammar
+
+failed tests (turtle):
+positive: none
+
+negative:
+(1) turtle-syntax-bad-prefix-01.ttl, 
+	not a parser issue
+	(enforce base in case non-prefixed qnames are listed)
+	
+(2) turtle-syntax-bad-prefix-02.ttl
+	not a parser issue
+	(enforce prefix when qname with prefix is listed)
+
+
+
+- n3(v1): based on turtle grammar, extended / adapted for n3 
+lacking keyword directive
+
+failed tests (turtle):
+positive: none
+
+negative:
+(1) turtle-syntax-bad-prefix-01.ttl, turtle-syntax-bad-prefix-02.ttl, 
+	see turtle
+
+(2) turtle-syntax-bad-struct-05.ttl, turtle-syntax-bad-struct-06.ttl, turtle-syntax-bad-struct-07.ttl, turtle-syntax-bad-struct-17.ttl, turtle-syntax-bad-struct-14.ttl, turtle-syntax-bad-struct-04.ttl, turtle-syntax-bad-struct-15.ttl, turtle-syntax-bad-struct-16.ttl, turtle-syntax-bad-kw-04.ttl, turtle-syntax-bad-kw-05.ttl
+	due to N3 being much more permissive 
+	bad-struct: 4, 5, 14, 15: allowing literals as s/p ; 6-7, 16, 17: allowing bnodes as s/p
+	bad-kw: allowing booleans as s/p
+
+(3) turtle-syntax-bad-struct-02.ttl, turtle-syntax-bad-n3-extras-01.ttl, turtle-syntax-bad-n3-extras-02.ttl, turtle-syntax-bad-n3-extras-04.ttl, turtle-syntax-bad-n3-extras-09.ttl, turtle-syntax-bad-n3-extras-10.ttl, turtle-syntax-bad-n3-extras-11.ttl, turtle-syntax-bad-n3-extras-12.ttl
+	these specifically target N3 syntax ; so these should in fact be positive
+
+so, let's check why not all n3-extras are flagged here (i.e. missing)
+
+missing:
+(see N3Tests/turtle folder)
+(1) turtle-syntax-bad-n3-extras-07.ttl, turtle-syntax-bad-n3-extras-08.ttl, turtle-syntax-bad-n3-extras-13.ttl
+	rely on keywords directive which is not in the new grammar
+
+(2) turtle-syntax-bad-n3-extras-03.ttl, turtle-syntax-bad-n3-extras-05.ttl, turtle-syntax-bad-n3-extras-06.ttl
+	these seem to be malformed N3 .. (removed from n3Positive/turtle folder)
+	
+failed tests (04test):
+(1) LanguageQ.n3, query-survey-11.n3
+	language (@) tags for quick-vars
+
+(2) icalQ001.n3, icalQ002.n3, icalR.n3, query-survey-13.n3
+	datatype (^^) tag for quick-vars
+
+(3) metastaticP, metastaticR.n3
+	uses "_:" for bnodes which is not accepted by Turtle
+	(N3 doesn't seem to have specific syntax for bnodes)
+
+(4) query-survey-10.n3
+	neither turtle nor n3 strings allow '\'
+
+failed tests (07test):
+(in 07test, removed all files with suffix > 1000 ; sometimes got a "null" error ; should try these later)
+
+(1) badmeta.n3, gmpbnode.n3, gmpbnode2.n3, gmpbnode3.n3, gmpbnodeF.n3, biR.n3, httpspeech.n3, nincl.n3, pd_hes_query.n3, pd_hes_tactic.n3, pd_hes_theory.n3, speech.n3, time.n3
+	rely on keywords directive which is not in the new grammar
+
+(2) biR.n3
+	neither turtle nor n3 strings allow '\'
+	
+(3) biR.n3
+	+ is element of a list ; this is not allowed in turtle nor n3
+
+(4) irP.n3, irN.n3, m3bP.n3, irR.n3, nbbn_result.n3, orP.n3, ptP.n3, rsP.n3
+	uses "_:" for bnodes which is not accepted by Turtle
+	
+(5) owlth.n3
+	seems malformed - no keywords section and using 'is'
+	
+12tdb: files don't seem like proper N3 syntax
+
+failed tests (05smml):
+(1) RULESfaces.n3
+	variable starting with number (?1) ; not allowed in turtle nor n3
+	
+failed tests (cwm):
+- found many instances of "is .. of" instead of "@is .. @of"
+	some cases of "has" instead of "@has"
+	(see "*_correction.txt" files for applied corrections to cwm test files)
+- current N3 grammar is more restrictive re allowed escapes (see cwm_other/strqout.n3)
+	(copied ECHAR production from Turtle grammar)
+- current N3 grammar does not allow spaces in IRIs (see cwm_syntax/space-in-uri.n3)
+	restriction is also copied from Turtle grammar
+	but it doesn't seem like this is a strict test ("See what a parser does with a space")
+- found single occurrence of "this" keyword (deprecated according to https://www.w3.org/2000/10/swap/grammar/n3.n3) (see cwm_syntax/this-quantifiers-ref2.n3)

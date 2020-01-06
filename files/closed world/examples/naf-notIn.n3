@@ -1,0 +1,15 @@
+@base <http://example.com/test> .
+@prefix : <http://example.com/test#> .
+@prefix log: <http://www.w3.org/2000/10/swap/log#>.
+@prefix task: <http://example.com/task#>.
+
+:task1 a :CompositeTask.
+{
+	?t a :CompositeTask. 
+	@notIn({ :task1 a :DiscardedTask. }) { ?t a :DiscardedTask. }.
+	# normally notIn would point to a filename instead of a nested formula
+} 
+log:implies 
+{
+	:t a :NotDiscardedTask.
+}.

@@ -1,0 +1,15 @@
+@base <http://example.com/test> .
+@prefix : <http://example.com/test#> .
+@prefix log: <http://www.w3.org/2000/10/swap/log#>.
+@prefix list: <http://www.w3.org/2000/10/swap/list#>.
+PREFIX e: <http://eulersharp.sourceforge.net/2003/03swap/log-rules#>
+
+:task1 a :CompositeTask.
+:task1 :subTask :task11. :task11 a :Completed.
+:task1 :subTask :task12. :task12 a :Completed.
+
+#this here makes a list of all the tasks contained in your composite task
+{?t a :CompositeTask. _:x e:findall (?st { ?t :subTask ?st.} ?tasklist). }=>{?t :subTasks ?tasklist }.
+
+#test whether all tasks are completed
+{?t a :CompositeTask. ?t :subTasks ?tasklist. _:x e:findall (?st { ?st list:in ?tasklist. ?st a :Completed.} ?tasklist). }=>{?t a :AllTasksCompleted }.

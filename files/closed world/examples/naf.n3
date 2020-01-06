@@ -1,0 +1,24 @@
+@base <http://example.com/test> .
+@prefix : <http://example.com/test#> .
+@prefix log: <http://www.w3.org/2000/10/swap/log#>.
+@prefix task: <http://example.com/task#>.
+
+:task1 a :CompositeTask.
+
+@forAll :t.
+{
+	:t a :CompositeTask. 
+	{
+		# :task1 a :DiscardedTask.
+		:task1 :subTask :task11.
+	} 
+	# normally the above would utilize log:semantics to get the parsed N3 from a file
+	log:notIncludes
+	{	
+		:t a :DiscardedTask.
+	}
+} 
+log:implies
+{
+	:t a :NotDiscardedTask.
+}.

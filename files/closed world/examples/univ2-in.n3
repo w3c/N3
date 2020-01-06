@@ -1,0 +1,28 @@
+ @base <http://example.com/test> .
+@prefix : <http://example.com/test#> .
+@prefix log: <http://www.w3.org/2000/10/swap/log#>.
+
+:task1 a :CompositeTask.
+
+@forAll :t.
+{ 
+	:t a :CompositeTask.
+	@forAll :st.
+	{
+		@in({
+			:task1 :subTask :task11. :task11 a :Completed.
+			:task1 :subTask :task12. :task12 a :Completed.
+		
+		}) { :t :subTask :st. }
+		
+	} log:implies {
+		@in({ 
+			:task1 :subTask :task11. :task11 a :Completed.
+			:task1 :subTask :task12. :task12 a :Completed.
+		
+		}) { :st a :Completed. }
+	}
+	
+} log:implies {
+	:t a :AllTasksCompleted.
+}.

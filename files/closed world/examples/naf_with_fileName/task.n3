@@ -1,0 +1,9 @@
+@prefix : <http://example.com/test#> .
+@prefix log: <http://www.w3.org/2000/10/swap/log#>.
+@prefix task: <http://example.com/task#>.
+
+
+:task1 :subTask :task11.
+
+#You can see the difference by commenting this rule in or out.
+#{?x :subTask :task11.}=>{?x a :DiscardedTask.}.

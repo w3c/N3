@@ -10,3 +10,4 @@ List of N3 implementations
 * [swish](http://hackage.haskell.org/package/swish) implementation in Haskell of N3 (also Turtle,
   formal semantics, graph isomorphism, etc)
 * [AutoNomic](https://github.com/koo5/AutoNomic-pyco) backchaining reasoner with AE rules
+* [Linked Data-Fu](http://linked-data-fu.github.io/) implementation in Java of a subset of N3's features (RDF assertions, deductions) with special semantics regarding HTTP requests in rule heads

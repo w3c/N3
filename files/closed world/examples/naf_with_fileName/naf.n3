@@ -1,0 +1,31 @@
+@prefix : <http://example.com/test#> .
+@prefix log: <http://www.w3.org/2000/10/swap/log#>.
+@prefix task: <http://example.com/task#>.
+PREFIX e: <http://eulersharp.sourceforge.net/2003/03swap/log-rules#>
+
+:task1 a :CompositeTask.
+:task1 :taskDescription <task.n3>.
+
+
+
+{
+	?t a :CompositeTask;
+     :taskDescription ?filename.
+
+ ?filename log:semantics ?filecontent.
+
+ 
+?filecontent log:conclusion ?conclusion.
+
+
+
+	?conclusion
+	log:notIncludes
+	{	
+		?t a :DiscardedTask.
+	}
+} 
+=>
+{
+	?t a :NotDiscardedTask.
+}.
