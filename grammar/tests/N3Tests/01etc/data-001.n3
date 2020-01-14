@@ -1,9 +1,19 @@
-@prefix t: <http://josd.github.io/eye/reasoning/tfcontext#>.
+@prefix : <http://josd.github.io/eye/reasoning/cs#>.
 
-t:Antwerp-Belgium t:position-tensor (51.2192 4.4029).
-t:Boston-USA t:position-tensor (42.3584 -71.0598).
-t:Bruges-Belgium t:position-tensor (51.2108 3.2249).
-t:Cambridge-USA t:position-tensor (42.3736 -71.1097).
-t:Chicago-USA t:position-tensor (41.8781 -87.6298).
-t:Ghent-Belgium t:position-tensor (51.0535 3.7304).
-t:Ostend-Belgium t:position-tensor (51.2154 2.9286).
+# input
+:input1 :measurement1 (6 11).
+:input2 :measurement2 true.
+:input3 :measurement3 56967.
+
+# disturbance
+:disturbance1 :measurement3 35766.
+:disturbance2 :measurement1 (45 39).
+
+# state
+:state1 :observation1 80.
+:state2 :observation2 false.
+:state3 :observation3 22.
+
+# output
+:output2 :measurement4 24.
+:output2 :target2 29.
