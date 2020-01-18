@@ -53,6 +53,8 @@ For the **Turtle test suite**, the Turtle grammar fails for two negative-test fi
 
 Currently, the new N3 grammar does not support the `@keywords` section. This means that quite a lot of relevant test cases, i.e., which are meant to test something else but happen to have a `@keywords` section, were failing. Hence, we manually removed the `@keywords` section and manually corrected the non-qname terms in those files. You can find the original versions of those test cases in the `N3Tests/original/with_keywords` folder. 
 
+Note that the `N3Tests\turtle` folder contains test cases from the Turtle test suite that specifically target N3 features (so they are expected to fail for a Turtle-only parser, but should succeed for an N3 parser).
+
 We refer to the `manifest.ttl` file for all test cases that failed for our N3 grammar - these will have a `Rejected` or `Proposed` approval together with an `rdfs:comment` describing why they failed.
 
 You can find an (likely incomplete) summary below:
