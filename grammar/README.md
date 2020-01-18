@@ -75,6 +75,9 @@ For the **cwm N3 test cases**, the N3 grammar passes for most of them. The faile
 
 4. the `this` keyword (deprecated according to [here](https://www.w3.org/2000/10/swap/grammar/n3.n3)) (see `cwm_syntax/this-quantifiers-ref2.n3`)
 
+## Contributing
+
+If you would like to contribute a new test or a fix to an existing test, please file an [issue](https://github.com/w3c/N3/issues) and/or create a [pull request](https://github.com/w3c/N3/pulls).
 
 ## TODOs
 
