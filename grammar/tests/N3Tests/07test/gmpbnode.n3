@@ -1,8 +1,7 @@
 @prefix : <gmpbnode#>.
-@keywords is, of, a.
 
-dan home [ in Texas ].
+:dan :home [ :in :Texas ].
 
-{ ?WHO home ?WHERE.
-  ?WHERE in ?REGION } => { ?WHO homeRegion ?REGION }.
+{ ?WHO :home ?WHERE.
+  ?WHERE :in ?REGION } => { ?WHO :homeRegion ?REGION }.
 

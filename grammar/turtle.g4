@@ -26,8 +26,12 @@
 
 grammar turtle;
 
+@header {
+    package parser;
+}
+
 turtleDoc 
-	: statement*
+	: statement* EOF
 	;
 	
 COMMENT

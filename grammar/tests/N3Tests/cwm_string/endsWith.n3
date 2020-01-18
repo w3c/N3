@@ -4,7 +4,7 @@
 @prefix doc:  <http://www.w3.org/2000/10/swap/pim/doc#> .
 
 
-<>   rcs:id "$Id: endsWith.n3,v 1.3 2004/06/25 01:27:00 timbl Exp $";
+<>   rcs:id "$Id: endsWith.n3,v 1.3 2004-06-25 01:27:00 timbl Exp $";
 
   doc:creator [ 
 	contact:fullName "Tim berners-Lee";

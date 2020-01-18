@@ -1,5 +1,4 @@
 @prefix : <gmpbnode#>.
-@keywords is, of, a.
 
-{ ?WHO homeRegion ?REGION } => { ?WHO homeRegion ?REGION }.
+{ ?WHO :homeRegion ?REGION } => { ?WHO :homeRegion ?REGION }.
 

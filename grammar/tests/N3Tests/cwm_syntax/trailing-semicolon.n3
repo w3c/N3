@@ -3,10 +3,8 @@
 # DJB pointed out that it is useful,
 # and it always was acceptable to the original n3 parser.
 
-@keywords.
+:b :c :d;.
 
-b c d;.
-
-e f [g h; i j;].
+:e :f [:g :h; :i :j;].
 
 # ends

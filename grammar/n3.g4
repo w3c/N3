@@ -27,8 +27,12 @@
 
 grammar n3;
 
+@header {
+    package parser;
+}
+
 n3Doc 
-	: (n3Statement '.' | sparqlDirective)*
+	: (n3Statement '.' | sparqlDirective)* EOF
 	;
 
 COMMENT

@@ -3,7 +3,7 @@
 @prefix rcs: <http://www.w3.org/2001/03swell/rcs#>.
 
 <> dc:description """Test string:containsRoughly""";
-  rcs:id "$Id: roughly.n3,v 1.2 2004/06/25 01:27:00 timbl Exp $";
+  rcs:id "$Id: roughly.n3,v 1.2 2004-06-25 01:27:00 timbl Exp $";
   dc:creator [ 
 	contact:fullName "Tim berners-Lee";
 	contact:homePage <http://www.w3.org/People/Berners-Lee/>;

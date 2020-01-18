@@ -1,14 +1,18 @@
 package test;
 
+import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.FileReader;
+import java.io.IOException;
 import java.lang.reflect.Method;
 import java.nio.charset.Charset;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.BitSet;
 import java.util.List;
-import java.util.function.Consumer;
+import java.util.function.BiConsumer;
+import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import org.antlr.v4.runtime.ANTLRErrorListener;
@@ -18,12 +22,13 @@ import org.antlr.v4.runtime.CharStreams;
 import org.antlr.v4.runtime.CommonTokenStream;
 import org.antlr.v4.runtime.Lexer;
 import org.antlr.v4.runtime.Parser;
+import org.antlr.v4.runtime.ParserRuleContext;
 import org.antlr.v4.runtime.RecognitionException;
 import org.antlr.v4.runtime.Recognizer;
-import org.antlr.v4.runtime.Token;
 import org.antlr.v4.runtime.TokenStream;
 import org.antlr.v4.runtime.atn.ATNConfigSet;
 import org.antlr.v4.runtime.dfa.DFA;
+import org.antlr.v4.runtime.tree.AbstractParseTreeVisitor;
 import org.apache.commons.lang3.tuple.ImmutablePair;
 import org.apache.commons.lang3.tuple.Pair;
 import org.apache.jena.rdf.model.Model;
@@ -37,15 +42,21 @@ import rdf.util.NS;
 public class Test {
 
 	private static List<String> suppGrammars = Arrays.asList("turtle", "n3");
-	private static List<String> suppPosNeg = Arrays.asList("pos", "neg");
-
 	private static List<String> suppExts = Arrays.asList("ttl", "n3");
-
+	
 	public static void main(String[] args) throws Exception {
-		if (args.length < 2 || args.length > 3) {
-			System.out.println("usage: java -jar n3Grammar.jar <grammar> <file or folder> (<pos/neg>)?");
+		if (args.length < 2) {
+			System.out.println("usage: java -jar n3Grammar.jar <grammar> <file or folder>\n\n" + "flags:\n"
+					+ "-pos/neg: whether tests should be run as positive (-pos) or negative (-neg) tests. "
+					+ "This flag is needed when testing an individual file, or a folder without a manifest file. "
+					+ "It will override any manifest found in a folder.\n\n"
+					+ "-printAST: when given for a file, the resulting AST will be printed.");
 			return;
 		}
+
+		List<String> flags = new ArrayList<>();
+		for (int i = 2; i < args.length; i++)
+			flags.add(args[i]);
 
 		String grammar = args[0];
 		if (!suppGrammars.contains(grammar)) {
@@ -66,26 +77,22 @@ public class Test {
 
 		File manifest = new File(f, "manifest.ttl");
 
-		Boolean pos = null;
-		if (args.length < 3) {
+		Boolean posTest = null;
+		if (flags.contains("-pos") || flags.contains("-neg"))
+			posTest = flags.contains("-pos");
+
+		else {
 			if (!f.isDirectory()) {
-				System.err.println("error: expecting <pos/neg> for an individual file test");
+				System.err.println("error: expecting -pos/neg flag for an individual file test");
 				return;
 
 			} else if (!manifest.exists()) {
-				System.err.println(
-						"error: no " + f.getPath() + "\\manifest.ttl found so need <pos/neg> for running tests");
+				System.err.println("error: no " + f.getPath() + "\\manifest.ttl found so need -pos/neg flag");
 				return;
 			}
-
-		} else {
-			if (!suppPosNeg.contains(args[2])) {
-				System.err.println("error: expecting <pos/neg> instead of \"" + args[2] + "\"");
-				return;
-			}
-
-			pos = (args[2].equals("pos"));
 		}
+
+		boolean ast = flags.contains("-printAST");
 
 		System.out.println("-- CONFIG");
 		System.out.println("grammar: " + grammar);
@@ -93,19 +100,29 @@ public class Test {
 		if (f.isDirectory()) {
 			System.out.println("folder: " + f.getCanonicalPath());
 
-			System.out.println("\n\n-- TESTS");
-			if (manifest.exists())
+			// pos/neg flag overrides any potential manifest in the folder
+			if (posTest != null) {
+				System.out.println("running tests as " + (posTest ? "positive" : "negative"));
+
+				System.out.println("\n\n-- TESTS");
+				t.testFolder(posTest, grammar, f.getPath() + "/");
+			} else {
+				System.out.println("using manifest");
+
+				System.out.println("\n\n-- TESTS");
 				t.testManifest(grammar, f.getPath() + "/");
-			else
-				t.testFolder(pos, grammar, f.getPath() + "/");
+			}
 
 		} else {
 			System.out.println("file: " + f.getCanonicalPath());
 
 			System.out.println("\n\n-- TESTS");
-			System.out.println("\npass? " + (pos ? t.positiveTest(grammar, f) : t.negativeTest(grammar, f)));
+			System.out.println(
+					"\npass? " + (posTest ? t.positiveTest(grammar, f, ast) : t.negativeTest(grammar, f, ast)));
 		}
 	}
+
+	private String base = null;
 
 	public void testManifest(String grammar, String folder) throws Exception {
 		Model manifest = readManifest(folder);
@@ -114,14 +131,14 @@ public class Test {
 		List<String> posFailed = new ArrayList<>();
 		List<String> negFailed = new ArrayList<>();
 
-		totalNr += doSyntaxTests(manifest.createResource(NS.uri("rdft:TestTurtlePositiveSyntax")), test -> {
-			if (!positiveTest(grammar, test))
-				posFailed.add(test.getName());
+		totalNr += doSyntaxTests(manifest.createResource(NS.uri("rdft:TestTurtlePositiveSyntax")), (test, name) -> {
+			if (!positiveTest(grammar, test, false))
+				posFailed.add(name);
 		}, folder, manifest);
 
-		totalNr += doSyntaxTests(manifest.createResource(NS.uri("rdft:TestTurtleNegativeSyntax")), test -> {
-			if (!negativeTest(grammar, test))
-				negFailed.add(test.getName());
+		totalNr += doSyntaxTests(manifest.createResource(NS.uri("rdft:TestTurtleNegativeSyntax")), (test, name) -> {
+			if (!negativeTest(grammar, test, false))
+				negFailed.add(name);
 		}, folder, manifest);
 
 		printFailed(totalNr, posFailed, negFailed);
@@ -129,10 +146,32 @@ public class Test {
 
 	private Model readManifest(String folder) throws Exception {
 		System.out.println("parsing manifest.ttl");
-		return ModelFactory.createDefaultModel().read(new FileInputStream(folder + "manifest.ttl"), "", "TURTLE");
+
+		getBase(folder + "manifest.ttl");
+		return ModelFactory.createDefaultModel().read(new FileInputStream(folder + "manifest.ttl"), null, "TURTLE");
 	}
 
-	private int doSyntaxTests(Resource type, Consumer<File> fn, String folder, Model manifest) {
+	private void getBase(String path) throws IOException {
+		Pattern p = Pattern.compile("\\s*@base\\s*<(.*?)>\\s*\\.\\s*");
+
+		BufferedReader br = new BufferedReader(new FileReader(path));
+		String line = null;
+		while ((line = br.readLine()) != null) {
+			Matcher m = p.matcher(line);
+			if (m.matches()) {
+				base = m.group(1);
+				break;
+			}
+		}
+		br.close();
+
+		if (base == null)
+			base = "file:///" + System.getProperty("user.dir") + "/";
+
+		System.out.println("assuming base = " + base);
+	}
+
+	private int doSyntaxTests(Resource type, BiConsumer<File, String> fn, String folder, Model manifest) {
 		int nr = 0;
 
 		StmtIterator stmtIt = manifest.listStatements(null, manifest.createProperty(NS.uri("rdf:type")), type);
@@ -140,10 +179,17 @@ public class Test {
 			Statement stmt = stmtIt.next();
 			Resource testCase = stmt.getSubject();
 
+			if (!testCase.getProperty(manifest.createProperty(NS.uri("rdft", "approval"))).getObject().asResource()
+					.getURI().equals(NS.uri("rdft", "Approved")))
+
+				continue;
+
 			Statement actionStmt = testCase.getProperty(manifest.createProperty(NS.uri("mf", "action")));
 			if (actionStmt != null) {
-				String test = NS.localName(actionStmt.getObject().asResource().getURI());
-				fn.accept(new File(folder + test));
+				String test = actionStmt.getObject().asResource().getURI();
+				test = test.substring(base.length());
+
+				fn.accept(new File(folder + test), test);
 
 				nr++;
 
@@ -174,7 +220,8 @@ public class Test {
 			else if (suppExts.stream().anyMatch(e -> file.getName().endsWith("." + e))) {
 				String name = prefix + file.getName();
 				try {
-					boolean success = (pos ? positiveTest(grammar, file, name) : negativeTest(grammar, file, name));
+					boolean success = (pos ? positiveTest(grammar, file, name, false)
+							: negativeTest(grammar, file, name, false));
 					if (!success)
 						failed.add(name);
 
@@ -189,31 +236,32 @@ public class Test {
 		return nr;
 	}
 
-	public boolean positiveTest(String grammar, File file) {
-		return positiveTest(grammar, file, file.getName());
+	public boolean positiveTest(String grammar, File file, boolean printAST) {
+		return positiveTest(grammar, file, file.getName(), printAST);
 	}
 
-	public boolean positiveTest(String grammar, File file, String name) {
-		System.out.println("testing (positive): " + name);
+	public boolean positiveTest(String grammar, File file, String name, boolean printAST) {
+		System.out.println("testing (positive): " + file.getPath());
 		try {
-			MyParserCmp cmp = parse(grammar, file);
+			MyParserCmp cmp = parse(grammar, file, printAST);
 			return (cmp.getNumErrors() == 0);
 
 		} catch (Exception e) {
 			System.err.println("error (" + file.getName() + "): " + e.getMessage());
+			e.printStackTrace();
 
 			return false;
 		}
 	}
 
-	public boolean negativeTest(String grammar, File file) {
-		return negativeTest(grammar, file, file.getName());
+	public boolean negativeTest(String grammar, File file, boolean printAST) {
+		return negativeTest(grammar, file, file.getName(), printAST);
 	}
 
-	public boolean negativeTest(String grammar, File file, String name) {
+	public boolean negativeTest(String grammar, File file, String name, boolean printAST) {
 		System.out.println("testing (negative): " + name);
 		try {
-			MyParserCmp cmp = parse(grammar, file);
+			MyParserCmp cmp = parse(grammar, file, printAST);
 			return (cmp.getNumErrors() > 0);
 
 		} catch (Exception e) {
@@ -223,7 +271,7 @@ public class Test {
 		}
 	}
 
-	public MyParserCmp parse(String grammar, File file) throws Exception {
+	public MyParserCmp parse(String grammar, File file, boolean printAST) throws Exception {
 		MyParserCmp cmp = createGrammarComponents(grammar, file);
 
 		boolean found = false;
@@ -232,7 +280,10 @@ public class Test {
 
 			if (p.matcher(m.getName()).matches()) {
 				found = true;
-				m.invoke(cmp.getParser());
+				
+				ParserRuleContext ctx = (ParserRuleContext) m.invoke(cmp.getParser());
+				if (printAST)
+					createVisitor(grammar).visit(ctx);
 
 				break;
 			}
@@ -242,33 +293,6 @@ public class Test {
 			System.err.println("error: could not find parser method for " + grammar);
 
 		return cmp;
-	}
-
-	public void checkTokens(String grammar, File file) {
-		System.out.println("checkTokens (" + grammar + "): " + file.getName());
-
-		try {
-			MyParserCmp cmp = createGrammarComponents(grammar, file);
-			CommonTokenStream tokens = new CommonTokenStream(cmp.getLexer());
-
-			while (true) {
-				Token tk = tokens.LT(1);
-
-				if (tk.getType() == -1)
-					break;
-
-				System.out.println(tk + " - " + cmp.getParser().getVocabulary().getSymbolicName(tk.getType()));
-
-				// (antlr 4.4)
-				// System.out.println(tk + " - " +
-				// cmp.getParser().getTokenNames()[tk.getType()]);
-
-				tokens.consume();
-			}
-
-		} catch (Exception e) {
-			System.err.println("error in " + file.getName() + ": " + e.getMessage());
-		}
 	}
 
 	private void printFailed(int totalNr, List<String> posFailed, List<String> negFailed) {
@@ -300,28 +324,34 @@ public class Test {
 		// new ANTLRInputStream(new InputStreamReader(new FileInputStream(file),
 		// Charset.forName("UTF-8"))));
 
-		lexer.removeErrorListeners();
+//		lexer.removeErrorListeners();
 		MyLexerErrorListener lexerListener = new MyLexerErrorListener(file.getName());
 		lexer.addErrorListener(lexerListener);
 
 		Parser parser = clss.getRight().getConstructor(TokenStream.class).newInstance(new CommonTokenStream(lexer));
 
-		parser.removeErrorListeners();
+//		parser.removeErrorListeners();
 		MyParserErrorListener parserListener = new MyParserErrorListener(file.getName());
 		parser.addErrorListener(parserListener);
 
 		return new MyParserCmp(lexer, parser, lexerListener, parserListener);
 	}
 
+	@SuppressWarnings("rawtypes")
+	private AbstractParseTreeVisitor createVisitor(String grammar) throws Exception {
+		return (AbstractParseTreeVisitor) Class.forName("test.visitor." + grammar + "VisitorPrinter").getConstructor()
+				.newInstance();
+	}
+
 	@SuppressWarnings("unchecked")
 	private Pair<Class<? extends Lexer>, Class<? extends Parser>> getGrammarClasses(String grammar)
 			throws ClassNotFoundException {
 
-		return ImmutablePair.of((Class<? extends Lexer>) Class.forName(grammar + "Lexer"),
-				(Class<? extends Parser>) Class.forName(grammar + "Parser"));
+		return ImmutablePair.of((Class<? extends Lexer>) Class.forName("parser." + grammar + "Lexer"),
+				(Class<? extends Parser>) Class.forName("parser." + grammar + "Parser"));
 	}
 
-	private class MyParserCmp {
+	protected class MyParserCmp {
 
 		private Lexer lexer;
 		private Parser parser;
