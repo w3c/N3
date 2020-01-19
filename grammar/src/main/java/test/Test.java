@@ -166,7 +166,7 @@ public class Test {
 		br.close();
 
 		if (base == null)
-			base = "file:///" + System.getProperty("user.dir") + "/";
+			base = "file:\\\\\\" + System.getProperty("user.dir") + "\\";
 
 		System.out.println("assuming base = " + base);
 	}
