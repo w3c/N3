@@ -20,9 +20,15 @@ See below for instructions on how to run the tests.
 
 # Running tests
 
-Currently, the test harnass supports testing the new N3 (and Turtle) grammar and [cwm](https://www.w3.org/2000/10/swap/doc/cwm.html). The tool will utilize a `manifest.ttl` file when found, or else simply treat all given files as positive/negative tests.
+Currently, the test harnass supports:
+- The new N3 (and Turtle) grammar (see `*.g4` files)
+- The [cwm](https://www.w3.org/2000/10/swap/doc/cwm.html) system. 
 
-To compile the test harness, run `mvn clean package`. If all goes well this process should result in `n3TestGrammar.jar` and `n3TestCwm.jar` files under the `target` folder. Run `java -jar <name>.jar` for usage info. 
+It should be relatively straightforward to support additional systems, such as [Eye](http://eulersharp.sourceforge.net/).
+
+The tool will utilize a `manifest.ttl` file when found; else, it will treat all given files as positive/negative tests.
+
+To compile the test harness, run `mvn clean package`. If all goes well this process should result in separate jar files for each supported system under the `target` folder. Run `java -jar <name>.jar` for usage info. 
 
 Note that you can update the grammar (`.g4` file) and then run `mvn clean package` to compile the new lexer and parser, which are part of the test harness.
 
