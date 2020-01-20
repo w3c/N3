@@ -18,7 +18,7 @@ Since running syntax tests is a bit more complex than usual, with a distinction 
 
 See below for instructions on how to run the tests.
 
-## Running tests
+# Running tests
 
 Currently, the test harnass supports testing the new N3 (and Turtle) grammar and [cwm](https://www.w3.org/2000/10/swap/doc/cwm.html). The tool will utilize a `manifest.ttl` file when found, or else simply treat all given files as positive/negative tests.
 
@@ -48,11 +48,11 @@ For instance:
 * `java -jar n3TestCwm.jar C:/cwm/cwm-1.2.1/build/scripts-2.7/cwm ../tests/N3Tests`  
 **Cwm**: tests files inside the `N3Tests` folder, as listed in its `manifest.ttl`, as cwm test cases.  
 
-### Turtle grammar
+## Turtle grammar
 
 For the **Turtle test suite**, the Turtle grammar fails for two negative-test files (marked as `Rejected` in `manifest.ttl`) due to an issue unrelated to the parser.
 
-### N3 grammar
+## N3 grammar
 
 Currently, the new N3 grammar does not support the `@keywords` section. This means that quite a lot of relevant test cases, i.e., which are meant to test something else but happen to have a `@keywords` section, were failing. Hence, we manually removed the `@keywords` section and manually corrected the non-qname terms in those files. You can find the original versions of those test cases in the `N3Tests/original/with_keywords` folder. 
 
