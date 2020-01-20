@@ -1,4 +1,5 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>w3c.n3dev</groupId>
@@ -69,20 +70,40 @@
 				<artifactId>maven-assembly-plugin</artifactId>
 				<executions>
 					<execution>
+						<id>n3TestGrammar</id>
 						<phase>package</phase>
 						<goals>
 							<goal>single</goal>
 						</goals>
 						<configuration>
-							<finalName>n3Grammar</finalName>
+							<finalName>n3TestGrammar</finalName>
 							<archive>
 								<manifest>
-									<mainClass>test.Test</mainClass>
+									<mainClass>test.N3TestGrammar</mainClass>
 								</manifest>
 							</archive>
-							<descriptors>
-								<descriptor>descriptor.xml</descriptor>
-							</descriptors>
+							<descriptorRefs>
+								<descriptorRef>jar-with-dependencies</descriptorRef>
+							</descriptorRefs>
+							<appendAssemblyId>false</appendAssemblyId>
+						</configuration>
+					</execution>
+					<execution>
+						<id>n3TestCwm</id>
+						<phase>package</phase>
+						<goals>
+							<goal>single</goal>
+						</goals>
+						<configuration>
+							<finalName>n3TestCwm</finalName>
+							<archive>
+								<manifest>
+									<mainClass>test.N3TestCwm</mainClass>
+								</manifest>
+							</archive>
+							<descriptorRefs>
+								<descriptorRef>jar-with-dependencies</descriptorRef>
+							</descriptorRefs>
 							<appendAssemblyId>false</appendAssemblyId>
 						</configuration>
 					</execution>

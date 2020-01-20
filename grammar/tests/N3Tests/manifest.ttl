@@ -1603,8 +1603,8 @@
         a              rdft:TestTurtlePositiveSyntax ;
         mf:action      <07test/pd_hes_tactic.n3> ;
         mf:name        "pd_hes_tactic" ;
-        rdfs:comment   "(edited to remove reliance on @keywords)" ;
-        rdft:approval  rdft:Approved .
+        rdfs:comment   "(edited to remove reliance on @keywords) ; currently rejected since cwm blocks on it" ;
+        rdft:approval  rdft:Rejected .
 
 <#07test_parteval_answer.n3>
         a              rdft:TestTurtlePositiveSyntax ;
