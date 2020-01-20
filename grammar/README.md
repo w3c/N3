@@ -26,7 +26,7 @@ Currently, the test harnass supports:
 
 It should be relatively straightforward to support additional systems, such as [Eye](http://eulersharp.sourceforge.net/).
 
-The tool will utilize a `manifest.ttl` file when found; else, it will treat all given files as positive/negative tests.
+The tool will utilize a `manifest.ttl` file when found; else, it will treat all given files as positive/negative tests. It will also print all output to file `./test_out.txt`, in addition to showing it on the cmd line.
 
 To compile the test harness, run `mvn clean package`. If all goes well this process should result in separate jar files for each supported system under the `target` folder. Run `java -jar <name>.jar` for usage info. 
 
