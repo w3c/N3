@@ -19,6 +19,10 @@ import org.apache.jena.rdf.model.Statement;
 import org.apache.jena.rdf.model.StmtIterator;
 
 import rdf.util.NS;
+import wvw.utils.log.Log;
+import wvw.utils.log.target.AggregateTarget;
+import wvw.utils.log.target.FileTarget;
+import wvw.utils.log.target.SystemOut;
 
 public abstract class N3Test {
 
@@ -26,6 +30,11 @@ public abstract class N3Test {
 
 	private String base = null;
 	private List<String> skipped;
+
+	protected N3Test() {
+		Log.setLevel(Log.D);
+		Log.setTarget(new AggregateTarget(new SystemOut(), new FileTarget("test_out.txt")));
+	}
 
 	public void testManifest(String folder) throws Exception {
 		Model manifest = readManifest(folder);
@@ -51,7 +60,7 @@ public abstract class N3Test {
 	}
 
 	protected Model readManifest(String folder) throws Exception {
-		System.out.println("parsing manifest.ttl");
+		Log.i("parsing manifest.ttl");
 
 		getBase(folder + "manifest.ttl");
 		return ModelFactory.createDefaultModel().read(new FileInputStream(folder + "manifest.ttl"), null, "TURTLE");
@@ -74,7 +83,7 @@ public abstract class N3Test {
 		if (base == null)
 			base = "file:\\\\\\" + System.getProperty("user.dir") + "\\";
 
-		System.out.println("assuming base = " + base);
+		Log.i("assuming base = " + base);
 	}
 
 	protected int doSyntaxTests(Resource type, BiConsumer<File, String> fn, String folder, Model manifest) {
@@ -157,7 +166,7 @@ public abstract class N3Test {
 	}
 
 	public boolean positiveTest(File file, String name) {
-		System.out.println("testing (positive): " + file.getPath());
+		Log.i("testing (positive): " + file.getPath());
 		try {
 			IParserCmp cmp = parse(file);
 			return (cmp.getNumErrors() == 0);
@@ -175,7 +184,7 @@ public abstract class N3Test {
 	}
 
 	public boolean negativeTest(File file, String name) {
-		System.out.println("testing (negative): " + name);
+		Log.i("testing (negative): " + name);
 		try {
 			IParserCmp cmp = parse(file);
 			return (cmp.getNumErrors() > 0);
@@ -188,27 +197,27 @@ public abstract class N3Test {
 	}
 
 	protected void printFailed(int totalNr, List<String> posFailed, List<String> negFailed) {
-		System.out.println("\n\n-- RESULTS");
-		System.out.println("total # tests = " + totalNr);
+		Log.i("\n\n-- RESULTS");
+		Log.i("total # tests = " + totalNr);
 
 		if (posFailed != null) {
-			System.out.println("\n> positive tests:");
+			Log.i("\n> positive tests:");
 
-			System.out.println("# failed = " + posFailed.size());
-			System.out.println("failed: " + posFailed);
+			Log.i("# failed = " + posFailed.size());
+			Log.i("failed: " + posFailed);
 		}
 
 		if (negFailed != null) {
-			System.out.println("\n> negative tests:");
+			Log.i("\n> negative tests:");
 
-			System.out.println("# failed = " + negFailed.size());
-			System.out.println("failed: " + negFailed);
+			Log.i("# failed = " + negFailed.size());
+			Log.i("failed: " + negFailed);
 		}
 
-		System.out.println("\n> skipped tests:");
+		Log.i("\n> skipped tests:");
 
-		System.out.println("# skipped = " + skipped.size());
-		System.out.println("skipped: " + skipped);
+		Log.i("# skipped = " + skipped.size());
+		Log.i("skipped: " + skipped);
 	}
 
 	protected abstract IParserCmp parse(File file) throws Exception;

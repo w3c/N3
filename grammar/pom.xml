@@ -27,7 +27,6 @@
 			<artifactId>jena-core</artifactId>
 			<version>3.13.1</version>
 		</dependency>
-
 	</dependencies>
 
 	<build>
@@ -99,6 +98,25 @@
 							<archive>
 								<manifest>
 									<mainClass>test.N3TestCwm</mainClass>
+								</manifest>
+							</archive>
+							<descriptorRefs>
+								<descriptorRef>jar-with-dependencies</descriptorRef>
+							</descriptorRefs>
+							<appendAssemblyId>false</appendAssemblyId>
+						</configuration>
+					</execution>
+					<execution>
+						<id>n3TestEye</id>
+						<phase>package</phase>
+						<goals>
+							<goal>single</goal>
+						</goals>
+						<configuration>
+							<finalName>n3TestEye</finalName>
+							<archive>
+								<manifest>
+									<mainClass>test.N3TestEye</mainClass>
 								</manifest>
 							</archive>
 							<descriptorRefs>

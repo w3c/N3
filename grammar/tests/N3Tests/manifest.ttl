@@ -2998,7 +2998,8 @@
 <#04test_minsuE.n3>  a  rdft:TestTurtlePositiveSyntax ;
         mf:action      <04test/minsuE.n3> ;
         mf:name        "minsuE" ;
-        rdft:approval  rdft:Approved .
+        rdfs:comment   "currently rejected since eye blocks on it" ;
+        rdft:approval  rdft:Rejected .
 
 <#cwm_list_construct.n3>
         a              rdft:TestTurtlePositiveSyntax ;
@@ -3590,8 +3591,8 @@
 <#07test_graphgen512mt.n3>
         a              rdft:TestTurtlePositiveSyntax ;
         mf:action      <07test/graphgen512mt.n3> ;
-        mf:name        "graphgen512mt" ;
-        rdft:approval  rdft:Approved .
+        rdfs:comment   "currently rejected since eye blocks on it" ;
+        rdft:approval  rdft:Rejected .
 
 <#04test_diagnosis.n3>
         a              rdft:TestTurtlePositiveSyntax ;
@@ -3848,7 +3849,8 @@
         a              rdft:TestTurtlePositiveSyntax ;
         mf:action      <07test/graphgen1bt.n3> ;
         mf:name        "graphgen1bt" ;
-        rdft:approval  rdft:Approved .
+        rdfs:comment   "currently rejected since eye blocks on it" ;
+        rdft:approval  rdft:Rejected .
 
 <#07test_parteval-subclass.n3>
         a              rdft:TestTurtlePositiveSyntax ;

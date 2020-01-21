@@ -26,17 +26,26 @@ import org.antlr.v4.runtime.tree.AbstractParseTreeVisitor;
 import org.apache.commons.lang3.tuple.ImmutablePair;
 import org.apache.commons.lang3.tuple.Pair;
 
+import wvw.utils.log.Log;
+
 public class N3TestGrammar extends N3Test {
 
 	private static List<String> suppGrammars = Arrays.asList("turtle", "n3");
 
 	public static void main(String[] args) throws Exception {
 		if (args.length < 2) {
-			System.out.println("usage: java -jar n3TestGrammar.jar <grammar> <file or folder>\n\n" + "flags:\n"
+			System.out.println("usage: java -jar n3TestGrammar.jar <grammar> <file or folder>\n"
+					+ "all output will be stored in ./out.txt" + "\n\nflags:\n\n"
 					+ "-pos/neg: whether tests should be run as positive (-pos) or negative (-neg) tests. "
 					+ "This flag is needed when testing an individual file, or a folder without a manifest file. "
 					+ "It will override any manifest found in a folder.\n\n"
-					+ "-printAST: when given for a file, the resulting AST will be printed.");
+					+ "-printAST: when given for a file, the resulting AST will be printed." + "\n\nexamples:\n\n"
+					+ "java -jar n3TestGrammar.jar n3 ../tests/N3Tests\n"
+					+ "tests files inside the 'N3Tests' folder, as listed in its 'manifest.ttl', as N3 test cases.\n\n"
+					+ "java -jar n3TestGrammar.jar n3 ../tests/TurtleTests -pos\n"
+					+ "tests all files inside the 'TurtleTests' folder as positive Turtle test cases.\n\n"
+					+ "java -jar n3TestGrammar.jar n3 ../tests/N3Tests/01etc/food-query.n3 -pos -printAST\n"
+					+ "tests the 'a.n3' file as a positive N3 test case and prints its AST.");
 			return;
 		}
 
@@ -80,31 +89,31 @@ public class N3TestGrammar extends N3Test {
 
 		N3TestGrammar t = new N3TestGrammar(grammar, printAST);
 
-		System.out.println("-- CONFIG");
-		System.out.println("grammar: " + grammar);
+		Log.i("-- CONFIG");
+		Log.i("grammar: " + grammar);
 
 		if (f.isDirectory()) {
-			System.out.println("folder: " + f.getCanonicalPath());
+			Log.i("folder: " + f.getCanonicalPath());
 
 			// pos/neg flag overrides any potential manifest in the folder
 			if (posTest != null) {
-				System.out.println("running tests as " + (posTest ? "positive" : "negative"));
+				Log.i("running tests as " + (posTest ? "positive" : "negative"));
 
-				System.out.println("\n\n-- TESTS");
+				Log.i("\n\n-- TESTS");
 				t.testFolder(posTest, f.getPath() + "/");
 
 			} else {
-				System.out.println("using manifest");
+				Log.i("using manifest");
 
-				System.out.println("\n\n-- TESTS");
+				Log.i("\n\n-- TESTS");
 				t.testManifest(f.getPath() + "/");
 			}
 
 		} else {
-			System.out.println("file: " + f.getCanonicalPath());
+			Log.i("file: " + f.getCanonicalPath());
 
-			System.out.println("\n\n-- TESTS");
-			System.out.println("\npass? " + (posTest ? t.positiveTest(f) : t.negativeTest(f)));
+			Log.i("\n\n-- TESTS");
+			Log.i("\npass? " + (posTest ? t.positiveTest(f) : t.negativeTest(f)));
 		}
 	}
 

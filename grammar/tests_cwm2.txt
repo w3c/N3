@@ -1,0 +1,2289 @@
+-- CONFIG
+system: cwm (C:\cwm\cwm-1.2.1\build\scripts-2.7\cwm)
+folder: D:\git\n3dev\N3\grammar\tests\N3Tests
+using manifest
+
+
+-- TESTS
+parsing manifest.ttl
+assuming base = file:\\\D:\git\n3dev\N3\grammar\target\
+testing (positive): ..\tests\N3Tests\cwm_string\uriEncode.n3
+testing (positive): ..\tests\N3Tests\cwm_list\bnode_in_list_in_list.n3
+testing (positive): ..\tests\N3Tests\01etc\query40.n3
+testing (positive): ..\tests\N3Tests\01etc\1tt2.n3
+testing (positive): ..\tests\N3Tests\cwm_list\r1-ref.n3
+testing (positive): ..\tests\N3Tests\cwm_unify\unify2-ref.n3
+testing (positive): ..\tests\N3Tests\04test\RecursionQ.n3
+testing (positive): ..\tests\N3Tests\07test\cryptoE.n3
+testing (positive): ..\tests\N3Tests\07test\orQ.n3
+testing (positive): ..\tests\N3Tests\cwm_other\lists.n3
+testing (positive): ..\tests\N3Tests\cwm_syntax\boolean-ref.n3
+testing (positive): ..\tests\N3Tests\cwm_reason\t3-ref.n3
+testing (positive): ..\tests\N3Tests\05smml\RULESgeometryrecognition.n3
+testing (positive): ..\tests\N3Tests\07test\witchE.n3
+testing (positive): ..\tests\N3Tests\01etc\owl-complementOf.n3
+testing (positive): ..\tests\N3Tests\07test\socratesE.n3
+testing (positive): ..\tests\N3Tests\01etc\query59.n3
+testing (positive): ..\tests\N3Tests\04test\result-ot-0-01.n3
+in: #Processed by Id: cwm.py,v 1.197 2007/12/13 15:38:39 syosi Exp 
+        #    using base file:///D:\git\n3dev\N3\grammar\target\..\tests\N3Tests\04test\result-ot-0-01.n3
+        
+
+error:     Failed to parse file:///D:\git\n3dev\N3\grammar\target\..\tests\N3Tests\04test\result-ot-0-01.n3 
+   file:///D:\git\n3dev\N3\grammar\target\..\tests\N3Tests\04test\result-ot-0-01.n3 
+Traceback (most recent call last):
+  File "C:\cwm\cwm-1.2.1\build\scripts-2.7\cwm", line 750, in <module>
+    doCommand()
+  File "C:\cwm\cwm-1.2.1\build\scripts-2.7\cwm", line 455, in doCommand
+    why=myReason)
+  File "C:\Users\William\.windows-build-tools\python27\lib\site-packages\swap\webAccess.py", line 225, in load
+    p.feed(buffer)
+  File "C:\Users\William\.windows-build-tools\python27\lib\site-packages\swap\notation3.py", line 214, in feed
+    i = self.directiveOrStatement(str,j)
+  File "C:\Users\William\.windows-build-tools\python27\lib\site-packages\swap\notation3.py", line 228, in directiveOrStatement
+    j = self.statement(str, i)
+  File "C:\Users\William\.windows-build-tools\python27\lib\site-packages\swap\notation3.py", line 377, in statement
+    j = self.property_list(str, i, r[0])
+  File "C:\Users\William\.windows-build-tools\python27\lib\site-packages\swap\notation3.py", line 698, in property_list
+    i = self.objectList(str, j, objs)
+  File "C:\Users\William\.windows-build-tools\python27\lib\site-packages\swap\notation3.py", line 745, in objectList
+    i = self.object(str, i, res)
+  File "C:\Users\William\.windows-build-tools\python27\lib\site-packages\swap\notation3.py", line 952, in object
+    j = self.subject(str, i, res)
+  File "C:\Users\William\.windows-build-tools\python27\lib\site-packages\swap\notation3.py", line 384, in subject
+    return self.item(str, i, res)
+  File "C:\Users\William\.windows-build-tools\python27\lib\site-packages\swap\notation3.py", line 463, in item
+    return self.path(str, i, res)
+  File "C:\Users\William\.windows-build-tools\python27\lib\site-packages\swap\notation3.py", line 475, in path
+    j = self.nodeOrLiteral(str, i, res)
+  File "C:\Users\William\.windows-build-tools\python27\lib\site-packages\swap\notation3.py", line 974, in nodeOrLiteral
+    j = self.node(str, i, res)
+  File "C:\Users\William\.windows-build-tools\python27\lib\site-packages\swap\notation3.py", line 641, in node
+    j = self.item(str,i, item) #@@@@@ should be path, was object
+  File "C:\Users\William\.windows-build-tools\python27\lib\site-packages\swap\notation3.py", line 463, in item
+    return self.path(str, i, res)
+  File "C:\Users\William\.windows-build-tools\python27\lib\site-packages\swap\notation3.py", line 475, in path
+    j = self.nodeOrLiteral(str, i, res)
+  File "C:\Users\William\.windows-build-tools\python27\lib\site-packages\swap\notation3.py", line 974, in nodeOrLiteral
+    j = self.node(str, i, res)
+  File "C:\Users\William\.windows-build-tools\python27\lib\site-packages\swap\notation3.py", line 666, in node
+    j = self.uri_ref2(str, i, res)
+  File "C:\Users\William\.windows-build-tools\python27\lib\site-packages\swap\notation3.py", line 810, in uri_ref2
+    j = self.variable(str,i,v)
+  File "C:\Users\William\.windows-build-tools\python27\lib\site-packages\swap\notation3.py", line 886, in variable
+    % str[j-1:i])
+swap.notation3.BadSyntax: at line 8 of <file:///D:\git\n3dev\N3\grammar\target\..\tests\N3Tests\04test\result-ot-0-01.n3>:
+Bad syntax (Can't use ?xxx syntax for variable in outermost level: ?mbox) at ^ in:
+"...urceforge.net/2004/04test/dawg-ot-0-01.n3> q:answer ("Eve" ?^mbox). 
+
+<http://eulersharp.sourceforge.net/2004/04test/dawg..."
+
+testing (positive): ..\tests\N3Tests\07test\swetQ01.n3
+testing (positive): ..\tests\N3Tests\04test\pat.n3
+testing (positive): ..\tests\N3Tests\01etc\train_data.n3
+testing (positive): ..\tests\N3Tests\01etc\4color_data.n3
+in: #Processed by Id: cwm.py,v 1.197 2007/12/13 15:38:39 syosi Exp 
+        #    using base file:///D:\git\n3dev\N3\grammar\target\..\tests\N3Tests\01etc\4color_data.n3
+        
+
+error:     Failed to parse file:///D:\git\n3dev\N3\grammar\target\..\tests\N3Tests\01etc\4color_data.n3 
+   file:///D:\git\n3dev\N3\grammar\target\..\tests\N3Tests\01etc\4color_data.n3 
+Traceback (most recent call last):
+  File "C:\cwm\cwm-1.2.1\build\scripts-2.7\cwm", line 750, in <module>
+    doCommand()
+  File "C:\cwm\cwm-1.2.1\build\scripts-2.7\cwm", line 455, in doCommand
+    why=myReason)
+  File "C:\Users\William\.windows-build-tools\python27\lib\site-packages\swap\webAccess.py", line 225, in load
+    p.feed(buffer)
+  File "C:\Users\William\.windows-build-tools\python27\lib\site-packages\swap\notation3.py", line 214, in feed
+    i = self.directiveOrStatement(str,j)
+  File "C:\Users\William\.windows-build-tools\python27\lib\site-packages\swap\notation3.py", line 229, in directiveOrStatement
+    if j>=0: return self.checkDot(str,j)
+  File "C:\Users\William\.windows-build-tools\python27\lib\site-packages\swap\notation3.py", line 768, in checkDot
+    str, j, "expected '.' or '}' or ']' at end of statement")
+swap.notation3.BadSyntax: at line 3 of <file:///D:\git\n3dev\N3\grammar\target\..\tests\N3Tests\01etc\4color_data.n3>:
+Bad syntax (expected '.' or '}' or ']' at end of statement) at ^ in:
+"...http://josd.github.io/eye/reasoning/4color#>.
+
+
+
+:::Austria ^:neighbours (:Czech_Republic :Germany :Hungary :Italy :Slove..."
+
+testing (positive): ..\tests\N3Tests\04test\robP.n3
+testing (positive): ..\tests\N3Tests\07test\alpE012.n3
+testing (positive): ..\tests\N3Tests\01etc\checking.n3
+testing (positive): ..\tests\N3Tests\04test\aliceFoaf.n3
+testing (positive): ..\tests\N3Tests\01etc\query17.n3
+testing (positive): ..\tests\N3Tests\05smml\RULESneighbours.n3
+testing (positive): ..\tests\N3Tests\05smml\QUERYneighbourfaceedges.n3
+testing (positive): ..\tests\N3Tests\04test\ex2-2aQ.n3
+testing (positive): ..\tests\N3Tests\07test\biP.n3
+testing (positive): ..\tests\N3Tests\cwm_list\r1.n3
+testing (positive): ..\tests\N3Tests\07test\sudoku-solver.n3
+testing (positive): ..\tests\N3Tests\cwm_includes\genBnodeInNestedFormula.n3
+testing (positive): ..\tests\N3Tests\01etc\sample.n3
+testing (positive): ..\tests\N3Tests\cwm_includes\conjunction-ref.n3
+testing (positive): ..\tests\N3Tests\01etc\sdcoding-a.n3
+testing (positive): ..\tests\N3Tests\01etc\sudoku.n3
+testing (positive): ..\tests\N3Tests\04test\alarmE.n3
+testing (positive): ..\tests\N3Tests\cwm_other\daml-ont.n3
+testing (positive): ..\tests\N3Tests\04test\query-survey-result-2.n3
+testing (positive): ..\tests\N3Tests\01etc\query38.n3
+testing (positive): ..\tests\N3Tests\07test\benchE.n3
+testing (positive): ..\tests\N3Tests\01etc\palindrome-proof.n3
+testing (positive): ..\tests\N3Tests\cwm_syntax\sep-term.n3
+testing (positive): ..\tests\N3Tests\01etc\owl-AllDifferent.n3
+testing (positive): ..\tests\N3Tests\01etc\background_rules.n3
+testing (positive): ..\tests\N3Tests\07test\plfnP.n3
+testing (positive): ..\tests\N3Tests\07test\music-proof2.n3
+testing (positive): ..\tests\N3Tests\cwm_syntax\colon-no-qname.n3
+testing (positive): ..\tests\N3Tests\01etc\1tt7.n3
+testing (positive): ..\tests\N3Tests\01etc\query73.n3
+testing (positive): ..\tests\N3Tests\cwm_supports\simple.n3
+testing (positive): ..\tests\N3Tests\04test\anatomy-facts.n3
+testing (positive): ..\tests\N3Tests\04test\gene.n3
+testing (positive): ..\tests\N3Tests\04test\metastaticE.n3
+testing (positive): ..\tests\N3Tests\01etc\select-query.n3
+testing (positive): ..\tests\N3Tests\04test\librarianQ.n3
+testing (positive): ..\tests\N3Tests\cwm_includes\concat-ref.n3
+testing (positive): ..\tests\N3Tests\cwm_n3\n3parser.tests_n3_10008.nt
+testing (positive): ..\tests\N3Tests\01etc\dp.n3
+testing (positive): ..\tests\N3Tests\cwm_syntax\dot-dash.n3
+testing (positive): ..\tests\N3Tests\cwm_includes\t10.n3
+testing (positive): ..\tests\N3Tests\04test\ex2-1aE.n3
+testing (positive): ..\tests\N3Tests\07test\cryptoP.n3
+testing (positive): ..\tests\N3Tests\07test\data3.n3
+testing (positive): ..\tests\N3Tests\01etc\query10.n3
+testing (positive): ..\tests\N3Tests\01etc\medicE.n3
+testing (positive): ..\tests\N3Tests\01etc\witch-goal.n3
+testing (positive): ..\tests\N3Tests\cwm_other\reflexive.n3
+testing (positive): ..\tests\N3Tests\cwm_other\daml-ex.n3
+testing (positive): ..\tests\N3Tests\01etc\socratesF.n3
+testing (positive): ..\tests\N3Tests\01etc\food-proof.n3
+testing (positive): ..\tests\N3Tests\cwm_syntax\numbers.n3
+testing (positive): ..\tests\N3Tests\01etc\rdfs-domain.n3
+testing (positive): ..\tests\N3Tests\04test\factorial.n3
+testing (positive): ..\tests\N3Tests\01etc\skos_mv_proof.n3
+testing (positive): ..\tests\N3Tests\01etc\year.n3
+testing (positive): ..\tests\N3Tests\01etc\queens.n3
+testing (positive): ..\tests\N3Tests\04test\ex2-1a.n3
+testing (positive): ..\tests\N3Tests\01etc\query50.n3
+testing (positive): ..\tests\N3Tests\cwm_other\sameDan.n3
+testing (positive): ..\tests\N3Tests\07test\ab_c.n3
+testing (positive): ..\tests\N3Tests\01etc\mmln-plugin.n3
+testing (positive): ..\tests\N3Tests\01etc\palindrome-declarations.n3
+testing (positive): ..\tests\N3Tests\07test\speech.n3
+testing (positive): ..\tests\N3Tests\01etc\query37.n3
+testing (positive): ..\tests\N3Tests\01etc\deE.n3
+testing (positive): ..\tests\N3Tests\turtle\turtle-syntax-bad-n3-extras-01.ttl
+testing (positive): ..\tests\N3Tests\01etc\polynomialgen.n3
+testing (positive): ..\tests\N3Tests\07test\agent_knowledge.n3
+testing (positive): ..\tests\N3Tests\07test\nbbn-model.n3
+testing (positive): ..\tests\N3Tests\cwm_syntax\decimal.n3
+testing (positive): ..\tests\N3Tests\01etc\swetD.n3
+testing (positive): ..\tests\N3Tests\07test\takQ.n3
+testing (positive): ..\tests\N3Tests\07test\path-4-3-answer.n3
+testing (positive): ..\tests\N3Tests\01etc\usmQ.n3
+testing (positive): ..\tests\N3Tests\cwm_string\endsWith.n3
+testing (positive): ..\tests\N3Tests\07test\wetP100.n3
+testing (positive): ..\tests\N3Tests\01etc\hanoiE.n3
+testing (positive): ..\tests\N3Tests\07test\usmE.n3
+testing (positive): ..\tests\N3Tests\07test\swetA.n3
+testing (positive): ..\tests\N3Tests\07test\time.n3
+testing (positive): ..\tests\N3Tests\07test\turing_proof.n3
+testing (positive): ..\tests\N3Tests\01etc\query6.n3
+testing (positive): ..\tests\N3Tests\07test\swetQ21.n3
+testing (positive): ..\tests\N3Tests\04test\UnionE.n3
+testing (positive): ..\tests\N3Tests\04test\unsaidE.n3
+testing (positive): ..\tests\N3Tests\01etc\graph.axiom.n3
+testing (positive): ..\tests\N3Tests\01etc\graph-100.n3
+testing (positive): ..\tests\N3Tests\01etc\owl-someValuesFrom.n3
+testing (positive): ..\tests\N3Tests\07test\bd-test-1000.n3
+testing (positive): ..\tests\N3Tests\cwm_syntax\no-last-nl.n3
+testing (positive): ..\tests\N3Tests\01etc\gedcom-filter.n3
+testing (positive): ..\tests\N3Tests\07test\fib.n3
+testing (positive): ..\tests\N3Tests\05smml\FACTSfacedetection.n3
+testing (positive): ..\tests\N3Tests\01etc\mmln-gv-mln.n3
+testing (positive): ..\tests\N3Tests\cwm_includes\conclusion.n3
+testing (positive): ..\tests\N3Tests\01etc\query98.n3
+testing (positive): ..\tests\N3Tests\01etc\owl-differentFrom.n3
+testing (positive): ..\tests\N3Tests\07test\arc-goal.n3
+testing (positive): ..\tests\N3Tests\cwm_supports\simple-ref.n3
+testing (positive): ..\tests\N3Tests\04test\da538tc1E.n3
+testing (positive): ..\tests\N3Tests\07test\easterP.n3
+testing (positive): ..\tests\N3Tests\07test\shubertE.n3
+testing (positive): ..\tests\N3Tests\01etc\mmln-gv-example.n3
+testing (positive): ..\tests\N3Tests\01etc\train_rules.n3
+testing (positive): ..\tests\N3Tests\cwm_includes\quant-implies.n3
+testing (positive): ..\tests\N3Tests\07test\parteval_answer.n3
+testing (positive): ..\tests\N3Tests\01etc\owl-sameAs.n3
+testing (positive): ..\tests\N3Tests\cwm_other\underbarscope.n3
+testing (positive): ..\tests\N3Tests\04test\danC.n3
+testing (positive): ..\tests\N3Tests\04test\sampleE.n3
+testing (positive): ..\tests\N3Tests\01etc\deA.n3
+testing (positive): ..\tests\N3Tests\cwm_n3\n3parser.tests_n3_10007.nt
+testing (positive): ..\tests\N3Tests\04test\data-02.n3
+testing (positive): ..\tests\N3Tests\cwm_list\unify5.n3
+testing (positive): ..\tests\N3Tests\cwm_syntax\sib.n3
+testing (positive): ..\tests\N3Tests\01etc\owl-hasKey.n3
+testing (positive): ..\tests\N3Tests\01etc\swetA01.n3
+testing (positive): ..\tests\N3Tests\turtle\turtle-syntax-bad-n3-extras-12.ttl
+testing (positive): ..\tests\N3Tests\07test\shubertQ.n3
+testing (positive): ..\tests\N3Tests\05smml\RULESfeaturerecognition.n3
+testing (positive): ..\tests\N3Tests\01etc\4color_rules.n3
+testing (positive): ..\tests\N3Tests\05smml\RULESlinkfacestoobjects.n3
+testing (positive): ..\tests\N3Tests\01etc\proof-001.n3
+testing (positive): ..\tests\N3Tests\cwm_n3\n3parser.tests_n3_10018.nt
+testing (positive): ..\tests\N3Tests\04test\PathQ.n3
+testing (positive): ..\tests\N3Tests\04test\origin.n3
+testing (positive): ..\tests\N3Tests\07test\parteval_query.n3
+testing (positive): ..\tests\N3Tests\01etc\owl-propertyChainAxiom.n3
+testing (positive): ..\tests\N3Tests\01etc\query62.n3
+testing (positive): ..\tests\N3Tests\cwm_syntax\equals1.n3
+testing (positive): ..\tests\N3Tests\01etc\gps-proof1.n3
+testing (positive): ..\tests\N3Tests\cwm_includes\xsd.n3
+testing (positive): ..\tests\N3Tests\04test\query-survey-result-12.n3
+testing (positive): ..\tests\N3Tests\cwm_reason\t3.n3
+testing (positive): ..\tests\N3Tests\01etc\train_model.n3
+testing (positive): ..\tests\N3Tests\07test\fgcm-query.n3
+testing (positive): ..\tests\N3Tests\07test\streason-rules.n3
+testing (positive): ..\tests\N3Tests\04test\dawg-data-01.n3
+testing (positive): ..\tests\N3Tests\01etc\skos-mapping-sample-snomed-icd10.n3
+testing (positive): ..\tests\N3Tests\07test\select-data.n3
+testing (positive): ..\tests\N3Tests\04test\SequenceQ.n3
+testing (positive): ..\tests\N3Tests\01etc\gedcom-proof.n3
+testing (positive): ..\tests\N3Tests\01etc\select-proof.n3
+testing (positive): ..\tests\N3Tests\07test\swetA31.n3
+testing (positive): ..\tests\N3Tests\cwm_syntax\bad-preds-literal.n3
+testing (positive): ..\tests\N3Tests\cwm_reason\poor-urop.n3
+testing (positive): ..\tests\N3Tests\04test\NamespaceE.n3
+testing (positive): ..\tests\N3Tests\04test\danT.n3
+testing (positive): ..\tests\N3Tests\01etc\turing.n3
+testing (positive): ..\tests\N3Tests\01etc\query5.n3
+testing (positive): ..\tests\N3Tests\04test\stc1.n3
+testing (positive): ..\tests\N3Tests\07test\sudoku-solution-3.n3
+testing (positive): ..\tests\N3Tests\cwm_other\anon-prop.n3
+testing (positive): ..\tests\N3Tests\07test\easterF.n3
+testing (positive): ..\tests\N3Tests\07test\id.n3
+testing (positive): ..\tests\N3Tests\07test\grawl-1000.n3
+testing (positive): ..\tests\N3Tests\cwm_reason\t6-ref.n3
+testing (positive): ..\tests\N3Tests\07test\path-3-5-answer.n3
+testing (positive): ..\tests\N3Tests\cwm_syntax\base.n3
+testing (positive): ..\tests\N3Tests\01etc\gps-example1.n3
+testing (positive): ..\tests\N3Tests\cwm_unify\unify1-ref.n3
+testing (positive): ..\tests\N3Tests\04test\da538tc2Q.n3
+testing (positive): ..\tests\N3Tests\01etc\acct3start.n3
+testing (positive): ..\tests\N3Tests\07test\randomsample-answer.n3
+testing (positive): ..\tests\N3Tests\05smml\QUERYfaces.n3
+testing (positive): ..\tests\N3Tests\04test\dawg-ot-0-01.n3
+testing (positive): ..\tests\N3Tests\04test\vcardP.n3
+testing (positive): ..\tests\N3Tests\cwm_reason\rename-loop.n3
+testing (positive): ..\tests\N3Tests\07test\swQ.n3
+testing (positive): ..\tests\N3Tests\01etc\owl-SymmetricProperty.n3
+testing (positive): ..\tests\N3Tests\07test\alpE001.n3
+testing (positive): ..\tests\N3Tests\07test\music-query2.n3
+testing (positive): ..\tests\N3Tests\01etc\easter.n3
+testing (positive): ..\tests\N3Tests\01etc\query67.n3
+testing (positive): ..\tests\N3Tests\04test\unsaidQ.n3
+testing (positive): ..\tests\N3Tests\01etc\lee.n3
+testing (positive): ..\tests\N3Tests\04test\xanthippe.n3
+testing (positive): ..\tests\N3Tests\07test\gv-mln.n3
+testing (positive): ..\tests\N3Tests\01etc\food-preduction.n3
+testing (positive): ..\tests\N3Tests\01etc\socrates.n3
+testing (positive): ..\tests\N3Tests\cwm_string\endsWith-out.n3
+testing (positive): ..\tests\N3Tests\01etc\swetA21.n3
+testing (positive): ..\tests\N3Tests\07test\grawl-100.n3
+testing (positive): ..\tests\N3Tests\04test\ex3Q.n3
+testing (positive): ..\tests\N3Tests\01etc\query80.n3
+testing (positive): ..\tests\N3Tests\01etc\ab_c.n3
+testing (positive): ..\tests\N3Tests\01etc\query13.n3
+testing (positive): ..\tests\N3Tests\cwm_n3\n3parser.tests_n3_20002.nt
+testing (positive): ..\tests\N3Tests\07test\graphgen.n3
+testing (positive): ..\tests\N3Tests\07test\benchQ.n3
+testing (positive): ..\tests\N3Tests\07test\grass_pass.n3
+testing (positive): ..\tests\N3Tests\cwm_syntax\qvars3.n3
+testing (positive): ..\tests\N3Tests\07test\easter-eye.n3
+testing (positive): ..\tests\N3Tests\01etc\query30.n3
+testing (positive): ..\tests\N3Tests\01etc\rdfs-subPropertyOf.n3
+testing (positive): ..\tests\N3Tests\04test\u1.n3
+testing (positive): ..\tests\N3Tests\07test\dpe_answer.n3
+testing (positive): ..\tests\N3Tests\04test\result-ot-0-03.n3
+testing (positive): ..\tests\N3Tests\07test\pluginQ.n3
+testing (positive): ..\tests\N3Tests\07test\path-1-3-answer.n3
+testing (positive): ..\tests\N3Tests\01etc\query100.n3
+testing (positive): ..\tests\N3Tests\07test\test-strela-10.n3
+testing (positive): ..\tests\N3Tests\04test\books.n3
+testing (positive): ..\tests\N3Tests\04test\bcE.n3
+testing (positive): ..\tests\N3Tests\04test\metastatic.n3
+testing (positive): ..\tests\N3Tests\cwm_includes\builtins.n3
+testing (positive): ..\tests\N3Tests\07test\socrates.n3
+testing (positive): ..\tests\N3Tests\07test\turingQ.n3
+testing (positive): ..\tests\N3Tests\01etc\dpe_theory.n3
+testing (positive): ..\tests\N3Tests\01etc\query2.n3
+testing (positive): ..\tests\N3Tests\07test\adl_result.n3
+testing (positive): ..\tests\N3Tests\04test\diagnosis.n3
+testing (positive): ..\tests\N3Tests\04test\originE.n3
+testing (positive): ..\tests\N3Tests\cwm_norm\av.n3
+testing (positive): ..\tests\N3Tests\cwm_norm\av-ref.n3
+testing (positive): ..\tests\N3Tests\07test\parteval_proofcheck.n3
+testing (positive): ..\tests\N3Tests\cwm_syntax\path2.n3
+testing (positive): ..\tests\N3Tests\cwm_n3\n3parser.tests_n3_20001.nt
+testing (positive): ..\tests\N3Tests\cwm_includes\t3.n3
+testing (positive): ..\tests\N3Tests\07test\abc.n3
+testing (positive): ..\tests\N3Tests\01etc\query42.n3
+testing (positive): ..\tests\N3Tests\cwm_list\unify4-ref.n3
+testing (positive): ..\tests\N3Tests\cwm_list\builtin_generated_match.n3
+testing (positive): ..\tests\N3Tests\07test\path-3-3-answer.n3
+testing (positive): ..\tests\N3Tests\01etc\query86.n3
+testing (positive): ..\tests\N3Tests\07test\path-7-3-answer.n3
+testing (positive): ..\tests\N3Tests\04test\grahamC.n3
+in: #Processed by Id: cwm.py,v 1.197 2007/12/13 15:38:39 syosi Exp 
+        #    using base file:///D:\git\n3dev\N3\grammar\target\..\tests\N3Tests\04test\grahamC.n3
+        
+
+error:     Failed to parse file:///D:\git\n3dev\N3\grammar\target\..\tests\N3Tests\04test\grahamC.n3 
+   file:///D:\git\n3dev\N3\grammar\target\..\tests\N3Tests\04test\grahamC.n3 
+Traceback (most recent call last):
+  File "C:\cwm\cwm-1.2.1\build\scripts-2.7\cwm", line 750, in <module>
+    doCommand()
+  File "C:\cwm\cwm-1.2.1\build\scripts-2.7\cwm", line 455, in doCommand
+    why=myReason)
+  File "C:\Users\William\.windows-build-tools\python27\lib\site-packages\swap\webAccess.py", line 225, in load
+    p.feed(buffer)
+  File "C:\Users\William\.windows-build-tools\python27\lib\site-packages\swap\notation3.py", line 214, in feed
+    i = self.directiveOrStatement(str,j)
+  File "C:\Users\William\.windows-build-tools\python27\lib\site-packages\swap\notation3.py", line 228, in directiveOrStatement
+    j = self.statement(str, i)
+  File "C:\Users\William\.windows-build-tools\python27\lib\site-packages\swap\notation3.py", line 374, in statement
+    i = self.object(str, i, r)  #  Allow literal for subject - extends RDF 
+  File "C:\Users\William\.windows-build-tools\python27\lib\site-packages\swap\notation3.py", line 952, in object
+    j = self.subject(str, i, res)
+  File "C:\Users\William\.windows-build-tools\python27\lib\site-packages\swap\notation3.py", line 384, in subject
+    return self.item(str, i, res)
+  File "C:\Users\William\.windows-build-tools\python27\lib\site-packages\swap\notation3.py", line 463, in item
+    return self.path(str, i, res)
+  File "C:\Users\William\.windows-build-tools\python27\lib\site-packages\swap\notation3.py", line 475, in path
+    j = self.nodeOrLiteral(str, i, res)
+  File "C:\Users\William\.windows-build-tools\python27\lib\site-packages\swap\notation3.py", line 974, in nodeOrLiteral
+    j = self.node(str, i, res)
+  File "C:\Users\William\.windows-build-tools\python27\lib\site-packages\swap\notation3.py", line 666, in node
+    j = self.uri_ref2(str, i, res)
+  File "C:\Users\William\.windows-build-tools\python27\lib\site-packages\swap\notation3.py", line 810, in uri_ref2
+    j = self.variable(str,i,v)
+  File "C:\Users\William\.windows-build-tools\python27\lib\site-packages\swap\notation3.py", line 886, in variable
+    % str[j-1:i])
+swap.notation3.BadSyntax: at line 6 of <file:///D:\git\n3dev\N3\grammar\target\..\tests\N3Tests\04test\grahamC.n3>:
+Bad syntax (Can't use ?xxx syntax for variable in outermost level: ?W) at ^ in:
+"...ttp://eulersharp.sourceforge.net/2004/04test/grahamP#>.
+
+
+
+?^W a :WeatherReport; :maxTemperature ?M.
+
+?E a :Experiment; :..."
+
+testing (positive): ..\tests\N3Tests\cwm_syntax\boolean.n3
+testing (positive): ..\tests\N3Tests\04test\librarianP.n3
+testing (positive): ..\tests\N3Tests\04test\OptionalPathE.n3
+testing (positive): ..\tests\N3Tests\01etc\cryptoP.n3
+testing (positive): ..\tests\N3Tests\07test\pd_hes_theory.n3
+testing (positive): ..\tests\N3Tests\04test\LexicalSpaceE.n3
+testing (positive): ..\tests\N3Tests\07test\bmi_test_result.n3
+testing (positive): ..\tests\N3Tests\01etc\query26.n3
+testing (positive): ..\tests\N3Tests\01etc\query78.n3
+testing (positive): ..\tests\N3Tests\cwm_other\smush-query.n3
+testing (positive): ..\tests\N3Tests\04test\dogE.n3
+testing (positive): ..\tests\N3Tests\04test\disjunctionE.n3
+testing (positive): ..\tests\N3Tests\05smml\RULESdefaultvaluesfindall.n3
+testing (positive): ..\tests\N3Tests\01etc\owl-hasValue.n3
+testing (positive): ..\tests\N3Tests\07test\tak.n3
+testing (positive): ..\tests\N3Tests\04test\query-survey-8.n3
+testing (positive): ..\tests\N3Tests\07test\restoG.n3
+testing (positive): ..\tests\N3Tests\cwm_n3\n3parser.tests_n3_10019.nt
+testing (positive): ..\tests\N3Tests\04test\sethP.n3
+testing (positive): ..\tests\N3Tests\cwm_other\contexts.n3
+testing (positive): ..\tests\N3Tests\04test\query-survey-3.n3
+testing (positive): ..\tests\N3Tests\07test\iq_proof.n3
+testing (positive): ..\tests\N3Tests\07test\wetE100.n3
+testing (positive): ..\tests\N3Tests\cwm_unify\reflexive.n3
+testing (positive): ..\tests\N3Tests\07test\witchF.n3
+testing (positive): ..\tests\N3Tests\cwm_includes\uri-startswith.n3
+testing (positive): ..\tests\N3Tests\04test\alarm.n3
+testing (positive): ..\tests\N3Tests\04test\ericT.n3
+testing (positive): ..\tests\N3Tests\01etc\query68.n3
+testing (positive): ..\tests\N3Tests\07test\wetE101.n3
+testing (positive): ..\tests\N3Tests\01etc\owl-FunctionalProperty.n3
+testing (positive): ..\tests\N3Tests\07test\bd-result-1000.n3
+testing (positive): ..\tests\N3Tests\cwm_syntax\path1.n3
+testing (positive): ..\tests\N3Tests\cwm_other\invalid-ex.n3
+testing (positive): ..\tests\N3Tests\cwm_n3\n3parser.tests_n3_10028.nt
+testing (positive): ..\tests\N3Tests\04test\ericP.n3
+testing (positive): ..\tests\N3Tests\04test\sampleP.n3
+testing (positive): ..\tests\N3Tests\01etc\rdfs-range.n3
+testing (positive): ..\tests\N3Tests\cwm_syntax\formula_bnode.n3
+testing (positive): ..\tests\N3Tests\04test\stc1E.n3
+testing (positive): ..\tests\N3Tests\01etc\query91.n3
+testing (positive): ..\tests\N3Tests\07test\gmpbnode.n3
+testing (positive): ..\tests\N3Tests\cwm_other\lists-simple.n3
+testing (positive): ..\tests\N3Tests\cwm_reason\t6.n3
+testing (positive): ..\tests\N3Tests\07test\path-3-2.n3
+testing (positive): ..\tests\N3Tests\cwm_includes\bnodeConclude.n3
+testing (positive): ..\tests\N3Tests\01etc\easterP.n3
+testing (positive): ..\tests\N3Tests\cwm_reason\t9.n3
+testing (positive): ..\tests\N3Tests\cwm_syntax\neg-formula-predicate.n3
+testing (positive): ..\tests\N3Tests\turtle\turtle-syntax-bad-n3-extras-02.ttl
+testing (positive): ..\tests\N3Tests\01etc\query36.n3
+testing (positive): ..\tests\N3Tests\04test\vcardF.n3
+testing (positive): ..\tests\N3Tests\cwm_reason\t2-ref.n3
+testing (positive): ..\tests\N3Tests\01etc\rdfs-subClassOf.n3
+testing (positive): ..\tests\N3Tests\cwm_string\uriEncode-out.n3
+testing (positive): ..\tests\N3Tests\cwm_n3\n3parser.tests_n3_10010.nt
+testing (positive): ..\tests\N3Tests\07test\path-3-4.n3
+testing (positive): ..\tests\N3Tests\01etc\test-facts.n3
+testing (positive): ..\tests\N3Tests\cwm_os\environ.n3
+testing (positive): ..\tests\N3Tests\07test\resto-proof.n3
+testing (positive): ..\tests\N3Tests\04test\query-survey-result-1.n3
+testing (positive): ..\tests\N3Tests\07test\ninclQ.n3
+testing (positive): ..\tests\N3Tests\cwm_other\kb1.n3
+testing (positive): ..\tests\N3Tests\01etc\select-proof-extra.n3
+testing (positive): ..\tests\N3Tests\07test\nbbn_proof.n3
+testing (positive): ..\tests\N3Tests\04test\ex2-2aE.n3
+testing (positive): ..\tests\N3Tests\04test\radlexE.n3
+testing (positive): ..\tests\N3Tests\07test\path-8-3.n3
+testing (positive): ..\tests\N3Tests\cwm_other\sameThing.n3
+testing (positive): ..\tests\N3Tests\04test\grahamE.n3
+testing (positive): ..\tests\N3Tests\07test\bmi_instances.n3
+testing (positive): ..\tests\N3Tests\01etc\path-9-3.n3
+testing (positive): ..\tests\N3Tests\07test\socratesQ.n3
+testing (positive): ..\tests\N3Tests\07test\swetQ11.n3
+testing (positive): ..\tests\N3Tests\07test\graph-100.n3
+testing (positive): ..\tests\N3Tests\01etc\query48.n3
+testing (positive): ..\tests\N3Tests\07test\resto.n3
+testing (positive): ..\tests\N3Tests\07test\dtb-result-10.n3
+testing (positive): ..\tests\N3Tests\01etc\swetQ21.n3
+testing (positive): ..\tests\N3Tests\05smml\FACTShousewalls.n3
+testing (positive): ..\tests\N3Tests\01etc\query39.n3
+testing (positive): ..\tests\N3Tests\01etc\pi.n3
+testing (positive): ..\tests\N3Tests\01etc\gen.n3
+testing (positive): ..\tests\N3Tests\04test\variableSubstitution.n3
+testing (positive): ..\tests\N3Tests\01etc\utf8.n3
+testing (positive): ..\tests\N3Tests\01etc\bell.n3
+testing (positive): ..\tests\N3Tests\cwm_list\append-ref.n3
+testing (positive): ..\tests\N3Tests\07test\scE.n3
+testing (positive): ..\tests\N3Tests\01etc\example001P.n3
+testing (positive): ..\tests\N3Tests\04test\rtE.n3
+testing (positive): ..\tests\N3Tests\04test\LexicalSpaceQ.n3
+testing (positive): ..\tests\N3Tests\cwm_list\unify1.n3
+testing (positive): ..\tests\N3Tests\01etc\query16.n3
+testing (positive): ..\tests\N3Tests\cwm_reason\socrates-ref.n3
+testing (positive): ..\tests\N3Tests\cwm_includes\conjunction.n3
+testing (positive): ..\tests\N3Tests\cwm_reason\socrates.n3
+testing (positive): ..\tests\N3Tests\07test\httpspeech.n3
+testing (positive): ..\tests\N3Tests\05smml\FACTStriangleedges.n3
+testing (positive): ..\tests\N3Tests\cwm_other\two-route.n3
+testing (positive): ..\tests\N3Tests\05smml\FACTSlinkfacestoobjects.n3
+testing (positive): ..\tests\N3Tests\01etc\ccd_rules.n3
+testing (positive): ..\tests\N3Tests\01etc\query63.n3
+testing (positive): ..\tests\N3Tests\cwm_n3\n3parser.tests_n3_10015.nt
+testing (positive): ..\tests\N3Tests\cwm_syntax\neg-single-quote.n3
+in: #Processed by Id: cwm.py,v 1.197 2007/12/13 15:38:39 syosi Exp 
+        #    using base file:///D:\git\n3dev\N3\grammar\target\..\tests\N3Tests\cwm_syntax\neg-single-quote.n3
+        
+
+error:     Failed to parse file:///D:\git\n3dev\N3\grammar\target\..\tests\N3Tests\cwm_syntax\neg-single-quote.n3 
+   file:///D:\git\n3dev\N3\grammar\target\..\tests\N3Tests\cwm_syntax\neg-single-quote.n3 
+Traceback (most recent call last):
+  File "C:\cwm\cwm-1.2.1\build\scripts-2.7\cwm", line 750, in <module>
+    doCommand()
+  File "C:\cwm\cwm-1.2.1\build\scripts-2.7\cwm", line 455, in doCommand
+    why=myReason)
+  File "C:\Users\William\.windows-build-tools\python27\lib\site-packages\swap\webAccess.py", line 225, in load
+    p.feed(buffer)
+  File "C:\Users\William\.windows-build-tools\python27\lib\site-packages\swap\notation3.py", line 214, in feed
+    i = self.directiveOrStatement(str,j)
+  File "C:\Users\William\.windows-build-tools\python27\lib\site-packages\swap\notation3.py", line 228, in directiveOrStatement
+    j = self.statement(str, i)
+  File "C:\Users\William\.windows-build-tools\python27\lib\site-packages\swap\notation3.py", line 377, in statement
+    j = self.property_list(str, i, r[0])
+  File "C:\Users\William\.windows-build-tools\python27\lib\site-packages\swap\notation3.py", line 700, in property_list
+    "objectList expected")
+swap.notation3.BadSyntax: at line 1 of <file:///D:\git\n3dev\N3\grammar\target\..\tests\N3Tests\cwm_syntax\neg-single-quote.n3>:
+Bad syntax (objectList expected) at ^ in:
+"<#a> <#b>^ 'A single quoted string' . 
+
+"
+
+testing (positive): ..\tests\N3Tests\cwm_other\schema-filter.n3
+testing (positive): ..\tests\N3Tests\07test\adl.n3
+testing (positive): ..\tests\N3Tests\01etc\iq_proof.n3
+testing (positive): ..\tests\N3Tests\cwm_syntax\BnodeAcrossFormulae.n3
+testing (positive): ..\tests\N3Tests\01etc\owl-AllDisjointProperties.n3
+testing (positive): ..\tests\N3Tests\01etc\bmi_query.n3
+testing (positive): ..\tests\N3Tests\01etc\agent2-proof.n3
+testing (positive): ..\tests\N3Tests\cwm_n3\n3parser.tests_n3_10011.nt
+testing (positive): ..\tests\N3Tests\07test\grawlgen.n3
+testing (positive): ..\tests\N3Tests\01etc\swetQ31.n3
+testing (positive): ..\tests\N3Tests\07test\path-256-3.n3
+testing (positive): ..\tests\N3Tests\01etc\parteval-subclass.n3
+testing (positive): ..\tests\N3Tests\07test\select-query.n3
+testing (positive): ..\tests\N3Tests\cwm_reason\t5-ref.n3
+testing (positive): ..\tests\N3Tests\01etc\age_rules_backward.n3
+testing (positive): ..\tests\N3Tests\cwm_includes\t6.n3
+testing (positive): ..\tests\N3Tests\04test\unsaid.n3
+testing (positive): ..\tests\N3Tests\01etc\easterF.n3
+testing (positive): ..\tests\N3Tests\07test\goal.n3
+testing (positive): ..\tests\N3Tests\01etc\skos-mapping-validation-rules.n3
+testing (positive): ..\tests\N3Tests\01etc\proof-2-10.n3
+testing (positive): ..\tests\N3Tests\04test\dawg-tp-2-01.n3
+testing (positive): ..\tests\N3Tests\07test\agent_goal.n3
+testing (positive): ..\tests\N3Tests\01etc\query96.n3
+testing (positive): ..\tests\N3Tests\cwm_list\list-bug1.n3
+testing (positive): ..\tests\N3Tests\cwm_reason\timbl.n3
+testing (positive): ..\tests\N3Tests\01etc\query64.n3
+testing (positive): ..\tests\N3Tests\07test\gv-query.n3
+testing (positive): ..\tests\N3Tests\07test\path-7-3.n3
+testing (positive): ..\tests\N3Tests\01etc\query94.n3
+testing (positive): ..\tests\N3Tests\04test\result-tp-1-01.n3
+testing (positive): ..\tests\N3Tests\cwm_includes\quantifiers_limited.n3
+testing (positive): ..\tests\N3Tests\cwm_i18n\i18n.n3
+testing (positive): ..\tests\N3Tests\07test\swetQ31.n3
+testing (positive): ..\tests\N3Tests\01etc\skos-extra-rules.n3
+testing (positive): ..\tests\N3Tests\cwm_syntax\bad-preds.n3
+testing (positive): ..\tests\N3Tests\07test\rulegen.n3
+testing (positive): ..\tests\N3Tests\07test\age_query.n3
+testing (positive): ..\tests\N3Tests\07test\parteval-equivalent.n3
+testing (positive): ..\tests\N3Tests\01etc\query79.n3
+testing (positive): ..\tests\N3Tests\01etc\owl-equivalentProperty.n3
+testing (positive): ..\tests\N3Tests\04test\robQ.n3
+testing (positive): ..\tests\N3Tests\04test\EntailmentQ.n3
+testing (positive): ..\tests\N3Tests\04test\QuantificationQ.n3
+testing (positive): ..\tests\N3Tests\04test\wetE.n3
+testing (positive): ..\tests\N3Tests\01etc\einsteinE.n3
+testing (positive): ..\tests\N3Tests\01etc\query24.n3
+testing (positive): ..\tests\N3Tests\01etc\restoG.n3
+testing (positive): ..\tests\N3Tests\01etc\fgcm-query.n3
+testing (positive): ..\tests\N3Tests\07test\fdlQ001.n3
+testing (positive): ..\tests\N3Tests\cwm_n3\n3parser.tests_n3_10006.nt
+testing (positive): ..\tests\N3Tests\01etc\query29.n3
+testing (positive): ..\tests\N3Tests\07test\skos_mv_proof.n3
+testing (positive): ..\tests\N3Tests\07test\patient.n3
+testing (positive): ..\tests\N3Tests\04test\icalE001.n3
+testing (positive): ..\tests\N3Tests\01etc\redgraph001.n3
+testing (positive): ..\tests\N3Tests\04test\D2Q.n3
+testing (positive): ..\tests\N3Tests\01etc\fgcm-model.n3
+testing (positive): ..\tests\N3Tests\01etc\graph-1000.n3
+testing (positive): ..\tests\N3Tests\01etc\owl-distinctMembers.n3
+testing (positive): ..\tests\N3Tests\04test\daveQ.n3
+testing (positive): ..\tests\N3Tests\cwm_n3\n3parser.tests_n3_10020.nt
+testing (positive): ..\tests\N3Tests\01etc\owl-maxQualifiedCardinality.n3
+testing (positive): ..\tests\N3Tests\01etc\randomsample-query.n3
+testing (positive): ..\tests\N3Tests\cwm_syntax\qvars2.n3
+testing (positive): ..\tests\N3Tests\01etc\query82.n3
+testing (positive): ..\tests\N3Tests\07test\initial.n3
+testing (positive): ..\tests\N3Tests\04test\booksE.n3
+testing (positive): ..\tests\N3Tests\07test\de.n3
+testing (positive): ..\tests\N3Tests\cwm_list\unify4.n3
+testing (positive): ..\tests\N3Tests\cwm_list\builtin_generated_match-ref.n3
+testing (positive): ..\tests\N3Tests\04test\stc2aE.n3
+testing (positive): ..\tests\N3Tests\04test\da538tc1Q.n3
+testing (positive): ..\tests\N3Tests\07test\bd-query.n3
+testing (positive): ..\tests\N3Tests\04test\ex2-4a.n3
+testing (positive): ..\tests\N3Tests\01etc\agent1-query.n3
+testing (positive): ..\tests\N3Tests\01etc\euler.n3
+testing (positive): ..\tests\N3Tests\01etc\sdcoding-query.n3
+testing (positive): ..\tests\N3Tests\01etc\test_query.n3
+testing (positive): ..\tests\N3Tests\cwm_includes\list-in-ref.n3
+testing (positive): ..\tests\N3Tests\04test\LanguageE.n3
+testing (positive): ..\tests\N3Tests\04test\anatomy-filter.n3
+testing (positive): ..\tests\N3Tests\05smml\FACTSneighbourtriangles.n3
+testing (positive): ..\tests\N3Tests\01etc\train_query.n3
+testing (positive): ..\tests\N3Tests\01etc\goal.n3
+testing (positive): ..\tests\N3Tests\01etc\test-dl-1000.n3
+testing (positive): ..\tests\N3Tests\cwm_other\t01-ref.n3
+testing (positive): ..\tests\N3Tests\01etc\test.n3
+testing (positive): ..\tests\N3Tests\cwm_syntax\space-in-uri-ref.n3
+testing (positive): ..\tests\N3Tests\01etc\hypothesis-001.n3
+testing (positive): ..\tests\N3Tests\01etc\query69.n3
+testing (positive): ..\tests\N3Tests\07test\music.n3
+testing (positive): ..\tests\N3Tests\01etc\query-001.n3
+testing (positive): ..\tests\N3Tests\07test\swap.n3
+testing (positive): ..\tests\N3Tests\01etc\proof-10.n3
+testing (positive): ..\tests\N3Tests\05smml\FACTSlinkfaceedgestoobjects.n3
+testing (positive): ..\tests\N3Tests\07test\turingA.n3
+testing (positive): ..\tests\N3Tests\05smml\FACTSfaceedgedetection.n3
+testing (positive): ..\tests\N3Tests\04test\gate.n3
+testing (positive): ..\tests\N3Tests\04test\exonE.n3
+testing (positive): ..\tests\N3Tests\cwm_reason\t1.n3
+testing (positive): ..\tests\N3Tests\01etc\notIn_answer.n3
+testing (positive): ..\tests\N3Tests\01etc\graph-10.n3
+testing (positive): ..\tests\N3Tests\cwm_other\classes.n3
+testing (positive): ..\tests\N3Tests\cwm_includes\list-in.n3
+testing (positive): ..\tests\N3Tests\01etc\resto.n3
+testing (positive): ..\tests\N3Tests\turtle\turtle-syntax-bad-n3-extras-10.ttl
+testing (positive): ..\tests\N3Tests\07test\sudoku-solution-2.n3
+testing (positive): ..\tests\N3Tests\01etc\greenquery003.n3
+testing (positive): ..\tests\N3Tests\07test\path-5-3.n3
+testing (positive): ..\tests\N3Tests\04test\originQ.n3
+testing (positive): ..\tests\N3Tests\01etc\query44.n3
+testing (positive): ..\tests\N3Tests\04test\dawg-tp-0-01.n3
+testing (positive): ..\tests\N3Tests\cwm_includes\t10a.n3
+testing (positive): ..\tests\N3Tests\cwm_reason\danc.n3
+testing (positive): ..\tests\N3Tests\cwm_i18n\umlaut.n3
+testing (positive): ..\tests\N3Tests\04test\UnionQ.n3
+testing (positive): ..\tests\N3Tests\07test\plfnQ.n3
+testing (positive): ..\tests\N3Tests\01etc\query74.n3
+testing (positive): ..\tests\N3Tests\01etc\owl-Nothing.n3
+testing (positive): ..\tests\N3Tests\01etc\query.n3
+testing (positive): ..\tests\N3Tests\07test\path-3-1.n3
+testing (positive): ..\tests\N3Tests\04test\stc3a.n3
+testing (positive): ..\tests\N3Tests\01etc\einstein.n3
+testing (positive): ..\tests\N3Tests\04test\robC.n3
+in: #Processed by Id: cwm.py,v 1.197 2007/12/13 15:38:39 syosi Exp 
+        #    using base file:///D:\git\n3dev\N3\grammar\target\..\tests\N3Tests\04test\robC.n3
+        
+
+error:     Failed to parse file:///D:\git\n3dev\N3\grammar\target\..\tests\N3Tests\04test\robC.n3 
+   file:///D:\git\n3dev\N3\grammar\target\..\tests\N3Tests\04test\robC.n3 
+Traceback (most recent call last):
+  File "C:\cwm\cwm-1.2.1\build\scripts-2.7\cwm", line 750, in <module>
+    doCommand()
+  File "C:\cwm\cwm-1.2.1\build\scripts-2.7\cwm", line 455, in doCommand
+    why=myReason)
+  File "C:\Users\William\.windows-build-tools\python27\lib\site-packages\swap\webAccess.py", line 225, in load
+    p.feed(buffer)
+  File "C:\Users\William\.windows-build-tools\python27\lib\site-packages\swap\notation3.py", line 214, in feed
+    i = self.directiveOrStatement(str,j)
+  File "C:\Users\William\.windows-build-tools\python27\lib\site-packages\swap\notation3.py", line 228, in directiveOrStatement
+    j = self.statement(str, i)
+  File "C:\Users\William\.windows-build-tools\python27\lib\site-packages\swap\notation3.py", line 374, in statement
+    i = self.object(str, i, r)  #  Allow literal for subject - extends RDF 
+  File "C:\Users\William\.windows-build-tools\python27\lib\site-packages\swap\notation3.py", line 952, in object
+    j = self.subject(str, i, res)
+  File "C:\Users\William\.windows-build-tools\python27\lib\site-packages\swap\notation3.py", line 384, in subject
+    return self.item(str, i, res)
+  File "C:\Users\William\.windows-build-tools\python27\lib\site-packages\swap\notation3.py", line 463, in item
+    return self.path(str, i, res)
+  File "C:\Users\William\.windows-build-tools\python27\lib\site-packages\swap\notation3.py", line 475, in path
+    j = self.nodeOrLiteral(str, i, res)
+  File "C:\Users\William\.windows-build-tools\python27\lib\site-packages\swap\notation3.py", line 974, in nodeOrLiteral
+    j = self.node(str, i, res)
+  File "C:\Users\William\.windows-build-tools\python27\lib\site-packages\swap\notation3.py", line 666, in node
+    j = self.uri_ref2(str, i, res)
+  File "C:\Users\William\.windows-build-tools\python27\lib\site-packages\swap\notation3.py", line 810, in uri_ref2
+    j = self.variable(str,i,v)
+  File "C:\Users\William\.windows-build-tools\python27\lib\site-packages\swap\notation3.py", line 886, in variable
+    % str[j-1:i])
+swap.notation3.BadSyntax: at line 6 of <file:///D:\git\n3dev\N3\grammar\target\..\tests\N3Tests\04test\robC.n3>:
+Bad syntax (Can't use ?xxx syntax for variable in outermost level: ?X) at ^ in:
+"... <http://eulersharp.sourceforge.net/2004/04test/robP#>.
+
+
+
+?^X :hasGroup :ManagementOrSupport.
+
+"
+
+testing (positive): ..\tests\N3Tests\01etc\query90.n3
+testing (positive): ..\tests\N3Tests\cwm_other\vblsNotURIs.n3
+testing (positive): ..\tests\N3Tests\cwm_list\unify5-ref.n3
+testing (positive): ..\tests\N3Tests\01etc\query75.n3
+testing (positive): ..\tests\N3Tests\04test\dl-safe_small.owl.n3
+testing (positive): ..\tests\N3Tests\07test\swetA21.n3
+testing (positive): ..\tests\N3Tests\04test\bobFoaf.n3
+testing (positive): ..\tests\N3Tests\04test\xanthippeQ.n3
+testing (positive): ..\tests\N3Tests\07test\skos-mapping-validation-query.n3
+testing (positive): ..\tests\N3Tests\01etc\food-example.n3
+testing (positive): ..\tests\N3Tests\01etc\test_answer.n3
+testing (positive): ..\tests\N3Tests\01etc\graphgen.n3
+testing (positive): ..\tests\N3Tests\01etc\owl-NegativePropertyAssertion.n3
+testing (positive): ..\tests\N3Tests\04test\geneF.n3
+testing (positive): ..\tests\N3Tests\01etc\agent2-map.n3
+testing (positive): ..\tests\N3Tests\01etc\select-data.n3
+testing (positive): ..\tests\N3Tests\04test\disjunctionQ.n3
+testing (positive): ..\tests\N3Tests\cwm_syntax\zero-length-lname.n3
+testing (positive): ..\tests\N3Tests\01etc\floatingwoman.n3
+testing (positive): ..\tests\N3Tests\01etc\palindrome.n3
+testing (positive): ..\tests\N3Tests\04test\statement1.n3
+testing (positive): ..\tests\N3Tests\07test\bench.n3
+testing (positive): ..\tests\N3Tests\cwm_includes\quantifiers.n3
+testing (positive): ..\tests\N3Tests\cwm_list\double.n3
+testing (positive): ..\tests\N3Tests\04test\dawg-ot-0-02.n3
+testing (positive): ..\tests\N3Tests\cwm_reason\t2.n3
+testing (positive): ..\tests\N3Tests\cwm_n3\n3parser.tests_n3_20003.nt
+testing (positive): ..\tests\N3Tests\01etc\food2.n3
+testing (positive): ..\tests\N3Tests\cwm_other\anonymous_loop.n3
+testing (positive): ..\tests\N3Tests\01etc\owl-InverseFunctionalProperty.n3
+testing (positive): ..\tests\N3Tests\07test\music-proof.n3
+testing (positive): ..\tests\N3Tests\07test\music-rule.n3
+testing (positive): ..\tests\N3Tests\cwm_n3\n3parser.tests_n3_10027.nt
+testing (positive): ..\tests\N3Tests\07test\witchG.n3
+testing (positive): ..\tests\N3Tests\01etc\query89.n3
+testing (positive): ..\tests\N3Tests\01etc\fibQ.n3
+testing (positive): ..\tests\N3Tests\01etc\greenquery002.n3
+testing (positive): ..\tests\N3Tests\01etc\path-9-3-proof.n3
+testing (positive): ..\tests\N3Tests\04test\bcF.n3
+testing (positive): ..\tests\N3Tests\07test\bg-result-1000.n3
+testing (positive): ..\tests\N3Tests\cwm_syntax\decimal-ref.n3
+testing (positive): ..\tests\N3Tests\04test\michaelC.n3
+in: #Processed by Id: cwm.py,v 1.197 2007/12/13 15:38:39 syosi Exp 
+        #    using base file:///D:\git\n3dev\N3\grammar\target\..\tests\N3Tests\04test\michaelC.n3
+        
+
+error:     Failed to parse file:///D:\git\n3dev\N3\grammar\target\..\tests\N3Tests\04test\michaelC.n3 
+   file:///D:\git\n3dev\N3\grammar\target\..\tests\N3Tests\04test\michaelC.n3 
+Traceback (most recent call last):
+  File "C:\cwm\cwm-1.2.1\build\scripts-2.7\cwm", line 750, in <module>
+    doCommand()
+  File "C:\cwm\cwm-1.2.1\build\scripts-2.7\cwm", line 455, in doCommand
+    why=myReason)
+  File "C:\Users\William\.windows-build-tools\python27\lib\site-packages\swap\webAccess.py", line 225, in load
+    p.feed(buffer)
+  File "C:\Users\William\.windows-build-tools\python27\lib\site-packages\swap\notation3.py", line 214, in feed
+    i = self.directiveOrStatement(str,j)
+  File "C:\Users\William\.windows-build-tools\python27\lib\site-packages\swap\notation3.py", line 228, in directiveOrStatement
+    j = self.statement(str, i)
+  File "C:\Users\William\.windows-build-tools\python27\lib\site-packages\swap\notation3.py", line 374, in statement
+    i = self.object(str, i, r)  #  Allow literal for subject - extends RDF 
+  File "C:\Users\William\.windows-build-tools\python27\lib\site-packages\swap\notation3.py", line 952, in object
+    j = self.subject(str, i, res)
+  File "C:\Users\William\.windows-build-tools\python27\lib\site-packages\swap\notation3.py", line 384, in subject
+    return self.item(str, i, res)
+  File "C:\Users\William\.windows-build-tools\python27\lib\site-packages\swap\notation3.py", line 463, in item
+    return self.path(str, i, res)
+  File "C:\Users\William\.windows-build-tools\python27\lib\site-packages\swap\notation3.py", line 475, in path
+    j = self.nodeOrLiteral(str, i, res)
+  File "C:\Users\William\.windows-build-tools\python27\lib\site-packages\swap\notation3.py", line 974, in nodeOrLiteral
+    j = self.node(str, i, res)
+  File "C:\Users\William\.windows-build-tools\python27\lib\site-packages\swap\notation3.py", line 666, in node
+    j = self.uri_ref2(str, i, res)
+  File "C:\Users\William\.windows-build-tools\python27\lib\site-packages\swap\notation3.py", line 810, in uri_ref2
+    j = self.variable(str,i,v)
+  File "C:\Users\William\.windows-build-tools\python27\lib\site-packages\swap\notation3.py", line 886, in variable
+    % str[j-1:i])
+swap.notation3.BadSyntax: at line 6 of <file:///D:\git\n3dev\N3\grammar\target\..\tests\N3Tests\04test\michaelC.n3>:
+Bad syntax (Can't use ?xxx syntax for variable in outermost level: ?W) at ^ in:
+"...tp://eulersharp.sourceforge.net/2004/04test/michaelP#>.
+
+
+
+?^W :diameterValue [ a :LenthQuantity; :value ?V; :unit ?U].
+
+"
+
+testing (positive): ..\tests\N3Tests\05smml\FACTSfeaturerecognition.n3
+testing (positive): ..\tests\N3Tests\01etc\query11.n3
+testing (positive): ..\tests\N3Tests\07test\grawl-10.n3
+testing (positive): ..\tests\N3Tests\01etc\owl-disjointWith.n3
+testing (positive): ..\tests\N3Tests\01etc\food-query.n3
+testing (positive): ..\tests\N3Tests\01etc\turingQ.n3
+testing (positive): ..\tests\N3Tests\07test\alpQ001.n3
+testing (positive): ..\tests\N3Tests\01etc\lldmP.n3
+testing (positive): ..\tests\N3Tests\04test\michaelE.n3
+testing (positive): ..\tests\N3Tests\cwm_andy\D.n3
+testing (positive): ..\tests\N3Tests\07test\path-3-2-answer.n3
+testing (positive): ..\tests\N3Tests\cwm_includes\t2.n3
+testing (positive): ..\tests\N3Tests\07test\easter-cwm.n3
+testing (positive): ..\tests\N3Tests\01etc\takQ.n3
+testing (positive): ..\tests\N3Tests\04test\a.n3
+testing (positive): ..\tests\N3Tests\07test\data1.n3
+testing (positive): ..\tests\N3Tests\01etc\query22.n3
+testing (positive): ..\tests\N3Tests\01etc\utf8_proof.n3
+testing (positive): ..\tests\N3Tests\01etc\hanoi.n3
+testing (positive): ..\tests\N3Tests\07test\cyclic-pass.n3
+testing (positive): ..\tests\N3Tests\07test\irQ.n3
+testing (positive): ..\tests\N3Tests\01etc\redgraph002.n3
+testing (positive): ..\tests\N3Tests\01etc\crypto-proof.n3
+testing (positive): ..\tests\N3Tests\07test\wetQ100.n3
+testing (positive): ..\tests\N3Tests\01etc\biQ.n3
+testing (positive): ..\tests\N3Tests\07test\arcE.n3
+testing (positive): ..\tests\N3Tests\cwm_other\dec-div.n3
+testing (positive): ..\tests\N3Tests\07test\fgcm_result.n3
+testing (positive): ..\tests\N3Tests\07test\alpP001.n3
+testing (positive): ..\tests\N3Tests\05smml\FACTSboxgeometrydetection.n3
+testing (positive): ..\tests\N3Tests\07test\path-9-3.n3
+testing (positive): ..\tests\N3Tests\07test\sudoku-query-1.n3
+testing (positive): ..\tests\N3Tests\01etc\palindrome2.n3
+testing (positive): ..\tests\N3Tests\01etc\turing_proof.n3
+testing (positive): ..\tests\N3Tests\01etc\gps-plugin.n3
+testing (positive): ..\tests\N3Tests\01etc\sdcoding-a-proof.n3
+testing (positive): ..\tests\N3Tests\04test\ericQ.n3
+testing (positive): ..\tests\N3Tests\cwm_includes\t4.n3
+testing (positive): ..\tests\N3Tests\cwm_math\long.n3
+testing (positive): ..\tests\N3Tests\cwm_includes\t9br.n3
+testing (positive): ..\tests\N3Tests\01etc\owl-unionOf.n3
+testing (positive): ..\tests\N3Tests\01etc\query35.n3
+testing (positive): ..\tests\N3Tests\04test\patE.n3
+testing (positive): ..\tests\N3Tests\01etc\rifQ.n3
+testing (positive): ..\tests\N3Tests\04test\query-survey-12.n3
+testing (positive): ..\tests\N3Tests\cwm_syntax\this-quantifiers-ref.n3
+testing (positive): ..\tests\N3Tests\07test\wetE102.n3
+testing (positive): ..\tests\N3Tests\01etc\query47.n3
+testing (positive): ..\tests\N3Tests\cwm_n3\n3parser.tests_n3_10005.nt
+testing (positive): ..\tests\N3Tests\04test\wetF.n3
+testing (positive): ..\tests\N3Tests\01etc\initial.n3
+testing (positive): ..\tests\N3Tests\04test\booksQ.n3
+testing (positive): ..\tests\N3Tests\cwm_syntax\this-rules-ref.n3
+testing (positive): ..\tests\N3Tests\07test\swetA11.n3
+testing (positive): ..\tests\N3Tests\cwm_includes\concat.n3
+testing (positive): ..\tests\N3Tests\01etc\1tt6.n3
+testing (positive): ..\tests\N3Tests\04test\radlexQ.n3
+testing (positive): ..\tests\N3Tests\01etc\numeral.n3
+testing (positive): ..\tests\N3Tests\cwm_reason\t4-ref.n3
+testing (positive): ..\tests\N3Tests\01etc\query70.n3
+testing (positive): ..\tests\N3Tests\01etc\forAllIn_proof.n3
+testing (positive): ..\tests\N3Tests\01etc\easterE.n3
+testing (positive): ..\tests\N3Tests\04test\gmp.n3
+testing (positive): ..\tests\N3Tests\07test\path-10-3.n3
+testing (positive): ..\tests\N3Tests\07test\randomsample-rule.n3
+testing (positive): ..\tests\N3Tests\cwm_list\unify3.n3
+testing (positive): ..\tests\N3Tests\cwm_includes\conclusion-simple.n3
+testing (positive): ..\tests\N3Tests\07test\desc_images.n3
+testing (positive): ..\tests\N3Tests\07test\rifP.n3
+in: #Processed by Id: cwm.py,v 1.197 2007/12/13 15:38:39 syosi Exp 
+        #    using base file:///D:\git\n3dev\N3\grammar\target\..\tests\N3Tests\07test\rifP.n3
+        
+
+error:     Failed to parse file:///D:\git\n3dev\N3\grammar\target\..\tests\N3Tests\07test\rifP.n3 
+   file:///D:\git\n3dev\N3\grammar\target\..\tests\N3Tests\07test\rifP.n3 
+Traceback (most recent call last):
+  File "C:\cwm\cwm-1.2.1\build\scripts-2.7\cwm", line 750, in <module>
+    doCommand()
+  File "C:\cwm\cwm-1.2.1\build\scripts-2.7\cwm", line 455, in doCommand
+    why=myReason)
+  File "C:\Users\William\.windows-build-tools\python27\lib\site-packages\swap\webAccess.py", line 225, in load
+    p.feed(buffer)
+  File "C:\Users\William\.windows-build-tools\python27\lib\site-packages\swap\notation3.py", line 214, in feed
+    i = self.directiveOrStatement(str,j)
+  File "C:\Users\William\.windows-build-tools\python27\lib\site-packages\swap\notation3.py", line 228, in directiveOrStatement
+    j = self.statement(str, i)
+  File "C:\Users\William\.windows-build-tools\python27\lib\site-packages\swap\notation3.py", line 374, in statement
+    i = self.object(str, i, r)  #  Allow literal for subject - extends RDF 
+  File "C:\Users\William\.windows-build-tools\python27\lib\site-packages\swap\notation3.py", line 952, in object
+    j = self.subject(str, i, res)
+  File "C:\Users\William\.windows-build-tools\python27\lib\site-packages\swap\notation3.py", line 384, in subject
+    return self.item(str, i, res)
+  File "C:\Users\William\.windows-build-tools\python27\lib\site-packages\swap\notation3.py", line 463, in item
+    return self.path(str, i, res)
+  File "C:\Users\William\.windows-build-tools\python27\lib\site-packages\swap\notation3.py", line 475, in path
+    j = self.nodeOrLiteral(str, i, res)
+  File "C:\Users\William\.windows-build-tools\python27\lib\site-packages\swap\notation3.py", line 974, in nodeOrLiteral
+    j = self.node(str, i, res)
+  File "C:\Users\William\.windows-build-tools\python27\lib\site-packages\swap\notation3.py", line 610, in node
+    j = self.directiveOrStatement(str,i)
+  File "C:\Users\William\.windows-build-tools\python27\lib\site-packages\swap\notation3.py", line 228, in directiveOrStatement
+    j = self.statement(str, i)
+  File "C:\Users\William\.windows-build-tools\python27\lib\site-packages\swap\notation3.py", line 374, in statement
+    i = self.object(str, i, r)  #  Allow literal for subject - extends RDF 
+  File "C:\Users\William\.windows-build-tools\python27\lib\site-packages\swap\notation3.py", line 952, in object
+    j = self.subject(str, i, res)
+  File "C:\Users\William\.windows-build-tools\python27\lib\site-packages\swap\notation3.py", line 384, in subject
+    return self.item(str, i, res)
+  File "C:\Users\William\.windows-build-tools\python27\lib\site-packages\swap\notation3.py", line 463, in item
+    return self.path(str, i, res)
+  File "C:\Users\William\.windows-build-tools\python27\lib\site-packages\swap\notation3.py", line 475, in path
+    j = self.nodeOrLiteral(str, i, res)
+  File "C:\Users\William\.windows-build-tools\python27\lib\site-packages\swap\notation3.py", line 974, in nodeOrLiteral
+    j = self.node(str, i, res)
+  File "C:\Users\William\.windows-build-tools\python27\lib\site-packages\swap\notation3.py", line 643, in node
+    "expected item in list or ')'")
+swap.notation3.BadSyntax: at line 24 of <file:///D:\git\n3dev\N3\grammar\target\..\tests\N3Tests\07test\rifP.n3>:
+Bad syntax (expected item in list or ')') at ^ in:
+"....9000000000000004} => {:numeric-mod-3 :result true}.
+
+{(1.23^E2 0.6E1) func:numeric-mod 3.0E0} => {:numeric-mod-4 :result..."
+
+testing (positive): ..\tests\N3Tests\cwm_n3\n3parser.tests_n3_10016.nt
+testing (positive): ..\tests\N3Tests\04test\sameAsE.n3
+testing (positive): ..\tests\N3Tests\01etc\preduction-plugin.n3
+testing (positive): ..\tests\N3Tests\07test\path-6-3.n3
+testing (positive): ..\tests\N3Tests\05smml\RULESx3dboxtostl.n3
+testing (positive): ..\tests\N3Tests\01etc\acct3check1.n3
+testing (positive): ..\tests\N3Tests\01etc\query60.n3
+testing (positive): ..\tests\N3Tests\01etc\proof-2-100.n3
+testing (positive): ..\tests\N3Tests\07test\deE.n3
+testing (positive): ..\tests\N3Tests\04test\SequenceE.n3
+testing (positive): ..\tests\N3Tests\01etc\query21.n3
+testing (positive): ..\tests\N3Tests\01etc\streason-output.n3
+testing (positive): ..\tests\N3Tests\cwm_time\t1.n3
+testing (positive): ..\tests\N3Tests\07test\pi.n3
+testing (positive): ..\tests\N3Tests\07test\ind.n3
+testing (positive): ..\tests\N3Tests\01etc\blueproof001.n3
+testing (positive): ..\tests\N3Tests\07test\irP.n3
+testing (positive): ..\tests\N3Tests\01etc\query52.n3
+testing (positive): ..\tests\N3Tests\01etc\owl-oneOf.n3
+testing (positive): ..\tests\N3Tests\07test\path-4-3.n3
+testing (positive): ..\tests\N3Tests\07test\dpe_query.n3
+testing (positive): ..\tests\N3Tests\01etc\dpe_proof.n3
+testing (positive): ..\tests\N3Tests\01etc\lldmE.n3
+testing (positive): ..\tests\N3Tests\04test\easterE.n3
+testing (positive): ..\tests\N3Tests\07test\eventTime_test_result.n3
+testing (positive): ..\tests\N3Tests\07test\nincl.n3
+testing (positive): ..\tests\N3Tests\cwm_math\math-test.n3
+testing (positive): ..\tests\N3Tests\01etc\proof-100.n3
+testing (positive): ..\tests\N3Tests\04test\result-tp-0-01.n3
+testing (positive): ..\tests\N3Tests\07test\gv-example.n3
+testing (positive): ..\tests\N3Tests\07test\alpE003.n3
+testing (positive): ..\tests\N3Tests\07test\path-6-3-answer.n3
+testing (positive): ..\tests\N3Tests\07test\socraterE.n3
+testing (positive): ..\tests\N3Tests\01etc\1tt9.n3
+testing (positive): ..\tests\N3Tests\07test\3outOf5-sample.n3
+testing (positive): ..\tests\N3Tests\01etc\1tt3.n3
+testing (positive): ..\tests\N3Tests\04test\query-survey-result-8.n3
+testing (positive): ..\tests\N3Tests\01etc\gps-query2.n3
+testing (positive): ..\tests\N3Tests\01etc\agent1-map.n3
+testing (positive): ..\tests\N3Tests\04test\henry.n3
+testing (positive): ..\tests\N3Tests\04test\dogQ.n3
+testing (positive): ..\tests\N3Tests\04test\easterQ.n3
+testing (positive): ..\tests\N3Tests\07test\grass.n3
+testing (positive): ..\tests\N3Tests\05smml\FACTSboxdata.n3
+testing (positive): ..\tests\N3Tests\07test\path-9-3-answer.n3
+testing (positive): ..\tests\N3Tests\07test\path-2-3.n3
+testing (positive): ..\tests\N3Tests\07test\alpE002.n3
+testing (positive): ..\tests\N3Tests\07test\path-5-3-answer.n3
+testing (positive): ..\tests\N3Tests\cwm_syntax\zero-predicates.n3
+testing (positive): ..\tests\N3Tests\01etc\palindrome2-query.n3
+testing (positive): ..\tests\N3Tests\07test\sample.n3
+testing (positive): ..\tests\N3Tests\01etc\tak.n3
+testing (positive): ..\tests\N3Tests\04test\icalE002.n3
+testing (positive): ..\tests\N3Tests\04test\D2E.n3
+testing (positive): ..\tests\N3Tests\04test\metastaticP002.n3
+testing (positive): ..\tests\N3Tests\cwm_reason\f9.n3
+testing (positive): ..\tests\N3Tests\07test\swetA01.n3
+testing (positive): ..\tests\N3Tests\cwm_andy\D-ref.n3
+testing (positive): ..\tests\N3Tests\01etc\query28.n3
+testing (positive): ..\tests\N3Tests\cwm_list\construct.n3
+testing (positive): ..\tests\N3Tests\04test\sameAsQ.n3
+testing (positive): ..\tests\N3Tests\04test\D2.n3
+testing (positive): ..\tests\N3Tests\01etc\usmE.n3
+testing (positive): ..\tests\N3Tests\07test\biE.n3
+testing (positive): ..\tests\N3Tests\cwm_other\filter-bnodes.n3
+testing (positive): ..\tests\N3Tests\07test\bg-result-100.n3
+testing (positive): ..\tests\N3Tests\07test\age_instance.n3
+testing (positive): ..\tests\N3Tests\cwm_other\t00.n3
+testing (positive): ..\tests\N3Tests\01etc\graph.proof.n3
+testing (positive): ..\tests\N3Tests\01etc\example003Q.n3
+testing (positive): ..\tests\N3Tests\01etc\resto-proof.n3
+testing (positive): ..\tests\N3Tests\01etc\palindrome2-proof.n3
+testing (positive): ..\tests\N3Tests\07test\wetC100.n3
+testing (positive): ..\tests\N3Tests\04test\kendallP.n3
+testing (positive): ..\tests\N3Tests\01etc\food2-proof.n3
+testing (positive): ..\tests\N3Tests\07test\shubert.n3
+testing (positive): ..\tests\N3Tests\07test\bg-result-10.n3
+testing (positive): ..\tests\N3Tests\01etc\owl-inverseOf.n3
+testing (positive): ..\tests\N3Tests\07test\gmpbnodeF.n3
+testing (positive): ..\tests\N3Tests\04test\query-survey-result-9.n3
+testing (positive): ..\tests\N3Tests\04test\sethC.n3
+in: #Processed by Id: cwm.py,v 1.197 2007/12/13 15:38:39 syosi Exp 
+        #    using base file:///D:\git\n3dev\N3\grammar\target\..\tests\N3Tests\04test\sethC.n3
+        
+
+error:     Failed to parse file:///D:\git\n3dev\N3\grammar\target\..\tests\N3Tests\04test\sethC.n3 
+   file:///D:\git\n3dev\N3\grammar\target\..\tests\N3Tests\04test\sethC.n3 
+Traceback (most recent call last):
+  File "C:\cwm\cwm-1.2.1\build\scripts-2.7\cwm", line 750, in <module>
+    doCommand()
+  File "C:\cwm\cwm-1.2.1\build\scripts-2.7\cwm", line 455, in doCommand
+    why=myReason)
+  File "C:\Users\William\.windows-build-tools\python27\lib\site-packages\swap\webAccess.py", line 225, in load
+    p.feed(buffer)
+  File "C:\Users\William\.windows-build-tools\python27\lib\site-packages\swap\notation3.py", line 214, in feed
+    i = self.directiveOrStatement(str,j)
+  File "C:\Users\William\.windows-build-tools\python27\lib\site-packages\swap\notation3.py", line 228, in directiveOrStatement
+    j = self.statement(str, i)
+  File "C:\Users\William\.windows-build-tools\python27\lib\site-packages\swap\notation3.py", line 374, in statement
+    i = self.object(str, i, r)  #  Allow literal for subject - extends RDF 
+  File "C:\Users\William\.windows-build-tools\python27\lib\site-packages\swap\notation3.py", line 952, in object
+    j = self.subject(str, i, res)
+  File "C:\Users\William\.windows-build-tools\python27\lib\site-packages\swap\notation3.py", line 384, in subject
+    return self.item(str, i, res)
+  File "C:\Users\William\.windows-build-tools\python27\lib\site-packages\swap\notation3.py", line 463, in item
+    return self.path(str, i, res)
+  File "C:\Users\William\.windows-build-tools\python27\lib\site-packages\swap\notation3.py", line 475, in path
+    j = self.nodeOrLiteral(str, i, res)
+  File "C:\Users\William\.windows-build-tools\python27\lib\site-packages\swap\notation3.py", line 974, in nodeOrLiteral
+    j = self.node(str, i, res)
+  File "C:\Users\William\.windows-build-tools\python27\lib\site-packages\swap\notation3.py", line 666, in node
+    j = self.uri_ref2(str, i, res)
+  File "C:\Users\William\.windows-build-tools\python27\lib\site-packages\swap\notation3.py", line 810, in uri_ref2
+    j = self.variable(str,i,v)
+  File "C:\Users\William\.windows-build-tools\python27\lib\site-packages\swap\notation3.py", line 886, in variable
+    % str[j-1:i])
+swap.notation3.BadSyntax: at line 6 of <file:///D:\git\n3dev\N3\grammar\target\..\tests\N3Tests\04test\sethC.n3>:
+Bad syntax (Can't use ?xxx syntax for variable in outermost level: ?X) at ^ in:
+"...<http://eulersharp.sourceforge.net/2004/04test/sethP#>.
+
+
+
+?^X a :Foo.
+
+"
+
+testing (positive): ..\tests\N3Tests\07test\cd.n3
+testing (positive): ..\tests\N3Tests\07test\swetD.n3
+testing (positive): ..\tests\N3Tests\04test\robE.n3
+testing (positive): ..\tests\N3Tests\01etc\lldmD.n3
+testing (positive): ..\tests\N3Tests\cwm_list\append.n3
+testing (positive): ..\tests\N3Tests\04test\sethE.n3
+testing (positive): ..\tests\N3Tests\07test\utf8.n3
+in: #Processed by Id: cwm.py,v 1.197 2007/12/13 15:38:39 syosi Exp 
+        #    using base file:///D:\git\n3dev\N3\grammar\target\..\tests\N3Tests\07test\utf8.n3
+        
+
+error:     Failed to parse file:///D:\git\n3dev\N3\grammar\target\..\tests\N3Tests\07test\utf8.n3 
+   file:///D:\git\n3dev\N3\grammar\target\..\tests\N3Tests\07test\utf8.n3 
+Traceback (most recent call last):
+  File "C:\cwm\cwm-1.2.1\build\scripts-2.7\cwm", line 750, in <module>
+    doCommand()
+  File "C:\cwm\cwm-1.2.1\build\scripts-2.7\cwm", line 455, in doCommand
+    why=myReason)
+  File "C:\Users\William\.windows-build-tools\python27\lib\site-packages\swap\webAccess.py", line 225, in load
+    p.feed(buffer)
+  File "C:\Users\William\.windows-build-tools\python27\lib\site-packages\swap\notation3.py", line 208, in feed
+    str = octets.decode('utf-8')
+  File "C:\Users\William\.windows-build-tools\python27\lib\encodings\utf_8.py", line 16, in decode
+    return codecs.utf_8_decode(input, errors, True)
+UnicodeDecodeError: 'utf8' codec can't decode byte 0xf0 in position 56: invalid continuation byte
+
+testing (positive): ..\tests\N3Tests\cwm_includes\uri-object-invalid.n3
+testing (positive): ..\tests\N3Tests\04test\factorialE.n3
+testing (positive): ..\tests\N3Tests\07test\graph-10.n3
+testing (positive): ..\tests\N3Tests\cwm_other\rules12.n3
+testing (positive): ..\tests\N3Tests\01etc\query71.n3
+testing (positive): ..\tests\N3Tests\07test\bd-test-10.n3
+testing (positive): ..\tests\N3Tests\01etc\notIn_query.n3
+testing (positive): ..\tests\N3Tests\04test\query-survey-result-13.n3
+testing (positive): ..\tests\N3Tests\01etc\query97.n3
+testing (positive): ..\tests\N3Tests\01etc\query83.n3
+testing (positive): ..\tests\N3Tests\07test\fgcm-model.n3
+testing (positive): ..\tests\N3Tests\04test\minsuE.n3
+testing (positive): ..\tests\N3Tests\cwm_reason\double-ref.n3
+testing (positive): ..\tests\N3Tests\04test\result-tp-2-01.n3
+testing (positive): ..\tests\N3Tests\cwm_other\resolves-rdf.n3
+testing (positive): ..\tests\N3Tests\01etc\nbbn-plugin.n3
+testing (positive): ..\tests\N3Tests\07test\cyclic-rules.n3
+testing (positive): ..\tests\N3Tests\04test\exonQ.n3
+testing (positive): ..\tests\N3Tests\01etc\iq.n3
+testing (positive): ..\tests\N3Tests\04test\da538tc1D.n3
+testing (positive): ..\tests\N3Tests\07test\graph-imjoin.n3
+testing (positive): ..\tests\N3Tests\01etc\einsteinQ.n3
+testing (positive): ..\tests\N3Tests\07test\path-3-1-answer.n3
+testing (positive): ..\tests\N3Tests\01etc\data-001.n3
+testing (positive): ..\tests\N3Tests\07test\witchA.n3
+testing (positive): ..\tests\N3Tests\07test\age_test_result.n3
+testing (positive): ..\tests\N3Tests\01etc\4color_answer.n3
+testing (positive): ..\tests\N3Tests\05smml\RULESedges.n3
+testing (positive): ..\tests\N3Tests\01etc\gps-query1.n3
+testing (positive): ..\tests\N3Tests\07test\gmpbnode2.n3
+testing (positive): ..\tests\N3Tests\cwm_syntax\formula-subject.n3
+testing (positive): ..\tests\N3Tests\01etc\query33.n3
+testing (positive): ..\tests\N3Tests\07test\bmi_query.n3
+testing (positive): ..\tests\N3Tests\04test\srcP.n3
+testing (positive): ..\tests\N3Tests\01etc\1tt10.n3
+testing (positive): ..\tests\N3Tests\04test\CountingE.n3
+testing (positive): ..\tests\N3Tests\04test\geneE.n3
+testing (positive): ..\tests\N3Tests\04test\query-survey-9.n3
+testing (positive): ..\tests\N3Tests\07test\pd_hes_query.n3
+testing (positive): ..\tests\N3Tests\04test\da538tc2D.n3
+testing (positive): ..\tests\N3Tests\01etc\query85.n3
+testing (positive): ..\tests\N3Tests\04test\gmpE.n3
+testing (positive): ..\tests\N3Tests\01etc\query19.n3
+testing (positive): ..\tests\N3Tests\07test\resto2.n3
+testing (positive): ..\tests\N3Tests\cwm_syntax\lstring.n3
+testing (positive): ..\tests\N3Tests\07test\pi-query.n3
+testing (positive): ..\tests\N3Tests\01etc\example002P.n3
+testing (positive): ..\tests\N3Tests\01etc\rules-001.n3
+testing (positive): ..\tests\N3Tests\07test\dtb-result-100.n3
+testing (positive): ..\tests\N3Tests\04test\metastaticF.n3
+testing (positive): ..\tests\N3Tests\cwm_list\unify2-ref.n3
+testing (positive): ..\tests\N3Tests\01etc\query76.n3
+testing (positive): ..\tests\N3Tests\01etc\rifP.n3
+in: #Processed by Id: cwm.py,v 1.197 2007/12/13 15:38:39 syosi Exp 
+        #    using base file:///D:\git\n3dev\N3\grammar\target\..\tests\N3Tests\01etc\rifP.n3
+        
+
+error:     Failed to parse file:///D:\git\n3dev\N3\grammar\target\..\tests\N3Tests\01etc\rifP.n3 
+   file:///D:\git\n3dev\N3\grammar\target\..\tests\N3Tests\01etc\rifP.n3 
+Traceback (most recent call last):
+  File "C:\cwm\cwm-1.2.1\build\scripts-2.7\cwm", line 750, in <module>
+    doCommand()
+  File "C:\cwm\cwm-1.2.1\build\scripts-2.7\cwm", line 455, in doCommand
+    why=myReason)
+  File "C:\Users\William\.windows-build-tools\python27\lib\site-packages\swap\webAccess.py", line 225, in load
+    p.feed(buffer)
+  File "C:\Users\William\.windows-build-tools\python27\lib\site-packages\swap\notation3.py", line 214, in feed
+    i = self.directiveOrStatement(str,j)
+  File "C:\Users\William\.windows-build-tools\python27\lib\site-packages\swap\notation3.py", line 228, in directiveOrStatement
+    j = self.statement(str, i)
+  File "C:\Users\William\.windows-build-tools\python27\lib\site-packages\swap\notation3.py", line 374, in statement
+    i = self.object(str, i, r)  #  Allow literal for subject - extends RDF 
+  File "C:\Users\William\.windows-build-tools\python27\lib\site-packages\swap\notation3.py", line 952, in object
+    j = self.subject(str, i, res)
+  File "C:\Users\William\.windows-build-tools\python27\lib\site-packages\swap\notation3.py", line 384, in subject
+    return self.item(str, i, res)
+  File "C:\Users\William\.windows-build-tools\python27\lib\site-packages\swap\notation3.py", line 463, in item
+    return self.path(str, i, res)
+  File "C:\Users\William\.windows-build-tools\python27\lib\site-packages\swap\notation3.py", line 475, in path
+    j = self.nodeOrLiteral(str, i, res)
+  File "C:\Users\William\.windows-build-tools\python27\lib\site-packages\swap\notation3.py", line 974, in nodeOrLiteral
+    j = self.node(str, i, res)
+  File "C:\Users\William\.windows-build-tools\python27\lib\site-packages\swap\notation3.py", line 610, in node
+    j = self.directiveOrStatement(str,i)
+  File "C:\Users\William\.windows-build-tools\python27\lib\site-packages\swap\notation3.py", line 228, in directiveOrStatement
+    j = self.statement(str, i)
+  File "C:\Users\William\.windows-build-tools\python27\lib\site-packages\swap\notation3.py", line 374, in statement
+    i = self.object(str, i, r)  #  Allow literal for subject - extends RDF 
+  File "C:\Users\William\.windows-build-tools\python27\lib\site-packages\swap\notation3.py", line 952, in object
+    j = self.subject(str, i, res)
+  File "C:\Users\William\.windows-build-tools\python27\lib\site-packages\swap\notation3.py", line 384, in subject
+    return self.item(str, i, res)
+  File "C:\Users\William\.windows-build-tools\python27\lib\site-packages\swap\notation3.py", line 463, in item
+    return self.path(str, i, res)
+  File "C:\Users\William\.windows-build-tools\python27\lib\site-packages\swap\notation3.py", line 475, in path
+    j = self.nodeOrLiteral(str, i, res)
+  File "C:\Users\William\.windows-build-tools\python27\lib\site-packages\swap\notation3.py", line 974, in nodeOrLiteral
+    j = self.node(str, i, res)
+  File "C:\Users\William\.windows-build-tools\python27\lib\site-packages\swap\notation3.py", line 643, in node
+    "expected item in list or ')'")
+swap.notation3.BadSyntax: at line 23 of <file:///D:\git\n3dev\N3\grammar\target\..\tests\N3Tests\01etc\rifP.n3>:
+Bad syntax (expected item in list or ')') at ^ in:
+"....9000000000000004} => {:numeric-mod-3 :result true}.
+
+{(1.23^E2 0.6E1) func:numeric-mod 3.0E0} => {:numeric-mod-4 :result..."
+
+testing (positive): ..\tests\N3Tests\01etc\dpe_query.n3
+testing (positive): ..\tests\N3Tests\07test\turing.n3
+testing (positive): ..\tests\N3Tests\04test\CountingQ.n3
+testing (positive): ..\tests\N3Tests\cwm_syntax\nested.n3
+testing (positive): ..\tests\N3Tests\04test\dawg-ot-0-03.n3
+testing (positive): ..\tests\N3Tests\07test\deQ.n3
+testing (positive): ..\tests\N3Tests\cwm_syntax\djb1a.n3
+testing (positive): ..\tests\N3Tests\04test\sampleQ.n3
+testing (positive): ..\tests\N3Tests\01etc\swetA11.n3
+testing (positive): ..\tests\N3Tests\04test\rogier.n3
+testing (positive): ..\tests\N3Tests\cwm_syntax\trailing-semicolon.n3
+testing (positive): ..\tests\N3Tests\04test\swrl-n3-rulesQ.n3
+testing (positive): ..\tests\N3Tests\07test\sudoku-query-3.n3
+testing (positive): ..\tests\N3Tests\04test\query-survey-result-10.n3
+testing (positive): ..\tests\N3Tests\04test\davidP.n3
+testing (positive): ..\tests\N3Tests\01etc\query34.n3
+testing (positive): ..\tests\N3Tests\04test\v.n3
+testing (positive): ..\tests\N3Tests\04test\ex3.n3
+testing (positive): ..\tests\N3Tests\07test\witch.n3
+testing (positive): ..\tests\N3Tests\07test\alpQ002.n3
+testing (positive): ..\tests\N3Tests\turtle\turtle-syntax-bad-n3-extras-09.ttl
+testing (positive): ..\tests\N3Tests\01etc\train_model_proof.n3
+testing (positive): ..\tests\N3Tests\cwm_unify\reflexive-ref.n3
+testing (positive): ..\tests\N3Tests\07test\gmpbnodeE1.n3
+testing (positive): ..\tests\N3Tests\07test\path-64-3.n3
+testing (positive): ..\tests\N3Tests\01etc\swetQ11.n3
+testing (positive): ..\tests\N3Tests\01etc\greenquery001.n3
+testing (positive): ..\tests\N3Tests\01etc\query3.n3
+testing (positive): ..\tests\N3Tests\04test\b.n3
+testing (positive): ..\tests\N3Tests\04test\stc3b.n3
+testing (positive): ..\tests\N3Tests\01etc\4color_proof.n3
+testing (positive): ..\tests\N3Tests\07test\rdip_proof.n3
+testing (positive): ..\tests\N3Tests\04test\vcardQ.n3
+testing (positive): ..\tests\N3Tests\04test\grahamQ.n3
+testing (positive): ..\tests\N3Tests\04test\stc3bE.n3
+testing (positive): ..\tests\N3Tests\07test\bd-test-100.n3
+testing (positive): ..\tests\N3Tests\04test\rtQ.n3
+testing (positive): ..\tests\N3Tests\01etc\query8.n3
+testing (positive): ..\tests\N3Tests\04test\swrl-n3-rules.n3
+testing (positive): ..\tests\N3Tests\01etc\deQ.n3
+testing (positive): ..\tests\N3Tests\01etc\socrates_proof.n3
+testing (positive): ..\tests\N3Tests\07test\bg-test-1000.n3
+testing (positive): ..\tests\N3Tests\07test\wetQ101.n3
+testing (positive): ..\tests\N3Tests\04test\ex2-3a.n3
+testing (positive): ..\tests\N3Tests\07test\arc.n3
+testing (positive): ..\tests\N3Tests\01etc\bmi_instances.n3
+testing (positive): ..\tests\N3Tests\01etc\bmi_proof.n3
+testing (positive): ..\tests\N3Tests\cwm_unify\unify2.n3
+testing (positive): ..\tests\N3Tests\04test\JoeCo.n3
+testing (positive): ..\tests\N3Tests\01etc\1tt1.n3
+testing (positive): ..\tests\N3Tests\04test\vcard.n3
+testing (positive): ..\tests\N3Tests\cwm_syntax\base-ref.n3
+testing (positive): ..\tests\N3Tests\04test\danP.n3
+testing (positive): ..\tests\N3Tests\cwm_other\reluri-1.n3
+testing (positive): ..\tests\N3Tests\01etc\gedcom-facts.n3
+testing (positive): ..\tests\N3Tests\cwm_time\t1s.n3
+testing (positive): ..\tests\N3Tests\01etc\query88.n3
+testing (positive): ..\tests\N3Tests\01etc\dpe_assumption.n3
+testing (positive): ..\tests\N3Tests\01etc\query54.n3
+testing (positive): ..\tests\N3Tests\04test\nciOncologyQ.n3
+testing (positive): ..\tests\N3Tests\07test\desc_thumbnail.n3
+testing (positive): ..\tests\N3Tests\01etc\query65.n3
+testing (positive): ..\tests\N3Tests\07test\iq_answer.n3
+testing (positive): ..\tests\N3Tests\01etc\1tt5.n3
+testing (positive): ..\tests\N3Tests\04test\sample.n3
+testing (positive): ..\tests\N3Tests\01etc\bankSW.n3
+testing (positive): ..\tests\N3Tests\07test\fibE.n3
+testing (positive): ..\tests\N3Tests\07test\resto-cwm-proof.n3
+testing (positive): ..\tests\N3Tests\cwm_math\trigo-test.n3
+in: #Processed by Id: cwm.py,v 1.197 2007/12/13 15:38:39 syosi Exp 
+        #    using base file:///D:\git\n3dev\N3\grammar\target\..\tests\N3Tests\cwm_math\trigo-test.n3
+        
+
+error:     Failed to parse file:///D:\git\n3dev\N3\grammar\target\..\tests\N3Tests\cwm_math\trigo-test.n3 
+   file:///D:\git\n3dev\N3\grammar\target\..\tests\N3Tests\cwm_math\trigo-test.n3 
+Traceback (most recent call last):
+  File "C:\cwm\cwm-1.2.1\build\scripts-2.7\cwm", line 750, in <module>
+    doCommand()
+  File "C:\cwm\cwm-1.2.1\build\scripts-2.7\cwm", line 455, in doCommand
+    why=myReason)
+  File "C:\Users\William\.windows-build-tools\python27\lib\site-packages\swap\webAccess.py", line 225, in load
+    p.feed(buffer)
+  File "C:\Users\William\.windows-build-tools\python27\lib\site-packages\swap\notation3.py", line 214, in feed
+    i = self.directiveOrStatement(str,j)
+  File "C:\Users\William\.windows-build-tools\python27\lib\site-packages\swap\notation3.py", line 228, in directiveOrStatement
+    j = self.statement(str, i)
+  File "C:\Users\William\.windows-build-tools\python27\lib\site-packages\swap\notation3.py", line 377, in statement
+    j = self.property_list(str, i, r[0])
+  File "C:\Users\William\.windows-build-tools\python27\lib\site-packages\swap\notation3.py", line 698, in property_list
+    i = self.objectList(str, j, objs)
+  File "C:\Users\William\.windows-build-tools\python27\lib\site-packages\swap\notation3.py", line 755, in objectList
+    i = self.object(str, j+1, res)
+  File "C:\Users\William\.windows-build-tools\python27\lib\site-packages\swap\notation3.py", line 952, in object
+    j = self.subject(str, i, res)
+  File "C:\Users\William\.windows-build-tools\python27\lib\site-packages\swap\notation3.py", line 384, in subject
+    return self.item(str, i, res)
+  File "C:\Users\William\.windows-build-tools\python27\lib\site-packages\swap\notation3.py", line 463, in item
+    return self.path(str, i, res)
+  File "C:\Users\William\.windows-build-tools\python27\lib\site-packages\swap\notation3.py", line 475, in path
+    j = self.nodeOrLiteral(str, i, res)
+  File "C:\Users\William\.windows-build-tools\python27\lib\site-packages\swap\notation3.py", line 974, in nodeOrLiteral
+    j = self.node(str, i, res)
+  File "C:\Users\William\.windows-build-tools\python27\lib\site-packages\swap\notation3.py", line 666, in node
+    j = self.uri_ref2(str, i, res)
+  File "C:\Users\William\.windows-build-tools\python27\lib\site-packages\swap\notation3.py", line 794, in uri_ref2
+    "Prefix \"%s:\" not bound" % (pfx))
+swap.notation3.BadSyntax: at line 16 of <file:///D:\git\n3dev\N3\grammar\target\..\tests\N3Tests\cwm_math\trigo-test.n3>:
+Bad syntax (Prefix "NonPi:" not bound) at ^ in:
+"...# test sine, cosine, arcsine, arcosine
+
+
+
+
+
+0 a :TestValue, ^NonPi:TestValue.
+
+0.23 a :TestValue, NonPi:TestValue.
+
+-0.70..."
+
+testing (positive): ..\tests\N3Tests\04test\dawg-tp-0-02.n3
+testing (positive): ..\tests\N3Tests\01etc\agent2-answer.n3
+testing (positive): ..\tests\N3Tests\07test\sudoku-query-2.n3
+testing (positive): ..\tests\N3Tests\04test\ex3E.n3
+testing (positive): ..\tests\N3Tests\04test\icalD001.n3
+testing (positive): ..\tests\N3Tests\cwm_other\smush-schema.n3
+testing (positive): ..\tests\N3Tests\07test\fdlP020.n3
+testing (positive): ..\tests\N3Tests\01etc\owl-maxCardinality.n3
+testing (positive): ..\tests\N3Tests\cwm_other\t00-ref.n3
+testing (positive): ..\tests\N3Tests\04test\socratesP.n3
+testing (positive): ..\tests\N3Tests\04test\stc3aE.n3
+testing (positive): ..\tests\N3Tests\04test\vcardE.n3
+testing (positive): ..\tests\N3Tests\07test\deA.n3
+testing (positive): ..\tests\N3Tests\01etc\1tt8.n3
+testing (positive): ..\tests\N3Tests\07test\bd-result-100.n3
+testing (positive): ..\tests\N3Tests\cwm_other\regression.n3
+testing (positive): ..\tests\N3Tests\04test\NamespaceQ.n3
+testing (positive): ..\tests\N3Tests\cwm_list\list-bug1-ref.n3
+testing (positive): ..\tests\N3Tests\01etc\floatingwoman-goal.n3
+testing (positive): ..\tests\N3Tests\07test\hanoiE.n3
+testing (positive): ..\tests\N3Tests\07test\ab_d.n3
+testing (positive): ..\tests\N3Tests\07test\path-2-3-answer.n3
+testing (positive): ..\tests\N3Tests\04test\metastaticP001.n3
+testing (positive): ..\tests\N3Tests\01etc\testE.n3
+testing (positive): ..\tests\N3Tests\cwm_n3\n3parser.tests_n3_10002.nt
+testing (positive): ..\tests\N3Tests\cwm_n3\n3parser.tests_n3_10003.nt
+testing (positive): ..\tests\N3Tests\01etc\query81.n3
+testing (positive): ..\tests\N3Tests\01etc\randomsample-rule.n3
+testing (positive): ..\tests\N3Tests\07test\theory1.n3
+testing (positive): ..\tests\N3Tests\01etc\query27.n3
+testing (positive): ..\tests\N3Tests\07test\3outOf5-answer.n3
+testing (positive): ..\tests\N3Tests\cwm_includes\bnode-conclude-ref.n3
+testing (positive): ..\tests\N3Tests\07test\bg-test-100.n3
+testing (positive): ..\tests\N3Tests\07test\path-10-3-answer.n3
+testing (positive): ..\tests\N3Tests\01etc\query95.n3
+testing (positive): ..\tests\N3Tests\cwm_n3\n3parser.tests_n3_10014.nt
+testing (positive): ..\tests\N3Tests\07test\fibQ.n3
+testing (positive): ..\tests\N3Tests\07test\owl2.n3
+testing (positive): ..\tests\N3Tests\01etc\fcm_proof.n3
+testing (positive): ..\tests\N3Tests\01etc\redgraph003.n3
+testing (positive): ..\tests\N3Tests\07test\swetQ.n3
+testing (positive): ..\tests\N3Tests\01etc\answer-001.n3
+testing (positive): ..\tests\N3Tests\cwm_includes\n3ExprFor.n3
+testing (positive): ..\tests\N3Tests\04test\ex2-2a.n3
+testing (positive): ..\tests\N3Tests\07test\resto-proof2.n3
+testing (positive): ..\tests\N3Tests\07test\eventTime_instances_2.n3
+testing (positive): ..\tests\N3Tests\cwm_n3\n3parser.tests_n3_10004.nt
+testing (positive): ..\tests\N3Tests\cwm_list\list-bug2.n3
+testing (positive): ..\tests\N3Tests\07test\ptQ.n3
+testing (positive): ..\tests\N3Tests\cwm_reason\t8.n3
+testing (positive): ..\tests\N3Tests\07test\data2.n3
+testing (positive): ..\tests\N3Tests\01etc\lldmF.n3
+testing (positive): ..\tests\N3Tests\01etc\owl-propertyDisjointWith.n3
+testing (positive): ..\tests\N3Tests\04test\stc2a.n3
+testing (positive): ..\tests\N3Tests\07test\pd_hes_result.n3
+testing (positive): ..\tests\N3Tests\07test\path-3-5.n3
+testing (positive): ..\tests\N3Tests\04test\socratesR.n3
+testing (positive): ..\tests\N3Tests\01etc\food-declarations.n3
+testing (positive): ..\tests\N3Tests\01etc\1tt4.n3
+testing (positive): ..\tests\N3Tests\cwm_reason\t5.n3
+testing (positive): ..\tests\N3Tests\01etc\owl-disjointUnionOf.n3
+testing (positive): ..\tests\N3Tests\07test\path-16-3.n3
+testing (positive): ..\tests\N3Tests\07test\alpA001.n3
+testing (positive): ..\tests\N3Tests\04test\D1Q.n3
+testing (positive): ..\tests\N3Tests\04test\easterF.n3
+testing (positive): ..\tests\N3Tests\cwm_os\argv.n3
+testing (positive): ..\tests\N3Tests\07test\rulegen_result.n3
+testing (positive): ..\tests\N3Tests\cwm_other\equiv-syntax.n3
+testing (positive): ..\tests\N3Tests\01etc\sdcoding-answer.n3
+testing (positive): ..\tests\N3Tests\01etc\food.n3
+testing (positive): ..\tests\N3Tests\01etc\tasks.n3
+testing (positive): ..\tests\N3Tests\07test\test-strela-100.n3
+testing (positive): ..\tests\N3Tests\07test\rdfs-nice.n3
+testing (positive): ..\tests\N3Tests\07test\path-3-4-answer.n3
+testing (positive): ..\tests\N3Tests\cwm_syntax\qvars1.n3
+testing (positive): ..\tests\N3Tests\04test\query-survey-1.n3
+testing (positive): ..\tests\N3Tests\07test\skos-mapping-sample-snomed-icd10.n3
+testing (positive): ..\tests\N3Tests\01etc\owl-AsymmetricProperty.n3
+testing (positive): ..\tests\N3Tests\01etc\query56.n3
+testing (positive): ..\tests\N3Tests\01etc\test-query.n3
+testing (positive): ..\tests\N3Tests\04test\ex2-1aQ.n3
+testing (positive): ..\tests\N3Tests\01etc\rpo-rules.n3
+testing (positive): ..\tests\N3Tests\07test\rsQ.n3
+testing (positive): ..\tests\N3Tests\01etc\bmi_rules.n3
+testing (positive): ..\tests\N3Tests\01etc\query58.n3
+testing (positive): ..\tests\N3Tests\04test\metastaticQ.n3
+testing (positive): ..\tests\N3Tests\01etc\test_data.n3
+testing (positive): ..\tests\N3Tests\07test\resto-cwm-proof2.n3
+testing (positive): ..\tests\N3Tests\cwm_other\trivial-filter.n3
+testing (positive): ..\tests\N3Tests\01etc\forAllIn_answer.n3
+testing (positive): ..\tests\N3Tests\01etc\acct3check2.n3
+testing (positive): ..\tests\N3Tests\cwm_n3\n3parser.tests_n3_10017.nt
+testing (positive): ..\tests\N3Tests\cwm_n3\n3parser.tests_n3_10001.nt
+testing (positive): ..\tests\N3Tests\01etc\query51.n3
+testing (positive): ..\tests\N3Tests\05smml\RULESdefaultvaluesefindall.n3
+testing (positive): ..\tests\N3Tests\01etc\owl-TransitiveProperty.n3
+testing (positive): ..\tests\N3Tests\01etc\query72.n3
+testing (positive): ..\tests\N3Tests\01etc\query18.n3
+testing (positive): ..\tests\N3Tests\cwm_other\schema-rules.n3
+testing (positive): ..\tests\N3Tests\05smml\RULESifctransformationmatrix.n3
+testing (positive): ..\tests\N3Tests\04test\D1.n3
+testing (positive): ..\tests\N3Tests\01etc\owl-allValuesFrom.n3
+testing (positive): ..\tests\N3Tests\04test\ex2-3aE.n3
+testing (positive): ..\tests\N3Tests\cwm_syntax\equals2.n3
+testing (positive): ..\tests\N3Tests\07test\sudoku-solution-1.n3
+testing (positive): ..\tests\N3Tests\01etc\query1.n3
+testing (positive): ..\tests\N3Tests\01etc\owl-AllDisjointClasses.n3
+testing (positive): ..\tests\N3Tests\07test\m3bQ.n3
+testing (positive): ..\tests\N3Tests\01etc\nbbn-query.n3
+testing (positive): ..\tests\N3Tests\04test\nciOncologyE.n3
+testing (positive): ..\tests\N3Tests\01etc\query32.n3
+testing (positive): ..\tests\N3Tests\01etc\fib.n3
+testing (positive): ..\tests\N3Tests\01etc\testQ.n3
+testing (positive): ..\tests\N3Tests\05smml\RULESobjects.n3
+testing (positive): ..\tests\N3Tests\cwm_syntax\neg-literal-predicate.n3
+testing (positive): ..\tests\N3Tests\cwm_reason\t9-ref.n3
+testing (positive): ..\tests\N3Tests\cwm_includes\t8.n3
+testing (positive): ..\tests\N3Tests\01etc\fcm-plugin.n3
+testing (positive): ..\tests\N3Tests\01etc\query15.n3
+testing (positive): ..\tests\N3Tests\07test\rifQ.n3
+testing (positive): ..\tests\N3Tests\cwm_math\quotient_string.n3
+testing (positive): ..\tests\N3Tests\cwm_syntax\qual-after-user.n3
+in: #Processed by Id: cwm.py,v 1.197 2007/12/13 15:38:39 syosi Exp 
+        #    using base file:///D:\git\n3dev\N3\grammar\target\..\tests\N3Tests\cwm_syntax\qual-after-user.n3
+        
+
+error:     Failed to parse file:///D:\git\n3dev\N3\grammar\target\..\tests\N3Tests\cwm_syntax\qual-after-user.n3 
+   file:///D:\git\n3dev\N3\grammar\target\..\tests\N3Tests\cwm_syntax\qual-after-user.n3 
+Traceback (most recent call last):
+  File "C:\cwm\cwm-1.2.1\build\scripts-2.7\cwm", line 750, in <module>
+    doCommand()
+  File "C:\cwm\cwm-1.2.1\build\scripts-2.7\cwm", line 455, in doCommand
+    why=myReason)
+  File "C:\Users\William\.windows-build-tools\python27\lib\site-packages\swap\webAccess.py", line 225, in load
+    p.feed(buffer)
+  File "C:\Users\William\.windows-build-tools\python27\lib\site-packages\swap\notation3.py", line 214, in feed
+    i = self.directiveOrStatement(str,j)
+  File "C:\Users\William\.windows-build-tools\python27\lib\site-packages\swap\notation3.py", line 225, in directiveOrStatement
+    j = self.directive(str, i)
+  File "C:\Users\William\.windows-build-tools\python27\lib\site-packages\swap\notation3.py", line 286, in directive
+    self._variables[x] =  self._context.newUniversal(x)
+  File "C:\Users\William\.windows-build-tools\python27\lib\site-packages\swap\formula.py", line 242, in newUniversal
+    x = AnonymousUniversal(self, uri)
+  File "C:\Users\William\.windows-build-tools\python27\lib\site-packages\swap\term.py", line 604, in __init__
+    scope.declareUniversal(self, key=self.__class__)
+  File "C:\Users\William\.windows-build-tools\python27\lib\site-packages\swap\formula.py", line 219, in declareUniversal
+    raise ValueError("Internal error: declareUniversal: %s?" % v)
+ValueError: Internal error: declareUniversal: x?
+
+testing (positive): ..\tests\N3Tests\07test\alpE011.n3
+testing (positive): ..\tests\N3Tests\07test\swet_cwm_result.n3
+testing (positive): ..\tests\N3Tests\04test\RecursionE.n3
+testing (positive): ..\tests\N3Tests\04test\OptionalPathQ.n3
+testing (positive): ..\tests\N3Tests\04test\srcE.n3
+testing (positive): ..\tests\N3Tests\cwm_n3\n3parser.tests_n3_10013.nt
+testing (positive): ..\tests\N3Tests\cwm_syntax\a1.n3
+testing (positive): ..\tests\N3Tests\01etc\fl-rules.n3
+testing (positive): ..\tests\N3Tests\01etc\nbbn-model.n3
+testing (positive): ..\tests\N3Tests\07test\dtb-result-1000.n3
+testing (positive): ..\tests\N3Tests\cwm_i18n\hiragana.n3
+testing (positive): ..\tests\N3Tests\01etc\usmP.n3
+testing (positive): ..\tests\N3Tests\01etc\agent1-proof.n3
+testing (positive): ..\tests\N3Tests\07test\3outOf5-query.n3
+testing (positive): ..\tests\N3Tests\01etc\biP.n3
+testing (positive): ..\tests\N3Tests\07test\alpE000.n3
+testing (positive): ..\tests\N3Tests\01etc\subtasks.n3
+testing (positive): ..\tests\N3Tests\cwm_n3\n3parser.tests_n3_10014.n3
+in: #Processed by Id: cwm.py,v 1.197 2007/12/13 15:38:39 syosi Exp 
+        #    using base file:///D:\git\n3dev\N3\grammar\target\..\tests\N3Tests\cwm_n3\n3parser.tests_n3_10014.n3
+        
+
+error:     Failed to parse file:///D:\git\n3dev\N3\grammar\target\..\tests\N3Tests\cwm_n3\n3parser.tests_n3_10014.n3 
+   file:///D:\git\n3dev\N3\grammar\target\..\tests\N3Tests\cwm_n3\n3parser.tests_n3_10014.n3 
+Traceback (most recent call last):
+  File "C:\cwm\cwm-1.2.1\build\scripts-2.7\cwm", line 750, in <module>
+    doCommand()
+  File "C:\cwm\cwm-1.2.1\build\scripts-2.7\cwm", line 455, in doCommand
+    why=myReason)
+  File "C:\Users\William\.windows-build-tools\python27\lib\site-packages\swap\webAccess.py", line 225, in load
+    p.feed(buffer)
+  File "C:\Users\William\.windows-build-tools\python27\lib\site-packages\swap\notation3.py", line 214, in feed
+    i = self.directiveOrStatement(str,j)
+  File "C:\Users\William\.windows-build-tools\python27\lib\site-packages\swap\notation3.py", line 228, in directiveOrStatement
+    j = self.statement(str, i)
+  File "C:\Users\William\.windows-build-tools\python27\lib\site-packages\swap\notation3.py", line 374, in statement
+    i = self.object(str, i, r)  #  Allow literal for subject - extends RDF 
+  File "C:\Users\William\.windows-build-tools\python27\lib\site-packages\swap\notation3.py", line 952, in object
+    j = self.subject(str, i, res)
+  File "C:\Users\William\.windows-build-tools\python27\lib\site-packages\swap\notation3.py", line 384, in subject
+    return self.item(str, i, res)
+  File "C:\Users\William\.windows-build-tools\python27\lib\site-packages\swap\notation3.py", line 463, in item
+    return self.path(str, i, res)
+  File "C:\Users\William\.windows-build-tools\python27\lib\site-packages\swap\notation3.py", line 475, in path
+    j = self.nodeOrLiteral(str, i, res)
+  File "C:\Users\William\.windows-build-tools\python27\lib\site-packages\swap\notation3.py", line 974, in nodeOrLiteral
+    j = self.node(str, i, res)
+  File "C:\Users\William\.windows-build-tools\python27\lib\site-packages\swap\notation3.py", line 544, in node
+    i = self.property_list(str, j, subj)
+  File "C:\Users\William\.windows-build-tools\python27\lib\site-packages\swap\notation3.py", line 698, in property_list
+    i = self.objectList(str, j, objs)
+  File "C:\Users\William\.windows-build-tools\python27\lib\site-packages\swap\notation3.py", line 745, in objectList
+    i = self.object(str, i, res)
+  File "C:\Users\William\.windows-build-tools\python27\lib\site-packages\swap\notation3.py", line 952, in object
+    j = self.subject(str, i, res)
+  File "C:\Users\William\.windows-build-tools\python27\lib\site-packages\swap\notation3.py", line 384, in subject
+    return self.item(str, i, res)
+  File "C:\Users\William\.windows-build-tools\python27\lib\site-packages\swap\notation3.py", line 463, in item
+    return self.path(str, i, res)
+  File "C:\Users\William\.windows-build-tools\python27\lib\site-packages\swap\notation3.py", line 475, in path
+    j = self.nodeOrLiteral(str, i, res)
+  File "C:\Users\William\.windows-build-tools\python27\lib\site-packages\swap\notation3.py", line 974, in nodeOrLiteral
+    j = self.node(str, i, res)
+  File "C:\Users\William\.windows-build-tools\python27\lib\site-packages\swap\notation3.py", line 666, in node
+    j = self.uri_ref2(str, i, res)
+  File "C:\Users\William\.windows-build-tools\python27\lib\site-packages\swap\notation3.py", line 794, in uri_ref2
+    "Prefix \"%s:\" not bound" % (pfx))
+swap.notation3.BadSyntax: at line 1 of <file:///D:\git\n3dev\N3\grammar\target\..\tests\N3Tests\cwm_n3\n3parser.tests_n3_10014.n3>:
+Bad syntax (Prefix "log:" not bound) at ^ in:
+"[ a ^log:Truth;
+
+  rei:statements [
+
+    owl:oneOf (
+
+      [ rei..."
+
+testing (positive): ..\tests\N3Tests\01etc\witch.n3
+testing (positive): ..\tests\N3Tests\01etc\query46.n3
+testing (positive): ..\tests\N3Tests\turtle\turtle-syntax-bad-struct-02.ttl
+testing (positive): ..\tests\N3Tests\07test\usmQ.n3
+testing (positive): ..\tests\N3Tests\07test\nbbn-query.n3
+testing (positive): ..\tests\N3Tests\01etc\palindrome-preduction.n3
+testing (positive): ..\tests\N3Tests\05smml\RULESneighbourfaceedges.n3
+testing (positive): ..\tests\N3Tests\07test\socrater.n3
+testing (positive): ..\tests\N3Tests\cwm_reason\double.n3
+testing (positive): ..\tests\N3Tests\04test\PathE.n3
+testing (positive): ..\tests\N3Tests\07test\alpQ003.n3
+testing (positive): ..\tests\N3Tests\cwm_reason\single_gen.n3
+testing (positive): ..\tests\N3Tests\07test\iq.n3
+testing (positive): ..\tests\N3Tests\04test\stc2bE.n3
+testing (positive): ..\tests\N3Tests\04test\simplegraph_query.n3
+testing (positive): ..\tests\N3Tests\01etc\query84.n3
+testing (positive): ..\tests\N3Tests\04test\testP.n3
+testing (positive): ..\tests\N3Tests\07test\medic.n3
+testing (positive): ..\tests\N3Tests\04test\bc.n3
+testing (positive): ..\tests\N3Tests\07test\biQ.n3
+testing (positive): ..\tests\N3Tests\07test\bd-result-10.n3
+testing (positive): ..\tests\N3Tests\01etc\query61.n3
+testing (positive): ..\tests\N3Tests\01etc\mmln-gv-query.n3
+testing (positive): ..\tests\N3Tests\07test\rifE.n3
+testing (positive): ..\tests\N3Tests\cwm_n3\n3parser.tests_n3_10009.nt
+testing (positive): ..\tests\N3Tests\01etc\4color_query.n3
+testing (positive): ..\tests\N3Tests\04test\gmpF.n3
+testing (positive): ..\tests\N3Tests\04test\u2.n3
+testing (positive): ..\tests\N3Tests\01etc\abc.n3
+testing (positive): ..\tests\N3Tests\05smml\FACTSobjectdetection.n3
+testing (positive): ..\tests\N3Tests\cwm_other\reflexive-ref.n3
+testing (positive): ..\tests\N3Tests\04test\daveE.n3
+testing (positive): ..\tests\N3Tests\01etc\query93.n3
+testing (positive): ..\tests\N3Tests\01etc\components.n3
+testing (positive): ..\tests\N3Tests\cwm_other\rules13.n3
+testing (positive): ..\tests\N3Tests\cwm_list\unify3-ref.n3
+testing (positive): ..\tests\N3Tests\cwm_string\roughly.n3
+testing (positive): ..\tests\N3Tests\01etc\query20.n3
+testing (positive): ..\tests\N3Tests\04test\minsuC.n3
+testing (positive): ..\tests\N3Tests\01etc\query49.n3
+testing (positive): ..\tests\N3Tests\cwm_i18n\n3string.n3
+testing (positive): ..\tests\N3Tests\01etc\query7.n3
+testing (positive): ..\tests\N3Tests\01etc\swetA31.n3
+testing (positive): ..\tests\N3Tests\01etc\de.n3
+testing (positive): ..\tests\N3Tests\04test\QuantificationE.n3
+testing (positive): ..\tests\N3Tests\01etc\fgcm-plugin.n3
+testing (positive): ..\tests\N3Tests\01etc\query9.n3
+testing (positive): ..\tests\N3Tests\04test\dog.n3
+testing (positive): ..\tests\N3Tests\07test\graph-1000.n3
+testing (positive): ..\tests\N3Tests\04test\gateF.n3
+testing (positive): ..\tests\N3Tests\cwm_other\forgetDups.n3
+testing (positive): ..\tests\N3Tests\07test\query.n3
+testing (positive): ..\tests\N3Tests\07test\witch-goal.n3
+testing (positive): ..\tests\N3Tests\04test\grahamP.n3
+testing (positive): ..\tests\N3Tests\04test\da538tc2E.n3
+testing (positive): ..\tests\N3Tests\07test\swet_result.n3
+testing (positive): ..\tests\N3Tests\04test\data-01.n3
+testing (positive): ..\tests\N3Tests\04test\query-survey-result-11.n3
+testing (positive): ..\tests\N3Tests\cwm_includes\foo.n3
+testing (positive): ..\tests\N3Tests\07test\alpA010.n3
+testing (positive): ..\tests\N3Tests\07test\cryptoQ.n3
+testing (positive): ..\tests\N3Tests\05smml\RULESfaceedges.n3
+testing (positive): ..\tests\N3Tests\04test\query-survey-result-3.n3
+testing (positive): ..\tests\N3Tests\01etc\owl-equivalentClass.n3
+testing (positive): ..\tests\N3Tests\07test\takE.n3
+testing (positive): ..\tests\N3Tests\01etc\dpQ.n3
+testing (positive): ..\tests\N3Tests\07test\ttl-to-rdfa.n3
+testing (positive): ..\tests\N3Tests\01etc\floatingwoman-proof.n3
+testing (positive): ..\tests\N3Tests\cwm_includes\t1.n3
+testing (positive): ..\tests\N3Tests\07test\eventTime_queries2.n3
+testing (positive): ..\tests\N3Tests\04test\testC.n3
+in: #Processed by Id: cwm.py,v 1.197 2007/12/13 15:38:39 syosi Exp 
+        #    using base file:///D:\git\n3dev\N3\grammar\target\..\tests\N3Tests\04test\testC.n3
+        
+
+error:     Failed to parse file:///D:\git\n3dev\N3\grammar\target\..\tests\N3Tests\04test\testC.n3 
+   file:///D:\git\n3dev\N3\grammar\target\..\tests\N3Tests\04test\testC.n3 
+Traceback (most recent call last):
+  File "C:\cwm\cwm-1.2.1\build\scripts-2.7\cwm", line 750, in <module>
+    doCommand()
+  File "C:\cwm\cwm-1.2.1\build\scripts-2.7\cwm", line 455, in doCommand
+    why=myReason)
+  File "C:\Users\William\.windows-build-tools\python27\lib\site-packages\swap\webAccess.py", line 225, in load
+    p.feed(buffer)
+  File "C:\Users\William\.windows-build-tools\python27\lib\site-packages\swap\notation3.py", line 214, in feed
+    i = self.directiveOrStatement(str,j)
+  File "C:\Users\William\.windows-build-tools\python27\lib\site-packages\swap\notation3.py", line 228, in directiveOrStatement
+    j = self.statement(str, i)
+  File "C:\Users\William\.windows-build-tools\python27\lib\site-packages\swap\notation3.py", line 377, in statement
+    j = self.property_list(str, i, r[0])
+  File "C:\Users\William\.windows-build-tools\python27\lib\site-packages\swap\notation3.py", line 698, in property_list
+    i = self.objectList(str, j, objs)
+  File "C:\Users\William\.windows-build-tools\python27\lib\site-packages\swap\notation3.py", line 745, in objectList
+    i = self.object(str, i, res)
+  File "C:\Users\William\.windows-build-tools\python27\lib\site-packages\swap\notation3.py", line 952, in object
+    j = self.subject(str, i, res)
+  File "C:\Users\William\.windows-build-tools\python27\lib\site-packages\swap\notation3.py", line 384, in subject
+    return self.item(str, i, res)
+  File "C:\Users\William\.windows-build-tools\python27\lib\site-packages\swap\notation3.py", line 463, in item
+    return self.path(str, i, res)
+  File "C:\Users\William\.windows-build-tools\python27\lib\site-packages\swap\notation3.py", line 475, in path
+    j = self.nodeOrLiteral(str, i, res)
+  File "C:\Users\William\.windows-build-tools\python27\lib\site-packages\swap\notation3.py", line 974, in nodeOrLiteral
+    j = self.node(str, i, res)
+  File "C:\Users\William\.windows-build-tools\python27\lib\site-packages\swap\notation3.py", line 666, in node
+    j = self.uri_ref2(str, i, res)
+  File "C:\Users\William\.windows-build-tools\python27\lib\site-packages\swap\notation3.py", line 810, in uri_ref2
+    j = self.variable(str,i,v)
+  File "C:\Users\William\.windows-build-tools\python27\lib\site-packages\swap\notation3.py", line 886, in variable
+    % str[j-1:i])
+swap.notation3.BadSyntax: at line 349 of <file:///D:\git\n3dev\N3\grammar\target\..\tests\N3Tests\04test\testC.n3>:
+Bad syntax (Can't use ?xxx syntax for variable in outermost level: ?C) at ^ in:
+"...52:44Z"^^xsd:dateTime time:inSeconds _:Seconds.
+
+
+
+:Paul a ?^C.
+
+"
+
+testing (positive): ..\tests\N3Tests\cwm_unify\unify1.n3
+testing (positive): ..\tests\N3Tests\04test\disjunction.n3
+testing (positive): ..\tests\N3Tests\07test\numeral.n3
+testing (positive): ..\tests\N3Tests\04test\ex2-4aE.n3
+testing (positive): ..\tests\N3Tests\01etc\swetA.n3
+testing (positive): ..\tests\N3Tests\07test\sample-roundtrip.n3
+testing (positive): ..\tests\N3Tests\04test\alarmF.n3
+testing (positive): ..\tests\N3Tests\01etc\sdcoding.n3
+testing (positive): ..\tests\N3Tests\cwm_n3\n3parser.tests_n3_10026.nt
+testing (positive): ..\tests\N3Tests\07test\idE.n3
+testing (positive): ..\tests\N3Tests\cwm_list\list-bug2-ref.n3
+testing (positive): ..\tests\N3Tests\07test\gv-answer.n3
+testing (positive): ..\tests\N3Tests\04test\stc2b.n3
+testing (positive): ..\tests\N3Tests\01etc\fibA.n3
+testing (positive): ..\tests\N3Tests\04test\danQ.n3
+testing (positive): ..\tests\N3Tests\cwm_reason\t4.n3
+testing (positive): ..\tests\N3Tests\04test\davidE.n3
+testing (positive): ..\tests\N3Tests\07test\gmpbnodeE2.n3
+testing (positive): ..\tests\N3Tests\04test\easterP.n3
+testing (positive): ..\tests\N3Tests\01etc\swetQ01.n3
+testing (positive): ..\tests\N3Tests\cwm_syntax\bad-preds-formula.n3
+testing (positive): ..\tests\N3Tests\07test\randomsample-query.n3
+testing (positive): ..\tests\N3Tests\05smml\RULESlinkedgestoobjects.n3
+testing (positive): ..\tests\N3Tests\07test\query1.n3
+testing (positive): ..\tests\N3Tests\04test\librarianE.n3
+testing (positive): ..\tests\N3Tests\04test\result-tp-05.n3
+in: #Processed by Id: cwm.py,v 1.197 2007/12/13 15:38:39 syosi Exp 
+        #    using base file:///D:\git\n3dev\N3\grammar\target\..\tests\N3Tests\04test\result-tp-05.n3
+        
+
+error:     Failed to parse file:///D:\git\n3dev\N3\grammar\target\..\tests\N3Tests\04test\result-tp-05.n3 
+   file:///D:\git\n3dev\N3\grammar\target\..\tests\N3Tests\04test\result-tp-05.n3 
+Traceback (most recent call last):
+  File "C:\cwm\cwm-1.2.1\build\scripts-2.7\cwm", line 750, in <module>
+    doCommand()
+  File "C:\cwm\cwm-1.2.1\build\scripts-2.7\cwm", line 455, in doCommand
+    why=myReason)
+  File "C:\Users\William\.windows-build-tools\python27\lib\site-packages\swap\webAccess.py", line 225, in load
+    p.feed(buffer)
+  File "C:\Users\William\.windows-build-tools\python27\lib\site-packages\swap\notation3.py", line 214, in feed
+    i = self.directiveOrStatement(str,j)
+  File "C:\Users\William\.windows-build-tools\python27\lib\site-packages\swap\notation3.py", line 228, in directiveOrStatement
+    j = self.statement(str, i)
+  File "C:\Users\William\.windows-build-tools\python27\lib\site-packages\swap\notation3.py", line 377, in statement
+    j = self.property_list(str, i, r[0])
+  File "C:\Users\William\.windows-build-tools\python27\lib\site-packages\swap\notation3.py", line 698, in property_list
+    i = self.objectList(str, j, objs)
+  File "C:\Users\William\.windows-build-tools\python27\lib\site-packages\swap\notation3.py", line 745, in objectList
+    i = self.object(str, i, res)
+  File "C:\Users\William\.windows-build-tools\python27\lib\site-packages\swap\notation3.py", line 952, in object
+    j = self.subject(str, i, res)
+  File "C:\Users\William\.windows-build-tools\python27\lib\site-packages\swap\notation3.py", line 384, in subject
+    return self.item(str, i, res)
+  File "C:\Users\William\.windows-build-tools\python27\lib\site-packages\swap\notation3.py", line 463, in item
+    return self.path(str, i, res)
+  File "C:\Users\William\.windows-build-tools\python27\lib\site-packages\swap\notation3.py", line 475, in path
+    j = self.nodeOrLiteral(str, i, res)
+  File "C:\Users\William\.windows-build-tools\python27\lib\site-packages\swap\notation3.py", line 974, in nodeOrLiteral
+    j = self.node(str, i, res)
+  File "C:\Users\William\.windows-build-tools\python27\lib\site-packages\swap\notation3.py", line 641, in node
+    j = self.item(str,i, item) #@@@@@ should be path, was object
+  File "C:\Users\William\.windows-build-tools\python27\lib\site-packages\swap\notation3.py", line 463, in item
+    return self.path(str, i, res)
+  File "C:\Users\William\.windows-build-tools\python27\lib\site-packages\swap\notation3.py", line 488, in path
+    "EOF found in middle of path syntax")
+swap.notation3.BadSyntax: at line 8 of <file:///D:\git\n3dev\N3\grammar\target\..\tests\N3Tests\04test\result-tp-05.n3>:
+Bad syntax (EOF found in middle of path syntax) at ^ in:
+"@prefix e: <http://eulersharp.sourceforge.net/2003/03swap/log-rules#>.
+
+@prefix q: <http://www.w3.org/2004/ql#>.
+
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+
+@prefix log: <http://www.w3.org/2000/10/swap/log#>.
+
+@prefix : <http://example.org/data/>.
+
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+
+
+
+<http://eulersharp.sourceforge.net/2004/04test/dawg-tp-05.n3> q:answer (:x :v1.1). 
+
+<http://eulersharp.sourceforge.net/2004/04test/dawg-tp-05.n3> q:answer (:x :v2.1). 
+
+
+^..."
+
+testing (positive): ..\tests\N3Tests\01etc\proof.n3
+testing (positive): ..\tests\N3Tests\cwm_includes\t11.n3
+testing (positive): ..\tests\N3Tests\04test\EntailmentE.n3
+testing (positive): ..\tests\N3Tests\01etc\answer.n3
+testing (positive): ..\tests\N3Tests\01etc\query92.n3
+testing (positive): ..\tests\N3Tests\01etc\query77.n3
+testing (positive): ..\tests\N3Tests\07test\parteval.n3
+testing (positive): ..\tests\N3Tests\07test\cdE.n3
+testing (positive): ..\tests\N3Tests\04test\patQ.n3
+testing (positive): ..\tests\N3Tests\01etc\query4.n3
+testing (positive): ..\tests\N3Tests\04test\minsuP.n3
+testing (positive): ..\tests\N3Tests\01etc\grover.n3
+testing (positive): ..\tests\N3Tests\04test\result-tp-0-02.n3
+testing (positive): ..\tests\N3Tests\01etc\select-data-extra.n3
+testing (positive): ..\tests\N3Tests\01etc\iq-extra.n3
+in: #Processed by Id: cwm.py,v 1.197 2007/12/13 15:38:39 syosi Exp 
+        #    using base file:///D:\git\n3dev\N3\grammar\target\..\tests\N3Tests\01etc\iq-extra.n3
+        
+
+error:     Failed to parse file:///D:\git\n3dev\N3\grammar\target\..\tests\N3Tests\01etc\iq-extra.n3 
+   file:///D:\git\n3dev\N3\grammar\target\..\tests\N3Tests\01etc\iq-extra.n3 
+Traceback (most recent call last):
+  File "C:\cwm\cwm-1.2.1\build\scripts-2.7\cwm", line 750, in <module>
+    doCommand()
+  File "C:\cwm\cwm-1.2.1\build\scripts-2.7\cwm", line 455, in doCommand
+    why=myReason)
+  File "C:\Users\William\.windows-build-tools\python27\lib\site-packages\swap\webAccess.py", line 225, in load
+    p.feed(buffer)
+  File "C:\Users\William\.windows-build-tools\python27\lib\site-packages\swap\notation3.py", line 214, in feed
+    i = self.directiveOrStatement(str,j)
+  File "C:\Users\William\.windows-build-tools\python27\lib\site-packages\swap\notation3.py", line 228, in directiveOrStatement
+    j = self.statement(str, i)
+  File "C:\Users\William\.windows-build-tools\python27\lib\site-packages\swap\notation3.py", line 377, in statement
+    j = self.property_list(str, i, r[0])
+  File "C:\Users\William\.windows-build-tools\python27\lib\site-packages\swap\notation3.py", line 698, in property_list
+    i = self.objectList(str, j, objs)
+  File "C:\Users\William\.windows-build-tools\python27\lib\site-packages\swap\notation3.py", line 745, in objectList
+    i = self.object(str, i, res)
+  File "C:\Users\William\.windows-build-tools\python27\lib\site-packages\swap\notation3.py", line 952, in object
+    j = self.subject(str, i, res)
+  File "C:\Users\William\.windows-build-tools\python27\lib\site-packages\swap\notation3.py", line 384, in subject
+    return self.item(str, i, res)
+  File "C:\Users\William\.windows-build-tools\python27\lib\site-packages\swap\notation3.py", line 463, in item
+    return self.path(str, i, res)
+  File "C:\Users\William\.windows-build-tools\python27\lib\site-packages\swap\notation3.py", line 475, in path
+    j = self.nodeOrLiteral(str, i, res)
+  File "C:\Users\William\.windows-build-tools\python27\lib\site-packages\swap\notation3.py", line 974, in nodeOrLiteral
+    j = self.node(str, i, res)
+  File "C:\Users\William\.windows-build-tools\python27\lib\site-packages\swap\notation3.py", line 666, in node
+    j = self.uri_ref2(str, i, res)
+  File "C:\Users\William\.windows-build-tools\python27\lib\site-packages\swap\notation3.py", line 810, in uri_ref2
+    j = self.variable(str,i,v)
+  File "C:\Users\William\.windows-build-tools\python27\lib\site-packages\swap\notation3.py", line 886, in variable
+    % str[j-1:i])
+swap.notation3.BadSyntax: at line 5 of <file:///D:\git\n3dev\N3\grammar\target\..\tests\N3Tests\01etc\iq-extra.n3>:
+Bad syntax (Can't use ?xxx syntax for variable in outermost level: ?y) at ^ in:
+"...ication
+
+# extra cases
+
+
+
+:a :b {:c :d :e}.
+
+{?x :b ?y} => ?^y.
+
+"
+
+testing (positive): ..\tests\N3Tests\04test\gateE.n3
+testing (positive): ..\tests\N3Tests\01etc\blueproof002.n3
+testing (positive): ..\tests\N3Tests\07test\path-1-3.n3
+testing (positive): ..\tests\N3Tests\cwm_syntax\graph-as-object.n3
+testing (positive): ..\tests\N3Tests\04test\ericE.n3
+testing (positive): ..\tests\N3Tests\04test\dawg-tp-05.n3
+testing (positive): ..\tests\N3Tests\cwm_syntax\formula-simple-1.n3
+testing (positive): ..\tests\N3Tests\04test\davidQ.n3
+testing (positive): ..\tests\N3Tests\01etc\test_proof.n3
+testing (positive): ..\tests\N3Tests\01etc\dpE.n3
+testing (positive): ..\tests\N3Tests\01etc\owl-IrreflexiveProperty.n3
+testing (positive): ..\tests\N3Tests\07test\skos_mv_answer.n3
+testing (positive): ..\tests\N3Tests\04test\kendallE.n3
+testing (positive): ..\tests\N3Tests\01etc\agent2-query.n3
+testing (positive): ..\tests\N3Tests\04test\wet.n3
+testing (positive): ..\tests\N3Tests\01etc\forAllIn_query.n3
+testing (positive): ..\tests\N3Tests\turtle\turtle-syntax-bad-n3-extras-04.ttl
+testing (positive): ..\tests\N3Tests\07test\bg-test-10.n3
+testing (positive): ..\tests\N3Tests\01etc\gps-example2.n3
+testing (positive): ..\tests\N3Tests\01etc\pi-query.n3
+testing (positive): ..\tests\N3Tests\01etc\weightStatus_rules.n3
+testing (positive): ..\tests\N3Tests\01etc\numeral_proof.n3
+testing (positive): ..\tests\N3Tests\cwm_syntax\embedded-dot-in-qname.n3
+in: #Processed by Id: cwm.py,v 1.197 2007/12/13 15:38:39 syosi Exp 
+        #    using base file:///D:\git\n3dev\N3\grammar\target\..\tests\N3Tests\cwm_syntax\embedded-dot-in-qname.n3
+        
+
+error:     Failed to parse file:///D:\git\n3dev\N3\grammar\target\..\tests\N3Tests\cwm_syntax\embedded-dot-in-qname.n3 
+   file:///D:\git\n3dev\N3\grammar\target\..\tests\N3Tests\cwm_syntax\embedded-dot-in-qname.n3 
+Traceback (most recent call last):
+  File "C:\cwm\cwm-1.2.1\build\scripts-2.7\cwm", line 750, in <module>
+    doCommand()
+  File "C:\cwm\cwm-1.2.1\build\scripts-2.7\cwm", line 455, in doCommand
+    why=myReason)
+  File "C:\Users\William\.windows-build-tools\python27\lib\site-packages\swap\webAccess.py", line 225, in load
+    p.feed(buffer)
+  File "C:\Users\William\.windows-build-tools\python27\lib\site-packages\swap\notation3.py", line 214, in feed
+    i = self.directiveOrStatement(str,j)
+  File "C:\Users\William\.windows-build-tools\python27\lib\site-packages\swap\notation3.py", line 228, in directiveOrStatement
+    j = self.statement(str, i)
+  File "C:\Users\William\.windows-build-tools\python27\lib\site-packages\swap\notation3.py", line 377, in statement
+    j = self.property_list(str, i, r[0])
+  File "C:\Users\William\.windows-build-tools\python27\lib\site-packages\swap\notation3.py", line 698, in property_list
+    i = self.objectList(str, j, objs)
+  File "C:\Users\William\.windows-build-tools\python27\lib\site-packages\swap\notation3.py", line 745, in objectList
+    i = self.object(str, i, res)
+  File "C:\Users\William\.windows-build-tools\python27\lib\site-packages\swap\notation3.py", line 952, in object
+    j = self.subject(str, i, res)
+  File "C:\Users\William\.windows-build-tools\python27\lib\site-packages\swap\notation3.py", line 384, in subject
+    return self.item(str, i, res)
+  File "C:\Users\William\.windows-build-tools\python27\lib\site-packages\swap\notation3.py", line 463, in item
+    return self.path(str, i, res)
+  File "C:\Users\William\.windows-build-tools\python27\lib\site-packages\swap\notation3.py", line 488, in path
+    "EOF found in middle of path syntax")
+swap.notation3.BadSyntax: at line 5 of <file:///D:\git\n3dev\N3\grammar\target\..\tests\N3Tests\cwm_syntax\embedded-dot-in-qname.n3>:
+Bad syntax (EOF found in middle of path syntax) at ^ in:
+"# DAWG meeting 2005-2-28
+
+#
+
+@prefix foo:  <http://example.com/>.
+
+
+
+foo:fred foo:loves foo:sushi.food .
+
+
+^..."
+
+testing (positive): ..\tests\N3Tests\01etc\patient.n3
+testing (positive): ..\tests\N3Tests\07test\dpe_theory.n3
+testing (positive): ..\tests\N3Tests\05smml\QUERYobjects.n3
+testing (positive): ..\tests\N3Tests\07test\contradiction.n3
+testing (positive): ..\tests\N3Tests\01etc\medicF.n3
+testing (positive): ..\tests\N3Tests\cwm_n3\n3parser.tests_n3_10025.nt
+testing (positive): ..\tests\N3Tests\04test\kendallQ.n3
+testing (positive): ..\tests\N3Tests\07test\fgcm_proof.n3
+testing (positive): ..\tests\N3Tests\cwm_n3\n3parser.tests_n3_20000.nt
+testing (positive): ..\tests\N3Tests\01etc\query53.n3
+testing (positive): ..\tests\N3Tests\07test\sc.n3
+testing (positive): ..\tests\N3Tests\cwm_other\testmeta.n3
+testing (positive): ..\tests\N3Tests\01etc\owl-sameAs-ext.n3
+testing (positive): ..\tests\N3Tests\01etc\query55.n3
+testing (positive): ..\tests\N3Tests\07test\path-8-3-answer.n3
+testing (positive): ..\tests\N3Tests\07test\parteval-subclass.n3
+testing (positive): ..\tests\N3Tests\01etc\notIn_proof.n3
+testing (positive): ..\tests\N3Tests\04test\anatomy-result.n3
+testing (positive): ..\tests\N3Tests\01etc\query12.n3
+testing (positive): ..\tests\N3Tests\04test\query-survey-2.n3
+testing (positive): ..\tests\N3Tests\cwm_syntax\trailing-semicolon-ref.nt
+testing (positive): ..\tests\N3Tests\01etc\query99.n3
+testing (positive): ..\tests\N3Tests\01etc\gedcom-relations.n3
+testing (positive): ..\tests\N3Tests\07test\music-query.n3
+testing (positive): ..\tests\N3Tests\01etc\witch-proof.n3
+testing (positive): ..\tests\N3Tests\cwm_other\log-filter.n3
+testing (positive): ..\tests\N3Tests\01etc\query57.n3
+testing (positive): ..\tests\N3Tests\turtle\turtle-syntax-bad-n3-extras-11.ttl
+testing (positive): ..\tests\N3Tests\01etc\sdcoding-proof.n3
+testing (positive): ..\tests\N3Tests\01etc\agent1-answer.n3
+testing (positive): ..\tests\N3Tests\01etc\query66.n3
+testing (positive): ..\tests\N3Tests\04test\michaelP.n3
+testing (positive): ..\tests\N3Tests\01etc\query25.n3
+testing (positive): ..\tests\N3Tests\01etc\blueproof003.n3
+testing (positive): ..\tests\N3Tests\04test\metastaticQ001.n3
+testing (positive): ..\tests\N3Tests\04test\socratesQ.n3
+testing (positive): ..\tests\N3Tests\01etc\query41.n3
+testing (positive): ..\tests\N3Tests\01etc\skos-mapping-validation-query.n3
+testing (positive): ..\tests\N3Tests\01etc\query23.n3
+testing (positive): ..\tests\N3Tests\07test\wetQ102.n3
+testing (positive): ..\tests\N3Tests\04test\dawg-tp-1-01.n3
+testing (positive): ..\tests\N3Tests\04test\ex2-3aQ.n3
+testing (positive): ..\tests\N3Tests\05smml\RULESmatrix.n3
+testing (positive): ..\tests\N3Tests\01etc\graph.filter.n3
+testing (positive): ..\tests\N3Tests\cwm_reason\t1-ref.n3
+testing (positive): ..\tests\N3Tests\01etc\medic.n3
+testing (positive): ..\tests\N3Tests\01etc\query14.n3
+testing (positive): ..\tests\N3Tests\cwm_other\t01.n3
+testing (positive): ..\tests\N3Tests\04test\result-ot-0-02.n3
+testing (positive): ..\tests\N3Tests\01etc\query87.n3
+testing (positive): ..\tests\N3Tests\04test\anatomy-rules.n3
+testing (positive): ..\tests\N3Tests\01etc\owl-intersectionOf.n3
+testing (positive): ..\tests\N3Tests\01etc\skos-rules.n3
+testing (positive): ..\tests\N3Tests\01etc\streason-rules.n3
+testing (positive): ..\tests\N3Tests\cwm_math\trigo.ref.n3
+testing (positive): ..\tests\N3Tests\01etc\swetQ.n3
+testing (positive): ..\tests\N3Tests\07test\streason-result.n3
+testing (positive): ..\tests\N3Tests\07test\alpE013.n3
+testing (positive): ..\tests\N3Tests\04test\factorialQ.n3
+testing (positive): ..\tests\N3Tests\cwm_list\last.n3
+testing (positive): ..\tests\N3Tests\cwm_n3\n3parser.tests_n3_10012.nt
+testing (positive): ..\tests\N3Tests\07test\equalities1.n3
+testing (positive): ..\tests\N3Tests\cwm_string\roughly-out.n3
+testing (positive): ..\tests\N3Tests\04test\D1E.n3
+testing (positive): ..\tests\N3Tests\07test\thumbnail_why.n3
+testing (positive): ..\tests\N3Tests\01etc\palindrome-query.n3
+testing (positive): ..\tests\N3Tests\07test\swP.n3
+testing (positive): ..\tests\N3Tests\04test\danE.n3
+testing (positive): ..\tests\N3Tests\04test\ex2-4aQ.n3
+testing (positive): ..\tests\N3Tests\07test\usmP.n3
+testing (positive): ..\tests\N3Tests\cwm_syntax\one-bnode.n3
+testing (positive): ..\tests\N3Tests\04test\srcQ.n3
+testing (positive): ..\tests\N3Tests\07test\numeral_result.n3
+testing (positive): ..\tests\N3Tests\cwm_reason\t8-ref.n3
+testing (positive): ..\tests\N3Tests\07test\pi_result.n3
+testing (positive): ..\tests\N3Tests\01etc\query31.n3
+testing (positive): ..\tests\N3Tests\04test\ericF.n3
+testing (positive): ..\tests\N3Tests\cwm_list\unify2.n3
+testing (positive): ..\tests\N3Tests\07test\dpe_assumption.n3
+testing (positive): ..\tests\N3Tests\01etc\sdcoding-q.n3
+testing (positive): ..\tests\N3Tests\01etc\query43.n3
+testing (positive): ..\tests\N3Tests\cwm_other\daml-pref.n3
+testing (positive): ..\tests\N3Tests\07test\hanoi.n3
+testing (positive): ..\tests\N3Tests\01etc\nbbn_proof.n3
+testing (positive): ..\tests\N3Tests\07test\badmeta.n3
+in: #Processed by Id: cwm.py,v 1.197 2007/12/13 15:38:39 syosi Exp 
+        #    using base file:///D:\git\n3dev\N3\grammar\target\..\tests\N3Tests\07test\badmeta.n3
+        
+
+error:     Failed to parse file:///D:\git\n3dev\N3\grammar\target\..\tests\N3Tests\07test\badmeta.n3 
+   file:///D:\git\n3dev\N3\grammar\target\..\tests\N3Tests\07test\badmeta.n3 
+Traceback (most recent call last):
+  File "C:\cwm\cwm-1.2.1\build\scripts-2.7\cwm", line 750, in <module>
+    doCommand()
+  File "C:\cwm\cwm-1.2.1\build\scripts-2.7\cwm", line 455, in doCommand
+    why=myReason)
+  File "C:\Users\William\.windows-build-tools\python27\lib\site-packages\swap\webAccess.py", line 225, in load
+    p.feed(buffer)
+  File "C:\Users\William\.windows-build-tools\python27\lib\site-packages\swap\notation3.py", line 214, in feed
+    i = self.directiveOrStatement(str,j)
+  File "C:\Users\William\.windows-build-tools\python27\lib\site-packages\swap\notation3.py", line 228, in directiveOrStatement
+    j = self.statement(str, i)
+  File "C:\Users\William\.windows-build-tools\python27\lib\site-packages\swap\notation3.py", line 377, in statement
+    j = self.property_list(str, i, r[0])
+  File "C:\Users\William\.windows-build-tools\python27\lib\site-packages\swap\notation3.py", line 698, in property_list
+    i = self.objectList(str, j, objs)
+  File "C:\Users\William\.windows-build-tools\python27\lib\site-packages\swap\notation3.py", line 745, in objectList
+    i = self.object(str, i, res)
+  File "C:\Users\William\.windows-build-tools\python27\lib\site-packages\swap\notation3.py", line 952, in object
+    j = self.subject(str, i, res)
+  File "C:\Users\William\.windows-build-tools\python27\lib\site-packages\swap\notation3.py", line 384, in subject
+    return self.item(str, i, res)
+  File "C:\Users\William\.windows-build-tools\python27\lib\site-packages\swap\notation3.py", line 463, in item
+    return self.path(str, i, res)
+  File "C:\Users\William\.windows-build-tools\python27\lib\site-packages\swap\notation3.py", line 475, in path
+    j = self.nodeOrLiteral(str, i, res)
+  File "C:\Users\William\.windows-build-tools\python27\lib\site-packages\swap\notation3.py", line 974, in nodeOrLiteral
+    j = self.node(str, i, res)
+  File "C:\Users\William\.windows-build-tools\python27\lib\site-packages\swap\notation3.py", line 610, in node
+    j = self.directiveOrStatement(str,i)
+  File "C:\Users\William\.windows-build-tools\python27\lib\site-packages\swap\notation3.py", line 229, in directiveOrStatement
+    if j>=0: return self.checkDot(str,j)
+  File "C:\Users\William\.windows-build-tools\python27\lib\site-packages\swap\notation3.py", line 768, in checkDot
+    str, j, "expected '.' or '}' or ']' at end of statement")
+swap.notation3.BadSyntax: at line 45 of <file:///D:\git\n3dev\N3\grammar\target\..\tests\N3Tests\07test\badmeta.n3>:
+Bad syntax (expected '.' or '}' or ']' at end of statement) at ^ in:
+"...://penguin-house.example/2008/article2>
+
+        dc::SOURCE ^<http://example.org/1995/manifesto>.
+
+    }.
+
+
+
+
+
+  :Bob cyc..."
+
+testing (positive): ..\tests\N3Tests\01etc\query45.n3
+testing (positive): ..\tests\N3Tests\07test\path-3-3.n3
+testing (negative): neg-thisadoc.n3
+in: #Processed by Id: cwm.py,v 1.197 2007/12/13 15:38:39 syosi Exp 
+        #    using base file:///D:\git\n3dev\N3\grammar\target\..\tests\N3Tests\cwm_syntax\neg-thisadoc.n3
+        
+
+error: C:\Users\William\.windows-build-tools\python27\lib\site-packages\swap\notation3.py:651: UserWarning: at line 1 of <file:///D:\git\n3dev\N3\grammar\target\..\tests\N3Tests\cwm_syntax\neg-thisadoc.n3>:
+Bad syntax (Keyword 'this' was ancient N3. Now use @forSome and @forAll keywords.) at ^ in:
+"@keywords this . @prefix : <#> . ^this :a :Doc .
+
+"
+  "Keyword 'this' was ancient N3. Now use @forSome and @forAll keywords.")))
+    Failed to parse file:///D:\git\n3dev\N3\grammar\target\..\tests\N3Tests\cwm_syntax\neg-thisadoc.n3 
+   file:///D:\git\n3dev\N3\grammar\target\..\tests\N3Tests\cwm_syntax\neg-thisadoc.n3 
+Traceback (most recent call last):
+  File "C:\cwm\cwm-1.2.1\build\scripts-2.7\cwm", line 750, in <module>
+    doCommand()
+  File "C:\cwm\cwm-1.2.1\build\scripts-2.7\cwm", line 455, in doCommand
+    why=myReason)
+  File "C:\Users\William\.windows-build-tools\python27\lib\site-packages\swap\webAccess.py", line 225, in load
+    p.feed(buffer)
+  File "C:\Users\William\.windows-build-tools\python27\lib\site-packages\swap\notation3.py", line 214, in feed
+    i = self.directiveOrStatement(str,j)
+  File "C:\Users\William\.windows-build-tools\python27\lib\site-packages\swap\notation3.py", line 228, in directiveOrStatement
+    j = self.statement(str, i)
+  File "C:\Users\William\.windows-build-tools\python27\lib\site-packages\swap\notation3.py", line 377, in statement
+    j = self.property_list(str, i, r[0])
+  File "C:\Users\William\.windows-build-tools\python27\lib\site-packages\swap\notation3.py", line 704, in property_list
+    self.makeStatement((self._context, sym, subj, obj))
+  File "C:\Users\William\.windows-build-tools\python27\lib\site-packages\swap\notation3.py", line 367, in makeStatement
+    self._store.makeStatement(quadruple, why=self._reason2)
+  File "C:\Users\William\.windows-build-tools\python27\lib\site-packages\swap\llyn.py", line 1810, in makeStatement
+    self.storeQuad(q, why)
+  File "C:\Users\William\.windows-build-tools\python27\lib\site-packages\swap\llyn.py", line 1839, in storeQuad
+    return context.add(subj=subj, pred=pred, obj=obj, why=why)
+  File "C:\Users\William\.windows-build-tools\python27\lib\site-packages\swap\llyn.py", line 455, in add
+    raise ValueError("You cannot use 'this' except as subject of forAll or forSome")
+ValueError: You cannot use 'this' except as subject of forAll or forSome
+
+testing (negative): trailing-dot-in-qname.n3
+in: #Processed by Id: cwm.py,v 1.197 2007/12/13 15:38:39 syosi Exp 
+        #    using base file:///D:\git\n3dev\N3\grammar\target\..\tests\N3Tests\cwm_syntax\trailing-dot-in-qname.n3
+        # next char:  u'.'
+
+error:     Failed to parse file:///D:\git\n3dev\N3\grammar\target\..\tests\N3Tests\cwm_syntax\trailing-dot-in-qname.n3 
+   file:///D:\git\n3dev\N3\grammar\target\..\tests\N3Tests\cwm_syntax\trailing-dot-in-qname.n3 
+Traceback (most recent call last):
+  File "C:\cwm\cwm-1.2.1\build\scripts-2.7\cwm", line 750, in <module>
+    doCommand()
+  File "C:\cwm\cwm-1.2.1\build\scripts-2.7\cwm", line 455, in doCommand
+    why=myReason)
+  File "C:\Users\William\.windows-build-tools\python27\lib\site-packages\swap\webAccess.py", line 225, in load
+    p.feed(buffer)
+  File "C:\Users\William\.windows-build-tools\python27\lib\site-packages\swap\notation3.py", line 218, in feed
+    "expected directive or statement")
+swap.notation3.BadSyntax: at line 5 of <file:///D:\git\n3dev\N3\grammar\target\..\tests\N3Tests\cwm_syntax\trailing-dot-in-qname.n3>:
+Bad syntax (expected directive or statement) at ^ in:
+"...o:  <http://example.com/>.
+
+
+
+foo:fred foo:loves foo:sushi. ^.
+
+
+
+"
+
+testing (negative): qname-as-prefix-in-decl.n3
+testing (negative): space-in-uri.n3
+testing (negative): qvars4.n3
+in: #Processed by Id: cwm.py,v 1.197 2007/12/13 15:38:39 syosi Exp 
+        #    using base file:///D:\git\n3dev\N3\grammar\target\..\tests\N3Tests\cwm_syntax\qvars4.n3
+        
+
+error:     Failed to parse file:///D:\git\n3dev\N3\grammar\target\..\tests\N3Tests\cwm_syntax\qvars4.n3 
+   file:///D:\git\n3dev\N3\grammar\target\..\tests\N3Tests\cwm_syntax\qvars4.n3 
+Traceback (most recent call last):
+  File "C:\cwm\cwm-1.2.1\build\scripts-2.7\cwm", line 750, in <module>
+    doCommand()
+  File "C:\cwm\cwm-1.2.1\build\scripts-2.7\cwm", line 455, in doCommand
+    why=myReason)
+  File "C:\Users\William\.windows-build-tools\python27\lib\site-packages\swap\webAccess.py", line 225, in load
+    p.feed(buffer)
+  File "C:\Users\William\.windows-build-tools\python27\lib\site-packages\swap\notation3.py", line 214, in feed
+    i = self.directiveOrStatement(str,j)
+  File "C:\Users\William\.windows-build-tools\python27\lib\site-packages\swap\notation3.py", line 225, in directiveOrStatement
+    j = self.directive(str, i)
+  File "C:\Users\William\.windows-build-tools\python27\lib\site-packages\swap\notation3.py", line 280, in directive
+    i = self.commaSeparatedList(str, j, res, self.uri_ref2)
+  File "C:\Users\William\.windows-build-tools\python27\lib\site-packages\swap\notation3.py", line 727, in commaSeparatedList
+    i = what(str, i, res)
+  File "C:\Users\William\.windows-build-tools\python27\lib\site-packages\swap\notation3.py", line 810, in uri_ref2
+    j = self.variable(str,i,v)
+  File "C:\Users\William\.windows-build-tools\python27\lib\site-packages\swap\notation3.py", line 886, in variable
+    % str[j-1:i])
+swap.notation3.BadSyntax: at line 9 of <file:///D:\git\n3dev\N3\grammar\target\..\tests\N3Tests\cwm_syntax\qvars4.n3>:
+Bad syntax (Can't use ?xxx syntax for variable in outermost level: ?x) at ^ in:
+"...ns
+
+
+
+
+
+@prefix : <foo.n3#>.  # Local stuff
+
+
+
+
+
+
+
+@forAll ?^x, ?y, ?z.
+
+@forSome ?a, ?b, ?c.
+
+
+
+
+
+
+
+{ :x <#mother> :y. :..."
+
+testing (negative): djb1.n3
+in: #Processed by Id: cwm.py,v 1.197 2007/12/13 15:38:39 syosi Exp 
+        #    using base file:///D:\git\n3dev\N3\grammar\target\..\tests\N3Tests\cwm_syntax\djb1.n3
+        
+
+error:     Failed to parse file:///D:\git\n3dev\N3\grammar\target\..\tests\N3Tests\cwm_syntax\djb1.n3 
+   file:///D:\git\n3dev\N3\grammar\target\..\tests\N3Tests\cwm_syntax\djb1.n3 
+Traceback (most recent call last):
+  File "C:\cwm\cwm-1.2.1\build\scripts-2.7\cwm", line 750, in <module>
+    doCommand()
+  File "C:\cwm\cwm-1.2.1\build\scripts-2.7\cwm", line 455, in doCommand
+    why=myReason)
+  File "C:\Users\William\.windows-build-tools\python27\lib\site-packages\swap\webAccess.py", line 225, in load
+    p.feed(buffer)
+  File "C:\Users\William\.windows-build-tools\python27\lib\site-packages\swap\notation3.py", line 214, in feed
+    i = self.directiveOrStatement(str,j)
+  File "C:\Users\William\.windows-build-tools\python27\lib\site-packages\swap\notation3.py", line 228, in directiveOrStatement
+    j = self.statement(str, i)
+  File "C:\Users\William\.windows-build-tools\python27\lib\site-packages\swap\notation3.py", line 377, in statement
+    j = self.property_list(str, i, r[0])
+  File "C:\Users\William\.windows-build-tools\python27\lib\site-packages\swap\notation3.py", line 700, in property_list
+    "objectList expected")
+swap.notation3.BadSyntax: at line 3 of <file:///D:\git\n3dev\N3\grammar\target\..\tests\N3Tests\cwm_syntax\djb1.n3>:
+Bad syntax (objectList expected) at ^ in:
+"...base1#> .
+
+@prefix a: <http://example.org/base2#> .
+
+a:a a:b^ .
+
+"
+
+testing (negative): zero-objects.n3
+in: #Processed by Id: cwm.py,v 1.197 2007/12/13 15:38:39 syosi Exp 
+        #    using base file:///D:\git\n3dev\N3\grammar\target\..\tests\N3Tests\cwm_syntax\zero-objects.n3
+        
+
+error:     Failed to parse file:///D:\git\n3dev\N3\grammar\target\..\tests\N3Tests\cwm_syntax\zero-objects.n3 
+   file:///D:\git\n3dev\N3\grammar\target\..\tests\N3Tests\cwm_syntax\zero-objects.n3 
+Traceback (most recent call last):
+  File "C:\cwm\cwm-1.2.1\build\scripts-2.7\cwm", line 750, in <module>
+    doCommand()
+  File "C:\cwm\cwm-1.2.1\build\scripts-2.7\cwm", line 455, in doCommand
+    why=myReason)
+  File "C:\Users\William\.windows-build-tools\python27\lib\site-packages\swap\webAccess.py", line 225, in load
+    p.feed(buffer)
+  File "C:\Users\William\.windows-build-tools\python27\lib\site-packages\swap\notation3.py", line 214, in feed
+    i = self.directiveOrStatement(str,j)
+  File "C:\Users\William\.windows-build-tools\python27\lib\site-packages\swap\notation3.py", line 228, in directiveOrStatement
+    j = self.statement(str, i)
+  File "C:\Users\William\.windows-build-tools\python27\lib\site-packages\swap\notation3.py", line 377, in statement
+    j = self.property_list(str, i, r[0])
+  File "C:\Users\William\.windows-build-tools\python27\lib\site-packages\swap\notation3.py", line 700, in property_list
+    "objectList expected")
+swap.notation3.BadSyntax: at line 1 of <file:///D:\git\n3dev\N3\grammar\target\..\tests\N3Tests\cwm_syntax\zero-objects.n3>:
+Bad syntax (objectList expected) at ^ in:
+":a :b^ .
+
+"
+
+testing (negative): turtle-syntax-bad-n3-extras-13.ttl
+testing (negative): turtle-syntax-bad-n3-extras-07.ttl
+testing (negative): turtle-syntax-bad-n3-extras-08.ttl
+testing (negative): strquot.n3
+testing (negative): neg-keywords3.n3
+in: #Processed by Id: cwm.py,v 1.197 2007/12/13 15:38:39 syosi Exp 
+        #    using base file:///D:\git\n3dev\N3\grammar\target\..\tests\N3Tests\cwm_syntax\neg-keywords3.n3
+        
+
+error:     Failed to parse file:///D:\git\n3dev\N3\grammar\target\..\tests\N3Tests\cwm_syntax\neg-keywords3.n3 
+   file:///D:\git\n3dev\N3\grammar\target\..\tests\N3Tests\cwm_syntax\neg-keywords3.n3 
+Traceback (most recent call last):
+  File "C:\cwm\cwm-1.2.1\build\scripts-2.7\cwm", line 750, in <module>
+    doCommand()
+  File "C:\cwm\cwm-1.2.1\build\scripts-2.7\cwm", line 455, in doCommand
+    why=myReason)
+  File "C:\Users\William\.windows-build-tools\python27\lib\site-packages\swap\webAccess.py", line 225, in load
+    p.feed(buffer)
+  File "C:\Users\William\.windows-build-tools\python27\lib\site-packages\swap\notation3.py", line 214, in feed
+    i = self.directiveOrStatement(str,j)
+  File "C:\Users\William\.windows-build-tools\python27\lib\site-packages\swap\notation3.py", line 228, in directiveOrStatement
+    j = self.statement(str, i)
+  File "C:\Users\William\.windows-build-tools\python27\lib\site-packages\swap\notation3.py", line 377, in statement
+    j = self.property_list(str, i, r[0])
+  File "C:\Users\William\.windows-build-tools\python27\lib\site-packages\swap\notation3.py", line 693, in property_list
+    j = self.verb(str, i, v)
+  File "C:\Users\William\.windows-build-tools\python27\lib\site-packages\swap\notation3.py", line 448, in verb
+    j = self.prop(str, i, r)
+  File "C:\Users\William\.windows-build-tools\python27\lib\site-packages\swap\notation3.py", line 460, in prop
+    return self.item(str, i, res)
+  File "C:\Users\William\.windows-build-tools\python27\lib\site-packages\swap\notation3.py", line 463, in item
+    return self.path(str, i, res)
+  File "C:\Users\William\.windows-build-tools\python27\lib\site-packages\swap\notation3.py", line 475, in path
+    j = self.nodeOrLiteral(str, i, res)
+  File "C:\Users\William\.windows-build-tools\python27\lib\site-packages\swap\notation3.py", line 974, in nodeOrLiteral
+    j = self.node(str, i, res)
+  File "C:\Users\William\.windows-build-tools\python27\lib\site-packages\swap\notation3.py", line 666, in node
+    j = self.uri_ref2(str, i, res)
+  File "C:\Users\William\.windows-build-tools\python27\lib\site-packages\swap\notation3.py", line 845, in uri_ref2
+    'Keyword "%s" not allowed here.' % v[0])
+swap.notation3.BadSyntax: at line 1 of <file:///D:\git\n3dev\N3\grammar\target\..\tests\N3Tests\cwm_syntax\neg-keywords3.n3>:
+Bad syntax (Keyword "prefix" not allowed here.) at ^ in:
+"@keywords prefix. :e ^prefix :f .
+
+"
+
+testing (negative): query-survey-10.n3
+in: #Processed by Id: cwm.py,v 1.197 2007/12/13 15:38:39 syosi Exp 
+        #    using base file:///D:\git\n3dev\N3\grammar\target\..\tests\N3Tests\04test\query-survey-10.n3
+        
+
+error:     Failed to parse file:///D:\git\n3dev\N3\grammar\target\..\tests\N3Tests\04test\query-survey-10.n3 
+   file:///D:\git\n3dev\N3\grammar\target\..\tests\N3Tests\04test\query-survey-10.n3 
+Traceback (most recent call last):
+  File "C:\cwm\cwm-1.2.1\build\scripts-2.7\cwm", line 750, in <module>
+    doCommand()
+  File "C:\cwm\cwm-1.2.1\build\scripts-2.7\cwm", line 455, in doCommand
+    why=myReason)
+  File "C:\Users\William\.windows-build-tools\python27\lib\site-packages\swap\webAccess.py", line 225, in load
+    p.feed(buffer)
+  File "C:\Users\William\.windows-build-tools\python27\lib\site-packages\swap\notation3.py", line 214, in feed
+    i = self.directiveOrStatement(str,j)
+  File "C:\Users\William\.windows-build-tools\python27\lib\site-packages\swap\notation3.py", line 228, in directiveOrStatement
+    j = self.statement(str, i)
+  File "C:\Users\William\.windows-build-tools\python27\lib\site-packages\swap\notation3.py", line 377, in statement
+    j = self.property_list(str, i, r[0])
+  File "C:\Users\William\.windows-build-tools\python27\lib\site-packages\swap\notation3.py", line 698, in property_list
+    i = self.objectList(str, j, objs)
+  File "C:\Users\William\.windows-build-tools\python27\lib\site-packages\swap\notation3.py", line 745, in objectList
+    i = self.object(str, i, res)
+  File "C:\Users\William\.windows-build-tools\python27\lib\site-packages\swap\notation3.py", line 952, in object
+    j = self.subject(str, i, res)
+  File "C:\Users\William\.windows-build-tools\python27\lib\site-packages\swap\notation3.py", line 384, in subject
+    return self.item(str, i, res)
+  File "C:\Users\William\.windows-build-tools\python27\lib\site-packages\swap\notation3.py", line 463, in item
+    return self.path(str, i, res)
+  File "C:\Users\William\.windows-build-tools\python27\lib\site-packages\swap\notation3.py", line 475, in path
+    j = self.nodeOrLiteral(str, i, res)
+  File "C:\Users\William\.windows-build-tools\python27\lib\site-packages\swap\notation3.py", line 974, in nodeOrLiteral
+    j = self.node(str, i, res)
+  File "C:\Users\William\.windows-build-tools\python27\lib\site-packages\swap\notation3.py", line 610, in node
+    j = self.directiveOrStatement(str,i)
+  File "C:\Users\William\.windows-build-tools\python27\lib\site-packages\swap\notation3.py", line 228, in directiveOrStatement
+    j = self.statement(str, i)
+  File "C:\Users\William\.windows-build-tools\python27\lib\site-packages\swap\notation3.py", line 377, in statement
+    j = self.property_list(str, i, r[0])
+  File "C:\Users\William\.windows-build-tools\python27\lib\site-packages\swap\notation3.py", line 698, in property_list
+    i = self.objectList(str, j, objs)
+  File "C:\Users\William\.windows-build-tools\python27\lib\site-packages\swap\notation3.py", line 745, in objectList
+    i = self.object(str, i, res)
+  File "C:\Users\William\.windows-build-tools\python27\lib\site-packages\swap\notation3.py", line 952, in object
+    j = self.subject(str, i, res)
+  File "C:\Users\William\.windows-build-tools\python27\lib\site-packages\swap\notation3.py", line 384, in subject
+    return self.item(str, i, res)
+  File "C:\Users\William\.windows-build-tools\python27\lib\site-packages\swap\notation3.py", line 463, in item
+    return self.path(str, i, res)
+  File "C:\Users\William\.windows-build-tools\python27\lib\site-packages\swap\notation3.py", line 475, in path
+    j = self.nodeOrLiteral(str, i, res)
+  File "C:\Users\William\.windows-build-tools\python27\lib\site-packages\swap\notation3.py", line 1007, in nodeOrLiteral
+    j, s = self.strconst(str, i, delim)
+  File "C:\Users\William\.windows-build-tools\python27\lib\site-packages\swap\notation3.py", line 1113, in strconst
+    "bad escape")
+swap.notation3.BadSyntax: at line 10 of <file:///D:\git\n3dev\N3\grammar\target\..\tests\N3Tests\04test\query-survey-10.n3>:
+Bad syntax (bad escape) at ^ in:
+"...:where {?R ?x ?y; log:uri ?S. ?S str:matches "http://example^\.org/.*"}.
+
+"
+
+
+
+-- RESULTS
+total # tests = 1175
+
+> positive tests:
+# failed = 18
+failed: [04test/result-ot-0-01.n3, 01etc/4color_data.n3, 04test/grahamC.n3, cwm_syntax/neg-single-quote.n3, 04test/robC.n3, 04test/michaelC.n3, 07test/rifP.n3, 04test/sethC.n3, 07test/utf8.n3, 01etc/rifP.n3, cwm_math/trigo-test.n3, cwm_syntax/qual-after-user.n3, cwm_n3/n3parser.tests_n3_10014.n3, 04test/testC.n3, 04test/result-tp-05.n3, 01etc/iq-extra.n3, cwm_syntax/embedded-dot-in-qname.n3, 07test/badmeta.n3]
+
+> negative tests:
+# failed = 6
+failed: [cwm_syntax/qname-as-prefix-in-decl.n3, cwm_syntax/space-in-uri.n3, turtle/turtle-syntax-bad-n3-extras-13.ttl, turtle/turtle-syntax-bad-n3-extras-07.ttl, turtle/turtle-syntax-bad-n3-extras-08.ttl, cwm_other/strquot.n3]
+
+> skipped tests:
+# skipped = 32
+skipped: [01etc/gps-proof2.n3, 01etc/graph-10000.n3, 01etc/test-proof-1000.n3, 05smml/FACTShousewallsmeshed.n3, 01etc/test-dt-1000.n3, 01etc/polynomial.n3, 01etc/proof-2-1000.n3, 04test/radlex.n3, 01etc/biE.n3, 01etc/mmln-gv-proof.n3, 01etc/swet_proof.n3, 01etc/takE.n3, 01etc/mq_proof.n3, 04test/ontology-for-data-model.n3, manifest.ttl, 01etc/randomsample-proof.n3, 01etc/easter-proof.n3, 01etc/proof-10000.n3, 07test/path-1024-3.n3, 07test/graph-10000.n3, 01etc/data.n3, 01etc/10tt_proof.n3, 01etc/fgcm_proof.n3, 07test/test-strela-1000.n3, 01etc/proof-2-10000.n3, cwm_other/rdfcore-tests.n3, 01etc/result.n3, 01etc/rifE.n3, 01etc/proof-1000.n3, 01etc/fibE.n3, 01etc/pi-proof.n3, 04test/not-galen.n3]
