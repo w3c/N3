@@ -11,45 +11,54 @@ Aside from the `keywords` section, all current N3 constructs should be present.
 For testing, we are currently using the [Turtle test suite](https://www.w3.org/2013/TurtleTests/), the [Eye N3 test cases](http://eulersharp.sourceforge.net/), and [cwm N3 test cases](https://www.w3.org/2000/10/swap/doc/cwm.html). 
 A number of tests were also contributed by [Gregg Kellogg](https://github.com/gkellogg) as distilled from the [SWAP webpage](http://www.w3.org/2000/10/swap). 
 
-All tests can be found under the `tests/` folder, which has a `manifest.ttl` file that describe the test cases (e.g., positive, negative tests) using the [RDF test manifest](https://www.w3.org/TR/rdf11-testcases/) vocabulary.
+All tests can be found under the `tests/` folder, where each subfolder (`N3Tests`, `TurtleTests`) has its own `manifest.ttl` file that describe the test cases (e.g., positive, negative tests) using the [RDF test manifest](https://www.w3.org/TR/rdf11-testcases/) vocabulary.
 
 Since running syntax tests is a bit more complex than usual, with a distinction between positive- and negative-tests 
-(i.e., tests with and without expected syntax errors), we opted to create our own "test harnass" (see [Test.java](https://github.com/w3c/N3/blob/master/grammar/src/main/java/test/Test.java)).
+(i.e., tests with and without expected syntax errors), we opted to create our own "test harnass" (see [here](https://github.com/w3c/N3/blob/master/grammar/src/main/java/test/) for the code).
 
-See below for instructions on how to run the tests using this test harnass.
+See below for instructions on how to run the tests.
 
-## Running tests
+# Running tests
 
-To compile the lexer and parser (i.e., initially or after changes to a `.g4` file), run `mvn clean package`. 
-If all goes well this process should result in an `n3Grammar.jar` file under the `target` folder. This program can be used for running tests with the updated grammar.
+Currently, the test harnass supports:
+- The new N3 (and Turtle) grammar (see `*.g4` files)
+- The [cwm](https://www.w3.org/2000/10/swap/doc/cwm.html) system. 
+
+It should be relatively straightforward to support additional systems, such as [Eye](http://eulersharp.sourceforge.net/).
+
+The tool will utilize a `manifest.ttl` file when found; else, it will treat all given files as positive/negative tests. It will also print all output to file `./test_out.txt`, in addition to showing it on the cmd line.
+
+To compile the test harness, run `mvn clean package`. If all goes well this process should result in separate jar files for each supported system under the `target` folder. Run `java -jar <name>.jar` for usage info. 
+
+Note that you can update the grammar (`.g4` file) and then run `mvn clean package` to compile the new lexer and parser, which are part of the test harness.
 
 There is a distinction between **positive-tests** (i.e., no syntax errors expected) and **negative-tests** (i.e., syntax errors expected).
 
-Run `java -jar n3Grammar.jar` for usage info. 
-
 - In case a **folder** is given, the program will look for a `manifest.ttl` file that describe the test cases using the [RDF test manifest](https://www.w3.org/TR/rdf11-testcases/) vocabulary. 
 
-  When no manifest is found, the program will simply treat all Turtle / N3 files in the folder as tests (recursively). The program will expect a `-pos`/`-neg` flag indicating whether they are positive or negative tests. This flag can always be given to override the `manifest.ttl` file within the folder, if any.
-
+  When no manifest is found, the program will simply treat all Turtle / N3 files in the folder as tests (recursively). The program will expect a `-pos`/`-neg` flag indicating whether they are positive or negative tests. Note that this flag can also be given to override the `manifest.ttl` file within the folder, if any.
 
 - In case an **individual file** is given, the program will always expect a `-pos`/`-neg` flag to indicate whether it is a  positive or negative test. The `-printAST` flag can be added to print the parsed AST.
 
 For instance:
 
-* `java -jar n3Grammar.jar n3 ../tests/N3Tests`
-runs all files inside the `N3Tests` folder as listed in its `manifest.ttl`.  
+* `java -jar n3TestGrammar.jar n3 ../tests/N3Tests`  
+**N3**: tests files inside the `N3Tests` folder, as listed in its `manifest.ttl`, as N3 test cases.  
 
-* `java -jar n3Grammar.jar n3 ../tests/N3Tests/01etc -pos`
-runs all files inside the `N3Tests/01etc` folder as positive tests.
+* `java -jar n3TestGrammar.jar n3 ../tests/TurtleTests -pos`  
+**Turtle**: tests all files inside the `TurtleTests` folder as positive Turtle test cases.
 
-* `java -jar n3Grammar.jar n3 ../tests/N3Tests/01etc/food-query.n3 -pos -printAST`  
-runs the individual `a.n3` file as a positive-test and prints its AST.
+* `java -jar n3TestGrammar.jar n3 ../tests/N3Tests/01etc/food-query.n3 -pos -printAST`  
+**N3**: tests the `a.n3` file as a positive N3 test case and prints its AST.
 
-### Turtle grammar
+* `java -jar n3TestCwm.jar C:/cwm/cwm-1.2.1/build/scripts-2.7/cwm ../tests/N3Tests`  
+**Cwm**: tests files inside the `N3Tests` folder, as listed in its `manifest.ttl`, as cwm test cases.  
+
+## Turtle grammar
 
 For the **Turtle test suite**, the Turtle grammar fails for two negative-test files (marked as `Rejected` in `manifest.ttl`) due to an issue unrelated to the parser.
 
-### N3 grammar
+## N3 grammar
 
 Currently, the new N3 grammar does not support the `@keywords` section. This means that quite a lot of relevant test cases, i.e., which are meant to test something else but happen to have a `@keywords` section, were failing. Hence, we manually removed the `@keywords` section and manually corrected the non-qname terms in those files. You can find the original versions of those test cases in the `N3Tests/original/with_keywords` folder. 
 
