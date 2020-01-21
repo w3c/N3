@@ -155,7 +155,7 @@ public abstract class N3TestExec extends N3Test {
 			break;
 
 		case NIX:
-			cmd = "bash -c " + cmd;
+			//cmd = "bash -c " + cmd;
 			break;
 		}
 
