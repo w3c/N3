@@ -1,1 +1,0 @@
-changed all has to @has

@@ -6,7 +6,16 @@ Since N3 is supposed to subsume Turtle, we started by creating a grammar for Tur
 In and of itself this came with its own set of issues - see comments in the grammar file.
 
 The Turtle grammar was subsequently adapted and extended with N3 constructs (`n3.g4`).
-Aside from the `keywords` section, all current N3 constructs should be present.
+
+Changes between the new N3 grammar and the original grammars (Turtle, N3) include:
+- Dropping the `@keywords` section
+- Allowing all "verb" keywords (e.g., `is .. of`, `has`) both with and without `@` prefix
+- Supporting comments in files  
+(strangely, neither N3 nor Turtle seemed to define these in their syntaxes)
+- (*minor*) supporting non-encoded spaces in IRIs  
+(not allowed in Turtle) 
+
+# Testing
 
 For testing, we are currently using the [Turtle test suite](https://www.w3.org/2013/TurtleTests/), the [Eye N3 test cases](http://eulersharp.sourceforge.net/), and [cwm N3 test cases](https://www.w3.org/2000/10/swap/doc/cwm.html). 
 A number of tests were also contributed by [Gregg Kellogg](https://github.com/gkellogg) as distilled from the [SWAP webpage](http://www.w3.org/2000/10/swap). 
@@ -18,7 +27,7 @@ Since running syntax tests is a bit more complex than usual, with a distinction 
 
 See below for instructions on how to run the tests.
 
-# Running tests
+## Running tests
 
 Currently, the test harnass supports:
 - The new N3 (and Turtle) grammar (see `*.g4` files)
@@ -54,37 +63,17 @@ For instance:
 * `java -jar n3TestCwm.jar C:/cwm/cwm-1.2.1/build/scripts-2.7/cwm ../tests/N3Tests`  
 **Cwm**: tests files inside the `N3Tests` folder, as listed in its `manifest.ttl`, as cwm test cases.  
 
-## Turtle grammar
+### Turtle grammar
 
 For the **Turtle test suite**, the Turtle grammar fails for two negative-test files (marked as `Rejected` in `manifest.ttl`) due to an issue unrelated to the parser.
 
-## N3 grammar
+### N3 grammar
 
 Currently, the new N3 grammar does not support the `@keywords` section. This means that quite a lot of relevant test cases, i.e., which are meant to test something else but happen to have a `@keywords` section, were failing. Hence, we manually removed the `@keywords` section and manually corrected the non-qname terms in those files. You can find the original versions of those test cases in the `N3Tests/original/with_keywords` folder. 
 
 Note that the `N3Tests\turtle` folder contains test cases from the Turtle test suite that specifically target N3 features (so they are expected to fail for a Turtle-only parser, but should succeed for an N3 parser).
 
 We refer to the `manifest.ttl` file for all test cases that failed for our N3 grammar - these will have a `Rejected` or `Proposed` approval together with an `rdfs:comment` describing why they failed.
-
-You can find an (likely incomplete) summary below:
-
-For the **Eye N3 test cases**, the N3 grammar passes for most of them. The failed ones involve the following:
-
-1. non-labeled (for lack of a better word) bnodes, i.e., `_:`
-
-2. quick-variables annotated with datatypes and language tags, e.g., `?v^^xsd:int`, `?v@en` 
-
-3. '\\' chars in strings which does not seem allowed by either Turtle nor N3
-
-For the **cwm N3 test cases**, the N3 grammar passes for most of them. The failed ones involve the following:
-
-1. instances of `is .. of` instead of `@is .. @of`, and `has` instead of `@has` (without a `@keywords` section). These cases were manually corrected (see `*_correction.txt` files).
-
-2. escaped characters that are not supported by Turtle (i.e., aside from `tbnrf`) (see `cwm_other/strqout.n3`). Would it make sense to support escaping arbitrary characters? .. 
-
-3. non-encoded spaces in IRIs (see `cwm_syntax/space-in-uri.n3`)
-
-4. the `this` keyword (deprecated according to [here](https://www.w3.org/2000/10/swap/grammar/n3.n3)) (see `cwm_syntax/this-quantifiers-ref2.n3`)
 
 ## Contributing
 

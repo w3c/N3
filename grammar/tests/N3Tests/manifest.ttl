@@ -81,8 +81,8 @@
         a              rdft:TestTurtlePositiveSyntax ;
         mf:action      <04test/metastaticP.n3> ;
         mf:name        "metastaticP" ;
-        rdfs:comment   "uses '_:' for bnodes which is not accepted by turtle" ;
-        rdft:approval  rdft:Proposed .
+        rdfs:comment   "uses '_:' for bnodes ; it was decided not to allow this" ;
+        rdft:approval  rdft:Rejected .
 
 <#cwm_supports_simple.n3>
         a              rdft:TestTurtlePositiveSyntax ;
@@ -223,10 +223,9 @@
         rdft:approval  rdft:Approved .
 
 <#cwm_syntax_space-in-uri.n3>
-        a              rdft:TestTurtleNegativeSyntax ;
+        a              rdft:TestTurtlePositiveSyntax ;
         mf:action      <cwm_syntax/space-in-uri.n3> ;
         mf:name        "space-in-uri" ;
-        rdfs:comment   "non-encoded spaces in IRIs are not allowed" ;
         rdft:approval  rdft:Approved .
 
 <#04test_radlexQ.n3>  a  rdft:TestTurtlePositiveSyntax ;
@@ -1819,8 +1818,8 @@
 <#07test_rsP.n3>  a    rdft:TestTurtlePositiveSyntax ;
         mf:action      <07test/rsP.n3> ;
         mf:name        "rsP" ;
-        rdfs:comment   "uses '_:' for bnodes which is not accepted by turtle" ;
-        rdft:approval  rdft:Proposed .
+        rdfs:comment   "uses '_:' for bnodes ; it was decided not to allow this" ;
+        rdft:approval  rdft:Rejected .
 
 <#04test_dogQ.n3>  a   rdft:TestTurtlePositiveSyntax ;
         mf:action      <04test/dogQ.n3> ;
@@ -3404,8 +3403,8 @@
         a              rdft:TestTurtlePositiveSyntax ;
         mf:action      <04test/metastaticR.n3> ;
         mf:name        "metastaticR" ;
-        rdfs:comment   "uses '_:' for bnodes which is not accepted by turtle" ;
-        rdft:approval  rdft:Proposed .
+        rdfs:comment   "uses '_:' for bnodes ; it was decided not to allow this" ;
+        rdft:approval  rdft:Rejected .
 
 <#01etc_pi.n3>  a      rdft:TestTurtlePositiveSyntax ;
         mf:action      <01etc/pi.n3> ;
@@ -4098,8 +4097,8 @@
 <#07test_ptP.n3>  a    rdft:TestTurtlePositiveSyntax ;
         mf:action      <07test/ptP.n3> ;
         mf:name        "ptP" ;
-        rdfs:comment   "uses '_:' for bnodes which is not accepted by turtle" ;
-        rdft:approval  rdft:Proposed .
+        rdfs:comment   "uses '_:' for bnodes ; it was decided not to allow this" ;
+        rdft:approval  rdft:Rejected .
 
 <#07test_adl_result.n3>
         a              rdft:TestTurtlePositiveSyntax ;
@@ -4685,8 +4684,8 @@
 <#07test_orP.n3>  a    rdft:TestTurtlePositiveSyntax ;
         mf:action      <07test/orP.n3> ;
         mf:name        "orP" ;
-        rdfs:comment   "uses '_:' for bnodes which is not accepted by turtle" ;
-        rdft:approval  rdft:Proposed .
+        rdfs:comment   "uses '_:' for bnodes ; it was decided not to allow this" ;
+        rdft:approval  rdft:Rejected .
 
 <#04test_ex2-4aQ.n3>  a  rdft:TestTurtlePositiveSyntax ;
         mf:action      <04test/ex2-4aQ.n3> ;
@@ -5274,8 +5273,8 @@
 <#07test_m3bP.n3>  a   rdft:TestTurtlePositiveSyntax ;
         mf:action      <07test/m3bP.n3> ;
         mf:name        "m3bP" ;
-        rdfs:comment   "uses '_:' for bnodes which is not accepted by turtle" ;
-        rdft:approval  rdft:Proposed .
+        rdfs:comment   "uses '_:' for bnodes ; it was decided not to allow this" ;
+        rdft:approval  rdft:Rejected .
 
 <#04test_icalR.n3>  a  rdft:TestTurtlePositiveSyntax ;
         mf:action      <04test/icalR.n3> ;
@@ -6085,8 +6084,8 @@
 <#07test_irR.n3>  a    rdft:TestTurtlePositiveSyntax ;
         mf:action      <07test/irR.n3> ;
         mf:name        "irR" ;
-        rdfs:comment   "uses '_:' for bnodes which is not accepted by turtle" ;
-        rdft:approval  rdft:Proposed .
+        rdfs:comment   "uses '_:' for bnodes ; it was decided not to allow this" ;
+        rdft:approval  rdft:Rejected .
 
 <#04test_stc1.n3>  a   rdft:TestTurtlePositiveSyntax ;
         mf:action      <04test/stc1.n3> ;
@@ -6271,8 +6270,8 @@
         a              rdft:TestTurtlePositiveSyntax ;
         mf:action      <07test/nbbn_result.n3> ;
         mf:name        "nbbn_result" ;
-        rdfs:comment   "uses '_:' for bnodes which is not accepted by turtle" ;
-        rdft:approval  rdft:Proposed .
+        rdfs:comment   "uses '_:' for bnodes ; it was decided not to allow this" ;
+        rdft:approval  rdft:Rejected .
 
 <#01etc_pi-proof.n3>  a  rdft:TestTurtlePositiveSyntax ;
         mf:action      <01etc/pi-proof.n3> ;

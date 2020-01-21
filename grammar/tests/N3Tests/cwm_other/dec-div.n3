@@ -13,7 +13,7 @@
              m:buyCurrency m:USD;
              m:sellCurrency m:CAD.
 
-{ ?X @is math:quotient @of ("2.3" "1.2") } => { :exch1 m:rate ?X }.
+{ ?X is math:quotient of ("2.3" "1.2") } => { :exch1 m:rate ?X }.
 
 :priceCAD m:priceCurrency m:CAD.
 qif:amount m:priceCurrency m:USD.

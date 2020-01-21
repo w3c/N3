@@ -69,8 +69,8 @@ rdfs:subClassOf 		a daml:TransitiveProperty .
 # Implication of subPropertyOf:
 
 
-{ 	<#p1> @has rdfs:range <#c>.
-	<#p2> rdfs:subPropertyOf <#p1> . } log:implies  { <#p2> @has rdfs:range <#c> } .
+{ 	<#p1> has rdfs:range <#c>.
+	<#p2> rdfs:subPropertyOf <#p1> . } log:implies  { <#p2> has rdfs:range <#c> } .
 
 
 # Implication of Range and domain

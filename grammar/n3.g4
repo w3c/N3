@@ -89,7 +89,9 @@ verb
 	: predicate 
 	| 'a' 
 	| '@a' 
-	| '@has' expression 
+	| 'has' expression 
+	| '@has' expression
+	| 'is' expression 'of'
 	| '@is' expression '@of' 
 	| '=' 
 	| '<=' 
@@ -209,7 +211,9 @@ universal
 	;
 	
 IRIREF 
-	: '<' (~[\u0000-\u0020<>"{}|^`\\] | UCHAR)* '>' /* #x00=NULL #01-#x1F=control codes #x20=space */
+//	: '<' (~[\u0000-\u0020<>"{}|^`\\] | UCHAR)* '>' /* #x00=NULL #01-#x1F=control codes #x20=space */
+/* currently allows non-encoded spaces */
+	: '<' (~[\u0000-\u0019<>"{}|^`\\] | UCHAR)* '>'
 	;
 	
 PNAME_NS 

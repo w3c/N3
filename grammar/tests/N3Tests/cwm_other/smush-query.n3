@@ -10,8 +10,8 @@
 
 @forAll :interest, :person, :company.
 
-{ :interest @is agg:technologyInterest @of :person.
-  :person @is agg:owner @of :company.
+{ :interest is agg:technologyInterest of :person.
+  :person is agg:owner of :company.
   :company agg:ethicalPolicy
 	<http://dotherightthing.example.org/policy.xhtml>.
 }
