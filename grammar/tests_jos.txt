@@ -26,12 +26,12 @@ n3TestEye
 total # tests = 1206
 
 > positive tests:
-# failed = 3
-failed: [cwm_syntax/space-in-uri.n3, cwm_math/trigo-test.n3, cwm_n3/n3parser.tests_n3_10014.n3]
+# failed = 2
+failed: [cwm_n3/n3parser.tests_n3_10014.n3, cwm_math/trigo-test.n3]
 
 > negative tests:
 # failed = 3
-failed: [turtle/turtle-syntax-bad-n3-extras-07.ttl, turtle/turtle-syntax-bad-n3-extras-13.ttl, turtle/turtle-syntax-bad-n3-extras-08.ttl]
+failed: [turtle/turtle-syntax-bad-n3-extras-08.ttl, turtle/turtle-syntax-bad-n3-extras-13.ttl, turtle/turtle-syntax-bad-n3-extras-07.ttl]
 
 > skipped tests:
 # skipped = 0
