@@ -81,7 +81,8 @@ public abstract class N3Test {
 		br.close();
 
 		if (base == null)
-			base = "file:\\\\\\" + System.getProperty("user.dir") + "\\";
+//			base = "file:\\\\\\" + System.getProperty("user.dir") + "\\";
+			base = "file:\\\\" + System.getProperty("user.dir") + "\\";
 
 		Log.i("assuming base = " + base);
 	}
@@ -102,7 +103,10 @@ public abstract class N3Test {
 			Statement actionStmt = testCase.getProperty(manifest.createProperty(NS.uri("mf", "action")));
 			if (actionStmt != null) {
 				String test = actionStmt.getObject().asResource().getURI();
+				
 				test = test.substring(base.length());
+				if (test.startsWith("/") || test.startsWith("\\"))
+					test = test.substring(1);
 
 				File f = new File(folder + test);
 				if (!skipTest(f)) {
