@@ -81,7 +81,7 @@ public abstract class N3Test {
 		br.close();
 
 		if (base == null)
-			base = "file:\\\\\\" + System.getProperty("user.dir") + "\\";
+			base = "file://" + System.getProperty("user.dir") + "/";
 
 		Log.i("assuming base = " + base);
 	}
