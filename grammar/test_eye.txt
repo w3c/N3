@@ -1,12 +1,12 @@
 -- CONFIG
-system: eye (C:\eye\eye\eye.cmd)
+system: eye (C:\eye\eye.cmd)
 folder: D:\git\n3dev\N3\grammar\tests\N3Tests
 using manifest
 
 
 -- TESTS
 parsing manifest.ttl
-assuming base = file:\\\D:\git\n3dev\N3\grammar\target\
+assuming base = file:\\D:\git\n3dev\N3\grammar\target\
 testing (positive): ..\tests\N3Tests\cwm_string\uriEncode.n3
 testing (positive): ..\tests\N3Tests\cwm_list\bnode_in_list_in_list.n3
 testing (positive): ..\tests\N3Tests\01etc\query40.n3
@@ -32,17 +32,6 @@ testing (positive): ..\tests\N3Tests\01etc\4color_data.n3
 testing (positive): ..\tests\N3Tests\04test\robP.n3
 testing (positive): ..\tests\N3Tests\07test\alpE012.n3
 testing (positive): ..\tests\N3Tests\01etc\gps-proof2.n3
-in: #Processed by EYE v19.0604.1527 josd
-#eye --n3 D:\git\n3dev\N3\grammar\target\..\tests\N3Tests\01etc\gps-proof2.n3
-
-
-
-error: eye --n3 D:\git\n3dev\N3\grammar\target\..\tests\N3Tests\01etc\gps-proof2.n3
-EYE v19.0604.1527 josd
-SWI-Prolog 8.0.3 (x64-win64): Jun 19 2019, 15:49:44
-starting 31 [msec cputime] 54 [msec walltime]
-GET file:///d:/git/n3dev/n3/grammar/tests/n3tests/01etc/gps-proof2.n3 ** ERROR ** file:///d:/git/n3dev/n3/grammar/tests/n3tests/01etc/gps-proof2.n3 ** not_supported_keyword(@forAll,at_formula_depth(1))
-
 testing (positive): ..\tests\N3Tests\01etc\checking.n3
 testing (positive): ..\tests\N3Tests\04test\aliceFoaf.n3
 testing (positive): ..\tests\N3Tests\01etc\query17.n3
@@ -59,32 +48,11 @@ testing (positive): ..\tests\N3Tests\cwm_includes\conjunction-ref.n3
 testing (positive): ..\tests\N3Tests\01etc\sdcoding-a.n3
 testing (positive): ..\tests\N3Tests\01etc\sudoku.n3
 testing (positive): ..\tests\N3Tests\04test\alarmE.n3
-in: #Processed by EYE v19.0604.1527 josd
-#eye --n3 D:\git\n3dev\N3\grammar\target\..\tests\N3Tests\04test\alarmE.n3
-
-
-error: eye --n3 D:\git\n3dev\N3\grammar\target\..\tests\N3Tests\04test\alarmE.n3
-EYE v19.0604.1527 josd
-SWI-Prolog 8.0.3 (x64-win64): Jun 19 2019, 15:49:44
-starting 15 [msec cputime] 56 [msec walltime]
-GET file:///d:/git/n3dev/n3/grammar/tests/n3tests/04test/alarme.n3 ** ERROR ** gre ** builtin_redefinition(<http://www.w3.org/2000/10/swap/log#semantics>(<http://eulersharp.sourceforge.net/2004/04test/alarm.n3>,<http://josd.github.io/eye/.well-known/genid/BbobIHP_eTNq7TtS3QSLNKr4_QY#bn_1>))
-
 testing (positive): ..\tests\N3Tests\cwm_other\daml-ont.n3
 testing (positive): ..\tests\N3Tests\04test\query-survey-result-2.n3
 testing (positive): ..\tests\N3Tests\01etc\query38.n3
 testing (positive): ..\tests\N3Tests\07test\benchE.n3
 testing (positive): ..\tests\N3Tests\01etc\palindrome-proof.n3
-in: #Processed by EYE v19.0604.1527 josd
-#eye --n3 D:\git\n3dev\N3\grammar\target\..\tests\N3Tests\01etc\palindrome-proof.n3
-
-
-
-error: eye --n3 D:\git\n3dev\N3\grammar\target\..\tests\N3Tests\01etc\palindrome-proof.n3
-EYE v19.0604.1527 josd
-SWI-Prolog 8.0.3 (x64-win64): Jun 19 2019, 15:49:44
-starting 46 [msec cputime] 83 [msec walltime]
-GET file:///d:/git/n3dev/n3/grammar/tests/n3tests/01etc/palindrome-proof.n3 ** ERROR ** file:///d:/git/n3dev/n3/grammar/tests/n3tests/01etc/palindrome-proof.n3 ** not_supported_keyword(@forAll,at_formula_depth(1))
-
 testing (positive): ..\tests\N3Tests\cwm_syntax\sep-term.n3
 testing (positive): ..\tests\N3Tests\01etc\owl-AllDifferent.n3
 testing (positive): ..\tests\N3Tests\01etc\background_rules.n3
@@ -97,17 +65,6 @@ testing (positive): ..\tests\N3Tests\cwm_supports\simple.n3
 testing (positive): ..\tests\N3Tests\04test\anatomy-facts.n3
 testing (positive): ..\tests\N3Tests\04test\gene.n3
 testing (positive): ..\tests\N3Tests\04test\metastaticE.n3
-in: #Processed by EYE v19.0604.1527 josd
-#eye --n3 D:\git\n3dev\N3\grammar\target\..\tests\N3Tests\04test\metastaticE.n3
-
-
-
-error: eye --n3 D:\git\n3dev\N3\grammar\target\..\tests\N3Tests\04test\metastaticE.n3
-EYE v19.0604.1527 josd
-SWI-Prolog 8.0.3 (x64-win64): Jun 19 2019, 15:49:44
-starting 0 [msec cputime] 56 [msec walltime]
-GET file:///d:/git/n3dev/n3/grammar/tests/n3tests/04test/metastatice.n3 ** ERROR ** file:///d:/git/n3dev/n3/grammar/tests/n3tests/04test/metastatice.n3 ** not_supported_keyword(@forAll,at_formula_depth(1))
-
 testing (positive): ..\tests\N3Tests\01etc\select-query.n3
 testing (positive): ..\tests\N3Tests\04test\librarianQ.n3
 testing (positive): ..\tests\N3Tests\cwm_includes\concat-ref.n3
@@ -120,48 +77,15 @@ testing (positive): ..\tests\N3Tests\07test\cryptoP.n3
 testing (positive): ..\tests\N3Tests\07test\data3.n3
 testing (positive): ..\tests\N3Tests\01etc\query10.n3
 testing (positive): ..\tests\N3Tests\01etc\medicE.n3
-in: #Processed by EYE v19.0604.1527 josd
-#eye --n3 D:\git\n3dev\N3\grammar\target\..\tests\N3Tests\01etc\medicE.n3
-
-
-
-error: eye --n3 D:\git\n3dev\N3\grammar\target\..\tests\N3Tests\01etc\medicE.n3
-EYE v19.0604.1527 josd
-SWI-Prolog 8.0.3 (x64-win64): Jun 19 2019, 15:49:44
-starting 46 [msec cputime] 61 [msec walltime]
-GET file:///d:/git/n3dev/n3/grammar/tests/n3tests/01etc/medice.n3 ** ERROR ** file:///d:/git/n3dev/n3/grammar/tests/n3tests/01etc/medice.n3 ** not_supported_keyword(@forAll,at_formula_depth(1))
-
 testing (positive): ..\tests\N3Tests\01etc\witch-goal.n3
 testing (positive): ..\tests\N3Tests\cwm_other\reflexive.n3
 testing (positive): ..\tests\N3Tests\cwm_other\daml-ex.n3
 testing (positive): ..\tests\N3Tests\01etc\socratesF.n3
 testing (positive): ..\tests\N3Tests\01etc\food-proof.n3
-in: #Processed by EYE v19.0604.1527 josd
-#eye --n3 D:\git\n3dev\N3\grammar\target\..\tests\N3Tests\01etc\food-proof.n3
-
-
-
-error: eye --n3 D:\git\n3dev\N3\grammar\target\..\tests\N3Tests\01etc\food-proof.n3
-EYE v19.0604.1527 josd
-SWI-Prolog 8.0.3 (x64-win64): Jun 19 2019, 15:49:44
-starting 31 [msec cputime] 58 [msec walltime]
-GET file:///d:/git/n3dev/n3/grammar/tests/n3tests/01etc/food-proof.n3 ** ERROR ** file:///d:/git/n3dev/n3/grammar/tests/n3tests/01etc/food-proof.n3 ** not_supported_keyword(@forAll,at_formula_depth(1))
-
 testing (positive): ..\tests\N3Tests\cwm_syntax\numbers.n3
 testing (positive): ..\tests\N3Tests\01etc\rdfs-domain.n3
 testing (positive): ..\tests\N3Tests\04test\factorial.n3
 testing (positive): ..\tests\N3Tests\01etc\skos_mv_proof.n3
-in: #Processed by EYE v19.0604.1527 josd
-#eye --n3 D:\git\n3dev\N3\grammar\target\..\tests\N3Tests\01etc\skos_mv_proof.n3
-
-
-
-error: eye --n3 D:\git\n3dev\N3\grammar\target\..\tests\N3Tests\01etc\skos_mv_proof.n3
-EYE v19.0604.1527 josd
-SWI-Prolog 8.0.3 (x64-win64): Jun 19 2019, 15:49:44
-starting 31 [msec cputime] 56 [msec walltime]
-GET file:///d:/git/n3dev/n3/grammar/tests/n3tests/01etc/skos_mv_proof.n3 ** ERROR ** file:///d:/git/n3dev/n3/grammar/tests/n3tests/01etc/skos_mv_proof.n3 ** not_supported_keyword(@forAll,at_formula_depth(1))
-
 testing (positive): ..\tests\N3Tests\01etc\year.n3
 testing (positive): ..\tests\N3Tests\01etc\queens.n3
 testing (positive): ..\tests\N3Tests\04test\ex2-1a.n3
@@ -173,17 +97,6 @@ testing (positive): ..\tests\N3Tests\01etc\palindrome-declarations.n3
 testing (positive): ..\tests\N3Tests\07test\speech.n3
 testing (positive): ..\tests\N3Tests\01etc\query37.n3
 testing (positive): ..\tests\N3Tests\01etc\deE.n3
-in: #Processed by EYE v19.0604.1527 josd
-#eye --n3 D:\git\n3dev\N3\grammar\target\..\tests\N3Tests\01etc\deE.n3
-
-
-
-error: eye --n3 D:\git\n3dev\N3\grammar\target\..\tests\N3Tests\01etc\deE.n3
-EYE v19.0604.1527 josd
-SWI-Prolog 8.0.3 (x64-win64): Jun 19 2019, 15:49:44
-starting 31 [msec cputime] 56 [msec walltime]
-GET file:///d:/git/n3dev/n3/grammar/tests/n3tests/01etc/dee.n3 ** ERROR ** file:///d:/git/n3dev/n3/grammar/tests/n3tests/01etc/dee.n3 ** not_supported_keyword(@forAll,at_formula_depth(1))
-
 testing (positive): ..\tests\N3Tests\turtle\turtle-syntax-bad-n3-extras-01.ttl
 testing (positive): ..\tests\N3Tests\01etc\polynomialgen.n3
 testing (positive): ..\tests\N3Tests\07test\agent_knowledge.n3
@@ -194,31 +107,9 @@ testing (positive): ..\tests\N3Tests\07test\takQ.n3
 testing (positive): ..\tests\N3Tests\07test\path-4-3-answer.n3
 testing (positive): ..\tests\N3Tests\01etc\usmQ.n3
 testing (positive): ..\tests\N3Tests\01etc\test-proof-1000.n3
-in: #Processed by EYE v19.0604.1527 josd
-#eye --n3 D:\git\n3dev\N3\grammar\target\..\tests\N3Tests\01etc\test-proof-1000.n3
-
-
-
-error: eye --n3 D:\git\n3dev\N3\grammar\target\..\tests\N3Tests\01etc\test-proof-1000.n3
-EYE v19.0604.1527 josd
-SWI-Prolog 8.0.3 (x64-win64): Jun 19 2019, 15:49:44
-starting 15 [msec cputime] 57 [msec walltime]
-GET file:///d:/git/n3dev/n3/grammar/tests/n3tests/01etc/test-proof-1000.n3 ** ERROR ** file:///d:/git/n3dev/n3/grammar/tests/n3tests/01etc/test-proof-1000.n3 ** not_supported_keyword(@forAll,at_formula_depth(1))
-
 testing (positive): ..\tests\N3Tests\cwm_string\endsWith.n3
 testing (positive): ..\tests\N3Tests\07test\wetP100.n3
 testing (positive): ..\tests\N3Tests\01etc\hanoiE.n3
-in: #Processed by EYE v19.0604.1527 josd
-#eye --n3 D:\git\n3dev\N3\grammar\target\..\tests\N3Tests\01etc\hanoiE.n3
-
-
-
-error: eye --n3 D:\git\n3dev\N3\grammar\target\..\tests\N3Tests\01etc\hanoiE.n3
-EYE v19.0604.1527 josd
-SWI-Prolog 8.0.3 (x64-win64): Jun 19 2019, 15:49:44
-starting 31 [msec cputime] 55 [msec walltime]
-GET file:///d:/git/n3dev/n3/grammar/tests/n3tests/01etc/hanoie.n3 ** ERROR ** file:///d:/git/n3dev/n3/grammar/tests/n3tests/01etc/hanoie.n3 ** not_supported_keyword(@forAll,at_formula_depth(1))
-
 testing (positive): ..\tests\N3Tests\07test\usmE.n3
 testing (positive): ..\tests\N3Tests\07test\swetA.n3
 testing (positive): ..\tests\N3Tests\07test\time.n3
@@ -250,16 +141,6 @@ testing (positive): ..\tests\N3Tests\cwm_includes\quant-implies.n3
 testing (positive): ..\tests\N3Tests\07test\parteval_answer.n3
 testing (positive): ..\tests\N3Tests\01etc\owl-sameAs.n3
 testing (positive): ..\tests\N3Tests\cwm_other\underbarscope.n3
-in: #Processed by EYE v19.0604.1527 josd
-#eye --n3 D:\git\n3dev\N3\grammar\target\..\tests\N3Tests\cwm_other\underbarscope.n3
-
-
-error: eye --n3 D:\git\n3dev\N3\grammar\target\..\tests\N3Tests\cwm_other\underbarscope.n3
-EYE v19.0604.1527 josd
-SWI-Prolog 8.0.3 (x64-win64): Jun 19 2019, 15:49:44
-starting 15 [msec cputime] 55 [msec walltime]
-GET file:///d:/git/n3dev/n3/grammar/tests/n3tests/cwm_other/underbarscope.n3 ** ERROR ** gre ** builtin_redefinition(<http://www.w3.org/2000/10/swap/log#notEqualTo>(<http://josd.github.io/eye/.well-known/genid/K2OQrX5fnmDIGluhveczE0egDI0#qe_1>,<http://josd.github.io/eye/.well-known/genid/K2OQrX5fnmDIGluhveczE0egDI0#e_a_1>))
-
 testing (positive): ..\tests\N3Tests\04test\danC.n3
 testing (positive): ..\tests\N3Tests\04test\sampleE.n3
 testing (positive): ..\tests\N3Tests\01etc\deA.n3
@@ -275,17 +156,6 @@ testing (positive): ..\tests\N3Tests\05smml\RULESfeaturerecognition.n3
 testing (positive): ..\tests\N3Tests\01etc\4color_rules.n3
 testing (positive): ..\tests\N3Tests\05smml\RULESlinkfacestoobjects.n3
 testing (positive): ..\tests\N3Tests\01etc\proof-001.n3
-in: #Processed by EYE v19.0604.1527 josd
-#eye --n3 D:\git\n3dev\N3\grammar\target\..\tests\N3Tests\01etc\proof-001.n3
-
-
-
-error: eye --n3 D:\git\n3dev\N3\grammar\target\..\tests\N3Tests\01etc\proof-001.n3
-EYE v19.0604.1527 josd
-SWI-Prolog 8.0.3 (x64-win64): Jun 19 2019, 15:49:44
-starting 15 [msec cputime] 54 [msec walltime]
-GET file:///d:/git/n3dev/n3/grammar/tests/n3tests/01etc/proof-001.n3 ** ERROR ** file:///d:/git/n3dev/n3/grammar/tests/n3tests/01etc/proof-001.n3 ** not_supported_keyword(@forAll,at_formula_depth(1))
-
 testing (positive): ..\tests\N3Tests\cwm_n3\n3parser.tests_n3_10018.nt
 testing (positive): ..\tests\N3Tests\04test\PathQ.n3
 testing (positive): ..\tests\N3Tests\04test\origin.n3
@@ -294,17 +164,6 @@ testing (positive): ..\tests\N3Tests\01etc\owl-propertyChainAxiom.n3
 testing (positive): ..\tests\N3Tests\01etc\query62.n3
 testing (positive): ..\tests\N3Tests\cwm_syntax\equals1.n3
 testing (positive): ..\tests\N3Tests\01etc\gps-proof1.n3
-in: #Processed by EYE v19.0604.1527 josd
-#eye --n3 D:\git\n3dev\N3\grammar\target\..\tests\N3Tests\01etc\gps-proof1.n3
-
-
-
-error: eye --n3 D:\git\n3dev\N3\grammar\target\..\tests\N3Tests\01etc\gps-proof1.n3
-EYE v19.0604.1527 josd
-SWI-Prolog 8.0.3 (x64-win64): Jun 19 2019, 15:49:44
-starting 15 [msec cputime] 57 [msec walltime]
-GET file:///d:/git/n3dev/n3/grammar/tests/n3tests/01etc/gps-proof1.n3 ** ERROR ** file:///d:/git/n3dev/n3/grammar/tests/n3tests/01etc/gps-proof1.n3 ** not_supported_keyword(@forAll,at_formula_depth(1))
-
 testing (positive): ..\tests\N3Tests\cwm_includes\xsd.n3
 testing (positive): ..\tests\N3Tests\04test\query-survey-result-12.n3
 testing (positive): ..\tests\N3Tests\cwm_reason\t3.n3
@@ -316,29 +175,7 @@ testing (positive): ..\tests\N3Tests\01etc\skos-mapping-sample-snomed-icd10.n3
 testing (positive): ..\tests\N3Tests\07test\select-data.n3
 testing (positive): ..\tests\N3Tests\04test\SequenceQ.n3
 testing (positive): ..\tests\N3Tests\01etc\gedcom-proof.n3
-in: #Processed by EYE v19.0604.1527 josd
-#eye --n3 D:\git\n3dev\N3\grammar\target\..\tests\N3Tests\01etc\gedcom-proof.n3
-
-
-
-error: eye --n3 D:\git\n3dev\N3\grammar\target\..\tests\N3Tests\01etc\gedcom-proof.n3
-EYE v19.0604.1527 josd
-SWI-Prolog 8.0.3 (x64-win64): Jun 19 2019, 15:49:44
-starting 15 [msec cputime] 56 [msec walltime]
-GET file:///d:/git/n3dev/n3/grammar/tests/n3tests/01etc/gedcom-proof.n3 ** ERROR ** file:///d:/git/n3dev/n3/grammar/tests/n3tests/01etc/gedcom-proof.n3 ** not_supported_keyword(@forAll,at_formula_depth(1))
-
 testing (positive): ..\tests\N3Tests\01etc\select-proof.n3
-in: #Processed by EYE v19.0604.1527 josd
-#eye --n3 D:\git\n3dev\N3\grammar\target\..\tests\N3Tests\01etc\select-proof.n3
-
-
-
-error: eye --n3 D:\git\n3dev\N3\grammar\target\..\tests\N3Tests\01etc\select-proof.n3
-EYE v19.0604.1527 josd
-SWI-Prolog 8.0.3 (x64-win64): Jun 19 2019, 15:49:44
-starting 31 [msec cputime] 55 [msec walltime]
-GET file:///d:/git/n3dev/n3/grammar/tests/n3tests/01etc/select-proof.n3 ** ERROR ** file:///d:/git/n3dev/n3/grammar/tests/n3tests/01etc/select-proof.n3 ** not_supported_keyword(@forAll,at_formula_depth(1))
-
 testing (positive): ..\tests\N3Tests\07test\swetA31.n3
 testing (positive): ..\tests\N3Tests\cwm_syntax\bad-preds-literal.n3
 testing (positive): ..\tests\N3Tests\cwm_reason\poor-urop.n3
@@ -364,17 +201,6 @@ testing (positive): ..\tests\N3Tests\05smml\QUERYfaces.n3
 testing (positive): ..\tests\N3Tests\04test\dawg-ot-0-01.n3
 testing (positive): ..\tests\N3Tests\04test\vcardP.n3
 testing (positive): ..\tests\N3Tests\cwm_reason\rename-loop.n3
-in: #Processed by EYE v19.0604.1527 josd
-#eye --n3 D:\git\n3dev\N3\grammar\target\..\tests\N3Tests\cwm_reason\rename-loop.n3
-
-
-
-error: eye --n3 D:\git\n3dev\N3\grammar\target\..\tests\N3Tests\cwm_reason\rename-loop.n3
-EYE v19.0604.1527 josd
-SWI-Prolog 8.0.3 (x64-win64): Jun 19 2019, 15:49:44
-starting 31 [msec cputime] 53 [msec walltime]
-GET file:///d:/git/n3dev/n3/grammar/tests/n3tests/cwm_reason/rename-loop.n3 ** ERROR ** file:///d:/git/n3dev/n3/grammar/tests/n3tests/cwm_reason/rename-loop.n3 ** not_supported_keyword(@forAll,at_formula_depth(1))
-
 testing (positive): ..\tests\N3Tests\07test\swQ.n3
 testing (positive): ..\tests\N3Tests\01etc\owl-SymmetricProperty.n3
 testing (positive): ..\tests\N3Tests\07test\alpE001.n3
@@ -414,17 +240,6 @@ testing (positive): ..\tests\N3Tests\01etc\polynomial.n3
 testing (positive): ..\tests\N3Tests\07test\test-strela-10.n3
 testing (positive): ..\tests\N3Tests\04test\books.n3
 testing (positive): ..\tests\N3Tests\04test\bcE.n3
-in: #Processed by EYE v19.0604.1527 josd
-#eye --n3 D:\git\n3dev\N3\grammar\target\..\tests\N3Tests\04test\bcE.n3
-
-
-
-error: eye --n3 D:\git\n3dev\N3\grammar\target\..\tests\N3Tests\04test\bcE.n3
-EYE v19.0604.1527 josd
-SWI-Prolog 8.0.3 (x64-win64): Jun 19 2019, 15:49:44
-starting 46 [msec cputime] 65 [msec walltime]
-GET file:///d:/git/n3dev/n3/grammar/tests/n3tests/04test/bce.n3 ** ERROR ** file:///d:/git/n3dev/n3/grammar/tests/n3tests/04test/bce.n3 ** not_supported_keyword(@forAll,at_formula_depth(1))
-
 testing (positive): ..\tests\N3Tests\04test\metastatic.n3
 testing (positive): ..\tests\N3Tests\cwm_includes\builtins.n3
 testing (positive): ..\tests\N3Tests\07test\socrates.n3
@@ -438,16 +253,6 @@ testing (positive): ..\tests\N3Tests\cwm_norm\av.n3
 testing (positive): ..\tests\N3Tests\cwm_norm\av-ref.n3
 testing (positive): ..\tests\N3Tests\07test\parteval_proofcheck.n3
 testing (positive): ..\tests\N3Tests\cwm_syntax\path2.n3
-in: #Processed by EYE v19.0604.1527 josd
-#eye --n3 D:\git\n3dev\N3\grammar\target\..\tests\N3Tests\cwm_syntax\path2.n3
-
-
-error: eye --n3 D:\git\n3dev\N3\grammar\target\..\tests\N3Tests\cwm_syntax\path2.n3
-EYE v19.0604.1527 josd
-SWI-Prolog 8.0.3 (x64-win64): Jun 19 2019, 15:49:44
-starting 31 [msec cputime] 58 [msec walltime]
-GET file:///d:/git/n3dev/n3/grammar/tests/n3tests/cwm_syntax/path2.n3 ** ERROR ** gre ** builtin_redefinition(<http://www.w3.org/2000/10/swap/math#sum>([literal(1,type(<http://www.w3.org/2001/XMLSchema#string>)),literal(2,type(<http://www.w3.org/2001/XMLSchema#string>))],<http://josd.github.io/eye/.well-known/genid/AxkjsXGYt7Ru0DkdFLIE9XhkX1I#bn_4>))
-
 testing (positive): ..\tests\N3Tests\cwm_n3\n3parser.tests_n3_20001.nt
 testing (positive): ..\tests\N3Tests\cwm_includes\t3.n3
 testing (positive): ..\tests\N3Tests\07test\abc.n3
@@ -464,17 +269,6 @@ testing (positive): ..\tests\N3Tests\04test\OptionalPathE.n3
 testing (positive): ..\tests\N3Tests\01etc\cryptoP.n3
 testing (positive): ..\tests\N3Tests\07test\pd_hes_theory.n3
 testing (positive): ..\tests\N3Tests\01etc\proof-2-1000.n3
-in: #Processed by EYE v19.0604.1527 josd
-#eye --n3 D:\git\n3dev\N3\grammar\target\..\tests\N3Tests\01etc\proof-2-1000.n3
-
-
-
-error: eye --n3 D:\git\n3dev\N3\grammar\target\..\tests\N3Tests\01etc\proof-2-1000.n3
-EYE v19.0604.1527 josd
-SWI-Prolog 8.0.3 (x64-win64): Jun 19 2019, 15:49:44
-starting 15 [msec cputime] 61 [msec walltime]
-GET file:///d:/git/n3dev/n3/grammar/tests/n3tests/01etc/proof-2-1000.n3 ** ERROR ** file:///d:/git/n3dev/n3/grammar/tests/n3tests/01etc/proof-2-1000.n3 ** not_supported_keyword(@forAll,at_formula_depth(1))
-
 testing (positive): ..\tests\N3Tests\04test\LexicalSpaceE.n3
 testing (positive): ..\tests\N3Tests\07test\bmi_test_result.n3
 testing (positive): ..\tests\N3Tests\01etc\query26.n3
@@ -535,42 +329,9 @@ testing (positive): ..\tests\N3Tests\04test\query-survey-result-1.n3
 testing (positive): ..\tests\N3Tests\07test\ninclQ.n3
 testing (positive): ..\tests\N3Tests\cwm_other\kb1.n3
 testing (positive): ..\tests\N3Tests\01etc\select-proof-extra.n3
-in: #Processed by EYE v19.0604.1527 josd
-#eye --n3 D:\git\n3dev\N3\grammar\target\..\tests\N3Tests\01etc\select-proof-extra.n3
-
-
-
-error: eye --n3 D:\git\n3dev\N3\grammar\target\..\tests\N3Tests\01etc\select-proof-extra.n3
-EYE v19.0604.1527 josd
-SWI-Prolog 8.0.3 (x64-win64): Jun 19 2019, 15:49:44
-starting 15 [msec cputime] 56 [msec walltime]
-GET file:///d:/git/n3dev/n3/grammar/tests/n3tests/01etc/select-proof-extra.n3 ** ERROR ** file:///d:/git/n3dev/n3/grammar/tests/n3tests/01etc/select-proof-extra.n3 ** not_supported_keyword(@forAll,at_formula_depth(1))
-
 testing (positive): ..\tests\N3Tests\01etc\biE.n3
-in: #Processed by EYE v19.0604.1527 josd
-#eye --n3 D:\git\n3dev\N3\grammar\target\..\tests\N3Tests\01etc\biE.n3
-
-
-
-error: eye --n3 D:\git\n3dev\N3\grammar\target\..\tests\N3Tests\01etc\biE.n3
-EYE v19.0604.1527 josd
-SWI-Prolog 8.0.3 (x64-win64): Jun 19 2019, 15:49:44
-starting 0 [msec cputime] 54 [msec walltime]
-GET file:///d:/git/n3dev/n3/grammar/tests/n3tests/01etc/bie.n3 ** ERROR ** file:///d:/git/n3dev/n3/grammar/tests/n3tests/01etc/bie.n3 ** not_supported_keyword(@forAll,at_formula_depth(1))
-
 testing (positive): ..\tests\N3Tests\07test\nbbn_proof.n3
 testing (positive): ..\tests\N3Tests\01etc\mmln-gv-proof.n3
-in: #Processed by EYE v19.0604.1527 josd
-#eye --n3 D:\git\n3dev\N3\grammar\target\..\tests\N3Tests\01etc\mmln-gv-proof.n3
-
-
-
-error: eye --n3 D:\git\n3dev\N3\grammar\target\..\tests\N3Tests\01etc\mmln-gv-proof.n3
-EYE v19.0604.1527 josd
-SWI-Prolog 8.0.3 (x64-win64): Jun 19 2019, 15:49:44
-starting 15 [msec cputime] 54 [msec walltime]
-GET file:///d:/git/n3dev/n3/grammar/tests/n3tests/01etc/mmln-gv-proof.n3 ** ERROR ** file:///d:/git/n3dev/n3/grammar/tests/n3tests/01etc/mmln-gv-proof.n3 ** not_supported_keyword(@forAll,at_formula_depth(1))
-
 testing (positive): ..\tests\N3Tests\04test\ex2-2aE.n3
 testing (positive): ..\tests\N3Tests\04test\radlexE.n3
 testing (positive): ..\tests\N3Tests\07test\path-8-3.n3
@@ -613,49 +374,16 @@ testing (positive): ..\tests\N3Tests\cwm_syntax\neg-single-quote.n3
 testing (positive): ..\tests\N3Tests\cwm_other\schema-filter.n3
 testing (positive): ..\tests\N3Tests\07test\adl.n3
 testing (positive): ..\tests\N3Tests\01etc\iq_proof.n3
-in: #Processed by EYE v19.0604.1527 josd
-#eye --n3 D:\git\n3dev\N3\grammar\target\..\tests\N3Tests\01etc\iq_proof.n3
-
-
-
-error: eye --n3 D:\git\n3dev\N3\grammar\target\..\tests\N3Tests\01etc\iq_proof.n3
-EYE v19.0604.1527 josd
-SWI-Prolog 8.0.3 (x64-win64): Jun 19 2019, 15:49:44
-starting 15 [msec cputime] 53 [msec walltime]
-GET file:///d:/git/n3dev/n3/grammar/tests/n3tests/01etc/iq_proof.n3 ** ERROR ** file:///d:/git/n3dev/n3/grammar/tests/n3tests/01etc/iq_proof.n3 ** not_supported_keyword(@forAll,at_formula_depth(1))
-
 testing (positive): ..\tests\N3Tests\cwm_syntax\BnodeAcrossFormulae.n3
 testing (positive): ..\tests\N3Tests\01etc\owl-AllDisjointProperties.n3
 testing (positive): ..\tests\N3Tests\01etc\bmi_query.n3
 testing (positive): ..\tests\N3Tests\01etc\agent2-proof.n3
-in: #Processed by EYE v19.0604.1527 josd
-#eye --n3 D:\git\n3dev\N3\grammar\target\..\tests\N3Tests\01etc\agent2-proof.n3
-
-
-
-error: eye --n3 D:\git\n3dev\N3\grammar\target\..\tests\N3Tests\01etc\agent2-proof.n3
-EYE v19.0604.1527 josd
-SWI-Prolog 8.0.3 (x64-win64): Jun 19 2019, 15:49:44
-starting 15 [msec cputime] 57 [msec walltime]
-GET file:///d:/git/n3dev/n3/grammar/tests/n3tests/01etc/agent2-proof.n3 ** ERROR ** file:///d:/git/n3dev/n3/grammar/tests/n3tests/01etc/agent2-proof.n3 ** not_supported_keyword(@forAll,at_formula_depth(1))
-
 testing (positive): ..\tests\N3Tests\cwm_n3\n3parser.tests_n3_10011.nt
 testing (positive): ..\tests\N3Tests\07test\grawlgen.n3
 testing (positive): ..\tests\N3Tests\01etc\swetQ31.n3
 testing (positive): ..\tests\N3Tests\07test\path-256-3.n3
 testing (positive): ..\tests\N3Tests\01etc\parteval-subclass.n3
 testing (positive): ..\tests\N3Tests\07test\select-query.n3
-in: #Processed by EYE v19.0604.1527 josd
-#eye --n3 D:\git\n3dev\N3\grammar\target\..\tests\N3Tests\07test\select-query.n3
-
-
-
-error: eye --n3 D:\git\n3dev\N3\grammar\target\..\tests\N3Tests\07test\select-query.n3
-EYE v19.0604.1527 josd
-SWI-Prolog 8.0.3 (x64-win64): Jun 19 2019, 15:49:44
-starting 0 [msec cputime] 54 [msec walltime]
-GET file:///d:/git/n3dev/n3/grammar/tests/n3tests/07test/select-query.n3 ** ERROR ** file:///d:/git/n3dev/n3/grammar/tests/n3tests/07test/select-query.n3 ** backward_rule_may_not_contain_existential_in_conclusion(('<http://eulersharp.sourceforge.net/2003/03swap/log-rules#csvTuple>'(_bn_1,[_S,_P,_A,_O,_C]):-exopred(_P,_S,_O),'<http://eulersharp.sourceforge.net/2003/03swap/log-rules#optional>'(_bn_2,'<http://eulersharp.sourceforge.net/try#b>'(_A,_C))))
-
 testing (positive): ..\tests\N3Tests\cwm_reason\t5-ref.n3
 testing (positive): ..\tests\N3Tests\01etc\age_rules_backward.n3
 testing (positive): ..\tests\N3Tests\cwm_includes\t6.n3
@@ -664,17 +392,6 @@ testing (positive): ..\tests\N3Tests\01etc\easterF.n3
 testing (positive): ..\tests\N3Tests\07test\goal.n3
 testing (positive): ..\tests\N3Tests\01etc\skos-mapping-validation-rules.n3
 testing (positive): ..\tests\N3Tests\01etc\proof-2-10.n3
-in: #Processed by EYE v19.0604.1527 josd
-#eye --n3 D:\git\n3dev\N3\grammar\target\..\tests\N3Tests\01etc\proof-2-10.n3
-
-
-
-error: eye --n3 D:\git\n3dev\N3\grammar\target\..\tests\N3Tests\01etc\proof-2-10.n3
-EYE v19.0604.1527 josd
-SWI-Prolog 8.0.3 (x64-win64): Jun 19 2019, 15:49:44
-starting 46 [msec cputime] 56 [msec walltime]
-GET file:///d:/git/n3dev/n3/grammar/tests/n3tests/01etc/proof-2-10.n3 ** ERROR ** file:///d:/git/n3dev/n3/grammar/tests/n3tests/01etc/proof-2-10.n3 ** not_supported_keyword(@forAll,at_formula_depth(1))
-
 testing (positive): ..\tests\N3Tests\04test\dawg-tp-2-01.n3
 testing (positive): ..\tests\N3Tests\07test\agent_goal.n3
 testing (positive): ..\tests\N3Tests\01etc\query96.n3
@@ -686,17 +403,6 @@ testing (positive): ..\tests\N3Tests\07test\path-7-3.n3
 testing (positive): ..\tests\N3Tests\01etc\query94.n3
 testing (positive): ..\tests\N3Tests\04test\result-tp-1-01.n3
 testing (positive): ..\tests\N3Tests\cwm_includes\quantifiers_limited.n3
-in: #Processed by EYE v19.0604.1527 josd
-#eye --n3 D:\git\n3dev\N3\grammar\target\..\tests\N3Tests\cwm_includes\quantifiers_limited.n3
-
-
-
-error: eye --n3 D:\git\n3dev\N3\grammar\target\..\tests\N3Tests\cwm_includes\quantifiers_limited.n3
-EYE v19.0604.1527 josd
-SWI-Prolog 8.0.3 (x64-win64): Jun 19 2019, 15:49:44
-starting 31 [msec cputime] 56 [msec walltime]
-GET file:///d:/git/n3dev/n3/grammar/tests/n3tests/cwm_includes/quantifiers_limited.n3 ** ERROR ** file:///d:/git/n3dev/n3/grammar/tests/n3tests/cwm_includes/quantifiers_limited.n3 ** not_supported_keyword(@forAll,at_formula_depth(2))
-
 testing (positive): ..\tests\N3Tests\cwm_i18n\i18n.n3
 testing (positive): ..\tests\N3Tests\07test\swetQ31.n3
 testing (positive): ..\tests\N3Tests\01etc\skos-extra-rules.n3
@@ -710,28 +416,7 @@ testing (positive): ..\tests\N3Tests\04test\robQ.n3
 testing (positive): ..\tests\N3Tests\04test\EntailmentQ.n3
 testing (positive): ..\tests\N3Tests\04test\QuantificationQ.n3
 testing (positive): ..\tests\N3Tests\04test\wetE.n3
-in: #Processed by EYE v19.0604.1527 josd
-#eye --n3 D:\git\n3dev\N3\grammar\target\..\tests\N3Tests\04test\wetE.n3
-
-
-error: eye --n3 D:\git\n3dev\N3\grammar\target\..\tests\N3Tests\04test\wetE.n3
-EYE v19.0604.1527 josd
-SWI-Prolog 8.0.3 (x64-win64): Jun 19 2019, 15:49:44
-starting 31 [msec cputime] 54 [msec walltime]
-GET file:///d:/git/n3dev/n3/grammar/tests/n3tests/04test/wete.n3 ** ERROR ** gre ** builtin_redefinition(<http://www.w3.org/2000/10/swap/log#semantics>(<http://eulersharp.sourceforge.net/2004/04test/wet.n3>,<http://josd.github.io/eye/.well-known/genid/f1BRIlbtXXEJSRjU9zhHO58UOEo#bn_1>))
-
 testing (positive): ..\tests\N3Tests\01etc\einsteinE.n3
-in: #Processed by EYE v19.0604.1527 josd
-#eye --n3 D:\git\n3dev\N3\grammar\target\..\tests\N3Tests\01etc\einsteinE.n3
-
-
-
-error: eye --n3 D:\git\n3dev\N3\grammar\target\..\tests\N3Tests\01etc\einsteinE.n3
-EYE v19.0604.1527 josd
-SWI-Prolog 8.0.3 (x64-win64): Jun 19 2019, 15:49:44
-starting 31 [msec cputime] 53 [msec walltime]
-GET file:///d:/git/n3dev/n3/grammar/tests/n3tests/01etc/einsteine.n3 ** ERROR ** file:///d:/git/n3dev/n3/grammar/tests/n3tests/01etc/einsteine.n3 ** not_supported_keyword(@forAll,at_formula_depth(1))
-
 testing (positive): ..\tests\N3Tests\01etc\query24.n3
 testing (positive): ..\tests\N3Tests\01etc\restoG.n3
 testing (positive): ..\tests\N3Tests\01etc\fgcm-query.n3
@@ -755,17 +440,6 @@ testing (positive): ..\tests\N3Tests\01etc\query82.n3
 testing (positive): ..\tests\N3Tests\07test\initial.n3
 testing (positive): ..\tests\N3Tests\04test\booksE.n3
 testing (positive): ..\tests\N3Tests\01etc\swet_proof.n3
-in: #Processed by EYE v19.0604.1527 josd
-#eye --n3 D:\git\n3dev\N3\grammar\target\..\tests\N3Tests\01etc\swet_proof.n3
-
-
-
-error: eye --n3 D:\git\n3dev\N3\grammar\target\..\tests\N3Tests\01etc\swet_proof.n3
-EYE v19.0604.1527 josd
-SWI-Prolog 8.0.3 (x64-win64): Jun 19 2019, 15:49:44
-starting 31 [msec cputime] 55 [msec walltime]
-GET file:///d:/git/n3dev/n3/grammar/tests/n3tests/01etc/swet_proof.n3 ** ERROR ** file:///d:/git/n3dev/n3/grammar/tests/n3tests/01etc/swet_proof.n3 ** not_supported_keyword(@forAll,at_formula_depth(1))
-
 testing (positive): ..\tests\N3Tests\07test\de.n3
 testing (positive): ..\tests\N3Tests\cwm_list\unify4.n3
 testing (positive): ..\tests\N3Tests\cwm_list\builtin_generated_match-ref.n3
@@ -785,17 +459,6 @@ testing (positive): ..\tests\N3Tests\01etc\train_query.n3
 testing (positive): ..\tests\N3Tests\01etc\goal.n3
 testing (positive): ..\tests\N3Tests\01etc\test-dl-1000.n3
 testing (positive): ..\tests\N3Tests\01etc\takE.n3
-in: #Processed by EYE v19.0604.1527 josd
-#eye --n3 D:\git\n3dev\N3\grammar\target\..\tests\N3Tests\01etc\takE.n3
-
-
-
-error: eye --n3 D:\git\n3dev\N3\grammar\target\..\tests\N3Tests\01etc\takE.n3
-EYE v19.0604.1527 josd
-SWI-Prolog 8.0.3 (x64-win64): Jun 19 2019, 15:49:44
-starting 46 [msec cputime] 57 [msec walltime]
-GET file:///d:/git/n3dev/n3/grammar/tests/n3tests/01etc/take.n3 ** ERROR ** file:///d:/git/n3dev/n3/grammar/tests/n3tests/01etc/take.n3 ** not_supported_keyword(@forAll,at_formula_depth(1))
-
 testing (positive): ..\tests\N3Tests\cwm_other\t01-ref.n3
 testing (positive): ..\tests\N3Tests\01etc\test.n3
 testing (positive): ..\tests\N3Tests\cwm_syntax\space-in-uri-ref.n3
@@ -805,29 +468,7 @@ testing (positive): ..\tests\N3Tests\07test\music.n3
 testing (positive): ..\tests\N3Tests\01etc\query-001.n3
 testing (positive): ..\tests\N3Tests\07test\swap.n3
 testing (positive): ..\tests\N3Tests\01etc\proof-10.n3
-in: #Processed by EYE v19.0604.1527 josd
-#eye --n3 D:\git\n3dev\N3\grammar\target\..\tests\N3Tests\01etc\proof-10.n3
-
-
-
-error: eye --n3 D:\git\n3dev\N3\grammar\target\..\tests\N3Tests\01etc\proof-10.n3
-EYE v19.0604.1527 josd
-SWI-Prolog 8.0.3 (x64-win64): Jun 19 2019, 15:49:44
-starting 31 [msec cputime] 57 [msec walltime]
-GET file:///d:/git/n3dev/n3/grammar/tests/n3tests/01etc/proof-10.n3 ** ERROR ** file:///d:/git/n3dev/n3/grammar/tests/n3tests/01etc/proof-10.n3 ** not_supported_keyword(@forAll,at_formula_depth(1))
-
 testing (positive): ..\tests\N3Tests\01etc\mq_proof.n3
-in: #Processed by EYE v19.0604.1527 josd
-#eye --n3 D:\git\n3dev\N3\grammar\target\..\tests\N3Tests\01etc\mq_proof.n3
-
-
-
-error: eye --n3 D:\git\n3dev\N3\grammar\target\..\tests\N3Tests\01etc\mq_proof.n3
-EYE v19.0604.1527 josd
-SWI-Prolog 8.0.3 (x64-win64): Jun 19 2019, 15:49:44
-starting 31 [msec cputime] 58 [msec walltime]
-GET file:///d:/git/n3dev/n3/grammar/tests/n3tests/01etc/mq_proof.n3 ** ERROR ** file:///d:/git/n3dev/n3/grammar/tests/n3tests/01etc/mq_proof.n3 ** not_supported_keyword(@forAll,at_formula_depth(1))
-
 testing (positive): ..\tests\N3Tests\05smml\FACTSlinkfaceedgestoobjects.n3
 testing (positive): ..\tests\N3Tests\07test\turingA.n3
 testing (positive): ..\tests\N3Tests\05smml\FACTSfaceedgedetection.n3
@@ -836,16 +477,16 @@ testing (positive): ..\tests\N3Tests\04test\exonE.n3
 testing (positive): ..\tests\N3Tests\cwm_reason\t1.n3
 testing (positive): ..\tests\N3Tests\01etc\notIn_answer.n3
 testing (positive): ..\tests\N3Tests\04test\ontology-for-data-model.n3
-in: #Processed by EYE v19.0604.1527 josd
+in: #Processed by EYE v20.0121.2250 josd
 #eye --n3 D:\git\n3dev\N3\grammar\target\..\tests\N3Tests\04test\ontology-for-data-model.n3
 
 
 
 error: eye --n3 D:\git\n3dev\N3\grammar\target\..\tests\N3Tests\04test\ontology-for-data-model.n3
-EYE v19.0604.1527 josd
+EYE v20.0121.2250 josd
 SWI-Prolog 8.0.3 (x64-win64): Jun 19 2019, 15:49:44
-starting 31 [msec cputime] 57 [msec walltime]
-GET file:///d:/git/n3dev/n3/grammar/tests/n3tests/04test/ontology-for-data-model.n3 ** ERROR ** file:///d:/git/n3dev/n3/grammar/tests/n3tests/04test/ontology-for-data-model.n3 ** error(syntax_error(illegal_number),context(number_codes/2,_672236))
+starting 15 [msec cputime] 56 [msec walltime]
+GET file:///d:/git/n3dev/n3/grammar/tests/n3tests/04test/ontology-for-data-model.n3 ** ERROR ** file:///d:/git/n3dev/n3/grammar/tests/n3tests/04test/ontology-for-data-model.n3 ** error(syntax_error(illegal_number),context(number_codes/2,_676398))
 
 testing (positive): ..\tests\N3Tests\01etc\graph-10.n3
 testing (positive): ..\tests\N3Tests\cwm_other\classes.n3
@@ -882,17 +523,6 @@ testing (positive): ..\tests\N3Tests\04test\xanthippeQ.n3
 testing (positive): ..\tests\N3Tests\07test\skos-mapping-validation-query.n3
 testing (positive): ..\tests\N3Tests\01etc\food-example.n3
 testing (positive): ..\tests\N3Tests\01etc\randomsample-proof.n3
-in: #Processed by EYE v19.0604.1527 josd
-#eye --n3 D:\git\n3dev\N3\grammar\target\..\tests\N3Tests\01etc\randomsample-proof.n3
-
-
-
-error: eye --n3 D:\git\n3dev\N3\grammar\target\..\tests\N3Tests\01etc\randomsample-proof.n3
-EYE v19.0604.1527 josd
-SWI-Prolog 8.0.3 (x64-win64): Jun 19 2019, 15:49:44
-starting 31 [msec cputime] 55 [msec walltime]
-GET file:///d:/git/n3dev/n3/grammar/tests/n3tests/01etc/randomsample-proof.n3 ** ERROR ** file:///d:/git/n3dev/n3/grammar/tests/n3tests/01etc/randomsample-proof.n3 ** not_supported_keyword(@forAll,at_formula_depth(1))
-
 testing (positive): ..\tests\N3Tests\01etc\test_answer.n3
 testing (positive): ..\tests\N3Tests\01etc\graphgen.n3
 testing (positive): ..\tests\N3Tests\01etc\owl-NegativePropertyAssertion.n3
@@ -906,17 +536,6 @@ testing (positive): ..\tests\N3Tests\01etc\palindrome.n3
 testing (positive): ..\tests\N3Tests\04test\statement1.n3
 testing (positive): ..\tests\N3Tests\07test\bench.n3
 testing (positive): ..\tests\N3Tests\cwm_includes\quantifiers.n3
-in: #Processed by EYE v19.0604.1527 josd
-#eye --n3 D:\git\n3dev\N3\grammar\target\..\tests\N3Tests\cwm_includes\quantifiers.n3
-
-
-
-error: eye --n3 D:\git\n3dev\N3\grammar\target\..\tests\N3Tests\cwm_includes\quantifiers.n3
-EYE v19.0604.1527 josd
-SWI-Prolog 8.0.3 (x64-win64): Jun 19 2019, 15:49:44
-starting 0 [msec cputime] 65 [msec walltime]
-GET file:///d:/git/n3dev/n3/grammar/tests/n3tests/cwm_includes/quantifiers.n3 ** ERROR ** file:///d:/git/n3dev/n3/grammar/tests/n3tests/cwm_includes/quantifiers.n3 ** not_supported_keyword(@forAll,at_formula_depth(2))
-
 testing (positive): ..\tests\N3Tests\cwm_list\double.n3
 testing (positive): ..\tests\N3Tests\04test\dawg-ot-0-02.n3
 testing (positive): ..\tests\N3Tests\cwm_reason\t2.n3
@@ -932,17 +551,6 @@ testing (positive): ..\tests\N3Tests\01etc\query89.n3
 testing (positive): ..\tests\N3Tests\01etc\fibQ.n3
 testing (positive): ..\tests\N3Tests\01etc\greenquery002.n3
 testing (positive): ..\tests\N3Tests\01etc\path-9-3-proof.n3
-in: #Processed by EYE v19.0604.1527 josd
-#eye --n3 D:\git\n3dev\N3\grammar\target\..\tests\N3Tests\01etc\path-9-3-proof.n3
-
-
-
-error: eye --n3 D:\git\n3dev\N3\grammar\target\..\tests\N3Tests\01etc\path-9-3-proof.n3
-EYE v19.0604.1527 josd
-SWI-Prolog 8.0.3 (x64-win64): Jun 19 2019, 15:49:44
-starting 15 [msec cputime] 55 [msec walltime]
-GET file:///d:/git/n3dev/n3/grammar/tests/n3tests/01etc/path-9-3-proof.n3 ** ERROR ** file:///d:/git/n3dev/n3/grammar/tests/n3tests/01etc/path-9-3-proof.n3 ** not_supported_keyword(@forAll,at_formula_depth(1))
-
 testing (positive): ..\tests\N3Tests\04test\bcF.n3
 testing (positive): ..\tests\N3Tests\07test\bg-result-1000.n3
 testing (positive): ..\tests\N3Tests\cwm_syntax\decimal-ref.n3
@@ -950,17 +558,6 @@ testing (positive): ..\tests\N3Tests\04test\michaelC.n3
 testing (positive): ..\tests\N3Tests\05smml\FACTSfeaturerecognition.n3
 testing (positive): ..\tests\N3Tests\01etc\query11.n3
 testing (positive): ..\tests\N3Tests\01etc\easter-proof.n3
-in: #Processed by EYE v19.0604.1527 josd
-#eye --n3 D:\git\n3dev\N3\grammar\target\..\tests\N3Tests\01etc\easter-proof.n3
-
-
-
-error: eye --n3 D:\git\n3dev\N3\grammar\target\..\tests\N3Tests\01etc\easter-proof.n3
-EYE v19.0604.1527 josd
-SWI-Prolog 8.0.3 (x64-win64): Jun 19 2019, 15:49:44
-starting 31 [msec cputime] 56 [msec walltime]
-GET file:///d:/git/n3dev/n3/grammar/tests/n3tests/01etc/easter-proof.n3 ** ERROR ** file:///d:/git/n3dev/n3/grammar/tests/n3tests/01etc/easter-proof.n3 ** not_supported_keyword(@forAll,at_formula_depth(1))
-
 testing (positive): ..\tests\N3Tests\07test\grawl-10.n3
 testing (positive): ..\tests\N3Tests\01etc\owl-disjointWith.n3
 testing (positive): ..\tests\N3Tests\01etc\food-query.n3
@@ -968,16 +565,6 @@ testing (positive): ..\tests\N3Tests\01etc\turingQ.n3
 testing (positive): ..\tests\N3Tests\07test\alpQ001.n3
 testing (positive): ..\tests\N3Tests\01etc\lldmP.n3
 testing (positive): ..\tests\N3Tests\04test\michaelE.n3
-in: #Processed by EYE v19.0604.1527 josd
-#eye --n3 D:\git\n3dev\N3\grammar\target\..\tests\N3Tests\04test\michaelE.n3
-
-
-error: eye --n3 D:\git\n3dev\N3\grammar\target\..\tests\N3Tests\04test\michaelE.n3
-EYE v19.0604.1527 josd
-SWI-Prolog 8.0.3 (x64-win64): Jun 19 2019, 15:49:44
-starting 46 [msec cputime] 54 [msec walltime]
-GET file:///d:/git/n3dev/n3/grammar/tests/n3tests/04test/michaele.n3 ** ERROR ** gre ** builtin_redefinition(<http://www.w3.org/2000/10/swap/log#semantics>(<http://eulersharp.sourceforge.net/2004/04test/michaelP.n3>,<http://josd.github.io/eye/.well-known/genid/VOzPGvO2qE2NPAdZ2zMkFvi5qiw#bn_1>))
-
 testing (positive): ..\tests\N3Tests\cwm_andy\D.n3
 testing (positive): ..\tests\N3Tests\07test\path-3-2-answer.n3
 testing (positive): ..\tests\N3Tests\cwm_includes\t2.n3
@@ -987,33 +574,11 @@ testing (positive): ..\tests\N3Tests\04test\a.n3
 testing (positive): ..\tests\N3Tests\07test\data1.n3
 testing (positive): ..\tests\N3Tests\01etc\query22.n3
 testing (positive): ..\tests\N3Tests\01etc\utf8_proof.n3
-in: #Processed by EYE v19.0604.1527 josd
-#eye --n3 D:\git\n3dev\N3\grammar\target\..\tests\N3Tests\01etc\utf8_proof.n3
-
-
-
-error: eye --n3 D:\git\n3dev\N3\grammar\target\..\tests\N3Tests\01etc\utf8_proof.n3
-EYE v19.0604.1527 josd
-SWI-Prolog 8.0.3 (x64-win64): Jun 19 2019, 15:49:44
-starting 31 [msec cputime] 53 [msec walltime]
-GET file:///d:/git/n3dev/n3/grammar/tests/n3tests/01etc/utf8_proof.n3 ** ERROR ** file:///d:/git/n3dev/n3/grammar/tests/n3tests/01etc/utf8_proof.n3 ** not_supported_keyword(@forAll,at_formula_depth(1))
-
 testing (positive): ..\tests\N3Tests\01etc\hanoi.n3
 testing (positive): ..\tests\N3Tests\07test\cyclic-pass.n3
 testing (positive): ..\tests\N3Tests\07test\irQ.n3
 testing (positive): ..\tests\N3Tests\01etc\redgraph002.n3
 testing (positive): ..\tests\N3Tests\01etc\crypto-proof.n3
-in: #Processed by EYE v19.0604.1527 josd
-#eye --n3 D:\git\n3dev\N3\grammar\target\..\tests\N3Tests\01etc\crypto-proof.n3
-
-
-
-error: eye --n3 D:\git\n3dev\N3\grammar\target\..\tests\N3Tests\01etc\crypto-proof.n3
-EYE v19.0604.1527 josd
-SWI-Prolog 8.0.3 (x64-win64): Jun 19 2019, 15:49:44
-starting 31 [msec cputime] 53 [msec walltime]
-GET file:///d:/git/n3dev/n3/grammar/tests/n3tests/01etc/crypto-proof.n3 ** ERROR ** file:///d:/git/n3dev/n3/grammar/tests/n3tests/01etc/crypto-proof.n3 ** not_supported_keyword(@forAll,at_formula_depth(1))
-
 testing (positive): ..\tests\N3Tests\07test\wetQ100.n3
 testing (positive): ..\tests\N3Tests\01etc\biQ.n3
 testing (positive): ..\tests\N3Tests\07test\arcE.n3
@@ -1025,30 +590,8 @@ testing (positive): ..\tests\N3Tests\07test\path-9-3.n3
 testing (positive): ..\tests\N3Tests\07test\sudoku-query-1.n3
 testing (positive): ..\tests\N3Tests\01etc\palindrome2.n3
 testing (positive): ..\tests\N3Tests\01etc\turing_proof.n3
-in: #Processed by EYE v19.0604.1527 josd
-#eye --n3 D:\git\n3dev\N3\grammar\target\..\tests\N3Tests\01etc\turing_proof.n3
-
-
-
-error: eye --n3 D:\git\n3dev\N3\grammar\target\..\tests\N3Tests\01etc\turing_proof.n3
-EYE v19.0604.1527 josd
-SWI-Prolog 8.0.3 (x64-win64): Jun 19 2019, 15:49:44
-starting 31 [msec cputime] 54 [msec walltime]
-GET file:///d:/git/n3dev/n3/grammar/tests/n3tests/01etc/turing_proof.n3 ** ERROR ** file:///d:/git/n3dev/n3/grammar/tests/n3tests/01etc/turing_proof.n3 ** not_supported_keyword(@forAll,at_formula_depth(1))
-
 testing (positive): ..\tests\N3Tests\01etc\gps-plugin.n3
 testing (positive): ..\tests\N3Tests\01etc\sdcoding-a-proof.n3
-in: #Processed by EYE v19.0604.1527 josd
-#eye --n3 D:\git\n3dev\N3\grammar\target\..\tests\N3Tests\01etc\sdcoding-a-proof.n3
-
-
-
-error: eye --n3 D:\git\n3dev\N3\grammar\target\..\tests\N3Tests\01etc\sdcoding-a-proof.n3
-EYE v19.0604.1527 josd
-SWI-Prolog 8.0.3 (x64-win64): Jun 19 2019, 15:49:44
-starting 15 [msec cputime] 54 [msec walltime]
-GET file:///d:/git/n3dev/n3/grammar/tests/n3tests/01etc/sdcoding-a-proof.n3 ** ERROR ** file:///d:/git/n3dev/n3/grammar/tests/n3tests/01etc/sdcoding-a-proof.n3 ** not_supported_keyword(@forAll,at_formula_depth(1))
-
 testing (positive): ..\tests\N3Tests\04test\ericQ.n3
 testing (positive): ..\tests\N3Tests\cwm_includes\t4.n3
 testing (positive): ..\tests\N3Tests\cwm_math\long.n3
@@ -1059,17 +602,6 @@ testing (positive): ..\tests\N3Tests\04test\patE.n3
 testing (positive): ..\tests\N3Tests\01etc\rifQ.n3
 testing (positive): ..\tests\N3Tests\04test\query-survey-12.n3
 testing (positive): ..\tests\N3Tests\cwm_syntax\this-quantifiers-ref.n3
-in: #Processed by EYE v19.0604.1527 josd
-#eye --n3 D:\git\n3dev\N3\grammar\target\..\tests\N3Tests\cwm_syntax\this-quantifiers-ref.n3
-
-
-
-error: eye --n3 D:\git\n3dev\N3\grammar\target\..\tests\N3Tests\cwm_syntax\this-quantifiers-ref.n3
-EYE v19.0604.1527 josd
-SWI-Prolog 8.0.3 (x64-win64): Jun 19 2019, 15:49:44
-starting 15 [msec cputime] 58 [msec walltime]
-GET file:///d:/git/n3dev/n3/grammar/tests/n3tests/cwm_syntax/this-quantifiers-ref.n3 ** ERROR ** file:///d:/git/n3dev/n3/grammar/tests/n3tests/cwm_syntax/this-quantifiers-ref.n3 ** not_supported_keyword(@forAll,at_formula_depth(2))
-
 testing (positive): ..\tests\N3Tests\07test\wetE102.n3
 testing (positive): ..\tests\N3Tests\01etc\query47.n3
 testing (positive): ..\tests\N3Tests\cwm_n3\n3parser.tests_n3_10005.nt
@@ -1077,17 +609,6 @@ testing (positive): ..\tests\N3Tests\04test\wetF.n3
 testing (positive): ..\tests\N3Tests\01etc\initial.n3
 testing (positive): ..\tests\N3Tests\04test\booksQ.n3
 testing (positive): ..\tests\N3Tests\cwm_syntax\this-rules-ref.n3
-in: #Processed by EYE v19.0604.1527 josd
-#eye --n3 D:\git\n3dev\N3\grammar\target\..\tests\N3Tests\cwm_syntax\this-rules-ref.n3
-
-
-
-error: eye --n3 D:\git\n3dev\N3\grammar\target\..\tests\N3Tests\cwm_syntax\this-rules-ref.n3
-EYE v19.0604.1527 josd
-SWI-Prolog 8.0.3 (x64-win64): Jun 19 2019, 15:49:44
-starting 31 [msec cputime] 57 [msec walltime]
-GET file:///d:/git/n3dev/n3/grammar/tests/n3tests/cwm_syntax/this-rules-ref.n3 ** ERROR ** file:///d:/git/n3dev/n3/grammar/tests/n3tests/cwm_syntax/this-rules-ref.n3 ** not_supported_keyword(@forAll,at_formula_depth(2))
-
 testing (positive): ..\tests\N3Tests\07test\swetA11.n3
 testing (positive): ..\tests\N3Tests\cwm_includes\concat.n3
 testing (positive): ..\tests\N3Tests\01etc\1tt6.n3
@@ -1096,29 +617,7 @@ testing (positive): ..\tests\N3Tests\01etc\numeral.n3
 testing (positive): ..\tests\N3Tests\cwm_reason\t4-ref.n3
 testing (positive): ..\tests\N3Tests\01etc\query70.n3
 testing (positive): ..\tests\N3Tests\01etc\forAllIn_proof.n3
-in: #Processed by EYE v19.0604.1527 josd
-#eye --n3 D:\git\n3dev\N3\grammar\target\..\tests\N3Tests\01etc\forAllIn_proof.n3
-
-
-
-error: eye --n3 D:\git\n3dev\N3\grammar\target\..\tests\N3Tests\01etc\forAllIn_proof.n3
-EYE v19.0604.1527 josd
-SWI-Prolog 8.0.3 (x64-win64): Jun 19 2019, 15:49:44
-starting 31 [msec cputime] 54 [msec walltime]
-GET file:///d:/git/n3dev/n3/grammar/tests/n3tests/01etc/forallin_proof.n3 ** ERROR ** file:///d:/git/n3dev/n3/grammar/tests/n3tests/01etc/forallin_proof.n3 ** not_supported_keyword(@forAll,at_formula_depth(1))
-
 testing (positive): ..\tests\N3Tests\01etc\easterE.n3
-in: #Processed by EYE v19.0604.1527 josd
-#eye --n3 D:\git\n3dev\N3\grammar\target\..\tests\N3Tests\01etc\easterE.n3
-
-
-
-error: eye --n3 D:\git\n3dev\N3\grammar\target\..\tests\N3Tests\01etc\easterE.n3
-EYE v19.0604.1527 josd
-SWI-Prolog 8.0.3 (x64-win64): Jun 19 2019, 15:49:44
-starting 31 [msec cputime] 57 [msec walltime]
-GET file:///d:/git/n3dev/n3/grammar/tests/n3tests/01etc/eastere.n3 ** ERROR ** file:///d:/git/n3dev/n3/grammar/tests/n3tests/01etc/eastere.n3 ** not_supported_keyword(@forAll,at_formula_depth(1))
-
 testing (positive): ..\tests\N3Tests\04test\gmp.n3
 testing (positive): ..\tests\N3Tests\07test\path-10-3.n3
 testing (positive): ..\tests\N3Tests\07test\randomsample-rule.n3
@@ -1134,17 +633,6 @@ testing (positive): ..\tests\N3Tests\05smml\RULESx3dboxtostl.n3
 testing (positive): ..\tests\N3Tests\01etc\acct3check1.n3
 testing (positive): ..\tests\N3Tests\01etc\query60.n3
 testing (positive): ..\tests\N3Tests\01etc\proof-2-100.n3
-in: #Processed by EYE v19.0604.1527 josd
-#eye --n3 D:\git\n3dev\N3\grammar\target\..\tests\N3Tests\01etc\proof-2-100.n3
-
-
-
-error: eye --n3 D:\git\n3dev\N3\grammar\target\..\tests\N3Tests\01etc\proof-2-100.n3
-EYE v19.0604.1527 josd
-SWI-Prolog 8.0.3 (x64-win64): Jun 19 2019, 15:49:44
-starting 31 [msec cputime] 53 [msec walltime]
-GET file:///d:/git/n3dev/n3/grammar/tests/n3tests/01etc/proof-2-100.n3 ** ERROR ** file:///d:/git/n3dev/n3/grammar/tests/n3tests/01etc/proof-2-100.n3 ** not_supported_keyword(@forAll,at_formula_depth(1))
-
 testing (positive): ..\tests\N3Tests\07test\deE.n3
 testing (positive): ..\tests\N3Tests\04test\SequenceE.n3
 testing (positive): ..\tests\N3Tests\01etc\query21.n3
@@ -1153,62 +641,18 @@ testing (positive): ..\tests\N3Tests\cwm_time\t1.n3
 testing (positive): ..\tests\N3Tests\07test\pi.n3
 testing (positive): ..\tests\N3Tests\07test\ind.n3
 testing (positive): ..\tests\N3Tests\01etc\blueproof001.n3
-in: #Processed by EYE v19.0604.1527 josd
-#eye --n3 D:\git\n3dev\N3\grammar\target\..\tests\N3Tests\01etc\blueproof001.n3
-
-
-
-error: eye --n3 D:\git\n3dev\N3\grammar\target\..\tests\N3Tests\01etc\blueproof001.n3
-EYE v19.0604.1527 josd
-SWI-Prolog 8.0.3 (x64-win64): Jun 19 2019, 15:49:44
-starting 15 [msec cputime] 60 [msec walltime]
-GET file:///d:/git/n3dev/n3/grammar/tests/n3tests/01etc/blueproof001.n3 ** ERROR ** file:///d:/git/n3dev/n3/grammar/tests/n3tests/01etc/blueproof001.n3 ** not_supported_keyword(@forAll,at_formula_depth(1))
-
 testing (positive): ..\tests\N3Tests\07test\irP.n3
 testing (positive): ..\tests\N3Tests\01etc\query52.n3
 testing (positive): ..\tests\N3Tests\01etc\owl-oneOf.n3
 testing (positive): ..\tests\N3Tests\07test\path-4-3.n3
 testing (positive): ..\tests\N3Tests\07test\dpe_query.n3
 testing (positive): ..\tests\N3Tests\01etc\dpe_proof.n3
-in: #Processed by EYE v19.0604.1527 josd
-#eye --n3 D:\git\n3dev\N3\grammar\target\..\tests\N3Tests\01etc\dpe_proof.n3
-
-
-
-error: eye --n3 D:\git\n3dev\N3\grammar\target\..\tests\N3Tests\01etc\dpe_proof.n3
-EYE v19.0604.1527 josd
-SWI-Prolog 8.0.3 (x64-win64): Jun 19 2019, 15:49:44
-starting 31 [msec cputime] 55 [msec walltime]
-GET file:///d:/git/n3dev/n3/grammar/tests/n3tests/01etc/dpe_proof.n3 ** ERROR ** file:///d:/git/n3dev/n3/grammar/tests/n3tests/01etc/dpe_proof.n3 ** not_supported_keyword(@forAll,at_formula_depth(1))
-
 testing (positive): ..\tests\N3Tests\01etc\lldmE.n3
-in: #Processed by EYE v19.0604.1527 josd
-#eye --n3 D:\git\n3dev\N3\grammar\target\..\tests\N3Tests\01etc\lldmE.n3
-
-
-
-error: eye --n3 D:\git\n3dev\N3\grammar\target\..\tests\N3Tests\01etc\lldmE.n3
-EYE v19.0604.1527 josd
-SWI-Prolog 8.0.3 (x64-win64): Jun 19 2019, 15:49:44
-starting 31 [msec cputime] 56 [msec walltime]
-GET file:///d:/git/n3dev/n3/grammar/tests/n3tests/01etc/lldme.n3 ** ERROR ** file:///d:/git/n3dev/n3/grammar/tests/n3tests/01etc/lldme.n3 ** not_supported_keyword(@forAll,at_formula_depth(1))
-
 testing (positive): ..\tests\N3Tests\04test\easterE.n3
 testing (positive): ..\tests\N3Tests\07test\eventTime_test_result.n3
 testing (positive): ..\tests\N3Tests\07test\nincl.n3
 testing (positive): ..\tests\N3Tests\cwm_math\math-test.n3
 testing (positive): ..\tests\N3Tests\01etc\proof-100.n3
-in: #Processed by EYE v19.0604.1527 josd
-#eye --n3 D:\git\n3dev\N3\grammar\target\..\tests\N3Tests\01etc\proof-100.n3
-
-
-
-error: eye --n3 D:\git\n3dev\N3\grammar\target\..\tests\N3Tests\01etc\proof-100.n3
-EYE v19.0604.1527 josd
-SWI-Prolog 8.0.3 (x64-win64): Jun 19 2019, 15:49:44
-starting 15 [msec cputime] 56 [msec walltime]
-GET file:///d:/git/n3dev/n3/grammar/tests/n3tests/01etc/proof-100.n3 ** ERROR ** file:///d:/git/n3dev/n3/grammar/tests/n3tests/01etc/proof-100.n3 ** not_supported_keyword(@forAll,at_formula_depth(1))
-
 testing (positive): ..\tests\N3Tests\04test\result-tp-0-01.n3
 testing (positive): ..\tests\N3Tests\07test\gv-example.n3
 testing (positive): ..\tests\N3Tests\07test\alpE003.n3
@@ -1227,17 +671,6 @@ testing (positive): ..\tests\N3Tests\07test\grass.n3
 testing (positive): ..\tests\N3Tests\05smml\FACTSboxdata.n3
 testing (positive): ..\tests\N3Tests\07test\path-9-3-answer.n3
 testing (positive): ..\tests\N3Tests\01etc\proof-10000.n3
-in: #Processed by EYE v19.0604.1527 josd
-#eye --n3 D:\git\n3dev\N3\grammar\target\..\tests\N3Tests\01etc\proof-10000.n3
-
-
-
-error: eye --n3 D:\git\n3dev\N3\grammar\target\..\tests\N3Tests\01etc\proof-10000.n3
-EYE v19.0604.1527 josd
-SWI-Prolog 8.0.3 (x64-win64): Jun 19 2019, 15:49:44
-starting 46 [msec cputime] 54 [msec walltime]
-GET file:///d:/git/n3dev/n3/grammar/tests/n3tests/01etc/proof-10000.n3 ** ERROR ** file:///d:/git/n3dev/n3/grammar/tests/n3tests/01etc/proof-10000.n3 ** not_supported_keyword(@forAll,at_formula_depth(1))
-
 testing (positive): ..\tests\N3Tests\07test\path-2-3.n3
 testing (positive): ..\tests\N3Tests\07test\alpE002.n3
 testing (positive): ..\tests\N3Tests\07test\path-5-3-answer.n3
@@ -1257,73 +690,18 @@ testing (positive): ..\tests\N3Tests\cwm_list\construct.n3
 testing (positive): ..\tests\N3Tests\04test\sameAsQ.n3
 testing (positive): ..\tests\N3Tests\04test\D2.n3
 testing (positive): ..\tests\N3Tests\01etc\usmE.n3
-in: #Processed by EYE v19.0604.1527 josd
-#eye --n3 D:\git\n3dev\N3\grammar\target\..\tests\N3Tests\01etc\usmE.n3
-
-
-
-error: eye --n3 D:\git\n3dev\N3\grammar\target\..\tests\N3Tests\01etc\usmE.n3
-EYE v19.0604.1527 josd
-SWI-Prolog 8.0.3 (x64-win64): Jun 19 2019, 15:49:44
-starting 15 [msec cputime] 56 [msec walltime]
-GET file:///d:/git/n3dev/n3/grammar/tests/n3tests/01etc/usme.n3 ** ERROR ** file:///d:/git/n3dev/n3/grammar/tests/n3tests/01etc/usme.n3 ** not_supported_keyword(@forAll,at_formula_depth(1))
-
 testing (positive): ..\tests\N3Tests\07test\biE.n3
 testing (positive): ..\tests\N3Tests\cwm_other\filter-bnodes.n3
 testing (positive): ..\tests\N3Tests\07test\bg-result-100.n3
 testing (positive): ..\tests\N3Tests\07test\age_instance.n3
 testing (positive): ..\tests\N3Tests\cwm_other\t00.n3
 testing (positive): ..\tests\N3Tests\01etc\graph.proof.n3
-in: #Processed by EYE v19.0604.1527 josd
-#eye --n3 D:\git\n3dev\N3\grammar\target\..\tests\N3Tests\01etc\graph.proof.n3
-
-
-
-error: eye --n3 D:\git\n3dev\N3\grammar\target\..\tests\N3Tests\01etc\graph.proof.n3
-EYE v19.0604.1527 josd
-SWI-Prolog 8.0.3 (x64-win64): Jun 19 2019, 15:49:44
-starting 15 [msec cputime] 53 [msec walltime]
-GET file:///d:/git/n3dev/n3/grammar/tests/n3tests/01etc/graph.proof.n3 ** ERROR ** file:///d:/git/n3dev/n3/grammar/tests/n3tests/01etc/graph.proof.n3 ** not_supported_keyword(@forAll,at_formula_depth(1))
-
 testing (positive): ..\tests\N3Tests\01etc\example003Q.n3
 testing (positive): ..\tests\N3Tests\01etc\resto-proof.n3
-in: #Processed by EYE v19.0604.1527 josd
-#eye --n3 D:\git\n3dev\N3\grammar\target\..\tests\N3Tests\01etc\resto-proof.n3
-
-
-
-error: eye --n3 D:\git\n3dev\N3\grammar\target\..\tests\N3Tests\01etc\resto-proof.n3
-EYE v19.0604.1527 josd
-SWI-Prolog 8.0.3 (x64-win64): Jun 19 2019, 15:49:44
-starting 15 [msec cputime] 56 [msec walltime]
-GET file:///d:/git/n3dev/n3/grammar/tests/n3tests/01etc/resto-proof.n3 ** ERROR ** file:///d:/git/n3dev/n3/grammar/tests/n3tests/01etc/resto-proof.n3 ** not_supported_keyword(@forAll,at_formula_depth(1))
-
 testing (positive): ..\tests\N3Tests\01etc\palindrome2-proof.n3
-in: #Processed by EYE v19.0604.1527 josd
-#eye --n3 D:\git\n3dev\N3\grammar\target\..\tests\N3Tests\01etc\palindrome2-proof.n3
-
-
-
-error: eye --n3 D:\git\n3dev\N3\grammar\target\..\tests\N3Tests\01etc\palindrome2-proof.n3
-EYE v19.0604.1527 josd
-SWI-Prolog 8.0.3 (x64-win64): Jun 19 2019, 15:49:44
-starting 31 [msec cputime] 53 [msec walltime]
-GET file:///d:/git/n3dev/n3/grammar/tests/n3tests/01etc/palindrome2-proof.n3 ** ERROR ** file:///d:/git/n3dev/n3/grammar/tests/n3tests/01etc/palindrome2-proof.n3 ** not_supported_keyword(@forAll,at_formula_depth(1))
-
 testing (positive): ..\tests\N3Tests\07test\wetC100.n3
 testing (positive): ..\tests\N3Tests\04test\kendallP.n3
 testing (positive): ..\tests\N3Tests\01etc\food2-proof.n3
-in: #Processed by EYE v19.0604.1527 josd
-#eye --n3 D:\git\n3dev\N3\grammar\target\..\tests\N3Tests\01etc\food2-proof.n3
-
-
-
-error: eye --n3 D:\git\n3dev\N3\grammar\target\..\tests\N3Tests\01etc\food2-proof.n3
-EYE v19.0604.1527 josd
-SWI-Prolog 8.0.3 (x64-win64): Jun 19 2019, 15:49:44
-starting 31 [msec cputime] 55 [msec walltime]
-GET file:///d:/git/n3dev/n3/grammar/tests/n3tests/01etc/food2-proof.n3 ** ERROR ** file:///d:/git/n3dev/n3/grammar/tests/n3tests/01etc/food2-proof.n3 ** not_supported_keyword(@forAll,at_formula_depth(1))
-
 testing (positive): ..\tests\N3Tests\07test\shubert.n3
 testing (positive): ..\tests\N3Tests\07test\bg-result-10.n3
 testing (positive): ..\tests\N3Tests\01etc\owl-inverseOf.n3
@@ -1336,33 +714,11 @@ testing (positive): ..\tests\N3Tests\04test\robE.n3
 testing (positive): ..\tests\N3Tests\01etc\lldmD.n3
 testing (positive): ..\tests\N3Tests\cwm_list\append.n3
 testing (positive): ..\tests\N3Tests\04test\sethE.n3
-in: #Processed by EYE v19.0604.1527 josd
-#eye --n3 D:\git\n3dev\N3\grammar\target\..\tests\N3Tests\04test\sethE.n3
-
-
-
-error: eye --n3 D:\git\n3dev\N3\grammar\target\..\tests\N3Tests\04test\sethE.n3
-EYE v19.0604.1527 josd
-SWI-Prolog 8.0.3 (x64-win64): Jun 19 2019, 15:49:44
-starting 15 [msec cputime] 55 [msec walltime]
-GET file:///d:/git/n3dev/n3/grammar/tests/n3tests/04test/sethe.n3 ** ERROR ** file:///d:/git/n3dev/n3/grammar/tests/n3tests/04test/sethe.n3 ** derived_rule_may_not_contain_existential_in_premise('<http://www.w3.org/2000/10/swap/log#implies>'('<http://josd.github.io/eye/.well-known/genid/4MfhvtHRYXN_XuJ4ruZzZ3QsBRQ#bn_4>','<http://www.w3.org/2000/10/swap/log#implies>'(('<http://www.w3.org/2000/01/rdf-schema#subClassOf>'(_e_e29_1_1,'<http://eulersharp.sourceforge.net/2004/04test/sethP#Foo>'),'<http://www.w3.org/2000/10/swap/log#implies>'(('<http://www.w3.org/2002/07/owl#onProperty>'(_e_e29_1_2,'<http://purl.org/dc/elements/1.0/subject>'),'<http://www.w3.org/2002/07/owl#hasValue>'(_e_e29_1_2,literal('foo',type('<http://www.w3.org/2001/XMLSchema#string>'))),'<http://purl.org/dc/elements/1.0/subject>'('<http://eulersharp.sourceforge.net/2004/04test/sethP#foo>',literal('foo',type('<http://www.w3.org/2001/XMLSchema#string>')))),'<http://www.w3.org/1999/02/22-rdf-syntax-ns#type>'('<http://eulersharp.sourceforge.net/2004/04test/sethP#foo>',_e_e29_1_3))),'<http://www.w3.org/1999/02/22-rdf-syntax-ns#type>'('<http://eulersharp.sourceforge.net/2004/04test/sethP#foo>','<http://eulersharp.sourceforge.net/2004/04test/sethP#Foo>'))))
-
 testing (positive): ..\tests\N3Tests\07test\utf8.n3
 testing (positive): ..\tests\N3Tests\cwm_includes\uri-object-invalid.n3
 testing (positive): ..\tests\N3Tests\04test\factorialE.n3
 testing (positive): ..\tests\N3Tests\07test\graph-10.n3
 testing (positive): ..\tests\N3Tests\cwm_other\rules12.n3
-in: #Processed by EYE v19.0604.1527 josd
-#eye --n3 D:\git\n3dev\N3\grammar\target\..\tests\N3Tests\cwm_other\rules12.n3
-
-
-
-error: eye --n3 D:\git\n3dev\N3\grammar\target\..\tests\N3Tests\cwm_other\rules12.n3
-EYE v19.0604.1527 josd
-SWI-Prolog 8.0.3 (x64-win64): Jun 19 2019, 15:49:44
-starting 31 [msec cputime] 55 [msec walltime]
-GET file:///d:/git/n3dev/n3/grammar/tests/n3tests/cwm_other/rules12.n3 ** ERROR ** file:///d:/git/n3dev/n3/grammar/tests/n3tests/cwm_other/rules12.n3 ** not_supported_keyword(@forAll,at_formula_depth(1))
-
 testing (positive): ..\tests\N3Tests\01etc\query71.n3
 testing (positive): ..\tests\N3Tests\07test\bd-test-10.n3
 testing (positive): ..\tests\N3Tests\01etc\notIn_query.n3
@@ -1396,32 +752,12 @@ testing (positive): ..\tests\N3Tests\04test\srcP.n3
 testing (positive): ..\tests\N3Tests\01etc\1tt10.n3
 testing (positive): ..\tests\N3Tests\04test\CountingE.n3
 testing (positive): ..\tests\N3Tests\04test\geneE.n3
-in: #Processed by EYE v19.0604.1527 josd
-#eye --n3 D:\git\n3dev\N3\grammar\target\..\tests\N3Tests\04test\geneE.n3
-
-
-error: eye --n3 D:\git\n3dev\N3\grammar\target\..\tests\N3Tests\04test\geneE.n3
-EYE v19.0604.1527 josd
-SWI-Prolog 8.0.3 (x64-win64): Jun 19 2019, 15:49:44
-starting 31 [msec cputime] 57 [msec walltime]
-GET file:///d:/git/n3dev/n3/grammar/tests/n3tests/04test/genee.n3 ** ERROR ** gre ** builtin_redefinition(<http://www.w3.org/2000/10/swap/log#semantics>(<http://eulersharp.sourceforge.net/2004/04test/gene.n3>,<http://josd.github.io/eye/.well-known/genid/omDLhxt8kChGK5yJpn42QNV6pRY#bn_1>))
-
 testing (positive): ..\tests\N3Tests\04test\query-survey-9.n3
 testing (positive): ..\tests\N3Tests\07test\pd_hes_query.n3
 testing (positive): ..\tests\N3Tests\04test\da538tc2D.n3
 testing (positive): ..\tests\N3Tests\01etc\query85.n3
 testing (positive): ..\tests\N3Tests\01etc\data.n3
 testing (positive): ..\tests\N3Tests\04test\gmpE.n3
-in: #Processed by EYE v19.0604.1527 josd
-#eye --n3 D:\git\n3dev\N3\grammar\target\..\tests\N3Tests\04test\gmpE.n3
-
-
-error: eye --n3 D:\git\n3dev\N3\grammar\target\..\tests\N3Tests\04test\gmpE.n3
-EYE v19.0604.1527 josd
-SWI-Prolog 8.0.3 (x64-win64): Jun 19 2019, 15:49:44
-starting 31 [msec cputime] 72 [msec walltime]
-GET file:///d:/git/n3dev/n3/grammar/tests/n3tests/04test/gmpe.n3 ** ERROR ** gre ** builtin_redefinition(<http://www.w3.org/2000/10/swap/log#semantics>(<http://eulersharp.sourceforge.net/2004/04test/gmp.n3>,<http://josd.github.io/eye/.well-known/genid/99nY14AOKqioYKoKIsl7e9:1TPQ#bn_1>))
-
 testing (positive): ..\tests\N3Tests\01etc\query19.n3
 testing (positive): ..\tests\N3Tests\07test\resto2.n3
 testing (positive): ..\tests\N3Tests\cwm_syntax\lstring.n3
@@ -1430,17 +766,6 @@ testing (positive): ..\tests\N3Tests\01etc\example002P.n3
 testing (positive): ..\tests\N3Tests\01etc\rules-001.n3
 testing (positive): ..\tests\N3Tests\07test\dtb-result-100.n3
 testing (positive): ..\tests\N3Tests\01etc\10tt_proof.n3
-in: #Processed by EYE v19.0604.1527 josd
-#eye --n3 D:\git\n3dev\N3\grammar\target\..\tests\N3Tests\01etc\10tt_proof.n3
-
-
-
-error: eye --n3 D:\git\n3dev\N3\grammar\target\..\tests\N3Tests\01etc\10tt_proof.n3
-EYE v19.0604.1527 josd
-SWI-Prolog 8.0.3 (x64-win64): Jun 19 2019, 15:49:44
-starting 31 [msec cputime] 55 [msec walltime]
-GET file:///d:/git/n3dev/n3/grammar/tests/n3tests/01etc/10tt_proof.n3 ** ERROR ** file:///d:/git/n3dev/n3/grammar/tests/n3tests/01etc/10tt_proof.n3 ** not_supported_keyword(@forAll,at_formula_depth(1))
-
 testing (positive): ..\tests\N3Tests\04test\metastaticF.n3
 testing (positive): ..\tests\N3Tests\cwm_list\unify2-ref.n3
 testing (positive): ..\tests\N3Tests\01etc\query76.n3
@@ -1467,30 +792,8 @@ testing (positive): ..\tests\N3Tests\07test\witch.n3
 testing (positive): ..\tests\N3Tests\07test\alpQ002.n3
 testing (positive): ..\tests\N3Tests\turtle\turtle-syntax-bad-n3-extras-09.ttl
 testing (positive): ..\tests\N3Tests\01etc\train_model_proof.n3
-in: #Processed by EYE v19.0604.1527 josd
-#eye --n3 D:\git\n3dev\N3\grammar\target\..\tests\N3Tests\01etc\train_model_proof.n3
-
-
-
-error: eye --n3 D:\git\n3dev\N3\grammar\target\..\tests\N3Tests\01etc\train_model_proof.n3
-EYE v19.0604.1527 josd
-SWI-Prolog 8.0.3 (x64-win64): Jun 19 2019, 15:49:44
-starting 31 [msec cputime] 55 [msec walltime]
-GET file:///d:/git/n3dev/n3/grammar/tests/n3tests/01etc/train_model_proof.n3 ** ERROR ** file:///d:/git/n3dev/n3/grammar/tests/n3tests/01etc/train_model_proof.n3 ** not_supported_keyword(@forAll,at_formula_depth(1))
-
 testing (positive): ..\tests\N3Tests\cwm_unify\reflexive-ref.n3
 testing (positive): ..\tests\N3Tests\07test\gmpbnodeE1.n3
-in: #Processed by EYE v19.0604.1527 josd
-#eye --n3 D:\git\n3dev\N3\grammar\target\..\tests\N3Tests\07test\gmpbnodeE1.n3
-
-
-
-error: eye --n3 D:\git\n3dev\N3\grammar\target\..\tests\N3Tests\07test\gmpbnodeE1.n3
-EYE v19.0604.1527 josd
-SWI-Prolog 8.0.3 (x64-win64): Jun 19 2019, 15:49:44
-starting 31 [msec cputime] 57 [msec walltime]
-GET file:///d:/git/n3dev/n3/grammar/tests/n3tests/07test/gmpbnodee1.n3 ** ERROR ** file:///d:/git/n3dev/n3/grammar/tests/n3tests/07test/gmpbnodee1.n3 ** not_supported_keyword(@forAll,at_formula_depth(1))
-
 testing (positive): ..\tests\N3Tests\07test\path-64-3.n3
 testing (positive): ..\tests\N3Tests\01etc\swetQ11.n3
 testing (positive): ..\tests\N3Tests\01etc\greenquery001.n3
@@ -1498,17 +801,6 @@ testing (positive): ..\tests\N3Tests\01etc\query3.n3
 testing (positive): ..\tests\N3Tests\04test\b.n3
 testing (positive): ..\tests\N3Tests\04test\stc3b.n3
 testing (positive): ..\tests\N3Tests\01etc\4color_proof.n3
-in: #Processed by EYE v19.0604.1527 josd
-#eye --n3 D:\git\n3dev\N3\grammar\target\..\tests\N3Tests\01etc\4color_proof.n3
-
-
-
-error: eye --n3 D:\git\n3dev\N3\grammar\target\..\tests\N3Tests\01etc\4color_proof.n3
-EYE v19.0604.1527 josd
-SWI-Prolog 8.0.3 (x64-win64): Jun 19 2019, 15:49:44
-starting 31 [msec cputime] 73 [msec walltime]
-GET file:///d:/git/n3dev/n3/grammar/tests/n3tests/01etc/4color_proof.n3 ** ERROR ** file:///d:/git/n3dev/n3/grammar/tests/n3tests/01etc/4color_proof.n3 ** not_supported_keyword(@forAll,at_formula_depth(1))
-
 testing (positive): ..\tests\N3Tests\07test\rdip_proof.n3
 testing (positive): ..\tests\N3Tests\04test\vcardQ.n3
 testing (positive): ..\tests\N3Tests\04test\grahamQ.n3
@@ -1517,60 +809,16 @@ testing (positive): ..\tests\N3Tests\07test\bd-test-100.n3
 testing (positive): ..\tests\N3Tests\04test\rtQ.n3
 testing (positive): ..\tests\N3Tests\01etc\query8.n3
 testing (positive): ..\tests\N3Tests\01etc\fgcm_proof.n3
-in: #Processed by EYE v19.0604.1527 josd
-#eye --n3 D:\git\n3dev\N3\grammar\target\..\tests\N3Tests\01etc\fgcm_proof.n3
-
-
-
-error: eye --n3 D:\git\n3dev\N3\grammar\target\..\tests\N3Tests\01etc\fgcm_proof.n3
-EYE v19.0604.1527 josd
-SWI-Prolog 8.0.3 (x64-win64): Jun 19 2019, 15:49:44
-starting 15 [msec cputime] 61 [msec walltime]
-GET file:///d:/git/n3dev/n3/grammar/tests/n3tests/01etc/fgcm_proof.n3 ** ERROR ** file:///d:/git/n3dev/n3/grammar/tests/n3tests/01etc/fgcm_proof.n3 ** not_supported_keyword(@forAll,at_formula_depth(1))
-
 testing (positive): ..\tests\N3Tests\04test\swrl-n3-rules.n3
 testing (positive): ..\tests\N3Tests\01etc\deQ.n3
 testing (positive): ..\tests\N3Tests\01etc\socrates_proof.n3
-in: #Processed by EYE v19.0604.1527 josd
-#eye --n3 D:\git\n3dev\N3\grammar\target\..\tests\N3Tests\01etc\socrates_proof.n3
-
-
-
-error: eye --n3 D:\git\n3dev\N3\grammar\target\..\tests\N3Tests\01etc\socrates_proof.n3
-EYE v19.0604.1527 josd
-SWI-Prolog 8.0.3 (x64-win64): Jun 19 2019, 15:49:44
-starting 31 [msec cputime] 54 [msec walltime]
-GET file:///d:/git/n3dev/n3/grammar/tests/n3tests/01etc/socrates_proof.n3 ** ERROR ** file:///d:/git/n3dev/n3/grammar/tests/n3tests/01etc/socrates_proof.n3 ** not_supported_keyword(@forAll,at_formula_depth(1))
-
 testing (positive): ..\tests\N3Tests\07test\bg-test-1000.n3
 testing (positive): ..\tests\N3Tests\07test\wetQ101.n3
 testing (positive): ..\tests\N3Tests\04test\ex2-3a.n3
 testing (positive): ..\tests\N3Tests\07test\arc.n3
 testing (positive): ..\tests\N3Tests\01etc\bmi_instances.n3
 testing (positive): ..\tests\N3Tests\01etc\bmi_proof.n3
-in: #Processed by EYE v19.0604.1527 josd
-#eye --n3 D:\git\n3dev\N3\grammar\target\..\tests\N3Tests\01etc\bmi_proof.n3
-
-
-
-error: eye --n3 D:\git\n3dev\N3\grammar\target\..\tests\N3Tests\01etc\bmi_proof.n3
-EYE v19.0604.1527 josd
-SWI-Prolog 8.0.3 (x64-win64): Jun 19 2019, 15:49:44
-starting 31 [msec cputime] 60 [msec walltime]
-GET file:///d:/git/n3dev/n3/grammar/tests/n3tests/01etc/bmi_proof.n3 ** ERROR ** file:///d:/git/n3dev/n3/grammar/tests/n3tests/01etc/bmi_proof.n3 ** not_supported_keyword(@forAll,at_formula_depth(1))
-
 testing (positive): ..\tests\N3Tests\cwm_unify\unify2.n3
-in: #Processed by EYE v19.0604.1527 josd
-#eye --n3 D:\git\n3dev\N3\grammar\target\..\tests\N3Tests\cwm_unify\unify2.n3
-
-
-
-error: eye --n3 D:\git\n3dev\N3\grammar\target\..\tests\N3Tests\cwm_unify\unify2.n3
-EYE v19.0604.1527 josd
-SWI-Prolog 8.0.3 (x64-win64): Jun 19 2019, 15:49:44
-starting 31 [msec cputime] 69 [msec walltime]
-GET file:///d:/git/n3dev/n3/grammar/tests/n3tests/cwm_unify/unify2.n3 ** ERROR ** file:///d:/git/n3dev/n3/grammar/tests/n3tests/cwm_unify/unify2.n3 ** not_supported_keyword(@forAll,at_formula_depth(1))
-
 testing (positive): ..\tests\N3Tests\04test\JoeCo.n3
 testing (positive): ..\tests\N3Tests\01etc\1tt1.n3
 testing (positive): ..\tests\N3Tests\04test\vcard.n3
@@ -1591,52 +839,43 @@ testing (positive): ..\tests\N3Tests\04test\sample.n3
 testing (positive): ..\tests\N3Tests\01etc\bankSW.n3
 testing (positive): ..\tests\N3Tests\07test\fibE.n3
 testing (positive): ..\tests\N3Tests\07test\resto-cwm-proof.n3
-in: #Processed by EYE v19.0604.1527 josd
-#eye --n3 D:\git\n3dev\N3\grammar\target\..\tests\N3Tests\07test\resto-cwm-proof.n3
-
-
-
-error: eye --n3 D:\git\n3dev\N3\grammar\target\..\tests\N3Tests\07test\resto-cwm-proof.n3
-EYE v19.0604.1527 josd
-SWI-Prolog 8.0.3 (x64-win64): Jun 19 2019, 15:49:44
-starting 46 [msec cputime] 56 [msec walltime]
-GET file:///d:/git/n3dev/n3/grammar/tests/n3tests/07test/resto-cwm-proof.n3 ** ERROR ** file:///d:/git/n3dev/n3/grammar/tests/n3tests/07test/resto-cwm-proof.n3 ** not_supported_keyword(@forAll,at_formula_depth(1))
-
 testing (positive): ..\tests\N3Tests\cwm_math\trigo-test.n3
-in: #Processed by EYE v19.0604.1527 josd
+in: #Processed by EYE v20.0121.2250 josd
 #eye --n3 D:\git\n3dev\N3\grammar\target\..\tests\N3Tests\cwm_math\trigo-test.n3
 
 
 
 error: eye --n3 D:\git\n3dev\N3\grammar\target\..\tests\N3Tests\cwm_math\trigo-test.n3
-EYE v19.0604.1527 josd
+EYE v20.0121.2250 josd
 SWI-Prolog 8.0.3 (x64-win64): Jun 19 2019, 15:49:44
-starting 15 [msec cputime] 55 [msec walltime]
+starting 31 [msec cputime] 55 [msec walltime]
 GET file:///d:/git/n3dev/n3/grammar/tests/n3tests/cwm_math/trigo-test.n3 ** ERROR ** file:///d:/git/n3dev/n3/grammar/tests/n3tests/cwm_math/trigo-test.n3 ** no_prefix_directive(NonPi,after_line(7))
 
 testing (positive): ..\tests\N3Tests\04test\dawg-tp-0-02.n3
 testing (positive): ..\tests\N3Tests\07test\test-strela-1000.n3
+testing (positive): ..\tests\N3Tests\cwm_other\smush-schema.n3
 testing (positive): ..\tests\N3Tests\01etc\agent2-answer.n3
 testing (positive): ..\tests\N3Tests\07test\sudoku-query-2.n3
 testing (positive): ..\tests\N3Tests\04test\ex3E.n3
 testing (positive): ..\tests\N3Tests\04test\icalD001.n3
-testing (positive): ..\tests\N3Tests\cwm_other\smush-schema.n3
+testing (positive): ..\tests\N3Tests\cwm_syntax\space-in-uri.n3
+in: #Processed by EYE v20.0121.2250 josd
+#eye --n3 D:\git\n3dev\N3\grammar\target\..\tests\N3Tests\cwm_syntax\space-in-uri.n3
+
+
+
+error: eye --n3 D:\git\n3dev\N3\grammar\target\..\tests\N3Tests\cwm_syntax\space-in-uri.n3
+EYE v20.0121.2250 josd
+SWI-Prolog 8.0.3 (x64-win64): Jun 19 2019, 15:49:44
+starting 31 [msec cputime] 55 [msec walltime]
+GET file:///d:/git/n3dev/n3/grammar/tests/n3tests/cwm_syntax/space-in-uri.n3 ** ERROR ** file:///d:/git/n3dev/n3/grammar/tests/n3tests/cwm_syntax/space-in-uri.n3 ** illegal_token(char_code(
+,10),line(5))
+
 testing (positive): ..\tests\N3Tests\07test\fdlP020.n3
 testing (positive): ..\tests\N3Tests\01etc\owl-maxCardinality.n3
 testing (positive): ..\tests\N3Tests\cwm_other\t00-ref.n3
 testing (positive): ..\tests\N3Tests\04test\socratesP.n3
 testing (positive): ..\tests\N3Tests\01etc\proof-2-10000.n3
-in: #Processed by EYE v19.0604.1527 josd
-#eye --n3 D:\git\n3dev\N3\grammar\target\..\tests\N3Tests\01etc\proof-2-10000.n3
-
-
-
-error: eye --n3 D:\git\n3dev\N3\grammar\target\..\tests\N3Tests\01etc\proof-2-10000.n3
-EYE v19.0604.1527 josd
-SWI-Prolog 8.0.3 (x64-win64): Jun 19 2019, 15:49:44
-starting 15 [msec cputime] 54 [msec walltime]
-GET file:///d:/git/n3dev/n3/grammar/tests/n3tests/01etc/proof-2-10000.n3 ** ERROR ** file:///d:/git/n3dev/n3/grammar/tests/n3tests/01etc/proof-2-10000.n3 ** not_supported_keyword(@forAll,at_formula_depth(1))
-
 testing (positive): ..\tests\N3Tests\04test\stc3aE.n3
 testing (positive): ..\tests\N3Tests\04test\vcardE.n3
 testing (positive): ..\tests\N3Tests\07test\deA.n3
@@ -1652,17 +891,6 @@ testing (positive): ..\tests\N3Tests\07test\ab_d.n3
 testing (positive): ..\tests\N3Tests\07test\path-2-3-answer.n3
 testing (positive): ..\tests\N3Tests\04test\metastaticP001.n3
 testing (positive): ..\tests\N3Tests\01etc\testE.n3
-in: #Processed by EYE v19.0604.1527 josd
-#eye --n3 D:\git\n3dev\N3\grammar\target\..\tests\N3Tests\01etc\testE.n3
-
-
-
-error: eye --n3 D:\git\n3dev\N3\grammar\target\..\tests\N3Tests\01etc\testE.n3
-EYE v19.0604.1527 josd
-SWI-Prolog 8.0.3 (x64-win64): Jun 19 2019, 15:49:44
-starting 31 [msec cputime] 54 [msec walltime]
-GET file:///d:/git/n3dev/n3/grammar/tests/n3tests/01etc/teste.n3 ** ERROR ** file:///d:/git/n3dev/n3/grammar/tests/n3tests/01etc/teste.n3 ** not_supported_keyword(@forAll,at_formula_depth(1))
-
 testing (positive): ..\tests\N3Tests\cwm_n3\n3parser.tests_n3_10002.nt
 testing (positive): ..\tests\N3Tests\cwm_n3\n3parser.tests_n3_10003.nt
 testing (positive): ..\tests\N3Tests\01etc\query81.n3
@@ -1678,17 +906,6 @@ testing (positive): ..\tests\N3Tests\cwm_n3\n3parser.tests_n3_10014.nt
 testing (positive): ..\tests\N3Tests\07test\fibQ.n3
 testing (positive): ..\tests\N3Tests\07test\owl2.n3
 testing (positive): ..\tests\N3Tests\01etc\fcm_proof.n3
-in: #Processed by EYE v19.0604.1527 josd
-#eye --n3 D:\git\n3dev\N3\grammar\target\..\tests\N3Tests\01etc\fcm_proof.n3
-
-
-
-error: eye --n3 D:\git\n3dev\N3\grammar\target\..\tests\N3Tests\01etc\fcm_proof.n3
-EYE v19.0604.1527 josd
-SWI-Prolog 8.0.3 (x64-win64): Jun 19 2019, 15:49:44
-starting 15 [msec cputime] 57 [msec walltime]
-GET file:///d:/git/n3dev/n3/grammar/tests/n3tests/01etc/fcm_proof.n3 ** ERROR ** file:///d:/git/n3dev/n3/grammar/tests/n3tests/01etc/fcm_proof.n3 ** not_supported_keyword(@forAll,at_formula_depth(1))
-
 testing (positive): ..\tests\N3Tests\01etc\redgraph003.n3
 testing (positive): ..\tests\N3Tests\07test\swetQ.n3
 testing (positive): ..\tests\N3Tests\01etc\answer-001.n3
@@ -1708,17 +925,6 @@ testing (positive): ..\tests\N3Tests\04test\stc2a.n3
 testing (positive): ..\tests\N3Tests\07test\pd_hes_result.n3
 testing (positive): ..\tests\N3Tests\07test\path-3-5.n3
 testing (positive): ..\tests\N3Tests\04test\socratesR.n3
-in: #Processed by EYE v19.0604.1527 josd
-#eye --n3 D:\git\n3dev\N3\grammar\target\..\tests\N3Tests\04test\socratesR.n3
-
-
-
-error: eye --n3 D:\git\n3dev\N3\grammar\target\..\tests\N3Tests\04test\socratesR.n3
-EYE v19.0604.1527 josd
-SWI-Prolog 8.0.3 (x64-win64): Jun 19 2019, 15:49:44
-starting 15 [msec cputime] 53 [msec walltime]
-GET file:///d:/git/n3dev/n3/grammar/tests/n3tests/04test/socratesr.n3 ** ERROR ** file:///d:/git/n3dev/n3/grammar/tests/n3tests/04test/socratesr.n3 ** not_supported_keyword(@forAll,at_formula_depth(1))
-
 testing (positive): ..\tests\N3Tests\01etc\food-declarations.n3
 testing (positive): ..\tests\N3Tests\01etc\1tt4.n3
 testing (positive): ..\tests\N3Tests\cwm_reason\t5.n3
@@ -1750,17 +956,6 @@ testing (positive): ..\tests\N3Tests\01etc\query58.n3
 testing (positive): ..\tests\N3Tests\04test\metastaticQ.n3
 testing (positive): ..\tests\N3Tests\01etc\test_data.n3
 testing (positive): ..\tests\N3Tests\07test\resto-cwm-proof2.n3
-in: #Processed by EYE v19.0604.1527 josd
-#eye --n3 D:\git\n3dev\N3\grammar\target\..\tests\N3Tests\07test\resto-cwm-proof2.n3
-
-
-
-error: eye --n3 D:\git\n3dev\N3\grammar\target\..\tests\N3Tests\07test\resto-cwm-proof2.n3
-EYE v19.0604.1527 josd
-SWI-Prolog 8.0.3 (x64-win64): Jun 19 2019, 15:49:44
-starting 15 [msec cputime] 54 [msec walltime]
-GET file:///d:/git/n3dev/n3/grammar/tests/n3tests/07test/resto-cwm-proof2.n3 ** ERROR ** file:///d:/git/n3dev/n3/grammar/tests/n3tests/07test/resto-cwm-proof2.n3 ** not_supported_keyword(@forAll,at_formula_depth(1))
-
 testing (positive): ..\tests\N3Tests\cwm_other\trivial-filter.n3
 testing (positive): ..\tests\N3Tests\01etc\forAllIn_answer.n3
 testing (positive): ..\tests\N3Tests\01etc\acct3check2.n3
@@ -1769,32 +964,10 @@ testing (positive): ..\tests\N3Tests\cwm_n3\n3parser.tests_n3_10001.nt
 testing (positive): ..\tests\N3Tests\01etc\query51.n3
 testing (positive): ..\tests\N3Tests\05smml\RULESdefaultvaluesefindall.n3
 testing (positive): ..\tests\N3Tests\01etc\rifE.n3
-in: #Processed by EYE v19.0604.1527 josd
-#eye --n3 D:\git\n3dev\N3\grammar\target\..\tests\N3Tests\01etc\rifE.n3
-
-
-
-error: eye --n3 D:\git\n3dev\N3\grammar\target\..\tests\N3Tests\01etc\rifE.n3
-EYE v19.0604.1527 josd
-SWI-Prolog 8.0.3 (x64-win64): Jun 19 2019, 15:49:44
-starting 31 [msec cputime] 53 [msec walltime]
-GET file:///d:/git/n3dev/n3/grammar/tests/n3tests/01etc/rife.n3 ** ERROR ** file:///d:/git/n3dev/n3/grammar/tests/n3tests/01etc/rife.n3 ** not_supported_keyword(@forAll,at_formula_depth(1))
-
 testing (positive): ..\tests\N3Tests\01etc\owl-TransitiveProperty.n3
 testing (positive): ..\tests\N3Tests\01etc\query72.n3
 testing (positive): ..\tests\N3Tests\01etc\query18.n3
 testing (positive): ..\tests\N3Tests\cwm_other\schema-rules.n3
-in: #Processed by EYE v19.0604.1527 josd
-#eye --n3 D:\git\n3dev\N3\grammar\target\..\tests\N3Tests\cwm_other\schema-rules.n3
-
-
-
-error: eye --n3 D:\git\n3dev\N3\grammar\target\..\tests\N3Tests\cwm_other\schema-rules.n3
-EYE v19.0604.1527 josd
-SWI-Prolog 8.0.3 (x64-win64): Jun 19 2019, 15:49:44
-starting 46 [msec cputime] 55 [msec walltime]
-GET file:///d:/git/n3dev/n3/grammar/tests/n3tests/cwm_other/schema-rules.n3 ** ERROR ** file:///d:/git/n3dev/n3/grammar/tests/n3tests/cwm_other/schema-rules.n3 ** not_supported_keyword(@forAll,at_formula_depth(1))
-
 testing (positive): ..\tests\N3Tests\05smml\RULESifctransformationmatrix.n3
 testing (positive): ..\tests\N3Tests\04test\D1.n3
 testing (positive): ..\tests\N3Tests\01etc\owl-allValuesFrom.n3
@@ -1831,31 +1004,20 @@ testing (positive): ..\tests\N3Tests\07test\dtb-result-1000.n3
 testing (positive): ..\tests\N3Tests\cwm_i18n\hiragana.n3
 testing (positive): ..\tests\N3Tests\01etc\usmP.n3
 testing (positive): ..\tests\N3Tests\01etc\agent1-proof.n3
-in: #Processed by EYE v19.0604.1527 josd
-#eye --n3 D:\git\n3dev\N3\grammar\target\..\tests\N3Tests\01etc\agent1-proof.n3
-
-
-
-error: eye --n3 D:\git\n3dev\N3\grammar\target\..\tests\N3Tests\01etc\agent1-proof.n3
-EYE v19.0604.1527 josd
-SWI-Prolog 8.0.3 (x64-win64): Jun 19 2019, 15:49:44
-starting 31 [msec cputime] 53 [msec walltime]
-GET file:///d:/git/n3dev/n3/grammar/tests/n3tests/01etc/agent1-proof.n3 ** ERROR ** file:///d:/git/n3dev/n3/grammar/tests/n3tests/01etc/agent1-proof.n3 ** not_supported_keyword(@forAll,at_formula_depth(1))
-
 testing (positive): ..\tests\N3Tests\07test\3outOf5-query.n3
 testing (positive): ..\tests\N3Tests\01etc\biP.n3
 testing (positive): ..\tests\N3Tests\07test\alpE000.n3
 testing (positive): ..\tests\N3Tests\01etc\subtasks.n3
 testing (positive): ..\tests\N3Tests\cwm_n3\n3parser.tests_n3_10014.n3
-in: #Processed by EYE v19.0604.1527 josd
+in: #Processed by EYE v20.0121.2250 josd
 #eye --n3 D:\git\n3dev\N3\grammar\target\..\tests\N3Tests\cwm_n3\n3parser.tests_n3_10014.n3
 
 
 
 error: eye --n3 D:\git\n3dev\N3\grammar\target\..\tests\N3Tests\cwm_n3\n3parser.tests_n3_10014.n3
-EYE v19.0604.1527 josd
+EYE v20.0121.2250 josd
 SWI-Prolog 8.0.3 (x64-win64): Jun 19 2019, 15:49:44
-starting 46 [msec cputime] 55 [msec walltime]
+starting 31 [msec cputime] 53 [msec walltime]
 GET file:///d:/git/n3dev/n3/grammar/tests/n3tests/cwm_n3/n3parser.tests_n3_10014.n3 ** ERROR ** file:///d:/git/n3dev/n3/grammar/tests/n3tests/cwm_n3/n3parser.tests_n3_10014.n3 ** no_prefix_directive(log,after_line(44))
 
 testing (positive): ..\tests\N3Tests\01etc\witch.n3
@@ -1868,17 +1030,6 @@ testing (positive): ..\tests\N3Tests\05smml\RULESneighbourfaceedges.n3
 testing (positive): ..\tests\N3Tests\07test\socrater.n3
 testing (positive): ..\tests\N3Tests\cwm_reason\double.n3
 testing (positive): ..\tests\N3Tests\01etc\proof-1000.n3
-in: #Processed by EYE v19.0604.1527 josd
-#eye --n3 D:\git\n3dev\N3\grammar\target\..\tests\N3Tests\01etc\proof-1000.n3
-
-
-
-error: eye --n3 D:\git\n3dev\N3\grammar\target\..\tests\N3Tests\01etc\proof-1000.n3
-EYE v19.0604.1527 josd
-SWI-Prolog 8.0.3 (x64-win64): Jun 19 2019, 15:49:44
-starting 31 [msec cputime] 54 [msec walltime]
-GET file:///d:/git/n3dev/n3/grammar/tests/n3tests/01etc/proof-1000.n3 ** ERROR ** file:///d:/git/n3dev/n3/grammar/tests/n3tests/01etc/proof-1000.n3 ** not_supported_keyword(@forAll,at_formula_depth(1))
-
 testing (positive): ..\tests\N3Tests\04test\PathE.n3
 testing (positive): ..\tests\N3Tests\07test\alpQ003.n3
 testing (positive): ..\tests\N3Tests\cwm_reason\single_gen.n3
@@ -1896,17 +1047,6 @@ testing (positive): ..\tests\N3Tests\01etc\mmln-gv-query.n3
 testing (positive): ..\tests\N3Tests\07test\rifE.n3
 testing (positive): ..\tests\N3Tests\cwm_n3\n3parser.tests_n3_10009.nt
 testing (positive): ..\tests\N3Tests\01etc\fibE.n3
-in: #Processed by EYE v19.0604.1527 josd
-#eye --n3 D:\git\n3dev\N3\grammar\target\..\tests\N3Tests\01etc\fibE.n3
-
-
-
-error: eye --n3 D:\git\n3dev\N3\grammar\target\..\tests\N3Tests\01etc\fibE.n3
-EYE v19.0604.1527 josd
-SWI-Prolog 8.0.3 (x64-win64): Jun 19 2019, 15:49:44
-starting 15 [msec cputime] 53 [msec walltime]
-GET file:///d:/git/n3dev/n3/grammar/tests/n3tests/01etc/fibe.n3 ** ERROR ** file:///d:/git/n3dev/n3/grammar/tests/n3tests/01etc/fibe.n3 ** not_supported_keyword(@forAll,at_formula_depth(1))
-
 testing (positive): ..\tests\N3Tests\01etc\4color_query.n3
 testing (positive): ..\tests\N3Tests\04test\gmpF.n3
 testing (positive): ..\tests\N3Tests\04test\u2.n3
@@ -1917,17 +1057,6 @@ testing (positive): ..\tests\N3Tests\04test\daveE.n3
 testing (positive): ..\tests\N3Tests\01etc\query93.n3
 testing (positive): ..\tests\N3Tests\01etc\components.n3
 testing (positive): ..\tests\N3Tests\cwm_other\rules13.n3
-in: #Processed by EYE v19.0604.1527 josd
-#eye --n3 D:\git\n3dev\N3\grammar\target\..\tests\N3Tests\cwm_other\rules13.n3
-
-
-
-error: eye --n3 D:\git\n3dev\N3\grammar\target\..\tests\N3Tests\cwm_other\rules13.n3
-EYE v19.0604.1527 josd
-SWI-Prolog 8.0.3 (x64-win64): Jun 19 2019, 15:49:44
-starting 46 [msec cputime] 61 [msec walltime]
-GET file:///d:/git/n3dev/n3/grammar/tests/n3tests/cwm_other/rules13.n3 ** ERROR ** file:///d:/git/n3dev/n3/grammar/tests/n3tests/cwm_other/rules13.n3 ** not_supported_keyword(@forAll,at_formula_depth(2))
-
 testing (positive): ..\tests\N3Tests\cwm_list\unify3-ref.n3
 testing (positive): ..\tests\N3Tests\cwm_string\roughly.n3
 testing (positive): ..\tests\N3Tests\01etc\query20.n3
@@ -1961,17 +1090,6 @@ testing (positive): ..\tests\N3Tests\07test\takE.n3
 testing (positive): ..\tests\N3Tests\01etc\dpQ.n3
 testing (positive): ..\tests\N3Tests\07test\ttl-to-rdfa.n3
 testing (positive): ..\tests\N3Tests\01etc\floatingwoman-proof.n3
-in: #Processed by EYE v19.0604.1527 josd
-#eye --n3 D:\git\n3dev\N3\grammar\target\..\tests\N3Tests\01etc\floatingwoman-proof.n3
-
-
-
-error: eye --n3 D:\git\n3dev\N3\grammar\target\..\tests\N3Tests\01etc\floatingwoman-proof.n3
-EYE v19.0604.1527 josd
-SWI-Prolog 8.0.3 (x64-win64): Jun 19 2019, 15:49:44
-starting 31 [msec cputime] 54 [msec walltime]
-GET file:///d:/git/n3dev/n3/grammar/tests/n3tests/01etc/floatingwoman-proof.n3 ** ERROR ** file:///d:/git/n3dev/n3/grammar/tests/n3tests/01etc/floatingwoman-proof.n3 ** not_supported_keyword(@forAll,at_formula_depth(1))
-
 testing (positive): ..\tests\N3Tests\cwm_includes\t1.n3
 testing (positive): ..\tests\N3Tests\07test\eventTime_queries2.n3
 testing (positive): ..\tests\N3Tests\04test\testC.n3
@@ -2002,31 +1120,9 @@ testing (positive): ..\tests\N3Tests\07test\query1.n3
 testing (positive): ..\tests\N3Tests\04test\librarianE.n3
 testing (positive): ..\tests\N3Tests\04test\result-tp-05.n3
 testing (positive): ..\tests\N3Tests\01etc\proof.n3
-in: #Processed by EYE v19.0604.1527 josd
-#eye --n3 D:\git\n3dev\N3\grammar\target\..\tests\N3Tests\01etc\proof.n3
-
-
-
-error: eye --n3 D:\git\n3dev\N3\grammar\target\..\tests\N3Tests\01etc\proof.n3
-EYE v19.0604.1527 josd
-SWI-Prolog 8.0.3 (x64-win64): Jun 19 2019, 15:49:44
-starting 46 [msec cputime] 54 [msec walltime]
-GET file:///d:/git/n3dev/n3/grammar/tests/n3tests/01etc/proof.n3 ** ERROR ** file:///d:/git/n3dev/n3/grammar/tests/n3tests/01etc/proof.n3 ** not_supported_keyword(@forAll,at_formula_depth(1))
-
 testing (positive): ..\tests\N3Tests\cwm_includes\t11.n3
 testing (positive): ..\tests\N3Tests\04test\EntailmentE.n3
 testing (positive): ..\tests\N3Tests\01etc\answer.n3
-in: #Processed by EYE v19.0604.1527 josd
-#eye --n3 D:\git\n3dev\N3\grammar\target\..\tests\N3Tests\01etc\answer.n3
-
-
-
-error: eye --n3 D:\git\n3dev\N3\grammar\target\..\tests\N3Tests\01etc\answer.n3
-EYE v19.0604.1527 josd
-SWI-Prolog 8.0.3 (x64-win64): Jun 19 2019, 15:49:44
-starting 31 [msec cputime] 55 [msec walltime]
-GET file:///d:/git/n3dev/n3/grammar/tests/n3tests/01etc/answer.n3 ** ERROR ** file:///d:/git/n3dev/n3/grammar/tests/n3tests/01etc/answer.n3 ** not_supported_keyword(@forAll,at_formula_depth(1))
-
 testing (positive): ..\tests\N3Tests\01etc\query92.n3
 testing (positive): ..\tests\N3Tests\01etc\query77.n3
 testing (positive): ..\tests\N3Tests\07test\parteval.n3
@@ -2039,28 +1135,7 @@ testing (positive): ..\tests\N3Tests\04test\result-tp-0-02.n3
 testing (positive): ..\tests\N3Tests\01etc\select-data-extra.n3
 testing (positive): ..\tests\N3Tests\01etc\iq-extra.n3
 testing (positive): ..\tests\N3Tests\04test\gateE.n3
-in: #Processed by EYE v19.0604.1527 josd
-#eye --n3 D:\git\n3dev\N3\grammar\target\..\tests\N3Tests\04test\gateE.n3
-
-
-error: eye --n3 D:\git\n3dev\N3\grammar\target\..\tests\N3Tests\04test\gateE.n3
-EYE v19.0604.1527 josd
-SWI-Prolog 8.0.3 (x64-win64): Jun 19 2019, 15:49:44
-starting 31 [msec cputime] 58 [msec walltime]
-GET file:///d:/git/n3dev/n3/grammar/tests/n3tests/04test/gatee.n3 ** ERROR ** gre ** builtin_redefinition(<http://www.w3.org/2000/10/swap/log#semantics>(<http://eulersharp.sourceforge.net/2004/04test/gate.n3>,<http://josd.github.io/eye/.well-known/genid/KXzuOzFNMXW6BOaBO6YC_gUM2fE#bn_1>))
-
 testing (positive): ..\tests\N3Tests\01etc\blueproof002.n3
-in: #Processed by EYE v19.0604.1527 josd
-#eye --n3 D:\git\n3dev\N3\grammar\target\..\tests\N3Tests\01etc\blueproof002.n3
-
-
-
-error: eye --n3 D:\git\n3dev\N3\grammar\target\..\tests\N3Tests\01etc\blueproof002.n3
-EYE v19.0604.1527 josd
-SWI-Prolog 8.0.3 (x64-win64): Jun 19 2019, 15:49:44
-starting 15 [msec cputime] 57 [msec walltime]
-GET file:///d:/git/n3dev/n3/grammar/tests/n3tests/01etc/blueproof002.n3 ** ERROR ** file:///d:/git/n3dev/n3/grammar/tests/n3tests/01etc/blueproof002.n3 ** not_supported_keyword(@forAll,at_formula_depth(1))
-
 testing (positive): ..\tests\N3Tests\07test\path-1-3.n3
 testing (positive): ..\tests\N3Tests\cwm_syntax\graph-as-object.n3
 testing (positive): ..\tests\N3Tests\04test\ericE.n3
@@ -2068,29 +1143,7 @@ testing (positive): ..\tests\N3Tests\04test\dawg-tp-05.n3
 testing (positive): ..\tests\N3Tests\cwm_syntax\formula-simple-1.n3
 testing (positive): ..\tests\N3Tests\04test\davidQ.n3
 testing (positive): ..\tests\N3Tests\01etc\test_proof.n3
-in: #Processed by EYE v19.0604.1527 josd
-#eye --n3 D:\git\n3dev\N3\grammar\target\..\tests\N3Tests\01etc\test_proof.n3
-
-
-
-error: eye --n3 D:\git\n3dev\N3\grammar\target\..\tests\N3Tests\01etc\test_proof.n3
-EYE v19.0604.1527 josd
-SWI-Prolog 8.0.3 (x64-win64): Jun 19 2019, 15:49:44
-starting 31 [msec cputime] 55 [msec walltime]
-GET file:///d:/git/n3dev/n3/grammar/tests/n3tests/01etc/test_proof.n3 ** ERROR ** file:///d:/git/n3dev/n3/grammar/tests/n3tests/01etc/test_proof.n3 ** not_supported_keyword(@forAll,at_formula_depth(1))
-
 testing (positive): ..\tests\N3Tests\01etc\dpE.n3
-in: #Processed by EYE v19.0604.1527 josd
-#eye --n3 D:\git\n3dev\N3\grammar\target\..\tests\N3Tests\01etc\dpE.n3
-
-
-
-error: eye --n3 D:\git\n3dev\N3\grammar\target\..\tests\N3Tests\01etc\dpE.n3
-EYE v19.0604.1527 josd
-SWI-Prolog 8.0.3 (x64-win64): Jun 19 2019, 15:49:44
-starting 15 [msec cputime] 54 [msec walltime]
-GET file:///d:/git/n3dev/n3/grammar/tests/n3tests/01etc/dpe.n3 ** ERROR ** file:///d:/git/n3dev/n3/grammar/tests/n3tests/01etc/dpe.n3 ** not_supported_keyword(@forAll,at_formula_depth(1))
-
 testing (positive): ..\tests\N3Tests\01etc\owl-IrreflexiveProperty.n3
 testing (positive): ..\tests\N3Tests\07test\skos_mv_answer.n3
 testing (positive): ..\tests\N3Tests\04test\kendallE.n3
@@ -2103,17 +1156,6 @@ testing (positive): ..\tests\N3Tests\01etc\gps-example2.n3
 testing (positive): ..\tests\N3Tests\01etc\pi-query.n3
 testing (positive): ..\tests\N3Tests\01etc\weightStatus_rules.n3
 testing (positive): ..\tests\N3Tests\01etc\numeral_proof.n3
-in: #Processed by EYE v19.0604.1527 josd
-#eye --n3 D:\git\n3dev\N3\grammar\target\..\tests\N3Tests\01etc\numeral_proof.n3
-
-
-
-error: eye --n3 D:\git\n3dev\N3\grammar\target\..\tests\N3Tests\01etc\numeral_proof.n3
-EYE v19.0604.1527 josd
-SWI-Prolog 8.0.3 (x64-win64): Jun 19 2019, 15:49:44
-starting 46 [msec cputime] 53 [msec walltime]
-GET file:///d:/git/n3dev/n3/grammar/tests/n3tests/01etc/numeral_proof.n3 ** ERROR ** file:///d:/git/n3dev/n3/grammar/tests/n3tests/01etc/numeral_proof.n3 ** not_supported_keyword(@forAll,at_formula_depth(1))
-
 testing (positive): ..\tests\N3Tests\cwm_syntax\embedded-dot-in-qname.n3
 testing (positive): ..\tests\N3Tests\01etc\patient.n3
 testing (positive): ..\tests\N3Tests\07test\dpe_theory.n3
@@ -2132,17 +1174,6 @@ testing (positive): ..\tests\N3Tests\01etc\query55.n3
 testing (positive): ..\tests\N3Tests\07test\path-8-3-answer.n3
 testing (positive): ..\tests\N3Tests\07test\parteval-subclass.n3
 testing (positive): ..\tests\N3Tests\01etc\notIn_proof.n3
-in: #Processed by EYE v19.0604.1527 josd
-#eye --n3 D:\git\n3dev\N3\grammar\target\..\tests\N3Tests\01etc\notIn_proof.n3
-
-
-
-error: eye --n3 D:\git\n3dev\N3\grammar\target\..\tests\N3Tests\01etc\notIn_proof.n3
-EYE v19.0604.1527 josd
-SWI-Prolog 8.0.3 (x64-win64): Jun 19 2019, 15:49:44
-starting 15 [msec cputime] 55 [msec walltime]
-GET file:///d:/git/n3dev/n3/grammar/tests/n3tests/01etc/notin_proof.n3 ** ERROR ** file:///d:/git/n3dev/n3/grammar/tests/n3tests/01etc/notin_proof.n3 ** not_supported_keyword(@forAll,at_formula_depth(1))
-
 testing (positive): ..\tests\N3Tests\04test\anatomy-result.n3
 testing (positive): ..\tests\N3Tests\01etc\query12.n3
 testing (positive): ..\tests\N3Tests\04test\query-survey-2.n3
@@ -2151,32 +1182,10 @@ testing (positive): ..\tests\N3Tests\01etc\query99.n3
 testing (positive): ..\tests\N3Tests\01etc\gedcom-relations.n3
 testing (positive): ..\tests\N3Tests\07test\music-query.n3
 testing (positive): ..\tests\N3Tests\01etc\witch-proof.n3
-in: #Processed by EYE v19.0604.1527 josd
-#eye --n3 D:\git\n3dev\N3\grammar\target\..\tests\N3Tests\01etc\witch-proof.n3
-
-
-
-error: eye --n3 D:\git\n3dev\N3\grammar\target\..\tests\N3Tests\01etc\witch-proof.n3
-EYE v19.0604.1527 josd
-SWI-Prolog 8.0.3 (x64-win64): Jun 19 2019, 15:49:44
-starting 15 [msec cputime] 57 [msec walltime]
-GET file:///d:/git/n3dev/n3/grammar/tests/n3tests/01etc/witch-proof.n3 ** ERROR ** file:///d:/git/n3dev/n3/grammar/tests/n3tests/01etc/witch-proof.n3 ** not_supported_keyword(@forAll,at_formula_depth(1))
-
 testing (positive): ..\tests\N3Tests\cwm_other\log-filter.n3
 testing (positive): ..\tests\N3Tests\01etc\query57.n3
 testing (positive): ..\tests\N3Tests\turtle\turtle-syntax-bad-n3-extras-11.ttl
 testing (positive): ..\tests\N3Tests\01etc\sdcoding-proof.n3
-in: #Processed by EYE v19.0604.1527 josd
-#eye --n3 D:\git\n3dev\N3\grammar\target\..\tests\N3Tests\01etc\sdcoding-proof.n3
-
-
-
-error: eye --n3 D:\git\n3dev\N3\grammar\target\..\tests\N3Tests\01etc\sdcoding-proof.n3
-EYE v19.0604.1527 josd
-SWI-Prolog 8.0.3 (x64-win64): Jun 19 2019, 15:49:44
-starting 46 [msec cputime] 55 [msec walltime]
-GET file:///d:/git/n3dev/n3/grammar/tests/n3tests/01etc/sdcoding-proof.n3 ** ERROR ** file:///d:/git/n3dev/n3/grammar/tests/n3tests/01etc/sdcoding-proof.n3 ** not_supported_keyword(@forAll,at_formula_depth(1))
-
 testing (positive): ..\tests\N3Tests\01etc\agent1-answer.n3
 testing (positive): ..\tests\N3Tests\01etc\query66.n3
 testing (positive): ..\tests\N3Tests\04test\michaelP.n3
@@ -2209,31 +1218,10 @@ testing (positive): ..\tests\N3Tests\07test\alpE013.n3
 testing (positive): ..\tests\N3Tests\04test\factorialQ.n3
 testing (positive): ..\tests\N3Tests\cwm_list\last.n3
 testing (positive): ..\tests\N3Tests\cwm_n3\n3parser.tests_n3_10012.nt
-in: #Processed by EYE v19.0604.1527 josd
-#eye --n3 D:\git\n3dev\N3\grammar\target\..\tests\N3Tests\cwm_n3\n3parser.tests_n3_10012.nt
-
-
-error: eye --n3 D:\git\n3dev\N3\grammar\target\..\tests\N3Tests\cwm_n3\n3parser.tests_n3_10012.nt
-EYE v19.0604.1527 josd
-SWI-Prolog 8.0.3 (x64-win64): Jun 19 2019, 15:49:44
-starting 31 [msec cputime] 57 [msec walltime]
-GET file:///d:/git/n3dev/n3/grammar/tests/n3tests/cwm_n3/n3parser.tests_n3_10012.nt ** ERROR ** gre ** builtin_redefinition(<http://www.w3.org/2000/10/swap/math#sum>(<http://josd.github.io/eye/.well-known/genid/SNjCgLqaBuOynvUnblkXFaaMSRc#e_li2_1>,<http://josd.github.io/eye/.well-known/genid/SNjCgLqaBuOynvUnblkXFaaMSRc#e_L20C12_1>))
-
 testing (positive): ..\tests\N3Tests\07test\equalities1.n3
 testing (positive): ..\tests\N3Tests\cwm_string\roughly-out.n3
 testing (positive): ..\tests\N3Tests\04test\D1E.n3
 testing (positive): ..\tests\N3Tests\01etc\pi-proof.n3
-in: #Processed by EYE v19.0604.1527 josd
-#eye --n3 D:\git\n3dev\N3\grammar\target\..\tests\N3Tests\01etc\pi-proof.n3
-
-
-
-error: eye --n3 D:\git\n3dev\N3\grammar\target\..\tests\N3Tests\01etc\pi-proof.n3
-EYE v19.0604.1527 josd
-SWI-Prolog 8.0.3 (x64-win64): Jun 19 2019, 15:49:44
-starting 46 [msec cputime] 70 [msec walltime]
-GET file:///d:/git/n3dev/n3/grammar/tests/n3tests/01etc/pi-proof.n3 ** ERROR ** file:///d:/git/n3dev/n3/grammar/tests/n3tests/01etc/pi-proof.n3 ** not_supported_keyword(@forAll,at_formula_depth(1))
-
 testing (positive): ..\tests\N3Tests\07test\thumbnail_why.n3
 testing (positive): ..\tests\N3Tests\01etc\palindrome-query.n3
 testing (positive): ..\tests\N3Tests\07test\swP.n3
@@ -2255,142 +1243,118 @@ testing (positive): ..\tests\N3Tests\01etc\query43.n3
 testing (positive): ..\tests\N3Tests\cwm_other\daml-pref.n3
 testing (positive): ..\tests\N3Tests\07test\hanoi.n3
 testing (positive): ..\tests\N3Tests\01etc\nbbn_proof.n3
-in: #Processed by EYE v19.0604.1527 josd
-#eye --n3 D:\git\n3dev\N3\grammar\target\..\tests\N3Tests\01etc\nbbn_proof.n3
-
-
-
-error: eye --n3 D:\git\n3dev\N3\grammar\target\..\tests\N3Tests\01etc\nbbn_proof.n3
-EYE v19.0604.1527 josd
-SWI-Prolog 8.0.3 (x64-win64): Jun 19 2019, 15:49:44
-starting 46 [msec cputime] 80 [msec walltime]
-GET file:///d:/git/n3dev/n3/grammar/tests/n3tests/01etc/nbbn_proof.n3 ** ERROR ** file:///d:/git/n3dev/n3/grammar/tests/n3tests/01etc/nbbn_proof.n3 ** not_supported_keyword(@forAll,at_formula_depth(1))
-
 testing (positive): ..\tests\N3Tests\07test\badmeta.n3
 testing (positive): ..\tests\N3Tests\01etc\query45.n3
 testing (positive): ..\tests\N3Tests\07test\path-3-3.n3
 testing (negative): neg-thisadoc.n3
-in: #Processed by EYE v19.0604.1527 josd
+in: #Processed by EYE v20.0121.2250 josd
 #eye --n3 D:\git\n3dev\N3\grammar\target\..\tests\N3Tests\cwm_syntax\neg-thisadoc.n3
 
 
 
 error: eye --n3 D:\git\n3dev\N3\grammar\target\..\tests\N3Tests\cwm_syntax\neg-thisadoc.n3
-EYE v19.0604.1527 josd
+EYE v20.0121.2250 josd
 SWI-Prolog 8.0.3 (x64-win64): Jun 19 2019, 15:49:44
-starting 46 [msec cputime] 54 [msec walltime]
+starting 46 [msec cputime] 53 [msec walltime]
 GET file:///d:/git/n3dev/n3/grammar/tests/n3tests/cwm_syntax/neg-thisadoc.n3 ** ERROR ** file:///d:/git/n3dev/n3/grammar/tests/n3tests/cwm_syntax/neg-thisadoc.n3 ** invalid_keyword_use(this,after_line(1))
 
 testing (negative): trailing-dot-in-qname.n3
-in: #Processed by EYE v19.0604.1527 josd
+in: #Processed by EYE v20.0121.2250 josd
 #eye --n3 D:\git\n3dev\N3\grammar\target\..\tests\N3Tests\cwm_syntax\trailing-dot-in-qname.n3
 
 
 
 error: eye --n3 D:\git\n3dev\N3\grammar\target\..\tests\N3Tests\cwm_syntax\trailing-dot-in-qname.n3
-EYE v19.0604.1527 josd
+EYE v20.0121.2250 josd
 SWI-Prolog 8.0.3 (x64-win64): Jun 19 2019, 15:49:44
-starting 46 [msec cputime] 56 [msec walltime]
+starting 46 [msec cputime] 55 [msec walltime]
 GET file:///d:/git/n3dev/n3/grammar/tests/n3tests/cwm_syntax/trailing-dot-in-qname.n3 ** ERROR ** file:///d:/git/n3dev/n3/grammar/tests/n3tests/cwm_syntax/trailing-dot-in-qname.n3 ** invalid_document(after_line(5))
 
 testing (negative): qname-as-prefix-in-decl.n3
-in: #Processed by EYE v19.0604.1527 josd
+in: #Processed by EYE v20.0121.2250 josd
 #eye --n3 D:\git\n3dev\N3\grammar\target\..\tests\N3Tests\cwm_syntax\qname-as-prefix-in-decl.n3
 
 
 
 error: eye --n3 D:\git\n3dev\N3\grammar\target\..\tests\N3Tests\cwm_syntax\qname-as-prefix-in-decl.n3
-EYE v19.0604.1527 josd
+EYE v20.0121.2250 josd
 SWI-Prolog 8.0.3 (x64-win64): Jun 19 2019, 15:49:44
-starting 46 [msec cputime] 64 [msec walltime]
+starting 31 [msec cputime] 53 [msec walltime]
 GET file:///d:/git/n3dev/n3/grammar/tests/n3tests/cwm_syntax/qname-as-prefix-in-decl.n3 ** ERROR ** file:///d:/git/n3dev/n3/grammar/tests/n3tests/cwm_syntax/qname-as-prefix-in-decl.n3 ** invalid_document(after_line(7))
 
-testing (negative): space-in-uri.n3
-in: #Processed by EYE v19.0604.1527 josd
-#eye --n3 D:\git\n3dev\N3\grammar\target\..\tests\N3Tests\cwm_syntax\space-in-uri.n3
-
-
-
-error: eye --n3 D:\git\n3dev\N3\grammar\target\..\tests\N3Tests\cwm_syntax\space-in-uri.n3
-EYE v19.0604.1527 josd
-SWI-Prolog 8.0.3 (x64-win64): Jun 19 2019, 15:49:44
-starting 15 [msec cputime] 54 [msec walltime]
-GET file:///d:/git/n3dev/n3/grammar/tests/n3tests/cwm_syntax/space-in-uri.n3 ** ERROR ** file:///d:/git/n3dev/n3/grammar/tests/n3tests/cwm_syntax/space-in-uri.n3 ** illegal_token(char_code(
-,10),line(5))
-
 testing (negative): qvars4.n3
-in: #Processed by EYE v19.0604.1527 josd
+in: #Processed by EYE v20.0121.2250 josd
 #eye --n3 D:\git\n3dev\N3\grammar\target\..\tests\N3Tests\cwm_syntax\qvars4.n3
 
 
 
 error: eye --n3 D:\git\n3dev\N3\grammar\target\..\tests\N3Tests\cwm_syntax\qvars4.n3
-EYE v19.0604.1527 josd
+EYE v20.0121.2250 josd
 SWI-Prolog 8.0.3 (x64-win64): Jun 19 2019, 15:49:44
-starting 31 [msec cputime] 56 [msec walltime]
+starting 46 [msec cputime] 54 [msec walltime]
 GET file:///d:/git/n3dev/n3/grammar/tests/n3tests/cwm_syntax/qvars4.n3 ** ERROR ** file:///d:/git/n3dev/n3/grammar/tests/n3tests/cwm_syntax/qvars4.n3 ** invalid_document(after_line(5))
 
 testing (negative): djb1.n3
-in: #Processed by EYE v19.0604.1527 josd
+in: #Processed by EYE v20.0121.2250 josd
 #eye --n3 D:\git\n3dev\N3\grammar\target\..\tests\N3Tests\cwm_syntax\djb1.n3
 
 
 
 error: eye --n3 D:\git\n3dev\N3\grammar\target\..\tests\N3Tests\cwm_syntax\djb1.n3
-EYE v19.0604.1527 josd
+EYE v20.0121.2250 josd
 SWI-Prolog 8.0.3 (x64-win64): Jun 19 2019, 15:49:44
-starting 15 [msec cputime] 55 [msec walltime]
+starting 31 [msec cputime] 54 [msec walltime]
 GET file:///d:/git/n3dev/n3/grammar/tests/n3tests/cwm_syntax/djb1.n3 ** ERROR ** file:///d:/git/n3dev/n3/grammar/tests/n3tests/cwm_syntax/djb1.n3 ** invalid_document(after_line(2))
 
 testing (negative): zero-objects.n3
-in: #Processed by EYE v19.0604.1527 josd
+in: #Processed by EYE v20.0121.2250 josd
 #eye --n3 D:\git\n3dev\N3\grammar\target\..\tests\N3Tests\cwm_syntax\zero-objects.n3
 
 
 
 error: eye --n3 D:\git\n3dev\N3\grammar\target\..\tests\N3Tests\cwm_syntax\zero-objects.n3
-EYE v19.0604.1527 josd
+EYE v20.0121.2250 josd
 SWI-Prolog 8.0.3 (x64-win64): Jun 19 2019, 15:49:44
-starting 31 [msec cputime] 54 [msec walltime]
+starting 15 [msec cputime] 54 [msec walltime]
 GET file:///d:/git/n3dev/n3/grammar/tests/n3tests/cwm_syntax/zero-objects.n3 ** ERROR ** file:///d:/git/n3dev/n3/grammar/tests/n3tests/cwm_syntax/zero-objects.n3 ** invalid_document(after_line(2))
 
 testing (negative): turtle-syntax-bad-n3-extras-13.ttl
 testing (negative): turtle-syntax-bad-n3-extras-07.ttl
 testing (negative): turtle-syntax-bad-n3-extras-08.ttl
 testing (negative): strquot.n3
-in: #Processed by EYE v19.0604.1527 josd
+in: #Processed by EYE v20.0121.2250 josd
 #eye --n3 D:\git\n3dev\N3\grammar\target\..\tests\N3Tests\cwm_other\strquot.n3
 
 
 
 error: eye --n3 D:\git\n3dev\N3\grammar\target\..\tests\N3Tests\cwm_other\strquot.n3
-EYE v19.0604.1527 josd
+EYE v20.0121.2250 josd
 SWI-Prolog 8.0.3 (x64-win64): Jun 19 2019, 15:49:44
-starting 31 [msec cputime] 55 [msec walltime]
+starting 31 [msec cputime] 53 [msec walltime]
 GET file:///d:/git/n3dev/n3/grammar/tests/n3tests/cwm_other/strquot.n3 ** ERROR ** file:///d:/git/n3dev/n3/grammar/tests/n3tests/cwm_other/strquot.n3 ** illegal_string_escape_sequence(\a,line(9))
 
 testing (negative): neg-keywords3.n3
-in: #Processed by EYE v19.0604.1527 josd
+in: #Processed by EYE v20.0121.2250 josd
 #eye --n3 D:\git\n3dev\N3\grammar\target\..\tests\N3Tests\cwm_syntax\neg-keywords3.n3
 
 
 
 error: eye --n3 D:\git\n3dev\N3\grammar\target\..\tests\N3Tests\cwm_syntax\neg-keywords3.n3
-EYE v19.0604.1527 josd
+EYE v20.0121.2250 josd
 SWI-Prolog 8.0.3 (x64-win64): Jun 19 2019, 15:49:44
-starting 46 [msec cputime] 56 [msec walltime]
+starting 31 [msec cputime] 61 [msec walltime]
 GET file:///d:/git/n3dev/n3/grammar/tests/n3tests/cwm_syntax/neg-keywords3.n3 ** ERROR ** file:///d:/git/n3dev/n3/grammar/tests/n3tests/cwm_syntax/neg-keywords3.n3 ** invalid_keyword_use(prefix,after_line(1))
 
 testing (negative): query-survey-10.n3
-in: #Processed by EYE v19.0604.1527 josd
+in: #Processed by EYE v20.0121.2250 josd
 #eye --n3 D:\git\n3dev\N3\grammar\target\..\tests\N3Tests\04test\query-survey-10.n3
 
 
 
 error: eye --n3 D:\git\n3dev\N3\grammar\target\..\tests\N3Tests\04test\query-survey-10.n3
-EYE v19.0604.1527 josd
+EYE v20.0121.2250 josd
 SWI-Prolog 8.0.3 (x64-win64): Jun 19 2019, 15:49:44
-starting 46 [msec cputime] 57 [msec walltime]
+starting 46 [msec cputime] 53 [msec walltime]
 GET file:///d:/git/n3dev/n3/grammar/tests/n3tests/04test/query-survey-10.n3 ** ERROR ** file:///d:/git/n3dev/n3/grammar/tests/n3tests/04test/query-survey-10.n3 ** illegal_string_escape_sequence(\.,line(10))
 
 
@@ -2399,12 +1363,12 @@ GET file:///d:/git/n3dev/n3/grammar/tests/n3tests/04test/query-survey-10.n3 ** E
 total # tests = 1206
 
 > positive tests:
-# failed = 98
-failed: [01etc/gps-proof2.n3, 04test/alarmE.n3, 01etc/palindrome-proof.n3, 04test/metastaticE.n3, 01etc/medicE.n3, 01etc/food-proof.n3, 01etc/skos_mv_proof.n3, 01etc/deE.n3, 01etc/test-proof-1000.n3, 01etc/hanoiE.n3, cwm_other/underbarscope.n3, 01etc/proof-001.n3, 01etc/gps-proof1.n3, 01etc/gedcom-proof.n3, 01etc/select-proof.n3, cwm_reason/rename-loop.n3, 04test/bcE.n3, cwm_syntax/path2.n3, 01etc/proof-2-1000.n3, 01etc/select-proof-extra.n3, 01etc/biE.n3, 01etc/mmln-gv-proof.n3, 01etc/iq_proof.n3, 01etc/agent2-proof.n3, 07test/select-query.n3, 01etc/proof-2-10.n3, cwm_includes/quantifiers_limited.n3, 04test/wetE.n3, 01etc/einsteinE.n3, 01etc/swet_proof.n3, 01etc/takE.n3, 01etc/proof-10.n3, 01etc/mq_proof.n3, 04test/ontology-for-data-model.n3, 01etc/randomsample-proof.n3, cwm_includes/quantifiers.n3, 01etc/path-9-3-proof.n3, 01etc/easter-proof.n3, 04test/michaelE.n3, 01etc/utf8_proof.n3, 01etc/crypto-proof.n3, 01etc/turing_proof.n3, 01etc/sdcoding-a-proof.n3, cwm_syntax/this-quantifiers-ref.n3, cwm_syntax/this-rules-ref.n3, 01etc/forAllIn_proof.n3, 01etc/easterE.n3, 01etc/proof-2-100.n3, 01etc/blueproof001.n3, 01etc/dpe_proof.n3, 01etc/lldmE.n3, 01etc/proof-100.n3, 01etc/proof-10000.n3, 01etc/usmE.n3, 01etc/graph.proof.n3, 01etc/resto-proof.n3, 01etc/palindrome2-proof.n3, 01etc/food2-proof.n3, 04test/sethE.n3, cwm_other/rules12.n3, 04test/geneE.n3, 04test/gmpE.n3, 01etc/10tt_proof.n3, 01etc/train_model_proof.n3, 07test/gmpbnodeE1.n3, 01etc/4color_proof.n3, 01etc/fgcm_proof.n3, 01etc/socrates_proof.n3, 01etc/bmi_proof.n3, cwm_unify/unify2.n3, 07test/resto-cwm-proof.n3, cwm_math/trigo-test.n3, 01etc/proof-2-10000.n3, 01etc/testE.n3, 01etc/fcm_proof.n3, 04test/socratesR.n3, 07test/resto-cwm-proof2.n3, 01etc/rifE.n3, cwm_other/schema-rules.n3, 01etc/agent1-proof.n3, cwm_n3/n3parser.tests_n3_10014.n3, 01etc/proof-1000.n3, 01etc/fibE.n3, cwm_other/rules13.n3, 01etc/floatingwoman-proof.n3, 01etc/proof.n3, 01etc/answer.n3, 04test/gateE.n3, 01etc/blueproof002.n3, 01etc/test_proof.n3, 01etc/dpE.n3, 01etc/numeral_proof.n3, 01etc/notIn_proof.n3, 01etc/witch-proof.n3, 01etc/sdcoding-proof.n3, cwm_n3/n3parser.tests_n3_10012.nt, 01etc/pi-proof.n3, 01etc/nbbn_proof.n3]
+# failed = 4
+failed: [/04test/ontology-for-data-model.n3, /cwm_math/trigo-test.n3, /cwm_syntax/space-in-uri.n3, /cwm_n3/n3parser.tests_n3_10014.n3]
 
 > negative tests:
 # failed = 3
-failed: [turtle/turtle-syntax-bad-n3-extras-13.ttl, turtle/turtle-syntax-bad-n3-extras-07.ttl, turtle/turtle-syntax-bad-n3-extras-08.ttl]
+failed: [/turtle/turtle-syntax-bad-n3-extras-13.ttl, /turtle/turtle-syntax-bad-n3-extras-07.ttl, /turtle/turtle-syntax-bad-n3-extras-08.ttl]
 
 > skipped tests:
 # skipped = 0
