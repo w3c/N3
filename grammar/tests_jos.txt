@@ -1,11 +1,33 @@
-n3TestEye:
+=============
+n3TestGrammar
+=============
 
 -- RESULTS
 total # tests = 1206
 
 > positive tests:
-# failed = 16
-failed: [cwm_other/underbarscope.n3, 04test/ontology-for-data-model.n3, cwm_syntax/path2.n3, 04test/geneE.n3, 04test/gmpE.n3, cwm_syntax/space-in-uri.n3, 04test/michaelE.n3, cwm_math/trigo-test.n3, 04test/gateE.n3, 04test/sethE.n3, cwm_n3/n3parser.tests_n3_10014.n3, 04test/bcE.n3, cwm_n3/n3parser.tests_n3_10012.nt, 04test/metastaticE.n3, 04test/wetE.n3, 04test/alarmE.n3]
+# failed = 0
+failed: []
+
+> negative tests:
+# failed = 0
+failed: []
+
+> skipped tests:
+# skipped = 0
+skipped: []
+
+
+=========
+n3TestEye
+=========
+
+-- RESULTS
+total # tests = 1206
+
+> positive tests:
+# failed = 3
+failed: [cwm_syntax/space-in-uri.n3, cwm_math/trigo-test.n3, cwm_n3/n3parser.tests_n3_10014.n3]
 
 > negative tests:
 # failed = 3
@@ -16,7 +38,9 @@ failed: [turtle/turtle-syntax-bad-n3-extras-07.ttl, turtle/turtle-syntax-bad-n3-
 skipped: []
 
 
-n3TestCwm:
+=========
+n3TestCwm
+=========
 
 -- RESULTS
 total # tests = 1174
@@ -33,22 +57,3 @@ failed: [turtle/turtle-syntax-bad-n3-extras-07.ttl, cwm_other/strquot.n3, turtle
 # skipped = 32
 skipped: [01etc/randomsample-proof.n3, 04test/ontology-for-data-model.n3, 01etc/proof-1000.n3, 05smml/FACTShousewallsmeshed.n3, 01etc/gps-proof2.n3, 01etc/test-proof-1000.n3, 04test/radlex.n3, 01etc/easter-proof.n3, 01etc/graph-10000.n3, 01etc/pi-proof.n3, 01etc/proof-2-1000.n3, 01etc/mmln-gv-proof.n3, 01etc/test-dt-1000.n3, 01etc/result.n3, 01etc/fgcm_proof.n3, 01etc/proof-10000.n3, 01etc/10tt_proof.n3, 01etc/swet_proof.n3, 01etc/mq_proof.n3, 07test/path-1024-3.n3, 01etc/proof-2-10000.n3, 01etc/takE.n3, 01etc/rifE.n3, 07test/test-strela-1000.n3, 07test/graph-10000.n3, 01etc/polynomial.n3, manifest.ttl, 01etc/data.n3, 04test/not-galen.n3, 01etc/fibE.n3, cwm_other/rdfcore-tests.n3, 01etc/biE.n3]
 
-
-n3TestGrammar:
-
--- RESULTS
-total # tests = 1206
-
-> positive tests:
-# failed = 0
-failed: []
-
-> negative tests:
-# failed = 0
-failed: []
-
-> skipped tests:
-# skipped = 0
-skipped: []
-Met vriendelijke groeten,
-Jos
