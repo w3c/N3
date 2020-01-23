@@ -102,8 +102,9 @@ subject
 	: expression
 	;
 	
-predicate 
-	: expression
+predicate
+	: (expression | '^' expression)
+/* allow first predicate in a path to also be inverted */
 	;
 	
 object 
