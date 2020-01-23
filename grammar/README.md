@@ -10,6 +10,7 @@ The Turtle grammar was subsequently adapted and extended with N3 constructs (`n3
 Changes between the new N3 grammar and the original grammars (Turtle, N3) include:
 - Dropping the `@keywords` section
 - Allowing all "verb" keywords (e.g., `is .. of`, `has`) both with and without `@` prefix
+- Allowing inverted properties at the start of path (e.g., `:s ^:p :o`)
 - Supporting comments in files  
 (strangely, neither N3 nor Turtle seemed to define these in their syntaxes)
 - (*minor*) supporting non-encoded spaces in IRIs  
