@@ -3,7 +3,7 @@ n3TestGrammar
 =============
 
 -- RESULTS
-total # tests = 1206
+total # tests = 1208
 
 > positive tests:
 # failed = 0
@@ -23,11 +23,11 @@ n3TestEye
 =========
 
 -- RESULTS
-total # tests = 1206
+total # tests = 1208
 
 > positive tests:
 # failed = 2
-failed: [cwm_n3/n3parser.tests_n3_10014.n3, cwm_math/trigo-test.n3]
+failed: [cwm_math/trigo-test.n3, cwm_n3/n3parser.tests_n3_10014.n3]
 
 > negative tests:
 # failed = 0
@@ -43,11 +43,11 @@ n3TestCwm
 =========
 
 -- RESULTS
-total # tests = 1174
+total # tests = 1176
 
 > positive tests:
-# failed = 18
-failed: [07test/badmeta.n3, 07test/utf8.n3, 04test/robC.n3, 01etc/iq-extra.n3, cwm_math/trigo-test.n3, cwm_syntax/qual-after-user.n3, 04test/grahamC.n3, cwm_n3/n3parser.tests_n3_10014.n3, cwm_syntax/embedded-dot-in-qname.n3, 01etc/4color_data.n3, 07test/rifP.n3, 01etc/rifP.n3, cwm_syntax/neg-single-quote.n3, 04test/sethC.n3, 04test/michaelC.n3, 04test/result-tp-05.n3, 04test/result-ot-0-01.n3, 04test/testC.n3]
+# failed = 19
+failed: [07test/badmeta.n3, 07test/utf8.n3, 04test/robC.n3, 01etc/iq-extra.n3, cwm_math/trigo-test.n3, cwm_syntax/qual-after-user.n3, 04test/grahamC.n3, cwm_n3/n3parser.tests_n3_10014.n3, cwm_syntax/embedded-dot-in-qname.n3, 01etc/4color_data.n3, 07test/rifP.n3, extra/inverted_properties.n3, 01etc/rifP.n3, cwm_syntax/neg-single-quote.n3, 04test/sethC.n3, 04test/michaelC.n3, 04test/result-tp-05.n3, 04test/result-ot-0-01.n3, 04test/testC.n3]
 
 > negative tests:
 # failed = 5
@@ -56,4 +56,3 @@ failed: [turtle/turtle-syntax-bad-n3-extras-07.ttl, cwm_other/strquot.n3, turtle
 > skipped tests:
 # skipped = 32
 skipped: [01etc/randomsample-proof.n3, 04test/ontology-for-data-model.n3, 01etc/proof-1000.n3, 05smml/FACTShousewallsmeshed.n3, 01etc/gps-proof2.n3, 01etc/test-proof-1000.n3, 04test/radlex.n3, 01etc/easter-proof.n3, 01etc/graph-10000.n3, 01etc/pi-proof.n3, 01etc/proof-2-1000.n3, 01etc/mmln-gv-proof.n3, 01etc/test-dt-1000.n3, 01etc/result.n3, 01etc/fgcm_proof.n3, 01etc/proof-10000.n3, 01etc/10tt_proof.n3, 01etc/swet_proof.n3, 01etc/mq_proof.n3, 07test/path-1024-3.n3, 01etc/proof-2-10000.n3, 01etc/takE.n3, 01etc/rifE.n3, 07test/test-strela-1000.n3, 07test/graph-10000.n3, 01etc/polynomial.n3, manifest.ttl, 01etc/data.n3, 04test/not-galen.n3, 01etc/fibE.n3, cwm_other/rdfcore-tests.n3, 01etc/biE.n3]
-
