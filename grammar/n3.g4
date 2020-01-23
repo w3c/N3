@@ -214,7 +214,7 @@ universal
 IRIREF 
 //	: '<' (~[\u0000-\u0020<>"{}|^`\\] | UCHAR)* '>' /* #x00=NULL #01-#x1F=control codes #x20=space */
 /* currently allows non-encoded spaces */
-	: '<' (~[\u0000-\u0019<>"{}|^`\\] | UCHAR)* '>'
+	: '<' (~[\u0000-\u001F<>"{}|^`\\] | UCHAR)* '>'
 	;
 	
 PNAME_NS 
