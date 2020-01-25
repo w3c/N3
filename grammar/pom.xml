@@ -37,7 +37,7 @@
 				<version>${antlr.version}</version>
 				<configuration>
 					<sourceDirectory>${basedir}</sourceDirectory>
-					<outputDirectory>${basedir}/src/main/java/parser</outputDirectory>
+					<outputDirectory>${basedir}/src/main/java/parser/antlr</outputDirectory>
 					<includes>
 						<include>**/*.g4</include>
 					</includes>

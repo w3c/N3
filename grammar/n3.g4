@@ -28,10 +28,10 @@
 grammar n3;
 
 @header {
-    package parser;
+    package parser.antlr;
 }
 
-n3Doc 
+n3Doc
 	: (n3Statement '.' | sparqlDirective)* EOF
 	;
 

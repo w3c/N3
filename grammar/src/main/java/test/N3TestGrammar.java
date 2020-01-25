@@ -5,32 +5,35 @@ import java.lang.reflect.Method;
 import java.nio.charset.Charset;
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.BitSet;
 import java.util.List;
 import java.util.regex.Pattern;
 
-import org.antlr.v4.runtime.ANTLRErrorListener;
-import org.antlr.v4.runtime.BaseErrorListener;
 import org.antlr.v4.runtime.CharStream;
 import org.antlr.v4.runtime.CharStreams;
 import org.antlr.v4.runtime.CommonTokenStream;
 import org.antlr.v4.runtime.Lexer;
 import org.antlr.v4.runtime.Parser;
 import org.antlr.v4.runtime.ParserRuleContext;
-import org.antlr.v4.runtime.RecognitionException;
-import org.antlr.v4.runtime.Recognizer;
 import org.antlr.v4.runtime.TokenStream;
-import org.antlr.v4.runtime.atn.ATNConfigSet;
-import org.antlr.v4.runtime.dfa.DFA;
-import org.antlr.v4.runtime.tree.AbstractParseTreeVisitor;
 import org.apache.commons.lang3.tuple.ImmutablePair;
 import org.apache.commons.lang3.tuple.Pair;
 
+import parser.n3AbstractLexerErrorListener;
+import parser.n3AbstractParserErrorListener;
+import parser.n3DefaultLexerErrorListener;
+import parser.n3DefaultParserErrorListener;
+import parser.n3PrefixErrorVisitor;
+import parser.n3PrintVisitor;
 import wvw.utils.log.Log;
 
 public class N3TestGrammar extends N3Test {
 
 	private static List<String> suppGrammars = Arrays.asList("turtle", "n3");
+
+//	public static void main(String[] args) throws Exception {
+//		System.out.println(new N3TestGrammar("n3", false)
+//				.negativeTest(new File("tests/N3Tests/cwm_syntax/qname-as-prefix-in-decl.n3")));
+//	}
 
 	public static void main(String[] args) throws Exception {
 		if (args.length < 2) {
@@ -128,25 +131,31 @@ public class N3TestGrammar extends N3Test {
 	public IParserCmp parse(File file) throws Exception {
 		MyParserCmp cmp = createGrammarComponents(grammar, file);
 
-		boolean found = false;
-		Pattern p = Pattern.compile(".*Doc");
-		for (Method m : cmp.getParser().getClass().getMethods()) {
+		Method m = findParseMethod(cmp.getParser());
+		if (m != null) {
+			ParserRuleContext ctx = (ParserRuleContext) m.invoke(cmp.getParser());
 
-			if (p.matcher(m.getName()).matches()) {
-				found = true;
+			n3PrefixErrorVisitor v = createPrefixErrorVisitor(grammar, cmp.getParserListener());
+			v.visit(ctx);
 
-				ParserRuleContext ctx = (ParserRuleContext) m.invoke(cmp.getParser());
-				if (printAST)
-					createVisitor(grammar).visit(ctx);
+			if (printAST)
+				createPrintVisitor(grammar).visit(ctx);
 
-				break;
-			}
-		}
-
-		if (!found)
+		} else
 			System.err.println("error: could not find parser method for " + grammar);
 
 		return cmp;
+	}
+
+	private Method findParseMethod(Parser parser) {
+		Pattern p = Pattern.compile(".*Doc");
+		for (Method m : parser.getClass().getMethods()) {
+
+			if (p.matcher(m.getName()).matches())
+				return m;
+		}
+
+		return null;
 	}
 
 	private MyParserCmp createGrammarComponents(String grammar, File file) throws Exception {
@@ -160,41 +169,47 @@ public class N3TestGrammar extends N3Test {
 		// Charset.forName("UTF-8"))));
 
 //		lexer.removeErrorListeners();
-		MyLexerErrorListener lexerListener = new MyLexerErrorListener(file.getName());
+		n3AbstractLexerErrorListener lexerListener = new n3DefaultLexerErrorListener(file.getName());
 		lexer.addErrorListener(lexerListener);
 
 		Parser parser = clss.getRight().getConstructor(TokenStream.class).newInstance(new CommonTokenStream(lexer));
 
 //		parser.removeErrorListeners();
-		MyParserErrorListener parserListener = new MyParserErrorListener(file.getName());
+		n3AbstractParserErrorListener parserListener = new n3DefaultParserErrorListener(file.getName());
 		parser.addErrorListener(parserListener);
 
 		return new MyParserCmp(lexer, parser, lexerListener, parserListener);
 	}
 
-	@SuppressWarnings("rawtypes")
-	private AbstractParseTreeVisitor createVisitor(String grammar) throws Exception {
-		return (AbstractParseTreeVisitor) Class.forName("test.visitor." + grammar + "VisitorPrinter").getConstructor()
+	private n3PrintVisitor createPrintVisitor(String grammar) throws Exception {
+		return (n3PrintVisitor) Class.forName("parser." + grammar.toLowerCase() + "PrintVisitor").getConstructor()
 				.newInstance();
+	}
+
+	private n3PrefixErrorVisitor createPrefixErrorVisitor(String grammar, n3AbstractParserErrorListener listener)
+			throws Exception {
+
+		return (n3PrefixErrorVisitor) Class.forName("parser." + grammar.toLowerCase() + "PrefixErrorVisitor")
+				.getConstructor(n3AbstractParserErrorListener.class).newInstance(listener);
 	}
 
 	@SuppressWarnings("unchecked")
 	private Pair<Class<? extends Lexer>, Class<? extends Parser>> getGrammarClasses(String grammar)
 			throws ClassNotFoundException {
 
-		return ImmutablePair.of((Class<? extends Lexer>) Class.forName("parser." + grammar + "Lexer"),
-				(Class<? extends Parser>) Class.forName("parser." + grammar + "Parser"));
+		return ImmutablePair.of((Class<? extends Lexer>) Class.forName("parser.antlr." + grammar + "Lexer"),
+				(Class<? extends Parser>) Class.forName("parser.antlr." + grammar + "Parser"));
 	}
 
 	protected class MyParserCmp implements IParserCmp {
 
 		private Lexer lexer;
 		private Parser parser;
-		private MyLexerErrorListener lexerListener;
-		private MyParserErrorListener parserListener;
+		private n3AbstractLexerErrorListener lexerListener;
+		private n3AbstractParserErrorListener parserListener;
 
-		public MyParserCmp(Lexer lexer, Parser parser, MyLexerErrorListener lexerListener,
-				MyParserErrorListener parserListener) {
+		public MyParserCmp(Lexer lexer, Parser parser, n3AbstractLexerErrorListener lexerListener,
+				n3AbstractParserErrorListener parserListener) {
 
 			this.lexer = lexer;
 			this.parser = parser;
@@ -210,81 +225,26 @@ public class N3TestGrammar extends N3Test {
 			return parser;
 		}
 
+		public n3AbstractLexerErrorListener getLexerListener() {
+			return lexerListener;
+		}
+
+		public void setLexerListener(n3AbstractLexerErrorListener lexerListener) {
+			this.lexerListener = lexerListener;
+		}
+
+		public n3AbstractParserErrorListener getParserListener() {
+			return parserListener;
+		}
+
+		public void setParserListener(n3AbstractParserErrorListener parserListener) {
+			this.parserListener = parserListener;
+		}
+
 		// it seems that parser.getNumberOfSyntaxErrors does not (always?) count
 		// lexer errors
 		public int getNumErrors() {
 			return lexerListener.getNumErrors() + parserListener.getNumErrors();
-		}
-	}
-
-	private class MyLexerErrorListener implements ANTLRErrorListener {
-
-		private String name;
-		private int errorCnt = 0;
-
-		public MyLexerErrorListener(String name) {
-			this.name = name;
-		}
-
-		@Override
-		public void reportAmbiguity(Parser arg0, DFA arg1, int arg2, int arg3, boolean arg4, BitSet arg5,
-				ATNConfigSet arg6) {
-
-			errorCnt++;
-			System.err.println(name + "[lexer]: " + "reportAmbiguity @" + arg2 + "-" + arg3 + " " + arg4 + " " + arg5
-					+ " " + arg6);
-		}
-
-		@Override
-		public void reportAttemptingFullContext(Parser arg0, DFA arg1, int arg2, int arg3, BitSet arg4,
-				ATNConfigSet arg5) {
-
-			errorCnt++;
-			System.err.println(
-					name + "[lexer]: " + "reportAttemptingFullContext @" + arg2 + "-" + arg3 + " " + arg4 + " " + arg5);
-		}
-
-		@Override
-		public void reportContextSensitivity(Parser arg0, DFA arg1, int arg2, int arg3, int arg4, ATNConfigSet arg5) {
-			errorCnt++;
-			System.err.println(
-					name + "[lexer]: " + "reportContextSensitivity @" + arg2 + "-" + arg3 + " " + arg4 + " " + arg5);
-		}
-
-		@Override
-		public void syntaxError(Recognizer<?, ?> arg0, Object arg1, int arg2, int arg3, String arg4,
-				RecognitionException arg5) {
-
-			errorCnt++;
-			System.err.println(name + " [lexer]: " + "syntaxError for " + arg1 + " @" + arg2 + ":" + arg3 + " - " + arg4
-					+ " " + arg5);
-		}
-
-		public int getNumErrors() {
-			return errorCnt;
-		}
-	}
-
-	private class MyParserErrorListener extends BaseErrorListener {
-
-		private String name;
-		private int errorCnt = 0;
-
-		public MyParserErrorListener(String name) {
-			this.name = name;
-		}
-
-		@Override
-		public void syntaxError(Recognizer<?, ?> recognizer, Object offendingSymbol, int line, int charPositionInLine,
-				String msg, RecognitionException e) {
-
-			errorCnt++;
-			System.err.println(name + " [parser]: " + "syntaxError for " + offendingSymbol + " @" + line + ":"
-					+ charPositionInLine + " - " + msg);
-		}
-
-		public int getNumErrors() {
-			return errorCnt;
 		}
 	}
 }

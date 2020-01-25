@@ -1,6 +1,6 @@
 // Generated from turtle.g4 by ANTLR 4.7.2
 
-    package parser;
+    package parser.antlr;
 
 import org.antlr.v4.runtime.tree.ParseTreeVisitor;
 

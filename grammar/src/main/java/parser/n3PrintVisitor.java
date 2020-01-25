@@ -1,13 +1,13 @@
-package test.visitor;
+package parser;
 
 import org.antlr.v4.runtime.tree.ParseTree;
 import org.antlr.v4.runtime.tree.RuleNode;
 import org.antlr.v4.runtime.tree.TerminalNode;
 
-import parser.n3BaseVisitor;
-import parser.n3Parser;
+import parser.antlr.n3Parser;
+import wvw.utils.log.Log;
 
-public class n3VisitorPrinter extends n3BaseVisitor<Void> {
+public class n3PrintVisitor extends n3DefaultVisitor {
 
 	private int lvl = 0;
 
@@ -423,7 +423,7 @@ public class n3VisitorPrinter extends n3BaseVisitor<Void> {
 			str.append(" ");
 
 		str.append(element);
-		System.out.println(str);
+		Log.i(str);
 	}
 
 	private Void doVisitChildren(RuleNode ctx) {
