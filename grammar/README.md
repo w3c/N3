@@ -11,6 +11,7 @@ Changes between the new N3 grammar and the original grammars (Turtle, N3) includ
 - Dropping the `@keywords` section
 - Allowing all "verb" keywords (e.g., `is .. of`, `has`) both with and without `@` prefix
 - Allowing inverted properties at the start of path (e.g., `:s ^:p :o`)
+- On top of the grammar, a visitor object checks whether prefixes in `prefixedNames` have been declared
 - Supporting comments in files  
 (strangely, neither N3 nor Turtle seemed to define these in their syntaxes)
 - (*minor*) supporting non-encoded spaces in IRIs  
@@ -32,7 +33,7 @@ See below for instructions on how to run the tests.
 
 Currently, the test harnass supports:
 - The new N3 (and Turtle) grammar (see `*.g4` files)
-- The [cwm](https://www.w3.org/2000/10/swap/doc/cwm.html) system. 
+- The [cwm](https://www.w3.org/2000/10/swap/doc/cwm.html) system.
 
 It should be relatively straightforward to support additional systems, such as [Eye](http://eulersharp.sourceforge.net/).
 
