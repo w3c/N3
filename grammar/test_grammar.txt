@@ -822,24 +822,13 @@ testing (positive): .\..\tests\N3Tests\01etc\dpe_assumption.n3
 testing (positive): .\..\tests\N3Tests\01etc\query54.n3
 testing (positive): .\..\tests\N3Tests\04test\nciOncologyQ.n3
 testing (positive): .\..\tests\N3Tests\07test\desc_thumbnail.n3
-testing (positive): .\..\tests\N3Tests\01etc\query65.n3
 testing (positive): .\..\tests\N3Tests\07test\iq_answer.n3
 testing (positive): .\..\tests\N3Tests\01etc\1tt5.n3
+testing (positive): .\..\tests\N3Tests\01etc\query65.n3
 testing (positive): .\..\tests\N3Tests\04test\sample.n3
 testing (positive): .\..\tests\N3Tests\01etc\bankSW.n3
 testing (positive): .\..\tests\N3Tests\07test\fibE.n3
 testing (positive): .\..\tests\N3Tests\07test\resto-cwm-proof.n3
-testing (positive): .\..\tests\N3Tests\cwm_math\trigo-test.n3
-ERROR: trigo-test.n3 [parser]: prefixError: referencing unknown prefix ("NonPi") in "NonPi:TestValue"
-ERROR: trigo-test.n3 [parser]: prefixError: referencing unknown prefix ("NonPi") in "NonPi:TestValue"
-ERROR: trigo-test.n3 [parser]: prefixError: referencing unknown prefix ("NonPi") in "NonPi:TestValue"
-ERROR: trigo-test.n3 [parser]: prefixError: referencing unknown prefix ("NonPi") in "NonPi:TestValue"
-ERROR: trigo-test.n3 [parser]: prefixError: referencing unknown prefix ("NonPi") in "NonPi:TestValue"
-ERROR: trigo-test.n3 [parser]: prefixError: referencing unknown prefix ("A") in "A:SIN"
-ERROR: trigo-test.n3 [parser]: prefixError: referencing unknown prefix ("A") in "A:COS"
-ERROR: trigo-test.n3 [parser]: prefixError: referencing unknown prefix ("NonPi") in "NonPi:TestValue"
-ERROR: trigo-test.n3 [parser]: prefixError: referencing unknown prefix ("A") in "A:SINH"
-ERROR: trigo-test.n3 [parser]: prefixError: referencing unknown prefix ("A") in "A:COSH"
 testing (positive): .\..\tests\N3Tests\04test\dawg-tp-0-02.n3
 testing (positive): .\..\tests\N3Tests\07test\test-strela-1000.n3
 testing (positive): .\..\tests\N3Tests\cwm_other\smush-schema.n3
@@ -985,48 +974,6 @@ testing (positive): .\..\tests\N3Tests\07test\3outOf5-query.n3
 testing (positive): .\..\tests\N3Tests\01etc\biP.n3
 testing (positive): .\..\tests\N3Tests\07test\alpE000.n3
 testing (positive): .\..\tests\N3Tests\01etc\subtasks.n3
-testing (positive): .\..\tests\N3Tests\cwm_n3\n3parser.tests_n3_10014.n3
-ERROR: n3parser.tests_n3_10014.n3 [parser]: prefixError: referencing unknown prefix ("log") in "log:Truth"
-ERROR: n3parser.tests_n3_10014.n3 [parser]: prefixError: referencing unknown prefix ("rei") in "rei:statements"
-ERROR: n3parser.tests_n3_10014.n3 [parser]: prefixError: referencing unknown prefix ("owl") in "owl:oneOf"
-ERROR: n3parser.tests_n3_10014.n3 [parser]: prefixError: referencing unknown prefix ("rei") in "rei:subject"
-ERROR: n3parser.tests_n3_10014.n3 [parser]: prefixError: referencing unknown prefix ("rei") in "rei:statements"
-ERROR: n3parser.tests_n3_10014.n3 [parser]: prefixError: referencing unknown prefix ("owl") in "owl:oneOf"
-ERROR: n3parser.tests_n3_10014.n3 [parser]: prefixError: referencing unknown prefix ("rei") in "rei:subject"
-ERROR: n3parser.tests_n3_10014.n3 [parser]: prefixError: referencing unknown prefix ("rei") in "rei:uri"
-ERROR: n3parser.tests_n3_10014.n3 [parser]: prefixError: referencing unknown prefix ("rei") in "rei:predicate"
-ERROR: n3parser.tests_n3_10014.n3 [parser]: prefixError: referencing unknown prefix ("rei") in "rei:uri"
-ERROR: n3parser.tests_n3_10014.n3 [parser]: prefixError: referencing unknown prefix ("rei") in "rei:object"
-ERROR: n3parser.tests_n3_10014.n3 [parser]: prefixError: referencing unknown prefix ("rei") in "rei:uri"
-ERROR: n3parser.tests_n3_10014.n3 [parser]: prefixError: referencing unknown prefix ("rei") in "rei:subject"
-ERROR: n3parser.tests_n3_10014.n3 [parser]: prefixError: referencing unknown prefix ("rei") in "rei:uri"
-ERROR: n3parser.tests_n3_10014.n3 [parser]: prefixError: referencing unknown prefix ("rei") in "rei:predicate"
-ERROR: n3parser.tests_n3_10014.n3 [parser]: prefixError: referencing unknown prefix ("rei") in "rei:uri"
-ERROR: n3parser.tests_n3_10014.n3 [parser]: prefixError: referencing unknown prefix ("rei") in "rei:object"
-ERROR: n3parser.tests_n3_10014.n3 [parser]: prefixError: referencing unknown prefix ("rei") in "rei:uri"
-ERROR: n3parser.tests_n3_10014.n3 [parser]: prefixError: referencing unknown prefix ("rei") in "rei:existentials"
-ERROR: n3parser.tests_n3_10014.n3 [parser]: prefixError: referencing unknown prefix ("owl") in "owl:oneOf"
-ERROR: n3parser.tests_n3_10014.n3 [parser]: prefixError: referencing unknown prefix ("rei") in "rei:universals"
-ERROR: n3parser.tests_n3_10014.n3 [parser]: prefixError: referencing unknown prefix ("owl") in "owl:oneOf"
-ERROR: n3parser.tests_n3_10014.n3 [parser]: prefixError: referencing unknown prefix ("rei") in "rei:predicate"
-ERROR: n3parser.tests_n3_10014.n3 [parser]: prefixError: referencing unknown prefix ("rei") in "rei:uri"
-ERROR: n3parser.tests_n3_10014.n3 [parser]: prefixError: referencing unknown prefix ("rei") in "rei:object"
-ERROR: n3parser.tests_n3_10014.n3 [parser]: prefixError: referencing unknown prefix ("rei") in "rei:statements"
-ERROR: n3parser.tests_n3_10014.n3 [parser]: prefixError: referencing unknown prefix ("owl") in "owl:oneOf"
-ERROR: n3parser.tests_n3_10014.n3 [parser]: prefixError: referencing unknown prefix ("rei") in "rei:subject"
-ERROR: n3parser.tests_n3_10014.n3 [parser]: prefixError: referencing unknown prefix ("rei") in "rei:uri"
-ERROR: n3parser.tests_n3_10014.n3 [parser]: prefixError: referencing unknown prefix ("rei") in "rei:predicate"
-ERROR: n3parser.tests_n3_10014.n3 [parser]: prefixError: referencing unknown prefix ("rei") in "rei:uri"
-ERROR: n3parser.tests_n3_10014.n3 [parser]: prefixError: referencing unknown prefix ("rei") in "rei:object"
-ERROR: n3parser.tests_n3_10014.n3 [parser]: prefixError: referencing unknown prefix ("rei") in "rei:uri"
-ERROR: n3parser.tests_n3_10014.n3 [parser]: prefixError: referencing unknown prefix ("rei") in "rei:existentials"
-ERROR: n3parser.tests_n3_10014.n3 [parser]: prefixError: referencing unknown prefix ("owl") in "owl:oneOf"
-ERROR: n3parser.tests_n3_10014.n3 [parser]: prefixError: referencing unknown prefix ("rei") in "rei:universals"
-ERROR: n3parser.tests_n3_10014.n3 [parser]: prefixError: referencing unknown prefix ("owl") in "owl:oneOf"
-ERROR: n3parser.tests_n3_10014.n3 [parser]: prefixError: referencing unknown prefix ("rei") in "rei:existentials"
-ERROR: n3parser.tests_n3_10014.n3 [parser]: prefixError: referencing unknown prefix ("owl") in "owl:oneOf"
-ERROR: n3parser.tests_n3_10014.n3 [parser]: prefixError: referencing unknown prefix ("rei") in "rei:universals"
-ERROR: n3parser.tests_n3_10014.n3 [parser]: prefixError: referencing unknown prefix ("owl") in "owl:oneOf"
 testing (positive): .\..\tests\N3Tests\01etc\witch.n3
 testing (positive): .\..\tests\N3Tests\01etc\query46.n3
 testing (positive): .\..\tests\N3Tests\turtle\turtle-syntax-bad-struct-02.ttl
@@ -1256,10 +1203,63 @@ testing (positive): .\..\tests\N3Tests\01etc\query45.n3
 testing (positive): .\..\tests\N3Tests\07test\path-3-3.n3
 testing (negative): neg-thisadoc.n3
 ERROR: neg-thisadoc.n3 [parser]: syntaxError for [@0,0:8='@keywords',<38>,1:0] @1:0 - mismatched input '@keywords' expecting {<EOF>, '@prefix', '@base', '[', '(', '{', '@forSome', '@forAll', NumericLiteral, BooleanLiteral, String, BlankNode, QuickVar, IRIREF, PNAME_NS, PNAME_LN, BASE, PREFIX}
+testing (negative): n3parser.tests_n3_10014.n3
+ERROR: n3parser.tests_n3_10014.n3 [parser]: prefixError: referencing unknown prefix ("log") in "log:Truth"
+ERROR: n3parser.tests_n3_10014.n3 [parser]: prefixError: referencing unknown prefix ("rei") in "rei:statements"
+ERROR: n3parser.tests_n3_10014.n3 [parser]: prefixError: referencing unknown prefix ("owl") in "owl:oneOf"
+ERROR: n3parser.tests_n3_10014.n3 [parser]: prefixError: referencing unknown prefix ("rei") in "rei:subject"
+ERROR: n3parser.tests_n3_10014.n3 [parser]: prefixError: referencing unknown prefix ("rei") in "rei:statements"
+ERROR: n3parser.tests_n3_10014.n3 [parser]: prefixError: referencing unknown prefix ("owl") in "owl:oneOf"
+ERROR: n3parser.tests_n3_10014.n3 [parser]: prefixError: referencing unknown prefix ("rei") in "rei:subject"
+ERROR: n3parser.tests_n3_10014.n3 [parser]: prefixError: referencing unknown prefix ("rei") in "rei:uri"
+ERROR: n3parser.tests_n3_10014.n3 [parser]: prefixError: referencing unknown prefix ("rei") in "rei:predicate"
+ERROR: n3parser.tests_n3_10014.n3 [parser]: prefixError: referencing unknown prefix ("rei") in "rei:uri"
+ERROR: n3parser.tests_n3_10014.n3 [parser]: prefixError: referencing unknown prefix ("rei") in "rei:object"
+ERROR: n3parser.tests_n3_10014.n3 [parser]: prefixError: referencing unknown prefix ("rei") in "rei:uri"
+ERROR: n3parser.tests_n3_10014.n3 [parser]: prefixError: referencing unknown prefix ("rei") in "rei:subject"
+ERROR: n3parser.tests_n3_10014.n3 [parser]: prefixError: referencing unknown prefix ("rei") in "rei:uri"
+ERROR: n3parser.tests_n3_10014.n3 [parser]: prefixError: referencing unknown prefix ("rei") in "rei:predicate"
+ERROR: n3parser.tests_n3_10014.n3 [parser]: prefixError: referencing unknown prefix ("rei") in "rei:uri"
+ERROR: n3parser.tests_n3_10014.n3 [parser]: prefixError: referencing unknown prefix ("rei") in "rei:object"
+ERROR: n3parser.tests_n3_10014.n3 [parser]: prefixError: referencing unknown prefix ("rei") in "rei:uri"
+ERROR: n3parser.tests_n3_10014.n3 [parser]: prefixError: referencing unknown prefix ("rei") in "rei:existentials"
+ERROR: n3parser.tests_n3_10014.n3 [parser]: prefixError: referencing unknown prefix ("owl") in "owl:oneOf"
+ERROR: n3parser.tests_n3_10014.n3 [parser]: prefixError: referencing unknown prefix ("rei") in "rei:universals"
+ERROR: n3parser.tests_n3_10014.n3 [parser]: prefixError: referencing unknown prefix ("owl") in "owl:oneOf"
+ERROR: n3parser.tests_n3_10014.n3 [parser]: prefixError: referencing unknown prefix ("rei") in "rei:predicate"
+ERROR: n3parser.tests_n3_10014.n3 [parser]: prefixError: referencing unknown prefix ("rei") in "rei:uri"
+ERROR: n3parser.tests_n3_10014.n3 [parser]: prefixError: referencing unknown prefix ("rei") in "rei:object"
+ERROR: n3parser.tests_n3_10014.n3 [parser]: prefixError: referencing unknown prefix ("rei") in "rei:statements"
+ERROR: n3parser.tests_n3_10014.n3 [parser]: prefixError: referencing unknown prefix ("owl") in "owl:oneOf"
+ERROR: n3parser.tests_n3_10014.n3 [parser]: prefixError: referencing unknown prefix ("rei") in "rei:subject"
+ERROR: n3parser.tests_n3_10014.n3 [parser]: prefixError: referencing unknown prefix ("rei") in "rei:uri"
+ERROR: n3parser.tests_n3_10014.n3 [parser]: prefixError: referencing unknown prefix ("rei") in "rei:predicate"
+ERROR: n3parser.tests_n3_10014.n3 [parser]: prefixError: referencing unknown prefix ("rei") in "rei:uri"
+ERROR: n3parser.tests_n3_10014.n3 [parser]: prefixError: referencing unknown prefix ("rei") in "rei:object"
+ERROR: n3parser.tests_n3_10014.n3 [parser]: prefixError: referencing unknown prefix ("rei") in "rei:uri"
+ERROR: n3parser.tests_n3_10014.n3 [parser]: prefixError: referencing unknown prefix ("rei") in "rei:existentials"
+ERROR: n3parser.tests_n3_10014.n3 [parser]: prefixError: referencing unknown prefix ("owl") in "owl:oneOf"
+ERROR: n3parser.tests_n3_10014.n3 [parser]: prefixError: referencing unknown prefix ("rei") in "rei:universals"
+ERROR: n3parser.tests_n3_10014.n3 [parser]: prefixError: referencing unknown prefix ("owl") in "owl:oneOf"
+ERROR: n3parser.tests_n3_10014.n3 [parser]: prefixError: referencing unknown prefix ("rei") in "rei:existentials"
+ERROR: n3parser.tests_n3_10014.n3 [parser]: prefixError: referencing unknown prefix ("owl") in "owl:oneOf"
+ERROR: n3parser.tests_n3_10014.n3 [parser]: prefixError: referencing unknown prefix ("rei") in "rei:universals"
+ERROR: n3parser.tests_n3_10014.n3 [parser]: prefixError: referencing unknown prefix ("owl") in "owl:oneOf"
 testing (negative): trailing-dot-in-qname.n3
 ERROR: trailing-dot-in-qname.n3 [parser]: syntaxError for [@8,99:99='.',<1>,5:30] @5:30 - extraneous input '.' expecting {<EOF>, '@prefix', '@base', '[', '(', '{', '@forSome', '@forAll', NumericLiteral, BooleanLiteral, String, BlankNode, QuickVar, IRIREF, PNAME_NS, PNAME_LN, BASE, PREFIX}
 testing (negative): qname-as-prefix-in-decl.n3
 ERROR: qname-as-prefix-in-decl.n3 [parser]: syntaxError for [@1,91:97='foo:bar',<36>,3:9] @3:9 - mismatched input 'foo:bar' expecting PNAME_NS
+testing (negative): trigo-test.n3
+ERROR: trigo-test.n3 [parser]: prefixError: referencing unknown prefix ("NonPi") in "NonPi:TestValue"
+ERROR: trigo-test.n3 [parser]: prefixError: referencing unknown prefix ("NonPi") in "NonPi:TestValue"
+ERROR: trigo-test.n3 [parser]: prefixError: referencing unknown prefix ("NonPi") in "NonPi:TestValue"
+ERROR: trigo-test.n3 [parser]: prefixError: referencing unknown prefix ("NonPi") in "NonPi:TestValue"
+ERROR: trigo-test.n3 [parser]: prefixError: referencing unknown prefix ("NonPi") in "NonPi:TestValue"
+ERROR: trigo-test.n3 [parser]: prefixError: referencing unknown prefix ("A") in "A:SIN"
+ERROR: trigo-test.n3 [parser]: prefixError: referencing unknown prefix ("A") in "A:COS"
+ERROR: trigo-test.n3 [parser]: prefixError: referencing unknown prefix ("NonPi") in "NonPi:TestValue"
+ERROR: trigo-test.n3 [parser]: prefixError: referencing unknown prefix ("A") in "A:SINH"
+ERROR: trigo-test.n3 [parser]: prefixError: referencing unknown prefix ("A") in "A:COSH"
 testing (negative): qvars4.n3
 ERROR: qvars4.n3 [parser]: syntaxError for [@5,101:102='?x',<33>,9:8] @9:8 - mismatched input '?x' expecting {IRIREF, PNAME_NS, PNAME_LN}
 ERROR: qvars4.n3 [parser]: syntaxError for [@7,105:106='?y',<33>,9:12] @9:12 - mismatched input '?y' expecting {IRIREF, PNAME_NS, PNAME_LN}
@@ -1274,12 +1274,12 @@ testing (negative): djb1.n3
 ERROR: djb1.n3 [parser]: syntaxError for [@10,91:91='.',<1>,3:8] @3:8 - mismatched input '.' expecting {'[', '(', '{', NumericLiteral, BooleanLiteral, String, BlankNode, QuickVar, IRIREF, PNAME_NS, PNAME_LN}
 testing (negative): zero-objects.n3
 ERROR: zero-objects.n3 [parser]: syntaxError for [@2,6:6='.',<1>,1:6] @1:6 - mismatched input '.' expecting {'[', '(', '{', NumericLiteral, BooleanLiteral, String, BlankNode, QuickVar, IRIREF, PNAME_NS, PNAME_LN}
+testing (negative): turtle-syntax-bad-n3-extras-08.ttl
+ERROR: turtle-syntax-bad-n3-extras-08.ttl [parser]: syntaxError for [@0,27:35='@keywords',<38>,2:0] @2:0 - mismatched input '@keywords' expecting {<EOF>, '@prefix', '@base', '[', '(', '{', '@forSome', '@forAll', NumericLiteral, BooleanLiteral, String, BlankNode, QuickVar, IRIREF, PNAME_NS, PNAME_LN, BASE, PREFIX}
 testing (negative): turtle-syntax-bad-n3-extras-13.ttl
 ERROR: turtle-syntax-bad-n3-extras-13.ttl [parser]: syntaxError for [@0,27:35='@keywords',<38>,2:0] @2:0 - mismatched input '@keywords' expecting {<EOF>, '@prefix', '@base', '[', '(', '{', '@forSome', '@forAll', NumericLiteral, BooleanLiteral, String, BlankNode, QuickVar, IRIREF, PNAME_NS, PNAME_LN, BASE, PREFIX}
 testing (negative): turtle-syntax-bad-n3-extras-07.ttl
 ERROR: turtle-syntax-bad-n3-extras-07.ttl [parser]: syntaxError for [@0,27:35='@keywords',<38>,2:0] @2:0 - mismatched input '@keywords' expecting {<EOF>, '@prefix', '@base', '[', '(', '{', '@forSome', '@forAll', NumericLiteral, BooleanLiteral, String, BlankNode, QuickVar, IRIREF, PNAME_NS, PNAME_LN, BASE, PREFIX}
-testing (negative): turtle-syntax-bad-n3-extras-08.ttl
-ERROR: turtle-syntax-bad-n3-extras-08.ttl [parser]: syntaxError for [@0,27:35='@keywords',<38>,2:0] @2:0 - mismatched input '@keywords' expecting {<EOF>, '@prefix', '@base', '[', '(', '{', '@forSome', '@forAll', NumericLiteral, BooleanLiteral, String, BlankNode, QuickVar, IRIREF, PNAME_NS, PNAME_LN, BASE, PREFIX}
 testing (negative): strquot.n3
 ERROR: strquot.n3 [lexer]: syntaxError for null @10:17 - token recognition error at: '"\\\"\a' LexerNoViableAltException('"')
 ERROR: strquot.n3 [parser]: syntaxError for [@18,228:229='\b',<48>,10:24] @10:24 - mismatched input '\b' expecting {'[', '(', '{', NumericLiteral, BooleanLiteral, String, BlankNode, QuickVar, IRIREF, PNAME_NS, PNAME_LN}
@@ -1303,8 +1303,8 @@ ERROR: query-survey-10.n3 [parser]: syntaxError for [@39,531:530='<EOF>',<-1>,11
 total # tests = 1209
 
 > positive tests:
-# failed = 2
-failed: [cwm_math/trigo-test.n3, cwm_n3/n3parser.tests_n3_10014.n3]
+# failed = 0
+failed: []
 
 > negative tests:
 # failed = 0

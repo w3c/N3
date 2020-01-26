@@ -1398,9 +1398,10 @@
         rdft:approval  rdft:Approved .
 
 <#cwm_math_trigo-test.n3>
-        a              rdft:TestTurtlePositiveSyntax ;
+        a              rdft:TestTurtleNegativeSyntax ;
         mf:action      <cwm_math/trigo-test.n3> ;
         mf:name        "trigo-test" ;
+        rdfs:comment   "does not declare all referenced prefixes" ;
         rdft:approval  rdft:Approved .
 
 <#04test_ex2-1aE.n3>  a  rdft:TestTurtlePositiveSyntax ;
@@ -2839,9 +2840,10 @@
         rdft:approval  rdft:Approved .
 
 <#cwm_n3_n3parser.tests_n3_10014.n3>
-        a              rdft:TestTurtlePositiveSyntax ;
+        a              rdft:TestTurtleNegativeSyntax ;
         mf:action      <cwm_n3/n3parser.tests_n3_10014.n3> ;
         mf:name        "n3parser.tests_n3_10014" ;
+        rdfs:comment   "does not declare any of the referenced prefixes" ;
         rdft:approval  rdft:Approved .
 
 <#07test_goal.n3>  a   rdft:TestTurtlePositiveSyntax ;
