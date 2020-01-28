@@ -1,6 +1,6 @@
 @prefix : <http://josd.github.io/eye/reasoning/4color#>.
 
-:::Austria :neighbours (:Czech_Republic :Germany :Hungary :Italy :Slovenia :Slovakia).
+:Austria :neighbours (:Czech_Republic :Germany :Hungary :Italy :Slovenia :Slovakia).
 :Belgium :neighbours (:France :Netherlands :Luxemburg :Germany :United_Kingdom).
 :Bulgaria :neighbours (:Romania :Greece).
 :Croatia :neighbours (:Slovenia :Hungary).

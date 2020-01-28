@@ -1,4 +1,4 @@
-#Processed by EYE v20.0105.1336 josd
+#Processed by EYE v20.0128.2228 josd
 #eye --no-genid http://josd.github.io/eye/reasoning/de/de.n3 http://josd.github.io/eye/reasoning/de/deA.n3 --query http://josd.github.io/eye/reasoning/de/deQ.n3
 
 @prefix : <http://josd.github.io/eye/reasoning#>.
@@ -82,6 +82,6 @@
   };
   r:because [ a r:Parsing; r:source <http://josd.github.io/eye/reasoning/de/de.n3>].
 
-#2020-01-14T10:12:11.962Z in=8 out=1 ent=6 step=18 brake=3 inf=27211 sec=0.042 inf/sec=647881
+#2020-01-28T22:34:56.424Z in=8 out=1 ent=6 step=18 brake=3 inf=27400 sec=0.093 inf/sec=294624
 #ENDS
 
