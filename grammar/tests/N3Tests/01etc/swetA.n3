@@ -1,5 +1,5 @@
 @prefix e: <http://eulersharp.sourceforge.net/2003/03swap/log-rules#>.
-@prefix : <http://eulersharp.sourceforge.net/2003/03swap/eye/reasoning#>.
+@prefix : <http://eulersharp.sourceforge.net/2003/03swap/brain#>.
 
 [] e:answer {:obs :like :obs001}.
 [] e:answer {:obs :like :obs002}.

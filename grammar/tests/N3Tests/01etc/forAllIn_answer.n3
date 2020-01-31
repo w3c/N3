@@ -1,5 +1,5 @@
-#Processed by EYE v20.0128.2228 josd
-#eye --no-genid --nope http://josd.github.io/eye/reasoning/n3c/components.n3 --turtle http://josd.github.io/eye/reasoning/n3c/tasks.n3 --query http://josd.github.io/eye/reasoning/n3c/forAllIn_query.n3
+#Processed by EYE v20.0129.2333 josd
+#eye --no-genid --nope http://josd.github.io/brain/n3c/components.n3 --turtle http://josd.github.io/brain/n3c/tasks.n3 --query http://josd.github.io/brain/n3c/forAllIn_query.n3
 
 @prefix n3: <https://www.w3.org/ns/n3#>.
 @prefix log: <http://www.w3.org/2000/10/swap/log#>.
@@ -8,6 +8,6 @@
 
 :task1 a :AllTasksCompleted.
 
-#2020-01-28T22:36:38.876Z in=14 out=1 ent=1 step=1 brake=1 inf=25344 sec=0.092 inf/sec=275478
+#2020-01-31T23:14:32.572Z in=14 out=1 ent=1 step=1 brake=1 inf=25281 sec=0.102 inf/sec=247853
 #ENDS
 

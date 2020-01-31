@@ -1,13 +1,13 @@
-#Processed by EYE v20.0128.2228 josd
-#eye --no-genid --nope http://josd.github.io/eye/reasoning/fib/fib.n3 --query http://josd.github.io/eye/reasoning/fib/fibQ.n3
+#Processed by EYE v20.0129.2333 josd
+#eye --no-genid --nope http://josd.github.io/brain/fib/fib.n3 --query http://josd.github.io/brain/fib/fibQ.n3
 
 @prefix math: <http://www.w3.org/2000/10/swap/math#>.
-@prefix : <http://josd.github.io/eye/reasoning#>.
+@prefix : <http://josd.github.io/brain#>.
 
 (0) :fib 1 .
 (91) :fib 7540113804746346429 .
 (283) :fib 100694286476841731898333719576864360661213863366454327287613 .
 
-#2020-01-28T22:36:02.274Z in=7 out=3 ent=3 step=3 brake=1 inf=30542 sec=0.091 inf/sec=335626
+#2020-01-31T23:14:02.034Z in=7 out=3 ent=3 step=3 brake=1 inf=30415 sec=0.093 inf/sec=327043
 #ENDS
 
