@@ -723,11 +723,6 @@
         mf:name        "proof-1000" ;
         rdft:approval  rdft:Approved .
 
-<#01etc_bell.n3>  a    rdft:TestTurtlePositiveSyntax ;
-        mf:action      <01etc/bell.n3> ;
-        mf:name        "bell" ;
-        rdft:approval  rdft:Approved .
-
 <#cwm_other_rules13.n3>
         a              rdft:TestTurtlePositiveSyntax ;
         mf:action      <cwm_other/rules13.n3> ;
@@ -1859,11 +1854,6 @@
 <#04test_vcardQ.n3>  a  rdft:TestTurtlePositiveSyntax ;
         mf:action      <04test/vcardQ.n3> ;
         mf:name        "vcardQ" ;
-        rdft:approval  rdft:Approved .
-
-<#01etc_grover.n3>  a  rdft:TestTurtlePositiveSyntax ;
-        mf:action      <01etc/grover.n3> ;
-        mf:name        "grover" ;
         rdft:approval  rdft:Approved .
 
 <#01etc_gedcom-proof.n3>
@@ -3169,11 +3159,6 @@
         mf:name        "owl-maxQualifiedCardinality" ;
         rdft:approval  rdft:Approved .
 
-<#01etc_lee.n3>  a     rdft:TestTurtlePositiveSyntax ;
-        mf:action      <01etc/lee.n3> ;
-        mf:name        "lee" ;
-        rdft:approval  rdft:Approved .
-
 <#04test_query-survey-result-8.n3>
         a              rdft:TestTurtlePositiveSyntax ;
         mf:action      <04test/query-survey-result-8.n3> ;
@@ -4345,11 +4330,6 @@
         mf:name        "sdcoding" ;
         rdft:approval  rdft:Approved .
 
-<#01etc_queens.n3>  a  rdft:TestTurtlePositiveSyntax ;
-        mf:action      <01etc/queens.n3> ;
-        mf:name        "queens" ;
-        rdft:approval  rdft:Approved .
-
 <#01etc_checking.n3>  a  rdft:TestTurtlePositiveSyntax ;
         mf:action      <01etc/checking.n3> ;
         mf:name        "checking" ;
@@ -4519,11 +4499,6 @@
         a              rdft:TestTurtlePositiveSyntax ;
         mf:action      <01etc/food2-proof.n3> ;
         mf:name        "food2-proof" ;
-        rdft:approval  rdft:Approved .
-
-<#01etc_sudoku.n3>  a  rdft:TestTurtlePositiveSyntax ;
-        mf:action      <01etc/sudoku.n3> ;
-        mf:name        "sudoku" ;
         rdft:approval  rdft:Approved .
 
 <#cwm_includes_conclusion-simple.n3>
@@ -5113,11 +5088,6 @@
         a              rdft:TestTurtlePositiveSyntax ;
         mf:action      <01etc/gps-example2.n3> ;
         mf:name        "gps-example2" ;
-        rdft:approval  rdft:Approved .
-
-<#01etc_euler.n3>  a   rdft:TestTurtlePositiveSyntax ;
-        mf:action      <01etc/euler.n3> ;
-        mf:name        "euler" ;
         rdft:approval  rdft:Approved .
 
 <#07test_sudoku-solution-3.n3>

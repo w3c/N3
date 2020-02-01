@@ -3,7 +3,7 @@ n3TestGrammar
 =============
 
 -- RESULTS
-total # tests = 1209
+total # tests = 1203
 
 > positive tests:
 # failed = 0
@@ -23,7 +23,7 @@ n3TestEye
 =========
 
 -- RESULTS
-total # tests = 1209
+total # tests = 1203
 
 > positive tests:
 # failed = 0
@@ -43,11 +43,11 @@ n3TestCwm
 =========
 
 -- RESULTS
-total # tests = 1177
+total # tests = 1171
 
 > positive tests:
-# failed = 18
-failed: [07test/badmeta.n3, 07test/utf8.n3, 04test/robC.n3, 01etc/iq-extra.n3, extra/good_prefix.n3, cwm_syntax/qual-after-user.n3, 04test/grahamC.n3, cwm_syntax/embedded-dot-in-qname.n3, 01etc/4color_data.n3, 07test/rifP.n3, extra/inverted_properties.n3, 01etc/rifP.n3, cwm_syntax/neg-single-quote.n3, 04test/sethC.n3, 04test/michaelC.n3, 04test/result-tp-05.n3, 04test/result-ot-0-01.n3, 04test/testC.n3]
+# failed = 17
+failed: [07test/badmeta.n3, 07test/utf8.n3, 04test/robC.n3, 01etc/iq-extra.n3, extra/good_prefix.n3, cwm_syntax/qual-after-user.n3, 04test/grahamC.n3, cwm_syntax/embedded-dot-in-qname.n3, 07test/rifP.n3, extra/inverted_properties.n3, 01etc/rifP.n3, cwm_syntax/neg-single-quote.n3, 04test/sethC.n3, 04test/michaelC.n3, 04test/result-tp-05.n3, 04test/result-ot-0-01.n3, 04test/testC.n3]
 
 > negative tests:
 # failed = 5
