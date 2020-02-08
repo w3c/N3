@@ -1,4 +1,4 @@
-@prefix : <http://josd.github.io/brain#>.
+@prefix : <http://josd.github.io/fluid#>.
 
 :s :p1 true.
 #:s :p2 true.

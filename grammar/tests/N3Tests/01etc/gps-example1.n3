@@ -1,6 +1,6 @@
 @prefix math: <http://www.w3.org/2000/10/swap/math#>.
-@prefix gps: <http://josd.github.io/brain/gps/gps-schema#>.
-@prefix : <http://josd.github.io/brain#>.
+@prefix gps: <http://josd.github.io/fluid/gps/gps-schema#>.
+@prefix : <http://josd.github.io/fluid#>.
 
 # current state
 :i1 :location :Gent.

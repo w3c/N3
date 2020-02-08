@@ -1,8 +1,8 @@
-#Processed by EYE v20.0129.2333 josd
-#eye --no-genid --nope http://josd.github.io/brain/swet/swetA.n3 http://josd.github.io/brain/swet/swetD.n3 --query http://josd.github.io/brain/swet/swetQ21.n3
+#Processed by EYE v20.0204.1058 josd
+#eye --no-genid --nope http://josd.github.io/fluid/swet/swetA.n3 http://josd.github.io/fluid/swet/swetD.n3 --query http://josd.github.io/fluid/swet/swetQ21.n3
 
 @prefix e: <http://eulersharp.sourceforge.net/2003/03swap/log-rules#>.
-@prefix : <http://eulersharp.sourceforge.net/2003/03swap/brain#>.
+@prefix : <http://eulersharp.sourceforge.net/2003/03swap/fluid#>.
 
 _:bn_2 e:answer {:obs002 :ascribed :Sprinkler. :obs002 :ascribed :WetGrass}.
 _:bn_4 e:answer {:obs004 :ascribed :Sprinkler. :obs004 :ascribed :WetGrass}.
@@ -51,6 +51,6 @@ _:bn_97 e:answer {:obs097 :ascribed :Sprinkler. :obs097 :ascribed :WetGrass}.
 _:bn_99 e:answer {:obs099 :ascribed :Sprinkler. :obs099 :ascribed :WetGrass}.
 _:bn_100 e:answer {:obs100 :ascribed :Sprinkler. :obs100 :ascribed :WetGrass}.
 
-#2020-01-31T23:15:07.290Z in=501 out=46 ent=46 step=46 brake=1 inf=214540 sec=0.168 inf/sec=1277024
+#2020-02-08T10:14:25.501Z in=501 out=46 ent=46 step=46 brake=1 inf=214676 sec=0.177 inf/sec=1212859
 #ENDS
 

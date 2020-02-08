@@ -1,5 +1,5 @@
-#Processed by EYE v20.0129.2333 josd
-#eye --no-genid --nope http://josd.github.io/brain/n3c/components.n3 --turtle http://josd.github.io/brain/n3c/tasks.n3 --query http://josd.github.io/brain/n3c/notIn_query.n3
+#Processed by EYE v20.0204.1058 josd
+#eye --no-genid --nope http://josd.github.io/fluid/n3c/components.n3 --turtle http://josd.github.io/fluid/n3c/tasks.n3 --query http://josd.github.io/fluid/n3c/notIn_query.n3
 
 @prefix n3: <https://www.w3.org/ns/n3#>.
 @prefix log: <http://www.w3.org/2000/10/swap/log#>.
@@ -9,6 +9,6 @@
 :task1 a :NotDiscardedTask.
 :task2 a :NotDiscardedTask.
 
-#2020-01-31T23:14:30.877Z in=7 out=2 ent=2 step=2 brake=1 inf=22489 sec=0.094 inf/sec=239245
+#2020-02-08T10:13:49.688Z in=7 out=2 ent=2 step=2 brake=1 inf=22645 sec=0.093 inf/sec=243495
 #ENDS
 

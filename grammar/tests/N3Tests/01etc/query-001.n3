@@ -1,4 +1,4 @@
-@prefix : <http://josd.github.io/brain/cs#>.
+@prefix : <http://josd.github.io/fluid/cs#>.
 
 {
     ?O :control1 ?C.

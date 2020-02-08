@@ -1,4 +1,4 @@
-@prefix : <http://josd.github.io/brain#>.
+@prefix : <http://josd.github.io/fluid#>.
 
 {(0) :fib ?Y} => {(0) :fib ?Y}.
 {(91) :fib ?Y} => {(91) :fib ?Y}.
