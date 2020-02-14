@@ -1,24 +1,11 @@
 package test;
 
-import java.io.BufferedReader;
 import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileReader;
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import java.util.function.BiConsumer;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
+import java.util.function.Consumer;
 
-import org.apache.jena.rdf.model.Model;
-import org.apache.jena.rdf.model.ModelFactory;
-import org.apache.jena.rdf.model.Resource;
-import org.apache.jena.rdf.model.Statement;
-import org.apache.jena.rdf.model.StmtIterator;
-
-import rdf.util.NS;
 import wvw.utils.log.Log;
 import wvw.utils.log.target.AggregateTarget;
 import wvw.utils.log.target.FileTarget;
@@ -28,7 +15,6 @@ public abstract class N3Test {
 
 	private static List<String> suppExts = Arrays.asList("ttl", "n3");
 
-	private String base = null;
 	private List<String> skipped;
 
 	protected N3Test() {
@@ -37,94 +23,22 @@ public abstract class N3Test {
 	}
 
 	public void testManifest(String folder) throws Exception {
-		Model manifest = readManifest(folder);
+		RdfTestManifest manifest = new RdfTestManifest(folder);
 
-		int totalNr = 0;
 		skipped = new ArrayList<>();
-		List<String> posFailed = new ArrayList<>();
-		List<String> negFailed = new ArrayList<>();
 
-		totalNr += doSyntaxTests(manifest.createResource(NS.uri("rdft:TestTurtlePositiveSyntax")), (test, name) -> {
-			if (!positiveTest(test))
-				posFailed.add(name);
+		ManifestTestConsumer posFn = new ManifestTestConsumer(folder, true);
+		manifest.forEachTest(true, posFn);
 
-		}, folder, manifest);
+		ManifestTestConsumer negFn = new ManifestTestConsumer(folder, false);
+		manifest.forEachTest(false, negFn);
 
-		totalNr += doSyntaxTests(manifest.createResource(NS.uri("rdft:TestTurtleNegativeSyntax")), (test, name) -> {
-			if (!negativeTest(test))
-				negFailed.add(name);
-
-		}, folder, manifest);
-
-		printFailed(totalNr, posFailed, negFailed);
-	}
-
-	protected Model readManifest(String folder) throws Exception {
-		Log.i("parsing manifest.ttl");
-
-		getBase(folder + "manifest.ttl");
-		return ModelFactory.createDefaultModel().read(new FileInputStream(folder + "manifest.ttl"), null, "TURTLE");
-	}
-
-	protected void getBase(String path) throws IOException {
-		Pattern p = Pattern.compile("\\s*@base\\s*<(.*?)>\\s*\\.\\s*");
-
-		BufferedReader br = new BufferedReader(new FileReader(path));
-		String line = null;
-		while ((line = br.readLine()) != null) {
-			Matcher m = p.matcher(line);
-			if (m.matches()) {
-				base = m.group(1);
-				break;
-			}
-		}
-		br.close();
-
-		if (base == null)
-//			base = "file:\\\\\\" + System.getProperty("user.dir") + "\\";
-			base = "file:\\\\" + System.getProperty("user.dir") + "\\";
-
-		Log.i("assuming base = " + base);
-	}
-
-	protected int doSyntaxTests(Resource type, BiConsumer<File, String> fn, String folder, Model manifest) {
-		int nr = 0;
-
-		StmtIterator stmtIt = manifest.listStatements(null, manifest.createProperty(NS.uri("rdf:type")), type);
-		while (stmtIt.hasNext()) {
-			Statement stmt = stmtIt.next();
-			Resource testCase = stmt.getSubject();
-
-			if (!testCase.getProperty(manifest.createProperty(NS.uri("rdft", "approval"))).getObject().asResource()
-					.getURI().equals(NS.uri("rdft", "Approved")))
-
-				continue;
-
-			Statement actionStmt = testCase.getProperty(manifest.createProperty(NS.uri("mf", "action")));
-			if (actionStmt != null) {
-				String test = actionStmt.getObject().asResource().getURI();
-				
-				test = test.substring(base.length());
-				if (test.startsWith("/") || test.startsWith("\\"))
-					test = test.substring(1);
-
-				File f = new File(folder + test);
-				if (!skipTest(f)) {
-					fn.accept(new File(folder + test), test);
-					nr++;
-
-				} else
-					skipped.add(test);
-
-			} else
-				System.err.println("could not find action for " + testCase);
-		}
-
-		return nr;
+		printFailed(posFn.getCount() + negFn.getCount(), posFn.getFailed(), negFn.getFailed());
 	}
 
 	public void testFolder(boolean pos, String folder) {
 		skipped = new ArrayList<>();
+		
 		List<String> failed = new ArrayList<>();
 
 		int totalNr = testFolder(pos, folder, "", failed);
@@ -162,7 +76,6 @@ public abstract class N3Test {
 		}
 
 		return nr;
-
 	}
 
 	public boolean positiveTest(File file) {
@@ -172,7 +85,7 @@ public abstract class N3Test {
 	public boolean positiveTest(File file, String name) {
 		Log.i("testing (positive): " + file.getPath());
 		try {
-			IParserCmp cmp = parse(file);
+			ITestResult cmp = parse(file);
 			return (cmp.getNumErrors() == 0);
 
 		} catch (Exception e) {
@@ -190,7 +103,7 @@ public abstract class N3Test {
 	public boolean negativeTest(File file, String name) {
 		Log.i("testing (negative): " + name);
 		try {
-			IParserCmp cmp = parse(file);
+			ITestResult cmp = parse(file);
 			return (cmp.getNumErrors() > 0);
 
 		} catch (Exception e) {
@@ -224,14 +137,50 @@ public abstract class N3Test {
 		Log.i("skipped: " + skipped);
 	}
 
-	protected abstract IParserCmp parse(File file) throws Exception;
+	protected abstract ITestResult parse(File file) throws Exception;
 
 	protected boolean skipTest(File file) {
 		return false;
 	}
 
-	protected interface IParserCmp {
+	protected interface ITestResult {
 
 		public int getNumErrors();
+	}
+
+	protected class ManifestTestConsumer implements Consumer<String> {
+
+		private String folder;
+		private boolean positive;
+
+		private int count = 0;
+		private List<String> failed = new ArrayList<>();
+
+		public ManifestTestConsumer(String folder, boolean positive) {
+			this.folder = folder;
+			this.positive = positive;
+		}
+
+		@Override
+		public void accept(String test) {
+			File file = new File(folder, test);
+
+			if (!skipTest(file)) {
+				if ((positive && !positiveTest(file)) || (!positive && !negativeTest(file)))
+					failed.add(test);
+
+				count++;
+
+			} else
+				skipped.add(test);
+		}
+
+		public int getCount() {
+			return count;
+		}
+
+		public List<String> getFailed() {
+			return failed;
+		}
 	}
 }
