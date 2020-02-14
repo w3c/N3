@@ -2,9 +2,9 @@ found built-ins:
 
 > individual uris:
 
-http://www.w3.org/2000/10/swap/reason#variable; count=69289
-http://www.w3.org/2000/10/swap/reason#boundTo; count=69289
-http://www.w3.org/2000/10/swap/reason#binding; count=69289
+http://www.w3.org/2000/10/swap/reason#variable; count=69285
+http://www.w3.org/2000/10/swap/reason#boundTo; count=69285
+http://www.w3.org/2000/10/swap/reason#binding; count=69285
 http://www.w3.org/2000/10/swap/reason#gives; count=41781
 http://www.w3.org/2000/10/swap/reason#rule; count=10538
 http://www.w3.org/2000/10/swap/reason#evidence; count=10538
@@ -13,7 +13,7 @@ http://www.w3.org/2000/10/swap/reason#because; count=8619
 http://www.w3.org/2000/10/swap/math#sum; count=5815
 http://www.w3.org/2000/10/swap/reason#component; count=4468
 http://www.w3.org/2000/10/swap/math#product; count=2985
-http://eulersharp.sourceforge.net/2003/03swap/eye/reasoning#ascribed; count=1973
+http://eulersharp.sourceforge.net/2003/03swap/fluid#ascribed; count=1973
 http://eulersharp.sourceforge.net/2003/03swap/log-rules#graphMember; count=1948
 http://eulersharp.sourceforge.net/2003/03swap/log-rules#derive; count=1627
 http://eulersharp.sourceforge.net/2003/03swap/log-rules#answer; count=1394
@@ -44,7 +44,7 @@ http://eulersharp.sourceforge.net/2006/02swap/fcm-plugin#fs; count=130
 http://eulersharp.sourceforge.net/2006/02swap/fcm-plugin#pi; count=130
 http://www.w3.org/2000/10/swap/log#semantics; count=125
 http://eulersharp.sourceforge.net/2003/03swap/time#hasDateTime; count=105
-http://eulersharp.sourceforge.net/2003/03swap/eye/reasoning#like; count=104
+http://eulersharp.sourceforge.net/2003/03swap/fluid#like; count=104
 http://eulersharp.sourceforge.net/2003/03swap/log-rules#closure; count=101
 http://www.w3.org/2000/10/swap/math#equalTo; count=100
 http://www.w3.org/2000/10/swap/log#notEqualTo; count=94
@@ -63,10 +63,10 @@ http://eulersharp.sourceforge.net/2003/03swap/fl-rules#pi; count=72
 http://eulersharp.sourceforge.net/2003/03swap/quantities#hasUnit; count=69
 http://www.w3.org/2000/10/swap/math#lessThan; count=67
 http://eulersharp.sourceforge.net/2003/03swap/log-rules#fail; count=58
-http://www.w3.org/2000/10/swap/math#memberCount; count=56
 http://eulersharp.sourceforge.net/2003/03swap/log-rules#graphDifference; count=55
 http://eulersharp.sourceforge.net/2003/03swap/log-rules#graphIntersection; count=55
 http://eulersharp.sourceforge.net/2003/03swap/log-rules#inductivity; count=51
+http://www.w3.org/2000/10/swap/math#memberCount; count=50
 http://eulersharp.sourceforge.net/2003/03swap/log-rules#csvTuple; count=47
 http://www.w3.org/2000/10/swap/log#includes; count=47
 http://www.w3.org/2000/10/swap/list#in; count=41
@@ -98,8 +98,8 @@ http://www.w3.org/2000/10/swap/list#first; count=13
 http://eulersharp.sourceforge.net/2003/03swap/organism#hasBirthDateTime; count=12
 http://eulersharp.sourceforge.net/2003/03swap/log-rules#possibility; count=12
 http://eulersharp.sourceforge.net/2003/03swap/log-rules#min; count=12
+http://eulersharp.sourceforge.net/2003/03swap/fluid#given; count=12
 http://eulersharp.sourceforge.net/2003/03swap/log-rules#compoundTerm; count=12
-http://eulersharp.sourceforge.net/2003/03swap/eye/reasoning#given; count=12
 http://eulersharp.sourceforge.net/2006/02swap/med#isPrescribed; count=12
 http://eulersharp.sourceforge.net/2003/03swap/log-rules#stringEscape; count=11
 http://www.w3.org/2000/10/swap/string#matches; count=11
@@ -167,10 +167,10 @@ http://eulersharp.sourceforge.net/2003/03swap/fl-rules#gpiWhitenized; count=1
 
 > ordered by prefix:
 
-- http://www.w3.org/2000/10/swap/reason#; count=292430
-http://www.w3.org/2000/10/swap/reason#boundTo; count=69289
-http://www.w3.org/2000/10/swap/reason#variable; count=69289
-http://www.w3.org/2000/10/swap/reason#binding; count=69289
+- http://www.w3.org/2000/10/swap/reason#; count=292418
+http://www.w3.org/2000/10/swap/reason#boundTo; count=69285
+http://www.w3.org/2000/10/swap/reason#variable; count=69285
+http://www.w3.org/2000/10/swap/reason#binding; count=69285
 http://www.w3.org/2000/10/swap/reason#gives; count=41781
 http://www.w3.org/2000/10/swap/reason#rule; count=10538
 http://www.w3.org/2000/10/swap/reason#evidence; count=10538
@@ -178,7 +178,7 @@ http://www.w3.org/2000/10/swap/reason#because; count=8619
 http://www.w3.org/2000/10/swap/reason#source; count=8619
 http://www.w3.org/2000/10/swap/reason#component; count=4468
 
-- http://www.w3.org/2000/10/swap/math#; count=16281
+- http://www.w3.org/2000/10/swap/math#; count=16275
 http://www.w3.org/2000/10/swap/math#sum; count=5815
 http://www.w3.org/2000/10/swap/math#product; count=2985
 http://www.w3.org/2000/10/swap/math#negation; count=1358
@@ -192,7 +192,7 @@ http://www.w3.org/2000/10/swap/math#notGreaterThan; count=426
 http://www.w3.org/2000/10/swap/math#notLessThan; count=292
 http://www.w3.org/2000/10/swap/math#equalTo; count=100
 http://www.w3.org/2000/10/swap/math#lessThan; count=67
-http://www.w3.org/2000/10/swap/math#memberCount; count=56
+http://www.w3.org/2000/10/swap/math#memberCount; count=50
 http://www.w3.org/2000/10/swap/math#exponentiation; count=40
 
 - http://eulersharp.sourceforge.net/2003/03swap/log-rules#; count=6675
@@ -247,10 +247,10 @@ http://eulersharp.sourceforge.net/2003/03swap/log-rules#sha; count=3
 http://eulersharp.sourceforge.net/2003/03swap/log-rules#graphPair; count=1
 http://eulersharp.sourceforge.net/2003/03swap/log-rules#propertyChainExtension; count=1
 
-- http://eulersharp.sourceforge.net/2003/03swap/eye/reasoning#; count=2089
-http://eulersharp.sourceforge.net/2003/03swap/eye/reasoning#ascribed; count=1973
-http://eulersharp.sourceforge.net/2003/03swap/eye/reasoning#like; count=104
-http://eulersharp.sourceforge.net/2003/03swap/eye/reasoning#given; count=12
+- http://eulersharp.sourceforge.net/2003/03swap/fluid#; count=2089
+http://eulersharp.sourceforge.net/2003/03swap/fluid#ascribed; count=1973
+http://eulersharp.sourceforge.net/2003/03swap/fluid#like; count=104
+http://eulersharp.sourceforge.net/2003/03swap/fluid#given; count=12
 
 - http://eulersharp.sourceforge.net/2003/03swap/log-rule; count=1944
 http://eulersharp.sourceforge.net/2003/03swap/log-rules#graphMember; count=1944
@@ -378,3 +378,4 @@ http://eulersharp.sourceforge.net/2003/03swap/physicalResource#hasComplexity; co
 
 - http://www.w3.org/2000/10/swap/crypto#; count=3
 http://www.w3.org/2000/10/swap/crypto#sha; count=3
+
