@@ -1,0 +1,3 @@
+@prefix queens: <http://josd.github.io/eye/brain/queens#>.
+
+{14 queens:solved ?QUEENS} <= {14 queens:solve ?QUEENS}.

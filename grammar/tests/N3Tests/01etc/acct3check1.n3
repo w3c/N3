@@ -1,5 +1,5 @@
-@prefix my: <http://josd.github.io/fluid/ppt-bank/acct3#>.
-@prefix ck: <http://josd.github.io/fluid/ppt-bank/checking#>.
+@prefix my: <http://josd.github.io/brain/ppt-bank/acct3#>.
+@prefix ck: <http://josd.github.io/brain/ppt-bank/checking#>.
 
 <> a ck:Check;
     ck:amount 5.00;

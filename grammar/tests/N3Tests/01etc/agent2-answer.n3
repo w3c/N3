@@ -1,18 +1,18 @@
-#Processed by EYE v20.0204.1058 josd
-#eye --no-genid --wcache http://josd.github.io/fluid/map . --nope http://josd.github.io/fluid/map/gps-plugin.n3 http://josd.github.io/fluid/map/agent2-map.n3 --twinkle http://josd.github.io/fluid/map/agent1-proof.n3 --query http://josd.github.io/fluid/map/agent2-query.n3
+#Processed by EYE v20.0211.2332 josd
+#eye --no-genid --wcache http://josd.github.io/brain/map . --nope http://josd.github.io/brain/map/gps-plugin.n3 http://josd.github.io/brain/map/agent2-map.n3 --twinkle http://josd.github.io/brain/map/agent1-proof.n3 --query http://josd.github.io/brain/map/agent2-query.n3
 
 @prefix math: <http://www.w3.org/2000/10/swap/math#>.
 @prefix list: <http://www.w3.org/2000/10/swap/list#>.
 @prefix log: <http://www.w3.org/2000/10/swap/log#>.
 @prefix e: <http://eulersharp.sourceforge.net/2003/03swap/log-rules#>.
-@prefix gps: <http://josd.github.io/fluid/gps/gps-schema#>.
-@prefix : <http://josd.github.io/fluid#>.
+@prefix gps: <http://josd.github.io/brain/gps/gps-schema#>.
+@prefix : <http://josd.github.io/brain#>.
 @prefix r: <http://www.w3.org/2000/10/swap/reason#>.
 @prefix var: <http://josd.github.io/var#>.
 @prefix n3: <http://www.w3.org/2004/06/rei#>.
 
 :i1 gps:path ((:drive_gent_brugge :drive_brugge_oostende) 2400.0 0.01 0.9408 0.99).
 
-#2020-02-08T10:13:38.748Z in=442 out=1 ent=11 step=82 brake=4 inf=349536 sec=0.197 inf/sec=1774294
+#2020-02-14T22:10:50.278Z in=442 out=1 ent=11 step=82 brake=4 inf=349526 sec=0.196 inf/sec=1783296
 #ENDS
 

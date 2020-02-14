@@ -1,9 +1,9 @@
-#Processed by EYE v20.0204.1058 josd
-#eye --no-genid --wcache http://josd.github.io/fluid/ccd . --nope http://josd.github.io/fluid/ccd/train_data.n3 http://josd.github.io/fluid/ccd/background_rules.n3 http://josd.github.io/fluid/ccd/train_rules.n3 --query http://josd.github.io/fluid/ccd/train_query.n3
+#Processed by EYE v20.0211.2332 josd
+#eye --no-genid --wcache http://josd.github.io/brain/ccd . --nope http://josd.github.io/brain/ccd/train_data.n3 http://josd.github.io/brain/ccd/background_rules.n3 http://josd.github.io/brain/ccd/train_rules.n3 --query http://josd.github.io/brain/ccd/train_query.n3
 
-@prefix : <http://josd.github.io/fluid#>.
+@prefix : <http://josd.github.io/brain#>.
 @prefix list: <http://www.w3.org/2000/10/swap/list#>.
-@prefix ccd: <http://josd.github.io/fluid/ccd#>.
+@prefix ccd: <http://josd.github.io/brain/ccd#>.
 @prefix math: <http://www.w3.org/2000/10/swap/math#>.
 @prefix e: <http://eulersharp.sourceforge.net/2003/03swap/log-rules#>.
 
@@ -25,6 +25,6 @@
 (:input10 ("abc" 60)) ccd:model (:output1 1 2).
 (:input10 ("xyz" 40)) ccd:model (:output1 1 0).
 
-#2020-02-08T10:12:22.746Z in=54 out=17 ent=24 step=110 brake=2 inf=52945 sec=0.095 inf/sec=557316
+#2020-02-14T22:09:33.808Z in=54 out=17 ent=24 step=110 brake=2 inf=52945 sec=0.096 inf/sec=551510
 #ENDS
 
