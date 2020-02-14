@@ -108,7 +108,7 @@ public abstract class N3TestExec extends N3Test {
 	}
 
 	@Override
-	public IParserCmp parse(File file) throws Exception {
+	public ITestResult parse(File file) throws Exception {
 		String cmd = genCmd.apply(file);
 //		Log.i("cmd: " + cmd);
 
@@ -126,7 +126,7 @@ public abstract class N3TestExec extends N3Test {
 			if (error)
 				Log.i(output);
 
-			return new MyParserCmp(error);
+			return new ExecTestResult(error);
 
 //			} else {
 //				System.err.println("abnormal exit value: " + exitVal);
@@ -140,7 +140,7 @@ public abstract class N3TestExec extends N3Test {
 			e.printStackTrace();
 		}
 
-		return new MyParserCmp(true);
+		return new ExecTestResult(true);
 	}
 
 	private Process executeCmd(String cmd) throws IOException {
@@ -184,11 +184,11 @@ public abstract class N3TestExec extends N3Test {
 
 	protected abstract boolean foundError(String output);
 
-	protected class MyParserCmp implements IParserCmp {
+	protected class ExecTestResult implements ITestResult {
 
 		private boolean error;
 
-		public MyParserCmp(boolean error) {
+		public ExecTestResult(boolean error) {
 			this.error = error;
 		}
 

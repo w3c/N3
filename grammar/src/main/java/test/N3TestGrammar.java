@@ -1,27 +1,14 @@
 package test;
 
 import java.io.File;
-import java.lang.reflect.Method;
-import java.nio.charset.Charset;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import java.util.regex.Pattern;
 
-import org.antlr.v4.runtime.CharStream;
-import org.antlr.v4.runtime.CharStreams;
-import org.antlr.v4.runtime.CommonTokenStream;
-import org.antlr.v4.runtime.Lexer;
-import org.antlr.v4.runtime.Parser;
 import org.antlr.v4.runtime.ParserRuleContext;
-import org.antlr.v4.runtime.TokenStream;
-import org.apache.commons.lang3.tuple.ImmutablePair;
-import org.apache.commons.lang3.tuple.Pair;
 
-import parser.n3AbstractLexerErrorListener;
 import parser.n3AbstractParserErrorListener;
-import parser.n3DefaultLexerErrorListener;
-import parser.n3DefaultParserErrorListener;
+import parser.n3Grammar;
 import parser.n3PrefixErrorVisitor;
 import parser.n3PrintVisitor;
 import wvw.utils.log.Log;
@@ -120,65 +107,27 @@ public class N3TestGrammar extends N3Test {
 		}
 	}
 
-	private String grammar;
+	private String grammarLabel;
+	private n3Grammar grammar;
+
 	private boolean printAST = false;
 
 	public N3TestGrammar(String grammar, boolean printAST) {
-		this.grammar = grammar;
+		this.grammarLabel = grammar;
 		this.printAST = printAST;
 	}
 
-	public IParserCmp parse(File file) throws Exception {
-		MyParserCmp cmp = createGrammarComponents(grammar, file);
+	public ITestResult parse(File file) throws Exception {
+		grammar = new n3Grammar();
+		ParserRuleContext ctx = grammar.parse(file, grammarLabel);
 
-		Method m = findParseMethod(cmp.getParser());
-		if (m != null) {
-			ParserRuleContext ctx = (ParserRuleContext) m.invoke(cmp.getParser());
+		n3PrefixErrorVisitor v = createPrefixErrorVisitor(grammarLabel, grammar.getParserListener());
+		v.visit(ctx);
 
-			n3PrefixErrorVisitor v = createPrefixErrorVisitor(grammar, cmp.getParserListener());
-			v.visit(ctx);
+		if (printAST)
+			createPrintVisitor(grammarLabel).visit(ctx);
 
-			if (printAST)
-				createPrintVisitor(grammar).visit(ctx);
-
-		} else
-			System.err.println("error: could not find parser method for " + grammar);
-
-		return cmp;
-	}
-
-	private Method findParseMethod(Parser parser) {
-		Pattern p = Pattern.compile(".*Doc");
-		for (Method m : parser.getClass().getMethods()) {
-
-			if (p.matcher(m.getName()).matches())
-				return m;
-		}
-
-		return null;
-	}
-
-	private MyParserCmp createGrammarComponents(String grammar, File file) throws Exception {
-		Pair<Class<? extends Lexer>, Class<? extends Parser>> clss = getGrammarClasses(grammar);
-
-		Lexer lexer = clss.getLeft().getConstructor(CharStream.class)
-				.newInstance(CharStreams.fromPath(file.toPath(), Charset.forName("UTF-8")));
-
-		// (antlr 4.4)
-		// new ANTLRInputStream(new InputStreamReader(new FileInputStream(file),
-		// Charset.forName("UTF-8"))));
-
-//		lexer.removeErrorListeners();
-		n3AbstractLexerErrorListener lexerListener = new n3DefaultLexerErrorListener(file.getName());
-		lexer.addErrorListener(lexerListener);
-
-		Parser parser = clss.getRight().getConstructor(TokenStream.class).newInstance(new CommonTokenStream(lexer));
-
-//		parser.removeErrorListeners();
-		n3AbstractParserErrorListener parserListener = new n3DefaultParserErrorListener(file.getName());
-		parser.addErrorListener(parserListener);
-
-		return new MyParserCmp(lexer, parser, lexerListener, parserListener);
+		return new N3TestResult(grammar.getNumErrors());
 	}
 
 	private n3PrintVisitor createPrintVisitor(String grammar) throws Exception {
@@ -193,58 +142,17 @@ public class N3TestGrammar extends N3Test {
 				.getConstructor(n3AbstractParserErrorListener.class).newInstance(listener);
 	}
 
-	@SuppressWarnings("unchecked")
-	private Pair<Class<? extends Lexer>, Class<? extends Parser>> getGrammarClasses(String grammar)
-			throws ClassNotFoundException {
+	protected class N3TestResult implements ITestResult {
 
-		return ImmutablePair.of((Class<? extends Lexer>) Class.forName("parser.antlr." + grammar + "Lexer"),
-				(Class<? extends Parser>) Class.forName("parser.antlr." + grammar + "Parser"));
-	}
+		private int numErrors;
 
-	protected class MyParserCmp implements IParserCmp {
-
-		private Lexer lexer;
-		private Parser parser;
-		private n3AbstractLexerErrorListener lexerListener;
-		private n3AbstractParserErrorListener parserListener;
-
-		public MyParserCmp(Lexer lexer, Parser parser, n3AbstractLexerErrorListener lexerListener,
-				n3AbstractParserErrorListener parserListener) {
-
-			this.lexer = lexer;
-			this.parser = parser;
-			this.lexerListener = lexerListener;
-			this.parserListener = parserListener;
+		public N3TestResult(int numErrors) {
+			this.numErrors = numErrors;
 		}
 
-		public Lexer getLexer() {
-			return lexer;
-		}
-
-		public Parser getParser() {
-			return parser;
-		}
-
-		public n3AbstractLexerErrorListener getLexerListener() {
-			return lexerListener;
-		}
-
-		public void setLexerListener(n3AbstractLexerErrorListener lexerListener) {
-			this.lexerListener = lexerListener;
-		}
-
-		public n3AbstractParserErrorListener getParserListener() {
-			return parserListener;
-		}
-
-		public void setParserListener(n3AbstractParserErrorListener parserListener) {
-			this.parserListener = parserListener;
-		}
-
-		// it seems that parser.getNumberOfSyntaxErrors does not (always?) count
-		// lexer errors
+		@Override
 		public int getNumErrors() {
-			return lexerListener.getNumErrors() + parserListener.getNumErrors();
+			return numErrors;
 		}
 	}
 }
