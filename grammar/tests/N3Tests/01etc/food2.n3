@@ -1,9 +1,9 @@
-#Processed by EYE v20.0105.1336 josd
+#Processed by EYE v20.0204.1058 josd
 #eye --no-genid --nope food.n3 food-declarations.n3 preduction-plugin.n3 --query food-preduction.n3
 
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
 @prefix food: <http://www.w3.org/2002/03owlt/miscellaneous/consistent002#>.
-@prefix p: <http://josd.github.io/eye/reasoning/preduction#>.
+@prefix p: <http://josd.github.io/fluid/preduction#>.
 @prefix log: <http://www.w3.org/2000/10/swap/log#>.
 @prefix e: <http://eulersharp.sourceforge.net/2003/03swap/log-rules#>.
 
@@ -43,6 +43,6 @@
 {?U_203 a food:RedMeat} => {?U_203 a food:Meat}.
 {?U_209 a food:EatingGrape} => {?U_209 a food:Grape}.
 
-#2020-01-14T10:12:52.456Z in=50 out=35 ent=35 step=35 brake=1 inf=98564 sec=0.061 inf/sec=1615803
+#2020-02-08T10:14:04.072Z in=50 out=35 ent=35 step=35 brake=1 inf=98816 sec=0.116 inf/sec=851862
 #ENDS
 

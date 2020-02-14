@@ -1,8 +1,8 @@
-#Processed by EYE v20.0105.1336 josd
-#eye --no-genid http://josd.github.io/eye/reasoning/pi/pi.n3 --query http://josd.github.io/eye/reasoning/pi/pi-query.n3
+#Processed by EYE v20.0204.1058 josd
+#eye --no-genid http://josd.github.io/fluid/pi/pi.n3 --query http://josd.github.io/fluid/pi/pi-query.n3
 
 @prefix math: <http://www.w3.org/2000/10/swap/math#>.
-@prefix : <http://josd.github.io/eye/reasoning#>.
+@prefix : <http://josd.github.io/fluid#>.
 @prefix r: <http://www.w3.org/2000/10/swap/reason#>.
 @prefix var: <http://josd.github.io/var#>.
 @prefix n3: <http://www.w3.org/2004/06/rei#>.
@@ -42,7 +42,7 @@
   r:gives {
     @forAll var:x_0. {(1000 var:x_0) :pi true} => {(1000 var:x_0) :pi true}.
   };
-  r:because [ a r:Parsing; r:source <http://josd.github.io/eye/reasoning/pi/pi-query.n3>].
+  r:because [ a r:Parsing; r:source <http://josd.github.io/fluid/pi/pi-query.n3>].
 
 <#lemma4> a r:Inference;
   r:gives {
@@ -81,7 +81,7 @@
      (4 var:x_1) math:product var:x_2.
      (3 var:x_2) math:sum var:x_3}.
   };
-  r:because [ a r:Parsing; r:source <http://josd.github.io/eye/reasoning/pi/pi.n3>].
+  r:because [ a r:Parsing; r:source <http://josd.github.io/fluid/pi/pi.n3>].
 
 <#lemma6> a r:Inference;
   r:gives {
@@ -127,7 +127,7 @@
      var:x_7 math:negation var:x_11.
      (var:x_2 var:x_1 var:x_10 var:x_12 var:x_11) :pi true}.
   };
-  r:because [ a r:Parsing; r:source <http://josd.github.io/eye/reasoning/pi/pi.n3>].
+  r:because [ a r:Parsing; r:source <http://josd.github.io/fluid/pi/pi.n3>].
 
 <#lemma8> a r:Inference;
   r:gives {
@@ -31052,8 +31052,8 @@
   r:gives {
     @forSome var:x_0, var:x_1, var:x_2. {(var:x_0 var:x_0 var:x_1 var:x_1 var:x_2) :pi true} <= true.
   };
-  r:because [ a r:Parsing; r:source <http://josd.github.io/eye/reasoning/pi/pi.n3>].
+  r:because [ a r:Parsing; r:source <http://josd.github.io/fluid/pi/pi.n3>].
 
-#2020-01-14T10:12:49.982Z in=4 out=1 ent=1 step=1 brake=1 inf=4499007 sec=0.656 inf/sec=6858242
+#2020-02-08T10:13:58.437Z in=4 out=1 ent=1 step=1 brake=1 inf=4499172 sec=2.142 inf/sec=2100454
 #ENDS
 

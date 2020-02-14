@@ -1,5 +1,5 @@
-#Processed by EYE v20.0105.1336 josd
-#eye --no-genid --strict --no-numerals --turtle http://josd.github.io/eye/reasoning/numeral/numeral.n3 --pass
+#Processed by EYE v20.0204.1058 josd
+#eye --no-genid --strict --no-numerals --turtle http://josd.github.io/fluid/numeral/numeral.n3 --pass
 
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
 @prefix : <http://example.org/try#>.
@@ -85,7 +85,7 @@
   r:gives {
     :s4 :p "999999999.999999"^^xsd:decimal .
   };
-  r:because [ a r:Parsing; r:source <http://josd.github.io/eye/reasoning/numeral/numeral.n3>].
+  r:because [ a r:Parsing; r:source <http://josd.github.io/fluid/numeral/numeral.n3>].
 
 <#lemma7> a r:Extraction;
   r:gives {
@@ -97,26 +97,26 @@
   r:gives {
     :s5 :p "999999999.99999900"^^xsd:decimal .
   };
-  r:because [ a r:Parsing; r:source <http://josd.github.io/eye/reasoning/numeral/numeral.n3>].
+  r:because [ a r:Parsing; r:source <http://josd.github.io/fluid/numeral/numeral.n3>].
 
 <#lemma9> a r:Extraction;
   r:gives {
     :s6 :p "999999999.999999"^^xsd:decimal .
   };
-  r:because [ a r:Parsing; r:source <http://josd.github.io/eye/reasoning/numeral/numeral.n3>].
+  r:because [ a r:Parsing; r:source <http://josd.github.io/fluid/numeral/numeral.n3>].
 
 <#lemma10> a r:Extraction;
   r:gives {
     :s7 :p "9.99999999e+15"^^xsd:double .
   };
-  r:because [ a r:Parsing; r:source <http://josd.github.io/eye/reasoning/numeral/numeral.n3>].
+  r:because [ a r:Parsing; r:source <http://josd.github.io/fluid/numeral/numeral.n3>].
 
 <#lemma11> a r:Extraction;
   r:gives {
     :s8 :p "9.0"^^xsd:decimal .
   };
-  r:because [ a r:Parsing; r:source <http://josd.github.io/eye/reasoning/numeral/numeral.n3>].
+  r:because [ a r:Parsing; r:source <http://josd.github.io/fluid/numeral/numeral.n3>].
 
-#2020-01-14T10:12:48.881Z in=5 out=5 ent=5 step=5 brake=1 inf=24328 sec=0.037 inf/sec=657514
+#2020-02-08T10:13:55.364Z in=5 out=5 ent=5 step=5 brake=1 inf=24560 sec=0.101 inf/sec=243168
 #ENDS
 

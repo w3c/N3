@@ -1,5 +1,5 @@
 -- CONFIG
-system: eye (/usr/local/bin/eye)
+system: cwm (/home/jdroo/github.com/linkeddata/swap/cwm.py)
 folder: /home/jdroo/github.com/w3c/N3/grammar/tests/N3Tests
 using manifest
 
@@ -31,6 +31,54 @@ testing (positive): tests/N3Tests/cwm_includes/conjunction.n3
 testing (positive): tests/N3Tests/01etc/owl-someValuesFrom.n3
 testing (positive): tests/N3Tests/05smml/FACTSlinkfaceedgestoobjects.n3
 testing (positive): tests/N3Tests/07test/badmeta.n3
+in: #Processed by Id
+        #    using base file:////home/jdroo/github.com/w3c/N3/grammar/tests/N3Tests/07test/badmeta.n3
+        
+
+error:     Failed to parse file:////home/jdroo/github.com/w3c/N3/grammar/tests/N3Tests/07test/badmeta.n3 
+   file:////home/jdroo/github.com/w3c/N3/grammar/tests/N3Tests/07test/badmeta.n3 
+Traceback (most recent call last):
+  File "/home/jdroo/github.com/linkeddata/swap/cwm.py", line 750, in <module>
+    doCommand()
+  File "/home/jdroo/github.com/linkeddata/swap/cwm.py", line 455, in doCommand
+    why=myReason)
+  File "/home/jdroo/github.com/linkeddata/swap/webAccess.py", line 225, in load
+    p.feed(buffer)
+  File "/home/jdroo/github.com/linkeddata/swap/notation3.py", line 219, in feed
+    i = self.directiveOrStatement(str,j)
+  File "/home/jdroo/github.com/linkeddata/swap/notation3.py", line 233, in directiveOrStatement
+    j = self.statement(str, i)
+  File "/home/jdroo/github.com/linkeddata/swap/notation3.py", line 382, in statement
+    j = self.property_list(str, i, r[0])
+  File "/home/jdroo/github.com/linkeddata/swap/notation3.py", line 706, in property_list
+    i = self.objectList(str, j, objs)
+  File "/home/jdroo/github.com/linkeddata/swap/notation3.py", line 753, in objectList
+    i = self.object(str, i, res)
+  File "/home/jdroo/github.com/linkeddata/swap/notation3.py", line 960, in object
+    j = self.subject(str, i, res)
+  File "/home/jdroo/github.com/linkeddata/swap/notation3.py", line 389, in subject
+    return self.item(str, i, res)
+  File "/home/jdroo/github.com/linkeddata/swap/notation3.py", line 468, in item
+    return self.path(str, i, res)
+  File "/home/jdroo/github.com/linkeddata/swap/notation3.py", line 480, in path
+    j = self.nodeOrLiteral(str, i, res)
+  File "/home/jdroo/github.com/linkeddata/swap/notation3.py", line 982, in nodeOrLiteral
+    j = self.node(str, i, res)
+  File "/home/jdroo/github.com/linkeddata/swap/notation3.py", line 615, in node
+    j = self.directiveOrStatement(str,i)
+  File "/home/jdroo/github.com/linkeddata/swap/notation3.py", line 234, in directiveOrStatement
+    if j>=0: return self.checkDot(str,j)
+  File "/home/jdroo/github.com/linkeddata/swap/notation3.py", line 776, in checkDot
+    str, j, "expected '.' or '}' or ']' at end of statement")
+swap.notation3.BadSyntax: at line 45 of <file:////home/jdroo/github.com/w3c/N3/grammar/tests/N3Tests/07test/badmeta.n3>:
+Bad syntax (expected '.' or '}' or ']' at end of statement) at ^ in:
+"...p://penguin-house.example/2008/article2>
+        dc::SOURCE ^<http://example.org/1995/manifesto>.
+    }.
+
+
+  :Bob cyc:dat..."
+
 testing (positive): tests/N3Tests/04test/factorialQ.n3
 testing (positive): tests/N3Tests/07test/socraterE.n3
 testing (positive): tests/N3Tests/01etc/4color_query.n3
@@ -75,7 +123,6 @@ testing (positive): tests/N3Tests/01etc/query9.n3
 testing (positive): tests/N3Tests/01etc/owl-SymmetricProperty.n3
 testing (positive): tests/N3Tests/cwm_n3/n3parser.tests_n3_20002.nt
 testing (positive): tests/N3Tests/01etc/query30.n3
-testing (positive): tests/N3Tests/01etc/randomsample-proof.n3
 testing (positive): tests/N3Tests/04test/kendallE.n3
 testing (positive): tests/N3Tests/07test/sudoku-solution-3.n3
 testing (positive): tests/N3Tests/cwm_list/r1-ref.n3
@@ -84,7 +131,6 @@ testing (positive): tests/N3Tests/07test/socratesE.n3
 testing (positive): tests/N3Tests/07test/dtb-result-1000.n3
 testing (positive): tests/N3Tests/04test/stc3bE.n3
 testing (positive): tests/N3Tests/cwm_unify/reflexive.n3
-testing (positive): tests/N3Tests/04test/ontology-for-data-model.n3
 testing (positive): tests/N3Tests/01etc/agent1-answer.n3
 testing (positive): tests/N3Tests/01etc/year.n3
 testing (positive): tests/N3Tests/04test/unsaidE.n3
@@ -117,6 +163,25 @@ testing (positive): tests/N3Tests/01etc/4color_proof.n3
 testing (positive): tests/N3Tests/07test/music-query.n3
 testing (positive): tests/N3Tests/01etc/components.n3
 testing (positive): tests/N3Tests/07test/utf8.n3
+in: #Processed by Id
+        #    using base file:////home/jdroo/github.com/w3c/N3/grammar/tests/N3Tests/07test/utf8.n3
+        
+
+error:     Failed to parse file:////home/jdroo/github.com/w3c/N3/grammar/tests/N3Tests/07test/utf8.n3 
+   file:////home/jdroo/github.com/w3c/N3/grammar/tests/N3Tests/07test/utf8.n3 
+Traceback (most recent call last):
+  File "/home/jdroo/github.com/linkeddata/swap/cwm.py", line 750, in <module>
+    doCommand()
+  File "/home/jdroo/github.com/linkeddata/swap/cwm.py", line 455, in doCommand
+    why=myReason)
+  File "/home/jdroo/github.com/linkeddata/swap/webAccess.py", line 225, in load
+    p.feed(buffer)
+  File "/home/jdroo/github.com/linkeddata/swap/notation3.py", line 213, in feed
+    str = octets.decode('utf-8')
+  File "/usr/lib/python2.7/encodings/utf_8.py", line 16, in decode
+    return codecs.utf_8_decode(input, errors, True)
+UnicodeDecodeError: 'utf8' codec can't decode byte 0xf0 in position 52: invalid continuation byte
+
 testing (positive): tests/N3Tests/cwm_unify/reflexive-ref.n3
 testing (positive): tests/N3Tests/07test/age_test_result.n3
 testing (positive): tests/N3Tests/01etc/forAllIn_query.n3
@@ -128,7 +193,6 @@ testing (positive): tests/N3Tests/07test/rdfs-nice.n3
 testing (positive): tests/N3Tests/07test/fib.n3
 testing (positive): tests/N3Tests/04test/sampleQ.n3
 testing (positive): tests/N3Tests/01etc/sdcoding-a-proof.n3
-testing (positive): tests/N3Tests/01etc/proof-1000.n3
 testing (positive): tests/N3Tests/01etc/owl-IrreflexiveProperty.n3
 testing (positive): tests/N3Tests/turtle/turtle-syntax-bad-n3-extras-02.ttl
 testing (positive): tests/N3Tests/01etc/owl-allValuesFrom.n3
@@ -179,6 +243,48 @@ testing (positive): tests/N3Tests/01etc/palindrome-proof.n3
 testing (positive): tests/N3Tests/07test/gmpbnodeE1.n3
 testing (positive): tests/N3Tests/07test/pi-query.n3
 testing (positive): tests/N3Tests/04test/robC.n3
+in: #Processed by Id
+        #    using base file:////home/jdroo/github.com/w3c/N3/grammar/tests/N3Tests/04test/robC.n3
+        
+
+error:     Failed to parse file:////home/jdroo/github.com/w3c/N3/grammar/tests/N3Tests/04test/robC.n3 
+   file:////home/jdroo/github.com/w3c/N3/grammar/tests/N3Tests/04test/robC.n3 
+Traceback (most recent call last):
+  File "/home/jdroo/github.com/linkeddata/swap/cwm.py", line 750, in <module>
+    doCommand()
+  File "/home/jdroo/github.com/linkeddata/swap/cwm.py", line 455, in doCommand
+    why=myReason)
+  File "/home/jdroo/github.com/linkeddata/swap/webAccess.py", line 225, in load
+    p.feed(buffer)
+  File "/home/jdroo/github.com/linkeddata/swap/notation3.py", line 219, in feed
+    i = self.directiveOrStatement(str,j)
+  File "/home/jdroo/github.com/linkeddata/swap/notation3.py", line 233, in directiveOrStatement
+    j = self.statement(str, i)
+  File "/home/jdroo/github.com/linkeddata/swap/notation3.py", line 379, in statement
+    i = self.object(str, i, r)  #  Allow literal for subject - extends RDF 
+  File "/home/jdroo/github.com/linkeddata/swap/notation3.py", line 960, in object
+    j = self.subject(str, i, res)
+  File "/home/jdroo/github.com/linkeddata/swap/notation3.py", line 389, in subject
+    return self.item(str, i, res)
+  File "/home/jdroo/github.com/linkeddata/swap/notation3.py", line 468, in item
+    return self.path(str, i, res)
+  File "/home/jdroo/github.com/linkeddata/swap/notation3.py", line 480, in path
+    j = self.nodeOrLiteral(str, i, res)
+  File "/home/jdroo/github.com/linkeddata/swap/notation3.py", line 982, in nodeOrLiteral
+    j = self.node(str, i, res)
+  File "/home/jdroo/github.com/linkeddata/swap/notation3.py", line 674, in node
+    j = self.uri_ref2(str, i, res)
+  File "/home/jdroo/github.com/linkeddata/swap/notation3.py", line 818, in uri_ref2
+    j = self.variable(str,i,v)
+  File "/home/jdroo/github.com/linkeddata/swap/notation3.py", line 894, in variable
+    % str[j-1:i])
+swap.notation3.BadSyntax: at line 6 of <file:////home/jdroo/github.com/w3c/N3/grammar/tests/N3Tests/04test/robC.n3>:
+Bad syntax (Can't use ?xxx syntax for variable in outermost level: ?X) at ^ in:
+"... : <http://eulersharp.sourceforge.net/2004/04test/robP#>.
+
+?^X :hasGroup :ManagementOrSupport.
+"
+
 testing (positive): tests/N3Tests/04test/UnionQ.n3
 testing (positive): tests/N3Tests/01etc/bmi_query.n3
 testing (positive): tests/N3Tests/04test/factorial.n3
@@ -196,7 +302,6 @@ testing (positive): tests/N3Tests/cwm_syntax/neg-literal-predicate.n3
 testing (positive): tests/N3Tests/01etc/food-query.n3
 testing (positive): tests/N3Tests/07test/cryptoP.n3
 testing (positive): tests/N3Tests/01etc/biP.n3
-testing (positive): tests/N3Tests/05smml/FACTShousewallsmeshed.n3
 testing (positive): tests/N3Tests/04test/da538tc1E.n3
 testing (positive): tests/N3Tests/07test/path-4-3.n3
 testing (positive): tests/N3Tests/01etc/query57.n3
@@ -254,17 +359,14 @@ testing (positive): tests/N3Tests/01etc/checking.n3
 testing (positive): tests/N3Tests/04test/ericT.n3
 testing (positive): tests/N3Tests/cwm_math/quotient_string.n3
 testing (positive): tests/N3Tests/07test/path-6-3-answer.n3
-testing (positive): tests/N3Tests/01etc/gps-proof2.n3
 testing (positive): tests/N3Tests/01etc/floatingwoman-proof.n3
 testing (positive): tests/N3Tests/01etc/skos-mapping-validation-rules.n3
 testing (positive): tests/N3Tests/07test/irQ.n3
-testing (positive): tests/N3Tests/01etc/test-proof-1000.n3
 testing (positive): tests/N3Tests/turtle/turtle-syntax-bad-n3-extras-04.ttl
 testing (positive): tests/N3Tests/04test/metastaticF.n3
 testing (positive): tests/N3Tests/cwm_other/testmeta.n3
 testing (positive): tests/N3Tests/07test/bd-result-10.n3
 testing (positive): tests/N3Tests/01etc/rifQ.n3
-testing (positive): tests/N3Tests/04test/radlex.n3
 testing (positive): tests/N3Tests/01etc/hanoi.n3
 testing (positive): tests/N3Tests/cwm_includes/builtins.n3
 testing (positive): tests/N3Tests/01etc/answer.n3
@@ -284,7 +386,6 @@ testing (positive): tests/N3Tests/01etc/select-query.n3
 testing (positive): tests/N3Tests/04test/pat.n3
 testing (positive): tests/N3Tests/01etc/palindrome-preduction.n3
 testing (positive): tests/N3Tests/01etc/dpe_proof.n3
-testing (positive): tests/N3Tests/01etc/easter-proof.n3
 testing (positive): tests/N3Tests/05smml/RULESlinkedgestoobjects.n3
 testing (positive): tests/N3Tests/01etc/sdcoding-a.n3
 testing (positive): tests/N3Tests/01etc/4color_rules.n3
@@ -298,7 +399,6 @@ testing (positive): tests/N3Tests/01etc/usmP.n3
 testing (positive): tests/N3Tests/04test/query-survey-result-2.n3
 testing (positive): tests/N3Tests/07test/initial.n3
 testing (positive): tests/N3Tests/07test/pd_hes_theory.n3
-testing (positive): tests/N3Tests/01etc/graph-10000.n3
 testing (positive): tests/N3Tests/cwm_list/unify3.n3
 testing (positive): tests/N3Tests/cwm_includes/t10.n3
 testing (positive): tests/N3Tests/cwm_norm/av.n3
@@ -310,7 +410,6 @@ testing (positive): tests/N3Tests/01etc/1tt8.n3
 testing (positive): tests/N3Tests/01etc/dpE.n3
 testing (positive): tests/N3Tests/05smml/FACTSfacedetection.n3
 testing (positive): tests/N3Tests/01etc/easterE.n3
-testing (positive): tests/N3Tests/01etc/pi-proof.n3
 testing (positive): tests/N3Tests/07test/bd-test-100.n3
 testing (positive): tests/N3Tests/cwm_math/trigo.ref.n3
 testing (positive): tests/N3Tests/01etc/train_query.n3
@@ -324,11 +423,9 @@ testing (positive): tests/N3Tests/01etc/food-proof.n3
 testing (positive): tests/N3Tests/01etc/query11.n3
 testing (positive): tests/N3Tests/cwm_syntax/space-in-uri.n3
 testing (positive): tests/N3Tests/07test/nbbn-query.n3
-testing (positive): tests/N3Tests/01etc/proof-2-1000.n3
 testing (positive): tests/N3Tests/01etc/graph.axiom.n3
 testing (positive): tests/N3Tests/01etc/mmln-gv-mln.n3
 testing (positive): tests/N3Tests/07test/path-3-1-answer.n3
-testing (positive): tests/N3Tests/01etc/mmln-gv-proof.n3
 testing (positive): tests/N3Tests/cwm_reason/timbl.n3
 testing (positive): tests/N3Tests/01etc/utf8_proof.n3
 testing (positive): tests/N3Tests/07test/usmE.n3
@@ -377,7 +474,6 @@ testing (positive): tests/N3Tests/07test/bd-test-10.n3
 testing (positive): tests/N3Tests/01etc/query94.n3
 testing (positive): tests/N3Tests/04test/da538tc1D.n3
 testing (positive): tests/N3Tests/04test/query-survey-3.n3
-testing (positive): tests/N3Tests/01etc/test-dt-1000.n3
 testing (positive): tests/N3Tests/cwm_other/filter-bnodes.n3
 testing (positive): tests/N3Tests/01etc/swetA31.n3
 testing (positive): tests/N3Tests/04test/easterQ.n3
@@ -386,7 +482,6 @@ testing (positive): tests/N3Tests/01etc/restoG.n3
 testing (positive): tests/N3Tests/05smml/RULESfaceedges.n3
 testing (positive): tests/N3Tests/01etc/query82.n3
 testing (positive): tests/N3Tests/07test/alpE000.n3
-testing (positive): tests/N3Tests/01etc/result.n3
 testing (positive): tests/N3Tests/04test/query-survey-result-11.n3
 testing (positive): tests/N3Tests/cwm_other/rules12.n3
 testing (positive): tests/N3Tests/01etc/swetA21.n3
@@ -396,7 +491,6 @@ testing (positive): tests/N3Tests/01etc/test_proof.n3
 testing (positive): tests/N3Tests/01etc/palindrome-declarations.n3
 testing (positive): tests/N3Tests/07test/alpQ003.n3
 testing (positive): tests/N3Tests/cwm_other/t01-ref.n3
-testing (positive): tests/N3Tests/01etc/fgcm_proof.n3
 testing (positive): tests/N3Tests/cwm_string/roughly.n3
 testing (positive): tests/N3Tests/01etc/blueproof001.n3
 testing (positive): tests/N3Tests/01etc/iq_proof.n3
@@ -426,6 +520,54 @@ testing (positive): tests/N3Tests/cwm_reason/danc.n3
 testing (positive): tests/N3Tests/04test/srcE.n3
 testing (positive): tests/N3Tests/cwm_includes/t9br.n3
 testing (positive): tests/N3Tests/01etc/iq-extra.n3
+in: #Processed by Id
+        #    using base file:////home/jdroo/github.com/w3c/N3/grammar/tests/N3Tests/01etc/iq-extra.n3
+        
+
+error:     Failed to parse file:////home/jdroo/github.com/w3c/N3/grammar/tests/N3Tests/01etc/iq-extra.n3 
+   file:////home/jdroo/github.com/w3c/N3/grammar/tests/N3Tests/01etc/iq-extra.n3 
+Traceback (most recent call last):
+  File "/home/jdroo/github.com/linkeddata/swap/cwm.py", line 750, in <module>
+    doCommand()
+  File "/home/jdroo/github.com/linkeddata/swap/cwm.py", line 455, in doCommand
+    why=myReason)
+  File "/home/jdroo/github.com/linkeddata/swap/webAccess.py", line 225, in load
+    p.feed(buffer)
+  File "/home/jdroo/github.com/linkeddata/swap/notation3.py", line 219, in feed
+    i = self.directiveOrStatement(str,j)
+  File "/home/jdroo/github.com/linkeddata/swap/notation3.py", line 233, in directiveOrStatement
+    j = self.statement(str, i)
+  File "/home/jdroo/github.com/linkeddata/swap/notation3.py", line 382, in statement
+    j = self.property_list(str, i, r[0])
+  File "/home/jdroo/github.com/linkeddata/swap/notation3.py", line 706, in property_list
+    i = self.objectList(str, j, objs)
+  File "/home/jdroo/github.com/linkeddata/swap/notation3.py", line 753, in objectList
+    i = self.object(str, i, res)
+  File "/home/jdroo/github.com/linkeddata/swap/notation3.py", line 960, in object
+    j = self.subject(str, i, res)
+  File "/home/jdroo/github.com/linkeddata/swap/notation3.py", line 389, in subject
+    return self.item(str, i, res)
+  File "/home/jdroo/github.com/linkeddata/swap/notation3.py", line 468, in item
+    return self.path(str, i, res)
+  File "/home/jdroo/github.com/linkeddata/swap/notation3.py", line 480, in path
+    j = self.nodeOrLiteral(str, i, res)
+  File "/home/jdroo/github.com/linkeddata/swap/notation3.py", line 982, in nodeOrLiteral
+    j = self.node(str, i, res)
+  File "/home/jdroo/github.com/linkeddata/swap/notation3.py", line 674, in node
+    j = self.uri_ref2(str, i, res)
+  File "/home/jdroo/github.com/linkeddata/swap/notation3.py", line 818, in uri_ref2
+    j = self.variable(str,i,v)
+  File "/home/jdroo/github.com/linkeddata/swap/notation3.py", line 894, in variable
+    % str[j-1:i])
+swap.notation3.BadSyntax: at line 5 of <file:////home/jdroo/github.com/w3c/N3/grammar/tests/N3Tests/01etc/iq-extra.n3>:
+Bad syntax (Can't use ?xxx syntax for variable in outermost level: ?y) at ^ in:
+"...ntification
+# extra cases
+
+:a :b {:c :d :e}.
+{?x :b ?y} => ?^y.
+"
+
 testing (positive): tests/N3Tests/07test/parteval_answer.n3
 testing (positive): tests/N3Tests/04test/vcardF.n3
 testing (positive): tests/N3Tests/07test/bd-query.n3
@@ -436,6 +578,32 @@ testing (positive): tests/N3Tests/01etc/background_rules.n3
 testing (positive): tests/N3Tests/01etc/proof.n3
 testing (positive): tests/N3Tests/cwm_reason/t3.n3
 testing (positive): tests/N3Tests/extra/good_prefix.n3
+in: #Processed by Id
+        #    using base file:////home/jdroo/github.com/w3c/N3/grammar/tests/N3Tests/extra/good_prefix.n3
+        
+
+error:     Failed to parse file:////home/jdroo/github.com/w3c/N3/grammar/tests/N3Tests/extra/good_prefix.n3 
+   file:////home/jdroo/github.com/w3c/N3/grammar/tests/N3Tests/extra/good_prefix.n3 
+Traceback (most recent call last):
+  File "/home/jdroo/github.com/linkeddata/swap/cwm.py", line 750, in <module>
+    doCommand()
+  File "/home/jdroo/github.com/linkeddata/swap/cwm.py", line 455, in doCommand
+    why=myReason)
+  File "/home/jdroo/github.com/linkeddata/swap/webAccess.py", line 225, in load
+    p.feed(buffer)
+  File "/home/jdroo/github.com/linkeddata/swap/notation3.py", line 219, in feed
+    i = self.directiveOrStatement(str,j)
+  File "/home/jdroo/github.com/linkeddata/swap/notation3.py", line 234, in directiveOrStatement
+    if j>=0: return self.checkDot(str,j)
+  File "/home/jdroo/github.com/linkeddata/swap/notation3.py", line 776, in checkDot
+    str, j, "expected '.' or '}' or ']' at end of statement")
+swap.notation3.BadSyntax: at line 4 of <file:////home/jdroo/github.com/w3c/N3/grammar/tests/N3Tests/extra/good_prefix.n3>:
+Bad syntax (expected '.' or '}' or ']' at end of statement) at ^ in:
+"...ood.org> .
+@prefix bad: <http://worse.org> .
+
+good:s :p :bad^:o ."
+
 testing (positive): tests/N3Tests/07test/pi_result.n3
 testing (positive): tests/N3Tests/turtle/turtle-syntax-bad-n3-extras-01.ttl
 testing (positive): tests/N3Tests/cwm_n3/n3parser.tests_n3_10016.nt
@@ -465,6 +633,33 @@ testing (positive): tests/N3Tests/cwm_syntax/decimal.n3
 testing (positive): tests/N3Tests/07test/nbbn-model.n3
 testing (positive): tests/N3Tests/01etc/resto.n3
 testing (positive): tests/N3Tests/cwm_syntax/qual-after-user.n3
+in: #Processed by Id
+        #    using base file:////home/jdroo/github.com/w3c/N3/grammar/tests/N3Tests/cwm_syntax/qual-after-user.n3
+        
+
+error:     Failed to parse file:////home/jdroo/github.com/w3c/N3/grammar/tests/N3Tests/cwm_syntax/qual-after-user.n3 
+   file:////home/jdroo/github.com/w3c/N3/grammar/tests/N3Tests/cwm_syntax/qual-after-user.n3 
+Traceback (most recent call last):
+  File "/home/jdroo/github.com/linkeddata/swap/cwm.py", line 750, in <module>
+    doCommand()
+  File "/home/jdroo/github.com/linkeddata/swap/cwm.py", line 455, in doCommand
+    why=myReason)
+  File "/home/jdroo/github.com/linkeddata/swap/webAccess.py", line 225, in load
+    p.feed(buffer)
+  File "/home/jdroo/github.com/linkeddata/swap/notation3.py", line 219, in feed
+    i = self.directiveOrStatement(str,j)
+  File "/home/jdroo/github.com/linkeddata/swap/notation3.py", line 230, in directiveOrStatement
+    j = self.directive(str, i)
+  File "/home/jdroo/github.com/linkeddata/swap/notation3.py", line 291, in directive
+    self._variables[x] =  self._context.newUniversal(x)
+  File "/home/jdroo/github.com/linkeddata/swap/formula.py", line 242, in newUniversal
+    x = AnonymousUniversal(self, uri)
+  File "/home/jdroo/github.com/linkeddata/swap/term.py", line 608, in __init__
+    scope.declareUniversal(self, key=self.__class__)
+  File "/home/jdroo/github.com/linkeddata/swap/formula.py", line 219, in declareUniversal
+    raise ValueError("Internal error: declareUniversal: %s?" % v)
+ValueError: Internal error: declareUniversal: x?
+
 testing (positive): tests/N3Tests/04test/RecursionQ.n3
 testing (positive): tests/N3Tests/01etc/query32.n3
 testing (positive): tests/N3Tests/01etc/owl-sameAs-ext.n3
@@ -488,7 +683,6 @@ testing (positive): tests/N3Tests/01etc/lldmP.n3
 testing (positive): tests/N3Tests/cwm_other/dec-div.n3
 testing (positive): tests/N3Tests/07test/resto-cwm-proof.n3
 testing (positive): tests/N3Tests/07test/pd_hes_query.n3
-testing (positive): tests/N3Tests/01etc/proof-10000.n3
 testing (positive): tests/N3Tests/cwm_syntax/equals2.n3
 testing (positive): tests/N3Tests/01etc/socratesF.n3
 testing (positive): tests/N3Tests/cwm_n3/n3parser.tests_n3_10007.nt
@@ -533,6 +727,48 @@ testing (positive): tests/N3Tests/01etc/query59.n3
 testing (positive): tests/N3Tests/cwm_syntax/boolean.n3
 testing (positive): tests/N3Tests/07test/bg-result-100.n3
 testing (positive): tests/N3Tests/04test/grahamC.n3
+in: #Processed by Id
+        #    using base file:////home/jdroo/github.com/w3c/N3/grammar/tests/N3Tests/04test/grahamC.n3
+        
+
+error:     Failed to parse file:////home/jdroo/github.com/w3c/N3/grammar/tests/N3Tests/04test/grahamC.n3 
+   file:////home/jdroo/github.com/w3c/N3/grammar/tests/N3Tests/04test/grahamC.n3 
+Traceback (most recent call last):
+  File "/home/jdroo/github.com/linkeddata/swap/cwm.py", line 750, in <module>
+    doCommand()
+  File "/home/jdroo/github.com/linkeddata/swap/cwm.py", line 455, in doCommand
+    why=myReason)
+  File "/home/jdroo/github.com/linkeddata/swap/webAccess.py", line 225, in load
+    p.feed(buffer)
+  File "/home/jdroo/github.com/linkeddata/swap/notation3.py", line 219, in feed
+    i = self.directiveOrStatement(str,j)
+  File "/home/jdroo/github.com/linkeddata/swap/notation3.py", line 233, in directiveOrStatement
+    j = self.statement(str, i)
+  File "/home/jdroo/github.com/linkeddata/swap/notation3.py", line 379, in statement
+    i = self.object(str, i, r)  #  Allow literal for subject - extends RDF 
+  File "/home/jdroo/github.com/linkeddata/swap/notation3.py", line 960, in object
+    j = self.subject(str, i, res)
+  File "/home/jdroo/github.com/linkeddata/swap/notation3.py", line 389, in subject
+    return self.item(str, i, res)
+  File "/home/jdroo/github.com/linkeddata/swap/notation3.py", line 468, in item
+    return self.path(str, i, res)
+  File "/home/jdroo/github.com/linkeddata/swap/notation3.py", line 480, in path
+    j = self.nodeOrLiteral(str, i, res)
+  File "/home/jdroo/github.com/linkeddata/swap/notation3.py", line 982, in nodeOrLiteral
+    j = self.node(str, i, res)
+  File "/home/jdroo/github.com/linkeddata/swap/notation3.py", line 674, in node
+    j = self.uri_ref2(str, i, res)
+  File "/home/jdroo/github.com/linkeddata/swap/notation3.py", line 818, in uri_ref2
+    j = self.variable(str,i,v)
+  File "/home/jdroo/github.com/linkeddata/swap/notation3.py", line 894, in variable
+    % str[j-1:i])
+swap.notation3.BadSyntax: at line 6 of <file:////home/jdroo/github.com/w3c/N3/grammar/tests/N3Tests/04test/grahamC.n3>:
+Bad syntax (Can't use ?xxx syntax for variable in outermost level: ?W) at ^ in:
+"...<http://eulersharp.sourceforge.net/2004/04test/grahamP#>.
+
+?^W a :WeatherReport; :maxTemperature ?M.
+?E a :Experiment; :m..."
+
 testing (positive): tests/N3Tests/cwm_other/daml-pref.n3
 testing (positive): tests/N3Tests/cwm_includes/list-in.n3
 testing (positive): tests/N3Tests/01etc/query93.n3
@@ -557,13 +793,52 @@ testing (positive): tests/N3Tests/04test/books.n3
 testing (positive): tests/N3Tests/04test/nciOncologyE.n3
 testing (positive): tests/N3Tests/07test/alpA010.n3
 testing (positive): tests/N3Tests/cwm_syntax/embedded-dot-in-qname.n3
+in: #Processed by Id
+        #    using base file:////home/jdroo/github.com/w3c/N3/grammar/tests/N3Tests/cwm_syntax/embedded-dot-in-qname.n3
+        
+
+error:     Failed to parse file:////home/jdroo/github.com/w3c/N3/grammar/tests/N3Tests/cwm_syntax/embedded-dot-in-qname.n3 
+   file:////home/jdroo/github.com/w3c/N3/grammar/tests/N3Tests/cwm_syntax/embedded-dot-in-qname.n3 
+Traceback (most recent call last):
+  File "/home/jdroo/github.com/linkeddata/swap/cwm.py", line 750, in <module>
+    doCommand()
+  File "/home/jdroo/github.com/linkeddata/swap/cwm.py", line 455, in doCommand
+    why=myReason)
+  File "/home/jdroo/github.com/linkeddata/swap/webAccess.py", line 225, in load
+    p.feed(buffer)
+  File "/home/jdroo/github.com/linkeddata/swap/notation3.py", line 219, in feed
+    i = self.directiveOrStatement(str,j)
+  File "/home/jdroo/github.com/linkeddata/swap/notation3.py", line 233, in directiveOrStatement
+    j = self.statement(str, i)
+  File "/home/jdroo/github.com/linkeddata/swap/notation3.py", line 382, in statement
+    j = self.property_list(str, i, r[0])
+  File "/home/jdroo/github.com/linkeddata/swap/notation3.py", line 706, in property_list
+    i = self.objectList(str, j, objs)
+  File "/home/jdroo/github.com/linkeddata/swap/notation3.py", line 753, in objectList
+    i = self.object(str, i, res)
+  File "/home/jdroo/github.com/linkeddata/swap/notation3.py", line 960, in object
+    j = self.subject(str, i, res)
+  File "/home/jdroo/github.com/linkeddata/swap/notation3.py", line 389, in subject
+    return self.item(str, i, res)
+  File "/home/jdroo/github.com/linkeddata/swap/notation3.py", line 468, in item
+    return self.path(str, i, res)
+  File "/home/jdroo/github.com/linkeddata/swap/notation3.py", line 493, in path
+    "EOF found in middle of path syntax")
+swap.notation3.BadSyntax: at line 5 of <file:////home/jdroo/github.com/w3c/N3/grammar/tests/N3Tests/cwm_syntax/embedded-dot-in-qname.n3>:
+Bad syntax (EOF found in middle of path syntax) at ^ in:
+"# DAWG meeting 2005-2-28
+#
+@prefix foo:  <http://example.com/>.
+
+foo:fred foo:loves foo:sushi.food .
+^..."
+
 testing (positive): tests/N3Tests/cwm_syntax/qvars2.n3
 testing (positive): tests/N3Tests/01etc/tasks.n3
 testing (positive): tests/N3Tests/cwm_other/kb1.n3
 testing (positive): tests/N3Tests/07test/fdlQ001.n3
 testing (positive): tests/N3Tests/04test/anatomy-rules.n3
 testing (positive): tests/N3Tests/cwm_list/unify4-ref.n3
-testing (positive): tests/N3Tests/01etc/10tt_proof.n3
 testing (positive): tests/N3Tests/04test/dawg-ot-0-03.n3
 testing (positive): tests/N3Tests/07test/path-3-3.n3
 testing (positive): tests/N3Tests/07test/swetA.n3
@@ -603,7 +878,6 @@ testing (positive): tests/N3Tests/04test/EntailmentE.n3
 testing (positive): tests/N3Tests/01etc/path-9-3-proof.n3
 testing (positive): tests/N3Tests/cwm_other/vblsNotURIs.n3
 testing (positive): tests/N3Tests/07test/desc_images.n3
-testing (positive): tests/N3Tests/01etc/swet_proof.n3
 testing (positive): tests/N3Tests/01etc/blueproof002.n3
 testing (positive): tests/N3Tests/07test/swetA31.n3
 testing (positive): tests/N3Tests/07test/swetA01.n3
@@ -624,7 +898,6 @@ testing (positive): tests/N3Tests/cwm_i18n/umlaut.n3
 testing (positive): tests/N3Tests/01etc/query52.n3
 testing (positive): tests/N3Tests/04test/aliceFoaf.n3
 testing (positive): tests/N3Tests/04test/robQ.n3
-testing (positive): tests/N3Tests/01etc/mq_proof.n3
 testing (positive): tests/N3Tests/04test/bcE.n3
 testing (positive): tests/N3Tests/01etc/query36.n3
 testing (positive): tests/N3Tests/07test/path-3-2.n3
@@ -638,7 +911,6 @@ testing (positive): tests/N3Tests/01etc/query64.n3
 testing (positive): tests/N3Tests/01etc/einsteinE.n3
 testing (positive): tests/N3Tests/cwm_list/unify5.n3
 testing (positive): tests/N3Tests/04test/icalE001.n3
-testing (positive): tests/N3Tests/07test/path-1024-3.n3
 testing (positive): tests/N3Tests/cwm_reason/f9.n3
 testing (positive): tests/N3Tests/01etc/query55.n3
 testing (positive): tests/N3Tests/07test/parteval-equivalent.n3
@@ -655,7 +927,6 @@ testing (positive): tests/N3Tests/01etc/bmi_rules.n3
 testing (positive): tests/N3Tests/01etc/query12.n3
 testing (positive): tests/N3Tests/01etc/owl-disjointUnionOf.n3
 testing (positive): tests/N3Tests/04test/da538tc1Q.n3
-testing (positive): tests/N3Tests/01etc/proof-2-10000.n3
 testing (positive): tests/N3Tests/07test/music.n3
 testing (positive): tests/N3Tests/01etc/redgraph001.n3
 testing (positive): tests/N3Tests/01etc/owl-Nothing.n3
@@ -677,10 +948,61 @@ testing (positive): tests/N3Tests/04test/michaelP.n3
 testing (positive): tests/N3Tests/07test/usmP.n3
 testing (positive): tests/N3Tests/01etc/rdfs-subClassOf.n3
 testing (positive): tests/N3Tests/07test/rifP.n3
+in: #Processed by Id
+        #    using base file:////home/jdroo/github.com/w3c/N3/grammar/tests/N3Tests/07test/rifP.n3
+        
+
+error:     Failed to parse file:////home/jdroo/github.com/w3c/N3/grammar/tests/N3Tests/07test/rifP.n3 
+   file:////home/jdroo/github.com/w3c/N3/grammar/tests/N3Tests/07test/rifP.n3 
+Traceback (most recent call last):
+  File "/home/jdroo/github.com/linkeddata/swap/cwm.py", line 750, in <module>
+    doCommand()
+  File "/home/jdroo/github.com/linkeddata/swap/cwm.py", line 455, in doCommand
+    why=myReason)
+  File "/home/jdroo/github.com/linkeddata/swap/webAccess.py", line 225, in load
+    p.feed(buffer)
+  File "/home/jdroo/github.com/linkeddata/swap/notation3.py", line 219, in feed
+    i = self.directiveOrStatement(str,j)
+  File "/home/jdroo/github.com/linkeddata/swap/notation3.py", line 233, in directiveOrStatement
+    j = self.statement(str, i)
+  File "/home/jdroo/github.com/linkeddata/swap/notation3.py", line 379, in statement
+    i = self.object(str, i, r)  #  Allow literal for subject - extends RDF 
+  File "/home/jdroo/github.com/linkeddata/swap/notation3.py", line 960, in object
+    j = self.subject(str, i, res)
+  File "/home/jdroo/github.com/linkeddata/swap/notation3.py", line 389, in subject
+    return self.item(str, i, res)
+  File "/home/jdroo/github.com/linkeddata/swap/notation3.py", line 468, in item
+    return self.path(str, i, res)
+  File "/home/jdroo/github.com/linkeddata/swap/notation3.py", line 480, in path
+    j = self.nodeOrLiteral(str, i, res)
+  File "/home/jdroo/github.com/linkeddata/swap/notation3.py", line 982, in nodeOrLiteral
+    j = self.node(str, i, res)
+  File "/home/jdroo/github.com/linkeddata/swap/notation3.py", line 615, in node
+    j = self.directiveOrStatement(str,i)
+  File "/home/jdroo/github.com/linkeddata/swap/notation3.py", line 233, in directiveOrStatement
+    j = self.statement(str, i)
+  File "/home/jdroo/github.com/linkeddata/swap/notation3.py", line 379, in statement
+    i = self.object(str, i, r)  #  Allow literal for subject - extends RDF 
+  File "/home/jdroo/github.com/linkeddata/swap/notation3.py", line 960, in object
+    j = self.subject(str, i, res)
+  File "/home/jdroo/github.com/linkeddata/swap/notation3.py", line 389, in subject
+    return self.item(str, i, res)
+  File "/home/jdroo/github.com/linkeddata/swap/notation3.py", line 468, in item
+    return self.path(str, i, res)
+  File "/home/jdroo/github.com/linkeddata/swap/notation3.py", line 480, in path
+    j = self.nodeOrLiteral(str, i, res)
+  File "/home/jdroo/github.com/linkeddata/swap/notation3.py", line 982, in nodeOrLiteral
+    j = self.node(str, i, res)
+  File "/home/jdroo/github.com/linkeddata/swap/notation3.py", line 651, in node
+    "expected item in list or ')'")
+swap.notation3.BadSyntax: at line 24 of <file:////home/jdroo/github.com/w3c/N3/grammar/tests/N3Tests/07test/rifP.n3>:
+Bad syntax (expected item in list or ')') at ^ in:
+"...0.9000000000000004} => {:numeric-mod-3 :result true}.
+{(1.23^E2 0.6E1) func:numeric-mod 3.0E0} => {:numeric-mod-4 :result..."
+
 testing (positive): tests/N3Tests/04test/henry.n3
 testing (positive): tests/N3Tests/04test/patQ.n3
 testing (positive): tests/N3Tests/04test/rtQ.n3
-testing (positive): tests/N3Tests/01etc/takE.n3
 testing (positive): tests/N3Tests/01etc/example003Q.n3
 testing (positive): tests/N3Tests/04test/a.n3
 testing (positive): tests/N3Tests/07test/fgcm-model.n3
@@ -698,6 +1020,31 @@ testing (positive): tests/N3Tests/07test/medic.n3
 testing (positive): tests/N3Tests/07test/sudoku-query-3.n3
 testing (positive): tests/N3Tests/04test/dawg-tp-2-01.n3
 testing (positive): tests/N3Tests/extra/inverted_properties.n3
+in: #Processed by Id
+        #    using base file:////home/jdroo/github.com/w3c/N3/grammar/tests/N3Tests/extra/inverted_properties.n3
+        
+
+error:     Failed to parse file:////home/jdroo/github.com/w3c/N3/grammar/tests/N3Tests/extra/inverted_properties.n3 
+   file:////home/jdroo/github.com/w3c/N3/grammar/tests/N3Tests/extra/inverted_properties.n3 
+Traceback (most recent call last):
+  File "/home/jdroo/github.com/linkeddata/swap/cwm.py", line 750, in <module>
+    doCommand()
+  File "/home/jdroo/github.com/linkeddata/swap/cwm.py", line 455, in doCommand
+    why=myReason)
+  File "/home/jdroo/github.com/linkeddata/swap/webAccess.py", line 225, in load
+    p.feed(buffer)
+  File "/home/jdroo/github.com/linkeddata/swap/notation3.py", line 219, in feed
+    i = self.directiveOrStatement(str,j)
+  File "/home/jdroo/github.com/linkeddata/swap/notation3.py", line 234, in directiveOrStatement
+    if j>=0: return self.checkDot(str,j)
+  File "/home/jdroo/github.com/linkeddata/swap/notation3.py", line 776, in checkDot
+    str, j, "expected '.' or '}' or ']' at end of statement")
+swap.notation3.BadSyntax: at line 1 of <file:////home/jdroo/github.com/w3c/N3/grammar/tests/N3Tests/extra/inverted_properties.n3>:
+Bad syntax (expected '.' or '}' or ']' at end of statement) at ^ in:
+":s ^^:p { :x ^:y :z } .
+
+:a ^:hasFather^:hasFather!:hasMother :d..."
+
 testing (positive): tests/N3Tests/01etc/takQ.n3
 testing (positive): tests/N3Tests/01etc/query2.n3
 testing (positive): tests/N3Tests/04test/ex3E.n3
@@ -727,7 +1074,6 @@ testing (positive): tests/N3Tests/01etc/query43.n3
 testing (positive): tests/N3Tests/07test/graphgen.n3
 testing (positive): tests/N3Tests/cwm_n3/n3parser.tests_n3_10008.nt
 testing (positive): tests/N3Tests/cwm_syntax/no-last-nl.n3
-testing (positive): tests/N3Tests/01etc/rifE.n3
 testing (positive): tests/N3Tests/07test/witchG.n3
 testing (positive): tests/N3Tests/04test/metastaticE.n3
 testing (positive): tests/N3Tests/07test/path-16-3.n3
@@ -810,7 +1156,6 @@ testing (positive): tests/N3Tests/07test/skos-mapping-validation-query.n3
 testing (positive): tests/N3Tests/05smml/RULESdefaultvaluesefindall.n3
 testing (positive): tests/N3Tests/07test/graph-10.n3
 testing (positive): tests/N3Tests/01etc/query46.n3
-testing (positive): tests/N3Tests/07test/test-strela-1000.n3
 testing (positive): tests/N3Tests/04test/query-survey-8.n3
 testing (positive): tests/N3Tests/07test/parteval-subclass.n3
 testing (positive): tests/N3Tests/04test/librarianP.n3
@@ -840,7 +1185,6 @@ testing (positive): tests/N3Tests/cwm_other/sameThing.n3
 testing (positive): tests/N3Tests/04test/D2Q.n3
 testing (positive): tests/N3Tests/07test/alpE001.n3
 testing (positive): tests/N3Tests/04test/originQ.n3
-testing (positive): tests/N3Tests/07test/graph-10000.n3
 testing (positive): tests/N3Tests/cwm_other/forgetDups.n3
 testing (positive): tests/N3Tests/cwm_syntax/zero-predicates.n3
 testing (positive): tests/N3Tests/07test/swetD.n3
@@ -870,7 +1214,6 @@ testing (positive): tests/N3Tests/04test/JoeCo.n3
 testing (positive): tests/N3Tests/04test/da538tc2D.n3
 testing (positive): tests/N3Tests/01etc/swetQ31.n3
 testing (positive): tests/N3Tests/01etc/turing.n3
-testing (positive): tests/N3Tests/01etc/polynomial.n3
 testing (positive): tests/N3Tests/01etc/abc.n3
 testing (positive): tests/N3Tests/04test/stc1.n3
 testing (positive): tests/N3Tests/cwm_other/two-route.n3
@@ -885,6 +1228,58 @@ testing (positive): tests/N3Tests/04test/ex2-3aQ.n3
 testing (positive): tests/N3Tests/07test/bg-test-100.n3
 testing (positive): tests/N3Tests/04test/NamespaceQ.n3
 testing (positive): tests/N3Tests/01etc/rifP.n3
+in: #Processed by Id
+        #    using base file:////home/jdroo/github.com/w3c/N3/grammar/tests/N3Tests/01etc/rifP.n3
+        
+
+error:     Failed to parse file:////home/jdroo/github.com/w3c/N3/grammar/tests/N3Tests/01etc/rifP.n3 
+   file:////home/jdroo/github.com/w3c/N3/grammar/tests/N3Tests/01etc/rifP.n3 
+Traceback (most recent call last):
+  File "/home/jdroo/github.com/linkeddata/swap/cwm.py", line 750, in <module>
+    doCommand()
+  File "/home/jdroo/github.com/linkeddata/swap/cwm.py", line 455, in doCommand
+    why=myReason)
+  File "/home/jdroo/github.com/linkeddata/swap/webAccess.py", line 225, in load
+    p.feed(buffer)
+  File "/home/jdroo/github.com/linkeddata/swap/notation3.py", line 219, in feed
+    i = self.directiveOrStatement(str,j)
+  File "/home/jdroo/github.com/linkeddata/swap/notation3.py", line 233, in directiveOrStatement
+    j = self.statement(str, i)
+  File "/home/jdroo/github.com/linkeddata/swap/notation3.py", line 379, in statement
+    i = self.object(str, i, r)  #  Allow literal for subject - extends RDF 
+  File "/home/jdroo/github.com/linkeddata/swap/notation3.py", line 960, in object
+    j = self.subject(str, i, res)
+  File "/home/jdroo/github.com/linkeddata/swap/notation3.py", line 389, in subject
+    return self.item(str, i, res)
+  File "/home/jdroo/github.com/linkeddata/swap/notation3.py", line 468, in item
+    return self.path(str, i, res)
+  File "/home/jdroo/github.com/linkeddata/swap/notation3.py", line 480, in path
+    j = self.nodeOrLiteral(str, i, res)
+  File "/home/jdroo/github.com/linkeddata/swap/notation3.py", line 982, in nodeOrLiteral
+    j = self.node(str, i, res)
+  File "/home/jdroo/github.com/linkeddata/swap/notation3.py", line 615, in node
+    j = self.directiveOrStatement(str,i)
+  File "/home/jdroo/github.com/linkeddata/swap/notation3.py", line 233, in directiveOrStatement
+    j = self.statement(str, i)
+  File "/home/jdroo/github.com/linkeddata/swap/notation3.py", line 379, in statement
+    i = self.object(str, i, r)  #  Allow literal for subject - extends RDF 
+  File "/home/jdroo/github.com/linkeddata/swap/notation3.py", line 960, in object
+    j = self.subject(str, i, res)
+  File "/home/jdroo/github.com/linkeddata/swap/notation3.py", line 389, in subject
+    return self.item(str, i, res)
+  File "/home/jdroo/github.com/linkeddata/swap/notation3.py", line 468, in item
+    return self.path(str, i, res)
+  File "/home/jdroo/github.com/linkeddata/swap/notation3.py", line 480, in path
+    j = self.nodeOrLiteral(str, i, res)
+  File "/home/jdroo/github.com/linkeddata/swap/notation3.py", line 982, in nodeOrLiteral
+    j = self.node(str, i, res)
+  File "/home/jdroo/github.com/linkeddata/swap/notation3.py", line 651, in node
+    "expected item in list or ')'")
+swap.notation3.BadSyntax: at line 23 of <file:////home/jdroo/github.com/w3c/N3/grammar/tests/N3Tests/01etc/rifP.n3>:
+Bad syntax (expected item in list or ')') at ^ in:
+"...0.9000000000000004} => {:numeric-mod-3 :result true}.
+{(1.23^E2 0.6E1) func:numeric-mod 3.0E0} => {:numeric-mod-4 :result..."
+
 testing (positive): tests/N3Tests/07test/usmQ.n3
 testing (positive): tests/N3Tests/04test/da538tc2E.n3
 testing (positive): tests/N3Tests/01etc/ccd_rules.n3
@@ -921,6 +1316,32 @@ testing (positive): tests/N3Tests/01etc/swetQ21.n3
 testing (positive): tests/N3Tests/04test/ex3.n3
 testing (positive): tests/N3Tests/07test/deA.n3
 testing (positive): tests/N3Tests/cwm_syntax/neg-single-quote.n3
+in: #Processed by Id
+        #    using base file:////home/jdroo/github.com/w3c/N3/grammar/tests/N3Tests/cwm_syntax/neg-single-quote.n3
+        
+
+error:     Failed to parse file:////home/jdroo/github.com/w3c/N3/grammar/tests/N3Tests/cwm_syntax/neg-single-quote.n3 
+   file:////home/jdroo/github.com/w3c/N3/grammar/tests/N3Tests/cwm_syntax/neg-single-quote.n3 
+Traceback (most recent call last):
+  File "/home/jdroo/github.com/linkeddata/swap/cwm.py", line 750, in <module>
+    doCommand()
+  File "/home/jdroo/github.com/linkeddata/swap/cwm.py", line 455, in doCommand
+    why=myReason)
+  File "/home/jdroo/github.com/linkeddata/swap/webAccess.py", line 225, in load
+    p.feed(buffer)
+  File "/home/jdroo/github.com/linkeddata/swap/notation3.py", line 219, in feed
+    i = self.directiveOrStatement(str,j)
+  File "/home/jdroo/github.com/linkeddata/swap/notation3.py", line 233, in directiveOrStatement
+    j = self.statement(str, i)
+  File "/home/jdroo/github.com/linkeddata/swap/notation3.py", line 382, in statement
+    j = self.property_list(str, i, r[0])
+  File "/home/jdroo/github.com/linkeddata/swap/notation3.py", line 708, in property_list
+    "objectList expected")
+swap.notation3.BadSyntax: at line 1 of <file:////home/jdroo/github.com/w3c/N3/grammar/tests/N3Tests/cwm_syntax/neg-single-quote.n3>:
+Bad syntax (objectList expected) at ^ in:
+"<#a> <#b>^ 'A single quoted string' . 
+"
+
 testing (positive): tests/N3Tests/04test/robE.n3
 testing (positive): tests/N3Tests/07test/skos_mv_answer.n3
 testing (positive): tests/N3Tests/07test/gmpbnodeE2.n3
@@ -931,6 +1352,48 @@ testing (positive): tests/N3Tests/01etc/gps-plugin.n3
 testing (positive): tests/N3Tests/04test/bobFoaf.n3
 testing (positive): tests/N3Tests/cwm_other/resolves-rdf.n3
 testing (positive): tests/N3Tests/04test/sethC.n3
+in: #Processed by Id
+        #    using base file:////home/jdroo/github.com/w3c/N3/grammar/tests/N3Tests/04test/sethC.n3
+        
+
+error:     Failed to parse file:////home/jdroo/github.com/w3c/N3/grammar/tests/N3Tests/04test/sethC.n3 
+   file:////home/jdroo/github.com/w3c/N3/grammar/tests/N3Tests/04test/sethC.n3 
+Traceback (most recent call last):
+  File "/home/jdroo/github.com/linkeddata/swap/cwm.py", line 750, in <module>
+    doCommand()
+  File "/home/jdroo/github.com/linkeddata/swap/cwm.py", line 455, in doCommand
+    why=myReason)
+  File "/home/jdroo/github.com/linkeddata/swap/webAccess.py", line 225, in load
+    p.feed(buffer)
+  File "/home/jdroo/github.com/linkeddata/swap/notation3.py", line 219, in feed
+    i = self.directiveOrStatement(str,j)
+  File "/home/jdroo/github.com/linkeddata/swap/notation3.py", line 233, in directiveOrStatement
+    j = self.statement(str, i)
+  File "/home/jdroo/github.com/linkeddata/swap/notation3.py", line 379, in statement
+    i = self.object(str, i, r)  #  Allow literal for subject - extends RDF 
+  File "/home/jdroo/github.com/linkeddata/swap/notation3.py", line 960, in object
+    j = self.subject(str, i, res)
+  File "/home/jdroo/github.com/linkeddata/swap/notation3.py", line 389, in subject
+    return self.item(str, i, res)
+  File "/home/jdroo/github.com/linkeddata/swap/notation3.py", line 468, in item
+    return self.path(str, i, res)
+  File "/home/jdroo/github.com/linkeddata/swap/notation3.py", line 480, in path
+    j = self.nodeOrLiteral(str, i, res)
+  File "/home/jdroo/github.com/linkeddata/swap/notation3.py", line 982, in nodeOrLiteral
+    j = self.node(str, i, res)
+  File "/home/jdroo/github.com/linkeddata/swap/notation3.py", line 674, in node
+    j = self.uri_ref2(str, i, res)
+  File "/home/jdroo/github.com/linkeddata/swap/notation3.py", line 818, in uri_ref2
+    j = self.variable(str,i,v)
+  File "/home/jdroo/github.com/linkeddata/swap/notation3.py", line 894, in variable
+    % str[j-1:i])
+swap.notation3.BadSyntax: at line 6 of <file:////home/jdroo/github.com/w3c/N3/grammar/tests/N3Tests/04test/sethC.n3>:
+Bad syntax (Can't use ?xxx syntax for variable in outermost level: ?X) at ^ in:
+"...: <http://eulersharp.sourceforge.net/2004/04test/sethP#>.
+
+?^X a :Foo.
+"
+
 testing (positive): tests/N3Tests/07test/shubert.n3
 testing (positive): tests/N3Tests/04test/icalE002.n3
 testing (positive): tests/N3Tests/04test/CountingQ.n3
@@ -943,6 +1406,48 @@ testing (positive): tests/N3Tests/04test/exonE.n3
 testing (positive): tests/N3Tests/07test/sudoku-query-2.n3
 testing (positive): tests/N3Tests/01etc/deQ.n3
 testing (positive): tests/N3Tests/04test/michaelC.n3
+in: #Processed by Id
+        #    using base file:////home/jdroo/github.com/w3c/N3/grammar/tests/N3Tests/04test/michaelC.n3
+        
+
+error:     Failed to parse file:////home/jdroo/github.com/w3c/N3/grammar/tests/N3Tests/04test/michaelC.n3 
+   file:////home/jdroo/github.com/w3c/N3/grammar/tests/N3Tests/04test/michaelC.n3 
+Traceback (most recent call last):
+  File "/home/jdroo/github.com/linkeddata/swap/cwm.py", line 750, in <module>
+    doCommand()
+  File "/home/jdroo/github.com/linkeddata/swap/cwm.py", line 455, in doCommand
+    why=myReason)
+  File "/home/jdroo/github.com/linkeddata/swap/webAccess.py", line 225, in load
+    p.feed(buffer)
+  File "/home/jdroo/github.com/linkeddata/swap/notation3.py", line 219, in feed
+    i = self.directiveOrStatement(str,j)
+  File "/home/jdroo/github.com/linkeddata/swap/notation3.py", line 233, in directiveOrStatement
+    j = self.statement(str, i)
+  File "/home/jdroo/github.com/linkeddata/swap/notation3.py", line 379, in statement
+    i = self.object(str, i, r)  #  Allow literal for subject - extends RDF 
+  File "/home/jdroo/github.com/linkeddata/swap/notation3.py", line 960, in object
+    j = self.subject(str, i, res)
+  File "/home/jdroo/github.com/linkeddata/swap/notation3.py", line 389, in subject
+    return self.item(str, i, res)
+  File "/home/jdroo/github.com/linkeddata/swap/notation3.py", line 468, in item
+    return self.path(str, i, res)
+  File "/home/jdroo/github.com/linkeddata/swap/notation3.py", line 480, in path
+    j = self.nodeOrLiteral(str, i, res)
+  File "/home/jdroo/github.com/linkeddata/swap/notation3.py", line 982, in nodeOrLiteral
+    j = self.node(str, i, res)
+  File "/home/jdroo/github.com/linkeddata/swap/notation3.py", line 674, in node
+    j = self.uri_ref2(str, i, res)
+  File "/home/jdroo/github.com/linkeddata/swap/notation3.py", line 818, in uri_ref2
+    j = self.variable(str,i,v)
+  File "/home/jdroo/github.com/linkeddata/swap/notation3.py", line 894, in variable
+    % str[j-1:i])
+swap.notation3.BadSyntax: at line 6 of <file:////home/jdroo/github.com/w3c/N3/grammar/tests/N3Tests/04test/michaelC.n3>:
+Bad syntax (Can't use ?xxx syntax for variable in outermost level: ?W) at ^ in:
+"...http://eulersharp.sourceforge.net/2004/04test/michaelP#>.
+
+?^W :diameterValue [ a :LenthQuantity; :value ?V; :unit ?U].
+"
+
 testing (positive): tests/N3Tests/04test/D1.n3
 testing (positive): tests/N3Tests/04test/exonQ.n3
 testing (positive): tests/N3Tests/cwm_syntax/sib.n3
@@ -984,7 +1489,111 @@ testing (positive): tests/N3Tests/04test/PathE.n3
 testing (positive): tests/N3Tests/04test/b.n3
 testing (positive): tests/N3Tests/01etc/query73.n3
 testing (positive): tests/N3Tests/04test/result-tp-05.n3
+in: #Processed by Id
+        #    using base file:////home/jdroo/github.com/w3c/N3/grammar/tests/N3Tests/04test/result-tp-05.n3
+        
+
+error:     Failed to parse file:////home/jdroo/github.com/w3c/N3/grammar/tests/N3Tests/04test/result-tp-05.n3 
+   file:////home/jdroo/github.com/w3c/N3/grammar/tests/N3Tests/04test/result-tp-05.n3 
+Traceback (most recent call last):
+  File "/home/jdroo/github.com/linkeddata/swap/cwm.py", line 750, in <module>
+    doCommand()
+  File "/home/jdroo/github.com/linkeddata/swap/cwm.py", line 455, in doCommand
+    why=myReason)
+  File "/home/jdroo/github.com/linkeddata/swap/webAccess.py", line 225, in load
+    p.feed(buffer)
+  File "/home/jdroo/github.com/linkeddata/swap/notation3.py", line 219, in feed
+    i = self.directiveOrStatement(str,j)
+  File "/home/jdroo/github.com/linkeddata/swap/notation3.py", line 233, in directiveOrStatement
+    j = self.statement(str, i)
+  File "/home/jdroo/github.com/linkeddata/swap/notation3.py", line 382, in statement
+    j = self.property_list(str, i, r[0])
+  File "/home/jdroo/github.com/linkeddata/swap/notation3.py", line 706, in property_list
+    i = self.objectList(str, j, objs)
+  File "/home/jdroo/github.com/linkeddata/swap/notation3.py", line 753, in objectList
+    i = self.object(str, i, res)
+  File "/home/jdroo/github.com/linkeddata/swap/notation3.py", line 960, in object
+    j = self.subject(str, i, res)
+  File "/home/jdroo/github.com/linkeddata/swap/notation3.py", line 389, in subject
+    return self.item(str, i, res)
+  File "/home/jdroo/github.com/linkeddata/swap/notation3.py", line 468, in item
+    return self.path(str, i, res)
+  File "/home/jdroo/github.com/linkeddata/swap/notation3.py", line 480, in path
+    j = self.nodeOrLiteral(str, i, res)
+  File "/home/jdroo/github.com/linkeddata/swap/notation3.py", line 982, in nodeOrLiteral
+    j = self.node(str, i, res)
+  File "/home/jdroo/github.com/linkeddata/swap/notation3.py", line 649, in node
+    j = self.item(str,i, item) #@@@@@ should be path, was object
+  File "/home/jdroo/github.com/linkeddata/swap/notation3.py", line 468, in item
+    return self.path(str, i, res)
+  File "/home/jdroo/github.com/linkeddata/swap/notation3.py", line 493, in path
+    "EOF found in middle of path syntax")
+swap.notation3.BadSyntax: at line 8 of <file:////home/jdroo/github.com/w3c/N3/grammar/tests/N3Tests/04test/result-tp-05.n3>:
+Bad syntax (EOF found in middle of path syntax) at ^ in:
+"@prefix e: <http://eulersharp.sourceforge.net/2003/03swap/log-rules#>.
+@prefix q: <http://www.w3.org/2004/ql#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix log: <http://www.w3.org/2000/10/swap/log#>.
+@prefix : <http://example.org/data/>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+
+<http://eulersharp.sourceforge.net/2004/04test/dawg-tp-05.n3> q:answer (:x :v1.1). 
+<http://eulersharp.sourceforge.net/2004/04test/dawg-tp-05.n3> q:answer (:x :v2.1). 
+^..."
+
 testing (positive): tests/N3Tests/04test/result-ot-0-01.n3
+in: #Processed by Id
+        #    using base file:////home/jdroo/github.com/w3c/N3/grammar/tests/N3Tests/04test/result-ot-0-01.n3
+        
+
+error:     Failed to parse file:////home/jdroo/github.com/w3c/N3/grammar/tests/N3Tests/04test/result-ot-0-01.n3 
+   file:////home/jdroo/github.com/w3c/N3/grammar/tests/N3Tests/04test/result-ot-0-01.n3 
+Traceback (most recent call last):
+  File "/home/jdroo/github.com/linkeddata/swap/cwm.py", line 750, in <module>
+    doCommand()
+  File "/home/jdroo/github.com/linkeddata/swap/cwm.py", line 455, in doCommand
+    why=myReason)
+  File "/home/jdroo/github.com/linkeddata/swap/webAccess.py", line 225, in load
+    p.feed(buffer)
+  File "/home/jdroo/github.com/linkeddata/swap/notation3.py", line 219, in feed
+    i = self.directiveOrStatement(str,j)
+  File "/home/jdroo/github.com/linkeddata/swap/notation3.py", line 233, in directiveOrStatement
+    j = self.statement(str, i)
+  File "/home/jdroo/github.com/linkeddata/swap/notation3.py", line 382, in statement
+    j = self.property_list(str, i, r[0])
+  File "/home/jdroo/github.com/linkeddata/swap/notation3.py", line 706, in property_list
+    i = self.objectList(str, j, objs)
+  File "/home/jdroo/github.com/linkeddata/swap/notation3.py", line 753, in objectList
+    i = self.object(str, i, res)
+  File "/home/jdroo/github.com/linkeddata/swap/notation3.py", line 960, in object
+    j = self.subject(str, i, res)
+  File "/home/jdroo/github.com/linkeddata/swap/notation3.py", line 389, in subject
+    return self.item(str, i, res)
+  File "/home/jdroo/github.com/linkeddata/swap/notation3.py", line 468, in item
+    return self.path(str, i, res)
+  File "/home/jdroo/github.com/linkeddata/swap/notation3.py", line 480, in path
+    j = self.nodeOrLiteral(str, i, res)
+  File "/home/jdroo/github.com/linkeddata/swap/notation3.py", line 982, in nodeOrLiteral
+    j = self.node(str, i, res)
+  File "/home/jdroo/github.com/linkeddata/swap/notation3.py", line 649, in node
+    j = self.item(str,i, item) #@@@@@ should be path, was object
+  File "/home/jdroo/github.com/linkeddata/swap/notation3.py", line 468, in item
+    return self.path(str, i, res)
+  File "/home/jdroo/github.com/linkeddata/swap/notation3.py", line 480, in path
+    j = self.nodeOrLiteral(str, i, res)
+  File "/home/jdroo/github.com/linkeddata/swap/notation3.py", line 982, in nodeOrLiteral
+    j = self.node(str, i, res)
+  File "/home/jdroo/github.com/linkeddata/swap/notation3.py", line 674, in node
+    j = self.uri_ref2(str, i, res)
+  File "/home/jdroo/github.com/linkeddata/swap/notation3.py", line 818, in uri_ref2
+    j = self.variable(str,i,v)
+  File "/home/jdroo/github.com/linkeddata/swap/notation3.py", line 894, in variable
+    % str[j-1:i])
+swap.notation3.BadSyntax: at line 8 of <file:////home/jdroo/github.com/w3c/N3/grammar/tests/N3Tests/04test/result-ot-0-01.n3>:
+Bad syntax (Can't use ?xxx syntax for variable in outermost level: ?mbox) at ^ in:
+"...urceforge.net/2004/04test/dawg-ot-0-01.n3> q:answer ("Eve" ?^mbox). 
+<http://eulersharp.sourceforge.net/2004/04test/dawg-..."
+
 testing (positive): tests/N3Tests/01etc/fgcm-plugin.n3
 testing (positive): tests/N3Tests/cwm_includes/xsd.n3
 testing (positive): tests/N3Tests/04test/stc2a.n3
@@ -1042,7 +1651,6 @@ testing (positive): tests/N3Tests/cwm_other/classes.n3
 testing (positive): tests/N3Tests/04test/vcardP.n3
 testing (positive): tests/N3Tests/01etc/query3.n3
 testing (positive): tests/N3Tests/04test/LexicalSpaceE.n3
-testing (positive): tests/N3Tests/manifest.ttl
 testing (positive): tests/N3Tests/cwm_syntax/this-quantifiers-ref.n3
 testing (positive): tests/N3Tests/04test/metastaticQ001.n3
 testing (positive): tests/N3Tests/04test/nciOncologyQ.n3
@@ -1067,7 +1675,6 @@ testing (positive): tests/N3Tests/04test/data-02.n3
 testing (positive): tests/N3Tests/01etc/agent2-proof.n3
 testing (positive): tests/N3Tests/01etc/select-data.n3
 testing (positive): tests/N3Tests/01etc/owl-equivalentClass.n3
-testing (positive): tests/N3Tests/01etc/data.n3
 testing (positive): tests/N3Tests/cwm_n3/n3parser.tests_n3_10019.nt
 testing (positive): tests/N3Tests/05smml/RULESifctransformationmatrix.n3
 testing (positive): tests/N3Tests/07test/arcE.n3
@@ -1091,7 +1698,6 @@ testing (positive): tests/N3Tests/07test/swQ.n3
 testing (positive): tests/N3Tests/04test/vcard.n3
 testing (positive): tests/N3Tests/07test/path-3-5.n3
 testing (positive): tests/N3Tests/01etc/sdcoding.n3
-testing (positive): tests/N3Tests/04test/not-galen.n3
 testing (positive): tests/N3Tests/cwm_n3/n3parser.tests_n3_20000.nt
 testing (positive): tests/N3Tests/07test/age_query.n3
 testing (positive): tests/N3Tests/01etc/gedcom-filter.n3
@@ -1107,7 +1713,6 @@ testing (positive): tests/N3Tests/07test/path-5-3-answer.n3
 testing (positive): tests/N3Tests/07test/patient.n3
 testing (positive): tests/N3Tests/07test/benchQ.n3
 testing (positive): tests/N3Tests/04test/ex2-4a.n3
-testing (positive): tests/N3Tests/01etc/fibE.n3
 testing (positive): tests/N3Tests/07test/ind.n3
 testing (positive): tests/N3Tests/07test/music-rule.n3
 testing (positive): tests/N3Tests/01etc/iq.n3
@@ -1138,6 +1743,52 @@ testing (positive): tests/N3Tests/07test/3outOf5-sample.n3
 testing (positive): tests/N3Tests/04test/ex2-4aE.n3
 testing (positive): tests/N3Tests/01etc/nbbn-model.n3
 testing (positive): tests/N3Tests/04test/testC.n3
+in: #Processed by Id
+        #    using base file:////home/jdroo/github.com/w3c/N3/grammar/tests/N3Tests/04test/testC.n3
+        
+
+error:     Failed to parse file:////home/jdroo/github.com/w3c/N3/grammar/tests/N3Tests/04test/testC.n3 
+   file:////home/jdroo/github.com/w3c/N3/grammar/tests/N3Tests/04test/testC.n3 
+Traceback (most recent call last):
+  File "/home/jdroo/github.com/linkeddata/swap/cwm.py", line 750, in <module>
+    doCommand()
+  File "/home/jdroo/github.com/linkeddata/swap/cwm.py", line 455, in doCommand
+    why=myReason)
+  File "/home/jdroo/github.com/linkeddata/swap/webAccess.py", line 225, in load
+    p.feed(buffer)
+  File "/home/jdroo/github.com/linkeddata/swap/notation3.py", line 219, in feed
+    i = self.directiveOrStatement(str,j)
+  File "/home/jdroo/github.com/linkeddata/swap/notation3.py", line 233, in directiveOrStatement
+    j = self.statement(str, i)
+  File "/home/jdroo/github.com/linkeddata/swap/notation3.py", line 382, in statement
+    j = self.property_list(str, i, r[0])
+  File "/home/jdroo/github.com/linkeddata/swap/notation3.py", line 706, in property_list
+    i = self.objectList(str, j, objs)
+  File "/home/jdroo/github.com/linkeddata/swap/notation3.py", line 753, in objectList
+    i = self.object(str, i, res)
+  File "/home/jdroo/github.com/linkeddata/swap/notation3.py", line 960, in object
+    j = self.subject(str, i, res)
+  File "/home/jdroo/github.com/linkeddata/swap/notation3.py", line 389, in subject
+    return self.item(str, i, res)
+  File "/home/jdroo/github.com/linkeddata/swap/notation3.py", line 468, in item
+    return self.path(str, i, res)
+  File "/home/jdroo/github.com/linkeddata/swap/notation3.py", line 480, in path
+    j = self.nodeOrLiteral(str, i, res)
+  File "/home/jdroo/github.com/linkeddata/swap/notation3.py", line 982, in nodeOrLiteral
+    j = self.node(str, i, res)
+  File "/home/jdroo/github.com/linkeddata/swap/notation3.py", line 674, in node
+    j = self.uri_ref2(str, i, res)
+  File "/home/jdroo/github.com/linkeddata/swap/notation3.py", line 818, in uri_ref2
+    j = self.variable(str,i,v)
+  File "/home/jdroo/github.com/linkeddata/swap/notation3.py", line 894, in variable
+    % str[j-1:i])
+swap.notation3.BadSyntax: at line 349 of <file:////home/jdroo/github.com/w3c/N3/grammar/tests/N3Tests/04test/testC.n3>:
+Bad syntax (Can't use ?xxx syntax for variable in outermost level: ?C) at ^ in:
+"...4:52:44Z"^^xsd:dateTime time:inSeconds _:Seconds.
+
+:Paul a ?^C.
+"
+
 testing (positive): tests/N3Tests/01etc/age_rules_backward.n3
 testing (positive): tests/N3Tests/04test/dawg-data-01.n3
 testing (positive): tests/N3Tests/01etc/hypothesis-001.n3
@@ -1147,7 +1798,6 @@ testing (positive): tests/N3Tests/01etc/sdcoding-query.n3
 testing (positive): tests/N3Tests/01etc/query47.n3
 testing (positive): tests/N3Tests/07test/witch-goal.n3
 testing (positive): tests/N3Tests/07test/arc-goal.n3
-testing (positive): tests/N3Tests/cwm_other/rdfcore-tests.n3
 testing (positive): tests/N3Tests/04test/geneF.n3
 testing (positive): tests/N3Tests/04test/radlexQ.n3
 testing (positive): tests/N3Tests/07test/3outOf5-answer.n3
@@ -1190,7 +1840,6 @@ testing (positive): tests/N3Tests/07test/gmpbnode.n3
 testing (positive): tests/N3Tests/cwm_includes/t11.n3
 testing (positive): tests/N3Tests/cwm_reason/t5-ref.n3
 testing (positive): tests/N3Tests/04test/metastaticP001.n3
-testing (positive): tests/N3Tests/01etc/biE.n3
 testing (positive): tests/N3Tests/01etc/query29.n3
 testing (positive): tests/N3Tests/01etc/query38.n3
 testing (positive): tests/N3Tests/01etc/query75.n3
@@ -1199,198 +1848,410 @@ testing (positive): tests/N3Tests/01etc/query76.n3
 testing (positive): tests/N3Tests/01etc/owl-sameAs.n3
 testing (positive): tests/N3Tests/01etc/query69.n3
 testing (negative): zero-objects.n3
-in: #Processed by EYE v20.0204.1058 josd
-#eye --n3 /home/jdroo/github.com/w3c/N3/grammar/tests/N3Tests/cwm_syntax/zero-objects.n3
+in: #Processed by Id
+        #    using base file:////home/jdroo/github.com/w3c/N3/grammar/tests/N3Tests/cwm_syntax/zero-objects.n3
+        
 
-
-
-error: eye --n3 /home/jdroo/github.com/w3c/N3/grammar/tests/N3Tests/cwm_syntax/zero-objects.n3
-EYE v20.0204.1058 josd
-SWI-Prolog version 8.1.21-97-g0a8840c98
-starting 68 [msec cputime] 84 [msec walltime]
-GET file:///home/jdroo/github.com/w3c/N3/grammar/tests/N3Tests/cwm_syntax/zero-objects.n3 ** ERROR ** file:///home/jdroo/github.com/w3c/N3/grammar/tests/N3Tests/cwm_syntax/zero-objects.n3 ** invalid_document(after_line(2))
+error:     Failed to parse file:////home/jdroo/github.com/w3c/N3/grammar/tests/N3Tests/cwm_syntax/zero-objects.n3 
+   file:////home/jdroo/github.com/w3c/N3/grammar/tests/N3Tests/cwm_syntax/zero-objects.n3 
+Traceback (most recent call last):
+  File "/home/jdroo/github.com/linkeddata/swap/cwm.py", line 750, in <module>
+    doCommand()
+  File "/home/jdroo/github.com/linkeddata/swap/cwm.py", line 455, in doCommand
+    why=myReason)
+  File "/home/jdroo/github.com/linkeddata/swap/webAccess.py", line 225, in load
+    p.feed(buffer)
+  File "/home/jdroo/github.com/linkeddata/swap/notation3.py", line 219, in feed
+    i = self.directiveOrStatement(str,j)
+  File "/home/jdroo/github.com/linkeddata/swap/notation3.py", line 233, in directiveOrStatement
+    j = self.statement(str, i)
+  File "/home/jdroo/github.com/linkeddata/swap/notation3.py", line 382, in statement
+    j = self.property_list(str, i, r[0])
+  File "/home/jdroo/github.com/linkeddata/swap/notation3.py", line 708, in property_list
+    "objectList expected")
+swap.notation3.BadSyntax: at line 1 of <file:////home/jdroo/github.com/w3c/N3/grammar/tests/N3Tests/cwm_syntax/zero-objects.n3>:
+Bad syntax (objectList expected) at ^ in:
+":a :b^ .
+"
 
 testing (negative): query-survey-10.n3
-in: #Processed by EYE v20.0204.1058 josd
-#eye --n3 /home/jdroo/github.com/w3c/N3/grammar/tests/N3Tests/04test/query-survey-10.n3
+in: #Processed by Id
+        #    using base file:////home/jdroo/github.com/w3c/N3/grammar/tests/N3Tests/04test/query-survey-10.n3
+        
 
-
-
-error: eye --n3 /home/jdroo/github.com/w3c/N3/grammar/tests/N3Tests/04test/query-survey-10.n3
-EYE v20.0204.1058 josd
-SWI-Prolog version 8.1.21-97-g0a8840c98
-starting 67 [msec cputime] 85 [msec walltime]
-GET file:///home/jdroo/github.com/w3c/N3/grammar/tests/N3Tests/04test/query-survey-10.n3 ** ERROR ** file:///home/jdroo/github.com/w3c/N3/grammar/tests/N3Tests/04test/query-survey-10.n3 ** illegal_string_escape_sequence(\.,line(10))
+error:     Failed to parse file:////home/jdroo/github.com/w3c/N3/grammar/tests/N3Tests/04test/query-survey-10.n3 
+   file:////home/jdroo/github.com/w3c/N3/grammar/tests/N3Tests/04test/query-survey-10.n3 
+Traceback (most recent call last):
+  File "/home/jdroo/github.com/linkeddata/swap/cwm.py", line 750, in <module>
+    doCommand()
+  File "/home/jdroo/github.com/linkeddata/swap/cwm.py", line 455, in doCommand
+    why=myReason)
+  File "/home/jdroo/github.com/linkeddata/swap/webAccess.py", line 225, in load
+    p.feed(buffer)
+  File "/home/jdroo/github.com/linkeddata/swap/notation3.py", line 219, in feed
+    i = self.directiveOrStatement(str,j)
+  File "/home/jdroo/github.com/linkeddata/swap/notation3.py", line 233, in directiveOrStatement
+    j = self.statement(str, i)
+  File "/home/jdroo/github.com/linkeddata/swap/notation3.py", line 382, in statement
+    j = self.property_list(str, i, r[0])
+  File "/home/jdroo/github.com/linkeddata/swap/notation3.py", line 706, in property_list
+    i = self.objectList(str, j, objs)
+  File "/home/jdroo/github.com/linkeddata/swap/notation3.py", line 753, in objectList
+    i = self.object(str, i, res)
+  File "/home/jdroo/github.com/linkeddata/swap/notation3.py", line 960, in object
+    j = self.subject(str, i, res)
+  File "/home/jdroo/github.com/linkeddata/swap/notation3.py", line 389, in subject
+    return self.item(str, i, res)
+  File "/home/jdroo/github.com/linkeddata/swap/notation3.py", line 468, in item
+    return self.path(str, i, res)
+  File "/home/jdroo/github.com/linkeddata/swap/notation3.py", line 480, in path
+    j = self.nodeOrLiteral(str, i, res)
+  File "/home/jdroo/github.com/linkeddata/swap/notation3.py", line 982, in nodeOrLiteral
+    j = self.node(str, i, res)
+  File "/home/jdroo/github.com/linkeddata/swap/notation3.py", line 615, in node
+    j = self.directiveOrStatement(str,i)
+  File "/home/jdroo/github.com/linkeddata/swap/notation3.py", line 233, in directiveOrStatement
+    j = self.statement(str, i)
+  File "/home/jdroo/github.com/linkeddata/swap/notation3.py", line 382, in statement
+    j = self.property_list(str, i, r[0])
+  File "/home/jdroo/github.com/linkeddata/swap/notation3.py", line 706, in property_list
+    i = self.objectList(str, j, objs)
+  File "/home/jdroo/github.com/linkeddata/swap/notation3.py", line 753, in objectList
+    i = self.object(str, i, res)
+  File "/home/jdroo/github.com/linkeddata/swap/notation3.py", line 960, in object
+    j = self.subject(str, i, res)
+  File "/home/jdroo/github.com/linkeddata/swap/notation3.py", line 389, in subject
+    return self.item(str, i, res)
+  File "/home/jdroo/github.com/linkeddata/swap/notation3.py", line 468, in item
+    return self.path(str, i, res)
+  File "/home/jdroo/github.com/linkeddata/swap/notation3.py", line 480, in path
+    j = self.nodeOrLiteral(str, i, res)
+  File "/home/jdroo/github.com/linkeddata/swap/notation3.py", line 1029, in nodeOrLiteral
+    j, s = self.strconst(str, i, delim)
+  File "/home/jdroo/github.com/linkeddata/swap/notation3.py", line 1149, in strconst
+    "bad escape")
+swap.notation3.BadSyntax: at line 10 of <file:////home/jdroo/github.com/w3c/N3/grammar/tests/N3Tests/04test/query-survey-10.n3>:
+Bad syntax (bad escape) at ^ in:
+"...:where {?R ?x ?y; log:uri ?S. ?S str:matches "http://example^\.org/.*"}.
+"
 
 testing (negative): turtle-syntax-bad-n3-extras-07.ttl
-in: #Processed by EYE v20.0204.1058 josd
-#eye --n3 /home/jdroo/github.com/w3c/N3/grammar/tests/N3Tests/turtle/turtle-syntax-bad-n3-extras-07.ttl
-
-
-
-error: eye --n3 /home/jdroo/github.com/w3c/N3/grammar/tests/N3Tests/turtle/turtle-syntax-bad-n3-extras-07.ttl
-EYE v20.0204.1058 josd
-SWI-Prolog version 8.1.21-97-g0a8840c98
-starting 69 [msec cputime] 85 [msec walltime]
-GET file:///home/jdroo/github.com/w3c/N3/grammar/tests/N3Tests/turtle/turtle-syntax-bad-n3-extras-07.ttl ** ERROR ** file:///home/jdroo/github.com/w3c/N3/grammar/tests/N3Tests/turtle/turtle-syntax-bad-n3-extras-07.ttl ** invalid_document(after_line(4))
-
 testing (negative): bad_inverted_resources.n3
-in: #Processed by EYE v20.0204.1058 josd
-#eye --n3 /home/jdroo/github.com/w3c/N3/grammar/tests/N3Tests/extra/bad_inverted_resources.n3
+in: #Processed by Id
+        #    using base file:////home/jdroo/github.com/w3c/N3/grammar/tests/N3Tests/extra/bad_inverted_resources.n3
+        
 
-
-
-error: eye --n3 /home/jdroo/github.com/w3c/N3/grammar/tests/N3Tests/extra/bad_inverted_resources.n3
-EYE v20.0204.1058 josd
-SWI-Prolog version 8.1.21-97-g0a8840c98
-starting 68 [msec cputime] 85 [msec walltime]
-GET file:///home/jdroo/github.com/w3c/N3/grammar/tests/N3Tests/extra/bad_inverted_resources.n3 ** ERROR ** file:///home/jdroo/github.com/w3c/N3/grammar/tests/N3Tests/extra/bad_inverted_resources.n3 ** invalid_document(after_line(1))
+error:     Failed to parse file:////home/jdroo/github.com/w3c/N3/grammar/tests/N3Tests/extra/bad_inverted_resources.n3 
+   file:////home/jdroo/github.com/w3c/N3/grammar/tests/N3Tests/extra/bad_inverted_resources.n3 
+Traceback (most recent call last):
+  File "/home/jdroo/github.com/linkeddata/swap/cwm.py", line 750, in <module>
+    doCommand()
+  File "/home/jdroo/github.com/linkeddata/swap/cwm.py", line 455, in doCommand
+    why=myReason)
+  File "/home/jdroo/github.com/linkeddata/swap/webAccess.py", line 225, in load
+    p.feed(buffer)
+  File "/home/jdroo/github.com/linkeddata/swap/notation3.py", line 223, in feed
+    "expected directive or statement")
+swap.notation3.BadSyntax: at line 1 of <file:////home/jdroo/github.com/w3c/N3/grammar/tests/N3Tests/extra/bad_inverted_resources.n3>:
+Bad syntax (expected directive or statement) at ^ in:
+"^^:s :p { :x :y ^:z } ."
 
 testing (negative): strquot.n3
-in: #Processed by EYE v20.0204.1058 josd
-#eye --n3 /home/jdroo/github.com/w3c/N3/grammar/tests/N3Tests/cwm_other/strquot.n3
-
-
-
-error: eye --n3 /home/jdroo/github.com/w3c/N3/grammar/tests/N3Tests/cwm_other/strquot.n3
-EYE v20.0204.1058 josd
-SWI-Prolog version 8.1.21-97-g0a8840c98
-starting 70 [msec cputime] 84 [msec walltime]
-GET file:///home/jdroo/github.com/w3c/N3/grammar/tests/N3Tests/cwm_other/strquot.n3 ** ERROR ** file:///home/jdroo/github.com/w3c/N3/grammar/tests/N3Tests/cwm_other/strquot.n3 ** illegal_string_escape_sequence(\a,line(9))
-
 testing (negative): neg-keywords3.n3
-in: #Processed by EYE v20.0204.1058 josd
-#eye --n3 /home/jdroo/github.com/w3c/N3/grammar/tests/N3Tests/cwm_syntax/neg-keywords3.n3
+in: #Processed by Id
+        #    using base file:////home/jdroo/github.com/w3c/N3/grammar/tests/N3Tests/cwm_syntax/neg-keywords3.n3
+        
 
-
-
-error: eye --n3 /home/jdroo/github.com/w3c/N3/grammar/tests/N3Tests/cwm_syntax/neg-keywords3.n3
-EYE v20.0204.1058 josd
-SWI-Prolog version 8.1.21-97-g0a8840c98
-starting 69 [msec cputime] 85 [msec walltime]
-GET file:///home/jdroo/github.com/w3c/N3/grammar/tests/N3Tests/cwm_syntax/neg-keywords3.n3 ** ERROR ** file:///home/jdroo/github.com/w3c/N3/grammar/tests/N3Tests/cwm_syntax/neg-keywords3.n3 ** invalid_document(after_line(2))
+error:     Failed to parse file:////home/jdroo/github.com/w3c/N3/grammar/tests/N3Tests/cwm_syntax/neg-keywords3.n3 
+   file:////home/jdroo/github.com/w3c/N3/grammar/tests/N3Tests/cwm_syntax/neg-keywords3.n3 
+Traceback (most recent call last):
+  File "/home/jdroo/github.com/linkeddata/swap/cwm.py", line 750, in <module>
+    doCommand()
+  File "/home/jdroo/github.com/linkeddata/swap/cwm.py", line 455, in doCommand
+    why=myReason)
+  File "/home/jdroo/github.com/linkeddata/swap/webAccess.py", line 225, in load
+    p.feed(buffer)
+  File "/home/jdroo/github.com/linkeddata/swap/notation3.py", line 219, in feed
+    i = self.directiveOrStatement(str,j)
+  File "/home/jdroo/github.com/linkeddata/swap/notation3.py", line 233, in directiveOrStatement
+    j = self.statement(str, i)
+  File "/home/jdroo/github.com/linkeddata/swap/notation3.py", line 382, in statement
+    j = self.property_list(str, i, r[0])
+  File "/home/jdroo/github.com/linkeddata/swap/notation3.py", line 701, in property_list
+    j = self.verb(str, i, v)
+  File "/home/jdroo/github.com/linkeddata/swap/notation3.py", line 453, in verb
+    j = self.prop(str, i, r)
+  File "/home/jdroo/github.com/linkeddata/swap/notation3.py", line 465, in prop
+    return self.item(str, i, res)
+  File "/home/jdroo/github.com/linkeddata/swap/notation3.py", line 468, in item
+    return self.path(str, i, res)
+  File "/home/jdroo/github.com/linkeddata/swap/notation3.py", line 480, in path
+    j = self.nodeOrLiteral(str, i, res)
+  File "/home/jdroo/github.com/linkeddata/swap/notation3.py", line 982, in nodeOrLiteral
+    j = self.node(str, i, res)
+  File "/home/jdroo/github.com/linkeddata/swap/notation3.py", line 674, in node
+    j = self.uri_ref2(str, i, res)
+  File "/home/jdroo/github.com/linkeddata/swap/notation3.py", line 853, in uri_ref2
+    'Keyword "%s" not allowed here.' % v[0])
+swap.notation3.BadSyntax: at line 1 of <file:////home/jdroo/github.com/w3c/N3/grammar/tests/N3Tests/cwm_syntax/neg-keywords3.n3>:
+Bad syntax (Keyword "prefix" not allowed here.) at ^ in:
+"@keywords prefix. :e ^prefix :f .
+"
 
 testing (negative): trailing-dot-in-qname.n3
-in: #Processed by EYE v20.0204.1058 josd
-#eye --n3 /home/jdroo/github.com/w3c/N3/grammar/tests/N3Tests/cwm_syntax/trailing-dot-in-qname.n3
+in: #Processed by Id
+        #    using base file:////home/jdroo/github.com/w3c/N3/grammar/tests/N3Tests/cwm_syntax/trailing-dot-in-qname.n3
+        
 
+error:     Failed to parse file:////home/jdroo/github.com/w3c/N3/grammar/tests/N3Tests/cwm_syntax/trailing-dot-in-qname.n3 
+   file:////home/jdroo/github.com/w3c/N3/grammar/tests/N3Tests/cwm_syntax/trailing-dot-in-qname.n3 
+Traceback (most recent call last):
+  File "/home/jdroo/github.com/linkeddata/swap/cwm.py", line 750, in <module>
+    doCommand()
+  File "/home/jdroo/github.com/linkeddata/swap/cwm.py", line 455, in doCommand
+    why=myReason)
+  File "/home/jdroo/github.com/linkeddata/swap/webAccess.py", line 225, in load
+    p.feed(buffer)
+  File "/home/jdroo/github.com/linkeddata/swap/notation3.py", line 223, in feed
+    "expected directive or statement")
+swap.notation3.BadSyntax: at line 5 of <file:////home/jdroo/github.com/w3c/N3/grammar/tests/N3Tests/cwm_syntax/trailing-dot-in-qname.n3>:
+Bad syntax (expected directive or statement) at ^ in:
+"...foo:  <http://example.com/>.
 
+foo:fred foo:loves foo:sushi. ^.
 
-error: eye --n3 /home/jdroo/github.com/w3c/N3/grammar/tests/N3Tests/cwm_syntax/trailing-dot-in-qname.n3
-EYE v20.0204.1058 josd
-SWI-Prolog version 8.1.21-97-g0a8840c98
-starting 71 [msec cputime] 86 [msec walltime]
-GET file:///home/jdroo/github.com/w3c/N3/grammar/tests/N3Tests/cwm_syntax/trailing-dot-in-qname.n3 ** ERROR ** file:///home/jdroo/github.com/w3c/N3/grammar/tests/N3Tests/cwm_syntax/trailing-dot-in-qname.n3 ** invalid_document(after_line(5))
+"
 
 testing (negative): neg-thisadoc.n3
-in: #Processed by EYE v20.0204.1058 josd
-#eye --n3 /home/jdroo/github.com/w3c/N3/grammar/tests/N3Tests/cwm_syntax/neg-thisadoc.n3
+in: #Processed by Id
+        #    using base file:////home/jdroo/github.com/w3c/N3/grammar/tests/N3Tests/cwm_syntax/neg-thisadoc.n3
+        
 
-
-
-error: eye --n3 /home/jdroo/github.com/w3c/N3/grammar/tests/N3Tests/cwm_syntax/neg-thisadoc.n3
-EYE v20.0204.1058 josd
-SWI-Prolog version 8.1.21-97-g0a8840c98
-starting 68 [msec cputime] 83 [msec walltime]
-GET file:///home/jdroo/github.com/w3c/N3/grammar/tests/N3Tests/cwm_syntax/neg-thisadoc.n3 ** ERROR ** file:///home/jdroo/github.com/w3c/N3/grammar/tests/N3Tests/cwm_syntax/neg-thisadoc.n3 ** invalid_document(after_line(2))
+error: /home/jdroo/github.com/linkeddata/swap/notation3.py:659: UserWarning: at line 1 of <file:////home/jdroo/github.com/w3c/N3/grammar/tests/N3Tests/cwm_syntax/neg-thisadoc.n3>:
+Bad syntax (Keyword 'this' was ancient N3. Now use @forSome and @forAll keywords.) at ^ in:
+"@keywords this . @prefix : <#> . ^this :a :Doc .
+"
+  "Keyword 'this' was ancient N3. Now use @forSome and @forAll keywords.")))
+    Failed to parse file:////home/jdroo/github.com/w3c/N3/grammar/tests/N3Tests/cwm_syntax/neg-thisadoc.n3 
+   file:////home/jdroo/github.com/w3c/N3/grammar/tests/N3Tests/cwm_syntax/neg-thisadoc.n3 
+Traceback (most recent call last):
+  File "/home/jdroo/github.com/linkeddata/swap/cwm.py", line 750, in <module>
+    doCommand()
+  File "/home/jdroo/github.com/linkeddata/swap/cwm.py", line 455, in doCommand
+    why=myReason)
+  File "/home/jdroo/github.com/linkeddata/swap/webAccess.py", line 225, in load
+    p.feed(buffer)
+  File "/home/jdroo/github.com/linkeddata/swap/notation3.py", line 219, in feed
+    i = self.directiveOrStatement(str,j)
+  File "/home/jdroo/github.com/linkeddata/swap/notation3.py", line 233, in directiveOrStatement
+    j = self.statement(str, i)
+  File "/home/jdroo/github.com/linkeddata/swap/notation3.py", line 382, in statement
+    j = self.property_list(str, i, r[0])
+  File "/home/jdroo/github.com/linkeddata/swap/notation3.py", line 712, in property_list
+    self.makeStatement((self._context, sym, subj, obj))
+  File "/home/jdroo/github.com/linkeddata/swap/notation3.py", line 372, in makeStatement
+    self._store.makeStatement(quadruple, why=self._reason2)
+  File "/home/jdroo/github.com/linkeddata/swap/llyn.py", line 1818, in makeStatement
+    self.storeQuad(q, why)
+  File "/home/jdroo/github.com/linkeddata/swap/llyn.py", line 1847, in storeQuad
+    return context.add(subj=subj, pred=pred, obj=obj, why=why)
+  File "/home/jdroo/github.com/linkeddata/swap/llyn.py", line 472, in add
+    raise ValueError("You cannot use 'this' except as subject of forAll or forSome")
+ValueError: You cannot use 'this' except as subject of forAll or forSome
 
 testing (negative): djb1.n3
-in: #Processed by EYE v20.0204.1058 josd
-#eye --n3 /home/jdroo/github.com/w3c/N3/grammar/tests/N3Tests/cwm_syntax/djb1.n3
+in: #Processed by Id
+        #    using base file:////home/jdroo/github.com/w3c/N3/grammar/tests/N3Tests/cwm_syntax/djb1.n3
+        
 
-
-
-error: eye --n3 /home/jdroo/github.com/w3c/N3/grammar/tests/N3Tests/cwm_syntax/djb1.n3
-EYE v20.0204.1058 josd
-SWI-Prolog version 8.1.21-97-g0a8840c98
-starting 70 [msec cputime] 86 [msec walltime]
-GET file:///home/jdroo/github.com/w3c/N3/grammar/tests/N3Tests/cwm_syntax/djb1.n3 ** ERROR ** file:///home/jdroo/github.com/w3c/N3/grammar/tests/N3Tests/cwm_syntax/djb1.n3 ** invalid_document(after_line(2))
+error:     Failed to parse file:////home/jdroo/github.com/w3c/N3/grammar/tests/N3Tests/cwm_syntax/djb1.n3 
+   file:////home/jdroo/github.com/w3c/N3/grammar/tests/N3Tests/cwm_syntax/djb1.n3 
+Traceback (most recent call last):
+  File "/home/jdroo/github.com/linkeddata/swap/cwm.py", line 750, in <module>
+    doCommand()
+  File "/home/jdroo/github.com/linkeddata/swap/cwm.py", line 455, in doCommand
+    why=myReason)
+  File "/home/jdroo/github.com/linkeddata/swap/webAccess.py", line 225, in load
+    p.feed(buffer)
+  File "/home/jdroo/github.com/linkeddata/swap/notation3.py", line 219, in feed
+    i = self.directiveOrStatement(str,j)
+  File "/home/jdroo/github.com/linkeddata/swap/notation3.py", line 233, in directiveOrStatement
+    j = self.statement(str, i)
+  File "/home/jdroo/github.com/linkeddata/swap/notation3.py", line 382, in statement
+    j = self.property_list(str, i, r[0])
+  File "/home/jdroo/github.com/linkeddata/swap/notation3.py", line 708, in property_list
+    "objectList expected")
+swap.notation3.BadSyntax: at line 3 of <file:////home/jdroo/github.com/w3c/N3/grammar/tests/N3Tests/cwm_syntax/djb1.n3>:
+Bad syntax (objectList expected) at ^ in:
+"...g/base1#> .
+@prefix a: <http://example.org/base2#> .
+a:a a:b^ .
+"
 
 testing (negative): n3parser.tests_n3_10014.n3
-in: #Processed by EYE v20.0204.1058 josd
-#eye --n3 /home/jdroo/github.com/w3c/N3/grammar/tests/N3Tests/cwm_n3/n3parser.tests_n3_10014.n3
+in: #Processed by Id
+        #    using base file:////home/jdroo/github.com/w3c/N3/grammar/tests/N3Tests/cwm_n3/n3parser.tests_n3_10014.n3
+        
 
-
-
-error: eye --n3 /home/jdroo/github.com/w3c/N3/grammar/tests/N3Tests/cwm_n3/n3parser.tests_n3_10014.n3
-EYE v20.0204.1058 josd
-SWI-Prolog version 8.1.21-97-g0a8840c98
-starting 68 [msec cputime] 85 [msec walltime]
-GET file:///home/jdroo/github.com/w3c/N3/grammar/tests/N3Tests/cwm_n3/n3parser.tests_n3_10014.n3 ** ERROR ** file:///home/jdroo/github.com/w3c/N3/grammar/tests/N3Tests/cwm_n3/n3parser.tests_n3_10014.n3 ** no_prefix_directive(log,after_line(44))
+error:     Failed to parse file:////home/jdroo/github.com/w3c/N3/grammar/tests/N3Tests/cwm_n3/n3parser.tests_n3_10014.n3 
+   file:////home/jdroo/github.com/w3c/N3/grammar/tests/N3Tests/cwm_n3/n3parser.tests_n3_10014.n3 
+Traceback (most recent call last):
+  File "/home/jdroo/github.com/linkeddata/swap/cwm.py", line 750, in <module>
+    doCommand()
+  File "/home/jdroo/github.com/linkeddata/swap/cwm.py", line 455, in doCommand
+    why=myReason)
+  File "/home/jdroo/github.com/linkeddata/swap/webAccess.py", line 225, in load
+    p.feed(buffer)
+  File "/home/jdroo/github.com/linkeddata/swap/notation3.py", line 219, in feed
+    i = self.directiveOrStatement(str,j)
+  File "/home/jdroo/github.com/linkeddata/swap/notation3.py", line 233, in directiveOrStatement
+    j = self.statement(str, i)
+  File "/home/jdroo/github.com/linkeddata/swap/notation3.py", line 379, in statement
+    i = self.object(str, i, r)  #  Allow literal for subject - extends RDF 
+  File "/home/jdroo/github.com/linkeddata/swap/notation3.py", line 960, in object
+    j = self.subject(str, i, res)
+  File "/home/jdroo/github.com/linkeddata/swap/notation3.py", line 389, in subject
+    return self.item(str, i, res)
+  File "/home/jdroo/github.com/linkeddata/swap/notation3.py", line 468, in item
+    return self.path(str, i, res)
+  File "/home/jdroo/github.com/linkeddata/swap/notation3.py", line 480, in path
+    j = self.nodeOrLiteral(str, i, res)
+  File "/home/jdroo/github.com/linkeddata/swap/notation3.py", line 982, in nodeOrLiteral
+    j = self.node(str, i, res)
+  File "/home/jdroo/github.com/linkeddata/swap/notation3.py", line 549, in node
+    i = self.property_list(str, j, subj)
+  File "/home/jdroo/github.com/linkeddata/swap/notation3.py", line 706, in property_list
+    i = self.objectList(str, j, objs)
+  File "/home/jdroo/github.com/linkeddata/swap/notation3.py", line 753, in objectList
+    i = self.object(str, i, res)
+  File "/home/jdroo/github.com/linkeddata/swap/notation3.py", line 960, in object
+    j = self.subject(str, i, res)
+  File "/home/jdroo/github.com/linkeddata/swap/notation3.py", line 389, in subject
+    return self.item(str, i, res)
+  File "/home/jdroo/github.com/linkeddata/swap/notation3.py", line 468, in item
+    return self.path(str, i, res)
+  File "/home/jdroo/github.com/linkeddata/swap/notation3.py", line 480, in path
+    j = self.nodeOrLiteral(str, i, res)
+  File "/home/jdroo/github.com/linkeddata/swap/notation3.py", line 982, in nodeOrLiteral
+    j = self.node(str, i, res)
+  File "/home/jdroo/github.com/linkeddata/swap/notation3.py", line 674, in node
+    j = self.uri_ref2(str, i, res)
+  File "/home/jdroo/github.com/linkeddata/swap/notation3.py", line 802, in uri_ref2
+    "Prefix \"%s:\" not bound" % (pfx))
+swap.notation3.BadSyntax: at line 1 of <file:////home/jdroo/github.com/w3c/N3/grammar/tests/N3Tests/cwm_n3/n3parser.tests_n3_10014.n3>:
+Bad syntax (Prefix "log:" not bound) at ^ in:
+"[ a ^log:Truth;
+  rei:statements [
+    owl:oneOf (
+      [ rei:su..."
 
 testing (negative): trigo-test.n3
-in: #Processed by EYE v20.0204.1058 josd
-#eye --n3 /home/jdroo/github.com/w3c/N3/grammar/tests/N3Tests/cwm_math/trigo-test.n3
+in: #Processed by Id
+        #    using base file:////home/jdroo/github.com/w3c/N3/grammar/tests/N3Tests/cwm_math/trigo-test.n3
+        
+
+error:     Failed to parse file:////home/jdroo/github.com/w3c/N3/grammar/tests/N3Tests/cwm_math/trigo-test.n3 
+   file:////home/jdroo/github.com/w3c/N3/grammar/tests/N3Tests/cwm_math/trigo-test.n3 
+Traceback (most recent call last):
+  File "/home/jdroo/github.com/linkeddata/swap/cwm.py", line 750, in <module>
+    doCommand()
+  File "/home/jdroo/github.com/linkeddata/swap/cwm.py", line 455, in doCommand
+    why=myReason)
+  File "/home/jdroo/github.com/linkeddata/swap/webAccess.py", line 225, in load
+    p.feed(buffer)
+  File "/home/jdroo/github.com/linkeddata/swap/notation3.py", line 219, in feed
+    i = self.directiveOrStatement(str,j)
+  File "/home/jdroo/github.com/linkeddata/swap/notation3.py", line 233, in directiveOrStatement
+    j = self.statement(str, i)
+  File "/home/jdroo/github.com/linkeddata/swap/notation3.py", line 382, in statement
+    j = self.property_list(str, i, r[0])
+  File "/home/jdroo/github.com/linkeddata/swap/notation3.py", line 706, in property_list
+    i = self.objectList(str, j, objs)
+  File "/home/jdroo/github.com/linkeddata/swap/notation3.py", line 763, in objectList
+    i = self.object(str, j+1, res)
+  File "/home/jdroo/github.com/linkeddata/swap/notation3.py", line 960, in object
+    j = self.subject(str, i, res)
+  File "/home/jdroo/github.com/linkeddata/swap/notation3.py", line 389, in subject
+    return self.item(str, i, res)
+  File "/home/jdroo/github.com/linkeddata/swap/notation3.py", line 468, in item
+    return self.path(str, i, res)
+  File "/home/jdroo/github.com/linkeddata/swap/notation3.py", line 480, in path
+    j = self.nodeOrLiteral(str, i, res)
+  File "/home/jdroo/github.com/linkeddata/swap/notation3.py", line 982, in nodeOrLiteral
+    j = self.node(str, i, res)
+  File "/home/jdroo/github.com/linkeddata/swap/notation3.py", line 674, in node
+    j = self.uri_ref2(str, i, res)
+  File "/home/jdroo/github.com/linkeddata/swap/notation3.py", line 802, in uri_ref2
+    "Prefix \"%s:\" not bound" % (pfx))
+swap.notation3.BadSyntax: at line 16 of <file:////home/jdroo/github.com/w3c/N3/grammar/tests/N3Tests/cwm_math/trigo-test.n3>:
+Bad syntax (Prefix "NonPi:" not bound) at ^ in:
+"....
+
+# test sine, cosine, arcsine, arcosine
 
 
-
-error: eye --n3 /home/jdroo/github.com/w3c/N3/grammar/tests/N3Tests/cwm_math/trigo-test.n3
-EYE v20.0204.1058 josd
-SWI-Prolog version 8.1.21-97-g0a8840c98
-starting 68 [msec cputime] 85 [msec walltime]
-GET file:///home/jdroo/github.com/w3c/N3/grammar/tests/N3Tests/cwm_math/trigo-test.n3 ** ERROR ** file:///home/jdroo/github.com/w3c/N3/grammar/tests/N3Tests/cwm_math/trigo-test.n3 ** no_prefix_directive(NonPi,after_line(7))
+0 a :TestValue, ^NonPi:TestValue.
+0.23 a :TestValue, NonPi:TestValue.
+-0.707 ..."
 
 testing (negative): turtle-syntax-bad-n3-extras-13.ttl
-in: #Processed by EYE v20.0204.1058 josd
-#eye --n3 /home/jdroo/github.com/w3c/N3/grammar/tests/N3Tests/turtle/turtle-syntax-bad-n3-extras-13.ttl
-
-
-
-error: eye --n3 /home/jdroo/github.com/w3c/N3/grammar/tests/N3Tests/turtle/turtle-syntax-bad-n3-extras-13.ttl
-EYE v20.0204.1058 josd
-SWI-Prolog version 8.1.21-97-g0a8840c98
-starting 69 [msec cputime] 84 [msec walltime]
-GET file:///home/jdroo/github.com/w3c/N3/grammar/tests/N3Tests/turtle/turtle-syntax-bad-n3-extras-13.ttl ** ERROR ** file:///home/jdroo/github.com/w3c/N3/grammar/tests/N3Tests/turtle/turtle-syntax-bad-n3-extras-13.ttl ** invalid_document(after_line(4))
-
 testing (negative): qname-as-prefix-in-decl.n3
-in: #Processed by EYE v20.0204.1058 josd
-#eye --n3 /home/jdroo/github.com/w3c/N3/grammar/tests/N3Tests/cwm_syntax/qname-as-prefix-in-decl.n3
-
-
-
-error: eye --n3 /home/jdroo/github.com/w3c/N3/grammar/tests/N3Tests/cwm_syntax/qname-as-prefix-in-decl.n3
-EYE v20.0204.1058 josd
-SWI-Prolog version 8.1.21-97-g0a8840c98
-starting 71 [msec cputime] 87 [msec walltime]
-GET file:///home/jdroo/github.com/w3c/N3/grammar/tests/N3Tests/cwm_syntax/qname-as-prefix-in-decl.n3 ** ERROR ** file:///home/jdroo/github.com/w3c/N3/grammar/tests/N3Tests/cwm_syntax/qname-as-prefix-in-decl.n3 ** invalid_document(after_line(7))
-
 testing (negative): turtle-syntax-bad-n3-extras-08.ttl
-in: #Processed by EYE v20.0204.1058 josd
-#eye --n3 /home/jdroo/github.com/w3c/N3/grammar/tests/N3Tests/turtle/turtle-syntax-bad-n3-extras-08.ttl
-
-
-
-error: eye --n3 /home/jdroo/github.com/w3c/N3/grammar/tests/N3Tests/turtle/turtle-syntax-bad-n3-extras-08.ttl
-EYE v20.0204.1058 josd
-SWI-Prolog version 8.1.21-97-g0a8840c98
-starting 70 [msec cputime] 86 [msec walltime]
-GET file:///home/jdroo/github.com/w3c/N3/grammar/tests/N3Tests/turtle/turtle-syntax-bad-n3-extras-08.ttl ** ERROR ** file:///home/jdroo/github.com/w3c/N3/grammar/tests/N3Tests/turtle/turtle-syntax-bad-n3-extras-08.ttl ** invalid_document(after_line(4))
-
 testing (negative): qvars4.n3
-in: #Processed by EYE v20.0204.1058 josd
-#eye --n3 /home/jdroo/github.com/w3c/N3/grammar/tests/N3Tests/cwm_syntax/qvars4.n3
+in: #Processed by Id
+        #    using base file:////home/jdroo/github.com/w3c/N3/grammar/tests/N3Tests/cwm_syntax/qvars4.n3
+        
+
+error:     Failed to parse file:////home/jdroo/github.com/w3c/N3/grammar/tests/N3Tests/cwm_syntax/qvars4.n3 
+   file:////home/jdroo/github.com/w3c/N3/grammar/tests/N3Tests/cwm_syntax/qvars4.n3 
+Traceback (most recent call last):
+  File "/home/jdroo/github.com/linkeddata/swap/cwm.py", line 750, in <module>
+    doCommand()
+  File "/home/jdroo/github.com/linkeddata/swap/cwm.py", line 455, in doCommand
+    why=myReason)
+  File "/home/jdroo/github.com/linkeddata/swap/webAccess.py", line 225, in load
+    p.feed(buffer)
+  File "/home/jdroo/github.com/linkeddata/swap/notation3.py", line 219, in feed
+    i = self.directiveOrStatement(str,j)
+  File "/home/jdroo/github.com/linkeddata/swap/notation3.py", line 230, in directiveOrStatement
+    j = self.directive(str, i)
+  File "/home/jdroo/github.com/linkeddata/swap/notation3.py", line 285, in directive
+    i = self.commaSeparatedList(str, j, res, self.uri_ref2)
+  File "/home/jdroo/github.com/linkeddata/swap/notation3.py", line 735, in commaSeparatedList
+    i = what(str, i, res)
+  File "/home/jdroo/github.com/linkeddata/swap/notation3.py", line 818, in uri_ref2
+    j = self.variable(str,i,v)
+  File "/home/jdroo/github.com/linkeddata/swap/notation3.py", line 894, in variable
+    % str[j-1:i])
+swap.notation3.BadSyntax: at line 9 of <file:////home/jdroo/github.com/w3c/N3/grammar/tests/N3Tests/cwm_syntax/qvars4.n3>:
+Bad syntax (Can't use ?xxx syntax for variable in outermost level: ?x) at ^ in:
+"...larations
+
+
+@prefix : <foo.n3#>.  # Local stuff
 
 
 
-error: eye --n3 /home/jdroo/github.com/w3c/N3/grammar/tests/N3Tests/cwm_syntax/qvars4.n3
-EYE v20.0204.1058 josd
-SWI-Prolog version 8.1.21-97-g0a8840c98
-starting 70 [msec cputime] 83 [msec walltime]
-GET file:///home/jdroo/github.com/w3c/N3/grammar/tests/N3Tests/cwm_syntax/qvars4.n3 ** ERROR ** file:///home/jdroo/github.com/w3c/N3/grammar/tests/N3Tests/cwm_syntax/qvars4.n3 ** invalid_document(after_line(5))
+@forAll ?^x, ?y, ?z.
+@forSome ?a, ?b, ?c.
+
+
+
+{ :x <#mother> :y. :y <#s..."
 
 
 
 -- RESULTS
-total # tests = 1203
+total # tests = 1171
 
 > positive tests:
-# failed = 0
-failed: []
+# failed = 17
+failed: [07test/badmeta.n3, 07test/utf8.n3, 04test/robC.n3, 01etc/iq-extra.n3, extra/good_prefix.n3, cwm_syntax/qual-after-user.n3, 04test/grahamC.n3, cwm_syntax/embedded-dot-in-qname.n3, 07test/rifP.n3, extra/inverted_properties.n3, 01etc/rifP.n3, cwm_syntax/neg-single-quote.n3, 04test/sethC.n3, 04test/michaelC.n3, 04test/result-tp-05.n3, 04test/result-ot-0-01.n3, 04test/testC.n3]
 
 > negative tests:
-# failed = 0
-failed: []
+# failed = 5
+failed: [turtle/turtle-syntax-bad-n3-extras-07.ttl, cwm_other/strquot.n3, turtle/turtle-syntax-bad-n3-extras-13.ttl, cwm_syntax/qname-as-prefix-in-decl.n3, turtle/turtle-syntax-bad-n3-extras-08.ttl]
 
 > skipped tests:
-# skipped = 0
-skipped: []
+# skipped = 32
+skipped: [01etc/randomsample-proof.n3, 04test/ontology-for-data-model.n3, 01etc/proof-1000.n3, 05smml/FACTShousewallsmeshed.n3, 01etc/gps-proof2.n3, 01etc/test-proof-1000.n3, 04test/radlex.n3, 01etc/easter-proof.n3, 01etc/graph-10000.n3, 01etc/pi-proof.n3, 01etc/proof-2-1000.n3, 01etc/mmln-gv-proof.n3, 01etc/test-dt-1000.n3, 01etc/result.n3, 01etc/fgcm_proof.n3, 01etc/proof-10000.n3, 01etc/10tt_proof.n3, 01etc/swet_proof.n3, 01etc/mq_proof.n3, 07test/path-1024-3.n3, 01etc/proof-2-10000.n3, 01etc/takE.n3, 01etc/rifE.n3, 07test/test-strela-1000.n3, 07test/graph-10000.n3, 01etc/polynomial.n3, manifest.ttl, 01etc/data.n3, 04test/not-galen.n3, 01etc/fibE.n3, cwm_other/rdfcore-tests.n3, 01etc/biE.n3]

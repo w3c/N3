@@ -1,8 +1,8 @@
-#Processed by EYE v20.0105.1336 josd
-#eye --no-genid --nope http://josd.github.io/eye/reasoning/swet/swetA.n3 http://josd.github.io/eye/reasoning/swet/swetD.n3 --query http://josd.github.io/eye/reasoning/swet/swetQ01.n3
+#Processed by EYE v20.0204.1058 josd
+#eye --no-genid --nope http://josd.github.io/fluid/swet/swetA.n3 http://josd.github.io/fluid/swet/swetD.n3 --query http://josd.github.io/fluid/swet/swetQ01.n3
 
 @prefix e: <http://eulersharp.sourceforge.net/2003/03swap/log-rules#>.
-@prefix : <http://eulersharp.sourceforge.net/2003/03swap/eye/reasoning#>.
+@prefix : <http://eulersharp.sourceforge.net/2003/03swap/fluid#>.
 
 _:bn_1 e:answer {:obs001 :ascribed :WetGrass}.
 _:bn_2 e:answer {:obs002 :ascribed :WetGrass}.
@@ -86,6 +86,6 @@ _:bn_98 e:answer {:obs098 :ascribed :WetGrass}.
 _:bn_99 e:answer {:obs099 :ascribed :WetGrass}.
 _:bn_100 e:answer {:obs100 :ascribed :WetGrass}.
 
-#2020-01-14T10:13:01.507Z in=501 out=81 ent=81 step=81 brake=1 inf=225110 sec=0.082 inf/sec=2745244
+#2020-02-08T10:14:23.273Z in=501 out=81 ent=81 step=81 brake=1 inf=223879 sec=0.175 inf/sec=1279309
 #ENDS
 
