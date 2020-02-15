@@ -1,4 +1,4 @@
-#Processed by EYE v20.0211.2332 josd
+#Processed by EYE v20.0214.1629 josd
 #eye --no-genid http://josd.github.io/brain/csv/select-data-extra.n3 --query http://josd.github.io/brain/csv/select-query.n3
 
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
@@ -147,6 +147,6 @@
   };
   r:because [ a r:Parsing; r:source <http://josd.github.io/brain/csv/select-data-extra.n3>].
 
-#2020-02-14T22:09:38.506Z in=6 out=5 ent=5 step=5 brake=2 inf=53948 sec=0.115 inf/sec=469113
+#2020-02-15T19:32:27.511Z in=6 out=5 ent=5 step=5 brake=2 inf=51628 sec=0.123 inf/sec=419740
 #ENDS
 

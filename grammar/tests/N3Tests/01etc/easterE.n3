@@ -1,4 +1,4 @@
-#Processed by EYE v20.0211.2332 josd
+#Processed by EYE v20.0214.1629 josd
 #eye --no-genid http://josd.github.io/brain/easter/easterP.n3 --query http://josd.github.io/brain/easter/easterF.n3
 
 @prefix math: <http://www.w3.org/2000/10/swap/math#>.
@@ -1610,6 +1610,6 @@
   };
   r:because [ a r:Parsing; r:source <http://josd.github.io/brain/easter/easterP.n3>].
 
-#2020-02-14T22:10:15.166Z in=19 out=16 ent=32 step=64 brake=2 inf=300151 sec=0.211 inf/sec=1422517
+#2020-02-15T19:33:03.292Z in=19 out=16 ent=32 step=64 brake=2 inf=297815 sec=0.212 inf/sec=1404788
 #ENDS
 

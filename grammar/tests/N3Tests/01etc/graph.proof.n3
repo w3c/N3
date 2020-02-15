@@ -1,4 +1,4 @@
-#Processed by EYE v20.0211.2332 josd
+#Processed by EYE v20.0214.1629 josd
 #eye --no-genid http://josd.github.io/brain/graph/graph.axiom.n3 http://josd.github.io/brain/graph/rpo-rules.n3 --query http://josd.github.io/brain/graph/graph.filter.n3
 
 @prefix log: <http://www.w3.org/2000/10/swap/log#>.
@@ -187,6 +187,6 @@
   };
   r:because [ a r:Parsing; r:source <http://josd.github.io/brain/graph/graph.axiom.n3>].
 
-#2020-02-14T22:10:40.571Z in=89 out=1 ent=24 step=70 brake=2 inf=93210 sec=0.134 inf/sec=695597
+#2020-02-15T19:33:36.840Z in=89 out=1 ent=24 step=70 brake=2 inf=90854 sec=0.130 inf/sec=698877
 #ENDS
 

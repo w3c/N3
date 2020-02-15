@@ -1,4 +1,4 @@
-#Processed by EYE v20.0211.2332 josd
+#Processed by EYE v20.0214.1629 josd
 #eye --no-genid http://josd.github.io/brain/lldm/lldmD.n3 http://josd.github.io/brain/lldm/lldmP.n3 --query http://josd.github.io/brain/lldm/lldmF.n3
 
 @prefix log: <http://www.w3.org/2000/10/swap/log#>.
@@ -1012,6 +1012,6 @@
   };
   r:because [ a r:Parsing; r:source <http://josd.github.io/brain/lldm/lldmP.n3>].
 
-#2020-02-14T22:10:49.479Z in=168 out=1 ent=39 step=124 brake=4 inf=232604 sec=0.184 inf/sec=1264152
+#2020-02-15T19:33:46.568Z in=168 out=1 ent=39 step=124 brake=4 inf=230248 sec=0.189 inf/sec=1218243
 #ENDS
 

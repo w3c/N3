@@ -1,4 +1,4 @@
-#Processed by EYE v20.0211.2332 josd
+#Processed by EYE v20.0214.1629 josd
 #eye --no-genid http://josd.github.io/brain/rgb/redgraph002.n3 --query http://josd.github.io/brain/rgb/greenquery002.n3
 
 @prefix : <http://example.org/try#>.
@@ -54,6 +54,6 @@
   };
   r:because [ a r:Parsing; r:source <http://josd.github.io/brain/rgb/greenquery002.n3>].
 
-#2020-02-14T22:11:28.209Z in=5 out=2 ent=2 step=2 brake=1 inf=22353 sec=0.079 inf/sec=282949
+#2020-02-15T19:34:28.299Z in=5 out=2 ent=2 step=2 brake=1 inf=19996 sec=0.081 inf/sec=246864
 #ENDS
 

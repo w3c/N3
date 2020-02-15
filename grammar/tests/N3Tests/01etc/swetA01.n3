@@ -1,4 +1,4 @@
-#Processed by EYE v20.0211.2332 josd
+#Processed by EYE v20.0214.1629 josd
 #eye --no-genid --nope http://josd.github.io/brain/swet/swetA.n3 http://josd.github.io/brain/swet/swetD.n3 --query http://josd.github.io/brain/swet/swetQ01.n3
 
 @prefix e: <http://eulersharp.sourceforge.net/2003/03swap/log-rules#>.
@@ -86,6 +86,6 @@ _:bn_98 e:answer {:obs098 :ascribed :WetGrass}.
 _:bn_99 e:answer {:obs099 :ascribed :WetGrass}.
 _:bn_100 e:answer {:obs100 :ascribed :WetGrass}.
 
-#2020-02-14T22:11:41.659Z in=501 out=81 ent=81 step=81 brake=1 inf=223869 sec=0.182 inf/sec=1230049
+#2020-02-15T19:34:43.902Z in=501 out=81 ent=81 step=81 brake=1 inf=221513 sec=0.178 inf/sec=1244455
 #ENDS
 

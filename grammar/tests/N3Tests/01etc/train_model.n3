@@ -1,4 +1,4 @@
-#Processed by EYE v20.0211.2332 josd
+#Processed by EYE v20.0214.1629 josd
 #eye --no-genid --wcache http://josd.github.io/brain/ccd . --nope http://josd.github.io/brain/ccd/train_data.n3 http://josd.github.io/brain/ccd/background_rules.n3 http://josd.github.io/brain/ccd/train_rules.n3 --query http://josd.github.io/brain/ccd/train_query.n3
 
 @prefix : <http://josd.github.io/brain#>.
@@ -25,6 +25,6 @@
 (:input10 ("abc" 60)) ccd:model (:output1 1 2).
 (:input10 ("xyz" 40)) ccd:model (:output1 1 0).
 
-#2020-02-14T22:09:33.808Z in=54 out=17 ent=24 step=110 brake=2 inf=52945 sec=0.096 inf/sec=551510
+#2020-02-15T19:32:23.020Z in=54 out=17 ent=24 step=110 brake=2 inf=50579 sec=0.093 inf/sec=543860
 #ENDS
 

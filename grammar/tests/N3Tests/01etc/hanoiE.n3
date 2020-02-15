@@ -1,4 +1,4 @@
-#Processed by EYE v20.0211.2332 josd
+#Processed by EYE v20.0214.1629 josd
 #eye --no-genid --tactic limited-answer 1 http://josd.github.io/brain/hanoi/hanoi.n3 --pass
 
 # Move top disk from <http://josd.github.io/brain#left> to <http://josd.github.io/brain#right>
@@ -187,6 +187,6 @@
   };
   r:because [ a r:Parsing; r:source <http://josd.github.io/brain/hanoi/hanoi.n3>].
 
-#2020-02-14T22:10:43.182Z in=3 out=1 ent=2 step=2 brake=1 inf=40923 sec=0.092 inf/sec=444815
+#2020-02-15T19:33:39.233Z in=3 out=1 ent=2 step=2 brake=1 inf=38567 sec=0.085 inf/sec=453729
 #ENDS
 

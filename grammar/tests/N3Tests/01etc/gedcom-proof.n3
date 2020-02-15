@@ -1,4 +1,4 @@
-#Processed by EYE v20.0211.2332 josd
+#Processed by EYE v20.0214.1629 josd
 #eye --no-genid http://josd.github.io/brain/gedcom/gedcom-facts.n3 http://josd.github.io/brain/gedcom/gedcom-relations.n3 http://josd.github.io/brain/gedcom/rpo-rules.n3 --query http://josd.github.io/brain/gedcom/gedcom-filter.n3
 
 @prefix gc: <http://www.daml.org/2001/01/gedcom/gedcom#>.
@@ -1136,6 +1136,6 @@
   r:binding [ r:variable [ n3:uri "http://josd.github.io/var#x_2"]; r:boundTo (:Dirk :Greta)];
   r:rule <#lemma92>.
 
-#2020-02-14T22:10:34.130Z in=185 out=6 ent=1591 step=18973 brake=12 inf=882887 sec=0.438 inf/sec=2015724
+#2020-02-15T19:33:30.386Z in=185 out=6 ent=1591 step=18973 brake=12 inf=880581 sec=0.457 inf/sec=1926873
 #ENDS
 

@@ -1,4 +1,4 @@
-#Processed by EYE v20.0211.2332 josd
+#Processed by EYE v20.0214.1629 josd
 #eye --no-genid --wcache http://josd.github.io/brain/cs . --nope http://josd.github.io/brain/cs/data-001.n3 http://josd.github.io/brain/cs/rules-001.n3 --query http://josd.github.io/brain/cs/query-001.n3
 
 @prefix : <http://josd.github.io/brain/cs#>.
@@ -7,6 +7,6 @@
 :actuator1 :control1 39.27346198678276 .
 :actuator2 :control1 26.08 .
 
-#2020-02-14T22:09:35.461Z in=15 out=2 ent=4 step=8 brake=2 inf=33208 sec=0.084 inf/sec=395333
+#2020-02-15T19:32:24.715Z in=15 out=2 ent=4 step=8 brake=2 inf=30842 sec=0.081 inf/sec=380765
 #ENDS
 

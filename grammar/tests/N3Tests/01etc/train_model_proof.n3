@@ -1,4 +1,4 @@
-#Processed by EYE v20.0211.2332 josd
+#Processed by EYE v20.0214.1629 josd
 #eye --no-genid --wcache http://josd.github.io/brain/ccd . http://josd.github.io/brain/ccd/train_data.n3 http://josd.github.io/brain/ccd/background_rules.n3 http://josd.github.io/brain/ccd/train_rules.n3 --query http://josd.github.io/brain/ccd/train_query.n3
 
 @prefix : <http://josd.github.io/brain#>.
@@ -857,6 +857,6 @@
   };
   r:because [ a r:Parsing; r:source <http://josd.github.io/brain/ccd/train_data.n3>].
 
-#2020-02-14T22:09:34.089Z in=54 out=17 ent=41 step=254 brake=4 inf=180455 sec=0.152 inf/sec=1187204
+#2020-02-15T19:32:23.291Z in=54 out=17 ent=41 step=254 brake=4 inf=178089 sec=0.151 inf/sec=1179397
 #ENDS
 

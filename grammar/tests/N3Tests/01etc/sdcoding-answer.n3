@@ -1,4 +1,4 @@
-#Processed by EYE v20.0211.2332 josd
+#Processed by EYE v20.0214.1629 josd
 #eye --no-genid --wcache http://josd.github.io/brain/dqc . --no-distinct-input --nope http://josd.github.io/brain/dqc/sdcoding-a.n3 --query http://josd.github.io/brain/dqc/sdcoding-query.n3
 
 @prefix dqc: <http://josd.github.io/brain/dqc#>.
@@ -10,6 +10,6 @@
 0 dqc:sdcoding 0 .
 2 dqc:sdcoding 2 .
 
-#2020-02-14T22:10:10.256Z in=25 out=4 ent=4 step=4 brake=2 inf=27636 sec=0.080 inf/sec=345450
+#2020-02-15T19:32:58.548Z in=25 out=4 ent=4 step=4 brake=2 inf=25280 sec=0.080 inf/sec=316000
 #ENDS
 

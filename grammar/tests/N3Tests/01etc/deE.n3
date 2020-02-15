@@ -1,4 +1,4 @@
-#Processed by EYE v20.0211.2332 josd
+#Processed by EYE v20.0214.1629 josd
 #eye --no-genid http://josd.github.io/brain/de/de.n3 http://josd.github.io/brain/de/deA.n3 --query http://josd.github.io/brain/de/deQ.n3
 
 @prefix : <http://josd.github.io/brain#>.
@@ -82,6 +82,6 @@
   };
   r:because [ a r:Parsing; r:source <http://josd.github.io/brain/de/de.n3>].
 
-#2020-02-14T22:09:40.030Z in=8 out=1 ent=6 step=18 brake=3 inf=27340 sec=0.094 inf/sec=290851
+#2020-02-15T19:32:28.965Z in=8 out=1 ent=6 step=18 brake=3 inf=24974 sec=0.084 inf/sec=297310
 #ENDS
 

@@ -1,4 +1,4 @@
-#Processed by EYE v20.0211.2332 josd
+#Processed by EYE v20.0214.1629 josd
 #eye --no-genid --tactic limited-answer 1 http://josd.github.io/brain/resto/resto.n3 --query http://josd.github.io/brain/resto/restoG.n3
 
 @prefix foaf: <http://xmlns.com/foaf/0.1/>.
@@ -309,6 +309,6 @@
   };
   r:because [ a r:Parsing; r:source <http://josd.github.io/brain/resto/resto.n3>].
 
-#2020-02-14T22:11:24.538Z in=10 out=4 ent=47 step=7 brake=1 inf=96875 sec=0.125 inf/sec=775000
+#2020-02-15T19:34:24.864Z in=10 out=4 ent=47 step=7 brake=1 inf=94520 sec=0.128 inf/sec=738438
 #ENDS
 

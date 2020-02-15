@@ -1,4 +1,4 @@
-#Processed by EYE v20.0211.2332 josd
+#Processed by EYE v20.0214.1629 josd
 #eye --no-genid http://josd.github.io/brain/pi/pi.n3 --query http://josd.github.io/brain/pi/pi-query.n3
 
 @prefix math: <http://www.w3.org/2000/10/swap/math#>.
@@ -31054,6 +31054,6 @@
   };
   r:because [ a r:Parsing; r:source <http://josd.github.io/brain/pi/pi.n3>].
 
-#2020-02-14T22:11:13.356Z in=4 out=1 ent=1 step=1 brake=1 inf=4499162 sec=2.066 inf/sec=2177716
+#2020-02-15T19:34:09.097Z in=4 out=1 ent=1 step=1 brake=1 inf=4496826 sec=2.052 inf/sec=2191436
 #ENDS
 

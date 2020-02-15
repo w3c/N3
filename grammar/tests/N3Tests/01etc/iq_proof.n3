@@ -1,4 +1,4 @@
-#Processed by EYE v20.0211.2332 josd
+#Processed by EYE v20.0214.1629 josd
 #eye --no-genid http://josd.github.io/brain/iq/iq.n3 --pass-all
 
 @prefix : <http://example.org/test#>.
@@ -228,6 +228,6 @@
   };
   r:because [ a r:Parsing; r:source <http://josd.github.io/brain/iq/iq.n3>].
 
-#2020-02-14T22:10:46.726Z in=7 out=10 ent=13 step=26 brake=2 inf=61897 sec=0.102 inf/sec=606833
+#2020-02-15T19:33:43.097Z in=7 out=10 ent=13 step=26 brake=2 inf=59541 sec=0.099 inf/sec=601424
 #ENDS
 

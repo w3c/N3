@@ -1,4 +1,4 @@
-#Processed by EYE v20.0211.2332 josd
+#Processed by EYE v20.0214.1629 josd
 #eye --no-genid http://josd.github.io/brain/pptbank/bankSW.n3 http://josd.github.io/brain/pptbank/checking.n3 --query http://josd.github.io/brain/pptbank/query.n3
 
 @prefix my: <http://josd.github.io/brain/ppt-bank/acct3#>.
@@ -97,6 +97,6 @@
   };
   r:because [ a r:Parsing; r:source <http://josd.github.io/brain/pptbank/checking.n3>].
 
-#2020-02-14T22:11:16.087Z in=17 out=1 ent=2 step=4 brake=4 inf=47370 sec=0.110 inf/sec=430636
+#2020-02-15T19:34:11.809Z in=17 out=1 ent=2 step=4 brake=4 inf=45014 sec=0.107 inf/sec=420692
 #ENDS
 

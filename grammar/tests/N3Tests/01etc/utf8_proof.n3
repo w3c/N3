@@ -1,4 +1,4 @@
-#Processed by EYE v20.0211.2332 josd
+#Processed by EYE v20.0214.1629 josd
 #eye --no-genid http://josd.github.io/brain/utf8/utf8.n3 --pass
 
 @prefix : <http://josd.github.io/brain/utf8/try#>.
@@ -116,6 +116,6 @@
   };
   r:because [ a r:Parsing; r:source <http://josd.github.io/brain/utf8/utf8.n3>].
 
-#2020-02-14T22:11:54.602Z in=5 out=5 ent=5 step=5 brake=1 inf=24520 sec=0.088 inf/sec=278636
+#2020-02-15T19:34:55.816Z in=5 out=5 ent=5 step=5 brake=1 inf=22164 sec=0.084 inf/sec=263857
 #ENDS
 

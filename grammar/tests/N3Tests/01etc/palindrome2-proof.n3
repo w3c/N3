@@ -1,4 +1,4 @@
-#Processed by EYE v20.0211.2332 josd
+#Processed by EYE v20.0214.1629 josd
 #eye --no-genid http://josd.github.io/brain/preduction/palindrome2.n3 --query http://josd.github.io/brain/preduction/palindrome2-query.n3
 
 @prefix e: <http://eulersharp.sourceforge.net/2003/03swap/log-rules#>.
@@ -591,6 +591,6 @@
   };
   r:because [ a r:Parsing; r:source <http://josd.github.io/brain/preduction/palindrome2.n3>].
 
-#2020-02-14T22:11:18.576Z in=7 out=1 ent=1 step=1 brake=1 inf=172436 sec=0.152 inf/sec=1134447
+#2020-02-15T19:34:14.863Z in=7 out=1 ent=1 step=1 brake=1 inf=170080 sec=0.143 inf/sec=1189371
 #ENDS
 

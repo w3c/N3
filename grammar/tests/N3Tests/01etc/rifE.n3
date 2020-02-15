@@ -1,4 +1,4 @@
-#Processed by EYE v20.0211.2332 josd
+#Processed by EYE v20.0214.1629 josd
 #eye --no-genid http://josd.github.io/brain/rif/rifP.n3 --query http://josd.github.io/brain/rif/rifQ.n3
 
 @prefix func: <http://www.w3.org/2007/rif-builtin-function#>.
@@ -6889,6 +6889,6 @@
   };
   r:because [ a r:Parsing; r:source <http://josd.github.io/brain/rif/rifP.n3>].
 
-#2020-02-14T22:11:31.285Z in=224 out=222 ent=443 step=1776 brake=4 inf=1861456 sec=0.842 inf/sec=2210755
+#2020-02-15T19:34:31.185Z in=224 out=222 ent=443 step=1776 brake=4 inf=1859100 sec=0.856 inf/sec=2171846
 #ENDS
 

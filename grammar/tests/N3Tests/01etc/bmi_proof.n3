@@ -1,4 +1,4 @@
-#Processed by EYE v20.0211.2332 josd
+#Processed by EYE v20.0214.1629 josd
 #eye --no-genid http://josd.github.io/brain/bmi/bmi_instances.n3 http://josd.github.io/brain/bmi/bmi_rules.n3 http://josd.github.io/brain/bmi/weightStatus_rules.n3 http://josd.github.io/brain/bmi/age_rules_backward.n3 --query http://josd.github.io/brain/bmi/bmi_query.n3
 
 @prefix owl: <http://www.w3.org/2002/07/owl#>.
@@ -1342,6 +1342,6 @@
   };
   r:because [ a r:Parsing; r:source <http://josd.github.io/brain/bmi/bmi_instances.n3>].
 
-#2020-02-14T22:09:22.365Z in=97 out=50 ent=100 step=48 brake=4 inf=401401 sec=0.283 inf/sec=1418378
+#2020-02-15T19:32:12.561Z in=97 out=50 ent=100 step=48 brake=4 inf=399064 sec=0.304 inf/sec=1312711
 #ENDS
 

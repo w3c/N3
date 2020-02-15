@@ -1,4 +1,4 @@
-#Processed by EYE v20.0211.2332 josd
+#Processed by EYE v20.0214.1629 josd
 #eye --no-genid --tactic limited-answer 1 http://josd.github.io/brain/usm/usmP.n3 --query http://josd.github.io/brain/usm/usmQ.n3
 
 @prefix : <http://josd.github.io/brain#>.
@@ -441,6 +441,6 @@
   };
   r:because [ a r:Parsing; r:source <http://josd.github.io/brain/usm/usmP.n3>].
 
-#2020-02-14T22:11:53.683Z in=21 out=2 ent=24 step=88 brake=5 inf=79341 sec=0.116 inf/sec=683974
+#2020-02-15T19:34:55.212Z in=21 out=2 ent=24 step=88 brake=5 inf=76985 sec=0.116 inf/sec=663664
 #ENDS
 

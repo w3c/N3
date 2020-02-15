@@ -1,4 +1,4 @@
-#Processed by EYE v20.0211.2332 josd
+#Processed by EYE v20.0214.1629 josd
 #eye --no-genid --tactic limited-answer 1 http://josd.github.io/brain/restpath/initial.n3 http://josd.github.io/brain/restpath/path-9-3.n3 --query http://josd.github.io/brain/restpath/goal.n3
 
 @prefix ex: <http://example.org/#>.
@@ -383,6 +383,6 @@
   };
   r:because [ a r:Parsing; r:source <http://josd.github.io/brain/restpath/path-9-3.n3>].
 
-#2020-02-14T22:11:26.176Z in=11 out=1 ent=209 step=218 brake=1 inf=111196 sec=0.138 inf/sec=805768
+#2020-02-15T19:34:26.314Z in=11 out=1 ent=209 step=218 brake=1 inf=108840 sec=0.133 inf/sec=818346
 #ENDS
 

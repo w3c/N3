@@ -1,4 +1,4 @@
-#Processed by EYE v20.0211.2332 josd
+#Processed by EYE v20.0214.1629 josd
 #eye --no-genid http://josd.github.io/brain/medic/medic.n3 --query http://josd.github.io/brain/medic/medicF.n3
 
 @prefix math: <http://www.w3.org/2000/10/swap/math#>.
@@ -122,6 +122,6 @@
   };
   r:because [ a r:Parsing; r:source <http://josd.github.io/brain/medic/medic.n3>].
 
-#2020-02-14T22:10:51.934Z in=18 out=2 ent=4 step=8 brake=4 inf=47551 sec=0.104 inf/sec=457221
+#2020-02-15T19:33:48.805Z in=18 out=2 ent=4 step=8 brake=4 inf=45195 sec=0.103 inf/sec=438786
 #ENDS
 

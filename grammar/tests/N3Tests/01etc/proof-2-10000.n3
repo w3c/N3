@@ -1,4 +1,4 @@
-#Processed by EYE v20.0211.2332 josd
+#Processed by EYE v20.0214.1629 josd
 #eye --no-genid --twinkle http://josd.github.io/brain/djiti/proof-10000.n3 --query http://josd.github.io/brain/djiti/query.n3
 
 @prefix : <http://josd.github.io/brain#>.
@@ -65447,6 +65447,6 @@
   };
   r:because [ a r:Parsing; r:source <http://josd.github.io/brain/djiti/proof-10000.n3>].
 
-#2020-02-14T22:10:05.529Z in=37739 out=966 ent=3683 step=7366 brake=2 inf=27987907 sec=13.285 inf/sec=2106730
+#2020-02-15T19:32:54.200Z in=37739 out=966 ent=3683 step=7366 brake=2 inf=27985531 sec=13.706 inf/sec=2041845
 #ENDS
 

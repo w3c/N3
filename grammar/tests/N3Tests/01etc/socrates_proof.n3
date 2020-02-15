@@ -1,4 +1,4 @@
-#Processed by EYE v20.0211.2332 josd
+#Processed by EYE v20.0214.1629 josd
 #eye --no-genid http://josd.github.io/brain/socrates/socrates.n3 --query http://josd.github.io/brain/socrates/socratesF.n3
 
 @prefix log: <http://www.w3.org/2000/10/swap/log#>.
@@ -78,6 +78,6 @@
   };
   r:because [ a r:Parsing; r:source <http://josd.github.io/brain/socrates/socrates.n3>].
 
-#2020-02-14T22:11:38.134Z in=4 out=2 ent=3 step=6 brake=2 inf=24629 sec=0.086 inf/sec=286384
+#2020-02-15T19:34:37.348Z in=4 out=2 ent=3 step=6 brake=2 inf=22274 sec=0.080 inf/sec=278425
 #ENDS
 
