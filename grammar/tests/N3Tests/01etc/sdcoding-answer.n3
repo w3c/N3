@@ -1,7 +1,7 @@
-#Processed by EYE v20.0204.1058 josd
-#eye --no-genid --wcache http://josd.github.io/fluid/dqc . --no-distinct-input --nope http://josd.github.io/fluid/dqc/sdcoding-a.n3 --query http://josd.github.io/fluid/dqc/sdcoding-query.n3
+#Processed by EYE v20.0214.1629 josd
+#eye --no-genid --wcache http://josd.github.io/brain/dqc . --no-distinct-input --nope http://josd.github.io/brain/dqc/sdcoding-a.n3 --query http://josd.github.io/brain/dqc/sdcoding-query.n3
 
-@prefix dqc: <http://josd.github.io/fluid/dqc#>.
+@prefix dqc: <http://josd.github.io/brain/dqc#>.
 @prefix e: <http://eulersharp.sourceforge.net/2003/03swap/log-rules#>.
 @prefix math: <http://www.w3.org/2000/10/swap/math#>.
 
@@ -10,6 +10,6 @@
 0 dqc:sdcoding 0 .
 2 dqc:sdcoding 2 .
 
-#2020-02-08T10:13:00.344Z in=25 out=4 ent=4 step=4 brake=2 inf=27666 sec=0.082 inf/sec=337390
+#2020-02-15T20:05:18.410Z in=25 out=4 ent=4 step=4 brake=2 inf=25290 sec=0.076 inf/sec=332763
 #ENDS
 

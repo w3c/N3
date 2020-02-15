@@ -1,18 +1,18 @@
-#Processed by EYE v20.0204.1058 josd
-#eye --no-genid --tactic limited-answer 1 http://josd.github.io/fluid/dp/dp.n3 --query http://josd.github.io/fluid/dp/dpQ.n3
+#Processed by EYE v20.0214.1629 josd
+#eye --no-genid --tactic limited-answer 1 http://josd.github.io/brain/dp/dp.n3 --query http://josd.github.io/brain/dp/dpQ.n3
 
-# <http://josd.github.io/fluid#person5> thinking for 0.025 seconds
-# <http://josd.github.io/fluid#person1> thinking for 0.1 seconds
-# <http://josd.github.io/fluid#person5> eating for 0.1 seconds
-# <http://josd.github.io/fluid#person2> thinking for 0.2 seconds
-# <http://josd.github.io/fluid#person1> eating for 0.1 seconds
-# <http://josd.github.io/fluid#person4> thinking for 0.25 seconds
-# <http://josd.github.io/fluid#person3> thinking for 0.3 seconds
-# <http://josd.github.io/fluid#person2> eating for 0.2 seconds
-# <http://josd.github.io/fluid#person4> eating for 0.2 seconds
-# <http://josd.github.io/fluid#person3> eating for 0.3 seconds
+# <http://josd.github.io/brain#person5> thinking for 0.025 seconds
+# <http://josd.github.io/brain#person1> thinking for 0.1 seconds
+# <http://josd.github.io/brain#person5> eating for 0.1 seconds
+# <http://josd.github.io/brain#person2> thinking for 0.2 seconds
+# <http://josd.github.io/brain#person1> eating for 0.1 seconds
+# <http://josd.github.io/brain#person4> thinking for 0.25 seconds
+# <http://josd.github.io/brain#person3> thinking for 0.3 seconds
+# <http://josd.github.io/brain#person2> eating for 0.2 seconds
+# <http://josd.github.io/brain#person4> eating for 0.2 seconds
+# <http://josd.github.io/brain#person3> eating for 0.3 seconds
 @prefix e: <http://eulersharp.sourceforge.net/2003/03swap/log-rules#>.
-@prefix : <http://josd.github.io/fluid#>.
+@prefix : <http://josd.github.io/brain#>.
 @prefix r: <http://www.w3.org/2000/10/swap/reason#>.
 @prefix var: <http://josd.github.io/var#>.
 @prefix n3: <http://www.w3.org/2004/06/rei#>.
@@ -64,7 +64,7 @@
   r:gives {
     {:all :got :dinner} => {:all :got :dinner}.
   };
-  r:because [ a r:Parsing; r:source <http://josd.github.io/fluid/dp/dpQ.n3>].
+  r:because [ a r:Parsing; r:source <http://josd.github.io/brain/dp/dpQ.n3>].
 
 <#lemma4> a r:Extraction;
   r:gives {
@@ -79,8 +79,8 @@
      ("thread_join" var:x_3 var:x_8) e:derive true.
      ("thread_join" var:x_4 var:x_9) e:derive true} => {:all :got :dinner}.
   };
-  r:because [ a r:Parsing; r:source <http://josd.github.io/fluid/dp/dp.n3>].
+  r:because [ a r:Parsing; r:source <http://josd.github.io/brain/dp/dp.n3>].
 
-#2020-02-08T10:12:58.171Z in=10 out=1 ent=2 step=2 brake=1 inf=50688 sec=0.102 inf/sec=496941
+#2020-02-15T20:05:16.263Z in=10 out=1 ent=2 step=2 brake=1 inf=48332 sec=0.102 inf/sec=473843
 #ENDS
 

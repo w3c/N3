@@ -2,7 +2,7 @@
 @prefix math: <http://www.w3.org/2000/10/swap/math#>.
 @prefix log: <http://www.w3.org/2000/10/swap/log#>.
 @prefix e: <http://eulersharp.sourceforge.net/2003/03swap/log-rules#>.
-@prefix : <http://eulersharp.sourceforge.net/2003/03swap/fluid#>.
+@prefix : <http://eulersharp.sourceforge.net/2003/03swap/brain#>.
 
 {   <swetA11.n3> log:semantics ?A.
     ?A math:memberCount ?D.

@@ -1,5 +1,5 @@
-#Processed by EYE v20.0204.1058 josd
-#eye --no-genid http://josd.github.io/fluid/rgb/redgraph001.n3 --query http://josd.github.io/fluid/rgb/greenquery001.n3
+#Processed by EYE v20.0214.1629 josd
+#eye --no-genid http://josd.github.io/brain/rgb/redgraph001.n3 --query http://josd.github.io/brain/rgb/greenquery001.n3
 
 @prefix : <http://example.org/try#>.
 @prefix r: <http://www.w3.org/2000/10/swap/reason#>.
@@ -40,20 +40,20 @@
   r:gives {
     :s :p :o.
   };
-  r:because [ a r:Parsing; r:source <http://josd.github.io/fluid/rgb/redgraph001.n3>].
+  r:because [ a r:Parsing; r:source <http://josd.github.io/brain/rgb/redgraph001.n3>].
 
 <#lemma4> a r:Extraction;
   r:gives {
     @forAll var:x_0. @forSome var:x_1. {var:x_0 :p :o} => {{var:x_0 :p var:x_1} => {var:x_0 :q var:x_1}}.
   };
-  r:because [ a r:Parsing; r:source <http://josd.github.io/fluid/rgb/greenquery001.n3>].
+  r:because [ a r:Parsing; r:source <http://josd.github.io/brain/rgb/greenquery001.n3>].
 
 <#lemma5> a r:Extraction;
   r:gives {
     @forAll var:x_0. @forSome var:x_1. {var:x_0 :p :o} => {{var:x_0 :q var:x_1} => {var:x_0 :r var:x_1}}.
   };
-  r:because [ a r:Parsing; r:source <http://josd.github.io/fluid/rgb/greenquery001.n3>].
+  r:because [ a r:Parsing; r:source <http://josd.github.io/brain/rgb/greenquery001.n3>].
 
-#2020-02-08T10:14:10.218Z in=5 out=2 ent=2 step=2 brake=1 inf=22382 sec=0.086 inf/sec=260256
+#2020-02-15T20:06:47.097Z in=5 out=2 ent=2 step=2 brake=1 inf=20026 sec=0.079 inf/sec=253494
 #ENDS
 
