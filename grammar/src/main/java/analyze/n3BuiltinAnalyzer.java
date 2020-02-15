@@ -16,9 +16,9 @@ public class n3BuiltinAnalyzer {
 	public static void main(String[] args) throws Exception {
 		n3BuiltinAnalyzer analyzer = new n3BuiltinAnalyzer("n3", "tests/N3Tests/");
 
-//		analyzer.analyzeFile("07test/biR.n3");
-		analyzer.analyzeFolder("01etc/");
-//		analyzer.analyzeAll();
+//		analyzer.analyzeFile("07test/grawlgen.n3");
+//		analyzer.analyzeFolder("01etc/");
+		analyzer.analyzeAll();
 	}
 
 	private String grammarLabel;
@@ -53,7 +53,7 @@ public class n3BuiltinAnalyzer {
 	}
 
 	private void runTest(String test) {
-//		System.out.println("- " + test);
+		System.out.println("- " + test);
 
 		File file = new File(mainFolder, test);
 		n3Grammar grammar = new n3Grammar();
