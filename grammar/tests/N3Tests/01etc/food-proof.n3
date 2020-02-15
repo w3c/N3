@@ -505,6 +505,6 @@
   };
   r:because [ a r:Parsing; r:source <http://josd.github.io/brain/rpo/rdfs-subClassOf.n3>].
 
-#2020-02-15T19:34:17.140Z in=45 out=16 ent=91 step=338 brake=3 inf=94639 sec=0.133 inf/sec=711571
+#2020-02-15T20:06:36.159Z in=45 out=16 ent=91 step=338 brake=3 inf=94649 sec=0.132 inf/sec=717038
 #ENDS
 

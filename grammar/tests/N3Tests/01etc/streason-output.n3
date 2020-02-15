@@ -102,6 +102,6 @@ _:sk_19 <http://josd.github.io/brain#q> true.
 _:sk_19 <http://josd.github.io/brain#q> 9.
 (<http://josd.github.io/brain#i4181> <http://josd.github.io/brain#i8> <http://josd.github.io/brain#i9462>) <http://josd.github.io/brain#r5> <http://josd.github.io/brain#r10>.
 (<http://josd.github.io/brain#i8> <http://josd.github.io/brain#i9462> 9 <http://josd.github.io/brain#i4181>) <http://josd.github.io/brain#r9> true.
-#2020-02-15T19:34:37.971Z in=16 out=101 ent=0 step=0 brake=0 inf=31341 sec=0.085 inf/sec=368718
+#2020-02-15T20:07:08.285Z in=16 out=101 ent=0 step=0 brake=0 inf=31369 sec=0.090 inf/sec=348544
 #ENDS
 

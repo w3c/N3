@@ -1501,6 +1501,6 @@
       1 log:equalTo var:x_1} {1 log:equalTo 1 .
       1 log:equalTo 1}) e:derive true}}}].
 
-#2020-02-15T19:33:26.241Z in=253 out=18 ent=237 step=1917 brake=5 inf=1212119 sec=0.726 inf/sec=1669585
+#2020-02-15T20:05:45.981Z in=253 out=18 ent=237 step=1917 brake=5 inf=1212128 sec=0.716 inf/sec=1692916
 #ENDS
 

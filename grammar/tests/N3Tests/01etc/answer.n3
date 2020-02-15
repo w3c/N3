@@ -132,6 +132,6 @@
   };
   r:because [ a r:Parsing; r:source <http://josd.github.io/brain/3outof5/sample.n3>].
 
-#2020-02-15T19:32:04.926Z in=6 out=1 ent=1 step=1 brake=2 inf=50106 sec=0.123 inf/sec=407366
+#2020-02-15T20:04:24.394Z in=6 out=1 ent=1 step=1 brake=2 inf=50096 sec=0.121 inf/sec=414017
 #ENDS
 

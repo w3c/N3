@@ -202,6 +202,6 @@
   };
   r:because [ a r:Parsing; r:source <http://josd.github.io/brain/einstein/einstein.n3>].
 
-#2020-02-15T19:33:04.688Z in=5 out=1 ent=2 step=4 brake=2 inf=701113 sec=0.422 inf/sec=1661405
+#2020-02-15T20:05:24.322Z in=5 out=1 ent=2 step=4 brake=2 inf=701107 sec=0.419 inf/sec=1673286
 #ENDS
 

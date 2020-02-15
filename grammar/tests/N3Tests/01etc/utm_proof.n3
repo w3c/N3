@@ -1,7 +1,7 @@
 #Processed by EYE v20.0214.1629 josd
 #eye --no-genid --plugin http://josd.github.io/brain/utm/utm_interpreter.pl --plugin http://josd.github.io/brain/utm/utm_program.pl --query http://josd.github.io/brain/utm/utm_query.n3
 
-@prefix utm: <http://josd.github.io/eye/brain/utm#>.
+@prefix utm: <http://josd.github.io/brain/utm#>.
 @prefix r: <http://www.w3.org/2000/10/swap/reason#>.
 @prefix var: <http://josd.github.io/var#>.
 @prefix n3: <http://www.w3.org/2004/06/rei#>.
@@ -1818,6 +1818,6 @@
   r:rule [ a r:Fact; r:gives {"continue(halt,avar0,avar2,avar3,avar4)" <= {"reverse(avar0,avar1)".
     "append(avar1,[avar2|avar3],avar4)"}}].
 
-#2020-02-15T19:34:58.160Z in=4 out=4 ent=4 step=4 brake=1 inf=214318 sec=0.182 inf/sec=1177571
+#2020-02-15T20:07:28.874Z in=4 out=4 ent=4 step=4 brake=1 inf=214296 sec=0.176 inf/sec=1217591
 #ENDS
 

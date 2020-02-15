@@ -115,6 +115,6 @@
   };
   r:because [ a r:Parsing; r:source <http://josd.github.io/brain/witch/witch.n3>].
 
-#2020-02-15T19:34:59.146Z in=8 out=1 ent=7 step=25 brake=5 inf=26861 sec=0.088 inf/sec=305239
+#2020-02-15T20:07:29.875Z in=8 out=1 ent=7 step=25 brake=5 inf=26877 sec=0.088 inf/sec=305420
 #ENDS
 

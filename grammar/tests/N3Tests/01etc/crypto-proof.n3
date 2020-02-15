@@ -108,6 +108,6 @@
   };
   r:because [ a r:Parsing; r:source <http://josd.github.io/brain/crypto/cryptoP.n3>].
 
-#2020-02-15T19:32:24.497Z in=3 out=3 ent=6 step=12 brake=2 inf=26239 sec=0.085 inf/sec=308694
+#2020-02-15T20:04:44.434Z in=3 out=3 ent=6 step=12 brake=2 inf=26249 sec=0.079 inf/sec=332266
 #ENDS
 

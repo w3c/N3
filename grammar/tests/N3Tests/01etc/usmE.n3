@@ -441,6 +441,6 @@
   };
   r:because [ a r:Parsing; r:source <http://josd.github.io/brain/usm/usmP.n3>].
 
-#2020-02-15T19:34:55.212Z in=21 out=2 ent=24 step=88 brake=5 inf=76985 sec=0.116 inf/sec=663664
+#2020-02-15T20:07:25.894Z in=21 out=2 ent=24 step=88 brake=5 inf=76995 sec=0.110 inf/sec=699955
 #ENDS
 

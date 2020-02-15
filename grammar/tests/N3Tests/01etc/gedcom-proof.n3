@@ -1136,6 +1136,6 @@
   r:binding [ r:variable [ n3:uri "http://josd.github.io/var#x_2"]; r:boundTo (:Dirk :Greta)];
   r:rule <#lemma92>.
 
-#2020-02-15T19:33:30.386Z in=185 out=6 ent=1591 step=18973 brake=12 inf=880581 sec=0.457 inf/sec=1926873
+#2020-02-15T20:05:50.215Z in=185 out=6 ent=1591 step=18973 brake=12 inf=880591 sec=0.462 inf/sec=1906041
 #ENDS
 

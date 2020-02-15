@@ -228,6 +228,6 @@
   };
   r:because [ a r:Parsing; r:source <http://josd.github.io/brain/iq/iq.n3>].
 
-#2020-02-15T19:33:43.097Z in=7 out=10 ent=13 step=26 brake=2 inf=59541 sec=0.099 inf/sec=601424
+#2020-02-15T20:06:02.731Z in=7 out=10 ent=13 step=26 brake=2 inf=59585 sec=0.099 inf/sec=601869
 #ENDS
 

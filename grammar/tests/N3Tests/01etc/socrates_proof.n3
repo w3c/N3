@@ -78,6 +78,6 @@
   };
   r:because [ a r:Parsing; r:source <http://josd.github.io/brain/socrates/socrates.n3>].
 
-#2020-02-15T19:34:37.348Z in=4 out=2 ent=3 step=6 brake=2 inf=22274 sec=0.080 inf/sec=278425
+#2020-02-15T20:07:07.652Z in=4 out=2 ent=3 step=6 brake=2 inf=22304 sec=0.084 inf/sec=265524
 #ENDS
 

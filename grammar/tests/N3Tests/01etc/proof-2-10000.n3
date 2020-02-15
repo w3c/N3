@@ -65447,6 +65447,6 @@
   };
   r:because [ a r:Parsing; r:source <http://josd.github.io/brain/djiti/proof-10000.n3>].
 
-#2020-02-15T19:32:54.200Z in=37739 out=966 ent=3683 step=7366 brake=2 inf=27985531 sec=13.706 inf/sec=2041845
+#2020-02-15T20:05:14.288Z in=37739 out=966 ent=3683 step=7366 brake=2 inf=27985541 sec=13.648 inf/sec=2050523
 #ENDS
 

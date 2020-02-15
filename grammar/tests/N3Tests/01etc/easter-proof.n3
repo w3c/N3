@@ -10576,6 +10576,6 @@
   };
   r:because [ a r:Parsing; r:source <http://josd.github.io/brain/image/year.n3>].
 
-#2020-02-15T19:33:42.176Z in=5 out=101 ent=202 step=404 brake=2 inf=1726057 sec=0.799 inf/sec=2160272
+#2020-02-15T20:06:02.092Z in=5 out=101 ent=202 step=404 brake=2 inf=1726087 sec=0.809 inf/sec=2133606
 #ENDS
 

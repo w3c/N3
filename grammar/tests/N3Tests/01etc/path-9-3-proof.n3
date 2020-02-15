@@ -383,6 +383,6 @@
   };
   r:because [ a r:Parsing; r:source <http://josd.github.io/brain/restpath/path-9-3.n3>].
 
-#2020-02-15T19:34:26.314Z in=11 out=1 ent=209 step=218 brake=1 inf=108840 sec=0.133 inf/sec=818346
+#2020-02-15T20:06:45.467Z in=11 out=1 ent=209 step=218 brake=1 inf=108850 sec=0.133 inf/sec=818421
 #ENDS
 

@@ -1012,6 +1012,6 @@
   };
   r:because [ a r:Parsing; r:source <http://josd.github.io/brain/lldm/lldmP.n3>].
 
-#2020-02-15T19:33:46.568Z in=168 out=1 ent=39 step=124 brake=4 inf=230248 sec=0.189 inf/sec=1218243
+#2020-02-15T20:06:06.263Z in=168 out=1 ent=39 step=124 brake=4 inf=230274 sec=0.191 inf/sec=1205623
 #ENDS
 

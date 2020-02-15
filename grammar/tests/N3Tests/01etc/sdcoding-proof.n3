@@ -121,6 +121,6 @@
   };
   r:because [ a r:Parsing; r:source <http://josd.github.io/brain/dqc/sdcoding-a.n3>].
 
-#2020-02-15T19:32:58.757Z in=25 out=4 ent=4 step=4 brake=2 inf=38664 sec=0.082 inf/sec=471512
+#2020-02-15T20:05:18.622Z in=25 out=4 ent=4 step=4 brake=2 inf=38674 sec=0.085 inf/sec=454988
 #ENDS
 

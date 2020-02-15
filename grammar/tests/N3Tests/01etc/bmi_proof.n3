@@ -1342,6 +1342,6 @@
   };
   r:because [ a r:Parsing; r:source <http://josd.github.io/brain/bmi/bmi_instances.n3>].
 
-#2020-02-15T19:32:12.561Z in=97 out=50 ent=100 step=48 brake=4 inf=399064 sec=0.304 inf/sec=1312711
+#2020-02-15T20:04:32.354Z in=97 out=50 ent=100 step=48 brake=4 inf=399075 sec=0.298 inf/sec=1339178
 #ENDS
 

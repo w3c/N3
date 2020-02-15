@@ -276,6 +276,6 @@
   };
   r:because [ a r:Parsing; r:source <http://josd.github.io/brain/dpe/dpe_theory.n3>].
 
-#2020-02-15T19:32:57.882Z in=16 out=2 ent=32 step=120 brake=4 inf=51395 sec=0.112 inf/sec=458884
+#2020-02-15T20:05:17.749Z in=16 out=2 ent=32 step=120 brake=4 inf=51405 sec=0.100 inf/sec=514050
 #ENDS
 

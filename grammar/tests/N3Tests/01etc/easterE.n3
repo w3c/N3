@@ -1610,6 +1610,6 @@
   };
   r:because [ a r:Parsing; r:source <http://josd.github.io/brain/easter/easterP.n3>].
 
-#2020-02-15T19:33:03.292Z in=19 out=16 ent=32 step=64 brake=2 inf=297815 sec=0.212 inf/sec=1404788
+#2020-02-15T20:05:22.983Z in=19 out=16 ent=32 step=64 brake=2 inf=297805 sec=0.207 inf/sec=1438671
 #ENDS
 

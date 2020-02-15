@@ -591,6 +591,6 @@
   };
   r:because [ a r:Parsing; r:source <http://josd.github.io/brain/preduction/palindrome2.n3>].
 
-#2020-02-15T19:34:14.863Z in=7 out=1 ent=1 step=1 brake=1 inf=170080 sec=0.143 inf/sec=1189371
+#2020-02-15T20:06:33.897Z in=7 out=1 ent=1 step=1 brake=1 inf=170090 sec=0.150 inf/sec=1133933
 #ENDS
 

@@ -171,6 +171,6 @@
   };
   r:because [ a r:Parsing; r:source <http://josd.github.io/brain/djiti/proof-10.n3>].
 
-#2020-02-15T19:32:35.677Z in=89 out=2 ent=9 step=18 brake=2 inf=83216 sec=0.120 inf/sec=693467
+#2020-02-15T20:04:55.580Z in=89 out=2 ent=9 step=18 brake=2 inf=83228 sec=0.122 inf/sec=682197
 #ENDS
 

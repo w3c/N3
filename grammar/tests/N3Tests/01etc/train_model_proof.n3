@@ -857,6 +857,6 @@
   };
   r:because [ a r:Parsing; r:source <http://josd.github.io/brain/ccd/train_data.n3>].
 
-#2020-02-15T19:32:23.291Z in=54 out=17 ent=41 step=254 brake=4 inf=178089 sec=0.151 inf/sec=1179397
+#2020-02-15T20:04:43.201Z in=54 out=17 ent=41 step=254 brake=4 inf=178099 sec=0.153 inf/sec=1164046
 #ENDS
 

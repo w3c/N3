@@ -16037,6 +16037,6 @@
   };
   r:because [ a r:Parsing; r:source <http://josd.github.io/brain/dt/test-dt-1000.n3>].
 
-#2020-02-15T19:33:02.141Z in=3004 out=1 ent=2999 step=5998 brake=2 inf=3978017 sec=1.781 inf/sec=2233586
+#2020-02-15T20:05:21.856Z in=3004 out=1 ent=2999 step=5998 brake=2 inf=3978007 sec=1.762 inf/sec=2257666
 #ENDS
 

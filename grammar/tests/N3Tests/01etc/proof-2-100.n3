@@ -435,6 +435,6 @@
   };
   r:because [ a r:Parsing; r:source <http://josd.github.io/brain/djiti/proof-100.n3>].
 
-#2020-02-15T19:32:36.598Z in=244 out=6 ent=24 step=48 brake=2 inf=196116 sec=0.177 inf/sec=1108000
+#2020-02-15T20:04:56.486Z in=244 out=6 ent=24 step=48 brake=2 inf=196126 sec=0.167 inf/sec=1174407
 #ENDS
 

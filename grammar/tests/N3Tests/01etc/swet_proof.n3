@@ -1588,6 +1588,6 @@
   };
   r:because [ a r:Parsing; r:source <http://josd.github.io/brain/swet/swetQ.n3>].
 
-#2020-02-15T19:34:49.944Z in=303 out=3 ent=3 step=3 brake=1 inf=630172 sec=0.359 inf/sec=1755354
+#2020-02-15T20:07:20.626Z in=303 out=3 ent=3 step=3 brake=1 inf=630182 sec=0.336 inf/sec=1875542
 #ENDS
 

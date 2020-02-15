@@ -187,6 +187,6 @@
   };
   r:because [ a r:Parsing; r:source <http://josd.github.io/brain/hanoi/hanoi.n3>].
 
-#2020-02-15T19:33:39.233Z in=3 out=1 ent=2 step=2 brake=1 inf=38567 sec=0.085 inf/sec=453729
+#2020-02-15T20:05:59.140Z in=3 out=1 ent=2 step=2 brake=1 inf=38577 sec=0.087 inf/sec=443414
 #ENDS
 

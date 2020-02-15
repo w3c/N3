@@ -31054,6 +31054,6 @@
   };
   r:because [ a r:Parsing; r:source <http://josd.github.io/brain/pi/pi.n3>].
 
-#2020-02-15T19:34:09.097Z in=4 out=1 ent=1 step=1 brake=1 inf=4496826 sec=2.052 inf/sec=2191436
+#2020-02-15T20:06:28.451Z in=4 out=1 ent=1 step=1 brake=1 inf=4496814 sec=2.057 inf/sec=2186103
 #ENDS
 

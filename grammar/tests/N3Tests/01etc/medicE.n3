@@ -122,6 +122,6 @@
   };
   r:because [ a r:Parsing; r:source <http://josd.github.io/brain/medic/medic.n3>].
 
-#2020-02-15T19:33:48.805Z in=18 out=2 ent=4 step=8 brake=4 inf=45195 sec=0.103 inf/sec=438786
+#2020-02-15T20:06:08.466Z in=18 out=2 ent=4 step=8 brake=4 inf=45223 sec=0.100 inf/sec=452230
 #ENDS
 

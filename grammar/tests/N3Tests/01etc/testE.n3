@@ -195,6 +195,6 @@
   };
   r:because [ a r:Parsing; r:source <http://josd.github.io/brain/glass/test.n3>].
 
-#2020-02-15T19:33:31.446Z in=9 out=6 ent=7 step=30 brake=2 inf=48200 sec=0.099 inf/sec=486869
+#2020-02-15T20:05:51.252Z in=9 out=6 ent=7 step=30 brake=2 inf=48211 sec=0.098 inf/sec=491949
 #ENDS
 

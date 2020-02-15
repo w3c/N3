@@ -97,6 +97,6 @@
   };
   r:because [ a r:Parsing; r:source <http://josd.github.io/brain/pptbank/checking.n3>].
 
-#2020-02-15T19:34:11.809Z in=17 out=1 ent=2 step=4 brake=4 inf=45014 sec=0.107 inf/sec=420692
+#2020-02-15T20:06:31.470Z in=17 out=1 ent=2 step=4 brake=4 inf=45024 sec=0.111 inf/sec=405622
 #ENDS
 

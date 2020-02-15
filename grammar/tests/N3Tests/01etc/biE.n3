@@ -4509,6 +4509,6 @@
   };
   r:because [ a r:Parsing; r:source <http://josd.github.io/brain/bi/biP.n3>].
 
-#2020-02-15T19:32:10.172Z in=131 out=97 ent=200 step=910 brake=6 inf=1145449 sec=0.610 inf/sec=1877785
+#2020-02-15T20:04:29.925Z in=131 out=97 ent=200 step=910 brake=6 inf=1145459 sec=0.604 inf/sec=1896455
 #ENDS
 

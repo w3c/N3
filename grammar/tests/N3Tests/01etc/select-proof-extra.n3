@@ -147,6 +147,6 @@
   };
   r:because [ a r:Parsing; r:source <http://josd.github.io/brain/csv/select-data-extra.n3>].
 
-#2020-02-15T19:32:27.511Z in=6 out=5 ent=5 step=5 brake=2 inf=51628 sec=0.123 inf/sec=419740
+#2020-02-15T20:04:47.447Z in=6 out=5 ent=5 step=5 brake=2 inf=51638 sec=0.119 inf/sec=433933
 #ENDS
 

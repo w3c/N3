@@ -13,6 +13,6 @@
 {(?U_15 :pop ?U_16) :palindrome true} <= {?U_15 e:firstRest (?U_17 ?U_18). ?U_16 e:firstRest (?U_17 ?U_19). (?U_18 :pop ?U_19) :palindrome true}.
 (() :pop ()) :palindrome true.
 
-#2020-02-15T19:34:12.040Z in=24 out=6 ent=6 step=6 brake=1 inf=58019 sec=0.095 inf/sec=610726
+#2020-02-15T20:06:31.700Z in=24 out=6 ent=6 step=6 brake=1 inf=58029 sec=0.093 inf/sec=623968
 #ENDS
 

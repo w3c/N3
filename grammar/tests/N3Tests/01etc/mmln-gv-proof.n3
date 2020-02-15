@@ -2198,6 +2198,6 @@
   };
   r:because [ a r:Parsing; r:source <http://josd.github.io/brain/mmln/mmln-plugin.n3>].
 
-#2020-02-15T19:33:51.808Z in=345 out=47 ent=105 step=332 brake=4 inf=2070000 sec=1.271 inf/sec=1628639
+#2020-02-15T20:06:11.485Z in=345 out=47 ent=105 step=332 brake=4 inf=2070011 sec=1.257 inf/sec=1646787
 #ENDS
 

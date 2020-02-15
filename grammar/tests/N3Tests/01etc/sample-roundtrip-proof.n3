@@ -24,7 +24,7 @@
     :s :p {:a :b :c}.
     :s :p {:a :b :c.
      :d :e :f}.
-    <http://josd.github.io/.well-known/genid/cSomicIN3HfjlscrZDITsiF_1i4#e_X_1> :p {<http://josd.github.io/.well-known/genid/cSomicIN3HfjlscrZDITsiF_1i4#e_X_2> :b :c}.
+    <http://josd.github.io/.well-known/genid/0l4gZjrLokrTSMCaH1QcS_VZsC0#e_X_1> :p {<http://josd.github.io/.well-known/genid/0l4gZjrLokrTSMCaH1QcS_VZsC0#e_X_2> :b :c}.
     :s :p <http://www.w3.org/1999/02/22-rdf-syntax-ns#nil>.
     _:sk_0 :p :o.
     {:u :v ?U_1.
@@ -74,15 +74,15 @@
 
 <#lemma3> a r:Inference;
   r:gives {
-    <http://josd.github.io/.well-known/genid/cSomicIN3HfjlscrZDITsiF_1i4#e_X_1> :p {<http://josd.github.io/.well-known/genid/cSomicIN3HfjlscrZDITsiF_1i4#e_X_2> :b :c}.
+    <http://josd.github.io/.well-known/genid/0l4gZjrLokrTSMCaH1QcS_VZsC0#e_X_1> :p {<http://josd.github.io/.well-known/genid/0l4gZjrLokrTSMCaH1QcS_VZsC0#e_X_2> :b :c}.
   };
   r:evidence (
     <#lemma16>
     [ a r:Fact; r:gives {:p <http://www.w3.org/2000/10/swap/log#notEqualTo> <http://www.w3.org/2000/10/swap/log#implies>}]
   );
   r:binding [ r:variable [ n3:uri "http://josd.github.io/var#x_0"]; r:boundTo [ n3:uri "http://example.org/try#p"]];
-  r:binding [ r:variable [ n3:uri "http://josd.github.io/var#x_1"]; r:boundTo [ n3:uri "http://josd.github.io/.well-known/genid/cSomicIN3HfjlscrZDITsiF_1i4#e_X_1"]];
-  r:binding [ r:variable [ n3:uri "http://josd.github.io/var#x_2"]; r:boundTo {<http://josd.github.io/.well-known/genid/cSomicIN3HfjlscrZDITsiF_1i4#e_X_2> :b :c}];
+  r:binding [ r:variable [ n3:uri "http://josd.github.io/var#x_1"]; r:boundTo [ n3:uri "http://josd.github.io/.well-known/genid/0l4gZjrLokrTSMCaH1QcS_VZsC0#e_X_1"]];
+  r:binding [ r:variable [ n3:uri "http://josd.github.io/var#x_2"]; r:boundTo {<http://josd.github.io/.well-known/genid/0l4gZjrLokrTSMCaH1QcS_VZsC0#e_X_2> :b :c}];
   r:rule <#lemma14>.
 
 <#lemma4> a r:Inference;
@@ -221,7 +221,7 @@
   r:gives {
     :s :p {:a :b :c}.
   };
-  r:because [ a r:Parsing; r:source <http://josd.github.io/eye/brain/n3p/sample.n3>].
+  r:because [ a r:Parsing; r:source <http://josd.github.io/brain/n3p/sample.n3>].
 
 <#lemma14> a r:Extraction;
   r:gives {
@@ -235,19 +235,19 @@
     :s :p {:a :b :c.
      :d :e :f}.
   };
-  r:because [ a r:Parsing; r:source <http://josd.github.io/eye/brain/n3p/sample.n3>].
+  r:because [ a r:Parsing; r:source <http://josd.github.io/brain/n3p/sample.n3>].
 
 <#lemma16> a r:Extraction;
   r:gives {
-    <http://josd.github.io/.well-known/genid/cSomicIN3HfjlscrZDITsiF_1i4#e_X_1> :p {<http://josd.github.io/.well-known/genid/cSomicIN3HfjlscrZDITsiF_1i4#e_X_2> :b :c}.
+    <http://josd.github.io/.well-known/genid/0l4gZjrLokrTSMCaH1QcS_VZsC0#e_X_1> :p {<http://josd.github.io/.well-known/genid/0l4gZjrLokrTSMCaH1QcS_VZsC0#e_X_2> :b :c}.
   };
-  r:because [ a r:Parsing; r:source <http://josd.github.io/eye/brain/n3p/sample.n3>].
+  r:because [ a r:Parsing; r:source <http://josd.github.io/brain/n3p/sample.n3>].
 
 <#lemma17> a r:Extraction;
   r:gives {
     :s :p <http://www.w3.org/1999/02/22-rdf-syntax-ns#nil>.
   };
-  r:because [ a r:Parsing; r:source <http://josd.github.io/eye/brain/n3p/sample.n3>].
+  r:because [ a r:Parsing; r:source <http://josd.github.io/brain/n3p/sample.n3>].
 
 <#lemma18> a r:Inference;
   r:gives {
@@ -271,7 +271,7 @@
     {?U_9 :q ?U_10} <= {:u :v ?U_9.
      ?U_10 ?U_11 :z}.
   };
-  r:because [ a r:Parsing; r:source <http://josd.github.io/eye/brain/n3p/sample.n3>].
+  r:because [ a r:Parsing; r:source <http://josd.github.io/brain/n3p/sample.n3>].
 
 <#lemma21> a r:Extraction;
   r:gives {
@@ -285,20 +285,20 @@
      ?U_12 :p ?U_14.
      ?U_12 :y ?U_15}.
   };
-  r:because [ a r:Parsing; r:source <http://josd.github.io/eye/brain/n3p/sample.n3>].
+  r:because [ a r:Parsing; r:source <http://josd.github.io/brain/n3p/sample.n3>].
 
 <#lemma23> a r:Extraction;
   r:gives {
     {?U_16 :r ?U_17} <= {{?U_16 :q ?U_18} <= ?U_17}.
   };
-  r:because [ a r:Parsing; r:source <http://josd.github.io/eye/brain/n3p/sample.n3>].
+  r:because [ a r:Parsing; r:source <http://josd.github.io/brain/n3p/sample.n3>].
 
 <#lemma24> a r:Extraction;
   r:gives {
     @forSome var:x_0. true => {var:x_0 :p :o}.
   };
-  r:because [ a r:Parsing; r:source <http://josd.github.io/eye/brain/n3p/sample.n3>].
+  r:because [ a r:Parsing; r:source <http://josd.github.io/brain/n3p/sample.n3>].
 
-#2020-02-15T19:34:03.987Z in=12 out=12 ent=13 step=29 brake=2 inf=51101 sec=0.097 inf/sec=526814
+#2020-02-15T20:06:23.307Z in=12 out=12 ent=13 step=29 brake=2 inf=51037 sec=0.097 inf/sec=526155
 #ENDS
 

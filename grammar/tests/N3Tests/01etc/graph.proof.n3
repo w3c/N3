@@ -187,6 +187,6 @@
   };
   r:because [ a r:Parsing; r:source <http://josd.github.io/brain/graph/graph.axiom.n3>].
 
-#2020-02-15T19:33:36.840Z in=89 out=1 ent=24 step=70 brake=2 inf=90854 sec=0.130 inf/sec=698877
+#2020-02-15T20:05:56.723Z in=89 out=1 ent=24 step=70 brake=2 inf=90863 sec=0.129 inf/sec=704364
 #ENDS
 

@@ -26939,6 +26939,6 @@
   };
   r:because [ a r:Parsing; r:source <http://josd.github.io/brain/djiti/graph-10000.n3>].
 
-#2020-02-15T19:32:34.749Z in=10001 out=966 ent=966 step=966 brake=1 inf=3615253 sec=2.081 inf/sec=1737267
+#2020-02-15T20:04:54.666Z in=10001 out=966 ent=966 step=966 brake=1 inf=3615269 sec=2.086 inf/sec=1733111
 #ENDS
 

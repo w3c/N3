@@ -92,6 +92,6 @@
   };
   r:because [ a r:Parsing; r:source <http://josd.github.io/brain/n3c/components.n3>].
 
-#2020-02-15T19:34:01.557Z in=14 out=1 ent=1 step=1 brake=1 inf=36439 sec=0.098 inf/sec=371827
+#2020-02-15T20:06:21.568Z in=14 out=1 ent=1 step=1 brake=1 inf=36431 sec=0.103 inf/sec=353699
 #ENDS
 

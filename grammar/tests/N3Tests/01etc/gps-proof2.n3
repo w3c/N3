@@ -10150,6 +10150,6 @@
   r:binding [ r:variable [ n3:uri "http://josd.github.io/var#x_12"]; r:boundTo 2];
   r:rule <#lemma336>.
 
-#2020-02-15T19:33:35.408Z in=44 out=10 ent=10 step=10 brake=2 inf=2929750 sec=1.377 inf/sec=2127633
+#2020-02-15T20:05:55.244Z in=44 out=10 ent=10 step=10 brake=2 inf=2929760 sec=1.385 inf/sec=2115350
 #ENDS
 

@@ -134,6 +134,6 @@
   };
   r:because [ a r:Parsing; r:source <http://josd.github.io/brain/nbbn/nbbn-plugin.n3>].
 
-#2020-02-15T19:34:05.498Z in=19 out=1 ent=1 step=1 brake=2 inf=135851 sec=0.166 inf/sec=818380
+#2020-02-15T20:06:24.784Z in=19 out=1 ent=1 step=1 brake=2 inf=135841 sec=0.160 inf/sec=849006
 #ENDS
 

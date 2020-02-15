@@ -118,6 +118,6 @@
   };
   r:because [ a r:Parsing; r:source <http://eulersharp.sourceforge.net/2003/03swap/proof-lemma>].
 
-#2020-02-15T19:35:00.596Z in=96 out=1 ent=14 step=43 brake=3 inf=88875 sec=0.146 inf/sec=608733
+#2020-02-15T20:07:31.304Z in=96 out=1 ent=14 step=43 brake=3 inf=88865 sec=0.142 inf/sec=625810
 #ENDS
 

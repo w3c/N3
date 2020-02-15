@@ -54,6 +54,6 @@
   };
   r:because [ a r:Parsing; r:source <http://josd.github.io/brain/rgb/greenquery002.n3>].
 
-#2020-02-15T19:34:28.299Z in=5 out=2 ent=2 step=2 brake=1 inf=19996 sec=0.081 inf/sec=246864
+#2020-02-15T20:06:48.445Z in=5 out=2 ent=2 step=2 brake=1 inf=20007 sec=0.081 inf/sec=247000
 #ENDS
 
