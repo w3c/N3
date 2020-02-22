@@ -1,9 +1,9 @@
 #Processed by EYE v20.0218.2044 josd
-#eye --no-genid http://josd.github.io/see/preduction/palindrome2.n3 --query http://josd.github.io/see/preduction/palindrome2-query.n3
+#eye --no-genid http://josd.github.io/brain/preduction/palindrome2.n3 --query http://josd.github.io/brain/preduction/palindrome2-query.n3
 
 @prefix e: <http://eulersharp.sourceforge.net/2003/03swap/log-rules#>.
-@prefix : <http://josd.github.io/see#>.
-@prefix p: <http://josd.github.io/see/preduction#>.
+@prefix : <http://josd.github.io/brain#>.
+@prefix p: <http://josd.github.io/brain/preduction#>.
 @prefix log: <http://www.w3.org/2000/10/swap/log#>.
 @prefix r: <http://www.w3.org/2000/10/swap/reason#>.
 @prefix var: <http://josd.github.io/var#>.
@@ -41,7 +41,7 @@
     @forAll var:x_0. {("atom_codes" "ingirumimusnocteetconsumimurigni" var:x_0) e:derive true.
      (var:x_0) :palindrome true} => {"ingirumimusnocteetconsumimurigni" a :Palindrome}.
   };
-  r:because [ a r:Parsing; r:source <http://josd.github.io/see/preduction/palindrome2-query.n3>].
+  r:because [ a r:Parsing; r:source <http://josd.github.io/brain/preduction/palindrome2-query.n3>].
 
 <#lemma4> a r:Inference;
   r:gives {
@@ -63,7 +63,7 @@
   r:gives {
     @forAll var:x_0. {(var:x_0) :palindrome true} <= {(var:x_0 :push ()) :palindrome true}.
   };
-  r:because [ a r:Parsing; r:source <http://josd.github.io/see/preduction/palindrome2.n3>].
+  r:because [ a r:Parsing; r:source <http://josd.github.io/brain/preduction/palindrome2.n3>].
 
 <#lemma6> a r:Inference;
   r:gives {
@@ -87,7 +87,7 @@
      var:x_3 e:firstRest (var:x_1 var:x_4).
      (var:x_2 :push var:x_3) :palindrome true}.
   };
-  r:because [ a r:Parsing; r:source <http://josd.github.io/see/preduction/palindrome2.n3>].
+  r:because [ a r:Parsing; r:source <http://josd.github.io/brain/preduction/palindrome2.n3>].
 
 <#lemma8> a r:Inference;
   r:gives {
@@ -335,7 +335,7 @@
      var:x_3 e:firstRest (var:x_1 var:x_4).
      (var:x_2 :pop var:x_3) :palindrome true}.
   };
-  r:because [ a r:Parsing; r:source <http://josd.github.io/see/preduction/palindrome2.n3>].
+  r:because [ a r:Parsing; r:source <http://josd.github.io/brain/preduction/palindrome2.n3>].
 
 <#lemma24> a r:Inference;
   r:gives {
@@ -359,7 +359,7 @@
      var:x_3 e:firstRest (var:x_1 var:x_4).
      (var:x_2 :pop var:x_4) :palindrome true}.
   };
-  r:because [ a r:Parsing; r:source <http://josd.github.io/see/preduction/palindrome2.n3>].
+  r:because [ a r:Parsing; r:source <http://josd.github.io/brain/preduction/palindrome2.n3>].
 
 <#lemma26> a r:Inference;
   r:gives {
@@ -589,8 +589,8 @@
   r:gives {
     (() :pop ()) :palindrome true.
   };
-  r:because [ a r:Parsing; r:source <http://josd.github.io/see/preduction/palindrome2.n3>].
+  r:because [ a r:Parsing; r:source <http://josd.github.io/brain/preduction/palindrome2.n3>].
 
-#2020-02-22T17:05:30.977Z in=7 out=1 ent=1 step=1 brake=1 inf=170280 sec=0.147 inf/sec=1158367
+#2020-02-22T21:52:29.104Z in=7 out=1 ent=1 step=1 brake=1 inf=170318 sec=0.145 inf/sec=1174607
 #ENDS
 

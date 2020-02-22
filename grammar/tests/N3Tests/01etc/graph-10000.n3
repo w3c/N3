@@ -1,4 +1,4 @@
-@prefix : <http://josd.github.io/see#>.
+@prefix : <http://josd.github.io/brain#>.
 
 (:i76659 :i12822 :i50983) :p :o.
 (:i35820 :i72748 :i78472) :p :o.

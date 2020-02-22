@@ -1,5 +1,5 @@
-@prefix gps: <http://josd.github.io/see/gps/gps-schema#>.
-@prefix : <http://josd.github.io/see#>.
+@prefix gps: <http://josd.github.io/brain/gps/gps-schema#>.
+@prefix : <http://josd.github.io/brain#>.
 
 # current state
 :i1 :location :Gent.

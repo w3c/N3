@@ -1,7 +1,7 @@
 #Processed by EYE v20.0218.2044 josd
-#eye --no-genid --plugin http://josd.github.io/see/queens/queens_program.pl --query http://josd.github.io/see/queens/queens_query.n3
+#eye --no-genid --plugin http://josd.github.io/brain/queens/queens_program.pl --query http://josd.github.io/brain/queens/queens_query.n3
 
-@prefix queens: <http://josd.github.io/see/queens#>.
+@prefix queens: <http://josd.github.io/brain/queens#>.
 @prefix r: <http://www.w3.org/2000/10/swap/reason#>.
 @prefix var: <http://josd.github.io/var#>.
 @prefix n3: <http://www.w3.org/2004/06/rei#>.
@@ -1136,7 +1136,7 @@
   r:gives {
     @forAll var:x_0. {8 queens:solve var:x_0} => {8 queens:solve var:x_0}.
   };
-  r:because [ a r:Parsing; r:source <http://josd.github.io/see/queens/queens_query.n3>].
+  r:because [ a r:Parsing; r:source <http://josd.github.io/brain/queens/queens_query.n3>].
 
 <#lemma95> a r:Inference;
   r:gives {
@@ -24482,6 +24482,6 @@
   r:binding [ r:variable [ n3:uri "http://josd.github.io/var#x_2"]; r:boundTo [ a r:Existential; n3:nodeId "_:sk_17"]];
   r:rule [ a r:Fact; r:gives {"constraints(0,avar0,avar1,avar2)" <= {("!") <http://eulersharp.sourceforge.net/2003/03swap/log-rules#derive> true}}].
 
-#2020-02-22T17:05:40.277Z in=1 out=92 ent=92 step=92 brake=1 inf=9357459 sec=4.043 inf/sec=2314484
+#2020-02-22T21:52:38.016Z in=1 out=92 ent=92 step=92 brake=1 inf=9357465 sec=4.032 inf/sec=2320800
 #ENDS
 

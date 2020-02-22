@@ -1,5 +1,5 @@
 @prefix e: <http://eulersharp.sourceforge.net/2003/03swap/log-rules#>.
-@prefix : <http://eulersharp.sourceforge.net/2003/03swap/see#>.
+@prefix : <http://eulersharp.sourceforge.net/2003/03swap/brain#>.
 
 {   ?S e:answer {:obs :like ?OBS}.
     ?OBS :ascribed :WetGrass.

@@ -1,4 +1,4 @@
-@prefix dqc: <http://josd.github.io/see/dqc#>.
+@prefix dqc: <http://josd.github.io/brain/dqc#>.
 
 # first ask for all answers
 {
