@@ -1,5 +1,5 @@
-#Processed by EYE v20.0214.1629 josd
-#eye --no-genid http://josd.github.io/brain/easter/easterP.n3 --query http://josd.github.io/brain/easter/easterF.n3
+#Processed by EYE v20.0218.2044 josd
+#eye --no-genid http://josd.github.io/see/easter/easterP.n3 --query http://josd.github.io/see/easter/easterF.n3
 
 @prefix math: <http://www.w3.org/2000/10/swap/math#>.
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
@@ -302,7 +302,7 @@
   r:gives {
     @forAll var:x_0, var:x_1. {var:x_0 :easterFor var:x_1} => {var:x_0 :easterFor var:x_1}.
   };
-  r:because [ a r:Parsing; r:source <http://josd.github.io/brain/easter/easterF.n3>].
+  r:because [ a r:Parsing; r:source <http://josd.github.io/see/easter/easterF.n3>].
 
 <#lemma19> a r:Inference;
   r:gives {
@@ -1478,7 +1478,7 @@
   r:gives {
     2015 a :Year.
   };
-  r:because [ a r:Parsing; r:source <http://josd.github.io/brain/easter/easterP.n3>].
+  r:because [ a r:Parsing; r:source <http://josd.github.io/see/easter/easterP.n3>].
 
 <#lemma35> a r:Extraction;
   r:gives {
@@ -1518,98 +1518,98 @@
      (var:x_31 31) math:remainder var:x_33.
      (var:x_33 1) math:sum var:x_34} => {(var:x_34 var:x_32) :easterFor var:x_0}.
   };
-  r:because [ a r:Parsing; r:source <http://josd.github.io/brain/easter/easterP.n3>].
+  r:because [ a r:Parsing; r:source <http://josd.github.io/see/easter/easterP.n3>].
 
 <#lemma36> a r:Extraction;
   r:gives {
     2016 a :Year.
   };
-  r:because [ a r:Parsing; r:source <http://josd.github.io/brain/easter/easterP.n3>].
+  r:because [ a r:Parsing; r:source <http://josd.github.io/see/easter/easterP.n3>].
 
 <#lemma37> a r:Extraction;
   r:gives {
     2017 a :Year.
   };
-  r:because [ a r:Parsing; r:source <http://josd.github.io/brain/easter/easterP.n3>].
+  r:because [ a r:Parsing; r:source <http://josd.github.io/see/easter/easterP.n3>].
 
 <#lemma38> a r:Extraction;
   r:gives {
     2018 a :Year.
   };
-  r:because [ a r:Parsing; r:source <http://josd.github.io/brain/easter/easterP.n3>].
+  r:because [ a r:Parsing; r:source <http://josd.github.io/see/easter/easterP.n3>].
 
 <#lemma39> a r:Extraction;
   r:gives {
     2019 a :Year.
   };
-  r:because [ a r:Parsing; r:source <http://josd.github.io/brain/easter/easterP.n3>].
+  r:because [ a r:Parsing; r:source <http://josd.github.io/see/easter/easterP.n3>].
 
 <#lemma40> a r:Extraction;
   r:gives {
     2020 a :Year.
   };
-  r:because [ a r:Parsing; r:source <http://josd.github.io/brain/easter/easterP.n3>].
+  r:because [ a r:Parsing; r:source <http://josd.github.io/see/easter/easterP.n3>].
 
 <#lemma41> a r:Extraction;
   r:gives {
     2021 a :Year.
   };
-  r:because [ a r:Parsing; r:source <http://josd.github.io/brain/easter/easterP.n3>].
+  r:because [ a r:Parsing; r:source <http://josd.github.io/see/easter/easterP.n3>].
 
 <#lemma42> a r:Extraction;
   r:gives {
     2022 a :Year.
   };
-  r:because [ a r:Parsing; r:source <http://josd.github.io/brain/easter/easterP.n3>].
+  r:because [ a r:Parsing; r:source <http://josd.github.io/see/easter/easterP.n3>].
 
 <#lemma43> a r:Extraction;
   r:gives {
     2023 a :Year.
   };
-  r:because [ a r:Parsing; r:source <http://josd.github.io/brain/easter/easterP.n3>].
+  r:because [ a r:Parsing; r:source <http://josd.github.io/see/easter/easterP.n3>].
 
 <#lemma44> a r:Extraction;
   r:gives {
     2024 a :Year.
   };
-  r:because [ a r:Parsing; r:source <http://josd.github.io/brain/easter/easterP.n3>].
+  r:because [ a r:Parsing; r:source <http://josd.github.io/see/easter/easterP.n3>].
 
 <#lemma45> a r:Extraction;
   r:gives {
     2025 a :Year.
   };
-  r:because [ a r:Parsing; r:source <http://josd.github.io/brain/easter/easterP.n3>].
+  r:because [ a r:Parsing; r:source <http://josd.github.io/see/easter/easterP.n3>].
 
 <#lemma46> a r:Extraction;
   r:gives {
     2026 a :Year.
   };
-  r:because [ a r:Parsing; r:source <http://josd.github.io/brain/easter/easterP.n3>].
+  r:because [ a r:Parsing; r:source <http://josd.github.io/see/easter/easterP.n3>].
 
 <#lemma47> a r:Extraction;
   r:gives {
     2027 a :Year.
   };
-  r:because [ a r:Parsing; r:source <http://josd.github.io/brain/easter/easterP.n3>].
+  r:because [ a r:Parsing; r:source <http://josd.github.io/see/easter/easterP.n3>].
 
 <#lemma48> a r:Extraction;
   r:gives {
     2028 a :Year.
   };
-  r:because [ a r:Parsing; r:source <http://josd.github.io/brain/easter/easterP.n3>].
+  r:because [ a r:Parsing; r:source <http://josd.github.io/see/easter/easterP.n3>].
 
 <#lemma49> a r:Extraction;
   r:gives {
     2029 a :Year.
   };
-  r:because [ a r:Parsing; r:source <http://josd.github.io/brain/easter/easterP.n3>].
+  r:because [ a r:Parsing; r:source <http://josd.github.io/see/easter/easterP.n3>].
 
 <#lemma50> a r:Extraction;
   r:gives {
     2030 a :Year.
   };
-  r:because [ a r:Parsing; r:source <http://josd.github.io/brain/easter/easterP.n3>].
+  r:because [ a r:Parsing; r:source <http://josd.github.io/see/easter/easterP.n3>].
 
-#2020-02-15T20:05:22.983Z in=19 out=16 ent=32 step=64 brake=2 inf=297805 sec=0.207 inf/sec=1438671
+#2020-02-22T17:04:18.032Z in=19 out=16 ent=32 step=64 brake=2 inf=298043 sec=0.211 inf/sec=1412526
 #ENDS
 

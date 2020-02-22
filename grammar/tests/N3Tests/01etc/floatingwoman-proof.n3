@@ -1,7 +1,7 @@
-#Processed by EYE v20.0214.1629 josd
-#eye --no-genid http://josd.github.io/brain/witch/floatingwoman.n3 --twinkle http://josd.github.io/brain/witch/witch-proof.n3 --query http://josd.github.io/brain/witch/floatingwoman-goal.n3
+#Processed by EYE v20.0218.2044 josd
+#eye --no-genid http://josd.github.io/see/witch/floatingwoman.n3 --proof http://josd.github.io/see/witch/witch-proof.n3 --query http://josd.github.io/see/witch/floatingwoman-goal.n3
 
-@prefix : <http://josd.github.io/brain/witch#>.
+@prefix : <http://josd.github.io/see/witch#>.
 @prefix r: <http://www.w3.org/2000/10/swap/reason#>.
 @prefix var: <http://josd.github.io/var#>.
 @prefix n3: <http://www.w3.org/2004/06/rei#>.
@@ -19,7 +19,7 @@
   r:evidence (
     <#lemma2>
   );
-  r:binding [ r:variable [ n3:uri "http://josd.github.io/var#x_0"]; r:boundTo [ n3:uri "http://josd.github.io/brain/witch#GIRL"]];
+  r:binding [ r:variable [ n3:uri "http://josd.github.io/var#x_0"]; r:boundTo [ n3:uri "http://josd.github.io/see/witch#GIRL"]];
   r:rule <#lemma3>.
 
 <#lemma2> a r:Inference;
@@ -30,14 +30,14 @@
     <#lemma4>
     <#lemma5>
   );
-  r:binding [ r:variable [ n3:uri "http://josd.github.io/var#x_0"]; r:boundTo [ n3:uri "http://josd.github.io/brain/witch#GIRL"]];
+  r:binding [ r:variable [ n3:uri "http://josd.github.io/var#x_0"]; r:boundTo [ n3:uri "http://josd.github.io/see/witch#GIRL"]];
   r:rule <#lemma6>.
 
 <#lemma3> a r:Extraction;
   r:gives {
     @forAll var:x_0. {var:x_0 a :FLOATINGWOMAN} => {var:x_0 a :FLOATINGWOMAN}.
   };
-  r:because [ a r:Parsing; r:source <http://josd.github.io/brain/witch/floatingwoman-goal.n3>].
+  r:because [ a r:Parsing; r:source <http://josd.github.io/see/witch/floatingwoman-goal.n3>].
 
 <#lemma4> a r:Inference;
   r:gives {
@@ -48,11 +48,11 @@
     <#lemma8>
     [ a r:Fact; r:gives {{:GIRL a :FLOATS} <http://eulersharp.sourceforge.net/2003/03swap/log-rules#graphMember> {:GIRL a :FLOATS}}]
   );
-  r:binding [ r:variable [ n3:uri "http://josd.github.io/var#x_0"]; r:boundTo [ n3:uri "http://josd.github.io/brain/witch/witch-proof.n3#lemma9"]];
+  r:binding [ r:variable [ n3:uri "http://josd.github.io/var#x_0"]; r:boundTo [ n3:uri "http://josd.github.io/see/witch/witch-proof.n3#lemma9"]];
   r:binding [ r:variable [ n3:uri "http://josd.github.io/var#x_1"]; r:boundTo {:GIRL a :FLOATS}];
   r:binding [ r:variable [ n3:uri "http://josd.github.io/var#x_2"]; r:boundTo [ n3:uri "http://www.w3.org/1999/02/22-rdf-syntax-ns#type"]];
-  r:binding [ r:variable [ n3:uri "http://josd.github.io/var#x_3"]; r:boundTo [ n3:uri "http://josd.github.io/brain/witch#GIRL"]];
-  r:binding [ r:variable [ n3:uri "http://josd.github.io/var#x_4"]; r:boundTo [ n3:uri "http://josd.github.io/brain/witch#FLOATS"]];
+  r:binding [ r:variable [ n3:uri "http://josd.github.io/var#x_3"]; r:boundTo [ n3:uri "http://josd.github.io/see/witch#GIRL"]];
+  r:binding [ r:variable [ n3:uri "http://josd.github.io/var#x_4"]; r:boundTo [ n3:uri "http://josd.github.io/see/witch#FLOATS"]];
   r:rule <#lemma9>.
 
 <#lemma5> a r:Inference;
@@ -64,11 +64,11 @@
     <#lemma11>
     [ a r:Fact; r:gives {{:GIRL a :WOMAN} <http://eulersharp.sourceforge.net/2003/03swap/log-rules#graphMember> {:GIRL a :WOMAN}}]
   );
-  r:binding [ r:variable [ n3:uri "http://josd.github.io/var#x_0"]; r:boundTo [ n3:uri "http://josd.github.io/brain/witch/witch-proof.n3#lemma5"]];
+  r:binding [ r:variable [ n3:uri "http://josd.github.io/var#x_0"]; r:boundTo [ n3:uri "http://josd.github.io/see/witch/witch-proof.n3#lemma5"]];
   r:binding [ r:variable [ n3:uri "http://josd.github.io/var#x_1"]; r:boundTo {:GIRL a :WOMAN}];
   r:binding [ r:variable [ n3:uri "http://josd.github.io/var#x_2"]; r:boundTo [ n3:uri "http://www.w3.org/1999/02/22-rdf-syntax-ns#type"]];
-  r:binding [ r:variable [ n3:uri "http://josd.github.io/var#x_3"]; r:boundTo [ n3:uri "http://josd.github.io/brain/witch#GIRL"]];
-  r:binding [ r:variable [ n3:uri "http://josd.github.io/var#x_4"]; r:boundTo [ n3:uri "http://josd.github.io/brain/witch#WOMAN"]];
+  r:binding [ r:variable [ n3:uri "http://josd.github.io/var#x_3"]; r:boundTo [ n3:uri "http://josd.github.io/see/witch#GIRL"]];
+  r:binding [ r:variable [ n3:uri "http://josd.github.io/var#x_4"]; r:boundTo [ n3:uri "http://josd.github.io/see/witch#WOMAN"]];
   r:rule <#lemma12>.
 
 <#lemma6> a r:Extraction;
@@ -76,19 +76,19 @@
     @forAll var:x_0. {var:x_0 a :FLOATS.
      var:x_0 a :WOMAN} => {var:x_0 a :FLOATINGWOMAN}.
   };
-  r:because [ a r:Parsing; r:source <http://josd.github.io/brain/witch/floatingwoman.n3>].
+  r:because [ a r:Parsing; r:source <http://josd.github.io/see/witch/floatingwoman.n3>].
 
 <#lemma7> a r:Extraction;
   r:gives {
-    <http://josd.github.io/brain/witch/witch-proof.n3#lemma9> a r:Inference.
+    <http://josd.github.io/see/witch/witch-proof.n3#lemma9> a r:Inference.
   };
-  r:because [ a r:Parsing; r:source <http://josd.github.io/brain/witch/witch-proof.n3>].
+  r:because [ a r:Parsing; r:source <http://josd.github.io/see/witch/witch-proof.n3>].
 
 <#lemma8> a r:Extraction;
   r:gives {
-    <http://josd.github.io/brain/witch/witch-proof.n3#lemma9> r:gives {:GIRL a :FLOATS}.
+    <http://josd.github.io/see/witch/witch-proof.n3#lemma9> r:gives {:GIRL a :FLOATS}.
   };
-  r:because [ a r:Parsing; r:source <http://josd.github.io/brain/witch/witch-proof.n3>].
+  r:because [ a r:Parsing; r:source <http://josd.github.io/see/witch/witch-proof.n3>].
 
 <#lemma9> a r:Extraction;
   r:gives {
@@ -100,15 +100,15 @@
 
 <#lemma10> a r:Extraction;
   r:gives {
-    <http://josd.github.io/brain/witch/witch-proof.n3#lemma5> a r:Extraction.
+    <http://josd.github.io/see/witch/witch-proof.n3#lemma5> a r:Extraction.
   };
-  r:because [ a r:Parsing; r:source <http://josd.github.io/brain/witch/witch-proof.n3>].
+  r:because [ a r:Parsing; r:source <http://josd.github.io/see/witch/witch-proof.n3>].
 
 <#lemma11> a r:Extraction;
   r:gives {
-    <http://josd.github.io/brain/witch/witch-proof.n3#lemma5> r:gives {:GIRL a :WOMAN}.
+    <http://josd.github.io/see/witch/witch-proof.n3#lemma5> r:gives {:GIRL a :WOMAN}.
   };
-  r:because [ a r:Parsing; r:source <http://josd.github.io/brain/witch/witch-proof.n3>].
+  r:because [ a r:Parsing; r:source <http://josd.github.io/see/witch/witch-proof.n3>].
 
 <#lemma12> a r:Extraction;
   r:gives {
@@ -118,6 +118,6 @@
   };
   r:because [ a r:Parsing; r:source <http://eulersharp.sourceforge.net/2003/03swap/proof-lemma>].
 
-#2020-02-15T20:07:31.304Z in=96 out=1 ent=14 step=43 brake=3 inf=88865 sec=0.142 inf/sec=625810
+#2020-02-22T17:06:21.386Z in=96 out=1 ent=14 step=43 brake=3 inf=88937 sec=0.153 inf/sec=581288
 #ENDS
 

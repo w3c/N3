@@ -1,5 +1,5 @@
-#Processed by EYE v20.0214.1629 josd
-#eye --no-genid http://josd.github.io/brain/socrates/socrates.n3 --query http://josd.github.io/brain/socrates/socratesF.n3
+#Processed by EYE v20.0218.2044 josd
+#eye --no-genid http://josd.github.io/see/socrates/socrates.n3 --query http://josd.github.io/see/socrates/socratesF.n3
 
 @prefix log: <http://www.w3.org/2000/10/swap/log#>.
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
@@ -44,13 +44,13 @@
   r:gives {
     :Socrates a :Man.
   };
-  r:because [ a r:Parsing; r:source <http://josd.github.io/brain/socrates/socrates.n3>].
+  r:because [ a r:Parsing; r:source <http://josd.github.io/see/socrates/socrates.n3>].
 
 <#lemma4> a r:Extraction;
   r:gives {
     @forAll var:x_0, var:x_1. {var:x_0 a var:x_1} => {var:x_0 a var:x_1}.
   };
-  r:because [ a r:Parsing; r:source <http://josd.github.io/brain/socrates/socratesF.n3>].
+  r:because [ a r:Parsing; r:source <http://josd.github.io/see/socrates/socratesF.n3>].
 
 <#lemma5> a r:Inference;
   r:gives {
@@ -69,15 +69,15 @@
   r:gives {
     :Man rdfs:subClassOf :Mortal.
   };
-  r:because [ a r:Parsing; r:source <http://josd.github.io/brain/socrates/socrates.n3>].
+  r:because [ a r:Parsing; r:source <http://josd.github.io/see/socrates/socrates.n3>].
 
 <#lemma7> a r:Extraction;
   r:gives {
     @forAll var:x_0, var:x_1, var:x_2. {var:x_0 rdfs:subClassOf var:x_1.
      var:x_2 a var:x_0} => {var:x_2 a var:x_1}.
   };
-  r:because [ a r:Parsing; r:source <http://josd.github.io/brain/socrates/socrates.n3>].
+  r:because [ a r:Parsing; r:source <http://josd.github.io/see/socrates/socrates.n3>].
 
-#2020-02-15T20:07:07.652Z in=4 out=2 ent=3 step=6 brake=2 inf=22304 sec=0.084 inf/sec=265524
+#2020-02-22T17:05:54.324Z in=4 out=2 ent=3 step=6 brake=2 inf=22522 sec=0.084 inf/sec=268119
 #ENDS
 

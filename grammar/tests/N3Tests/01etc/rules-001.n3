@@ -1,5 +1,5 @@
 @prefix math: <http://www.w3.org/2000/10/swap/math#>.
-@prefix : <http://josd.github.io/brain/cs#>.
+@prefix : <http://josd.github.io/see/cs#>.
 
 # forward rules
 {

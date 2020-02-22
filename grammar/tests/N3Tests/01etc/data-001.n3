@@ -1,4 +1,4 @@
-@prefix : <http://josd.github.io/brain/cs#>.
+@prefix : <http://josd.github.io/see/cs#>.
 
 # input
 :input1 :measurement1 (6 11).

@@ -1,5 +1,5 @@
 # disjunction elimination test case using negation predicates
-@prefix : <http://josd.github.io/brain#>.
+@prefix : <http://josd.github.io/see#>.
 
 # saying A means saying C
 {?S :saying :A} => {?S :saying :C}.

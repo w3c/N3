@@ -1,13 +1,13 @@
-#Processed by EYE v20.0214.1629 josd
-#eye --no-genid --nope --plugin http://josd.github.io/brain/utm/utm_interpreter.pl --plugin http://josd.github.io/brain/utm/utm_program.pl --query http://josd.github.io/brain/utm/utm_query.n3
+#Processed by EYE v20.0218.2044 josd
+#eye --no-genid --nope --plugin http://josd.github.io/see/utm/utm_interpreter.pl --plugin http://josd.github.io/see/utm/utm_program.pl --query http://josd.github.io/see/utm/utm_query.n3
 
-@prefix utm: <http://josd.github.io/brain/utm#>.
+@prefix utm: <http://josd.github.io/see/utm#>.
 
 (1 0 1 0 0 1) utm:compute (1 0 1 0 1 0 "#").
 (1 0 1 1 1 1) utm:compute (1 1 0 0 0 0 "#").
 (1 1 1 1 1 1) utm:compute (1 0 0 0 0 0 0 "#").
 () utm:compute (1 "#").
 
-#2020-02-15T20:07:27.965Z in=4 out=4 ent=4 step=4 brake=1 inf=18249 sec=0.081 inf/sec=225296
+#2020-02-22T17:06:17.986Z in=4 out=4 ent=4 step=4 brake=1 inf=18471 sec=0.080 inf/sec=230888
 #ENDS
 
