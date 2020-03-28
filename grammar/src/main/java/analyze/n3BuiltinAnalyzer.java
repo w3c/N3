@@ -53,7 +53,7 @@ public class n3BuiltinAnalyzer {
 	}
 
 	private void runTest(String test) {
-		System.out.println("- " + test);
+//		System.out.println("- " + test);
 
 		File file = new File(mainFolder, test);
 		n3Grammar grammar = new n3Grammar();

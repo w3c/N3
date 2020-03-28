@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" />
+<style>
+	td { padding: 25px; }
+	h3 { margin-top: 0; }
+	#output { padding-left: 25px; }
+	#ast { display: none; }
+	#error { display: none; color: red; }
+</style>
+<script src="jquery-3.4.1.min.js"></script>
+<script src="dist/main.js"></script>
+<script>
+	function Output() {
+		this.reset();
+	}
+	
+	Output.prototype.syntaxError = 
+		function(recognizer, offendingSymbol, line, column, msg, err) {
+			console.error(`${offendingSymbol} line ${line}, col ${column}: ${msg}`);
+			
+			$("#error").show();
+			$("#error .content").append(`${offendingSymbol}<br />
+				&nbsp;&nbsp;&nbsp;&nbsp;
+				line ${line}, col ${column}: ${msg}`
+			);
+		};
+	
+	Output.prototype.ast = 
+		function(el) {
+			el = el.replace(/\n/g, "<br/>").replace(/\s/g, "&nbsp;");
+		
+			$("#ast").show();
+			$("#ast .content").append(el);
+		};
+	
+	Output.prototype.reset = 
+		function() {
+			$("#error").hide();
+			$("#error .content").empty();
+			
+			$("#ast").hide();
+			$("#ast .content").empty();
+		};
+
+	function loaded() {
+		document.getElementById("check").addEventListener("click", function() {
+			var input = $("#input").val();
+			console.log("input: " + input);
+			
+			var output = new Output();			
+			n3.validate(input, output);			
+		})
+	}
+</script>
+</head>
+<body onload="loaded()">
+	<table>
+		<tr>
+			<td valign="top"><textarea rows=10 cols=50 id="input"></textarea>
+				<br /> <br />
+				<button id="check">check</button></td>
+			<td valign="top">
+				<div id="output">
+					<div id="error">
+						<h3>Errors:</h3>
+						<div class="content"></div>
+						<br />
+					</div>
+					<div id="ast">
+						<h3>AST:</h3>
+						<div class="content"></div>
+					</div>
+				</div>
+			</td>
+		</tr>
+	</table>
+
+</body>
+</html>

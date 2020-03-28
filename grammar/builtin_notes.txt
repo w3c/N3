@@ -1,0 +1,59 @@
+math
+http://eulersharp.sourceforge.net/2003/03swap/log-rules#calculate; count=455
+http://eulersharp.sourceforge.net/2003/03swap/log-rules#random; count=11
+http://eulersharp.sourceforge.net/2003/03swap/log-rules#rms; count=11
+http://eulersharp.sourceforge.net/2003/03swap/log-rules#std; count=11
+
+pertain to calls and their possible failures (?)
+http://eulersharp.sourceforge.net/2003/03swap/log-rules#call; count=344 (?)
+http://eulersharp.sourceforge.net/2003/03swap/log-rules#fail; count=58 (?)
+http://eulersharp.sourceforge.net/2003/03swap/log-rules#finalize; count=225
+	cfr. "finally" (?)
+http://eulersharp.sourceforge.net/2003/03swap/log-rules#optional; count=134
+
+copy stuff
+http://eulersharp.sourceforge.net/2003/03swap/log-rules#labelvars; count=226 (?)
+http://eulersharp.sourceforge.net/2003/03swap/log-rules#graphCopy; count=17
+
+list operations
+http://eulersharp.sourceforge.net/2003/03swap/log-rules#sort; count=36
+http://eulersharp.sourceforge.net/2003/03swap/log-rules#subsequence; count=33
+http://eulersharp.sourceforge.net/2003/03swap/log-rules#max; count=22
+http://eulersharp.sourceforge.net/2003/03swap/log-rules#min; count=12
+http://eulersharp.sourceforge.net/2003/03swap/log-rules#reverse; count=17
+http://eulersharp.sourceforge.net/2003/03swap/log-rules#avg; count=11
+(regarding types)
+http://eulersharp.sourceforge.net/2003/03swap/rpo-rules#inAllOf; count=4
+http://eulersharp.sourceforge.net/2003/03swap/rpo-rules#inSomeOf; count=4
+
+"meta" stuff
+http://eulersharp.sourceforge.net/2003/03swap/log-rules#whenGround; count=19
+http://eulersharp.sourceforge.net/2003/03swap/log-rules#valuation; count=7
+http://eulersharp.sourceforge.net/2003/03swap/log-rules#biconditional; count=9
+http://eulersharp.sourceforge.net/2003/03swap/log-rules#conditional; count=7
+
+fuzzy set membership extension
+http://eulersharp.sourceforge.net/2003/03swap
+
+bunch of other plugins
+
+time
+(http://eulersharp.sourceforge.net/2003/03swap/time#calculatingAge; count=14)
+convert date/time into time since epoch (to allow arbitrary calculations)
+
+
+related to proofs
+- http://www.w3.org/2000/10/swap/reason#; count=292418
+http://www.w3.org/2000/10/swap/reason#boundTo; count=69285
+http://www.w3.org/2000/10/swap/reason#variable; count=69285
+http://www.w3.org/2000/10/swap/reason#binding; count=69285
+http://www.w3.org/2000/10/swap/reason#gives; count=41781
+http://www.w3.org/2000/10/swap/reason#rule; count=10538
+http://www.w3.org/2000/10/swap/reason#evidence; count=10538
+http://www.w3.org/2000/10/swap/reason#because; count=8619
+http://www.w3.org/2000/10/swap/reason#source; count=8619
+http://www.w3.org/2000/10/swap/reason#component; count=4468
+
+
+related to prolog predicates
+http://eulersharp.sourceforge.net/2003/03swap/log-rules#derive; count=1627

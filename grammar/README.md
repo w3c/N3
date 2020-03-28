@@ -77,6 +77,33 @@ Note that the `N3Tests\turtle` folder contains test cases from the Turtle test s
 
 We refer to the `manifest.ttl` file for all test cases that failed for our N3 grammar - these will have a `Rejected` or `Proposed` approval together with an `rdfs:comment` describing why they failed.
 
+## JavaScript
+
+Since we are using ANTLR4, we can easily generate JavaScript lexer, parser and visitor code as well.
+
+We created an example [HTML page](js/index.html) that relies on a JS parser to validate N3 code.
+
+### Creating the JS parser
+
+To generate the JavaScript parser code, download the latest [ANTLR4 runtime](https://www.antlr.org/download.html) and run:
+
+`java -jar path/to/antlr-<version>-complete.jar -Dlanguage=JavaScript n3.g4 -visitor`
+
+(ensure there are no "package" statements at the start of the lexer and parser files)
+
+You can then create an `index.js` page for testing the JS parser (and possibly your own visitor code). You should use `npm` for running the code. See [here](https://github.com/antlr/antlr4/blob/master/doc/javascript-target.md) for more information.
+
+Then, you can package all of the code into a single JS file so it can be included into a webpage:
+
+- Install `webpack` for `npm` (see [here](https://webpack.js.org/guides/installation/#local-installation))
+
+- Create a webpack.config.js file (see `js/webpack.config.js` for an example; normally, you only need to change your entry point)
+
+- Run the following: `../js>npx webpack --config webpack.config.js` 
+
+You can checkout the example [HTML page](js/index.html), where this packaged file is used to validate N3 code.
+
+
 ## Contributing
 
 If you would like to contribute a new test or a fix to an existing test, please file an [issue](https://github.com/w3c/N3/issues) and/or create a [pull request](https://github.com/w3c/N3/pulls).
