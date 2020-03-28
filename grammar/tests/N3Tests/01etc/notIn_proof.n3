@@ -1,4 +1,4 @@
-#Processed by EYE v20.0214.1629 josd
+#Processed by EYE v20.0218.2044 josd
 #eye --no-genid http://josd.github.io/brain/n3c/components.n3 --turtle http://josd.github.io/brain/n3c/tasks.n3 --query http://josd.github.io/brain/n3c/notIn_query.n3
 
 @prefix n3: <https://www.w3.org/ns/n3#>.
@@ -96,6 +96,6 @@
   };
   r:because [ a r:Parsing; r:source <http://josd.github.io/brain/n3c/components.n3>].
 
-#2020-02-15T20:06:20.519Z in=7 out=2 ent=2 step=2 brake=1 inf=30441 sec=0.093 inf/sec=327323
+#2020-02-22T21:52:14.846Z in=7 out=2 ent=2 step=2 brake=1 inf=30669 sec=0.099 inf/sec=309788
 #ENDS
 

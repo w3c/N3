@@ -1,5 +1,5 @@
-#Processed by EYE v20.0214.1629 josd
-#eye --no-genid --twinkle http://josd.github.io/brain/djiti/proof-100.n3 --query http://josd.github.io/brain/djiti/query.n3
+#Processed by EYE v20.0218.2044 josd
+#eye --no-genid --proof http://josd.github.io/brain/djiti/proof-100.n3 --query http://josd.github.io/brain/djiti/query.n3
 
 @prefix : <http://josd.github.io/brain#>.
 @prefix r: <http://www.w3.org/2000/10/swap/reason#>.
@@ -435,6 +435,6 @@
   };
   r:because [ a r:Parsing; r:source <http://josd.github.io/brain/djiti/proof-100.n3>].
 
-#2020-02-15T20:04:56.486Z in=244 out=6 ent=24 step=48 brake=2 inf=196126 sec=0.167 inf/sec=1174407
+#2020-02-22T21:50:44.468Z in=244 out=6 ent=24 step=48 brake=2 inf=196354 sec=0.168 inf/sec=1168774
 #ENDS
 

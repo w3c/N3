@@ -1,4 +1,4 @@
-#Processed by EYE v20.0214.1629 josd
+#Processed by EYE v20.0218.2044 josd
 #eye --no-genid http://josd.github.io/brain/swet/swetA.n3 --query http://josd.github.io/brain/swet/swetQ.n3
 
 @prefix e: <http://eulersharp.sourceforge.net/2003/03swap/log-rules#>.
@@ -1588,6 +1588,6 @@
   };
   r:because [ a r:Parsing; r:source <http://josd.github.io/brain/swet/swetQ.n3>].
 
-#2020-02-15T20:07:20.626Z in=303 out=3 ent=3 step=3 brake=1 inf=630182 sec=0.336 inf/sec=1875542
+#2020-02-22T21:53:09.348Z in=303 out=3 ent=3 step=3 brake=1 inf=630430 sec=0.358 inf/sec=1760978
 #ENDS
 

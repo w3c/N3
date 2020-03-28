@@ -1,4 +1,4 @@
-#Processed by EYE v20.0214.1629 josd
+#Processed by EYE v20.0218.2044 josd
 #eye --no-genid http://josd.github.io/brain/glass/test.n3 --query http://josd.github.io/brain/glass/testQ.n3
 
 @prefix log: <http://www.w3.org/2000/10/swap/log#>.
@@ -195,6 +195,6 @@
   };
   r:because [ a r:Parsing; r:source <http://josd.github.io/brain/glass/test.n3>].
 
-#2020-02-15T20:05:51.252Z in=9 out=6 ent=7 step=30 brake=2 inf=48211 sec=0.098 inf/sec=491949
+#2020-02-22T21:51:44.258Z in=9 out=6 ent=7 step=30 brake=2 inf=48439 sec=0.097 inf/sec=499371
 #ENDS
 

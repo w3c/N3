@@ -1,4 +1,4 @@
-#Processed by EYE v20.0214.1629 josd
+#Processed by EYE v20.0218.2044 josd
 #eye --no-genid http://josd.github.io/brain/preduction/food-example.n3 http://josd.github.io/brain/preduction/food.n3 http://josd.github.io/brain/rpo/rdfs-subClassOf.n3 --query http://josd.github.io/brain/preduction/food-query.n3
 
 @prefix food: <http://www.w3.org/2002/03owlt/miscellaneous/consistent002#>.
@@ -505,6 +505,6 @@
   };
   r:because [ a r:Parsing; r:source <http://josd.github.io/brain/rpo/rdfs-subClassOf.n3>].
 
-#2020-02-15T20:06:36.159Z in=45 out=16 ent=91 step=338 brake=3 inf=94649 sec=0.132 inf/sec=717038
+#2020-02-22T21:52:31.294Z in=45 out=16 ent=91 step=338 brake=3 inf=94877 sec=0.128 inf/sec=741227
 #ENDS
 

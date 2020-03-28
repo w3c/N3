@@ -1,4 +1,4 @@
-#Processed by EYE v20.0214.1629 josd
+#Processed by EYE v20.0218.2044 josd
 #eye --no-genid http://josd.github.io/brain/dt/test-facts.n3 http://josd.github.io/brain/dt/test-dt-1000.n3 --query http://josd.github.io/brain/dt/test-query.n3
 
 @prefix : <http://eulersharp.sourceforge.net/2009/12dtb/test#>.
@@ -16037,6 +16037,6 @@
   };
   r:because [ a r:Parsing; r:source <http://josd.github.io/brain/dt/test-dt-1000.n3>].
 
-#2020-02-15T20:05:21.856Z in=3004 out=1 ent=2999 step=5998 brake=2 inf=3978007 sec=1.762 inf/sec=2257666
+#2020-02-22T21:51:09.856Z in=3004 out=1 ent=2999 step=5998 brake=2 inf=3978255 sec=1.832 inf/sec=2171537
 #ENDS
 

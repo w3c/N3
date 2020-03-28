@@ -1,4 +1,4 @@
-#Processed by EYE v20.0214.1629 josd
+#Processed by EYE v20.0218.2044 josd
 #eye --no-genid --turtle http://josd.github.io/brain/djiti/graph-10000.n3 --query http://josd.github.io/brain/djiti/query.n3
 
 @prefix : <http://josd.github.io/brain#>.
@@ -26939,6 +26939,6 @@
   };
   r:because [ a r:Parsing; r:source <http://josd.github.io/brain/djiti/graph-10000.n3>].
 
-#2020-02-15T20:04:54.666Z in=10001 out=966 ent=966 step=966 brake=1 inf=3615269 sec=2.086 inf/sec=1733111
+#2020-02-22T21:50:42.697Z in=10001 out=966 ent=966 step=966 brake=1 inf=3615491 sec=2.012 inf/sec=1796964
 #ENDS
 

@@ -1,4 +1,4 @@
-#Processed by EYE v20.0214.1629 josd
+#Processed by EYE v20.0218.2044 josd
 #eye --no-genid --tactic limited-answer 1 http://josd.github.io/brain/rs/randomsample-rule.n3 --query http://josd.github.io/brain/rs/randomsample-query.n3
 
 @prefix log: <http://www.w3.org/2000/10/swap/log#>.
@@ -3210,6 +3210,6 @@
   };
   r:because [ a r:Parsing; r:source <http://josd.github.io/brain/rs/randomsample-rule.n3>].
 
-#2020-02-15T20:07:05.162Z in=1002 out=1 ent=1 step=1 brake=2 inf=1560506 sec=0.700 inf/sec=2229294
+#2020-02-22T21:52:48.920Z in=1002 out=1 ent=1 step=1 brake=2 inf=1560714 sec=0.680 inf/sec=2295168
 #ENDS
 

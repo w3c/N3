@@ -1,4 +1,4 @@
-#Processed by EYE v20.0214.1629 josd
+#Processed by EYE v20.0218.2044 josd
 #eye --no-genid http://josd.github.io/brain/gps/gps-plugin.n3 http://josd.github.io/brain/gps/gps-example1.n3 --query http://josd.github.io/brain/gps/gps-query1.n3
 
 @prefix math: <http://www.w3.org/2000/10/swap/math#>.
@@ -399,6 +399,6 @@
   };
   r:because [ a r:Parsing; r:source <http://josd.github.io/brain/gps/gps-plugin.n3>].
 
-#2020-02-15T20:05:52.708Z in=11 out=1 ent=1 step=1 brake=2 inf=127450 sec=0.146 inf/sec=872945
+#2020-02-22T21:51:45.799Z in=11 out=1 ent=1 step=1 brake=2 inf=127678 sec=0.139 inf/sec=918547
 #ENDS
 

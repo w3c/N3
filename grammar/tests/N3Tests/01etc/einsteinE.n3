@@ -1,4 +1,4 @@
-#Processed by EYE v20.0214.1629 josd
+#Processed by EYE v20.0218.2044 josd
 #eye --no-genid http://josd.github.io/brain/einstein/einstein.n3 --query http://josd.github.io/brain/einstein/einsteinQ.n3
 
 @prefix list: <http://www.w3.org/2000/10/swap/list#>.
@@ -202,6 +202,6 @@
   };
   r:because [ a r:Parsing; r:source <http://josd.github.io/brain/einstein/einstein.n3>].
 
-#2020-02-15T20:05:24.322Z in=5 out=1 ent=2 step=4 brake=2 inf=701107 sec=0.419 inf/sec=1673286
+#2020-02-22T21:51:12.408Z in=5 out=1 ent=2 step=4 brake=2 inf=701334 sec=0.458 inf/sec=1531297
 #ENDS
 

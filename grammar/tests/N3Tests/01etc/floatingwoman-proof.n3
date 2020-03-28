@@ -1,5 +1,5 @@
-#Processed by EYE v20.0214.1629 josd
-#eye --no-genid http://josd.github.io/brain/witch/floatingwoman.n3 --twinkle http://josd.github.io/brain/witch/witch-proof.n3 --query http://josd.github.io/brain/witch/floatingwoman-goal.n3
+#Processed by EYE v20.0218.2044 josd
+#eye --no-genid http://josd.github.io/brain/witch/floatingwoman.n3 --proof http://josd.github.io/brain/witch/witch-proof.n3 --query http://josd.github.io/brain/witch/floatingwoman-goal.n3
 
 @prefix : <http://josd.github.io/brain/witch#>.
 @prefix r: <http://www.w3.org/2000/10/swap/reason#>.
@@ -118,6 +118,6 @@
   };
   r:because [ a r:Parsing; r:source <http://eulersharp.sourceforge.net/2003/03swap/proof-lemma>].
 
-#2020-02-15T20:07:31.304Z in=96 out=1 ent=14 step=43 brake=3 inf=88865 sec=0.142 inf/sec=625810
+#2020-02-22T21:53:20.283Z in=96 out=1 ent=14 step=43 brake=3 inf=89255 sec=0.153 inf/sec=583366
 #ENDS
 

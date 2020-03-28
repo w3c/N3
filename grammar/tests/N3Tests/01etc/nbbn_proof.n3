@@ -1,4 +1,4 @@
-#Processed by EYE v20.0214.1629 josd
+#Processed by EYE v20.0218.2044 josd
 #eye --no-genid http://josd.github.io/brain/nbbn/nbbn-plugin.n3 http://josd.github.io/brain/nbbn/nbbn-model.n3 --query http://josd.github.io/brain/nbbn/nbbn-query.n3
 
 @prefix math: <http://www.w3.org/2000/10/swap/math#>.
@@ -134,6 +134,6 @@
   };
   r:because [ a r:Parsing; r:source <http://josd.github.io/brain/nbbn/nbbn-plugin.n3>].
 
-#2020-02-15T20:06:24.784Z in=19 out=1 ent=1 step=1 brake=2 inf=135841 sec=0.160 inf/sec=849006
+#2020-02-22T21:52:19.870Z in=19 out=1 ent=1 step=1 brake=2 inf=136231 sec=0.159 inf/sec=856799
 #ENDS
 

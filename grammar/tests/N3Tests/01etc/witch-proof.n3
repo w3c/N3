@@ -1,4 +1,4 @@
-#Processed by EYE v20.0214.1629 josd
+#Processed by EYE v20.0218.2044 josd
 #eye --no-genid http://josd.github.io/brain/witch/witch.n3 --query http://josd.github.io/brain/witch/witch-goal.n3
 
 @prefix : <http://josd.github.io/brain/witch#>.
@@ -115,6 +115,6 @@
   };
   r:because [ a r:Parsing; r:source <http://josd.github.io/brain/witch/witch.n3>].
 
-#2020-02-15T20:07:29.875Z in=8 out=1 ent=7 step=25 brake=5 inf=26877 sec=0.088 inf/sec=305420
+#2020-02-22T21:53:18.840Z in=8 out=1 ent=7 step=25 brake=5 inf=27099 sec=0.083 inf/sec=326494
 #ENDS
 

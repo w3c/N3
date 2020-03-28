@@ -1,4 +1,4 @@
-#Processed by EYE v20.0214.1629 josd
+#Processed by EYE v20.0218.2044 josd
 #eye --no-genid --tactic limited-answer 1 http://josd.github.io/brain/dpe/dpe_theory.n3 http://josd.github.io/brain/dpe/dpe_assumption.n3 --query http://josd.github.io/brain/dpe/dpe_query.n3
 
 @prefix : <http://josd.github.io/brain/dpe/dpe#>.
@@ -276,6 +276,6 @@
   };
   r:because [ a r:Parsing; r:source <http://josd.github.io/brain/dpe/dpe_theory.n3>].
 
-#2020-02-15T20:05:17.749Z in=16 out=2 ent=32 step=120 brake=4 inf=51405 sec=0.100 inf/sec=514050
+#2020-02-22T21:51:05.530Z in=16 out=2 ent=32 step=120 brake=4 inf=51651 sec=0.107 inf/sec=482720
 #ENDS
 

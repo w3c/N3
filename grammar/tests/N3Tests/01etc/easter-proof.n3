@@ -1,4 +1,4 @@
-#Processed by EYE v20.0214.1629 josd
+#Processed by EYE v20.0218.2044 josd
 #eye --no-genid http://josd.github.io/brain/image/year.n3 http://josd.github.io/brain/image/easter.n3 --no-genid --query http://josd.github.io/brain/image/query.n3
 
 @prefix e: <http://eulersharp.sourceforge.net/2003/03swap/log-rules#>.
@@ -10576,6 +10576,6 @@
   };
   r:because [ a r:Parsing; r:source <http://josd.github.io/brain/image/year.n3>].
 
-#2020-02-15T20:06:02.092Z in=5 out=101 ent=202 step=404 brake=2 inf=1726087 sec=0.809 inf/sec=2133606
+#2020-02-22T21:51:56.363Z in=5 out=101 ent=202 step=404 brake=2 inf=1726280 sec=0.939 inf/sec=1838424
 #ENDS
 

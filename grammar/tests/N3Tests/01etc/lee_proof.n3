@@ -1,4 +1,4 @@
-#Processed by EYE v20.0214.1629 josd
+#Processed by EYE v20.0218.2044 josd
 #eye --no-genid --plugin http://josd.github.io/brain/lee/lee_program.pl --query http://josd.github.io/brain/lee/lee_query.n3
 
 @prefix lee: <http://josd.github.io/brain/lee#>.
@@ -1152,6 +1152,6 @@
   r:binding [ r:variable [ n3:uri "http://josd.github.io/var#x_1"]; r:boundTo (())];
   r:rule [ a r:Fact; r:gives {"path(avar0,avar0,avar1,[avar0])" <= {("!") <http://eulersharp.sourceforge.net/2003/03swap/log-rules#derive> true}}].
 
-#2020-02-15T20:06:04.685Z in=1 out=1 ent=1 step=1 brake=1 inf=676570 sec=0.402 inf/sec=1683010
+#2020-02-22T21:51:59.414Z in=1 out=1 ent=1 step=1 brake=1 inf=676778 sec=0.540 inf/sec=1253293
 #ENDS
 

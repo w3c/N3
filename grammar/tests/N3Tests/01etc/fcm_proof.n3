@@ -1,4 +1,4 @@
-#Processed by EYE v20.0214.1629 josd
+#Processed by EYE v20.0218.2044 josd
 #eye --no-genid http://josd.github.io/brain/fcm/fcm-plugin.n3 http://josd.github.io/brain/fcm/fl-rules.n3 http://josd.github.io/brain/fcm/example001P.n3 http://josd.github.io/brain/fcm/example002P.n3 --query http://josd.github.io/brain/fcm/example003Q.n3
 
 @prefix math: <http://www.w3.org/2000/10/swap/math#>.
@@ -891,6 +891,6 @@
   };
   r:because [ a r:Parsing; r:source <http://josd.github.io/brain/fcm/example002P.n3>].
 
-#2020-02-15T20:05:34.084Z in=76 out=8 ent=50 step=307 brake=6 inf=560210 sec=0.347 inf/sec=1614438
+#2020-02-22T21:51:26.029Z in=76 out=8 ent=50 step=307 brake=6 inf=560604 sec=0.357 inf/sec=1570319
 #ENDS
 

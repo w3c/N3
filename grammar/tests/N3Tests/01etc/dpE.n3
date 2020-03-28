@@ -1,4 +1,4 @@
-#Processed by EYE v20.0214.1629 josd
+#Processed by EYE v20.0218.2044 josd
 #eye --no-genid --tactic limited-answer 1 http://josd.github.io/brain/dp/dp.n3 --query http://josd.github.io/brain/dp/dpQ.n3
 
 # <http://josd.github.io/brain#person5> thinking for 0.025 seconds
@@ -81,6 +81,6 @@
   };
   r:because [ a r:Parsing; r:source <http://josd.github.io/brain/dp/dp.n3>].
 
-#2020-02-15T20:05:16.263Z in=10 out=1 ent=2 step=2 brake=1 inf=48332 sec=0.102 inf/sec=473843
+#2020-02-22T21:51:04.041Z in=10 out=1 ent=2 step=2 brake=1 inf=48580 sec=0.100 inf/sec=485800
 #ENDS
 

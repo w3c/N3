@@ -1,4 +1,4 @@
-#Processed by EYE v20.0214.1629 josd
+#Processed by EYE v20.0218.2044 josd
 #eye --no-genid --hmac-key k123 http://josd.github.io/brain/crypto/cryptoP.n3 --pass
 
 @prefix crypto: <http://www.w3.org/2000/10/swap/crypto#>.
@@ -108,6 +108,6 @@
   };
   r:because [ a r:Parsing; r:source <http://josd.github.io/brain/crypto/cryptoP.n3>].
 
-#2020-02-15T20:04:44.434Z in=3 out=3 ent=6 step=12 brake=2 inf=26249 sec=0.079 inf/sec=332266
+#2020-02-22T21:50:31.301Z in=3 out=3 ent=6 step=12 brake=2 inf=26477 sec=0.086 inf/sec=307872
 #ENDS
 
