@@ -5,8 +5,8 @@ import java.util.Map;
 
 import org.antlr.v4.runtime.tree.TerminalNode;
 
-import parser.n3PrefixVisitor;
 import parser.antlr.n3Parser;
+import parser.visitor.n3PrefixVisitor;
 
 public class n3BuiltinVisitor extends n3PrefixVisitor {
 

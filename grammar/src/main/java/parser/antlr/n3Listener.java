@@ -240,6 +240,16 @@ public interface n3Listener extends ParseTreeListener {
 	 */
 	void exitFormulaContent(n3Parser.FormulaContentContext ctx);
 	/**
+	 * Enter a parse tree produced by {@link n3Parser#numericLiteral}.
+	 * @param ctx the parse tree
+	 */
+	void enterNumericLiteral(n3Parser.NumericLiteralContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link n3Parser#numericLiteral}.
+	 * @param ctx the parse tree
+	 */
+	void exitNumericLiteral(n3Parser.NumericLiteralContext ctx);
+	/**
 	 * Enter a parse tree produced by {@link n3Parser#rdfLiteral}.
 	 * @param ctx the parse tree
 	 */
@@ -279,6 +289,26 @@ public interface n3Listener extends ParseTreeListener {
 	 * @param ctx the parse tree
 	 */
 	void exitPrefixedName(n3Parser.PrefixedNameContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link n3Parser#blankNode}.
+	 * @param ctx the parse tree
+	 */
+	void enterBlankNode(n3Parser.BlankNodeContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link n3Parser#blankNode}.
+	 * @param ctx the parse tree
+	 */
+	void exitBlankNode(n3Parser.BlankNodeContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link n3Parser#quickVar}.
+	 * @param ctx the parse tree
+	 */
+	void enterQuickVar(n3Parser.QuickVarContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link n3Parser#quickVar}.
+	 * @param ctx the parse tree
+	 */
+	void exitQuickVar(n3Parser.QuickVarContext ctx);
 	/**
 	 * Enter a parse tree produced by {@link n3Parser#existential}.
 	 * @param ctx the parse tree

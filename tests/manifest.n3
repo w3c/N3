@@ -5,7 +5,7 @@
 @prefix test: <test.n3#>.
 @prefix :     <#>.
 
-<>  a mf:Manifest ;
+<#>  a mf:Manifest ;
     rdfs:label "N3 Test Suite";
     rdfs:comment "This manifest loads additional manifests for specific behavior tests" ;
     mf:include (<manifest-parser.n3> <manifest-reasoner.n3>) .

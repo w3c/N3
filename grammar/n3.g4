@@ -121,8 +121,8 @@ path
 	
 pathItem 
 	: iri 
-	| BlankNode 
-	| QuickVar 
+	| blankNode 
+	| quickVar 
 	| collection 
 	| blankNodePropertyList 
 	| literal 
@@ -131,7 +131,7 @@ pathItem
 
 literal 
 	: rdfLiteral 
-	| NumericLiteral 
+	| numericLiteral 
 	| BooleanLiteral
 	;
 	
@@ -152,7 +152,7 @@ formulaContent
 	| sparqlDirective formulaContent?
 	;
 
-NumericLiteral 
+numericLiteral 
 	: INTEGER 
 	| DECIMAL 
 	| DOUBLE
@@ -193,13 +193,13 @@ prefixedName
  * instead of PrefixedName token */
 	;
 
-BlankNode 
+blankNode 
 	: BLANK_NODE_LABEL 
 	| ANON
 	;
 	
-QuickVar 
-	: '?' PN_CHARS_U PN_CHARS*
+quickVar 
+	: '?' QuickVarName
 /* approximating "barename" with PN_CHARS - they seem similar enough */
 	;
 
@@ -287,15 +287,19 @@ WS
 ANON 
 	: '[' WS* ']'
 	;
-	
-PN_CHARS_BASE 
-	: [A-Z] | [a-z] | [\u00C0-\u00D6] | [\u00D8-\u00F6] | [\u00F8-\u02FF] | [\u0370-\u037D] | [\u037F-\u1FFF] | [\u200C-\u200D] | [\u2070-\u218F] | [\u2C00-\u2FEF] | [\u3001-\uD7FF] | [\uF900-\uFDCF] | [\uFDF0-\uFFFD]
-/* antlr cannot include (at least on Java) the following: #x10000-#xEFFFF */
+
+QuickVarName
+	: PN_CHARS_U PN_CHARS*
 	;
 
 PN_CHARS_U 
 	: PN_CHARS_BASE 
 	| '_'
+	;
+		
+PN_CHARS_BASE 
+	: [A-Z] | [a-z] | [\u00C0-\u00D6] | [\u00D8-\u00F6] | [\u00F8-\u02FF] | [\u0370-\u037D] | [\u037F-\u1FFF] | [\u200C-\u200D] | [\u2070-\u218F] | [\u2C00-\u2FEF] | [\u3001-\uD7FF] | [\uF900-\uFDCF] | [\uFDF0-\uFFFD]
+/* antlr cannot include (at least on Java) the following: #x10000-#xEFFFF */
 	;
 	
 PN_CHARS 

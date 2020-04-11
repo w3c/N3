@@ -1,0 +1,1296 @@
+-- CONFIG
+grammar: n3
+file: D:\git\n3dev\N3\grammar\tests\N3Tests\01etc\food-query.n3
+
+
+-- TESTS
+testing (positive): .\tests\N3Tests\01etc\food-query.n3
+N3Doc
+ N3Statement
+  Triples
+   Subject
+    Expression
+     Path
+      PathItem
+       Formula
+        {
+        FormulaContent
+         N3Statement
+          Triples
+           Subject
+            Expression
+             Path
+              PathItem
+               ?A
+           PredicateObjectList
+            Verb
+             a
+            ObjectList
+             Object
+              Expression
+               Path
+                PathItem
+                 ?B
+        }
+   PredicateObjectList
+    Verb
+     =>
+    ObjectList
+     Object
+      Expression
+       Path
+        PathItem
+         Formula
+          {
+          FormulaContent
+           N3Statement
+            Triples
+             Subject
+              Expression
+               Path
+                PathItem
+                 ?A
+             PredicateObjectList
+              Verb
+               a
+              ObjectList
+               Object
+                Expression
+                 Path
+                  PathItem
+                   ?B
+          }
+ .
+ <EOF>
+
+pass? true
+-- CONFIG
+grammar: n3
+file: D:\git\n3dev\N3\grammar\tests\N3Tests\01etc\food-query.n3
+
+
+-- TESTS
+testing (positive): .\tests\N3Tests\01etc\food-query.n3
+N3Doc
+ N3Statement
+  Triples
+   Subject
+    Expression
+     Path
+      PathItem
+       Formula
+        {
+        FormulaContent
+         N3Statement
+          Triples
+           Subject
+            Expression
+             Path
+              PathItem
+               ?A
+           PredicateObjectList
+            Verb
+             a
+            ObjectList
+             Object
+              Expression
+               Path
+                PathItem
+                 ?B
+        }
+   PredicateObjectList
+    Verb
+     =>
+    ObjectList
+     Object
+      Expression
+       Path
+        PathItem
+         Formula
+          {
+          FormulaContent
+           N3Statement
+            Triples
+             Subject
+              Expression
+               Path
+                PathItem
+                 ?A
+             PredicateObjectList
+              Verb
+               a
+              ObjectList
+               Object
+                Expression
+                 Path
+                  PathItem
+                   ?B
+          }
+ .
+ <EOF>
+
+pass? true
+-- CONFIG
+grammar: n3
+file: D:\git\n3dev\tests\test1.n3
+
+
+-- TESTS
+testing (positive): .\..\..\tests\test1.n3
+N3Doc
+ N3Statement
+  Triples
+   Subject
+    Expression
+     Path
+      PathItem
+       Formula
+        {
+        FormulaContent
+         N3Statement
+          Triples
+           Subject
+            Expression
+             Path
+              PathItem
+               Iri
+                PrefixedName
+                 :will
+           PredicateObjectList
+            Verb
+             Predicate
+              Expression
+               Path
+                PathItem
+                 Iri
+                  PrefixedName
+                   :hates
+            ObjectList
+             Object
+              Expression
+               Path
+                PathItem
+                 Iri
+                  PrefixedName
+                   :covid
+        }
+   PredicateObjectList
+    Verb
+     Predicate
+      Expression
+       Path
+        PathItem
+         Iri
+          PrefixedName
+           :time
+    ObjectList
+     Object
+      Expression
+       Path
+        PathItem
+         Literal
+          123
+     ,
+     Object
+      Expression
+       Path
+        PathItem
+         Literal
+          456
+ .
+ <EOF>
+
+pass? true
+-- CONFIG
+grammar: n3
+file: D:\git\n3dev\tests\test1.n3
+
+
+-- TESTS
+testing (positive): .\..\..\tests\test1.n3
+
+pass? false
+-- CONFIG
+grammar: n3
+file: D:\git\n3dev\tests\test1.n3
+
+
+-- TESTS
+testing (positive): .\..\..\tests\test1.n3
+N3Doc
+ N3Statement
+  Triples
+   Subject
+    Expression
+     Path
+      PathItem
+       Formula
+        {
+        FormulaContent
+         N3Statement
+          Triples
+           Subject
+            Expression
+             Path
+              PathItem
+               Iri
+                PrefixedName
+                 :will
+           PredicateObjectList
+            Verb
+             Predicate
+              Expression
+               Path
+                PathItem
+                 Iri
+                  PrefixedName
+                   :hates
+            ObjectList
+             Object
+              Expression
+               Path
+                PathItem
+                 Iri
+                  PrefixedName
+                   :covid
+        }
+   PredicateObjectList
+    Verb
+     Predicate
+      Expression
+       Path
+        PathItem
+         Iri
+          PrefixedName
+           :time
+    ObjectList
+     Object
+      Expression
+       Path
+        PathItem
+         Literal
+          123
+     ,
+     Object
+      Expression
+       Path
+        PathItem
+         Literal
+          456
+ .
+ <EOF>
+
+pass? true
+-- CONFIG
+grammar: n3
+file: D:\git\n3dev\tests\test1.n3
+
+
+-- TESTS
+testing (positive): .\..\..\tests\test1.n3
+N3Doc
+ N3Statement
+  Triples
+   Subject
+    Expression
+     Path
+      PathItem
+       ?x
+   PredicateObjectList
+    Verb
+     Predicate
+      Expression
+       Path
+        PathItem
+         Iri
+          PrefixedName
+           :hates
+    ObjectList
+     Object
+      Expression
+       Path
+        PathItem
+         Iri
+          PrefixedName
+           :covid
+ .
+ <EOF>
+
+pass? true
+-- CONFIG
+grammar: n3
+file: D:\git\n3dev\tests\test1.n3
+
+
+-- TESTS
+testing (positive): .\..\..\tests\test1.n3
+ERROR: test1.n3 [parser]: syntaxError for [@1,655:655='x',<49>,39:1] @39:1 - mismatched input 'x' expecting PN_CHARS_U
+N3Doc
+ N3Statement
+  Triples
+   Subject
+    Expression
+     Path
+      PathItem
+       ?
+       x
+   PredicateObjectList
+    Verb
+     Predicate
+      Expression
+       Path
+        PathItem
+         Iri
+          PrefixedName
+           :hates
+    ObjectList
+     Object
+      Expression
+       Path
+        PathItem
+         Iri
+          PrefixedName
+           :covid
+ .
+ <EOF>
+
+pass? false
+-- CONFIG
+grammar: n3
+file: D:\git\n3dev\tests\test1.n3
+
+
+-- TESTS
+testing (positive): .\..\..\tests\test1.n3
+ERROR: test1.n3 [parser]: syntaxError for [@1,655:655='x',<49>,39:1] @39:1 - mismatched input 'x' expecting PN_CHARS_U
+N3Doc
+ N3Statement
+  Triples
+   Subject
+    Expression
+     Path
+      PathItem
+       [@0,654:654='?',<26>,39:0]
+       ?
+       [@1,655:655='x',<49>,39:1]
+       x
+   PredicateObjectList
+    Verb
+     Predicate
+      Expression
+       Path
+        PathItem
+         Iri
+          PrefixedName
+           [@2,657:662=':hates',<34>,39:3]
+           :hates
+    ObjectList
+     Object
+      Expression
+       Path
+        PathItem
+         Iri
+          PrefixedName
+           [@3,664:669=':covid',<34>,39:10]
+           :covid
+ [@4,671:671='.',<1>,39:17]
+ .
+ [@5,672:671='<EOF>',<-1>,39:18]
+ <EOF>
+
+pass? false
+-- CONFIG
+grammar: n3
+file: D:\git\n3dev\tests\test1.n3
+
+
+-- TESTS
+testing (positive): .\..\..\tests\test1.n3
+ERROR: test1.n3 [parser]: syntaxError for [@1,655:655='x',<49>,39:1] @39:1 - mismatched input 'x' expecting PN_CHARS_U
+N3Doc
+ N3Statement
+  Triples
+   Subject
+    Expression
+     Path
+      PathItem
+       '?'
+       ?
+       PN_CHARS_BASE
+       x
+   PredicateObjectList
+    Verb
+     Predicate
+      Expression
+       Path
+        PathItem
+         Iri
+          PrefixedName
+           PNAME_LN
+           :hates
+    ObjectList
+     Object
+      Expression
+       Path
+        PathItem
+         Iri
+          PrefixedName
+           PNAME_LN
+           :covid
+ '.'
+ .
+
+pass? false
+-- CONFIG
+grammar: n3
+file: D:\git\n3dev\tests\test1.n3
+
+
+-- TESTS
+testing (positive): .\..\..\tests\test1.n3
+ERROR: test1.n3 [parser]: syntaxError for [@1,655:655='x',<49>,39:1] @39:1 - mismatched input 'x' expecting PN_CHARS_U
+N3Doc
+ N3Statement
+  Triples
+   Subject
+    Expression
+     Path
+      PathItem
+       '?'
+       ?
+       PN_CHARS_BASE
+       x
+   PredicateObjectList
+    Verb
+     Predicate
+      Expression
+       Path
+        PathItem
+         Iri
+          PrefixedName
+           PNAME_LN
+           :hates
+    ObjectList
+     Object
+      Expression
+       Path
+        PathItem
+         Iri
+          PrefixedName
+           PNAME_LN
+           :covid
+ '.'
+ .
+ <EOF>
+
+pass? false
+-- CONFIG
+grammar: n3
+file: D:\git\n3dev\tests\test1.n3
+
+
+-- TESTS
+testing (positive): .\..\..\tests\test1.n3
+ERROR: test1.n3 [parser]: syntaxError for [@1,655:655='x',<49>,39:1] @39:1 - mismatched input 'x' expecting PN_CHARS_U
+N3Doc
+ N3Statement
+  Triples
+   Subject
+    Expression
+     Path
+      PathItem
+       ? ('?')
+       x (PN_CHARS_BASE)
+   PredicateObjectList
+    Verb
+     Predicate
+      Expression
+       Path
+        PathItem
+         Iri
+          PrefixedName
+           :hates (PNAME_LN)
+    ObjectList
+     Object
+      Expression
+       Path
+        PathItem
+         Iri
+          PrefixedName
+           :covid (PNAME_LN)
+ . ('.')
+ <EOF>
+
+pass? false
+-- CONFIG
+grammar: n3
+file: D:\git\n3dev\tests\test1.n3
+
+
+-- TESTS
+testing (positive): .\..\..\tests\test1.n3
+N3Doc
+ N3Statement
+  Triples
+   Subject
+    Expression
+     Path
+      PathItem
+       ? ('?')
+       x (PN_CHARS_U)
+   PredicateObjectList
+    Verb
+     Predicate
+      Expression
+       Path
+        PathItem
+         Iri
+          PrefixedName
+           :hates (PNAME_LN)
+    ObjectList
+     Object
+      Expression
+       Path
+        PathItem
+         Iri
+          PrefixedName
+           :covid (PNAME_LN)
+ . ('.')
+ <EOF>
+
+pass? true
+-- CONFIG
+grammar: n3
+file: D:\git\n3dev\tests\test1.n3
+
+
+-- TESTS
+testing (positive): .\..\..\tests\test1.n3
+N3Doc
+ N3Statement
+  N3Directive
+   PrefixID
+    @prefix ('@prefix')
+    test: (PNAME_NS)
+    <http://test.org> (IRIREF)
+ . ('.')
+ N3Statement
+  Triples
+   Subject
+    Expression
+     Path
+      PathItem
+       ? ('?')
+       x (PN_CHARS_U)
+   PredicateObjectList
+    Verb
+     Predicate
+      Expression
+       Path
+        PathItem
+         Iri
+          PrefixedName
+           :hates (PNAME_LN)
+    ObjectList
+     Object
+      Expression
+       Path
+        PathItem
+         Iri
+          PrefixedName
+           :covid (PNAME_LN)
+ . ('.')
+ <EOF>
+
+pass? true
+-- CONFIG
+grammar: n3
+file: D:\git\n3dev\tests\test1.n3
+
+
+-- TESTS
+testing (positive): .\..\..\tests\test1.n3
+N3Doc
+ N3Statement
+  N3Directive
+   PrefixID
+    @prefix ('@prefix')
+    test: (PNAME_NS)
+    <http://test.org> (IRIREF)
+ . ('.')
+ N3Statement
+  Triples
+   Subject
+    Expression
+     Path
+      PathItem
+       ? ('?')
+       x (PN_CHARS_U)
+   PredicateObjectList
+    Verb
+     Predicate
+      Expression
+       Path
+        PathItem
+         Iri
+          PrefixedName
+           test:hates (PNAME_LN)
+    ObjectList
+     Object
+      Expression
+       Path
+        PathItem
+         Iri
+          PrefixedName
+           test:covid (PNAME_LN)
+ . ('.')
+ <EOF>
+
+pass? true
+-- CONFIG
+grammar: n3
+file: D:\git\n3dev\tests\test1.n3
+
+
+-- TESTS
+testing (positive): .\..\..\tests\test1.n3
+ERROR: test1.n3 [parser]: syntaxError for [@5,692:697='_xab23',<55>,41:1] @41:1 - mismatched input '_xab23' expecting PN_CHARS_U
+N3Doc
+ N3Statement
+  N3Directive
+   PrefixID
+    @prefix ('@prefix')
+    test: (PNAME_NS)
+    <http://test.org> (IRIREF)
+ . ('.')
+ N3Statement
+  Triples
+   Subject
+    Expression
+     Path
+      PathItem
+       ? ('?')
+       _xab23 (PN_LOCAL)
+   PredicateObjectList
+    Verb
+     Predicate
+      Expression
+       Path
+        PathItem
+         Iri
+          PrefixedName
+           test:hates (PNAME_LN)
+    ObjectList
+     Object
+      Expression
+       Path
+        PathItem
+         Iri
+          PrefixedName
+           test:covid (PNAME_LN)
+ . ('.')
+ <EOF>
+
+pass? false
+-- CONFIG
+grammar: n3
+file: D:\git\n3dev\tests\test1.n3
+
+
+-- TESTS
+testing (positive): .\..\..\tests\test1.n3
+ERROR: test1.n3 [parser]: syntaxError for [@5,692:695='_xab',<55>,41:1] @41:1 - mismatched input '_xab' expecting PN_CHARS_U
+N3Doc
+ N3Statement
+  N3Directive
+   PrefixID
+    @prefix ('@prefix')
+    test: (PNAME_NS)
+    <http://test.org> (IRIREF)
+ . ('.')
+ N3Statement
+  Triples
+   Subject
+    Expression
+     Path
+      PathItem
+       ? ('?')
+       _xab (PN_LOCAL)
+   PredicateObjectList
+    Verb
+     Predicate
+      Expression
+       Path
+        PathItem
+         Iri
+          PrefixedName
+           test:hates (PNAME_LN)
+    ObjectList
+     Object
+      Expression
+       Path
+        PathItem
+         Iri
+          PrefixedName
+           test:covid (PNAME_LN)
+ . ('.')
+ <EOF>
+
+pass? false
+-- CONFIG
+grammar: n3
+file: D:\git\n3dev\tests\test1.n3
+
+
+-- TESTS
+testing (positive): .\..\..\tests\test1.n3
+ERROR: test1.n3 [parser]: syntaxError for [@5,692:694='xab',<54>,41:1] @41:1 - mismatched input 'xab' expecting PN_CHARS_U
+N3Doc
+ N3Statement
+  N3Directive
+   PrefixID
+    @prefix ('@prefix')
+    test: (PNAME_NS)
+    <http://test.org> (IRIREF)
+ . ('.')
+ N3Statement
+  Triples
+   Subject
+    Expression
+     Path
+      PathItem
+       ? ('?')
+       xab (PN_PREFIX)
+   PredicateObjectList
+    Verb
+     Predicate
+      Expression
+       Path
+        PathItem
+         Iri
+          PrefixedName
+           test:hates (PNAME_LN)
+    ObjectList
+     Object
+      Expression
+       Path
+        PathItem
+         Iri
+          PrefixedName
+           test:covid (PNAME_LN)
+ . ('.')
+ <EOF>
+
+pass? false
+-- CONFIG
+grammar: n3
+file: D:\git\n3dev\tests\test1.n3
+
+
+-- TESTS
+testing (positive): .\..\..\tests\test1.n3
+N3Doc
+ N3Statement
+  N3Directive
+   PrefixID
+    @prefix ('@prefix')
+    test: (PNAME_NS)
+    <http://test.org> (IRIREF)
+ . ('.')
+ N3Statement
+  Triples
+   Subject
+    Expression
+     Path
+      PathItem
+       ? ('?')
+       x (PN_CHARS_U)
+   PredicateObjectList
+    Verb
+     Predicate
+      Expression
+       Path
+        PathItem
+         Iri
+          PrefixedName
+           test:hates (PNAME_LN)
+    ObjectList
+     Object
+      Expression
+       Path
+        PathItem
+         Iri
+          PrefixedName
+           test:covid (PNAME_LN)
+ . ('.')
+ <EOF>
+
+pass? true
+-- CONFIG
+grammar: n3
+file: D:\git\n3dev\tests\test1.n3
+
+
+-- TESTS
+testing (positive): .\..\..\tests\test1.n3
+ERROR: test1.n3 [parser]: syntaxError for [@5,692:693='xa',<54>,41:1] @41:1 - mismatched input 'xa' expecting PN_CHARS_U
+N3Doc
+ N3Statement
+  N3Directive
+   PrefixID
+    @prefix ('@prefix')
+    test: (PNAME_NS)
+    <http://test.org> (IRIREF)
+ . ('.')
+ N3Statement
+  Triples
+   Subject
+    Expression
+     Path
+      PathItem
+       ? ('?')
+       xa (PN_PREFIX)
+   PredicateObjectList
+    Verb
+     Predicate
+      Expression
+       Path
+        PathItem
+         Iri
+          PrefixedName
+           test:hates (PNAME_LN)
+    ObjectList
+     Object
+      Expression
+       Path
+        PathItem
+         Iri
+          PrefixedName
+           test:covid (PNAME_LN)
+ . ('.')
+ <EOF>
+
+pass? false
+-- CONFIG
+grammar: n3
+file: D:\git\n3dev\tests\test1.n3
+
+
+-- TESTS
+testing (positive): .\..\..\tests\test1.n3
+N3Doc
+ N3Statement
+  N3Directive
+   PrefixID
+    @prefix ('@prefix')
+    test: (PNAME_NS)
+    <http://test.org> (IRIREF)
+ . ('.')
+ N3Statement
+  Triples
+   Subject
+    Expression
+     Path
+      PathItem
+       ? ('?')
+       xa (QuickVarName)
+   PredicateObjectList
+    Verb
+     Predicate
+      Expression
+       Path
+        PathItem
+         Iri
+          PrefixedName
+           test:hates (PNAME_LN)
+    ObjectList
+     Object
+      Expression
+       Path
+        PathItem
+         Iri
+          PrefixedName
+           test:covid (PNAME_LN)
+ . ('.')
+ <EOF>
+
+pass? true
+-- CONFIG
+grammar: n3
+file: D:\git\n3dev\tests\test1.n3
+
+
+-- TESTS
+testing (positive): .\..\..\tests\test1.n3
+N3Doc
+ N3Statement
+  N3Directive
+   PrefixID
+    @prefix ('@prefix')
+    test: (PNAME_NS)
+    <http://test.org> (IRIREF)
+ . ('.')
+ N3Statement
+  Triples
+   Subject
+    Expression
+     Path
+      PathItem
+       ? ('?')
+       _xa12 (QuickVarName)
+   PredicateObjectList
+    Verb
+     Predicate
+      Expression
+       Path
+        PathItem
+         Iri
+          PrefixedName
+           test:hates (PNAME_LN)
+    ObjectList
+     Object
+      Expression
+       Path
+        PathItem
+         Iri
+          PrefixedName
+           test:covid (PNAME_LN)
+ . ('.')
+ <EOF>
+
+pass? true
+-- CONFIG
+grammar: n3
+file: D:\git\n3dev\tests\test1.n3
+
+
+-- TESTS
+testing (positive): .\..\..\tests\test1.n3
+ERROR: test1.n3 [parser]: syntaxError for [@13,647:647='}',<24>,38:43] @38:43 - mismatched input '}' expecting {'[', '(', '{', '?', BooleanLiteral, String, IRIREF, PNAME_NS, PNAME_LN, BLANK_NODE_LABEL, INTEGER, DECIMAL, DOUBLE, ANON}
+N3Doc
+ N3Statement
+  N3Directive
+   PrefixID
+    @prefix ('@prefix')
+    test: (PNAME_NS)
+    <http://test.org> (IRIREF)
+ . ('.')
+ N3Statement
+  Triples
+   Subject
+    Expression
+     Path
+      PathItem
+       Formula
+        { ('{')
+        FormulaContent
+         N3Statement
+          Triples
+           Subject
+            Expression
+             Path
+              PathItem
+               Iri
+                PrefixedName
+                 :will (PNAME_LN)
+           PredicateObjectList
+            Verb
+             Predicate
+              Expression
+               Path
+                PathItem
+                 Iri
+                  PrefixedName
+                   :hates (PNAME_LN)
+            ObjectList
+             Object
+              Expression
+               Path
+                PathItem
+                 Iri
+                  PrefixedName
+                   :covid (PNAME_LN)
+            ; (';')
+            Verb
+             Predicate
+              Expression
+               Path
+                PathItem
+                 Iri
+                  PrefixedName
+                   :says (PNAME_LN)
+            ObjectList
+             Object
+              Expression
+               Path
+                PathItem
+                 Formula
+                  { ('{')
+                  FormulaContent
+                   N3Statement
+                    Triples
+                     Subject
+                      Expression
+                       Path
+                        PathItem
+                         Iri
+                          PrefixedName
+                           :this (PNAME_LN)
+                     PredicateObjectList
+                      Verb
+                       Predicate
+                        Expression
+                         Path
+                          PathItem
+                           Iri
+                            PrefixedName
+                             :too (PNAME_LN)
+                      ObjectList
+                       Object
+                        Expression
+                         Path
+                          PathItem
+                  } ('}')
+        } ('}')
+   PredicateObjectList
+    Verb
+     Predicate
+      Expression
+       Path
+        PathItem
+         Iri
+          PrefixedName
+           :time (PNAME_LN)
+    ObjectList
+     Object
+      Expression
+       Path
+        PathItem
+         Literal
+          123 (INTEGER)
+     , (',')
+     Object
+      Expression
+       Path
+        PathItem
+         Literal
+          456 (INTEGER)
+ . ('.')
+ <EOF>
+
+pass? false
+-- CONFIG
+grammar: n3
+file: D:\git\n3dev\tests\test1.n3
+
+
+-- TESTS
+testing (positive): .\..\..\tests\test1.n3
+N3Doc
+ N3Statement
+  N3Directive
+   PrefixID
+    @prefix ('@prefix')
+    test: (PNAME_NS)
+    <http://test.org> (IRIREF)
+ . ('.')
+ N3Statement
+  Triples
+   Subject
+    Expression
+     Path
+      PathItem
+       Formula
+        { ('{')
+        FormulaContent
+         N3Statement
+          Triples
+           Subject
+            Expression
+             Path
+              PathItem
+               Iri
+                PrefixedName
+                 :will (PNAME_LN)
+           PredicateObjectList
+            Verb
+             Predicate
+              Expression
+               Path
+                PathItem
+                 Iri
+                  PrefixedName
+                   :hates (PNAME_LN)
+            ObjectList
+             Object
+              Expression
+               Path
+                PathItem
+                 Iri
+                  PrefixedName
+                   :covid (PNAME_LN)
+            ; (';')
+            Verb
+             Predicate
+              Expression
+               Path
+                PathItem
+                 Iri
+                  PrefixedName
+                   :says (PNAME_LN)
+            ObjectList
+             Object
+              Expression
+               Path
+                PathItem
+                 Formula
+                  { ('{')
+                  FormulaContent
+                   N3Statement
+                    Triples
+                     Subject
+                      Expression
+                       Path
+                        PathItem
+                         Iri
+                          PrefixedName
+                           :and (PNAME_LN)
+                     PredicateObjectList
+                      Verb
+                       Predicate
+                        Expression
+                         Path
+                          PathItem
+                           Iri
+                            PrefixedName
+                             :this (PNAME_LN)
+                      ObjectList
+                       Object
+                        Expression
+                         Path
+                          PathItem
+                           Iri
+                            PrefixedName
+                             :too (PNAME_LN)
+                  } ('}')
+        } ('}')
+   PredicateObjectList
+    Verb
+     Predicate
+      Expression
+       Path
+        PathItem
+         Iri
+          PrefixedName
+           :time (PNAME_LN)
+    ObjectList
+     Object
+      Expression
+       Path
+        PathItem
+         Literal
+          123 (INTEGER)
+     , (',')
+     Object
+      Expression
+       Path
+        PathItem
+         Literal
+          456 (INTEGER)
+ . ('.')
+ <EOF>
+
+pass? true
+-- CONFIG
+grammar: n3
+file: D:\git\n3dev\tests\test1.n3
+
+
+-- TESTS
+testing (positive): .\..\..\tests\test1.n3
+N3Doc
+ N3Statement
+  N3Directive
+   PrefixID
+    @prefix ('@prefix')
+    test: (PNAME_NS)
+    <http://test.org> (IRIREF)
+ . ('.')
+ N3Statement
+  Triples
+   Subject
+    Expression
+     Path
+      PathItem
+       Iri
+        PrefixedName
+         :will (PNAME_LN)
+   PredicateObjectList
+    Verb
+     Predicate
+      Expression
+       Path
+        PathItem
+         Iri
+          PrefixedName
+           :is (PNAME_LN)
+    ObjectList
+     Object
+      Expression
+       Path
+        PathItem
+         Collection
+          ( ('(')
+          Object
+           Expression
+            Path
+             PathItem
+              BlankNodePropertyList
+               [ ('[')
+               PredicateObjectList
+                Verb
+                 Predicate
+                  Expression
+                   Path
+                    PathItem
+                     Iri
+                      PrefixedName
+                       :label (PNAME_LN)
+                ObjectList
+                 Object
+                  Expression
+                   Path
+                    PathItem
+                     Literal
+                      RdfLiteral
+                       "awesome" (String)
+               ] (']')
+          Object
+           Expression
+            Path
+             PathItem
+              BlankNodePropertyList
+               [ ('[')
+               PredicateObjectList
+                Verb
+                 Predicate
+                  Expression
+                   Path
+                    PathItem
+                     Iri
+                      PrefixedName
+                       :label (PNAME_LN)
+                ObjectList
+                 Object
+                  Expression
+                   Path
+                    PathItem
+                     Literal
+                      RdfLiteral
+                       "cool" (String)
+               ] (']')
+          ) (')')
+ . ('.')
+ <EOF>
+
+pass? true

@@ -7,10 +7,10 @@ import java.util.List;
 
 import org.antlr.v4.runtime.ParserRuleContext;
 
-import parser.n3AbstractParserErrorListener;
+import parser.n3ParserErrorListener;
 import parser.n3Grammar;
-import parser.n3PrefixErrorVisitor;
-import parser.n3PrintVisitor;
+import parser.visitor.n3PrefixErrorVisitor;
+import parser.visitor.n3PrintVisitor;
 import wvw.utils.log.Log;
 
 public class N3TestGrammar extends N3Test {
@@ -131,15 +131,15 @@ public class N3TestGrammar extends N3Test {
 	}
 
 	private n3PrintVisitor createPrintVisitor(String grammar) throws Exception {
-		return (n3PrintVisitor) Class.forName("parser." + grammar.toLowerCase() + "PrintVisitor").getConstructor()
-				.newInstance();
+		return (n3PrintVisitor) Class.forName("parser.visitor." + grammar.toLowerCase() + "PrintVisitor")
+				.getConstructor().newInstance();
 	}
 
-	private n3PrefixErrorVisitor createPrefixErrorVisitor(String grammar, n3AbstractParserErrorListener listener)
+	private n3PrefixErrorVisitor createPrefixErrorVisitor(String grammar, n3ParserErrorListener listener)
 			throws Exception {
 
-		return (n3PrefixErrorVisitor) Class.forName("parser." + grammar.toLowerCase() + "PrefixErrorVisitor")
-				.getConstructor(n3AbstractParserErrorListener.class).newInstance(listener);
+		return (n3PrefixErrorVisitor) Class.forName("parser.visitor." + grammar.toLowerCase() + "PrefixErrorVisitor")
+				.getConstructor(n3ParserErrorListener.class).newInstance(listener);
 	}
 
 	protected class N3TestResult implements ITestResult {

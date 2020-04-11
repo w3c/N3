@@ -1,15 +1,17 @@
-package parser;
+package parser.visitor;
 
 import org.antlr.v4.runtime.tree.TerminalNode;
 
 import parser.n3PrefixException.PrefixErrors;
+import parser.n3ParserErrorListener;
+import parser.n3PrefixException;
 import parser.antlr.n3Parser;
 
 public class n3PrefixErrorVisitor extends n3PrefixVisitor {
 
-	private n3AbstractParserErrorListener listener;
+	private n3ParserErrorListener listener;
 
-	public n3PrefixErrorVisitor(n3AbstractParserErrorListener listener) {
+	public n3PrefixErrorVisitor(n3ParserErrorListener listener) {
 		this.listener = listener;
 	}
 

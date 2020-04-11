@@ -1,4 +1,4 @@
-package parser;
+package parser.visitor;
 
 import org.antlr.v4.runtime.tree.ParseTree;
 import org.antlr.v4.runtime.tree.RuleNode;
@@ -445,7 +445,12 @@ public class n3PrintVisitor extends n3DefaultVisitor {
 
 			ParseTree c = node.getChild(i);
 			if (c instanceof TerminalNode) {
-				print(c.toString());
+				TerminalNode t = (TerminalNode) c;
+				String out = c.toString();
+				int type = t.getSymbol().getType();
+				if (type != -1)
+					out += " (" + n3Parser.tokenNames[type] + ")";
+				print(out);
 
 			} else {
 				Void childResult = c.accept(this);

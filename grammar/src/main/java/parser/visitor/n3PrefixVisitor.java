@@ -1,4 +1,4 @@
-package parser;
+package parser.visitor;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -11,6 +11,7 @@ public class n3PrefixVisitor extends n3DefaultVisitor {
 
 	protected Map<String, String> prefixUris = new HashMap<>();
 
+	@Override
 	public Void visitPrefixID(n3Parser.PrefixIDContext ctx) {
 //		String decl = collectText(ctx, " ");
 

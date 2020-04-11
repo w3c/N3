@@ -19,8 +19,8 @@ public class n3Grammar {
 
 	private Lexer lexer;
 	private Parser parser;
-	private n3AbstractLexerErrorListener lexerListener;
-	private n3AbstractParserErrorListener parserListener;
+	private n3LexerErrorListener lexerListener;
+	private n3ParserErrorListener parserListener;
 
 	public ParserRuleContext parse(File file, String grammar) throws Exception {
 		createGrammarComponents(grammar, file);
@@ -35,11 +35,11 @@ public class n3Grammar {
 		}
 	}
 
-	public n3AbstractLexerErrorListener getLexerListener() {
+	public n3LexerErrorListener getLexerListener() {
 		return lexerListener;
 	}
 
-	public n3AbstractParserErrorListener getParserListener() {
+	public n3ParserErrorListener getParserListener() {
 		return parserListener;
 	}
 
@@ -69,13 +69,13 @@ public class n3Grammar {
 		// Charset.forName("UTF-8"))));
 
 //		lexer.removeErrorListeners();
-		lexerListener = new n3DefaultLexerErrorListener(file.getName());
+		lexerListener = new n3LogLexerErrorListener(file.getName());
 		lexer.addErrorListener(lexerListener);
 
 		parser = clss.getRight().getConstructor(TokenStream.class).newInstance(new CommonTokenStream(lexer));
 
 //		parser.removeErrorListeners();
-		parserListener = new n3DefaultParserErrorListener(file.getName());
+		parserListener = new n3LogParserErrorListener(file.getName());
 		parser.addErrorListener(parserListener);
 	}
 

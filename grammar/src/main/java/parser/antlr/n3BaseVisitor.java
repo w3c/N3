@@ -180,6 +180,13 @@ public class n3BaseVisitor<T> extends AbstractParseTreeVisitor<T> implements n3V
 	 * <p>The default implementation returns the result of calling
 	 * {@link #visitChildren} on {@code ctx}.</p>
 	 */
+	@Override public T visitNumericLiteral(n3Parser.NumericLiteralContext ctx) { return visitChildren(ctx); }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation returns the result of calling
+	 * {@link #visitChildren} on {@code ctx}.</p>
+	 */
 	@Override public T visitRdfLiteral(n3Parser.RdfLiteralContext ctx) { return visitChildren(ctx); }
 	/**
 	 * {@inheritDoc}
@@ -202,6 +209,20 @@ public class n3BaseVisitor<T> extends AbstractParseTreeVisitor<T> implements n3V
 	 * {@link #visitChildren} on {@code ctx}.</p>
 	 */
 	@Override public T visitPrefixedName(n3Parser.PrefixedNameContext ctx) { return visitChildren(ctx); }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation returns the result of calling
+	 * {@link #visitChildren} on {@code ctx}.</p>
+	 */
+	@Override public T visitBlankNode(n3Parser.BlankNodeContext ctx) { return visitChildren(ctx); }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation returns the result of calling
+	 * {@link #visitChildren} on {@code ctx}.</p>
+	 */
+	@Override public T visitQuickVar(n3Parser.QuickVarContext ctx) { return visitChildren(ctx); }
 	/**
 	 * {@inheritDoc}
 	 *

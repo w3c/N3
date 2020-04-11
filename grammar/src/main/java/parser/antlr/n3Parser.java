@@ -22,13 +22,13 @@ public class n3Parser extends Parser {
 		T__0=1, T__1=2, T__2=3, T__3=4, T__4=5, T__5=6, T__6=7, T__7=8, T__8=9, 
 		T__9=10, T__10=11, T__11=12, T__12=13, T__13=14, T__14=15, T__15=16, T__16=17, 
 		T__17=18, T__18=19, T__19=20, T__20=21, T__21=22, T__22=23, T__23=24, 
-		T__24=25, T__25=26, T__26=27, COMMENT=28, NumericLiteral=29, BooleanLiteral=30, 
-		String=31, BlankNode=32, QuickVar=33, IRIREF=34, PNAME_NS=35, PNAME_LN=36, 
-		BLANK_NODE_LABEL=37, LANGTAG=38, INTEGER=39, DECIMAL=40, DOUBLE=41, EXPONENT=42, 
-		STRING_LITERAL_LONG_SINGLE_QUOTE=43, STRING_LITERAL_LONG_QUOTE=44, STRING_LITERAL_QUOTE=45, 
-		STRING_LITERAL_SINGLE_QUOTE=46, UCHAR=47, ECHAR=48, WS=49, ANON=50, PN_CHARS_BASE=51, 
-		PN_CHARS_U=52, PN_CHARS=53, BASE=54, PREFIX=55, PN_PREFIX=56, PN_LOCAL=57, 
-		PLX=58, PERCENT=59, HEX=60, PN_LOCAL_ESC=61;
+		T__24=25, T__25=26, T__26=27, T__27=28, COMMENT=29, BooleanLiteral=30, 
+		String=31, IRIREF=32, PNAME_NS=33, PNAME_LN=34, BLANK_NODE_LABEL=35, LANGTAG=36, 
+		INTEGER=37, DECIMAL=38, DOUBLE=39, EXPONENT=40, STRING_LITERAL_LONG_SINGLE_QUOTE=41, 
+		STRING_LITERAL_LONG_QUOTE=42, STRING_LITERAL_QUOTE=43, STRING_LITERAL_SINGLE_QUOTE=44, 
+		UCHAR=45, ECHAR=46, WS=47, ANON=48, QuickVarName=49, PN_CHARS_U=50, PN_CHARS_BASE=51, 
+		PN_CHARS=52, BASE=53, PREFIX=54, PN_PREFIX=55, PN_LOCAL=56, PLX=57, PERCENT=58, 
+		HEX=59, PN_LOCAL_ESC=60;
 	public static final int
 		RULE_n3Doc = 0, RULE_n3Statement = 1, RULE_n3Directive = 2, RULE_sparqlDirective = 3, 
 		RULE_sparqlBase = 4, RULE_sparqlPrefix = 5, RULE_prefixID = 6, RULE_base = 7, 
@@ -36,16 +36,17 @@ public class n3Parser extends Parser {
 		RULE_verb = 11, RULE_subject = 12, RULE_predicate = 13, RULE_object = 14, 
 		RULE_expression = 15, RULE_path = 16, RULE_pathItem = 17, RULE_literal = 18, 
 		RULE_blankNodePropertyList = 19, RULE_collection = 20, RULE_formula = 21, 
-		RULE_formulaContent = 22, RULE_rdfLiteral = 23, RULE_iri = 24, RULE_iriList = 25, 
-		RULE_prefixedName = 26, RULE_existential = 27, RULE_universal = 28;
+		RULE_formulaContent = 22, RULE_numericLiteral = 23, RULE_rdfLiteral = 24, 
+		RULE_iri = 25, RULE_iriList = 26, RULE_prefixedName = 27, RULE_blankNode = 28, 
+		RULE_quickVar = 29, RULE_existential = 30, RULE_universal = 31;
 	private static String[] makeRuleNames() {
 		return new String[] {
 			"n3Doc", "n3Statement", "n3Directive", "sparqlDirective", "sparqlBase", 
 			"sparqlPrefix", "prefixID", "base", "triples", "predicateObjectList", 
 			"objectList", "verb", "subject", "predicate", "object", "expression", 
 			"path", "pathItem", "literal", "blankNodePropertyList", "collection", 
-			"formula", "formulaContent", "rdfLiteral", "iri", "iriList", "prefixedName", 
-			"existential", "universal"
+			"formula", "formulaContent", "numericLiteral", "rdfLiteral", "iri", "iriList", 
+			"prefixedName", "blankNode", "quickVar", "existential", "universal"
 		};
 	}
 	public static final String[] ruleNames = makeRuleNames();
@@ -54,7 +55,7 @@ public class n3Parser extends Parser {
 		return new String[] {
 			null, "'.'", "'@prefix'", "'@base'", "';'", "','", "'a'", "'@a'", "'has'", 
 			"'@has'", "'is'", "'of'", "'@is'", "'@of'", "'='", "'<='", "'=>'", "'^'", 
-			"'!'", "'['", "']'", "'('", "')'", "'{'", "'}'", "'^^'", "'@forSome'", 
+			"'!'", "'['", "']'", "'('", "')'", "'{'", "'}'", "'^^'", "'?'", "'@forSome'", 
 			"'@forAll'"
 		};
 	}
@@ -63,13 +64,13 @@ public class n3Parser extends Parser {
 		return new String[] {
 			null, null, null, null, null, null, null, null, null, null, null, null, 
 			null, null, null, null, null, null, null, null, null, null, null, null, 
-			null, null, null, null, "COMMENT", "NumericLiteral", "BooleanLiteral", 
-			"String", "BlankNode", "QuickVar", "IRIREF", "PNAME_NS", "PNAME_LN", 
-			"BLANK_NODE_LABEL", "LANGTAG", "INTEGER", "DECIMAL", "DOUBLE", "EXPONENT", 
-			"STRING_LITERAL_LONG_SINGLE_QUOTE", "STRING_LITERAL_LONG_QUOTE", "STRING_LITERAL_QUOTE", 
-			"STRING_LITERAL_SINGLE_QUOTE", "UCHAR", "ECHAR", "WS", "ANON", "PN_CHARS_BASE", 
-			"PN_CHARS_U", "PN_CHARS", "BASE", "PREFIX", "PN_PREFIX", "PN_LOCAL", 
-			"PLX", "PERCENT", "HEX", "PN_LOCAL_ESC"
+			null, null, null, null, null, "COMMENT", "BooleanLiteral", "String", 
+			"IRIREF", "PNAME_NS", "PNAME_LN", "BLANK_NODE_LABEL", "LANGTAG", "INTEGER", 
+			"DECIMAL", "DOUBLE", "EXPONENT", "STRING_LITERAL_LONG_SINGLE_QUOTE", 
+			"STRING_LITERAL_LONG_QUOTE", "STRING_LITERAL_QUOTE", "STRING_LITERAL_SINGLE_QUOTE", 
+			"UCHAR", "ECHAR", "WS", "ANON", "QuickVarName", "PN_CHARS_U", "PN_CHARS_BASE", 
+			"PN_CHARS", "BASE", "PREFIX", "PN_PREFIX", "PN_LOCAL", "PLX", "PERCENT", 
+			"HEX", "PN_LOCAL_ESC"
 		};
 	}
 	private static final String[] _SYMBOLIC_NAMES = makeSymbolicNames();
@@ -163,12 +164,12 @@ public class n3Parser extends Parser {
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(64);
+			setState(70);
 			_errHandler.sync(this);
 			_la = _input.LA(1);
-			while ((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << T__1) | (1L << T__2) | (1L << T__18) | (1L << T__20) | (1L << T__22) | (1L << T__25) | (1L << T__26) | (1L << NumericLiteral) | (1L << BooleanLiteral) | (1L << String) | (1L << BlankNode) | (1L << QuickVar) | (1L << IRIREF) | (1L << PNAME_NS) | (1L << PNAME_LN) | (1L << BASE) | (1L << PREFIX))) != 0)) {
+			while ((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << T__1) | (1L << T__2) | (1L << T__18) | (1L << T__20) | (1L << T__22) | (1L << T__25) | (1L << T__26) | (1L << T__27) | (1L << BooleanLiteral) | (1L << String) | (1L << IRIREF) | (1L << PNAME_NS) | (1L << PNAME_LN) | (1L << BLANK_NODE_LABEL) | (1L << INTEGER) | (1L << DECIMAL) | (1L << DOUBLE) | (1L << ANON) | (1L << BASE) | (1L << PREFIX))) != 0)) {
 				{
-				setState(62);
+				setState(68);
 				_errHandler.sync(this);
 				switch (_input.LA(1)) {
 				case T__1:
@@ -178,25 +179,28 @@ public class n3Parser extends Parser {
 				case T__22:
 				case T__25:
 				case T__26:
-				case NumericLiteral:
+				case T__27:
 				case BooleanLiteral:
 				case String:
-				case BlankNode:
-				case QuickVar:
 				case IRIREF:
 				case PNAME_NS:
 				case PNAME_LN:
+				case BLANK_NODE_LABEL:
+				case INTEGER:
+				case DECIMAL:
+				case DOUBLE:
+				case ANON:
 					{
-					setState(58);
+					setState(64);
 					n3Statement();
-					setState(59);
+					setState(65);
 					match(T__0);
 					}
 					break;
 				case BASE:
 				case PREFIX:
 					{
-					setState(61);
+					setState(67);
 					sparqlDirective();
 					}
 					break;
@@ -204,11 +208,11 @@ public class n3Parser extends Parser {
 					throw new NoViableAltException(this);
 				}
 				}
-				setState(66);
+				setState(72);
 				_errHandler.sync(this);
 				_la = _input.LA(1);
 			}
-			setState(67);
+			setState(73);
 			match(EOF);
 			}
 		}
@@ -259,45 +263,48 @@ public class n3Parser extends Parser {
 		N3StatementContext _localctx = new N3StatementContext(_ctx, getState());
 		enterRule(_localctx, 2, RULE_n3Statement);
 		try {
-			setState(73);
+			setState(79);
 			_errHandler.sync(this);
 			switch (_input.LA(1)) {
 			case T__1:
 			case T__2:
 				enterOuterAlt(_localctx, 1);
 				{
-				setState(69);
+				setState(75);
 				n3Directive();
 				}
 				break;
 			case T__18:
 			case T__20:
 			case T__22:
-			case NumericLiteral:
+			case T__25:
 			case BooleanLiteral:
 			case String:
-			case BlankNode:
-			case QuickVar:
 			case IRIREF:
 			case PNAME_NS:
 			case PNAME_LN:
+			case BLANK_NODE_LABEL:
+			case INTEGER:
+			case DECIMAL:
+			case DOUBLE:
+			case ANON:
 				enterOuterAlt(_localctx, 2);
 				{
-				setState(70);
+				setState(76);
 				triples();
 				}
 				break;
-			case T__25:
+			case T__26:
 				enterOuterAlt(_localctx, 3);
 				{
-				setState(71);
+				setState(77);
 				existential();
 				}
 				break;
-			case T__26:
+			case T__27:
 				enterOuterAlt(_localctx, 4);
 				{
-				setState(72);
+				setState(78);
 				universal();
 				}
 				break;
@@ -346,20 +353,20 @@ public class n3Parser extends Parser {
 		N3DirectiveContext _localctx = new N3DirectiveContext(_ctx, getState());
 		enterRule(_localctx, 4, RULE_n3Directive);
 		try {
-			setState(77);
+			setState(83);
 			_errHandler.sync(this);
 			switch (_input.LA(1)) {
 			case T__1:
 				enterOuterAlt(_localctx, 1);
 				{
-				setState(75);
+				setState(81);
 				prefixID();
 				}
 				break;
 			case T__2:
 				enterOuterAlt(_localctx, 2);
 				{
-				setState(76);
+				setState(82);
 				base();
 				}
 				break;
@@ -408,20 +415,20 @@ public class n3Parser extends Parser {
 		SparqlDirectiveContext _localctx = new SparqlDirectiveContext(_ctx, getState());
 		enterRule(_localctx, 6, RULE_sparqlDirective);
 		try {
-			setState(81);
+			setState(87);
 			_errHandler.sync(this);
 			switch (_input.LA(1)) {
 			case BASE:
 				enterOuterAlt(_localctx, 1);
 				{
-				setState(79);
+				setState(85);
 				sparqlBase();
 				}
 				break;
 			case PREFIX:
 				enterOuterAlt(_localctx, 2);
 				{
-				setState(80);
+				setState(86);
 				sparqlPrefix();
 				}
 				break;
@@ -468,9 +475,9 @@ public class n3Parser extends Parser {
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(83);
+			setState(89);
 			match(BASE);
-			setState(84);
+			setState(90);
 			match(IRIREF);
 			}
 		}
@@ -514,11 +521,11 @@ public class n3Parser extends Parser {
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(86);
+			setState(92);
 			match(PREFIX);
-			setState(87);
+			setState(93);
 			match(PNAME_NS);
-			setState(88);
+			setState(94);
 			match(IRIREF);
 			}
 		}
@@ -561,11 +568,11 @@ public class n3Parser extends Parser {
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(90);
+			setState(96);
 			match(T__1);
-			setState(91);
+			setState(97);
 			match(PNAME_NS);
-			setState(92);
+			setState(98);
 			match(IRIREF);
 			}
 		}
@@ -607,9 +614,9 @@ public class n3Parser extends Parser {
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(94);
+			setState(100);
 			match(T__2);
-			setState(95);
+			setState(101);
 			match(IRIREF);
 			}
 		}
@@ -660,28 +667,28 @@ public class n3Parser extends Parser {
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(99);
+			setState(105);
 			_errHandler.sync(this);
 			switch ( getInterpreter().adaptivePredict(_input,5,_ctx) ) {
 			case 1:
 				{
-				setState(97);
+				setState(103);
 				subject();
 				}
 				break;
 			case 2:
 				{
-				setState(98);
+				setState(104);
 				blankNodePropertyList();
 				}
 				break;
 			}
-			setState(102);
+			setState(108);
 			_errHandler.sync(this);
 			_la = _input.LA(1);
-			if ((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << T__5) | (1L << T__6) | (1L << T__7) | (1L << T__8) | (1L << T__9) | (1L << T__11) | (1L << T__13) | (1L << T__14) | (1L << T__15) | (1L << T__16) | (1L << T__18) | (1L << T__20) | (1L << T__22) | (1L << NumericLiteral) | (1L << BooleanLiteral) | (1L << String) | (1L << BlankNode) | (1L << QuickVar) | (1L << IRIREF) | (1L << PNAME_NS) | (1L << PNAME_LN))) != 0)) {
+			if ((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << T__5) | (1L << T__6) | (1L << T__7) | (1L << T__8) | (1L << T__9) | (1L << T__11) | (1L << T__13) | (1L << T__14) | (1L << T__15) | (1L << T__16) | (1L << T__18) | (1L << T__20) | (1L << T__22) | (1L << T__25) | (1L << BooleanLiteral) | (1L << String) | (1L << IRIREF) | (1L << PNAME_NS) | (1L << PNAME_LN) | (1L << BLANK_NODE_LABEL) | (1L << INTEGER) | (1L << DECIMAL) | (1L << DOUBLE) | (1L << ANON))) != 0)) {
 				{
-				setState(101);
+				setState(107);
 				predicateObjectList();
 				}
 			}
@@ -738,33 +745,33 @@ public class n3Parser extends Parser {
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(104);
+			setState(110);
 			verb();
-			setState(105);
+			setState(111);
 			objectList();
-			setState(114);
+			setState(120);
 			_errHandler.sync(this);
 			_la = _input.LA(1);
 			while (_la==T__3) {
 				{
 				{
-				setState(106);
+				setState(112);
 				match(T__3);
-				setState(110);
+				setState(116);
 				_errHandler.sync(this);
 				_la = _input.LA(1);
-				if ((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << T__5) | (1L << T__6) | (1L << T__7) | (1L << T__8) | (1L << T__9) | (1L << T__11) | (1L << T__13) | (1L << T__14) | (1L << T__15) | (1L << T__16) | (1L << T__18) | (1L << T__20) | (1L << T__22) | (1L << NumericLiteral) | (1L << BooleanLiteral) | (1L << String) | (1L << BlankNode) | (1L << QuickVar) | (1L << IRIREF) | (1L << PNAME_NS) | (1L << PNAME_LN))) != 0)) {
+				if ((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << T__5) | (1L << T__6) | (1L << T__7) | (1L << T__8) | (1L << T__9) | (1L << T__11) | (1L << T__13) | (1L << T__14) | (1L << T__15) | (1L << T__16) | (1L << T__18) | (1L << T__20) | (1L << T__22) | (1L << T__25) | (1L << BooleanLiteral) | (1L << String) | (1L << IRIREF) | (1L << PNAME_NS) | (1L << PNAME_LN) | (1L << BLANK_NODE_LABEL) | (1L << INTEGER) | (1L << DECIMAL) | (1L << DOUBLE) | (1L << ANON))) != 0)) {
 					{
-					setState(107);
+					setState(113);
 					verb();
-					setState(108);
+					setState(114);
 					objectList();
 					}
 				}
 
 				}
 				}
-				setState(116);
+				setState(122);
 				_errHandler.sync(this);
 				_la = _input.LA(1);
 			}
@@ -814,21 +821,21 @@ public class n3Parser extends Parser {
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(117);
+			setState(123);
 			object();
-			setState(122);
+			setState(128);
 			_errHandler.sync(this);
 			_la = _input.LA(1);
 			while (_la==T__4) {
 				{
 				{
-				setState(118);
+				setState(124);
 				match(T__4);
-				setState(119);
+				setState(125);
 				object();
 				}
 				}
-				setState(124);
+				setState(130);
 				_errHandler.sync(this);
 				_la = _input.LA(1);
 			}
@@ -875,99 +882,102 @@ public class n3Parser extends Parser {
 		VerbContext _localctx = new VerbContext(_ctx, getState());
 		enterRule(_localctx, 22, RULE_verb);
 		try {
-			setState(143);
+			setState(149);
 			_errHandler.sync(this);
 			switch (_input.LA(1)) {
 			case T__16:
 			case T__18:
 			case T__20:
 			case T__22:
-			case NumericLiteral:
+			case T__25:
 			case BooleanLiteral:
 			case String:
-			case BlankNode:
-			case QuickVar:
 			case IRIREF:
 			case PNAME_NS:
 			case PNAME_LN:
+			case BLANK_NODE_LABEL:
+			case INTEGER:
+			case DECIMAL:
+			case DOUBLE:
+			case ANON:
 				enterOuterAlt(_localctx, 1);
 				{
-				setState(125);
+				setState(131);
 				predicate();
 				}
 				break;
 			case T__5:
 				enterOuterAlt(_localctx, 2);
 				{
-				setState(126);
+				setState(132);
 				match(T__5);
 				}
 				break;
 			case T__6:
 				enterOuterAlt(_localctx, 3);
 				{
-				setState(127);
+				setState(133);
 				match(T__6);
 				}
 				break;
 			case T__7:
 				enterOuterAlt(_localctx, 4);
 				{
-				setState(128);
+				setState(134);
 				match(T__7);
-				setState(129);
+				setState(135);
 				expression();
 				}
 				break;
 			case T__8:
 				enterOuterAlt(_localctx, 5);
 				{
-				setState(130);
+				setState(136);
 				match(T__8);
-				setState(131);
+				setState(137);
 				expression();
 				}
 				break;
 			case T__9:
 				enterOuterAlt(_localctx, 6);
 				{
-				setState(132);
+				setState(138);
 				match(T__9);
-				setState(133);
+				setState(139);
 				expression();
-				setState(134);
+				setState(140);
 				match(T__10);
 				}
 				break;
 			case T__11:
 				enterOuterAlt(_localctx, 7);
 				{
-				setState(136);
+				setState(142);
 				match(T__11);
-				setState(137);
+				setState(143);
 				expression();
-				setState(138);
+				setState(144);
 				match(T__12);
 				}
 				break;
 			case T__13:
 				enterOuterAlt(_localctx, 8);
 				{
-				setState(140);
+				setState(146);
 				match(T__13);
 				}
 				break;
 			case T__14:
 				enterOuterAlt(_localctx, 9);
 				{
-				setState(141);
+				setState(147);
 				match(T__14);
 				}
 				break;
 			case T__15:
 				enterOuterAlt(_localctx, 10);
 				{
-				setState(142);
+				setState(148);
 				match(T__15);
 				}
 				break;
@@ -1015,7 +1025,7 @@ public class n3Parser extends Parser {
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(145);
+			setState(151);
 			expression();
 			}
 		}
@@ -1059,30 +1069,33 @@ public class n3Parser extends Parser {
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(150);
+			setState(156);
 			_errHandler.sync(this);
 			switch (_input.LA(1)) {
 			case T__18:
 			case T__20:
 			case T__22:
-			case NumericLiteral:
+			case T__25:
 			case BooleanLiteral:
 			case String:
-			case BlankNode:
-			case QuickVar:
 			case IRIREF:
 			case PNAME_NS:
 			case PNAME_LN:
+			case BLANK_NODE_LABEL:
+			case INTEGER:
+			case DECIMAL:
+			case DOUBLE:
+			case ANON:
 				{
-				setState(147);
+				setState(153);
 				expression();
 				}
 				break;
 			case T__16:
 				{
-				setState(148);
+				setState(154);
 				match(T__16);
-				setState(149);
+				setState(155);
 				expression();
 				}
 				break;
@@ -1131,7 +1144,7 @@ public class n3Parser extends Parser {
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(152);
+			setState(158);
 			expression();
 			}
 		}
@@ -1175,7 +1188,7 @@ public class n3Parser extends Parser {
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(154);
+			setState(160);
 			path();
 			}
 		}
@@ -1222,24 +1235,24 @@ public class n3Parser extends Parser {
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(156);
+			setState(162);
 			pathItem();
-			setState(161);
+			setState(167);
 			_errHandler.sync(this);
 			switch ( getInterpreter().adaptivePredict(_input,12,_ctx) ) {
 			case 1:
 				{
-				setState(157);
+				setState(163);
 				match(T__17);
-				setState(158);
+				setState(164);
 				path();
 				}
 				break;
 			case 2:
 				{
-				setState(159);
+				setState(165);
 				match(T__16);
-				setState(160);
+				setState(166);
 				path();
 				}
 				break;
@@ -1261,8 +1274,12 @@ public class n3Parser extends Parser {
 		public IriContext iri() {
 			return getRuleContext(IriContext.class,0);
 		}
-		public TerminalNode BlankNode() { return getToken(n3Parser.BlankNode, 0); }
-		public TerminalNode QuickVar() { return getToken(n3Parser.QuickVar, 0); }
+		public BlankNodeContext blankNode() {
+			return getRuleContext(BlankNodeContext.class,0);
+		}
+		public QuickVarContext quickVar() {
+			return getRuleContext(QuickVarContext.class,0);
+		}
 		public CollectionContext collection() {
 			return getRuleContext(CollectionContext.class,0);
 		}
@@ -1298,7 +1315,7 @@ public class n3Parser extends Parser {
 		PathItemContext _localctx = new PathItemContext(_ctx, getState());
 		enterRule(_localctx, 34, RULE_pathItem);
 		try {
-			setState(170);
+			setState(176);
 			_errHandler.sync(this);
 			switch (_input.LA(1)) {
 			case IRIREF:
@@ -1306,51 +1323,54 @@ public class n3Parser extends Parser {
 			case PNAME_LN:
 				enterOuterAlt(_localctx, 1);
 				{
-				setState(163);
+				setState(169);
 				iri();
 				}
 				break;
-			case BlankNode:
+			case BLANK_NODE_LABEL:
+			case ANON:
 				enterOuterAlt(_localctx, 2);
 				{
-				setState(164);
-				match(BlankNode);
+				setState(170);
+				blankNode();
 				}
 				break;
-			case QuickVar:
+			case T__25:
 				enterOuterAlt(_localctx, 3);
 				{
-				setState(165);
-				match(QuickVar);
+				setState(171);
+				quickVar();
 				}
 				break;
 			case T__20:
 				enterOuterAlt(_localctx, 4);
 				{
-				setState(166);
+				setState(172);
 				collection();
 				}
 				break;
 			case T__18:
 				enterOuterAlt(_localctx, 5);
 				{
-				setState(167);
+				setState(173);
 				blankNodePropertyList();
 				}
 				break;
-			case NumericLiteral:
 			case BooleanLiteral:
 			case String:
+			case INTEGER:
+			case DECIMAL:
+			case DOUBLE:
 				enterOuterAlt(_localctx, 6);
 				{
-				setState(168);
+				setState(174);
 				literal();
 				}
 				break;
 			case T__22:
 				enterOuterAlt(_localctx, 7);
 				{
-				setState(169);
+				setState(175);
 				formula();
 				}
 				break;
@@ -1373,7 +1393,9 @@ public class n3Parser extends Parser {
 		public RdfLiteralContext rdfLiteral() {
 			return getRuleContext(RdfLiteralContext.class,0);
 		}
-		public TerminalNode NumericLiteral() { return getToken(n3Parser.NumericLiteral, 0); }
+		public NumericLiteralContext numericLiteral() {
+			return getRuleContext(NumericLiteralContext.class,0);
+		}
 		public TerminalNode BooleanLiteral() { return getToken(n3Parser.BooleanLiteral, 0); }
 		public LiteralContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
@@ -1398,27 +1420,29 @@ public class n3Parser extends Parser {
 		LiteralContext _localctx = new LiteralContext(_ctx, getState());
 		enterRule(_localctx, 36, RULE_literal);
 		try {
-			setState(175);
+			setState(181);
 			_errHandler.sync(this);
 			switch (_input.LA(1)) {
 			case String:
 				enterOuterAlt(_localctx, 1);
 				{
-				setState(172);
+				setState(178);
 				rdfLiteral();
 				}
 				break;
-			case NumericLiteral:
+			case INTEGER:
+			case DECIMAL:
+			case DOUBLE:
 				enterOuterAlt(_localctx, 2);
 				{
-				setState(173);
-				match(NumericLiteral);
+				setState(179);
+				numericLiteral();
 				}
 				break;
 			case BooleanLiteral:
 				enterOuterAlt(_localctx, 3);
 				{
-				setState(174);
+				setState(180);
 				match(BooleanLiteral);
 				}
 				break;
@@ -1467,19 +1491,19 @@ public class n3Parser extends Parser {
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(177);
+			setState(183);
 			match(T__18);
-			setState(179);
+			setState(185);
 			_errHandler.sync(this);
 			_la = _input.LA(1);
-			if ((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << T__5) | (1L << T__6) | (1L << T__7) | (1L << T__8) | (1L << T__9) | (1L << T__11) | (1L << T__13) | (1L << T__14) | (1L << T__15) | (1L << T__16) | (1L << T__18) | (1L << T__20) | (1L << T__22) | (1L << NumericLiteral) | (1L << BooleanLiteral) | (1L << String) | (1L << BlankNode) | (1L << QuickVar) | (1L << IRIREF) | (1L << PNAME_NS) | (1L << PNAME_LN))) != 0)) {
+			if ((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << T__5) | (1L << T__6) | (1L << T__7) | (1L << T__8) | (1L << T__9) | (1L << T__11) | (1L << T__13) | (1L << T__14) | (1L << T__15) | (1L << T__16) | (1L << T__18) | (1L << T__20) | (1L << T__22) | (1L << T__25) | (1L << BooleanLiteral) | (1L << String) | (1L << IRIREF) | (1L << PNAME_NS) | (1L << PNAME_LN) | (1L << BLANK_NODE_LABEL) | (1L << INTEGER) | (1L << DECIMAL) | (1L << DOUBLE) | (1L << ANON))) != 0)) {
 				{
-				setState(178);
+				setState(184);
 				predicateObjectList();
 				}
 			}
 
-			setState(181);
+			setState(187);
 			match(T__19);
 			}
 		}
@@ -1527,23 +1551,23 @@ public class n3Parser extends Parser {
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(183);
+			setState(189);
 			match(T__20);
-			setState(187);
+			setState(193);
 			_errHandler.sync(this);
 			_la = _input.LA(1);
-			while ((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << T__18) | (1L << T__20) | (1L << T__22) | (1L << NumericLiteral) | (1L << BooleanLiteral) | (1L << String) | (1L << BlankNode) | (1L << QuickVar) | (1L << IRIREF) | (1L << PNAME_NS) | (1L << PNAME_LN))) != 0)) {
+			while ((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << T__18) | (1L << T__20) | (1L << T__22) | (1L << T__25) | (1L << BooleanLiteral) | (1L << String) | (1L << IRIREF) | (1L << PNAME_NS) | (1L << PNAME_LN) | (1L << BLANK_NODE_LABEL) | (1L << INTEGER) | (1L << DECIMAL) | (1L << DOUBLE) | (1L << ANON))) != 0)) {
 				{
 				{
-				setState(184);
+				setState(190);
 				object();
 				}
 				}
-				setState(189);
+				setState(195);
 				_errHandler.sync(this);
 				_la = _input.LA(1);
 			}
-			setState(190);
+			setState(196);
 			match(T__21);
 			}
 		}
@@ -1588,19 +1612,19 @@ public class n3Parser extends Parser {
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(192);
+			setState(198);
 			match(T__22);
-			setState(194);
+			setState(200);
 			_errHandler.sync(this);
 			_la = _input.LA(1);
-			if ((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << T__1) | (1L << T__2) | (1L << T__18) | (1L << T__20) | (1L << T__22) | (1L << T__25) | (1L << T__26) | (1L << NumericLiteral) | (1L << BooleanLiteral) | (1L << String) | (1L << BlankNode) | (1L << QuickVar) | (1L << IRIREF) | (1L << PNAME_NS) | (1L << PNAME_LN) | (1L << BASE) | (1L << PREFIX))) != 0)) {
+			if ((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << T__1) | (1L << T__2) | (1L << T__18) | (1L << T__20) | (1L << T__22) | (1L << T__25) | (1L << T__26) | (1L << T__27) | (1L << BooleanLiteral) | (1L << String) | (1L << IRIREF) | (1L << PNAME_NS) | (1L << PNAME_LN) | (1L << BLANK_NODE_LABEL) | (1L << INTEGER) | (1L << DECIMAL) | (1L << DOUBLE) | (1L << ANON) | (1L << BASE) | (1L << PREFIX))) != 0)) {
 				{
-				setState(193);
+				setState(199);
 				formulaContent();
 				}
 			}
 
-			setState(196);
+			setState(202);
 			match(T__23);
 			}
 		}
@@ -1649,7 +1673,7 @@ public class n3Parser extends Parser {
 		enterRule(_localctx, 44, RULE_formulaContent);
 		int _la;
 		try {
-			setState(209);
+			setState(215);
 			_errHandler.sync(this);
 			switch (_input.LA(1)) {
 			case T__1:
@@ -1659,31 +1683,34 @@ public class n3Parser extends Parser {
 			case T__22:
 			case T__25:
 			case T__26:
-			case NumericLiteral:
+			case T__27:
 			case BooleanLiteral:
 			case String:
-			case BlankNode:
-			case QuickVar:
 			case IRIREF:
 			case PNAME_NS:
 			case PNAME_LN:
+			case BLANK_NODE_LABEL:
+			case INTEGER:
+			case DECIMAL:
+			case DOUBLE:
+			case ANON:
 				enterOuterAlt(_localctx, 1);
 				{
-				setState(198);
+				setState(204);
 				n3Statement();
-				setState(203);
+				setState(209);
 				_errHandler.sync(this);
 				_la = _input.LA(1);
 				if (_la==T__0) {
 					{
-					setState(199);
+					setState(205);
 					match(T__0);
-					setState(201);
+					setState(207);
 					_errHandler.sync(this);
 					_la = _input.LA(1);
-					if ((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << T__1) | (1L << T__2) | (1L << T__18) | (1L << T__20) | (1L << T__22) | (1L << T__25) | (1L << T__26) | (1L << NumericLiteral) | (1L << BooleanLiteral) | (1L << String) | (1L << BlankNode) | (1L << QuickVar) | (1L << IRIREF) | (1L << PNAME_NS) | (1L << PNAME_LN) | (1L << BASE) | (1L << PREFIX))) != 0)) {
+					if ((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << T__1) | (1L << T__2) | (1L << T__18) | (1L << T__20) | (1L << T__22) | (1L << T__25) | (1L << T__26) | (1L << T__27) | (1L << BooleanLiteral) | (1L << String) | (1L << IRIREF) | (1L << PNAME_NS) | (1L << PNAME_LN) | (1L << BLANK_NODE_LABEL) | (1L << INTEGER) | (1L << DECIMAL) | (1L << DOUBLE) | (1L << ANON) | (1L << BASE) | (1L << PREFIX))) != 0)) {
 						{
-						setState(200);
+						setState(206);
 						formulaContent();
 						}
 					}
@@ -1697,14 +1724,14 @@ public class n3Parser extends Parser {
 			case PREFIX:
 				enterOuterAlt(_localctx, 2);
 				{
-				setState(205);
+				setState(211);
 				sparqlDirective();
-				setState(207);
+				setState(213);
 				_errHandler.sync(this);
 				_la = _input.LA(1);
-				if ((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << T__1) | (1L << T__2) | (1L << T__18) | (1L << T__20) | (1L << T__22) | (1L << T__25) | (1L << T__26) | (1L << NumericLiteral) | (1L << BooleanLiteral) | (1L << String) | (1L << BlankNode) | (1L << QuickVar) | (1L << IRIREF) | (1L << PNAME_NS) | (1L << PNAME_LN) | (1L << BASE) | (1L << PREFIX))) != 0)) {
+				if ((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << T__1) | (1L << T__2) | (1L << T__18) | (1L << T__20) | (1L << T__22) | (1L << T__25) | (1L << T__26) | (1L << T__27) | (1L << BooleanLiteral) | (1L << String) | (1L << IRIREF) | (1L << PNAME_NS) | (1L << PNAME_LN) | (1L << BLANK_NODE_LABEL) | (1L << INTEGER) | (1L << DECIMAL) | (1L << DOUBLE) | (1L << ANON) | (1L << BASE) | (1L << PREFIX))) != 0)) {
 					{
-					setState(206);
+					setState(212);
 					formulaContent();
 					}
 				}
@@ -1713,6 +1740,59 @@ public class n3Parser extends Parser {
 				break;
 			default:
 				throw new NoViableAltException(this);
+			}
+		}
+		catch (RecognitionException re) {
+			_localctx.exception = re;
+			_errHandler.reportError(this, re);
+			_errHandler.recover(this, re);
+		}
+		finally {
+			exitRule();
+		}
+		return _localctx;
+	}
+
+	public static class NumericLiteralContext extends ParserRuleContext {
+		public TerminalNode INTEGER() { return getToken(n3Parser.INTEGER, 0); }
+		public TerminalNode DECIMAL() { return getToken(n3Parser.DECIMAL, 0); }
+		public TerminalNode DOUBLE() { return getToken(n3Parser.DOUBLE, 0); }
+		public NumericLiteralContext(ParserRuleContext parent, int invokingState) {
+			super(parent, invokingState);
+		}
+		@Override public int getRuleIndex() { return RULE_numericLiteral; }
+		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof n3Listener ) ((n3Listener)listener).enterNumericLiteral(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof n3Listener ) ((n3Listener)listener).exitNumericLiteral(this);
+		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof n3Visitor ) return ((n3Visitor<? extends T>)visitor).visitNumericLiteral(this);
+			else return visitor.visitChildren(this);
+		}
+	}
+
+	public final NumericLiteralContext numericLiteral() throws RecognitionException {
+		NumericLiteralContext _localctx = new NumericLiteralContext(_ctx, getState());
+		enterRule(_localctx, 46, RULE_numericLiteral);
+		int _la;
+		try {
+			enterOuterAlt(_localctx, 1);
+			{
+			setState(217);
+			_la = _input.LA(1);
+			if ( !((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << INTEGER) | (1L << DECIMAL) | (1L << DOUBLE))) != 0)) ) {
+			_errHandler.recoverInline(this);
+			}
+			else {
+				if ( _input.LA(1)==Token.EOF ) matchedEOF = true;
+				_errHandler.reportMatch(this);
+				consume();
+			}
 			}
 		}
 		catch (RecognitionException re) {
@@ -1753,26 +1833,26 @@ public class n3Parser extends Parser {
 
 	public final RdfLiteralContext rdfLiteral() throws RecognitionException {
 		RdfLiteralContext _localctx = new RdfLiteralContext(_ctx, getState());
-		enterRule(_localctx, 46, RULE_rdfLiteral);
+		enterRule(_localctx, 48, RULE_rdfLiteral);
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(211);
+			setState(219);
 			match(String);
-			setState(215);
+			setState(223);
 			_errHandler.sync(this);
 			switch (_input.LA(1)) {
 			case LANGTAG:
 				{
-				setState(212);
+				setState(220);
 				match(LANGTAG);
 				}
 				break;
 			case T__24:
 				{
-				setState(213);
+				setState(221);
 				match(T__24);
-				setState(214);
+				setState(222);
 				iri();
 				}
 				break;
@@ -1798,14 +1878,17 @@ public class n3Parser extends Parser {
 			case T__21:
 			case T__22:
 			case T__23:
-			case NumericLiteral:
+			case T__25:
 			case BooleanLiteral:
 			case String:
-			case BlankNode:
-			case QuickVar:
 			case IRIREF:
 			case PNAME_NS:
 			case PNAME_LN:
+			case BLANK_NODE_LABEL:
+			case INTEGER:
+			case DECIMAL:
+			case DOUBLE:
+			case ANON:
 				break;
 			default:
 				break;
@@ -1849,15 +1932,15 @@ public class n3Parser extends Parser {
 
 	public final IriContext iri() throws RecognitionException {
 		IriContext _localctx = new IriContext(_ctx, getState());
-		enterRule(_localctx, 48, RULE_iri);
+		enterRule(_localctx, 50, RULE_iri);
 		try {
-			setState(219);
+			setState(227);
 			_errHandler.sync(this);
 			switch (_input.LA(1)) {
 			case IRIREF:
 				enterOuterAlt(_localctx, 1);
 				{
-				setState(217);
+				setState(225);
 				match(IRIREF);
 				}
 				break;
@@ -1865,7 +1948,7 @@ public class n3Parser extends Parser {
 			case PNAME_LN:
 				enterOuterAlt(_localctx, 2);
 				{
-				setState(218);
+				setState(226);
 				prefixedName();
 				}
 				break;
@@ -1912,26 +1995,26 @@ public class n3Parser extends Parser {
 
 	public final IriListContext iriList() throws RecognitionException {
 		IriListContext _localctx = new IriListContext(_ctx, getState());
-		enterRule(_localctx, 50, RULE_iriList);
+		enterRule(_localctx, 52, RULE_iriList);
 		int _la;
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(221);
+			setState(229);
 			iri();
-			setState(226);
+			setState(234);
 			_errHandler.sync(this);
 			_la = _input.LA(1);
 			while (_la==T__4) {
 				{
 				{
-				setState(222);
+				setState(230);
 				match(T__4);
-				setState(223);
+				setState(231);
 				iri();
 				}
 				}
-				setState(228);
+				setState(236);
 				_errHandler.sync(this);
 				_la = _input.LA(1);
 			}
@@ -1972,12 +2055,12 @@ public class n3Parser extends Parser {
 
 	public final PrefixedNameContext prefixedName() throws RecognitionException {
 		PrefixedNameContext _localctx = new PrefixedNameContext(_ctx, getState());
-		enterRule(_localctx, 52, RULE_prefixedName);
+		enterRule(_localctx, 54, RULE_prefixedName);
 		int _la;
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(229);
+			setState(237);
 			_la = _input.LA(1);
 			if ( !(_la==PNAME_NS || _la==PNAME_LN) ) {
 			_errHandler.recoverInline(this);
@@ -1987,6 +2070,102 @@ public class n3Parser extends Parser {
 				_errHandler.reportMatch(this);
 				consume();
 			}
+			}
+		}
+		catch (RecognitionException re) {
+			_localctx.exception = re;
+			_errHandler.reportError(this, re);
+			_errHandler.recover(this, re);
+		}
+		finally {
+			exitRule();
+		}
+		return _localctx;
+	}
+
+	public static class BlankNodeContext extends ParserRuleContext {
+		public TerminalNode BLANK_NODE_LABEL() { return getToken(n3Parser.BLANK_NODE_LABEL, 0); }
+		public TerminalNode ANON() { return getToken(n3Parser.ANON, 0); }
+		public BlankNodeContext(ParserRuleContext parent, int invokingState) {
+			super(parent, invokingState);
+		}
+		@Override public int getRuleIndex() { return RULE_blankNode; }
+		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof n3Listener ) ((n3Listener)listener).enterBlankNode(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof n3Listener ) ((n3Listener)listener).exitBlankNode(this);
+		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof n3Visitor ) return ((n3Visitor<? extends T>)visitor).visitBlankNode(this);
+			else return visitor.visitChildren(this);
+		}
+	}
+
+	public final BlankNodeContext blankNode() throws RecognitionException {
+		BlankNodeContext _localctx = new BlankNodeContext(_ctx, getState());
+		enterRule(_localctx, 56, RULE_blankNode);
+		int _la;
+		try {
+			enterOuterAlt(_localctx, 1);
+			{
+			setState(239);
+			_la = _input.LA(1);
+			if ( !(_la==BLANK_NODE_LABEL || _la==ANON) ) {
+			_errHandler.recoverInline(this);
+			}
+			else {
+				if ( _input.LA(1)==Token.EOF ) matchedEOF = true;
+				_errHandler.reportMatch(this);
+				consume();
+			}
+			}
+		}
+		catch (RecognitionException re) {
+			_localctx.exception = re;
+			_errHandler.reportError(this, re);
+			_errHandler.recover(this, re);
+		}
+		finally {
+			exitRule();
+		}
+		return _localctx;
+	}
+
+	public static class QuickVarContext extends ParserRuleContext {
+		public TerminalNode QuickVarName() { return getToken(n3Parser.QuickVarName, 0); }
+		public QuickVarContext(ParserRuleContext parent, int invokingState) {
+			super(parent, invokingState);
+		}
+		@Override public int getRuleIndex() { return RULE_quickVar; }
+		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof n3Listener ) ((n3Listener)listener).enterQuickVar(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof n3Listener ) ((n3Listener)listener).exitQuickVar(this);
+		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof n3Visitor ) return ((n3Visitor<? extends T>)visitor).visitQuickVar(this);
+			else return visitor.visitChildren(this);
+		}
+	}
+
+	public final QuickVarContext quickVar() throws RecognitionException {
+		QuickVarContext _localctx = new QuickVarContext(_ctx, getState());
+		enterRule(_localctx, 58, RULE_quickVar);
+		try {
+			enterOuterAlt(_localctx, 1);
+			{
+			setState(241);
+			match(T__25);
+			setState(242);
+			match(QuickVarName);
 			}
 		}
 		catch (RecognitionException re) {
@@ -2025,13 +2204,13 @@ public class n3Parser extends Parser {
 
 	public final ExistentialContext existential() throws RecognitionException {
 		ExistentialContext _localctx = new ExistentialContext(_ctx, getState());
-		enterRule(_localctx, 54, RULE_existential);
+		enterRule(_localctx, 60, RULE_existential);
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(231);
-			match(T__25);
-			setState(232);
+			setState(244);
+			match(T__26);
+			setState(245);
 			iriList();
 			}
 		}
@@ -2071,13 +2250,13 @@ public class n3Parser extends Parser {
 
 	public final UniversalContext universal() throws RecognitionException {
 		UniversalContext _localctx = new UniversalContext(_ctx, getState());
-		enterRule(_localctx, 56, RULE_universal);
+		enterRule(_localctx, 62, RULE_universal);
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(234);
-			match(T__26);
-			setState(235);
+			setState(247);
+			match(T__27);
+			setState(248);
 			iriList();
 			}
 		}
@@ -2093,85 +2272,90 @@ public class n3Parser extends Parser {
 	}
 
 	public static final String _serializedATN =
-		"\3\u608b\ua72a\u8133\ub9ed\u417c\u3be7\u7786\u5964\3?\u00f0\4\2\t\2\4"+
+		"\3\u608b\ua72a\u8133\ub9ed\u417c\u3be7\u7786\u5964\3>\u00fd\4\2\t\2\4"+
 		"\3\t\3\4\4\t\4\4\5\t\5\4\6\t\6\4\7\t\7\4\b\t\b\4\t\t\t\4\n\t\n\4\13\t"+
 		"\13\4\f\t\f\4\r\t\r\4\16\t\16\4\17\t\17\4\20\t\20\4\21\t\21\4\22\t\22"+
 		"\4\23\t\23\4\24\t\24\4\25\t\25\4\26\t\26\4\27\t\27\4\30\t\30\4\31\t\31"+
-		"\4\32\t\32\4\33\t\33\4\34\t\34\4\35\t\35\4\36\t\36\3\2\3\2\3\2\3\2\7\2"+
-		"A\n\2\f\2\16\2D\13\2\3\2\3\2\3\3\3\3\3\3\3\3\5\3L\n\3\3\4\3\4\5\4P\n\4"+
-		"\3\5\3\5\5\5T\n\5\3\6\3\6\3\6\3\7\3\7\3\7\3\7\3\b\3\b\3\b\3\b\3\t\3\t"+
-		"\3\t\3\n\3\n\5\nf\n\n\3\n\5\ni\n\n\3\13\3\13\3\13\3\13\3\13\3\13\5\13"+
-		"q\n\13\7\13s\n\13\f\13\16\13v\13\13\3\f\3\f\3\f\7\f{\n\f\f\f\16\f~\13"+
-		"\f\3\r\3\r\3\r\3\r\3\r\3\r\3\r\3\r\3\r\3\r\3\r\3\r\3\r\3\r\3\r\3\r\3\r"+
-		"\3\r\5\r\u0092\n\r\3\16\3\16\3\17\3\17\3\17\5\17\u0099\n\17\3\20\3\20"+
-		"\3\21\3\21\3\22\3\22\3\22\3\22\3\22\5\22\u00a4\n\22\3\23\3\23\3\23\3\23"+
-		"\3\23\3\23\3\23\5\23\u00ad\n\23\3\24\3\24\3\24\5\24\u00b2\n\24\3\25\3"+
-		"\25\5\25\u00b6\n\25\3\25\3\25\3\26\3\26\7\26\u00bc\n\26\f\26\16\26\u00bf"+
-		"\13\26\3\26\3\26\3\27\3\27\5\27\u00c5\n\27\3\27\3\27\3\30\3\30\3\30\5"+
-		"\30\u00cc\n\30\5\30\u00ce\n\30\3\30\3\30\5\30\u00d2\n\30\5\30\u00d4\n"+
-		"\30\3\31\3\31\3\31\3\31\5\31\u00da\n\31\3\32\3\32\5\32\u00de\n\32\3\33"+
-		"\3\33\3\33\7\33\u00e3\n\33\f\33\16\33\u00e6\13\33\3\34\3\34\3\35\3\35"+
-		"\3\35\3\36\3\36\3\36\3\36\2\2\37\2\4\6\b\n\f\16\20\22\24\26\30\32\34\36"+
-		" \"$&(*,.\60\62\64\668:\2\3\3\2%&\2\u00fd\2B\3\2\2\2\4K\3\2\2\2\6O\3\2"+
-		"\2\2\bS\3\2\2\2\nU\3\2\2\2\fX\3\2\2\2\16\\\3\2\2\2\20`\3\2\2\2\22e\3\2"+
-		"\2\2\24j\3\2\2\2\26w\3\2\2\2\30\u0091\3\2\2\2\32\u0093\3\2\2\2\34\u0098"+
-		"\3\2\2\2\36\u009a\3\2\2\2 \u009c\3\2\2\2\"\u009e\3\2\2\2$\u00ac\3\2\2"+
-		"\2&\u00b1\3\2\2\2(\u00b3\3\2\2\2*\u00b9\3\2\2\2,\u00c2\3\2\2\2.\u00d3"+
-		"\3\2\2\2\60\u00d5\3\2\2\2\62\u00dd\3\2\2\2\64\u00df\3\2\2\2\66\u00e7\3"+
-		"\2\2\28\u00e9\3\2\2\2:\u00ec\3\2\2\2<=\5\4\3\2=>\7\3\2\2>A\3\2\2\2?A\5"+
-		"\b\5\2@<\3\2\2\2@?\3\2\2\2AD\3\2\2\2B@\3\2\2\2BC\3\2\2\2CE\3\2\2\2DB\3"+
-		"\2\2\2EF\7\2\2\3F\3\3\2\2\2GL\5\6\4\2HL\5\22\n\2IL\58\35\2JL\5:\36\2K"+
-		"G\3\2\2\2KH\3\2\2\2KI\3\2\2\2KJ\3\2\2\2L\5\3\2\2\2MP\5\16\b\2NP\5\20\t"+
-		"\2OM\3\2\2\2ON\3\2\2\2P\7\3\2\2\2QT\5\n\6\2RT\5\f\7\2SQ\3\2\2\2SR\3\2"+
-		"\2\2T\t\3\2\2\2UV\78\2\2VW\7$\2\2W\13\3\2\2\2XY\79\2\2YZ\7%\2\2Z[\7$\2"+
-		"\2[\r\3\2\2\2\\]\7\4\2\2]^\7%\2\2^_\7$\2\2_\17\3\2\2\2`a\7\5\2\2ab\7$"+
-		"\2\2b\21\3\2\2\2cf\5\32\16\2df\5(\25\2ec\3\2\2\2ed\3\2\2\2fh\3\2\2\2g"+
-		"i\5\24\13\2hg\3\2\2\2hi\3\2\2\2i\23\3\2\2\2jk\5\30\r\2kt\5\26\f\2lp\7"+
-		"\6\2\2mn\5\30\r\2no\5\26\f\2oq\3\2\2\2pm\3\2\2\2pq\3\2\2\2qs\3\2\2\2r"+
-		"l\3\2\2\2sv\3\2\2\2tr\3\2\2\2tu\3\2\2\2u\25\3\2\2\2vt\3\2\2\2w|\5\36\20"+
-		"\2xy\7\7\2\2y{\5\36\20\2zx\3\2\2\2{~\3\2\2\2|z\3\2\2\2|}\3\2\2\2}\27\3"+
-		"\2\2\2~|\3\2\2\2\177\u0092\5\34\17\2\u0080\u0092\7\b\2\2\u0081\u0092\7"+
-		"\t\2\2\u0082\u0083\7\n\2\2\u0083\u0092\5 \21\2\u0084\u0085\7\13\2\2\u0085"+
-		"\u0092\5 \21\2\u0086\u0087\7\f\2\2\u0087\u0088\5 \21\2\u0088\u0089\7\r"+
-		"\2\2\u0089\u0092\3\2\2\2\u008a\u008b\7\16\2\2\u008b\u008c\5 \21\2\u008c"+
-		"\u008d\7\17\2\2\u008d\u0092\3\2\2\2\u008e\u0092\7\20\2\2\u008f\u0092\7"+
-		"\21\2\2\u0090\u0092\7\22\2\2\u0091\177\3\2\2\2\u0091\u0080\3\2\2\2\u0091"+
-		"\u0081\3\2\2\2\u0091\u0082\3\2\2\2\u0091\u0084\3\2\2\2\u0091\u0086\3\2"+
-		"\2\2\u0091\u008a\3\2\2\2\u0091\u008e\3\2\2\2\u0091\u008f\3\2\2\2\u0091"+
-		"\u0090\3\2\2\2\u0092\31\3\2\2\2\u0093\u0094\5 \21\2\u0094\33\3\2\2\2\u0095"+
-		"\u0099\5 \21\2\u0096\u0097\7\23\2\2\u0097\u0099\5 \21\2\u0098\u0095\3"+
-		"\2\2\2\u0098\u0096\3\2\2\2\u0099\35\3\2\2\2\u009a\u009b\5 \21\2\u009b"+
-		"\37\3\2\2\2\u009c\u009d\5\"\22\2\u009d!\3\2\2\2\u009e\u00a3\5$\23\2\u009f"+
-		"\u00a0\7\24\2\2\u00a0\u00a4\5\"\22\2\u00a1\u00a2\7\23\2\2\u00a2\u00a4"+
-		"\5\"\22\2\u00a3\u009f\3\2\2\2\u00a3\u00a1\3\2\2\2\u00a3\u00a4\3\2\2\2"+
-		"\u00a4#\3\2\2\2\u00a5\u00ad\5\62\32\2\u00a6\u00ad\7\"\2\2\u00a7\u00ad"+
-		"\7#\2\2\u00a8\u00ad\5*\26\2\u00a9\u00ad\5(\25\2\u00aa\u00ad\5&\24\2\u00ab"+
-		"\u00ad\5,\27\2\u00ac\u00a5\3\2\2\2\u00ac\u00a6\3\2\2\2\u00ac\u00a7\3\2"+
-		"\2\2\u00ac\u00a8\3\2\2\2\u00ac\u00a9\3\2\2\2\u00ac\u00aa\3\2\2\2\u00ac"+
-		"\u00ab\3\2\2\2\u00ad%\3\2\2\2\u00ae\u00b2\5\60\31\2\u00af\u00b2\7\37\2"+
-		"\2\u00b0\u00b2\7 \2\2\u00b1\u00ae\3\2\2\2\u00b1\u00af\3\2\2\2\u00b1\u00b0"+
-		"\3\2\2\2\u00b2\'\3\2\2\2\u00b3\u00b5\7\25\2\2\u00b4\u00b6\5\24\13\2\u00b5"+
-		"\u00b4\3\2\2\2\u00b5\u00b6\3\2\2\2\u00b6\u00b7\3\2\2\2\u00b7\u00b8\7\26"+
-		"\2\2\u00b8)\3\2\2\2\u00b9\u00bd\7\27\2\2\u00ba\u00bc\5\36\20\2\u00bb\u00ba"+
-		"\3\2\2\2\u00bc\u00bf\3\2\2\2\u00bd\u00bb\3\2\2\2\u00bd\u00be\3\2\2\2\u00be"+
-		"\u00c0\3\2\2\2\u00bf\u00bd\3\2\2\2\u00c0\u00c1\7\30\2\2\u00c1+\3\2\2\2"+
-		"\u00c2\u00c4\7\31\2\2\u00c3\u00c5\5.\30\2\u00c4\u00c3\3\2\2\2\u00c4\u00c5"+
-		"\3\2\2\2\u00c5\u00c6\3\2\2\2\u00c6\u00c7\7\32\2\2\u00c7-\3\2\2\2\u00c8"+
-		"\u00cd\5\4\3\2\u00c9\u00cb\7\3\2\2\u00ca\u00cc\5.\30\2\u00cb\u00ca\3\2"+
-		"\2\2\u00cb\u00cc\3\2\2\2\u00cc\u00ce\3\2\2\2\u00cd\u00c9\3\2\2\2\u00cd"+
-		"\u00ce\3\2\2\2\u00ce\u00d4\3\2\2\2\u00cf\u00d1\5\b\5\2\u00d0\u00d2\5."+
-		"\30\2\u00d1\u00d0\3\2\2\2\u00d1\u00d2\3\2\2\2\u00d2\u00d4\3\2\2\2\u00d3"+
-		"\u00c8\3\2\2\2\u00d3\u00cf\3\2\2\2\u00d4/\3\2\2\2\u00d5\u00d9\7!\2\2\u00d6"+
-		"\u00da\7(\2\2\u00d7\u00d8\7\33\2\2\u00d8\u00da\5\62\32\2\u00d9\u00d6\3"+
-		"\2\2\2\u00d9\u00d7\3\2\2\2\u00d9\u00da\3\2\2\2\u00da\61\3\2\2\2\u00db"+
-		"\u00de\7$\2\2\u00dc\u00de\5\66\34\2\u00dd\u00db\3\2\2\2\u00dd\u00dc\3"+
-		"\2\2\2\u00de\63\3\2\2\2\u00df\u00e4\5\62\32\2\u00e0\u00e1\7\7\2\2\u00e1"+
-		"\u00e3\5\62\32\2\u00e2\u00e0\3\2\2\2\u00e3\u00e6\3\2\2\2\u00e4\u00e2\3"+
-		"\2\2\2\u00e4\u00e5\3\2\2\2\u00e5\65\3\2\2\2\u00e6\u00e4\3\2\2\2\u00e7"+
-		"\u00e8\t\2\2\2\u00e8\67\3\2\2\2\u00e9\u00ea\7\34\2\2\u00ea\u00eb\5\64"+
-		"\33\2\u00eb9\3\2\2\2\u00ec\u00ed\7\35\2\2\u00ed\u00ee\5\64\33\2\u00ee"+
-		";\3\2\2\2\33@BKOSehpt|\u0091\u0098\u00a3\u00ac\u00b1\u00b5\u00bd\u00c4"+
-		"\u00cb\u00cd\u00d1\u00d3\u00d9\u00dd\u00e4";
+		"\4\32\t\32\4\33\t\33\4\34\t\34\4\35\t\35\4\36\t\36\4\37\t\37\4 \t \4!"+
+		"\t!\3\2\3\2\3\2\3\2\7\2G\n\2\f\2\16\2J\13\2\3\2\3\2\3\3\3\3\3\3\3\3\5"+
+		"\3R\n\3\3\4\3\4\5\4V\n\4\3\5\3\5\5\5Z\n\5\3\6\3\6\3\6\3\7\3\7\3\7\3\7"+
+		"\3\b\3\b\3\b\3\b\3\t\3\t\3\t\3\n\3\n\5\nl\n\n\3\n\5\no\n\n\3\13\3\13\3"+
+		"\13\3\13\3\13\3\13\5\13w\n\13\7\13y\n\13\f\13\16\13|\13\13\3\f\3\f\3\f"+
+		"\7\f\u0081\n\f\f\f\16\f\u0084\13\f\3\r\3\r\3\r\3\r\3\r\3\r\3\r\3\r\3\r"+
+		"\3\r\3\r\3\r\3\r\3\r\3\r\3\r\3\r\3\r\5\r\u0098\n\r\3\16\3\16\3\17\3\17"+
+		"\3\17\5\17\u009f\n\17\3\20\3\20\3\21\3\21\3\22\3\22\3\22\3\22\3\22\5\22"+
+		"\u00aa\n\22\3\23\3\23\3\23\3\23\3\23\3\23\3\23\5\23\u00b3\n\23\3\24\3"+
+		"\24\3\24\5\24\u00b8\n\24\3\25\3\25\5\25\u00bc\n\25\3\25\3\25\3\26\3\26"+
+		"\7\26\u00c2\n\26\f\26\16\26\u00c5\13\26\3\26\3\26\3\27\3\27\5\27\u00cb"+
+		"\n\27\3\27\3\27\3\30\3\30\3\30\5\30\u00d2\n\30\5\30\u00d4\n\30\3\30\3"+
+		"\30\5\30\u00d8\n\30\5\30\u00da\n\30\3\31\3\31\3\32\3\32\3\32\3\32\5\32"+
+		"\u00e2\n\32\3\33\3\33\5\33\u00e6\n\33\3\34\3\34\3\34\7\34\u00eb\n\34\f"+
+		"\34\16\34\u00ee\13\34\3\35\3\35\3\36\3\36\3\37\3\37\3\37\3 \3 \3 \3!\3"+
+		"!\3!\3!\2\2\"\2\4\6\b\n\f\16\20\22\24\26\30\32\34\36 \"$&(*,.\60\62\64"+
+		"\668:<>@\2\5\3\2\')\3\2#$\4\2%%\62\62\2\u0107\2H\3\2\2\2\4Q\3\2\2\2\6"+
+		"U\3\2\2\2\bY\3\2\2\2\n[\3\2\2\2\f^\3\2\2\2\16b\3\2\2\2\20f\3\2\2\2\22"+
+		"k\3\2\2\2\24p\3\2\2\2\26}\3\2\2\2\30\u0097\3\2\2\2\32\u0099\3\2\2\2\34"+
+		"\u009e\3\2\2\2\36\u00a0\3\2\2\2 \u00a2\3\2\2\2\"\u00a4\3\2\2\2$\u00b2"+
+		"\3\2\2\2&\u00b7\3\2\2\2(\u00b9\3\2\2\2*\u00bf\3\2\2\2,\u00c8\3\2\2\2."+
+		"\u00d9\3\2\2\2\60\u00db\3\2\2\2\62\u00dd\3\2\2\2\64\u00e5\3\2\2\2\66\u00e7"+
+		"\3\2\2\28\u00ef\3\2\2\2:\u00f1\3\2\2\2<\u00f3\3\2\2\2>\u00f6\3\2\2\2@"+
+		"\u00f9\3\2\2\2BC\5\4\3\2CD\7\3\2\2DG\3\2\2\2EG\5\b\5\2FB\3\2\2\2FE\3\2"+
+		"\2\2GJ\3\2\2\2HF\3\2\2\2HI\3\2\2\2IK\3\2\2\2JH\3\2\2\2KL\7\2\2\3L\3\3"+
+		"\2\2\2MR\5\6\4\2NR\5\22\n\2OR\5> \2PR\5@!\2QM\3\2\2\2QN\3\2\2\2QO\3\2"+
+		"\2\2QP\3\2\2\2R\5\3\2\2\2SV\5\16\b\2TV\5\20\t\2US\3\2\2\2UT\3\2\2\2V\7"+
+		"\3\2\2\2WZ\5\n\6\2XZ\5\f\7\2YW\3\2\2\2YX\3\2\2\2Z\t\3\2\2\2[\\\7\67\2"+
+		"\2\\]\7\"\2\2]\13\3\2\2\2^_\78\2\2_`\7#\2\2`a\7\"\2\2a\r\3\2\2\2bc\7\4"+
+		"\2\2cd\7#\2\2de\7\"\2\2e\17\3\2\2\2fg\7\5\2\2gh\7\"\2\2h\21\3\2\2\2il"+
+		"\5\32\16\2jl\5(\25\2ki\3\2\2\2kj\3\2\2\2ln\3\2\2\2mo\5\24\13\2nm\3\2\2"+
+		"\2no\3\2\2\2o\23\3\2\2\2pq\5\30\r\2qz\5\26\f\2rv\7\6\2\2st\5\30\r\2tu"+
+		"\5\26\f\2uw\3\2\2\2vs\3\2\2\2vw\3\2\2\2wy\3\2\2\2xr\3\2\2\2y|\3\2\2\2"+
+		"zx\3\2\2\2z{\3\2\2\2{\25\3\2\2\2|z\3\2\2\2}\u0082\5\36\20\2~\177\7\7\2"+
+		"\2\177\u0081\5\36\20\2\u0080~\3\2\2\2\u0081\u0084\3\2\2\2\u0082\u0080"+
+		"\3\2\2\2\u0082\u0083\3\2\2\2\u0083\27\3\2\2\2\u0084\u0082\3\2\2\2\u0085"+
+		"\u0098\5\34\17\2\u0086\u0098\7\b\2\2\u0087\u0098\7\t\2\2\u0088\u0089\7"+
+		"\n\2\2\u0089\u0098\5 \21\2\u008a\u008b\7\13\2\2\u008b\u0098\5 \21\2\u008c"+
+		"\u008d\7\f\2\2\u008d\u008e\5 \21\2\u008e\u008f\7\r\2\2\u008f\u0098\3\2"+
+		"\2\2\u0090\u0091\7\16\2\2\u0091\u0092\5 \21\2\u0092\u0093\7\17\2\2\u0093"+
+		"\u0098\3\2\2\2\u0094\u0098\7\20\2\2\u0095\u0098\7\21\2\2\u0096\u0098\7"+
+		"\22\2\2\u0097\u0085\3\2\2\2\u0097\u0086\3\2\2\2\u0097\u0087\3\2\2\2\u0097"+
+		"\u0088\3\2\2\2\u0097\u008a\3\2\2\2\u0097\u008c\3\2\2\2\u0097\u0090\3\2"+
+		"\2\2\u0097\u0094\3\2\2\2\u0097\u0095\3\2\2\2\u0097\u0096\3\2\2\2\u0098"+
+		"\31\3\2\2\2\u0099\u009a\5 \21\2\u009a\33\3\2\2\2\u009b\u009f\5 \21\2\u009c"+
+		"\u009d\7\23\2\2\u009d\u009f\5 \21\2\u009e\u009b\3\2\2\2\u009e\u009c\3"+
+		"\2\2\2\u009f\35\3\2\2\2\u00a0\u00a1\5 \21\2\u00a1\37\3\2\2\2\u00a2\u00a3"+
+		"\5\"\22\2\u00a3!\3\2\2\2\u00a4\u00a9\5$\23\2\u00a5\u00a6\7\24\2\2\u00a6"+
+		"\u00aa\5\"\22\2\u00a7\u00a8\7\23\2\2\u00a8\u00aa\5\"\22\2\u00a9\u00a5"+
+		"\3\2\2\2\u00a9\u00a7\3\2\2\2\u00a9\u00aa\3\2\2\2\u00aa#\3\2\2\2\u00ab"+
+		"\u00b3\5\64\33\2\u00ac\u00b3\5:\36\2\u00ad\u00b3\5<\37\2\u00ae\u00b3\5"+
+		"*\26\2\u00af\u00b3\5(\25\2\u00b0\u00b3\5&\24\2\u00b1\u00b3\5,\27\2\u00b2"+
+		"\u00ab\3\2\2\2\u00b2\u00ac\3\2\2\2\u00b2\u00ad\3\2\2\2\u00b2\u00ae\3\2"+
+		"\2\2\u00b2\u00af\3\2\2\2\u00b2\u00b0\3\2\2\2\u00b2\u00b1\3\2\2\2\u00b3"+
+		"%\3\2\2\2\u00b4\u00b8\5\62\32\2\u00b5\u00b8\5\60\31\2\u00b6\u00b8\7 \2"+
+		"\2\u00b7\u00b4\3\2\2\2\u00b7\u00b5\3\2\2\2\u00b7\u00b6\3\2\2\2\u00b8\'"+
+		"\3\2\2\2\u00b9\u00bb\7\25\2\2\u00ba\u00bc\5\24\13\2\u00bb\u00ba\3\2\2"+
+		"\2\u00bb\u00bc\3\2\2\2\u00bc\u00bd\3\2\2\2\u00bd\u00be\7\26\2\2\u00be"+
+		")\3\2\2\2\u00bf\u00c3\7\27\2\2\u00c0\u00c2\5\36\20\2\u00c1\u00c0\3\2\2"+
+		"\2\u00c2\u00c5\3\2\2\2\u00c3\u00c1\3\2\2\2\u00c3\u00c4\3\2\2\2\u00c4\u00c6"+
+		"\3\2\2\2\u00c5\u00c3\3\2\2\2\u00c6\u00c7\7\30\2\2\u00c7+\3\2\2\2\u00c8"+
+		"\u00ca\7\31\2\2\u00c9\u00cb\5.\30\2\u00ca\u00c9\3\2\2\2\u00ca\u00cb\3"+
+		"\2\2\2\u00cb\u00cc\3\2\2\2\u00cc\u00cd\7\32\2\2\u00cd-\3\2\2\2\u00ce\u00d3"+
+		"\5\4\3\2\u00cf\u00d1\7\3\2\2\u00d0\u00d2\5.\30\2\u00d1\u00d0\3\2\2\2\u00d1"+
+		"\u00d2\3\2\2\2\u00d2\u00d4\3\2\2\2\u00d3\u00cf\3\2\2\2\u00d3\u00d4\3\2"+
+		"\2\2\u00d4\u00da\3\2\2\2\u00d5\u00d7\5\b\5\2\u00d6\u00d8\5.\30\2\u00d7"+
+		"\u00d6\3\2\2\2\u00d7\u00d8\3\2\2\2\u00d8\u00da\3\2\2\2\u00d9\u00ce\3\2"+
+		"\2\2\u00d9\u00d5\3\2\2\2\u00da/\3\2\2\2\u00db\u00dc\t\2\2\2\u00dc\61\3"+
+		"\2\2\2\u00dd\u00e1\7!\2\2\u00de\u00e2\7&\2\2\u00df\u00e0\7\33\2\2\u00e0"+
+		"\u00e2\5\64\33\2\u00e1\u00de\3\2\2\2\u00e1\u00df\3\2\2\2\u00e1\u00e2\3"+
+		"\2\2\2\u00e2\63\3\2\2\2\u00e3\u00e6\7\"\2\2\u00e4\u00e6\58\35\2\u00e5"+
+		"\u00e3\3\2\2\2\u00e5\u00e4\3\2\2\2\u00e6\65\3\2\2\2\u00e7\u00ec\5\64\33"+
+		"\2\u00e8\u00e9\7\7\2\2\u00e9\u00eb\5\64\33\2\u00ea\u00e8\3\2\2\2\u00eb"+
+		"\u00ee\3\2\2\2\u00ec\u00ea\3\2\2\2\u00ec\u00ed\3\2\2\2\u00ed\67\3\2\2"+
+		"\2\u00ee\u00ec\3\2\2\2\u00ef\u00f0\t\3\2\2\u00f09\3\2\2\2\u00f1\u00f2"+
+		"\t\4\2\2\u00f2;\3\2\2\2\u00f3\u00f4\7\34\2\2\u00f4\u00f5\7\63\2\2\u00f5"+
+		"=\3\2\2\2\u00f6\u00f7\7\35\2\2\u00f7\u00f8\5\66\34\2\u00f8?\3\2\2\2\u00f9"+
+		"\u00fa\7\36\2\2\u00fa\u00fb\5\66\34\2\u00fbA\3\2\2\2\33FHQUYknvz\u0082"+
+		"\u0097\u009e\u00a9\u00b2\u00b7\u00bb\u00c3\u00ca\u00d1\u00d3\u00d7\u00d9"+
+		"\u00e1\u00e5\u00ec";
 	public static final ATN _ATN =
 		new ATNDeserializer().deserialize(_serializedATN.toCharArray());
 	static {

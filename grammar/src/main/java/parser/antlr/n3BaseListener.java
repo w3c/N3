@@ -294,6 +294,18 @@ public class n3BaseListener implements n3Listener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
+	@Override public void enterNumericLiteral(n3Parser.NumericLiteralContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitNumericLiteral(n3Parser.NumericLiteralContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
 	@Override public void enterRdfLiteral(n3Parser.RdfLiteralContext ctx) { }
 	/**
 	 * {@inheritDoc}
@@ -337,6 +349,30 @@ public class n3BaseListener implements n3Listener {
 	 * <p>The default implementation does nothing.</p>
 	 */
 	@Override public void exitPrefixedName(n3Parser.PrefixedNameContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterBlankNode(n3Parser.BlankNodeContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitBlankNode(n3Parser.BlankNodeContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterQuickVar(n3Parser.QuickVarContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitQuickVar(n3Parser.QuickVarContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *

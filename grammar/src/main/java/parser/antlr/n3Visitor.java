@@ -151,6 +151,12 @@ public interface n3Visitor<T> extends ParseTreeVisitor<T> {
 	 */
 	T visitFormulaContent(n3Parser.FormulaContentContext ctx);
 	/**
+	 * Visit a parse tree produced by {@link n3Parser#numericLiteral}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitNumericLiteral(n3Parser.NumericLiteralContext ctx);
+	/**
 	 * Visit a parse tree produced by {@link n3Parser#rdfLiteral}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
@@ -174,6 +180,18 @@ public interface n3Visitor<T> extends ParseTreeVisitor<T> {
 	 * @return the visitor result
 	 */
 	T visitPrefixedName(n3Parser.PrefixedNameContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link n3Parser#blankNode}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitBlankNode(n3Parser.BlankNodeContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link n3Parser#quickVar}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitQuickVar(n3Parser.QuickVarContext ctx);
 	/**
 	 * Visit a parse tree produced by {@link n3Parser#existential}.
 	 * @param ctx the parse tree
