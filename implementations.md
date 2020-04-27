@@ -18,6 +18,7 @@ List of N3 implementations
 (_seems incomplete according to [this](https://github.com/koo5/n3-dev-testcases/tree/509f6bc84fea55422ed3c93f26cd1b097d602a3d)?_)
 * [Linked Data-Fu](http://linked-data-fu.github.io/) implementation in Java of a subset of N3's features (RDF assertions, deductions) with special semantics regarding HTTP requests in rule heads  
 (_reasoning aspect unclear - cannot access system_)
+* [RDFLib](https://github.com/RDFLib/rdflib) Python package for working with RDF. (_note: does not support reasoning_)
 
 ## Archived
 
