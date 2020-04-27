@@ -7,7 +7,6 @@ List of N3 implementations
 
 ## In Progress
 * [Apache Jena] extending Jena system with full N3 support (william.van.woensel@gmail.com)  
-Link: coming soon
 
 ## Incomplete
 * [swish](http://hackage.haskell.org/package/swish) implementation in Haskell of N3 (also Turtle,
