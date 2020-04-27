@@ -14,7 +14,7 @@ Link: coming soon
   formal semantics, graph isomorphism, etc)  
   (_homepage mentions incompleteness_)
 * [AutoNomic](https://github.com/koo5/AutoNomic-pyco) backchaining reasoner with AE rules  
-(_seems [incomplete](https://github.com/koo5/n3-dev-testcases/tree/509f6bc84fea55422ed3c93f26cd1b097d602a3d)?_)
+(_seems incomplete according to [this](https://github.com/koo5/n3-dev-testcases/tree/509f6bc84fea55422ed3c93f26cd1b097d602a3d)?_)
 * [Linked Data-Fu](http://linked-data-fu.github.io/) implementation in Java of a subset of N3's features (RDF assertions, deductions) with special semantics regarding HTTP requests in rule heads  
 (_reasoning aspect unclear - cannot access system_)
 
