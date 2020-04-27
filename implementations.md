@@ -9,6 +9,8 @@ List of N3 implementations
 * [Apache Jena] extending Jena system with full N3 support (william.van.woensel@gmail.com)  
 
 ## Incomplete
+* [N3.js](https://github.com/rdfjs/N3.js/blob/master/README.md) Lightning fast, asynchronous, streaming RDF for JavaScript  
+(_note: does not support reasoning_)
 * [swish](http://hackage.haskell.org/package/swish) implementation in Haskell of N3 (also Turtle,
   formal semantics, graph isomorphism, etc)  
   (_homepage mentions incompleteness_)
