@@ -199,8 +199,9 @@ blankNode
 	;
 	
 quickVar 
-	: '?' QuickVarName
-/* approximating "barename" with PN_CHARS - they seem similar enough */
+	: QuickVarName
+	// only made this a parser rule for consistency 
+	// (all other path-items are also parser rules)
 	;
 
 existential 
@@ -289,7 +290,8 @@ ANON
 	;
 
 QuickVarName
-	: PN_CHARS_U PN_CHARS*
+	: '?' PN_CHARS_U PN_CHARS*
+/* approximating "barename" with PN_CHARS - they seem similar enough */
 	;
 
 PN_CHARS_U 

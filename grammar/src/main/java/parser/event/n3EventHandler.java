@@ -60,6 +60,7 @@ public class n3EventHandler extends n3BaseListener {
 
 	private void processBase(TerminalNode iriRef) {
 		baseUri = iriRef.getText().trim();
+		baseUri = baseUri.substring(1, baseUri.length() - 1);
 	}
 
 	@Override
