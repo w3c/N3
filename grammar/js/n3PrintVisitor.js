@@ -156,6 +156,12 @@ n3PrintVisitor.prototype.visitFormulaContent = function(ctx) {
 	return this.doVisitChildren(ctx);
 };
 
+// Visit a parse tree produced by n3Parser#numericLiteral.
+n3Visitor.prototype.visitNumericLiteral = function(ctx) {
+  this.print("NumericLiteral");
+  return this.doVisitChildren(ctx);
+};
+
 // Visit a parse tree produced by n3Parser#rdfLiteral.
 n3PrintVisitor.prototype.visitRdfLiteral = function(ctx) {
 	this.print("RdfLiteral");
@@ -178,6 +184,18 @@ n3PrintVisitor.prototype.visitIriList = function(ctx) {
 n3PrintVisitor.prototype.visitPrefixedName = function(ctx) {
 	this.print("PrefixedName");
 	return this.doVisitChildren(ctx);
+};
+
+// Visit a parse tree produced by n3Parser#blankNode.
+n3Visitor.prototype.visitBlankNode = function(ctx) {
+  this.print("BlankNode");
+  return this.doVisitChildren(ctx);
+};
+
+// Visit a parse tree produced by n3Parser#quickVar.
+n3Visitor.prototype.visitQuickVar = function(ctx) {
+  this.print("QuickVar");
+  return this.doVisitChildren(ctx);
 };
 
 // Visit a parse tree produced by n3Parser#existential.

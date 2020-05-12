@@ -1,4 +1,4 @@
-// Generated from n3.g4 by ANTLR 4.8
+// Generated from n3.g4 by ANTLR 4.6
 // jshint ignore: start
 var antlr4 = require('antlr4/index');
 
@@ -218,6 +218,15 @@ n3Listener.prototype.exitFormulaContent = function(ctx) {
 };
 
 
+// Enter a parse tree produced by n3Parser#numericLiteral.
+n3Listener.prototype.enterNumericLiteral = function(ctx) {
+};
+
+// Exit a parse tree produced by n3Parser#numericLiteral.
+n3Listener.prototype.exitNumericLiteral = function(ctx) {
+};
+
+
 // Enter a parse tree produced by n3Parser#rdfLiteral.
 n3Listener.prototype.enterRdfLiteral = function(ctx) {
 };
@@ -251,6 +260,24 @@ n3Listener.prototype.enterPrefixedName = function(ctx) {
 
 // Exit a parse tree produced by n3Parser#prefixedName.
 n3Listener.prototype.exitPrefixedName = function(ctx) {
+};
+
+
+// Enter a parse tree produced by n3Parser#blankNode.
+n3Listener.prototype.enterBlankNode = function(ctx) {
+};
+
+// Exit a parse tree produced by n3Parser#blankNode.
+n3Listener.prototype.exitBlankNode = function(ctx) {
+};
+
+
+// Enter a parse tree produced by n3Parser#quickVar.
+n3Listener.prototype.enterQuickVar = function(ctx) {
+};
+
+// Exit a parse tree produced by n3Parser#quickVar.
+n3Listener.prototype.exitQuickVar = function(ctx) {
 };
 
 
