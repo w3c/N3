@@ -7,6 +7,8 @@ List of N3 implementations
 
 ## In Progress
 * [Apache Jena] extending Jena system with full N3 support (william.van.woensel@gmail.com)  
+* [Ruby RDF::N3](https://github.com/ruby-rdf/rdf-n3) a Reader and Writer for the [RDF.rb](https://github.com/ruby-rdf/rdf)
+  ecosystem which includes limited provisional capabilities.
 
 ## Incomplete
 * [N3.js](https://github.com/rdfjs/N3.js/blob/master/README.md) Lightning fast, asynchronous, streaming RDF for JavaScript  
