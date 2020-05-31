@@ -28,7 +28,7 @@
 grammar n3;
 
 @header {
-    package parser.antlr;
+    package w3c.n3dev.parser.antlr;
 }
 
 n3Doc

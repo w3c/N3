@@ -27,7 +27,7 @@
 grammar turtle;
 
 @header {
-    package parser.antlr;
+    package w3c.n3dev.parser.antlr;
 }
 
 turtleDoc 

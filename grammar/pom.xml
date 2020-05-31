@@ -37,7 +37,7 @@
 				<version>${antlr.version}</version>
 				<configuration>
 					<sourceDirectory>${basedir}</sourceDirectory>
-					<outputDirectory>${basedir}/src/main/java/parser/antlr</outputDirectory>
+					<outputDirectory>${basedir}/src/main/java/w3c/n3dev/parser/antlr</outputDirectory>
 					<includes>
 						<include>**/*.g4</include>
 					</includes>
@@ -78,7 +78,7 @@
 							<finalName>n3TestGrammar</finalName>
 							<archive>
 								<manifest>
-									<mainClass>test.N3TestGrammar</mainClass>
+									<mainClass>w3c.n3dev.test.N3TestGrammar</mainClass>
 								</manifest>
 							</archive>
 							<descriptorRefs>
@@ -97,7 +97,7 @@
 							<finalName>n3TestCwm</finalName>
 							<archive>
 								<manifest>
-									<mainClass>test.N3TestCwm</mainClass>
+									<mainClass>w3c.n3dev.test.N3TestCwm</mainClass>
 								</manifest>
 							</archive>
 							<descriptorRefs>
@@ -116,7 +116,7 @@
 							<finalName>n3TestEye</finalName>
 							<archive>
 								<manifest>
-									<mainClass>test.N3TestEye</mainClass>
+									<mainClass>w3c.n3dev.test.N3TestEye</mainClass>
 								</manifest>
 							</archive>
 							<descriptorRefs>

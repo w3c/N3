@@ -57,3 +57,7 @@ RemoteSystemsTempFiles
 .cache-main
 .scala_dependencies
 .worksheet
+
+# custom
+*.zip
+**/codemirror-5.54.0/
