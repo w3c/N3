@@ -18,7 +18,7 @@
                   name: "William Van Woensel",
                   company: "Dalhousie University",
                   companyURL: "https://www.dal.ca/",
-                  mailto: "email@uwb.edu.pl"
+                  mailto: "email@dal.ca"
               },
               {
                   name: "Dominik Tomaszuk",
@@ -37,7 +37,6 @@
   <body>
     <section id='abstract'>
       <p>
-        Testing 123!
         This document defines Notation 3 (also known as N3), an assertion and logic language which is a superset of <abbr title="Resource Description Framework">RDF</abbr>.
       </p>
     </section>
@@ -63,26 +62,21 @@
         <p>Bla...</p>
         <section id='simpletriples'>
           <h4>Simple triples</h4>
-          <p>Bla...</p>
-          <pre class="example">Preformatted Text 
-all
-whitespaces
-are important
-here</pre>
+          <p>The simplest triple statement is a sequence of (subject, predicate, object) terms, separated by whitespace and terminated by '.' after each triple.</p>
+          <pre class="example nohighlight">&lt;http://example.org/#dt&gt; &lt;http://xmlns.com/foaf/0.1/name&gt; &quot;Dominik Tomaszuk&quot; .</pre>
         </section>
         <section id='polists'>
           <h4>Predicate and object lists</h4>
-          <p>Bla...</p>
-          <pre class="example">Preformatted Text 
-all
-whitespaces
-are important
-here</pre>
+          <p>Often the same subject will be referenced by a number of predicates.</p>
+          <pre class="example nohighlight">&lt;http://example.org/#dt&gt; &lt;http://xmlns.com/foaf/0.1/firstName&gt; &quot;Dominik&quot; ;
+                         &lt;http://xmlns.com/foaf/0.1/lastName&gt; &quot;Tomaszuk&quot; .</pre>
+          <p>As with predicates often objects are repeated with the same subject and predicate.</p>
+          <pre class="example nohighlight">&lt;http://example.org/#dt&gt; &lt;http://xmlns.com/foaf/0.1/nick&gt; &quot;Domel&quot;, &quot;Misiek&quot@pl .</pre>
         </section>
         <section id='keywords'>
           <h4>Keywords and special symbols</h4>
           <p>Bla...</p>
-          <pre class="example">Preformatted Text 
+          <pre class="example nohighlight">Preformatted Text 
 all
 whitespaces
 are important
@@ -91,7 +85,7 @@ here</pre>
         <section id='paths'>
           <h4>Paths</h4>
           <p>Bla...</p>
-          <pre class="example">Preformatted Text 
+          <pre class="example nohighlight">Preformatted Text 
 all
 whitespaces
 are important
@@ -100,8 +94,8 @@ here</pre>
       </section>
       <section id='iris'>
         <h3>IRIs</h3>
-        <p>Bla...</p>
-        <pre class="example">Preformatted Text 
+        <p>IRIs may be written as relative or absolute IRIs or prefixed names. Relative and absolute IRIs are enclosed in &apos;<&apos; and &apos;>&apos; and may contain numeric escape sequences (described below). For example <code>&lt;http://example.org/#dt&gt;</code>.</p>
+        <pre class="example nohighlight">Preformatted Text 
 all
 whitespaces
 are important
@@ -109,26 +103,38 @@ here</pre>
       </section>
       <section id='literals'>
         <h3>Literals</h3>
-        <p>Bla...</p>
-        <pre class="example">Preformatted Text 
-all
-whitespaces
-are important
-here</pre>
+        <p>Literals are used to identify values such as strings, numbers, dates.</p>
+        <pre class="example nohighlight">@prefix : &lt;http://example.org/vocab/&gt; .
+@prefix rdfs: &lt;http://www.w3.org/2000/01/rdf-schema#&gt; .
+@prefix xsd: &lt;http://www.w3.org/2001/XMLSchema#&gt; .
+
+_:x rdfs:comment &quot;This is an example.&quot;^^xsd:string . # literal with XML Schema string datatype
+_:x rdfs:comment &quot;This is an example.&quot;^^&lt;http://www.w3.org/2001/XMLSchema#string&gt; . # same as above
+_:x rdfs:comment &quot;This is an example.&quot; .  # same again
+_:x rdfs:comment &quot;To jest przykład.&quot;@pl . # literal with a language tag
+_:x rdfs:comment 'Ceci est un exemple.'@fr . # literal delimited by single quote
+_:x rdfs:comment '''This # literal with embedded new lines
+is
+an example.''' .
+                                                                            
+_:y :atomicNumber 2 ; # xsd:integer
+    :atomicMass 4.002602 ; # xsd:decimal
+    :specificGravity 1.663E-4 ; # xsd:double
+    :isNobleGas true . # xsd:boolean
+</pre>
       </section>
       <section id='bnodes'>
         <h3>Blank Nodes</h3>
         <p>Bla...</p>
-        <pre class="example">Preformatted Text 
-all
-whitespaces
-are important
-here</pre>
+        <pre class="example nohighlight">@prefix foaf: &lt;http://xmlns.com/foaf/0.1/&gt; .
+
+_:doerthe foaf:knows _:dominik .
+_:dominik foaf:knows [ foaf:firstName &quot;William&quot; ].</pre>
       </section>
       <section id='collections'>
         <h3>Collections</h3>
         <p>Bla...</p>
-        <pre class="example">Preformatted Text 
+        <pre class="example nohighlight">Preformatted Text 
 all
 whitespaces
 are important
@@ -137,7 +143,7 @@ here</pre>
       <section id='cformulas'>
         <h3>Cited Formulas</h3>
         <p>Bla...</p>
-        <pre class="example">Preformatted Text 
+        <pre class="example nohighlight">Preformatted Text 
 all
 whitespaces
 are important
@@ -181,7 +187,7 @@ here</pre>
     <section id='semantics'>
       <h2>Semantics</h2>
       <p>...</p>
-      <p>We introduce several concepts which extend the syntax of RDF to N3:</p>
+      <p>We introduce several concepts which extend the syntax of RDF to <acronym title="Notation3">N3</acronym>:</p>
       <p>The set of <dfn id="dfn-n3-symbols">N3 symbols</dfn> consists of the set of <a href="#dfn-triple-elements">triple elements</a> and the set of <a href="#dfn-quantifiers">quantifiers</a>.</p>
       <p>The set of <dfn id="dfn-triple-elements">N3 triple elements</dfn> consists of the disjoint sets of IRIs, blank nodes, literals, universal variables, lists, quoted graphs  and of one implication sign. 
       <section id='sinterpret'>
@@ -244,7 +250,7 @@ here</pre>
       <p>Bla...</p>
     </section>
     <section id='aknowledgements' class=appendix>
-      <h2> Acknowledgements</h2>
+      <h2>Acknowledgements</h2>
       <p>Bla...</p>
     </section>
   </body>
