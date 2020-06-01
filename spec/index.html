@@ -1,63 +1,180 @@
 <!DOCTYPE html>
 <html>
-<head>
+  <head>
     <meta charset='utf-8'>
-    <title>N3 Semantics</title>
+    <title>Notation3</title>
     <script async class='remove' src='respec-w3c.js'></script>
     <script class='remove'>
-        var respecConfig = {
-            specStatus: "unofficial",
-            editors: [ // here edit the editors
-                {
-                    name: "Dörthe Arndt",
-                    company: "Ghent University",
-                    companyURL: "https://www.ugent.be/",
-                    mailto: "email@ugent.be"
-                },
-                {
-                    name: "William Van Woensel",
-                    company: "Dalhousie University",
-                    companyURL: "https://www.dal.ca/",
-                    mailto: "email@uwb.edu.pl"
-                },
-                {
-                    name: "Dominik Tomaszuk",
-                    company: "University of Bialystok",
-                    companyURL: "https://uwb.edu.pl",
-                    mailto: "email@uwb.edu.pl"
-                }],
-            github: {
-                repoURL: "https://github.com/w3c/N3",
-                branch: "master"
-            },
-            shortName: "N3"
-        };
+      var respecConfig = {
+          specStatus: "unofficial",
+          editors: [ // here edit the editors
+              {
+                  name: "Dörthe Arndt",
+                  company: "Ghent University",
+                  companyURL: "https://www.ugent.be/",
+                  mailto: "email@ugent.be"
+              },
+              {
+                  name: "William Van Woensel",
+                  company: "Dalhousie University",
+                  companyURL: "https://www.dal.ca/",
+                  mailto: "email@uwb.edu.pl"
+              },
+              {
+                  name: "Dominik Tomaszuk",
+                  company: "University of Bialystok",
+                  companyURL: "https://uwb.edu.pl",
+                  mailto: "email@uwb.edu.pl"
+              }],
+          github: {
+              repoURL: "https://github.com/w3c/N3",
+              branch: "master"
+          },
+          shortName: "N3"
+      };
     </script>
-</head>
-<body>
-<section id='abstract'>
-    <p>
+  </head>
+  <body>
+    <section id='abstract'>
+      <p>
         Testing 123!
         This document defines Notation 3 (also known as N3), an assertion and logic language which is a superset of <abbr title="Resource Description Framework">RDF</abbr>.
-    </p>
-</section>
-<section id='sotd'>
-    <p>
+      </p>
+    </section>
+    <section id='sotd'>
+      <p>
         This is very early draft of Notatnion3 specification.
-    </p>
-</section>
-<!--
-How to edit this HTML?
-https://dev.w3.org/2008/video/mediaann/ReSpec.js/documentation.html
-https://github.com/w3c/respec
--->
-<section id='introduction'>
-    <h2>Introduction</h2>
-    <p>Bla...</p>
-</section>
-<section class=informative>
-    <h2>Bla</h2>
-    <p>informative bla...</p>
-</section>
-</body>
+      </p>
+    </section>
+    <!--
+      How to edit this HTML?
+      https://dev.w3.org/2008/video/mediaann/ReSpec.js/documentation.html
+      https://github.com/w3c/respec
+      -->
+    <section id='introduction'>
+      <h2>Introduction</h2>
+      <p>Bla...</p>
+    </section>
+    <section id='language' class=informative>
+      <h2>Language</h2>
+      <p>Bla...</p>
+      <section id='triples'>
+        <h3>Triples</h3>
+        <p>Bla...</p>
+        <section id='simpletriples'>
+          <h4>Simple triples</h4>
+          <p>Bla...</p>
+        </section>
+        <section id='polists'>
+          <h4>Predicate and object lists</h4>
+          <p>Bla...</p>
+        </section>
+        <section id='keywords'>
+          <h4>Keywords and special symbols</h4>
+          <p>Bla...</p>
+        </section>
+        <section id='paths'>
+          <h4>Paths</h4>
+          <p>Bla...</p>
+        </section>
+      </section>
+      <section id='iris'>
+        <h3>IRIs</h3>
+        <p>Bla...</p>
+      </section>
+      <section id='literals'>
+        <h3>Literals</h3>
+        <p>Bla...</p>
+      </section>
+      <section id='bnodes'>
+        <h3>Blank Nodes</h3>
+        <p>Bla...</p>
+      </section>
+      <section id='collections'>
+        <h3>Collections</h3>
+        <p>Bla...</p>
+      </section>
+      <section id='cformulas'>
+        <h3>Cited Formulas</h3>
+        <p>Bla...</p>
+      </section>
+      <section id='variables'>
+        <h3>Variables and Quantification</h3>
+        <p>Bla...</p>
+      </section>
+      <section id='rules'>
+        <h3>Rules</h3>
+        <p>Bla...</p>
+      </section>
+    </section>
+    <section id='concepts'>
+      <h2>Syntactic Concepts and Terminology</h2>
+      <p>Bla...</p>
+      <section id='terms'>
+        <h3>Terms</h3>
+        <p>Bla...</p>
+      </section>
+      <section id='formulas'>
+        <h3>Formulas</h3>
+        <p>Bla...</p>
+      </section>
+      <section id='cgraphs'>
+        <h3>Closed graphs</h3>
+        <p>Bla...</p>
+      </section>
+    </section>
+    <section id='semantics'>
+      <h2>Semantics</h2>
+      <p>Bla...</p>
+      <section id='sinterpret'>
+        <h3>Simple N3 interpretations</h3>
+        <p>Bla...</p>
+      </section>
+      <section id='sneg'>
+        <h3>Scoped Negation</h3>
+        <p>Bla...</p>
+      </section>
+      <section id='builtins'>
+        <h3>N3 Builtins</h3>
+        <p>Bla...</p>
+      </section>
+    </section>
+    <section id='n3grammar'>
+      <h2>EBNF Grammar</h2>
+      <p>Bla...</p>
+      <section id='whitespace'>
+        <h3>Whitespace</h3>
+        <p>Bla...</p>
+      </section>
+      <section id='comments'>
+        <h3>Comments</h3>
+        <p>Bla...</p>
+      </section>
+      <section id='escseq'>
+        <h3>Escape sequences</h3>
+        <p>Bla...</p>
+      </section>
+      <section id='irires'>
+        <h3>IRI resolution</h3>
+        <p>Bla...</p>
+      </section>
+      <section id='pathres'>
+        <h3>Path resolution</h3>
+        <p>Bla...</p>
+      </section>
+      <section id='grammar'>
+        <h3>Grammar</h3>
+        <p>Bla...</p>
+      </section>
+    </section>
+    <section id='mime' class=appendix>
+      <h2>Internet Media Type, File Extension and Macintosh File Type</h2>
+      <p>Bla...</p>
+    </section>
+    <section id='aknowledgements' class=appendix>
+      <h2> Acknowledgements</h2>
+      <p>Bla...</p>
+    </section>
+  </body>
 </html>
+
