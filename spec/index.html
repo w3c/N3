@@ -247,7 +247,44 @@ here</pre>
     </section>
     <section id='mime' class=appendix>
       <h2>Internet Media Type, File Extension and Macintosh File Type</h2>
-      <p>Bla...</p>
+      <p>This section has been submitted to the Internet Engineering Steering Group (IESG) for review, approval, and registration with IANA.</p>
+      <dl>
+      <dt>Contact:</dt>
+      <dd>NAME</dd>
+      <dt>Type name:</dt>
+      <dd>text</dd>
+      <dt>Subtype name:</dt>
+      <dd>n3</dd>
+      <dt>Optional parameters:</dt>
+      <dd><code>charset</code> — this parameter is required when transferring non-ASCII data. If present, the value of <code>charset</code> is always <code>UTF-8</code>.</dd>
+      <dt>Encoding considerations:</dt>
+      <dd>The syntax of Notation3 is expressed over code points in Unicode [[UNICODE]]. The encoding is always UTF-8 [[UTF-8]]. Unicode code points may also be expressed using an \uXXXX (U+0000 to U+FFFF) or \UXXXXXXXX syntax (for U+10000 onwards) where X is a hexadecimal digit [0-9A-Fa-f]</dd>
+      <dt>Security considerations:</dt>
+      <dd>Notation3 is a general-purpose assertion language; applications may evaluate given data to infer more assertions or to dereference IRIs, invoking the security considerations of the scheme for that IRI. Note in particular, the privacy issues in [[RFC3023]] section 10 for HTTP IRIs. Data obtained from an inaccurate or malicious data source may lead to inaccurate or misleading conclusions, as well as the dereferencing of unintended IRIs. Care must be taken to align the trust in consulted resources with the sensitivity of the intended use of the data; inferences of potential medical treatments would likely require different trust than inferences for trip planning. Notation3 is used to express arbitrary application data; security considerations will vary by domain of use. Security tools and protocols applicable to text (e.g. PGP encryption, MD5 sum validation, password-protected compression) may also be used on Notation3 documents. Security/privacy protocols must be imposed which reflect the sensitivity of the embedded information. Notation3 can express data which is presented to the user, for example, RDF Schema labels. Application rendering strings retrieved from untrusted Notation3 documents must ensure that malignant strings may not be used to mislead the reader. The security considerations in the media type registration for XML ([[RFC3023]] section 10) provide additional guidance around the expression of arbitrary data and markup. Notation3 uses IRIs as term identifiers. Applications interpreting data expressed in Notation3 should address the security issues of Internationalized Resource Identifiers (IRIs) [[RFC3987]] Section 8, as well as Uniform Resource Identifier (URI): Generic Syntax [[RFC3986]] Section 7. Multiple IRIs may have the same appearance. Characters in different scripts may look similar (a Cyrillic "о" may appear similar to a Latin "o"). A character followed by combining characters may have the same visual representation as another character (LATIN SMALL LETTER E followed by COMBINING ACUTE ACCENT has the same visual representation as LATIN SMALL LETTER E WITH ACUTE). Any person or application that is writing or interpreting data in Notation3 must take care to use the IRI that matches the intended semantics, and avoid IRIs that make look similar. Further information about matching of similar characters can be found in Unicode Security Considerations [[UNICODE-SECURITY]] and Internationalized Resource Identifiers (IRIs) [[RFC3987]] Section 8.</dd>
+      <dt>Interoperability considerations:</dt>
+      <dd>Not Applicable</dd>
+      <dt>Published specification:</dt>
+      <dd>This specification.</dd>
+      <dt>Applications which use this media type:</dt>
+      <dd>Any programming environment that requires the exchange of directed graphs. Implementations of Notation3 have been created for JavaScript, Python, Java, and Prolog. It may be used by some web services and clients consuming their data.</dd>
+      <dt>Additional information:</dt>
+      <dt>Magic number(s):</dt>
+      <dd>Notation3 documents may have the strings 'prefix' or 'base' (case independent) near the beginning of the document.</dd>
+      <dt>File extension(s):</dt>
+      <dd>.n3</dd>
+      <dt>Macintosh file type code(s):</dt>
+      <dd>TEXT</dd>
+      <dt>Person &amp; email address to contact for further information:</dt>
+      <dd>NAME &lt;EMAIL&gt;</dd>
+      <dt>Intended usage:</dt>
+      <dd>Common</dd>
+      <dt>Restrictions on usage:</dt>
+      <dd>None</dd>
+      <dt>Author(s):</dt>
+      <dd>Dörthe Arndt, William Van Woensel, Dominik Tomaszuk</dd>
+      <dt>Change controller:</dt>
+      <dd>W3C</dd>
+      <dl>
     </section>
     <section id='aknowledgements' class=appendix>
       <h2>Acknowledgements</h2>
