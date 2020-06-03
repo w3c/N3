@@ -134,11 +134,14 @@ _:dominik foaf:knows [ foaf:firstName &quot;William&quot; ].</pre>
       <section id='collections'>
         <h3>Collections</h3>
         <p>Bla...</p>
-        <pre class="example nohighlight">Preformatted Text 
-all
-whitespaces
-are important
-here</pre>
+        <pre class="example nohighlight">@prefix foaf: &lt;http://xmlns.com/foaf/0.1/&gt; .
+
+_:n3
+    foaf:member (
+        _:doerthe
+        _:william
+        _:dominik
+    ).</pre>
       </section>
       <section id='cformulas'>
         <h3>Cited Formulas</h3>
@@ -161,11 +164,15 @@ here</pre>
       <section id='rules'>
         <h3>Rules</h3>
         <p>Bla...</p>
-        <pre class="example">Preformatted Text 
-all
-whitespaces
-are important
-here</pre>
+        <pre class="example nohighlight">@prefix foaf: &lt;http://xmlns.com/foaf/0.1/&gt; .
+
+{
+_:doerthe foaf:knows _:dominik .
+}
+=&gt;
+{
+_:dominik foaf:knows _:doerthe .
+} .</pre>
       </section>
     </section>
     <section id='concepts'>
