@@ -1,63 +1,299 @@
 <!DOCTYPE html>
 <html>
-<head>
+  <head>
     <meta charset='utf-8'>
-    <title>N3 Semantics</title>
+    <title>Notation3</title>
     <script async class='remove' src='respec-w3c.js'></script>
     <script class='remove'>
-        var respecConfig = {
-            specStatus: "unofficial",
-            editors: [ // here edit the editors
-                {
-                    name: "Dörthe Arndt",
-                    company: "Ghent University",
-                    companyURL: "https://www.ugent.be/",
-                    mailto: "email@ugent.be"
-                },
-                {
-                    name: "William Van Woensel",
-                    company: "Dalhousie University",
-                    companyURL: "https://www.dal.ca/",
-                    mailto: "email@uwb.edu.pl"
-                },
-                {
-                    name: "Dominik Tomaszuk",
-                    company: "University of Bialystok",
-                    companyURL: "https://uwb.edu.pl",
-                    mailto: "email@uwb.edu.pl"
-                }],
-            github: {
-                repoURL: "https://github.com/w3c/N3",
-                branch: "master"
-            },
-            shortName: "N3"
-        };
+      var respecConfig = {
+          specStatus: "unofficial",
+          editors: [ // here edit the editors
+              {
+                  name: "Dörthe Arndt",
+                  company: "Ghent University",
+                  companyURL: "https://www.ugent.be/",
+                  mailto: "email@ugent.be"
+              },
+              {
+                  name: "William Van Woensel",
+                  company: "Dalhousie University",
+                  companyURL: "https://www.dal.ca/",
+                  mailto: "email@dal.ca"
+              },
+              {
+                  name: "Dominik Tomaszuk",
+                  company: "University of Bialystok",
+                  companyURL: "https://uwb.edu.pl",
+                  mailto: "email@uwb.edu.pl"
+              }],
+          github: {
+              repoURL: "https://github.com/w3c/N3",
+              branch: "master"
+          },
+          shortName: "N3"
+      };
     </script>
-</head>
-<body>
-<section id='abstract'>
-    <p>
-        Testing 123!
+  </head>
+  <body>
+    <section id='abstract'>
+      <p>
         This document defines Notation 3 (also known as N3), an assertion and logic language which is a superset of <abbr title="Resource Description Framework">RDF</abbr>.
-    </p>
-</section>
-<section id='sotd'>
-    <p>
+      </p>
+    </section>
+    <section id='sotd'>
+      <p>
         This is very early draft of Notatnion3 specification.
-    </p>
-</section>
-<!--
-How to edit this HTML?
-https://dev.w3.org/2008/video/mediaann/ReSpec.js/documentation.html
-https://github.com/w3c/respec
--->
-<section id='introduction'>
-    <h2>Introduction</h2>
-    <p>Bla...</p>
-</section>
-<section class=informative>
-    <h2>Bla</h2>
-    <p>informative bla...</p>
-</section>
-</body>
+      </p>
+    </section>
+    <!--
+      How to edit this HTML?
+      https://dev.w3.org/2008/video/mediaann/ReSpec.js/documentation.html
+      https://github.com/w3c/respec
+      -->
+    <section id='introduction'>
+      <h2>Introduction</h2>
+      <p>Bla...</p>
+    </section>
+    <section id='language' class=informative>
+      <h2>Language</h2>
+      <p>Bla...</p>
+      <section id='triples'>
+        <h3>Triples</h3>
+        <p>Bla...</p>
+        <section id='simpletriples'>
+          <h4>Simple triples</h4>
+          <p>The simplest triple statement is a sequence of (subject, predicate, object) terms, separated by whitespace and terminated by '.' after each triple.</p>
+          <pre class="example nohighlight">&lt;http://example.org/#dt&gt; &lt;http://xmlns.com/foaf/0.1/name&gt; &quot;Dominik Tomaszuk&quot; .</pre>
+        </section>
+        <section id='polists'>
+          <h4>Predicate and object lists</h4>
+          <p>Often the same subject will be referenced by a number of predicates.</p>
+          <pre class="example nohighlight">&lt;http://example.org/#dt&gt; &lt;http://xmlns.com/foaf/0.1/firstName&gt; &quot;Dominik&quot; ;
+                         &lt;http://xmlns.com/foaf/0.1/lastName&gt; &quot;Tomaszuk&quot; .</pre>
+          <p>As with predicates often objects are repeated with the same subject and predicate.</p>
+          <pre class="example nohighlight">&lt;http://example.org/#dt&gt; &lt;http://xmlns.com/foaf/0.1/nick&gt; &quot;Domel&quot;, &quot;Misiek&quot;@pl .</pre>
+        </section>
+        <section id='keywords'>
+          <h4>Keywords and special symbols</h4>
+          <p>Bla...</p>
+          <pre class="example nohighlight">@prefix foaf: &lt;http://xmlns.com/foaf/0.1/&gt; .
+
+&lt;http://example.org/#dt&gt; a foaf:Person ;
+                         foaf:name &quot;Dominik Tomaszuk&quot; ;
+                         = &lt;http://example.org/#dominik&gt; .</pre>
+        </section>
+        <section id='paths'>
+          <h4>Paths</h4>
+          <p>Bla...</p>
+          <pre class="example nohighlight">@prefix foaf: &lt;http://xmlns.com/foaf/0.1/&gt; .
+&lt;http://example.org/#dt&gt; foaf:knows &lt;http://example.org/#da&gt; ;
+&lt;http://example.org/#dt&gt; ^foaf:knows &lt;http://example.org/#da&gt; .</pre>
+        </section>
+      </section>
+      <section id='iris'>
+        <h3>IRIs</h3>
+        <p>IRIs may be written as relative or absolute IRIs or prefixed names. Relative and absolute IRIs are enclosed in &apos;&lt;&apos; and &apos;&gt;&apos; and may contain numeric escape sequences (described below). For example <code>&lt;http://example.org/#dt&gt;</code>.</p>
+        <pre class="example nohighlight">@prefix foaf: &lt;http://xmlns.com/foaf/0.1/&gt; .
+@prefix : &lt;http://example.org/#&gt;
+
+&lt;http://example.org/#doerthe&gt; foaf:knows &lt;http://example.org/#dominik&gt; .
+:doerthe foaf:knows :dominik .</pre>
+      </section>
+      <section id='literals'>
+        <h3>Literals</h3>
+        <p>Literals are used to identify values such as strings, numbers, dates.</p>
+        <pre class="example nohighlight">@prefix : &lt;http://example.org/vocab/&gt; .
+@prefix rdfs: &lt;http://www.w3.org/2000/01/rdf-schema#&gt; .
+@prefix xsd: &lt;http://www.w3.org/2001/XMLSchema#&gt; .
+
+_:x rdfs:comment &quot;This is an example.&quot;^^xsd:string . # literal with XML Schema string datatype
+_:x rdfs:comment &quot;This is an example.&quot;^^&lt;http://www.w3.org/2001/XMLSchema#string&gt; . # same as above
+_:x rdfs:comment &quot;This is an example.&quot; .  # same again
+_:x rdfs:comment &quot;To jest przykład.&quot;@pl . # literal with a language tag
+_:x rdfs:comment 'Ceci est un exemple.'@fr . # literal delimited by single quote
+_:x rdfs:comment '''This # literal with embedded new lines
+is
+an example.''' .
+                                                                            
+_:y :atomicNumber 2 ; # xsd:integer
+    :atomicMass 4.002602 ; # xsd:decimal
+    :specificGravity 1.663E-4 ; # xsd:double
+    :isNobleGas true . # xsd:boolean
+</pre>
+      </section>
+      <section id='bnodes'>
+        <h3>Blank Nodes</h3>
+        <p>Bla...</p>
+        <pre class="example nohighlight">@prefix foaf: &lt;http://xmlns.com/foaf/0.1/&gt; .
+
+_:doerthe foaf:knows _:dominik .
+_:dominik foaf:knows [ foaf:firstName &quot;William&quot; ].</pre>
+      </section>
+      <section id='collections'>
+        <h3>Collections</h3>
+        <p>Bla...</p>
+        <pre class="example nohighlight">@prefix foaf: &lt;http://xmlns.com/foaf/0.1/&gt; .
+
+_:n3
+    foaf:member (
+        _:doerthe
+        _:william
+        _:dominik
+    ).</pre>
+      </section>
+      <section id='cformulas'>
+        <h3>Cited Formulas</h3>
+        <p>Bla...</p>
+        <pre class="example nohighlight">Preformatted Text 
+all
+whitespaces
+are important
+here</pre>
+      </section>
+      <section id='variables'>
+        <h3>Variables and Quantification</h3>
+        <p>Bla...</p>
+        <pre class="example">Preformatted Text 
+all
+whitespaces
+are important
+here</pre>
+      </section>
+      <section id='rules'>
+        <h3>Rules</h3>
+        <p>Bla...</p>
+        <pre class="example nohighlight">@prefix foaf: &lt;http://xmlns.com/foaf/0.1/&gt; .
+
+{
+_:doerthe foaf:knows _:dominik .
+}
+=&gt;
+{
+_:dominik foaf:knows _:doerthe .
+} .</pre>
+      </section>
+    </section>
+    <section id='concepts'>
+      <h2>Syntactic Concepts and Terminology</h2>
+      <p>Bla...</p>
+      <section id='terms'>
+        <h3>Terms</h3>
+        <p>Bla...</p>
+      </section>
+      <section id='formulas'>
+        <h3>Formulas</h3>
+        <p>Bla...</p>
+      </section>
+      <section id='cgraphs'>
+        <h3>Closed graphs</h3>
+        <p>Bla...</p>
+      </section>
+    </section>
+    <section id='semantics'>
+      <h2>Semantics</h2>
+      <p>...</p>
+      <p>We introduce several concepts which extend the syntax of RDF to <abbr title="Notation3">N3</abbr>:</p>
+      <p>The set of <dfn id="dfn-n3-symbols">N3 symbols</dfn> consists of the set of <a href="#dfn-triple-elements">triple elements</a> and the set of <a href="#dfn-quantifiers">quantifiers</a>.</p>
+      <p>The set of <dfn id="dfn-triple-elements">N3 triple elements</dfn> consists of the disjoint sets of IRIs, blank nodes, literals, universal variables, lists, quoted graphs  and of one implication sign. 
+      <section id='sinterpret'>
+        <h3>Simple N3 interpretations</h3>
+        <p>Bla...</p>
+      </section>
+      <section id='sneg'>
+        <h3>Scoped Negation</h3>
+        <p>Bla...</p>
+      </section>
+      <section id='builtins'>
+        <h3>N3 Builtins</h3>
+        <p>Bla...</p>
+      </section>
+    </section>
+    <section id='n3grammar'>
+      <h2>EBNF Grammar</h2>
+      <p>Bla...</p>
+      <section id='whitespace'>
+        <h3>Whitespace</h3>
+        <p>Bla...</p>
+      </section>
+      <section id='comments'>
+        <h3>Comments</h3>
+        <p>Bla...</p>
+      </section>
+      <section id='escseq'>
+        <h3>Escape sequences</h3>
+        <p>Bla...</p>
+      </section>
+      <section id='irires'>
+        <h3>IRI resolution</h3>
+        <p>Bla...</p>
+      </section>
+      <section id='pathres'>
+        <h3>Path resolution</h3>
+        <p>Bla...</p>
+      </section>
+      <section id='grammar'>
+        <h3>Grammar</h3>
+        <p>Bla...</p>
+        <table class="grammar simple">
+          <tr>
+            <td>[1]</td>
+            <td><code>prod1</code></td>
+            <td>::=</td>
+            <td><code>def1</code></td>
+          </tr>
+          <tr>
+            <td>[2]</td>
+            <td><code>prod2</code></td>
+            <td>::=</td>
+            <td><code>def2</code></td>
+          </tr>
+        </table>
+      </section>
+    </section>
+    <section id='mime' class=appendix>
+      <h2>Internet Media Type, File Extension and Macintosh File Type</h2>
+      <p>This section has been submitted to the Internet Engineering Steering Group (IESG) for review, approval, and registration with IANA.</p>
+      <dl>
+      <dt>Contact:</dt>
+      <dd>NAME</dd>
+      <dt>Type name:</dt>
+      <dd>text</dd>
+      <dt>Subtype name:</dt>
+      <dd>n3</dd>
+      <dt>Optional parameters:</dt>
+      <dd><code>charset</code> — this parameter is required when transferring non-ASCII data. If present, the value of <code>charset</code> is always <code>UTF-8</code>.</dd>
+      <dt>Encoding considerations:</dt>
+      <dd>The syntax of Notation3 is expressed over code points in Unicode [[UNICODE]]. The encoding is always UTF-8 [[UTF-8]]. Unicode code points may also be expressed using an \uXXXX (U+0000 to U+FFFF) or \UXXXXXXXX syntax (for U+10000 onwards) where X is a hexadecimal digit [0-9A-Fa-f]</dd>
+      <dt>Security considerations:</dt>
+      <dd>Notation3 is a general-purpose assertion language; applications may evaluate given data to infer more assertions or to dereference IRIs, invoking the security considerations of the scheme for that IRI. Note in particular, the privacy issues in [[RFC3023]] section 10 for HTTP IRIs. Data obtained from an inaccurate or malicious data source may lead to inaccurate or misleading conclusions, as well as the dereferencing of unintended IRIs. Care must be taken to align the trust in consulted resources with the sensitivity of the intended use of the data; inferences of potential medical treatments would likely require different trust than inferences for trip planning. Notation3 is used to express arbitrary application data; security considerations will vary by domain of use. Security tools and protocols applicable to text (e.g. PGP encryption, MD5 sum validation, password-protected compression) may also be used on Notation3 documents. Security/privacy protocols must be imposed which reflect the sensitivity of the embedded information. Notation3 can express data which is presented to the user, for example, RDF Schema labels. Application rendering strings retrieved from untrusted Notation3 documents must ensure that malignant strings may not be used to mislead the reader. The security considerations in the media type registration for XML ([[RFC3023]] section 10) provide additional guidance around the expression of arbitrary data and markup. Notation3 uses IRIs as term identifiers. Applications interpreting data expressed in Notation3 should address the security issues of Internationalized Resource Identifiers (IRIs) [[RFC3987]] Section 8, as well as Uniform Resource Identifier (URI): Generic Syntax [[RFC3986]] Section 7. Multiple IRIs may have the same appearance. Characters in different scripts may look similar (a Cyrillic "о" may appear similar to a Latin "o"). A character followed by combining characters may have the same visual representation as another character (LATIN SMALL LETTER E followed by COMBINING ACUTE ACCENT has the same visual representation as LATIN SMALL LETTER E WITH ACUTE). Any person or application that is writing or interpreting data in Notation3 must take care to use the IRI that matches the intended semantics, and avoid IRIs that make look similar. Further information about matching of similar characters can be found in Unicode Security Considerations [[UNICODE-SECURITY]] and Internationalized Resource Identifiers (IRIs) [[RFC3987]] Section 8.</dd>
+      <dt>Interoperability considerations:</dt>
+      <dd>Not Applicable</dd>
+      <dt>Published specification:</dt>
+      <dd>This specification.</dd>
+      <dt>Applications which use this media type:</dt>
+      <dd>Any programming environment that requires the exchange of directed graphs. Implementations of Notation3 have been created for JavaScript, Python, Java, and Prolog. It may be used by some web services and clients consuming their data.</dd>
+      <dt>Additional information:</dt>
+      <dt>Magic number(s):</dt>
+      <dd>Notation3 documents may have the strings 'prefix' or 'base' (case independent) near the beginning of the document.</dd>
+      <dt>File extension(s):</dt>
+      <dd>.n3</dd>
+      <dt>Macintosh file type code(s):</dt>
+      <dd>TEXT</dd>
+      <dt>Person &amp; email address to contact for further information:</dt>
+      <dd>NAME &lt;EMAIL&gt;</dd>
+      <dt>Intended usage:</dt>
+      <dd>Common</dd>
+      <dt>Restrictions on usage:</dt>
+      <dd>None</dd>
+      <dt>Author(s):</dt>
+      <dd>Dörthe Arndt, William Van Woensel, Dominik Tomaszuk</dd>
+      <dt>Change controller:</dt>
+      <dd>W3C</dd>
+      </dl>
+    </section>
+    <section id='aknowledgements' class=appendix>
+      <h2>Acknowledgements</h2>
+      <p>Bla...</p>
+    </section>
+  </body>
 </html>
