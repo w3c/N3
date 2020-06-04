@@ -76,30 +76,28 @@
         <section id='keywords'>
           <h4>Keywords and special symbols</h4>
           <p>Bla...</p>
-          <pre class="example nohighlight">Preformatted Text 
-all
-whitespaces
-are important
-here</pre>
+          <pre class="example nohighlight">@prefix foaf: &lt;http://xmlns.com/foaf/0.1/&gt; .
+
+&lt;http://example.org/#dt&gt; a foaf:Person ;
+                         foaf:name &quot;Dominik Tomaszuk&quot; ;
+                         = &lt;http://example.org/#dominik&gt; .</pre>
         </section>
         <section id='paths'>
           <h4>Paths</h4>
           <p>Bla...</p>
-          <pre class="example nohighlight">Preformatted Text 
-all
-whitespaces
-are important
-here</pre>
+          <pre class="example nohighlight">@prefix foaf: &lt;http://xmlns.com/foaf/0.1/&gt; .
+&lt;http://example.org/#dt&gt; foaf:knows &lt;http://example.org/#da&gt; ;
+&lt;http://example.org/#dt&gt; ^foaf:knows &lt;http://example.org/#da&gt; .</pre>
         </section>
       </section>
       <section id='iris'>
         <h3>IRIs</h3>
         <p>IRIs may be written as relative or absolute IRIs or prefixed names. Relative and absolute IRIs are enclosed in &apos;&lt;&apos; and &apos;&gt;&apos; and may contain numeric escape sequences (described below). For example <code>&lt;http://example.org/#dt&gt;</code>.</p>
-        <pre class="example nohighlight">Preformatted Text 
-all
-whitespaces
-are important
-here</pre>
+        <pre class="example nohighlight">@prefix foaf: &lt;http://xmlns.com/foaf/0.1/&gt; .
+@prefix : &lt;http://example.org/#&gt;
+
+&lt;http://example.org/#doerthe&gt; foaf:knows &lt;http://example.org/#dominik&gt; .
+:doerthe foaf:knows :dominik .</pre>
       </section>
       <section id='literals'>
         <h3>Literals</h3>
