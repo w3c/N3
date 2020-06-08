@@ -81,7 +81,7 @@ We refer to the `manifest.ttl` file for all test cases that failed for our N3 gr
 
 Since we are using ANTLR4, we can easily generate JavaScript lexer, parser and visitor code as well.
 
-We created an example [HTML page](js/index.html) that relies on a JS parser to validate N3 code.
+Based on the JS lexer and parser, we created the [n3-editor-js](https://github.com/william-vw/n3-editor-js) project which features lint (i.e., error flagging) support for Notation3, among others.
 
 ### Creating the JS parser
 
@@ -100,8 +100,6 @@ Then, you can package all of the code into a single JS file so it can be include
 - Create a webpack.config.js file (see `js/webpack.config.js` for an example; normally, you only need to change your entry point)
 
 - Run the following: `../js>npx webpack --config webpack.config.js` 
-
-You can checkout the example [HTML page](js/index.html), where this packaged file is used to validate N3 code.
 
 
 ## Contributing
