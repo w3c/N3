@@ -11,7 +11,7 @@
               {
                   name: "Dörthe Arndt",
                   company: "Ghent University - imec",
-                  companyURL: "https://www.ugent.be/",
+                  companyURL: "https://www.ugent.be/ea/idlab/en",
                   mailto: "doerthe.arndt@ugent.be"
               },
               {
@@ -56,7 +56,9 @@
     </section>
     <section id='language' class=informative>
       <h2>Language</h2>
-      <p>Bla...</p>
+      <p>The aim of this section is to provide an informal overview of the language and its different features. 
+         More formal definitions will follow in the subsequent sections.
+      </p>
       <section id='triples'>
         <h3>Triples</h3>
         <p>Bla...</p>
@@ -175,10 +177,36 @@ _:dominik foaf:knows _:doerthe .
     </section>
     <section id='concepts'>
       <h2>Syntactic Concepts and Terminology</h2>
-      <p>This document uses the following terminology for describing N3 graph syntax, all as defined in the companion <a href="https://www.w3.org/TR/rdf11-concepts/">RDF Concepts specification</a>: <a href="https://www.w3.org/TR/rdf11-concepts/#section-IRIs">IRI</a>, <a href="https://www.w3.org/TR/rdf11-concepts/#section-triples">RDF triple</a>, <a href="http://www.w3.org/TR/rdf11-concepts/#section-rdf-graph">RDF graph</a>, <a href="http://www.w3.org/TR/rdf11-concepts/#section-triples">subject</a>, <a href="http://www.w3.org/TR/rdf11-concepts/#section-triples">predicate</a>, <a href="http://www.w3.org/TR/rdf11-concepts/#section-triples">object</a>, <a href="http://www.w3.org/TR/rdf11-concepts/#dfn-rdf-source">RDF source</a>, <a href="http://www.w3.org/TR/rdf11-concepts/#dfn-node">node</a>, <a href="http://www.w3.org/TR/rdf11-concepts/#dfn-blank-node">blank node</a>, <a href="http://www.w3.org/TR/rdf11-concepts/#dfn-literal">literal</a>,  <a href="http://www.w3.org/TR/rdf11-concepts/#graph-isomorphism">isomorphic</a>, and <a href="http://www.w3.org/TR/rdf11-concepts/#section-generalized-rdf">generalized RDF triples, graphs, and datasets</a>. </p>
+      
+      <p> 
+        In this section we give an overview of the syntax of <abbr title="Notation3">N3</abbr>.
+        <abbr title="Notation3">N3</abbr> is an extension of RDF. We use the following concepts from the <a href="https://www.w3.org/TR/rdf11-concepts/">RDF Concepts specification</a>: <a href="https://www.w3.org/TR/rdf11-concepts/#section-IRIs">IRI</a>, <a href="https://www.w3.org/TR/rdf11-concepts/#section-triples">RDF triple</a>, <a href="http://www.w3.org/TR/rdf11-concepts/#section-rdf-graph">RDF graph</a>, <a href="http://www.w3.org/TR/rdf11-concepts/#section-triples">subject</a>, <a href="http://www.w3.org/TR/rdf11-concepts/#section-triples">predicate</a>, <a href="http://www.w3.org/TR/rdf11-concepts/#section-triples">object</a>, <a href="http://www.w3.org/TR/rdf11-concepts/#dfn-rdf-source">RDF source</a>, <a href="http://www.w3.org/TR/rdf11-concepts/#dfn-node">node</a>, <a href="http://www.w3.org/TR/rdf11-concepts/#dfn-blank-node">blank node</a>, <a href="http://www.w3.org/TR/rdf11-concepts/#dfn-literal">literal</a>,  <a href="http://www.w3.org/TR/rdf11-concepts/#graph-isomorphism">isomorphic</a>, and <a href="http://www.w3.org/TR/rdf11-concepts/#section-generalized-rdf">generalized RDF triples, graphs, and datasets</a>. </p>
+      <p>
+     The examples above as well as the examples in the remainder of this document all follow <abbr title="Notation3">N3</abbr>-turtle syntax which is also the standard syntax for <abbr title="Notation3">N3</abbr>. 
+     It is however possible, to use alternative syntaxes as long as the translation to <abbr title="Notation3">N3</abbr> turtle syntax is clearly defined.
+      </p>
       <section id='terms'>
         <h3>Terms</h3>
-        <p>Bla...</p>
+        <p>
+        In order to define the set of all terms of <abbr title="Notation3">N3</abbr> we to add several definitions to the RDF concepts above which extend the syntax of RDF to <abbr title="Notation3">N3</abbr>: 
+        </p>
+        <p>
+        The set of <dfn id="dfn-n3-symbols">N3 symbols</dfn> consists of the set of <a href="#dfn-triple-elements">N3 triple  elements</a> and the 
+        <a href="#dfn-quantifiers">quantifiers</a> which are defined below.
+        </p>
+       <p>
+       The set of <dfn id="dfn-triple-elements">N3 triple elements</dfn> consists of the disjoint sets of <a href="https://www.w3.org/TR/rdf11-concepts/#dfn-iri">IRIs</a>, 
+       <a href="https://www.w3.org/TR/rdf11-concepts/#dfn-blank-node">blank nodes</a>, <a href="https://www.w3.org/TR/rdf11-concepts/#dfn-literal">literals</a>, 
+       <a href="#universals">universal variables</a>, lists, quoted graphs  and of one implication sign. The latter is a special symbol to indicate an implication. In N3-turtle syntax sign is represented using the symbol =>.
+        </p>
+       <p>
+The set of <dfn id="dfn-quantifiers">N3 quantifiers</dfn> consists of the universal quantifier and the existential quantifier. In <abbr title="Notation3">N3</abbr>-turtle 
+syntax we denote the universal quantifier as @forAll and the existential quantifier as @forSome.
+        </p>
+       <p>
+The set of <dfn id="universals">universal variables</dfn> is an arbitrary set of symbols which is disjoint to all other <abbr title="Notation3">N3</abbr> triple elements. 
+  In <abbr title="Notation3">N3</abbr>-turtle syntax, universal variables are represented by strings starting with a question mark ? .
+       </p>
       </section>
       <section id='formulas'>
         <h3>Formulas</h3>
@@ -192,10 +220,7 @@ _:dominik foaf:knows _:doerthe .
     <section id='semantics'>
       <h2>Semantics</h2>
       <p>...</p>
-      <p>We introduce several concepts which extend the syntax of RDF to <abbr title="Notation3">N3</abbr>:</p>
-      <p>The set of <dfn id="dfn-n3-symbols">N3 symbols</dfn> consists of the set of <a href="#dfn-triple-elements">triple elements</a> and the set of <a href="#dfn-quantifiers">quantifiers</a>.</p>
-      <p>The set of <dfn id="dfn-triple-elements">N3 triple elements</dfn> consists of the disjoint sets of IRIs, blank nodes, literals, universal variables, lists, quoted graphs  and of one implication sign. 
-      <section id='sinterpret'>
+     <section id='sinterpret'>
         <h3>Simple N3 interpretations</h3>
         <p>Bla...</p>
       </section>
