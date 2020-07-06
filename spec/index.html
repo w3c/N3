@@ -24,7 +24,7 @@
                   name: "Dominik Tomaszuk",
                   company: "University of Bialystok",
                   companyURL: "https://uwb.edu.pl",
-                  mailto: "email@uwb.edu.pl"
+                  mailto: "d.tomaszuk@uwb.edu.pl"
               }],
           github: {
               repoURL: "https://github.com/w3c/N3",
@@ -71,7 +71,7 @@
 				<b>N3 includes a core set of builtins for accessing remote online information.</b> In an open web environment, any online source may have information to support decision making. The <code>log:semantics</code> builtin allows pulling in (parsed) logical expressions from remote online locations; the <code>log:conclusion</code> built-in allows calculating the deductive closure of any logical expression, albeit local or remote. Subsequently, down-stream operations may, for instance, check whether other expressions are included, or not included, within these logical expressions.
 			</li>
 			<li>
-				<b>N3 supports a scoped version of negation-as-failure.</b> In an open web environment, it is often useful to check whether online information supports or not, or allows to derive or not, a given set of facts. But, it will not be possible nor useful to check whether the whole Semantic Web <i>does not</i> support a given set of facts at some time - any online source, unknown to the reasoner at the time, or added after the question was asked, may hold a positive answer. Instead, a useful question in this setting is whether a <i>specific</i> piece of information, at a given point in time, does not support, or does not allow the derivation of, a set of facts. When tightly scoped to a specific information source, and at a specific time, this kind of negation-as-failure will not influenced by other, unknown online sources. This is referred to as scoped negation as failure, and is supported by N3's <code>log:notIncludes</code> built-in. </p>
+				<b>N3 supports a scoped version of negation-as-failure.</b> In an open web environment, it is often useful to check whether online information supports or not, or allows to derive or not, a given set of facts. But, it will not be possible nor useful to check whether the whole Semantic Web <i>does not</i> support a given set of facts at some time - any online source, unknown to the reasoner at the time, or added after the question was asked, may hold a positive answer. Instead, a useful question in this setting is whether a <i>specific</i> piece of information, at a given point in time, does not support, or does not allow the derivation of, a set of facts. When tightly scoped to a specific information source, and at a specific time, this kind of negation-as-failure will not influenced by other, unknown online sources. This is referred to as scoped negation as failure, and is supported by N3's <code>log:notIncludes</code> built-in. </li></ul>
     </section>
     <section id='language' class=informative>
       
@@ -154,7 +154,7 @@
 
 		<pre class="example nohighlight">
 			@base &lt;http://www.example.org/#&gt; .
-			<#green-goblin> <#enemyOf> <#spiderman> .
+			&lt;#green-goblin&gt; &lt;#enemyOf&gt; &lt;#spiderman&gt; .
 		</pre>
 
 		<pre class="note nohighlight">
@@ -430,7 +430,7 @@ The set of <dfn id="universals">universal variables</dfn> is an arbitrary set of
 			<li>Variable quantifications (e.g., "<code>@forAll :x .</code>"), which are a standalone element (i.e., not part of a "regular" N3 statement). See the "existential" and "universal" productions.</li>
 			<li>A path syntax, comparable to (but not quite as extensive as) the <a href="https://www.w3.org/TR/sparql11-property-paths/">SPARQL property path syntax</a>. See the "path" production.</li>
 			<li>The possibility to invert the predicate within a statement. See the "predicate" production.</li>
-			<li>An additional set of keywords, incl. "<code>is .. of</code>", "<code>has</code>", "<code>=</code>", "<code>=></code>", "<code><=</code>", in addition to Turtle's "<code>a</code>" keyword (among others). All keywords can be optionally preceded by "<code>@</code>", for consistency with the "<code>@prefix</code>" and "<code>@base"</code> keywords.</li>
+			<li>An additional set of keywords, incl. "<code>is .. of</code>", "<code>has</code>", "<code>=</code>", "<code>=></code>", "<code>&lt;=</code>", in addition to Turtle's "<code>a</code>" keyword (among others). All keywords can be optionally preceded by "<code>@</code>", for consistency with the "<code>@prefix</code>" and "<code>@base"</code> keywords.</li>
 		</ul>
 	</section>
 	
