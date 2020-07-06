@@ -3,7 +3,8 @@
   <head>
     <meta charset='utf-8'>
     <title>Notation3</title>
-    <script async class='remove' src='respec-w3c.js'></script>
+    <!-- <script async class='remove' src='respec-w3c.js'></script> -->
+	<script src="https://www.w3.org/Tools/respec/respec-w3c" class="remove" defer></script>
     <script class='remove'>
       var respecConfig = {
           specStatus: "unofficial",
@@ -30,7 +31,14 @@
               repoURL: "https://github.com/w3c/N3",
               branch: "master"
           },
-          shortName: "N3"
+          shortName: "N3",
+		  localBiblio: {
+			"LNG-TAG": {
+				title: "Language Subtag Registry",
+				href: "http://www.iana.org/assignments/language-subtag-registry/language-subtag-registry",
+				publisher: "IANA"
+			}
+		  }
       };
     </script>
   </head>
@@ -52,20 +60,20 @@
       -->
     <section id='introduction'>
 		<h2>Introduction</h2>
-		<p>The Semantic Web represents a vision of online, interconnected and logical information. The core building block is a logical formalism called the <a href="https://www.w3.org/TR/rdf11-concepts/">Resource Description Framework (RDF)</a>. In RDF, one can express a logical graph as a conjunction of statements that describe properties of subject resources; and then describe the resource objects of those properties; and so on; resulting in a connected graph of logical information. It builds on the fundamental pointer mechanism of the Web, i.e., the Uniform Resource Identifier (URI), also known as International Resource Identifier (IRI), as a means to identify any RDF resource, ranging from abstract concepts (the book "Moby Dick") to physical (a paper copy of the book "Moby Dick") to electronic objects (an e-book copy of "Moby Dick"). People have used RDF to build vast quantities of online, connected knowledge graphs. The Semantic Web has allowed for decision making within an open web environment of shared knowledge graphs, as opposed to a closed system of locally believed facts.</p>
+		<p>The Semantic Web represents a vision of online, interconnected and logical information. The core building block is a logical formalism called the Resource Description Framework (RDF) ([[[RDF11-PRIMER]]]). In RDF, one can express a logical graph as a conjunction of statements that describe properties of subject resources; and then describe the resource objects of those properties; and so on; resulting in a connected graph of logical information. It builds on the fundamental pointer mechanism of the Web, i.e., the Uniform Resource Identifier (URI), also known as International Resource Identifier (IRI), as a means to identify any RDF resource, ranging from abstract concepts (the book "Moby Dick") to physical (a paper copy of the book "Moby Dick") to electronic objects (an e-book copy of "Moby Dick"). People have used RDF to build vast quantities of online, connected knowledge graphs. The Semantic Web has allowed for decision making within an open web environment of shared knowledge graphs, as opposed to a closed system of locally believed facts.</p>
 
 		<p>Notation3 Logic, or N3 for short, aims to improve decision-making abilities in an open web environment - by (a) extending the logical representation abilities of RDF and (b) allowing to access, operate on, and reason over online information. In line with the design ethos of RDF, N3 attempts to walk the line between, on the one hand, ease-of-use by authors and simplicity of reasoning for developers; and, on the other hand, an extended utility and practicality for building real-world applications.</p>
 		
 		<p>Below, we elaborate on the main characteristics of N3:</p>
 		<ul>
 			<li>
-				<b>N3 is a superset of RDF and Turtle.</b> One can write any valid <a href="https://www.w3.org/TR/rdf11-concepts/">RDF</a> or <a href="https://www.w3.org/TR/turtle/">Turtle</a> graph and it will be valid in N3 as well. Importantly, this means that all of Turtle's syntactic sugar is available in N3 - including predicate and object lists, unlabeled blank nodes, and collections. Moreover, <b>collections are first-class citizens</b> in N3, with an associated set of built-ins for accessing and manipulating them.
+				<b>N3 is a superset of RDF and Turtle.</b> One can write any valid [[[TURTLE]]] graph and it will be valid in N3 as well. Importantly, this means that all of Turtle's syntactic sugar is available in N3 - including predicate and object lists, unlabeled blank nodes, and collections. Moreover, <b>collections are first-class citizens</b> in N3, with an associated set of built-ins for accessing and manipulating them.
 			</li>
 			<li>
 				<b>N3 adds an If-Then style of decision making in the form of logical implications and variables.</b> Logical implications allow making If-Then style inferences via modus ponens (where implementations may apply either backward- or forward-chaining). Variables in such rules may be either universally or existentially quantified - in the latter case, they are comparable to blank nodes. 
 			</li>
 			<li>
-				<b>N3 supports quoting and describing graphs of statements (e.g., recording provenance).</b> In an open web environment, as an unbounded sea of (semi-)connected sources of information, one should be made aware of, and given the ability to disseminate, the provenance of information, among others [<i>https://www.w3.org/DesignIssues/Notation3</i>]. A quoted graph includes a conjunction of quoted statements. It allows expressing where the particular statements (e.g., message, document) came from, at what time they were stated and by whom, and, in general, what other kinds of statements can be made about them.
+				<b>N3 supports quoting and describing graphs of statements (e.g., recording provenance).</b> In an open web environment, as an unbounded sea of (semi-)connected sources, one should be made aware of, and given the ability to disseminate, the provenance of information, among others. A quoted graph includes a conjunction of quoted statements. It allows expressing where the particular statements (e.g., message, document) came from, at what time they were stated and by whom, and, in general, what other kinds of statements can be made about them.
 			</li>
 			<li>
 				<b>N3 includes a core set of builtins for accessing remote online information.</b> In an open web environment, any online source may have information to support decision making. The <code>log:semantics</code> builtin allows pulling in (parsed) logical expressions from remote online locations; the <code>log:conclusion</code> built-in allows calculating the deductive closure of any logical expression, albeit local or remote. Subsequently, down-stream operations may, for instance, check whether other expressions are included, or not included, within these logical expressions.
@@ -76,13 +84,13 @@
     <section id='language' class=informative>
       
 	  <h2>Language</h2>
-      <p>The aim of this section is to provide an informal overview of the N3 language and its different features. Where possible, this section borrows from, or is at least based on, the <a href="https://www.w3.org/TR/turtle/#language-features">Turtle specification</a>. More formal definitions will follow in the subsequent sections.
+      <p>The aim of this section is to provide an informal overview of the N3 language and its different features. Where possible, this section borrows from, or is at least based on, the [[[Turtle]]] specification</a>. More formal definitions will follow in the subsequent sections.
       </p>
     
 	<section id='n3doc'>
 	
 		<h3>N3 document</h3>
-		<p>An N3 document represents an N3 graph in a compact textual form. An N3 graph, in its simplest form, is a series of <a href="">N3 statements</a>, each describing a resource's property and written as a triple: <code>&lt;subject&gt; &lt;predicate&gt; &lt;object&gt;.</code> An N3 graph can have many more elements - <a href="">cited formulas</a> for quoting sets of statements, <a href="">logical implications</a> for If-Then style reasoning, <a href="">quantifications</a> for variables, and so on. We introduce these elements below.</p>
+		<p>An N3 document represents an N3 graph in a compact textual form. An N3 graph, in its simplest form, is a series of <a href="#simpletriples">N3 statements</a>, each describing a resource's property and written as a triple: <code>&lt;subject&gt; &lt;predicate&gt; &lt;object&gt;.</code> An N3 graph can have many more elements - <a href="#cformulas">cited formulas</a> for quoting sets of statements, <a href="#logimpl">logical implications</a> for If-Then style, rule-based reasoning, <a href="#variables">quantifications</a> for variables, and so on. We introduce these elements below.</p>
 		
 		<p>Comments are indicated using a separate '#' (i.e., not part of another N3 symbol, such as an IRI) and continue until the end of 
 		the line.</p>
@@ -92,9 +100,15 @@
 	  
 	  <h4>Simple triples</h4>
 	  
-	  <p>The simplest N3 statement or triple is a sequence of <code>&lt;subject&gt;</code>, <code>&lt;predicate&gt;</code> and <code>&lt;object&gt;</code>, separated by whitespace and terminated by '<code>.</code>' after each triple. For now, we will asssume that a resource is represented either by an <a href="">IRI</a> or a <a href="">literal</a>. In general, one uses an IRI for an identifiable entity - such as a person, place, or thing - and a literal for a textual or numerical (i.e., datatype) value - such as names, dates, height, and so on.
+	  <p>The simplest N3 statement or triple is a sequence of <code>&lt;subject&gt;</code>, <code>&lt;predicate&gt;</code> and <code>&lt;object&gt;</code>, separated by whitespace and terminated by '<code>.</code>' after each triple. For now, we will asssume that a resource is represented either by an <a href="#iris">IRI</a> or a <a href="#literals">literal</a>. In general, one uses an IRI for an identifiable entity - such as a person, place, or thing - and a literal for a textual or numerical (i.e., datatype) value - such as names, dates, height, and so on.
 	  
 	  <p>The three N3 statements below highlights the emnity between Spiderman and the Green Goblin, and lists the names of these two individuals:</p>
+
+	<!-- 
+		NOTE: there is a data-include attribute 
+		(https://github.com/w3c/respec/wiki/ReSpec-Editor's-Guide#inclusions--transformations)
+		that allows you to directly include a data file here
+	-->
 	  
 	  <pre class="example nohighlight">
 	  &lt;http://example.org/#spiderman&gt; &lt;http://example.org/#enemyOf&gt; &lt;http://example.org/#green-goblin&gt; .
@@ -103,7 +117,7 @@
 	  </pre>
 	  
 	  <pre class="note nohighlight">
-		<p>Examples will often be written using newlines and tab spaces for readability. However, generally, only the subjects, predicates and objects need to be separated with a whitespace.</p>
+		<div>Examples will often be written using newlines and tab spaces for readability. However, generally, only the subjects, predicates and objects need to be separated with a whitespace.</div>
 	  </pre>
 	  
 	  <!-- <pre class="example nohighlight">&lt;http://example.org/#dt&gt; &lt;http://xmlns.com/foaf/0.1/name&gt; &quot;Dominik Tomaszuk&quot; .</pre> -->
@@ -164,7 +178,7 @@
 		</pre>
 
 		<pre class="note nohighlight">
-			<p>Specifics of relative IRI resolution are defined in <a href="https://www.w3.org/TR/turtle/#sec-iri-references">Section 6.3 (IRI References)</a> of the Turtle spec.</p>
+			<p>Specifics of relative IRI resolution are defined in <a data-cite="TURTLE#sec-iri-references">the Turtle spec</a>.</p>
 		</pre>
 		
 		<!-- <pre class="example nohighlight">@prefix foaf: &lt;http://xmlns.com/foaf/0.1/&gt; .
@@ -195,9 +209,9 @@
 				&lt;http://example.org/#birthDate&gt; "2001-08-10" .
 	</pre>
 
-	<p>In that case, the <a href="http://www.w3.org/TR/rdf11-concepts/#dfn-lexical-form">"RDF lexical form"</a> will include the characters between the delimiter quotes (e.g., <code>2001-08-10</code>). Clearly, this can raise confusion as to what type of literal is being represented - a string or some other arbitrary type. RDF allows indicating the datatype of a literal, using the <code>^^</code> symbol and the corresponding <a href="https://www.w3.org/TR/xmlschema11-2/">datatype IRI</a> - for instance: <code>"2001-08-10"^^&lt;http://www.w3.org/2001/XMLSchema#date&gt;</code>. One can also use a prefixed name <code>xsd:date</code>, given a suitable prefix declaration (see full example below).</p>
+	<p>In that case, the <a data-cite="RDF11-CONCEPTS#dfn-lexical-form">"RDF lexical form"</a> will include the characters between the delimiter quotes (e.g., <code>2001-08-10</code>). Clearly, this can raise confusion as to what type of literal is being represented - a string or some other arbitrary type. RDF allows indicating the datatype of a literal, using the <code>^^</code> symbol and the corresponding <a data-cite="XMLSCHEMA11-2#built-in-datatypes">datatype IRI</a> - for instance: <code>"2001-08-10"^^&lt;http://www.w3.org/2001/XMLSchema#date&gt;</code>. One can also use a prefixed name <code>xsd:date</code>, given a suitable prefix declaration (see <a href="#string-literal-example">example</a>).</p>
 	
-	<p>In lieu of a datatype, one can specify the language of a string literal using the <code>@</code> symbol and the corresponding <a href="http://www.iana.org/assignments/language-subtag-registry/language-subtag-registry">language tag</a>. For instance:</p>
+	<p>In lieu of a datatype, one can specify the language of a string literal using the <code>@</code> symbol and the corresponding language tag (as defined in [[BCP47]] - find the registry in [[LNG-TAG]]). For instance:</p>
 	
 	<pre class="example nohighlight">
 	  &lt;http://example.org/#spiderman&gt; &lt;http://xmlns.com/foaf/0.1/name&gt; "Spiderman"@en , 
@@ -212,7 +226,7 @@
 	
 	There are several ways to write string literals. Until now we have used double-quotes <code>"</code> for delimiting, but one may also use single-quotes <code>'</code>, or even compound delimiters consisting of three double-quotes <code>"""</code> or three single-quotes <code>'''</code>. These other delimiters are useful if the string literal is known to contain single- or double-quotes; e.g., if the string contains single-quotes, one could use double-quotes as delimiters, and vice-versa, to avoid syntax errors. Alternatively, one can also use a '<code>\</code>' for escaping the delimiter each time it occurs within a string literal. If a string can contain any type of quote or even newlines one should use the compound type of delimiter, i.e., <code>"""</code> or <code>'''</code>. For instance:
 	
-	<pre class="example nohighlight">@prefix ex: &lt;http://example.org/#&gt; .
+	<pre id="string-literal-example" class="example nohighlight">@prefix ex: &lt;http://example.org/#&gt; .
 @prefix rdfs: &lt;http://www.w3.org/2000/01/rdf-schema#&gt; .
 @prefix xsd: &lt;http://www.w3.org/2001/XMLSchema#&gt; .
 
@@ -302,8 +316,8 @@ whitespaces
 are important
 here</pre>
       </section>
-      <section id='rules'>
-        <h3>Rules</h3>
+      <section id='logimpl'>
+        <h3>Logical Implications</h3>
         <p>Bla...</p>
         <pre class="example nohighlight">@prefix foaf: &lt;http://xmlns.com/foaf/0.1/&gt; .
 
@@ -321,7 +335,7 @@ _:dominik foaf:knows _:doerthe .
       
       <p> 
         In this section we give an overview of the syntax of <abbr title="Notation3">N3</abbr>.
-        <abbr title="Notation3">N3</abbr> is an extension of RDF. We use the following concepts from the <a href="https://www.w3.org/TR/rdf11-concepts/">RDF Concepts specification</a>: <a href="https://www.w3.org/TR/rdf11-concepts/#section-IRIs">IRI</a>, <a href="https://www.w3.org/TR/rdf11-concepts/#section-triples">RDF triple</a>, <a href="http://www.w3.org/TR/rdf11-concepts/#section-rdf-graph">RDF graph</a>, <a href="http://www.w3.org/TR/rdf11-concepts/#section-triples">subject</a>, <a href="http://www.w3.org/TR/rdf11-concepts/#section-triples">predicate</a>, <a href="http://www.w3.org/TR/rdf11-concepts/#section-triples">object</a>, <a href="http://www.w3.org/TR/rdf11-concepts/#dfn-rdf-source">RDF source</a>, <a href="http://www.w3.org/TR/rdf11-concepts/#dfn-node">node</a>, <a href="http://www.w3.org/TR/rdf11-concepts/#dfn-blank-node">blank node</a>, <a href="http://www.w3.org/TR/rdf11-concepts/#dfn-literal">literal</a>,  <a href="http://www.w3.org/TR/rdf11-concepts/#graph-isomorphism">isomorphic</a>, and <a href="http://www.w3.org/TR/rdf11-concepts/#section-generalized-rdf">generalized RDF triples, graphs, and datasets</a>. </p>
+        <abbr title="Notation3">N3</abbr> is an extension of RDF. We use the following concepts from the [[[RDF11-CONCEPTS]]]: <a data-cite="RDF11-CONCEPTS#section-IRIs">IRI</a>, <a data-cite="RDF11-CONCEPTS#section-triples">RDF triple</a>, <a data-cite="RDF11-CONCEPTS#section-rdf-graph">RDF graph</a>, <a data-cite="RDF11-CONCEPTS#section-triples">subject</a>, <a data-cite="RDF11-CONCEPTS#section-triples">predicate</a>, <a data-cite="RDF11-CONCEPTS#section-triples">object</a>, <a data-cite="RDF11-CONCEPTS#dfn-rdf-source">RDF source</a>, <a data-cite="RDF11-CONCEPTS#dfn-node">node</a>, <a data-cite="RDF11-CONCEPTS#dfn-blank-node">blank node</a>, <a data-cite="RDF11-CONCEPTS#dfn-literal">literal</a>,  <a data-cite="RDF11-CONCEPTS#graph-isomorphism">isomorphic</a>, and <a data-cite="RDF11-CONCEPTS#section-generalized-rdf">generalized RDF triples, graphs, and datasets</a>. </p>
       <p>
      The examples above as well as the examples in the remainder of this document all follow <abbr title="Notation3">N3</abbr>-turtle syntax which is also the standard syntax for <abbr title="Notation3">N3</abbr>. 
      It is however possible, to use alternative syntaxes as long as the translation to <abbr title="Notation3">N3</abbr> turtle syntax is clearly defined.
@@ -332,12 +346,12 @@ _:dominik foaf:knows _:doerthe .
         In order to define the set of all terms of <abbr title="Notation3">N3</abbr> we to add several definitions to the RDF concepts above which extend the syntax of RDF to <abbr title="Notation3">N3</abbr>: 
         </p>
         <p>
-        The set of <dfn id="dfn-n3-symbols">N3 symbols</dfn> consists of the set of <a href="#dfn-triple-elements">N3 triple  elements</a> and the 
+        The set of <dfn id="dfn-n3-symbols">N3 symbols</dfn> consists of the set of <a href="#dfn-triple-elements">N3 triple elements</a> and the 
         <a href="#dfn-quantifiers">quantifiers</a> which are defined below.
         </p>
        <p>
-       The set of <dfn id="dfn-triple-elements">N3 triple elements</dfn> consists of the disjoint sets of <a href="https://www.w3.org/TR/rdf11-concepts/#dfn-iri">IRIs</a>, 
-       <a href="https://www.w3.org/TR/rdf11-concepts/#dfn-blank-node">blank nodes</a>, <a href="https://www.w3.org/TR/rdf11-concepts/#dfn-literal">literals</a>, 
+       The set of <dfn id="dfn-triple-elements">N3 triple elements</dfn> consists of the disjoint sets of <a data-cite="RDF11-CONCEPTS#dfn-iri">IRIs</a>, 
+       <a data-cite="RDF11-CONCEPTS#dfn-blank-node">blank nodes</a>, <a data-cite="RDF11-CONCEPTS#dfn-literal">literals</a>, 
        <a href="#universals">universal variables</a>, lists, quoted graphs  and of one implication sign. The latter is a special symbol to indicate an implication. In N3-turtle syntax sign is represented using the symbol <code>=&gt;</code>.
         </p>
        <p>
@@ -419,8 +433,8 @@ The set of <dfn id="universals">universal variables</dfn> is an arbitrary set of
 	
 	<section>
 		<h3>Relation with Turtle</h3>
-		<p>N3 is a superset of <a href="https://www.w3.org/TR/turtle/">Turtle</a>, meaning that all valid Turtle documents will be valid in N3 as well. The inverse is not true, i.e., a valid N3 document will not always be valid in Turtle.</p>
-		<p>The current N3 grammar started from the <a href="https://www.w3.org/TR/turtle/#sec-grammar">Turtle grammar</a> which was adapted and extended to be in line with the <a href="https://www.w3.org/2000/10/swap/grammar/n3-report.html">initial N3 grammar</a>. Hence, many of the grammar productions will be much more similar to the Turtle grammar than the initial N3 grammar.</p>
+		<p>N3 is a superset of [[[Turtle]]], meaning that all valid Turtle documents will be valid in N3 as well. The inverse is not true, i.e., a valid N3 document will not always be valid in Turtle.</p>
+		<p>The current N3 grammar started from the <a data-cite="TURTLE#sec-grammar">Turtle grammar</a> which was adapted and extended to be in line with the <a href="https://www.w3.org/2000/10/swap/grammar/n3-report.html">initial N3 grammar</a>. Hence, many of the grammar productions will be much more similar to the Turtle grammar than the initial N3 grammar.</p>
 		<p>Important differences with Turtle are the following:</p>
 		<p>TODO - add links to production rules in the list (e.g., "pathItem")</p>
 		<ul>
@@ -428,7 +442,7 @@ The set of <dfn id="universals">universal variables</dfn> is an arbitrary set of
 			<li>Cited formulas (i.e., between "<code>{</code>" and "<code>}</code>"), which are allowed in any s/p/o position in a statement. See the "pathItem" production.</li>
 			<li>Quick-variables (e.g., "<code>?x</code>"), which are allowed in any s/p/o position in a statement. See the "pathItem" production.</li>
 			<li>Variable quantifications (e.g., "<code>@forAll :x .</code>"), which are a standalone element (i.e., not part of a "regular" N3 statement). See the "existential" and "universal" productions.</li>
-			<li>A path syntax, comparable to (but not quite as extensive as) the <a href="https://www.w3.org/TR/sparql11-property-paths/">SPARQL property path syntax</a>. See the "path" production.</li>
+			<li>A path syntax, comparable to (but not quite as extensive as) the [[[sparql11-property-paths]]] syntax. See the "path" production.</li>
 			<li>The possibility to invert the predicate within a statement. See the "predicate" production.</li>
 			<li>An additional set of keywords, incl. "<code>is .. of</code>", "<code>has</code>", "<code>=</code>", "<code>=></code>", "<code><=</code>", in addition to Turtle's "<code>a</code>" keyword (among others). All keywords can be optionally preceded by "<code>@</code>", for consistency with the "<code>@prefix</code>" and "<code>@base"</code> keywords.</li>
 		</ul>
@@ -436,9 +450,9 @@ The set of <dfn id="universals">universal variables</dfn> is an arbitrary set of
 	
 	<section>
 		<h3>Relation with TriG</h3>
-		<p><a href="https://www.w3.org/TR/trig/">TriG</a> is itself a superset of the Turtle syntax and includes a compact way to write RDF datasets, i.e., sets of named graphs. In particular, TriG allows the specification of so-called graph statements, which are a pair of an IRI or blank node label and a group of triple statements surrounded by <code>{}</code>.</p>
+		<p>[[[TRIG]]] is itself a superset of the Turtle syntax and includes a compact way to write RDF datasets, i.e., sets of named graphs. In particular, TriG allows the specification of so-called graph statements, which are a pair of an IRI or blank node label and a group of triple statements surrounded by <code>{}</code>.</p>
 
-		<p>For instance (example taken from [<i>https://www.w3.org/TR/trig/</i>]): 
+		<p>For instance: 
 		
 		<pre class="example nohighlight">
 # This document contains a default graph and two named graphs.
@@ -448,10 +462,8 @@ The set of <dfn id="universals">universal variables</dfn> is an arbitrary set of
 @prefix foaf: &lt;http://xmlns.com/foaf/0.1/&gt; .
 
 # default graph
-    {
-      &lt;http://example.org/bob&gt; dc:publisher "Bob" .
-      &lt;http://example.org/alice&gt; dc:publisher "Alice" .
-    }
+&lt;http://example.org/bob&gt; dc:publisher "Bob" .
+&lt;http://example.org/alice&gt; dc:publisher "Alice" .
 
 &lt;http://example.org/bob&gt;
     {
