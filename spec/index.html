@@ -51,135 +51,105 @@
       https://github.com/w3c/respec
       -->
     <section id='introduction'>
-		<h2>Introduction</h2>
-		<p>The Semantic Web represents a vision of online, interconnected and logical information. The core building block is a logical formalism called the <a href="https://www.w3.org/TR/rdf11-concepts/">Resource Description Framework (RDF)</a>. In RDF, one can express a logical graph as a conjunction of statements that describe properties of subject resources; and then describe the resource objects of those properties; and so on; resulting in a connected graph of logical information. It builds on the fundamental pointer mechanism of the Web, i.e., the Uniform Resource Identifier (URI), also known as International Resource Identifier (IRI), as a means to identify any RDF resource, ranging from abstract concepts (the book "Moby Dick") to physical (a paper copy of the book "Moby Dick") to electronic objects (an e-book copy of "Moby Dick"). People have used RDF to build vast quantities of online, connected knowledge graphs. The Semantic Web has allowed for decision making within an open web environment of shared knowledge graphs, as opposed to a closed system of locally believed facts.</p>
-
-		<p>Notation3 Logic, or N3 for short, aims to improve decision-making abilities in an open web environment - by (a) extending the logical representation abilities of RDF and (b) allowing to access, operate on, and reason over online information. In line with the design ethos of RDF, N3 attempts to walk the line between, on the one hand, ease-of-use by authors and simplicity of reasoning for developers; and, on the other hand, an extended utility and practicality for building real-world applications.</p>
-		
-		<p>Below, we elaborate on the main characteristics of N3:</p>
-		<ul>
-			<li>
-				<b>N3 is a superset of RDF and Turtle.</b> One can write any valid <a href="https://www.w3.org/TR/rdf11-concepts/">RDF</a> or <a href="https://www.w3.org/TR/turtle/">Turtle</a> graph and it will be valid in N3 as well. Importantly, this means that all of Turtle's syntactic sugar is available in N3 - including predicate and object lists, unlabeled blank nodes, and collections. Moreover, <b>collections are first-class citizens</b> in N3, with an associated set of built-ins for accessing and manipulating them.
-			</li>
-			<li>
-				<b>N3 adds an If-Then style of decision making in the form of logical implications and variables.</b> Logical implications allow making If-Then style inferences via modus ponens (where implementations may apply either backward- or forward-chaining). Variables in such rules may be either universally or existentially quantified - in the latter case, they are comparable to blank nodes. 
-			</li>
-			<li>
-				<b>N3 supports quoting and describing graphs of statements (e.g., recording provenance).</b> In an open web environment, as an unbounded sea of (semi-)connected sources of information, one should be made aware of, and given the ability to disseminate, the provenance of information, among others [<i>https://www.w3.org/DesignIssues/Notation3</i>]. A quoted graph includes a conjunction of quoted statements. It allows expressing where the particular statements (e.g., message, document) came from, at what time they were stated and by whom, and, in general, what other kinds of statements can be made about them.
-			</li>
-			<li>
-				<b>N3 includes a core set of builtins for accessing remote online information.</b> In an open web environment, any online source may have information to support decision making. The <code>log:semantics</code> builtin allows pulling in (parsed) logical expressions from remote online locations; the <code>log:conclusion</code> built-in allows calculating the deductive closure of any logical expression, albeit local or remote. Subsequently, down-stream operations may, for instance, check whether other expressions are included, or not included, within these logical expressions.
-			</li>
-			<li>
-				<b>N3 supports a scoped version of negation-as-failure.</b> In an open web environment, it is often useful to check whether online information supports or not, or allows to derive or not, a given set of facts. But, it will not be possible nor useful to check whether the whole Semantic Web <i>does not</i> support a given set of facts at some time - any online source, unknown to the reasoner at the time, or added after the question was asked, may hold a positive answer. Instead, a useful question in this setting is whether a <i>specific</i> piece of information, at a given point in time, does not support, or does not allow the derivation of, a set of facts. When tightly scoped to a specific information source, and at a specific time, this kind of negation-as-failure will not influenced by other, unknown online sources. This is referred to as scoped negation as failure, and is supported by N3's <code>log:notIncludes</code> built-in. </li></ul>
+      <h2>Introduction</h2>
+      <p>The Semantic Web represents a vision of online, interconnected and logical information. The core building block is a logical formalism called the <a href="https://www.w3.org/TR/rdf11-concepts/">Resource Description Framework (RDF)</a>. In RDF, one can express a logical graph as a conjunction of statements that describe properties of subject resources; and then describe the resource objects of those properties; and so on; resulting in a connected graph of logical information. It builds on the fundamental pointer mechanism of the Web, i.e., the Uniform Resource Identifier (URI), also known as International Resource Identifier (IRI), as a means to identify any RDF resource, ranging from abstract concepts (the book "Moby Dick") to physical (a paper copy of the book "Moby Dick") to electronic objects (an e-book copy of "Moby Dick"). People have used RDF to build vast quantities of online, connected knowledge graphs. The Semantic Web has allowed for decision making within an open web environment of shared knowledge graphs, as opposed to a closed system of locally believed facts.</p>
+      <p>Notation3 Logic, or N3 for short, aims to improve decision-making abilities in an open web environment - by (a) extending the logical representation abilities of RDF and (b) allowing to access, operate on, and reason over online information. In line with the design ethos of RDF, N3 attempts to walk the line between, on the one hand, ease-of-use by authors and simplicity of reasoning for developers; and, on the other hand, an extended utility and practicality for building real-world applications.</p>
+      <p>Below, we elaborate on the main characteristics of N3:</p>
+      <ul>
+        <li>
+          <b>N3 is a superset of RDF and Turtle.</b> One can write any valid <a href="https://www.w3.org/TR/rdf11-concepts/">RDF</a> or <a href="https://www.w3.org/TR/turtle/">Turtle</a> graph and it will be valid in N3 as well. Importantly, this means that all of Turtle's syntactic sugar is available in N3 - including predicate and object lists, unlabeled blank nodes, and collections. Moreover, <b>collections are first-class citizens</b> in N3, with an associated set of built-ins for accessing and manipulating them.
+        </li>
+        <li>
+          <b>N3 adds an If-Then style of decision making in the form of logical implications and variables.</b> Logical implications allow making If-Then style inferences via modus ponens (where implementations may apply either backward- or forward-chaining). Variables in such rules may be either universally or existentially quantified - in the latter case, they are comparable to blank nodes. 
+        </li>
+        <li>
+          <b>N3 supports quoting and describing graphs of statements (e.g., recording provenance).</b> In an open web environment, as an unbounded sea of (semi-)connected sources of information, one should be made aware of, and given the ability to disseminate, the provenance of information, among others [<i>https://www.w3.org/DesignIssues/Notation3</i>]. A quoted graph includes a conjunction of quoted statements. It allows expressing where the particular statements (e.g., message, document) came from, at what time they were stated and by whom, and, in general, what other kinds of statements can be made about them.
+        </li>
+        <li>
+          <b>N3 includes a core set of builtins for accessing remote online information.</b> In an open web environment, any online source may have information to support decision making. The <code>log:semantics</code> builtin allows pulling in (parsed) logical expressions from remote online locations; the <code>log:conclusion</code> built-in allows calculating the deductive closure of any logical expression, albeit local or remote. Subsequently, down-stream operations may, for instance, check whether other expressions are included, or not included, within these logical expressions.
+        </li>
+        <li>
+          <b>N3 supports a scoped version of negation-as-failure.</b> In an open web environment, it is often useful to check whether online information supports or not, or allows to derive or not, a given set of facts. But, it will not be possible nor useful to check whether the whole Semantic Web <i>does not</i> support a given set of facts at some time - any online source, unknown to the reasoner at the time, or added after the question was asked, may hold a positive answer. Instead, a useful question in this setting is whether a <i>specific</i> piece of information, at a given point in time, does not support, or does not allow the derivation of, a set of facts. When tightly scoped to a specific information source, and at a specific time, this kind of negation-as-failure will not influenced by other, unknown online sources. This is referred to as scoped negation as failure, and is supported by N3's <code>log:notIncludes</code> built-in. 
+        </li>
+      </ul>
     </section>
     <section id='language' class=informative>
-      
-	  <h2>Language</h2>
+      <h2>Language</h2>
       <p>The aim of this section is to provide an informal overview of the N3 language and its different features. Where possible, this section borrows from, or is at least based on, the <a href="https://www.w3.org/TR/turtle/#language-features">Turtle specification</a>. More formal definitions will follow in the subsequent sections.
       </p>
-    
-	<section id='n3doc'>
-	
-		<h3>N3 document</h3>
-		<p>An N3 document represents an N3 graph in a compact textual form. An N3 graph, in its simplest form, is a series of <a href="">N3 statements</a>, each describing a resource's property and written as a triple: <code>&lt;subject&gt; &lt;predicate&gt; &lt;object&gt;.</code> An N3 graph can have many more elements - <a href="">cited formulas</a> for quoting sets of statements, <a href="">logical implications</a> for If-Then style reasoning, <a href="">quantifications</a> for variables, and so on. We introduce these elements below.</p>
-		
-		<p>Comments are indicated using a separate '#' (i.e., not part of another N3 symbol, such as an IRI) and continue until the end of 
-		the line.</p>
-	</section>
-	
-	<section id='simpletriples'>
-	  
-	  <h4>Simple triples</h4>
-	  
-	  <p>The simplest N3 statement or triple is a sequence of <code>&lt;subject&gt;</code>, <code>&lt;predicate&gt;</code> and <code>&lt;object&gt;</code>, separated by whitespace and terminated by '<code>.</code>' after each triple. For now, we will asssume that a resource is represented either by an <a href="">IRI</a> or a <a href="">literal</a>. In general, one uses an IRI for an identifiable entity - such as a person, place, or thing - and a literal for a textual or numerical (i.e., datatype) value - such as names, dates, height, and so on.
-	  
-	  <p>The three N3 statements below highlights the emnity between Spiderman and the Green Goblin, and lists the names of these two individuals:</p>
-	  
-	  <pre class="example nohighlight">
+      <section id='n3doc'>
+        <h3>N3 document</h3>
+        <p>An N3 document represents an N3 graph in a compact textual form. An N3 graph, in its simplest form, is a series of <a href="">N3 statements</a>, each describing a resource's property and written as a triple: <code>&lt;subject&gt; &lt;predicate&gt; &lt;object&gt;.</code> An N3 graph can have many more elements - <a href="">cited formulas</a> for quoting sets of statements, <a href="">logical implications</a> for If-Then style reasoning, <a href="">quantifications</a> for variables, and so on. We introduce these elements below.</p>
+        <p>Comments are indicated using a separate '#' (i.e., not part of another N3 symbol, such as an IRI) and continue until the end of 
+          the line.
+        </p>
+      </section>
+      <section id='simpletriples'>
+        <h4>Simple triples</h4>
+        <p>The simplest N3 statement or triple is a sequence of <code>&lt;subject&gt;</code>, <code>&lt;predicate&gt;</code> and <code>&lt;object&gt;</code>, separated by whitespace and terminated by '<code>.</code>' after each triple. For now, we will asssume that a resource is represented either by an <a href="">IRI</a> or a <a href="">literal</a>. In general, one uses an IRI for an identifiable entity - such as a person, place, or thing - and a literal for a textual or numerical (i.e., datatype) value - such as names, dates, height, and so on.
+        <p>The three N3 statements below highlights the emnity between Spiderman and the Green Goblin, and lists the names of these two individuals:</p>
+        <pre class="example nohighlight">
 	  &lt;http://example.org/#spiderman&gt; &lt;http://example.org/#enemyOf&gt; &lt;http://example.org/#green-goblin&gt; .
 	  &lt;http://example.org/#spiderman&gt; &lt;http://xmlns.com/foaf/0.1/name&gt; "Spiderman" .
 	  &lt;http://example.org/#green-goblin&gt; &lt;http://xmlns.com/foaf/0.1/name&gt; "Green Goblin" .
 	  </pre>
-	  
-	  <pre class="note nohighlight">
+        <pre class="note nohighlight">
 		<p>Examples will often be written using newlines and tab spaces for readability. However, generally, only the subjects, predicates and objects need to be separated with a whitespace.</p>
 	  </pre>
-	  
-	  <!-- <pre class="example nohighlight">&lt;http://example.org/#dt&gt; &lt;http://xmlns.com/foaf/0.1/name&gt; &quot;Dominik Tomaszuk&quot; .</pre> -->
-	</section>
-	
-	<section id='polists'>
-	  <h4>Predicate and object lists</h4>  
-	  <p>As shown in the above example, the same subject (e.g., Spiderman) will often be described by several N3 statements. To make these N3 statements less cumbersome, one can put a '<code>;</code>' at the end of an N3 statement to describe the same subject in the subsequent N3 statement (called a "predicate list"):</p>
-	  
-	  <pre class="example nohighlight">
+        <!-- <pre class="example nohighlight">&lt;http://example.org/#dt&gt; &lt;http://xmlns.com/foaf/0.1/name&gt; &quot;Dominik Tomaszuk&quot; .</pre> -->
+      </section>
+      <section id='polists'>
+        <h4>Predicate and object lists</h4>
+        <p>As shown in the above example, the same subject (e.g., Spiderman) will often be described by several N3 statements. To make these N3 statements less cumbersome, one can put a '<code>;</code>' at the end of an N3 statement to describe the same subject in the subsequent N3 statement (called a "predicate list"):</p>
+        <pre class="example nohighlight">
 	  &lt;http://example.org/#spiderman&gt; &lt;http://example.org/#enemyOf&gt; &lt;http://example.org/#green-goblin&gt; ;
 				&lt;http://xmlns.com/foaf/0.1/name&gt; "Spiderman" .
 	  </pre>
-	  
-	  <!-- <pre class="example nohighlight">&lt;http://example.org/#dt&gt; &lt;http://xmlns.com/foaf/0.1/firstName&gt; &quot;Dominik&quot; ;
-					 &lt;http://xmlns.com/foaf/0.1/lastName&gt; &quot;Tomaszuk&quot; .</pre> -->
-					 
-	  <p>Similarly, a predicate (e.g., name) can often list multiple object values for the same subject (e.g., Spiderman). This can be written by listing the object values separated by a '<code>,</code>':</p>
-	  
-	  <pre class="example nohighlight">
+        <!-- <pre class="example nohighlight">&lt;http://example.org/#dt&gt; &lt;http://xmlns.com/foaf/0.1/firstName&gt; &quot;Dominik&quot; ;
+          &lt;http://xmlns.com/foaf/0.1/lastName&gt; &quot;Tomaszuk&quot; .</pre> -->
+        <p>Similarly, a predicate (e.g., name) can often list multiple object values for the same subject (e.g., Spiderman). This can be written by listing the object values separated by a '<code>,</code>':</p>
+        <pre class="example nohighlight">
 	  &lt;http://example.org/#spiderman&gt; 
 				&lt;http://xmlns.com/foaf/0.1/name&gt; "Spiderman", "Peter Parker" .
 	  </pre>
-	  
-	  <!-- <pre class="example nohighlight">&lt;http://example.org/#dt&gt; &lt;http://xmlns.com/foaf/0.1/nick&gt; &quot;Domel&quot;, &quot;Misiek&quot;@pl .</pre> -->
-	</section>
-			
-	<section id='iris'>
-	
-		<h3>IRIs</h3>
-		As mentioned, one typically uses an IRI to represent an identifiable entity - such as a person, place, or thing. Until now, we have been writing <i>absolute IRIs</i> (e.g., <code>http://example.org/#Spiderman</code>) - IRIs that include both the namespace (e.g., <code>http://example.org/#</code>) and the local name (e.g., <code>Spiderman</code>).</p>
-		
-		<p>This is a perfectly valid way of writing IRIs, but it is often much easier to write an IRI as a <i>prefixed name</i> - e.g., <code>ex:Spiderman</code>, which includes a prefix label (e.g., <code>ex</code>) and a local name (e.g., <code>Spiderman</code>) separated by a colon '<code>:</code>'. The <code>'@prefix'</code> directive associates a prefix label with a namespace IRI - a prefixed name is turned into an IRI by concatenating the namespace IRI of the prefix label with the local name. For instance, the following is equivalent to using absolute IRIs:</p>
-
-		<pre class="example nohighlight">
+        <!-- <pre class="example nohighlight">&lt;http://example.org/#dt&gt; &lt;http://xmlns.com/foaf/0.1/nick&gt; &quot;Domel&quot;, &quot;Misiek&quot;@pl .</pre> -->
+      </section>
+      <section id='iris'>
+        <h3>IRIs</h3>
+        As mentioned, one typically uses an IRI to represent an identifiable entity - such as a person, place, or thing. Until now, we have been writing <i>absolute IRIs</i> (e.g., <code>http://example.org/#Spiderman</code>) - IRIs that include both the namespace (e.g., <code>http://example.org/#</code>) and the local name (e.g., <code>Spiderman</code>).</p>
+        <p>This is a perfectly valid way of writing IRIs, but it is often much easier to write an IRI as a <i>prefixed name</i> - e.g., <code>ex:Spiderman</code>, which includes a prefix label (e.g., <code>ex</code>) and a local name (e.g., <code>Spiderman</code>) separated by a colon '<code>:</code>'. The <code>'@prefix'</code> directive associates a prefix label with a namespace IRI - a prefixed name is turned into an IRI by concatenating the namespace IRI of the prefix label with the local name. For instance, the following is equivalent to using absolute IRIs:</p>
+        <pre class="example nohighlight">
 			@prefix ex: &lt;http://www.example.org/#&gt; .
 			ex:green-goblin ex:enemyOf ex:spiderman .
 		</pre>
-
-		<p>To further simplify prefixed names, one can leave the prefix label empty (e.g., for a namespace that is often used in the N3 document):</p>
-		
-		<pre class="example nohighlight">
+        <p>To further simplify prefixed names, one can leave the prefix label empty (e.g., for a namespace that is often used in the N3 document):</p>
+        <pre class="example nohighlight">
 			@prefix : &lt;http://www.example.org/#&gt; .
 			:green-goblin :enemyOf :spiderman .
-		</pre>		
-
-		<p>One can write <i>relative IRIs</i>, e.g., <code>&lt;#Spiderman&gt;</code>, which will be resolved relative to the <i>current base IRI</i>. In other words, a relative IRI is turned into an IRI by concatenating the base IRI with the local name (e.g., <code>Spiderman</code>). A base IRI can be defined using the '@base' directive. For instance, the following is equivalent to the prior example:</p>
-
-		<pre class="example nohighlight">
+		</pre>
+        <p>One can write <i>relative IRIs</i>, e.g., <code>&lt;#Spiderman&gt;</code>, which will be resolved relative to the <i>current base IRI</i>. In other words, a relative IRI is turned into an IRI by concatenating the base IRI with the local name (e.g., <code>Spiderman</code>). A base IRI can be defined using the '@base' directive. For instance, the following is equivalent to the prior example:</p>
+        <pre class="example nohighlight">
 			@base &lt;http://www.example.org/#&gt; .
 			&lt;#green-goblin&gt; &lt;#enemyOf&gt; &lt;#spiderman&gt; .
 		</pre>
-
-		<pre class="note nohighlight">
+        <pre class="note nohighlight">
 			<p>We recommend listing the @prefix declarations (just like @base declarations) at the top of an N3 document. This is not mandatory however, and they can technically be put anywhere before the prefixed name or relative IRI that relies on the declaration. Subsequent '@prefix' or 'PREFIX' directives may re-map the same prefix label to another namespace IRI.</p>
 			
 			<p>N3 also supports case-insensitive 'PREFIX' and 'BASE' directives, as does Turtle, to align the syntax with SPARQL. Note that the <code>@prefix</code> and <code>@base</code> directives require a trailing '<code>.</code>' after the IRI, but the equivalent<code>PREFIX</code> and <code>BASE</code> must not have a trailing '.'.
 		</pre>
-
-		<pre class="note nohighlight">
+        <pre class="note nohighlight">
 			<p>Specifics of relative IRI resolution are defined in <a href="https://www.w3.org/TR/turtle/#sec-iri-references">Section 6.3 (IRI References)</a> of the Turtle spec.</p>
 		</pre>
-		
-		<!-- <pre class="example nohighlight">@prefix foaf: &lt;http://xmlns.com/foaf/0.1/&gt; .
-	@prefix : &lt;http://example.org/#&gt;
-
-	&lt;http://example.org/#doerthe&gt; foaf:knows &lt;http://example.org/#dominik&gt; .
-	:doerthe foaf:knows :dominik .</pre> -->
-  </section>
-  
-  <section id='literals'>
-	
-	<h3>Literals</h3>
-	<p>In general, one uses a literal to represent a textual or numerical (i.e., datatype) value - such as names, dates, height, and so on. Numbers (integers, decimals and doubles) can simply be represented using their numerical value, and booleans can be represented using keywords <code>true</code> or <code>false</code>:</p>
-	
-	<pre class="example nohighlight">
+        <!-- <pre class="example nohighlight">@prefix foaf: &lt;http://xmlns.com/foaf/0.1/&gt; .
+          @prefix : &lt;http://example.org/#&gt;
+          
+          &lt;http://example.org/#doerthe&gt; foaf:knows &lt;http://example.org/#dominik&gt; .
+          :doerthe foaf:knows :dominik .</pre> -->
+      </section>
+      <section id='literals'>
+        <h3>Literals</h3>
+        <p>In general, one uses a literal to represent a textual or numerical (i.e., datatype) value - such as names, dates, height, and so on. Numbers (integers, decimals and doubles) can simply be represented using their numerical value, and booleans can be represented using keywords <code>true</code> or <code>false</code>:</p>
+        <pre class="example nohighlight">
 		@prefix : &lt;http://example.org/elements&gt; .                                                                          
 		&lt;http://en.wikipedia.org/wiki/Helium&gt;                                                                                 
 				:atomicNumber 2 ;               # xsd:integer                                                                      
@@ -187,32 +157,24 @@
 				:specificGravity 1.663E-4 .     # xsd:double
 				:isNobleGas true . 		# xsd:boolean
 	</pre>
-		
-	<p>Other literals (e.g., date; binary, octal or hex code; XML or JSON code; other types of numbers, such as shorts), and of course strings themselves, need to be written as string literals. For instance:
-	
-	<pre class="example nohighlight">
+        <p>Other literals (e.g., date; binary, octal or hex code; XML or JSON code; other types of numbers, such as shorts), and of course strings themselves, need to be written as string literals. For instance:
+        <pre class="example nohighlight">
 	  &lt;http://example.org/#spiderman&gt; &lt;http://xmlns.com/foaf/0.1/name&gt; "Spiderman" ;
 				&lt;http://example.org/#birthDate&gt; "2001-08-10" .
 	</pre>
-
-	<p>In that case, the <a href="http://www.w3.org/TR/rdf11-concepts/#dfn-lexical-form">"RDF lexical form"</a> will include the characters between the delimiter quotes (e.g., <code>2001-08-10</code>). Clearly, this can raise confusion as to what type of literal is being represented - a string or some other arbitrary type. RDF allows indicating the datatype of a literal, using the <code>^^</code> symbol and the corresponding <a href="https://www.w3.org/TR/xmlschema11-2/">datatype IRI</a> - for instance: <code>"2001-08-10"^^&lt;http://www.w3.org/2001/XMLSchema#date&gt;</code>. One can also use a prefixed name <code>xsd:date</code>, given a suitable prefix declaration (see full example below).</p>
-	
-	<p>In lieu of a datatype, one can specify the language of a string literal using the <code>@</code> symbol and the corresponding <a href="http://www.iana.org/assignments/language-subtag-registry/language-subtag-registry">language tag</a>. For instance:</p>
-	
-	<pre class="example nohighlight">
+        <p>In that case, the <a href="http://www.w3.org/TR/rdf11-concepts/#dfn-lexical-form">"RDF lexical form"</a> will include the characters between the delimiter quotes (e.g., <code>2001-08-10</code>). Clearly, this can raise confusion as to what type of literal is being represented - a string or some other arbitrary type. RDF allows indicating the datatype of a literal, using the <code>^^</code> symbol and the corresponding <a href="https://www.w3.org/TR/xmlschema11-2/">datatype IRI</a> - for instance: <code>"2001-08-10"^^&lt;http://www.w3.org/2001/XMLSchema#date&gt;</code>. One can also use a prefixed name <code>xsd:date</code>, given a suitable prefix declaration (see full example below).</p>
+        <p>In lieu of a datatype, one can specify the language of a string literal using the <code>@</code> symbol and the corresponding <a href="http://www.iana.org/assignments/language-subtag-registry/language-subtag-registry">language tag</a>. For instance:</p>
+        <pre class="example nohighlight">
 	  &lt;http://example.org/#spiderman&gt; &lt;http://xmlns.com/foaf/0.1/name&gt; "Spiderman"@en , 
 					"Hombre Araña"@es , "Homme Araignée"@fr .
 	</pre>
-	
-	<pre class="note nohighlight">
+        <pre class="note nohighlight">
 	<p>If no datatype IRI or language tag is given, the datatype <code>xsd:string</code> will be assumed. In case a language tag is given, the datatype <code>rdf:langString</code> will be assumed. Note that it is not possible to specify both a datatype IRI and a language tag.</p>
 	<p>Integers, decimals and doubles, or booleans, may also be written as string literals with the appropriate datatype IRI.</p>
 	<p>Boolean literals can be written as <code>true</code> or <code>@true</code> and <code>false</code> or <code>@false</code>.</p>
 	</pre>
-	
-	There are several ways to write string literals. Until now we have used double-quotes <code>"</code> for delimiting, but one may also use single-quotes <code>'</code>, or even compound delimiters consisting of three double-quotes <code>"""</code> or three single-quotes <code>'''</code>. These other delimiters are useful if the string literal is known to contain single- or double-quotes; e.g., if the string contains single-quotes, one could use double-quotes as delimiters, and vice-versa, to avoid syntax errors. Alternatively, one can also use a '<code>\</code>' for escaping the delimiter each time it occurs within a string literal. If a string can contain any type of quote or even newlines one should use the compound type of delimiter, i.e., <code>"""</code> or <code>'''</code>. For instance:
-	
-	<pre class="example nohighlight">@prefix ex: &lt;http://example.org/#&gt; .
+        There are several ways to write string literals. Until now we have used double-quotes <code>"</code> for delimiting, but one may also use single-quotes <code>'</code>, or even compound delimiters consisting of three double-quotes <code>"""</code> or three single-quotes <code>'''</code>. These other delimiters are useful if the string literal is known to contain single- or double-quotes; e.g., if the string contains single-quotes, one could use double-quotes as delimiters, and vice-versa, to avoid syntax errors. Alternatively, one can also use a '<code>\</code>' for escaping the delimiter each time it occurs within a string literal. If a string can contain any type of quote or even newlines one should use the compound type of delimiter, i.e., <code>"""</code> or <code>'''</code>. For instance:
+        <pre class="example nohighlight">@prefix ex: &lt;http://example.org/#&gt; .
 @prefix rdfs: &lt;http://www.w3.org/2000/01/rdf-schema#&gt; .
 @prefix xsd: &lt;http://www.w3.org/2001/XMLSchema#&gt; .
 
@@ -221,49 +183,45 @@ ex:Spiderman rdfs:label '"Bitten" by a radioactive spider.'^^xsd:string .	# same
 ex:Spiderman rdfs:label """'Bitten' by "what"?
 	A radioactive spider!"""^^xsd:string
 	</pre>
-	
-	<p>In more detail: '<code>\</code>' (<span class="codepoint">U+005C</span>) may not appear in any quoted literal except as part of an escape sequence. Other restrictions depend on the delimiter:</p>
-	<ul>
-		<li>Literals delimited by <code>'</code> (<span class="codepoint">U+0027</span>), may not contain the characters <code>'</code>, <code title="LINE FEED"><sub>LF</sub></code> (<span class="codepoint">U+000A</span>), or <code title="CARRIAGE RETURN"><sub>CR</sub></code> (<span class="codepoint">U+000D</span>).
-		</li><li>Literals delimited by <code>&quot;</code>, may not contain the characters <code>&quot;</code>, <code title="LINE FEED"><sub>LF</sub></code>, or <code title="CARRIAGE RETURN"><sub>CR</sub></code>.
-		</li><li>Literals delimited by <code>'''</code> may not contain the sequence of characters <code>'''</code>.
-		</li><li>Literals delimited by <code>&quot;&quot;&quot;</code> may not contain the sequence of characters <code>&quot;&quot;&quot;</code>.</li>
-	</ul>
-	
-	<!-- <pre class="example nohighlight">@prefix : &lt;http://example.org/vocab/&gt; .
-@prefix rdfs: &lt;http://www.w3.org/2000/01/rdf-schema#&gt; .
-@prefix xsd: &lt;http://www.w3.org/2001/XMLSchema#&gt; .
-
-_:x rdfs:comment &quot;This is an example.&quot;^^xsd:string . # literal with XML Schema string datatype
-_:x rdfs:comment &quot;This is an example.&quot;^^&lt;http://www.w3.org/2001/XMLSchema#string&gt; . # same as above
-_:x rdfs:comment &quot;This is an example.&quot; .  # same again
-_:x rdfs:comment &quot;To jest przykład.&quot;@pl . # literal with a language tag
-_:x rdfs:comment 'Ceci est un exemple.'@fr . # literal delimited by single quote
-_:x rdfs:comment '''This # literal with embedded new lines
-is
-an example.''' .
-</pre> -->
-  </section>
-	
-	
-	<section id='keywords'>
-	  
-	  <h4>Keywords and special symbols</h4>
-	  <p>Bla...</p>
-	  
-	  <pre class="example nohighlight">@prefix foaf: &lt;http://xmlns.com/foaf/0.1/&gt; .
+        <p>In more detail: '<code>\</code>' (<span class="codepoint">U+005C</span>) may not appear in any quoted literal except as part of an escape sequence. Other restrictions depend on the delimiter:</p>
+        <ul>
+          <li>Literals delimited by <code>'</code> (<span class="codepoint">U+0027</span>), may not contain the characters <code>'</code>, <code title="LINE FEED"><sub>LF</sub></code> (<span class="codepoint">U+000A</span>), or <code title="CARRIAGE RETURN"><sub>CR</sub></code> (<span class="codepoint">U+000D</span>).
+          </li>
+          <li>Literals delimited by <code>&quot;</code>, may not contain the characters <code>&quot;</code>, <code title="LINE FEED"><sub>LF</sub></code>, or <code title="CARRIAGE RETURN"><sub>CR</sub></code>.
+          </li>
+          <li>Literals delimited by <code>'''</code> may not contain the sequence of characters <code>'''</code>.
+          </li>
+          <li>Literals delimited by <code>&quot;&quot;&quot;</code> may not contain the sequence of characters <code>&quot;&quot;&quot;</code>.</li>
+        </ul>
+        <!-- <pre class="example nohighlight">@prefix : &lt;http://example.org/vocab/&gt; .
+          @prefix rdfs: &lt;http://www.w3.org/2000/01/rdf-schema#&gt; .
+          @prefix xsd: &lt;http://www.w3.org/2001/XMLSchema#&gt; .
+          
+          _:x rdfs:comment &quot;This is an example.&quot;^^xsd:string . # literal with XML Schema string datatype
+          _:x rdfs:comment &quot;This is an example.&quot;^^&lt;http://www.w3.org/2001/XMLSchema#string&gt; . # same as above
+          _:x rdfs:comment &quot;This is an example.&quot; .  # same again
+          _:x rdfs:comment &quot;To jest przykład.&quot;@pl . # literal with a language tag
+          _:x rdfs:comment 'Ceci est un exemple.'@fr . # literal delimited by single quote
+          _:x rdfs:comment '''This # literal with embedded new lines
+          is
+          an example.''' .
+          </pre> -->
+      </section>
+      <section id='keywords'>
+        <h4>Keywords and special symbols</h4>
+        <p>Bla...</p>
+        <pre class="example nohighlight">@prefix foaf: &lt;http://xmlns.com/foaf/0.1/&gt; .
 &lt;http://example.org/#dt&gt; a foaf:Person ;
 					 foaf:name &quot;Dominik Tomaszuk&quot; ;
 					 = &lt;http://example.org/#dominik&gt; .</pre>
-	</section>
-	<section id='paths'>
-	  <h4>Paths</h4>
-	  <p>Bla...</p>
-	  <pre class="example nohighlight">@prefix foaf: &lt;http://xmlns.com/foaf/0.1/&gt; .
+      </section>
+      <section id='paths'>
+        <h4>Paths</h4>
+        <p>Bla...</p>
+        <pre class="example nohighlight">@prefix foaf: &lt;http://xmlns.com/foaf/0.1/&gt; .
 &lt;http://example.org/#dt&gt; foaf:knows &lt;http://example.org/#da&gt; .
 &lt;http://example.org/#dt&gt; ^foaf:knows &lt;http://example.org/#da&gt; .</pre>
-	</section>
-      
+      </section>
       <section id='bnodes'>
         <h3>Blank Nodes</h3>
         <p>Bla...</p>
@@ -318,36 +276,36 @@ _:dominik foaf:knows _:doerthe .
     </section>
     <section id='concepts'>
       <h2>Syntactic Concepts and Terminology</h2>
-      
       <p> 
         In this section we give an overview of the syntax of <abbr title="Notation3">N3</abbr>.
-        <abbr title="Notation3">N3</abbr> is an extension of RDF. We use the following concepts from the <a href="https://www.w3.org/TR/rdf11-concepts/">RDF Concepts specification</a>: <a href="https://www.w3.org/TR/rdf11-concepts/#section-IRIs">IRI</a>, <a href="https://www.w3.org/TR/rdf11-concepts/#section-triples">RDF triple</a>, <a href="http://www.w3.org/TR/rdf11-concepts/#section-rdf-graph">RDF graph</a>, <a href="http://www.w3.org/TR/rdf11-concepts/#section-triples">subject</a>, <a href="http://www.w3.org/TR/rdf11-concepts/#section-triples">predicate</a>, <a href="http://www.w3.org/TR/rdf11-concepts/#section-triples">object</a>, <a href="http://www.w3.org/TR/rdf11-concepts/#dfn-rdf-source">RDF source</a>, <a href="http://www.w3.org/TR/rdf11-concepts/#dfn-node">node</a>, <a href="http://www.w3.org/TR/rdf11-concepts/#dfn-blank-node">blank node</a>, <a href="http://www.w3.org/TR/rdf11-concepts/#dfn-literal">literal</a>,  <a href="http://www.w3.org/TR/rdf11-concepts/#graph-isomorphism">isomorphic</a>, and <a href="http://www.w3.org/TR/rdf11-concepts/#section-generalized-rdf">generalized RDF triples, graphs, and datasets</a>. </p>
+        <abbr title="Notation3">N3</abbr> is an extension of RDF. We use the following concepts from the <a href="https://www.w3.org/TR/rdf11-concepts/">RDF Concepts specification</a>: <a href="https://www.w3.org/TR/rdf11-concepts/#section-IRIs">IRI</a>, <a href="https://www.w3.org/TR/rdf11-concepts/#section-triples">RDF triple</a>, <a href="http://www.w3.org/TR/rdf11-concepts/#section-rdf-graph">RDF graph</a>, <a href="http://www.w3.org/TR/rdf11-concepts/#section-triples">subject</a>, <a href="http://www.w3.org/TR/rdf11-concepts/#section-triples">predicate</a>, <a href="http://www.w3.org/TR/rdf11-concepts/#section-triples">object</a>, <a href="http://www.w3.org/TR/rdf11-concepts/#dfn-rdf-source">RDF source</a>, <a href="http://www.w3.org/TR/rdf11-concepts/#dfn-node">node</a>, <a href="http://www.w3.org/TR/rdf11-concepts/#dfn-blank-node">blank node</a>, <a href="http://www.w3.org/TR/rdf11-concepts/#dfn-literal">literal</a>,  <a href="http://www.w3.org/TR/rdf11-concepts/#graph-isomorphism">isomorphic</a>, and <a href="http://www.w3.org/TR/rdf11-concepts/#section-generalized-rdf">generalized RDF triples, graphs, and datasets</a>. 
+      </p>
       <p>
-     The examples above as well as the examples in the remainder of this document all follow <abbr title="Notation3">N3</abbr>-turtle syntax which is also the standard syntax for <abbr title="Notation3">N3</abbr>. 
-     It is however possible, to use alternative syntaxes as long as the translation to <abbr title="Notation3">N3</abbr> turtle syntax is clearly defined.
+        The examples above as well as the examples in the remainder of this document all follow <abbr title="Notation3">N3</abbr>-turtle syntax which is also the standard syntax for <abbr title="Notation3">N3</abbr>. 
+        It is however possible, to use alternative syntaxes as long as the translation to <abbr title="Notation3">N3</abbr> turtle syntax is clearly defined.
       </p>
       <section id='terms'>
         <h3>Terms</h3>
         <p>
-        In order to define the set of all terms of <abbr title="Notation3">N3</abbr> we to add several definitions to the RDF concepts above which extend the syntax of RDF to <abbr title="Notation3">N3</abbr>: 
+          In order to define the set of all terms of <abbr title="Notation3">N3</abbr> we to add several definitions to the RDF concepts above which extend the syntax of RDF to <abbr title="Notation3">N3</abbr>: 
         </p>
         <p>
-        The set of <dfn id="dfn-n3-symbols">N3 symbols</dfn> consists of the set of <a href="#dfn-triple-elements">N3 triple  elements</a> and the 
-        <a href="#dfn-quantifiers">quantifiers</a> which are defined below.
+          The set of <dfn id="dfn-n3-symbols">N3 symbols</dfn> consists of the set of <a href="#dfn-triple-elements">N3 triple  elements</a> and the 
+          <a href="#dfn-quantifiers">quantifiers</a> which are defined below.
         </p>
-       <p>
-       The set of <dfn id="dfn-triple-elements">N3 triple elements</dfn> consists of the disjoint sets of <a href="https://www.w3.org/TR/rdf11-concepts/#dfn-iri">IRIs</a>, 
-       <a href="https://www.w3.org/TR/rdf11-concepts/#dfn-blank-node">blank nodes</a>, <a href="https://www.w3.org/TR/rdf11-concepts/#dfn-literal">literals</a>, 
-       <a href="#universals">universal variables</a>, lists, quoted graphs  and of one implication sign. The latter is a special symbol to indicate an implication. In N3-turtle syntax sign is represented using the symbol <code>=&gt;</code>.
+        <p>
+          The set of <dfn id="dfn-triple-elements">N3 triple elements</dfn> consists of the disjoint sets of <a href="https://www.w3.org/TR/rdf11-concepts/#dfn-iri">IRIs</a>, 
+          <a href="https://www.w3.org/TR/rdf11-concepts/#dfn-blank-node">blank nodes</a>, <a href="https://www.w3.org/TR/rdf11-concepts/#dfn-literal">literals</a>, 
+          <a href="#universals">universal variables</a>, lists, quoted graphs  and of one implication sign. The latter is a special symbol to indicate an implication. In N3-turtle syntax sign is represented using the symbol <code>=&gt;</code>.
         </p>
-       <p>
-The set of <dfn id="dfn-quantifiers">N3 quantifiers</dfn> consists of the universal quantifier and the existential quantifier. In <abbr title="Notation3">N3</abbr>-turtle 
-syntax we denote the universal quantifier as <code>@forAll</code> and the existential quantifier as <code>@forSome</code>.
+        <p>
+          The set of <dfn id="dfn-quantifiers">N3 quantifiers</dfn> consists of the universal quantifier and the existential quantifier. In <abbr title="Notation3">N3</abbr>-turtle 
+          syntax we denote the universal quantifier as <code>@forAll</code> and the existential quantifier as <code>@forSome</code>.
         </p>
-       <p>
-The set of <dfn id="universals">universal variables</dfn> is an arbitrary set of symbols which is disjoint to all other <abbr title="Notation3">N3</abbr> triple elements. 
-  In <abbr title="Notation3">N3</abbr>-turtle syntax, universal variables are represented by strings starting with a question mark <code>?</code>.
-       </p>
+        <p>
+          The set of <dfn id="universals">universal variables</dfn> is an arbitrary set of symbols which is disjoint to all other <abbr title="Notation3">N3</abbr> triple elements. 
+          In <abbr title="Notation3">N3</abbr>-turtle syntax, universal variables are represented by strings starting with a question mark <code>?</code>.
+        </p>
       </section>
       <section id='formulas'>
         <h3>Formulas</h3>
@@ -361,7 +319,7 @@ The set of <dfn id="universals">universal variables</dfn> is an arbitrary set of
     <section id='semantics'>
       <h2>Semantics</h2>
       <p>...</p>
-     <section id='sinterpret'>
+      <section id='sinterpret'>
         <h3>Simple N3 interpretations</h3>
         <p>Bla...</p>
       </section>
@@ -400,47 +358,620 @@ The set of <dfn id="universals">universal variables</dfn> is an arbitrary set of
       <section id='grammar'>
         <h3>Grammar</h3>
         <p>Bla...</p>
-        <table class="grammar simple">
-          <tr>
-            <td>[1]</td>
-            <td><code>prod1</code></td>
-            <td>::=</td>
-            <td><code>def1</code></td>
-          </tr>
-          <tr>
-            <td>[2]</td>
-            <td><code>prod2</code></td>
-            <td>::=</td>
-            <td><code>def2</code></td>
-          </tr>
+        <table class='grammar simple'>
+          <tbody id='grammar-productions'>
+            <tr id='grammar-production-n3Doc'>
+              <td>[1]</td>
+              <td><code>n3Doc</code></td>
+              <td>::=</td>
+              <td>
+                ((n3Statement ".") | sparqlDirective)*
+              </td>
+            </tr>
+            <tr id='grammar-production-n3Statement'>
+              <td>[2]</td>
+              <td><code>n3Statement</code></td>
+              <td>::=</td>
+              <td>
+                n3Directive
+                | triples
+                | existential
+                | universal
+              </td>
+            </tr>
+            <tr id='grammar-production-n3Directive'>
+              <td>[3]</td>
+              <td><code>n3Directive</code></td>
+              <td>::=</td>
+              <td>
+                prefixID | base
+              </td>
+            </tr>
+            <tr id='grammar-production-sparqlDirective'>
+              <td>[4]</td>
+              <td><code>sparqlDirective</code></td>
+              <td>::=</td>
+              <td>
+                sparqlBase | sparqlPrefix
+              </td>
+            </tr>
+            <tr id='grammar-production-sparqlBase'>
+              <td>[5]</td>
+              <td><code>sparqlBase</code></td>
+              <td>::=</td>
+              <td>
+                BASE IRIREF
+              </td>
+            </tr>
+            <tr id='grammar-production-sparqlPrefix'>
+              <td>[6]</td>
+              <td><code>sparqlPrefix</code></td>
+              <td>::=</td>
+              <td>
+                PREFIX PNAME_NS IRIREF
+              </td>
+            </tr>
+            <tr id='grammar-production-prefixID'>
+              <td>[7]</td>
+              <td><code>prefixID</code></td>
+              <td>::=</td>
+              <td>
+                "@prefix" PNAME_NS IRIREF
+              </td>
+            </tr>
+            <tr id='grammar-production-base'>
+              <td>[8]</td>
+              <td><code>base</code></td>
+              <td>::=</td>
+              <td>
+                "@base" IRIREF
+              </td>
+            </tr>
+            <tr id='grammar-production-triples'>
+              <td>[9]</td>
+              <td><code>triples</code></td>
+              <td>::=</td>
+              <td>
+                (subject | blankNodePropertyList)
+                predicateObjectList?
+              </td>
+            </tr>
+            <tr id='grammar-production-predicateObjectList'>
+              <td>[10]</td>
+              <td><code>predicateObjectList</code></td>
+              <td>::=</td>
+              <td>
+                verb
+                objectList
+                (";" (verb objectList)?)*
+              </td>
+            </tr>
+            <tr id='grammar-production-objectList'>
+              <td>[11]</td>
+              <td><code>objectList</code></td>
+              <td>::=</td>
+              <td>
+                object ("," object)*
+              </td>
+            </tr>
+            <tr id='grammar-production-verb'>
+              <td>[12]</td>
+              <td><code>verb</code></td>
+              <td>::=</td>
+              <td>
+                predicate
+                | "a"
+                | "@a"
+                | ("has" expression)
+                | ("@has" expression)
+                | ("is" expression "of")
+                | ("@is" expression "@of")
+                | "="
+                | "<="
+                | "=>"
+              </td>
+            </tr>
+            <tr id='grammar-production-subject'>
+              <td>[13]</td>
+              <td><code>subject</code></td>
+              <td>::=</td>
+              <td>
+                expression
+              </td>
+            </tr>
+            <tr id='grammar-production-predicate'>
+              <td>[14]</td>
+              <td><code>predicate</code></td>
+              <td>::=</td>
+              <td>
+                expression | ("^" expression)
+              </td>
+            </tr>
+            <tr id='grammar-production-object'>
+              <td>[15]</td>
+              <td><code>object</code></td>
+              <td>::=</td>
+              <td>
+                expression
+              </td>
+            </tr>
+            <tr id='grammar-production-expression'>
+              <td>[16]</td>
+              <td><code>expression</code></td>
+              <td>::=</td>
+              <td>
+                path
+              </td>
+            </tr>
+            <tr id='grammar-production-path'>
+              <td>[17]</td>
+              <td><code>path</code></td>
+              <td>::=</td>
+              <td>
+                pathItem ((#x21 path) | ("^" path))?
+              </td>
+            </tr>
+            <tr id='grammar-production-pathItem'>
+              <td>[18]</td>
+              <td><code>pathItem</code></td>
+              <td>::=</td>
+              <td>
+                iri
+                | blankNode
+                | quickVar
+                | collection
+                | blankNodePropertyList
+                | literal
+                | formula
+              </td>
+            </tr>
+            <tr id='grammar-production-literal'>
+              <td>[19]</td>
+              <td><code>literal</code></td>
+              <td>::=</td>
+              <td>
+                rdfLiteral
+                | numericLiteral
+                | BooleanLiteral
+              </td>
+            </tr>
+            <tr id='grammar-production-blankNodePropertyList'>
+              <td>[20]</td>
+              <td><code>blankNodePropertyList</code></td>
+              <td>::=</td>
+              <td>
+                "[" predicateObjectList? "]"
+              </td>
+            </tr>
+            <tr id='grammar-production-collection'>
+              <td>[21]</td>
+              <td><code>collection</code></td>
+              <td>::=</td>
+              <td>
+                "(" object* ")"
+              </td>
+            </tr>
+            <tr id='grammar-production-formula'>
+              <td>[22]</td>
+              <td><code>formula</code></td>
+              <td>::=</td>
+              <td>
+                "{" formulaContent? "}"
+              </td>
+            </tr>
+            <tr id='grammar-production-formulaContent'>
+              <td>[23]</td>
+              <td><code>formulaContent</code></td>
+              <td>::=</td>
+              <td>
+                (n3Statement ("." formulaContent?)?)
+                | (sparqlDirective formulaContent?)
+              </td>
+            </tr>
+            <tr id='grammar-production-numericLiteral'>
+              <td>[24]</td>
+              <td><code>numericLiteral</code></td>
+              <td>::=</td>
+              <td>
+                INTEGER | DECIMAL | DOUBLE
+              </td>
+            </tr>
+            <tr id='grammar-production-rdfLiteral'>
+              <td>[25]</td>
+              <td><code>rdfLiteral</code></td>
+              <td>::=</td>
+              <td>
+                String (LANGTAG | ("^^" iri))?
+              </td>
+            </tr>
+            <tr id='grammar-production-iri'>
+              <td>[26]</td>
+              <td><code>iri</code></td>
+              <td>::=</td>
+              <td>
+                IRIREF | prefixedName
+              </td>
+            </tr>
+            <tr id='grammar-production-iriList'>
+              <td>[27]</td>
+              <td><code>iriList</code></td>
+              <td>::=</td>
+              <td>
+                iri ("," iri)*
+              </td>
+            </tr>
+            <tr id='grammar-production-prefixedName'>
+              <td>[28]</td>
+              <td><code>prefixedName</code></td>
+              <td>::=</td>
+              <td>
+                PNAME_NS | PNAME_LN
+              </td>
+            </tr>
+            <tr id='grammar-production-blankNode'>
+              <td>[29]</td>
+              <td><code>blankNode</code></td>
+              <td>::=</td>
+              <td>
+                BLANK_NODE_LABEL | ANON
+              </td>
+            </tr>
+            <tr id='grammar-production-quickVar'>
+              <td>[30]</td>
+              <td><code>quickVar</code></td>
+              <td>::=</td>
+              <td>
+                QuickVarName
+              </td>
+            </tr>
+            <tr id='grammar-production-existential'>
+              <td>[31]</td>
+              <td><code>existential</code></td>
+              <td>::=</td>
+              <td>
+                "@forSome" iriList
+              </td>
+            </tr>
+            <tr id='grammar-production-universal'>
+              <td>[32]</td>
+              <td><code>universal</code></td>
+              <td>::=</td>
+              <td>
+                "@forAll" iriList
+              </td>
+            </tr>
+            <tr id='grammar-production-BooleanLiteral'>
+              <td>[33]</td>
+              <td><code>BooleanLiteral</code></td>
+              <td>::=</td>
+              <td>
+                "true" | "false" | "@true" | "@false"
+              </td>
+            </tr>
+            <tr id='grammar-production-String'>
+              <td>[34]</td>
+              <td><code>String</code></td>
+              <td>::=</td>
+              <td>
+                STRING_LITERAL_QUOTE
+                | STRING_LITERAL_SINGLE_QUOTE
+                | STRING_LITERAL_LONG_SINGLE_QUOTE
+                | STRING_LITERAL_LONG_QUOTE
+              </td>
+            </tr>
+            <tr id='grammar-production-QuickVarName'>
+              <td>[35]</td>
+              <td><code>QuickVarName</code></td>
+              <td>::=</td>
+              <td>
+                "?" PN_LOCAL
+              </td>
+            </tr>
+            <tr id='grammar-production-IRIREF'>
+              <td>[139s]</td>
+              <td><code>IRIREF</code></td>
+              <td>::=</td>
+              <td>
+                "<" [^<>"{}|^`]-[#x00-#x20]* ">"
+              </td>
+            </tr>
+            <tr id='grammar-production-PNAME_NS'>
+              <td>[140s]</td>
+              <td><code>PNAME_NS</code></td>
+              <td>::=</td>
+              <td>
+                PN_PREFIX? ":"
+              </td>
+            </tr>
+            <tr id='grammar-production-PNAME_LN'>
+              <td>[141s]</td>
+              <td><code>PNAME_LN</code></td>
+              <td>::=</td>
+              <td>
+                PNAME_NS PN_LOCAL
+              </td>
+            </tr>
+            <tr id='grammar-production-BLANK_NODE_LABEL'>
+              <td>[142s]</td>
+              <td><code>BLANK_NODE_LABEL</code></td>
+              <td>::=</td>
+              <td>
+                "_:"
+                (PN_CHARS_U | [0-9])
+                ((PN_CHARS | ".")* PN_CHARS)?
+              </td>
+            </tr>
+            <tr id='grammar-production-LANGTAG'>
+              <td>[145s]</td>
+              <td><code>LANGTAG</code></td>
+              <td>::=</td>
+              <td>
+                "@" [a-zA-Z]+ ("-" [a-zA-Z0-9]+)*
+              </td>
+            </tr>
+            <tr id='grammar-production-INTEGER'>
+              <td>[146s]</td>
+              <td><code>INTEGER</code></td>
+              <td>::=</td>
+              <td>
+                [0-9]+
+              </td>
+            </tr>
+            <tr id='grammar-production-DECIMAL'>
+              <td>[147s]</td>
+              <td><code>DECIMAL</code></td>
+              <td>::=</td>
+              <td>
+                [0-9]* "." [0-9]+
+              </td>
+            </tr>
+            <tr id='grammar-production-DOUBLE'>
+              <td>[148s]</td>
+              <td><code>DOUBLE</code></td>
+              <td>::=</td>
+              <td>
+                ([0-9]+ "." [0-9]* EXPONENT)
+                | ("." [0-9]+ EXPONENT)
+                | ([0-9]+ EXPONENT)
+              </td>
+            </tr>
+            <tr id='grammar-production-EXPONENT'>
+              <td>[155s]</td>
+              <td><code>EXPONENT</code></td>
+              <td>::=</td>
+              <td>
+                [eE] [+-]? [0-9]+
+              </td>
+            </tr>
+            <tr id='grammar-production-STRING_LITERAL_QUOTE'>
+              <td>[156s]</td>
+              <td><code>STRING_LITERAL_QUOTE</code></td>
+              <td>::=</td>
+              <td>
+                '"'
+                ([^#x22#x5C#xA#xD] | ECHAR | UCHAR)*
+                '"'
+              </td>
+            </tr>
+            <tr id='grammar-production-STRING_LITERAL_SINGLE_QUOTE'>
+              <td>[157s]</td>
+              <td><code>STRING_LITERAL_SINGLE_QUOTE</code></td>
+              <td>::=</td>
+              <td>
+                "'"
+                ([^#x27#x5C#xA#xD] | ECHAR | UCHAR)*
+                "'"
+              </td>
+            </tr>
+            <tr id='grammar-production-STRING_LITERAL_LONG_SINGLE_QUOTE'>
+              <td>[158s]</td>
+              <td><code>STRING_LITERAL_LONG_SINGLE_QUOTE</code></td>
+              <td>::=</td>
+              <td>
+                "'''"
+                (("'" | "''")? [^']#x20|#x20ECHAR#x20|#x20UCHAR#x20)#x20)*#x20"'''"])
+              </td>
+            </tr>
+            <tr id='grammar-production-STRING_LITERAL_LONG_QUOTE'>
+              <td>[159s]</td>
+              <td><code>STRING_LITERAL_LONG_QUOTE</code></td>
+              <td>::=</td>
+              <td>
+                '"""'
+                (('"' | '""')? [^"]#x20|#x20ECHAR#x20|#x20UCHAR#x20)#x20)*#x20'"""'])
+              </td>
+            </tr>
+            <tr id='grammar-production-UCHAR'>
+              <td>[26t]</td>
+              <td><code>UCHAR</code></td>
+              <td>::=</td>
+              <td>
+                ("u" HEX HEX HEX HEX)
+                | ("U" HEX HEX HEX HEX HEX HEX HEX HEX)
+              </td>
+            </tr>
+            <tr id='grammar-production-ECHAR'>
+              <td>[160s]</td>
+              <td><code>ECHAR</code></td>
+              <td>::=</td>
+              <td>
+                "\" [tbnrf"']
+              </td>
+            </tr>
+            <tr id='grammar-production-WS'>
+              <td>[162s]</td>
+              <td><code>WS</code></td>
+              <td>::=</td>
+              <td>
+                #x20 | #x9 | #xD | #xA
+              </td>
+            </tr>
+            <tr id='grammar-production-ANON'>
+              <td>[163s]</td>
+              <td><code>ANON</code></td>
+              <td>::=</td>
+              <td>
+                "[" WS* "]"
+              </td>
+            </tr>
+            <tr id='grammar-production-PN_CHARS_BASE'>
+              <td>[164s]</td>
+              <td><code>PN_CHARS_BASE</code></td>
+              <td>::=</td>
+              <td>
+                [A-Z]
+                | [a-z]
+                | [#x00C0-#x00D6]
+                | [#x00D8-#x00F6]
+                | [#x00F8-#x02FF]
+                | [#x0370-#x037D]
+                | [#x037F-#x1FFF]
+                | [#x200C-#x200D]
+                | [#x2070-#x218F]
+                | [#x2C00-#x2FEF]
+                | [#x3001-#xD7FF]
+                | [#xF900-#xFDCF]
+                | [#xFDF0-#xFFFD]
+                | [#x10000-#xEFFFF]
+              </td>
+            </tr>
+            <tr id='grammar-production-PN_CHARS_U'>
+              <td>[165s]</td>
+              <td><code>PN_CHARS_U</code></td>
+              <td>::=</td>
+              <td>
+                PN_CHARS_BASE | "_"
+              </td>
+            </tr>
+            <tr id='grammar-production-PN_CHARS'>
+              <td>[167s]</td>
+              <td><code>PN_CHARS</code></td>
+              <td>::=</td>
+              <td>
+                PN_CHARS_U
+                | "-"
+                | [0-9]
+                | #x00B7
+                | [#x0300-#x036F]
+                | [#x203F-#x2040]
+              </td>
+            </tr>
+            <tr id='grammar-production-PN_PREFIX'>
+              <td>[168s]</td>
+              <td><code>PN_PREFIX</code></td>
+              <td>::=</td>
+              <td>
+                PN_CHARS_BASE
+                ((PN_CHARS | ".")* PN_CHARS)?
+              </td>
+            </tr>
+            <tr id='grammar-production-PN_LOCAL'>
+              <td>[169s]</td>
+              <td><code>PN_LOCAL</code></td>
+              <td>::=</td>
+              <td>
+                (PN_CHARS_U | ":" | [0-9] | PLX)
+                ((PN_CHARS | "." | ":" | PLX)* (PN_CHARS | ":" | PLX))?
+              </td>
+            </tr>
+            <tr id='grammar-production-PLX'>
+              <td>[170s]</td>
+              <td><code>PLX</code></td>
+              <td>::=</td>
+              <td>
+                PERCENT | PN_LOCAL_ESC
+              </td>
+            </tr>
+            <tr id='grammar-production-PERCENT'>
+              <td>[171s]</td>
+              <td><code>PERCENT</code></td>
+              <td>::=</td>
+              <td>
+                "%" HEX HEX
+              </td>
+            </tr>
+            <tr id='grammar-production-HEX'>
+              <td>[172s]</td>
+              <td><code>HEX</code></td>
+              <td>::=</td>
+              <td>
+                [0-9] | [A-F] | [a-f]
+              </td>
+            </tr>
+            <tr id='grammar-production-PN_LOCAL_ESC'>
+              <td>[173s]</td>
+              <td><code>PN_LOCAL_ESC</code></td>
+              <td>::=</td>
+              <td>
+                "\"
+                ("_" | "~" | "." | "-" | #x21 | "$" | "&" | "'" | "(" | ")" | "*" | "+" | "," | ";" | "=" | "/" | "?" | "#" | "@" | "%")
+              </td>
+            </tr>
+            <tr id='grammar-production-BASE'>
+              <td>[36]</td>
+              <td><code>BASE</code></td>
+              <td>::=</td>
+              <td>
+                ("B" | "b")
+                ("A" | "a")
+                ("S" | "s")
+                ("E" | "e")
+              </td>
+            </tr>
+            <tr id='grammar-production-PREFIX'>
+              <td>[37]</td>
+              <td><code>PREFIX</code></td>
+              <td>::=</td>
+              <td>
+                ("P" | "p")
+                ("R" | "r")
+                ("E" | "e")
+                ("F" | "f")
+                ("I" | "i")
+                ("X" | "x")
+              </td>
+            </tr>
+            <tr id='grammar-production-COMMENT'>
+              <td>[38]</td>
+              <td><code>COMMENT</code></td>
+              <td>::=</td>
+              <td>
+                ("#" - "#x") [^#xA#xC#xD]*
+              </td>
+            </tr>
+            <tr id='grammar-production-_pass'>
+              <td colspan='3'>
+                <code>@pass</code>
+              </td>
+              <td>
+                (WS | COMMENT)*
+              </td>
+            </tr>
+          </tbody>
         </table>
       </section>
     </section>
-	
-	<section>
-		<h3>Relation with Turtle</h3>
-		<p>N3 is a superset of <a href="https://www.w3.org/TR/turtle/">Turtle</a>, meaning that all valid Turtle documents will be valid in N3 as well. The inverse is not true, i.e., a valid N3 document will not always be valid in Turtle.</p>
-		<p>The current N3 grammar started from the <a href="https://www.w3.org/TR/turtle/#sec-grammar">Turtle grammar</a> which was adapted and extended to be in line with the <a href="https://www.w3.org/2000/10/swap/grammar/n3-report.html">initial N3 grammar</a>. Hence, many of the grammar productions will be much more similar to the Turtle grammar than the initial N3 grammar.</p>
-		<p>Important differences with Turtle are the following:</p>
-		<p>TODO - add links to production rules in the list (e.g., "pathItem")</p>
-		<ul>
-			<li>Literals are allowed at any s/p/o position (i.e., subject, predicate or object) in a statement. See the "pathItem" production, which is (eventually) referenced by the "subject", "predicate" and "object" productions.</li>
-			<li>Cited formulas (i.e., between "<code>{</code>" and "<code>}</code>"), which are allowed in any s/p/o position in a statement. See the "pathItem" production.</li>
-			<li>Quick-variables (e.g., "<code>?x</code>"), which are allowed in any s/p/o position in a statement. See the "pathItem" production.</li>
-			<li>Variable quantifications (e.g., "<code>@forAll :x .</code>"), which are a standalone element (i.e., not part of a "regular" N3 statement). See the "existential" and "universal" productions.</li>
-			<li>A path syntax, comparable to (but not quite as extensive as) the <a href="https://www.w3.org/TR/sparql11-property-paths/">SPARQL property path syntax</a>. See the "path" production.</li>
-			<li>The possibility to invert the predicate within a statement. See the "predicate" production.</li>
-			<li>An additional set of keywords, incl. "<code>is .. of</code>", "<code>has</code>", "<code>=</code>", "<code>=></code>", "<code>&lt;=</code>", in addition to Turtle's "<code>a</code>" keyword (among others). All keywords can be optionally preceded by "<code>@</code>", for consistency with the "<code>@prefix</code>" and "<code>@base"</code> keywords.</li>
-		</ul>
-	</section>
-	
-	<section>
-		<h3>Relation with TriG</h3>
-		<p><a href="https://www.w3.org/TR/trig/">TriG</a> is itself a superset of the Turtle syntax and includes a compact way to write RDF datasets, i.e., sets of named graphs. In particular, TriG allows the specification of so-called graph statements, which are a pair of an IRI or blank node label and a group of triple statements surrounded by <code>{}</code>.</p>
-
-		<p>For instance (example taken from [<i>https://www.w3.org/TR/trig/</i>]): 
-		
-		<pre class="example nohighlight">
+    <section>
+      <h3>Relation with Turtle</h3>
+      <p>N3 is a superset of <a href="https://www.w3.org/TR/turtle/">Turtle</a>, meaning that all valid Turtle documents will be valid in N3 as well. The inverse is not true, i.e., a valid N3 document will not always be valid in Turtle.</p>
+      <p>The current N3 grammar started from the <a href="https://www.w3.org/TR/turtle/#sec-grammar">Turtle grammar</a> which was adapted and extended to be in line with the <a href="https://www.w3.org/2000/10/swap/grammar/n3-report.html">initial N3 grammar</a>. Hence, many of the grammar productions will be much more similar to the Turtle grammar than the initial N3 grammar.</p>
+      <p>Important differences with Turtle are the following:</p>
+      <p>TODO - add links to production rules in the list (e.g., "pathItem")</p>
+      <ul>
+        <li>Literals are allowed at any s/p/o position (i.e., subject, predicate or object) in a statement. See the "pathItem" production, which is (eventually) referenced by the "subject", "predicate" and "object" productions.</li>
+        <li>Cited formulas (i.e., between "<code>{</code>" and "<code>}</code>"), which are allowed in any s/p/o position in a statement. See the "pathItem" production.</li>
+        <li>Quick-variables (e.g., "<code>?x</code>"), which are allowed in any s/p/o position in a statement. See the "pathItem" production.</li>
+        <li>Variable quantifications (e.g., "<code>@forAll :x .</code>"), which are a standalone element (i.e., not part of a "regular" N3 statement). See the "existential" and "universal" productions.</li>
+        <li>A path syntax, comparable to (but not quite as extensive as) the <a href="https://www.w3.org/TR/sparql11-property-paths/">SPARQL property path syntax</a>. See the "path" production.</li>
+        <li>The possibility to invert the predicate within a statement. See the "predicate" production.</li>
+        <li>An additional set of keywords, incl. "<code>is .. of</code>", "<code>has</code>", "<code>=</code>", "<code>=></code>", "<code>&lt;=</code>", in addition to Turtle's "<code>a</code>" keyword (among others). All keywords can be optionally preceded by "<code>@</code>", for consistency with the "<code>@prefix</code>" and "<code>@base"</code> keywords.</li>
+      </ul>
+    </section>
+    <section>
+      <h3>Relation with TriG</h3>
+      <p><a href="https://www.w3.org/TR/trig/">TriG</a> is itself a superset of the Turtle syntax and includes a compact way to write RDF datasets, i.e., sets of named graphs. In particular, TriG allows the specification of so-called graph statements, which are a pair of an IRI or blank node label and a group of triple statements surrounded by <code>{}</code>.</p>
+      <p>For instance (example taken from [<i>https://www.w3.org/TR/trig/</i>]): 
+      <pre class="example nohighlight">
 # This document contains a default graph and two named graphs.
 
 @prefix rdf: &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#&gt; .
@@ -466,51 +997,48 @@ The set of <dfn id="universals">universal variables</dfn> is an arbitrary set of
        _:b foaf:mbox &lt;mailto:alice@work.example.org&gt; .
     }	
 </pre>
-	
-<p>N3 is not directly compatible with TriG as it does not support this graph statement notation. Nevertheless, since N3 supports quoted graphs (i.e., cited formulas) as part of regular N3 statements, authors can utilize the N3 Named Graphs extension [<b>X</b>] for associating names or identifiers with cited formulas. Although applications could easily introduce their own custom predicates for this purpose, we strongly recommend the use of this extension for interoperability purposes.</p>
-
-<p>The N3 Named Graphs extension [<b>X</b>] defines a set of built-ins (used as predicates) to associate names or identifiers with cited formulas, which then become "named graphs". Moreover, each predicate has a well-defined semantics on how the named graph should be interpreted: as quoted graphs (the default N3 interpretation), a partitioning of triples within a dataset context, sets of triples with their own isolated contexts, or specifying relations between local and online graphs.</p>
-	</section>
-	
+      <p>N3 is not directly compatible with TriG as it does not support this graph statement notation. Nevertheless, since N3 supports quoted graphs (i.e., cited formulas) as part of regular N3 statements, authors can utilize the N3 Named Graphs extension [<b>X</b>] for associating names or identifiers with cited formulas. Although applications could easily introduce their own custom predicates for this purpose, we strongly recommend the use of this extension for interoperability purposes.</p>
+      <p>The N3 Named Graphs extension [<b>X</b>] defines a set of built-ins (used as predicates) to associate names or identifiers with cited formulas, which then become "named graphs". Moreover, each predicate has a well-defined semantics on how the named graph should be interpreted: as quoted graphs (the default N3 interpretation), a partitioning of triples within a dataset context, sets of triples with their own isolated contexts, or specifying relations between local and online graphs.</p>
+    </section>
     <section id='mime' class=appendix>
       <h2>Internet Media Type, File Extension and Macintosh File Type</h2>
       <p>This section has been submitted to the Internet Engineering Steering Group (IESG) for review, approval, and registration with IANA.</p>
       <dl>
-      <dt>Contact:</dt>
-      <dd>NAME</dd>
-      <dt>Type name:</dt>
-      <dd>text</dd>
-      <dt>Subtype name:</dt>
-      <dd>n3</dd>
-      <dt>Optional parameters:</dt>
-      <dd><code>charset</code> — this parameter is required when transferring non-ASCII data. If present, the value of <code>charset</code> is always <code>UTF-8</code>.</dd>
-      <dt>Encoding considerations:</dt>
-      <dd>The syntax of Notation3 is expressed over code points in Unicode [[UNICODE]]. The encoding is always UTF-8 [[UTF-8]]. Unicode code points may also be expressed using an \uXXXX (U+0000 to U+FFFF) or \UXXXXXXXX syntax (for U+10000 onwards) where X is a hexadecimal digit [0-9A-Fa-f]</dd>
-      <dt>Security considerations:</dt>
-      <dd>Notation3 is a general-purpose assertion language; applications may evaluate given data to infer more assertions or to dereference IRIs, invoking the security considerations of the scheme for that IRI. Note in particular, the privacy issues in [[RFC3023]] section 10 for HTTP IRIs. Data obtained from an inaccurate or malicious data source may lead to inaccurate or misleading conclusions, as well as the dereferencing of unintended IRIs. Care must be taken to align the trust in consulted resources with the sensitivity of the intended use of the data; inferences of potential medical treatments would likely require different trust than inferences for trip planning. Notation3 is used to express arbitrary application data; security considerations will vary by domain of use. Security tools and protocols applicable to text (e.g. PGP encryption, MD5 sum validation, password-protected compression) may also be used on Notation3 documents. Security/privacy protocols must be imposed which reflect the sensitivity of the embedded information. Notation3 can express data which is presented to the user, for example, RDF Schema labels. Application rendering strings retrieved from untrusted Notation3 documents must ensure that malignant strings may not be used to mislead the reader. The security considerations in the media type registration for XML ([[RFC3023]] section 10) provide additional guidance around the expression of arbitrary data and markup. Notation3 uses IRIs as term identifiers. Applications interpreting data expressed in Notation3 should address the security issues of Internationalized Resource Identifiers (IRIs) [[RFC3987]] Section 8, as well as Uniform Resource Identifier (URI): Generic Syntax [[RFC3986]] Section 7. Multiple IRIs may have the same appearance. Characters in different scripts may look similar (a Cyrillic "о" may appear similar to a Latin "o"). A character followed by combining characters may have the same visual representation as another character (LATIN SMALL LETTER E followed by COMBINING ACUTE ACCENT has the same visual representation as LATIN SMALL LETTER E WITH ACUTE). Any person or application that is writing or interpreting data in Notation3 must take care to use the IRI that matches the intended semantics, and avoid IRIs that make look similar. Further information about matching of similar characters can be found in Unicode Security Considerations [[UNICODE-SECURITY]] and Internationalized Resource Identifiers (IRIs) [[RFC3987]] Section 8.</dd>
-      <dt>Interoperability considerations:</dt>
-      <dd>Not Applicable</dd>
-      <dt>Published specification:</dt>
-      <dd>This specification.</dd>
-      <dt>Applications which use this media type:</dt>
-      <dd>Any programming environment that requires the exchange of directed graphs. Implementations of Notation3 have been created for JavaScript, Python, Java, and Prolog. It may be used by some web services and clients consuming their data.</dd>
-      <dt>Additional information:</dt>
-      <dt>Magic number(s):</dt>
-      <dd>Notation3 documents may have the strings 'prefix' or 'base' (case independent) near the beginning of the document.</dd>
-      <dt>File extension(s):</dt>
-      <dd>.n3</dd>
-      <dt>Macintosh file type code(s):</dt>
-      <dd>TEXT</dd>
-      <dt>Person &amp; email address to contact for further information:</dt>
-      <dd>NAME &lt;EMAIL&gt;</dd>
-      <dt>Intended usage:</dt>
-      <dd>Common</dd>
-      <dt>Restrictions on usage:</dt>
-      <dd>None</dd>
-      <dt>Author(s):</dt>
-      <dd>Dörthe Arndt, William Van Woensel, Dominik Tomaszuk</dd>
-      <dt>Change controller:</dt>
-      <dd>W3C</dd>
+        <dt>Contact:</dt>
+        <dd>NAME</dd>
+        <dt>Type name:</dt>
+        <dd>text</dd>
+        <dt>Subtype name:</dt>
+        <dd>n3</dd>
+        <dt>Optional parameters:</dt>
+        <dd><code>charset</code> — this parameter is required when transferring non-ASCII data. If present, the value of <code>charset</code> is always <code>UTF-8</code>.</dd>
+        <dt>Encoding considerations:</dt>
+        <dd>The syntax of Notation3 is expressed over code points in Unicode [[UNICODE]]. The encoding is always UTF-8 [[UTF-8]]. Unicode code points may also be expressed using an \uXXXX (U+0000 to U+FFFF) or \UXXXXXXXX syntax (for U+10000 onwards) where X is a hexadecimal digit [0-9A-Fa-f]</dd>
+        <dt>Security considerations:</dt>
+        <dd>Notation3 is a general-purpose assertion language; applications may evaluate given data to infer more assertions or to dereference IRIs, invoking the security considerations of the scheme for that IRI. Note in particular, the privacy issues in [[RFC3023]] section 10 for HTTP IRIs. Data obtained from an inaccurate or malicious data source may lead to inaccurate or misleading conclusions, as well as the dereferencing of unintended IRIs. Care must be taken to align the trust in consulted resources with the sensitivity of the intended use of the data; inferences of potential medical treatments would likely require different trust than inferences for trip planning. Notation3 is used to express arbitrary application data; security considerations will vary by domain of use. Security tools and protocols applicable to text (e.g. PGP encryption, MD5 sum validation, password-protected compression) may also be used on Notation3 documents. Security/privacy protocols must be imposed which reflect the sensitivity of the embedded information. Notation3 can express data which is presented to the user, for example, RDF Schema labels. Application rendering strings retrieved from untrusted Notation3 documents must ensure that malignant strings may not be used to mislead the reader. The security considerations in the media type registration for XML ([[RFC3023]] section 10) provide additional guidance around the expression of arbitrary data and markup. Notation3 uses IRIs as term identifiers. Applications interpreting data expressed in Notation3 should address the security issues of Internationalized Resource Identifiers (IRIs) [[RFC3987]] Section 8, as well as Uniform Resource Identifier (URI): Generic Syntax [[RFC3986]] Section 7. Multiple IRIs may have the same appearance. Characters in different scripts may look similar (a Cyrillic "о" may appear similar to a Latin "o"). A character followed by combining characters may have the same visual representation as another character (LATIN SMALL LETTER E followed by COMBINING ACUTE ACCENT has the same visual representation as LATIN SMALL LETTER E WITH ACUTE). Any person or application that is writing or interpreting data in Notation3 must take care to use the IRI that matches the intended semantics, and avoid IRIs that make look similar. Further information about matching of similar characters can be found in Unicode Security Considerations [[UNICODE-SECURITY]] and Internationalized Resource Identifiers (IRIs) [[RFC3987]] Section 8.</dd>
+        <dt>Interoperability considerations:</dt>
+        <dd>Not Applicable</dd>
+        <dt>Published specification:</dt>
+        <dd>This specification.</dd>
+        <dt>Applications which use this media type:</dt>
+        <dd>Any programming environment that requires the exchange of directed graphs. Implementations of Notation3 have been created for JavaScript, Python, Java, and Prolog. It may be used by some web services and clients consuming their data.</dd>
+        <dt>Additional information:</dt>
+        <dt>Magic number(s):</dt>
+        <dd>Notation3 documents may have the strings 'prefix' or 'base' (case independent) near the beginning of the document.</dd>
+        <dt>File extension(s):</dt>
+        <dd>.n3</dd>
+        <dt>Macintosh file type code(s):</dt>
+        <dd>TEXT</dd>
+        <dt>Person &amp; email address to contact for further information:</dt>
+        <dd>NAME &lt;EMAIL&gt;</dd>
+        <dt>Intended usage:</dt>
+        <dd>Common</dd>
+        <dt>Restrictions on usage:</dt>
+        <dd>None</dd>
+        <dt>Author(s):</dt>
+        <dd>Dörthe Arndt, William Van Woensel, Dominik Tomaszuk</dd>
+        <dt>Change controller:</dt>
+        <dd>W3C</dd>
       </dl>
     </section>
     <section id='aknowledgements' class=appendix>
