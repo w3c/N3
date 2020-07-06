@@ -93,9 +93,7 @@
 	  &lt;http://example.org/#spiderman&gt; &lt;http://xmlns.com/foaf/0.1/name&gt; "Spiderman" .
 	  &lt;http://example.org/#green-goblin&gt; &lt;http://xmlns.com/foaf/0.1/name&gt; "Green Goblin" .
 	  </pre>
-        <pre class="note nohighlight">
-		<p>Examples will often be written using newlines and tab spaces for readability. However, generally, only the subjects, predicates and objects need to be separated with a whitespace.</p>
-	  </pre>
+		<p class="note">Examples will often be written using newlines and tab spaces for readability. However, generally, only the subjects, predicates and objects need to be separated with a whitespace.</p>
         <!-- <pre class="example nohighlight">&lt;http://example.org/#dt&gt; &lt;http://xmlns.com/foaf/0.1/name&gt; &quot;Dominik Tomaszuk&quot; .</pre> -->
       </section>
       <section id='polists'>
@@ -132,14 +130,10 @@
 			@base &lt;http://www.example.org/#&gt; .
 			&lt;#green-goblin&gt; &lt;#enemyOf&gt; &lt;#spiderman&gt; .
 		</pre>
-        <pre class="note nohighlight">
-			<p>We recommend listing the @prefix declarations (just like @base declarations) at the top of an N3 document. This is not mandatory however, and they can technically be put anywhere before the prefixed name or relative IRI that relies on the declaration. Subsequent '@prefix' or 'PREFIX' directives may re-map the same prefix label to another namespace IRI.</p>
+			<p class="note">We recommend listing the @prefix declarations (just like @base declarations) at the top of an N3 document. This is not mandatory however, and they can technically be put anywhere before the prefixed name or relative IRI that relies on the declaration. Subsequent '@prefix' or 'PREFIX' directives may re-map the same prefix label to another namespace IRI.</p>
 			
-			<p>N3 also supports case-insensitive 'PREFIX' and 'BASE' directives, as does Turtle, to align the syntax with SPARQL. Note that the <code>@prefix</code> and <code>@base</code> directives require a trailing '<code>.</code>' after the IRI, but the equivalent<code>PREFIX</code> and <code>BASE</code> must not have a trailing '.'.
-		</pre>
-        <pre class="note nohighlight">
-			<p>Specifics of relative IRI resolution are defined in <a href="https://www.w3.org/TR/turtle/#sec-iri-references">Section 6.3 (IRI References)</a> of the Turtle spec.</p>
-		</pre>
+			<p class="note">N3 also supports case-insensitive 'PREFIX' and 'BASE' directives, as does Turtle, to align the syntax with SPARQL. Note that the <code>@prefix</code> and <code>@base</code> directives require a trailing '<code>.</code>' after the IRI, but the equivalent<code>PREFIX</code> and <code>BASE</code> must not have a trailing '.'.</p>
+			<p  class="note">Specifics of relative IRI resolution are defined in <a href="https://www.w3.org/TR/turtle/#sec-iri-references">Section 6.3 (IRI References)</a> of the Turtle spec.</p>
         <!-- <pre class="example nohighlight">@prefix foaf: &lt;http://xmlns.com/foaf/0.1/&gt; .
           @prefix : &lt;http://example.org/#&gt;
           
@@ -168,11 +162,9 @@
 	  &lt;http://example.org/#spiderman&gt; &lt;http://xmlns.com/foaf/0.1/name&gt; "Spiderman"@en , 
 					"Hombre Araña"@es , "Homme Araignée"@fr .
 	</pre>
-        <pre class="note nohighlight">
-	<p>If no datatype IRI or language tag is given, the datatype <code>xsd:string</code> will be assumed. In case a language tag is given, the datatype <code>rdf:langString</code> will be assumed. Note that it is not possible to specify both a datatype IRI and a language tag.</p>
-	<p>Integers, decimals and doubles, or booleans, may also be written as string literals with the appropriate datatype IRI.</p>
-	<p>Boolean literals can be written as <code>true</code> or <code>@true</code> and <code>false</code> or <code>@false</code>.</p>
-	</pre>
+	<p class="note">If no datatype IRI or language tag is given, the datatype <code>xsd:string</code> will be assumed. In case a language tag is given, the datatype <code>rdf:langString</code> will be assumed. Note that it is not possible to specify both a datatype IRI and a language tag.</p>
+	<p class="note">Integers, decimals and doubles, or booleans, may also be written as string literals with the appropriate datatype IRI.</p>
+	<p class="note">Boolean literals can be written as <code>true</code> or <code>@true</code> and <code>false</code> or <code>@false</code>.</p>
         There are several ways to write string literals. Until now we have used double-quotes <code>"</code> for delimiting, but one may also use single-quotes <code>'</code>, or even compound delimiters consisting of three double-quotes <code>"""</code> or three single-quotes <code>'''</code>. These other delimiters are useful if the string literal is known to contain single- or double-quotes; e.g., if the string contains single-quotes, one could use double-quotes as delimiters, and vice-versa, to avoid syntax errors. Alternatively, one can also use a '<code>\</code>' for escaping the delimiter each time it occurs within a string literal. If a string can contain any type of quote or even newlines one should use the compound type of delimiter, i.e., <code>"""</code> or <code>'''</code>. For instance:
         <pre class="example nohighlight">@prefix ex: &lt;http://example.org/#&gt; .
 @prefix rdfs: &lt;http://www.w3.org/2000/01/rdf-schema#&gt; .
