@@ -389,7 +389,7 @@ _:dominik foaf:knows _:doerthe .
 	  
 	  <section id='comments'>
         <h3>Comments</h3>
-        <p>Comments are indicated using a "<code>#</code>" symbol outside an N3 terminal (e.g., IRIREF, String) and will continue until the end of the line (indicated by <code>\r</code>, <code>\n</code> or <code>\f</code>) or end of file, if there is no end of line marker.</p>
+        <p>Comments are indicated using a "<code>#</code>" symbol outside an N3 terminal (e.g., <a href="#grammar-production-IRIREF">IRIREF</a>, <a href="#grammar-production-STRING">STRING</a>) and will continue until the end of the line (indicated by <code>\r</code>, <code>\n</code> or <code>\f</code>) or end of file, if there is no end of line marker.</p>
 		<p>All recognized comment terminals will be skipped by the grammar (i.e., a resulting parser will not call listener or visitor code when encountering a comment.)</p>
       </section>
       
@@ -658,7 +658,7 @@ _:dominik foaf:knows _:doerthe .
               <td>
                 rdfLiteral
                 | numericLiteral
-                | BooleanLiteral
+                | BOOLEAN_LITERAL
               </td>
             </tr>
             <tr id='grammar-production-blankNodePropertyList'>
@@ -707,30 +707,11 @@ _:dominik foaf:knows _:doerthe .
               <td><code>rdfLiteral</code></td>
               <td>::=</td>
               <td>
-                String (LANGTAG | ("^^" iri))?
-              </td>
-            </tr>
-            <tr id='grammar-production-BooleanLiteral'>
-              <td>[26]</td>
-              <td><code>BooleanLiteral</code></td>
-              <td>::=</td>
-              <td>
-                "true" | "false" | "@true" | "@false"
-              </td>
-            </tr>
-            <tr id='grammar-production-String'>
-              <td>[27]</td>
-              <td><code>String</code></td>
-              <td>::=</td>
-              <td>
-                STRING_LITERAL_QUOTE
-                | STRING_LITERAL_SINGLE_QUOTE
-                | STRING_LITERAL_LONG_SINGLE_QUOTE
-                | STRING_LITERAL_LONG_QUOTE
+                STRING (LANGTAG | ("^^" iri))?
               </td>
             </tr>
             <tr id='grammar-production-iri'>
-              <td>[28]</td>
+              <td>[26]</td>
               <td><code>iri</code></td>
               <td>::=</td>
               <td>
@@ -738,7 +719,7 @@ _:dominik foaf:knows _:doerthe .
               </td>
             </tr>
             <tr id='grammar-production-iriList'>
-              <td>[29]</td>
+              <td>[27]</td>
               <td><code>iriList</code></td>
               <td>::=</td>
               <td>
@@ -746,7 +727,7 @@ _:dominik foaf:knows _:doerthe .
               </td>
             </tr>
             <tr id='grammar-production-prefixedName'>
-              <td>[30]</td>
+              <td>[28]</td>
               <td><code>prefixedName</code></td>
               <td>::=</td>
               <td>
@@ -754,7 +735,7 @@ _:dominik foaf:knows _:doerthe .
               </td>
             </tr>
             <tr id='grammar-production-blankNode'>
-              <td>[31]</td>
+              <td>[29]</td>
               <td><code>blankNode</code></td>
               <td>::=</td>
               <td>
@@ -762,15 +743,15 @@ _:dominik foaf:knows _:doerthe .
               </td>
             </tr>
             <tr id='grammar-production-quickVar'>
-              <td>[32]</td>
+              <td>[30]</td>
               <td><code>quickVar</code></td>
               <td>::=</td>
               <td>
-                QuickVarName
+                QUICK_VAR_NAME
               </td>
             </tr>
             <tr id='grammar-production-existential'>
-              <td>[33]</td>
+              <td>[31]</td>
               <td><code>existential</code></td>
               <td>::=</td>
               <td>
@@ -778,11 +759,30 @@ _:dominik foaf:knows _:doerthe .
               </td>
             </tr>
             <tr id='grammar-production-universal'>
-              <td>[34]</td>
+              <td>[32]</td>
               <td><code>universal</code></td>
               <td>::=</td>
               <td>
                 "@forAll" iriList
+              </td>
+            </tr>
+            <tr id='grammar-production-BOOLEAN_LITERAL'>
+              <td>[33]</td>
+              <td><code>BOOLEAN_LITERAL</code></td>
+              <td>::=</td>
+              <td>
+                "true" | "false" | "@true" | "@false"
+              </td>
+            </tr>
+            <tr id='grammar-production-STRING'>
+              <td>[34]</td>
+              <td><code>STRING</code></td>
+              <td>::=</td>
+              <td>
+                STRING_LITERAL_QUOTE
+                | STRING_LITERAL_SINGLE_QUOTE
+                | STRING_LITERAL_LONG_SINGLE_QUOTE
+                | STRING_LITERAL_LONG_QUOTE
               </td>
             </tr>
             <tr id='grammar-production-IRIREF'>
@@ -934,9 +934,9 @@ _:dominik foaf:knows _:doerthe .
                 "[" WS* "]"
               </td>
             </tr>
-            <tr id='grammar-production-QuickVarName'>
+            <tr id='grammar-production-QUICK_VAR_NAME'>
               <td>[36]</td>
-              <td><code>QuickVarName</code></td>
+              <td><code>QUICK_VAR_NAME</code></td>
               <td>::=</td>
               <td>
                 "?" PN_CHARS_U PN_CHARS*
