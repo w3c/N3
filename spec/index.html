@@ -70,7 +70,7 @@
 		<p>Below, we elaborate on the main characteristics of N3:</p>
 		<ul>
 			<li>
-				<b>N3 is a superset of RDF and <abbr title="Terse RDF Triple Language">Turtle</a>.</b> One can write any valid [[[turtle]]] graph and it will be valid in N3 as well. Importantly, this means that all of Turtle's syntactic sugar is available in N3 - including predicate and object lists, unlabeled blank nodes, and collections. Moreover, <b>collections are first-class citizens</b> in N3, with an associated set of built-ins for accessing and manipulating them.
+				<b>N3 is a superset of RDF and <abbr title="Terse RDF Triple Language">Turtle</abbr>.</b> One can write any valid [[[turtle]]] graph and it will be valid in N3 as well. Importantly, this means that all of Turtle's syntactic sugar is available in N3 - including predicate and object lists, unlabeled blank nodes, and collections. Moreover, <b>collections are first-class citizens</b> in N3, with an associated set of built-ins for accessing and manipulating them.
 			</li>
 			<li>
 				<b>N3 adds an If-Then style of decision making in the form of logical implications and variables.</b> Logical implications allow making If-Then style inferences via modus ponens (where implementations may apply either backward- or forward-chaining). Variables in such rules may be either universally or existentially quantified - in the latter case, they are comparable to blank nodes. 
@@ -139,7 +139,7 @@
         <!-- <pre class="example nohighlight">&lt;http://example.org/#dt&gt; &lt;http://xmlns.com/foaf/0.1/nick&gt; &quot;Domel&quot;, &quot;Misiek&quot;@pl .</pre> -->
       </section>
       <section id='iris'>
-        <h3>IRIs</h3>
+        <h3><abbr title="International Resource Identifiers">IRIs</a></h3>
         As mentioned, one typically uses an IRI to represent an identifiable entity - such as a person, place, or thing. Until now, we have been writing <dfn id="dfn-absolute-iri">absolute IRIs</dfn> (e.g., <code>http://example.org/#Spiderman</code>) - IRIs that include both the namespace (e.g., <code>http://example.org/#</code>) and the local name (e.g., <code>Spiderman</code>).</p>
         <p>This is a perfectly valid way of writing IRIs, but it is often much easier to write an IRI as a <dfn id="dfn-prefixed-name">prefixed name</dfn> - e.g., <code>ex:Spiderman</code>, which includes a <dfn id="dfn-prefix-label">prefix label</dfn> (e.g., <code>ex</code>) and a <dfn id="dfn-local-name">local name</dfn> (e.g., <code>Spiderman</code>) separated by a colon '<code>:</code>'. The <code>'@prefix'</code> directive associates a prefix label with a namespace IRI - a prefixed name is turned into an IRI by concatenating the namespace IRI of the prefix label with the local name. For instance, the following is equivalent to using absolute IRIs:</p>
         <pre class="example nohighlight">
@@ -366,7 +366,7 @@ _:dominik foaf:knows _:doerthe .
       </section>
     </section>
     <section id='n3grammar'>
-      <h2>EBNF Grammar</h2>
+      <h2><abbr title="Extended Backus–Naur Form">EBNF</abbr> Grammar</h2>
       <p>The <a data-cite="TURTLE#sec-grammar-grammar">Turtle grammar</a> was used as the starting point for the N3 grammar, which was subsequently adapted and extended with N3 constructs.</p>
 	  <p>The N3 Working Group made the following decisions that modify the N3 grammar as originally presented in [[N3]]:
 		<ul>
