@@ -491,7 +491,7 @@ _:dominik foaf:knows _:doerthe .
               <td><code>n3Doc</code></td>
               <td>::=</td>
               <td>
-                ((n3Statement ".") | sparqlDirective)*
+                (n3Statement "." | sparqlDirective)*
               </td>
             </tr>
             <tr id='grammar-production-n3Statement'>
@@ -634,7 +634,7 @@ _:dominik foaf:knows _:doerthe .
               <td><code>path</code></td>
               <td>::=</td>
               <td>
-                pathItem ((#x21 path) | ("^" path))?
+                pathItem (("!" path) | ("^" path))?
               </td>
             </tr>
             <tr id='grammar-production-pathItem'>
@@ -710,64 +710,8 @@ _:dominik foaf:knows _:doerthe .
                 String (LANGTAG | ("^^" iri))?
               </td>
             </tr>
-            <tr id='grammar-production-iri'>
-              <td>[26]</td>
-              <td><code>iri</code></td>
-              <td>::=</td>
-              <td>
-                IRIREF | prefixedName
-              </td>
-            </tr>
-            <tr id='grammar-production-iriList'>
-              <td>[27]</td>
-              <td><code>iriList</code></td>
-              <td>::=</td>
-              <td>
-                iri ("," iri)*
-              </td>
-            </tr>
-            <tr id='grammar-production-prefixedName'>
-              <td>[28]</td>
-              <td><code>prefixedName</code></td>
-              <td>::=</td>
-              <td>
-                PNAME_NS | PNAME_LN
-              </td>
-            </tr>
-            <tr id='grammar-production-blankNode'>
-              <td>[29]</td>
-              <td><code>blankNode</code></td>
-              <td>::=</td>
-              <td>
-                BLANK_NODE_LABEL | ANON
-              </td>
-            </tr>
-            <tr id='grammar-production-quickVar'>
-              <td>[30]</td>
-              <td><code>quickVar</code></td>
-              <td>::=</td>
-              <td>
-                QuickVarName
-              </td>
-            </tr>
-            <tr id='grammar-production-existential'>
-              <td>[31]</td>
-              <td><code>existential</code></td>
-              <td>::=</td>
-              <td>
-                "@forSome" iriList
-              </td>
-            </tr>
-            <tr id='grammar-production-universal'>
-              <td>[32]</td>
-              <td><code>universal</code></td>
-              <td>::=</td>
-              <td>
-                "@forAll" iriList
-              </td>
-            </tr>
             <tr id='grammar-production-BooleanLiteral'>
-              <td>[33]</td>
+              <td>[26]</td>
               <td><code>BooleanLiteral</code></td>
               <td>::=</td>
               <td>
@@ -775,7 +719,7 @@ _:dominik foaf:knows _:doerthe .
               </td>
             </tr>
             <tr id='grammar-production-String'>
-              <td>[34]</td>
+              <td>[27]</td>
               <td><code>String</code></td>
               <td>::=</td>
               <td>
@@ -785,12 +729,60 @@ _:dominik foaf:knows _:doerthe .
                 | STRING_LITERAL_LONG_QUOTE
               </td>
             </tr>
-            <tr id='grammar-production-QuickVarName'>
-              <td>[35]</td>
-              <td><code>QuickVarName</code></td>
+            <tr id='grammar-production-iri'>
+              <td>[28]</td>
+              <td><code>iri</code></td>
               <td>::=</td>
               <td>
-                "?" PN_LOCAL
+                IRIREF | prefixedName
+              </td>
+            </tr>
+            <tr id='grammar-production-iriList'>
+              <td>[29]</td>
+              <td><code>iriList</code></td>
+              <td>::=</td>
+              <td>
+                iri ("," iri)*
+              </td>
+            </tr>
+            <tr id='grammar-production-prefixedName'>
+              <td>[30]</td>
+              <td><code>prefixedName</code></td>
+              <td>::=</td>
+              <td>
+                PNAME_NS | PNAME_LN
+              </td>
+            </tr>
+            <tr id='grammar-production-blankNode'>
+              <td>[31]</td>
+              <td><code>blankNode</code></td>
+              <td>::=</td>
+              <td>
+                BLANK_NODE_LABEL | ANON
+              </td>
+            </tr>
+            <tr id='grammar-production-quickVar'>
+              <td>[32]</td>
+              <td><code>quickVar</code></td>
+              <td>::=</td>
+              <td>
+                QuickVarName
+              </td>
+            </tr>
+            <tr id='grammar-production-existential'>
+              <td>[33]</td>
+              <td><code>existential</code></td>
+              <td>::=</td>
+              <td>
+                "@forSome" iriList
+              </td>
+            </tr>
+            <tr id='grammar-production-universal'>
+              <td>[34]</td>
+              <td><code>universal</code></td>
+              <td>::=</td>
+              <td>
+                "@forAll" iriList
               </td>
             </tr>
             <tr id='grammar-production-IRIREF'>
@@ -798,7 +790,7 @@ _:dominik foaf:knows _:doerthe .
               <td><code>IRIREF</code></td>
               <td>::=</td>
               <td>
-                "<" [^<>"{}|^`]-[#x00-#x20]* ">"
+                "<" [^<>"{}|^`]-[#x00-#x1F]* ">"
               </td>
             </tr>
             <tr id='grammar-production-PNAME_NS'>
@@ -869,13 +861,33 @@ _:dominik foaf:knows _:doerthe .
                 [eE] [+-]? [0-9]+
               </td>
             </tr>
+            <tr id='grammar-production-STRING_LITERAL_LONG_SINGLE_QUOTE'>
+              <td>[158s]</td>
+              <td><code>STRING_LITERAL_LONG_SINGLE_QUOTE</code></td>
+              <td>::=</td>
+              <td>
+                "'''"
+				(("'" | "''")? ([^'\] | ECHAR | UCHAR ))*
+				"'''"
+              </td>
+            </tr>
+            <tr id='grammar-production-STRING_LITERAL_LONG_QUOTE'>
+              <td>[159s]</td>
+              <td><code>STRING_LITERAL_LONG_QUOTE</code></td>
+              <td>::=</td>
+              <td>
+                '"""'
+				(('"' | '""')? ([^"] | ECHAR | UCHAR ))*
+				'"""'
+              </td>
+            </tr>
             <tr id='grammar-production-STRING_LITERAL_QUOTE'>
               <td>[156s]</td>
               <td><code>STRING_LITERAL_QUOTE</code></td>
               <td>::=</td>
               <td>
                 '"'
-                ([^#x22#x5C#xA#xD] | ECHAR | UCHAR)*
+                ([^<abbr title="double quote">#x22</abbr> <abbr title="escape character">#x5C</abbr> <abbr title="line feed">#xA</abbr> <abbr title="carriage return">#xD</abbr>] | ECHAR | UCHAR)*
                 '"'
               </td>
             </tr>
@@ -885,30 +897,12 @@ _:dominik foaf:knows _:doerthe .
               <td>::=</td>
               <td>
                 "'"
-                ([^#x27#x5C#xA#xD] | ECHAR | UCHAR)*
+                ([^<abbr title="single quote">#x27</abbr> <abbr title="escape character">#x5C</abbr> <abbr title="line feed">#xA</abbr> <abbr title="carriage return">#xD</abbr>] | ECHAR | UCHAR)*
                 "'"
               </td>
             </tr>
-            <tr id='grammar-production-STRING_LITERAL_LONG_SINGLE_QUOTE'>
-              <td>[158s]</td>
-              <td><code>STRING_LITERAL_LONG_SINGLE_QUOTE</code></td>
-              <td>::=</td>
-              <td>
-                "'''"
-                (("'" | "''")? [^']#x20|#x20ECHAR#x20|#x20UCHAR#x20)#x20)*#x20"'''"])
-              </td>
-            </tr>
-            <tr id='grammar-production-STRING_LITERAL_LONG_QUOTE'>
-              <td>[159s]</td>
-              <td><code>STRING_LITERAL_LONG_QUOTE</code></td>
-              <td>::=</td>
-              <td>
-                '"""'
-                (('"' | '""')? [^"]#x20|#x20ECHAR#x20|#x20UCHAR#x20)#x20)*#x20'"""'])
-              </td>
-            </tr>
             <tr id='grammar-production-UCHAR'>
-              <td>[26t]</td>
+              <td>[35]</td>
               <td><code>UCHAR</code></td>
               <td>::=</td>
               <td>
@@ -929,7 +923,7 @@ _:dominik foaf:knows _:doerthe .
               <td><code>WS</code></td>
               <td>::=</td>
               <td>
-                #x20 | #x9 | #xD | #xA
+                <abbr title="space">#x20</abbr> | <abbr title="tab">#x9</abbr> | <abbr title="carriage return">#xD</abbr> | <abbr title="line feed">#xA</abbr>
               </td>
             </tr>
             <tr id='grammar-production-ANON'>
@@ -938,6 +932,14 @@ _:dominik foaf:knows _:doerthe .
               <td>::=</td>
               <td>
                 "[" WS* "]"
+              </td>
+            </tr>
+            <tr id='grammar-production-QuickVarName'>
+              <td>[36]</td>
+              <td><code>QuickVarName</code></td>
+              <td>::=</td>
+              <td>
+                "?" PN_CHARS_U PN_CHARS*
               </td>
             </tr>
             <tr id='grammar-production-PN_CHARS_BASE'>
@@ -980,6 +982,30 @@ _:dominik foaf:knows _:doerthe .
                 | #x00B7
                 | [#x0300-#x036F]
                 | [#x203F-#x2040]
+              </td>
+            </tr>
+			<tr id='grammar-production-BASE'>
+              <td>[37]</td>
+              <td><code>BASE</code></td>
+              <td>::=</td>
+              <td>
+                ("B" | "b")
+                ("A" | "a")
+                ("S" | "s")
+                ("E" | "e")
+              </td>
+            </tr>
+            <tr id='grammar-production-PREFIX'>
+              <td>[38]</td>
+              <td><code>PREFIX</code></td>
+              <td>::=</td>
+              <td>
+                ("P" | "p")
+                ("R" | "r")
+                ("E" | "e")
+                ("F" | "f")
+                ("I" | "i")
+                ("X" | "x")
               </td>
             </tr>
             <tr id='grammar-production-PN_PREFIX'>
@@ -1030,39 +1056,15 @@ _:dominik foaf:knows _:doerthe .
               <td>::=</td>
               <td>
                 "\"
-                ("_" | "~" | "." | "-" | #x21 | "$" | "&" | "'" | "(" | ")" | "*" | "+" | "," | ";" | "=" | "/" | "?" | "#" | "@" | "%")
-              </td>
-            </tr>
-            <tr id='grammar-production-BASE'>
-              <td>[36]</td>
-              <td><code>BASE</code></td>
-              <td>::=</td>
-              <td>
-                ("B" | "b")
-                ("A" | "a")
-                ("S" | "s")
-                ("E" | "e")
-              </td>
-            </tr>
-            <tr id='grammar-production-PREFIX'>
-              <td>[37]</td>
-              <td><code>PREFIX</code></td>
-              <td>::=</td>
-              <td>
-                ("P" | "p")
-                ("R" | "r")
-                ("E" | "e")
-                ("F" | "f")
-                ("I" | "i")
-                ("X" | "x")
+                ("_" | "~" | "." | "-" | "!" | "$" | "&" | "'" | "(" | ")" | "*" | "+" | "," | ";" | "=" | "/" | "?" | "#" | "@" | "%")
               </td>
             </tr>
             <tr id='grammar-production-COMMENT'>
-              <td>[38]</td>
+              <td>[39]</td>
               <td><code>COMMENT</code></td>
               <td>::=</td>
               <td>
-                ("#" - "#x") [^#xA#xC#xD]*
+                "#" [^<abbr title="form feed">#xC</abbr> <abbr title="line feed">#xA</abbr> <abbr title="carriage return">#xD</abbr>]*
               </td>
             </tr>
             <tr id='grammar-production-_pass'>
