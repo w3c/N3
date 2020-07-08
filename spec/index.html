@@ -790,7 +790,7 @@ _:dominik foaf:knows _:doerthe .
               <td><code>IRIREF</code></td>
               <td>::=</td>
               <td>
-                "<" [^<>"{}|^`]-[#x00-#x1F]* ">"
+                "<" ([^#x00-#x1F<>"{}|^`] | UCHAR)* ">"
               </td>
             </tr>
             <tr id='grammar-production-PNAME_NS'>
