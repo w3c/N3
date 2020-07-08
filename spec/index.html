@@ -19,7 +19,7 @@
                   name: "William Van Woensel",
                   company: "Dalhousie University",
                   companyURL: "https://www.dal.ca/",
-                  mailto: "email@dal.ca"
+                  mailto: "william.van.woensel@dal.ca"
               },
               {
                   name: "Dominik Tomaszuk",
@@ -41,6 +41,9 @@
 		  }
       };
     </script>
+	<style>
+		table, th, td { border: 1px solid black; border-collapse: collapse; padding: 5px; }
+	</style>
   </head>
   <body>
     <section id='abstract'>
@@ -60,14 +63,14 @@
       -->
     <section id='introduction'>
 		<h2>Introduction</h2>
-		<p>The Semantic Web represents a vision of online, interconnected and logical information. The core building block is a logical formalism called the Resource Description Framework (RDF) ([[[RDF11-PRIMER]]]). In RDF, one can express a logical graph as a conjunction of statements that describe properties of subject resources; and then describe the resource objects of those properties; and so on; resulting in a connected graph of logical information. It builds on the fundamental pointer mechanism of the Web, i.e., the Uniform Resource Identifier (URI), also known as International Resource Identifier (IRI), as a means to identify any RDF resource, ranging from abstract concepts (the book "Moby Dick") to physical (a paper copy of the book "Moby Dick") to electronic objects (an e-book copy of "Moby Dick"). People have used RDF to build vast quantities of online, connected knowledge graphs. The Semantic Web has allowed for decision making within an open web environment of shared knowledge graphs, as opposed to a closed system of locally believed facts.</p>
+		<p>The Semantic Web represents a vision of online, interconnected and logical information. The core building block is a logical formalism called the Resource Description Framework (RDF) ([[[RDF11-PRIMER]]]). In RDF, one can express a logical graph as a conjunction of statements that describe properties of subject resources; and then describe the resource objects of those properties; and so on; resulting in a connected graph of logical information. It builds on the fundamental pointer mechanism of the Web, i.e., the Uniform Resource Identifier (URI), also known as International Resource Identifier (<abbr title="International Resource Identifier">IRI</abbr>), as a means to identify any RDF resource, ranging from abstract concepts (the book "Moby Dick") to physical (a paper copy of the book "Moby Dick") to electronic objects (an e-book copy of "Moby Dick"). People have used RDF to build vast quantities of online, connected knowledge graphs. The Semantic Web has allowed for decision making within an open web environment of shared knowledge graphs, as opposed to a closed system of locally believed facts.</p>
 
 		<p>Notation3 Logic, or N3 for short, aims to improve decision-making abilities in an open web environment - by (a) extending the logical representation abilities of RDF and (b) allowing to access, operate on, and reason over online information. In line with the design ethos of RDF, N3 attempts to walk the line between, on the one hand, ease-of-use by authors and simplicity of reasoning for developers; and, on the other hand, an extended utility and practicality for building real-world applications.</p>
 		
 		<p>Below, we elaborate on the main characteristics of N3:</p>
 		<ul>
 			<li>
-				<b>N3 is a superset of RDF and Turtle.</b> One can write any valid [[[TURTLE]]] graph and it will be valid in N3 as well. Importantly, this means that all of Turtle's syntactic sugar is available in N3 - including predicate and object lists, unlabeled blank nodes, and collections. Moreover, <b>collections are first-class citizens</b> in N3, with an associated set of built-ins for accessing and manipulating them.
+				<b>N3 is a superset of RDF and <abbr title="Terse RDF Triple Language">Turtle</a>.</b> One can write any valid [[[turtle]]] graph and it will be valid in N3 as well. Importantly, this means that all of Turtle's syntactic sugar is available in N3 - including predicate and object lists, unlabeled blank nodes, and collections. Moreover, <b>collections are first-class citizens</b> in N3, with an associated set of built-ins for accessing and manipulating them.
 			</li>
 			<li>
 				<b>N3 adds an If-Then style of decision making in the form of logical implications and variables.</b> Logical implications allow making If-Then style inferences via modus ponens (where implementations may apply either backward- or forward-chaining). Variables in such rules may be either universally or existentially quantified - in the latter case, they are comparable to blank nodes. 
@@ -84,7 +87,7 @@
     <section id='language' class=informative>
       
 	  <h2>Language</h2>
-      <p>The aim of this section is to provide an informal overview of the N3 language and its different features. Where possible, this section borrows from, or is at least based on, the [[[Turtle]]] specification</a>. More formal definitions will follow in the subsequent sections.
+      <p>The aim of this section is to provide an informal overview of the N3 language and its different features. Where possible, this section borrows from, or is at least based on, the [[[turtle]]] specification</a>. More formal definitions will follow in the subsequent sections.
       </p>
     
 	<section id='n3doc'>
@@ -137,8 +140,8 @@
       </section>
       <section id='iris'>
         <h3>IRIs</h3>
-        As mentioned, one typically uses an IRI to represent an identifiable entity - such as a person, place, or thing. Until now, we have been writing <i>absolute IRIs</i> (e.g., <code>http://example.org/#Spiderman</code>) - IRIs that include both the namespace (e.g., <code>http://example.org/#</code>) and the local name (e.g., <code>Spiderman</code>).</p>
-        <p>This is a perfectly valid way of writing IRIs, but it is often much easier to write an IRI as a <i>prefixed name</i> - e.g., <code>ex:Spiderman</code>, which includes a prefix label (e.g., <code>ex</code>) and a local name (e.g., <code>Spiderman</code>) separated by a colon '<code>:</code>'. The <code>'@prefix'</code> directive associates a prefix label with a namespace IRI - a prefixed name is turned into an IRI by concatenating the namespace IRI of the prefix label with the local name. For instance, the following is equivalent to using absolute IRIs:</p>
+        As mentioned, one typically uses an IRI to represent an identifiable entity - such as a person, place, or thing. Until now, we have been writing <dfn id="dfn-absolute-iri">absolute IRIs</dfn> (e.g., <code>http://example.org/#Spiderman</code>) - IRIs that include both the namespace (e.g., <code>http://example.org/#</code>) and the local name (e.g., <code>Spiderman</code>).</p>
+        <p>This is a perfectly valid way of writing IRIs, but it is often much easier to write an IRI as a <dfn id="dfn-prefixed-name">prefixed name</dfn> - e.g., <code>ex:Spiderman</code>, which includes a <dfn id="dfn-prefix-label">prefix label</dfn> (e.g., <code>ex</code>) and a <dfn id="dfn-local-name">local name</dfn> (e.g., <code>Spiderman</code>) separated by a colon '<code>:</code>'. The <code>'@prefix'</code> directive associates a prefix label with a namespace IRI - a prefixed name is turned into an IRI by concatenating the namespace IRI of the prefix label with the local name. For instance, the following is equivalent to using absolute IRIs:</p>
         <pre class="example nohighlight">
 			@prefix ex: &lt;http://www.example.org/#&gt; .
 			ex:green-goblin ex:enemyOf ex:spiderman .
@@ -148,7 +151,7 @@
 			@prefix : &lt;http://www.example.org/#&gt; .
 			:green-goblin :enemyOf :spiderman .
 		</pre>
-        <p>One can write <i>relative IRIs</i>, e.g., <code>&lt;#Spiderman&gt;</code>, which will be resolved relative to the <i>current base IRI</i>. In other words, a relative IRI is turned into an IRI by concatenating the base IRI with the local name (e.g., <code>Spiderman</code>). A base IRI can be defined using the '@base' directive. For instance, the following is equivalent to the prior example:</p>
+        <p>One can write <dfn id="dfn-relative-iri">relative IRIs</dfn>, e.g., <code>&lt;#Spiderman&gt;</code>, which will be resolved relative to the <i>current base IRI</i>. In other words, a relative IRI is turned into an IRI by concatenating the base IRI with the local name (e.g., <code>Spiderman</code>). A base IRI can be defined using the '@base' directive. For instance, the following is equivalent to the prior example:</p>
         <pre class="example nohighlight">
 			@base &lt;http://www.example.org/#&gt; .
 			&lt;#green-goblin&gt; &lt;#enemyOf&gt; &lt;#spiderman&gt; .
@@ -181,6 +184,8 @@
 				:specificGravity 1.663E-4 .     # xsd:double
 				:isNobleGas true . 		# xsd:boolean
 	</pre>
+	
+	<p>For details on what number syntax is supported (e.g., for decimals, doubles), we refer to the <a data-cite="TURTLE#abbrev">RDF 1.1: Turtle (Section 2.5.2)</a> specification.</p>
     
 	<p>Other literals (e.g., date; binary, octal or hex code; XML or JSON code; other types of numbers, such as shorts), and of course strings themselves, need to be written as string literals. For instance:
     
@@ -191,7 +196,7 @@
 	
 	<p>In that case, the <a data-cite="RDF11-CONCEPTS#dfn-lexical-form">"RDF lexical form"</a> will include the characters between the delimiter quotes (e.g., <code>2001-08-10</code>). Clearly, this can raise confusion as to what type of literal is being represented - a string or some other arbitrary type. RDF allows indicating the datatype of a literal, using the <code>^^</code> symbol and the corresponding <a data-cite="XMLSCHEMA11-2#built-in-datatypes">datatype IRI</a> - for instance: <code>"2001-08-10"^^&lt;http://www.w3.org/2001/XMLSchema#date&gt;</code>. One can also use a prefixed name <code>xsd:date</code>, given a suitable prefix declaration (see <a href="#string-literal-example">example</a>).</p>
 	
-	<p>In lieu of a datatype, one can specify the language of a string literal using the <code>@</code> symbol and the corresponding language tag (as defined in [[BCP47]] - find the registry in [[LNG-TAG]]). For instance:</p>
+	<p>In lieu of a datatype, one can specify the language of a string literal using the "<code>@</code>" symbol and the corresponding language tag (as defined in [[BCP47]] - find the registry in [[LNG-TAG]]). For instance:</p>
 	
 	<pre class="example nohighlight">
 	  &lt;http://example.org/#spiderman&gt; &lt;http://xmlns.com/foaf/0.1/name&gt; "Spiderman"@en , 
@@ -201,7 +206,7 @@
 	<p class="note">If no datatype IRI or language tag is given, the datatype <code>xsd:string</code> will be assumed. In case a language tag is given, the datatype <code>rdf:langString</code> will be assumed. Note that it is not possible to specify both a datatype IRI and a language tag.</p>
 	<p class="note">Integers, decimals and doubles, or booleans, may also be written as string literals with the appropriate datatype IRI. Boolean literals can be written as <code>true</code> or <code>@true</code> and <code>false</code> or <code>@false</code>.</p>
 	
-	There are several ways to write string literals. Until now we have used double-quotes <code>"</code> for delimiting, but one may also use single-quotes <code>'</code>, or even compound delimiters consisting of three double-quotes <code>"""</code> or three single-quotes <code>'''</code>. These other delimiters are useful if the string literal is known to contain single- or double-quotes; e.g., if the string contains single-quotes, one could use double-quotes as delimiters, and vice-versa, to avoid syntax errors. Alternatively, one can also use a '<code>\</code>' for escaping the delimiter each time it occurs within a string literal. If a string can contain any type of quote or even newlines one should use the compound type of delimiter, i.e., <code>"""</code> or <code>'''</code>. For instance:
+	There are several ways to write string literals. Until now we have used double-quotes <code>"</code> for delimiting, but one may also use single-quotes <code>'</code>, or even compound delimiters consisting of three double-quotes <code>"""</code> or three single-quotes <code>'''</code>. These other delimiters are useful if the string literal is known to contain single- or double-quotes; e.g., if the string contains single-quotes, one could use double-quotes as delimiters, and vice-versa, to avoid syntax errors. Alternatively, one can also use a '<code>\</code>' for escaping the delimiter each time it occurs within a string literal. If a string can contain newlines (or a quote of any type, and it is impractical or undesirable to escape them), one should use the compound type of delimiter, i.e., <code>"""</code> or <code>'''</code>. For instance:
 	
 	<pre id="string-literal-example" class="example nohighlight">@prefix ex: &lt;http://example.org/#&gt; .
 @prefix rdfs: &lt;http://www.w3.org/2000/01/rdf-schema#&gt; .
@@ -212,7 +217,7 @@ ex:Spiderman rdfs:label '"Bitten" by a radioactive spider.'^^xsd:string .	# same
 ex:Spiderman rdfs:label """'Bitten' by "what"?
 	A radioactive spider!"""^^xsd:string
 	</pre>
-        <p>In more detail: '<code>\</code>' (<span class="codepoint">U+005C</span>) may not appear in any quoted literal except as part of an escape sequence. Other restrictions depend on the delimiter:</p>
+        <p>In general, the escape symbol '<code>\</code>' (<span class="codepoint">U+005C</span>) may only appear in a string literal as part of <a href="#escseq">an escape sequence</a>. Other restrictions within string literals depend on the delimiter:</p>
         <ul>
           <li>Literals delimited by <code>'</code> (<span class="codepoint">U+0027</span>), may not contain the characters <code>'</code>, <code title="LINE FEED"><sub>LF</sub></code> (<span class="codepoint">U+000A</span>), or <code title="CARRIAGE RETURN"><sub>CR</sub></code> (<span class="codepoint">U+000D</span>).
           </li>
@@ -362,18 +367,111 @@ _:dominik foaf:knows _:doerthe .
     </section>
     <section id='n3grammar'>
       <h2>EBNF Grammar</h2>
-      <p>Bla...</p>
-      <section id='whitespace'>
+      <p>The <a data-cite="TURTLE#sec-grammar-grammar">Turtle grammar</a> was used as the starting point for the N3 grammar, which was subsequently adapted and extended with N3 constructs.</p>
+	  <p>The N3 Working Group made the following decisions that modify the N3 grammar as originally presented in [[N3]]:
+		<ul>
+			<li>
+				Dropping the <code>@keywords</code> declaration. It is complex and difficult to explain. Also, when using the declaration, N3 documents look wholly different from when it is not being used, since it allows local names in the default namespace to be listed without the "<code>:</code>" symbol.
+			</li>
+			<li>
+				Supporting all verb and boolean keywords (<code>is .. of</code>, <code>has</code>, <code>a</code>, <code>true</code>, <code>false</code>) both with and without "<code>@</code>" prefix. Turtle supports the <code>a</code> keyword, i.e., without an "<code>@</code>", but requires the symbol for the <code>@prefix</code> and <code>@base</code> declarations. The original N3 grammar required the "<code>@</code>" prefix for all verb and boolean keywords. Hence, this decision was made for compatibility with Turtle as well as to avoid an unintuitive grammar, i.e., where some keywords have the "<code>@</code>" prefix and some don't.
+			</li>
+			<li>
+				Representing an inverted property using the <code>^</code> symbol. The original N3 grammar allowed the inverting of a property by using the <code>@is .. @of</code> construct. But, this construct can be unintuitive when property names are more verbosely specified (e.g., <code>:hasFather</code>), leading to statements such as <code>?x @is :hasFather @of ?y</code>. The <code>@is .. @of</code> construct is still supported, but the above statement can now be represented as follows: <code>?x ^:hasFather ?y</code>. This is also in line with the <a data-cite="sparql11-query#propertypaths">SPARQL 1.1 Property Path</a> syntax.
+			</li>
+		</ul>
+	  </p>
+      
+	  <section id='whitespace'>
         <h3>Whitespace</h3>
-        <p>Bla...</p>
+        <p>White space ("WS" production) is used to separate terminals. The amount and type (e.g., newline or space) of white space is only significant within terminals.</p>
       </section>
-      <section id='comments'>
+	  
+	  <section id='comments'>
         <h3>Comments</h3>
-        <p>Bla...</p>
+        <p>Comments are indicated using a "<code>#</code>" symbol outside an N3 terminal (e.g., IRIREF, String) and will continue until the end of the line (indicated by <code>\r</code>, <code>\n</code> or <code>\f</code>) or end of file, if there is no end of line marker.</p>
+		<p>All recognized comment terminals will be skipped by the grammar (i.e., a resulting parser will not call listener or visitor code when encountering a comment.)</p>
       </section>
-      <section id='escseq'>
+      
+	  <section id='escseq'>
         <h3>Escape sequences</h3>
-        <p>Bla...</p>
+        <p> There are three forms of escapes used in N3 documents:
+			<ul>
+				<li>
+					Escape sequences in string literals. These are characters that are traditionally escaped in strings:
+					<table>
+						<thead>
+							<tr>
+								<th>Escape sequence</th>
+								<th>Unicode code point</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td>'\t'</td>
+								<td>U+0009</td>
+							</tr>
+							<tr>
+								<td>'\b'</td>
+								<td>U+0008</td>
+							</tr>
+							<tr>
+								<td>'\n'</td>
+								<td>U+000A</td>
+							</tr>
+							<tr>
+								<td>'\r'</td>
+								<td>U+000D</td>
+							</tr>
+							<tr>
+								<td>'\f'</td>
+								<td>U+000C</td>
+							</tr>
+							<tr>
+								<td>'\&quot;'</td>
+								<td>U+0022</td>
+							</tr>
+							<tr>
+								<td>'\''</td>
+								<td>U+0027</td>
+							</tr>
+							<tr>
+								<td>'\\'</td>
+								<td>U+005C</td>
+							</tr>
+						</tbody>
+					</table>	
+					(see the <a href="#grammar-production-ECHAR">ECHAR</a> production)					
+				</li>
+				<li>
+					Numeric escape sequences. These represent Unicode code points:
+					<table>
+						<thead>
+							<tr>
+								<th>Escape sequence</th>
+								<th>Unicode code point</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td>'\u' <a href="#grammar-production-HEX">hex</a> <a href="#grammar-production-HEX">hex</a> <a href="#grammar-production-HEX">hex</a> <a href="#grammar-production-HEX">hex</a></td>
+								<td>A Unicode character in the range U+0000 to U+FFFF inclusive
+								corresponding to the value encoded by the four hexadecimal digits interpreted from most significant to least significant digit.</td>
+							</tr>
+							<tr>
+								<td>'\U' <a href="#grammar-production-HEX">hex</a> <a href="#grammar-production-HEX">hex</a> <a href="#grammar-production-HEX">hex</a> <a href="#grammar-production-HEX">hex</a> <a href="#grammar-production-HEX">hex</a> <a href="#grammar-production-HEX">hex</a> <a href="#grammar-production-HEX">hex</a> <a href="#grammar-production-HEX">hex</a></td>
+								<td>A Unicode character in the range U+0000 to U+10FFFF inclusive
+								corresponding to the value encoded by the eight hexadecimal digits interpreted from most significant to least significant digit.</td>
+							</tr>
+						</tbody>
+					</table>
+					(see the <a href="#grammar-production-UCHAR">UCHAR</a> production)
+				</li>
+				<li>
+					Escape sequences in <a href="#dfn-local-name">local names</a>. These escape the following reserved characters in the local name part of prefixed names: <code>_ ~ . - ! $ & \ ( ) * + , ; = / ? # @ %</code> (see the <a href="#grammar-production-PN_LOCAL_ESC">PN_LOCAL_ESC</a> production)
+				</li>
+			</ul>
+		</p>
       </section>
       <section id='irires'>
         <h3>IRI resolution</h3>
@@ -385,7 +483,7 @@ _:dominik foaf:knows _:doerthe .
       </section>
       <section id='grammar'>
         <h3>Grammar</h3>
-        <p>Bla...</p>
+        <p>Blah...</p>
         <table class='grammar simple'>
           <tbody id='grammar-productions'>
             <tr id='grammar-production-n3Doc'>
@@ -982,24 +1080,23 @@ _:dominik foaf:knows _:doerthe .
 	
 	<section>
 		<h3>Relation with Turtle</h3>
-		<p>N3 is a superset of [[[Turtle]]], meaning that all valid Turtle documents will be valid in N3 as well. The inverse is not true, i.e., a valid N3 document will not always be valid in Turtle.</p>
+		<p>N3 is a superset of [[[turtle]]], meaning that all valid Turtle documents will be valid in N3 as well. The inverse is not true, i.e., a valid N3 document will not always be valid in Turtle.</p>
 		<p>The current N3 grammar started from the <a data-cite="TURTLE#sec-grammar">Turtle grammar</a> which was adapted and extended to be in line with the <a href="https://www.w3.org/2000/10/swap/grammar/n3-report.html">initial N3 grammar</a>. Hence, many of the grammar productions will be much more similar to the Turtle grammar than the initial N3 grammar.</p>
 		<p>Important differences with Turtle are the following:</p>
-		<p>TODO - add links to production rules in the list (e.g., "pathItem")</p>
 		<ul>
-			<li>Literals are allowed at any s/p/o position (i.e., subject, predicate or object) in a statement. See the "pathItem" production, which is (eventually) referenced by the "subject", "predicate" and "object" productions.</li>
-			<li>Cited formulas (i.e., between "<code>{</code>" and "<code>}</code>"), which are allowed in any s/p/o position in a statement. See the "pathItem" production.</li>
-			<li>Quick-variables (e.g., "<code>?x</code>"), which are allowed in any s/p/o position in a statement. See the "pathItem" production.</li>
-			<li>Variable quantifications (e.g., "<code>@forAll :x .</code>"), which are a standalone element (i.e., not part of a "regular" N3 statement). See the "existential" and "universal" productions.</li>
-			<li>A path syntax, comparable to (but not quite as extensive as) the [[[sparql11-property-paths]]] syntax. See the "path" production.</li>
-			<li>The possibility to invert the predicate within a statement. See the "predicate" production.</li>
+			<li>Literals are allowed at any s/p/o position (i.e., subject, predicate or object) in a statement. See the <a href="#grammar-production-pathItem">pathItem</a> production, which is (eventually) referenced by the "subject", "predicate" and "object" productions.</li>
+			<li>Cited formulas (i.e., between "<code>{</code>" and "<code>}</code>"), which are allowed in any s/p/o position in a statement. See the <a href="#grammar-production-pathItem">pathItem</a> production.</li>
+			<li>Quick-variables (e.g., "<code>?x</code>"), which are allowed in any s/p/o position in a statement. See the <a href="#grammar-production-pathItem">pathItem</a> production.</li>
+			<li>Variable quantifications (e.g., "<code>@forAll :x .</code>"), which are a standalone element (i.e., not part of a "regular" N3 statement). See the <a href="#grammar-production-existential">existential</a> and <a href="#grammar-production-universal">universal</a> productions.</li>
+			<li>A path syntax, comparable to (but not quite as extensive as) the <a data-cite="sparql11-query#propertypaths">SPARQL 1.1 Property Path</a> syntax. See the <a href="#grammar-production-path">path</a> production.</li>
+			<li>The possibility to invert the predicate within a statement. See the <a href="#grammar-production-predicate">predicate</a> production.</li>
 			<li>An additional set of keywords, incl. "<code>is .. of</code>", "<code>has</code>", "<code>=</code>", "<code>=></code>", "<code><=</code>", in addition to Turtle's "<code>a</code>" keyword (among others). All keywords can be optionally preceded by "<code>@</code>", for consistency with the "<code>@prefix</code>" and "<code>@base"</code> keywords.</li>
 		</ul>
 	</section>
 	
 	<section>
 		<h3>Relation with TriG</h3>
-		<p>[[[TRIG]]] is itself a superset of the Turtle syntax and includes a compact way to write RDF datasets, i.e., sets of named graphs. In particular, TriG allows the specification of so-called graph statements, which are a pair of an IRI or blank node label and a group of triple statements surrounded by <code>{}</code>.</p>
+		<p>[[[TRIG]]] is itself a superset of the Turtle syntax and includes a compact way to write RDF datasets, i.e., sets of named graphs. In particular, TriG allows the specification of so-called graph statements, which are a pair of an IRI or blank node label and a group of triple statements surrounded by "<code>{</code>" and "<code>}</code>".</p>
 
 		<p>For instance: 
 		
