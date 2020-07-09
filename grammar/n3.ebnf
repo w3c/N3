@@ -55,7 +55,7 @@
 
 [19] literal                            ::= rdfLiteral
                                           | numericLiteral
-                                          | BooleanLiteral
+                                          | BOOLEAN_LITERAL
 
 [20] blankNodePropertyList              ::= '[' predicateObjectList? ']'
 
@@ -68,7 +68,7 @@
 
 [24] numericLiteral                     ::= INTEGER | DECIMAL | DOUBLE
 
-[25] rdfLiteral                         ::= String (LANGTAG | '^^' iri)?
+[25] rdfLiteral                         ::= STRING (LANGTAG | '^^' iri)?
 
 [26] iri                                ::= IRIREF | prefixedName
 
@@ -81,7 +81,7 @@
 
 [29] blankNode                          ::=  BLANK_NODE_LABEL | ANON
 
-[30] quickVar                           ::= QuickVarName
+[30] quickVar                           ::= QUICK_VAR_NAME
                                             # only made this a parser rule for consistency
                                             # (all other path-items are also parser rules)
 
@@ -91,21 +91,18 @@
 
 @terminals
 
-[33] BooleanLiteral                     ::= 'true'
+[33] BOOLEAN_LITERAL                    ::= 'true'
                                            | 'false'
                                            | '@true'
                                            | '@false'
 
-[34] String                             ::= STRING_LITERAL_QUOTE
+[34] STRING                             ::= STRING_LITERAL_QUOTE
                                           | STRING_LITERAL_SINGLE_QUOTE
                                           | STRING_LITERAL_LONG_SINGLE_QUOTE
                                           | STRING_LITERAL_LONG_QUOTE
 
-[35] QuickVarName                       ::= "?" PN_LOCAL
-                                           /* Allows fuller character set */
-
 /* borrowed from SPARQL spec, which excludes newlines and other nastiness */
-[139s] IRIREF                           ::= '<' ([^<>"{}|^`\]-[#x00-#x20])* '>'
+[139s] IRIREF                           ::= '<' ([^<>"{}|^`\]-[#x00-#x1F])* '>'
 [140s] PNAME_NS                         ::= PN_PREFIX? ':'
 [141s] PNAME_LN                         ::= PNAME_NS PN_LOCAL
 [142s] BLANK_NODE_LABEL                 ::= '_:' ( PN_CHARS_U | [0-9] ) ((PN_CHARS|'.')* PN_CHARS)?
@@ -119,10 +116,12 @@
 [157s] STRING_LITERAL_SINGLE_QUOTE      ::= "'" ( [^#x27#x5C#xA#xD] | ECHAR | UCHAR )* "'"
 [158s] STRING_LITERAL_LONG_SINGLE_QUOTE ::= "'''" ( ( "'" | "''" )? ( [^'\] | ECHAR | UCHAR ) )* "'''"
 [159s] STRING_LITERAL_LONG_QUOTE        ::= '"""' ( ( '"' | '""' )? ( [^"\] | ECHAR | UCHAR ) )* '"""'
-[26t]  UCHAR                            ::=   ( "\u" HEX HEX HEX HEX ) | ( "\U" HEX HEX HEX HEX HEX HEX HEX HEX )
+[35]  UCHAR                             ::=   ( "\u" HEX HEX HEX HEX ) | ( "\U" HEX HEX HEX HEX HEX HEX HEX HEX )
 [160s] ECHAR                            ::= "\" [tbnrf\"']
 [162s] WS                               ::= #x20 | #x9 | #xD | #xA
 [163s] ANON                             ::= '[' WS* ']'
+[36] QUICK_VAR_NAME                     ::= "?" PN_LOCAL
+                                           /* Allows fuller character set */
 [164s] PN_CHARS_BASE                    ::= [A-Z] | [a-z] | [#x00C0-#x00D6]
                                           | [#x00D8-#x00F6] | [#x00F8-#x02FF] | [#x0370-#x037D]
                                           | [#x037F-#x1FFF] | [#x200C-#x200D] | [#x2070-#x218F]
@@ -130,6 +129,9 @@
                                           | [#xFDF0-#xFFFD] | [#x10000-#xEFFFF]
 [165s] PN_CHARS_U                     ::= PN_CHARS_BASE | '_'
 [167s] PN_CHARS                       ::= PN_CHARS_U | "-" | [0-9] | #x00B7 | [#x0300-#x036F] | [#x203F-#x2040]
+/* BASE and PREFIX must be case-insensitive, hence these monstrosities */
+[37] BASE                             ::= ('B'|'b') ('A'|'a') ('S'|'s') ('E'|'e')
+[38] PREFIX                           ::= ('P'|'p') ('R'|'r') ('E'|'e') ('F'|'f') ('I'|'i') ('X'|'x')
 [168s] PN_PREFIX                      ::= PN_CHARS_BASE ( ( PN_CHARS | "." )* PN_CHARS )?
 [169s] PN_LOCAL                       ::= ( PN_CHARS_U | ':' | [0-9] | PLX ) ( ( PN_CHARS | '.' | ':' | PLX )*  ( PN_CHARS | ':' | PLX ) ) ?
 [170s] PLX                            ::= PERCENT | PN_LOCAL_ESC
@@ -137,11 +139,7 @@
 [172s] HEX                            ::=   [0-9] | [A-F] | [a-f]
 [173s] PN_LOCAL_ESC                   ::= '\' ( '_' | '~' | '.' | '-' | '!' | '$' | '&' | "'" | '(' | ')' | '*' | '+' | ',' | ';' | '='
                                         | '/' | '?' | '#' | '@' | '%' )
-
-/* BASE and PREFIX must be case-insensitive, hence these monstrosities */
-[36] BASE                             ::= ('B'|'b') ('A'|'a') ('S'|'s') ('E'|'e')
-[37] PREFIX                           ::= ('P'|'p') ('R'|'r') ('E'|'e') ('F'|'f') ('I'|'i') ('X'|'x')
-[38] COMMENT   ::= ('#' - '#x') [^#xA#xC#xD]*
+[39] COMMENT   ::= ('#' - '#x') [^#xA#xC#xD]*
 
 # Ignore all whitespace and comments between non-terminals
 @pass           ( WS | COMMENT )*
