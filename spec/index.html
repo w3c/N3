@@ -103,7 +103,7 @@
 	  
 	  <h4>Simple triples</h4>
 	  
-	  <p>The simplest N3 statement or triple is a sequence of <code>&lt;subject&gt;</code>, <code>&lt;predicate&gt;</code> and <code>&lt;object&gt;</code>, separated by whitespace and terminated by '<code>.</code>' after each triple. For now, we will asssume that a resource is represented either by an <a href="#iris">IRI</a> or a <a href="#literals">literal</a>. In general, one uses an IRI for an identifiable entity - such as a person, place, or thing - and a literal for a textual or numerical (i.e., datatype) value - such as names, dates, height, and so on.
+	  <p>The simplest N3 statement or triple is a sequence of <code>&lt;subject&gt;</code>, <code>&lt;predicate&gt;</code> and <code>&lt;object&gt;</code>, separated by whitespace and terminated by '<code>.</code>' after each triple. For now, we will asssume that a resource is represented either by an <a href="#iris">IRI</a> or a <a href="#literals">literal</a>. In general, one uses an IRI to identify, well, an identifiable entity, such as a person, place, or thing &mdash; and a literal for a textual or numerical (i.e., datatype) value, such as names, dates, height, and so on.
 	  
 	  <p>The three N3 statements below highlights the emnity between Spiderman and the Green Goblin, and lists the names of these two individuals:</p>
 
@@ -241,6 +241,60 @@ ex:Spiderman rdfs:label """'Bitten' by "what"?
           an example.''' .
           </pre> -->
       </section>
+	  
+      <section id='bnodes'>
+        <h3>Blank Nodes</h3>
+        <p>In many cases, it would be quite inconvenient and redundant to mint a new IRI each time one wants to describe a resource. Such a unique identification is useful when one wants external N3 graphs to refer to the resource, but quite redundant otherwise.
+		
+		Instead, one can instead use blank nodes to talk about resources. Blank nodes are not really "anonymous resources", i.e., resources without an IRI, but rather existential variables, i.e., they state the existence of a thing without identifying that thing.
+		
+		(unknown resource use case) [rdf-primer#section-blank-node]
+		For instance, we might want to state that the Mona Lisa painting has in its background an unidentified tree which we know to be a cypress tree. We could mint an IRI such as "mona-lisa-cypress-tree" but that would be awkward and redundant. Especially because we simply want to describe the tree, such as the painting it is in, and the type of tree, and we're not very interested in allowing other N3 graphs to refer to the tree. Instead, we can simply use a blank node to represent the resource, which can be represented in several ways:
+		
+		-- Blank node identifiers
+		A blank node can be represented by a locally unique blank node identifier, i.e., only unique within the N3 graph. This identifier looks as follows: ..
+		
+		Then, we use this identifier to describe the resource in the same way we have been doing until now. For instance: ..
+		
+		(composite information structuring) (https://www.w3.org/TR/rdf-primer/#structuredproperties)
+		A common use case for blank nodes is when describing composite or aggregate pieces of information, in such a way that explicitly lists their components. Such as street addresses, telephone numbers and dates. 
+		
+		It would be quite redundant to introduce an IRI just for the purpose of structuring this information: ..
+		Indeed, it is unlikely that anyone outside this N3 graph would ever need to refer directly to an IRI "".
+		Instead, one can use an RDF blank node to connect the "composed" piece of information, such as a street address, and its composite values. 
+		If there is an expectation that the entity, e.g., street address, will need to be referenced from outside the graph, one should use an IRI for identifying the entity.
+		
+		(n-ary relations)
+		Thirdly, as discussed later on, blank nodes are a way to represent <a href="#naryrel">n-ary relations in N3</a>.
+		
+		-- Blank node property lists
+		Above, we used blank node identifiers as a way to make statements about blank nodes. However, and although they're not quite as hard to mint as IRIs, it is redundant in most cases to even introduce such an identifier. 
+		
+		As mentioned above, blank nodes are often used to structure composite information, or represent n-ary relations. In those cases, the resulting N3 graphs will be quite similar; a statement linking a subject (e.g., "john") to a blank node object (e.g., a street address, purchase relation, ..), and a series of subsequent statements describing the blank node. 
+	
+		These cases can be written much more conveniently as follows: ...
+		
+		NOTE in some cases, using a blank node identifier will simply feel more convenient and natural. For instance, in case multiple people have the same address, and one wants to use the pattern described above, one would need to repeat the address description for each person sharing the address. Alternatively, one can of course use an inverse addressOf property to link all people sharing the same address, but this may not feel natural to some. 
+		</p>
+        <pre class="example nohighlight">@prefix foaf: &lt;http://xmlns.com/foaf/0.1/&gt; .
+
+_:doerthe foaf:knows _:dominik .
+_:dominik foaf:knows [ foaf:firstName &quot;William&quot; ].</pre>
+      </section>
+	  
+	  <section id='collections'>
+        <h3>Collections</h3>
+        <p>Bla...</p>
+        <pre class="example nohighlight">@prefix foaf: &lt;http://xmlns.com/foaf/0.1/&gt; .
+
+_:n3
+    foaf:member (
+        _:doerthe
+        _:william
+        _:dominik
+    ).</pre>
+      </section>
+	  
       <section id='keywords'>
         <h4>Keywords and special symbols</h4>
         <p>Bla...</p>
@@ -256,26 +310,55 @@ ex:Spiderman rdfs:label """'Bitten' by "what"?
 &lt;http://example.org/#dt&gt; foaf:knows &lt;http://example.org/#da&gt; .
 &lt;http://example.org/#dt&gt; ^foaf:knows &lt;http://example.org/#da&gt; .</pre>
       </section>
-      <section id='bnodes'>
-        <h3>Blank Nodes</h3>
-        <p>Bla...</p>
-        <pre class="example nohighlight">@prefix foaf: &lt;http://xmlns.com/foaf/0.1/&gt; .
-
-_:doerthe foaf:knows _:dominik .
-_:dominik foaf:knows [ foaf:firstName &quot;William&quot; ].</pre>
-      </section>
-      <section id='collections'>
-        <h3>Collections</h3>
-        <p>Bla...</p>
-        <pre class="example nohighlight">@prefix foaf: &lt;http://xmlns.com/foaf/0.1/&gt; .
-
-_:n3
-    foaf:member (
-        _:doerthe
-        _:william
-        _:dominik
-    ).</pre>
-      </section>
+      
+	  <section id="naryrel">
+		<h4>N-ary Relations</h4>
+		<p>This is turning out to be more of a data modeling tutorial than anything else ..
+		
+		Until now, only considered binary relations between entities and/or values, such as .. Clearly, many types of relations are ternary, quaternary, or, in general, n-ary, i.e., they may contain an arbitrary number of participants. There are several ways of representing n-ary relations in RDF - these are described in [[[swbp-n-aryRelations]]].
+		
+		Below, we summarize options for representing n-ary relations in N3. 
+		
+		-- Using sets of binary relations
+		In general, it is possible to convert any n-ary relation into an equivalent set of binary relations. This is an easy solution, since we already know how to represent binary relations.
+		
+		We will use clear examples of n-ary relations, such as the Purchase / Employment / .. example:
+		First, we create a resource that represents the n-ary relation, and use a set of binary relations to link each relation participant to this newly minted resource. 
+		Each binary relation is hereby given a meaningful name that represents the role the participant plays in the n-ary relation, for instance, ..
+		
+		This use case is described in the <a href="https://www.w3.org/TR/rdf-primer/#structuredproperties">original RDF Primer</a>.
+		
+		NOTE similar to our discussion on <a href="#bnodes">blank nodes</a>, one needs to choose whether to coin a new IRI for representing the n-ary relation, or whether to use a blank node &mdash; the same arguments apply here. 
+		I.e., in case it could be useful to the n-ary relation from outside the N3 graph, an IRI should be used &mdash; else, a blank node should be used.
+		
+		(NOTE from a data modeling viewpoint, one can choose one of the participants as the subject of the relationship object in a statement, e.g., ..  This serves to indicate that this participant is somehow the "owner" of the relationship. 
+		Examples in which the "owner" is more clear are the following: street address, body temperature, .. 
+		the subject "owns" these relations - it would be awkward to include "john" as just another participant in the relationship - 
+		whereas such a thing would be much more natural in the "Purchase" or "Employment" example.)
+		
+		But, these are more issues of data modeling than anything else, and either options are perfectly valid in N3, 
+		(albeit some are clearly preferrable - as would be the case when modeling any kind of data repository)
+		
+		In some cases, things are more naturally described as *properties* of relations, rather than n-ary relations. 
+		The body temperature, diagnosis example. 
+		Nevertheless, these can be represented identically. 
+		We start from the solution above, i.e., introducing an entity to represent the (in this case, binary) relation, and then linking the two participants to the relation entity. Subsequently, one uses a binary relation to attach the relation property (e.g., diagnosis probability) 
+		to the relation entity: ..
+		This is possible since we know that the relation entity represents the n-ary relation - hence any descriptive properties of the relation, in addition to participants in the relation, can simply be linked to the entity. 
+		
+		(NOTE from a data modeling perspective, there would be a clear problem if the relation entity could have multiple "subjects" - e.g., in case it is being re-used to represent the same diagnosis for multiple patients. In that case, each of the patients' 
+		diagnosis probabilities would be linked to the same relation entity - and we lose the link that tells us which probability belongs to which patient. This can be seen as a kind of "fan trap".)
+		
+		-- Using collections
+		Even more simply, we can use a collection to keep all the participants of the n-ary relation. For instance: ...
+		
+		A clear advantage of this approach is that it is easier and much less verbose to write down. 
+		However, the roles each participant play in the n-ary relation are no longer explicated. For instance: ..
+		
+		What roles do X, Y and Z play in this relation? One could answer that question by having a tailored schema: ...
+		</p>
+	  </section>
+	  
       <section id='cformulas'>
         <h3>Cited Formulas</h3>
         <p>Bla...</p>
@@ -473,11 +556,27 @@ _:dominik foaf:knows _:doerthe .
 			</ul>
 		</p>
       </section>
-      <section id='irires'>
+      
+	  <section id='irires'>
         <h3>IRI resolution</h3>
-        <p>Bla...</p>
+        <p> Relative IRIs are resolved with base IRIs using the algorithm in the Uniform Resource Identifier (URI) Generic Syntax [[RFC3986]] Section 5.2, "Relative Resolution". Since [[RFC3986]] pertains to URIs instead of IRIs, in the aforementioned algorithm, characters that are additionally allowed in IRI references are simply treated in the same way that unreserved characters are treated in URI references, per Section 6.5 of Internationalized Resource Identifiers (IRIs) [[RFC3987]]. Neither Syntax-Based Normalization nor Scheme-Based Normalization (described in Sections 6.2.2 and 6.2.3 of [[RFC3986]]) are performed.</p>
+		
+		<p>In descending order of precedence, the following describes how Base IRIs are established:</p>
+		<ol>
+			<li>
+				The N3 <code>@base</code> or <code>BASE</code> directive can be used to define the Base IRI, per [[RFC3986]] Section 5.1.1, "Base URI Embedded in Content".
+			</li>
+			<li>
+				If no Base IRI is embedded: if the N3 document's retrieval context is known, then the enclosing entity's (e.g., message or archive) Base IRI will be used, as per [[RFC3986]] Section 5.1.2, "Base URI from the Encapsulating Entity". A mechanism for embedding a Base IRI within MIME container types is defined by MHTML [RFC2557] Section 5, "Base URIs for resolution of relative URIs". For instance, the HTML BASE directive or Content-Location header can be used within a MIME multipart container, as per [[RFC2557]], or the XML BASE directive within a SOAP envelope [[XMLBASE]].
+			</li>
+			<li>
+				If no Base IRI is embedded, and no encapsulated entity exists: if a IRI was used to retrieve the N3 document, then that IRI will be considered the Base IRI, as per [[RFC3986]] Section 5.1.3, "Base URI from the Retrieval URI".
+			</li>
+			<li>If none of the above apply, then the Base IRI will be defined by the context of the application, as per [[RFC3986]] Section 5.1.4, "Default Base URI".</li>
+		</ol>
       </section>
-      <section id='pathres'>
+      
+	  <section id='pathres'>
         <h3>Path resolution</h3>
         <p>Bla...</p>
       </section>
