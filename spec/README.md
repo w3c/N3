@@ -7,4 +7,4 @@ This is documented on the [ReSpec Wiki](https://github.com/w3c/respec/wiki/ReSpe
 You can **run a local HTTP server** to view the specification document on your local machine. The "www" folder should be the github repository root folder (files
 are loaded relative to that root folder).
 
-For instance, if you have Python installed, you can simply run the following (with the repository root folder as cwd): `python -m SimpleHTTPServer`.
+For instance, if you have Python installed, you can simply run the following (with the repository root folder as cwd): `python -m SimpleHTTPServer`. Then, you can visit [localhost:8000/spec/](http://localhost:8000/spec/) to view the document.
