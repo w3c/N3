@@ -93,7 +93,7 @@
 	<section id='n3doc'>
 	
 		<h3>N3 document</h3>
-		<p>An N3 document represents an N3 graph in a compact textual form. An N3 graph, in its simplest form, is a series of <a href="#simpletriples">N3 statements</a>, each describing a resource's property and written as a triple: <code>&lt;subject&gt; &lt;predicate&gt; &lt;object&gt;.</code> An N3 graph can have many more elements - <a href="#cformulas">cited formulas</a> for quoting sets of statements, <a href="#logimpl">logical implications</a> for If-Then style, rule-based reasoning, <a href="#variables">quantifications</a> for variables, and so on. We introduce these elements below.</p>
+		<p>An N3 document represents an N3 graph in a compact textual form. An N3 graph, in its simplest form, is a series of <a href="#simpletriples">N3 statements or triples</a>, each describing a resource's property and written as a triple: <code>&lt;subject&gt; &lt;predicate&gt; &lt;object&gt;.</code> An N3 graph can have many more elements - <a href="#cformulas">cited formulas</a> for quoting sets of statements, <a href="#logimpl">logical implications</a> for If-Then style, rule-based reasoning, <a href="#variables">quantifications</a> for variables, and so on. We introduce these elements below.</p>
 		
 		<p>Comments are indicated using a separate '#' (i.e., not part of another N3 symbol, such as an IRI) and continue until the end of 
 		the line.</p>
@@ -103,7 +103,7 @@
 	  
 	  <h4>Simple triples</h4>
 	  
-	  <p>The simplest N3 statement or triple is a sequence of <code>&lt;subject&gt;</code>, <code>&lt;predicate&gt;</code> and <code>&lt;object&gt;</code>, separated by whitespace and terminated by '<code>.</code>' after each triple. For now, we will asssume that a resource is represented either by an <a href="#iris">IRI</a> or a <a href="#literals">literal</a>. In general, one uses an IRI to identify, well, an identifiable entity, such as a person, place, or thing &mdash; and a literal for a textual or numerical (i.e., datatype) value, such as names, dates, height, and so on.
+	  <p>The simplest N3 statement or triple is a sequence of <code>&lt;subject&gt;</code>, <code>&lt;predicate&gt;</code> and <code>&lt;object&gt;</code>, separated by whitespace and terminated by '<code>.</code>' after each triple. For now, we will asssume that a resource is represented either by an <a href="#iris">IRI</a> or a <a href="#literals">literal</a>. In general, one uses an IRI to identify, well, an identifiable entity, such as a person, place, or thing &mdash; a literal is used for a textual or numerical (i.e., datatype) value, such as names, dates, height, and so on.
 	  
 	  <p>The three N3 statements below highlights the emnity between Spiderman and the Green Goblin, and lists the names of these two individuals:</p>
 
@@ -118,6 +118,8 @@
 	  &lt;http://example.org/#spiderman&gt; &lt;http://xmlns.com/foaf/0.1/name&gt; "Spiderman" .
 	  &lt;http://example.org/#green-goblin&gt; &lt;http://xmlns.com/foaf/0.1/name&gt; "Green Goblin" .
 	  </pre>
+	  
+	  <p class="note">There is no inherent order for N3 / RDF triples. This is the same for the relational model, i.e., relational tuples or rows do not have an inherent order. Hence, it is a mistake to associate meaning with the order of a statement in an N3 document: e.g., assuming that the first listed telephone for Spiderman would his landline, and the second one his mobile number.</p>
 
       <p class="note">Examples will often be written using newlines and tab spaces for readability. However, generally, only the subjects, predicates and objects need to be separated with a whitespace.</p>
         <!-- <pre class="example nohighlight">&lt;http://example.org/#dt&gt; &lt;http://xmlns.com/foaf/0.1/name&gt; &quot;Dominik Tomaszuk&quot; .</pre> -->
@@ -313,7 +315,7 @@ ex:Spiderman rdfs:label """'Bitten' by "what"?
 		
 		<p>Below, we summarize typical use cases where blank nodes are used to describe resources.</p>
 		
-		<p><b>Unknown resources</b>: we might <a href="rdf-primer#section-blank-node">want to state</a> that the Mona Lisa painting has in its background an unidentified tree, which we know to be a cypress tree. We could mint an IRI such as "mona-lisa-cypress-tree", but we feel that would be redundant &mdash; we simply want to describe the tree, such as the painting it is in, and the type of tree, and we're not really interested in allowing other N3 graphs to refer to the tree. Moreover, there may already exist an IRI for that particular tree, and we don't want to mint another IRI to refer to the same tree, nor do we want to lookup this existing IRI.</p>
+		<p><b>Unknown resources</b>: we might <a href="rdf-primer#section-blank-node">want to state</a> that the Mona Lisa painting has in its background an unidentified tree, which we know to be a cypress tree. We could mint an IRI such as "mona-lisa-cypress-tree", but we feel that would be redundant &mdash; we simply want to describe the tree, such as the painting it is in, and the type of tree. We're not particularly interested in allowing other N3 graphs to refer to the tree. Moreover, there may already exist an IRI for that particular tree, and we don't want to mint another IRI to refer to the same tree (nor do we want to lookup this existing IRI).</p>
 		
 		<p><b>Composite information</b>: when describing <a data-cite="rdf-primer#structuredproperties">composite pieces of information</a>, such as street addresses, telephone numbers and dates, it would be quite redundant to mint an IRI just for the purpose of structuring this information. It is unlikely that anyone outside this N3 graph would ever need to refer directly to the IRI. Instead, one can use an RDF blank node to connect the "composed" piece of information, e.g., the street address, to its composite values, e.g., street name, number, and city.</p>
 		
@@ -330,24 +332,71 @@ ex:Spiderman rdfs:label """'Bitten' by "what"?
 	  
 	  <section id='collections'>
         <h3>Collections</h3>
-        <p>Bla...</p>
-        <pre class="example nohighlight">@prefix foaf: &lt;http://xmlns.com/foaf/0.1/&gt; .
-
-_:n3
-    foaf:member (
-        _:doerthe
-        _:william
-        _:dominik
-    ).</pre>
-      </section>
+        <p>We often need to describe collections of things, e.g., a book written by several authors, listing the students in a course, or listing the software modules in a package. N3 provides a succinct collection syntax to represent (possibly empty) collections of terms enclosed by <code>(</code> <code>)</code>. The contained things are called "members".</p>
+		
+		<p class="note">To an extent, an N3 collection <a href="#semantics">is equivalent to</a> the more verbose <a data-cite="rdf11-mt#rdf-collections">RDF Collection vocabulary</a>.</p>
+		
+		<p>For instance:</p>
+		
+		<pre class="example nohighlight">
+		@base &lt;http://example.org/#&gt; .
+		:dl_handbook a :Book ;
+			rdfs:label "The Description Logic Handbook: Theory, implementation, and applications" ;
+			:author ( :deborah :daniele :peter) .
+		</pre>
+		
+		<p>This states that the value of the author property is the <i>collection resource</i>. <b>Important</b>: any additional meaning, e.g., that (<i>a</i>) each member (e.g., <code>:deborah</code>) can be considered as a value of the author property (i.e., the author property "distributes" across the members), or that (<i>b</i>) the first member is the author who put the most effort into the book, <b>is not given by the N3 semantics</b>.</p>
+		<p>That said, in this example, it would be reasonable to assume these two meanings &mdash; i.e., each member is a separate author of the book, and the first member put the most effort in the book. Nevertheless, such meanings would always be application-specific.</p>
+		
+		<p>Alternatively, one could represent this information as follows, in such a way that explicates meaning (<i>a</i>):</p>
+		
+		<pre class="example nohighlight">
+		@base &lt;http://example.org/#&gt; .
+		:dl_handbook a :Book ;
+			rdfs:label "The Description Logic Handbook: Theory, implementation, and applications" ;
+			:author :deborah, :daniele, :peter .
+		</pre>
+		
+		<p>I.e., we use an <a href="polists">object list</a> to explicitly state that these members are separate values of the author property. We no longer need to assume meaning (<i>a</i>) since the RDF semantics already explicates that meaning.</p>
+		
+		<p class="note">Since N3 / RDF statements do not have an inherent order, this example loses meaning (<i>b</i>) since we no longer know who is the first author.</p>
+		
+		<p>In the following example, we state that a resolution was approved by a group with members Fred, Wilma, and Dino:</p>
+		
+		<pre class="example nohighlight">
+		@base &lt;http://example.org/#&gt; .
+		:resolution123 :approvedBy (:Fred :Wilma :Dino) .
+		</pre>
+		
+		<p>This states that the <i>collection resource</i> consisting of Fred, Wilma, and Dino approved the resolution. As before, the N3 semantics do not imply that Fred, Wilma, and Dino <i>each individually</i> approved the resolution (i.e., the "approvedBy" property does not distribute across the collection members). In contrast to before, such a meaning, which would have to be application-specific, would not make sense either &mdash; it is possible that Fred and Wilma formed the majority that approved the resolution, and Dino was the dissenting voice.</p>
+		
+		<p>In N3, collections may occur as subjects, predicates or objects in a statement. For instance:</p>
+		
+		<pre class="example nohighlight">
+		@base &lt;http://example.org/#&gt; .
+		(:Fred :Wilma :Dino) :approved :resolution123 .
+		</pre>
+		
+		<p>Or even:</p>
+		<pre class="example nohighlight">
+		@base &lt;http://example.org/#&gt; .
+		(:Fred :Wilma :Dino) (:read :liked :approved) (:resolution1 :resolution2 :resolution3) .
+		</pre>
+		
+		<p>As before, any meaning that goes beyond the fact that three collection resources are involved in this statement, would be application-specific &mdash; for instance, that the predicate <code>(:read :liked :approved)</code> means that the subject collection did all those things for all members in the object collection.</p>
+		
+        <!--
+		<pre class="example nohighlight">
+		@prefix foaf: &lt;http://xmlns.com/foaf/0.1/&gt; .
+		_:n3
+			foaf:member (
+				_:doerthe
+				_:william
+				_:dominik
+			).</pre>
+      -->
 	  
-      <section id='paths'>
-        <h4>Paths</h4>
-        <p>Bla...</p>
-        <pre class="example nohighlight">@prefix foaf: &lt;http://xmlns.com/foaf/0.1/&gt; .
-&lt;http://example.org/#dt&gt; foaf:knows &lt;http://example.org/#da&gt; .
-&lt;http://example.org/#dt&gt; ^foaf:knows &lt;http://example.org/#da&gt; .</pre>
-      </section>
+	  </section>
 	  
       <section id='cformulas'>
         <h3>Cited Formulas</h3>
@@ -358,6 +407,15 @@ whitespaces
 are important
 here</pre>
       </section>
+	  
+      <section id='paths'>
+        <h4>Paths</h4>
+        <p>Bla...</p>
+        <pre class="example nohighlight">@prefix foaf: &lt;http://xmlns.com/foaf/0.1/&gt; .
+&lt;http://example.org/#dt&gt; foaf:knows &lt;http://example.org/#da&gt; .
+&lt;http://example.org/#dt&gt; ^foaf:knows &lt;http://example.org/#da&gt; .</pre>
+      </section>
+	  
       <section id='variables'>
         <h3>Variables and Quantification</h3>
         <p>Bla...</p>
