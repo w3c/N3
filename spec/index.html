@@ -304,14 +304,14 @@ ex:Spiderman rdfs:label """'Bitten' by "what"?
 			
 			<p>As shown, a blank node property list relies on <a href="#polists">predicate lists</a> to easily group statements about blank nodes. We also show the equivalent <a href="#simpletriples">simple triples</a> using blank node identifiers.</p>
 			
-			<p class="note">In some cases, using a blank node identifier will simply feel more convenient and natural &mdash; e.g., in case you want to describe multiple people with the same address. Of course, in that case, we could still use an "inverse" <i>addressOf</i> property to add people with the same address to the blank node property list.</p>
+			<p class="note">In some cases, using a blank node identifier will simply feel more convenient and natural; e.g., in case you want to describe multiple people with the same address. Of course, we could still use an "inverse" <i>addressOf</i> property to add people with the same address to the blank node property list, i.e., making <code>:john</code> just another element of the composite piece of information.</p>
 			
 		</section>
 			
 		<section id="bnode-use-cases">
 		<h4>Blank node use cases</h4>
 		
-		<p>Below, we summarize typical use cases where blank nodes are often used to describe resources.</p>
+		<p>Below, we summarize typical use cases where blank nodes are used to describe resources.</p>
 		
 		<p><b>Unknown resources</b>: we might <a href="rdf-primer#section-blank-node">want to state</a> that the Mona Lisa painting has in its background an unidentified tree, which we know to be a cypress tree. We could mint an IRI such as "mona-lisa-cypress-tree", but we feel that would be redundant &mdash; we simply want to describe the tree, such as the painting it is in, and the type of tree, and we're not really interested in allowing other N3 graphs to refer to the tree. Moreover, there may already exist an IRI for that particular tree, and we don't want to mint another IRI to refer to the same tree, nor do we want to lookup this existing IRI.</p>
 		
@@ -655,7 +655,7 @@ _:dominik foaf:knows _:doerthe .
 			
 			<p>Below, we illustrate options for representing n-ary relations in N3 in particular.</p> 
 			
-			<section id="nary-binary-rels">
+			<section id="nary-binary-rel">
 			<h4>Using sets of binary relations</h4>
 			<p>In general, it is possible to convert any n-ary relation into an equivalent set of binary relations. This is a convenient solution, since we already know how to represent binary relations.</p>
 			
@@ -673,46 +673,46 @@ _:dominik foaf:knows _:doerthe .
 				ex:hasSeller <http://books.example.com> .
 			</pre>
 			
-			<p class="note">Either you could coin a new IRI for representing the n-ary relation or simply use a <a href="#bnodes">blank node</a>. E.g., in case other parties may want to refer to the n-ary relation from outside the N3 graph, one could choose to mint a new IRI; else, it will likely be more convenient to use a <a href="#bnodeprplist">blank node property list</a>.</p>
+			<p class="note">Either you could mint a new IRI for representing the n-ary relation, or simply use a <a href="#bnodes">blank node</a>. E.g., in case other parties may want to refer to the n-ary relation from outside the N3 graph, one could choose to mint a new IRI; else, it will likely be more convenient to use a <a href="#bnodeprplist">blank node property list</a>.</p>
 			
-			<!--
-			(NOTE from a data modeling viewpoint, one can choose one of the participants as the subject of the relationship object in a statement, e.g., ..  This serves to indicate that this participant is somehow the "owner" of the relationship. 
-			Examples in which the "owner" is more clear are the following: street address, body temperature, .. 
-			the subject "owns" these relations - it would be awkward to include "john" as just another participant in the relationship - 
-			whereas such a thing would be much more natural in the "Purchase" or "Employment" example.) But, these are more issues of data modeling than anything else, and either options are perfectly valid in N3 (albeit some are clearly preferrable - as would be the case when modeling any kind of data repository)
-			-->
-			
-			<p>In other cases, things are more naturally described as <i>properties of relations</i>, rather than n-ary relations &mdash; for instance, the provenance of a piece of information, the probability of a diagnosis, or the trend of someone's body temperature.Nevertheless, these can be represented in the same way as n-ary relation participants.</p>
+			<p>In other cases, things are more naturally described as <i>properties of relations</i>, rather than n-ary relations &mdash; for instance, the provenance of a piece of information, the trend of someone's body temperature and when the temperature was taken. Nevertheless, these can be represented in the same way as n-ary relation participants.</p>
 			
 			<p>We start from the same solution above, i.e., introducing a resource to represent the (in this case, binary) relation, and then linking the two participants to this resource. Subsequently, we use a set of binary relations to attach each descriptive property (e.g., diagnosis probability; temperature trend) to the relation resource.</p>
 			
-			<p>For instance, when describing a diagnosis (e.g., breast cancer) of someone (e.g., Christine), you may want to indicate the probability of the diagnosis:</p>
+			<!-- <p>For instance, when describing a diagnosis (e.g., breast cancer) of someone (e.g., Christine), you may want to indicate the probability of the diagnosis, and the date at which the diagnosis was made:</p>
 			
 			<pre id="" class="example nohighlight">
 			@prefix ex: &lt;http://example.org/#&gt; .
 			@base &lt;http://example.org/#&gt; .
+			@prefix xsd: &lt;http://www.w3.org/2001/XMLSchema#&gt; .
 			ex:Christine
 				a       :Person ;
 				:hasDiagnosis _:Diagnosis_Relation_1 .
 
 			_:Diagnosis_Relation_1
-				:diagnosisProbability :HIGH;
-				:diagnosisValue :Breast_Tumor_Christine .
-			</pre>
+				:diagnosisProbability :HIGH ;
+				:diagnosisValue :Breast_Tumor_Christine ;
+				:diagnosisDate ""
+			</pre> -->
 			
-			<p>Or, when describing someone's current temperature, you may want to indicate the absolute value (e.g., 40 degrees Celcius), a description of that value (e.g., elevated), and the trend compared to the prior value (e.g., rising):</p>
+			<p>For instance, when describing someone's (e.g., Christine) current temperature, you may want to indicate the absolute value (e.g., 40 degrees), a description of that value (e.g., elevated), the trend compared to the prior value (e.g., rising), and the time the temperature was taken:</p>
 			
 			<pre id="" class="example nohighlight">
-			@prefix ex: &lt;http://example.org/#&gt; .
+			@prefix xsd: &lt;http://www.w3.org/2001/XMLSchema#&gt; .
 			@base &lt;http://example.org/#&gt; .
+			:Christine
+				a       :Person ;
+				:hasTemperature _:Temperature_Observation_1 .
 			_:Temperature_Observation_1
 				:temperatureTrend :RISING ;
 				:temperatureValue 40 ;
-				:temperatureDescription :ELEVATED .
+				:temperatureDescription :ELEVATED ;
+				:temperatureTime "2020-07-12T09:01:33"^^xsd:dateTime .
 			</pre>
 			
-			<p>This is possible since we know that the relation resource (e.g., <code>Temperature_Observation_1</code>) represents the n-ary relation. Hence, any descriptive properties of the relation, in addition to participants in the relation, can simply be linked to the entity.</p>
-			
+			<p>This is possible since we know that the relation resource (e.g., <code>Temperature_Observation_1</code>) represents the n-ary relation. Hence, any descriptive properties of the relation, in addition to participants in the relation, can simply be attached to the entity.</p>
+				
+			<p class="note">In this example, we made a statement with one of the participants (<code>:Christine</code>) as subject, and the relation resource (e.g., <code>_:Temperature_Observation_1</code>) as object. An alternative would have been to add <code>:Christine</code> as just another element of the n-ary relation, e.g., using a property <code>temperatureOf</code>. Our modeling choice here served to indicate that Christine is somehow the <a data-cite="swbp-n-aryRelations#useCase2">"owner" of the relationship</a>.</p>			
 			<!-- 
 			(NOTE from a data modeling perspective, there would be a clear problem if the relation entity could have multiple "subjects" - e.g., in case it is being re-used to represent the same diagnosis for multiple patients. In that case, each of the patients' 
 			diagnosis probabilities would be linked to the same relation entity - and we lose the link that tells us which probability belongs to which patient. This can be seen as a kind of "fan trap".)
