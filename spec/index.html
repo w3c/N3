@@ -636,56 +636,58 @@ _:dominik foaf:knows _:doerthe .
         <div data-include="../grammar/n3.html"></div>
       </section>
     </section>
-    <section id="rel-n3-turtle">
-      <h3>Relation with Turtle</h3>
-      <p>N3 is a superset of [[[turtle]]], meaning that all valid Turtle documents will be valid in N3 as well. The inverse is not true, i.e., a valid N3 document will not always be valid in Turtle.</p>
-      <p>The current N3 grammar started from the <a data-cite="TURTLE#sec-grammar">Turtle grammar</a> which was adapted and extended to be in line with the <a href="https://www.w3.org/2000/10/swap/grammar/n3-report.html">initial N3 grammar</a>. Hence, many of the grammar productions will be much more similar to the Turtle grammar than the initial N3 grammar.</p>
-      <p>Important differences with Turtle are the following:</p>
-      <ul>
-        <li>Literals are allowed at any s/p/o position (i.e., subject, predicate or object) in a statement. See the <a href="#grammar-production-pathItem">pathItem</a> production, which is (eventually) referenced by the "subject", "predicate" and "object" productions.</li>
-        <li>Cited formulas (i.e., between "<code>{</code>" and "<code>}</code>"), which are allowed in any s/p/o position in a statement. See the <a href="#grammar-production-pathItem">pathItem</a> production.</li>
-        <li>Quick-variables (e.g., "<code>?x</code>"), which are allowed in any s/p/o position in a statement. See the <a href="#grammar-production-pathItem">pathItem</a> production.</li>
-        <li>Variable quantifications (e.g., "<code>@forAll :x .</code>"), which are a standalone element (i.e., not part of a "regular" N3 statement). See the <a href="#grammar-production-existential">existential</a> and <a href="#grammar-production-universal">universal</a> productions.</li>
-        <li>A path syntax, comparable to (but not quite as extensive as) the <a data-cite="sparql11-query#propertypaths">SPARQL 1.1 Property Path</a> syntax. See the <a href="#grammar-production-path">path</a> production.</li>
-        <li>The possibility to invert the predicate within a statement. See the <a href="#grammar-production-predicate">predicate</a> production.</li>
-        <li>An additional set of keywords, incl. "<code>is .. of</code>", "<code>has</code>", "<code>=</code>", "<code>=></code>", "<code>&lt;=</code>", in addition to Turtle's "<code>a</code>" keyword (among others). All keywords can be optionally preceded by "<code>@</code>", for consistency with the "<code>@prefix</code>" and "<code>@base"</code> keywords.</li>
-      </ul>
-    </section>
-    <section id="rel-n3-sparql">
-      <h4>Relation with SPARQL</h4>
-      <p>The <abbr title="SPARQL Protocol and RDF Query Language">SPARQL</abbr> 1.1 Query Language (SPARQL) [[SPARQL11-QUERY]] uses a Turtle-style [[turtle]] syntax for its <a data-cite="sparql11-query#rTriplesBlock">TriplesBlock production</a>. Differences between Turtle and SPARQL are elaborated in the <a data-cite="turtle#sec-diff-sparql">Turtle specification</a>.</p>
-      <p>Below, we indicate some important differences between this production and N3:</p>
-      <ul>
-        <li>
-          Like N3, SPARQL permits literals as the subject of RDF triples. But, in contrast to N3, it does not allow literals as the predicate of RDF triples. Similarly, N3 allows for blank node property lists and collections in any position, whereas SPARQL only allows them in the subject or object position.
-        </li>
-        <li>
-          Like N3, SPARQL permits variables in any part of the triple. But, in contrast to N3, SPARQL allows writing variables as both <code>?name</code> and <code>$name</code>, whereas N3 only allows <code>?name</code>.
-        </li>
-        <li>
-          N3 allows <a href="#iris">prefix and base directives</a> anywhere outside of a triple. In SPARQL, they are only allowed in the <a data-cite="sparql11-query#rPrologue">Prologue</a> (i.e., at the start of the SPARQL query). However, in general, we also recommend listing prolog and base directives at the start of N3 documents.
-        </li>
-        <li>
-          In N3, most keywords (including <code>@prefix</code> and <code>@base</code> directives) are case sensitive, but most keywords in SPARQL are case-insensitive (aside from <code>a</code>). An exception in N3 are the <code>PREFIX</code> and <code>BASE</code> directives, which are derived from SPARQL and are case insensitive in N3 as well.
-        </li>
-        <li>
-          The <a href="#paths">N3 path syntax</a> resembles the <a data-cite="sparql11-query#propertypaths">SPARQL 1.1 Property Path</a> syntax, but there are important differences: 
-          <ul>
-            <li>
-              It is assumed that the <b>path starts from a resource (<i>IR</i>) instead of a property (<i>IP</i>)</b>. Hence, they are meant to be used in the subject and object positions, rather than the predicate position as is the case for SPARQL 1.1 property paths. This has important repercussions on how <a href="#pathres">paths are resolved</a>. Note that paths are unrelated to the inverted notation <code>^</code> for predicates (see the <a href="#grammar-production-predicate">predicate</a> production)
-            </li>
-            <li>
-              Compared to SPARQL, N3 only supports the <i>SequencePath</i> and <i>InversePath</i> expressions, but with syntactic differences: the '<code>!</code>' symbol is used to separate path items, whereas the '<code>^</code>' symbol is used to indicate an inverse predicate.
-            </li>
-          </ul>
-      </ul>
-      <p>For more information, see the <a data-cite="sparql11-query#sparqlGrammar">SPARQL Grammar</a> section of [[[SPARQL11-QUERY]]].</p>
-    </section>
-    <section id="rel-n3-trig">
-      <h3>Relation with TriG</h3>
-      <p>[[[TRIG]]] is itself a superset of the Turtle syntax and includes a compact way to write RDF datasets, i.e., sets of named graphs. In particular, TriG allows the specification of so-called graph statements, which are a pair of an IRI or blank node label and a group of triple statements surrounded by "<code>{</code>" and "<code>}</code>".</p>
-      <p>For instance:</p>
-      <pre class="example nohighlight">
+    <section class=informative>
+      <h2>Relationship to Other Languages</h2>
+      <section id="rel-n3-turtle">
+        <h3>Turtle</h3>
+        <p>N3 is a superset of [[[turtle]]], meaning that all valid Turtle documents will be valid in N3 as well. The inverse is not true, i.e., a valid N3 document will not always be valid in Turtle.</p>
+        <p>The current N3 grammar started from the <a data-cite="TURTLE#sec-grammar">Turtle grammar</a> which was adapted and extended to be in line with the <a href="https://www.w3.org/2000/10/swap/grammar/n3-report.html">initial N3 grammar</a>. Hence, many of the grammar productions will be much more similar to the Turtle grammar than the initial N3 grammar.</p>
+        <p>Important differences with Turtle are the following:</p>
+        <ul>
+          <li>Literals are allowed at any s/p/o position (i.e., subject, predicate or object) in a statement. See the <a href="#grammar-production-pathItem">pathItem</a> production, which is (eventually) referenced by the "subject", "predicate" and "object" productions.</li>
+          <li>Cited formulas (i.e., between "<code>{</code>" and "<code>}</code>"), which are allowed in any s/p/o position in a statement. See the <a href="#grammar-production-pathItem">pathItem</a> production.</li>
+          <li>Quick-variables (e.g., "<code>?x</code>"), which are allowed in any s/p/o position in a statement. See the <a href="#grammar-production-pathItem">pathItem</a> production.</li>
+          <li>Variable quantifications (e.g., "<code>@forAll :x .</code>"), which are a standalone element (i.e., not part of a "regular" N3 statement). See the <a href="#grammar-production-existential">existential</a> and <a href="#grammar-production-universal">universal</a> productions.</li>
+          <li>A path syntax, comparable to (but not quite as extensive as) the <a data-cite="sparql11-query#propertypaths">SPARQL 1.1 Property Path</a> syntax. See the <a href="#grammar-production-path">path</a> production.</li>
+          <li>The possibility to invert the predicate within a statement. See the <a href="#grammar-production-predicate">predicate</a> production.</li>
+          <li>An additional set of keywords, incl. "<code>is .. of</code>", "<code>has</code>", "<code>=</code>", "<code>=></code>", "<code>&lt;=</code>", in addition to Turtle's "<code>a</code>" keyword (among others). All keywords can be optionally preceded by "<code>@</code>", for consistency with the "<code>@prefix</code>" and "<code>@base"</code> keywords.</li>
+        </ul>
+      </section>
+      <section id="rel-n3-sparql">
+        <h3>SPARQL</h3>
+        <p>The <abbr title="SPARQL Protocol and RDF Query Language">SPARQL</abbr> 1.1 Query Language (SPARQL) [[SPARQL11-QUERY]] uses a Turtle-style [[turtle]] syntax for its <a data-cite="sparql11-query#rTriplesBlock">TriplesBlock production</a>. Differences between Turtle and SPARQL are elaborated in the <a data-cite="turtle#sec-diff-sparql">Turtle specification</a>.</p>
+        <p>Below, we indicate some important differences between this production and N3:</p>
+        <ul>
+          <li>
+            Like N3, SPARQL permits literals as the subject of RDF triples. But, in contrast to N3, it does not allow literals as the predicate of RDF triples. Similarly, N3 allows for blank node property lists and collections in any position, whereas SPARQL only allows them in the subject or object position.
+          </li>
+          <li>
+            Like N3, SPARQL permits variables in any part of the triple. But, in contrast to N3, SPARQL allows writing variables as both <code>?name</code> and <code>$name</code>, whereas N3 only allows <code>?name</code>.
+          </li>
+          <li>
+            N3 allows <a href="#iris">prefix and base directives</a> anywhere outside of a triple. In SPARQL, they are only allowed in the <a data-cite="sparql11-query#rPrologue">Prologue</a> (i.e., at the start of the SPARQL query). However, in general, we also recommend listing prolog and base directives at the start of N3 documents.
+          </li>
+          <li>
+            In N3, most keywords (including <code>@prefix</code> and <code>@base</code> directives) are case sensitive, but most keywords in SPARQL are case-insensitive (aside from <code>a</code>). An exception in N3 are the <code>PREFIX</code> and <code>BASE</code> directives, which are derived from SPARQL and are case insensitive in N3 as well.
+          </li>
+          <li>
+            The <a href="#paths">N3 path syntax</a> resembles the <a data-cite="sparql11-query#propertypaths">SPARQL 1.1 Property Path</a> syntax, but there are important differences: 
+            <ul>
+              <li>
+                It is assumed that the <b>path starts from a resource (<i>IR</i>) instead of a property (<i>IP</i>)</b>. Hence, they are meant to be used in the subject and object positions, rather than the predicate position as is the case for SPARQL 1.1 property paths. This has important repercussions on how <a href="#pathres">paths are resolved</a>. Note that paths are unrelated to the inverted notation <code>^</code> for predicates (see the <a href="#grammar-production-predicate">predicate</a> production)
+              </li>
+              <li>
+                Compared to SPARQL, N3 only supports the <i>SequencePath</i> and <i>InversePath</i> expressions, but with syntactic differences: the '<code>!</code>' symbol is used to separate path items, whereas the '<code>^</code>' symbol is used to indicate an inverse predicate.
+              </li>
+            </ul>
+        </ul>
+        <p>For more information, see the <a data-cite="sparql11-query#sparqlGrammar">SPARQL Grammar</a> section of [[[SPARQL11-QUERY]]].</p>
+      </section>
+      <section id="rel-n3-trig">
+        <h3>TriG</h3>
+        <p>[[[TRIG]]] is itself a superset of the Turtle syntax and includes a compact way to write RDF datasets, i.e., sets of named graphs. In particular, TriG allows the specification of so-called graph statements, which are a pair of an IRI or blank node label and a group of triple statements surrounded by "<code>{</code>" and "<code>}</code>".</p>
+        <p>For instance:</p>
+        <pre class="example nohighlight">
     # This document contains a default graph and two named graphs.
     @prefix rdf: &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#&gt; .
     @prefix dc: &lt;http://purl.org/dc/terms/&gt; .
@@ -705,10 +707,11 @@ _:dominik foaf:knows _:doerthe .
     _:b foaf:mbox &lt;mailto:alice@work.example.org&gt; .
     }	
     </pre>
-      <p>N3 is not directly compatible with TriG as it does not support this graph statement notation. Nevertheless, since N3 supports quoted graphs (i.e., cited formulas) as part of regular N3 statements, authors can utilize the N3 Named Graphs extension [<b>X</b>] for associating names or identifiers with cited formulas. Although applications could easily introduce their own custom predicates for this purpose, we strongly recommend the use of this extension for interoperability purposes.</p>
-      <p>The N3 Named Graphs extension [<b>X</b>] defines a set of built-ins (used as predicates) to associate names or identifiers with cited formulas, which then become "named graphs". Moreover, each predicate has a well-defined semantics on how the named graph should be interpreted: as quoted graphs (the default N3 interpretation), a partitioning of triples within a dataset context, sets of triples with their own isolated contexts, or specifying relations between local and online graphs.</p>
+        <p>N3 is not directly compatible with TriG as it does not support this graph statement notation. Nevertheless, since N3 supports quoted graphs (i.e., cited formulas) as part of regular N3 statements, authors can utilize the N3 Named Graphs extension [<b>X</b>] for associating names or identifiers with cited formulas. Although applications could easily introduce their own custom predicates for this purpose, we strongly recommend the use of this extension for interoperability purposes.</p>
+        <p>The N3 Named Graphs extension [<b>X</b>] defines a set of built-ins (used as predicates) to associate names or identifiers with cited formulas, which then become "named graphs". Moreover, each predicate has a well-defined semantics on how the named graph should be interpreted: as quoted graphs (the default N3 interpretation), a partitioning of triples within a dataset context, sets of triples with their own isolated contexts, or specifying relations between local and online graphs.</p>
+      </section>
     </section>
-    <section id='datamodeling'>
+    <section id='datamodeling' class=informative>
       <h3>Data Modeling</h3>
       <p>In this section, we present patterns to solve often-occurring data modeling problems in N3.</p>
       <section id="naryrel">
@@ -819,9 +822,9 @@ _:dominik foaf:knows _:doerthe .
         <dd>W3C</dd>
       </dl>
     </section>
-    <section id='aknowledgements' class=appendix>
+    <section id='aknowledgements' class="appendix informative">
       <h2>Acknowledgements</h2>
-      <p>Bla...</p>
+      <p>The editors acknowledge valuable contributions from...</p>
     </section>
   </body>
 </html>
