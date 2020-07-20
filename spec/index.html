@@ -727,12 +727,11 @@ _:dominik foaf:knows _:doerthe .
           <p>For instance, say we want to describe the <em>Purchase</em> relation between a buyer called "John", a purchased book called "Lenny the Lion", the amount paid for the book, and the seller:</p>
           <pre id="nary-book-relation" class="example nohighlight">
     @prefix ex: &lt;http://example.org/#&gt; .
-    ex:Purchase_1
-    a       ex:Purchase ;
-    ex:hasBuyer ex:John ;
-    ex:hasObject ex:Lenny_The_Lion ;
-    ex:hasAmount 15 ;
-    ex:hasSeller &lt;http://books.example.com&gt; .
+    ex:Purchase_1 a ex:Purchase ;
+                  ex:hasBuyer ex:John ;
+                  ex:hasObject ex:Lenny_The_Lion ;
+                  ex:hasAmount 15 ;
+                  ex:hasSeller &lt;http://books.example.com&gt; .
     </pre>
           <p class="note">Either you could mint a new IRI for representing the n-ary relation, or simply use a <a href="#bnodes">blank node</a>. E.g., in case other parties may want to refer to the n-ary relation from outside the N3 graph, one could choose to mint a new IRI; else, it will likely be more convenient to use a <a href="#bnodeprplist">blank node property list</a>.</p>
           <p>In other cases, things are more naturally described as <em>properties of relations</em>, rather than n-ary relations &mdash; for instance, the provenance of a piece of information, the trend of someone's body temperature and when the temperature was taken. Nevertheless, these can be represented in the same way as n-ary relation participants.</p>
@@ -755,14 +754,13 @@ _:dominik foaf:knows _:doerthe .
           <pre class="example nohighlight">
     @prefix xsd: &lt;http://www.w3.org/2001/XMLSchema#&gt; .
     @base &lt;http://example.org/#&gt; .
-    :Christine
-    a       :Person ;
-    :hasTemperature _:Temperature_Observation_1 .
-    _:Temperature_Observation_1
-    :temperatureTrend :RISING ;
-    :temperatureValue 40 ;
-    :temperatureDescription :ELEVATED ;
-    :temperatureTime "2020-07-12T09:01:33"^^xsd:dateTime .
+    
+    :Christine a :Person ;
+               :hasTemperature _:to1 .
+    _:to1 :temperatureTrend :RISING ;
+          :temperatureValue 40 ;
+          :temperatureDescription :ELEVATED ;
+          :temperatureTime "2020-07-12T09:01:33"^^xsd:dateTime .
     </pre>
           <p>This is possible since we know that the relation resource (e.g., <code>Temperature_Observation_1</code>) represents the n-ary relation. Hence, any descriptive properties of the relation, in addition to participants in the relation, can simply be attached to the entity.</p>
           <p class="note">In this example, we made a statement with one of the participants (<code>:Christine</code>) as subject, and the relation resource (e.g., <code>_:Temperature_Observation_1</code>) as object. An alternative would have been to add <code>:Christine</code> as just another element of the n-ary relation, e.g., using a property <code>temperatureOf</code>. Our modeling choice here served to indicate that Christine is somehow the <a data-cite="swbp-n-aryRelations#useCase2">"owner" of the relationship</a>.</p>
