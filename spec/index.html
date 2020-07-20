@@ -519,20 +519,45 @@ _:dominik foaf:knows _:doerthe .
        <p>
        The set of <dfn id="dfn-triple-elements">N3 triple elements</dfn> consists of the disjoint sets of <a data-cite="RDF11-CONCEPTS#dfn-iri">IRIs</a>, 
        <a data-cite="RDF11-CONCEPTS#dfn-blank-node">blank nodes</a>, <a data-cite="RDF11-CONCEPTS#dfn-literal">literals</a>, 
-       <a href="#dfn-universals">universal variables</a>, lists, quoted graphs  and of one implication sign. The latter is a special symbol to indicate an implication. In N3-turtle syntax sign is represented using the symbol <code>=&gt;</code>.
+       <a href="#dfn-universals">universal variables</a>, lists, quoted graphs  and of one implication sign. The latter is a special symbol to indicate an implication. 
+       In N3-turtle syntax sign is represented using the symbol <code>=&gt;</code>.
         </p>
         <p>
           The set of <dfn id="dfn-quantifiers">N3 quantifiers</dfn> consists of the universal quantifier and the existential quantifier. In <abbr title="Notation3">N3</abbr>-turtle 
-          syntax we denote the universal quantifier as <code>@forAll</code> and the existential quantifier as <code>@forSome</code>.
+          syntax, we denote the universal quantifier as <code>@forAll</code> and the existential quantifier as <code>@forSome</code>.
         </p>
         <p>
           The set of <dfn id="dfn-universals">universal variables</dfn> is an arbitrary set of symbols which is disjoint to all other <abbr title="Notation3">N3</abbr> triple elements. 
           In <abbr title="Notation3">N3</abbr>-turtle syntax, universal variables are represented by strings starting with a question mark <code>?</code>.
         </p>
+        <p>
+	  <dfn id="lists">Lists</dfn> are ordered sets consisting of zero or more <a href="#dfn-triple-elements">N3 triple elements</a>. 
+	  We call the list which has no elements the empty list. In N3-turtle syntax, 
+	  we indicate lists by using round brackets <code>()</code>. 
+	  The empty list in N3 is equivalent to the empty list in RDF and can thus also be represented using <a href="https://www.w3.org/TR/rdf11-mt/#rdf-interpretations">rdf:nil</a>.
+        </p>
+        <p>
+         <dfn id="quotes">Quoted graphs</dfn> are N3 formulas which are surrounded by quoting signs. 
+         In N3 turtle syntax we denote these quoting signs as curly brackets <code>{}</code>.
+        </p>
       </section>
       <section id='formulas'>
         <h3>Formulas</h3>
-        <p>Bla...</p>
+                <p>
+        An <dfn id="N3-triple">N3 triple</dfn> consists of the three components subject, predicate and object, each being an N3 triple element.
+        </p>
+        <p>
+        A <dfn id="quantified-formula">quantified N3 formula</dfn> consists of pair of a <a href="#quantification">quantification</a> 
+        and an 
+        <a href="#N3-formula">N3 formula</a>
+        f, where a <dfn id="quantification">quantification</dfn>
+        consists of a <a href="#dfn-quantifiers">quantifier</a> <code>Q</code> and an <a data-cite="RDF11-CONCEPTS#section-IRIs">IRI</a> <code>x</code>. 
+        For a quantified N3 formula <code>Qx f</code>, we call <code>x</code> the quantified element and say that <code>x</code> is quantified in <code>f</code>.
+        </p>
+        <p>
+        An <dfn id="N3-formula">N3 formula<dfn> is either an <a href="#N3-triple">N3 triple</a>, a <a href="#quantified-formula">quantified N3 formula</a> 
+        or a set of <a href="#N3-formula">N3 formulas</a>. 
+        </p>
       </section>
       <section id='cgraphs'>
         <h3>Closed graphs</h3>
