@@ -335,7 +335,7 @@
       <#01etc_swetQ31.n3>
       mf:entries
       <#extra_bad_prefix.n3>
-      <#extra_bad_prefix.n3>
+      <#extra_bad_prefix2.n3>
       <#extra_good_prefix.n3>
       <#extra_inverted_properties.n3>
       <#extra_bad_inverted_resources.n3>
@@ -3052,7 +3052,7 @@
 	rdfs:comment       "prefixes used in prefixed-names should be declared" ;
 	rdft:approval      rdft:Approved .
 	
-<#extra_bad_prefix.n3> a test:TestN3NegativeSyntax ;
+<#extra_bad_prefix2.n3> a test:TestN3NegativeSyntax ;
 	mf:action          <extra/bad_prefix2.n3> ;
 	mf:name            "bad_prefix2" ;
 	rdfs:comment       "prefix declarations should not redefine prior declarations" ;
