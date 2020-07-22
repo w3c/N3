@@ -1,21 +1,21 @@
     
-    _:li3     <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> <https://w3c.github.io/n3/tests/test#b> .
+    _:li3     <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> <https://w3c.github.io/N3/tests/test#b> .
     
     _:li3     <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> _:li2 .
     
-    _:li2     <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> <https://w3c.github.io/n3/tests/test#c> .
+    _:li2     <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> <https://w3c.github.io/N3/tests/test#c> .
     
     _:li2     <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> _:li1 .
     
-    _:li1     <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> <https://w3c.github.io/n3/tests/test#d> .
+    _:li1     <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> <https://w3c.github.io/N3/tests/test#d> .
     
     _:li1     <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> <http://www.w3.org/1999/02/22-rdf-syntax-ns#nil> .
     
-    _:li9     <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> <https://w3c.github.io/n3/tests/test#first> .
+    _:li9     <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> <https://w3c.github.io/N3/tests/test#first> .
     
     _:li9     <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> _:li8 .
     
-    _:li8     <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> <https://w3c.github.io/n3/tests/test#second> .
+    _:li8     <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> <https://w3c.github.io/N3/tests/test#second> .
     
     _:li8     <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> _:li7 .
     
@@ -23,15 +23,15 @@
     
     _:li7     <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> _:li6 .
     
-    _:li6     <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> <https://w3c.github.io/n3/tests/test#fourth> .
+    _:li6     <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> <https://w3c.github.io/N3/tests/test#fourth> .
     
     _:li6     <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> <http://www.w3.org/1999/02/22-rdf-syntax-ns#nil> .
     
-    _:li5     <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> <https://w3c.github.io/n3/tests/test#left3> .
+    _:li5     <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> <https://w3c.github.io/N3/tests/test#left3> .
     
     _:li5     <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> _:li4 .
     
-    _:li4     <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> <https://w3c.github.io/n3/tests/test#right3> .
+    _:li4     <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> <https://w3c.github.io/N3/tests/test#right3> .
     
     _:li4     <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> <http://www.w3.org/1999/02/22-rdf-syntax-ns#nil> .
     
@@ -89,29 +89,29 @@
     
     _:li22     <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> <http://www.w3.org/1999/02/22-rdf-syntax-ns#nil> .
     
-    <http://www.w3.org/1999/02/22-rdf-syntax-ns#nil>     <https://w3c.github.io/n3/tests/test#verb0> <https://w3c.github.io/n3/tests/test#object0> .
+    <http://www.w3.org/1999/02/22-rdf-syntax-ns#nil>     <https://w3c.github.io/N3/tests/test#verb0> <https://w3c.github.io/N3/tests/test#object0> .
     
-    _:li14     <https://w3c.github.io/n3/tests/test#verb1> <https://w3c.github.io/n3/tests/test#object1> .
+    _:li14     <https://w3c.github.io/N3/tests/test#verb1> <https://w3c.github.io/N3/tests/test#object1> .
     
-    _:li16     <https://w3c.github.io/n3/tests/test#verb2> <https://w3c.github.io/n3/tests/test#object2> .
+    _:li16     <https://w3c.github.io/N3/tests/test#verb2> <https://w3c.github.io/N3/tests/test#object2> .
     
-    _:li17     <https://w3c.github.io/n3/tests/lists.n3#linksEqualLists> _:li17 .
+    _:li17     <https://w3c.github.io/N3/tests/lists.n3#linksEqualLists> _:li17 .
     
-    <https://w3c.github.io/n3/tests/test#emptyList>     <http://www.w3.org/2002/07/owl#sameAs> <http://www.w3.org/1999/02/22-rdf-syntax-ns#nil> .
+    <https://w3c.github.io/N3/tests/test#emptyList>     <http://www.w3.org/2002/07/owl#sameAs> <http://www.w3.org/1999/02/22-rdf-syntax-ns#nil> .
     
-    <https://w3c.github.io/n3/tests/test#listOf2Empties>     <http://www.w3.org/2002/07/owl#sameAs> _:li11 .
+    <https://w3c.github.io/N3/tests/test#listOf2Empties>     <http://www.w3.org/2002/07/owl#sameAs> _:li11 .
     
-    <https://w3c.github.io/n3/tests/test#nested>     <http://www.w3.org/2002/07/owl#sameAs> _:li9 .
+    <https://w3c.github.io/N3/tests/test#nested>     <http://www.w3.org/2002/07/owl#sameAs> _:li9 .
     
-    <https://w3c.github.io/n3/tests/test#threeItems>     <http://www.w3.org/2002/07/owl#sameAs> _:li3 .
+    <https://w3c.github.io/N3/tests/test#threeItems>     <http://www.w3.org/2002/07/owl#sameAs> _:li3 .
     
-    <https://w3c.github.io/n3/tests/test#twoAnons>     <http://www.w3.org/2002/07/owl#sameAs> _:li13 .
+    <https://w3c.github.io/N3/tests/test#twoAnons>     <http://www.w3.org/2002/07/owl#sameAs> _:li13 .
     
-    <https://w3c.github.io/n3/tests/test#twoFormulae>     <http://www.w3.org/2002/07/owl#sameAs> _:li23 .
+    <https://w3c.github.io/N3/tests/test#twoFormulae>     <http://www.w3.org/2002/07/owl#sameAs> _:li23 .
     
-    _:L17C14     <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <https://w3c.github.io/n3/tests/test#mother> .
+    _:L17C14     <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <https://w3c.github.io/N3/tests/test#mother> .
     
-    _:L17C25     <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <https://w3c.github.io/n3/tests/test#father> .
+    _:L17C25     <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <https://w3c.github.io/N3/tests/test#father> .
     
     _:g9     <http://www.w3.org/2004/06/rei#existentials> _:g28 .
     
@@ -125,11 +125,11 @@
     
     _:g12     <http://www.w3.org/2004/06/rei#subject> _:g13 .
     
-    _:g13     <http://www.w3.org/2004/06/rei#uri> "https://w3c.github.io/n3/tests/test#a" .
+    _:g13     <http://www.w3.org/2004/06/rei#uri> "https://w3c.github.io/N3/tests/test#a" .
     
     _:g14     <http://www.w3.org/2004/06/rei#uri> "http://www.w3.org/1999/02/22-rdf-syntax-ns#type" .
     
-    _:g15     <http://www.w3.org/2004/06/rei#uri> "https://w3c.github.io/n3/tests/test#mother" .
+    _:g15     <http://www.w3.org/2004/06/rei#uri> "https://w3c.github.io/N3/tests/test#mother" .
     
     _:g17     <http://www.w3.org/2004/06/rei#existentials> _:g28 .
     
@@ -143,9 +143,9 @@
     
     _:g20     <http://www.w3.org/2004/06/rei#subject> _:g21 .
     
-    _:g21     <http://www.w3.org/2004/06/rei#uri> "https://w3c.github.io/n3/tests/test#b" .
+    _:g21     <http://www.w3.org/2004/06/rei#uri> "https://w3c.github.io/N3/tests/test#b" .
     
     _:g22     <http://www.w3.org/2004/06/rei#uri> "http://www.w3.org/1999/02/22-rdf-syntax-ns#type" .
     
-    _:g23     <http://www.w3.org/2004/06/rei#uri> "https://w3c.github.io/n3/tests/test#father" .
+    _:g23     <http://www.w3.org/2004/06/rei#uri> "https://w3c.github.io/N3/tests/test#father" .
     

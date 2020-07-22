@@ -17,11 +17,11 @@
     
     _:li3     <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> <http://www.w3.org/1999/02/22-rdf-syntax-ns#nil> .
     
-    <https://w3c.github.io/n3/tests/contexts.n3#assumption>     <http://www.w3.org/2002/07/owl#sameAs> _:g8 .
+    <https://w3c.github.io/N3/tests/contexts.n3#assumption>     <http://www.w3.org/2002/07/owl#sameAs> _:g8 .
     
-    <https://w3c.github.io/n3/tests/contexts.n3#conclusion>     <http://www.w3.org/2002/07/owl#sameAs> _:g20 .
+    <https://w3c.github.io/N3/tests/contexts.n3#conclusion>     <http://www.w3.org/2002/07/owl#sameAs> _:g20 .
     
-    <https://w3c.github.io/n3/tests/contexts.n3#trivialTruth>     <http://www.w3.org/2002/07/owl#sameAs> _:g28 .
+    <https://w3c.github.io/N3/tests/contexts.n3#trivialTruth>     <http://www.w3.org/2002/07/owl#sameAs> _:g28 .
     
     _:g8     <http://www.w3.org/2004/06/rei#existentials> _:g35 .
     
@@ -35,11 +35,11 @@
     
     _:g11     <http://www.w3.org/2004/06/rei#subject> _:g12 .
     
-    _:g12     <http://www.w3.org/2004/06/rei#uri> "https://w3c.github.io/n3/tests/contexts.n3#fred" .
+    _:g12     <http://www.w3.org/2004/06/rei#uri> "https://w3c.github.io/N3/tests/contexts.n3#fred" .
     
     _:g13     <http://www.w3.org/2004/06/rei#uri> "http://www.example.org/utilities#knows" .
     
-    _:g14     <http://www.w3.org/2004/06/rei#uri> "https://w3c.github.io/n3/tests/contexts.n3#john" .
+    _:g14     <http://www.w3.org/2004/06/rei#uri> "https://w3c.github.io/N3/tests/contexts.n3#john" .
     
     _:g15     <http://www.w3.org/2004/06/rei#object> _:g18 .
     
@@ -47,11 +47,11 @@
     
     _:g15     <http://www.w3.org/2004/06/rei#subject> _:g16 .
     
-    _:g16     <http://www.w3.org/2004/06/rei#uri> "https://w3c.github.io/n3/tests/contexts.n3#john" .
+    _:g16     <http://www.w3.org/2004/06/rei#uri> "https://w3c.github.io/N3/tests/contexts.n3#john" .
     
     _:g17     <http://www.w3.org/2004/06/rei#uri> "http://www.example.org/utilities#knows" .
     
-    _:g18     <http://www.w3.org/2004/06/rei#uri> "https://w3c.github.io/n3/tests/contexts.n3#mary" .
+    _:g18     <http://www.w3.org/2004/06/rei#uri> "https://w3c.github.io/N3/tests/contexts.n3#mary" .
     
     _:g20     <http://www.w3.org/2004/06/rei#existentials> _:g35 .
     
@@ -65,11 +65,11 @@
     
     _:g23     <http://www.w3.org/2004/06/rei#subject> _:g24 .
     
-    _:g24     <http://www.w3.org/2004/06/rei#uri> "https://w3c.github.io/n3/tests/contexts.n3#fred" .
+    _:g24     <http://www.w3.org/2004/06/rei#uri> "https://w3c.github.io/N3/tests/contexts.n3#fred" .
     
     _:g25     <http://www.w3.org/2004/06/rei#uri> "http://www.example.org/utilities#knows" .
     
-    _:g26     <http://www.w3.org/2004/06/rei#uri> "https://w3c.github.io/n3/tests/contexts.n3#mary" .
+    _:g26     <http://www.w3.org/2004/06/rei#uri> "https://w3c.github.io/N3/tests/contexts.n3#mary" .
     
     _:g28     <http://www.w3.org/2004/06/rei#existentials> _:g35 .
     
