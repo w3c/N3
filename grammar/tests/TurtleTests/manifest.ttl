@@ -1645,7 +1645,7 @@
 #   rdfs:comment "Bad IRI : space (negative test)" ;
 #   rdft:approval rdft:Approved ;
 #   mf:action    <turtle-syntax-bad-uri-01.ttl> ;
-   .
+#   .
 
 <#turtle-syntax-bad-uri-02> a rdft:TestTurtleNegativeSyntax ;
    mf:name    "turtle-syntax-bad-uri-02" ;
@@ -1681,14 +1681,15 @@
 #   rdfs:comment "No prefix (negative test)" ;
 #   rdft:approval rdft:Approved ;
 #   mf:action    <turtle-syntax-bad-prefix-01.ttl> ;
-   .
+#   .
+
 # N3 allows ':' as a synonym for base <#>.
 #<#turtle-syntax-bad-prefix-02> a rdft:TestTurtleNegativeSyntax ;
 #   mf:name    "turtle-syntax-bad-prefix-02" ;
 #   rdfs:comment "No prefix (2) (negative test)" ;
 #   rdft:approval rdft:Approved ;
 #   mf:action    <turtle-syntax-bad-prefix-02.ttl> ;
-   .
+#   .
 
 <#turtle-syntax-bad-prefix-03> a rdft:TestTurtleNegativeSyntax ;
    mf:name    "turtle-syntax-bad-prefix-03" ;
@@ -1744,7 +1745,7 @@
 #   rdfs:comment "Turtle is not N3 (negative test)" ;
 #   rdft:approval rdft:Approved ;
 #   mf:action    <turtle-syntax-bad-struct-02.ttl> ;
-   .
+#   .
 
 <#turtle-syntax-bad-struct-03> a rdft:TestTurtleNegativeSyntax ;
    mf:name    "turtle-syntax-bad-struct-03" ;
