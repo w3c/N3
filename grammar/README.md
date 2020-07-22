@@ -34,8 +34,9 @@ See below for instructions on how to run the tests.
 Currently, the test harnass supports:
 - The new N3 (and Turtle) grammar (see `*.g4` files)
 - The [cwm](https://www.w3.org/2000/10/swap/doc/cwm.html) system.
+- The [eye](https://www.mdpi.com/journal/ijerph/special_issues/Smart_Healthcare_Services) system.
 
-It should be relatively straightforward to support additional systems, such as [Eye](http://eulersharp.sourceforge.net/).
+It should be relatively straightforward to support additional systems, when they are developed.
 
 The tool will utilize a `manifest.ttl` file when found; else, it will treat all given files as positive/negative tests. It will also print all output to file `./test_out.txt`, in addition to showing it on the cmd line.
 
@@ -63,7 +64,10 @@ For instance:
 **N3**: tests the `a.n3` file as a positive N3 test case and prints its AST.
 
 * `java -jar n3TestCwm.jar C:/cwm/cwm-1.2.1/build/scripts-2.7/cwm ../tests/N3Tests`  
-**Cwm**: tests files inside the `N3Tests` folder, as listed in its `manifest.ttl`, as cwm test cases.  
+**Cwm**: tests files inside the `N3Tests` folder, as listed in its `manifest.ttl`, as cwm test cases.
+
+* `java -jar n3TestEye.jar C:/eye/eye.cmd ../tests/N3Tests`  
+**Eye**: tests files inside the `N3Tests` folder, as listed in its `manifest.ttl`, as eye test cases.
 
 ### Turtle grammar
 
