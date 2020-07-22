@@ -204,13 +204,13 @@
     <#turtle-eval-lists-03>
     <#turtle-eval-lists-04>
     <#turtle-eval-lists-05>
-    <#turtle-syntax-bad-uri-01>
+    #<#turtle-syntax-bad-uri-01>
     <#turtle-syntax-bad-uri-02>
     <#turtle-syntax-bad-uri-03>
     <#turtle-syntax-bad-uri-04>
     <#turtle-syntax-bad-uri-05>
-    <#turtle-syntax-bad-prefix-01>
-    <#turtle-syntax-bad-prefix-02>
+    #<#turtle-syntax-bad-prefix-01>
+    #<#turtle-syntax-bad-prefix-02>
     <#turtle-syntax-bad-prefix-03>
     <#turtle-syntax-bad-prefix-04>
     <#turtle-syntax-bad-prefix-05>
@@ -218,40 +218,40 @@
     <#turtle-syntax-bad-base-02>
     <#turtle-syntax-bad-base-03>
     <#turtle-syntax-bad-struct-01>
-    <#turtle-syntax-bad-struct-02>
+    #<#turtle-syntax-bad-struct-02>
     <#turtle-syntax-bad-struct-03>
-    <#turtle-syntax-bad-struct-04>
+    #<#turtle-syntax-bad-struct-04>
     <#turtle-syntax-bad-struct-05>
-    <#turtle-syntax-bad-struct-06>
-    <#turtle-syntax-bad-struct-07>
+    #<#turtle-syntax-bad-struct-06>
+    #<#turtle-syntax-bad-struct-07>
     <#turtle-syntax-bad-kw-01>
     <#turtle-syntax-bad-kw-02>
     <#turtle-syntax-bad-kw-03>
-    <#turtle-syntax-bad-kw-04>
+    #<#turtle-syntax-bad-kw-04>
     <#turtle-syntax-bad-kw-05>
-    <#turtle-syntax-bad-n3-extras-01>
-    <#turtle-syntax-bad-n3-extras-02>
-    <#turtle-syntax-bad-n3-extras-03>
-    <#turtle-syntax-bad-n3-extras-04>
-    <#turtle-syntax-bad-n3-extras-05>
-    <#turtle-syntax-bad-n3-extras-06>
+    #<#turtle-syntax-bad-n3-extras-01>
+    #<#turtle-syntax-bad-n3-extras-02>
+    #<#turtle-syntax-bad-n3-extras-03>
+    #<#turtle-syntax-bad-n3-extras-04>
+    #<#turtle-syntax-bad-n3-extras-05>
+    #<#turtle-syntax-bad-n3-extras-06>
     <#turtle-syntax-bad-n3-extras-07>
     <#turtle-syntax-bad-n3-extras-08>
-    <#turtle-syntax-bad-n3-extras-09>
-    <#turtle-syntax-bad-n3-extras-10>
-    <#turtle-syntax-bad-n3-extras-11>
-    <#turtle-syntax-bad-n3-extras-12>
-    <#turtle-syntax-bad-n3-extras-13>
+    #<#turtle-syntax-bad-n3-extras-09>
+    #<#turtle-syntax-bad-n3-extras-10>
+    #<#turtle-syntax-bad-n3-extras-11>
+    #<#turtle-syntax-bad-n3-extras-12>
+    #<#turtle-syntax-bad-n3-extras-13>
     <#turtle-syntax-bad-struct-08>
     <#turtle-syntax-bad-struct-09>
     <#turtle-syntax-bad-struct-10>
     <#turtle-syntax-bad-struct-11>
     <#turtle-syntax-bad-struct-12>
     <#turtle-syntax-bad-struct-13>
-    <#turtle-syntax-bad-struct-14>
+    #<#turtle-syntax-bad-struct-14>
     <#turtle-syntax-bad-struct-15>
-    <#turtle-syntax-bad-struct-16>
-    <#turtle-syntax-bad-struct-17>
+    #<#turtle-syntax-bad-struct-16>
+    #<#turtle-syntax-bad-struct-17>
     <#turtle-syntax-bad-lang-01>
     <#turtle-syntax-bad-esc-01>
     <#turtle-syntax-bad-esc-02>
@@ -1639,11 +1639,12 @@
    mf:result    <turtle-eval-lists-05.nt> ;
    .
 
-<#turtle-syntax-bad-uri-01> a rdft:TestTurtleNegativeSyntax ;
-   mf:name    "turtle-syntax-bad-uri-01" ;
-   rdfs:comment "Bad IRI : space (negative test)" ;
-   rdft:approval rdft:Approved ;
-   mf:action    <turtle-syntax-bad-uri-01.ttl> ;
+# N3 allows spaces in IRIs
+#<#turtle-syntax-bad-uri-01> a rdft:TestTurtleNegativeSyntax ;
+#   mf:name    "turtle-syntax-bad-uri-01" ;
+#   rdfs:comment "Bad IRI : space (negative test)" ;
+#   rdft:approval rdft:Approved ;
+#   mf:action    <turtle-syntax-bad-uri-01.ttl> ;
    .
 
 <#turtle-syntax-bad-uri-02> a rdft:TestTurtleNegativeSyntax ;
@@ -1674,18 +1675,19 @@
    mf:action    <turtle-syntax-bad-uri-05.ttl> ;
    .
 
-<#turtle-syntax-bad-prefix-01> a rdft:TestTurtleNegativeSyntax ;
-   mf:name    "turtle-syntax-bad-prefix-01" ;
-   rdfs:comment "No prefix (negative test)" ;
-   rdft:approval rdft:Approved ;
-   mf:action    <turtle-syntax-bad-prefix-01.ttl> ;
+# N3 allows ':' as a synonym for base <#>.
+#<#turtle-syntax-bad-prefix-01> a rdft:TestTurtleNegativeSyntax ;
+#   mf:name    "turtle-syntax-bad-prefix-01" ;
+#   rdfs:comment "No prefix (negative test)" ;
+#   rdft:approval rdft:Approved ;
+#   mf:action    <turtle-syntax-bad-prefix-01.ttl> ;
    .
-
-<#turtle-syntax-bad-prefix-02> a rdft:TestTurtleNegativeSyntax ;
-   mf:name    "turtle-syntax-bad-prefix-02" ;
-   rdfs:comment "No prefix (2) (negative test)" ;
-   rdft:approval rdft:Approved ;
-   mf:action    <turtle-syntax-bad-prefix-02.ttl> ;
+# N3 allows ':' as a synonym for base <#>.
+#<#turtle-syntax-bad-prefix-02> a rdft:TestTurtleNegativeSyntax ;
+#   mf:name    "turtle-syntax-bad-prefix-02" ;
+#   rdfs:comment "No prefix (2) (negative test)" ;
+#   rdft:approval rdft:Approved ;
+#   mf:action    <turtle-syntax-bad-prefix-02.ttl> ;
    .
 
 <#turtle-syntax-bad-prefix-03> a rdft:TestTurtleNegativeSyntax ;
@@ -1737,11 +1739,11 @@
    mf:action    <turtle-syntax-bad-struct-01.ttl> ;
    .
 
-<#turtle-syntax-bad-struct-02> a rdft:TestTurtleNegativeSyntax ;
-   mf:name    "turtle-syntax-bad-struct-02" ;
-   rdfs:comment "Turtle is not N3 (negative test)" ;
-   rdft:approval rdft:Approved ;
-   mf:action    <turtle-syntax-bad-struct-02.ttl> ;
+#<#turtle-syntax-bad-struct-02> a rdft:TestTurtleNegativeSyntax ;
+#   mf:name    "turtle-syntax-bad-struct-02" ;
+#   rdfs:comment "Turtle is not N3 (negative test)" ;
+#   rdft:approval rdft:Approved ;
+#   mf:action    <turtle-syntax-bad-struct-02.ttl> ;
    .
 
 <#turtle-syntax-bad-struct-03> a rdft:TestTurtleNegativeSyntax ;
@@ -1751,12 +1753,12 @@
    mf:action    <turtle-syntax-bad-struct-03.ttl> ;
    .
 
-<#turtle-syntax-bad-struct-04> a rdft:TestTurtleNegativeSyntax ;
-   mf:name    "turtle-syntax-bad-struct-04" ;
-   rdfs:comment "Turtle does not allow literals-as-subjects (negative test)" ;
-   rdft:approval rdft:Approved ;
-   mf:action    <turtle-syntax-bad-struct-04.ttl> ;
-   .
+#<#turtle-syntax-bad-struct-04> a rdft:TestTurtleNegativeSyntax ;
+#   mf:name    "turtle-syntax-bad-struct-04" ;
+#   rdfs:comment "Turtle does not allow literals-as-subjects (negative test)" ;
+#   rdft:approval rdft:Approved ;
+#   mf:action    <turtle-syntax-bad-struct-04.ttl> ;
+#   .
 
 <#turtle-syntax-bad-struct-05> a rdft:TestTurtleNegativeSyntax ;
    mf:name    "turtle-syntax-bad-struct-05" ;
@@ -1765,19 +1767,19 @@
    mf:action    <turtle-syntax-bad-struct-05.ttl> ;
    .
 
-<#turtle-syntax-bad-struct-06> a rdft:TestTurtleNegativeSyntax ;
-   mf:name    "turtle-syntax-bad-struct-06" ;
-   rdfs:comment "Turtle does not allow bnodes-as-predicates (negative test)" ;
-   rdft:approval rdft:Approved ;
-   mf:action    <turtle-syntax-bad-struct-06.ttl> ;
-   .
+#<#turtle-syntax-bad-struct-06> a rdft:TestTurtleNegativeSyntax ;
+#   mf:name    "turtle-syntax-bad-struct-06" ;
+#   rdfs:comment "Turtle does not allow bnodes-as-predicates (negative test)" ;
+#   rdft:approval rdft:Approved ;
+#   mf:action    <turtle-syntax-bad-struct-06.ttl> ;
+#   .
 
-<#turtle-syntax-bad-struct-07> a rdft:TestTurtleNegativeSyntax ;
-   mf:name    "turtle-syntax-bad-struct-07" ;
-   rdfs:comment "Turtle does not allow labeled bnodes-as-predicates (negative test)" ;
-   rdft:approval rdft:Approved ;
-   mf:action    <turtle-syntax-bad-struct-07.ttl> ;
-   .
+#<#turtle-syntax-bad-struct-07> a rdft:TestTurtleNegativeSyntax ;
+#   mf:name    "turtle-syntax-bad-struct-07" ;
+#   rdfs:comment "Turtle does not allow labeled bnodes-as-predicates (negative test)" ;
+#   rdft:approval rdft:Approved ;
+#   mf:action    <turtle-syntax-bad-struct-07.ttl> ;
+#   .
 
 <#turtle-syntax-bad-kw-01> a rdft:TestTurtleNegativeSyntax ;
    mf:name    "turtle-syntax-bad-kw-01" ;
@@ -1800,12 +1802,12 @@
    mf:action    <turtle-syntax-bad-kw-03.ttl> ;
    .
 
-<#turtle-syntax-bad-kw-04> a rdft:TestTurtleNegativeSyntax ;
-   mf:name    "turtle-syntax-bad-kw-04" ;
-   rdfs:comment "'true' cannot be used as subject (negative test)" ;
-   rdft:approval rdft:Approved ;
-   mf:action    <turtle-syntax-bad-kw-04.ttl> ;
-   .
+#<#turtle-syntax-bad-kw-04> a rdft:TestTurtleNegativeSyntax ;
+#   mf:name    "turtle-syntax-bad-kw-04" ;
+#   rdfs:comment "'true' cannot be used as subject (negative test)" ;
+#   rdft:approval rdft:Approved ;
+#   mf:action    <turtle-syntax-bad-kw-04.ttl> ;
+#   .
 
 <#turtle-syntax-bad-kw-05> a rdft:TestTurtleNegativeSyntax ;
    mf:name    "turtle-syntax-bad-kw-05" ;
@@ -1814,47 +1816,47 @@
    mf:action    <turtle-syntax-bad-kw-05.ttl> ;
    .
 
-<#turtle-syntax-bad-n3-extras-01> a rdft:TestTurtleNegativeSyntax ;
-   mf:name    "turtle-syntax-bad-n3-extras-01" ;
-   rdfs:comment "{} fomulae not in Turtle (negative test)" ;
-   rdft:approval rdft:Approved ;
-   mf:action    <turtle-syntax-bad-n3-extras-01.ttl> ;
-   .
+#<#turtle-syntax-bad-n3-extras-01> a rdft:TestTurtleNegativeSyntax ;
+#   mf:name    "turtle-syntax-bad-n3-extras-01" ;
+#   rdfs:comment "{} fomulae not in Turtle (negative test)" ;
+#   rdft:approval rdft:Approved ;
+#   mf:action    <turtle-syntax-bad-n3-extras-01.ttl> ;
+#   .
 
-<#turtle-syntax-bad-n3-extras-02> a rdft:TestTurtleNegativeSyntax ;
-   mf:name    "turtle-syntax-bad-n3-extras-02" ;
-   rdfs:comment "= is not Turtle (negative test)" ;
-   rdft:approval rdft:Approved ;
-   mf:action    <turtle-syntax-bad-n3-extras-02.ttl> ;
-   .
+#<#turtle-syntax-bad-n3-extras-02> a rdft:TestTurtleNegativeSyntax ;
+#   mf:name    "turtle-syntax-bad-n3-extras-02" ;
+#   rdfs:comment "= is not Turtle (negative test)" ;
+#   rdft:approval rdft:Approved ;
+#   mf:action    <turtle-syntax-bad-n3-extras-02.ttl> ;
+#   .
 
-<#turtle-syntax-bad-n3-extras-03> a rdft:TestTurtleNegativeSyntax ;
-   mf:name    "turtle-syntax-bad-n3-extras-03" ;
-   rdfs:comment "N3 paths not in Turtle (negative test)" ;
-   rdft:approval rdft:Approved ;
-   mf:action    <turtle-syntax-bad-n3-extras-03.ttl> ;
-   .
+#<#turtle-syntax-bad-n3-extras-03> a rdft:TestTurtleNegativeSyntax ;
+#   mf:name    "turtle-syntax-bad-n3-extras-03" ;
+#   rdfs:comment "N3 paths not in Turtle (negative test)" ;
+#   rdft:approval rdft:Approved ;
+#   mf:action    <turtle-syntax-bad-n3-extras-03.ttl> ;
+#   .
 
-<#turtle-syntax-bad-n3-extras-04> a rdft:TestTurtleNegativeSyntax ;
-   mf:name    "turtle-syntax-bad-n3-extras-04" ;
-   rdfs:comment "N3 paths not in Turtle (negative test)" ;
-   rdft:approval rdft:Approved ;
-   mf:action    <turtle-syntax-bad-n3-extras-04.ttl> ;
-   .
+#<#turtle-syntax-bad-n3-extras-04> a rdft:TestTurtleNegativeSyntax ;
+#   mf:name    "turtle-syntax-bad-n3-extras-04" ;
+#   rdfs:comment "N3 paths not in Turtle (negative test)" ;
+#   rdft:approval rdft:Approved ;
+#   mf:action    <turtle-syntax-bad-n3-extras-04.ttl> ;
+#   .
 
-<#turtle-syntax-bad-n3-extras-05> a rdft:TestTurtleNegativeSyntax ;
-   mf:name    "turtle-syntax-bad-n3-extras-05" ;
-   rdfs:comment "N3 is...of not in Turtle (negative test)" ;
-   rdft:approval rdft:Approved ;
-   mf:action    <turtle-syntax-bad-n3-extras-05.ttl> ;
-   .
+#<#turtle-syntax-bad-n3-extras-05> a rdft:TestTurtleNegativeSyntax ;
+#   mf:name    "turtle-syntax-bad-n3-extras-05" ;
+#   rdfs:comment "N3 is...of not in Turtle (negative test)" ;
+#   rdft:approval rdft:Approved ;
+#   mf:action    <turtle-syntax-bad-n3-extras-05.ttl> ;
+#   .
 
-<#turtle-syntax-bad-n3-extras-06> a rdft:TestTurtleNegativeSyntax ;
-   mf:name    "turtle-syntax-bad-n3-extras-06" ;
-   rdfs:comment "N3 paths not in Turtle (negative test)" ;
-   rdft:approval rdft:Approved ;
-   mf:action    <turtle-syntax-bad-n3-extras-06.ttl> ;
-   .
+#<#turtle-syntax-bad-n3-extras-06> a rdft:TestTurtleNegativeSyntax ;
+#   mf:name    "turtle-syntax-bad-n3-extras-06" ;
+#   rdfs:comment "N3 paths not in Turtle (negative test)" ;
+#   rdft:approval rdft:Approved ;
+#   mf:action    <turtle-syntax-bad-n3-extras-06.ttl> ;
+#   .
 
 <#turtle-syntax-bad-n3-extras-07> a rdft:TestTurtleNegativeSyntax ;
    mf:name    "turtle-syntax-bad-n3-extras-07" ;
@@ -1870,33 +1872,33 @@
    mf:action    <turtle-syntax-bad-n3-extras-08.ttl> ;
    .
 
-<#turtle-syntax-bad-n3-extras-09> a rdft:TestTurtleNegativeSyntax ;
-   mf:name    "turtle-syntax-bad-n3-extras-09" ;
-   rdfs:comment "=> is not Turtle (negative test)" ;
-   rdft:approval rdft:Approved ;
-   mf:action    <turtle-syntax-bad-n3-extras-09.ttl> ;
-   .
+#<#turtle-syntax-bad-n3-extras-09> a rdft:TestTurtleNegativeSyntax ;
+#   mf:name    "turtle-syntax-bad-n3-extras-09" ;
+#   rdfs:comment "=> is not Turtle (negative test)" ;
+#   rdft:approval rdft:Approved ;
+#   mf:action    <turtle-syntax-bad-n3-extras-09.ttl> ;
+#   .
 
-<#turtle-syntax-bad-n3-extras-10> a rdft:TestTurtleNegativeSyntax ;
-   mf:name    "turtle-syntax-bad-n3-extras-10" ;
-   rdfs:comment "<= is not Turtle (negative test)" ;
-   rdft:approval rdft:Approved ;
-   mf:action    <turtle-syntax-bad-n3-extras-10.ttl> ;
-   .
+#<#turtle-syntax-bad-n3-extras-10> a rdft:TestTurtleNegativeSyntax ;
+#   mf:name    "turtle-syntax-bad-n3-extras-10" ;
+#   rdfs:comment "<= is not Turtle (negative test)" ;
+#   rdft:approval rdft:Approved ;
+#   mf:action    <turtle-syntax-bad-n3-extras-10.ttl> ;
+#   .
 
-<#turtle-syntax-bad-n3-extras-11> a rdft:TestTurtleNegativeSyntax ;
-   mf:name    "turtle-syntax-bad-n3-extras-11" ;
-   rdfs:comment "@forSome is not Turtle (negative test)" ;
-   rdft:approval rdft:Approved ;
-   mf:action    <turtle-syntax-bad-n3-extras-11.ttl> ;
-   .
+#<#turtle-syntax-bad-n3-extras-11> a rdft:TestTurtleNegativeSyntax ;
+#   mf:name    "turtle-syntax-bad-n3-extras-11" ;
+#   rdfs:comment "@forSome is not Turtle (negative test)" ;
+#   rdft:approval rdft:Approved ;
+#   mf:action    <turtle-syntax-bad-n3-extras-11.ttl> ;
+#   .
 
-<#turtle-syntax-bad-n3-extras-12> a rdft:TestTurtleNegativeSyntax ;
-   mf:name    "turtle-syntax-bad-n3-extras-12" ;
-   rdfs:comment "@forAll is not Turtle (negative test)" ;
-   rdft:approval rdft:Approved ;
-   mf:action    <turtle-syntax-bad-n3-extras-12.ttl> ;
-   .
+#<#turtle-syntax-bad-n3-extras-12> a rdft:TestTurtleNegativeSyntax ;
+#   mf:name    "turtle-syntax-bad-n3-extras-12" ;
+#   rdfs:comment "@forAll is not Turtle (negative test)" ;
+#   rdft:approval rdft:Approved ;
+#   mf:action    <turtle-syntax-bad-n3-extras-12.ttl> ;
+#   .
 
 <#turtle-syntax-bad-n3-extras-13> a rdft:TestTurtleNegativeSyntax ;
    mf:name    "turtle-syntax-bad-n3-extras-13" ;
@@ -1947,12 +1949,12 @@
    mf:action    <turtle-syntax-bad-struct-13.ttl> ;
    .
 
-<#turtle-syntax-bad-struct-14> a rdft:TestTurtleNegativeSyntax ;
-   mf:name    "turtle-syntax-bad-struct-14" ;
-   rdfs:comment "literal as subject (negative test)" ;
-   rdft:approval rdft:Approved ;
-   mf:action    <turtle-syntax-bad-struct-14.ttl> ;
-   .
+#<#turtle-syntax-bad-struct-14> a rdft:TestTurtleNegativeSyntax ;
+#   mf:name    "turtle-syntax-bad-struct-14" ;
+#   rdfs:comment "literal as subject (negative test)" ;
+#   rdft:approval rdft:Approved ;
+#   mf:action    <turtle-syntax-bad-struct-14.ttl> ;
+#   .
 
 <#turtle-syntax-bad-struct-15> a rdft:TestTurtleNegativeSyntax ;
    mf:name    "turtle-syntax-bad-struct-15" ;
@@ -1961,19 +1963,19 @@
    mf:action    <turtle-syntax-bad-struct-15.ttl> ;
    .
 
-<#turtle-syntax-bad-struct-16> a rdft:TestTurtleNegativeSyntax ;
-   mf:name    "turtle-syntax-bad-struct-16" ;
-   rdfs:comment "bnode as predicate (negative test)" ;
-   rdft:approval rdft:Approved ;
-   mf:action    <turtle-syntax-bad-struct-16.ttl> ;
-   .
+#<#turtle-syntax-bad-struct-16> a rdft:TestTurtleNegativeSyntax ;
+#   mf:name    "turtle-syntax-bad-struct-16" ;
+#   rdfs:comment "bnode as predicate (negative test)" ;
+#   rdft:approval rdft:Approved ;
+#   mf:action    <turtle-syntax-bad-struct-16.ttl> ;
+#   .
 
-<#turtle-syntax-bad-struct-17> a rdft:TestTurtleNegativeSyntax ;
-   mf:name    "turtle-syntax-bad-struct-17" ;
-   rdfs:comment "labeled bnode as predicate (negative test)" ;
-   rdft:approval rdft:Approved ;
-   mf:action    <turtle-syntax-bad-struct-17.ttl> ;
-   .
+#<#turtle-syntax-bad-struct-17> a rdft:TestTurtleNegativeSyntax ;
+#   mf:name    "turtle-syntax-bad-struct-17" ;
+#   rdfs:comment "labeled bnode as predicate (negative test)" ;
+#   rdft:approval rdft:Approved ;
+#   mf:action    <turtle-syntax-bad-struct-17.ttl> ;
+#   .
 
 <#turtle-syntax-bad-lang-01> a rdft:TestTurtleNegativeSyntax ;
    mf:name    "turtle-syntax-bad-lang-01" ;
