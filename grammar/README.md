@@ -109,19 +109,3 @@ Then, you can package all of the code into a single JS file so it can be include
 ## Contributing
 
 If you would like to contribute a new test or a fix to an existing test, please file an [issue](https://github.com/w3c/N3/issues) and/or create a [pull request](https://github.com/w3c/N3/pulls).
-
-## TODOs
-
-The following are grammar updates that are not yet decided (it's just to try them out) so they may turn out not to be needed:
-
--	Update the N3 grammar with “single inverse property” notation (extension of path sytax – see issue on GitHub)
-
--	Update the N3 path syntax to be fully in line with SPARQL property paths ; including changing the ‘!’ symbol to ‘/’
-
-Also:
-
--	Create an N3 visitor class that issues errors when:
-
-    - Non-prefixed qnames are listed and no base directive is given (turtle-syntax-bad-prefix-01.ttl)
-
-    - Prefixed qnames are listed without corresponding prefix declaration (turtle-syntax-bad-prefix-02.ttl)
