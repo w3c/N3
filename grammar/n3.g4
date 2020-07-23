@@ -88,11 +88,8 @@ objectList
 verb 
 	: predicate 
 	| 'a' 
-	| '@a' 
 	| 'has' expression 
-	| '@has' expression
 	| 'is' expression 'of'
-	| '@is' expression '@of' 
 	| '=' 
 	| '<=' 
 	| '=>'
@@ -165,8 +162,6 @@ rdfLiteral
 BooleanLiteral 
 	: 'true' 
 	| 'false'
-	| '@true'
-	| '@false'
 	;
 	
 String 

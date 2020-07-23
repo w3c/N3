@@ -337,7 +337,6 @@
       <#extra_bad_prefix.n3>
       <#extra_bad_prefix2.n3>
       <#extra_good_prefix.n3>
-      <#extra_inverted_properties.n3>
       <#extra_bad_inverted_resources.n3>
       <#04test_henry.n3>
       <#07test_rsP.n3>
@@ -1247,7 +1246,7 @@
       <#01etc_gps-example1.n3>
 	  <#new_syntax/caret_neg.n3>
 	  <#new_syntax/caret_pos.n3>
-	  <#new_syntax/inv_pred.n3>
+	  <#new_syntax/inverted_properties.n3>
     ) .
 
 <#01etc_year.n3>  a    rdft:TestN3PositiveSyntax ;
@@ -3065,12 +3064,6 @@
 	mf:action          <extra/good_prefix.n3> ;
 	mf:name            "good_prefix" ;
 	rdft:approval      rdft:Approved .
-
-<#extra_inverted_properties.n3> a rdft:TestN3PositiveSyntax ;
-        mf:action      <extra/inverted_properties.n3> ;
-        mf:name        "inverted_properties" ;
-        rdfs:comment   "inverted properties (at the start of a path) should be allowed" ;
-        rdft:approval  rdft:Approved .
 
 <#extra_bad_inverted_resources.n3> a rdft:TestN3NegativeSyntax ;
         mf:action      <extra/bad_inverted_resources.n3> ;
@@ -8222,8 +8215,8 @@
         mf:name        "caret_pos" ;
         rdft:approval  rdft:Approved .
 
-<#new_syntax/inv_pred.n3>
+<#new_syntax/inverted_properties.n3>
 		a              rdft:TestN3PositiveSyntax ;
-        mf:action      <new_syntax/inv_pred.n3> ;
-        mf:name        "inv_pred" ;
+        mf:action      <new_syntax/inverted_properties.n3> ;
+        mf:name        "inverted_properties" ;
         rdft:approval  rdft:Approved .
