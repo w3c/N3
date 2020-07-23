@@ -74,7 +74,7 @@ base
 	;
 
 triples 
-	: (subject | blankNodePropertyList) predicateObjectList?
+	: subject predicateObjectList?
 	;
 	
 predicateObjectList 
@@ -103,7 +103,7 @@ subject
 	;
 	
 predicate
-	: (expression | '^' expression)
+	: (expression | '<-' expression)
 /* allow first predicate in a path to also be inverted */
 	;
 	
@@ -136,7 +136,7 @@ literal
 	;
 	
 blankNodePropertyList 
-	: '[' predicateObjectList? ']'
+	: '[' predicateObjectList ']'
 	;
 		
 collection 
@@ -213,9 +213,9 @@ universal
 	;
 	
 IRIREF 
-//	: '<' (~[\u0000-\u0020<>"{}|^`\\] | UCHAR)* '>' /* #x00=NULL #01-#x1F=control codes #x20=space */
-/* currently allows non-encoded spaces */
-	: '<' (~[\u0000-\u001F<>"{}|^`\\] | UCHAR)* '>'
+	: '<' (~[\u0000-\u0020<>"{}|^`\\] | UCHAR)* '>' /* #x00=NULL #01-#x1F=control codes #x20=space */
+/* production below allows non-encoded spaces */
+// 	: '<' (~[\u0000-\u001F<>"{}|^`\\] | UCHAR)* '>'
 	;
 	
 PNAME_NS 
@@ -285,8 +285,8 @@ WS
 	: [\u0020\u0009\u000D\u000A] -> skip /* #x20=space #x9=character tabulation #xD=carriage return #xA=new line */
 	;
 	
-ANON 
-	: '[' WS* ']'
+ ANON 
+ 	: '[' WS* ']'
 	;
 
 QuickVarName

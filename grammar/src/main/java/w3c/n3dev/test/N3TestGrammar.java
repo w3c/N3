@@ -17,8 +17,8 @@ public class N3TestGrammar extends N3Test {
 	private static List<String> suppGrammars = Arrays.asList("turtle", "n3");
 
 //	public static void main(String[] args) throws Exception {
-//		System.out.println(new N3TestGrammar("n3", false)
-//				.negativeTest(new File("tests/N3Tests/cwm_syntax/qname-as-prefix-in-decl.n3")));
+//		System.out.println(new N3TestGrammar("n3", true)
+//				.positiveTest(new File("tests/N3Tests/cwm_reason/danc.n3")));
 //	}
 
 	public static void main(String[] args) throws Exception {

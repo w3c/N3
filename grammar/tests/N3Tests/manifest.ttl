@@ -1245,6 +1245,9 @@
       <#cwm_reason_t4-ref.n3>
       <#04test_query-survey-result-12.n3>
       <#01etc_gps-example1.n3>
+	  <#new_syntax/caret_neg.n3>
+	  <#new_syntax/caret_pos.n3>
+	  <#new_syntax/inv_pred.n3>
     ) .
 
 <#01etc_year.n3>  a    rdft:TestN3PositiveSyntax ;
@@ -1468,7 +1471,7 @@
         rdft:approval  rdft:Approved .
 
 <#cwm_syntax_space-in-uri.n3>
-        a              rdft:TestN3PositiveSyntax ;
+        a              rdft:TestN3NegativeSyntax ;
         mf:action      <cwm_syntax/space-in-uri.n3> ;
         mf:name        "space-in-uri" ;
         rdft:approval  rdft:Approved .
@@ -8205,4 +8208,22 @@
         a              rdft:TestN3PositiveSyntax ;
         mf:action      <01etc/gps-example1.n3> ;
         mf:name        "gps-example1" ;
+        rdft:approval  rdft:Approved .
+
+<#new_syntax/caret_neg.n3>
+		a              rdft:TestN3NegativeSyntax ;
+        mf:action      <new_syntax/caret_neg.n3> ;
+        mf:name        "caret_neg" ;
+        rdft:approval  rdft:Approved .
+
+<#new_syntax/caret_pos.n3>
+		a              rdft:TestN3PositiveSyntax ;
+        mf:action      <new_syntax/caret_pos.n3> ;
+        mf:name        "caret_pos" ;
+        rdft:approval  rdft:Approved .
+
+<#new_syntax/inv_pred.n3>
+		a              rdft:TestN3PositiveSyntax ;
+        mf:action      <new_syntax/inv_pred.n3> ;
+        mf:name        "inv_pred" ;
         rdft:approval  rdft:Approved .

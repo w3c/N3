@@ -1294,3 +1294,313 @@ N3Doc
  <EOF>
 
 pass? true
+testing (positive): tests\N3Tests\cwm_reason\danc.n3
+testing (positive): tests\N3Tests\cwm_reason\danc.n3
+testing (positive): tests\N3Tests\cwm_reason\danc.n3
+testing (positive): tests\N3Tests\cwm_reason\danc.n3
+testing (positive): tests\N3Tests\cwm_reason\danc.n3
+ERROR: danc.n3[parser]: reportAttemptingFullContext @0-2, conflictingAlts: {1, 2}
+ERROR: danc.n3[parser]: reportAmbiguity @0-1, exact: false, ambigAlts: {1, 2}
+testing (positive): tests\N3Tests\cwm_reason\danc.n3
+testing (positive): tests\N3Tests\cwm_reason\danc.n3
+testing (positive): tests\N3Tests\cwm_reason\danc.n3
+testing (positive): tests\N3Tests\cwm_reason\danc.n3
+N3Doc
+ N3Statement
+  Triples
+   Subject
+    Expression
+     Path
+      PathItem
+       [] (ANON)
+   PredicateObjectList
+    Verb
+     Predicate
+      Expression
+       Path
+        PathItem
+         [] (ANON)
+    ObjectList
+     Object
+      Expression
+       Path
+        PathItem
+         [] (ANON)
+ . ('.')
+ <EOF>
+testing (positive): tests\N3Tests\cwm_reason\danc.n3
+N3Doc
+ N3Statement
+  Triples
+   Subject
+    Expression
+     Path
+      PathItem
+       BlankNodePropertyList
+        [ ('[')
+        PredicateObjectList
+         Verb
+          Predicate
+           Expression
+            Path
+             PathItem
+              Iri
+               PrefixedName
+                :a (PNAME_LN)
+         ObjectList
+          Object
+           Expression
+            Path
+             PathItem
+              Iri
+               PrefixedName
+                :b (PNAME_LN)
+        ] (']')
+   PredicateObjectList
+    Verb
+     Predicate
+      Expression
+       Path
+        PathItem
+         [] (ANON)
+    ObjectList
+     Object
+      Expression
+       Path
+        PathItem
+         [] (ANON)
+ . ('.')
+ <EOF>
+testing (positive): tests\N3Tests\cwm_reason\danc.n3
+N3Doc
+ N3Statement
+  Triples
+   Subject
+    Expression
+     Path
+      PathItem
+       BlankNodePropertyList
+        [ ('[')
+        PredicateObjectList
+         Verb
+          Predicate
+           Expression
+            Path
+             PathItem
+              Iri
+               PrefixedName
+                :a (PNAME_LN)
+         ObjectList
+          Object
+           Expression
+            Path
+             PathItem
+              Iri
+               PrefixedName
+                :b (PNAME_LN)
+        ] (']')
+   PredicateObjectList
+    Verb
+     Predicate
+      Expression
+       Path
+        PathItem
+         [] (ANON)
+    ObjectList
+     Object
+      Expression
+       Path
+        PathItem
+         [] (ANON)
+ . ('.')
+ <EOF>
+testing (positive): tests\N3Tests\cwm_reason\danc.n3
+N3Doc
+ N3Statement
+  N3Directive
+   PrefixID
+    @prefix ('@prefix')
+    log: (PNAME_NS)
+    <http://www.w3.org/2000/10/swap/log#> (IRIREF)
+ . ('.')
+ N3Statement
+  N3Directive
+   PrefixID
+    @prefix ('@prefix')
+    owl: (PNAME_NS)
+    <http://www.w3.org/2002/07/owl#> (IRIREF)
+ . ('.')
+ N3Statement
+  N3Directive
+   PrefixID
+    @prefix ('@prefix')
+    rdf: (PNAME_NS)
+    <http://www.w3.org/1999/02/22-rdf-syntax-ns#> (IRIREF)
+ . ('.')
+ N3Statement
+  N3Directive
+   PrefixID
+    @prefix ('@prefix')
+    rdfs: (PNAME_NS)
+    <http://www.w3.org/2000/01/rdf-schema#> (IRIREF)
+ . ('.')
+ N3Statement
+  Universal
+   @forAll ('@forAll')
+   IriList
+    Iri
+     PrefixedName
+      :X (PNAME_LN)
+ . ('.')
+ N3Statement
+  Triples
+   Subject
+    Expression
+     Path
+      PathItem
+       Iri
+        PrefixedName
+         owl:sameAs (PNAME_LN)
+   PredicateObjectList
+    Verb
+     a ('a')
+    ObjectList
+     Object
+      Expression
+       Path
+        PathItem
+         Iri
+          PrefixedName
+           owl:SymmetricProperty (PNAME_LN)
+ . ('.')
+ N3Statement
+  Triples
+   Subject
+    Expression
+     Path
+      PathItem
+       Formula
+        { ('{')
+        FormulaContent
+         N3Statement
+          Triples
+           Subject
+            Expression
+             Path
+              PathItem
+               Iri
+                PrefixedName
+                 :a (PNAME_LN)
+           PredicateObjectList
+            Verb
+             Predicate
+              Expression
+               Path
+                PathItem
+                 [] (ANON)
+            ObjectList
+             Object
+              Expression
+               Path
+                PathItem
+                 Iri
+                  PrefixedName
+                   :b (PNAME_LN)
+        } ('}')
+   PredicateObjectList
+    Verb
+     a ('a')
+    ObjectList
+     Object
+      Expression
+       Path
+        PathItem
+         Iri
+          PrefixedName
+           log:Formula (PNAME_LN)
+ . ('.')
+ N3Statement
+  Triples
+   Subject
+    Expression
+     Path
+      PathItem
+       Formula
+        { ('{')
+        FormulaContent
+         N3Statement
+          Triples
+           Subject
+            Expression
+             Path
+              PathItem
+               Iri
+                PrefixedName
+                 :X (PNAME_LN)
+           PredicateObjectList
+            Verb
+             a ('a')
+            ObjectList
+             Object
+              Expression
+               Path
+                PathItem
+                 Iri
+                  PrefixedName
+                   :Man (PNAME_LN)
+        } ('}')
+   PredicateObjectList
+    Verb
+     => ('=>')
+    ObjectList
+     Object
+      Expression
+       Path
+        PathItem
+         Formula
+          { ('{')
+          FormulaContent
+           N3Statement
+            Triples
+             Subject
+              Expression
+               Path
+                PathItem
+                 Iri
+                  PrefixedName
+                   :X (PNAME_LN)
+             PredicateObjectList
+              Verb
+               a ('a')
+              ObjectList
+               Object
+                Expression
+                 Path
+                  PathItem
+                   Iri
+                    PrefixedName
+                     :Mortal (PNAME_LN)
+          } ('}')
+ . ('.')
+ N3Statement
+  Triples
+   Subject
+    Expression
+     Path
+      PathItem
+       BlankNodePropertyList
+        [ ('[')
+        PredicateObjectList
+         Verb
+          a ('a')
+         ObjectList
+          Object
+           Expression
+            Path
+             PathItem
+              Iri
+               PrefixedName
+                :Man (PNAME_LN)
+        ] (']')
+ . ('.')
+ <EOF>

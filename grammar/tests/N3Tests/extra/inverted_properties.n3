@@ -1,3 +1,0 @@
-:s ^:p { :x ^:y :z } .
-
-:a ^:hasFather^:hasFather!:hasMother :d .
