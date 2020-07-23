@@ -6,7 +6,7 @@ import java.util.Map;
 import org.antlr.v4.runtime.tree.TerminalNode;
 
 import w3c.n3dev.parser.antlr.n3Parser;
-import w3c.n3dev.parser.visitor.n3PrefixVisitor;
+import w3c.n3dev.parser.visitor.n3.n3PrefixVisitor;
 
 public class n3BuiltinVisitor extends n3PrefixVisitor {
 

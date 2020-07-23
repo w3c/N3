@@ -6,11 +6,10 @@ import java.util.Arrays;
 import java.util.List;
 
 import org.antlr.v4.runtime.ParserRuleContext;
+import org.antlr.v4.runtime.tree.AbstractParseTreeVisitor;
 
-import w3c.n3dev.parser.n3Grammar;
-import w3c.n3dev.parser.n3ParserErrorListener;
-import w3c.n3dev.parser.visitor.n3PrefixErrorVisitor;
-import w3c.n3dev.parser.visitor.n3PrintVisitor;
+import w3c.n3dev.parser.Grammar;
+import w3c.n3dev.parser.ParserErrorListener;
 import wvw.utils.log.Log;
 
 public class N3TestGrammar extends N3Test {
@@ -32,10 +31,10 @@ public class N3TestGrammar extends N3Test {
 					+ "-printAST: when given for a file, the resulting AST will be printed." + "\n\nexamples:\n\n"
 					+ "java -jar n3TestGrammar.jar n3 ../tests/N3Tests\n"
 					+ "tests files inside the 'N3Tests' folder, as listed in its 'manifest.ttl', as N3 test cases.\n\n"
-					+ "java -jar n3TestGrammar.jar n3 ../tests/TurtleTests -pos\n"
+					+ "java -jar n3TestGrammar.jar turtle ../tests/TurtleTests -pos\n"
 					+ "tests all files inside the 'TurtleTests' folder as positive Turtle test cases.\n\n"
 					+ "java -jar n3TestGrammar.jar n3 ../tests/N3Tests/01etc/food-query.n3 -pos -printAST\n"
-					+ "tests the 'a.n3' file as a positive N3 test case and prints its AST.");
+					+ "tests the 'a.n3' file as a positive test case and prints its AST.");
 			return;
 		}
 
@@ -96,7 +95,7 @@ public class N3TestGrammar extends N3Test {
 				Log.i("using manifest");
 
 				Log.i("\n\n-- TESTS");
-				t.testManifest(f.getPath() + "/");
+				t.testManifest(f.getPath() + "/", grammar);
 			}
 
 		} else {
@@ -108,21 +107,20 @@ public class N3TestGrammar extends N3Test {
 	}
 
 	private String grammarLabel;
-	private n3Grammar grammar;
+	private Grammar grammar;
 
 	private boolean printAST = false;
 
 	public N3TestGrammar(String grammar, boolean printAST) {
-		this.grammarLabel = grammar;
+		this.grammarLabel = grammar.toLowerCase();
 		this.printAST = printAST;
 	}
 
 	public ITestResult parse(File file) throws Exception {
-		grammar = new n3Grammar();
+		grammar = new Grammar();
 		ParserRuleContext ctx = grammar.parse(file, grammarLabel);
 
-		n3PrefixErrorVisitor v = createPrefixErrorVisitor(grammarLabel, grammar.getParserListener());
-		v.visit(ctx);
+		createPrefixErrorVisitor(grammarLabel, grammar.getParserListener()).visit(ctx);
 
 		if (printAST)
 			createPrintVisitor(grammarLabel).visit(ctx);
@@ -130,17 +128,20 @@ public class N3TestGrammar extends N3Test {
 		return new N3TestResult(grammar.getNumErrors());
 	}
 
-	private n3PrintVisitor createPrintVisitor(String grammar) throws Exception {
-		return (n3PrintVisitor) Class.forName("w3c.n3dev.parser.visitor." + grammar.toLowerCase() + "PrintVisitor")
-				.getConstructor().newInstance();
+	@SuppressWarnings("unchecked")
+	private AbstractParseTreeVisitor<Void> createPrintVisitor(String grammar) throws Exception {
+		return (AbstractParseTreeVisitor<Void>)
+				Class.forName("w3c.n3dev.parser.visitor." + grammar + "." + grammar + "PrintVisitor")
+					.getConstructor().newInstance();
 	}
 
-	private n3PrefixErrorVisitor createPrefixErrorVisitor(String grammar, n3ParserErrorListener listener)
+	@SuppressWarnings("unchecked")
+	private AbstractParseTreeVisitor<Void> createPrefixErrorVisitor(String grammar, ParserErrorListener listener)
 			throws Exception {
-
-		return (n3PrefixErrorVisitor) Class
-				.forName("w3c.n3dev.parser.visitor." + grammar.toLowerCase() + "PrefixErrorVisitor")
-				.getConstructor(n3ParserErrorListener.class).newInstance(listener);
+		
+		return (AbstractParseTreeVisitor<Void>) 
+				Class.forName("w3c.n3dev.parser.visitor." + grammar + "." + grammar + "PrefixErrorVisitor")
+					.getConstructor(ParserErrorListener.class).newInstance(listener);
 	}
 
 	protected class N3TestResult implements ITestResult {

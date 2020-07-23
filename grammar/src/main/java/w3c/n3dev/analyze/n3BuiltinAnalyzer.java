@@ -8,7 +8,7 @@ import java.util.Map;
 import org.antlr.v4.runtime.ParserRuleContext;
 
 import w3c.n3dev.analyze.n3BuiltinVisitor.PrefixEntry;
-import w3c.n3dev.parser.n3Grammar;
+import w3c.n3dev.parser.Grammar;
 import w3c.n3dev.test.RdfTestManifest;
 
 public class n3BuiltinAnalyzer {
@@ -38,7 +38,7 @@ public class n3BuiltinAnalyzer {
 	public void analyzeFolder(String folder) throws Exception {
 		RdfTestManifest manifest = new RdfTestManifest(mainFolder);
 
-		manifest.forEachTest(true, (test) -> {
+		manifest.forEachTest(true, "n3", (test) -> {
 			if (folder == null || test.startsWith(folder))
 				runTest(test);
 		});
@@ -56,7 +56,7 @@ public class n3BuiltinAnalyzer {
 //		System.out.println("- " + test);
 
 		File file = new File(mainFolder, test);
-		n3Grammar grammar = new n3Grammar();
+		Grammar grammar = new Grammar();
 		try {
 			ParserRuleContext ctx = grammar.parse(file, grammarLabel);
 			visitor.visit(ctx);

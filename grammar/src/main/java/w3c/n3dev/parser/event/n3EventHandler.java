@@ -8,11 +8,11 @@ import org.antlr.v4.runtime.Token;
 import org.antlr.v4.runtime.tree.ParseTree;
 import org.antlr.v4.runtime.tree.TerminalNode;
 
-import w3c.n3dev.parser.n3ParserErrorListener;
-import w3c.n3dev.parser.n3PrefixException;
+import w3c.n3dev.parser.ParserErrorListener;
+import w3c.n3dev.parser.PrefixException;
 import w3c.n3dev.parser.antlr.n3BaseListener;
 import w3c.n3dev.parser.antlr.n3Parser;
-import w3c.n3dev.parser.n3PrefixException.PrefixErrors;
+import w3c.n3dev.parser.PrefixException.PrefixErrors;
 
 public class n3EventHandler extends n3BaseListener {
 
@@ -20,9 +20,9 @@ public class n3EventHandler extends n3BaseListener {
 	protected String docUri = null;
 	protected Map<String, String> prefixUris = new HashMap<>();
 
-	private n3ParserErrorListener listener;
+	private ParserErrorListener listener;
 
-	public n3EventHandler(String docUri, n3ParserErrorListener listener) {
+	public n3EventHandler(String docUri, ParserErrorListener listener) {
 		this.docUri = docUri;
 		this.listener = listener;
 	}
@@ -75,7 +75,7 @@ public class n3EventHandler extends n3BaseListener {
 				return;
 
 			if (!prefixUris.containsKey(prefix))
-				listener.prefixError(prefix, pName, new n3PrefixException(PrefixErrors.UNKNOWN_PREFIX));
+				listener.prefixError(prefix, pName, new PrefixException(PrefixErrors.UNKNOWN_PREFIX));
 		}
 	}
 

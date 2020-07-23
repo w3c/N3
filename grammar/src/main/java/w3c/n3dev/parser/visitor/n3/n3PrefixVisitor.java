@@ -1,4 +1,4 @@
-package w3c.n3dev.parser.visitor;
+package w3c.n3dev.parser.visitor.n3;
 
 import java.util.HashMap;
 import java.util.Map;

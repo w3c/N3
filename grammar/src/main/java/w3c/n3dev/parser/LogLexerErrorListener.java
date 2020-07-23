@@ -10,9 +10,9 @@ import org.antlr.v4.runtime.dfa.DFA;
 
 import wvw.utils.log.Log;
 
-public class n3LogLexerErrorListener extends n3LexerErrorListener {
+public class LogLexerErrorListener extends LexerErrorListener {
 
-	public n3LogLexerErrorListener(String name) {
+	public LogLexerErrorListener(String name) {
 		super(name);
 	}
 

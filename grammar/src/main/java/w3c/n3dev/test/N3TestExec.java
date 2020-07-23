@@ -96,7 +96,7 @@ public abstract class N3TestExec extends N3Test {
 				Log.i("using manifest");
 
 				Log.i("\n\n-- TESTS");
-				testManifest(file.getPath() + "/");
+				testManifest(file.getPath() + "/", "n3");
 			}
 
 		} else {

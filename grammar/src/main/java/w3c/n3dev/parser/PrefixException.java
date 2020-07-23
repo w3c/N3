@@ -1,6 +1,6 @@
 package w3c.n3dev.parser;
 
-public class n3PrefixException extends Exception {
+public class PrefixException extends Exception {
 
 	private static final long serialVersionUID = 1L;
 
@@ -21,13 +21,13 @@ public class n3PrefixException extends Exception {
 
 	private PrefixErrors type;
 
-	public n3PrefixException(PrefixErrors type) {
+	public PrefixException(PrefixErrors type) {
 		super(type.getMsg());
 
 		this.type = type;
 	}
 
-	public n3PrefixException(PrefixErrors type, String e) {
+	public PrefixException(PrefixErrors type, String e) {
 		super(e);
 
 		this.type = type;

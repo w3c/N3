@@ -15,12 +15,12 @@ import org.antlr.v4.runtime.TokenStream;
 import org.apache.commons.lang3.tuple.ImmutablePair;
 import org.apache.commons.lang3.tuple.Pair;
 
-public class n3Grammar {
+public class Grammar {
 
 	private Lexer lexer;
 	private Parser parser;
-	private n3LexerErrorListener lexerListener;
-	private n3ParserErrorListener parserListener;
+	private LexerErrorListener lexerListener;
+	private ParserErrorListener parserListener;
 
 	public ParserRuleContext parse(File file, String grammar) throws Exception {
 		createGrammarComponents(grammar, file);
@@ -35,11 +35,11 @@ public class n3Grammar {
 		}
 	}
 
-	public n3LexerErrorListener getLexerListener() {
+	public LexerErrorListener getLexerListener() {
 		return lexerListener;
 	}
 
-	public n3ParserErrorListener getParserListener() {
+	public ParserErrorListener getParserListener() {
 		return parserListener;
 	}
 
@@ -69,13 +69,13 @@ public class n3Grammar {
 		// Charset.forName("UTF-8"))));
 
 //		lexer.removeErrorListeners();
-		lexerListener = new n3LogLexerErrorListener(file.getName());
+		lexerListener = new LogLexerErrorListener(file.getName());
 		lexer.addErrorListener(lexerListener);
 
 		parser = clss.getRight().getConstructor(TokenStream.class).newInstance(new CommonTokenStream(lexer));
 
 //		parser.removeErrorListeners();
-		parserListener = new n3LogParserErrorListener(file.getName());
+		parserListener = new LogParserErrorListener(file.getName());
 		parser.addErrorListener(parserListener);
 	}
 

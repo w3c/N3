@@ -8,6 +8,7 @@ import java.util.function.Consumer;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import org.apache.commons.lang3.StringUtils;
 import org.apache.jena.rdf.model.Model;
 import org.apache.jena.rdf.model.ModelFactory;
 import org.apache.jena.rdf.model.Resource;
@@ -33,9 +34,11 @@ public class RdfTestManifest {
 		return ModelFactory.createDefaultModel().read(new FileInputStream(folder + "manifest.ttl"), null, "TURTLE");
 	}
 
-	public void forEachTest(boolean positive, Consumer<String> fn) {
-		Resource type = manifest
-				.createResource(NS.uri(positive ? "rdft:TestTurtlePositiveSyntax" : "rdft:TestTurtleNegativeSyntax"));
+	public void forEachTest(boolean positive, String lang, Consumer<String> fn) {
+		lang = StringUtils.capitalize(lang);
+		String posNeg = (positive ? "Positive" : "Negative");
+
+		Resource type = manifest.createResource(NS.uri("rdft:Test" + lang + posNeg + "Syntax"));
 
 		StmtIterator stmtIt = manifest.listStatements(null, manifest.createProperty(NS.uri("rdf:type")), type);
 		while (stmtIt.hasNext()) {

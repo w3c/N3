@@ -10,9 +10,9 @@ import org.antlr.v4.runtime.dfa.DFA;
 
 import wvw.utils.log.Log;
 
-public class n3LogParserErrorListener extends n3ParserErrorListener {
+public class LogParserErrorListener extends ParserErrorListener {
 
-	public n3LogParserErrorListener(String name) {
+	public LogParserErrorListener(String name) {
 		super(name);
 	}
 
@@ -27,7 +27,7 @@ public class n3LogParserErrorListener extends n3ParserErrorListener {
 	}
 
 	@Override
-	public void prefixError(String offendingPrefix, String context, n3PrefixException e) {
+	public void prefixError(String offendingPrefix, String context, PrefixException e) {
 		onError();
 
 		Log.e(name + " [parser]: prefixError: " + e.getMessage() + " (\"" + offendingPrefix + "\") in \"" + context

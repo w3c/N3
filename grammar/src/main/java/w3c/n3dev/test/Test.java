@@ -7,10 +7,10 @@ import java.nio.charset.Charset;
 import org.antlr.v4.runtime.CharStreams;
 import org.antlr.v4.runtime.CommonTokenStream;
 
-import w3c.n3dev.parser.n3LogLexerErrorListener;
-import w3c.n3dev.parser.n3LogParserErrorListener;
-import w3c.n3dev.parser.n3ParserErrorListener;
-import w3c.n3dev.parser.n3PrefixException;
+import w3c.n3dev.parser.LogLexerErrorListener;
+import w3c.n3dev.parser.LogParserErrorListener;
+import w3c.n3dev.parser.ParserErrorListener;
+import w3c.n3dev.parser.PrefixException;
 import w3c.n3dev.parser.antlr.n3Lexer;
 import w3c.n3dev.parser.antlr.n3Parser;
 import w3c.n3dev.parser.event.n3EventHandler;
@@ -24,16 +24,16 @@ public class Test {
 
 		n3Lexer lexer = new n3Lexer(CharStreams.fromPath(file.toPath(), Charset.forName("UTF-8")));
 		lexer.removeErrorListeners();
-		lexer.addErrorListener(new n3LogLexerErrorListener(file.getName()));
+		lexer.addErrorListener(new LogLexerErrorListener(file.getName()));
 
 		n3Parser parser = new n3Parser(new CommonTokenStream(lexer));
 		parser.removeErrorListeners();
-		parser.addErrorListener(new n3LogParserErrorListener(file.getName()));
+		parser.addErrorListener(new LogParserErrorListener(file.getName()));
 
 		parser.removeParseListeners();
-		parser.addParseListener(new n3EventHandler("", new n3ParserErrorListener("") {
+		parser.addParseListener(new n3EventHandler("", new ParserErrorListener("") {
 
-			public void prefixError(String offendingPrefix, String pname, n3PrefixException e) {
+			public void prefixError(String offendingPrefix, String pname, PrefixException e) {
 				onError();
 				Log.e(offendingPrefix + " - " + pname + " - " + e.getMessage());
 			}

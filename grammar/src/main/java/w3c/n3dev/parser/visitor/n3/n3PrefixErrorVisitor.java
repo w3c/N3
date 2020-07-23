@@ -1,17 +1,17 @@
-package w3c.n3dev.parser.visitor;
+package w3c.n3dev.parser.visitor.n3;
 
 import org.antlr.v4.runtime.tree.TerminalNode;
 
-import w3c.n3dev.parser.n3ParserErrorListener;
-import w3c.n3dev.parser.n3PrefixException;
+import w3c.n3dev.parser.ParserErrorListener;
+import w3c.n3dev.parser.PrefixException;
 import w3c.n3dev.parser.antlr.n3Parser;
-import w3c.n3dev.parser.n3PrefixException.PrefixErrors;
+import w3c.n3dev.parser.PrefixException.PrefixErrors;
 
 public class n3PrefixErrorVisitor extends n3PrefixVisitor {
 
-	private n3ParserErrorListener listener;
+	private ParserErrorListener listener;
 
-	public n3PrefixErrorVisitor(n3ParserErrorListener listener) {
+	public n3PrefixErrorVisitor(ParserErrorListener listener) {
 		this.listener = listener;
 	}
 
@@ -27,7 +27,7 @@ public class n3PrefixErrorVisitor extends n3PrefixVisitor {
 				return null;
 
 			if (!prefixUris.containsKey(prefix))
-				listener.prefixError(prefix, pName, new n3PrefixException(PrefixErrors.UNKNOWN_PREFIX));
+				listener.prefixError(prefix, pName, new PrefixException(PrefixErrors.UNKNOWN_PREFIX));
 		}
 
 		return null;

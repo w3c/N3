@@ -1,13 +1,13 @@
-package w3c.n3dev.parser.visitor;
+package w3c.n3dev.parser.visitor.turtle;
 
 import org.antlr.v4.runtime.tree.ParseTree;
 import org.antlr.v4.runtime.tree.RuleNode;
 import org.antlr.v4.runtime.tree.TerminalNode;
 
-import w3c.n3dev.parser.antlr.n3Parser;
+import w3c.n3dev.parser.antlr.turtleParser;
 import wvw.utils.log.Log;
 
-public class n3PrintVisitor extends n3DefaultVisitor {
+public class turtlePrintVisitor extends turtleDefaultVisitor {
 
 	private int lvl = 0;
 
@@ -20,8 +20,8 @@ public class n3PrintVisitor extends n3DefaultVisitor {
 	 * </p>
 	 */
 	@Override
-	public Void visitN3Doc(n3Parser.N3DocContext ctx) {
-		print("N3Doc");
+	public Void visitTurtleDoc(turtleParser.TurtleDocContext ctx) {
+		print("TurtleDoc");
 		return doVisitChildren(ctx);
 	}
 
@@ -34,8 +34,8 @@ public class n3PrintVisitor extends n3DefaultVisitor {
 	 * </p>
 	 */
 	@Override
-	public Void visitN3Statement(n3Parser.N3StatementContext ctx) {
-		print("N3Statement");
+	public Void visitStatement(turtleParser.StatementContext ctx) {
+		print("Statement");
 		return doVisitChildren(ctx);
 	}
 
@@ -48,8 +48,8 @@ public class n3PrintVisitor extends n3DefaultVisitor {
 	 * </p>
 	 */
 	@Override
-	public Void visitN3Directive(n3Parser.N3DirectiveContext ctx) {
-		print("N3Directive");
+	public Void visitDirective(turtleParser.DirectiveContext ctx) {
+		print("Directive");
 		return doVisitChildren(ctx);
 	}
 
@@ -62,49 +62,7 @@ public class n3PrintVisitor extends n3DefaultVisitor {
 	 * </p>
 	 */
 	@Override
-	public Void visitSparqlDirective(n3Parser.SparqlDirectiveContext ctx) {
-		print("SparqlDirective");
-		return doVisitChildren(ctx);
-	}
-
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>
-	 * The default implementation returns the result of calling
-	 * {@link #visitChildren} on {@code ctx}.
-	 * </p>
-	 */
-	@Override
-	public Void visitSparqlBase(n3Parser.SparqlBaseContext ctx) {
-		print("SparqlBase");
-		return doVisitChildren(ctx);
-	}
-
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>
-	 * The default implementation returns the result of calling
-	 * {@link #visitChildren} on {@code ctx}.
-	 * </p>
-	 */
-	@Override
-	public Void visitSparqlPrefix(n3Parser.SparqlPrefixContext ctx) {
-		print("SparqlPrefix");
-		return doVisitChildren(ctx);
-	}
-
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>
-	 * The default implementation returns the result of calling
-	 * {@link #visitChildren} on {@code ctx}.
-	 * </p>
-	 */
-	@Override
-	public Void visitPrefixID(n3Parser.PrefixIDContext ctx) {
+	public Void visitPrefixID(turtleParser.PrefixIDContext ctx) {
 		print("PrefixID");
 		return doVisitChildren(ctx);
 	}
@@ -118,7 +76,7 @@ public class n3PrintVisitor extends n3DefaultVisitor {
 	 * </p>
 	 */
 	@Override
-	public Void visitBase(n3Parser.BaseContext ctx) {
+	public Void visitBase(turtleParser.BaseContext ctx) {
 		print("Base");
 		return doVisitChildren(ctx);
 	}
@@ -132,7 +90,35 @@ public class n3PrintVisitor extends n3DefaultVisitor {
 	 * </p>
 	 */
 	@Override
-	public Void visitTriples(n3Parser.TriplesContext ctx) {
+	public Void visitSparqlBase(turtleParser.SparqlBaseContext ctx) {
+		print("SparqlBase");
+		return doVisitChildren(ctx);
+	}
+
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>
+	 * The default implementation returns the result of calling
+	 * {@link #visitChildren} on {@code ctx}.
+	 * </p>
+	 */
+	@Override
+	public Void visitSparqlPrefix(turtleParser.SparqlPrefixContext ctx) {
+		print("SparqlPrefix");
+		return doVisitChildren(ctx);
+	}
+
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>
+	 * The default implementation returns the result of calling
+	 * {@link #visitChildren} on {@code ctx}.
+	 * </p>
+	 */
+	@Override
+	public Void visitTriples(turtleParser.TriplesContext ctx) {
 		print("Triples");
 		return doVisitChildren(ctx);
 	}
@@ -146,7 +132,7 @@ public class n3PrintVisitor extends n3DefaultVisitor {
 	 * </p>
 	 */
 	@Override
-	public Void visitPredicateObjectList(n3Parser.PredicateObjectListContext ctx) {
+	public Void visitPredicateObjectList(turtleParser.PredicateObjectListContext ctx) {
 		print("PredicateObjectList");
 		return doVisitChildren(ctx);
 	}
@@ -160,7 +146,7 @@ public class n3PrintVisitor extends n3DefaultVisitor {
 	 * </p>
 	 */
 	@Override
-	public Void visitObjectList(n3Parser.ObjectListContext ctx) {
+	public Void visitObjectList(turtleParser.ObjectListContext ctx) {
 		print("ObjectList");
 		return doVisitChildren(ctx);
 	}
@@ -174,7 +160,7 @@ public class n3PrintVisitor extends n3DefaultVisitor {
 	 * </p>
 	 */
 	@Override
-	public Void visitVerb(n3Parser.VerbContext ctx) {
+	public Void visitVerb(turtleParser.VerbContext ctx) {
 		print("Verb");
 		return doVisitChildren(ctx);
 	}
@@ -188,7 +174,7 @@ public class n3PrintVisitor extends n3DefaultVisitor {
 	 * </p>
 	 */
 	@Override
-	public Void visitSubject(n3Parser.SubjectContext ctx) {
+	public Void visitSubject(turtleParser.SubjectContext ctx) {
 		print("Subject");
 		return doVisitChildren(ctx);
 	}
@@ -202,7 +188,7 @@ public class n3PrintVisitor extends n3DefaultVisitor {
 	 * </p>
 	 */
 	@Override
-	public Void visitPredicate(n3Parser.PredicateContext ctx) {
+	public Void visitPredicate(turtleParser.PredicateContext ctx) {
 		print("Predicate");
 		return doVisitChildren(ctx);
 	}
@@ -216,7 +202,7 @@ public class n3PrintVisitor extends n3DefaultVisitor {
 	 * </p>
 	 */
 	@Override
-	public Void visitObject(n3Parser.ObjectContext ctx) {
+	public Void visitObject(turtleParser.ObjectContext ctx) {
 		print("Object");
 		return doVisitChildren(ctx);
 	}
@@ -230,49 +216,7 @@ public class n3PrintVisitor extends n3DefaultVisitor {
 	 * </p>
 	 */
 	@Override
-	public Void visitExpression(n3Parser.ExpressionContext ctx) {
-		print("Expression");
-		return doVisitChildren(ctx);
-	}
-
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>
-	 * The default implementation returns the result of calling
-	 * {@link #visitChildren} on {@code ctx}.
-	 * </p>
-	 */
-	@Override
-	public Void visitPath(n3Parser.PathContext ctx) {
-		print("Path");
-		return doVisitChildren(ctx);
-	}
-
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>
-	 * The default implementation returns the result of calling
-	 * {@link #visitChildren} on {@code ctx}.
-	 * </p>
-	 */
-	@Override
-	public Void visitPathItem(n3Parser.PathItemContext ctx) {
-		print("PathItem");
-		return doVisitChildren(ctx);
-	}
-
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>
-	 * The default implementation returns the result of calling
-	 * {@link #visitChildren} on {@code ctx}.
-	 * </p>
-	 */
-	@Override
-	public Void visitLiteral(n3Parser.LiteralContext ctx) {
+	public Void visitLiteral(turtleParser.LiteralContext ctx) {
 		print("Literal");
 		return doVisitChildren(ctx);
 	}
@@ -286,7 +230,7 @@ public class n3PrintVisitor extends n3DefaultVisitor {
 	 * </p>
 	 */
 	@Override
-	public Void visitBlankNodePropertyList(n3Parser.BlankNodePropertyListContext ctx) {
+	public Void visitBlankNodePropertyList(turtleParser.BlankNodePropertyListContext ctx) {
 		print("BlankNodePropertyList");
 		return doVisitChildren(ctx);
 	}
@@ -300,7 +244,7 @@ public class n3PrintVisitor extends n3DefaultVisitor {
 	 * </p>
 	 */
 	@Override
-	public Void visitCollection(n3Parser.CollectionContext ctx) {
+	public Void visitCollection(turtleParser.CollectionContext ctx) {
 		print("Collection");
 		return doVisitChildren(ctx);
 	}
@@ -314,35 +258,7 @@ public class n3PrintVisitor extends n3DefaultVisitor {
 	 * </p>
 	 */
 	@Override
-	public Void visitFormula(n3Parser.FormulaContext ctx) {
-		print("Formula");
-		return doVisitChildren(ctx);
-	}
-
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>
-	 * The default implementation returns the result of calling
-	 * {@link #visitChildren} on {@code ctx}.
-	 * </p>
-	 */
-	@Override
-	public Void visitFormulaContent(n3Parser.FormulaContentContext ctx) {
-		print("FormulaContent");
-		return doVisitChildren(ctx);
-	}
-
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>
-	 * The default implementation returns the result of calling
-	 * {@link #visitChildren} on {@code ctx}.
-	 * </p>
-	 */
-	@Override
-	public Void visitRdfLiteral(n3Parser.RdfLiteralContext ctx) {
+	public Void visitRdfLiteral(turtleParser.RdfLiteralContext ctx) {
 		print("RdfLiteral");
 		return doVisitChildren(ctx);
 	}
@@ -356,7 +272,7 @@ public class n3PrintVisitor extends n3DefaultVisitor {
 	 * </p>
 	 */
 	@Override
-	public Void visitIri(n3Parser.IriContext ctx) {
+	public Void visitIri(turtleParser.IriContext ctx) {
 		print("Iri");
 		return doVisitChildren(ctx);
 	}
@@ -370,50 +286,8 @@ public class n3PrintVisitor extends n3DefaultVisitor {
 	 * </p>
 	 */
 	@Override
-	public Void visitIriList(n3Parser.IriListContext ctx) {
-		print("IriList");
-		return doVisitChildren(ctx);
-	}
-
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>
-	 * The default implementation returns the result of calling
-	 * {@link #visitChildren} on {@code ctx}.
-	 * </p>
-	 */
-	@Override
-	public Void visitPrefixedName(n3Parser.PrefixedNameContext ctx) {
+	public Void visitPrefixedName(turtleParser.PrefixedNameContext ctx) {
 		print("PrefixedName");
-		return doVisitChildren(ctx);
-	}
-
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>
-	 * The default implementation returns the result of calling
-	 * {@link #visitChildren} on {@code ctx}.
-	 * </p>
-	 */
-	@Override
-	public Void visitExistential(n3Parser.ExistentialContext ctx) {
-		print("Existential");
-		return doVisitChildren(ctx);
-	}
-
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>
-	 * The default implementation returns the result of calling
-	 * {@link #visitChildren} on {@code ctx}.
-	 * </p>
-	 */
-	@Override
-	public Void visitUniversal(n3Parser.UniversalContext ctx) {
-		print("Universal");
 		return doVisitChildren(ctx);
 	}
 
@@ -449,7 +323,7 @@ public class n3PrintVisitor extends n3DefaultVisitor {
 				String out = c.toString();
 				int type = t.getSymbol().getType();
 				if (type != -1)
-					out += " (" + n3Parser.tokenNames[type] + ")";
+					out += " (" + turtleParser.tokenNames[type] + ")";
 				print(out);
 
 			} else {

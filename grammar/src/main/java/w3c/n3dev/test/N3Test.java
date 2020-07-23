@@ -22,23 +22,23 @@ public abstract class N3Test {
 		Log.setTarget(new AggregateTarget(new SystemOut(), new FileTarget("test_out.txt")));
 	}
 
-	public void testManifest(String folder) throws Exception {
+	public void testManifest(String folder, String grammar) throws Exception {
 		RdfTestManifest manifest = new RdfTestManifest(folder);
 
 		skipped = new ArrayList<>();
 
 		ManifestTestConsumer posFn = new ManifestTestConsumer(folder, true);
-		manifest.forEachTest(true, posFn);
+		manifest.forEachTest(true, grammar, posFn);
 
 		ManifestTestConsumer negFn = new ManifestTestConsumer(folder, false);
-		manifest.forEachTest(false, negFn);
+		manifest.forEachTest(false, grammar, negFn);
 
 		printFailed(posFn.getCount() + negFn.getCount(), posFn.getFailed(), negFn.getFailed());
 	}
 
 	public void testFolder(boolean pos, String folder) {
 		skipped = new ArrayList<>();
-		
+
 		List<String> failed = new ArrayList<>();
 
 		int totalNr = testFolder(pos, folder, "", failed);
