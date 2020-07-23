@@ -4,13 +4,13 @@
       [ rei:subject [
           rei:statements [
             owl:oneOf (
-              [ rei:subject [ rei:uri "https://w3c.github.io/n3/tests/syntax/qvars1.n3#a"];
-                rei:predicate [ rei:uri "https://w3c.github.io/n3/tests/syntax/qvars1.n3#mother"];
-                rei:object [ rei:uri "https://w3c.github.io/n3/tests/syntax/qvars1.n3#b"];
+              [ rei:subject [ rei:uri "https://w3c.github.io/N3/tests/syntax/qvars1.n3#a"];
+                rei:predicate [ rei:uri "https://w3c.github.io/N3/tests/syntax/qvars1.n3#mother"];
+                rei:object [ rei:uri "https://w3c.github.io/N3/tests/syntax/qvars1.n3#b"];
               ]
-              [ rei:subject [ rei:uri "https://w3c.github.io/n3/tests/syntax/qvars1.n3#a"];
-                rei:predicate [ rei:uri "https://w3c.github.io/n3/tests/syntax/qvars1.n3#sister"];
-                rei:object [ rei:uri "https://w3c.github.io/n3/tests/syntax/qvars1.n3#c"];
+              [ rei:subject [ rei:uri "https://w3c.github.io/N3/tests/syntax/qvars1.n3#a"];
+                rei:predicate [ rei:uri "https://w3c.github.io/N3/tests/syntax/qvars1.n3#sister"];
+                rei:object [ rei:uri "https://w3c.github.io/N3/tests/syntax/qvars1.n3#c"];
               ]
             )
           ];
@@ -21,9 +21,9 @@
         rei:object [
           rei:statements [
             owl:oneOf (
-              [ rei:subject [ rei:uri "https://w3c.github.io/n3/tests/syntax/qvars1.n3#b"];
-                rei:predicate [ rei:uri "https://w3c.github.io/n3/tests/syntax/qvars1.n3#aunt"];
-                rei:object [ rei:uri "https://w3c.github.io/n3/tests/syntax/qvars1.n3#c"];
+              [ rei:subject [ rei:uri "https://w3c.github.io/N3/tests/syntax/qvars1.n3#b"];
+                rei:predicate [ rei:uri "https://w3c.github.io/N3/tests/syntax/qvars1.n3#aunt"];
+                rei:object [ rei:uri "https://w3c.github.io/N3/tests/syntax/qvars1.n3#c"];
               ]
             )
           ];
@@ -36,9 +36,9 @@
   rei:existentials [owl:oneOf ()];
   rei:universals [
     owl:oneOf (
-      "https://w3c.github.io/n3/tests/syntax/qvars1.n3#a"
-      "https://w3c.github.io/n3/tests/syntax/qvars1.n3#b"
-      "https://w3c.github.io/n3/tests/syntax/qvars1.n3#c"
+      "https://w3c.github.io/N3/tests/syntax/qvars1.n3#a"
+      "https://w3c.github.io/N3/tests/syntax/qvars1.n3#b"
+      "https://w3c.github.io/N3/tests/syntax/qvars1.n3#c"
     )
   ]
 ] .

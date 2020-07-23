@@ -5,7 +5,7 @@
 @prefix : <#>.
 
 
- """     @prefix : <https://w3c.github.io/n3/tests/crypto/acc.n3#> .
+ """     @prefix : <https://w3c.github.io/N3/tests/crypto/acc.n3#> .
      @prefix crypto: <http://www.w3.org/2000/10/swap/crypto#> .
      @prefix log: <http://www.w3.org/2000/10/swap/log#> .
      @prefix os: <http://www.w3.org/2000/10/swap/os#> .
