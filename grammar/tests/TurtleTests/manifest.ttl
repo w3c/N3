@@ -1820,9 +1820,9 @@
    mf:action    <turtle-syntax-bad-n3-extras-02.ttl> ;
    .
 
-<#turtle-syntax-bad-n3-extras-03> a rdft:TestTurtleNegativeSyntax, test:TestN3PositiveSyntax ;
+<#turtle-syntax-bad-n3-extras-03> a rdft:TestTurtleNegativeSyntax, test:TestN3NegativeSyntax ;
    mf:name    "turtle-syntax-bad-n3-extras-03" ;
-   rdfs:comment "N3 paths not in Turtle (negative test)" ;
+   rdfs:comment "N3 '.' paths not in Turtle (negative test)" ;
    rdft:approval rdft:Approved ;
    mf:action    <turtle-syntax-bad-n3-extras-03.ttl> ;
    .
@@ -1841,9 +1841,9 @@
    mf:action    <turtle-syntax-bad-n3-extras-05.ttl> ;
    .
 
-<#turtle-syntax-bad-n3-extras-06> a rdft:TestTurtleNegativeSyntax, test:TestN3PositiveSyntax ;
+<#turtle-syntax-bad-n3-extras-06> a rdft:TestTurtleNegativeSyntax, test:TestN3NegativeSyntax ;
    mf:name    "turtle-syntax-bad-n3-extras-06" ;
-   rdfs:comment "N3 paths not in Turtle (negative test)" ;
+   rdfs:comment "N3 '.' paths not in Turtle (negative test)" ;
    rdft:approval rdft:Approved ;
    mf:action    <turtle-syntax-bad-n3-extras-06.ttl> ;
    .
