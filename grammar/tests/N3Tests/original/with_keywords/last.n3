@@ -19,7 +19,7 @@
 { 0 list:in  (  1 2 3 4 5 ) } => { trap2 a FAILURE }.
 
 thing1 prop1 ( test5a test5b test5c ) .
-{ ?item list:in [ @is prop1 @of thing1 ] } => { ?item a SUCCESS } .
+{ ?item list:in [ is prop1 of thing1 ] } => { ?item a SUCCESS } .
 
 ( foo bar baz ) prop2 test6a .
 ( foo ) prop2 test6b .

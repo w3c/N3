@@ -3,7 +3,7 @@
 { ?x li:in (3 4 5) } => { ?x a :RESULT1 }.
 
 
-{ ( :joe :fred :amy ) li:member ?y  } => { ?y @a :Friend }.
+{ ( :joe :fred :amy ) li:member ?y  } => { ?y a :Friend }.
 
 
 

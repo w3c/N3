@@ -21,33 +21,33 @@
     
     _:li2     <http://www.w3.org/2000/10/swap/math#sum> _:L20C12 .
     
-    _:li4     <https://w3c.github.io/N3/tests/syntax/path2.n3#relatedTo> _:li5 .
+    _:li4     <https://w3c.github.io/N3/grammar/tests/N3Tests/cwm_syntax/path2.n3#relatedTo> _:li5 .
     
-    <https://w3c.github.io/N3/tests/syntax/a>     <https://w3c.github.io/N3/tests/syntax/b> _:L27C7 .
+    <https://w3c.github.io/N3/grammar/tests/N3Tests/cwm_syntax/a>     <https://w3c.github.io/N3/grammar/tests/N3Tests/cwm_syntax/b> _:L27C7 .
     
-    <https://w3c.github.io/N3/tests/syntax/e>     <https://w3c.github.io/N3/tests/syntax/f> _:L27C41 .
+    <https://w3c.github.io/N3/grammar/tests/N3Tests/cwm_syntax/e>     <https://w3c.github.io/N3/grammar/tests/N3Tests/cwm_syntax/f> _:L27C41 .
     
-    <https://w3c.github.io/N3/tests/syntax/foo.n3#admires>     <https://w3c.github.io/N3/tests/syntax/foo.n3#converse> _:L18C21 .
+    <https://w3c.github.io/N3/grammar/tests/N3Tests/cwm_syntax/foo.n3#admires>     <https://w3c.github.io/N3/grammar/tests/N3Tests/cwm_syntax/foo.n3#converse> _:L18C21 .
     
-    <https://w3c.github.io/N3/tests/syntax/foo.n3#albert>     <http://www.daml.example.org/2001/03/fam#mother> _:L16C10 .
+    <https://w3c.github.io/N3/grammar/tests/N3Tests/cwm_syntax/foo.n3#albert>     <http://www.daml.example.org/2001/03/fam#mother> _:L16C10 .
     
-    <https://w3c.github.io/N3/tests/syntax/foo.n3#albert>     _:L18C21 <https://w3c.github.io/N3/tests/syntax/foo.n3#grumpy> .
+    <https://w3c.github.io/N3/grammar/tests/N3Tests/cwm_syntax/foo.n3#albert>     _:L18C21 <https://w3c.github.io/N3/grammar/tests/N3Tests/cwm_syntax/foo.n3#grumpy> .
     
-    <https://w3c.github.io/N3/tests/syntax/foo.n3#mentor>     <https://w3c.github.io/N3/tests/syntax/foo.n3#inverse> _:L16C29 .
+    <https://w3c.github.io/N3/grammar/tests/N3Tests/cwm_syntax/foo.n3#mentor>     <https://w3c.github.io/N3/grammar/tests/N3Tests/cwm_syntax/foo.n3#inverse> _:L16C29 .
     
-    <https://w3c.github.io/N3/tests/syntax/foo.n3#x>     <http://www.w3.org/2000/01/rdf-schema#label> _:L22C22 .
+    <https://w3c.github.io/N3/grammar/tests/N3Tests/cwm_syntax/foo.n3#x>     <http://www.w3.org/2000/01/rdf-schema#label> _:L22C22 .
     
-    <https://w3c.github.io/N3/tests/syntax/foo.n3#x>     <http://www.w3.org/2000/01/rdf-schema#label> _:L22C38 .
+    <https://w3c.github.io/N3/grammar/tests/N3Tests/cwm_syntax/foo.n3#x>     <http://www.w3.org/2000/01/rdf-schema#label> _:L22C38 .
     
-    _:L16C10     _:L16C29 <https://w3c.github.io/N3/tests/syntax/foo.n3#auntieAnne> .
+    _:L16C10     _:L16C29 <https://w3c.github.io/N3/grammar/tests/N3Tests/cwm_syntax/foo.n3#auntieAnne> .
     
-    _:L20C12     <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <https://w3c.github.io/N3/tests/syntax/foo.n3#THREE> .
+    _:L20C12     <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <https://w3c.github.io/N3/grammar/tests/N3Tests/cwm_syntax/foo.n3#THREE> .
     
     _:L22C22     <http://www.daml.example.org/2000/10/lang#eng> "Help!" .
     
     _:L22C38     <http://www.daml.example.org/2000/10/lang#fr> "foo" .
     
-    _:L27C16     <https://w3c.github.io/N3/tests/syntax/d> <https://w3c.github.io/N3/tests/syntax/c> .
+    _:L27C16     <https://w3c.github.io/N3/grammar/tests/N3Tests/cwm_syntax/d> <https://w3c.github.io/N3/grammar/tests/N3Tests/cwm_syntax/c> .
     
-    _:L27C41     <https://w3c.github.io/N3/tests/syntax/g> _:L27C45 .
+    _:L27C41     <https://w3c.github.io/N3/grammar/tests/N3Tests/cwm_syntax/g> _:L27C45 .
     

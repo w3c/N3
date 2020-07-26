@@ -1239,9 +1239,10 @@
         mf:name        "swetQ11" .
 
 :cwm_list_list-bug2.n3
-        a              test:TestN3PositiveSyntax ;
+        a              test:TestN3NegativeSyntax ;
         mf:action      <cwm_list/list-bug2.n3> ;
-        mf:name        "list-bug2" .
+        mf:name        "list-bug2" ;
+        rdfs:comment   "New grammar disallows bare lists." .
 
 :04test_danE.n3  a   test:TestN3PositiveSyntax ;
         mf:action      <04test/danE.n3> ;
@@ -1407,7 +1408,7 @@
         mf:name        "test" .
 
 :cwm_syntax_space-in-uri.n3
-        a              test:TestN3NegativeSyntax ;
+        a              test:TestN3PositiveSyntax ;
         mf:action      <cwm_syntax/space-in-uri.n3> ;
         mf:name        "space-in-uri" .
 
@@ -3000,7 +3001,7 @@
         mf:name        "radlex" .
 
 :cwm_syntax_bad-preds-literal.n3
-        a              test:TestN3PositiveSyntax ;
+        a              test:TestN3NegativeSyntax ;
         mf:action      <cwm_syntax/bad-preds-literal.n3> ;
         mf:name        "bad-preds-literal" .
 
@@ -3525,9 +3526,9 @@
         mf:name        "goal" .
 
 :cwm_syntax_keywords2.n3
-        a              test:TestN3Eval ;
+        a              test:TestN3NegativeSyntax ;
         mf:action      <cwm_syntax/keywords2.n3> ;
-        mf:result      <cwm_n3/n3parser.tests_n3_10004.nt> ;
+        #mf:result      <cwm_n3/n3parser.tests_n3_10004.nt> ;
         mf:name        "keywords2" ;
         rdfs:comment   "using no keywords in n3 (removing reliance on @keywords breaks test)" ;
         rdft:approval  rdft:Rejected .
@@ -4049,10 +4050,10 @@
         mf:name        "SequenceQ" .
 
 :cwm_syntax_zero-predicates.n3
-        a              test:TestN3PositiveSyntax ;
+        a              test:TestN3NegativeSyntax ;
         mf:action      <cwm_syntax/zero-predicates.n3> ;
         mf:name        "zero-predicates" ;
-        rdfs:comment   "A statement that says nothing at all";
+        rdfs:comment   "A statement that says nothing at all (new grammar requires full statements)";
         rdft:approval  rdft:Approved .
 
 :07test_resto-cwm-proof.n3
@@ -4343,9 +4344,9 @@
         mf:name        "gv-mln" .
 
 :cwm_other_strquot.n3
-        a              test:TestN3Eval ;
+        a              test:TestN3NegativeSyntax ;
         mf:action      <cwm_other/strquot.n3> ;
-        mf:result      <cwm_n3/n3parser.tests_n3_10009.nt> ;
+        #mf:result      <cwm_n3/n3parser.tests_n3_10009.nt> ;
         mf:name        "strquot.n3" ;
         rdfs:comment   "N3 string quoting with escaping (new grammar is more restrictive re allowed escapes)" .
 
@@ -4457,9 +4458,9 @@
         mf:name        "desc_images" .
 
 :cwm_syntax_qvars2.n3
-        a              test:TestN3Eval ;
+        a              test:TestN3PositiveSyntax ;
         mf:action      <cwm_syntax/qvars2.n3> ;
-        mf:result      <cwm_n3/n3parser.tests_n3_10015.nt> ;
+        #mf:result      <cwm_n3/n3parser.tests_n3_10015.nt> ;
         mf:name        "qvars2.n3" ;
         rdfs:comment   "Quick variable syntax, more";
         rdft:approval  rdft:Approved .
@@ -4983,9 +4984,9 @@
         mf:name        "palindrome-declarations" .
 
 :cwm_syntax_keywords1.n3
-        a              test:TestN3Eval ;
+        a              test:TestN3NegativeSyntax ;
         mf:action      <cwm_syntax/keywords1.n3> ;
-        mf:result      <cwm_n3/n3parser.tests_n3_10003.nt> ;
+        #mf:result      <cwm_n3/n3parser.tests_n3_10003.nt> ;
         rdfs:comment   "@keywords in n3 (removing reliance on @keywords breaks test)";
         rdft:approval  rdft:Rejected .
 
@@ -5559,11 +5560,11 @@
         mf:name        "bd-result-100" .
 
 :cwm_other_lists.n3
-        a              test:TestN3Eval ;
+        a              test:TestN3PositiveSyntax ;
         mf:action      <cwm_other/lists.n3> ;
-        mf:result      <cwm_n3/n3parser.tests_n3_10017.nt> ;
+        #mf:result      <cwm_n3/n3parser.tests_n3_10017.nt> ;
         mf:name        "lists.n3" ;
-        rdfs:comment   "parsing and generation of N3 list syntax";
+        rdfs:comment   "parsing and generation of N3 list syntax (seems to be reasoning)";
         rdft:approval  rdft:Approved .
 
 :07test_time.n3  a   test:TestN3PositiveSyntax ;
@@ -5880,9 +5881,9 @@
         mf:name        "parteval-equivalent" .
 
 :cwm_syntax_qvars1.n3
-        a              test:TestN3Eval ;
+        a              test:TestN3PositiveSyntax ;
         mf:action      <cwm_syntax/qvars1.n3> ;
-        mf:result      <cwm_n3/n3parser.tests_n3_10014.nt> ;
+        #mf:result      <cwm_n3/n3parser.tests_n3_10014.nt> ;
         mf:name        "qvars1.n3" ;
         rdfs:comment   "Quick variable syntax, simple";
         rdft:approval  rdft:Approved .
@@ -6053,11 +6054,11 @@
         mf:name        "dtb-result-100" .
 
 :cwm_other_contexts.n3
-        a              test:TestN3Eval ;
+        a              test:TestN3PositiveSyntax ;
         mf:action      <cwm_other/contexts.n3> ;
-        mf:result      <cwm_n3/n3parser.tests_n3_10007.nt> ;
+        #mf:result      <cwm_n3/n3parser.tests_n3_10007.nt> ;
         mf:name        "contexts.n3" ;
-        rdfs:comment   "Parse and generate simple contexts";
+        rdfs:comment   "Parse and generate simple contexts (this looks like a reasoning test)";
         rdft:approval  rdft:Approved .
 
 :07test_owl2.n3  a   test:TestN3PositiveSyntax ;

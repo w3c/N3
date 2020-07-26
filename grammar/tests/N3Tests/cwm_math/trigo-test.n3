@@ -26,22 +26,22 @@
 { 1 math:acos ?x } => { ?x :valueOf "acos(1) = 0" } .
 
 { ?x a NonPi:TestValue; math:sin ?y} => {?x :SIN ?y}.
-{ ?x a :TestValue; @is math:sin @of ?y} => {?x A:SIN ?y}.
+{ ?x a :TestValue; is math:sin of ?y} => {?x A:SIN ?y}.
 
 { ?x a :TestValue; math:cos ?y} => {?x :COS ?y}.
-{ ?x a :TestValue; @is math:cos @of ?y} => {?x A:COS ?y}.
+{ ?x a :TestValue; is math:cos of ?y} => {?x A:COS ?y}.
 
 { ?x a NonPi:TestValue; math:tan ?y} => {?x :TAN ?y}.
-{ ?x a :TestValue; @is math:tan @of ?y} => {?x :A:TAN ?y}.
+{ ?x a :TestValue; is math:tan of ?y} => {?x :A:TAN ?y}.
 
 { ?x a :TestValue; math:sinh ?y} => {?x :SINH ?y}.
-{ ?x a :TestValue; @is math:sinh @of ?y} => {?x A:SINH ?y}.
+{ ?x a :TestValue; is math:sinh of ?y} => {?x A:SINH ?y}.
 
 { ?x a :TestValue; math:cosh ?y} => {?x :COSH ?y}.
-{ ?x a :TestValue; @is math:cosh @of ?y} => {?x A:COSH ?y}.
+{ ?x a :TestValue; is math:cosh of ?y} => {?x A:COSH ?y}.
 
 { ?x a :TestValue; math:tanh ?y} => {?x :TANH ?y}.
-{ ?x a :TestValue; @is math:tanh @of ?y} => {?x :A:TANH ?y}.
+{ ?x a :TestValue; is math:tanh of ?y} => {?x :A:TANH ?y}.
 
 
 #{ 0 math:acos ?x } => { ?x :valueOf "acos(0) = 1.57079632679" } .
