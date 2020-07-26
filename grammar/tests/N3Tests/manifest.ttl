@@ -1239,10 +1239,9 @@
         mf:name        "swetQ11" .
 
 :cwm_list_list-bug2.n3
-        a              test:TestN3NegativeSyntax ;
+        a              test:TestN3PositiveSyntax ;
         mf:action      <cwm_list/list-bug2.n3> ;
-        mf:name        "list-bug2" ;
-        rdfs:comment   "New grammar disallows bare lists." .
+        mf:name        "list-bug2"  .
 
 :04test_danE.n3  a   test:TestN3PositiveSyntax ;
         mf:action      <04test/danE.n3> ;
@@ -4050,10 +4049,10 @@
         mf:name        "SequenceQ" .
 
 :cwm_syntax_zero-predicates.n3
-        a              test:TestN3NegativeSyntax ;
+        a              test:TestN3PositiveSyntax ;
         mf:action      <cwm_syntax/zero-predicates.n3> ;
         mf:name        "zero-predicates" ;
-        rdfs:comment   "A statement that says nothing at all (new grammar requires full statements)";
+        rdfs:comment   "A statement that says nothing at all";
         rdft:approval  rdft:Approved .
 
 :07test_resto-cwm-proof.n3
