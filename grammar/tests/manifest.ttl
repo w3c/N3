@@ -11,5 +11,6 @@
     mf:include (
       <TurtleTests/manifest.ttl>
       <N3Tests/manifest.ttl>
+      <N3Tests/manifest-reasoner.ttl>
       <N3Tests/manifest-extended.ttl>
     ) .
