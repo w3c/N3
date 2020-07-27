@@ -42,7 +42,18 @@
       };
     </script>
     <style>
-      table, th, td { border: 1px solid black; border-collapse: collapse; padding: 5px; }
+      table, th, td {
+        border: 1px solid black;
+        border-collapse: collapse;
+        padding: 5px;
+      }
+      table.grammar, table.grammar th, table.grammar td {
+        border: none;
+        padding: 2px;
+      }
+      table.grammar td:nth-child(2) {
+        text-align: right;
+      }
     </style>
   </head>
   <body>
@@ -634,6 +645,7 @@ _:dominik foaf:knows _:doerthe .
         <h3>Grammar</h3>
         <p>Blah...</p>
         <div data-include="../grammar/n3.html"></div>
+        <p>A textual version of this grammar may be found <a href="../grammar/n3.ebnf">here</a>.</p>
       </section>
     </section>
     <section class=informative>
