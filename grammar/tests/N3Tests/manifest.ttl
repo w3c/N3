@@ -231,19 +231,6 @@
       :new_syntax_caret_neg.n3
       :new_syntax_caret_pos.n3
       :new_syntax_inverted_properties.n3
-
-      # These are likely duplicated from TurtleTests
-      :turtle_turtle-syntax-bad-n3-extras-01.ttl
-      :turtle_turtle-syntax-bad-n3-extras-02.ttl
-      :turtle_turtle-syntax-bad-n3-extras-04.ttl
-      :turtle_turtle-syntax-bad-n3-extras-07.ttl
-      :turtle_turtle-syntax-bad-n3-extras-08.ttl
-      :turtle_turtle-syntax-bad-n3-extras-09.ttl
-      :turtle_turtle-syntax-bad-n3-extras-10.ttl
-      :turtle_turtle-syntax-bad-n3-extras-11.ttl
-      :turtle_turtle-syntax-bad-n3-extras-12.ttl
-      :turtle_turtle-syntax-bad-n3-extras-13.ttl
-      :turtle_turtle-syntax-bad-struct-02.ttl
   ) .
 
 :cwm_andy_D-ref.n3  a  test:TestN3PositiveSyntax ;
@@ -1396,62 +1383,3 @@
         a              test:TestN3PositiveSyntax ;
         mf:action      <new_syntax/inverted_properties.n3> ;
         mf:name        "inverted_properties" .
-
-:turtle_turtle-syntax-bad-n3-extras-01.ttl
-        a              test:TestN3PositiveSyntax ;
-        mf:action      <turtle/turtle-syntax-bad-n3-extras-01.ttl> ;
-        mf:name        "turtle-syntax-bad-n3-extras-01" .
-
-:turtle_turtle-syntax-bad-n3-extras-02.ttl
-        a              test:TestN3PositiveSyntax ;
-        mf:action      <turtle/turtle-syntax-bad-n3-extras-02.ttl> ;
-        mf:name        "turtle-syntax-bad-n3-extras-02" .
-
-:turtle_turtle-syntax-bad-n3-extras-04.ttl
-        a              test:TestN3PositiveSyntax ;
-        mf:action      <turtle/turtle-syntax-bad-n3-extras-04.ttl> ;
-        mf:name        "turtle-syntax-bad-n3-extras-04" .
-
-:turtle_turtle-syntax-bad-n3-extras-07.ttl
-        a              test:TestN3NegativeSyntax ;
-        mf:action      <turtle/turtle-syntax-bad-n3-extras-07.ttl> ;
-        mf:name        "turtle-syntax-bad-n3-extras-07" ;
-        rdfs:comment   "new grammar does not support @keywords directive" .
-
-:turtle_turtle-syntax-bad-n3-extras-08.ttl
-        a              test:TestN3NegativeSyntax ;
-        mf:action      <turtle/turtle-syntax-bad-n3-extras-08.ttl> ;
-        mf:name        "turtle-syntax-bad-n3-extras-08" ;
-        rdfs:comment   "new grammar does not support @keywords directive" .
-
-:turtle_turtle-syntax-bad-n3-extras-09.ttl
-        a              test:TestN3PositiveSyntax ;
-        mf:action      <turtle/turtle-syntax-bad-n3-extras-09.ttl> ;
-        mf:name        "turtle-syntax-bad-n3-extras-09" .
-
-:turtle_turtle-syntax-bad-n3-extras-10.ttl
-        a              test:TestN3PositiveSyntax ;
-        mf:action      <turtle/turtle-syntax-bad-n3-extras-10.ttl> ;
-        mf:name        "turtle-syntax-bad-n3-extras-10" .
-
-:turtle_turtle-syntax-bad-n3-extras-11.ttl
-        a              test:TestN3PositiveSyntax ;
-        mf:action      <turtle/turtle-syntax-bad-n3-extras-11.ttl> ;
-        mf:name        "turtle-syntax-bad-n3-extras-11" .
-
-:turtle_turtle-syntax-bad-n3-extras-12.ttl
-        a              test:TestN3PositiveSyntax ;
-        mf:action      <turtle/turtle-syntax-bad-n3-extras-12.ttl> ;
-        mf:name        "turtle-syntax-bad-n3-extras-12" .
-
-:turtle_turtle-syntax-bad-n3-extras-13.ttl
-        a              test:TestN3NegativeSyntax ;
-        mf:action      <turtle/turtle-syntax-bad-n3-extras-13.ttl> ;
-        mf:name        "turtle-syntax-bad-n3-extras-13" ;
-        rdfs:comment   "new grammar does not support @keywords directive" .
-
-:turtle_turtle-syntax-bad-struct-02.ttl
-        a              test:TestN3PositiveSyntax ;
-        mf:action      <turtle/turtle-syntax-bad-struct-02.ttl> ;
-        mf:name        "turtle-syntax-bad-struct-02" .
-

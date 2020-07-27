@@ -10,10 +10,9 @@
 
 <>  a mf:Manifest ;
     rdfs:label "N3 ExtendedParser tests" ;
-    rdfs:comment "These tests may be useful for stress testing parsers."
+    rdfs:comment "These tests may be useful for stress testing parsers." ;
     mf:entries
     (
-
       :01etc_10tt_proof.n3
       :01etc_1tt1.n3
       :01etc_1tt10.n3
