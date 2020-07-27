@@ -1,4 +1,4 @@
-# In-scope base URI is <https://w3c.github.io/N3/grammar/tests/TurtleTests/turtle-subm-27.ttl> at this point
+# In-scope base URI is <https://w3c.github.io/N3/tests/TurtleTests/turtle-subm-27.ttl> at this point
 <a1> <b1> <c1> .
 @base <http://example.org/ns/> .
 # In-scope base URI is http://example.org/ns/ at this point

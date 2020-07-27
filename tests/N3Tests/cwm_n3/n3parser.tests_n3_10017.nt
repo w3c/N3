@@ -95,7 +95,7 @@
     
     _:li16     <https://w3c.github.io/N3/tests/test#verb2> <https://w3c.github.io/N3/tests/test#object2> .
     
-    _:li17     <https://w3c.github.io/N3/grammar/tests/N3Tests/cwm_lists.n3#linksEqualLists> _:li17 .
+    _:li17     <https://w3c.github.io/N3/tests/N3Tests/cwm_lists.n3#linksEqualLists> _:li17 .
     
     <https://w3c.github.io/N3/tests/test#emptyList>     <http://www.w3.org/2002/07/owl#sameAs> <http://www.w3.org/1999/02/22-rdf-syntax-ns#nil> .
     

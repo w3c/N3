@@ -1,29 +1,29 @@
     
     _:g39     <http://www.w3.org/2002/07/owl#oneOf> _:li3 .
     
-    _:li3     <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> "https://w3c.github.io/N3/grammar/tests/N3Tests/cwm_syntax/foo.n3#a" .
+    _:li3     <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> "https://w3c.github.io/N3/tests/N3Tests/cwm_syntax/foo.n3#a" .
     
     _:li3     <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> _:li2 .
     
-    _:li2     <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> "https://w3c.github.io/N3/grammar/tests/N3Tests/cwm_syntax/foo.n3#b" .
+    _:li2     <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> "https://w3c.github.io/N3/tests/N3Tests/cwm_syntax/foo.n3#b" .
     
     _:li2     <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> _:li1 .
     
-    _:li1     <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> "https://w3c.github.io/N3/grammar/tests/N3Tests/cwm_syntax/foo.n3#c" .
+    _:li1     <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> "https://w3c.github.io/N3/tests/N3Tests/cwm_syntax/foo.n3#c" .
     
     _:li1     <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> <http://www.w3.org/1999/02/22-rdf-syntax-ns#nil> .
     
     _:g40     <http://www.w3.org/2002/07/owl#oneOf> _:li6 .
     
-    _:li6     <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> "https://w3c.github.io/N3/grammar/tests/N3Tests/cwm_syntax/foo.n3#x" .
+    _:li6     <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> "https://w3c.github.io/N3/tests/N3Tests/cwm_syntax/foo.n3#x" .
     
     _:li6     <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> _:li5 .
     
-    _:li5     <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> "https://w3c.github.io/N3/grammar/tests/N3Tests/cwm_syntax/foo.n3#y" .
+    _:li5     <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> "https://w3c.github.io/N3/tests/N3Tests/cwm_syntax/foo.n3#y" .
     
     _:li5     <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> _:li4 .
     
-    _:li4     <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> "https://w3c.github.io/N3/grammar/tests/N3Tests/cwm_syntax/foo.n3#z" .
+    _:li4     <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> "https://w3c.github.io/N3/tests/N3Tests/cwm_syntax/foo.n3#z" .
     
     _:li4     <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> <http://www.w3.org/1999/02/22-rdf-syntax-ns#nil> .
     
@@ -79,11 +79,11 @@
     
     _:g14     <http://www.w3.org/2004/06/rei#subject> _:g15 .
     
-    _:g15     <http://www.w3.org/2004/06/rei#uri> "https://w3c.github.io/N3/grammar/tests/N3Tests/cwm_syntax/foo.n3#x" .
+    _:g15     <http://www.w3.org/2004/06/rei#uri> "https://w3c.github.io/N3/tests/N3Tests/cwm_syntax/foo.n3#x" .
     
-    _:g16     <http://www.w3.org/2004/06/rei#uri> "https://w3c.github.io/N3/grammar/tests/N3Tests/cwm_syntax/foo.n3#mother" .
+    _:g16     <http://www.w3.org/2004/06/rei#uri> "https://w3c.github.io/N3/tests/N3Tests/cwm_syntax/foo.n3#mother" .
     
-    _:g17     <http://www.w3.org/2004/06/rei#uri> "https://w3c.github.io/N3/grammar/tests/N3Tests/cwm_syntax/foo.n3#y" .
+    _:g17     <http://www.w3.org/2004/06/rei#uri> "https://w3c.github.io/N3/tests/N3Tests/cwm_syntax/foo.n3#y" .
     
     _:g18     <http://www.w3.org/2004/06/rei#object> _:g21 .
     
@@ -91,11 +91,11 @@
     
     _:g18     <http://www.w3.org/2004/06/rei#subject> _:g19 .
     
-    _:g19     <http://www.w3.org/2004/06/rei#uri> "https://w3c.github.io/N3/grammar/tests/N3Tests/cwm_syntax/foo.n3#y" .
+    _:g19     <http://www.w3.org/2004/06/rei#uri> "https://w3c.github.io/N3/tests/N3Tests/cwm_syntax/foo.n3#y" .
     
-    _:g20     <http://www.w3.org/2004/06/rei#uri> "https://w3c.github.io/N3/grammar/tests/N3Tests/cwm_syntax/foo.n3#sister" .
+    _:g20     <http://www.w3.org/2004/06/rei#uri> "https://w3c.github.io/N3/tests/N3Tests/cwm_syntax/foo.n3#sister" .
     
-    _:g21     <http://www.w3.org/2004/06/rei#uri> "https://w3c.github.io/N3/grammar/tests/N3Tests/cwm_syntax/foo.n3#z" .
+    _:g21     <http://www.w3.org/2004/06/rei#uri> "https://w3c.github.io/N3/tests/N3Tests/cwm_syntax/foo.n3#z" .
     
     _:g23     <http://www.w3.org/2004/06/rei#uri> "http://www.w3.org/2000/10/swap/log#implies" .
     
@@ -111,9 +111,9 @@
     
     _:g27     <http://www.w3.org/2004/06/rei#subject> _:g28 .
     
-    _:g28     <http://www.w3.org/2004/06/rei#uri> "https://w3c.github.io/N3/grammar/tests/N3Tests/cwm_syntax/foo.n3#x" .
+    _:g28     <http://www.w3.org/2004/06/rei#uri> "https://w3c.github.io/N3/tests/N3Tests/cwm_syntax/foo.n3#x" .
     
-    _:g29     <http://www.w3.org/2004/06/rei#uri> "https://w3c.github.io/N3/grammar/tests/N3Tests/cwm_syntax/foo.n3#aunt" .
+    _:g29     <http://www.w3.org/2004/06/rei#uri> "https://w3c.github.io/N3/tests/N3Tests/cwm_syntax/foo.n3#aunt" .
     
-    _:g30     <http://www.w3.org/2004/06/rei#uri> "https://w3c.github.io/N3/grammar/tests/N3Tests/cwm_syntax/foo.n3#z" .
+    _:g30     <http://www.w3.org/2004/06/rei#uri> "https://w3c.github.io/N3/tests/N3Tests/cwm_syntax/foo.n3#z" .
     
