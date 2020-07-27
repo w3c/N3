@@ -8,4 +8,8 @@
 <#>  a mf:Manifest ;
     rdfs:label "N3 Test Suite";
     rdfs:comment "This manifest loads additional manifests for specific behavior tests" ;
-    mf:include (<N3Tests/manifest.ttl> <TurtleTests/manifest.ttl>) .
+    mf:include (
+      <TurtleTests/manifest.ttl>
+      <N3Tests/manifest.ttl>
+      <N3Tests/manifest-extended.ttl>
+    ) .
