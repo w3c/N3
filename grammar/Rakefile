@@ -1,0 +1,6 @@
+task default: "n3.html"
+
+desc "Build HTML version of N3 EBNF"
+file "n3.html" => "n3.ebnf" do
+  %x(ebnf "n3.ebnf" --format html -o "n3.html")
+end
