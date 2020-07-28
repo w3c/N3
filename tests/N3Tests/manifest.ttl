@@ -1140,7 +1140,7 @@
 :cwm_syntax_numbers.n3
         a              test:TestN3Eval ;
         mf:action      <cwm_syntax/numbers.n3> ;
-        mf:result      <cwm_n3/n3parser.tests_n3_10013.nt> ;
+        mf:result      <cwm_n3/n3parser.tests_n3_10013.n3> ;
         mf:name        "numbers.n3" ;
         rdfs:comment   "Number syntax";
         rdft:approval  rdft:Approved .
