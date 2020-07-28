@@ -1,2 +1,0 @@
-# Turtle is not N3
-<https://w3c.github.io/N3/tests/TurtleTests/s> = <https://w3c.github.io/N3/tests/TurtleTests/o> .

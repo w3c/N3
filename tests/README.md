@@ -1,7 +1,7 @@
 # Notation3 Tests
-Note that all N3 grammar syntax tests are currently found [here](https://github.com/w3c/N3/tree/master/grammar).
+Note that all N3 grammar, evaluation and reasoning tests are currently found [here](https://w3c.github.io/N3/tests/N3Tests).
 
-For reasoning or evaluation tests, you should use the files listed here (see `manifest-reasoner.ttl` file).
+Tests exist for [N3 grammar](N3Tests/manifest.ttl), [N3 reasoning](N3Tests/manifes-reasoner.tl), [extended N3 grammar](N3Tests/manifest-extended.ttl) and appropriate [Turtle](TurtleTests/manifest.ttl) tests.
 
 # Design
 
@@ -11,7 +11,7 @@ Evaluation tests check whether the input (`action`) can be parsed into a dataset
 
 Reason tests invoke the Notation3 reasoner, with various options, and check that the results are isomorphic to those described in `results`.
 
-Tests should be run with an assumed base URI of `https://github.com/w3c/N3/tests/`
+Tests should be run with an assumed base URI of their associated manifest, either `https://w3c.github.io/N3/tests/N3Tests` or `https://w3c.github.io/N3/tests/TurtleTests`.
 
 # Contributing
 
