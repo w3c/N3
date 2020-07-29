@@ -38,17 +38,17 @@ Currently, the test harnass supports:
 
 It should be relatively straightforward to support additional systems, when they are developed.
 
-The tool will utilize a `manifest.ttl` file when found; else, it will treat all given files as positive/negative tests. It will also print all output to file `./test_out.txt`, in addition to showing it on the cmd line.
+The tool will utilize a `manifest.ttl` file when found (or when indicated using the `-mf` flag); else, it will treat all given files as positive/negative tests. It will also print all output to file `./test_out.txt`, in addition to showing it on the cmd line.
 
-To compile the test harness, run `mvn clean package`. If all goes well this process should result in separate jar files for each supported system under the `target` folder. Run `java -jar <name>.jar` for usage info. 
+To compile the test harness, run `mvn clean package`. If all goes well this process should result in separate jar files for each supported system under the `target` folder. Note that you can update the grammar (`.g4` file) and then run `mvn clean package` to compile the new lexer and parser, which are part of the test harness.
 
-Note that you can update the grammar (`.g4` file) and then run `mvn clean package` to compile the new lexer and parser, which are part of the test harness.
+Run `java -jar <name>.jar` for usage info. Below, the options are described in a bit more detail.
 
 There is a distinction between **positive-tests** (i.e., no syntax errors expected) and **negative-tests** (i.e., syntax errors expected).
 
-- In case a **folder** is given, the program will look for a `manifest.ttl` file that describe the test cases using the [RDF test manifest](https://www.w3.org/TR/rdf11-testcases/) vocabulary. 
+- In case a **folder** is given, the program will look for a `manifest.ttl` file that describe the test cases using the [RDF test manifest](https://www.w3.org/TR/rdf11-testcases/) vocabulary. Optionally, you can indicate the manifest file using the `-mf` flag.
 
-  When no manifest is found, the program will simply treat all Turtle / N3 files in the folder as tests (recursively). The program will expect a `-pos`/`-neg` flag indicating whether they are positive or negative tests. Note that this flag can also be given to override the `manifest.ttl` file within the folder, if any.
+When no manifest is found or given, the program will treat all Turtle / N3 files in the folder as tests (recursively). The program will expect a `-pos`/`-neg` flag indicating whether they are positive or negative tests. Note that this flag can also be given to override the `manifest.ttl` file within the folder, if any.
 
 - In case an **individual file** is given, the program will always expect a `-pos`/`-neg` flag to indicate whether it is a  positive or negative test. The `-printAST` flag can be added to print the parsed AST.
 
@@ -56,6 +56,9 @@ For instance:
 
 * `java -jar n3TestGrammar.jar n3 ../tests/N3Tests`  
 **N3**: tests files inside the `N3Tests` folder, as listed in its `manifest.ttl`, as N3 test cases.  
+
+* `java -jar n3TestGrammar.jar n3 ../tests/N3Tests -mf manifest.n3`  
+**N3**: tests files inside the `N3Tests` folder, as listed in its `manifest.n3`, as N3 test cases.  
 
 * `java -jar n3TestGrammar.jar n3 ../tests/TurtleTests -pos`  
 **Turtle**: tests all files inside the `TurtleTests` folder as positive Turtle test cases.
