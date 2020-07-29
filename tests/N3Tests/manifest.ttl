@@ -1213,12 +1213,12 @@
         mf:name        "sib" .
 
 :cwm_syntax_space-in-uri-ref.n3
-        a              test:TestN3NegativeSyntax ;
+        a              test:TestN3PositiveSyntax ;
         mf:action      <cwm_syntax/space-in-uri-ref.n3> ;
         mf:name        "space-in-uri-ref" .
 
 :cwm_syntax_space-in-uri.n3
-        a              test:TestN3PositiveSyntax ;
+        a              test:TestN3NegativeSyntax ;
         mf:action      <cwm_syntax/space-in-uri.n3> ;
         mf:name        "space-in-uri" .
 
