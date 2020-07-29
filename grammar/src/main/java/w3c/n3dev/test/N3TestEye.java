@@ -21,6 +21,21 @@ public class N3TestEye extends N3TestExec {
 	}
 
 	@Override
+	protected String name() {
+		return "eye";
+	}
+
+	@Override
+	protected String cmdNote() {
+		return null;
+	}
+
+	@Override
+	protected String cmdFlags() {
+		return null;
+	}
+
+	@Override
 	protected boolean foundError(String output) {
 		return output.contains("** ERROR **");
 	}

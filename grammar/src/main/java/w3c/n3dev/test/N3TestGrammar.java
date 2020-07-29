@@ -1,7 +1,6 @@
 package w3c.n3dev.test;
 
 import java.io.File;
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -20,103 +19,77 @@ public class N3TestGrammar extends N3Test {
 //	}
 
 	public static void main(String[] args) throws Exception {
-		if (args.length < 2) {
-			// @formatter:off
-			System.out.println("usage: java -jar n3TestGrammar.jar <grammar> <file or folder>\n"
-					+ "all output will be stored in ./test_out.txt\n\n" 
-					+ "<grammar> either turtle, n3 or n3ws\n\n"
-					+ "\n\nflags:\n\n"
-					+ "-pos/neg: whether tests should be run as positive (-pos) or negative (-neg) tests. "
-					+ "This flag is needed when testing an individual file, or a folder without a manifest file. "
-					+ "It will override any manifest found in a folder.\n\n"
-					+ "-printAST: when given for a file, the resulting AST will be printed." 
-					+ "\n\nexamples:\n\n"
-					+ "java -jar n3TestGrammar.jar n3 ../tests/N3Tests\n"
-					+ "tests files inside the 'N3Tests' folder, as listed in its 'manifest.ttl', as N3 test cases.\n\n"
-					+ "java -jar n3TestGrammar.jar turtle ../tests/TurtleTests -pos\n"
-					+ "tests all files inside the 'TurtleTests' folder as positive Turtle test cases.\n\n"
-					+ "java -jar n3TestGrammar.jar n3 ../tests/N3Tests/01etc/food-query.n3 -pos -printAST\n"
-					+ "tests the 'a.n3' file as a positive test case and prints its AST.");
-			// @formatter:on
-			return;
-		}
-
-		List<String> flags = new ArrayList<>();
-		for (int i = 2; i < args.length; i++)
-			flags.add(args[i]);
-
-		Grammars grammar = Grammars.valueOf(args[0]);
-		if (grammar == null) {
-			System.err.println("error: expected one of " + Arrays.toString(Grammars.values()) + " grammars");
-			return;
-		}
-
-		String file = args[1];
-		String folder = ".";
-
-		File f = new File(folder, file);
-		if (!f.exists()) {
-			System.err.println("error: cannot find " + f.getPath());
-			return;
-		}
-
-		File manifest = new File(f, "manifest.ttl");
-
-		Boolean posTest = null;
-		if (flags.contains("-pos") || flags.contains("-neg"))
-			posTest = flags.contains("-pos");
-
-		else {
-			if (!f.isDirectory()) {
-				System.err.println("error: expecting -pos/neg flag for an individual file test");
-				return;
-
-			} else if (!manifest.exists()) {
-				System.err.println("error: no " + f.getPath() + "\\manifest.ttl found so need -pos/neg flag");
-				return;
-			}
-		}
-
-		boolean printAST = (!f.isDirectory() && flags.contains("-printAST"));
-
-		N3TestGrammar t = new N3TestGrammar(grammar, printAST);
-
-		Log.i("-- CONFIG");
-		Log.i("grammar: " + grammar.describe());
-
-		if (f.isDirectory()) {
-			Log.i("folder: " + f.getCanonicalPath());
-
-			// pos/neg flag overrides any potential manifest in the folder
-			if (posTest != null) {
-				Log.i("running tests as " + (posTest ? "positive" : "negative"));
-
-				Log.i("\n\n-- TESTS");
-				t.testFolder(posTest, f.getPath() + "/");
-
-			} else {
-				Log.i("using manifest");
-
-				Log.i("\n\n-- TESTS");
-				t.testManifest(f.getPath() + "/", grammar);
-			}
-
-		} else {
-			Log.i("file: " + f.getCanonicalPath());
-
-			Log.i("\n\n-- TESTS");
-			Log.i("\npass? " + (posTest ? t.positiveTest(f) : t.negativeTest(f)));
-		}
+		new N3TestGrammar().run(args);
 	}
 
-	private Grammar grammar;
 	private Grammars type;
-
 	private boolean printAST = false;
+
+	private Grammar grammar;
+
+	public N3TestGrammar() {
+	}
 
 	public N3TestGrammar(Grammars type, boolean printAST) {
 		this.type = type;
 		this.printAST = printAST;
+	}
+
+	@Override
+	protected String name() {
+		return "grammar";
+	}
+
+	@Override
+	protected int minArgLen() {
+		return 2;
+	}
+
+	@Override
+	protected String cmdUsage() {
+		return "<grammar> <file or folder>";
+	}
+
+	@Override
+	protected String cmdNote() {
+		return "grammar = n3, n3ws or turtle";
+	}
+
+	@Override
+	protected String cmdFlags() {
+		return "\n\n-printAST: when given for a file, the resulting AST will be printed.";
+	}
+
+	@Override
+	protected String examples() {
+		return "java -jar " + jarName() + " n3 ../tests/N3Tests\n"
+				+ "tests files inside the 'N3Tests' folder, as listed in its 'manifest.ttl', as N3 test cases.\n\n"
+				+ "java -jar " + jarName() + " n3ws ../tests/N3Tests -mf manifest.n3 \n"
+				+ "tests files inside the 'N3Tests' folder, as listed in its 'manifest.n3', as N3 (WS) test cases.\n\n"
+				+ "java -jar n3TestGrammar.jar turtle ../tests/TurtleTests -pos\n"
+				+ "tests all files inside the 'TurtleTests' folder as positive Turtle test cases.\n\n"
+				+ "java -jar n3TestGrammar.jar n3 ../tests/N3Tests/01etc/food-query.n3 -pos -printAST\n"
+				+ "tests the 'a.n3' file as a positive test case and prints its AST.";
+	}
+
+	@Override
+	protected boolean process(String[] args, List<String> flags) {
+		type = Grammars.valueOf(args[0]);
+		if (type == null) {
+			Log.e("expected one of " + Arrays.toString(Grammars.values()) + " grammars");
+			return false;
+		}
+
+		file = new File(args[1]);
+
+		printAST = (flags.remove("-printAST") && !file.isDirectory());
+
+		return true;
+	}
+
+	@Override
+	protected String describeConfig() {
+		return type.describe();
 	}
 
 	public ITestResult parse(File file) throws Exception {

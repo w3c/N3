@@ -1,6 +1,7 @@
 package w3c.n3dev.test;
 
 import java.io.BufferedReader;
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileReader;
 import java.io.IOException;
@@ -23,32 +24,36 @@ public class RdfTestManifest {
 	private String base = null;
 	private Model manifest;
 
-	public RdfTestManifest(String folder) throws Exception {
-		this.manifest = readManifest(folder);
+	public RdfTestManifest(String folder, File mf) throws Exception {
+		this.manifest = readManifest(folder, mf);
 	}
 
-	protected Model readManifest(String folder) throws Exception {
-		Log.i("parsing manifest.ttl");
+	protected Model readManifest(String folder, File mf) throws Exception {
+		Log.i("parsing " + mf.getPath());
 
-		getBase(folder + "manifest.ttl");
-		return ModelFactory.createDefaultModel().read(new FileInputStream(folder + "manifest.ttl"), null, "TURTLE");
+		getBase(mf.getPath());
+		Log.i("");
+
+		return ModelFactory.createDefaultModel().read(new FileInputStream(mf.getPath()), null, "TURTLE");
 	}
 
 	public void forEachTest(boolean positive, String lang, Consumer<String> fn) {
 		lang = StringUtils.capitalize(lang);
 		String posNeg = (positive ? "Positive" : "Negative");
 
-		Resource type = manifest.createResource(NS.uri("rdft:Test" + lang + posNeg + "Syntax"));
+		Resource type = manifest.createResource(NS.uri("test:Test" + lang + posNeg + "Syntax"));
 
 		StmtIterator stmtIt = manifest.listStatements(null, manifest.createProperty(NS.uri("rdf:type")), type);
 		while (stmtIt.hasNext()) {
 			Statement stmt = stmtIt.next();
 			Resource testCase = stmt.getSubject();
 
-			if (!testCase.getProperty(manifest.createProperty(NS.uri("rdft", "approval"))).getObject().asResource()
-					.getURI().equals(NS.uri("rdft", "Approved")))
+			Statement status = testCase.getProperty(manifest.createProperty(NS.uri("rdft", "approval")));
+			if (status != null && status.getObject().asResource().getURI().equals(NS.uri("rdft", "Rejected"))) {
+				Log.i("skipping (rejected): " + testCase);
 
 				continue;
+			}
 
 			Statement actionStmt = testCase.getProperty(manifest.createProperty(NS.uri("mf:action")));
 			if (actionStmt != null) {

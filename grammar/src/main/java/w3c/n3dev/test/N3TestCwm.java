@@ -28,8 +28,18 @@ public class N3TestCwm extends N3TestExec {
 	}
 
 	@Override
-	protected String getCmdNote() {
+	protected String name() {
+		return "cwm";
+	}
+	
+	@Override
+	protected String cmdNote() {
 		return "requires python to be installed";
+	}
+	
+	@Override
+	protected String cmdFlags() {
+		return null;
 	}
 
 	@Override

@@ -35,6 +35,7 @@ public class NS {
 		map.put("owl", "http://www.w3.org/2002/07/owl#");
 		map.put("rf", "http://niche.cs.dal.ca/reflex-ontology.owl#");
 		map.put("rdft", "http://www.w3.org/ns/rdftest#");
+		map.put("test", "https://w3c.github.io/N3/tests/test.n3#");
 		map.put("mf", "http://www.w3.org/2001/sw/DataAccess/tests/test-manifest#");
 	}
 

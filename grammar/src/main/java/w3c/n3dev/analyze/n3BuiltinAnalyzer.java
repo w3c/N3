@@ -37,7 +37,7 @@ public class n3BuiltinAnalyzer {
 	}
 
 	public void analyzeFolder(String folder) throws Exception {
-		RdfTestManifest manifest = new RdfTestManifest(mainFolder);
+		RdfTestManifest manifest = new RdfTestManifest(mainFolder, new File(mainFolder, "manifest.ttl"));
 
 		manifest.forEachTest(true, "n3", (test) -> {
 			if (folder == null || test.startsWith(folder))

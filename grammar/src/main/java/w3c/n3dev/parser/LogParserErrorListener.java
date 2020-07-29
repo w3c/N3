@@ -49,6 +49,7 @@ public class LogParserErrorListener extends ParserErrorListener {
 			BitSet conflictingAlts, ATNConfigSet configs) {
 
 		onError();
+
 		Log.e(name + "[parser]: " + "reportAttemptingFullContext @" + startIndex + "-" + stopIndex
 				+ ", conflictingAlts: " + conflictingAlts + ", configs " + configs);
 	}
@@ -58,6 +59,7 @@ public class LogParserErrorListener extends ParserErrorListener {
 			ATNConfigSet configs) {
 
 		onError();
+
 		Log.e(name + "[lexer]: " + "reportContextSensitivity @" + startIndex + "-" + stopIndex + ", prediction: "
 				+ prediction + ", configs: " + configs);
 	}

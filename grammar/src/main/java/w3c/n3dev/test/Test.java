@@ -35,6 +35,7 @@ public class Test {
 
 			public void prefixError(String offendingPrefix, String pname, PrefixException e) {
 				onError();
+				
 				Log.e(offendingPrefix + " - " + pname + " - " + e.getMessage());
 			}
 		}));
