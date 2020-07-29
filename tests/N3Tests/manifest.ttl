@@ -960,7 +960,7 @@
         mf:name        "bad-preds-formula" .
 
 :cwm_syntax_bad-preds-literal.n3
-        a              test:TestN3NegativeSyntax ;
+        a              test:TestN3PositiveSyntax ;
         mf:action      <cwm_syntax/bad-preds-literal.n3> ;
         mf:name        "bad-preds-literal" .
 
@@ -1091,10 +1091,10 @@
         rdft:approval  rdft:Approved .
 
 :cwm_syntax_neg-formula-predicate.n3
-        a              test:TestN3NegativeSyntax ;
+        a              test:TestN3PositiveSyntax ;
         mf:action      <cwm_syntax/neg-formula-predicate.n3> ;
         mf:name        "neg-formula-predicate.n3" ;
-        rdfs:comment   "A predicate cannot be a formula, I hope";
+        rdfs:comment   "A predicate cannot be a formula, I hope ; yes it can!";
         rdft:approval  rdft:Approved .
 
 :cwm_syntax_neg-keywords3.n3
@@ -1105,10 +1105,10 @@
         rdft:approval  rdft:Approved .
 
 :cwm_syntax_neg-literal-predicate.n3
-        a              test:TestN3NegativeSyntax ;
+        a              test:TestN3PositiveSyntax ;
         mf:action      <cwm_syntax/neg-literal-predicate.n3> ;
         mf:name        "neg-literal-predicate.n3" ;
-        rdfs:comment   "A predicate cannot be a literal, I hope";
+        rdfs:comment   "A predicate cannot be a literal, I hope ; yes it can!";
         rdft:approval  rdft:Approved .
 
 :cwm_syntax_neg-single-quote.n3
@@ -1213,7 +1213,7 @@
         mf:name        "sib" .
 
 :cwm_syntax_space-in-uri-ref.n3
-        a              test:TestN3PositiveSyntax ;
+        a              test:TestN3NegativeSyntax ;
         mf:action      <cwm_syntax/space-in-uri-ref.n3> ;
         mf:name        "space-in-uri-ref" .
 
