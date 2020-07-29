@@ -1,13 +1,13 @@
-package w3c.n3dev.parser.visitor.n3;
+package w3c.n3dev.parser.visitor.n3ws;
 
 import org.antlr.v4.runtime.tree.ParseTree;
 import org.antlr.v4.runtime.tree.RuleNode;
 import org.antlr.v4.runtime.tree.TerminalNode;
 
-import w3c.n3dev.parser.antlr.n3Parser;
+import w3c.n3dev.parser.antlr.n3wsParser;
 import wvw.utils.log.Log;
 
-public class n3PrintVisitor extends n3DefaultVisitor {
+public class n3wsPrintVisitor extends n3wsDefaultVisitor {
 
 	private int lvl = 0;
 
@@ -20,7 +20,7 @@ public class n3PrintVisitor extends n3DefaultVisitor {
 	 * </p>
 	 */
 	@Override
-	public Void visitN3Doc(n3Parser.N3DocContext ctx) {
+	public Void visitN3Doc(n3wsParser.N3DocContext ctx) {
 		print("N3Doc");
 		return doVisitChildren(ctx);
 	}
@@ -34,7 +34,7 @@ public class n3PrintVisitor extends n3DefaultVisitor {
 	 * </p>
 	 */
 	@Override
-	public Void visitN3Statement(n3Parser.N3StatementContext ctx) {
+	public Void visitN3Statement(n3wsParser.N3StatementContext ctx) {
 		print("N3Statement");
 		return doVisitChildren(ctx);
 	}
@@ -48,7 +48,7 @@ public class n3PrintVisitor extends n3DefaultVisitor {
 	 * </p>
 	 */
 	@Override
-	public Void visitN3Directive(n3Parser.N3DirectiveContext ctx) {
+	public Void visitN3Directive(n3wsParser.N3DirectiveContext ctx) {
 		print("N3Directive");
 		return doVisitChildren(ctx);
 	}
@@ -62,7 +62,7 @@ public class n3PrintVisitor extends n3DefaultVisitor {
 	 * </p>
 	 */
 	@Override
-	public Void visitSparqlDirective(n3Parser.SparqlDirectiveContext ctx) {
+	public Void visitSparqlDirective(n3wsParser.SparqlDirectiveContext ctx) {
 		print("SparqlDirective");
 		return doVisitChildren(ctx);
 	}
@@ -76,7 +76,7 @@ public class n3PrintVisitor extends n3DefaultVisitor {
 	 * </p>
 	 */
 	@Override
-	public Void visitSparqlBase(n3Parser.SparqlBaseContext ctx) {
+	public Void visitSparqlBase(n3wsParser.SparqlBaseContext ctx) {
 		print("SparqlBase");
 		return doVisitChildren(ctx);
 	}
@@ -90,7 +90,7 @@ public class n3PrintVisitor extends n3DefaultVisitor {
 	 * </p>
 	 */
 	@Override
-	public Void visitSparqlPrefix(n3Parser.SparqlPrefixContext ctx) {
+	public Void visitSparqlPrefix(n3wsParser.SparqlPrefixContext ctx) {
 		print("SparqlPrefix");
 		return doVisitChildren(ctx);
 	}
@@ -104,7 +104,7 @@ public class n3PrintVisitor extends n3DefaultVisitor {
 	 * </p>
 	 */
 	@Override
-	public Void visitPrefixID(n3Parser.PrefixIDContext ctx) {
+	public Void visitPrefixID(n3wsParser.PrefixIDContext ctx) {
 		print("PrefixID");
 		return doVisitChildren(ctx);
 	}
@@ -118,7 +118,7 @@ public class n3PrintVisitor extends n3DefaultVisitor {
 	 * </p>
 	 */
 	@Override
-	public Void visitBase(n3Parser.BaseContext ctx) {
+	public Void visitBase(n3wsParser.BaseContext ctx) {
 		print("Base");
 		return doVisitChildren(ctx);
 	}
@@ -132,7 +132,7 @@ public class n3PrintVisitor extends n3DefaultVisitor {
 	 * </p>
 	 */
 	@Override
-	public Void visitTriples(n3Parser.TriplesContext ctx) {
+	public Void visitTriples(n3wsParser.TriplesContext ctx) {
 		print("Triples");
 		return doVisitChildren(ctx);
 	}
@@ -146,7 +146,7 @@ public class n3PrintVisitor extends n3DefaultVisitor {
 	 * </p>
 	 */
 	@Override
-	public Void visitPredicateObjectList(n3Parser.PredicateObjectListContext ctx) {
+	public Void visitPredicateObjectList(n3wsParser.PredicateObjectListContext ctx) {
 		print("PredicateObjectList");
 		return doVisitChildren(ctx);
 	}
@@ -160,7 +160,7 @@ public class n3PrintVisitor extends n3DefaultVisitor {
 	 * </p>
 	 */
 	@Override
-	public Void visitObjectList(n3Parser.ObjectListContext ctx) {
+	public Void visitObjectList(n3wsParser.ObjectListContext ctx) {
 		print("ObjectList");
 		return doVisitChildren(ctx);
 	}
@@ -174,7 +174,7 @@ public class n3PrintVisitor extends n3DefaultVisitor {
 	 * </p>
 	 */
 	@Override
-	public Void visitVerb(n3Parser.VerbContext ctx) {
+	public Void visitVerb(n3wsParser.VerbContext ctx) {
 		print("Verb");
 		return doVisitChildren(ctx);
 	}
@@ -188,7 +188,7 @@ public class n3PrintVisitor extends n3DefaultVisitor {
 	 * </p>
 	 */
 	@Override
-	public Void visitSubject(n3Parser.SubjectContext ctx) {
+	public Void visitSubject(n3wsParser.SubjectContext ctx) {
 		print("Subject");
 		return doVisitChildren(ctx);
 	}
@@ -202,7 +202,7 @@ public class n3PrintVisitor extends n3DefaultVisitor {
 	 * </p>
 	 */
 	@Override
-	public Void visitPredicate(n3Parser.PredicateContext ctx) {
+	public Void visitPredicate(n3wsParser.PredicateContext ctx) {
 		print("Predicate");
 		return doVisitChildren(ctx);
 	}
@@ -216,7 +216,7 @@ public class n3PrintVisitor extends n3DefaultVisitor {
 	 * </p>
 	 */
 	@Override
-	public Void visitObject(n3Parser.ObjectContext ctx) {
+	public Void visitObject(n3wsParser.ObjectContext ctx) {
 		print("Object");
 		return doVisitChildren(ctx);
 	}
@@ -230,7 +230,7 @@ public class n3PrintVisitor extends n3DefaultVisitor {
 	 * </p>
 	 */
 	@Override
-	public Void visitExpression(n3Parser.ExpressionContext ctx) {
+	public Void visitExpression(n3wsParser.ExpressionContext ctx) {
 		print("Expression");
 		return doVisitChildren(ctx);
 	}
@@ -244,7 +244,7 @@ public class n3PrintVisitor extends n3DefaultVisitor {
 	 * </p>
 	 */
 	@Override
-	public Void visitPath(n3Parser.PathContext ctx) {
+	public Void visitPath(n3wsParser.PathContext ctx) {
 		print("Path");
 		return doVisitChildren(ctx);
 	}
@@ -258,7 +258,7 @@ public class n3PrintVisitor extends n3DefaultVisitor {
 	 * </p>
 	 */
 	@Override
-	public Void visitPathItem(n3Parser.PathItemContext ctx) {
+	public Void visitPathItem(n3wsParser.PathItemContext ctx) {
 		print("PathItem");
 		return doVisitChildren(ctx);
 	}
@@ -272,7 +272,7 @@ public class n3PrintVisitor extends n3DefaultVisitor {
 	 * </p>
 	 */
 	@Override
-	public Void visitLiteral(n3Parser.LiteralContext ctx) {
+	public Void visitLiteral(n3wsParser.LiteralContext ctx) {
 		print("Literal");
 		return doVisitChildren(ctx);
 	}
@@ -286,7 +286,7 @@ public class n3PrintVisitor extends n3DefaultVisitor {
 	 * </p>
 	 */
 	@Override
-	public Void visitBlankNodePropertyList(n3Parser.BlankNodePropertyListContext ctx) {
+	public Void visitBlankNodePropertyList(n3wsParser.BlankNodePropertyListContext ctx) {
 		print("BlankNodePropertyList");
 		return doVisitChildren(ctx);
 	}
@@ -300,7 +300,7 @@ public class n3PrintVisitor extends n3DefaultVisitor {
 	 * </p>
 	 */
 	@Override
-	public Void visitCollection(n3Parser.CollectionContext ctx) {
+	public Void visitCollection(n3wsParser.CollectionContext ctx) {
 		print("Collection");
 		return doVisitChildren(ctx);
 	}
@@ -314,7 +314,7 @@ public class n3PrintVisitor extends n3DefaultVisitor {
 	 * </p>
 	 */
 	@Override
-	public Void visitFormula(n3Parser.FormulaContext ctx) {
+	public Void visitFormula(n3wsParser.FormulaContext ctx) {
 		print("Formula");
 		return doVisitChildren(ctx);
 	}
@@ -328,7 +328,7 @@ public class n3PrintVisitor extends n3DefaultVisitor {
 	 * </p>
 	 */
 	@Override
-	public Void visitFormulaContent(n3Parser.FormulaContentContext ctx) {
+	public Void visitFormulaContent(n3wsParser.FormulaContentContext ctx) {
 		print("FormulaContent");
 		return doVisitChildren(ctx);
 	}
@@ -342,7 +342,7 @@ public class n3PrintVisitor extends n3DefaultVisitor {
 	 * </p>
 	 */
 	@Override
-	public Void visitRdfLiteral(n3Parser.RdfLiteralContext ctx) {
+	public Void visitRdfLiteral(n3wsParser.RdfLiteralContext ctx) {
 		print("RdfLiteral");
 		return doVisitChildren(ctx);
 	}
@@ -356,7 +356,7 @@ public class n3PrintVisitor extends n3DefaultVisitor {
 	 * </p>
 	 */
 	@Override
-	public Void visitIri(n3Parser.IriContext ctx) {
+	public Void visitIri(n3wsParser.IriContext ctx) {
 		print("Iri");
 		return doVisitChildren(ctx);
 	}
@@ -370,7 +370,7 @@ public class n3PrintVisitor extends n3DefaultVisitor {
 	 * </p>
 	 */
 	@Override
-	public Void visitIriList(n3Parser.IriListContext ctx) {
+	public Void visitIriList(n3wsParser.IriListContext ctx) {
 		print("IriList");
 		return doVisitChildren(ctx);
 	}
@@ -384,7 +384,7 @@ public class n3PrintVisitor extends n3DefaultVisitor {
 	 * </p>
 	 */
 	@Override
-	public Void visitPrefixedName(n3Parser.PrefixedNameContext ctx) {
+	public Void visitPrefixedName(n3wsParser.PrefixedNameContext ctx) {
 		print("PrefixedName");
 		return doVisitChildren(ctx);
 	}
@@ -398,7 +398,7 @@ public class n3PrintVisitor extends n3DefaultVisitor {
 	 * </p>
 	 */
 	@Override
-	public Void visitExistential(n3Parser.ExistentialContext ctx) {
+	public Void visitExistential(n3wsParser.ExistentialContext ctx) {
 		print("Existential");
 		return doVisitChildren(ctx);
 	}
@@ -412,7 +412,7 @@ public class n3PrintVisitor extends n3DefaultVisitor {
 	 * </p>
 	 */
 	@Override
-	public Void visitUniversal(n3Parser.UniversalContext ctx) {
+	public Void visitUniversal(n3wsParser.UniversalContext ctx) {
 		print("Universal");
 		return doVisitChildren(ctx);
 	}
@@ -449,7 +449,7 @@ public class n3PrintVisitor extends n3DefaultVisitor {
 				String out = c.toString();
 				int type = t.getSymbol().getType();
 				if (type != -1)
-					out += " (" + n3Parser.tokenNames[type] + ")";
+					out += " (" + n3wsParser.tokenNames[type] + ")";
 				print(out);
 
 			} else {

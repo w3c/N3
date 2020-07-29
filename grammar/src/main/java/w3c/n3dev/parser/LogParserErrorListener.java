@@ -22,8 +22,8 @@ public class LogParserErrorListener extends ParserErrorListener {
 
 		onError();
 
-		Log.e(name + " [parser]: syntaxError for " + offendingSymbol + " @" + line + ":" + charPositionInLine + " - "
-				+ msg);
+		Log.e(name + " [parser] " + "(@" + line + ":" + charPositionInLine + ") syntaxError for " + offendingSymbol
+				+ " - " + msg);
 	}
 
 	@Override
@@ -50,7 +50,7 @@ public class LogParserErrorListener extends ParserErrorListener {
 
 		onError();
 		Log.e(name + "[parser]: " + "reportAttemptingFullContext @" + startIndex + "-" + stopIndex
-				+ ", conflictingAlts: " + conflictingAlts); // + ", configs " + configs);
+				+ ", conflictingAlts: " + conflictingAlts + ", configs " + configs);
 	}
 
 	@Override
@@ -59,6 +59,6 @@ public class LogParserErrorListener extends ParserErrorListener {
 
 		onError();
 		Log.e(name + "[lexer]: " + "reportContextSensitivity @" + startIndex + "-" + stopIndex + ", prediction: "
-				+ prediction); // + ", configs: " + configs);
+				+ prediction + ", configs: " + configs);
 	}
 }

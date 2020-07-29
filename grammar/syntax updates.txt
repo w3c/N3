@@ -1,0 +1,37 @@
+> whitespaces
+
+- updating the grammar is a tad tricky (cannot just add WS everywhere as this will cause ambiguity in the parser)
+An n3Statement may end on a WS. As a result, no explicit WS is needed in n3Doc production at that position. Since sparqlDirective does not have a potential WS ending, it's needed in the n3Doc production. 
+	n3Directive has a potential WS ending
+	universal, existantial: iriList has potential WS ending
+	triples: predicateObjectList > objectList have potential WS ending
+	
+(productions such as iriList, triples need a potential WS ending regardless of what else is matched in the production)	
+(in productions such as iriList, the ending ".. iri WS*)*" could be replaced by ".. iriList)?" to make it recursive
+	but, if I'm not mistaken, compiler-compilers such as ANTLR convert the latter into the former anyway)
+
+blankNodePropertyList: no second WS needed since predicateObjectList has a potential WS ending
+collection: needs a second WS, since object production does not have potential WS ending
+formula: no second WS needed since formulaContent has a potential WS ending
+formulaContent: no WS after n3Statement since that production already has potential WS ending
+
+all this trouble to do the following:
+	triples: a whitespace is needed between subject and predicateObjectList if the latter is matched
+	predicate, path: no whitespaces allowed between elements of a property / resource path
+	rdfLiteral: no whitespace allowed between String and language tag or datatype IRI (latter is not strictly needed I suppose)
+
+- some test cases, where there is no space between subject and predicate, will no longer work 
+	(cwm_includes/t11.n3, 07test/iq.n3, cwm_list/last.n3, cwm_includes/conclusion-simple.n3, cwm_list/double.n3)
+awkwardly, this means that stuff like {}=>{} won't work (but {} =>{} will work)
+
+
+
+> '@' ambiguity
+since whitespaces are no longer allowed between strings and language tags, the above solution solves this to an extent as well
+
+- but, tokens such as @is, @of, @has, @a, @true, @false will always be returned as such, instead of a LANGTAG instance
+	(lexer rule precedence depends on position from top to bottom)
+so, explicitly include these as potential language tags in new langTag parser rule, in addition to LANGTAG token
+
+- explicitly adding @true, @false to langTag rule caused confusion; these were then no longer returned as BooleanLiteral tokens
+hence, separated @true, @false into AtBoolLiteral and true, false into DefBoolLiteral ; refer to latter in langTag rule

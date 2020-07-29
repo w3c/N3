@@ -1,4 +1,4 @@
-// Generated from n3.g4 by ANTLR 4.7.2
+// Generated from n3ws.g4 by ANTLR 4.7.2
 
     package w3c.n3dev.parser.antlr;
 
@@ -112,7 +112,7 @@ public class n3Lexer extends Lexer {
 	}
 
 	@Override
-	public String getGrammarFileName() { return "n3.g4"; }
+	public String getGrammarFileName() { return "n3ws.g4"; }
 
 	@Override
 	public String[] getRuleNames() { return ruleNames; }

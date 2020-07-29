@@ -17,6 +17,14 @@ public class LogLexerErrorListener extends LexerErrorListener {
 	}
 
 	@Override
+	public void syntaxError(Recognizer<?, ?> arg0, Object arg1, int arg2, int arg3, String arg4,
+			RecognitionException arg5) {
+
+		onError();
+		Log.e(name + " [lexer] " + "(@" + arg2 + ":" + arg3 + ") syntaxError for " + arg1 + " - " + arg4 + " " + arg5);
+	}
+
+	@Override
 	public void reportAmbiguity(Parser arg0, DFA arg1, int arg2, int arg3, boolean arg4, BitSet arg5,
 			ATNConfigSet arg6) {
 
@@ -34,13 +42,5 @@ public class LogLexerErrorListener extends LexerErrorListener {
 	public void reportContextSensitivity(Parser arg0, DFA arg1, int arg2, int arg3, int arg4, ATNConfigSet arg5) {
 		onError();
 		Log.e(name + "[lexer]: " + "reportContextSensitivity @" + arg2 + "-" + arg3 + " " + arg4 + " " + arg5);
-	}
-
-	@Override
-	public void syntaxError(Recognizer<?, ?> arg0, Object arg1, int arg2, int arg3, String arg4,
-			RecognitionException arg5) {
-
-		onError();
-		Log.e(name + " [lexer]: " + "syntaxError for " + arg1 + " @" + arg2 + ":" + arg3 + " - " + arg4 + " " + arg5);
 	}
 }

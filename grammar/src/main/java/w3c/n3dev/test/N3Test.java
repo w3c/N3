@@ -6,6 +6,7 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.function.Consumer;
 
+import w3c.n3dev.parser.Grammar.Grammars;
 import wvw.utils.log.Log;
 import wvw.utils.log.target.AggregateTarget;
 import wvw.utils.log.target.FileTarget;
@@ -22,16 +23,16 @@ public abstract class N3Test {
 		Log.setTarget(new AggregateTarget(new SystemOut(), new FileTarget("test_out.txt")));
 	}
 
-	public void testManifest(String folder, String grammar) throws Exception {
+	public void testManifest(String folder, Grammars type) throws Exception {
 		RdfTestManifest manifest = new RdfTestManifest(folder);
 
 		skipped = new ArrayList<>();
 
 		ManifestTestConsumer posFn = new ManifestTestConsumer(folder, true);
-		manifest.forEachTest(true, grammar, posFn);
+		manifest.forEachTest(true, type.getLng(), posFn);
 
 		ManifestTestConsumer negFn = new ManifestTestConsumer(folder, false);
-		manifest.forEachTest(false, grammar, negFn);
+		manifest.forEachTest(false, type.getLng(), negFn);
 
 		printFailed(posFn.getCount() + negFn.getCount(), posFn.getFailed(), negFn.getFailed());
 	}

@@ -11,6 +11,7 @@ import java.util.function.Function;
 
 import org.apache.commons.lang3.StringUtils;
 
+import w3c.n3dev.parser.Grammar.Grammars;
 import wvw.utils.log.Log;
 
 public abstract class N3TestExec extends N3Test {
@@ -96,7 +97,7 @@ public abstract class N3TestExec extends N3Test {
 				Log.i("using manifest");
 
 				Log.i("\n\n-- TESTS");
-				testManifest(file.getPath() + "/", "n3");
+				testManifest(file.getPath() + "/", Grammars.n3);
 			}
 
 		} else {

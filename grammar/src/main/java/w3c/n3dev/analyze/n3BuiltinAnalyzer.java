@@ -9,25 +9,26 @@ import org.antlr.v4.runtime.ParserRuleContext;
 
 import w3c.n3dev.analyze.n3BuiltinVisitor.PrefixEntry;
 import w3c.n3dev.parser.Grammar;
+import w3c.n3dev.parser.Grammar.Grammars;
 import w3c.n3dev.test.RdfTestManifest;
 
 public class n3BuiltinAnalyzer {
 
 	public static void main(String[] args) throws Exception {
-		n3BuiltinAnalyzer analyzer = new n3BuiltinAnalyzer("n3", "tests/N3Tests/");
+		n3BuiltinAnalyzer analyzer = new n3BuiltinAnalyzer(Grammars.n3, "tests/N3Tests/");
 
 //		analyzer.analyzeFile("07test/grawlgen.n3");
 //		analyzer.analyzeFolder("01etc/");
 		analyzer.analyzeAll();
 	}
 
-	private String grammarLabel;
+	private Grammars type;
 	private String mainFolder;
 
 	private n3BuiltinVisitor visitor = new n3BuiltinVisitor();
 
-	public n3BuiltinAnalyzer(String grammarLabel, String mainFolder) {
-		this.grammarLabel = grammarLabel;
+	public n3BuiltinAnalyzer(Grammars type, String mainFolder) {
+		this.type = type;
 		this.mainFolder = mainFolder;
 	}
 
@@ -58,7 +59,7 @@ public class n3BuiltinAnalyzer {
 		File file = new File(mainFolder, test);
 		Grammar grammar = new Grammar();
 		try {
-			ParserRuleContext ctx = grammar.parse(file, grammarLabel);
+			ParserRuleContext ctx = grammar.parse(file, type);
 			visitor.visit(ctx);
 
 		} catch (Exception e) {
