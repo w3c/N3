@@ -1,5 +1,0 @@
-# N3 paths
-@prefix : <https://w3c.github.io/N3/tests/TurtleTests/> .
-@prefix ns: <https://w3c.github.io/N3/tests/TurtleTests/p#> .
-
-:x^ns:p :p :z .

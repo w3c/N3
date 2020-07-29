@@ -1,4 +1,0 @@
-# = is not Turtle
-@prefix : <https://w3c.github.io/N3/tests/TurtleTests/> .
-
-:a = :b .

@@ -1,7 +1,0 @@
-     @prefix : <http://dig.csail.mit.edu/TAMI/2007/amord/tms#> .
-    {
-#        :A     :B :C .
-        
-        }     :D  [];
-
-    :E  :F .
