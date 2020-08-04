@@ -1,5 +1,9 @@
 Here, you can find the current draft of the N3 specification document.
 
+You can read it in HTML here: [https://w3c.github.io/N3/spec/](https://w3c.github.io/N3/spec/) (GitHub Pages)
+
+## Local Editing
+
 Some files will be dynamically loaded by the ReSpec code (using the `data-include` feature; notably, `n3.html`). As a result, 
 if you try to view the document from your filesystem, you will run into the **same-origin security restriction**. 
 This is documented on the [ReSpec Wiki](https://github.com/w3c/respec/wiki/ReSpec-Editor's-Guide#inclusions--transformations).
