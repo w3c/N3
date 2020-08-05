@@ -534,6 +534,7 @@ _:dominik foaf:knows _:doerthe .
       <section id='whitespace'>
         <h3>Whitespace</h3>
         <p>White space (<a href="#grammar-production-WS">WS production</a>) is used to separate terminals. The amount and type (e.g., newline or space) of white space is only significant within terminals.</p>
+		<p>The <a href="#grammar-production-IRIREF">IRIREF</a> production explicitly allows whitespaces, but these are to be <b>ignored</b> by the N3 system. For instance, this allows long URIs to be broken onto several lines, which in turn allows N3 to be sent via e.g., email with limited line length. In other words, although allowed by the grammar, any whitespace within the <> is to be ignored by the N3 system.</p>
       </section>
       <section id='comments'>
         <h3>Comments</h3>
