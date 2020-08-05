@@ -15,7 +15,8 @@ import wvw.utils.log.Log;
 public class N3TestGrammar extends N3Test {
 
 //	public static void main(String[] args) throws Exception {
-//		System.out.println(new N3TestGrammar(Grammars.n3ws, false).positiveTest(new File("tests/N3Tests/01etc/skos-rules.n3")));
+//		System.out.println(new N3TestGrammar(Grammars.n3, true)
+//				.positiveTest(new File("D:\\git\\n3dev\\N3\\tests\\N3Tests\\cwm_syntax\\space-in-uri.n3")));
 //	}
 
 	public static void main(String[] args) throws Exception {
