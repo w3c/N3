@@ -796,6 +796,32 @@ _:dominik foaf:knows _:doerthe .
         </section>
       </section>
     </section>
+    <section id='in-html' class="appendix informative">
+      <h2>Embedding N3 in HTML documents</h2>
+      <p>HTML [[HTML5]] <code>script</code> element can be used to embed data blocks in documents. N3 can be easily embedded in <code>script</code> with the <code>type</code> attribute set to <code>text/n3</code>.</p>
+      <p>Such content may be escaped as indicated below:</p>
+        <ul>
+          <li><code>&amp;amp;</code>: &amp; (ampersand, U+0026)</li>
+          <li><code>&amp;lt;</code>: &lt; (less-than sign, U+003C)</li>
+          <li><code>&amp;gt;</code>: &gt; (greater-than sign, U+003E)</li>
+          <li><code>&amp;quot;</code>: &quot; (quotation mark, U+0022)</li>
+          <li><code>&amp;apos;</code>: &apos; (apostrophe, U+0027)</li>
+        </ul>
+      </p>
+      <pre class="example nohighlight">&lt;script type=&quot;text/n3&quot;&gt;
+@prefix : &amp;lt;http://www.example.org/#&amp;gt; .
+:green-goblin :enemyOf :spiderman .
+&lt;/script&gt;
+      </pre>
+      <p>When embedded in XHTML N3 data blocks must be enclosed in CDATA sections. Those CDATA markers must be in Turtle comments. If the character sequence <code>]]&gt;</code> occurs in the document it must be escaped using strings escapes (<code>\u005d\u0054\u003e</code>). This will also make N3 safe in polyglot documents served as both <code>text/html</code> and <code>application/xhtml+xml</code>. Failing to use CDATA sections or escape <code>]]&gt;</code> may result in a non well-formed XML document.</p>
+      <pre class="example nohighlight">&lt;script type=&quot;text/n3&quot;&gt;
+# &lt;![CDATA[
+@prefix : &lt;http://www.example.org/#&gt; .
+:green-goblin :enemyOf :spiderman .
+# ]]&gt;
+&lt;/script&gt;
+      </pre>
+    </section>
     <section id='mime' class=appendix>
       <h2>Internet Media Type, File Extension and Macintosh File Type</h2>
       <p>This section has been submitted to the Internet Engineering Steering Group (IESG) for review, approval, and registration with IANA.</p>
