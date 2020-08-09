@@ -106,7 +106,7 @@
   rdfs:comment "List processing bug check 2" ;
   mf:action <cwm_list/list-bug2.n3>;
   mf:result <cwm_list/list-bug2-ref.n3>;
-  test:options [test:think true; test:data true;] .
+  test:options [test:think true; test:filter true;] .
 
 :t1031 a test:TestN3Reason;
   mf:name      "li-r1.n3" ;
