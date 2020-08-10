@@ -1,0 +1,3 @@
+@prefix : <#> .
+
+"test-1"     a :success .

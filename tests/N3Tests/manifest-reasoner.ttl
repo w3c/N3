@@ -40,7 +40,10 @@
       :cwm_reason_t9 :cwm_reason_double
 
       # From swap/test/string
-      :cwm_string_startsWith :cwm_string_endsWith :cwm_string_contains
+      :cwm_string_startsWith :cwm_string_endsWith :cwm_string_contains :cwm_string_containsIgnoringCase
+      :cwm_string_equalIgnoringCase :cwm_string_notEqualIgnoringCase :cwm_string_format
+      :cwm_string_greaterThan :cwm_string_lessThan :cwm_string_notGreaterThan :cwm_string_notLessThan
+      :cwm_string_matches :cwm_string_notMatches :cwm_string_replace :cwm_string_scrape
       :cwm_string_roughly :cwm_string_uriEncode
 
       # From swap/test/supports
@@ -262,6 +265,90 @@
   rdfs:comment "string:contains" ;
   mf:action <cwm_string/contains.n3>;
   mf:result <cwm_string/contains-out.n3>;
+  test:options [test:rules true; test:data true] .
+
+:cwm_string_containsIgnoringCase a test:TestN3Reason;
+  mf:name      "string-containsIgnoringCase.n3" ;
+  rdfs:comment "string:containsIgnoringCase" ;
+  mf:action <cwm_string/containsIgnoringCase.n3>;
+  mf:result <cwm_string/containsIgnoringCase-out.n3>;
+  test:options [test:rules true; test:data true] .
+
+:cwm_string_equalIgnoringCase a test:TestN3Reason;
+  mf:name      "string-equalIgnoringCase.n3" ;
+  rdfs:comment "string:equalIgnoringCase" ;
+  mf:action <cwm_string/equalIgnoringCase.n3>;
+  mf:result <cwm_string/equalIgnoringCase-out.n3>;
+  test:options [test:rules true; test:data true] .
+
+:cwm_string_format a test:TestN3Reason;
+  mf:name      "string-format.n3" ;
+  rdfs:comment "string:format" ;
+  mf:action <cwm_string/format.n3>;
+  mf:result <cwm_string/format-out.n3>;
+  test:options [test:rules true; test:data true] .
+
+:cwm_string_greaterThan a test:TestN3Reason;
+  mf:name      "string-greaterThan.n3" ;
+  rdfs:comment "string:greaterThan" ;
+  mf:action <cwm_string/greaterThan.n3>;
+  mf:result <cwm_string/greaterThan-out.n3>;
+  test:options [test:rules true; test:data true] .
+
+:cwm_string_lessThan a test:TestN3Reason;
+  mf:name      "string-lessThan.n3" ;
+  rdfs:comment "string:lessThan" ;
+  mf:action <cwm_string/lessThan.n3>;
+  mf:result <cwm_string/lessThan-out.n3>;
+  test:options [test:rules true; test:data true] .
+
+:cwm_string_matches a test:TestN3Reason;
+  mf:name      "string-matches.n3" ;
+  rdfs:comment "string:matches" ;
+  mf:action <cwm_string/matches.n3>;
+  mf:result <cwm_string/matches-out.n3>;
+  test:options [test:rules true; test:data true] .
+
+:cwm_string_notEqualIgnoringCase a test:TestN3Reason;
+  mf:name      "string-notEqualIgnoringCase.n3" ;
+  rdfs:comment "string:notEqualIgnoringCase" ;
+  mf:action <cwm_string/notEqualIgnoringCase.n3>;
+  mf:result <cwm_string/notEqualIgnoringCase-out.n3>;
+  test:options [test:rules true; test:data true] .
+
+:cwm_string_notGreaterThan a test:TestN3Reason;
+  mf:name      "string-notGreaterThan.n3" ;
+  rdfs:comment "string:notGreaterThan" ;
+  mf:action <cwm_string/notGreaterThan.n3>;
+  mf:result <cwm_string/notGreaterThan-out.n3>;
+  test:options [test:rules true; test:data true] .
+
+:cwm_string_notLessThan a test:TestN3Reason;
+  mf:name      "string-notLessThan.n3" ;
+  rdfs:comment "string:notLessThan" ;
+  mf:action <cwm_string/notLessThan.n3>;
+  mf:result <cwm_string/notLessThan-out.n3>;
+  test:options [test:rules true; test:data true] .
+
+:cwm_string_notMatches a test:TestN3Reason;
+  mf:name      "string-notMatches.n3" ;
+  rdfs:comment "string:notMatches" ;
+  mf:action <cwm_string/notMatches.n3>;
+  mf:result <cwm_string/notMatches-out.n3>;
+  test:options [test:rules true; test:data true] .
+
+:cwm_string_replace a test:TestN3Reason;
+  mf:name      "string-replace.n3" ;
+  rdfs:comment "string:replace" ;
+  mf:action <cwm_string/replace.n3>;
+  mf:result <cwm_string/replace-out.n3>;
+  test:options [test:rules true; test:data true] .
+
+:cwm_string_scrape a test:TestN3Reason;
+  mf:name      "string-scrape.n3" ;
+  rdfs:comment "string:scrape" ;
+  mf:action <cwm_string/scrape.n3>;
+  mf:result <cwm_string/scrape-out.n3>;
   test:options [test:rules true; test:data true] .
 
 :cwm_string_roughly a test:TestN3Reason;

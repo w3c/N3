@@ -1,0 +1,4 @@
+@prefix : <#> .
+
+:test2     a :success .
+:test4     a :success .
