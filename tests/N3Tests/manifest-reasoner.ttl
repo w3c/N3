@@ -40,7 +40,8 @@
       :cwm_reason_t9 :cwm_reason_double
 
       # From swap/test/string
-      :cwm_string_endsWith :cwm_string_roughly :cwm_string_uriEncode
+      :cwm_string_startsWith :cwm_string_endsWith :cwm_string_contains
+      :cwm_string_roughly :cwm_string_uriEncode
 
       # From swap/test/supports
       :cwm_supports_simple
@@ -242,11 +243,25 @@
 
 # List tests from swap/test/string
 
+:cwm_string_startsWith a test:TestN3Reason;
+  mf:name      "string-startsWith.n3" ;
+  rdfs:comment "string:startsWith" ;
+  mf:action <cwm_string/startsWith.n3>;
+  mf:result <cwm_string/startsWith-out.n3>;
+  test:options [test:rules true; test:data true] .
+
 :cwm_string_endsWith a test:TestN3Reason;
   mf:name      "string-endsWith.n3" ;
   rdfs:comment "string:endsWith" ;
   mf:action <cwm_string/endsWith.n3>;
   mf:result <cwm_string/endsWith-out.n3>;
+  test:options [test:rules true; test:data true] .
+
+:cwm_string_contains a test:TestN3Reason;
+  mf:name      "string-contains.n3" ;
+  rdfs:comment "string:contains" ;
+  mf:action <cwm_string/contains.n3>;
+  mf:result <cwm_string/contains-out.n3>;
   test:options [test:rules true; test:data true] .
 
 :cwm_string_roughly a test:TestN3Reason;

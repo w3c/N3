@@ -1,0 +1,23 @@
+@prefix log: <http://www.w3.org/2000/10/swap/log#>.
+@prefix string: <http://www.w3.org/2000/10/swap/string#>.
+@prefix : <#>.
+
+@forAll :x, :y, :z, :p, :q.
+
+{ "asdfghjkl" string:contains "jkl" } log:implies { :test1e a :success }.
+{ "asdfghjkl" string:contains "asd" } log:implies { :test1s a :success }.
+
+{ "asdfghjkl" string:contains "ass" } log:implies { :test2 a :FAILURE }.
+
+{ "jkl" string:contains "jkl" } log:implies { :test3 a :success }.
+
+{ "asdfghjkl" string:contains "dfg" } log:implies { :test4 a :success }.
+
+{ "asdfjhkh" string:contains "hkh" } log:implies { :test5 a :success }.
+
+{ "foobar" string:contains "" } log:implies { :test6 a :success }.
+
+{ "" string:contains "" } log:implies { :test7 a :success }.
+
+#ends
+
