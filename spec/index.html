@@ -804,7 +804,7 @@ _:dominik foaf:knows _:doerthe .
       </section>
       <section id="compoundliteral">
         <h4>Compound literal</h4>
-        <p>This solution is inspired by a separate discussion of the RDF community on <em>Language Tagged Strings</em>. The essence of the discussion is to separate the string, as a simple data, from all the various characterizations that may be added to it. This design pattern uses the <code>rdf:CompoundLiteral</code> class, which is in the domain of <code>rdf:language</code> and <code>rdf:direction</code> to be used for describing RDF literal values containing base direction and a possible language tag to be associated with the string value of rdf:value on the same subject.</p>
+        <p>This solution is inspired by a separate discussion of the RDF community on <em>Language Tagged Strings</em>. The essence of the discussion is to separate the string, as a simple data, from all the various characterizations that may be added to it. This design pattern uses the <code>rdf:CompoundLiteral</code> class, which is in the domain of <code>rdf:language</code> and <code>rdf:direction</code> to be used for describing RDF literal values containing base direction and a possible language tag to be associated with the string value of <code>rdf:value</code> on the same subject.</p>
         <pre class="example nohighlight">
 @prefix foaf: &lt;http://xmlns.com/foaf/0.1/&gt; .
 &lt;http://example.org/#spiderman&gt; foaf:name [
@@ -812,6 +812,27 @@ _:dominik foaf:knows _:doerthe .
 	rdf:language "ar-eg", 
 	rdf:direction "rtl" 
 ] .
+        </pre>
+      </section>
+      <section id="reification">
+        <h4>Graph quoted inside another graph</h4>
+        <p>Reification in the RDF context means the expression of something in a language using the language so that it becomes treatable by the language. RDF graphs consist of RDF statements. If one wants to look objectively at an RDF graph and reason about it is using RDF tools, then it is useful to have a mechanism for describing RDF statements. N3 extends RDF to allow graphs themselves to be another form of literal node. A graph can be quoted inside another graph, as in the example:</p>
+        <pre class="example nohighlight">
+@prefix : &lt;http://example.org/&gt;  .
+_:x :graph { 
+  &lt;http://example.org/#spiderman&gt; &lt;http://xmlns.com/foaf/0.1/name&gt; "Spiderman" . 
+} .
+_:x :certainty 0.8 .
+        </pre>
+        <p>The above example can also be seen as <a data-cite="rdf11-mt#reification">RDF reification</a>:</p>
+        <pre class="example nohighlight">
+@prefix rdf: &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#&gt; .
+@prefix : &lt;http://example.org/&gt; .
+_:x a rdf:Statement ;
+    rdf:subject &lt;http://example.org/#spiderman&gt; ;
+    rdf:predicate &lt;http://xmlns.com/foaf/0.1/name&gt; ;
+    rdf:object "Spiderman" ;
+    :certainty 0.8 .
         </pre>
       </section>
     </section>
