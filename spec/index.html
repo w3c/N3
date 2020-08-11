@@ -222,7 +222,14 @@
 	</pre>
         <p class="note">If no datatype IRI or language tag is given, the datatype <code>xsd:string</code> will be assumed. In case a language tag is given, the datatype <code>rdf:langString</code> will be assumed. Note that it is not possible to specify both a datatype IRI and a language tag.</p>
         <p class="note">Integers, decimals and doubles, or booleans, may also be written as string literals with the appropriate datatype IRI. Boolean literals can be written as <code>true</code> or <code>@true</code> and <code>false</code> or <code>@false</code>.</p>
-        There are several ways to write string literals. Until now we have used double-quotes <code>"</code> for delimiting, but one may also use single-quotes <code>'</code>, or even compound delimiters consisting of three double-quotes <code>"""</code> or three single-quotes <code>'''</code>. These other delimiters are useful if the string literal is known to contain single- or double-quotes; e.g., if the string contains single-quotes, one could use double-quotes as delimiters, and vice-versa, to avoid syntax errors. Alternatively, one can also use a '<code>\</code>' for escaping the delimiter each time it occurs within a string literal. If a string can contain newlines (or a quote of any type, and it is impractical or undesirable to escape them), one should use the compound type of delimiter, i.e., <code>"""</code> or <code>'''</code>. For instance:
+        <p>One of the mechanisms for describing the [BCP47] language tag and base direction of RDF literals is the <code>i18n</code> namespace.</p>
+        <pre class="example nohighlight">
+		@prefix i18n: &lt;https://www.w3.org/ns/i18n#&gt; .
+		@prefix foaf: &lt;http://xmlns.com/foaf/0.1/&gt; .
+		&lt;http://example.org/#spiderman&gt; foaf:name "الرجل العنكبوت"^^i18n:ar-eg_rtl
+	</pre>
+        <p class="note">There are also <a href="#compoundliteral">other mechanisms</a> for describing the language tag and base direction of RDF literals.</p>
+        <p>There are several ways to write string literals. Until now we have used double-quotes <code>"</code> for delimiting, but one may also use single-quotes <code>'</code>, or even compound delimiters consisting of three double-quotes <code>"""</code> or three single-quotes <code>'''</code>. These other delimiters are useful if the string literal is known to contain single- or double-quotes; e.g., if the string contains single-quotes, one could use double-quotes as delimiters, and vice-versa, to avoid syntax errors. Alternatively, one can also use a '<code>\</code>' for escaping the delimiter each time it occurs within a string literal. If a string can contain newlines (or a quote of any type, and it is impractical or undesirable to escape them), one should use the compound type of delimiter, i.e., <code>"""</code> or <code>'''</code>. For instance:</p>
         <pre id="string-literal-example" class="example nohighlight">
 @prefix ex: &lt;http://example.org/#&gt; .
 @prefix rdfs: &lt;http://www.w3.org/2000/01/rdf-schema#&gt; .
@@ -794,6 +801,18 @@ _:dominik foaf:knows _:doerthe .
             What roles do X, Y and Z play in this relation? One could answer that question by having a tailored schema: ...
           </p>
         </section>
+      </section>
+      <section id="compoundliteral">
+        <h4>Compound literal</h4>
+        <p>This solution is inspired by a separate discussion of the RDF community on <em>Language Tagged Strings</em>. The essence of the discussion is to separate the string, as a simple data, from all the various characterizations that may be added to it. This design pattern uses the <code>rdf:CompoundLiteral</code> class, which is in the domain of <code>rdf:language</code> and <code>rdf:direction</code> to be used for describing RDF literal values containing base direction and a possible language tag to be associated with the string value of rdf:value on the same subject.</p>
+        <pre class="example nohighlight">
+@prefix foaf: &lt;http://xmlns.com/foaf/0.1/&gt; .
+&lt;http://example.org/#spiderman&gt; foaf:name [
+	rdf:value "الرجل العنكبوت", 
+	rdf:language "ar-eg", 
+	rdf:direction "rtl" 
+] .
+        </pre>
       </section>
     </section>
     <section id='in-html' class="appendix informative">
