@@ -201,35 +201,45 @@
         <h3>Literals</h3>
         <p>In general, one uses a literal to represent a textual or numerical (i.e., datatype) value - such as names, dates, height, and so on. Numbers (integers, decimals and doubles) can simply be represented using their numerical value, and booleans can be represented using keywords <code>true</code> or <code>false</code>:</p>
         <pre class="example nohighlight">
-		@prefix : &lt;http://example.org/elements&gt; .                                                                          
+		@prefix : &lt;http://example.org/elements&gt; .
+		@prefix rdfs: &lt;http://www.w3.org/2000/01/rdf-schema#&gt; .		
 		&lt;http://en.wikipedia.org/wiki/Helium&gt;                                                                                 
 				:atomicNumber 2 ;               # xsd:integer                                                                      
 				:atomicMass 4.002602 ;          # xsd:decimal                                                                      
-				:specificGravity 1.663E-4 .     # xsd:double
-				:isNobleGas true . 		# xsd:boolean
+				:specificGravity 1.663E-4 ;     # xsd:double
+				:isNobleGas true ; 		# xsd:boolean
+				rdfs:label "Helium" .   	# xsd:string
 	</pre>
         <p>For details on what number syntax is supported (e.g., for decimals, doubles), we refer to the <a data-cite="TURTLE#abbrev">RDF 1.1: Turtle (Section 2.5.2)</a> specification.</p>
-        <p>Other literals (e.g., date; binary, octal or hex code; XML or JSON code; other types of numbers, such as shorts), and of course strings themselves, need to be written as string literals. For instance:
+        <p>Other literals (e.g., date; binary, octal or hex code; XML or JSON code; other types of numbers, such as shorts), and of course strings themselves, need to be written as <b>string literals</b>. For instance, <code>&lt;http://example.org/#spiderman&gt; &lt;http://example.org/#birthDate&gt; "2001-08-10".</code> In that case, the <a data-cite="RDF11-CONCEPTS#dfn-lexical-form">lexical form</a> will include the characters between the delimiter quotes (e.g., <code>2001-08-10</code>).</p>
+		<p>Clearly, this can raise confusion as to what type of literal is being represented - is it a string or some other arbitrary type? You can indicate the datatype of a literal in RDF using the <code>^^</code> symbol and the corresponding <a data-cite="XMLSCHEMA11-2#built-in-datatypes">datatype IRI</a>. The above example then becomes:
+		
+		<pre class="example nohighlight">
+		@prefix xsd: &lt;http://www.w3.org/2001/XMLSchema#&gt; .
+		&lt;http://example.org/#spiderman&gt; 
+			&lt;http://example.org/#birthDate&gt; "2001-08-10"^^xsd:date .
+		</pre>
+		
+		<p>(Take care to add the appropriate <code>xsd</code> prefix declaration.)</p>
+        <p>One can also specify the language of a string literal using the <code>@</code> symbol and the corresponding language tag (as defined in [[BCP47]] - find the registry in [[LNG-TAG]]). For instance:</p>
         <pre class="example nohighlight">
-	  &lt;http://example.org/#spiderman&gt; &lt;http://xmlns.com/foaf/0.1/name&gt; "Spiderman" ;
-				&lt;http://example.org/#birthDate&gt; "2001-08-10" .
-	</pre>
-        <p>In that case, the <a data-cite="RDF11-CONCEPTS#dfn-lexical-form">"RDF lexical form"</a> will include the characters between the delimiter quotes (e.g., <code>2001-08-10</code>). Clearly, this can raise confusion as to what type of literal is being represented - a string or some other arbitrary type. RDF allows indicating the datatype of a literal, using the <code>^^</code> symbol and the corresponding <a data-cite="XMLSCHEMA11-2#built-in-datatypes">datatype IRI</a> - for instance: <code>"2001-08-10"^^&lt;http://www.w3.org/2001/XMLSchema#date&gt;</code>. One can also use a prefixed name <code>xsd:date</code>, given a suitable prefix declaration (see <a href="#string-literal-example">example</a>).</p>
-        <p>In lieu of a datatype, one can specify the language of a string literal using the "<code>@</code>" symbol and the corresponding language tag (as defined in [[BCP47]] - find the registry in [[LNG-TAG]]). For instance:</p>
-        <pre class="example nohighlight">
-	  &lt;http://example.org/#spiderman&gt; &lt;http://xmlns.com/foaf/0.1/name&gt; "Spiderman"@en , 
+		&lt;http://example.org/#spiderman&gt; &lt;http://xmlns.com/foaf/0.1/name&gt; "Spiderman"@en , 
 					"Hombre Araña"@es , "Homme Araignée"@fr .
-	</pre>
-        <p class="note">If no datatype IRI or language tag is given, the datatype <code>xsd:string</code> will be assumed. In case a language tag is given, the datatype <code>rdf:langString</code> will be assumed. Note that it is not possible to specify both a datatype IRI and a language tag.</p>
-        <p class="note">Integers, decimals and doubles, or booleans, may also be written as string literals with the appropriate datatype IRI. Boolean literals can be written as <code>true</code> or <code>@true</code> and <code>false</code> or <code>@false</code>.</p>
-        <p>One of the mechanisms for describing the [BCP47] language tag and base direction of RDF literals is the <code>i18n</code> namespace.</p>
+		</pre>
+        <p>If you need to describe the base direction as well as the language [[BCP47]] you can use the <code>i18n</code> namespace:</p>
         <pre class="example nohighlight">
 		@prefix i18n: &lt;https://www.w3.org/ns/i18n#&gt; .
 		@prefix foaf: &lt;http://xmlns.com/foaf/0.1/&gt; .
-		&lt;http://example.org/#spiderman&gt; foaf:name "الرجل العنكبوت"^^i18n:ar-eg_rtl
-	</pre>
-        <p class="note">There are also <a href="#compoundliteral">other mechanisms</a> for describing the language tag and base direction of RDF literals.</p>
-        <p>There are several ways to write string literals. Until now we have used double-quotes <code>"</code> for delimiting, but one may also use single-quotes <code>'</code>, or even compound delimiters consisting of three double-quotes <code>"""</code> or three single-quotes <code>'''</code>. These other delimiters are useful if the string literal is known to contain single- or double-quotes; e.g., if the string contains single-quotes, one could use double-quotes as delimiters, and vice-versa, to avoid syntax errors. Alternatively, one can also use a '<code>\</code>' for escaping the delimiter each time it occurs within a string literal. If a string can contain newlines (or a quote of any type, and it is impractical or undesirable to escape them), one should use the compound type of delimiter, i.e., <code>"""</code> or <code>'''</code>. For instance:</p>
+		&lt;http://example.org/#spiderman&gt; foaf:name "الرجل العنكبوت"^^i18n:ar-eg_rtl .
+		</pre>
+		
+		<p class="note">If no datatype IRI or language tag is given, the datatype <code>xsd:string</code> will be assumed. In case a language tag is given, the datatype <code>rdf:langString</code> will be assumed. Note that it is not possible to specify both a datatype IRI and a language tag.</p>
+        
+		<p class="note">Integers, decimals and doubles, or booleans, may also be written as string literals with the appropriate datatype IRI. Boolean literals can be written as <code>true</code> or <code>@true</code> and <code>false</code> or <code>@false</code>.</p>
+        
+		<p class="note">There are also <a href="#compoundliteral">other mechanisms</a> for describing the language tag and base direction of RDF literals.</p>
+        
+		<p>There are several ways to write string literals. Until now we have used double-quotes <code>"</code> for delimiting, but one may also use single-quotes <code>'</code>, or even compound delimiters consisting of three double-quotes <code>"""</code> or three single-quotes <code>'''</code>. These other delimiters are useful if the string literal is known to contain single- or double-quotes; e.g., if the string contains single-quotes, one could use double-quotes as delimiters, and vice-versa, to avoid syntax errors. Alternatively, one can also use a '<code>\</code>' for escaping the delimiter each time it occurs within a string literal. If a string can contain newlines (or a quote of any type, and it is impractical or undesirable to escape them), one should use the compound type of delimiter, i.e., <code>"""</code> or <code>'''</code>. For instance:</p>
         <pre id="string-literal-example" class="example nohighlight">
 @prefix ex: &lt;http://example.org/#&gt; .
 @prefix rdfs: &lt;http://www.w3.org/2000/01/rdf-schema#&gt; .
@@ -240,8 +250,6 @@ ex:Spiderman rdfs:label '"Bitten" by a radioactive spider.'^^xsd:string .	# same
 ex:Spiderman rdfs:label """'Bitten' by "what"?
 	A radioactive spider!"""^^xsd:string
 	</pre>
-	 
-	 <p>TODO add a note on reading direction (cfr. (JSON-LD)[https://www.w3.org/TR/json-ld11/#base-direction]) - see also (GitHub post)[https://github.com/w3c/N3/issues/30].
 	      
         <p>In general, the escape symbol '<code>\</code>' (<span class="codepoint">U+005C</span>) may only appear in a string literal as part of <a href="#escseq">an escape sequence</a>. Other restrictions within string literals depend on the delimiter:</p>
         <ul>
