@@ -18,5 +18,14 @@
 
 { "" string:containsIgnoringCase "" } log:implies { :test7 a :success }.
 
-#ends
+# Variations with variable bindings
+:Tim :value "Tim".
+:im :value "IM".
 
+{ [is :value of :Tim] string:containsIgnoringCase "IM" } log:implies { :test8a a :success }.
+
+{ "Tim" string:containsIgnoringCase [is :value of :im] } log:implies { :test8b a :success }.
+
+{ :Tim :value ?a. ?a string:containsIgnoringCase "IM" } log:implies { :test8c a :success }.
+
+{ :im :value ?a. "Tim" string:containsIgnoringCase ?a } log:implies { :test8d a :success }.
