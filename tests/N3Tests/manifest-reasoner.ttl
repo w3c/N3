@@ -28,7 +28,7 @@
 
       # From swap/test/list
       :cwm_list_bug1 :cwm_list_bug2 :cwm_list_r1 :cwm_list_unify2 :cwm_list_unify3 :cwm_list_unify4
-      :cwm_list_unify5 :cwm_list_append :cwm_list_last :cwm_list_builtin_generated_match
+      :cwm_list_unify5 :cwm_list_append :cwm_list_first :cwm_list_last :cwm_list_builtin_generated_match
       :cwm_list_in :cwm_list_member
 
       # From swap/test/paw
@@ -170,6 +170,13 @@
   rdfs:comment "Iterative ops on lists" ;
   mf:action <cwm_list/append.n3>;
   mf:result <cwm_list/append-ref.n3>;
+  test:options [test:think true; test:filter true] .
+
+:cwm_list_first a test:TestN3Reason;
+  mf:name      "list-first.n3" ;
+  rdfs:comment "first, in builtins on lists" ;
+  mf:action <cwm_list/first.n3>;
+  mf:result <cwm_list/first-ref.n3>;
   test:options [test:think true; test:filter true] .
 
 :cwm_list_last a test:TestN3Reason;
