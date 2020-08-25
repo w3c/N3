@@ -1,40 +1,18 @@
-# $Id: append.n3,v 1.1 2003/08/30 18:04:16 timbl Exp $
+# Note, different from swap/test/list/append.n3
+@prefix : <#>.
+@prefix list: <http://www.w3.org/2000/10/swap/list#>.
 
-@prefix rdf:      <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
-@prefix rdfs:     <http://www.w3.org/2000/01/rdf-schema#> .
-@prefix log:      <http://www.w3.org/2000/10/swap/log#> .
-@prefix :         <#> .
+{ ((1 2 3 4 5) (6)) list:append (1 2 3 4 5 6)} => {:test1 a :success}.
+{ ((1 2 3 4 5) (6)) list:append ?item} => {:test2 :is ?item}.
 
-#{ ?A :append ( ?L  ?X ) => 
+{ (() (1)) list:append (1)} => {:test3 a :success}.
+{ (() (1)) list:append ?item} => {:test4 :is ?item}.
 
-{ 
-  ?A :append ( [ rdf:first ?H ; rdf:rest ?T ] ?S ) .
-}
-	=>
-{ 
-  ?A rdf:first ?H ;
-     rdf:rest  [ :append ( ?T ?S ) ] .
+:thing1 :prop1 ( 1 2 3 ) .
+:thing2 :prop1 ( 4 ) .
+{
+  ([is :prop1 of :thing1]
+   [is :prop1 of :thing2]) list:append ?item
+} => {
+  :test5 :is ?item
 } .
-
-
-{ 
-  ?A :append ( () ?S ) .
-}
-	=>
-{ 
-  ?A rdf:first ?S ;
-     rdf:rest  () .
-} .
-
-
-# Test cases
-
- :A0 :RESULT  [ :append ( ()  "only" ) ].
- :B0 :append ( ()  "onlyB" ) .
-
- :A1 :RESULT [ :append (  ( 1 ) 2 ) ] .
-
-#:A2 :append (  :A1 "L2" ) .
-
-#:A3 :append (  :A1 "L3" ) .
-
