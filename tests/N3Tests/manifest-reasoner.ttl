@@ -30,7 +30,7 @@
       # From swap/test/list
       :cwm_list_bug1 :cwm_list_bug2 :cwm_list_r1 :cwm_list_unify2 :cwm_list_unify3 :cwm_list_unify4
       :cwm_list_unify5 :cwm_list_append :cwm_list_first :cwm_list_last :cwm_list_builtin_generated_match
-      :list_in :list_member
+      :list_in :list_length :list_member
 
       # From swap/test/paw
 
@@ -119,7 +119,7 @@
 
 :cwm_math_test a test:TestN3Reason;
   mf:name "math-test.n3";
-  rdfs:comment   "Various math builtins";
+  rdfs:comment   "Various math builtins. (changed from using math:memberCount to list:length).";
   mf:action <cwm_math/math-test.n3>;
   mf:result <cwm_math/math-test-ref.n3>;
   test:options [test:think true; test:data true;] .
@@ -153,6 +153,13 @@
   rdfs:comment "list:in" ;
   mf:action <list/in.n3>;
   mf:result <list/in-ref.n3>;
+  test:options [test:think true; test:filter true;] .
+
+:list_length a test:TestN3Reason;
+  mf:name      "li-length.n3" ;
+  rdfs:comment "list-:length" ;
+  mf:action <list/length.n3>;
+  mf:result <list/length-ref.n3>;
   test:options [test:think true; test:filter true;] .
 
 :list_member a test:TestN3Reason;
