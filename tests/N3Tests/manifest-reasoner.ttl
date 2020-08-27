@@ -22,7 +22,7 @@
       :cwm_includes_conjunction
 
       # From swap/test/math
-      :math_absoluteValue :math_ceiling :math_floor :cwm_math_test
+      :math_absoluteValue :math_ceiling :math_exponentiation :math_floor :cwm_math_test
 
       # From swap/test/norm
       :cwm_norm_av1
@@ -108,6 +108,13 @@
   rdfs:comment   "Test math:ceiling";
   mf:action <math/ceiling.n3>;
   mf:result <math/ceiling-ref.n3>;
+  test:options [test:think true; test:data true;] .
+
+:math_exponentiation a test:TestN3Reason;
+  mf:name "exponentiation.n3";
+  rdfs:comment   "Test math:exponentiation";
+  mf:action <math/exponentiation.n3>;
+  mf:result <math/exponentiation-ref.n3>;
   test:options [test:think true; test:data true;] .
 
 :math_floor a test:TestN3Reason;
