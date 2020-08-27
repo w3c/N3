@@ -22,6 +22,7 @@
       :cwm_includes_conjunction
 
       # From swap/test/math
+      :math_absoluteValue :math_ceiling :math_floor :cwm_math_test
 
       # From swap/test/norm
       :cwm_norm_av1
@@ -92,6 +93,35 @@
   rdfs:comment "Builtins for log:conjunction." ;
   mf:action <cwm_includes/conjunction.n3>;
   mf:result <cwm_includes/conjunction-ref.n3>;
+  test:options [test:think true; test:data true;] .
+
+# Tests from swap/test/math
+:math_absoluteValue a test:TestN3Reason;
+  mf:name "absoluteValue.n3";
+  rdfs:comment   "Test math:absoluteValue";
+  mf:action <math/absoluteValue.n3>;
+  mf:result <math/absoluteValue-ref.n3>;
+  test:options [test:think true; test:data true;] .
+
+:math_ceiling a test:TestN3Reason;
+  mf:name "ceiling.n3";
+  rdfs:comment   "Test math:ceiling";
+  mf:action <math/ceiling.n3>;
+  mf:result <math/ceiling-ref.n3>;
+  test:options [test:think true; test:data true;] .
+
+:math_floor a test:TestN3Reason;
+  mf:name "floor.n3";
+  rdfs:comment   "Test math:floor";
+  mf:action <math/floor.n3>;
+  mf:result <math/floor-ref.n3>;
+  test:options [test:think true; test:data true;] .
+
+:cwm_math_test a test:TestN3Reason;
+  mf:name "math-test.n3";
+  rdfs:comment   "Various math builtins";
+  mf:action <cwm_math/math-test.n3>;
+  mf:result <cwm_math/math-test-ref.n3>;
   test:options [test:think true; test:data true;] .
 
 # Tests from swap/test/norm
