@@ -11,7 +11,7 @@
 { (0 0) math:exponentiation 1 } => {:test1g a :SUCCESS}.
 { (0 4) math:exponentiation 0 } => {:test1h a :SUCCESS}.
 
-# Combiations of types
+# Combinations of types
 { (2.7 2) math:exponentiation 7.29 } => {:test2a a :SUCCESS}.
 { (16 0.5) math:exponentiation 4.0 } => {:test2b a :SUCCESS}.
 { (16 0.5e0) math:exponentiation 4.0e0 } => {:test2c a :SUCCESS}.
@@ -21,5 +21,5 @@
 { (-0.0e0 3) math:exponentiation -0.0e0 } => {:test3b a :SUCCESS}.
 
 # Argument errors
-{ (1) math:exponentiation ?x } => {:test5a a :FAILURE}.
-{ (1 2 3) math:exponentiation ?x } => {:test5a a :FAILURE}.
+{ (1) math:exponentiation ?x } => {:test4a a :FAILURE}.
+{ (1 2 3) math:exponentiation ?x } => {:test4b a :FAILURE}.

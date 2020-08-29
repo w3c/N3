@@ -21,16 +21,22 @@
       :cwm_includes_listin :cwm_includes_bnode :cwm_includes_concat :cwm_includes_conclusion_simple
       :cwm_includes_conjunction
 
+      # math
+      :math_absoluteValue :math_ceiling :math_exponentiation :math_floor
+      :math_difference :math_product :math_quotient :math_remainder :math_sum
+
       # From swap/test/math
-      :math_absoluteValue :math_ceiling :math_exponentiation :math_floor :cwm_math_test
+      :cwm_math_test
 
       # From swap/test/norm
       :cwm_norm_av1
 
+      # list
+      :list_in :list_length :list_member
+
       # From swap/test/list
       :cwm_list_bug1 :cwm_list_bug2 :cwm_list_r1 :cwm_list_unify2 :cwm_list_unify3 :cwm_list_unify4
       :cwm_list_unify5 :cwm_list_append :cwm_list_first :cwm_list_last :cwm_list_builtin_generated_match
-      :list_in :list_length :list_member
 
       # From swap/test/paw
 
@@ -41,14 +47,16 @@
       :cwm_reason_socrates :cwm_reason_t8
       :cwm_reason_t9 :cwm_reason_double
 
-      # From swap/test/string
-      :cwm_string_endsWith
-      :cwm_string_roughly :cwm_string_uriEncode
+      # string
       :string_startsWith :string_contains
       :string_containsIgnoringCase :string_equalIgnoringCase :string_format
       :string_notEqualIgnoringCase
       :string_greaterThan :string_lessThan :string_notGreaterThan :string_notLessThan
       :string_matches :string_notMatches :string_replace :string_scrape
+
+      # From swap/test/string
+      :cwm_string_endsWith
+      :cwm_string_roughly :cwm_string_uriEncode
 
       # From swap/test/supports
       :cwm_supports_simple
@@ -110,6 +118,13 @@
   mf:result <math/ceiling-ref.n3>;
   test:options [test:think true; test:data true;] .
 
+:math_difference a test:TestN3Reason;
+  mf:name "difference.n3";
+  rdfs:comment   "Test math:difference";
+  mf:action <math/difference.n3>;
+  mf:result <math/difference-ref.n3>;
+  test:options [test:rules true; test:data true;] .
+
 :math_exponentiation a test:TestN3Reason;
   mf:name "exponentiation.n3";
   rdfs:comment   "Test math:exponentiation";
@@ -123,6 +138,34 @@
   mf:action <math/floor.n3>;
   mf:result <math/floor-ref.n3>;
   test:options [test:think true; test:data true;] .
+
+:math_product a test:TestN3Reason;
+  mf:name "product.n3";
+  rdfs:comment   "Test math:product";
+  mf:action <math/product.n3>;
+  mf:result <math/product-ref.n3>;
+  test:options [test:rules true; test:data true;] .
+
+:math_quotient a test:TestN3Reason;
+  mf:name "quotient.n3";
+  rdfs:comment   "Test math:quotient";
+  mf:action <math/quotient.n3>;
+  mf:result <math/quotient-ref.n3>;
+  test:options [test:rules true; test:data true;] .
+
+:math_remainder a test:TestN3Reason;
+  mf:name "remainder.n3";
+  rdfs:comment   "Test math:remainder";
+  mf:action <math/remainder.n3>;
+  mf:result <math/remainder-ref.n3>;
+  test:options [test:rules true; test:data true;] .
+
+:math_sum a test:TestN3Reason;
+  mf:name "sum.n3";
+  rdfs:comment   "Test math:sum";
+  mf:action <math/sum.n3>;
+  mf:result <math/sum-ref.n3>;
+  test:options [test:rules true; test:data true;] .
 
 :cwm_math_test a test:TestN3Reason;
   mf:name "math-test.n3";
