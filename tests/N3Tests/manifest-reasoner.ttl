@@ -27,6 +27,8 @@
 
       # From swap/test/math
       :cwm_math_test
+      # :cwm_math_trigo # Results subject to native precision for exact values
+      :math_trig
 
       # From swap/test/norm
       :cwm_norm_av1
@@ -173,6 +175,20 @@
   mf:action <cwm_math/math-test.n3>;
   mf:result <cwm_math/math-test-ref.n3>;
   test:options [test:think true; test:data true;] .
+
+:cwm_math_trigo a test:TestN3Reason;
+  mf:name "math-trigo.n3";
+  rdfs:comment   "Various trig builtins.";
+  mf:action <cwm_math/trigo-test.n3>;
+  mf:result <cwm_math/trigo.ref.n3>;
+  test:options [test:think true; test:data true;] .
+
+:math_trig a test:TestN3Reason;
+  mf:name "math-trig.n3";
+  rdfs:comment   "Various trig builtins.";
+  mf:action <math/trig.n3>;
+  mf:result <math/trig-ref.n3>;
+  test:options [test:rules true; test:data true;] .
 
 # Tests from swap/test/norm
 :cwm_norm_av1 a test:TestN3Reason;
