@@ -21,15 +21,24 @@
       :cwm_includes_listin :cwm_includes_bnode :cwm_includes_concat :cwm_includes_conclusion_simple
       :cwm_includes_conjunction
 
+      # math
+      :math_absoluteValue :math_ceiling :math_exponentiation :math_floor
+      :math_difference :math_product :math_quotient :math_remainder :math_sum
+
       # From swap/test/math
+      :cwm_math_test
+      # :cwm_math_trigo # Results subject to native precision for exact values
+      :math_trig
 
       # From swap/test/norm
       :cwm_norm_av1
 
+      # list
+      :list_in :list_length :list_member
+
       # From swap/test/list
       :cwm_list_bug1 :cwm_list_bug2 :cwm_list_r1 :cwm_list_unify2 :cwm_list_unify3 :cwm_list_unify4
-      :cwm_list_unify5 :cwm_list_append :cwm_list_last :cwm_list_builtin_generated_match
-      :cwm_list_in :cwm_list_member
+      :cwm_list_unify5 :cwm_list_append :cwm_list_first :cwm_list_last :cwm_list_builtin_generated_match
 
       # From swap/test/paw
 
@@ -40,11 +49,15 @@
       :cwm_reason_socrates :cwm_reason_t8
       :cwm_reason_t9 :cwm_reason_double
 
+      # string
+      :string_startsWith :string_contains
+      :string_containsIgnoringCase :string_equalIgnoringCase :string_format
+      :string_notEqualIgnoringCase
+      :string_greaterThan :string_lessThan :string_notGreaterThan :string_notLessThan
+      :string_matches :string_notMatches :string_replace :string_scrape
+
       # From swap/test/string
-      :cwm_string_startsWith :cwm_string_endsWith :cwm_string_contains :cwm_string_containsIgnoringCase
-      :cwm_string_equalIgnoringCase :cwm_string_notEqualIgnoringCase :cwm_string_format
-      :cwm_string_greaterThan :cwm_string_lessThan :cwm_string_notGreaterThan :cwm_string_notLessThan
-      :cwm_string_matches :cwm_string_notMatches :cwm_string_replace :cwm_string_scrape
+      :cwm_string_endsWith
       :cwm_string_roughly :cwm_string_uriEncode
 
       # From swap/test/supports
@@ -92,6 +105,91 @@
   mf:result <cwm_includes/conjunction-ref.n3>;
   test:options [test:think true; test:data true;] .
 
+# Tests from swap/test/math
+:math_absoluteValue a test:TestN3Reason;
+  mf:name "absoluteValue.n3";
+  rdfs:comment   "Test math:absoluteValue";
+  mf:action <math/absoluteValue.n3>;
+  mf:result <math/absoluteValue-ref.n3>;
+  test:options [test:think true; test:data true;] .
+
+:math_ceiling a test:TestN3Reason;
+  mf:name "ceiling.n3";
+  rdfs:comment   "Test math:ceiling";
+  mf:action <math/ceiling.n3>;
+  mf:result <math/ceiling-ref.n3>;
+  test:options [test:think true; test:data true;] .
+
+:math_difference a test:TestN3Reason;
+  mf:name "difference.n3";
+  rdfs:comment   "Test math:difference";
+  mf:action <math/difference.n3>;
+  mf:result <math/difference-ref.n3>;
+  test:options [test:rules true; test:data true;] .
+
+:math_exponentiation a test:TestN3Reason;
+  mf:name "exponentiation.n3";
+  rdfs:comment   "Test math:exponentiation";
+  mf:action <math/exponentiation.n3>;
+  mf:result <math/exponentiation-ref.n3>;
+  test:options [test:think true; test:data true;] .
+
+:math_floor a test:TestN3Reason;
+  mf:name "floor.n3";
+  rdfs:comment   "Test math:floor";
+  mf:action <math/floor.n3>;
+  mf:result <math/floor-ref.n3>;
+  test:options [test:think true; test:data true;] .
+
+:math_product a test:TestN3Reason;
+  mf:name "product.n3";
+  rdfs:comment   "Test math:product";
+  mf:action <math/product.n3>;
+  mf:result <math/product-ref.n3>;
+  test:options [test:rules true; test:data true;] .
+
+:math_quotient a test:TestN3Reason;
+  mf:name "quotient.n3";
+  rdfs:comment   "Test math:quotient";
+  mf:action <math/quotient.n3>;
+  mf:result <math/quotient-ref.n3>;
+  test:options [test:rules true; test:data true;] .
+
+:math_remainder a test:TestN3Reason;
+  mf:name "remainder.n3";
+  rdfs:comment   "Test math:remainder";
+  mf:action <math/remainder.n3>;
+  mf:result <math/remainder-ref.n3>;
+  test:options [test:rules true; test:data true;] .
+
+:math_sum a test:TestN3Reason;
+  mf:name "sum.n3";
+  rdfs:comment   "Test math:sum";
+  mf:action <math/sum.n3>;
+  mf:result <math/sum-ref.n3>;
+  test:options [test:rules true; test:data true;] .
+
+:cwm_math_test a test:TestN3Reason;
+  mf:name "math-test.n3";
+  rdfs:comment   "Various math builtins. (changed from using math:memberCount to list:length).";
+  mf:action <cwm_math/math-test.n3>;
+  mf:result <cwm_math/math-test-ref.n3>;
+  test:options [test:think true; test:data true;] .
+
+:cwm_math_trigo a test:TestN3Reason;
+  mf:name "math-trigo.n3";
+  rdfs:comment   "Various trig builtins.";
+  mf:action <cwm_math/trigo-test.n3>;
+  mf:result <cwm_math/trigo.ref.n3>;
+  test:options [test:think true; test:data true;] .
+
+:math_trig a test:TestN3Reason;
+  mf:name "math-trig.n3";
+  rdfs:comment   "Various trig builtins.";
+  mf:action <math/trig.n3>;
+  mf:result <math/trig-ref.n3>;
+  test:options [test:rules true; test:data true;] .
+
 # Tests from swap/test/norm
 :cwm_norm_av1 a test:TestN3Reason;
   mf:name "norm-av1.n3";
@@ -116,18 +214,25 @@
   mf:result <cwm_list/list-bug2-ref.n3>;
   test:options [test:think true; test:filter true;] .
 
-:cwm_list_in a test:TestN3Reason;
+:list_in a test:TestN3Reason;
   mf:name      "li-in.n3" ;
   rdfs:comment "list:in" ;
-  mf:action <cwm_list/in.n3>;
-  mf:result <cwm_list/in-ref.n3>;
+  mf:action <list/in.n3>;
+  mf:result <list/in-ref.n3>;
   test:options [test:think true; test:filter true;] .
 
-:cwm_list_member a test:TestN3Reason;
+:list_length a test:TestN3Reason;
+  mf:name      "li-length.n3" ;
+  rdfs:comment "list-:length" ;
+  mf:action <list/length.n3>;
+  mf:result <list/length-ref.n3>;
+  test:options [test:think true; test:filter true;] .
+
+:list_member a test:TestN3Reason;
   mf:name      "li-member.n3" ;
   rdfs:comment "list:member" ;
-  mf:action <cwm_list/member.n3>;
-  mf:result <cwm_list/member-ref.n3>;
+  mf:action <list/member.n3>;
+  mf:result <list/member-ref.n3>;
   test:options [test:think true; test:filter true;] .
 
 :cwm_list_r1 a test:TestN3Reason;
@@ -170,6 +275,13 @@
   rdfs:comment "Iterative ops on lists" ;
   mf:action <cwm_list/append.n3>;
   mf:result <cwm_list/append-ref.n3>;
+  test:options [test:think true; test:filter true] .
+
+:cwm_list_first a test:TestN3Reason;
+  mf:name      "list-first.n3" ;
+  rdfs:comment "first, in builtins on lists" ;
+  mf:action <cwm_list/first.n3>;
+  mf:result <cwm_list/first-ref.n3>;
   test:options [test:think true; test:filter true] .
 
 :cwm_list_last a test:TestN3Reason;
@@ -261,11 +373,11 @@
 
 # List tests from swap/test/string
 
-:cwm_string_startsWith a test:TestN3Reason;
+:string_startsWith a test:TestN3Reason;
   mf:name      "string-startsWith.n3" ;
   rdfs:comment "string:startsWith" ;
-  mf:action <cwm_string/startsWith.n3>;
-  mf:result <cwm_string/startsWith-out.n3>;
+  mf:action <string/startsWith.n3>;
+  mf:result <string/startsWith-out.n3>;
   test:options [test:rules true; test:filter true] .
 
 :cwm_string_endsWith a test:TestN3Reason;
@@ -275,95 +387,95 @@
   mf:result <cwm_string/endsWith-out.n3>;
   test:options [test:rules true; test:filter true] .
 
-:cwm_string_contains a test:TestN3Reason;
+:string_contains a test:TestN3Reason;
   mf:name      "string-contains.n3" ;
   rdfs:comment "string:contains" ;
-  mf:action <cwm_string/contains.n3>;
-  mf:result <cwm_string/contains-out.n3>;
+  mf:action <string/contains.n3>;
+  mf:result <string/contains-out.n3>;
   test:options [test:rules true; test:filter true] .
 
-:cwm_string_containsIgnoringCase a test:TestN3Reason;
+:string_containsIgnoringCase a test:TestN3Reason;
   mf:name      "string-containsIgnoringCase.n3" ;
   rdfs:comment "string:containsIgnoringCase" ;
-  mf:action <cwm_string/containsIgnoringCase.n3>;
-  mf:result <cwm_string/containsIgnoringCase-out.n3>;
+  mf:action <string/containsIgnoringCase.n3>;
+  mf:result <string/containsIgnoringCase-out.n3>;
   test:options [test:rules true; test:filter true] .
 
-:cwm_string_equalIgnoringCase a test:TestN3Reason;
+:string_equalIgnoringCase a test:TestN3Reason;
   mf:name      "string-equalIgnoringCase.n3" ;
   rdfs:comment "string:equalIgnoringCase" ;
-  mf:action <cwm_string/equalIgnoringCase.n3>;
-  mf:result <cwm_string/equalIgnoringCase-out.n3>;
+  mf:action <string/equalIgnoringCase.n3>;
+  mf:result <string/equalIgnoringCase-out.n3>;
   test:options [test:rules true; test:filter true] .
 
-:cwm_string_format a test:TestN3Reason;
+:string_format a test:TestN3Reason;
   mf:name      "string-format.n3" ;
   rdfs:comment "string:format" ;
-  mf:action <cwm_string/format.n3>;
-  mf:result <cwm_string/format-out.n3>;
+  mf:action <string/format.n3>;
+  mf:result <string/format-out.n3>;
   test:options [test:rules true; test:filter true] .
 
-:cwm_string_greaterThan a test:TestN3Reason;
+:string_greaterThan a test:TestN3Reason;
   mf:name      "string-greaterThan.n3" ;
   rdfs:comment "string:greaterThan" ;
-  mf:action <cwm_string/greaterThan.n3>;
-  mf:result <cwm_string/greaterThan-out.n3>;
+  mf:action <string/greaterThan.n3>;
+  mf:result <string/greaterThan-out.n3>;
   test:options [test:rules true; test:filter true] .
 
-:cwm_string_lessThan a test:TestN3Reason;
+:string_lessThan a test:TestN3Reason;
   mf:name      "string-lessThan.n3" ;
   rdfs:comment "string:lessThan" ;
-  mf:action <cwm_string/lessThan.n3>;
-  mf:result <cwm_string/lessThan-out.n3>;
+  mf:action <string/lessThan.n3>;
+  mf:result <string/lessThan-out.n3>;
   test:options [test:rules true; test:filter true] .
 
-:cwm_string_matches a test:TestN3Reason;
+:string_matches a test:TestN3Reason;
   mf:name      "string-matches.n3" ;
   rdfs:comment "string:matches" ;
-  mf:action <cwm_string/matches.n3>;
-  mf:result <cwm_string/matches-out.n3>;
+  mf:action <string/matches.n3>;
+  mf:result <string/matches-out.n3>;
   test:options [test:rules true; test:filter true] .
 
-:cwm_string_notEqualIgnoringCase a test:TestN3Reason;
+:string_notEqualIgnoringCase a test:TestN3Reason;
   mf:name      "string-notEqualIgnoringCase.n3" ;
   rdfs:comment "string:notEqualIgnoringCase" ;
-  mf:action <cwm_string/notEqualIgnoringCase.n3>;
-  mf:result <cwm_string/notEqualIgnoringCase-out.n3>;
+  mf:action <string/notEqualIgnoringCase.n3>;
+  mf:result <string/notEqualIgnoringCase-out.n3>;
   test:options [test:rules true; test:filter true] .
 
-:cwm_string_notGreaterThan a test:TestN3Reason;
+:string_notGreaterThan a test:TestN3Reason;
   mf:name      "string-notGreaterThan.n3" ;
   rdfs:comment "string:notGreaterThan" ;
-  mf:action <cwm_string/notGreaterThan.n3>;
-  mf:result <cwm_string/notGreaterThan-out.n3>;
+  mf:action <string/notGreaterThan.n3>;
+  mf:result <string/notGreaterThan-out.n3>;
   test:options [test:rules true; test:filter true] .
 
-:cwm_string_notLessThan a test:TestN3Reason;
+:string_notLessThan a test:TestN3Reason;
   mf:name      "string-notLessThan.n3" ;
   rdfs:comment "string:notLessThan" ;
-  mf:action <cwm_string/notLessThan.n3>;
-  mf:result <cwm_string/notLessThan-out.n3>;
+  mf:action <string/notLessThan.n3>;
+  mf:result <string/notLessThan-out.n3>;
   test:options [test:rules true; test:filter true] .
 
-:cwm_string_notMatches a test:TestN3Reason;
+:string_notMatches a test:TestN3Reason;
   mf:name      "string-notMatches.n3" ;
   rdfs:comment "string:notMatches" ;
-  mf:action <cwm_string/notMatches.n3>;
-  mf:result <cwm_string/notMatches-out.n3>;
+  mf:action <string/notMatches.n3>;
+  mf:result <string/notMatches-out.n3>;
   test:options [test:rules true; test:filter true] .
 
-:cwm_string_replace a test:TestN3Reason;
+:string_replace a test:TestN3Reason;
   mf:name      "string-replace.n3" ;
   rdfs:comment "string:replace" ;
-  mf:action <cwm_string/replace.n3>;
-  mf:result <cwm_string/replace-out.n3>;
+  mf:action <string/replace.n3>;
+  mf:result <string/replace-out.n3>;
   test:options [test:rules true; test:filter true] .
 
-:cwm_string_scrape a test:TestN3Reason;
+:string_scrape a test:TestN3Reason;
   mf:name      "string-scrape.n3" ;
   rdfs:comment "string:scrape" ;
-  mf:action <cwm_string/scrape.n3>;
-  mf:result <cwm_string/scrape-out.n3>;
+  mf:action <string/scrape.n3>;
+  mf:result <string/scrape-out.n3>;
   test:options [test:rules true; test:filter true] .
 
 :cwm_string_roughly a test:TestN3Reason;
