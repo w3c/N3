@@ -57,7 +57,7 @@
 { :y a :TestDate;  time:timeZone :x } log:implies
 { :y TEST:timeZone :x }.
 
-log:implies a log:Chaff.  # purge rules
+#log:implies a log:Chaff.  # purge rules
 
 
 #ends
