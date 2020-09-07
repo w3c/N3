@@ -2,6 +2,7 @@
 #  $Id: math-test.n3,v 1.6 2006/07/07 03:30:52 syosi Exp $
 
 @prefix : <#> .
+@prefix list: <http://www.w3.org/2000/10/swap/list#> .
 @prefix log: <http://www.w3.org/2000/10/swap/log#> .
 @prefix math: <http://www.w3.org/2000/10/swap/math#> .
 @prefix string: <http://www.w3.org/2000/10/swap/string#> .
