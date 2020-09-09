@@ -24,6 +24,7 @@
       # math
       :math_absoluteValue :math_ceiling :math_exponentiation :math_floor
       :math_difference :math_product :math_quotient :math_remainder :math_sum
+      :math_inf
 
       # From swap/test/math
       :cwm_math_test
@@ -171,6 +172,13 @@
   rdfs:comment   "Test math:sum";
   mf:action <math/sum.n3>;
   mf:result <math/sum-ref.n3>;
+  test:options [test:rules true; test:data true;] .
+
+:math_inf a test:TestN3Reason;
+  mf:name "inf.n3";
+  rdfs:comment   "Test infinities and NaN";
+  mf:action <math/inf.n3>;
+  mf:result <math/inf-ref.n3>;
   test:options [test:rules true; test:data true;] .
 
 :cwm_math_test a test:TestN3Reason;
