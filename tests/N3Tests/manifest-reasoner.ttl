@@ -21,6 +21,9 @@
       :cwm_includes_listin :cwm_includes_bnode :cwm_includes_concat :cwm_includes_conclusion_simple
       :cwm_includes_conjunction
 
+      # log
+      :log_content
+
       # math
       :math_absoluteValue :math_ceiling :math_exponentiation :math_floor
       :math_difference :math_product :math_quotient :math_remainder :math_sum
@@ -109,6 +112,14 @@
   mf:action <cwm_includes/conjunction.n3>;
   mf:result <cwm_includes/conjunction-ref.n3>;
   test:options [test:rules true; test:filter true;] .
+
+# Tests from log/
+:log_content a test:TestN3Reason;
+  mf:name      "log-content.n3" ;
+  rdfs:comment "Builtins for log:content." ;
+  mf:action <log/content.n3>;
+  mf:result <log/content-ref.n3>;
+  test:options [test:rules true; test:data true;] .
 
 # Tests from swap/test/math
 :math_absoluteValue a test:TestN3Reason;
