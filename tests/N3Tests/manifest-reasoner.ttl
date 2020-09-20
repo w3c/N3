@@ -108,7 +108,7 @@
   rdfs:comment "Builtins for log:conjunction." ;
   mf:action <cwm_includes/conjunction.n3>;
   mf:result <cwm_includes/conjunction-ref.n3>;
-  test:options [test:think true; test:data true;] .
+  test:options [test:rules true; test:filter true;] .
 
 # Tests from swap/test/math
 :math_absoluteValue a test:TestN3Reason;
