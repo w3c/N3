@@ -499,13 +499,35 @@ _:dominik foaf:knows _:doerthe .
     <section id='semantics'>
       <h2>Semantics</h2>
       <p>On top of the syntax as described above, we now define N3's semantics. As an auxiliary construct we first introduce closed formulas and ground terms and
-      then give a definition of simple interpretations. These are interpretations for formulas which do not include negation and without special buil-in functions.
+      then give a definition of simple interpretations. These are interpretations for formulas which do not include negation or any special buil-in functions.
       </p>
            <section id='cgraphs'>
         <h3>Closed graphs and ground formulas</h3>
         <p>
-        N3 supports implicit quantification, that is, you can state quantified variables without explicitely stating the quantifier. To do that, we use <a href="#dfn-universals">universal variables</a>, which are implicitely universally quantified, and <a data-cite="RDF11-CONCEPTS#dfn-blank-node">blank nodes</a>, these are implicitely existentially quantified.
+        N3 supports implicit quantification, that is, one can state quantified variables without explicitely stating the quantifier. To do that, we use <a href="#dfn-universals">universal variables</a>, which are implicitely universally quantified, and <a data-cite="RDF11-CONCEPTS#dfn-blank-node">blank nodes</a>, these are implicitely existentially quantified. 
         </p>
+       <p>
+       In this context it is important to note that not only the kind of the quantifier is matters but also its scope, i.e. the exact parts the quantification is valid for, and the exact position of the quantifier. 
+To illustrate that consider the following example:
+       </p>
+<pre class="example nohighlight">
+@prefix: &lt;http://example.org/#&gt; .
+:Fred :doubts {_:x a :Unicorn}.
+</pre>
+
+<p>
+Here, the blank node <code>_:x</code> is existentially quantified, but without any further specification, the triple could either mean (a) that there exists some x of which Fred doubts that it is a unicorn or it could mean (b) that Freds doubts that unicorns exist. In case we wanted to make the quantifier explicit, in option a the quantifier would need to be placed at the beginning of the whole expression, for option b it would need to be placed inside the brackets. N3 follows option b, 
+</p>
+
+<p>
+In the above example, an explicit quantifier of the blank node <code>_:x</code> would be placed inside quoted formula and it would only be scoped on that formula. Similarly, there are many cases in which explicit quantifiers only occur inside a quotation and do therefore not have impact on the surrounding of a fomula. We call such formulas which do not TODO: continue
+</p>
+
+
+
+
+
+
       </section>
       <section id='sinterpret'>
         <h3>Simple N3 interpretations</h3>
