@@ -19,10 +19,10 @@
 
       # From swap/test/includes
       :cwm_includes_listin :cwm_includes_bnode :cwm_includes_concat :cwm_includes_conclusion_simple
-      :cwm_includes_conjunction
+      :cwm_includes_conjunction :cwm_includes_t1 :cwm_includes_t3
 
       # log
-      :log_content
+      :log_content :log_parsedAsN3
 
       # math
       :math_absoluteValue :math_ceiling :math_exponentiation :math_floor
@@ -113,12 +113,33 @@
   mf:result <cwm_includes/conjunction-ref.n3>;
   test:options [test:rules true; test:filter true;] .
 
+:cwm_includes_t1 a test:TestN3Reason;
+  mf:name      "includes-t1.n3" ;
+  rdfs:comment "Simple use of log:includes." ;
+  mf:action <cwm_includes/t1.n3>;
+  mf:result <cwm_includes/t1-ref.n3>;
+  test:options [test:rules true; test:filter true;] .
+
+:cwm_includes_t3 a test:TestN3Reason;
+  mf:name      "includes-t3.n3" ;
+  rdfs:comment "Simple use of log:includes." ;
+  mf:action <cwm_includes/t3.n3>;
+  mf:result <cwm_includes/t3-ref.n3>;
+  test:options [test:rules true; test:filter true;] .
+
 # Tests from log/
 :log_content a test:TestN3Reason;
   mf:name      "log-content.n3" ;
   rdfs:comment "Builtins for log:content." ;
   mf:action <log/content.n3>;
   mf:result <log/content-ref.n3>;
+  test:options [test:rules true; test:data true;] .
+
+:log_parsedAsN3 a test:TestN3Reason;
+  mf:name      "log-parsedAsN3.n3" ;
+  rdfs:comment "Builtins for log:parsedAsN3." ;
+  mf:action <log/parsedAsN3.n3>;
+  mf:result <log/parsedAsN3-ref.n3>;
   test:options [test:rules true; test:data true;] .
 
 # Tests from swap/test/math
