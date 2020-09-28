@@ -492,17 +492,21 @@ _:dominik foaf:knows _:doerthe .
         </p>
         <p>
           An <dfn id="N3-formula">N3 formula</dfn> is either an <a href="#N3-triple">N3 triple</a>, a <a href="#quantified-formula">quantified N3 formula</a> 
-          or a set of <a href="#N3-formula">N3 formulas</a>. 
+          or a sequence of <a href="#N3-formula">N3 formulas</a>. 
         </p>
-      </section>
-      <section id='cgraphs'>
-        <h3>Closed graphs</h3>
-        <p>Bla...</p>
       </section>
     </section>
     <section id='semantics'>
       <h2>Semantics</h2>
-      <p>...</p>
+      <p>On top of the syntax as described above, we now define N3's semantics. As an auxiliary construct we first introduce closed formulas and ground terms and
+      then give a definition of simple interpretations. These are interpretations for formulas which do not include negation and without special buil-in functions.
+      </p>
+           <section id='cgraphs'>
+        <h3>Closed graphs and ground formulas</h3>
+        <p>
+        N3 supports implicit quantification, that is, you can state quantified variables without explicitely stating the quantifier. To do that, we use <a href="#dfn-universals">universal variables</a>, which are implicitely universally quantified, and <a data-cite="RDF11-CONCEPTS#dfn-blank-node">blank nodes</a>, these are implicitely existentially quantified.
+        </p>
+      </section>
       <section id='sinterpret'>
         <h3>Simple N3 interpretations</h3>
         <p>Bla...</p>
