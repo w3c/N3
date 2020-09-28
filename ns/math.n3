@@ -6,19 +6,14 @@
 
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
-# @prefix daml: <http://www.daml.org/2001/03/daml+oil#> .
 @prefix log: <http://www.w3.org/2000/10/swap/log#> .
 @prefix math: <http://www.w3.org/2000/10/swap/math#> .
 @prefix string: <http://www.w3.org/2000/10/swap/string#> .
+@prefix vs: <http://www.w3.org/2003/06/sw-vocab-status/ns#> .
 
 math:StrictProperty a rdfs:Class;
     rdfs:label "StrictProperty";
     rdfs:subClassOf rdf:Property.
-
-#   daml:intersectionOf (daml:UnambiguousProperty daml:UniqueProperty) .
-#   This would be very restrictive - only for 1:1 relationships. 
-#   Also note daml:UnambiguousProperty daml:UniqueProperty are in terms of daml:equivalentTo
-#   not math:equalTo
 
 math:Value a rdfs:Class; rdfs:label "Value"; 
    rdfs:subClassOf string:String; 
@@ -34,160 +29,127 @@ math:ReverseFunction a rdfs:Class;
    rdfs:comment "A math:ReverseFunction is unambiguous in terms of math:EqualTo. ".
 
 math:LogicalOperator a rdfs:Class; rdfs:subClassOf math:Function, math:ReverseFunction;
-   rdfs:comment """a logical operator allows evaluation eihter way, or testing relationship
-         between two values""".
+   rdfs:comment """A logical operator allows evaluation eihter way, or testing relationship
+between two values""".
 
 math:List a rdfs:Class; rdfs:label "List"; 
-   rdfs:subClassOf rdf:LIst; 
-   rdfs:comment """The class of things that are DAML lists were all of the 
-      members are math:Value items.""" .
+   rdfs:subClassOf log:List; 
+   rdfs:comment """The class of things that are N3 lists where all of the 
+members are math:Value items.""".
 
 math:TwoMemberedList a rdfs:Class; rdfs:label "TwoMemberedList"; 
    rdfs:subClassOf math:List; 
-   rdfs:comment 
-     "This is the class of things that are math lists with only two members." .
-
-# Reverse functions:  (obsolete - we stdize on forwrad ones i think -tbl)
-#
-#math:differenceOf a math:ReverseFunction; rdfs:label "differenceOf"; 
-#   rdfs:domain math:Value; rdfs:range math:TwoMemberedList; 
-#   rdfs:comment "The difference of the list members. (obsolete)" .
-#
-#math:factors a math:ReverseFunction; rdfs:label "factors"; 
-#   rdfs:domain math:Value; rdfs:range math:List;
-#   daml:inverse math:product; 
-#   rdfs:comment "A list of values which multiply to produce the subject. (obsolete)" .
-#
-#math:quotientOf a math:ReverseFunction; rdfs:label "quotientOf"; 
-#   rdfs:domain math:Value; rdfs:range math:TwoMemberedList; 
-#   rdfs:comment "The quotient of the list members (obsolete)" .
-#
-#math:remainderOf a math:ReverseFunction; rdfs:label "remainderOf"; 
-#   rdfs:domain math:Value; rdfs:range math:TwoMemberedList; 
-#   rdfs:comment "The remainder of the list members (obsolete)" .
-#
-#math:negationOf a math:Function, math:ReverseFunction;
-#   rdfs:label "negation"; 
-#   rdfs:domain math:Value; rdfs:range math:Value; 
-#   rdfs:comment "The subject is the negotation of the object (obsolete)" .
-#
-#math:exponentiationOf a math:ReverseFunction; rdfs:label "exponentiationOf"; 
-#   rdfs:domain math:Value; rdfs:range math:TwoMemberedList; 
-#   rdfs:comment "For exponOf(x, (y, z)), x = y^z   (obsolete)" .
-
-#  Forward function
+   rdfs:comment "This is the class of things that are math lists with only two members." .
 
 math:memberCount a math:Function; rdfs:label "memberCount"; 
    rdfs:domain math:List; rdfs:range math:Value; 
    rdfs:comment """The number of items in a list. The subject is a list,
-the object is calculated as the number of members.""" .
+the object is calculated as the number of members.
+Obsolete, see list:length""";
+   vs:term_status "deprecated".
 
 
 # Logical operators:
 
 math:greaterThan a math:StrictProperty; rdfs:label "greaterThan"; 
-   rdfs:comment """True iff the subject is a string representation of a number which  is greater than the number of which the object is a string representation.""";
+   rdfs:comment """True iff the subject is a number which is greater than the object.""";
    rdfs:domain math:Value; rdfs:range math:Value .
 
 math:notGreaterThan a math:StrictProperty;
     rdfs:label "notGreaterThan"; 
-    rdfs:comment """True iff the subject is a string representation of a number which is NOT greater than the number of which the object is a string representation.""";
+    rdfs:comment """True iff the subject is a number which is NOT greater than the object.""";
     rdfs:domain math:Value; rdfs:range math:Value .
 
 math:lessThan a math:StrictProperty; rdfs:label "lessThan"; 
-   rdfs:comment """True iff the subject is a string representation of a number which  is LESS than a number of which the object is a string representation.""";
+   rdfs:comment """True iff the subject is a number which is LESS than a object.""";
    rdfs:domain math:Value; rdfs:range math:Value .
 
 math:notLessThan a math:StrictProperty; rdfs:label "notlessThan"; 
-   rdfs:comment """True iff the subject is a string representation of a number which  is NOT LESS than a number of which the object is a string representation.""";
+   rdfs:comment """True iff the subject is a number which is NOT LESS than a object.""";
    rdfs:domain math:Value; rdfs:range math:Value .
 
 math:equalTo a math:StrictProperty; rdfs:label "equalTo"; 
-   rdfs:comment """True iff the subject is a string representation of a number which  is EQUAL TO a number of which the object is a string representation.""";
+   rdfs:comment """True iff the subject is a number which is EQUAL TO a object.""";
    rdfs:domain math:Value; rdfs:range math:Value .
 
 math:notEqualTo a math:StrictProperty; rdfs:label "notEqualTo"; 
-   rdfs:comment """True iff the subject is a string representation of a number which  is NOT EQUAL to a number of which the object is a string representation.""";
+   rdfs:comment """True iff the subject is a number which is NOT EQUAL to a object.""";
    rdfs:domain math:Value; rdfs:range math:Value .
 
-
-math:sum a rdf:Property;
-	rdfs:label "sum";
-	rdfs:range math:Value;
-	rdfs:comment
-"""The subject is a list of numbers.
+math:sum a math:Function;
+    rdfs:label "sum";
+  rdfs:domain log:List;
+    rdfs:range math:Value;
+    rdfs:comment """The subject is a list of numbers.
 The object is calculated as the arithmentic sum of those numbers.
 """.
 
-math:difference a rdf:Property;
-	rdfs:label "difference";
-	rdfs:range math:Value;
-	rdfs:comment
-"""The subject is a pair of numbers. The object
+math:difference a math:Function;
+    rdfs:label "difference";
+  rdfs:domain math:List;
+    rdfs:range math:Value;
+    rdfs:comment """The subject is a pair of numbers. The object
 is calculated by subtracting the second number of the pair from the first.
 """.
 
-math:product a rdf:Property;
-	rdfs:label "product";
-	rdfs:range math:Value;
-	rdfs:comment
-"""The subject is a list of numbers.
+math:product a math:Function;
+    rdfs:label "product";
+  rdfs:domain math:List;
+    rdfs:range math:Value;
+    rdfs:comment """The subject is a list of numbers.
 The object is calculated as the arithmentic product of those numbers.
 """.
 
-math:quotient a rdf:Property;
-	rdfs:label "quotient";
-	rdfs:range math:Value;
-	rdfs:comment
-"""The subject is a pair of numbers. The object
+math:quotient a math:Function;
+    rdfs:label "quotient";
+  rdfs:domain math:List;
+    rdfs:range math:Value;
+    rdfs:comment """The subject is a pair of numbers. The object
 is calculated by dividing the first number of the pair by the second.
 """.
 
-math:integerQuotient a rdf:Property;
-	rdfs:label "integerQuotient";
-	rdfs:range math:Value;
-	rdfs:comment
-"""The subject is a pair of integer numbers. The object
+math:integerQuotient a math:Function;
+    rdfs:label "integerQuotient";
+  rdfs:domain math:List;
+    rdfs:range math:Value;
+    rdfs:comment """The subject is a pair of integer numbers. The object
 is calculated by dividing the first number of the pair by the second, ignoring remainder.
 """.
 
-math:remainder a rdf:Property;
-	rdfs:label "remainder";
-	rdfs:range math:Value;
-	rdfs:comment
-"""The subject is a pair of integers. The object
+math:remainder a math:Function;
+    rdfs:label "remainder";
+  rdfs:domain math:List;
+    rdfs:range math:Value;
+    rdfs:comment """The subject is a pair of integers. The object
 is calculated by dividing the first number of the pair by the second and taking the remainder.
 """.
 
 
-math:exponentiation a rdf:Property;
-	rdfs:label "exponentiation";
-	rdfs:range math:Value;
-	rdfs:comment
-"""The subject is a pair of numbers. The object
+math:exponentiation a math:Function;
+    rdfs:label "exponentiation";
+  rdfs:domain math:List;
+    rdfs:range math:Value;
+    rdfs:comment """The subject is a pair of numbers. The object
 is calculated by raising the first number of the power of the second.
 """.
 
-math:negation a rdf:Property;
-	rdfs:label "negation";
-	rdfs:range math:Value;
-	rdfs:domain math:Value;
-	rdfs:comment
-"""The subject or object is calculated to be the negation of the other.""".
+math:negation a math:Function;
+    rdfs:label "negation";
+    rdfs:range math:Value;
+    rdfs:domain math:Value;
+    rdfs:comment """The subject or object is calculated to be the negation of the other.""".
 
-math:absoluteValue a rdf:Property;
-	rdfs:label "negation";
-	rdfs:range math:Value;
-	rdfs:domain math:Value;
-	rdfs:comment
-"""The object is calulated as the absolute value of the subject.""".
+math:absoluteValue a math:Function;
+    rdfs:label "negation";
+    rdfs:range math:Value;
+    rdfs:domain math:Value;
+    rdfs:comment """The object is calulated as the absolute value of the subject.""".
 
-math:rounded a rdf:Property;
-	rdfs:label "rounded";
-	rdfs:range math:Value;
-	rdfs:domain math:Value;
-	rdfs:comment
-"""The object is calulated as the subject rounded to the nearest integer.""".
+math:rounded a math:Function;
+    rdfs:label "rounded";
+    rdfs:range math:Value;
+    rdfs:domain math:Value;
+    rdfs:comment """The object is calulated as the subject rounded to the nearest integer.""".
 
 # 
 # Here start the trigonometric functions - karl dubost
@@ -196,81 +158,81 @@ math:rounded a rdf:Property;
 #  eg for  x math:asin y   say   x is math:sin of y
 
 #math:acos a rdf:Property;
-#	rdfs:label "acos";
-#	rdfs:range math:Value;
-#	rdfs:domain math:Value;
-#	rdfs:comment
+#   rdfs:label "acos";
+#   rdfs:range math:Value;
+#   rdfs:domain math:Value;
+#   rdfs:comment
 #"""The object is calulated as the arc cosine value of the subject.""".
 
 #math:asin a rdf:Property;
-#	rdfs:label "asin";
-#	rdfs:range math:Value;
-#	rdfs:domain math:Value;
-#	rdfs:comment
+#   rdfs:label "asin";
+#   rdfs:range math:Value;
+#   rdfs:domain math:Value;
+#   rdfs:comment
 #"""The object is calulated as the arc sine value of the subject.""".
 
 #math:atan a rdf:Property;
-#	rdfs:label "atan";
-#	rdfs:range math:Value;
-#	rdfs:domain math:Value;
-#	rdfs:comment
+#   rdfs:label "atan";
+#   rdfs:range math:Value;
+#   rdfs:domain math:Value;
+#   rdfs:comment
 #"""The object is calulated as the arc tangent value of the subject.""".
 
-math:atan2 a rdf:Property;
-	rdfs:label "atan2";
-	rdfs:range math:Value;
-	rdfs:domain math:Value;
-	rdfs:comment
-"""The subject is a pair of numbers. The object is calulated as the arc tangent value of the ratio of the two subject values.""".
+#math:atan2 a math:Function;
+#   rdfs:label "atan2";
+#   rdfs:range math:Value;
+#   rdfs:domain math:Value;
+#   rdfs:comment
+#"""The subject is a pair of numbers. The object is calulated as the arc tangent value of the ratio of the two subject values.""".
 
-math:cos a rdf:Property;
-	rdfs:label "cos";
-	rdfs:range math:Value;
-	rdfs:domain math:Value;
-	rdfs:comment
-"""The subject is an angle expressed in radians. The object is calulated as the cosine value of the subject.""".
+math:cos a math:LogicalOperator;
+    rdfs:label "cos";
+    rdfs:range math:Value;
+    rdfs:domain math:Value;
+    rdfs:comment """The subject is an angle expressed in radians.
+The object is calulated as the cosine value of the subject.""".
 
-##math:cosh a rdf:Property;
-#	rdfs:label "cosh";
-#	rdfs:range math:Value;
-#	rdfs:domain math:Value;
-#	rdfs:comment
-#"""The subject is an angle expressed in radians. The object is calulated as the #hyperbolic cosine value of the subject.""".
+math:cosh a math:LogicalOperator;
+    rdfs:label "cosh";
+    rdfs:range math:Value;
+    rdfs:domain math:Value;
+    rdfs:comment """The subject is an angle expressed in radians.
+The object is calulated as the #hyperbolic cosine value of the subject.""".
 
-math:degrees a rdf:Property;
-	rdfs:label "degrees";
-	rdfs:range math:Value;
-	rdfs:domain math:Value;
-	rdfs:comment
-"""The subject is an angle expressed in radians. The object is calulated as the conversion in degrees of the value of the subject.""".
+math:degrees a math:LogicalOperator;
+    rdfs:label "degrees";
+    rdfs:range math:Value;
+    rdfs:domain math:Value;
+    rdfs:comment """The subject is an angle expressed in radians.
+The object is calulated as the conversion in degrees of the value of the subject.""".
 
-math:sin a rdf:Property;
-	rdfs:label "sin";
-	rdfs:range math:Value;
-	rdfs:domain math:Value;
-	rdfs:comment
-"""The subject is an angle expressed in radians. The object is calulated as the sine value of the subject.""".
+math:sin a math:LogicalOperator;
+    rdfs:label "sin";
+    rdfs:range math:Value;
+    rdfs:domain math:Value;
+    rdfs:comment """The subject is an angle expressed in radians.
+The object is calulated as the sine value of the subject.""".
 
-math:sinh a rdf:Property;
-	rdfs:label "sinh";
-	rdfs:range math:Value;
-	rdfs:domain math:Value;
-	rdfs:comment
-"""The subject is an angle expressed in radians. The object is calulated as the hyperbolic sine value of the subject.""".
+math:sinh a math:LogicalOperator;
+    rdfs:label "sinh";
+    rdfs:range math:Value;
+    rdfs:domain math:Value;
+    rdfs:comment """The subject is an angle expressed in radians.
+The object is calulated as the hyperbolic sine value of the subject.""".
 
-math:tan a rdf:Property;
-	rdfs:label "tan";
-	rdfs:range math:Value;
-	rdfs:domain math:Value;
-	rdfs:comment
-"""The subject is an angle expressed in radians. The object is calulated as the tangent value of the subject.""".
+math:tan a math:LogicalOperator;
+    rdfs:label "tan";
+    rdfs:range math:Value;
+    rdfs:domain math:Value;
+    rdfs:comment """The subject is an angle expressed in radians.
+The object is calulated as the tangent value of the subject.""".
 
-math:tanh a rdf:Property;
-	rdfs:label "tanh";
-	rdfs:range math:Value;
-	rdfs:domain math:Value;
-	rdfs:comment
-"""The subject is an angle expressed in radians. The object is calulated as the hyperbolic tangent value of the subject.""".
+math:tanh a math:LogicalOperator;
+    rdfs:label "tanh";
+    rdfs:range math:Value;
+    rdfs:domain math:Value;
+    rdfs:comment """The subject is an angle expressed in radians.
+The object is calulated as the hyperbolic tangent value of the subject.""".
 
 
 #ends

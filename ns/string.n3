@@ -1,173 +1,168 @@
 #  Schema for string built-in functions in cwm. 
 
 @prefix owl: <http://www.w3.org/2002/07/owl#>.
-@prefix s: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
-
-# @prefix daml:  <http://www.daml.org/2001/03/daml-ont#> .
-# @prefix dpo:  <http://www.daml.org/2001/03/daml+oil#> .
-
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix log:  <http://www.w3.org/2000/10/swap/log#> .
+@prefix vs: <http://www.w3.org/2003/06/sw-vocab-status/ns#> .
 
 @prefix :  <http://www.w3.org/2000/10/swap/string#> .
 @prefix string:  <http://www.w3.org/2000/10/swap/string#> .
 
-<>  s:comment "String Processing Ontology";
-    s:comment """This is an ontology for computable string functions.
+<>  rdfs:comment "String Processing Ontology";
+    rdfs:comment """This is an ontology for computable string functions.
 It is implemented, for example, in CWM and Euler.""".
-
-string:String a s:Class;
-    s:label "string".
-#    owl:sameClassAs s:Literal.   # I suppose - modulo typing
 
 # Concat is backwards!
 string:concat a owl:InverseFunctionalProperty;   # obj = list of string to string
-    s:definedBy <http://www.w3.org/2000/10/swap/string>;  
-    s:label  "is concatenation of";
-    s:comment "(obsolete - (was backwards!) - use: string:concatenation)";
-    s:domain string:String;
-    s:range  rdf:List;
+    rdfs:definedBy <>;  
+    rdfs:label  "is concatenation of";
+    rdfs:comment "(obsolete - (was backwards!) - use: string:concatenation)";
+    rdfs:domain log:String;
+    rdfs:range  log:List;
+    vs:term_status "deprecated";
     owl:inverse string:concatenation.  # Use that instead for new designs
 
 string:concatenation a owl:FunctionalProperty;
-    s:definedBy <http://www.w3.org/2000/10/swap/string>;  
-    s:label "is the concatenation of the strings in";
-    s:comment  """The subject is a list of strings. The object is calculated as
-		a concatenation of those strings.""";
-    s:domain rdf:List;
-    s:range  string:String.
+    rdfs:definedBy <>;  
+    rdfs:label "is the concatenation of the strings in";
+    rdfs:comment  """The subject is a list of strings.
+The object is calculated as a concatenation of those strings.""";
+    rdfs:domain log:List;
+    rdfs:range  log:String.
 
 string:format a owl:FunctionalProperty;
-    s:definedBy <http://www.w3.org/2000/10/swap/string>;  
-    s:label "is the string formatted function of";
-    s:comment  """The subject is a list, whose first member is a format string,
-        and whose remaining members are arguments to the format string.
-        The formating string is in the style of python's % operator,
-        very similar to C's sprintf().
-        The object is calculated from the subject.""";
-    s:domain rdf:List;
-    s:range  string:String.
+    rdfs:definedBy <>;  
+    rdfs:label "is the string formatted function of";
+    rdfs:comment  """The subject is a list, whose first member is a format string,
+and whose remaining members are arguments to the format string.
+The formating string is in the style of python's % operator,
+very similar to C's sprintf().
+The object is calculated from the subject.""";
+    rdfs:domain log:List;
+    rdfs:range  log:String.
 
 string:greaterThan a rdf:Property;
-    s:definedBy <http://www.w3.org/2000/10/swap/string>;  
-    s:label  "is greater than";
-    s:comment  """True iff the string is greater than the object
-	when ordered according to Unicode(tm) code order.""";
-    s:domain string:String;
-    s:range  string:String.
+    rdfs:definedBy <>;  
+    rdfs:label  "is greater than";
+    rdfs:comment  """True iff the string is greater than the object
+when ordered according to Unicode(tm) code order.""";
+    rdfs:domain log:String;
+    rdfs:range  log:String.
 
 
 string:notGreaterThan a rdf:Property;
-    s:definedBy <http://www.w3.org/2000/10/swap/string>;  
-    s:label  "is not greater than";
-    s:comment  """True iff the string is NOT greater than the object
-	when ordered according to Unicode(tm) code order.""";
-    s:domain string:String;
-    s:range  string:String.
+    rdfs:definedBy <>;  
+    rdfs:label  "is not greater than";
+    rdfs:comment  """True iff the string is NOT greater than the object
+when ordered according to Unicode(tm) code order.""";
+    rdfs:domain log:String;
+    rdfs:range  log:String.
 
 
 string:lessThan a rdf:Property;
-    s:definedBy <http://www.w3.org/2000/10/swap/string>;  
-    s:label  "is less than";
-    s:comment  """True iff the string is less than the object
-	when ordered according to Unicode(tm) code order.""";
-    s:domain string:String;
-    s:range  string:String.
+    rdfs:definedBy <>;  
+    rdfs:label  "is less than";
+    rdfs:comment  """True iff the string is less than the object
+when ordered according to Unicode(tm) code order.""";
+    rdfs:domain log:String;
+    rdfs:range  log:String.
 
 
 string:notLessThan a rdf:Property;
-    s:definedBy <http://www.w3.org/2000/10/swap/string>;  
-    s:label  "is not less than";
-    s:comment  """True iff the string is NOT less than the object
-	when ordered according to Unicode(tm) code order.""";
-    s:domain string:String;
-    s:range  string:String.
+    rdfs:definedBy <>;  
+    rdfs:label  "is not less than";
+    rdfs:comment  """True iff the string is NOT less than the object
+when ordered according to Unicode(tm) code order.""";
+    rdfs:domain log:String;
+    rdfs:range  log:String.
 
 string:startsWith a rdf:Property;
-    s:definedBy <http://www.w3.org/2000/10/swap/string>;  
-    s:label  "starts with";
-    s:comment  """True iff the subject string starts with the object string.""";
-    s:domain string:String;
-    s:range  string:String.
+    rdfs:definedBy <>;  
+    rdfs:label  "starts with";
+    rdfs:comment  """True iff the subject string starts with the object string.""";
+    rdfs:domain log:String;
+    rdfs:range  log:String.
 
 string:endsWith a rdf:Property;
-    s:definedBy <http://www.w3.org/2000/10/swap/string>;  
-    s:label  "ends with";
-    s:comment  """True iff the subject string ends with the object string.""";
-    s:domain string:String;
-    s:range  string:String.
+    rdfs:definedBy <>;  
+    rdfs:label  "ends with";
+    rdfs:comment  """True iff the subject string ends with the object string.""";
+    rdfs:domain log:String;
+    rdfs:range  log:String.
 
 string:contains a rdf:Property;
-    s:definedBy <http://www.w3.org/2000/10/swap/string>;  
-    s:label  "contains";
-    s:comment  """True iff the subject string contains the object string.""";
-    s:domain string:String;
-    s:range  string:String.
+    rdfs:definedBy <>;  
+    rdfs:label  "contains";
+    rdfs:comment  """True iff the subject string contains the object string.""";
+    rdfs:domain log:String;
+    rdfs:range  log:String.
 
 string:containsIgnoringCase a rdf:Property;
-    s:definedBy <http://www.w3.org/2000/10/swap/string>;  
-    s:label  "contains";
-    s:comment  """True iff the subject string contains the object string,
+    rdfs:definedBy <>;  
+    rdfs:label  "contains";
+    rdfs:comment  """True iff the subject string contains the object string,
 with the comparison done ignoring the difference between upper case and
 lower case characters.""";
-    s:domain string:String;
-    s:range  string:String.
+    rdfs:domain log:String;
+    rdfs:range  log:String.
 
 string:equalIgnoringCase a rdf:Property;
-    s:definedBy <http://www.w3.org/2000/10/swap/string>;  
-    s:label  "contains";
-    s:comment  """True iff the subject string is the same as object string
+    rdfs:definedBy <>;  
+    rdfs:label  "contains";
+    rdfs:comment  """True iff the subject string is the same as object string
 ignoring differences between upper and lower case.""";
-    s:domain string:String;
-    s:range  string:String.
+    rdfs:domain log:String;
+    rdfs:range  log:String.
 
 string:notEqualIgnoringCase a rdf:Property;
-    s:definedBy <http://www.w3.org/2000/10/swap/string>;  
-    s:label  "contains";
-    s:comment  """True iff the subject string is the NOT same as object string
+    rdfs:definedBy <>;  
+    rdfs:label  "contains";
+    rdfs:comment  """True iff the subject string is the NOT same as object string
 ignoring differences between upper and lower case.""";
-    s:domain string:String;
-    s:range  string:String.
+    rdfs:domain log:String;
+    rdfs:range  log:String.
 
 string:scrape a rdf:Property;
-    s:definedBy <http://www.w3.org/2000/10/swap/string>;  
-    s:label  "scrape";
-    s:comment  """The subject is a list of two strings. The second string is
+    rdfs:definedBy <>;  
+    rdfs:label  "scrape";
+    rdfs:comment  """The subject is a list of two strings. The second string is
 a regular expression in the perl, python style.
 It must contain one group (a part in parentheses).  If the first string in the list matches
 the regular expression, then the object is calculated as being the
 part of the first string which matches the group.""";
-    s:range  string:String.
+    rdfs:domain log:List;
+    rdfs:range  log:String.
 
 string:replace a rdf:Property;
-    s:definedBy <http://www.w3.org/2000/10/swap/string>;  
-    s:label  "replace";
-    s:comment  """A built-in for replacing characters or sub.
-    takes a list of 3 strings; the first is the
-    input data, the second the old and the third the new string.
-    The object is calculated as the rplaced string.
-    For example, ("fofof bar", "of", "baz") string:replace "fbazbaz bar"
-    """;
-    s:range  string:String.
+    rdfs:definedBy <>;  
+    rdfs:label  "replace";
+    rdfs:comment  """A built-in for replacing characters or sub.
+takes a list of 3 strings; the first is the
+input data, the second the old and the third the new string.
+The object is calculated as the replaced string.
+For example, ("fofof bar", "of", "baz") string:replace "fbazbaz bar".""";
+    rdfs:domain log:List;
+    rdfs:range  log:String.
 
 string:matches a rdf:Property;
-    s:definedBy <http://www.w3.org/2000/10/swap/string>;  
-    s:label  "contains";
-    s:comment  """The subject is a string;
+    rdfs:definedBy <>;  
+    rdfs:label  "contains";
+    rdfs:comment  """The subject is a string;
 the object is is a regular expression in the perl, python style.
 It is true iff the string matches the regexp.""";
-    s:domain string:String;
-    s:range  string:String.
+    rdfs:domain log:String;
+    rdfs:range  log:String.
 
 
 string:notMatches a rdf:Property;
-    s:definedBy <http://www.w3.org/2000/10/swap/string>;  
-    s:label  "contains";
-    s:comment  """The subject string;
+    rdfs:definedBy <>;  
+    rdfs:label  "contains";
+    rdfs:comment  """The subject string;
 the object is is a regular expression in the perl, python style.
 It is true iff the string does NOT match the regexp.""";
-    s:domain string:String;
-    s:range  string:String.
+    rdfs:domain log:String;
+    rdfs:range  log:String.
 
 
 #ends

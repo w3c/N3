@@ -12,164 +12,151 @@
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix doc: <http://www.w3.org/2000/10/swap/pim/doc#>.
-@prefix ont: <http://www.daml.org/2000/10/daml-ont#> .
 @prefix log: <http://www.w3.org/2000/10/swap/log#>.
+@prefix math: <http://www.w3.org/2000/10/swap/math#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix vs: <http://www.w3.org/2003/06/sw-vocab-status/ns#> .
 
 @prefix time: <http://www.w3.org/2000/10/swap/time#>.
 @prefix : <#>.
 
 <> <http://www.w3.org/2000/10/swap/pim/doc.n3#licence> <http://www.w3.org/Consortium/Legal/copyright-software-19980720>.
 
-# This is a class for strings which are the lexical representations of datetimes
-# 
-time:ISOTime a rdfs:Class.  # What string to be subclass of? @@ use schema date
 
+time:inSeconds a rdf:Property, owl:FunctionalProperty, owl:ReverseFunctionalProperty;
+    rdfs:label "in era seconds";
+    rdfs:domain xsd:dateTime;
+    rdfs:range xsd:integer;
+    rdfs:comment """
+Iff the subject is a xsd:dateTime and the object is the integer number of seconds
+since the beginning of the era on a given system.  Don't assume a particular value, always test for it.
+The object can be calculated as a function of the subject.
 
-time:inSeconds rdfs:comment """
-For a date-time, its time:inSeconds is the (string reopresntation of)
-the floating point number of seconds since the beginning of the era
-on the given system. Don't assume a particular value, always test for it.
-
-Cwm implements this as a bidirectional function: you can calculae the
+Cwm implements this as a bidirectional function: you can calculate the
 ISO date from the seconds since the beginning of the era, or vice-versa.
 """;
-    a rdf:Property, ont:UniqueProperty, ont:UnambiguousProperty;
-    rdfs:label "in era seconds";
-    rdfs:domain time:ISOTime;
     rdfs:isDefinedBy <>.
 
 #   Pulling out bits of the date time string:
 
 
-time:year a rdf:Property,
-	ont:UniqueProperty;
+time:year a rdf:Property, owl:FunctionalProperty;
     rdfs:label "year";
+    rdfs:domain xsd:dateTime;
+    rdfs:range xsd:integer;
     rdfs:comment """
-For a date-time, its time:year is the (string representation of)
-the four-digit year.
-
-Cwm implements this as a function.
+Iff the subject is a xsd:dateTime and the object is the integer year component of the dateTime.
+The object can be calculated as a function of the subject.
 """;
-    rdfs:domain time:ISOTime;
     rdfs:isDefinedBy <>.
 
-time:month a rdf:Property,
-	ont:UniqueProperty;
+time:month a rdf:Property, owl:FunctionalProperty;
     rdfs:label "month";
+    rdfs:domain xsd:dateTime;
+    rdfs:range xsd:integer;
     rdfs:comment """
-For a date-time, its time:month is the two-digit month.
-
-Cwm implements this as a function.
+Iff the subject is a xsd:dateTime and the object is the integer month component of the dateTime.
+The object can be calculated as a function of the subject.
 """;
-    rdfs:domain time:ISOTime;
     rdfs:isDefinedBy <>.
 
-time:day a rdf:Property,
-	ont:UniqueProperty;
+time:day a rdf:Property, owl:FunctionalProperty;
     rdfs:label "day";
+    rdfs:domain xsd:dateTime;
+    rdfs:range xsd:integer;
     rdfs:comment """
-For a date-time, its time:day is the (string represntation of)
-the two-digitday of the month.
-
-Cwm implements this as a function.
+Iff the subject is a xsd:dateTime and the object is the integer day component of the dateTime.
+The object can be calculated as a function of the subject.
 """;
-    rdfs:domain time:ISOTime;
     rdfs:isDefinedBy <>.
 
-time:hour a rdf:Property,
-	ont:UniqueProperty;
+time:hour a rdf:Property, owl:FunctionalProperty;
     rdfs:label "hour";
+    rdfs:domain xsd:dateTime;
+    rdfs:range xsd:integer;
     rdfs:comment """
-For a date-time, its time:hour is the two-digit hour in the 24 hour clock.
-
-Cwm implements this as a function.
+Iff the subject is a xsd:dateTime and the object is the hour year component of the dateTime.
+The object can be calculated as a function of the subject.
 """;
-    rdfs:domain time:ISOTime;
     rdfs:isDefinedBy <>.
 
-time:minute a rdf:Property,
-	ont:UniqueProperty;
+time:minute a rdf:Property, owl:FunctionalProperty;
     rdfs:label "minute";
+    rdfs:domain xsd:dateTime;
+    rdfs:range xsd:integer;
     rdfs:comment """
-For a date-time, its time:minute is the two-digit number of seconds.
-
-Cwm implements this as a function.
+Iff the subject is a xsd:dateTime and the object is the integer minute component of the dateTime.
+The object can be calculated as a function of the subject.
 """;
-    rdfs:domain time:ISOTime;
     rdfs:isDefinedBy <>.
 
-time:second rdfs:comment """
-For a date-time, its time:second is the two-digit number of seconds.
-Cwm implements this as a function.
-""";
-    a rdf:Property, ont:UniqueProperty;
+time:second a rdf:Property, owl:FunctionalProperty;
     rdfs:label "second";
-    rdfs:domain time:ISOTime;
+    rdfs:domain xsd:dateTime;
+    rdfs:range xsd:integer;
+    rdfs:comment """
+Iff the subject is a xsd:dateTime and the object is the integer year component of the dateTime.
+The object can be calculated as a function of the subject.
+""";
     rdfs:isDefinedBy <>.
 
-time:timeZone rdfs:comment """
-For a date-time, its time:timeZone is the trailing timezone offset
-part, e.g.  "-05:00".
-Cwm implements this as a function.
-""";
-    a rdf:Property, ont:UniqueProperty;
+time:timeZone a rdf:Property, owl:FunctionalProperty;
     rdfs:label "timezone offset";
-    rdfs:domain time:ISOTime;
+    rdfs:domain xsd:dateTime;
+    rdfs:range xsd:string;
+    rdfs:comment """
+Iff the subject is a xsd:dateTime and the object is the trailing timezone offset
+part, e.g.  "-05:00"..
+The object can be calculated as a function of the subject.
+""";
     rdfs:isDefinedBy <>.
 
 ###########
 
 
-time:dayOfWeek a rdf:Property,
-	ont:UniqueProperty;
+time:dayOfWeek a rdf:Property, owl:FunctionalProperty;
     rdfs:label "day of week";
+    rdfs:domain xsd:dateTime;
+    rdfs:range xsd:integer;
     rdfs:comment """
-For a date-time, its time:dayOfWeek is the (string reopresntation of)
-the day number within the week, Sunday being 0.
-
-Currently the result is a sinbgle digit string but don't count on it
-being anything other than a valid integer represetnation.
-
-Cwm implements this as a function.
+Iff the subject is a xsd:dateTime and the object is the integer the day number within the week, Sunday being 0.
+The object can be calculated as a function of the subject.
 """;
-    rdfs:domain time:ISOTime;
     rdfs:isDefinedBy <>.
 
 ########### Actual time access routines
 
 
-time:gmTime a rdf:Property,
-	ont:UniqueProperty;
+time:gmTime a rdf:Property, owl:FunctionalProperty;
     rdfs:label "Universal Time";
+    rdfs:domain time:format;
+    rdfs:range xsd:string;
     rdfs:comment """
-For a date-time format string, its time:gmtime is the 
-result of formatting the Universal Time of processing
-in the format given.   If teh fiormat string has zero length,
-then the ISOdate standrad format is used. 
+Iff the subject is a dateTime format string and the object is the
+result of formatting the Universal Time of processing in the format given.
+If the format string has zero length,
+then the ISOdate standard format is used. 
 [ is time:gmtime of ""]  the therefore the current date time.
 It will end with "Z" as a timezone code.
-
-Cwm implements this as a function.
+The object can be calculated as a function of the subject.
 Rules which use this function will of course NOT be repeatable.
 """;
-    rdfs:range time:format;
     rdfs:isDefinedBy <>.
 
-time:localTime a rdf:Property,
-	ont:UniqueProperty;
+time:localTime a rdf:Property, owl:FunctionalProperty;
     rdfs:label "local time";
+    rdfs:domain time:format;
+    rdfs:range xsd:string;
     rdfs:comment """
-For a date-time format string, its time:localTime is the 
-result of formatting the current time of processing and local timezone
-in the format given.   If the format string has zero length,
-then the ISOdate standrad format is used. 
-[ is time:localTime of ""]  the therefore the current date time.
-It will end with a numeric timezone code or "Z" for UTC (GMT).
-
-Cwm implements this as a function.
+Iff the subject is a dateTime format string and the object is the
+result of formatting the current time of processing and local timezone in the format given.
+If the format string has zero length,
+then the ISOdate standard format is used. 
+[ is time:gmtime of ""]  the therefore the current date time.
+It will end with "Z" as a timezone code.
+The object can be calculated as a function of the subject.
 Rules which use this function will of course NOT be repeatable.
 """;
-    rdfs:range time:format;
     rdfs:isDefinedBy <>.
 
 

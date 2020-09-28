@@ -7,34 +7,15 @@
 @prefix doc: <http://www.w3.org/2000/01/pim/doc#>.
 @prefix log: <http://www.w3.org/2000/10/swap/log#>.
 @prefix owl: <http://www.w3.org/2002/07/owl#>.
+@prefix vs: <http://www.w3.org/2003/06/sw-vocab-status/ns#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
 @prefix list: <http://www.w3.org/2000/10/swap/list#>.
 @prefix : <#>.
 
-list:in a rdf:Property;
-    rdfs:label "in";
-    rdfs:comment """
-Iff the object is a list and the subject is in that list, then this is true.
-""";
-    rdfs:isDefinedBy <>.
-
-list:member a rdf:Property;
-    rdfs:label "member";
-    rdfs:comment """
-Iff the subject is a list and the obbject is in that list, then this is true.
-""";
-    rdfs:isDefinedBy <>.
-
-list:last a rdf:Property, owl:FunctionalProperty;
-    rdfs:label "in";
-    rdfs:comment """
-Iff the suject is a list and the obbject is the last thing that list, then this is true.
-The object can be calculated as a function of the list.
-""";
-    rdfs:isDefinedBy <>.
-
 list:append a rdf:Property, owl:FunctionalProperty;
-    rdfs:label "concatenation";
+    rdfs:label "append";
+    rdfs:domain log:List;
     rdfs:comment """
 Iff the subject is a list of lists and the concatenation of all those lists 
 is the object, then this is true.
@@ -43,6 +24,75 @@ The object can be calculated as a function of the subject.
 """;
     rdfs:isDefinedBy <>.
 
+list:first a rdf:Property, owl:FunctionalProperty;
+    rdfs:label "first";
+    rdfs:domain log:List;
+    rdfs:comment """
+Iff the subject is a list and the object is the first thing that list, then this is true.
+The object can be calculated as a function of the list.
+""";
+    vs:term_status "unstable";
+    rdfs:isDefinedBy <>.
 
-# ends
+list:in a rdf:Property;
+    rdfs:label "in";
+    rdfs:range log:List;
+    rdfs:comment """
+Iff the object is a list and the subject is in that list, then this is true.
+""";
+    rdfs:isDefinedBy <>.
+
+list:last a rdf:Property, owl:FunctionalProperty;
+    rdfs:label "in";
+    rdfs:domain log:List;
+    rdfs:comment """
+Iff the subject is a list and the object is the last thing that list, then this is true.
+The object can be calculated as a function of the list.
+""";
+    rdfs:isDefinedBy <>.
+
+list:length a rdf:Property, owl:FunctionalProperty;
+    rdfs:label "length";
+    rdfs:domain log:List;
+    rdfs:range xsd:integer;
+    rdfs:comment """
+Iff the subject is a list and the object is the last thing that list, then this is true.
+The object can be calculated as a function of the list.
+""";
+    vs:term_status "unstable";
+    rdfs:isDefinedBy <>.
+
+list:member a rdf:Property;
+    rdfs:label "member";
+    rdfs:domain log:List;
+    rdfs:comment """
+Iff the subject is a list and the object is in that list, then this is true.
+""";
+    rdfs:isDefinedBy <>.
+
+list:memberAt a rdf:Property;
+    rdfs:label "memberAt";
+    rdfs:domain log:List;
+    rdfs:comment """
+Iff the subject is a list composed of a list and integer position,
+and the object exists within that list at the specified position, then this is true.
+The object can be calculated as a function of the subject.
+The position can be calculated as a function of the first component of the subject and the object.
+""";
+    vs:term_status "unstable";
+    rdfs:isDefinedBy <>.
+
+list:remove a rdf:Property, owl:FunctionalProperty;
+    rdfs:label "remove";
+    rdfs:domain log:List;
+    rdfs:range log:List;
+    rdfs:comment """
+Iff the subject is a list of two lists and the object is a list composed of the
+members of the first component of the subject up to but not including the second component
+of the subject, then this is true.
+eg ( (1 2 3 4) (3 4) ) list:remove (1 2).
+The object can be calculated as a function of the subject.
+""";
+    vs:term_status "unstable";
+    rdfs:isDefinedBy <>.
 
