@@ -1,0 +1,48 @@
+#   n3 definition of some list functions
+#
+# $Id: list.n3,v 1.3 2010-03-26 20:41:54 timbl Exp $
+
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix doc: <http://www.w3.org/2000/01/pim/doc#>.
+@prefix log: <http://www.w3.org/2000/10/swap/log#>.
+@prefix owl: <http://www.w3.org/2002/07/owl#>.
+
+@prefix list: <http://www.w3.org/2000/10/swap/list#>.
+@prefix : <#>.
+
+list:in a rdf:Property;
+    rdfs:label "in";
+    rdfs:comment """
+Iff the object is a list and the subject is in that list, then this is true.
+""";
+    rdfs:isDefinedBy <>.
+
+list:member a rdf:Property;
+    rdfs:label "member";
+    rdfs:comment """
+Iff the subject is a list and the obbject is in that list, then this is true.
+""";
+    rdfs:isDefinedBy <>.
+
+list:last a rdf:Property, owl:FunctionalProperty;
+    rdfs:label "in";
+    rdfs:comment """
+Iff the suject is a list and the obbject is the last thing that list, then this is true.
+The object can be calculated as a function of the list.
+""";
+    rdfs:isDefinedBy <>.
+
+list:append a rdf:Property, owl:FunctionalProperty;
+    rdfs:label "concatenation";
+    rdfs:comment """
+Iff the subject is a list of lists and the concatenation of all those lists 
+is the object, then this is true.
+eg  ( (1 2) (3 4) ) list:append (1 2 3 4).
+The object can be calculated as a function of the subject.
+""";
+    rdfs:isDefinedBy <>.
+
+
+# ends
+

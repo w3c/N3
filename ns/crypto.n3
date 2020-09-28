@@ -1,0 +1,179 @@
+#  Schema for crypto built-in functions in cwm. 
+#
+#  These are terms drawn to match the available functions
+# in mxCrypto. See:
+# http://www.amk.ca/python/writing/pycrypt/  for the manual and
+# http://www.amk.ca/python/code/crypto.html  for the code.
+#
+#  I am not sure whether in the domain and range functions we should
+# distinguish strings one can present to a person from crypto binary.
+# Might be useful for driving the UI and/or serialization using base64 etc.
+#
+#  Beware that the simplicity of use of some of these properties belies
+# the knowledge o fcrypography that one needs to make a secure system
+#
+@prefix rdf:  <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix s: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#>.
+# @prefix daml:  <http://www.daml.org/2001/03/daml-ont#> .
+# @prefix dpo:  <http://www.daml.org/2001/03/daml+oil#> .
+@prefix log:  <http://www.w3.org/2000/10/swap/log#> .
+
+@prefix string:  <http://www.w3.org/2000/10/swap/string#> .
+@prefix cr:  <http://www.w3.org/2000/10/swap/crypto#> .
+
+
+#####################################################################
+#
+# Hash functions
+
+cr:HashFunction a s:Class;
+    s:label "Any crypographic hash function";
+    s:comment """
+The crypographic hash functions are (being functions) unique and are,
+when secure, assumed unambiguous (the whole point of being hash
+functions). That is, when you have the right hash, you have the right
+document. Currently (2001/9) only SHA is given that property.
+""".
+
+#cr:HAVAL128 a rdf:Property; s:label "HAVAL hash (128 bit)";
+#    s:comment "The object is a HAVAL hash (128 bit) of the subject.";
+#    a dpo:UniqueProperty;
+#    s:domain string:String;
+#    s:range string:String.
+#
+#cr:HAVAL160 a rdf:Property; s:label "HAVAL hash (160 bit)";
+#    s:comment "The object is a HAVAL hash (160 bit) of the subject.";
+#    a dpo:UniqueProperty;
+#    s:domain string:String;
+#    s:range string:String.
+#
+#cr:HAVAL192 a rdf:Property; s:label "HAVAL hash (192 bit)";
+#    s:comment "The object is a HAVAL hash (192 bit) of the subject.";
+#    a dpo:UniqueProperty;
+#    s:domain string:String;
+#    s:range string:String.
+#
+#cr:HAVAL224 a rdf:Property; s:label "HAVAL hash (224 bit)";
+#    s:comment "The object is a HAVAL hash (224 bit) of the subject.";
+#    a dpo:UniqueProperty;
+#    s:domain string:String;
+#    s:range string:String.
+#
+#cr:HAVAL256 a rdf:Property; s:label "HAVAL hash (256 bit)";
+#    s:comment "The object is a HAVAL hash (256 bit) of the subject.";
+#    a dpo:UniqueProperty;
+#    s:domain string:String;
+#    s:range string:String.
+#
+#cr:MD2 a rdf:Property; s:label "MD2 hash";
+#    s:comment "The object is a MD2 hash of the subject.";
+#    a dpo:UniqueProperty;
+#    s:domain string:String;
+#    s:range string:String.
+#
+#cr:MD4 a rdf:Property; s:label "MD4 hash";
+#    s:comment "The object is a MD4 hash of the subject.";
+#    a dpo:UniqueProperty;
+#    s:domain string:String;
+#    s:range string:String.
+#
+cr:md5 a rdf:Property; s:label "MD5 hash";
+    s:comment "The object is a MD5 hash of the subject.";
+    a owl:FunctionalProperty;
+    s:domain string:String;
+    s:range string:String.
+
+#cr:RIPEMD a rdf:Property; s:label "RIPEMD hash";
+#    s:comment "The object is a RIPEMD hash of the subject.";
+#    a dpo:UniqueProperty;
+#    s:domain string:String;
+#    s:range string:String.
+
+cr:sha a rdf:Property; s:label "SHA hash";
+    s:comment "The object is a SHA-1 hash of the subject.";
+    a owl:FunctionalProperty, owl:InverseFunctionalProperty;  # Assume unbreakable.
+    s:domain string:String;
+    s:range string:String.
+
+###########################  Public Key Algorithms
+#
+# See http://www.amk.ca/python/writing/pycrypt/node16.html
+#
+
+cr:PublicKeyObject a s:Class;
+    s:comment """An object corresponding to a key for some algorithm.
+The object can hold a public and optionally a private key.""".
+
+cr:CanEncrypt s:isSubClassOf cr:PublicKeyObject;
+    s:comment """PublicKeyObjects which are capable of encrypting things""".
+
+cr:CanSign s:isSubClassOf cr:PublicKeyObject;
+    s:comment """PublicKeyObjects which are capable of signing things.
+True if the algorithm is capable of signing data; false otherwise. To
+test if a given key object can sign data, use CanSign and HasPrivate.""".
+
+cr:HasPrivate s:isSubClassOf cr:PublicKeyObject;
+    s:comment"""
+Some keys have private parts, some don't.  This is the class of those which do.
+""".
+
+cr:publicKey a s:Property;
+    s:domain cr:PublicKeyObject;
+    s:range cr:PublicKeyObject;
+    s:comment """The object is a public key object that doesn't
+    contain the private key data in the subject.
+    This function extracts the public part.""".
+
+
+#cr:size a s:Property;
+#    s:domain cr:PublicKeyObject;
+#    s:range  log:Number;   # @@  string, decimal
+#    s:comment """The maximum size of a string that can be encrypted or signed,
+#measured in bits. String data is treated in big-endian format; the most significant
+#byte comes first. (This seems to be a de facto standard for cryptographical
+#software.) If the size is not a multiple of 8, then some of the high order
+#bits of the first byte must be zero. Usually it's simplest to just divide the
+#size by 8 and round down""".
+#
+#
+#cr:RSA s:SubClassOf cr:PublicKeyObject;
+#    s:comment "An RSA public key object".
+#
+#cr:RSA_ a rdf:Property;
+#    a dpo:UniqueProperty;
+#    s:label "RSA key generator";
+#    s:domain string:String;    # Actually a number in dcimal, length of ky in octets
+#    s:range  string:String.    # The key generated
+#
+#cr:RSA_validSignature a rdf:Property;   # Must be an internal built-in
+#    a dpo:UnambiguousProperty, dpo:UniqueProperty;  # Assume unbreakable.
+#    s:label "validated RSA signature";
+#    s:domain string:String;   # A signed string, typically the hash of the document contents
+#    s:range string:String.   # The signature
+
+cr:sign a rdf:Property;
+    s:label "sign";
+    s:comment """The subject should be a list of two things, a hash
+string and a key (containing private and public parts). The object is
+calculated as a signature string by signing the hash with the key's
+private part.""".
+
+cr:verify a rdf:Property;
+    s:comment """If the subject is a key object containing private and
+public parts and the obejct is a list of a hash and a signature, then
+this is true if and only if the signature is a valid signature of the
+hash with the key.""".
+
+cr:verifyBoolean a rdf:Property;
+    s:comment """If the subject is a list containg a keypair, a hash,
+and a signature, then the object is either "1" if the signature
+validates or "0" if it does not.""".
+
+####### Metaproperties
+#
+# These generate, given an encryption module, the funmctions for that module.
+#
+
+
+#ends
