@@ -446,10 +446,16 @@ public class n3PrintVisitor extends n3DefaultVisitor {
 			ParseTree c = node.getChild(i);
 			if (c instanceof TerminalNode) {
 				TerminalNode t = (TerminalNode) c;
+
 				String out = c.toString();
+				if (t.getSymbol().getType() == n3Parser.IRIREF)
+					out = processIriRef(t);
+
 				int type = t.getSymbol().getType();
-				if (type != -1)
-					out += " (" + n3Parser.tokenNames[type] + ")";
+				if (type != -1) {
+					String label = n3Parser.VOCABULARY.getDisplayName(type);
+					out += " (" + label + ")";
+				}
 				print(out);
 
 			} else {

@@ -32,7 +32,8 @@
               branch: "master"
           },
           shortName: "N3",
-          testSuiteURI:           "https://w3c.github.io/N3/tests/",
+          edDraftURI: "https://w3c.github.io/N3/spec/",
+          testSuiteURI: "https://w3c.github.io/N3/tests/",
       localBiblio: {
       "LNG-TAG": {
       title: "Language Subtag Registry",
@@ -200,28 +201,45 @@
         <h3>Literals</h3>
         <p>In general, one uses a literal to represent a textual or numerical (i.e., datatype) value - such as names, dates, height, and so on. Numbers (integers, decimals and doubles) can simply be represented using their numerical value, and booleans can be represented using keywords <code>true</code> or <code>false</code>:</p>
         <pre class="example nohighlight">
-		@prefix : &lt;http://example.org/elements&gt; .                                                                          
+		@prefix : &lt;http://example.org/elements&gt; .
+		@prefix rdfs: &lt;http://www.w3.org/2000/01/rdf-schema#&gt; .		
 		&lt;http://en.wikipedia.org/wiki/Helium&gt;                                                                                 
 				:atomicNumber 2 ;               # xsd:integer                                                                      
 				:atomicMass 4.002602 ;          # xsd:decimal                                                                      
-				:specificGravity 1.663E-4 .     # xsd:double
-				:isNobleGas true . 		# xsd:boolean
+				:specificGravity 1.663E-4 ;     # xsd:double
+				:isNobleGas true ; 		# xsd:boolean
+				rdfs:label "Helium" .   	# xsd:string
 	</pre>
         <p>For details on what number syntax is supported (e.g., for decimals, doubles), we refer to the <a data-cite="TURTLE#abbrev">RDF 1.1: Turtle (Section 2.5.2)</a> specification.</p>
-        <p>Other literals (e.g., date; binary, octal or hex code; XML or JSON code; other types of numbers, such as shorts), and of course strings themselves, need to be written as string literals. For instance:
+        <p>Other literals (e.g., date; binary, octal or hex code; XML or JSON code; other types of numbers, such as shorts), and of course strings themselves, need to be written as <b>string literals</b>. For instance, <code>&lt;http://example.org/#spiderman&gt; &lt;http://example.org/#birthDate&gt; "2001-08-10".</code> In that case, the <a data-cite="RDF11-CONCEPTS#dfn-lexical-form">lexical form</a> will include the characters between the delimiter quotes (e.g., <code>2001-08-10</code>).</p>
+		<p>Clearly, this can raise confusion as to what type of literal is being represented - is it a string or some other arbitrary type? You can indicate the datatype of a literal in RDF using the <code>^^</code> symbol and the corresponding <a data-cite="XMLSCHEMA11-2#built-in-datatypes">datatype IRI</a>. The above example then becomes:
+		
+		<pre class="example nohighlight">
+		@prefix xsd: &lt;http://www.w3.org/2001/XMLSchema#&gt; .
+		&lt;http://example.org/#spiderman&gt; 
+			&lt;http://example.org/#birthDate&gt; "2001-08-10"^^xsd:date .
+		</pre>
+		
+		<p>(Take care to add the appropriate <code>xsd</code> prefix declaration.)</p>
+        <p>One can also specify the language of a string literal using the <code>@</code> symbol and the corresponding language tag (as defined in [[BCP47]] - find the registry in [[LNG-TAG]]). For instance:</p>
         <pre class="example nohighlight">
-	  &lt;http://example.org/#spiderman&gt; &lt;http://xmlns.com/foaf/0.1/name&gt; "Spiderman" ;
-				&lt;http://example.org/#birthDate&gt; "2001-08-10" .
-	</pre>
-        <p>In that case, the <a data-cite="RDF11-CONCEPTS#dfn-lexical-form">"RDF lexical form"</a> will include the characters between the delimiter quotes (e.g., <code>2001-08-10</code>). Clearly, this can raise confusion as to what type of literal is being represented - a string or some other arbitrary type. RDF allows indicating the datatype of a literal, using the <code>^^</code> symbol and the corresponding <a data-cite="XMLSCHEMA11-2#built-in-datatypes">datatype IRI</a> - for instance: <code>"2001-08-10"^^&lt;http://www.w3.org/2001/XMLSchema#date&gt;</code>. One can also use a prefixed name <code>xsd:date</code>, given a suitable prefix declaration (see <a href="#string-literal-example">example</a>).</p>
-        <p>In lieu of a datatype, one can specify the language of a string literal using the "<code>@</code>" symbol and the corresponding language tag (as defined in [[BCP47]] - find the registry in [[LNG-TAG]]). For instance:</p>
-        <pre class="example nohighlight">
-	  &lt;http://example.org/#spiderman&gt; &lt;http://xmlns.com/foaf/0.1/name&gt; "Spiderman"@en , 
+		&lt;http://example.org/#spiderman&gt; &lt;http://xmlns.com/foaf/0.1/name&gt; "Spiderman"@en , 
 					"Hombre Araña"@es , "Homme Araignée"@fr .
-	</pre>
-        <p class="note">If no datatype IRI or language tag is given, the datatype <code>xsd:string</code> will be assumed. In case a language tag is given, the datatype <code>rdf:langString</code> will be assumed. Note that it is not possible to specify both a datatype IRI and a language tag.</p>
-        <p class="note">Integers, decimals and doubles, or booleans, may also be written as string literals with the appropriate datatype IRI. Boolean literals can be written as <code>true</code> or <code>@true</code> and <code>false</code> or <code>@false</code>.</p>
-        There are several ways to write string literals. Until now we have used double-quotes <code>"</code> for delimiting, but one may also use single-quotes <code>'</code>, or even compound delimiters consisting of three double-quotes <code>"""</code> or three single-quotes <code>'''</code>. These other delimiters are useful if the string literal is known to contain single- or double-quotes; e.g., if the string contains single-quotes, one could use double-quotes as delimiters, and vice-versa, to avoid syntax errors. Alternatively, one can also use a '<code>\</code>' for escaping the delimiter each time it occurs within a string literal. If a string can contain newlines (or a quote of any type, and it is impractical or undesirable to escape them), one should use the compound type of delimiter, i.e., <code>"""</code> or <code>'''</code>. For instance:
+		</pre>
+        <p>If you need to describe the base direction as well as the language [[BCP47]] you can use the <code>i18n</code> namespace:</p>
+        <pre class="example nohighlight">
+		@prefix i18n: &lt;https://www.w3.org/ns/i18n#&gt; .
+		@prefix foaf: &lt;http://xmlns.com/foaf/0.1/&gt; .
+		&lt;http://example.org/#spiderman&gt; foaf:name "الرجل العنكبوت"^^i18n:ar-eg_rtl .
+		</pre>
+		
+		<p class="note">If no datatype IRI or language tag is given, the datatype <code>xsd:string</code> will be assumed. In case a language tag is given, the datatype <code>rdf:langString</code> will be assumed. Note that it is not possible to specify both a datatype IRI and a language tag.</p>
+        
+		<p class="note">Integers, decimals and doubles, or booleans, may also be written as string literals with the appropriate datatype IRI. Boolean literals can be written as <code>true</code> or <code>@true</code> and <code>false</code> or <code>@false</code>.</p>
+        
+		<p class="note">There are also <a href="#compoundliteral">other mechanisms</a> for describing the language tag and base direction of RDF literals.</p>
+        
+		<p>There are several ways to write string literals. Until now we have used double-quotes <code>"</code> for delimiting, but one may also use single-quotes <code>'</code>, or even compound delimiters consisting of three double-quotes <code>"""</code> or three single-quotes <code>'''</code>. These other delimiters are useful if the string literal is known to contain single- or double-quotes; e.g., if the string contains single-quotes, one could use double-quotes as delimiters, and vice-versa, to avoid syntax errors. Alternatively, one can also use a '<code>\</code>' for escaping the delimiter each time it occurs within a string literal. If a string can contain newlines (or a quote of any type, and it is impractical or undesirable to escape them), one should use the compound type of delimiter, i.e., <code>"""</code> or <code>'''</code>. For instance:</p>
         <pre id="string-literal-example" class="example nohighlight">
 @prefix ex: &lt;http://example.org/#&gt; .
 @prefix rdfs: &lt;http://www.w3.org/2000/01/rdf-schema#&gt; .
@@ -232,6 +250,7 @@ ex:Spiderman rdfs:label '"Bitten" by a radioactive spider.'^^xsd:string .	# same
 ex:Spiderman rdfs:label """'Bitten' by "what"?
 	A radioactive spider!"""^^xsd:string
 	</pre>
+	      
         <p>In general, the escape symbol '<code>\</code>' (<span class="codepoint">U+005C</span>) may only appear in a string literal as part of <a href="#escseq">an escape sequence</a>. Other restrictions within string literals depend on the delimiter:</p>
         <ul>
           <li>Literals delimited by <code>'</code> (<span class="codepoint">U+0027</span>), may not contain the characters <code>'</code>, <code title="LINE FEED"><sub>LF</sub></code> (<span class="codepoint">U+000A</span>), or <code title="CARRIAGE RETURN"><sub>CR</sub></code> (<span class="codepoint">U+000D</span>).
@@ -560,6 +579,7 @@ In the above example, an explicit quantifier of the blank node <code>_:x</code> 
       <section id='whitespace'>
         <h3>Whitespace</h3>
         <p>White space (<a href="#grammar-production-WS">WS production</a>) is used to separate terminals. The amount and type (e.g., newline or space) of white space is only significant within terminals.</p>
+		<p>We note that the <a href="#grammar-production-IRIREF">IRIREF</a> production only allows IRI-encoded white spaces.</p>
       </section>
       <section id='comments'>
         <h3>Comments</h3>
@@ -750,9 +770,9 @@ In the above example, an explicit quantifier of the blank node <code>_:x</code> 
         <p>The N3 Named Graphs extension [<strong>X</strong>] defines a set of built-ins (used as predicates) to associate names or identifiers with cited formulas, which then become "named graphs". Moreover, each predicate has a well-defined semantics on how the named graph should be interpreted: as quoted graphs (the default N3 interpretation), a partitioning of triples within a dataset context, sets of triples with their own isolated contexts, or specifying relations between local and online graphs.</p>
       </section>
     </section>
-    <section id='datamodeling' class=informative>
-      <h3>Data Modeling</h3>
-      <p>In this section, we present patterns to solve often-occurring data modeling problems in N3.</p>
+    <section id='patterns' class=informative>
+      <h3>Design Patterns</h3>
+      <p>In this section, we present common patterns to solve often-occurring problems, for instance regarding data modeling, in N3.</p>
       <section id="naryrel">
         <h4>N-ary Relations</h4>
         <p>Until now, we only considered binary relations between entities and/or values. But, many types of relations are <em>ternary, quaternary, or, in general, n-ary in nature</em>, i.e., they have an arbitrary number of participants. Typical examples are purchase, employment, membership, .. relations.</p>
@@ -816,6 +836,65 @@ In the above example, an explicit quantifier of the blank node <code>_:x</code> 
           </p>
         </section>
       </section>
+      <section id="compoundliteral">
+        <h4>Compound literal</h4>
+        <p>This solution is inspired by a separate discussion of the RDF community on <em>Language Tagged Strings</em>. The essence of the discussion is to separate the string, as a simple data, from all the various characterizations that may be added to it. This design pattern uses the <code>rdf:CompoundLiteral</code> class, which is in the domain of <code>rdf:language</code> and <code>rdf:direction</code> to be used for describing RDF literal values containing base direction and a possible language tag to be associated with the string value of <code>rdf:value</code> on the same subject.</p>
+        <pre class="example nohighlight">
+@prefix foaf: &lt;http://xmlns.com/foaf/0.1/&gt; .
+&lt;http://example.org/#spiderman&gt; foaf:name [
+	rdf:value "الرجل العنكبوت", 
+	rdf:language "ar-eg", 
+	rdf:direction "rtl" 
+] .
+        </pre>
+      </section>
+      <section id="reification">
+        <h4>Graph quoted inside another graph</h4>
+        <p>Reification in the RDF context means the expression of something in a language using the language so that it becomes treatable by the language. RDF graphs consist of RDF statements. If one wants to look objectively at an RDF graph and reason about it is using RDF tools, then it is useful to have a mechanism for describing RDF statements. N3 extends RDF to allow graphs themselves to be another form of literal node. A graph can be quoted inside another graph, as in the example:</p>
+        <pre class="example nohighlight">
+@prefix : &lt;http://example.org/&gt;  .
+_:x :graph { 
+  &lt;http://example.org/#spiderman&gt; &lt;http://xmlns.com/foaf/0.1/name&gt; "Spiderman" . 
+} .
+_:x :certainty 0.8 .
+        </pre>
+        <p>The above example can also be seen as <a data-cite="rdf11-mt#reification">RDF reification</a>:</p>
+        <pre class="example nohighlight">
+@prefix rdf: &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#&gt; .
+@prefix : &lt;http://example.org/&gt; .
+_:x a rdf:Statement ;
+    rdf:subject &lt;http://example.org/#spiderman&gt; ;
+    rdf:predicate &lt;http://xmlns.com/foaf/0.1/name&gt; ;
+    rdf:object "Spiderman" ;
+    :certainty 0.8 .
+        </pre>
+      </section>
+    </section>
+    <section id='in-html' class="appendix informative">
+      <h2>Embedding N3 in HTML documents</h2>
+      <p>HTML [[HTML5]] <code>script</code> element can be used to embed data blocks in documents. N3 can be easily embedded in <code>script</code> with the <code>type</code> attribute set to <code>text/n3</code>.</p>
+      <p>Such content may be escaped as indicated below:</p>
+        <ul>
+          <li><code>&amp;amp;</code>: &amp; (ampersand, U+0026)</li>
+          <li><code>&amp;lt;</code>: &lt; (less-than sign, U+003C)</li>
+          <li><code>&amp;gt;</code>: &gt; (greater-than sign, U+003E)</li>
+          <li><code>&amp;quot;</code>: &quot; (quotation mark, U+0022)</li>
+          <li><code>&amp;apos;</code>: &apos; (apostrophe, U+0027)</li>
+        </ul>
+      </p>
+      <pre class="example nohighlight">&lt;script type=&quot;text/n3&quot;&gt;
+@prefix : &amp;lt;http://www.example.org/#&amp;gt; .
+:green-goblin :enemyOf :spiderman .
+&lt;/script&gt;
+      </pre>
+      <p>When embedded in XHTML N3 data blocks must be enclosed in CDATA sections. Those CDATA markers must be in Turtle comments. If the character sequence <code>]]&gt;</code> occurs in the document it must be escaped using strings escapes (<code>\u005d\u0054\u003e</code>). This will also make N3 safe in polyglot documents served as both <code>text/html</code> and <code>application/xhtml+xml</code>. Failing to use CDATA sections or escape <code>]]&gt;</code> may result in a non well-formed XML document.</p>
+      <pre class="example nohighlight">&lt;script type=&quot;text/n3&quot;&gt;
+# &lt;![CDATA[
+@prefix : &lt;http://www.example.org/#&gt; .
+:green-goblin :enemyOf :spiderman .
+# ]]&gt;
+&lt;/script&gt;
+      </pre>
     </section>
     <section id='mime' class=appendix>
       <h2>Internet Media Type, File Extension and Macintosh File Type</h2>

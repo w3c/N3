@@ -225,7 +225,7 @@ langTag
 	;
 	
 IRIREF 
-	: '<' (~[\u0000-\u0020<>"{}|^`\\] | UCHAR)* '>' /* #x00=NULL #01-#x1F=control codes #x20=space */
+	: '<' (~[\u0000-\u0020<>"{}|^`\\] | UCHAR | WS)* '>' /* #x00=NULL #01-#x1F=control codes #x20=space */
 /* production below allows non-encoded spaces */
 // 	: '<' (~[\u0000-\u001F<>"{}|^`\\] | UCHAR)* '>'
 	;

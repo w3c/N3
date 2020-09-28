@@ -1,0 +1,3 @@
+@prefix : <#> .
+:Test1     a :Success .
+:Test2     :result "cd" .

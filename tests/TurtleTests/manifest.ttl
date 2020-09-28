@@ -1640,7 +1640,12 @@
    mf:result    <turtle-eval-lists-05.nt> ;
    .
 
-# N3 allows spaces in IRIs
+<#turtle-syntax-bad-uri-01> a rdft:TestTurtleNegativeSyntax, test:TestN3NegativeSyntax ;
+   mf:name    "turtle-syntax-bad-uri-01" ;
+   rdfs:comment "Bad IRI : space (negative test)" ;
+   rdft:approval rdft:Approved ;
+   mf:action    <turtle-syntax-bad-uri-01.ttl> ;
+   .
 
 <#turtle-syntax-bad-uri-02> a rdft:TestTurtleNegativeSyntax, test:TestN3NegativeSyntax ;
    mf:name    "turtle-syntax-bad-uri-02" ;
@@ -1750,7 +1755,7 @@
    mf:action    <turtle-syntax-bad-struct-04.ttl> ;
    .
 
-<#turtle-syntax-bad-struct-05> a rdft:TestTurtleNegativeSyntax, test:TestN3NegativeSyntax ;
+<#turtle-syntax-bad-struct-05> a rdft:TestTurtleNegativeSyntax, test:TestN3PositiveSyntax ;
    mf:name    "turtle-syntax-bad-struct-05" ;
    rdfs:comment "Turtle does not allow literals-as-predicates (negative test)" ;
    rdft:approval rdft:Approved ;
@@ -1799,7 +1804,7 @@
    mf:action    <turtle-syntax-bad-kw-04.ttl> ;
    .
 
-<#turtle-syntax-bad-kw-05> a rdft:TestTurtleNegativeSyntax, test:TestN3NegativeSyntax ;
+<#turtle-syntax-bad-kw-05> a rdft:TestTurtleNegativeSyntax, test:TestN3PositiveSyntax ;
    mf:name    "turtle-syntax-bad-kw-05" ;
    rdfs:comment "'true' cannot be used as object (negative test)" ;
    rdft:approval rdft:Approved ;
@@ -1946,7 +1951,7 @@
    mf:action    <turtle-syntax-bad-struct-14.ttl> ;
    .
 
-<#turtle-syntax-bad-struct-15> a rdft:TestTurtleNegativeSyntax, test:TestN3NegativeSyntax ;
+<#turtle-syntax-bad-struct-15> a rdft:TestTurtleNegativeSyntax, test:TestN3PositiveSyntax ;
    mf:name    "turtle-syntax-bad-struct-15" ;
    rdfs:comment "literal as predicate (negative test)" ;
    rdft:approval rdft:Approved ;

@@ -4,8 +4,8 @@ import org.antlr.v4.runtime.tree.TerminalNode;
 
 import w3c.n3dev.parser.ParserErrorListener;
 import w3c.n3dev.parser.PrefixException;
-import w3c.n3dev.parser.antlr.n3Parser;
 import w3c.n3dev.parser.PrefixException.PrefixErrors;
+import w3c.n3dev.parser.antlr.n3Parser;
 
 public class n3PrefixErrorVisitor extends n3PrefixVisitor {
 

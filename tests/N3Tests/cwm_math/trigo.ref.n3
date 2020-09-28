@@ -1,5 +1,6 @@
      @prefix : <#> .
-    
+     @prefix NonPi: <http://www.w3.org/2000/10/swap/mathNonPi#> .
+     
     -0.707     a :NonPiTestValue,
                 :TestValue;
          :ACOS 2.35604349019e+00;

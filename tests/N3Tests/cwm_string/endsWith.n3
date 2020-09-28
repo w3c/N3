@@ -33,5 +33,14 @@
 
 { "" string:endsWith "" } log:implies { :test7 a :success }.
 
-#ends
+# Variations with variable bindings
+:asdfghjkl :value "asdfghjkl".
+:jkl :value "jkl".
 
+{ [is :value of :asdfghjkl] string:endsWith "jkl" } log:implies { :test8a a :success }.
+
+{ "asdfghjkl" string:endsWith [is :value of :jkl] } log:implies { :test8b a :success }.
+
+{ :asdfghjkl :value ?a. ?a string:endsWith "jkl" } log:implies { :test8c a :success }.
+
+{ :jkl :value ?a. "asdfghjkl" string:endsWith ?a } log:implies { :test8d a :success }.

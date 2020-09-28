@@ -199,6 +199,7 @@
       :cwm_syntax_sib.n3
       :cwm_syntax_space-in-uri-ref.n3
       :cwm_syntax_space-in-uri.n3
+      :cwm_syntax_newline-in-uri.n3
       :cwm_syntax_this-quantifiers-ref.n3
       :cwm_syntax_this-quantifiers-ref2.n3
       :cwm_syntax_this-quantifiers.n3
@@ -1221,6 +1222,11 @@
         a              test:TestN3NegativeSyntax ;
         mf:action      <cwm_syntax/space-in-uri.n3> ;
         mf:name        "space-in-uri" .
+
+:cwm_syntax_newline-in-uri.n3
+        a              test:TestN3NegativeSyntax ;
+        mf:action      <cwm_syntax/newline-in-uri.n3> ;
+        mf:name        "newline-in-uri" .
 
 :cwm_syntax_this-quantifiers-ref.n3
         a              test:TestN3PositiveSyntax ;
