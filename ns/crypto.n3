@@ -17,7 +17,6 @@
 @prefix owl: <http://www.w3.org/2002/07/owl#>.
 @prefix log:  <http://www.w3.org/2000/10/swap/log#> .
 
-@prefix string:  <http://www.w3.org/2000/10/swap/string#> .
 @prefix cr:  <http://www.w3.org/2000/10/swap/crypto#> .
 
 
@@ -25,70 +24,26 @@
 #
 # Hash functions
 
-cr:HashFunction a rdfs:Class;
-    rdfs:label "Any crypographic hash function";
-    rdfs:comment """
-The crypographic hash functions are (being functions) unique and are,
-when secure, assumed unambiguous (the whole point of being hash
-functions). That is, when you have the right hash, you have the right
-document. Currently (2001/9) only SHA is given that property.
-""".
-
 cr:md5 a rdf:Property, owl:FunctionalProperty, owl:InverseFunctionalProperty;
     rdfs:label "MD5 hash";
     rdfs:comment "The object is a MD5 hash of the subject.";
-    rdfs:domain string:String;
-    rdfs:range string:String.
+    rdfs:domain rdfs:Literal;
+    rdfs:range xsd:string.
 
 cr:sha a rdf:Property, owl:FunctionalProperty, owl:InverseFunctionalProperty;
-    rdfs:label "SHA hash";
+    rdfs:label "SHA-1 hash";
     rdfs:comment "The object is a SHA-1 hash of the subject.";
-    rdfs:domain string:String;
-    rdfs:range string:String.
+    rdfs:domain rdfs:Literal;
+    rdfs:range xsd:string.
 
-###########################  Public Key Algorithms
-#
-# See http://www.amk.ca/python/writing/pycrypt/node16.html
-#
+cr:sha256 a rdf:Property, owl:FunctionalProperty, owl:InverseFunctionalProperty;
+    rdfs:label "SHA-256 hash";
+    rdfs:comment "The object is a SHA-256 hash of the subject.";
+    rdfs:domain rdfs:Literal;
+    rdfs:range xsd:string.
 
-cr:PublicKeyObject a rdfs:Class;
-    rdfs:comment """An object corresponding to a key for some algorithm.
-The object can hold a public and optionally a private key.""".
-
-cr:CanEncrypt rdfs:isSubClassOf cr:PublicKeyObject;
-    rdfs:comment """PublicKeyObjects which are capable of encrypting things""".
-
-cr:CanSign rdfs:isSubClassOf cr:PublicKeyObject;
-    rdfs:comment """PublicKeyObjects which are capable of signing things.
-True if the algorithm is capable of signing data; false otherwise. To
-test if a given key object can sign data, use CanSign and HasPrivate.""".
-
-cr:HasPrivate rdfs:isSubClassOf cr:PublicKeyObject;
-    rdfs:comment"""
-Some keys have private parts, some don't.  This is the class of those which do.
-""".
-
-cr:publicKey a rdfs:Property;
-    rdfs:domain cr:PublicKeyObject;
-    rdfs:range cr:PublicKeyObject;
-    rdfs:comment """The object is a public key object that doesn't
-contain the private key data in the subject.
-This function extracts the public part.""".
-
-cr:sign a rdf:Property;
-    rdfs:label "sign";
-    rdfs:comment """The subject should be a list of two things, a hash
-string and a key (containing private and public parts). The object is
-calculated as a signature string by signing the hash with the key's
-private part.""".
-
-cr:verify a rdf:Property;
-    rdfs:comment """If the subject is a key object containing private and
-public parts and the obejct is a list of a hash and a signature, then
-this is true if and only if the signature is a valid signature of the
-hash with the key.""".
-
-cr:verifyBoolean a rdf:Property;
-    rdfs:comment """If the subject is a list containg a keypair, a hash,
-and a signature, then the object is either "1" if the signature
-validates or "0" if it does not.""".
+cr:sha512 a rdf:Property, owl:FunctionalProperty, owl:InverseFunctionalProperty;
+    rdfs:label "SHA-512 hash";
+    rdfs:comment "The object is a SHA-512 hash of the subject.";
+    rdfs:domain rdfs:Literal;
+    rdfs:range xsd:string.
