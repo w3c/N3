@@ -23,7 +23,7 @@
 <> <http://www.w3.org/2000/10/swap/pim/doc.n3#licence> <http://www.w3.org/Consortium/Legal/copyright-software-19980720>.
 
 
-time:inSeconds a rdf:Property, owl:FunctionalProperty, owl:ReverseFunctionalProperty;
+time:inSeconds a rdf:Property, owl:FunctionalProperty, owl:InverseFunctionalProperty;
     rdfs:label "in era seconds";
     rdfs:domain xsd:dateTime;
     rdfs:range xsd:integer;
@@ -170,4 +170,3 @@ Rules which use this function will of course NOT be repeatable.
 #    str.internFrag("format", BI_format)
 
 # ends
-
