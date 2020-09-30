@@ -70,7 +70,18 @@ math:notLessThan a math:StrictProperty; rdfs:label "notlessThan";
    rdfs:domain math:Value; rdfs:range math:Value .
 
 math:equalTo a math:StrictProperty; rdfs:label "equalTo"; 
-   rdfs:comment """True iff the subject is a number which is EQUAL TO a object.""";
+   rdfs:comment """
+- schema
+$a1 math:equalTo $a2
+- summary
+checks equality of numbers
+- definition
+true if and only if $a1 is equal to $a2. 
+requires both arguments to be either concrete numerals, or variables bound to a numeral.
+- literal domains
+$a1: xs:decimal (or its derived types), xs:float, or xs:double  (see note on type promotion, and casting from string)
+$a2: xs:decimal (or its derived types), xs:float, or xs:double  (see note on type promotion, and casting from string)
+""";
    rdfs:domain math:Value; rdfs:range math:Value .
 
 math:notEqualTo a math:StrictProperty; rdfs:label "notEqualTo"; 
@@ -81,8 +92,17 @@ math:sum a math:Function;
     rdfs:label "sum";
     rdfs:domain log:List;
     rdfs:range math:Value;
-    rdfs:comment """The subject is a list of numbers.
-The object is calculated as the arithmentic sum of those numbers.
+    rdfs:comment """
+- schema
+($a_1 .. $a_n) math:sum $a_s
+- summary
+performs addition of numbers
+- definition
+true if and only if the arithmetic sum of $a_1, .. $a_n equals $a_s.
+requires either: (1) all $a_1, .., $a_n to be bound; or (2) all but one $a_i (subject list) to be bound, and $a_s to be bound.
+- literal domains
+$a_1 .. $a_n : xs:decimal (or its derived types), xs:float, or xs:double (see note on type promotion, and casting from string)
+$a_s: xs:decimal (or its derived types), xs:float, or xs:double (see note on type promotion, and casting from string)
 """.
 
 math:difference a math:Function;
