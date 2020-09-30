@@ -101,10 +101,10 @@ list:remove a rdf:Property, owl:FunctionalProperty;
     rdfs:domain log:List;
     rdfs:range log:List;
     rdfs:comment """
-Iff the subject is a list of two lists and the object is a list composed of the
-members of the first component of the subject up to but not including the second component
-of the subject, then this is true.
-eg ( (1 2 3 4) (3 4) ) list:remove (1 2).
+Iff the subject is a list of two lists, the second component is a subset of the first component
+and the object is a list composed of the members of the first component of the subject with
+all members of the second component of the subject removed, matching left to right.
+eg ( (1 2 3 4) (2 3) ) list:remove (1 4).
 The object can be calculated as a function of the subject.
 """;
     vs:term_status "unstable";
