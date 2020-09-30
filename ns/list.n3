@@ -74,10 +74,24 @@ list:memberAt a rdf:Property;
     rdfs:label "memberAt";
     rdfs:domain log:List;
     rdfs:comment """
-Iff the subject is a list composed of a list and integer position,
-and the object exists within that list at the specified position, then this is true.
-The object can be calculated as a function of the subject.
-The position can be calculated as a function of the first component of the subject and the object.
+Gets the member of a list at a given position (where the position of the first element is 1)
+
+Schema: (($a_1 .. $a_n) $a_i) list:memberAt $a_m.
+
+Iff  ($a_1 .. $a_n) has an element at position $a_i,
+and if that element and $a_m can unify.
+
+Requires: $a_i or $a_m (or both) must be bound.
+
+Note that if $a_i is a variable, this builtin may bind it to more than one value (e.g. ((“A” “B” “A”) ?i) list:memberAt “A”).
+
+Literal domains:
+* $a_1 .. $a_n, $a_m: unconstrained
+* $a_i: xs:decimal, xs:float, xs:double within the value space of xs:integer
+  (see also note on type promotion and substitution).
+I.e., in case the double/float/decimal's literal's value is within the value space of integers,
+the literal will match the domain.
+In case of a negative integer, the index will count backwards from the length of the list.
 """;
     vs:term_status "unstable";
     rdfs:isDefinedBy <>.
