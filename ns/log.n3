@@ -17,6 +17,7 @@
 @prefix : <#>.
 
 log:N3Document a rdfs:Class;
+    rdfs:subClassOf doc:Work;
     rdfs:comment    """A document which, which parsed as Notation3
 as defined in general by http://www.w3.org/DesignIssues/Notation3.html
 and this schema, conveys the intent of the author by the semantics defined
@@ -60,7 +61,7 @@ The class of Notation3-specifiec resource types.
 
 log:Formula a rdfs:Class; rdfs:subClassOf log:Type.
 log:List    a rdfs:Class; rdfs:subClassOf log:Type, rdf:List.
-log:String  a rdfs:Class; rdfs:subClassOf log:Type.      # Replace with xsd:string or rdfs:Literal?
+log:String  a rdfs:Class; rdfs:subClassOf log:Type, rdfs:Literal.
 log:Other   a rdfs:Class; rdfs:subClassOf log:Type.     # Not one of the above.
 
 #   The following are inherent in the translation of N3 syntax to quad representation:
@@ -155,14 +156,14 @@ Related: See includes""";
 log:parsedAsN3 a rdf:Property;
     rdfs:comment "The subject string, parsed as N3, gives this formula.";
     rdfs:label "parses to";
-    rdfs:domain log:String;
+    rdfs:domain log:N3;
     rdfs:range log:Formula.
  
  log:n3String a rdf:Property;
     rdfs:comment "The subject formula, expressed as N3, gives this string.";
     rdfs:label "n3 string";
     rdfs:domain log:Formula;
-    rdfs:range log:String.
+    rdfs:range log:N3.
 
 log:semantics a rdf:Property;
     rdfs:domain doc:Work;
@@ -175,6 +176,7 @@ log:parsedAsN3 of the log:content of the document.
 For a document in another RDF syntax, it is parsed according to the
 appropriate specification to yield an RDF formula
 (a subclass of N3 log:Formula).
+Evaluates to false if an unrecognized document format is retrieved.
 
 [Aside: Philosophers will be distracted here into worrying about the meaning
 of meaning. At least we didn't call this function "meaning"!
@@ -347,6 +349,7 @@ log:N3 a rdfs:Datatype;
     rdfs:comment """
 The class log:N3 is the class of N3 literal values.
 log:N3 is an instance of rdfs:Datatype and a subclass of rdfs:Literal.
+The value of log:content of a log:N3Document is a literal with datatype log:N3.
 """;
     vs:term_status "unstable".
 
