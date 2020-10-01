@@ -1,5 +1,6 @@
 #  Schema for string built-in functions in cwm. 
 
+@prefix cc: <http://creativecommons.org/ns#>.
 @prefix owl: <http://www.w3.org/2002/07/owl#>.
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
@@ -9,9 +10,10 @@
 @prefix :  <http://www.w3.org/2000/10/swap/string#> .
 @prefix string:  <http://www.w3.org/2000/10/swap/string#> .
 
-<>  rdfs:comment "String Processing Ontology";
+<>  rdfs:label "String Processing Ontology";
     rdfs:comment """This is an ontology for computable string functions.
-It is implemented, for example, in CWM and Euler.""".
+It is implemented, for example, in CWM and Euler.""";
+    cc:license <http://www.w3.org/Consortium/Legal/copyright-software>.
 
 # Concat is backwards!
 string:concat a owl:InverseFunctionalProperty;   # obj = list of string to string

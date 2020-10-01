@@ -2,6 +2,7 @@
 #
 # $Id: list.n3,v 1.3 2010-03-26 20:41:54 timbl Exp $
 
+@prefix cc: <http://creativecommons.org/ns#>.
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix doc: <http://www.w3.org/2000/01/pim/doc#>.
@@ -12,6 +13,10 @@
 
 @prefix list: <http://www.w3.org/2000/10/swap/list#>.
 @prefix : <#>.
+
+<>  rdfs:label "n3 definition of some list functions";
+    rdfs:comment """This is an ontology for computable list functions.""";
+    cc:license <http://www.w3.org/Consortium/Legal/copyright-software>.
 
 list:append a rdf:Property, owl:FunctionalProperty;
     rdfs:label "append";
@@ -76,18 +81,22 @@ list:memberAt a rdf:Property;
     rdfs:comment """
 Gets the member of a list at a given position (where the position of the first element is 1)
 
-Schema: (($a_1 .. $a_n) $a_i) list:memberAt $a_m.
+**schema**:
+`(($a_1 .. $a_n) $a_i) list:memberAt $a_m.`
 
-Iff  ($a_1 .. $a_n) has an element at position $a_i,
-and if that element and $a_m can unify.
+Iff  `($a_1 .. $a_n)` has an element at position `$a_i`,
+and if that element and `$a_m` can unify.
 
-Requires: $a_i or $a_m (or both) must be bound.
+**requires**:
+`$a_i` or `$a_m` (or both) must be bound.
 
-Note that if $a_i is a variable, this builtin may bind it to more than one value (e.g. ((“A” “B” “A”) ?i) list:memberAt “A”).
+Note that if `$a_i` is a variable, this builtin may bind it to more than one value
+(e.g. `((“A” “B” “A”) ?i) list:memberAt "A"`).
 
-Literal domains:
-* $a_1 .. $a_n, $a_m: unconstrained
-* $a_i: xs:decimal, xs:float, xs:double within the value space of xs:integer
+**literal domains**:
+
+* `$a_1 .. $a_n`, `$a_m`: unconstrained
+* `$a_i`: `xs:decimal`, `xs:float`, `xs:double` within the value space of `xs:integer`
   (see also note on type promotion and substitution).
 I.e., in case the double/float/decimal's literal's value is within the value space of integers,
 the literal will match the domain.

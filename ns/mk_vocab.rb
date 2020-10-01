@@ -1,0 +1,39 @@
+#!/usr/bin/env ruby
+# Generate vocab.html from vocab.ttl and vocab_template.
+#
+# Usage: mk_vocab.rb file*
+# Generating vocab.jsonld is equivalent to running the following:
+#
+#    jsonld --compact --context vocab_context.jsonld --input-format ttl vocab.ttl  -o vocab.jsonld
+require 'linkeddata'
+require 'haml'
+
+STRIP_PROPS = [RDF::RDFS.comment].map(&:to_s)
+
+ARGV.each do |file|
+  basename = file.sub('.n3', '')
+  vocab_base = "http://www.w3.org/2000/10/swap/#{basename}"
+  File.open(file.sub('.n3', '.html'), "w") do |f|
+    r = RDF::Repository.load(file, base_uri: vocab_base)
+    JSON::LD::API.fromRDF(r, useNativeTypes: true) do |expanded|
+      # Remove leading/trailing and multiple whitespace from selected properties
+      expanded.each do |o|
+        STRIP_PROPS.each do |p|
+          o[p].first['@value'] = o[p].first['@value'].strip if o[p]
+        end
+      end
+      JSON::LD::API.compact(expanded, File.open("vocab_context.jsonld")) do |compacted|
+        # Create html using vocab_template.haml and compacted vocabulary
+        template = File.read("vocab_template.haml")
+      
+        html = Haml::Engine.new(template, :format => :html5).render(self,
+          ontology:   compacted['@graph'].detect {|o| o['@id'] == vocab_base},
+          classes:    compacted['@graph'].select {|o| Array(o['@type']).include?("rdfs:Class")}.sort_by {|o| o.fetch('rdfs:label', '')},
+          properties: compacted['@graph'].select {|o| Array(o['@type']).include?("rdf:Property")}.sort_by {|o| o.fetch('rdfs:label', '')},
+          datatypes: compacted['@graph'].select {|o| Array(o['@type']).include?("rdfs:Datatype")}.sort_by {|o| o.fetch('rdfs:label', '')},
+        )
+        f.write html
+      end
+    end
+  end
+end

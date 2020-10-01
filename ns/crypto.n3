@@ -12,6 +12,7 @@
 #  Beware that the simplicity of use of some of these properties belies
 # the knowledge o fcrypography that one needs to make a secure system
 #
+@prefix cc: <http://creativecommons.org/ns#>.
 @prefix rdf:  <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix owl: <http://www.w3.org/2002/07/owl#>.
@@ -19,6 +20,13 @@
 
 @prefix cr:  <http://www.w3.org/2000/10/swap/crypto#> .
 
+
+<>  rdfs:label "Schema for crypto built-in functions";
+    rdfs:comment """These are terms drawn to match the available functions
+in [mxCrypto](http://freshmeat.sourceforge.net/projects/mxcrypto).""";
+    cc:license <http://www.w3.org/Consortium/Legal/copyright-software>;
+    rdfs:seeAlso <http://www.amk.ca/python/writing/pycrypt/>,
+        <http://www.amk.ca/python/code/crypto.html> .
 
 #####################################################################
 #

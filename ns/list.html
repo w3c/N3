@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+<title>n3 definition of some list functions</title>
+<link href='http://www.w3.org/StyleSheets/TR/base' rel='stylesheet'>
+<style>
+  body: {bacground-image: none;}
+  dt {margin-top: 2em; font-weight: normal;}
+  dd code {display: inline;}
+  footer {text-align: center;}
+  dl.annotations dt {
+    margin-top: 0;
+    font-weight: bold;
+    float: left;
+    clear: left;
+    width: 17vw;
+  }
+  dl.annotations dd:after {
+      content: '';
+      display: block;
+      clear: both;
+      margin-bottom: 5px;
+  }
+  table.rdfs-definition td {vertical-align: top;}
+  .bold {font-weight: bold;}
+</style>
+</head>
+<body>
+<p>
+<a href='http://www.w3.org/'>
+<img alt='W3C' height='48' src='http://www.w3.org/Icons/w3c_home' width='72'>
+</a>
+</p>
+<h1>n3 definition of some list functions</h1>
+<div>
+<p>This is an ontology for computable list functions.</p>
+
+<p>The vocabulary is published by the <a href="https://www.w3.org/community/n3-dev/">W3C Notation-3 Community Group</a>.</p>
+
+</div>
+<section>
+<h2>Vocabulary Terms</h2>
+<section>
+<h3>Property Definitions</h3>
+<dl>
+<dt id='list_append'>
+<strong>list:append</strong>
+<em>append</em>
+<span class='permalink'><a href='#list_append' title='Permalink for list:append'>(link)</a></span>
+</dt>
+<dd>
+<p>Iff the subject is a list of lists and the concatenation of all those lists 
+is the object, then this is true.
+eg  ( (1 2) (3 4) ) list:append (1 2 3 4).
+The object can be calculated as a function of the subject.</p>
+
+<dl class='annotations'>
+<dt>rdfs:domain</dt>
+<dd>log:List</dd>
+</dl>
+</dd>
+<dt id='list_first'>
+<strong>list:first</strong>
+<em>first</em>
+<span class='permalink'><a href='#list_first' title='Permalink for list:first'>(link)</a></span>
+</dt>
+<dd>
+<p>Iff the subject is a list and the object is the first thing that list, then this is true.
+The object can be calculated as a function of the list.</p>
+
+<dl class='annotations'>
+<dt>rdfs:domain</dt>
+<dd>log:List</dd>
+<dt>vs:term_status</dt>
+<dd>unstable</dd>
+</dl>
+</dd>
+<dt id='list_in'>
+<strong>list:in</strong>
+<em>in</em>
+<span class='permalink'><a href='#list_in' title='Permalink for list:in'>(link)</a></span>
+</dt>
+<dd>
+<p>Iff the object is a list and the subject is in that list, then this is true.</p>
+
+<dl class='annotations'>
+<dt>rdfs:range</dt>
+<dd>log:List</dd>
+</dl>
+</dd>
+<dt id='list_last'>
+<strong>list:last</strong>
+<em>in</em>
+<span class='permalink'><a href='#list_last' title='Permalink for list:last'>(link)</a></span>
+</dt>
+<dd>
+<p>Iff the subject is a list and the object is the last thing that list, then this is true.
+The object can be calculated as a function of the list.</p>
+
+<dl class='annotations'>
+<dt>rdfs:domain</dt>
+<dd>log:List</dd>
+</dl>
+</dd>
+<dt id='list_length'>
+<strong>list:length</strong>
+<em>length</em>
+<span class='permalink'><a href='#list_length' title='Permalink for list:length'>(link)</a></span>
+</dt>
+<dd>
+<p>Iff the subject is a list and the object is the last thing that list, then this is true.
+The object can be calculated as a function of the list.</p>
+
+<dl class='annotations'>
+<dt>rdfs:domain</dt>
+<dd>log:List</dd>
+<dt>rdfs:range</dt>
+<dd>xsd:integer</dd>
+<dt>vs:term_status</dt>
+<dd>unstable</dd>
+</dl>
+</dd>
+<dt id='list_member'>
+<strong>list:member</strong>
+<em>member</em>
+<span class='permalink'><a href='#list_member' title='Permalink for list:member'>(link)</a></span>
+</dt>
+<dd>
+<p>Iff the subject is a list and the object is in that list, then this is true.</p>
+
+<dl class='annotations'>
+<dt>rdfs:domain</dt>
+<dd>log:List</dd>
+</dl>
+</dd>
+<dt id='list_memberAt'>
+<strong>list:memberAt</strong>
+<em>memberAt</em>
+<span class='permalink'><a href='#list_memberAt' title='Permalink for list:memberAt'>(link)</a></span>
+</dt>
+<dd>
+<p>Gets the member of a list at a given position (where the position of the first element is 1)</p>
+
+<p><strong>schema</strong>:
+<code>(($a_1 .. $a_n) $a_i) list:memberAt $a_m.</code></p>
+
+<p>Iff  <code>($a_1 .. $a_n)</code> has an element at position <code>$a_i</code>,
+and if that element and <code>$a_m</code> can unify.</p>
+
+<p><strong>requires</strong>:
+<code>$a_i</code> or <code>$a_m</code> (or both) must be bound.</p>
+
+<p>Note that if <code>$a_i</code> is a variable, this builtin may bind it to more than one value
+(e.g. <code>((“A” “B” “A”) ?i) list:memberAt &quot;A&quot;</code>).</p>
+
+<p><strong>literal domains</strong>:</p>
+
+<ul>
+<li><code>$a_1 .. $a_n</code>, <code>$a_m</code>: unconstrained</li>
+<li><code>$a_i</code>: <code>xs:decimal</code>, <code>xs:float</code>, <code>xs:double</code> within the value space of <code>xs:integer</code>
+(see also note on type promotion and substitution).
+I.e., in case the double/float/decimal&#39;s literal&#39;s value is within the value space of integers,
+the literal will match the domain.
+In case of a negative integer, the index will count backwards from the length of the list.</li>
+</ul>
+
+<dl class='annotations'>
+<dt>rdfs:domain</dt>
+<dd>log:List</dd>
+<dt>vs:term_status</dt>
+<dd>unstable</dd>
+</dl>
+</dd>
+<dt id='list_remove'>
+<strong>list:remove</strong>
+<em>remove</em>
+<span class='permalink'><a href='#list_remove' title='Permalink for list:remove'>(link)</a></span>
+</dt>
+<dd>
+<p>Iff the subject is a list of two lists, the second component is a subset of the first component
+and the object is a list composed of the members of the first component of the subject with
+all members of the second component of the subject removed, matching left to right.
+eg ( (1 2 3 4) (2 3) ) list:remove (1 4).
+The object can be calculated as a function of the subject.</p>
+
+<dl class='annotations'>
+<dt>rdfs:domain</dt>
+<dd>log:List</dd>
+<dt>rdfs:range</dt>
+<dd>log:List</dd>
+<dt>vs:term_status</dt>
+<dd>unstable</dd>
+</dl>
+</dd>
+</dl>
+</section>
+</section>
+</body>
+<footer>
+<p>All vocabularies are licensed by contributors under the
+<a href="http://www.w3.org/Consortium/Legal/copyright-software">W3C Software and Document License</a>.</p>
+</footer>
+</html>

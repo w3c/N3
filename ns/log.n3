@@ -8,6 +8,7 @@
 # 
 # $Id: log.n3,v 1.25 2010-03-26 20:35:14 timbl Exp $
 
+@prefix cc: <http://creativecommons.org/ns#>.
 @prefix owl: <http://www.w3.org/2002/07/owl#>.
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
@@ -16,7 +17,18 @@
 @prefix vs: <http://www.w3.org/2003/06/sw-vocab-status/ns#> .
 @prefix : <#>.
 
+<>  rdfs:label "n3 definition of some Semantic Web terms";
+    rdfs:comment """
+These raise the level above RDF's pure relational data,
+and Web Ontology's ontological level, to allow rules to be expressed
+and inference done. They connect the inference to the web,
+allowing data to be fetched from resources elsewhere, and remote
+servers to be queried.
+""";
+    cc:license <http://www.w3.org/Consortium/Legal/copyright-software> .
+
 log:N3Document a rdfs:Class;
+    rdfs:label "N3Document";
     rdfs:subClassOf doc:Work;
     rdfs:comment    """A document which, which parsed as Notation3
 as defined in general by http://www.w3.org/DesignIssues/Notation3.html
@@ -31,20 +43,24 @@ of any other identifiers used in the document.
 #  and Classes.  They operate at a level of symbol identity, not identity of the things referred to.
 #
 
-log:equalTo a rdf:Property;
+log:equalTo a rdf:Property, owl:FunctionalProperty, owl:InverseFunctionalProperty;
+    rdfs:label "equalTo";
     rdfs:comment
 """True if the subject and object are the same RDF node (symbol or literal).
 Do not confuse with owl:sameAs.
 A cwm built-in logical operator, RDF graph level.
 """.
 
-log:notEqualTo a rdf:Property; owl:inverse log:equalTo;
+log:notEqualTo a rdf:Property;
+    owl:inverse log:equalTo;
+    rdfs:label "notEqualTo";
     rdfs:comment
 """Equality in this sense is actually the same URI.
 A cwm built-in logical operator.
 """.
 
-log:rawType a rdf:Property;
+log:rawType a rdf:Property, owl:FunctionalProperty;
+    rdfs:label "rawType";
     rdfs:range log:Type;
     rdfs:comment """
 This is a low-level language type, one of log:Formula, log:Literal, 
@@ -53,34 +69,44 @@ Example: log:semanticsOrError returns either a formula or a string,
 and you can check which using log:rawType.
 """.
 
-log:Type a rdfs:Class
+log:Type a rdfs:Class;
+    rdfs:label "Type";
     rdfs:comment """
 The class of Notation3-specifiec resource types.
 """;
     vs:term_status "unstable".
 
-log:Formula a rdfs:Class; rdfs:subClassOf log:Type.
-log:List    a rdfs:Class; rdfs:subClassOf log:Type, rdf:List.
-log:String  a rdfs:Class; rdfs:subClassOf log:Type, rdfs:Literal.
-log:Other   a rdfs:Class; rdfs:subClassOf log:Type.     # Not one of the above.
+log:Formula a rdfs:Class; rdfs:subClassOf log:Type;
+    rdfs:label "Formula";
+    rdfs:comment "The class of Notation-3 Formulae".
+log:List    a rdfs:Class; rdfs:subClassOf log:Type, rdf:List;
+    rdfs:label "List";
+    rdfs:comment "A Notation-3 List, as a resource. A sub-class of an RDF List.".
+log:String  a rdfs:Class; rdfs:subClassOf log:Type, rdfs:Literal;
+    rdfs:label "List";
+    rdfs:comment "An RDF Literal".
+log:Other   a rdfs:Class; rdfs:subClassOf log:Type;
+    rdfs:label "List";
+    rdfs:comment "Some other Notation-3 type".
 
 #   The following are inherent in the translation of N3 syntax to quad representation:
 
 # FIXME: no such thing as rdf:SyntaxArc.
 log:forSome a rdf:SyntaxArc;  #@@@@@   NOT a real property. A pseudo property
+    rdfs:label "for Some";
+    rdfs:domain log:Formula;
     rdfs:comment """A is true for some object for which here we use B. This
 is NOT a real rdf property in its behavior - a pseudo-property.
 For example, removal of it from a formula does not
 preserve truth, and substitution is not permitted on its object.""" ;
-    rdfs:domain log:Formula;
     vs:term_status "unstable".
 
 log:forAll a log:SyntaxArc;  #@@@@@   NOT a real property. A pseudo property
     rdfs:label     "for All";
+    rdfs:domain log:Formula;
     rdfs:comment """A is true for any object in place of B.
 This is NOT a real rdf property in its behavior - a pseudo-property.
 For examples substitution is not permitted on its object.""";
-    rdfs:domain log:Formula;
     vs:term_status "unstable".
 
 
@@ -90,17 +116,20 @@ For examples substitution is not permitted on its object.""";
 #
 
 log:Truth a rdfs:Class;
+    rdfs:label "Truth";
     rdfs:comment """Something which is true: believe it as you would believe this.
 
 Understood natively by cwm in that it will execute rules in a formula
 declared a Truth within a formula it is already taking rules from.""".
 
 #log:Falsehood a rdf:Class;
+#   rdfs:label "Falsehood";
 #   rdfs:comment "Something which is not true. Not the complement of True!";
 #   rdfs:domain log:context.
 #
 
 log:implies a rdf:Property;
+    rdfs:label "implies";
     rdfs:comment """Logical implication. 
 This is the relation between the antecedent (subject) and
 conclusion (object) of a rule.
@@ -120,6 +149,7 @@ added to various formula.)
     rdfs:isDefinedBy <>.
 
 log:includes a rdf:Property;
+    rdfs:label "includes";
     rdfs:comment """The subject formula includes the object formula.
 Formula A includes formula B if there exists some substitution
 which when applied to B creates a formula B' such that for
@@ -137,6 +167,7 @@ You can use this to peer inside nested formulae.)""";
     rdfs:isDefinedBy <>.
 
 log:notIncludes a rdf:Property;
+    rdfs:label "not includes";
     rdfs:comment """The object formula is NOT a subset of subject.
 True iff log:includes is false.
 The converse of log:includes. (Understood natively by cwm.
@@ -155,7 +186,7 @@ Related: See includes""";
 
 log:parsedAsN3 a rdf:Property;
     rdfs:comment "The subject string, parsed as N3, gives this formula.";
-    rdfs:label "parses to";
+    rdfs:label "parses to N3";
     rdfs:domain log:N3;
     rdfs:range log:Formula.
  
@@ -207,7 +238,7 @@ log:conjunction a rdf:Property;
     rdfs:label "conjunction";
     rdfs:domain log:List;
     rdfs:range  log:Formula;
-    rdfs:comment """"A function to merge formulae: logical AND.
+    rdfs:comment """A function to merge formulae: logical AND.
 
 The subject is a list of formulae.
 The object, which can be generated, is a formula containing a copy
@@ -258,7 +289,7 @@ log:definitiveService a rdf:Property;
 any statement X P Y is true iff and only if a query to S returns
 that it is.  The protocol for the service S depends on the scheme.
 For mysql protocol, the URI of the service is like
-sql://user:password@host.domain/database/.
+`sql://user:password@host.domain/database/`.
 
 For example, there may be a definitive service for the zipcode of
 airports by airport code, and so on. This is useful to let a reasoner
@@ -294,17 +325,19 @@ log:dtlit a rdf:Property;
     rdfs:labe "dtlit";
     rdfs:domain log:List;
     rdfs:range rdfs:Literal;
-    rdfs:comment """Takes a list of a string and a URI and creates a datatyped literal.""";
+    rdfs:comment """Takes a list of a string and a URI and creates a datatyped literal.
+For example, `{ ("2005-03-30T11:00:00" :tz) log:dtlit ?X } => { ?X a :Answer } .`
+will produce `"2005-03-30T11:00:00"^^:tz a :Answer .`""";
     vs:term_status "deprecated".
-    
+
 log:findall a rdf:Property;
     rdfs:label "findall";
     rdfs:domain log:Formula;
     rdfs:range log:List;
     rdfs:comment """
-Built-in used as ?SCOPE e:findall (?SELECT ?WHERE ?ANSWER).
-Within the subject ?SCOPE it unifies ?ANSWER with a list that contains
-all the instantiations of ?SELECT satisfying the ?WHERE clause.
+Built-in used as `?SCOPE e:findall (?SELECT ?WHERE ?ANSWER).`
+Within the subject `?SCOPE` it unifies `?ANSWER` with a list that contains
+all the instantiations of `?SELECT` satisfying the `?WHERE` clause.
 """;
     vs:term_status "unstable".
 
@@ -356,6 +389,7 @@ The value of log:content of a log:N3Document is a literal with datatype log:N3.
 ################### Purge control
 
 log:Chaff a rdfs:Class;
+    rdfs:label "Chaff";
     rdfs:comment """Any statement mentioning anything in this class
 is considered boring and purged by the cwm --purge option.
 This is a convenience, and does not have any value when published as a
@@ -366,6 +400,7 @@ general fact on the web.""".
 #
 
 log:uri a rdf:Property;
+    rdfs:lable "uri";
     rdfs:comment 
 """This allows one to look at the actual string of the URI which identifies this.
 
@@ -377,6 +412,7 @@ functionality. Use to implement the URI spec and protocol specs, etc.
     rdfs:range log:String.
 
 log:rawUri a rdf:Property;
+    rdfs:label "raw uri";
     rdfs:comment 
 """This allows one to look at the actual string of the URI which identifies this,
 for anything, even a blank node or a formula. This peeks into the internal
@@ -385,14 +421,10 @@ workings of cwm, and so is not normally used. Use log:uri instead.
     rdfs:range log:String.
 
 log:racine a rdf:Property;
+    rdfs:label "racine";
     rdfs:comment """For anything identified by a URI with a fragid, this is the
 thing identified by the same URI without a hash or fragid.
 For anything else, it is itself.""".
-
-log:dtlit a rdf:Property;
-    rdfs:comment """Takes a list of a string and a URI and creates a datatyped literal.
-For example, { ("2005-03-30T11:00:00" :tz) log:dtlit ?X } => { ?X a :Answer } .
-will produce "2005-03-30T11:00:00"^^:tz a :Answer .""" .
 
 
 # ends
