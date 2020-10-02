@@ -1,0 +1,121 @@
+#   n3 definition of some list functions
+#
+# $Id: list.n3,v 1.3 2010-03-26 20:41:54 timbl Exp $
+
+@prefix cc: <http://creativecommons.org/ns#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix doc: <http://www.w3.org/2000/01/pim/doc#>.
+@prefix log: <http://www.w3.org/2000/10/swap/log#>.
+@prefix owl: <http://www.w3.org/2002/07/owl#>.
+@prefix vs: <http://www.w3.org/2003/06/sw-vocab-status/ns#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+@prefix list: <http://www.w3.org/2000/10/swap/list#>.
+@prefix : <#>.
+
+<>  rdfs:label "n3 definition of some list functions";
+    rdfs:comment """This is an ontology for computable list functions.""";
+    cc:license <http://www.w3.org/Consortium/Legal/copyright-software>.
+
+list:append a rdf:Property, owl:FunctionalProperty;
+    rdfs:label "append";
+    rdfs:domain log:List;
+    rdfs:comment """
+Iff the subject is a list of lists and the concatenation of all those lists 
+is the object, then this is true.
+eg  ( (1 2) (3 4) ) list:append (1 2 3 4).
+The object can be calculated as a function of the subject.
+""";
+    rdfs:isDefinedBy <>.
+
+list:first a rdf:Property, owl:FunctionalProperty;
+    rdfs:label "first";
+    rdfs:domain log:List;
+    rdfs:comment """
+Iff the subject is a list and the object is the first thing that list, then this is true.
+The object can be calculated as a function of the list.
+""";
+    vs:term_status "unstable";
+    rdfs:isDefinedBy <>.
+
+list:in a rdf:Property;
+    rdfs:label "in";
+    rdfs:range log:List;
+    rdfs:comment """
+Iff the object is a list and the subject is in that list, then this is true.
+""";
+    rdfs:isDefinedBy <>.
+
+list:last a rdf:Property, owl:FunctionalProperty;
+    rdfs:label "in";
+    rdfs:domain log:List;
+    rdfs:comment """
+Iff the subject is a list and the object is the last thing that list, then this is true.
+The object can be calculated as a function of the list.
+""";
+    rdfs:isDefinedBy <>.
+
+list:length a rdf:Property, owl:FunctionalProperty;
+    rdfs:label "length";
+    rdfs:domain log:List;
+    rdfs:range xsd:integer;
+    rdfs:comment """
+Iff the subject is a list and the object is the last thing that list, then this is true.
+The object can be calculated as a function of the list.
+""";
+    vs:term_status "unstable";
+    rdfs:isDefinedBy <>.
+
+list:member a rdf:Property;
+    rdfs:label "member";
+    rdfs:domain log:List;
+    rdfs:comment """
+Iff the subject is a list and the object is in that list, then this is true.
+""";
+    rdfs:isDefinedBy <>.
+
+list:memberAt a rdf:Property;
+    rdfs:label "memberAt";
+    rdfs:domain log:List;
+    rdfs:comment """
+Gets the member of a list at a given position (where the position of the first element is 1)
+
+**schema**:
+`(($a_1 .. $a_n) $a_i) list:memberAt $a_m.`
+
+Iff  `($a_1 .. $a_n)` has an element at position `$a_i`,
+and if that element and `$a_m` can unify.
+
+**requires**:
+`$a_i` or `$a_m` (or both) must be bound.
+
+Note that if `$a_i` is a variable, this builtin may bind it to more than one value
+(e.g. `((“A” “B” “A”) ?i) list:memberAt "A"`).
+
+**literal domains**:
+
+* `$a_1 .. $a_n`, `$a_m`: unconstrained
+* `$a_i`: `xs:decimal`, `xs:float`, `xs:double` within the value space of `xs:integer`
+  (see also note on type promotion and substitution).
+I.e., in case the double/float/decimal's literal's value is within the value space of integers,
+the literal will match the domain.
+In case of a negative integer, the index will count backwards from the length of the list.
+""";
+    vs:term_status "unstable";
+    rdfs:isDefinedBy <>.
+
+list:remove a rdf:Property, owl:FunctionalProperty;
+    rdfs:label "remove";
+    rdfs:domain log:List;
+    rdfs:range log:List;
+    rdfs:comment """
+Iff the subject is a list of two lists, the second component is a subset of the first component
+and the object is a list composed of the members of the first component of the subject with
+all members of the second component of the subject removed, matching left to right.
+eg ( (1 2 3 4) (2 3) ) list:remove (1 4).
+The object can be calculated as a function of the subject.
+""";
+    vs:term_status "unstable";
+    rdfs:isDefinedBy <>.
+

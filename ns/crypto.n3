@@ -1,0 +1,57 @@
+#  Schema for crypto built-in functions in cwm. 
+#
+#  These are terms drawn to match the available functions
+# in mxCrypto. See:
+# http://www.amk.ca/python/writing/pycrypt/  for the manual and
+# http://www.amk.ca/python/code/crypto.html  for the code.
+#
+#  I am not sure whether in the domain and range functions we should
+# distinguish strings one can present to a person from crypto binary.
+# Might be useful for driving the UI and/or serialization using base64 etc.
+#
+#  Beware that the simplicity of use of some of these properties belies
+# the knowledge o fcrypography that one needs to make a secure system
+#
+@prefix cc: <http://creativecommons.org/ns#>.
+@prefix rdf:  <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#>.
+@prefix log:  <http://www.w3.org/2000/10/swap/log#> .
+
+@prefix cr:  <http://www.w3.org/2000/10/swap/crypto#> .
+
+
+<>  rdfs:label "Schema for crypto built-in functions";
+    rdfs:comment """These are terms drawn to match the available functions
+in [mxCrypto](http://freshmeat.sourceforge.net/projects/mxcrypto).""";
+    cc:license <http://www.w3.org/Consortium/Legal/copyright-software>;
+    rdfs:seeAlso <http://www.amk.ca/python/writing/pycrypt/>,
+        <http://www.amk.ca/python/code/crypto.html> .
+
+#####################################################################
+#
+# Hash functions
+
+cr:md5 a rdf:Property, owl:FunctionalProperty, owl:InverseFunctionalProperty;
+    rdfs:label "MD5 hash";
+    rdfs:comment "The object is a MD5 hash of the subject.";
+    rdfs:domain rdfs:Literal;
+    rdfs:range xsd:string.
+
+cr:sha a rdf:Property, owl:FunctionalProperty, owl:InverseFunctionalProperty;
+    rdfs:label "SHA-1 hash";
+    rdfs:comment "The object is a SHA-1 hash of the subject.";
+    rdfs:domain rdfs:Literal;
+    rdfs:range xsd:string.
+
+cr:sha256 a rdf:Property, owl:FunctionalProperty, owl:InverseFunctionalProperty;
+    rdfs:label "SHA-256 hash";
+    rdfs:comment "The object is a SHA-256 hash of the subject.";
+    rdfs:domain rdfs:Literal;
+    rdfs:range xsd:string.
+
+cr:sha512 a rdf:Property, owl:FunctionalProperty, owl:InverseFunctionalProperty;
+    rdfs:label "SHA-512 hash";
+    rdfs:comment "The object is a SHA-512 hash of the subject.";
+    rdfs:domain rdfs:Literal;
+    rdfs:range xsd:string.
