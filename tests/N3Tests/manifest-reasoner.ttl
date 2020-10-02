@@ -140,7 +140,7 @@
   rdfs:comment "Builtins for log:parsedAsN3." ;
   mf:action <log/parsedAsN3.n3>;
   mf:result <log/parsedAsN3-ref.n3>;
-  test:options [test:rules true; test:data true;] .
+  test:options [test:rules true; test:filter true;] .
 
 # Tests from swap/test/math
 :math_absoluteValue a test:TestN3Reason;
