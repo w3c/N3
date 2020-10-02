@@ -20,7 +20,7 @@
 #  Someone whose mother is audrey knows someone whose sister is Betsy
 #
 
-{{ :foo :bar [:baz :bam] } log:includes { :foo :bar [:baz :bam] }}  log:implies { :TEST1 a :success }.
+{{ :foo :bar [:baz :bam] } log:includes { :foo :bar [:baz :bam] }}  log:implies { :test6 a :success }.
  
 #{{ [ :mother :Audrey ] :knows [ :sister :Betsy ]. :foo :bar :baz. }
 #  log:includes {[:mother :Audrey]:knows[:sister :Betsy]}}
