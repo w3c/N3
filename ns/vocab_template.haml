@@ -4,7 +4,7 @@
     %title<= ontology['rdfs:label']
     %link{href: "http://www.w3.org/StyleSheets/TR/base", rel: :stylesheet}
     :css
-      body: {bacground-image: none;}
+      body {background-image: none;}
       dt {margin-top: 2em; font-weight: normal;}
       dd code {display: inline;}
       footer {text-align: center;}
@@ -68,7 +68,7 @@
                       - if defn.has_key?(p)
                         %dt<=p
                         %dd<= Array(defn[p]).join(", ")
-  %footer
-    :markdown
-      All vocabularies are licensed by contributors under the
-      [W3C Software and Document License](http://www.w3.org/Consortium/Legal/copyright-software).
+    %footer
+      :markdown
+        All vocabularies are licensed by contributors under the
+        [W3C Software and Document License](http://www.w3.org/Consortium/Legal/copyright-software).
