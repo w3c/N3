@@ -31,11 +31,7 @@
       # math
       :math_absoluteValue :math_ceiling :math_exponentiation :math_floor
       :math_difference :math_product :math_quotient :math_remainder :math_sum
-      :math_inf
-
-      # From swap/test/math
-      :cwm_math_test
-      # :cwm_math_trigo # Results subject to native precision for exact values
+      :math_inf :math_strings :math_numbers :math_corners :math_big :math_combo
       :math_trig
 
       # From swap/test/norm
@@ -288,11 +284,39 @@
   mf:result <math/inf-ref.n3>;
   test:options [test:rules true; test:data true;] .
 
-:cwm_math_test a test:TestN3Reason;
-  mf:name "math-test.n3";
-  rdfs:comment   "Various math builtins. (changed from using math:memberCount to list:length).";
-  mf:action <cwm_math/math-test.n3>;
-  mf:result <cwm_math/math-test-ref.n3>;
+:math_strings a test:TestN3Reason;
+  mf:name "strings.n3";
+  rdfs:comment   "Various math builtins with string inputs.";
+  mf:action <math/strings.n3>;
+  mf:result <math/strings-ref.n3>;
+  test:options [test:think true; test:data true;] .
+
+:math_numbers a test:TestN3Reason;
+  mf:name "numbers.n3";
+  rdfs:comment   "Various math builtins with numbers inputs.";
+  mf:action <math/numbers.n3>;
+  mf:result <math/numbers-ref.n3>;
+  test:options [test:think true; test:data true;] .
+
+:math_corners a test:TestN3Reason;
+  mf:name "corners.n3";
+  rdfs:comment   "Various math builtins corner cases.";
+  mf:action <math/corners.n3>;
+  mf:result <math/corners-ref.n3>;
+  test:options [test:think true; test:data true;] .
+
+:math_big a test:TestN3Reason;
+  mf:name "big.n3";
+  rdfs:comment   "Big math builtin test.";
+  mf:action <math/big.n3>;
+  mf:result <math/big-ref.n3>;
+  test:options [test:think true; test:data true;] .
+
+:math_combo a test:TestN3Reason;
+  mf:name "combo.n3";
+  rdfs:comment   "Math builtin combinatorial test.";
+  mf:action <math/combo.n3>;
+  mf:result <math/combo-ref.n3>;
   test:options [test:think true; test:data true;] .
 
 :cwm_math_trigo a test:TestN3Reason;
