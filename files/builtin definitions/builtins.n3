@@ -12,11 +12,11 @@
 :list a :ListTypeRestriction .
 :regex a :RegexTypeRestriction .
 
-:numericOrVariable :union ( :numeric :variable ) .
-:stringOrVariable :union ( :string :variable ) .
-:regexOrVariable :union ( :regex :variable ) .
-:resourceOrVariable :union ( :resource :variable ) .
-:listOrVariable :union ( :list :variable ) .
+:numericOrVariable :oneOf ( :numeric :variable ) .
+:stringOrVariable :oneOf ( :string :variable ) .
+:regexOrVariable :oneOf ( :regex :variable ) .
+:resourceOrVariable :oneOf ( :resource :variable ) .
+:listOrVariable :oneOf ( :list :variable ) .
 
 :numericList a :ListTypeRestriction ; 
 	:listElementType :numeric .
@@ -42,29 +42,27 @@ math:greaterThan
 math:sum
     a :BuiltinDefinition ;
     :subject 
-		[ :union ( :numericOrVariableList :variable ) ] ;
+		[ :oneOf ( :numericOrVariableList :variable ) ] ;
     :object :numericOrVariable ;
-	:requires [
-		:subject :numericList ;
-		:object :numericOrVariable
-	] ;
-	:requires [
-		:subject [ :listElementType [ :union ( :maxOneVar :numeric ) ]] ;
-		:object :numeric
-	] .
+	:requires [ :oneOf ( [
+			:subject :numericList ;
+			:object :numericOrVariable
+		] [
+			:subject [ :listElementType [ :oneOf ( :maxOneVar :numeric ) ]] ;
+			:object :numeric
+		] ) ] .
 	
 math:difference
 	a :BuiltinDefinition ;
 	:subject [ :size [ a :Exact ; rdf:value 2 ] ; :listElementType :numericOrVariable ] ;
 	:object :numericOrVariable ;
-	:requires [
+	:requires [ :oneOf ( [ 
 		:subject :numericList ;
 		:object :numericOrVariable
-	] ;
-	:requires [
-		:subject [ :listElementType [ :union ( :maxOneVar :numeric ) ]] ;
+	] [
+		:subject [ :listElementType [ :oneOf ( :maxOneVar :numeric ) ]] ;
 		:object :numeric
-	] .
+	] ) ] .
 	
 math:absoluteValue
 	a :BuiltinDefinition ;
@@ -76,13 +74,16 @@ math:cos
 	a :BuiltinDefinition ;
 	:subject :numericOrVariable;
 	:object :numericOrVariable;
-	:requires [ :subject :numeric ; :object :numericOrVariable ] ;
-	:requires [ :subject :numericOrVariable ; :object :numeric ] .
+	:requires [ :oneOf ( [ 
+		:subject :numeric ; :object :numericOrVariable 
+	] [ 
+		:subject :numericOrVariable ; :object :numeric 
+	] ) ] .
 	
 string:scrape
 	a :BuiltinDefinition ;
 	:subject 
-		[ :union (
+		[ :oneOf (
 			[ :listElements ( :regexOrVariable :stringOrVariable ) ]
 			:variable
 		) ] ;
@@ -95,7 +96,7 @@ string:scrape
 string:concatenation
 	a :BuiltinDefinition ;
 	:subject 
-		[ :union ( :stringOrVariableList :variable ) ] ;
+		[ :oneOf ( :stringOrVariableList :variable ) ] ;
 	:object :stringOrVariable ;
 	:requires [ 
 		:subject :stringList ;
@@ -105,16 +106,15 @@ string:concatenation
 list:memberAt
 	a :BuiltinDefinition ;
 	:subject 
-		[ :union (
-			[ :listElements (:listOrVariable :numericOrVariable ) ]
+		[ :oneOf (
+			[ :listElements ( :listOrVariable :numericOrVariable ) ]
 			:variable 
-		)] ;
+		) ] ;
 	:object :resourceOrVariable ;
-	:requires [
+	:requires [ :oneOf ( [
 		:subject [ :listElements ( :list :numeric ) ] ;
-		:object [ :union ( :resource :variable ) ]
-	] ;
-	:requires [
+		:object [ :oneOf ( :resource :variable ) ]
+	] [
 		:subject [ :listElements ( :list :numericOrVariable ) ] ;
 		:object :resource
-	] .
+	] ) ] .
