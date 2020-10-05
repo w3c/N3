@@ -20,15 +20,18 @@
       # From swap/test/includes
       :cwm_includes_listin :cwm_includes_bnode :cwm_includes_concat :cwm_includes_conclusion_simple
       :cwm_includes_conjunction
+      :cwm_includes_t1 :cwm_includes_t2 :cwm_includes_t3 :cwm_includes_t4:cwm_includes_t6 :cwm_includes_t8
+      :cwm_includes_builtins
+      :cwm_includes_t9br :cwm_includes_t10 :cwm_includes_t11
+      :cwm_includes_quantifiers_limited :cwm_includes_quant-implies
+
+      # log
+      :log_content :log_parsedAsN3
 
       # math
       :math_absoluteValue :math_ceiling :math_exponentiation :math_floor
       :math_difference :math_product :math_quotient :math_remainder :math_sum
-      :math_inf
-
-      # From swap/test/math
-      :cwm_math_test
-      # :cwm_math_trigo # Results subject to native precision for exact values
+      :math_inf :math_strings :math_numbers :math_corners :math_big :math_combo
       :math_trig
 
       # From swap/test/norm
@@ -108,7 +111,107 @@
   rdfs:comment "Builtins for log:conjunction." ;
   mf:action <cwm_includes/conjunction.n3>;
   mf:result <cwm_includes/conjunction-ref.n3>;
-  test:options [test:think true; test:data true;] .
+  test:options [test:rules true; test:filter true;] .
+
+:cwm_includes_t1 a test:TestN3Reason;
+  mf:name      "includes-t1.n3" ;
+  rdfs:comment "Simple use of log:includes." ;
+  mf:action <cwm_includes/t1.n3>;
+  mf:result <cwm_includes/t1-ref.n3>;
+  test:options [test:rules true; test:filter true;] .
+
+:cwm_includes_t2 a test:TestN3Reason;
+  mf:name      "includes-t2.n3" ;
+  rdfs:comment "Simple use of log:includes." ;
+  mf:action <cwm_includes/t2.n3>;
+  mf:result <cwm_includes/t2-ref.n3>;
+  test:options [test:rules true; test:filter true;] .
+
+:cwm_includes_t3 a test:TestN3Reason;
+  mf:name      "includes-t3.n3" ;
+  rdfs:comment "Simple use of log:includes." ;
+  mf:action <cwm_includes/t3.n3>;
+  mf:result <cwm_includes/t3-ref.n3>;
+  test:options [test:rules true; test:filter true;] .
+
+:cwm_includes_t4 a test:TestN3Reason;
+  mf:name      "includes-t4.n3" ;
+  rdfs:comment "Simple use of log:notIncludes." ;
+  mf:action <cwm_includes/t4.n3>;
+  mf:result <cwm_includes/t4-ref.n3>;
+  test:options [test:rules true; test:filter true;] .
+
+:cwm_includes_t6 a test:TestN3Reason;
+  mf:name      "includes-t6.n3" ;
+  rdfs:comment "Simple use of log:includes." ;
+  mf:action <cwm_includes/t6.n3>;
+  mf:result <cwm_includes/t6-ref.n3>;
+  test:options [test:rules true; test:filter true;] .
+
+:cwm_includes_t8 a test:TestN3Reason;
+  mf:name      "includes-t8.n3" ;
+  rdfs:comment "Simple use of string built-ins." ;
+  mf:action <cwm_includes/t8.n3>;
+  mf:result <cwm_includes/t8-ref.n3>;
+  test:options [test:rules true;] .
+
+:cwm_includes_builtins a test:TestN3Reason;
+  mf:name      "includes-builtins.n3" ;
+  rdfs:comment "Builtins and log:includes." ;
+  mf:action <cwm_includes/builtins.n3>;
+  mf:result <cwm_includes/builtins-ref.n3>;
+  test:options [test:rules true; test:data true] .
+
+:cwm_includes_t9br a test:TestN3Reason;
+  mf:name      "includes-t9br.n3" ;
+  rdfs:comment "Filter event by date using strcmp BI's." ;
+  mf:action <cwm_includes/t9br.n3>;
+  mf:result <cwm_includes/t9br-ref.n3>;
+  test:options [test:rules true;] .
+
+:cwm_includes_t10 a test:TestN3Reason;
+  mf:name      "includes-t10.n3" ;
+  rdfs:comment "log:resolvesTo and log:includes." ;
+  mf:action <cwm_includes/t10.n3>;
+  mf:result <cwm_includes/t10-ref.n3>;
+  test:options [test:rules true; test:data true;] .
+
+:cwm_includes_t11 a test:TestN3Reason;
+  mf:name      "includes-t11.n3" ;
+  rdfs:comment "log:resolvesTo and log:includes - schema checking." ;
+  mf:action <cwm_includes/t11.n3>;
+  mf:result <cwm_includes/t11-ref.n3>;
+  test:options [test:rules true; test:data true;] .
+
+:cwm_includes_quantifiers_limited a test:TestN3Reason;
+  mf:name      "includes-quantifiers_limited.n3" ;
+  rdfs:comment "log:includes handling of univ./exist. quantifiers." ;
+  mf:action <cwm_includes/quantifiers_limited.n3>;
+  mf:result <cwm_includes/quantifiers_limited-ref.n3>;
+  test:options [test:rules true; test:data true;] .
+
+:cwm_includes_quant-implies a test:TestN3Reason;
+  mf:name      "includes-quant-implies.n3" ;
+  rdfs:comment "log:implies handling of quantifiers." ;
+  mf:action <cwm_includes/quant-implies.n3>;
+  mf:result <cwm_includes/quant-implies-ref.n3>;
+  test:options [test:rules true; test:data true;] .
+
+
+# Tests from log/
+:log_content a test:TestN3Reason;
+  mf:name      "log-content.n3" ;
+  rdfs:comment "Builtins for log:content." ;
+  mf:action <log/content.n3>;
+  mf:result <log/content-ref.n3>;
+  test:options [test:rules true; test:data true;] .
+
+:log_parsedAsN3 a test:TestN3Reason;
+  mf:name      "log-parsedAsN3.n3" ;
+  rdfs:comment "Builtins for log:parsedAsN3." ;
+  mf:action <log/parsedAsN3.n3>;
+  mf:result <log/parsedAsN3-ref.n3>;
+  test:options [test:rules true; test:filter true;] .
 
 # Tests from swap/test/math
 :math_absoluteValue a test:TestN3Reason;
@@ -181,11 +284,39 @@
   mf:result <math/inf-ref.n3>;
   test:options [test:rules true; test:data true;] .
 
-:cwm_math_test a test:TestN3Reason;
-  mf:name "math-test.n3";
-  rdfs:comment   "Various math builtins. (changed from using math:memberCount to list:length).";
-  mf:action <cwm_math/math-test.n3>;
-  mf:result <cwm_math/math-test-ref.n3>;
+:math_strings a test:TestN3Reason;
+  mf:name "strings.n3";
+  rdfs:comment   "Various math builtins with string inputs.";
+  mf:action <math/strings.n3>;
+  mf:result <math/strings-ref.n3>;
+  test:options [test:think true; test:data true;] .
+
+:math_numbers a test:TestN3Reason;
+  mf:name "numbers.n3";
+  rdfs:comment   "Various math builtins with numbers inputs.";
+  mf:action <math/numbers.n3>;
+  mf:result <math/numbers-ref.n3>;
+  test:options [test:think true; test:data true;] .
+
+:math_corners a test:TestN3Reason;
+  mf:name "corners.n3";
+  rdfs:comment   "Various math builtins corner cases.";
+  mf:action <math/corners.n3>;
+  mf:result <math/corners-ref.n3>;
+  test:options [test:think true; test:data true;] .
+
+:math_big a test:TestN3Reason;
+  mf:name "big.n3";
+  rdfs:comment   "Big math builtin test.";
+  mf:action <math/big.n3>;
+  mf:result <math/big-ref.n3>;
+  test:options [test:think true; test:data true;] .
+
+:math_combo a test:TestN3Reason;
+  mf:name "combo.n3";
+  rdfs:comment   "Math builtin combinatorial test.";
+  mf:action <math/combo.n3>;
+  mf:result <math/combo-ref.n3>;
   test:options [test:think true; test:data true;] .
 
 :cwm_math_trigo a test:TestN3Reason;

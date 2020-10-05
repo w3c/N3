@@ -50,8 +50,8 @@
 
 # Corner cases:
 
-{ () math:sum ?x } =>  { ?x :valuOf " () math:sum ?x  --- should be 0" }.
-{ () math:product ?x } =>  { ?x :valuOf " () math:product ?x  --- should be 1" }.
+{ () math:sum ?x } =>  { ?x :valueOf " () math:sum ?x  --- should be 0" }.
+{ () math:product ?x } =>  { ?x :valueOf " () math:product ?x  --- should be 1" }.
 
 # Check that comparison is really numeric and not string comparison
 
@@ -93,11 +93,12 @@
 1729 a :testValue.
 "0" a :testValue.
 0 a :testValue.
-"1.0e7" a :testValue.
-1.0e7 a :testValue.
+"1.0E7" a :testValue.
+1.0E7 a :testValue.
 
 { :x a :testValue. :y a :testValue.
-  (:x [ is math:difference of (:y :x)]) math:sum :y } => {:x :worksWith :y}.
+  :z is math:sum of (:x (:y :x)!math:difference).
+  :z math:equalTo :y } => {:x :worksWith :y}.
  
 { :x a :testValue. :y a :testValue.
   :z is math:sum of (:x (:y :x)!math:difference).
