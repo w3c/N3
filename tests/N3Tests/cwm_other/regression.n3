@@ -525,12 +525,6 @@ test:CwmTest;
     test:description   "basic ISo time handling functions";
     test:arguments     """time/t1.n3 --think --purge""".
 
-:t1050s a test:CwmTest, test:CwmProofTest;
-    test:referenceOutput <ref/timet1s.n3>;
-    test:description   "basic ISo time handling functions - stringy";
-    test:arguments     """time/t1s.n3 --think --purge""".
-
-
 :t1051 a test:CwmTest;
     test:referenceOutput <ref/smush.rdf>;
     test:description   "Data aggregation challenge from Jan 2001";
