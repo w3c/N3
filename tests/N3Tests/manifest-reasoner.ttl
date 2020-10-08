@@ -319,13 +319,6 @@
   mf:result <math/combo-ref.n3>;
   test:options [test:think true; test:data true;] .
 
-:cwm_math_trigo a test:TestN3Reason;
-  mf:name "math-trigo.n3";
-  rdfs:comment   "Various trig builtins.";
-  mf:action <cwm_math/trigo-test.n3>;
-  mf:result <cwm_math/trigo.ref.n3>;
-  test:options [test:think true; test:data true;] .
-
 :math_trig a test:TestN3Reason;
   mf:name "math-trig.n3";
   rdfs:comment   "Various trig builtins.";
