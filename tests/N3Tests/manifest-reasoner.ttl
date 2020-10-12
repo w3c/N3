@@ -117,7 +117,7 @@
   rdfs:comment "Builtins for log:conclusion." ;
   mf:action <cwm_includes/conclusion-simple.n3>;
   mf:result <cwm_includes/conclusion-simple-ref.n3>;
-  test:options [test:think true; test:data true;] .
+  test:options [test:think true; test:filter true;] .
 
 :cwm_includes_conjunction a test:TestN3Reason;
   mf:name      "includes-conjunction.n3" ;

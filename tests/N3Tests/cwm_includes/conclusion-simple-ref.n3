@@ -1,0 +1,3 @@
+@prefix : <conclusion-simple.n3#>.
+
+{ <test> a <SUCCESS> } a :TestResult .
