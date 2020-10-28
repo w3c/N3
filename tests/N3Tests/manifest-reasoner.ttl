@@ -24,6 +24,7 @@
       :cwm_includes_builtins
       :cwm_includes_t9br :cwm_includes_t10 :cwm_includes_t11
       :cwm_includes_quantifiers_limited :cwm_includes_quant-implies
+      :cwm_includes_xsd
 
       # log
       :log_content :log_parsedAsN3
@@ -210,6 +211,12 @@
   mf:result <cwm_includes/quant-implies-ref.n3>;
   test:options [test:rules true; test:data true;] .
 
+:cwm_includes_xsd a test:TestN3Reason;
+  mf:name      "includes-xsd.n3" ;
+  rdfs:comment "Cwm builtins should support most xsd datatypes." ;
+  mf:action <cwm_includes/xsd.n3>;
+  mf:result <cwm_includes/xsd-ref.txt>;
+  test:options [test:rules true; test:strings true;] .
 
 # Tests from log/
 :log_content a test:TestN3Reason;
