@@ -4,20 +4,12 @@
 @prefix task: <http://example.com/task#>.
 PREFIX e: <http://eulersharp.sourceforge.net/2003/03swap/log-rules#>
 
-:task1 a :CompositeTask.
+:task1 a :Task.
 # :task1 a :DiscardedTask.
 
-{
-    ?TASK a :CompositeTask. 
-    ?SCOPE e:findall (
-        ?TASK
-        {
-	        ?TASK a :DiscardedTask.
-	    }
-	    ()  # the empty list to mean that nothing is found
-    )
-} 
-    =>
-{
-	?TASK a :NotDiscardedTask.
-}.
+{ ?t a :NotDiscardedTask } <= { ?t a :DiscardedTask } .
+
+{	?TASK a :Task. 
+    ?SCOPE e:findall ( ?TASK { ?TASK a :DiscardedTask. } () )
+} <= { ?TASK a :NotDiscardedTask. }.
+	
