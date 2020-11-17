@@ -47,7 +47,7 @@ math:TwoMemberedList a rdfs:Class; rdfs:label "TwoMemberedList";
    rdfs:subClassOf math:List; 
    rdfs:comment "This is the class of things that are math lists with only two members." .
 
-math:memberCount a math:Function; rdfs:label "memberCount"; 
+math:memberCount a rdf:Property, math:Function; rdfs:label "memberCount"; 
    rdfs:domain math:List; rdfs:range math:Value; 
    rdfs:comment """The number of items in a list. The subject is a list,
 the object is calculated as the number of members.

@@ -81,7 +81,7 @@ between two values</p>
 
 <dl class='annotations'>
 <dt>rdfs:subClassOf</dt>
-<dd>math:Function, math:ReverseFunction</dd>
+<dd>math:ReverseFunction, math:Function</dd>
 </dl>
 </dd>
 <dt id='math_ReverseFunction'>
@@ -310,6 +310,25 @@ is calculated by dividing the first number of the pair by the second, ignoring r
 <dd>math:Value</dd>
 <dt>rdfs:range</dt>
 <dd>math:Value</dd>
+</dl>
+</dd>
+<dt id='math_memberCount'>
+<strong>math:memberCount</strong>
+<em>memberCount</em>
+<span class='permalink'><a href='#math_memberCount' title='Permalink for math:memberCount'>(link)</a></span>
+</dt>
+<dd>
+<p>The number of items in a list. The subject is a list,
+the object is calculated as the number of members.
+Obsolete, see list:length</p>
+
+<dl class='annotations'>
+<dt>rdfs:domain</dt>
+<dd>math:List</dd>
+<dt>rdfs:range</dt>
+<dd>math:Value</dd>
+<dt>vs:term_status</dt>
+<dd>deprecated</dd>
 </dl>
 </dd>
 <dt id='math_negation'>

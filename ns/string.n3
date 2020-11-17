@@ -16,7 +16,7 @@ It is implemented, for example, in CWM and Euler.""";
     cc:license <http://www.w3.org/Consortium/Legal/copyright-software>.
 
 # Concat is backwards!
-string:concat a owl:InverseFunctionalProperty;   # obj = list of string to string
+string:concat a rdf:Property, owl:InverseFunctionalProperty;   # obj = list of string to string
     rdfs:definedBy <>;  
     rdfs:label  "is concatenation of";
     rdfs:comment "(obsolete - (was backwards!) - use: string:concatenation)";
@@ -25,15 +25,18 @@ string:concat a owl:InverseFunctionalProperty;   # obj = list of string to strin
     vs:term_status "deprecated";
     owl:inverse string:concatenation.  # Use that instead for new designs
 
-string:concatenation a owl:FunctionalProperty;
+string:concatenation a rdf:Property, owl:FunctionalProperty;
     rdfs:definedBy <>;  
     rdfs:label "is the concatenation of the strings in";
     rdfs:comment  """The subject is a list of strings.
-The object is calculated as a concatenation of those strings.""";
+The object is calculated as a concatenation of those strings.
+Resources are turned into strings using by casting to xsd:string
+as defined in [XPath](https://www.w3.org/TR/xpath-functions/#casting-to-string)
+along with additional rules defined for [SPARQL 1.1](https://www.w3.org/TR/sparql11-query/#FunctionMapping).""";
     rdfs:domain log:List;
     rdfs:range  log:String.
 
-string:format a owl:FunctionalProperty;
+string:format a rdf:Property, owl:FunctionalProperty;
     rdfs:definedBy <>;  
     rdfs:label "is the string formatted function of";
     rdfs:comment  """The subject is a list, whose first member is a format string,

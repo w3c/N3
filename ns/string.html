@@ -4,7 +4,7 @@
 <title>String Processing Ontology</title>
 <link href='http://www.w3.org/StyleSheets/TR/base' rel='stylesheet'>
 <style>
-  body: {bacground-image: none;}
+  body {background-image: none;}
   dt {margin-top: 2em; font-weight: normal;}
   dd code {display: inline;}
   footer {text-align: center;}
@@ -44,6 +44,44 @@ It is implemented, for example, in CWM and Euler.</p>
 <section>
 <h3>Property Definitions</h3>
 <dl>
+<dt id='string_concat'>
+<strong>string:concat</strong>
+<em>is concatenation of</em>
+<span class='permalink'><a href='#string_concat' title='Permalink for string:concat'>(link)</a></span>
+</dt>
+<dd>
+<p>(obsolete - (was backwards!) - use: string:concatenation)</p>
+
+<dl class='annotations'>
+<dt>rdfs:domain</dt>
+<dd>log:String</dd>
+<dt>rdfs:range</dt>
+<dd>log:List</dd>
+<dt>vs:term_status</dt>
+<dd>deprecated</dd>
+<dt>owl:inverse</dt>
+<dd>string:concatenation</dd>
+</dl>
+</dd>
+<dt id='string_concatenation'>
+<strong>string:concatenation</strong>
+<em>is the concatenation of the strings in</em>
+<span class='permalink'><a href='#string_concatenation' title='Permalink for string:concatenation'>(link)</a></span>
+</dt>
+<dd>
+<p>The subject is a list of strings.
+The object is calculated as a concatenation of those strings.
+Resources are turned into strings using by casting to xsd:string
+as defined in <a href="https://www.w3.org/TR/xpath-functions/#casting-to-string">XPath</a>
+along with additional rules defined for <a href="https://www.w3.org/TR/sparql11-query/#FunctionMapping">SPARQL 1.1</a>.</p>
+
+<dl class='annotations'>
+<dt>rdfs:domain</dt>
+<dd>log:List</dd>
+<dt>rdfs:range</dt>
+<dd>log:String</dd>
+</dl>
+</dd>
 <dt id='string_contains'>
 <strong>string:contains</strong>
 <em>contains</em>
@@ -103,6 +141,25 @@ ignoring differences between upper and lower case.</p>
 <dl class='annotations'>
 <dt>rdfs:domain</dt>
 <dd>log:String</dd>
+<dt>rdfs:range</dt>
+<dd>log:String</dd>
+</dl>
+</dd>
+<dt id='string_format'>
+<strong>string:format</strong>
+<em>is the string formatted function of</em>
+<span class='permalink'><a href='#string_format' title='Permalink for string:format'>(link)</a></span>
+</dt>
+<dd>
+<p>The subject is a list, whose first member is a format string,
+and whose remaining members are arguments to the format string.
+The formating string is in the style of python&#39;s % operator,
+very similar to C&#39;s sprintf().
+The object is calculated from the subject.</p>
+
+<dl class='annotations'>
+<dt>rdfs:domain</dt>
+<dd>log:List</dd>
 <dt>rdfs:range</dt>
 <dd>log:String</dd>
 </dl>
@@ -277,9 +334,9 @@ part of the first string which matches the group.</p>
 </dl>
 </section>
 </section>
-</body>
 <footer>
 <p>All vocabularies are licensed by contributors under the
 <a href="http://www.w3.org/Consortium/Legal/copyright-software">W3C Software and Document License</a>.</p>
 </footer>
+</body>
 </html>
