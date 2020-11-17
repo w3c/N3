@@ -36,13 +36,18 @@ test:Option a rdfs:Class;
   rdfs:label "Processor Options" ;
   rdfs:comment "Options passed to the test runner to affect the reasoner." .
 
+test:conclusions a rdf:Property;
+  rdfs:comment "Replace store with conclusions from rules in store";
+  rdfs:domain test:Option;
+  rdfs:range rdfs:Resource .
+
 test:data a rdf:Property;
   rdfs:comment "Remove all except plain RDF triples (formulae, forAll, etc)";
   rdfs:domain test:Option;
   rdfs:range xsd:boolean .
 
 test:filter a rdf:Property;
-  rdfs:comment "Replace store with conclusions from rules in store";
+  rdfs:comment "Read rules from resource, apply to store, REPLACING store with conclusions";
   rdfs:domain test:Option;
   rdfs:range rdfs:Resource .
 
