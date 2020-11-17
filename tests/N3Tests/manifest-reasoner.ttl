@@ -70,7 +70,7 @@
       :cwm_reason_t9 :cwm_reason_double
 
       # string
-      :string_startsWith :string_contains
+      :string_startsWith :string_contains :string_concatenation
       :string_containsIgnoringCase :string_equalIgnoringCase :string_format
       :string_notEqualIgnoringCase
       :string_greaterThan :string_lessThan :string_notGreaterThan :string_notLessThan
@@ -563,6 +563,13 @@
   rdfs:comment "string:endsWith" ;
   mf:action <cwm_string/endsWith.n3>;
   mf:result <cwm_string/endsWith-out.n3>;
+  test:options [test:rules true; test:conclusions true] .
+
+:string_concatenation a test:TestN3Reason;
+  mf:name      "string-concatenation.n3" ;
+  rdfs:comment "string:concatenation with type casting." ;
+  mf:action <string/concatenation.n3>;
+  mf:result <string/concatenation-out.n3>;
   test:options [test:rules true; test:conclusions true] .
 
 :string_contains a test:TestN3Reason;
