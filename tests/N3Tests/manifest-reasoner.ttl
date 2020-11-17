@@ -18,7 +18,8 @@
       # From swap/test/i18n
 
       # From swap/test/includes
-      :cwm_includes_listin :cwm_includes_bnode :cwm_includes_concat :cwm_includes_conclusion_simple
+      :cwm_includes_listin :cwm_includes_bnode :cwm_includes_concat
+      :cwm_includes_conclusion_simple :cwm_includes_conclusion
       :cwm_includes_conjunction
       :cwm_includes_t1 :cwm_includes_t2 :cwm_includes_t3 :cwm_includes_t4:cwm_includes_t6 :cwm_includes_t8
       :cwm_includes_builtins
@@ -118,7 +119,14 @@
   rdfs:comment "Builtins for log:conclusion." ;
   mf:action <cwm_includes/conclusion-simple.n3>;
   mf:result <cwm_includes/conclusion-simple-ref.n3>;
-  test:options [test:think true; test:filter true;] .
+  test:options [test:think true;] .
+
+:cwm_includes_conclusion a test:TestN3Reason;
+  mf:name      "includes-conclusion.n3" ;
+  rdfs:comment "log:conclusion deductive closure." ;
+  mf:action <cwm_includes/conclusion.n3>;
+  mf:result <cwm_includes/conclusion-ref.n3>;
+  test:options [test:think true;] .
 
 :cwm_includes_conjunction a test:TestN3Reason;
   mf:name      "includes-conjunction.n3" ;
