@@ -27,7 +27,7 @@ string:concat a rdf:Property, owl:InverseFunctionalProperty;   # obj = list of s
 
 string:concatenation a rdf:Property, owl:FunctionalProperty;
     rdfs:definedBy <>;  
-    rdfs:label "is the concatenation of the strings in";
+    rdfs:label "concatenate into";
     rdfs:comment  """The subject is a list of strings.
 The object is calculated as a concatenation of those strings.
 Resources are turned into strings using by casting to xsd:string
