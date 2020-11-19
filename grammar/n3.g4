@@ -119,6 +119,7 @@ path
 pathItem 
 	: iri 
 	| blankNode 
+	| quantifiedVar 
 	| quickVar 
 	| collection 
 	| blankNodePropertyList 
@@ -176,8 +177,8 @@ iri
 	| prefixedName
 	;
 	
-iriList 
-	: iri ( ',' iri )*
+varList 
+	: (iri | quantifiedVar) ( ',' (iri | quantifiedVar) )*
 	;
 	
 prefixedName 
@@ -193,6 +194,10 @@ blankNode
 	| ANON
 	;
 	
+quantifiedVar 
+	: QuantifiedVarName
+	;
+
 quickVar 
 	: QuickVarName
 	// only made this a parser rule for consistency 
@@ -200,11 +205,11 @@ quickVar
 	;
 
 existential 
-	: '@forSome' iriList
+	: '@forSome' varList
 	;
 
 universal
-	: '@forAll' iriList
+	: '@forAll' varList
 	;
 	
 IRIREF 
@@ -282,6 +287,11 @@ WS
 	
  ANON 
  	: '[' WS* ']'
+	;
+
+QuantifiedVarName
+	: '$' PN_CHARS_U PN_CHARS*
+/* approximating "barename" with PN_CHARS - they seem similar enough */
 	;
 
 QuickVarName
