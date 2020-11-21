@@ -9,6 +9,7 @@ log:implies a log:Chaff .
 :test13d a :success .
 :test13e a :success .
 :test13f a :success .
+:test13g a :success.
 :test13h a :success .
 
 :emptyString :is "" .
