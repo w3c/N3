@@ -189,7 +189,7 @@
   rdfs:comment "Filter event by date using strcmp BI's." ;
   mf:action <cwm_includes/t9br.n3>;
   mf:result <cwm_includes/t9br-ref.n3>;
-  test:options [test:rules true;] .
+  test:options [test:think true;] .
 
 :cwm_includes_t10 a test:TestN3Reason;
   mf:name      "includes-t10.n3" ;
