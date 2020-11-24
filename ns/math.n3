@@ -191,7 +191,9 @@ math:rounded a rdf:Property, math:Function;
     rdfs:label "rounded";
     rdfs:domain math:Value;
     rdfs:range math:Value;
-    rdfs:comment """The object is calulated as the subject rounded to the nearest integer.""".
+    rdfs:comment """The object is calulated as the number with no fractional part that is closest to the subject.
+If there are two such numbers, then the one that is closest to positive infinity is returned.
+""".
 
 # 
 # Here start the trigonometric functions - karl dubost

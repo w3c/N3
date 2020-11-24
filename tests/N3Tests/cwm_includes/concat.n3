@@ -22,33 +22,33 @@
 
 @forAll :x, :y, :z.
 
-{ ""  string:concat () } log:implies {:test13a a :success}.
+{ "" is string:concatenation of () } log:implies {:test13a a :success}.
 
-{ :x  string:concat () } log:implies {:emptyString :is :x}.
+{ :x is string:concatenation of () } log:implies {:emptyString :is :x}.
 { :emptyString :is "" } log:implies { :test13b a :success }.
 
-{ :x string:concat ( "foo" ) }  log:implies { :fooString :is :x }.
+{ :x is string:concatenation of ( "foo" ) }  log:implies { :fooString :is :x }.
 { :fooString :is "foo" } log:implies { :test13c a :success }.
 
-{ :x  string:concat ("World" [string:concat ("W" "i" "d" "e")] "Web") } log:implies {:www :is :x}.
+{ :x is string:concatenation of ("World" [is string:concatenation of ("W" "i" "d" "e")] "Web") } log:implies {:www :is :x}.
 { :www :is "WorldWideWeb" } log:implies { :test13d a :success }.
 
-{ :x  string:concat ("World" "Wide" "Web") } log:implies {:www2 :is :x}.
+{ :x is string:concatenation of ("World" "Wide" "Web") } log:implies {:www2 :is :x}.
 { :www2 :is "WorldWideWeb" } log:implies { :test13e a :success }.
 
-{ :x  string:concat ("World" :y "Web").
-  :y  string:concat ( "W" "I" "D""E").
+{ :x is string:concatenation of ("World" :y "Web").
+  :y is string:concatenation of ( "W" "I" "D""E").
  } log:implies {:www3 :is :x}.
 { :www3 :is "WorldWIDEWeb" } log:implies { :test13f a :success }.
 
 
-{ "" log:equalTo [ string:concat () ]  } log:implies {:test13g a :success}.
+{ "" log:equalTo [ is string:concatenation of () ]  } log:implies {:test13g a :success}.
 
-{ "one" log:equalTo [ string:concat () ]  } log:implies {:test13a_bis a :FAILURE}.
+{ "one" log:equalTo [ is string:concatenation of () ]  } log:implies {:test13a_bis a :FAILURE}.
 
-{ "" log:equalTo [ string:concat ( "one" ) ].} log:implies {:test13b_bis a :FAILURE}.
+{ "" log:equalTo [ is string:concatenation of ( "one" ) ].} log:implies {:test13b_bis a :FAILURE}.
 
-{ "one" log:equalTo [ string:concat ( "World" "Wide" "Web" ) ]}
+{ "one" log:equalTo [ is string:concatenation of ( "World" "Wide" "Web" ) ]}
     log:implies {:test13c_bis a :FAILURE}.
 
 { :x is string:concatenation of (
