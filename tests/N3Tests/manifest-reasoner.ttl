@@ -40,7 +40,6 @@
       :math_exponentiation
       :math_floor
       :math_inf
-      :math_integerQuotient
       :math_numbers
       :math_product
       :math_quotient
@@ -289,13 +288,6 @@
   rdfs:comment   "Test math:quotient";
   mf:action <math/quotient.n3>;
   mf:result <math/quotient-ref.n3>;
-  test:options [test:rules true; test:data true;] .
-
-:math_integerQuotient a test:TestN3Reason;
-  mf:name "integerQuotient.n3";
-  rdfs:comment   "Test math:integerQuotient";
-  mf:action <math/integerQuotient.n3>;
-  mf:result <math/integerQuotient-ref.n3>;
   test:options [test:rules true; test:data true;] .
 
 :math_remainder a test:TestN3Reason;
