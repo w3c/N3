@@ -23,6 +23,10 @@
   }
   table.rdfs-definition td {vertical-align: top;}
   .bold {font-weight: bold;}
+  .note, .historyNote, .editorialNote {
+    margin-left: 2em;
+    font-style: italic;
+  }
 </style>
 </head>
 <body>
@@ -53,14 +57,22 @@ It is implemented, for example, in CWM and Euler.</p>
 <p>(obsolete - (was backwards!) - use: string:concatenation)</p>
 
 <dl class='annotations'>
-<dt>rdfs:domain</dt>
-<dd>log:String</dd>
-<dt>rdfs:range</dt>
-<dd>log:List</dd>
-<dt>vs:term_status</dt>
-<dd>deprecated</dd>
 <dt>owl:inverse</dt>
-<dd>string:concatenation</dd>
+<dd class='inverse'>
+string:concatenation
+</dd>
+<dt>vs:term_status</dt>
+<dd class='term_status'>
+deprecated
+</dd>
+<dt>rdfs:domain</dt>
+<dd class='domain'>
+log:String
+</dd>
+<dt>rdfs:range</dt>
+<dd class='range'>
+log:List
+</dd>
 </dl>
 </dd>
 <dt id='string_concatenation'>
@@ -94,9 +106,13 @@ concatenates the given resources</p>
 
 <dl class='annotations'>
 <dt>rdfs:domain</dt>
-<dd>log:List</dd>
+<dd class='domain'>
+log:List
+</dd>
 <dt>rdfs:range</dt>
-<dd>log:String</dd>
+<dd class='range'>
+log:String
+</dd>
 </dl>
 </dd>
 <dt id='string_contains'>
@@ -109,9 +125,13 @@ concatenates the given resources</p>
 
 <dl class='annotations'>
 <dt>rdfs:domain</dt>
-<dd>log:String</dd>
+<dd class='domain'>
+log:String
+</dd>
 <dt>rdfs:range</dt>
-<dd>log:String</dd>
+<dd class='range'>
+log:String
+</dd>
 </dl>
 </dd>
 <dt id='string_containsIgnoringCase'>
@@ -126,9 +146,13 @@ lower case characters.</p>
 
 <dl class='annotations'>
 <dt>rdfs:domain</dt>
-<dd>log:String</dd>
+<dd class='domain'>
+log:String
+</dd>
 <dt>rdfs:range</dt>
-<dd>log:String</dd>
+<dd class='range'>
+log:String
+</dd>
 </dl>
 </dd>
 <dt id='string_endsWith'>
@@ -141,9 +165,13 @@ lower case characters.</p>
 
 <dl class='annotations'>
 <dt>rdfs:domain</dt>
-<dd>log:String</dd>
+<dd class='domain'>
+log:String
+</dd>
 <dt>rdfs:range</dt>
-<dd>log:String</dd>
+<dd class='range'>
+log:String
+</dd>
 </dl>
 </dd>
 <dt id='string_equalIgnoringCase'>
@@ -157,9 +185,13 @@ ignoring differences between upper and lower case.</p>
 
 <dl class='annotations'>
 <dt>rdfs:domain</dt>
-<dd>log:String</dd>
+<dd class='domain'>
+log:String
+</dd>
 <dt>rdfs:range</dt>
-<dd>log:String</dd>
+<dd class='range'>
+log:String
+</dd>
 </dl>
 </dd>
 <dt id='string_format'>
@@ -176,9 +208,13 @@ The object is calculated from the subject.</p>
 
 <dl class='annotations'>
 <dt>rdfs:domain</dt>
-<dd>log:List</dd>
+<dd class='domain'>
+log:List
+</dd>
 <dt>rdfs:range</dt>
-<dd>log:String</dd>
+<dd class='range'>
+log:String
+</dd>
 </dl>
 </dd>
 <dt id='string_greaterThan'>
@@ -192,9 +228,13 @@ when ordered according to Unicode(tm) code order.</p>
 
 <dl class='annotations'>
 <dt>rdfs:domain</dt>
-<dd>log:String</dd>
+<dd class='domain'>
+log:String
+</dd>
 <dt>rdfs:range</dt>
-<dd>log:String</dd>
+<dd class='range'>
+log:String
+</dd>
 </dl>
 </dd>
 <dt id='string_lessThan'>
@@ -208,9 +248,13 @@ when ordered according to Unicode(tm) code order.</p>
 
 <dl class='annotations'>
 <dt>rdfs:domain</dt>
-<dd>log:String</dd>
+<dd class='domain'>
+log:String
+</dd>
 <dt>rdfs:range</dt>
-<dd>log:String</dd>
+<dd class='range'>
+log:String
+</dd>
 </dl>
 </dd>
 <dt id='string_matches'>
@@ -225,9 +269,13 @@ It is true iff the string matches the regexp.</p>
 
 <dl class='annotations'>
 <dt>rdfs:domain</dt>
-<dd>log:String</dd>
+<dd class='domain'>
+log:String
+</dd>
 <dt>rdfs:range</dt>
-<dd>log:String</dd>
+<dd class='range'>
+log:String
+</dd>
 </dl>
 </dd>
 <dt id='string_notEqualIgnoringCase'>
@@ -241,9 +289,13 @@ ignoring differences between upper and lower case.</p>
 
 <dl class='annotations'>
 <dt>rdfs:domain</dt>
-<dd>log:String</dd>
+<dd class='domain'>
+log:String
+</dd>
 <dt>rdfs:range</dt>
-<dd>log:String</dd>
+<dd class='range'>
+log:String
+</dd>
 </dl>
 </dd>
 <dt id='string_notGreaterThan'>
@@ -257,9 +309,13 @@ when ordered according to Unicode(tm) code order.</p>
 
 <dl class='annotations'>
 <dt>rdfs:domain</dt>
-<dd>log:String</dd>
+<dd class='domain'>
+log:String
+</dd>
 <dt>rdfs:range</dt>
-<dd>log:String</dd>
+<dd class='range'>
+log:String
+</dd>
 </dl>
 </dd>
 <dt id='string_notLessThan'>
@@ -273,9 +329,13 @@ when ordered according to Unicode(tm) code order.</p>
 
 <dl class='annotations'>
 <dt>rdfs:domain</dt>
-<dd>log:String</dd>
+<dd class='domain'>
+log:String
+</dd>
 <dt>rdfs:range</dt>
-<dd>log:String</dd>
+<dd class='range'>
+log:String
+</dd>
 </dl>
 </dd>
 <dt id='string_notMatches'>
@@ -290,9 +350,13 @@ It is true iff the string does NOT match the regexp.</p>
 
 <dl class='annotations'>
 <dt>rdfs:domain</dt>
-<dd>log:String</dd>
+<dd class='domain'>
+log:String
+</dd>
 <dt>rdfs:range</dt>
-<dd>log:String</dd>
+<dd class='range'>
+log:String
+</dd>
 </dl>
 </dd>
 <dt id='string_replace'>
@@ -309,9 +373,13 @@ For example, (&quot;fofof bar&quot;, &quot;of&quot;, &quot;baz&quot;) string:rep
 
 <dl class='annotations'>
 <dt>rdfs:domain</dt>
-<dd>log:List</dd>
+<dd class='domain'>
+log:List
+</dd>
 <dt>rdfs:range</dt>
-<dd>log:String</dd>
+<dd class='range'>
+log:String
+</dd>
 </dl>
 </dd>
 <dt id='string_scrape'>
@@ -328,9 +396,13 @@ part of the first string which matches the group.</p>
 
 <dl class='annotations'>
 <dt>rdfs:domain</dt>
-<dd>log:List</dd>
+<dd class='domain'>
+log:List
+</dd>
 <dt>rdfs:range</dt>
-<dd>log:String</dd>
+<dd class='range'>
+log:String
+</dd>
 </dl>
 </dd>
 <dt id='string_startsWith'>
@@ -343,9 +415,13 @@ part of the first string which matches the group.</p>
 
 <dl class='annotations'>
 <dt>rdfs:domain</dt>
-<dd>log:String</dd>
+<dd class='domain'>
+log:String
+</dd>
 <dt>rdfs:range</dt>
-<dd>log:String</dd>
+<dd class='range'>
+log:String
+</dd>
 </dl>
 </dd>
 </dl>

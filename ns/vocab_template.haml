@@ -23,6 +23,10 @@
       }
       table.rdfs-definition td {vertical-align: top;}
       .bold {font-weight: bold;}
+      .note, .historyNote, .editorialNote {
+        margin-left: 2em;
+        font-style: italic;
+      }
   %body
     %p
       %a{href: "http://www.w3.org/"}
@@ -33,6 +37,13 @@
         #{ontology["rdfs:comment"]}
 
         The vocabulary is published by the [W3C Notation-3 Community Group](https://www.w3.org/community/n3-dev/).
+    - %w(note historyNote editorialNote).each do |cls|
+      -if ontology["skos:#{cls}"]
+        %div{class: cls}
+          %h2
+            = {note: "Notes", historyNote: "Historical Note", editorialNote: "Editorial Notes"}[cls.to_sym]
+          :markdown
+            #{ontology["skos:#{cls}"]}
     - if ontology["rdfs:seeAlso"]
       %strong
         See Also:
@@ -48,6 +59,8 @@
          { heading: "Property Definitions",  values: Array(properties)},
          { heading: "Datatype Definitions",  values: Array(datatypes)},
         ]
+        example_props = %(skos:example)
+        markdown_props = %(rdfs:comment dc:description skos:note skos:historyNote skos:editorialNote)
       - sect_defs.each do |sect|
         - next if sect[:values].empty?
         %section
@@ -62,12 +75,20 @@
               %dd
                 :markdown
                   #{defn["rdfs:comment"]}
-                - if %w(rdfs:subClassOf rdfs:subPropertyOf rdfs:domain rdfs:range vs:term_status owl:inverse).any? { |p| defn.has_key?(p)}
+                - if %w(owl:inverse vs:term_status skos:note skos:historyNote skos:editorialNote rdfs:subClassOf rdfs:subPropertyOf rdfs:domain rdfs:range).any? { |p| defn.has_key?(p)}
                   %dl{class: :annotations}
-                    - %w(rdfs:subClassOf rdfs:subPropertyOf rdfs:domain rdfs:range vs:term_status owl:inverse).each do |p|
+                    - %w(owl:inverse vs:term_status skos:example skos:note skos:historyNote skos:editorialNote rdfs:subClassOf rdfs:subPropertyOf rdfs:domain rdfs:range).each do |p|
                       - if defn.has_key?(p)
                         %dt<=p
-                        %dd<= Array(defn[p]).join(", ")
+                        %dd{class: p.split(':').last}
+                          - if markdown_props.include?(p)
+                            :markdown
+                              #{Array(defn[p]).join(", ")}
+                          - elsif example_props.include?(p)
+                            %pre
+                              = Array(defn[p]).join(", ")
+                          - else
+                            = Array(defn[p]).join(", ")
     %footer
       :markdown
         All vocabularies are licensed by contributors under the

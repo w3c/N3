@@ -4,16 +4,18 @@
 <title>Schema for crypto built-in functions</title>
 <link href='http://www.w3.org/StyleSheets/TR/base' rel='stylesheet'>
 <style>
-  body: {bacground-image: none;}
-  dt {margin-top: 2em;}
+  body {background-image: none;}
+  dt {margin-top: 2em; font-weight: normal;}
   dd code {display: inline;}
   footer {text-align: center;}
-  dl.terms dt {
+  dl.annotations dt {
+    margin-top: 0;
+    font-weight: bold;
     float: left;
     clear: left;
     width: 17vw;
   }
-  dl.terms dd:after {
+  dl.annotations dd:after {
       content: '';
       display: block;
       clear: both;
@@ -21,6 +23,10 @@
   }
   table.rdfs-definition td {vertical-align: top;}
   .bold {font-weight: bold;}
+  .note, .historyNote, .editorialNote {
+    margin-left: 2em;
+    font-style: italic;
+  }
 </style>
 </head>
 <body>
@@ -37,98 +43,103 @@ in <a href="http://freshmeat.sourceforge.net/projects/mxcrypto">mxCrypto</a>.</p
 <p>The vocabulary is published by the <a href="https://www.w3.org/community/n3-dev/">W3C Notation-3 Community Group</a>.</p>
 
 </div>
-<dd>
-<dt>See also</dt>
-<dd>
+<strong>
+See Also:
+</strong>
+<ul></ul>
+<li>
 <a href='http://www.amk.ca/python/code/crypto.html'>http://www.amk.ca/python/code/crypto.html</a>
-</dd>
-<dd>
+</li>
+<li>
 <a href='http://www.amk.ca/python/writing/pycrypt/'>http://www.amk.ca/python/writing/pycrypt/</a>
-</dd>
-</dd>
+</li>
 <section>
 <h2>Vocabulary Terms</h2>
 <section>
-<h3 id='properties'>Properties</h3>
+<h3>Property Definitions</h3>
 <dl>
-<dt>cr:md5</dt>
-<dd>
+<dt id='cr_md5'>
+<strong>cr:md5</strong>
 <em>MD5 hash</em>
-<span><p>The object is a MD5 hash of the subject.</p>
-</span>
-<div>
-<strong>
-domain:
-</strong>
-<code>rdfs:Literal</code>
-</div>
-<div>
-<strong>
-range:
-</strong>
-<code>cr:string</code>
-</div>
-</dd>
-<dt>cr:sha</dt>
+<span class='permalink'><a href='#cr_md5' title='Permalink for cr:md5'>(link)</a></span>
+</dt>
 <dd>
+<p>The object is a MD5 hash of the subject.</p>
+
+<dl class='annotations'>
+<dt>rdfs:domain</dt>
+<dd class='domain'>
+rdfs:Literal
+</dd>
+<dt>rdfs:range</dt>
+<dd class='range'>
+cr:string
+</dd>
+</dl>
+</dd>
+<dt id='cr_sha'>
+<strong>cr:sha</strong>
 <em>SHA-1 hash</em>
-<span><p>The object is a SHA-1 hash of the subject.</p>
-</span>
-<div>
-<strong>
-domain:
-</strong>
-<code>rdfs:Literal</code>
-</div>
-<div>
-<strong>
-range:
-</strong>
-<code>cr:string</code>
-</div>
-</dd>
-<dt>cr:sha256</dt>
+<span class='permalink'><a href='#cr_sha' title='Permalink for cr:sha'>(link)</a></span>
+</dt>
 <dd>
+<p>The object is a SHA-1 hash of the subject.</p>
+
+<dl class='annotations'>
+<dt>rdfs:domain</dt>
+<dd class='domain'>
+rdfs:Literal
+</dd>
+<dt>rdfs:range</dt>
+<dd class='range'>
+cr:string
+</dd>
+</dl>
+</dd>
+<dt id='cr_sha256'>
+<strong>cr:sha256</strong>
 <em>SHA-256 hash</em>
-<span><p>The object is a SHA-256 hash of the subject.</p>
-</span>
-<div>
-<strong>
-domain:
-</strong>
-<code>rdfs:Literal</code>
-</div>
-<div>
-<strong>
-range:
-</strong>
-<code>cr:string</code>
-</div>
-</dd>
-<dt>cr:sha512</dt>
+<span class='permalink'><a href='#cr_sha256' title='Permalink for cr:sha256'>(link)</a></span>
+</dt>
 <dd>
+<p>The object is a SHA-256 hash of the subject.</p>
+
+<dl class='annotations'>
+<dt>rdfs:domain</dt>
+<dd class='domain'>
+rdfs:Literal
+</dd>
+<dt>rdfs:range</dt>
+<dd class='range'>
+cr:string
+</dd>
+</dl>
+</dd>
+<dt id='cr_sha512'>
+<strong>cr:sha512</strong>
 <em>SHA-512 hash</em>
-<span><p>The object is a SHA-512 hash of the subject.</p>
-</span>
-<div>
-<strong>
-domain:
-</strong>
-<code>rdfs:Literal</code>
-</div>
-<div>
-<strong>
-range:
-</strong>
-<code>cr:string</code>
-</div>
+<span class='permalink'><a href='#cr_sha512' title='Permalink for cr:sha512'>(link)</a></span>
+</dt>
+<dd>
+<p>The object is a SHA-512 hash of the subject.</p>
+
+<dl class='annotations'>
+<dt>rdfs:domain</dt>
+<dd class='domain'>
+rdfs:Literal
+</dd>
+<dt>rdfs:range</dt>
+<dd class='range'>
+cr:string
+</dd>
+</dl>
 </dd>
 </dl>
 </section>
 </section>
-</body>
 <footer>
 <p>All vocabularies are licensed by contributors under the
 <a href="http://www.w3.org/Consortium/Legal/copyright-software">W3C Software and Document License</a>.</p>
 </footer>
+</body>
 </html>

@@ -23,6 +23,10 @@
   }
   table.rdfs-definition td {vertical-align: top;}
   .bold {font-weight: bold;}
+  .note, .historyNote, .editorialNote {
+    margin-left: 2em;
+    font-style: italic;
+  }
 </style>
 </head>
 <body>
@@ -53,7 +57,9 @@
 
 <dl class='annotations'>
 <dt>rdfs:subClassOf</dt>
-<dd>owl:FunctionalProperty</dd>
+<dd class='subClassOf'>
+owl:FunctionalProperty
+</dd>
 </dl>
 </dd>
 <dt id='math_List'>
@@ -67,7 +73,9 @@ members are math:Value items.</p>
 
 <dl class='annotations'>
 <dt>rdfs:subClassOf</dt>
-<dd>log:List</dd>
+<dd class='subClassOf'>
+log:List
+</dd>
 </dl>
 </dd>
 <dt id='math_LogicalOperator'>
@@ -81,7 +89,9 @@ between two values</p>
 
 <dl class='annotations'>
 <dt>rdfs:subClassOf</dt>
-<dd>math:Function, math:ReverseFunction</dd>
+<dd class='subClassOf'>
+math:ReverseFunction, math:Function
+</dd>
 </dl>
 </dd>
 <dt id='math_ReverseFunction'>
@@ -94,7 +104,9 @@ between two values</p>
 
 <dl class='annotations'>
 <dt>rdfs:subClassOf</dt>
-<dd>owl:InverseFunctionalProperty</dd>
+<dd class='subClassOf'>
+owl:InverseFunctionalProperty
+</dd>
 </dl>
 </dd>
 <dt id='math_StrictProperty'>
@@ -107,7 +119,9 @@ between two values</p>
 
 <dl class='annotations'>
 <dt>rdfs:subClassOf</dt>
-<dd>rdf:Property</dd>
+<dd class='subClassOf'>
+rdf:Property
+</dd>
 </dl>
 </dd>
 <dt id='math_TwoMemberedList'>
@@ -120,7 +134,9 @@ between two values</p>
 
 <dl class='annotations'>
 <dt>rdfs:subClassOf</dt>
-<dd>math:List</dd>
+<dd class='subClassOf'>
+math:List
+</dd>
 </dl>
 </dd>
 <dt id='math_Value'>
@@ -133,7 +149,9 @@ between two values</p>
 
 <dl class='annotations'>
 <dt>rdfs:subClassOf</dt>
-<dd>_:g5540</dd>
+<dd class='subClassOf'>
+_:g5540
+</dd>
 </dl>
 </dd>
 </dl>
@@ -151,9 +169,13 @@ between two values</p>
 
 <dl class='annotations'>
 <dt>rdfs:domain</dt>
-<dd>math:Value</dd>
+<dd class='domain'>
+math:Value
+</dd>
 <dt>rdfs:range</dt>
-<dd>math:Value</dd>
+<dd class='range'>
+math:Value
+</dd>
 </dl>
 </dd>
 <dt id='math_acos'>
@@ -166,9 +188,13 @@ between two values</p>
 
 <dl class='annotations'>
 <dt>rdfs:domain</dt>
-<dd>math:Value</dd>
+<dd class='domain'>
+math:Value
+</dd>
 <dt>rdfs:range</dt>
-<dd>math:Value</dd>
+<dd class='range'>
+math:Value
+</dd>
 </dl>
 </dd>
 <dt id='math_asin'>
@@ -181,9 +207,13 @@ between two values</p>
 
 <dl class='annotations'>
 <dt>rdfs:domain</dt>
-<dd>math:Value</dd>
+<dd class='domain'>
+math:Value
+</dd>
 <dt>rdfs:range</dt>
-<dd>math:Value</dd>
+<dd class='range'>
+math:Value
+</dd>
 </dl>
 </dd>
 <dt id='math_atan'>
@@ -196,9 +226,13 @@ between two values</p>
 
 <dl class='annotations'>
 <dt>rdfs:domain</dt>
-<dd>math:Value</dd>
+<dd class='domain'>
+math:Value
+</dd>
 <dt>rdfs:range</dt>
-<dd>math:Value</dd>
+<dd class='range'>
+math:Value
+</dd>
 </dl>
 </dd>
 <dt id='math_cos'>
@@ -212,9 +246,13 @@ The object is calulated as the cosine value of the subject.</p>
 
 <dl class='annotations'>
 <dt>rdfs:domain</dt>
-<dd>math:Value</dd>
+<dd class='domain'>
+math:Value
+</dd>
 <dt>rdfs:range</dt>
-<dd>math:Value</dd>
+<dd class='range'>
+math:Value
+</dd>
 </dl>
 </dd>
 <dt id='math_cosh'>
@@ -228,9 +266,13 @@ The object is calulated as the #hyperbolic cosine value of the subject.</p>
 
 <dl class='annotations'>
 <dt>rdfs:domain</dt>
-<dd>math:Value</dd>
+<dd class='domain'>
+math:Value
+</dd>
 <dt>rdfs:range</dt>
-<dd>math:Value</dd>
+<dd class='range'>
+math:Value
+</dd>
 </dl>
 </dd>
 <dt id='math_degrees'>
@@ -244,9 +286,13 @@ The object is calulated as the conversion in degrees of the value of the subject
 
 <dl class='annotations'>
 <dt>rdfs:domain</dt>
-<dd>math:Value</dd>
+<dd class='domain'>
+math:Value
+</dd>
 <dt>rdfs:range</dt>
-<dd>math:Value</dd>
+<dd class='range'>
+math:Value
+</dd>
 </dl>
 </dd>
 <dt id='math_difference'>
@@ -260,9 +306,13 @@ is calculated by subtracting the second number of the pair from the first.</p>
 
 <dl class='annotations'>
 <dt>rdfs:domain</dt>
-<dd>math:TwoMemberedList</dd>
+<dd class='domain'>
+math:TwoMemberedList
+</dd>
 <dt>rdfs:range</dt>
-<dd>math:Value</dd>
+<dd class='range'>
+math:Value
+</dd>
 </dl>
 </dd>
 <dt id='math_equalTo'>
@@ -290,9 +340,13 @@ Requires both arguments to be either concrete numerals, or variables bound to a 
 
 <dl class='annotations'>
 <dt>rdfs:domain</dt>
-<dd>math:Value</dd>
+<dd class='domain'>
+math:Value
+</dd>
 <dt>rdfs:range</dt>
-<dd>math:Value</dd>
+<dd class='range'>
+math:Value
+</dd>
 </dl>
 </dd>
 <dt id='math_exponentiation'>
@@ -306,9 +360,13 @@ is calculated by raising the first number of the power of the second.</p>
 
 <dl class='annotations'>
 <dt>rdfs:domain</dt>
-<dd>math:TwoMemberedList</dd>
+<dd class='domain'>
+math:TwoMemberedList
+</dd>
 <dt>rdfs:range</dt>
-<dd>math:Value</dd>
+<dd class='range'>
+math:Value
+</dd>
 </dl>
 </dd>
 <dt id='math_greaterThan'>
@@ -321,9 +379,13 @@ is calculated by raising the first number of the power of the second.</p>
 
 <dl class='annotations'>
 <dt>rdfs:domain</dt>
-<dd>math:Value</dd>
+<dd class='domain'>
+math:Value
+</dd>
 <dt>rdfs:range</dt>
-<dd>math:Value</dd>
+<dd class='range'>
+math:Value
+</dd>
 </dl>
 </dd>
 <dt id='math_integerQuotient'>
@@ -336,12 +398,18 @@ is calculated by raising the first number of the power of the second.</p>
 is calculated by dividing the first number of the pair by the second, ignoring remainder.</p>
 
 <dl class='annotations'>
-<dt>rdfs:domain</dt>
-<dd>math:TwoMemberedList</dd>
-<dt>rdfs:range</dt>
-<dd>math:Value</dd>
 <dt>vs:term_status</dt>
-<dd>deprecated</dd>
+<dd class='term_status'>
+deprecated
+</dd>
+<dt>rdfs:domain</dt>
+<dd class='domain'>
+math:TwoMemberedList
+</dd>
+<dt>rdfs:range</dt>
+<dd class='range'>
+math:Value
+</dd>
 </dl>
 </dd>
 <dt id='math_lessThan'>
@@ -354,9 +422,13 @@ is calculated by dividing the first number of the pair by the second, ignoring r
 
 <dl class='annotations'>
 <dt>rdfs:domain</dt>
-<dd>math:Value</dd>
+<dd class='domain'>
+math:Value
+</dd>
 <dt>rdfs:range</dt>
-<dd>math:Value</dd>
+<dd class='range'>
+math:Value
+</dd>
 </dl>
 </dd>
 <dt id='math_memberCount'>
@@ -370,12 +442,18 @@ the object is calculated as the number of members.
 Obsolete, see list:length</p>
 
 <dl class='annotations'>
-<dt>rdfs:domain</dt>
-<dd>math:List</dd>
-<dt>rdfs:range</dt>
-<dd>math:Value</dd>
 <dt>vs:term_status</dt>
-<dd>deprecated</dd>
+<dd class='term_status'>
+deprecated
+</dd>
+<dt>rdfs:domain</dt>
+<dd class='domain'>
+math:List
+</dd>
+<dt>rdfs:range</dt>
+<dd class='range'>
+math:Value
+</dd>
 </dl>
 </dd>
 <dt id='math_negation'>
@@ -388,9 +466,13 @@ Obsolete, see list:length</p>
 
 <dl class='annotations'>
 <dt>rdfs:domain</dt>
-<dd>math:Value</dd>
+<dd class='domain'>
+math:Value
+</dd>
 <dt>rdfs:range</dt>
-<dd>math:Value</dd>
+<dd class='range'>
+math:Value
+</dd>
 </dl>
 </dd>
 <dt id='math_notEqualTo'>
@@ -403,9 +485,13 @@ Obsolete, see list:length</p>
 
 <dl class='annotations'>
 <dt>rdfs:domain</dt>
-<dd>math:Value</dd>
+<dd class='domain'>
+math:Value
+</dd>
 <dt>rdfs:range</dt>
-<dd>math:Value</dd>
+<dd class='range'>
+math:Value
+</dd>
 </dl>
 </dd>
 <dt id='math_notGreaterThan'>
@@ -418,9 +504,13 @@ Obsolete, see list:length</p>
 
 <dl class='annotations'>
 <dt>rdfs:domain</dt>
-<dd>math:Value</dd>
+<dd class='domain'>
+math:Value
+</dd>
 <dt>rdfs:range</dt>
-<dd>math:Value</dd>
+<dd class='range'>
+math:Value
+</dd>
 </dl>
 </dd>
 <dt id='math_notLessThan'>
@@ -433,9 +523,13 @@ Obsolete, see list:length</p>
 
 <dl class='annotations'>
 <dt>rdfs:domain</dt>
-<dd>math:Value</dd>
+<dd class='domain'>
+math:Value
+</dd>
 <dt>rdfs:range</dt>
-<dd>math:Value</dd>
+<dd class='range'>
+math:Value
+</dd>
 </dl>
 </dd>
 <dt id='math_product'>
@@ -449,9 +543,13 @@ The object is calculated as the arithmentic product of those numbers.</p>
 
 <dl class='annotations'>
 <dt>rdfs:domain</dt>
-<dd>math:List</dd>
+<dd class='domain'>
+math:List
+</dd>
 <dt>rdfs:range</dt>
-<dd>math:Value</dd>
+<dd class='range'>
+math:Value
+</dd>
 </dl>
 </dd>
 <dt id='math_quotient'>
@@ -465,9 +563,13 @@ is calculated by dividing the first number of the pair by the second.</p>
 
 <dl class='annotations'>
 <dt>rdfs:domain</dt>
-<dd>math:TwoMemberedList</dd>
+<dd class='domain'>
+math:TwoMemberedList
+</dd>
 <dt>rdfs:range</dt>
-<dd>math:Value</dd>
+<dd class='range'>
+math:Value
+</dd>
 </dl>
 </dd>
 <dt id='math_remainder'>
@@ -481,9 +583,13 @@ is calculated by dividing the first number of the pair by the second and taking 
 
 <dl class='annotations'>
 <dt>rdfs:domain</dt>
-<dd>math:TwoMemberedList</dd>
+<dd class='domain'>
+math:TwoMemberedList
+</dd>
 <dt>rdfs:range</dt>
-<dd>math:Value</dd>
+<dd class='range'>
+math:Value
+</dd>
 </dl>
 </dd>
 <dt id='math_rounded'>
@@ -497,9 +603,13 @@ If there are two such numbers, then the one that is closest to positive infinity
 
 <dl class='annotations'>
 <dt>rdfs:domain</dt>
-<dd>math:Value</dd>
+<dd class='domain'>
+math:Value
+</dd>
 <dt>rdfs:range</dt>
-<dd>math:Value</dd>
+<dd class='range'>
+math:Value
+</dd>
 </dl>
 </dd>
 <dt id='math_sin'>
@@ -513,9 +623,13 @@ The object is calulated as the sine value of the subject.</p>
 
 <dl class='annotations'>
 <dt>rdfs:domain</dt>
-<dd>math:Value</dd>
+<dd class='domain'>
+math:Value
+</dd>
 <dt>rdfs:range</dt>
-<dd>math:Value</dd>
+<dd class='range'>
+math:Value
+</dd>
 </dl>
 </dd>
 <dt id='math_sinh'>
@@ -529,9 +643,13 @@ The object is calulated as the hyperbolic sine value of the subject.</p>
 
 <dl class='annotations'>
 <dt>rdfs:domain</dt>
-<dd>math:Value</dd>
+<dd class='domain'>
+math:Value
+</dd>
 <dt>rdfs:range</dt>
-<dd>math:Value</dd>
+<dd class='range'>
+math:Value
+</dd>
 </dl>
 </dd>
 <dt id='math_sum'>
@@ -564,9 +682,13 @@ Requires either:</p>
 
 <dl class='annotations'>
 <dt>rdfs:domain</dt>
-<dd>log:List</dd>
+<dd class='domain'>
+log:List
+</dd>
 <dt>rdfs:range</dt>
-<dd>math:Value</dd>
+<dd class='range'>
+math:Value
+</dd>
 </dl>
 </dd>
 <dt id='math_tan'>
@@ -580,9 +702,13 @@ The object is calulated as the tangent value of the subject.</p>
 
 <dl class='annotations'>
 <dt>rdfs:domain</dt>
-<dd>math:Value</dd>
+<dd class='domain'>
+math:Value
+</dd>
 <dt>rdfs:range</dt>
-<dd>math:Value</dd>
+<dd class='range'>
+math:Value
+</dd>
 </dl>
 </dd>
 <dt id='math_tanh'>
@@ -596,9 +722,13 @@ The object is calulated as the hyperbolic tangent value of the subject.</p>
 
 <dl class='annotations'>
 <dt>rdfs:domain</dt>
-<dd>math:Value</dd>
+<dd class='domain'>
+math:Value
+</dd>
 <dt>rdfs:range</dt>
-<dd>math:Value</dd>
+<dd class='range'>
+math:Value
+</dd>
 </dl>
 </dd>
 </dl>

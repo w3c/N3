@@ -4,7 +4,7 @@
 <title>n3 definition of some list functions</title>
 <link href='http://www.w3.org/StyleSheets/TR/base' rel='stylesheet'>
 <style>
-  body: {bacground-image: none;}
+  body {background-image: none;}
   dt {margin-top: 2em; font-weight: normal;}
   dd code {display: inline;}
   footer {text-align: center;}
@@ -23,6 +23,10 @@
   }
   table.rdfs-definition td {vertical-align: top;}
   .bold {font-weight: bold;}
+  .note, .historyNote, .editorialNote {
+    margin-left: 2em;
+    font-style: italic;
+  }
 </style>
 </head>
 <body>
@@ -56,7 +60,9 @@ The object can be calculated as a function of the subject.</p>
 
 <dl class='annotations'>
 <dt>rdfs:domain</dt>
-<dd>log:List</dd>
+<dd class='domain'>
+log:List
+</dd>
 </dl>
 </dd>
 <dt id='list_first'>
@@ -69,10 +75,14 @@ The object can be calculated as a function of the subject.</p>
 The object can be calculated as a function of the list.</p>
 
 <dl class='annotations'>
-<dt>rdfs:domain</dt>
-<dd>log:List</dd>
 <dt>vs:term_status</dt>
-<dd>unstable</dd>
+<dd class='term_status'>
+unstable
+</dd>
+<dt>rdfs:domain</dt>
+<dd class='domain'>
+log:List
+</dd>
 </dl>
 </dd>
 <dt id='list_in'>
@@ -85,7 +95,9 @@ The object can be calculated as a function of the list.</p>
 
 <dl class='annotations'>
 <dt>rdfs:range</dt>
-<dd>log:List</dd>
+<dd class='range'>
+log:List
+</dd>
 </dl>
 </dd>
 <dt id='list_last'>
@@ -99,7 +111,9 @@ The object can be calculated as a function of the list.</p>
 
 <dl class='annotations'>
 <dt>rdfs:domain</dt>
-<dd>log:List</dd>
+<dd class='domain'>
+log:List
+</dd>
 </dl>
 </dd>
 <dt id='list_length'>
@@ -112,12 +126,18 @@ The object can be calculated as a function of the list.</p>
 The object can be calculated as a function of the list.</p>
 
 <dl class='annotations'>
-<dt>rdfs:domain</dt>
-<dd>log:List</dd>
-<dt>rdfs:range</dt>
-<dd>xsd:integer</dd>
 <dt>vs:term_status</dt>
-<dd>unstable</dd>
+<dd class='term_status'>
+unstable
+</dd>
+<dt>rdfs:domain</dt>
+<dd class='domain'>
+log:List
+</dd>
+<dt>rdfs:range</dt>
+<dd class='range'>
+xsd:integer
+</dd>
 </dl>
 </dd>
 <dt id='list_member'>
@@ -130,7 +150,9 @@ The object can be calculated as a function of the list.</p>
 
 <dl class='annotations'>
 <dt>rdfs:domain</dt>
-<dd>log:List</dd>
+<dd class='domain'>
+log:List
+</dd>
 </dl>
 </dd>
 <dt id='list_memberAt'>
@@ -165,10 +187,14 @@ In case of a negative integer, the index will count backwards from the length of
 </ul>
 
 <dl class='annotations'>
-<dt>rdfs:domain</dt>
-<dd>log:List</dd>
 <dt>vs:term_status</dt>
-<dd>unstable</dd>
+<dd class='term_status'>
+unstable
+</dd>
+<dt>rdfs:domain</dt>
+<dd class='domain'>
+log:List
+</dd>
 </dl>
 </dd>
 <dt id='list_remove'>
@@ -184,20 +210,26 @@ eg ( (1 2 3 4) (2 3) ) list:remove (1 4).
 The object can be calculated as a function of the subject.</p>
 
 <dl class='annotations'>
-<dt>rdfs:domain</dt>
-<dd>log:List</dd>
-<dt>rdfs:range</dt>
-<dd>log:List</dd>
 <dt>vs:term_status</dt>
-<dd>unstable</dd>
+<dd class='term_status'>
+unstable
+</dd>
+<dt>rdfs:domain</dt>
+<dd class='domain'>
+log:List
+</dd>
+<dt>rdfs:range</dt>
+<dd class='range'>
+log:List
+</dd>
 </dl>
 </dd>
 </dl>
 </section>
 </section>
-</body>
 <footer>
 <p>All vocabularies are licensed by contributors under the
 <a href="http://www.w3.org/Consortium/Legal/copyright-software">W3C Software and Document License</a>.</p>
 </footer>
+</body>
 </html>

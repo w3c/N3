@@ -4,7 +4,7 @@
 <title>n3 definition of some time and date functions</title>
 <link href='http://www.w3.org/StyleSheets/TR/base' rel='stylesheet'>
 <style>
-  body: {bacground-image: none;}
+  body {background-image: none;}
   dt {margin-top: 2em; font-weight: normal;}
   dd code {display: inline;}
   footer {text-align: center;}
@@ -23,6 +23,10 @@
   }
   table.rdfs-definition td {vertical-align: top;}
   .bold {font-weight: bold;}
+  .note, .historyNote, .editorialNote {
+    margin-left: 2em;
+    font-style: italic;
+  }
 </style>
 </head>
 <body>
@@ -54,9 +58,13 @@ the <em>object</em> can be calculated as a function of the <em>subject</em>.</p>
 
 <dl class='annotations'>
 <dt>rdfs:domain</dt>
-<dd>xsd:dateTime</dd>
+<dd class='domain'>
+xsd:dateTime
+</dd>
 <dt>rdfs:range</dt>
-<dd>xsd:integer</dd>
+<dd class='range'>
+xsd:integer
+</dd>
 </dl>
 </dd>
 <dt id='time_dayOfWeek'>
@@ -70,9 +78,13 @@ the <em>object</em> can be calculated as a function of the <em>subject</em>.</p>
 
 <dl class='annotations'>
 <dt>rdfs:domain</dt>
-<dd>xsd:dateTime</dd>
+<dd class='domain'>
+xsd:dateTime
+</dd>
 <dt>rdfs:range</dt>
-<dd>xsd:integer</dd>
+<dd class='range'>
+xsd:integer
+</dd>
 </dl>
 </dd>
 <dt id='time_gmTime'>
@@ -92,9 +104,13 @@ Rules which use this function will of course NOT be repeatable.</p>
 
 <dl class='annotations'>
 <dt>rdfs:domain</dt>
-<dd>time:format</dd>
+<dd class='domain'>
+time:format
+</dd>
 <dt>rdfs:range</dt>
-<dd>xsd:string</dd>
+<dd class='range'>
+xsd:string
+</dd>
 </dl>
 </dd>
 <dt id='time_hour'>
@@ -108,9 +124,13 @@ the <em>object</em> can be calculated as a function of the <em>subject</em>.</p>
 
 <dl class='annotations'>
 <dt>rdfs:domain</dt>
-<dd>xsd:dateTime</dd>
+<dd class='domain'>
+xsd:dateTime
+</dd>
 <dt>rdfs:range</dt>
-<dd>xsd:integer</dd>
+<dd class='range'>
+xsd:integer
+</dd>
 </dl>
 </dd>
 <dt id='time_inSeconds'>
@@ -128,9 +148,13 @@ ISO date from the seconds since the beginning of the era, or vice-versa.</p>
 
 <dl class='annotations'>
 <dt>rdfs:domain</dt>
-<dd>xsd:dateTime</dd>
+<dd class='domain'>
+xsd:dateTime
+</dd>
 <dt>rdfs:range</dt>
-<dd>xsd:integer</dd>
+<dd class='range'>
+xsd:integer
+</dd>
 </dl>
 </dd>
 <dt id='time_localTime'>
@@ -150,9 +174,13 @@ Rules which use this function will of course NOT be repeatable.</p>
 
 <dl class='annotations'>
 <dt>rdfs:domain</dt>
-<dd>time:format</dd>
+<dd class='domain'>
+time:format
+</dd>
 <dt>rdfs:range</dt>
-<dd>xsd:string</dd>
+<dd class='range'>
+xsd:string
+</dd>
 </dl>
 </dd>
 <dt id='time_minute'>
@@ -166,9 +194,13 @@ the <em>object</em> can be calculated as a function of the <em>subject</em>.</p>
 
 <dl class='annotations'>
 <dt>rdfs:domain</dt>
-<dd>xsd:dateTime</dd>
+<dd class='domain'>
+xsd:dateTime
+</dd>
 <dt>rdfs:range</dt>
-<dd>xsd:integer</dd>
+<dd class='range'>
+xsd:integer
+</dd>
 </dl>
 </dd>
 <dt id='time_month'>
@@ -182,9 +214,13 @@ the <em>object</em> can be calculated as a function of the <em>subject</em>.</p>
 
 <dl class='annotations'>
 <dt>rdfs:domain</dt>
-<dd>xsd:dateTime</dd>
+<dd class='domain'>
+xsd:dateTime
+</dd>
 <dt>rdfs:range</dt>
-<dd>xsd:integer</dd>
+<dd class='range'>
+xsd:integer
+</dd>
 </dl>
 </dd>
 <dt id='time_second'>
@@ -198,9 +234,13 @@ the <em>object</em> can be calculated as a function of the <em>subject</em>.</p>
 
 <dl class='annotations'>
 <dt>rdfs:domain</dt>
-<dd>xsd:dateTime</dd>
+<dd class='domain'>
+xsd:dateTime
+</dd>
 <dt>rdfs:range</dt>
-<dd>xsd:integer</dd>
+<dd class='range'>
+xsd:integer
+</dd>
 </dl>
 </dd>
 <dt id='time_timeZone'>
@@ -215,9 +255,13 @@ the <em>object</em> can be calculated as a function of the <em>subject</em>.</p>
 
 <dl class='annotations'>
 <dt>rdfs:domain</dt>
-<dd>xsd:dateTime</dd>
+<dd class='domain'>
+xsd:dateTime
+</dd>
 <dt>rdfs:range</dt>
-<dd>xsd:string</dd>
+<dd class='range'>
+xsd:string
+</dd>
 </dl>
 </dd>
 <dt id='time_year'>
@@ -231,17 +275,21 @@ the <em>object</em> can be calculated as a function of the <em>subject</em>.</p>
 
 <dl class='annotations'>
 <dt>rdfs:domain</dt>
-<dd>xsd:dateTime</dd>
+<dd class='domain'>
+xsd:dateTime
+</dd>
 <dt>rdfs:range</dt>
-<dd>xsd:integer</dd>
+<dd class='range'>
+xsd:integer
+</dd>
 </dl>
 </dd>
 </dl>
 </section>
 </section>
-</body>
 <footer>
 <p>All vocabularies are licensed by contributors under the
 <a href="http://www.w3.org/Consortium/Legal/copyright-software">W3C Software and Document License</a>.</p>
 </footer>
+</body>
 </html>

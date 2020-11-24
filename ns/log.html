@@ -4,7 +4,7 @@
 <title>n3 definition of some Semantic Web terms</title>
 <link href='http://www.w3.org/StyleSheets/TR/base' rel='stylesheet'>
 <style>
-  body: {bacground-image: none;}
+  body {background-image: none;}
   dt {margin-top: 2em; font-weight: normal;}
   dd code {display: inline;}
   footer {text-align: center;}
@@ -23,6 +23,10 @@
   }
   table.rdfs-definition td {vertical-align: top;}
   .bold {font-weight: bold;}
+  .note, .historyNote, .editorialNote {
+    margin-left: 2em;
+    font-style: italic;
+  }
 </style>
 </head>
 <body>
@@ -69,7 +73,9 @@ general fact on the web.</p>
 
 <dl class='annotations'>
 <dt>rdfs:subClassOf</dt>
-<dd>log:Type</dd>
+<dd class='subClassOf'>
+log:Type
+</dd>
 </dl>
 </dd>
 <dt id='log_List'>
@@ -82,7 +88,9 @@ general fact on the web.</p>
 
 <dl class='annotations'>
 <dt>rdfs:subClassOf</dt>
-<dd>log:Type, rdf:List</dd>
+<dd class='subClassOf'>
+rdf:List, log:Type
+</dd>
 </dl>
 </dd>
 <dt id='log_N3Document'>
@@ -99,7 +107,9 @@ of any other identifiers used in the document.</p>
 
 <dl class='annotations'>
 <dt>rdfs:subClassOf</dt>
-<dd>http://www.w3.org/2000/10/swap/pim/doc#Work</dd>
+<dd class='subClassOf'>
+http://www.w3.org/2000/10/swap/pim/doc#Work
+</dd>
 </dl>
 </dd>
 <dt id='log_Other'>
@@ -112,7 +122,9 @@ of any other identifiers used in the document.</p>
 
 <dl class='annotations'>
 <dt>rdfs:subClassOf</dt>
-<dd>log:Type</dd>
+<dd class='subClassOf'>
+log:Type
+</dd>
 </dl>
 </dd>
 <dt id='log_String'>
@@ -125,7 +137,9 @@ of any other identifiers used in the document.</p>
 
 <dl class='annotations'>
 <dt>rdfs:subClassOf</dt>
-<dd>rdfs:Literal, log:Type</dd>
+<dd class='subClassOf'>
+rdfs:Literal, log:Type
+</dd>
 </dl>
 </dd>
 <dt id='log_Truth'>
@@ -150,7 +164,9 @@ declared a Truth within a formula it is already taking rules from.</p>
 
 <dl class='annotations'>
 <dt>vs:term_status</dt>
-<dd>unstable</dd>
+<dd class='term_status'>
+unstable
+</dd>
 </dl>
 </dd>
 </dl>
@@ -168,7 +184,9 @@ declared a Truth within a formula it is already taking rules from.</p>
 
 <dl class='annotations'>
 <dt>vs:term_status</dt>
-<dd>unstable</dd>
+<dd class='term_status'>
+unstable
+</dd>
 </dl>
 </dd>
 <dt id='log_conclusion'>
@@ -188,9 +206,13 @@ signatures, etc.</p>
 
 <dl class='annotations'>
 <dt>rdfs:domain</dt>
-<dd>log:Formula</dd>
+<dd class='domain'>
+log:Formula
+</dd>
 <dt>rdfs:range</dt>
-<dd>log:Formula</dd>
+<dd class='range'>
+log:Formula
+</dd>
 </dl>
 </dd>
 <dt id='log_conjunction'>
@@ -208,9 +230,13 @@ A cwm built-in function.</p>
 
 <dl class='annotations'>
 <dt>rdfs:domain</dt>
-<dd>log:List</dd>
+<dd class='domain'>
+log:List
+</dd>
 <dt>rdfs:range</dt>
-<dd>log:Formula</dd>
+<dd class='range'>
+log:Formula
+</dd>
 </dl>
 </dd>
 <dt id='log_content'>
@@ -226,9 +252,13 @@ so must be known or guessed.</p>
 
 <dl class='annotations'>
 <dt>rdfs:domain</dt>
-<dd>http://www.w3.org/2000/10/swap/pim/doc#Work</dd>
+<dd class='domain'>
+http://www.w3.org/2000/10/swap/pim/doc#Work
+</dd>
 <dt>rdfs:range</dt>
-<dd>log:String</dd>
+<dd class='range'>
+log:String
+</dd>
 </dl>
 </dd>
 <dt id='log_definitiveDocument'>
@@ -247,12 +277,18 @@ know that it can extend its query to the given document.
 (Cwm will do this if its mode includes &quot;r&quot;).</p>
 
 <dl class='annotations'>
-<dt>rdfs:domain</dt>
-<dd>rdf:Property</dd>
-<dt>rdfs:range</dt>
-<dd>http://www.w3.org/2000/10/swap/pim/doc#Work</dd>
 <dt>vs:term_status</dt>
-<dd>deprecated</dd>
+<dd class='term_status'>
+deprecated
+</dd>
+<dt>rdfs:domain</dt>
+<dd class='domain'>
+rdf:Property
+</dd>
+<dt>rdfs:range</dt>
+<dd class='range'>
+http://www.w3.org/2000/10/swap/pim/doc#Work
+</dd>
 </dl>
 </dd>
 <dt id='log_definitiveService'>
@@ -274,10 +310,14 @@ in question.
 (Cwm will do this if its mode includes &quot;r&quot;).</p>
 
 <dl class='annotations'>
-<dt>rdfs:domain</dt>
-<dd>rdf:Property</dd>
 <dt>vs:term_status</dt>
-<dd>deprecated</dd>
+<dd class='term_status'>
+deprecated
+</dd>
+<dt>rdfs:domain</dt>
+<dd class='domain'>
+rdf:Property
+</dd>
 </dl>
 </dd>
 <dt id='log_dtlit'>
@@ -291,12 +331,18 @@ For example, <code>{ (&quot;2005-03-30T11:00:00&quot; :tz) log:dtlit ?X } =&gt; 
 will produce <code>&quot;2005-03-30T11:00:00&quot;^^:tz a :Answer .</code></p>
 
 <dl class='annotations'>
-<dt>rdfs:domain</dt>
-<dd>log:List</dd>
-<dt>rdfs:range</dt>
-<dd>rdfs:Literal</dd>
 <dt>vs:term_status</dt>
-<dd>deprecated</dd>
+<dd class='term_status'>
+deprecated
+</dd>
+<dt>rdfs:domain</dt>
+<dd class='domain'>
+log:List
+</dd>
+<dt>rdfs:range</dt>
+<dd class='range'>
+rdfs:Literal
+</dd>
 </dl>
 </dd>
 <dt id='log_equalTo'>
@@ -321,12 +367,18 @@ Within the subject <code>?SCOPE</code> it unifies <code>?ANSWER</code> with a li
 all the instantiations of <code>?SELECT</code> satisfying the <code>?WHERE</code> clause.</p>
 
 <dl class='annotations'>
-<dt>rdfs:domain</dt>
-<dd>log:Formula</dd>
-<dt>rdfs:range</dt>
-<dd>log:List</dd>
 <dt>vs:term_status</dt>
-<dd>unstable</dd>
+<dd class='term_status'>
+unstable
+</dd>
+<dt>rdfs:domain</dt>
+<dd class='domain'>
+log:Formula
+</dd>
+<dt>rdfs:range</dt>
+<dd class='range'>
+log:List
+</dd>
 </dl>
 </dd>
 <dt id='log_forAllIn'>
@@ -339,7 +391,9 @@ all the instantiations of <code>?SELECT</code> satisfying the <code>?WHERE</code
 
 <dl class='annotations'>
 <dt>vs:term_status</dt>
-<dd>unstable</dd>
+<dd class='term_status'>
+unstable
+</dd>
 </dl>
 </dd>
 <dt id='log_forAllInClosure'>
@@ -352,7 +406,9 @@ all the instantiations of <code>?SELECT</code> satisfying the <code>?WHERE</code
 
 <dl class='annotations'>
 <dt>vs:term_status</dt>
-<dd>unstable</dd>
+<dd class='term_status'>
+unstable
+</dd>
 </dl>
 </dd>
 <dt id='log_implies'>
@@ -377,9 +433,13 @@ added to various formula.)</p>
 
 <dl class='annotations'>
 <dt>rdfs:domain</dt>
-<dd>log:Formula</dd>
+<dd class='domain'>
+log:Formula
+</dd>
 <dt>rdfs:range</dt>
-<dd>log:Formula</dd>
+<dd class='range'>
+log:Formula
+</dd>
 </dl>
 </dd>
 <dt id='log_includes'>
@@ -403,9 +463,13 @@ You can use this to peer inside nested formulae.)</p>
 
 <dl class='annotations'>
 <dt>rdfs:domain</dt>
-<dd>log:Formula</dd>
+<dd class='domain'>
+log:Formula
+</dd>
 <dt>rdfs:range</dt>
-<dd>log:Formula</dd>
+<dd class='range'>
+log:Formula
+</dd>
 </dl>
 </dd>
 <dt id='log_n3String'>
@@ -418,9 +482,13 @@ You can use this to peer inside nested formulae.)</p>
 
 <dl class='annotations'>
 <dt>rdfs:domain</dt>
-<dd>log:Formula</dd>
+<dd class='domain'>
+log:Formula
+</dd>
 <dt>rdfs:range</dt>
-<dd>log:N3</dd>
+<dd class='range'>
+log:N3
+</dd>
 </dl>
 </dd>
 <dt id='log_notEqualTo'>
@@ -434,7 +502,9 @@ A cwm built-in logical operator.</p>
 
 <dl class='annotations'>
 <dt>owl:inverse</dt>
-<dd>log:equalTo</dd>
+<dd class='inverse'>
+log:equalTo
+</dd>
 </dl>
 </dd>
 <dt id='log_notIn'>
@@ -447,7 +517,9 @@ A cwm built-in logical operator.</p>
 
 <dl class='annotations'>
 <dt>vs:term_status</dt>
-<dd>unstable</dd>
+<dd class='term_status'>
+unstable
+</dd>
 </dl>
 </dd>
 <dt id='log_notInClosure'>
@@ -460,7 +532,9 @@ A cwm built-in logical operator.</p>
 
 <dl class='annotations'>
 <dt>vs:term_status</dt>
-<dd>unstable</dd>
+<dd class='term_status'>
+unstable
+</dd>
 </dl>
 </dd>
 <dt id='log_notIncludes'>
@@ -480,9 +554,13 @@ Related: See includes</p>
 
 <dl class='annotations'>
 <dt>rdfs:domain</dt>
-<dd>log:Formula</dd>
+<dd class='domain'>
+log:Formula
+</dd>
 <dt>rdfs:range</dt>
-<dd>log:Formula</dd>
+<dd class='range'>
+log:Formula
+</dd>
 </dl>
 </dd>
 <dt id='log_outputString'>
@@ -496,10 +574,14 @@ where the strings are to be output in the order of the keys.
 See cwm --strings in cwm --help.</p>
 
 <dl class='annotations'>
-<dt>rdfs:range</dt>
-<dd>log:String</dd>
 <dt>vs:term_status</dt>
-<dd>deprecated</dd>
+<dd class='term_status'>
+deprecated
+</dd>
+<dt>rdfs:range</dt>
+<dd class='range'>
+log:String
+</dd>
 </dl>
 </dd>
 <dt id='log_parsedAsN3'>
@@ -512,9 +594,13 @@ See cwm --strings in cwm --help.</p>
 
 <dl class='annotations'>
 <dt>rdfs:domain</dt>
-<dd>log:N3</dd>
+<dd class='domain'>
+log:N3
+</dd>
 <dt>rdfs:range</dt>
-<dd>log:Formula</dd>
+<dd class='range'>
+log:Formula
+</dd>
 </dl>
 </dd>
 <dt id='log_racine'>
@@ -541,7 +627,9 @@ and you can check which using log:rawType.</p>
 
 <dl class='annotations'>
 <dt>rdfs:range</dt>
-<dd>log:Type</dd>
+<dd class='range'>
+log:Type
+</dd>
 </dl>
 </dd>
 <dt id='log_rawUri'>
@@ -556,7 +644,9 @@ workings of cwm, and so is not normally used. Use log:uri instead.</p>
 
 <dl class='annotations'>
 <dt>rdfs:range</dt>
-<dd>log:String</dd>
+<dd class='range'>
+log:String
+</dd>
 </dl>
 </dd>
 <dt id='log_semantics'>
@@ -582,9 +672,13 @@ expressed by a document.]</p>
 
 <dl class='annotations'>
 <dt>rdfs:domain</dt>
-<dd>http://www.w3.org/2000/10/swap/pim/doc#Work</dd>
+<dd class='domain'>
+http://www.w3.org/2000/10/swap/pim/doc#Work
+</dd>
 <dt>rdfs:range</dt>
-<dd>log:Formula</dd>
+<dd class='range'>
+log:Formula
+</dd>
 </dl>
 </dd>
 <dt id='log_semanticsOrError'>
@@ -599,7 +693,9 @@ or an error message explaining what went wrong with trying. See log:semantics.
 
 <dl class='annotations'>
 <dt>rdfs:domain</dt>
-<dd>http://www.w3.org/2000/10/swap/pim/doc#Work</dd>
+<dd class='domain'>
+http://www.w3.org/2000/10/swap/pim/doc#Work
+</dd>
 </dl>
 </dd>
 <dt id='log_skolem'>
@@ -611,12 +707,18 @@ or an error message explaining what went wrong with trying. See log:semantics.
 <p>Built-in to generate a Skolem IRI object which is a function of the arguments in the subject list</p>
 
 <dl class='annotations'>
-<dt>rdfs:domain</dt>
-<dd>log:List</dd>
-<dt>rdfs:range</dt>
-<dd>log:String</dd>
 <dt>vs:term_status</dt>
-<dd>unstable</dd>
+<dd class='term_status'>
+unstable
+</dd>
+<dt>rdfs:domain</dt>
+<dd class='domain'>
+log:List
+</dd>
+<dt>rdfs:range</dt>
+<dd class='range'>
+log:String
+</dd>
 </dl>
 </dd>
 <dt id='log_uri'>
@@ -634,7 +736,9 @@ functionality. Use to implement the URI spec and protocol specs, etc.</p>
 
 <dl class='annotations'>
 <dt>rdfs:range</dt>
-<dd>log:String</dd>
+<dd class='range'>
+log:String
+</dd>
 </dl>
 </dd>
 </dl>
@@ -653,18 +757,22 @@ log:N3 is an instance of rdfs:Datatype and a subclass of rdfs:Literal.
 The value of log:content of a log:N3Document is a literal with datatype log:N3.</p>
 
 <dl class='annotations'>
-<dt>rdfs:subClassOf</dt>
-<dd>rdfs:Literal</dd>
 <dt>vs:term_status</dt>
-<dd>unstable</dd>
+<dd class='term_status'>
+unstable
+</dd>
+<dt>rdfs:subClassOf</dt>
+<dd class='subClassOf'>
+rdfs:Literal
+</dd>
 </dl>
 </dd>
 </dl>
 </section>
 </section>
-</body>
 <footer>
 <p>All vocabularies are licensed by contributors under the
 <a href="http://www.w3.org/Consortium/Legal/copyright-software">W3C Software and Document License</a>.</p>
 </footer>
+</body>
 </html>

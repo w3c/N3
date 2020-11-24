@@ -1,10 +1,19 @@
+VOCABS= %w(crypto list log math string time)
+
 desc 'Default: build HTML versions of namespace documents'
 task default: :html
 
+desc 'Remove generated files'
+task :clean do
+  VOCABS.each do |v|
+    %x(rm -f #{v}.html)
+  end
+end
+
 desc "Build HTML versions of namespace documents"
-task html: %w(crypto list log math string time).map {|ns| "#{ns}.html"}
+task html: [:clean] + VOCABS.map {|ns| "#{ns}.html"}
 
 rule ".html" => %w{.n3} do |t|
   puts "build #{t.name}"
-  %x{ruby mk_vocab.rb #{t.source}}
+  %x{ruby mk_vocab #{t.source}}
 end
