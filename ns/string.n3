@@ -12,7 +12,8 @@
 
 <>  rdfs:label "String Processing Ontology";
     rdfs:comment """This is an ontology for computable string functions.
-It is implemented, for example, in CWM and Euler.""";
+It is implemented, for example, in CWM and Euler.
+""";
     cc:license <http://www.w3.org/Consortium/Legal/copyright-software>.
 
 # Concat is backwards!
@@ -28,11 +29,26 @@ string:concat a rdf:Property, owl:InverseFunctionalProperty;   # obj = list of s
 string:concatenation a rdf:Property, owl:FunctionalProperty;
     rdfs:definedBy <>;  
     rdfs:label "concatenate into";
-    rdfs:comment  """The subject is a list of strings.
-The object is calculated as a concatenation of those strings.
-Resources are turned into strings using by casting to xsd:string
-as defined in [XPath](https://www.w3.org/TR/xpath-functions/#casting-to-string)
-along with additional rules defined for [SPARQL 1.1](https://www.w3.org/TR/sparql11-query/#FunctionMapping).""";
+    rdfs:comment  """
+**schema**:
+`($a_1 .. $a_n) string:concatenation $a_s`
+
+**summary**:
+concatenates the given resources
+
+**definition**:
+`true` if and only if the string concatenation of `$a_1, .. $a_n` equals `$a_s`.
+
+Requires either:
+
+1. all `$a_1, .., $a_n` to be bound; or
+2. all but one `$a_i` (subject list) to be bound, and `$a_s` to be bound.
+
+**literal domains**:
+
+* `$a_1 .. $a_n` : `xs:string` (see note on casting to string)
+* `$a_s`: `xs:string` (see note on casting to string)
+""";
     rdfs:domain log:List;
     rdfs:range  log:String.
 

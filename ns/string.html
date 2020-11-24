@@ -65,15 +65,32 @@ It is implemented, for example, in CWM and Euler.</p>
 </dd>
 <dt id='string_concatenation'>
 <strong>string:concatenation</strong>
-<em>is the concatenation of the strings in</em>
+<em>concatenate into</em>
 <span class='permalink'><a href='#string_concatenation' title='Permalink for string:concatenation'>(link)</a></span>
 </dt>
 <dd>
-<p>The subject is a list of strings.
-The object is calculated as a concatenation of those strings.
-Resources are turned into strings using by casting to xsd:string
-as defined in <a href="https://www.w3.org/TR/xpath-functions/#casting-to-string">XPath</a>
-along with additional rules defined for <a href="https://www.w3.org/TR/sparql11-query/#FunctionMapping">SPARQL 1.1</a>.</p>
+<p><strong>schema</strong>:
+<code>($a_1 .. $a_n) string:concatenation $a_s</code></p>
+
+<p><strong>summary</strong>:
+concatenates the given resources</p>
+
+<p><strong>definition</strong>:
+<code>true</code> if and only if the string concatenation of <code>$a_1, .. $a_n</code> equals <code>$a_s</code>.</p>
+
+<p>Requires either:</p>
+
+<ol>
+<li>all <code>$a_1, .., $a_n</code> to be bound; or</li>
+<li>all but one <code>$a_i</code> (subject list) to be bound, and <code>$a_s</code> to be bound.</li>
+</ol>
+
+<p><strong>literal domains</strong>:</p>
+
+<ul>
+<li><code>$a_1 .. $a_n</code> : <code>xs:string</code> (see note on casting to string)</li>
+<li><code>$a_s</code>: <code>xs:string</code> (see note on casting to string)</li>
+</ul>
 
 <dl class='annotations'>
 <dt>rdfs:domain</dt>

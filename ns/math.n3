@@ -152,6 +152,7 @@ is calculated by dividing the first number of the pair by the second.
 
 math:integerQuotient a rdf:Property, math:Function;
     rdfs:label "integerQuotient";
+    vs:term_status "deprecated";
     rdfs:domain math:TwoMemberedList;
     rdfs:range math:Value;
     rdfs:comment """The subject is a pair of numbers. The object
@@ -165,7 +166,6 @@ math:remainder a rdf:Property, math:Function;
     rdfs:comment """The subject is a pair of integers. The object
 is calculated by dividing the first number of the pair by the second and taking the remainder.
 """.
-
 
 math:exponentiation a rdf:Property, math:Function;
     rdfs:label "exponentiation";
@@ -201,33 +201,33 @@ If there are two such numbers, then the one that is closest to positive infinity
 #  Inverse functions are implemented by using the function backwards
 #  eg for  x math:asin y   say   x is math:sin of y
 
-#math:acos a rdf:Property;
-#   rdfs:label "acos";
-#   rdfs:range math:Value;
-#   rdfs:domain math:Value;
-#   rdfs:comment
-#"""The object is calulated as the arc cosine value of the subject.""".
+math:acos a rdf:Property;
+   rdfs:label "acos";
+   rdfs:range math:Value;
+   rdfs:domain math:Value;
+   rdfs:comment
+"""The object is calulated as the arc cosine value of the subject.""".
 
-#math:asin a rdf:Property;
-#   rdfs:label "asin";
-#   rdfs:range math:Value;
-#   rdfs:domain math:Value;
-#   rdfs:comment
-#"""The object is calulated as the arc sine value of the subject.""".
+math:asin a rdf:Property;
+   rdfs:label "asin";
+   rdfs:range math:Value;
+   rdfs:domain math:Value;
+   rdfs:comment
+"""The object is calulated as the arc sine value of the subject.""".
 
-#math:atan a rdf:Property;
-#   rdfs:label "atan";
-#   rdfs:range math:Value;
-#   rdfs:domain math:Value;
-#   rdfs:comment
-#"""The object is calulated as the arc tangent value of the subject.""".
+math:atan a rdf:Property;
+   rdfs:label "atan";
+   rdfs:range math:Value;
+   rdfs:domain math:Value;
+   rdfs:comment
+"""The object is calulated as the arc tangent value of the subject.""".
 
-#math:atan2 a math:Function;
-#   rdfs:label "atan2";
-#   rdfs:range math:Value;
-#   rdfs:domain math:Value;
-#   rdfs:comment
-#"""The subject is a pair of numbers. The object is calulated as the arc tangent value of the ratio of the two subject values.""".
+math:atan2 a math:Function;
+   rdfs:label "atan2";
+   rdfs:range math:Value;
+   rdfs:domain math:Value;
+   rdfs:comment
+"""The subject is a pair of numbers. The object is calulated as the arc tangent value of the ratio of the two subject values.""".
 
 math:cos a rdf:Property, math:LogicalOperator;
     rdfs:label "cos";

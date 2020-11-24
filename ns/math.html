@@ -81,7 +81,7 @@ between two values</p>
 
 <dl class='annotations'>
 <dt>rdfs:subClassOf</dt>
-<dd>math:ReverseFunction, math:Function</dd>
+<dd>math:Function, math:ReverseFunction</dd>
 </dl>
 </dd>
 <dt id='math_ReverseFunction'>
@@ -148,6 +148,51 @@ between two values</p>
 </dt>
 <dd>
 <p>The object is calulated as the absolute value of the subject.</p>
+
+<dl class='annotations'>
+<dt>rdfs:domain</dt>
+<dd>math:Value</dd>
+<dt>rdfs:range</dt>
+<dd>math:Value</dd>
+</dl>
+</dd>
+<dt id='math_acos'>
+<strong>math:acos</strong>
+<em>acos</em>
+<span class='permalink'><a href='#math_acos' title='Permalink for math:acos'>(link)</a></span>
+</dt>
+<dd>
+<p>The object is calulated as the arc cosine value of the subject.</p>
+
+<dl class='annotations'>
+<dt>rdfs:domain</dt>
+<dd>math:Value</dd>
+<dt>rdfs:range</dt>
+<dd>math:Value</dd>
+</dl>
+</dd>
+<dt id='math_asin'>
+<strong>math:asin</strong>
+<em>asin</em>
+<span class='permalink'><a href='#math_asin' title='Permalink for math:asin'>(link)</a></span>
+</dt>
+<dd>
+<p>The object is calulated as the arc sine value of the subject.</p>
+
+<dl class='annotations'>
+<dt>rdfs:domain</dt>
+<dd>math:Value</dd>
+<dt>rdfs:range</dt>
+<dd>math:Value</dd>
+</dl>
+</dd>
+<dt id='math_atan'>
+<strong>math:atan</strong>
+<em>atan</em>
+<span class='permalink'><a href='#math_atan' title='Permalink for math:atan'>(link)</a></span>
+</dt>
+<dd>
+<p>The object is calulated as the arc tangent value of the subject.</p>
 
 <dl class='annotations'>
 <dt>rdfs:domain</dt>
@@ -295,6 +340,8 @@ is calculated by dividing the first number of the pair by the second, ignoring r
 <dd>math:TwoMemberedList</dd>
 <dt>rdfs:range</dt>
 <dd>math:Value</dd>
+<dt>vs:term_status</dt>
+<dd>deprecated</dd>
 </dl>
 </dd>
 <dt id='math_lessThan'>
