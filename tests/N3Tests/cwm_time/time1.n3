@@ -13,7 +13,7 @@
      :day 31;
      :dayOfWeek 5;
      :hour 23;
-     :inSeconds 946684799.0e+00;
+     :inSeconds 946684799;
      :minute 59;
      :month 12;
      :second 59;
@@ -23,29 +23,29 @@
      :day 1;
      :dayOfWeek 6;
      :hour 0;
-     :inSeconds 946684800.0e+00;
+     :inSeconds 946684800;
      :minute 0;
      :month 1;
      :second 0;
      :year 2000 .
 
-"2001-09-09T01:46:40Z"     :inSeconds "1000000000" .
+"2001-09-09T01:46:40Z"     :inSeconds 1000000000 .
 
 "2002"     a v:TestDate;
-     :dayOfWeek 1;
-     :inSeconds 1009843200.0e+00;
+     :dayOfWeek 2;
+     :inSeconds 1009843200;
      :year 2002 .
 
 "2002-06"     a v:TestDate;
      :dayOfWeek 6;
-     :inSeconds 1022889600.0e+00;
+     :inSeconds 1022889600;
      :month 6;
      :year 2002 .
 
 "2002-06-22"     a v:TestDate;
      :day 22;
      :dayOfWeek 6;
-     :inSeconds 1024704000.0e+00;
+     :inSeconds 1024704000;
      :month 6;
      :year 2002 .
 
@@ -53,7 +53,7 @@
      :day 22;
      :dayOfWeek 6;
      :hour 12;
-     :inSeconds 1024749240.0e+00;
+     :inSeconds 1024749240;
      :minute 34;
      :month 6;
      :year 2002 .
@@ -62,7 +62,7 @@
      :day 22;
      :dayOfWeek 6;
      :hour 22;
-     :inSeconds 1024801772.0e+00;
+     :inSeconds 1024801772;
      :minute 9;
      :month 6;
      :second 32;

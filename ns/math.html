@@ -4,7 +4,7 @@
 <title>Schema mathematical built-in functions</title>
 <link href='http://www.w3.org/StyleSheets/TR/base' rel='stylesheet'>
 <style>
-  body: {bacground-image: none;}
+  body {background-image: none;}
   dt {margin-top: 2em; font-weight: normal;}
   dd code {display: inline;}
   footer {text-align: center;}
@@ -234,7 +234,7 @@ checks equality of numbers</p>
 
 <p><strong>definition</strong>:
 <code>true</code> if and only if <code>$a1</code> is equal to <code>$a2</code>. 
-requires both arguments to be either concrete numerals, or variables bound to a numeral.</p>
+Requires both arguments to be either concrete numerals, or variables bound to a numeral.</p>
 
 <p><strong>literal domains</strong>:</p>
 
@@ -426,7 +426,8 @@ is calculated by dividing the first number of the pair by the second and taking 
 <span class='permalink'><a href='#math_rounded' title='Permalink for math:rounded'>(link)</a></span>
 </dt>
 <dd>
-<p>The object is calulated as the subject rounded to the nearest integer.</p>
+<p>The object is calulated as the number with no fractional part that is closest to the subject.
+If there are two such numbers, then the one that is closest to positive infinity is returned.</p>
 
 <dl class='annotations'>
 <dt>rdfs:domain</dt>
@@ -481,7 +482,7 @@ performs addition of numbers</p>
 
 <p><strong>definition</strong>:
 <code>true</code> if and only if the arithmetic sum of <code>$a_1, .. $a_n</code> equals <code>$a_s</code>.
-requires either:</p>
+Requires either:</p>
 
 <ol>
 <li>all <code>$a_1, .., $a_n</code> to be bound; or</li>
@@ -537,9 +538,9 @@ The object is calulated as the hyperbolic tangent value of the subject.</p>
 </dl>
 </section>
 </section>
-</body>
 <footer>
 <p>All vocabularies are licensed by contributors under the
 <a href="http://www.w3.org/Consortium/Legal/copyright-software">W3C Software and Document License</a>.</p>
 </footer>
+</body>
 </html>

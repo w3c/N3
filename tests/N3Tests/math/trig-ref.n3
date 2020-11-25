@@ -24,4 +24,5 @@
 :test3k a :SUCCESS .
 
 :test4a :object 0;  :ASIN 0.0e0 .
-:test4b :object 0;  :ATAN 0.0e0 .
+:test4b :object 0;  :ACOS 0.0e0 .
+:test4c :object 0;  :ATAN 0.0e0 .
