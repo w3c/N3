@@ -1,10 +1,8 @@
 @prefix : <http://example.org#>.
 
-@forAll :y.
-@forSome :x. 
+@forAll :y. @forSome :x. 
 
+:Peter a :Person.
+:Bob a :Person.
 
-
-:a :b :c.
-:aa :b :c.
-{:y :b :c }=>{:x :o :o. :y :p {:x :pp :oo}}. 
+{:y a :Person}=>{:y :likes :x. :y :thinks {:x :likes :y}}.
