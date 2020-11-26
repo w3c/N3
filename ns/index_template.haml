@@ -1,0 +1,10 @@
+- require 'nokogumbo'
+
+%section.appendix
+  %h2="Vocabulary Definitions"
+  - files.each do |file|
+    - doc = Nokogiri::HTML(File.read file)
+    %section.vocabulary
+      %h3=doc.at_css('>html>head>title>text()')
+      = doc.at_css('>html>body>.attribute')
+      = doc.css('>html>body>.terms')

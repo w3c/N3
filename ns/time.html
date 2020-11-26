@@ -35,22 +35,23 @@
 <img alt='W3C' height='48' src='http://www.w3.org/Icons/w3c_home' width='72'>
 </a>
 </p>
-<h1>n3 definition of some time and date functions</h1>
-<div>
+<h3 class='label'>n3 definition of some time and date functions</h3>
+<div class='attribute'>
 <p>Based on orginal cwm_date and cwm_time by Mark Nottingham</p>
 
-<p>The vocabulary is published by the <a href="https://www.w3.org/community/n3-dev/">W3C Notation-3 Community Group</a>.</p>
-
 </div>
-<section>
-<h2>Vocabulary Terms</h2>
-<section>
-<h3>Property Definitions</h3>
+<div class='wg'>
+<p>The vocabulary is published by the <a href="https://www.w3.org/community/n3-dev/">W3C Notation-3 Community Group</a>.</p>
+</div>
+<section class='terms'>
+<h4>Vocabulary Terms</h4>
+<section class='properties'>
+<h5>Property Definitions</h5>
 <dl>
-<dt id='time_day'>
+<dt id='vocab_time_day'>
 <strong>time:day</strong>
 <em>day</em>
-<span class='permalink'><a href='#time_day' title='Permalink for time:day'>(link)</a></span>
+<span class='permalink'><a href='#vocab_time_day' title='Permalink for time:day'>(link)</a></span>
 </dt>
 <dd>
 <p>Iff the <em>subject</em> is a <code>xsd:dateTime</code> and the <em>object</em> is the integer day component of the dateTime.
@@ -67,10 +68,10 @@ xsd:integer
 </dd>
 </dl>
 </dd>
-<dt id='time_dayOfWeek'>
+<dt id='vocab_time_dayOfWeek'>
 <strong>time:dayOfWeek</strong>
 <em>day of week</em>
-<span class='permalink'><a href='#time_dayOfWeek' title='Permalink for time:dayOfWeek'>(link)</a></span>
+<span class='permalink'><a href='#vocab_time_dayOfWeek' title='Permalink for time:dayOfWeek'>(link)</a></span>
 </dt>
 <dd>
 <p>Iff the <em>subject</em> is a <code>xsd:dateTime</code> and the <em>object</em> is the integer the day number within the week, Sunday being 0.
@@ -87,10 +88,10 @@ xsd:integer
 </dd>
 </dl>
 </dd>
-<dt id='time_gmTime'>
+<dt id='vocab_time_gmTime'>
 <strong>time:gmTime</strong>
 <em>Universal Time</em>
-<span class='permalink'><a href='#time_gmTime' title='Permalink for time:gmTime'>(link)</a></span>
+<span class='permalink'><a href='#vocab_time_gmTime' title='Permalink for time:gmTime'>(link)</a></span>
 </dt>
 <dd>
 <p>Iff the <em>subject</em> is a dateTime format string and the <em>object</em> is the
@@ -113,10 +114,10 @@ xsd:string
 </dd>
 </dl>
 </dd>
-<dt id='time_hour'>
+<dt id='vocab_time_hour'>
 <strong>time:hour</strong>
 <em>hour</em>
-<span class='permalink'><a href='#time_hour' title='Permalink for time:hour'>(link)</a></span>
+<span class='permalink'><a href='#vocab_time_hour' title='Permalink for time:hour'>(link)</a></span>
 </dt>
 <dd>
 <p>Iff the <em>subject</em> is a <code>xsd:dateTime</code> and the <em>object</em> is the hour year component of the dateTime.
@@ -133,10 +134,10 @@ xsd:integer
 </dd>
 </dl>
 </dd>
-<dt id='time_inSeconds'>
+<dt id='vocab_time_inSeconds'>
 <strong>time:inSeconds</strong>
 <em>in era seconds</em>
-<span class='permalink'><a href='#time_inSeconds' title='Permalink for time:inSeconds'>(link)</a></span>
+<span class='permalink'><a href='#vocab_time_inSeconds' title='Permalink for time:inSeconds'>(link)</a></span>
 </dt>
 <dd>
 <p>Iff the <em>subject</em> is a <code>xsd:dateTime</code> and the <em>object</em> is the integer number of seconds
@@ -157,10 +158,10 @@ xsd:integer
 </dd>
 </dl>
 </dd>
-<dt id='time_localTime'>
+<dt id='vocab_time_localTime'>
 <strong>time:localTime</strong>
 <em>local time</em>
-<span class='permalink'><a href='#time_localTime' title='Permalink for time:localTime'>(link)</a></span>
+<span class='permalink'><a href='#vocab_time_localTime' title='Permalink for time:localTime'>(link)</a></span>
 </dt>
 <dd>
 <p>Iff the <em>subject</em> is a dateTime format string and the <em>object</em> is the
@@ -183,10 +184,10 @@ xsd:string
 </dd>
 </dl>
 </dd>
-<dt id='time_minute'>
+<dt id='vocab_time_minute'>
 <strong>time:minute</strong>
 <em>minute</em>
-<span class='permalink'><a href='#time_minute' title='Permalink for time:minute'>(link)</a></span>
+<span class='permalink'><a href='#vocab_time_minute' title='Permalink for time:minute'>(link)</a></span>
 </dt>
 <dd>
 <p>Iff the <em>subject</em> is a <code>xsd:dateTime</code> and the <em>object</em> is the integer minute component of the dateTime.
@@ -203,10 +204,10 @@ xsd:integer
 </dd>
 </dl>
 </dd>
-<dt id='time_month'>
+<dt id='vocab_time_month'>
 <strong>time:month</strong>
 <em>month</em>
-<span class='permalink'><a href='#time_month' title='Permalink for time:month'>(link)</a></span>
+<span class='permalink'><a href='#vocab_time_month' title='Permalink for time:month'>(link)</a></span>
 </dt>
 <dd>
 <p>Iff the <em>subject</em> is a <code>xsd:dateTime</code> and the <em>object</em> is the integer month component of the dateTime.
@@ -223,10 +224,10 @@ xsd:integer
 </dd>
 </dl>
 </dd>
-<dt id='time_second'>
+<dt id='vocab_time_second'>
 <strong>time:second</strong>
 <em>second</em>
-<span class='permalink'><a href='#time_second' title='Permalink for time:second'>(link)</a></span>
+<span class='permalink'><a href='#vocab_time_second' title='Permalink for time:second'>(link)</a></span>
 </dt>
 <dd>
 <p>Iff the <em>subject</em> is a <code>xsd:dateTime</code> and the <em>object</em> is the integer year component of the dateTime.
@@ -243,10 +244,10 @@ xsd:integer
 </dd>
 </dl>
 </dd>
-<dt id='time_timeZone'>
+<dt id='vocab_time_timeZone'>
 <strong>time:timeZone</strong>
 <em>timezone offset</em>
-<span class='permalink'><a href='#time_timeZone' title='Permalink for time:timeZone'>(link)</a></span>
+<span class='permalink'><a href='#vocab_time_timeZone' title='Permalink for time:timeZone'>(link)</a></span>
 </dt>
 <dd>
 <p>Iff the <em>subject</em> is a <code>xsd:dateTime</code> and the <em>object</em> is the trailing timezone offset
@@ -264,10 +265,10 @@ xsd:string
 </dd>
 </dl>
 </dd>
-<dt id='time_year'>
+<dt id='vocab_time_year'>
 <strong>time:year</strong>
 <em>year</em>
-<span class='permalink'><a href='#time_year' title='Permalink for time:year'>(link)</a></span>
+<span class='permalink'><a href='#vocab_time_year' title='Permalink for time:year'>(link)</a></span>
 </dt>
 <dd>
 <p>Iff the <em>subject</em> is a <code>xsd:dateTime</code> and the <em>object</em> is the integer year component of the dateTime.

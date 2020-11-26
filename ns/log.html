@@ -35,26 +35,27 @@
 <img alt='W3C' height='48' src='http://www.w3.org/Icons/w3c_home' width='72'>
 </a>
 </p>
-<h1>n3 definition of some Semantic Web terms</h1>
-<div>
+<h3 class='label'>n3 definition of some Semantic Web terms</h3>
+<div class='attribute'>
 <p>These raise the level above RDF&#39;s pure relational data,
 and Web Ontology&#39;s ontological level, to allow rules to be expressed
 and inference done. They connect the inference to the web,
 allowing data to be fetched from resources elsewhere, and remote
 servers to be queried.</p>
 
-<p>The vocabulary is published by the <a href="https://www.w3.org/community/n3-dev/">W3C Notation-3 Community Group</a>.</p>
-
 </div>
-<section>
-<h2>Vocabulary Terms</h2>
-<section>
-<h3>Class Definitions</h3>
+<div class='wg'>
+<p>The vocabulary is published by the <a href="https://www.w3.org/community/n3-dev/">W3C Notation-3 Community Group</a>.</p>
+</div>
+<section class='terms'>
+<h4>Vocabulary Terms</h4>
+<section class='classes'>
+<h5>Class Definitions</h5>
 <dl>
-<dt id='log_Chaff'>
+<dt id='vocab_log_Chaff'>
 <strong>log:Chaff</strong>
 <em>Chaff</em>
-<span class='permalink'><a href='#log_Chaff' title='Permalink for log:Chaff'>(link)</a></span>
+<span class='permalink'><a href='#vocab_log_Chaff' title='Permalink for log:Chaff'>(link)</a></span>
 </dt>
 <dd>
 <p>Any statement mentioning anything in this class
@@ -63,10 +64,10 @@ This is a convenience, and does not have any value when published as a
 general fact on the web.</p>
 
 </dd>
-<dt id='log_Formula'>
+<dt id='vocab_log_Formula'>
 <strong>log:Formula</strong>
 <em>Formula</em>
-<span class='permalink'><a href='#log_Formula' title='Permalink for log:Formula'>(link)</a></span>
+<span class='permalink'><a href='#vocab_log_Formula' title='Permalink for log:Formula'>(link)</a></span>
 </dt>
 <dd>
 <p>The class of Notation-3 Formulae</p>
@@ -78,10 +79,10 @@ log:Type
 </dd>
 </dl>
 </dd>
-<dt id='log_List'>
+<dt id='vocab_log_List'>
 <strong>log:List</strong>
 <em>List</em>
-<span class='permalink'><a href='#log_List' title='Permalink for log:List'>(link)</a></span>
+<span class='permalink'><a href='#vocab_log_List' title='Permalink for log:List'>(link)</a></span>
 </dt>
 <dd>
 <p>A Notation-3 List, as a resource. A sub-class of an RDF List.</p>
@@ -89,14 +90,14 @@ log:Type
 <dl class='annotations'>
 <dt>rdfs:subClassOf</dt>
 <dd class='subClassOf'>
-rdf:List, log:Type
+log:Type, rdf:List
 </dd>
 </dl>
 </dd>
-<dt id='log_N3Document'>
+<dt id='vocab_log_N3Document'>
 <strong>log:N3Document</strong>
 <em>N3Document</em>
-<span class='permalink'><a href='#log_N3Document' title='Permalink for log:N3Document'>(link)</a></span>
+<span class='permalink'><a href='#vocab_log_N3Document' title='Permalink for log:N3Document'>(link)</a></span>
 </dt>
 <dd>
 <p>A document which, which parsed as Notation3
@@ -112,10 +113,10 @@ http://www.w3.org/2000/10/swap/pim/doc#Work
 </dd>
 </dl>
 </dd>
-<dt id='log_Other'>
+<dt id='vocab_log_Other'>
 <strong>log:Other</strong>
 <em>List</em>
-<span class='permalink'><a href='#log_Other' title='Permalink for log:Other'>(link)</a></span>
+<span class='permalink'><a href='#vocab_log_Other' title='Permalink for log:Other'>(link)</a></span>
 </dt>
 <dd>
 <p>Some other Notation-3 type</p>
@@ -127,10 +128,10 @@ log:Type
 </dd>
 </dl>
 </dd>
-<dt id='log_String'>
+<dt id='vocab_log_String'>
 <strong>log:String</strong>
 <em>List</em>
-<span class='permalink'><a href='#log_String' title='Permalink for log:String'>(link)</a></span>
+<span class='permalink'><a href='#vocab_log_String' title='Permalink for log:String'>(link)</a></span>
 </dt>
 <dd>
 <p>An RDF Literal</p>
@@ -138,14 +139,14 @@ log:Type
 <dl class='annotations'>
 <dt>rdfs:subClassOf</dt>
 <dd class='subClassOf'>
-log:Type, rdfs:Literal
+rdfs:Literal, log:Type
 </dd>
 </dl>
 </dd>
-<dt id='log_Truth'>
+<dt id='vocab_log_Truth'>
 <strong>log:Truth</strong>
 <em>Truth</em>
-<span class='permalink'><a href='#log_Truth' title='Permalink for log:Truth'>(link)</a></span>
+<span class='permalink'><a href='#vocab_log_Truth' title='Permalink for log:Truth'>(link)</a></span>
 </dt>
 <dd>
 <p>Something which is true: believe it as you would believe this.</p>
@@ -154,10 +155,10 @@ log:Type, rdfs:Literal
 declared a Truth within a formula it is already taking rules from.</p>
 
 </dd>
-<dt id='log_Type'>
+<dt id='vocab_log_Type'>
 <strong>log:Type</strong>
 <em>Type</em>
-<span class='permalink'><a href='#log_Type' title='Permalink for log:Type'>(link)</a></span>
+<span class='permalink'><a href='#vocab_log_Type' title='Permalink for log:Type'>(link)</a></span>
 </dt>
 <dd>
 <p>The class of Notation3-specifiec resource types.</p>
@@ -171,13 +172,13 @@ unstable
 </dd>
 </dl>
 </section>
-<section>
-<h3>Property Definitions</h3>
+<section class='properties'>
+<h5>Property Definitions</h5>
 <dl>
-<dt id='log_becomes'>
+<dt id='vocab_log_becomes'>
 <strong>log:becomes</strong>
 <em>becomes</em>
-<span class='permalink'><a href='#log_becomes' title='Permalink for log:becomes'>(link)</a></span>
+<span class='permalink'><a href='#vocab_log_becomes' title='Permalink for log:becomes'>(link)</a></span>
 </dt>
 <dd>
 <p>Built-in to perform RDF linear implication i.e. retracting the subject graph and asserting the object graph.</p>
@@ -189,10 +190,10 @@ unstable
 </dd>
 </dl>
 </dd>
-<dt id='log_conclusion'>
+<dt id='vocab_log_conclusion'>
 <strong>log:conclusion</strong>
 <em>conclusion</em>
-<span class='permalink'><a href='#log_conclusion' title='Permalink for log:conclusion'>(link)</a></span>
+<span class='permalink'><a href='#vocab_log_conclusion' title='Permalink for log:conclusion'>(link)</a></span>
 </dt>
 <dd>
 <p>All possible conclusions which can be drawn from a formula.</p>
@@ -215,10 +216,10 @@ log:Formula
 </dd>
 </dl>
 </dd>
-<dt id='log_conjunction'>
+<dt id='vocab_log_conjunction'>
 <strong>log:conjunction</strong>
 <em>conjunction</em>
-<span class='permalink'><a href='#log_conjunction' title='Permalink for log:conjunction'>(link)</a></span>
+<span class='permalink'><a href='#vocab_log_conjunction' title='Permalink for log:conjunction'>(link)</a></span>
 </dt>
 <dd>
 <p>A function to merge formulae: logical AND.</p>
@@ -239,10 +240,10 @@ log:Formula
 </dd>
 </dl>
 </dd>
-<dt id='log_content'>
+<dt id='vocab_log_content'>
 <strong>log:content</strong>
 <em>content</em>
-<span class='permalink'><a href='#log_content' title='Permalink for log:content'>(link)</a></span>
+<span class='permalink'><a href='#vocab_log_content' title='Permalink for log:content'>(link)</a></span>
 </dt>
 <dd>
 <p>This connects a document and a string that represents it.
@@ -261,10 +262,10 @@ log:String
 </dd>
 </dl>
 </dd>
-<dt id='log_definitiveDocument'>
+<dt id='vocab_log_definitiveDocument'>
 <strong>log:definitiveDocument</strong>
 <em>definitive document</em>
-<span class='permalink'><a href='#log_definitiveDocument' title='Permalink for log:definitiveDocument'>(link)</a></span>
+<span class='permalink'><a href='#vocab_log_definitiveDocument' title='Permalink for log:definitiveDocument'>(link)</a></span>
 </dt>
 <dd>
 <p>When document D is the definitiveDocument for property P,
@@ -291,10 +292,10 @@ http://www.w3.org/2000/10/swap/pim/doc#Work
 </dd>
 </dl>
 </dd>
-<dt id='log_definitiveService'>
+<dt id='vocab_log_definitiveService'>
 <strong>log:definitiveService</strong>
 <em>definitive service</em>
-<span class='permalink'><a href='#log_definitiveService' title='Permalink for log:definitiveService'>(link)</a></span>
+<span class='permalink'><a href='#vocab_log_definitiveService' title='Permalink for log:definitiveService'>(link)</a></span>
 </dt>
 <dd>
 <p>When service S is the definitiveService for property P,
@@ -320,10 +321,10 @@ rdf:Property
 </dd>
 </dl>
 </dd>
-<dt id='log_dtlit'>
+<dt id='vocab_log_dtlit'>
 <strong>log:dtlit</strong>
 <em>log:dtlit</em>
-<span class='permalink'><a href='#log_dtlit' title='Permalink for log:dtlit'>(link)</a></span>
+<span class='permalink'><a href='#vocab_log_dtlit' title='Permalink for log:dtlit'>(link)</a></span>
 </dt>
 <dd>
 <p>Takes a list of a string and a URI and creates a datatyped literal.
@@ -345,10 +346,10 @@ rdfs:Literal
 </dd>
 </dl>
 </dd>
-<dt id='log_equalTo'>
+<dt id='vocab_log_equalTo'>
 <strong>log:equalTo</strong>
 <em>equalTo</em>
-<span class='permalink'><a href='#log_equalTo' title='Permalink for log:equalTo'>(link)</a></span>
+<span class='permalink'><a href='#vocab_log_equalTo' title='Permalink for log:equalTo'>(link)</a></span>
 </dt>
 <dd>
 <p>True if the subject and object are the same RDF node (symbol or literal).
@@ -356,10 +357,10 @@ Do not confuse with owl:sameAs.
 A cwm built-in logical operator, RDF graph level.</p>
 
 </dd>
-<dt id='log_findall'>
+<dt id='vocab_log_findall'>
 <strong>log:findall</strong>
 <em>findall</em>
-<span class='permalink'><a href='#log_findall' title='Permalink for log:findall'>(link)</a></span>
+<span class='permalink'><a href='#vocab_log_findall' title='Permalink for log:findall'>(link)</a></span>
 </dt>
 <dd>
 <p>Built-in used as <code>?SCOPE e:findall (?SELECT ?WHERE ?ANSWER).</code>
@@ -381,10 +382,10 @@ log:List
 </dd>
 </dl>
 </dd>
-<dt id='log_forAllIn'>
+<dt id='vocab_log_forAllIn'>
 <strong>log:forAllIn</strong>
 <em>forAllIn</em>
-<span class='permalink'><a href='#log_forAllIn' title='Permalink for log:forAllIn'>(link)</a></span>
+<span class='permalink'><a href='#vocab_log_forAllIn' title='Permalink for log:forAllIn'>(link)</a></span>
 </dt>
 <dd>
 <p>Built-in for implementing a scoped universal quantification.</p>
@@ -396,10 +397,10 @@ unstable
 </dd>
 </dl>
 </dd>
-<dt id='log_forAllInClosure'>
+<dt id='vocab_log_forAllInClosure'>
 <strong>log:forAllInClosure</strong>
 <em>forAllInClosure</em>
-<span class='permalink'><a href='#log_forAllInClosure' title='Permalink for log:forAllInClosure'>(link)</a></span>
+<span class='permalink'><a href='#vocab_log_forAllInClosure' title='Permalink for log:forAllInClosure'>(link)</a></span>
 </dt>
 <dd>
 <p>Built-in for implementing a scoped universal quantification.</p>
@@ -411,10 +412,10 @@ unstable
 </dd>
 </dl>
 </dd>
-<dt id='log_implies'>
+<dt id='vocab_log_implies'>
 <strong>log:implies</strong>
 <em>implies</em>
-<span class='permalink'><a href='#log_implies' title='Permalink for log:implies'>(link)</a></span>
+<span class='permalink'><a href='#vocab_log_implies' title='Permalink for log:implies'>(link)</a></span>
 </dt>
 <dd>
 <p>Logical implication. 
@@ -442,10 +443,10 @@ log:Formula
 </dd>
 </dl>
 </dd>
-<dt id='log_includes'>
+<dt id='vocab_log_includes'>
 <strong>log:includes</strong>
 <em>includes</em>
-<span class='permalink'><a href='#log_includes' title='Permalink for log:includes'>(link)</a></span>
+<span class='permalink'><a href='#vocab_log_includes' title='Permalink for log:includes'>(link)</a></span>
 </dt>
 <dd>
 <p>The subject formula includes the object formula.
@@ -472,10 +473,10 @@ log:Formula
 </dd>
 </dl>
 </dd>
-<dt id='log_n3String'>
+<dt id='vocab_log_n3String'>
 <strong>log:n3String</strong>
 <em>n3 string</em>
-<span class='permalink'><a href='#log_n3String' title='Permalink for log:n3String'>(link)</a></span>
+<span class='permalink'><a href='#vocab_log_n3String' title='Permalink for log:n3String'>(link)</a></span>
 </dt>
 <dd>
 <p>The subject formula, expressed as N3, gives this string.</p>
@@ -491,10 +492,10 @@ log:N3
 </dd>
 </dl>
 </dd>
-<dt id='log_notEqualTo'>
+<dt id='vocab_log_notEqualTo'>
 <strong>log:notEqualTo</strong>
 <em>notEqualTo</em>
-<span class='permalink'><a href='#log_notEqualTo' title='Permalink for log:notEqualTo'>(link)</a></span>
+<span class='permalink'><a href='#vocab_log_notEqualTo' title='Permalink for log:notEqualTo'>(link)</a></span>
 </dt>
 <dd>
 <p>Equality in this sense is actually the same URI.
@@ -507,10 +508,10 @@ log:equalTo
 </dd>
 </dl>
 </dd>
-<dt id='log_notIn'>
+<dt id='vocab_log_notIn'>
 <strong>log:notIn</strong>
 <em>notIn</em>
-<span class='permalink'><a href='#log_notIn' title='Permalink for log:notIn'>(link)</a></span>
+<span class='permalink'><a href='#vocab_log_notIn' title='Permalink for log:notIn'>(link)</a></span>
 </dt>
 <dd>
 <p>Custom built-in for implementing scoped negation-as-failure (SNAF).</p>
@@ -522,10 +523,10 @@ unstable
 </dd>
 </dl>
 </dd>
-<dt id='log_notInClosure'>
+<dt id='vocab_log_notInClosure'>
 <strong>log:notInClosure</strong>
 <em>notInClosure</em>
-<span class='permalink'><a href='#log_notInClosure' title='Permalink for log:notInClosure'>(link)</a></span>
+<span class='permalink'><a href='#vocab_log_notInClosure' title='Permalink for log:notInClosure'>(link)</a></span>
 </dt>
 <dd>
 <p>Custom built-in for implementing scoped negation-as-failure (SNAF).</p>
@@ -537,10 +538,10 @@ unstable
 </dd>
 </dl>
 </dd>
-<dt id='log_notIncludes'>
+<dt id='vocab_log_notIncludes'>
 <strong>log:notIncludes</strong>
 <em>not includes</em>
-<span class='permalink'><a href='#log_notIncludes' title='Permalink for log:notIncludes'>(link)</a></span>
+<span class='permalink'><a href='#vocab_log_notIncludes' title='Permalink for log:notIncludes'>(link)</a></span>
 </dt>
 <dd>
 <p>The object formula is NOT a subset of subject.
@@ -563,10 +564,10 @@ log:Formula
 </dd>
 </dl>
 </dd>
-<dt id='log_outputString'>
+<dt id='vocab_log_outputString'>
 <strong>log:outputString</strong>
 <em>output string</em>
-<span class='permalink'><a href='#log_outputString' title='Permalink for log:outputString'>(link)</a></span>
+<span class='permalink'><a href='#vocab_log_outputString' title='Permalink for log:outputString'>(link)</a></span>
 </dt>
 <dd>
 <p>The subject is a key and the object is a string,
@@ -584,10 +585,10 @@ log:String
 </dd>
 </dl>
 </dd>
-<dt id='log_parsedAsN3'>
+<dt id='vocab_log_parsedAsN3'>
 <strong>log:parsedAsN3</strong>
 <em>parses to N3</em>
-<span class='permalink'><a href='#log_parsedAsN3' title='Permalink for log:parsedAsN3'>(link)</a></span>
+<span class='permalink'><a href='#vocab_log_parsedAsN3' title='Permalink for log:parsedAsN3'>(link)</a></span>
 </dt>
 <dd>
 <p>The subject string, parsed as N3, gives this formula.</p>
@@ -603,10 +604,10 @@ log:Formula
 </dd>
 </dl>
 </dd>
-<dt id='log_racine'>
+<dt id='vocab_log_racine'>
 <strong>log:racine</strong>
 <em>racine</em>
-<span class='permalink'><a href='#log_racine' title='Permalink for log:racine'>(link)</a></span>
+<span class='permalink'><a href='#vocab_log_racine' title='Permalink for log:racine'>(link)</a></span>
 </dt>
 <dd>
 <p>For anything identified by a URI with a fragid, this is the
@@ -614,10 +615,10 @@ thing identified by the same URI without a hash or fragid.
 For anything else, it is itself.</p>
 
 </dd>
-<dt id='log_rawType'>
+<dt id='vocab_log_rawType'>
 <strong>log:rawType</strong>
 <em>rawType</em>
-<span class='permalink'><a href='#log_rawType' title='Permalink for log:rawType'>(link)</a></span>
+<span class='permalink'><a href='#vocab_log_rawType' title='Permalink for log:rawType'>(link)</a></span>
 </dt>
 <dd>
 <p>This is a low-level language type, one of log:Formula, log:Literal, 
@@ -632,10 +633,10 @@ log:Type
 </dd>
 </dl>
 </dd>
-<dt id='log_rawUri'>
+<dt id='vocab_log_rawUri'>
 <strong>log:rawUri</strong>
 <em>raw uri</em>
-<span class='permalink'><a href='#log_rawUri' title='Permalink for log:rawUri'>(link)</a></span>
+<span class='permalink'><a href='#vocab_log_rawUri' title='Permalink for log:rawUri'>(link)</a></span>
 </dt>
 <dd>
 <p>This allows one to look at the actual string of the URI which identifies this,
@@ -649,10 +650,10 @@ log:String
 </dd>
 </dl>
 </dd>
-<dt id='log_semantics'>
+<dt id='vocab_log_semantics'>
 <strong>log:semantics</strong>
 <em>semantics</em>
-<span class='permalink'><a href='#log_semantics' title='Permalink for log:semantics'>(link)</a></span>
+<span class='permalink'><a href='#vocab_log_semantics' title='Permalink for log:semantics'>(link)</a></span>
 </dt>
 <dd>
 <p>The log:semantics of a document is the formula.
@@ -681,10 +682,10 @@ log:Formula
 </dd>
 </dl>
 </dd>
-<dt id='log_semanticsOrError'>
+<dt id='vocab_log_semanticsOrError'>
 <strong>log:semanticsOrError</strong>
 <em>semantics or error message</em>
-<span class='permalink'><a href='#log_semanticsOrError' title='Permalink for log:semanticsOrError'>(link)</a></span>
+<span class='permalink'><a href='#vocab_log_semanticsOrError' title='Permalink for log:semanticsOrError'>(link)</a></span>
 </dt>
 <dd>
 <p>This connects a document and either the formula it parses to,
@@ -698,10 +699,10 @@ http://www.w3.org/2000/10/swap/pim/doc#Work
 </dd>
 </dl>
 </dd>
-<dt id='log_skolem'>
+<dt id='vocab_log_skolem'>
 <strong>log:skolem</strong>
 <em>skolem</em>
-<span class='permalink'><a href='#log_skolem' title='Permalink for log:skolem'>(link)</a></span>
+<span class='permalink'><a href='#vocab_log_skolem' title='Permalink for log:skolem'>(link)</a></span>
 </dt>
 <dd>
 <p>Built-in to generate a Skolem IRI object which is a function of the arguments in the subject list</p>
@@ -721,10 +722,10 @@ log:String
 </dd>
 </dl>
 </dd>
-<dt id='log_uri'>
+<dt id='vocab_log_uri'>
 <strong>log:uri</strong>
 <em>log:uri</em>
-<span class='permalink'><a href='#log_uri' title='Permalink for log:uri'>(link)</a></span>
+<span class='permalink'><a href='#vocab_log_uri' title='Permalink for log:uri'>(link)</a></span>
 </dt>
 <dd>
 <p>This allows one to look at the actual string of the URI which identifies this.</p>
@@ -743,13 +744,13 @@ log:String
 </dd>
 </dl>
 </section>
-<section>
-<h3>Datatype Definitions</h3>
+<section class='datatypes'>
+<h5>Datatype Definitions</h5>
 <dl>
-<dt id='log_N3'>
+<dt id='vocab_log_N3'>
 <strong>log:N3</strong>
 <em>log:N3</em>
-<span class='permalink'><a href='#log_N3' title='Permalink for log:N3'>(link)</a></span>
+<span class='permalink'><a href='#vocab_log_N3' title='Permalink for log:N3'>(link)</a></span>
 </dt>
 <dd>
 <p>The class log:N3 is the class of N3 literal values.

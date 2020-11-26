@@ -1,7 +1,7 @@
 VOCABS= %w(crypto list log math string time)
 
 desc 'Default: build HTML versions of namespace documents'
-task default: :html
+task default: :index
 
 desc 'Remove generated files'
 task :clean do
@@ -16,4 +16,10 @@ task html: [:clean] + VOCABS.map {|ns| "#{ns}.html"}
 rule ".html" => %w{.n3} do |t|
   puts "build #{t.name}"
   %x{ruby mk_vocab #{t.source}}
+end
+
+desc "Build index of vocabularies"
+task index: VOCABS.map {|ns| "#{ns}.html"} do |t|
+  puts "build index.html"
+  %x{ruby mk_index #{t.sources.join(' ')}}
 end

@@ -35,23 +35,24 @@
 <img alt='W3C' height='48' src='http://www.w3.org/Icons/w3c_home' width='72'>
 </a>
 </p>
-<h1>String Processing Ontology</h1>
-<div>
+<h3 class='label'>String Processing Ontology</h3>
+<div class='attribute'>
 <p>This is an ontology for computable string functions.
 It is implemented, for example, in CWM and Euler.</p>
 
-<p>The vocabulary is published by the <a href="https://www.w3.org/community/n3-dev/">W3C Notation-3 Community Group</a>.</p>
-
 </div>
-<section>
-<h2>Vocabulary Terms</h2>
-<section>
-<h3>Property Definitions</h3>
+<div class='wg'>
+<p>The vocabulary is published by the <a href="https://www.w3.org/community/n3-dev/">W3C Notation-3 Community Group</a>.</p>
+</div>
+<section class='terms'>
+<h4>Vocabulary Terms</h4>
+<section class='properties'>
+<h5>Property Definitions</h5>
 <dl>
-<dt id='string_concat'>
+<dt id='vocab_string_concat'>
 <strong>string:concat</strong>
 <em>is concatenation of</em>
-<span class='permalink'><a href='#string_concat' title='Permalink for string:concat'>(link)</a></span>
+<span class='permalink'><a href='#vocab_string_concat' title='Permalink for string:concat'>(link)</a></span>
 </dt>
 <dd>
 <p>(obsolete - (was backwards!) - use: string:concatenation)</p>
@@ -75,10 +76,10 @@ log:List
 </dd>
 </dl>
 </dd>
-<dt id='string_concatenation'>
+<dt id='vocab_string_concatenation'>
 <strong>string:concatenation</strong>
 <em>concatenate into</em>
-<span class='permalink'><a href='#string_concatenation' title='Permalink for string:concatenation'>(link)</a></span>
+<span class='permalink'><a href='#vocab_string_concatenation' title='Permalink for string:concatenation'>(link)</a></span>
 </dt>
 <dd>
 <p><strong>schema</strong>:
@@ -115,10 +116,10 @@ log:String
 </dd>
 </dl>
 </dd>
-<dt id='string_contains'>
+<dt id='vocab_string_contains'>
 <strong>string:contains</strong>
 <em>contains</em>
-<span class='permalink'><a href='#string_contains' title='Permalink for string:contains'>(link)</a></span>
+<span class='permalink'><a href='#vocab_string_contains' title='Permalink for string:contains'>(link)</a></span>
 </dt>
 <dd>
 <p>True iff the subject string contains the object string.</p>
@@ -134,10 +135,10 @@ log:String
 </dd>
 </dl>
 </dd>
-<dt id='string_containsIgnoringCase'>
+<dt id='vocab_string_containsIgnoringCase'>
 <strong>string:containsIgnoringCase</strong>
 <em>contains</em>
-<span class='permalink'><a href='#string_containsIgnoringCase' title='Permalink for string:containsIgnoringCase'>(link)</a></span>
+<span class='permalink'><a href='#vocab_string_containsIgnoringCase' title='Permalink for string:containsIgnoringCase'>(link)</a></span>
 </dt>
 <dd>
 <p>True iff the subject string contains the object string,
@@ -155,10 +156,10 @@ log:String
 </dd>
 </dl>
 </dd>
-<dt id='string_endsWith'>
+<dt id='vocab_string_endsWith'>
 <strong>string:endsWith</strong>
 <em>ends with</em>
-<span class='permalink'><a href='#string_endsWith' title='Permalink for string:endsWith'>(link)</a></span>
+<span class='permalink'><a href='#vocab_string_endsWith' title='Permalink for string:endsWith'>(link)</a></span>
 </dt>
 <dd>
 <p>True iff the subject string ends with the object string.</p>
@@ -174,10 +175,10 @@ log:String
 </dd>
 </dl>
 </dd>
-<dt id='string_equalIgnoringCase'>
+<dt id='vocab_string_equalIgnoringCase'>
 <strong>string:equalIgnoringCase</strong>
 <em>contains</em>
-<span class='permalink'><a href='#string_equalIgnoringCase' title='Permalink for string:equalIgnoringCase'>(link)</a></span>
+<span class='permalink'><a href='#vocab_string_equalIgnoringCase' title='Permalink for string:equalIgnoringCase'>(link)</a></span>
 </dt>
 <dd>
 <p>True iff the subject string is the same as object string
@@ -194,10 +195,10 @@ log:String
 </dd>
 </dl>
 </dd>
-<dt id='string_format'>
+<dt id='vocab_string_format'>
 <strong>string:format</strong>
 <em>is the string formatted function of</em>
-<span class='permalink'><a href='#string_format' title='Permalink for string:format'>(link)</a></span>
+<span class='permalink'><a href='#vocab_string_format' title='Permalink for string:format'>(link)</a></span>
 </dt>
 <dd>
 <p>The subject is a list, whose first member is a format string,
@@ -217,10 +218,10 @@ log:String
 </dd>
 </dl>
 </dd>
-<dt id='string_greaterThan'>
+<dt id='vocab_string_greaterThan'>
 <strong>string:greaterThan</strong>
 <em>is greater than</em>
-<span class='permalink'><a href='#string_greaterThan' title='Permalink for string:greaterThan'>(link)</a></span>
+<span class='permalink'><a href='#vocab_string_greaterThan' title='Permalink for string:greaterThan'>(link)</a></span>
 </dt>
 <dd>
 <p>True iff the string is greater than the object
@@ -237,10 +238,10 @@ log:String
 </dd>
 </dl>
 </dd>
-<dt id='string_lessThan'>
+<dt id='vocab_string_lessThan'>
 <strong>string:lessThan</strong>
 <em>is less than</em>
-<span class='permalink'><a href='#string_lessThan' title='Permalink for string:lessThan'>(link)</a></span>
+<span class='permalink'><a href='#vocab_string_lessThan' title='Permalink for string:lessThan'>(link)</a></span>
 </dt>
 <dd>
 <p>True iff the string is less than the object
@@ -257,10 +258,10 @@ log:String
 </dd>
 </dl>
 </dd>
-<dt id='string_matches'>
+<dt id='vocab_string_matches'>
 <strong>string:matches</strong>
 <em>contains</em>
-<span class='permalink'><a href='#string_matches' title='Permalink for string:matches'>(link)</a></span>
+<span class='permalink'><a href='#vocab_string_matches' title='Permalink for string:matches'>(link)</a></span>
 </dt>
 <dd>
 <p>The subject is a string;
@@ -278,10 +279,10 @@ log:String
 </dd>
 </dl>
 </dd>
-<dt id='string_notEqualIgnoringCase'>
+<dt id='vocab_string_notEqualIgnoringCase'>
 <strong>string:notEqualIgnoringCase</strong>
 <em>contains</em>
-<span class='permalink'><a href='#string_notEqualIgnoringCase' title='Permalink for string:notEqualIgnoringCase'>(link)</a></span>
+<span class='permalink'><a href='#vocab_string_notEqualIgnoringCase' title='Permalink for string:notEqualIgnoringCase'>(link)</a></span>
 </dt>
 <dd>
 <p>True iff the subject string is the NOT same as object string
@@ -298,10 +299,10 @@ log:String
 </dd>
 </dl>
 </dd>
-<dt id='string_notGreaterThan'>
+<dt id='vocab_string_notGreaterThan'>
 <strong>string:notGreaterThan</strong>
 <em>is not greater than</em>
-<span class='permalink'><a href='#string_notGreaterThan' title='Permalink for string:notGreaterThan'>(link)</a></span>
+<span class='permalink'><a href='#vocab_string_notGreaterThan' title='Permalink for string:notGreaterThan'>(link)</a></span>
 </dt>
 <dd>
 <p>True iff the string is NOT greater than the object
@@ -318,10 +319,10 @@ log:String
 </dd>
 </dl>
 </dd>
-<dt id='string_notLessThan'>
+<dt id='vocab_string_notLessThan'>
 <strong>string:notLessThan</strong>
 <em>is not less than</em>
-<span class='permalink'><a href='#string_notLessThan' title='Permalink for string:notLessThan'>(link)</a></span>
+<span class='permalink'><a href='#vocab_string_notLessThan' title='Permalink for string:notLessThan'>(link)</a></span>
 </dt>
 <dd>
 <p>True iff the string is NOT less than the object
@@ -338,10 +339,10 @@ log:String
 </dd>
 </dl>
 </dd>
-<dt id='string_notMatches'>
+<dt id='vocab_string_notMatches'>
 <strong>string:notMatches</strong>
 <em>contains</em>
-<span class='permalink'><a href='#string_notMatches' title='Permalink for string:notMatches'>(link)</a></span>
+<span class='permalink'><a href='#vocab_string_notMatches' title='Permalink for string:notMatches'>(link)</a></span>
 </dt>
 <dd>
 <p>The subject string;
@@ -359,10 +360,10 @@ log:String
 </dd>
 </dl>
 </dd>
-<dt id='string_replace'>
+<dt id='vocab_string_replace'>
 <strong>string:replace</strong>
 <em>replace</em>
-<span class='permalink'><a href='#string_replace' title='Permalink for string:replace'>(link)</a></span>
+<span class='permalink'><a href='#vocab_string_replace' title='Permalink for string:replace'>(link)</a></span>
 </dt>
 <dd>
 <p>A built-in for replacing characters or sub.
@@ -382,10 +383,10 @@ log:String
 </dd>
 </dl>
 </dd>
-<dt id='string_scrape'>
+<dt id='vocab_string_scrape'>
 <strong>string:scrape</strong>
 <em>scrape</em>
-<span class='permalink'><a href='#string_scrape' title='Permalink for string:scrape'>(link)</a></span>
+<span class='permalink'><a href='#vocab_string_scrape' title='Permalink for string:scrape'>(link)</a></span>
 </dt>
 <dd>
 <p>The subject is a list of two strings. The second string is
@@ -405,10 +406,10 @@ log:String
 </dd>
 </dl>
 </dd>
-<dt id='string_startsWith'>
+<dt id='vocab_string_startsWith'>
 <strong>string:startsWith</strong>
 <em>starts with</em>
-<span class='permalink'><a href='#string_startsWith' title='Permalink for string:startsWith'>(link)</a></span>
+<span class='permalink'><a href='#vocab_string_startsWith' title='Permalink for string:startsWith'>(link)</a></span>
 </dt>
 <dd>
 <p>True iff the subject string starts with the object string.</p>
