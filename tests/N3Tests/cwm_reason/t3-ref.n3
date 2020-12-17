@@ -5,7 +5,7 @@
 #       notation3.py,v 1.201 2010-10-23 04:14:48 timbl Exp
 
 #   Base was: file:///Users/gregg/Projects/rdf-n3/spec/test-files/reason/t3.n3
-     @prefix : <#> .
+     @prefix : <t3.n3#> .
     
     :a     :b :c .
     

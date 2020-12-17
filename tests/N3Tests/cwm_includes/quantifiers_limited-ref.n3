@@ -1,5 +1,5 @@
 # From swap/test/ref/bi-quant.n3
-@prefix : <#> .
+@prefix : <quantifiers_limited.n3#> .
 
 :testa1     a :success .
 

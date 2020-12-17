@@ -1,4 +1,4 @@
-@prefix : <#> .
+@prefix : <rounded.n3#> .
 
 :test1a :is -1 .
 :test1b :is 0 .

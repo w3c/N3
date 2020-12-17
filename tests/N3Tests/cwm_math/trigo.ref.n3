@@ -1,4 +1,4 @@
-     @prefix : <#> .
+     @prefix : <trigo-test.n3#> .
      @prefix NonPi: <http://www.w3.org/2000/10/swap/mathNonPi#> .
      
     -0.707     a :NonPiTestValue,

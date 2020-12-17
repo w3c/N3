@@ -1,4 +1,4 @@
-@prefix : <#> .
+@prefix : <contains.n3#> .
 
 :test1e    a :success .
 :test1s    a :success .

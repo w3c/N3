@@ -1,4 +1,4 @@
-@prefix : <#> .
+@prefix : <inf.n3#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
 :test1a :is :PASS .

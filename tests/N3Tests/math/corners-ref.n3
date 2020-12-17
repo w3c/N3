@@ -1,5 +1,5 @@
 # From swap/ref/math1.n3
-@prefix : <#> .
+@prefix : <corners.n3#> .
 
 0 :valueOf " () math:sum ?x  --- should be 0" .
 
