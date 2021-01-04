@@ -1,4 +1,4 @@
-@prefix : <#> .
+@prefix : <containsIgnoringCase.n3#> .
 
 :test1     a :success .
 :test3     a :success .

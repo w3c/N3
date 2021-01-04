@@ -1,4 +1,4 @@
-@prefix : <#>.
+@prefix : <last.n3#>.
 
 :test1 a :SUCCESS.
 :test2 a :SUCCESS.

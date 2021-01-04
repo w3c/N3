@@ -1,4 +1,4 @@
-@prefix : <#>.
+@prefix : <trig.n3#>.
 
 :test1a :subject 0; :SIN 0.0e0 .
 :test1b :subject 0; :ASIN 0.0e0 .

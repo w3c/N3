@@ -1,4 +1,4 @@
-@prefix : <#> .
+@prefix : <remainder.n3#> .
 
 :test1a a :SUCCESS .
 :test1b a :SUCCESS .

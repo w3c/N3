@@ -1,4 +1,4 @@
-@prefix : <#>.
+@prefix : <member.n3#>.
 
 :test4a a :SUCCESS.
 :test4b a :SUCCESS.

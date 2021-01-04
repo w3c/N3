@@ -5,7 +5,7 @@
 #       notation3.py,v 1.201 2010-10-23 04:14:48 timbl Exp
 
 #   Base was: file:///Users/gregg/Projects/rdf-n3/spec/test-files/unify4.n3
-     @prefix : <#> .
+     @prefix : <unify4.n3#> .
     
     2     a :RESULT .
       ( 1

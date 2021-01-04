@@ -1,5 +1,5 @@
 # From swap/tests/crypto/parsedAsN3-ref.n3
-@prefix : <#> .
+@prefix : <parsedAsN3.n3#> .
 @prefix acc: <http://www.w3.org/2000/10/swap/test/crypto/acc.n3#> .
 
 {

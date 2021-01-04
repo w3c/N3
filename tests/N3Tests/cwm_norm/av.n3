@@ -76,7 +76,7 @@
 
 # The graph information
 
-<> gv:digraph [
+: gv:digraph [
  gv:label "AV Diagram";
 
  gv:subgraph [ 

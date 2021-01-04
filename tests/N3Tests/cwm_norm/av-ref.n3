@@ -9,7 +9,7 @@
     @prefix gv: <http://www.w3.org/2001/02pd/gv#> .
     @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
     
-    <>     gv:digraph  [
+    :     gv:digraph  [
              gv:label "AV Diagram";
              gv:subgraph  [
                  gv:hasEdgeProperty :dottedEdge,

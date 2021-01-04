@@ -1,5 +1,5 @@
  @prefix : <TEST#> .
-@prefix v: <#> .
+@prefix v: <t1.n3#> .
 
  @forAll v:f,
             v:t,
