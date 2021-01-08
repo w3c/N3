@@ -94,7 +94,7 @@ cr:string
 </section>
 <section class='vocabulary'>
 <h3>n3 definition of some list functions</h3>
-<div class="attribute">
+<div class="attribute comment">
 <p>This is an ontology for computable list functions.</p>
 
 </div>
@@ -109,10 +109,21 @@ cr:string
 <span class="permalink"><a href="#vocab_list_append" title="Permalink for list:append">(link)</a></span>
 </dt>
 <dd>
-<p>Iff the subject is a list of lists and the concatenation of all those lists 
-is the object, then this is true.
-eg  ( (1 2) (3 4) ) list:append (1 2 3 4).
-The object can be calculated as a function of the subject.</p>
+<p>Concatenates separate lists into a single list</p>
+
+<p><strong>schema</strong>:
+<code>($a_1 .. $a_n) list:append $a_s</code></p>
+
+<p><strong>definition</strong>:
+<code>true</code> if and only if the subject is a list of lists and the concatenation of all those lists 
+is <code>$a_s</code>.
+<code>$a_s</code> can be calculated as a function of the subject.</p>
+
+<p><strong>requires</strong>:
+all <code>$a_1, .., $a_n</code> to be lists with all constituent members bound.</p>
+
+<p><strong>example</strong>:
+<code>( (1 2) (3 4) ) list:append (1 2 3 4).</code></p>
 
 <dl class="annotations">
 <dt>rdfs:domain</dt>
@@ -127,8 +138,17 @@ log:List
 <span class="permalink"><a href="#vocab_list_first" title="Permalink for list:first">(link)</a></span>
 </dt>
 <dd>
-<p>Iff the subject is a list and the object is the first thing that list, then this is true.
-The object can be calculated as a function of the list.</p>
+<p>Extracts the first member of a list.</p>
+
+<p><strong>schema</strong>:
+<code>($a_1 .. $a_n) list:first $a_s</code></p>
+
+<p><strong>definition</strong>:
+<code>true</code> if and only the subject is a list and <code>$a_s</code> is the first member of that list.
+<code>$a_s</code> can be calculated as a function of the subject.</p>
+
+<p><strong>requires</strong>:
+all <code>$a_1, .., $a_n</code> to be bound.</p>
 
 <dl class="annotations">
 <dt>vs:term_status</dt>
@@ -147,7 +167,18 @@ log:List
 <span class="permalink"><a href="#vocab_list_in" title="Permalink for list:in">(link)</a></span>
 </dt>
 <dd>
-<p>Iff the object is a list and the subject is in that list, then this is true.</p>
+<p>Determines if an subject is a member of the object list
+or binds every member of the object list to the subject.</p>
+
+<p><strong>schema</strong>:
+<code>$a_1 list:in $a_2</code></p>
+
+<p><strong>definition</strong>:
+<code>true</code> if and only <code>$a_2</code> is a list and <code>$a_1</code> is in that list.
+<code>$a_1</code> can be calculated from <code>$a_2</code>.</p>
+
+<p><strong>requires</strong>:
+<code>$a_2</code> to be a bound list.</p>
 
 <dl class="annotations">
 <dt>rdfs:range</dt>
@@ -162,8 +193,17 @@ log:List
 <span class="permalink"><a href="#vocab_list_last" title="Permalink for list:last">(link)</a></span>
 </dt>
 <dd>
-<p>Iff the subject is a list and the object is the last thing that list, then this is true.
-The object can be calculated as a function of the list.</p>
+<p>Extracts the first member of a list.</p>
+
+<p><strong>schema</strong>:
+<code>($a_1 .. $a_n) list:last $a_s</code></p>
+
+<p><strong>definition</strong>:
+<code>true</code> if and only the subject is a list and <code>$a_s</code> is the last member of that list.
+<code>$a_s</code> can be calculated as a function of the subject.</p>
+
+<p><strong>requires</strong>:
+all <code>$a_1, .., $a_n</code> to be bound.</p>
 
 <dl class="annotations">
 <dt>rdfs:domain</dt>
@@ -178,8 +218,22 @@ log:List
 <span class="permalink"><a href="#vocab_list_length" title="Permalink for list:length">(link)</a></span>
 </dt>
 <dd>
-<p>Iff the subject is a list and the object is the last thing that list, then this is true.
-The object can be calculated as a function of the list.</p>
+<p>Calculates the length of a list.</p>
+
+<p><strong>schema</strong>:
+<code>($a_1 .. $a_n) list:length $a_s</code></p>
+
+<p><strong>definition</strong>:
+<code>true</code> if and only the subject is a list and <code>$a_s</code> is integer length of that list.
+<code>$a_s</code> can be calculated as a function of the subject.</p>
+
+<p><strong>requires</strong>:</p>
+
+<ul>
+<li>all <code>$a_1, .., $a_n</code> to be bound.</li>
+<li>
+<code>$a_s</code>: unbound, <code>xs:integer</code> (or its derived types) (see note on type promotion, and casting from string)</li>
+</ul>
 
 <dl class="annotations">
 <dt>vs:term_status</dt>
@@ -202,7 +256,18 @@ xsd:integer
 <span class="permalink"><a href="#vocab_list_member" title="Permalink for list:member">(link)</a></span>
 </dt>
 <dd>
-<p>Iff the subject is a list and the object is in that list, then this is true.</p>
+<p>Determines if an object is a member of the subject list
+or binds every member of the subject list to the object.</p>
+
+<p><strong>schema</strong>:
+<code>$a_1 list:member $a_2</code></p>
+
+<p><strong>definition</strong>:
+<code>true</code> if and only <code>$a_1</code> is a list and <code>$a_2</code> is in that list.
+<code>$a_2</code> can be calculated from <code>$a_1</code>.</p>
+
+<p><strong>requires</strong>:
+<code>$a_1</code> to be a bound list.</p>
 
 <dl class="annotations">
 <dt>rdfs:domain</dt>
@@ -220,9 +285,10 @@ log:List
 <p>Gets the member of a list at a given position (where the position of the first element is 1)</p>
 
 <p><strong>schema</strong>:
-<code>(($a_1 .. $a_n) $a_i) list:memberAt $a_m.</code></p>
+<code>(($a_1 .. $a_n) $a_i) list:memberAt $a_m</code></p>
 
-<p>Iff  <code>($a_1 .. $a_n)</code> has an element at position <code>$a_i</code>,
+<p><strong>definition</strong>:
+Iff  <code>($a_1 .. $a_n)</code> has an element at position <code>$a_i</code>,
 and if that element and <code>$a_m</code> can unify.</p>
 
 <p><strong>requires</strong>:
@@ -261,11 +327,22 @@ log:List
 <span class="permalink"><a href="#vocab_list_remove" title="Permalink for list:remove">(link)</a></span>
 </dt>
 <dd>
-<p>Iff the subject is a list of two lists, the second component is a subset of the first component
-and the object is a list composed of the members of the first component of the subject with
-all members of the second component of the subject removed, matching left to right.
-eg ( (1 2 3 4) (2 3) ) list:remove (1 4).
-The object can be calculated as a function of the subject.</p>
+<p>Removes the second component of the subject list from the first component of that list.</p>
+
+<p><strong>schema</strong>:
+<code>($a_1 $a_2) list:remove $a_3</code></p>
+
+<p><strong>definition</strong>:
+Iff the subject is a list of two lists <code>$a_1</code> and <code>$a_2</code>, <code>$a_2</code> is a subset of <code>$a_1</code>
+and <code>$a_3</code> is a list composed of the members of the <code>$a_1</code> with
+all members of <code>$a_2</code> removed, matching left to right.
+<code>$a_3</code> can be calculated as a function of the subject.</p>
+
+<p><strong>requires</strong>:
+<code>$a_1</code> and <code>$a_2</code> must be bound lists.</p>
+
+<p><strong>example</strong>:
+<code>( (1 2 3 4) (2 3) ) list:remove (1 4).</code></p>
 
 <dl class="annotations">
 <dt>vs:term_status</dt>
