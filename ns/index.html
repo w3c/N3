@@ -1023,7 +1023,7 @@ rdfs:Literal
 </section>
 <section class='vocabulary'>
 <h3>Schema mathematical built-in functions</h3>
-<div class="attribute">
+<div class="attribute comment">
 <p>This is an ontology for computable math functions.</p>
 
 </div>
@@ -1075,7 +1075,7 @@ between two values</p>
 <dl class="annotations">
 <dt>rdfs:subClassOf</dt>
 <dd class="subClassOf">
-math:ReverseFunction, math:Function
+math:Function, math:ReverseFunction
 </dd>
 </dl>
 </dd>
@@ -1135,7 +1135,7 @@ math:List
 <dl class="annotations">
 <dt>rdfs:subClassOf</dt>
 <dd class="subClassOf">
-_:g5540
+_:b0
 </dd>
 </dl>
 </dd>
@@ -1313,8 +1313,10 @@ math:Value
 checks equality of numbers</p>
 
 <p><strong>definition</strong>:
-<code>true</code> if and only if <code>$a1</code> is equal to <code>$a2</code>. 
-Requires both arguments to be either concrete numerals, or variables bound to a numeral.</p>
+<code>true</code> if and only if <code>$a1</code> is equal to <code>$a2</code>. </p>
+
+<p><strong>requires</strong>:
+<code>$a_1</code> or <code>$a_2</code> (or both) must be either concrete numerals, or variables bound to a numeral.</p>
 
 <p><strong>literal domains</strong>:</p>
 
@@ -1652,13 +1654,10 @@ math:Value
 performs addition of numbers</p>
 
 <p><strong>definition</strong>:
-<code>true</code> if and only if the arithmetic sum of <code>$a_1, .. $a_n</code> equals <code>$a_s</code>.
-Requires either:</p>
+<code>true</code> if and only if the arithmetic sum of <code>$a_1, .. $a_n</code> equals <code>$a_s</code>.</p>
 
-<ol>
-<li>all <code>$a_1, .., $a_n</code> to be bound; or</li>
-<li>all but one <code>$a_i</code> (subject list) to be bound, and <code>$a_s</code> to be bound.</li>
-</ol>
+<p><strong>requires</strong>:
+all <code>$a_1, .., $a_n</code> to be bound.</p>
 
 <p><strong>literal domains</strong>:</p>
 
@@ -1726,7 +1725,7 @@ math:Value
 </section>
 <section class='vocabulary'>
 <h3>String Processing Ontology</h3>
-<div class="attribute">
+<div class="attribute comment">
 <p>This is an ontology for computable string functions.
 It is implemented, for example, in CWM and Euler.</p>
 
@@ -1778,12 +1777,8 @@ concatenates the given resources</p>
 <p><strong>definition</strong>:
 <code>true</code> if and only if the string concatenation of <code>$a_1, .. $a_n</code> equals <code>$a_s</code>.</p>
 
-<p>Requires either:</p>
-
-<ol>
-<li>all <code>$a_1, .., $a_n</code> to be bound; or</li>
-<li>all but one <code>$a_i</code> (subject list) to be bound, and <code>$a_s</code> to be bound.</li>
-</ol>
+<p><strong>requires</strong>:
+all <code>$a_1, .., $a_n</code> to be bound.</p>
 
 <p><strong>literal domains</strong>:</p>
 

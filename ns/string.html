@@ -36,7 +36,7 @@
 </a>
 </p>
 <h3 class='label'>String Processing Ontology</h3>
-<div class='attribute'>
+<div class='attribute comment'>
 <p>This is an ontology for computable string functions.
 It is implemented, for example, in CWM and Euler.</p>
 
@@ -91,12 +91,8 @@ concatenates the given resources</p>
 <p><strong>definition</strong>:
 <code>true</code> if and only if the string concatenation of <code>$a_1, .. $a_n</code> equals <code>$a_s</code>.</p>
 
-<p>Requires either:</p>
-
-<ol>
-<li>all <code>$a_1, .., $a_n</code> to be bound; or</li>
-<li>all but one <code>$a_i</code> (subject list) to be bound, and <code>$a_s</code> to be bound.</li>
-</ol>
+<p><strong>requires</strong>:
+all <code>$a_1, .., $a_n</code> to be bound.</p>
 
 <p><strong>literal domains</strong>:</p>
 

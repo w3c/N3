@@ -39,10 +39,8 @@ concatenates the given resources
 **definition**:
 `true` if and only if the string concatenation of `$a_1, .. $a_n` equals `$a_s`.
 
-Requires either:
-
-1. all `$a_1, .., $a_n` to be bound; or
-2. all but one `$a_i` (subject list) to be bound, and `$a_s` to be bound.
+**requires**:
+all `$a_1, .., $a_n` to be bound.
 
 **literal domains**:
 

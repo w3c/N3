@@ -88,7 +88,9 @@ checks equality of numbers
 
 **definition**:
 `true` if and only if `$a1` is equal to `$a2`. 
-Requires both arguments to be either concrete numerals, or variables bound to a numeral.
+
+**requires**:
+`$a_1` or `$a_2` (or both) must be either concrete numerals, or variables bound to a numeral.
 
 **literal domains**:
 
@@ -115,10 +117,9 @@ performs addition of numbers
 
 **definition**:
 `true` if and only if the arithmetic sum of `$a_1, .. $a_n` equals `$a_s`.
-Requires either:
 
-1. all `$a_1, .., $a_n` to be bound; or
-2. all but one `$a_i` (subject list) to be bound, and `$a_s` to be bound.
+**requires**:
+all `$a_1, .., $a_n` to be bound.
 
 **literal domains**:
 
