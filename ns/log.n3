@@ -46,27 +46,50 @@ of any other identifiers used in the document.
 log:equalTo a rdf:Property, owl:FunctionalProperty, owl:InverseFunctionalProperty;
     rdfs:label "equalTo";
     rdfs:comment
-"""True if the subject and object are the same RDF node (symbol or literal).
+"""
+Determines if two RDF resources are the same.
+
+**schema**:
+`$a_1 log:equalTo $a_2`
+
+**definition**:
+`true` if and only if `$a_1` and `$a_2` are the same RDF node (symbol or literal).
+
 Do not confuse with owl:sameAs.
-A cwm built-in logical operator, RDF graph level.
 """.
 
 log:notEqualTo a rdf:Property;
     owl:inverse log:equalTo;
     rdfs:label "notEqualTo";
     rdfs:comment
-"""Equality in this sense is actually the same URI.
-A cwm built-in logical operator.
+"""
+Determines if two RDF resources are not the same.
+
+**schema**:
+`$a_1 log:notEqualTo $a_2`
+
+**definition**:
+`true` if and only if `$a_1` and `$a_2` are not the same RDF node (symbol or literal).
 """.
 
 log:rawType a rdf:Property, owl:FunctionalProperty;
     rdfs:label "rawType";
     rdfs:range log:Type;
     rdfs:comment """
-This is a low-level language type, one of log:Formula, log:Literal, 
-log:List, log:Set or log:Other. 
-Example: log:semanticsOrError returns either a formula or a string,
-and you can check which using log:rawType.
+Returns an identifier based on the type of the RDF Resource.
+
+**schema**:
+`$a_1 log:rawType $a_2`
+
+**definition**:
+`true` if the type of `$a_1` is the same as `$a_2`, or binds the type to `$a_2`.
+
+**requires**:
+`$a_2` is unbound or one of `log:Formula`, `log:Literal`, 
+`log:List`, `log:Set` or `log:Other`. 
+
+**example**:
+`log:semanticsOrError` returns either a formula or a string, and you can check which using `log:rawType`.
 """.
 
 log:Type a rdfs:Class;
@@ -131,18 +154,25 @@ declared a Truth within a formula it is already taking rules from.""".
 log:implies a rdf:Property;
     rdfs:label "implies";
     rdfs:comment """Logical implication. 
+
 This is the relation between the antecedent (subject) and
 conclusion (object) of a rule.
+
+**schema**:
+`$a_1 log:implies $a_2`
+
+**definition**:
 The application of a rule to a knowledge-base is as follows.
-For every substitution which, applied to the antecedent,
-gives a formula which is a subset of the knowledge-base,
+For every substitution which, applied to the antecedent (`$a_1`),
+gives a formula (`$a_2`) which is a subset of the knowledge-base,
 then the result of applying that same substitution to the
 conclusion may be added to the knowledge-base.
 
-related: See log:conclusion. 
-(See the CWM manual for command line options to determine how
-rules from different sources are applied to and the results
-added to various formula.)
+**requires**:
+`$a_1` and `$a_2` must be formulae.
+
+**related**:
+See `log:conclusion`.
 """;
     rdfs:domain log:Formula;
     rdfs:range log:Formula;
@@ -150,18 +180,28 @@ added to various formula.)
 
 log:includes a rdf:Property;
     rdfs:label "includes";
-    rdfs:comment """The subject formula includes the object formula.
-Formula A includes formula B if there exists some substitution
-which when applied to B creates a formula B' such that for
-every statement in B' is also in A, every variable
+    rdfs:comment """
+The subject formula includes the object formula.
+
+**schema**:
+`$a_1 log:includes $a_2`
+
+**definition**:
+`$a_1` includes `$a_2` if there exists some substitution
+which when applied to `$a_2` creates a formula B' such that for
+every statement in B' is also in `$a_1`, every variable
 universally (or existentially) quantified in B' is quantified in
-the same way in A. 
+the same way in `$a_1`. 
 
 Variable substitution is applied recursively to nested compound terms such as
 formulae, lists and sets.
 
-(Understood natively by cwm when in in the antecedent of a rule.
-You can use this to peer inside nested formulae.)""";
+**requires**:
+`$a_1` and `$a_2` must be formulae.
+
+**note**:
+You can use this to peer inside nested formulae.
+""";
     rdfs:domain log:Formula;
     rdfs:range log:Formula;
     rdfs:isDefinedBy <>.
@@ -169,13 +209,16 @@ You can use this to peer inside nested formulae.)""";
 log:notIncludes a rdf:Property;
     rdfs:label "not includes";
     rdfs:comment """The object formula is NOT a subset of subject.
-True iff log:includes is false.
-The converse of log:includes. (Understood natively by cwm.
-The subject formula may contain variables.
-(In cwm, variables must of course end up getting bound
-before the log:include test can be done, or an infinite result set
-would result)
-Related: See includes""";
+
+**schema**:
+`$a_1 log:notIncludes $a_2`
+
+**definition**:
+`true` if and only if `log:includes` is `false`. The converse of log:includes.
+
+**related**:
+See `log:includes`.
+""";
     rdfs:domain log:Formula;
     rdfs:range log:Formula;
     rdfs:isDefinedBy <>.
@@ -185,13 +228,41 @@ Related: See includes""";
 
 
 log:parsedAsN3 a rdf:Property;
-    rdfs:comment "The subject string, parsed as N3, gives this formula.";
+    rdfs:comment """
+The subject string, parsed as N3, gives this formula.
+
+**schema**:
+`$a_1 log:parsedAsN3 $a_2`
+
+**definition**:
+`$a_1`, parsed as N3, gives `$a_2`.
+
+**requires**:
+`$a_1` is a syntactically valid string in N3 format.
+
+**related**:
+See `log:n3String`.
+""";
     rdfs:label "parses to N3";
     rdfs:domain log:N3;
     rdfs:range log:Formula.
  
  log:n3String a rdf:Property;
-    rdfs:comment "The subject formula, expressed as N3, gives this string.";
+    rdfs:comment """
+The subject formula, expressed as N3, gives this string.
+
+**schema**:
+`$a_1 log:n3String $a_2`
+
+**definition**:
+`$a_1`, serialized as N3, gives `$a_2`.
+
+**requires**:
+`$a_1` is a formula.
+
+**related**:
+See `log:parsedAsN3`.
+""";
     rdfs:label "n3 string";
     rdfs:domain log:Formula;
     rdfs:range log:N3.
@@ -200,37 +271,73 @@ log:semantics a rdf:Property;
     rdfs:domain doc:Work;
     rdfs:range  log:Formula;
     rdfs:label  "semantics";
-    rdfs:comment """The log:semantics of a document is the formula.
+    rdfs:comment """
+The log:semantics of a document is the formula
 achieved by parsing representation of the document.
-For a document in Notation3, log:semantics is the
-log:parsedAsN3 of the log:content of the document.
+
+**schema**:
+`$a_1 log:semantics $a_2`
+
+**definition**:
+For a document in Notation3, `log:semantics` is the
+`log:parsedAsN3` of the `log:content` of the document.
+
 For a document in another RDF syntax, it is parsed according to the
 appropriate specification to yield an RDF formula
-(a subclass of N3 log:Formula).
-Evaluates to false if an unrecognized document format is retrieved.
+(a subclass of N3 `log:Formula`).
 
-[Aside: Philosophers will be distracted here into worrying about the meaning
+Evaluates to `false` if an unrecognized document format is retrieved.
+
+**requires**:
+`$a_1` must be an IRI.
+
+**aside**:
+Philosophers will be distracted here into worrying about the meaning
 of meaning. At least we didn't call this function "meaning"!
 In as much as N3 is used as an interlingua for interoperability
 for different systems, this for an N3 based system is the meaning 
-expressed by a document.]""".
+expressed by a document.
+
+**related**:
+See `log:parsedAsN3` and `log:content`.
+""".
 
 log:semanticsOrError a rdf:Property;
     rdfs:domain doc:Work;
     rdfs:label  "semantics or error message";
-    rdfs:comment """This connects a document and either the formula it parses to,
-or an error message explaining what went wrong with trying. See log:semantics.
-(Cwm knows how to go get a document and parse it in order to evaluate this.)
+    rdfs:comment """
+This connects a document and either the formula it parses to,
+or an error message explaining what went wrong with trying.
+
+**schema**:
+`$a_1 log:semanticsOrError $a_2`
+
+**requires**:
+`$a_1` must be an IRI.
+
+**related**:
+See `log:semantics`.
 """.
 
 log:content a rdf:Property;
     rdfs:domain doc:Work;
     rdfs:range  log:String;
     rdfs:label  "content";
-    rdfs:comment """This connects a document and a string that represents it.
+    rdfs:comment """
+This connects a document and a string that represents it.
 (Cwm knows how to go get a document in order to evaluate this.)
-Note that the content-type of the information is not given and
-so must be known or guessed.""".
+
+**schema**:
+`$a_1 log:content $a_2`
+
+**requires**:
+`$a_1` must be an IRI.
+`$a_2` must be either unbound or a string.
+
+**note**:
+The content-type of the information is not given and
+so must be known or guessed.
+""".
 
 #  Merge two formulae
 
@@ -238,12 +345,18 @@ log:conjunction a rdf:Property;
     rdfs:label "conjunction";
     rdfs:domain log:List;
     rdfs:range  log:Formula;
-    rdfs:comment """A function to merge formulae: logical AND.
+    rdfs:comment """
+A function to merge formulae: logical AND.
 
-The subject is a list of formulae.
-The object, which can be generated, is a formula containing a copy
-of each of the formulae in the list on the left.
-A cwm built-in function.
+**schema**:
+`($a_1 .. $a_n) log:conjunction $a_s`
+
+**definition**:
+`$a_s`, which can be generated, is a formula containing a copy
+of each of the formulae `$a_1 .. $a_n`.
+
+**requires**:
+all `$a_1, .., $a_n` to be formulae.
 """.
 
 #  Find the set of ALL statements entailed by a given formula.
@@ -252,12 +365,25 @@ log:conclusion a rdf:Property;
     rdfs:label "conclusion";
     rdfs:domain log:Formula;
     rdfs:range log:Formula;
-    rdfs:comment """All possible conclusions which can be drawn from a formula.
+    rdfs:comment """
+All possible conclusions which can be drawn from a formula.
 
-The object of this function, a formula, is the set of conclusions which can be
-drawn from the subject formula, by successively applying any
-rules it contains to the data it contains. This is equivalent to
-cwm's "--think" command line function.  It does use built-ins, so
+**schema**:
+`$a_1 log:conclusion $a_2`
+
+**definition**:
+`$a_2` is the set of conclusions which can be
+drawn from `$a_1`, by successively applying any
+rules it contains to the data it contains.
+
+**requires**:
+`$a_1` is a formula
+`$a_2` is unbound or a formula.
+
+**note**:
+This is equivalent to
+cwm's "--think" command line function.
+It does use built-ins, so
 it may for example indirectly invoke other documents, validate
 signatures, etc.
 """.

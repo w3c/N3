@@ -36,7 +36,7 @@
 </a>
 </p>
 <h3 class='label'>n3 definition of some Semantic Web terms</h3>
-<div class='attribute'>
+<div class='attribute comment'>
 <p>These raise the level above RDF&#39;s pure relational data,
 and Web Ontology&#39;s ontological level, to allow rules to be expressed
 and inference done. They connect the inference to the web,
@@ -139,7 +139,7 @@ log:Type
 <dl class='annotations'>
 <dt>rdfs:subClassOf</dt>
 <dd class='subClassOf'>
-rdfs:Literal, log:Type
+log:Type, rdfs:Literal
 </dd>
 </dl>
 </dd>
@@ -198,10 +198,22 @@ unstable
 <dd>
 <p>All possible conclusions which can be drawn from a formula.</p>
 
-<p>The object of this function, a formula, is the set of conclusions which can be
-drawn from the subject formula, by successively applying any
-rules it contains to the data it contains. This is equivalent to
-cwm&#39;s &quot;--think&quot; command line function.  It does use built-ins, so
+<p><strong>schema</strong>:
+<code>$a_1 log:conclusion $a_2</code></p>
+
+<p><strong>definition</strong>:
+<code>$a_2</code> is the set of conclusions which can be
+drawn from <code>$a_1</code>, by successively applying any
+rules it contains to the data it contains.</p>
+
+<p><strong>requires</strong>:
+<code>$a_1</code> is a formula
+<code>$a_2</code> is unbound or a formula.</p>
+
+<p><strong>note</strong>:
+This is equivalent to
+cwm&#39;s &quot;--think&quot; command line function.
+It does use built-ins, so
 it may for example indirectly invoke other documents, validate
 signatures, etc.</p>
 
@@ -224,10 +236,15 @@ log:Formula
 <dd>
 <p>A function to merge formulae: logical AND.</p>
 
-<p>The subject is a list of formulae.
-The object, which can be generated, is a formula containing a copy
-of each of the formulae in the list on the left.
-A cwm built-in function.</p>
+<p><strong>schema</strong>:
+<code>($a_1 .. $a_n) log:conjunction $a_s</code></p>
+
+<p><strong>definition</strong>:
+<code>$a_s</code>, which can be generated, is a formula containing a copy
+of each of the formulae <code>$a_1 .. $a_n</code>.</p>
+
+<p><strong>requires</strong>:
+all <code>$a_1, .., $a_n</code> to be formulae.</p>
 
 <dl class='annotations'>
 <dt>rdfs:domain</dt>
@@ -247,8 +264,17 @@ log:Formula
 </dt>
 <dd>
 <p>This connects a document and a string that represents it.
-(Cwm knows how to go get a document in order to evaluate this.)
-Note that the content-type of the information is not given and
+(Cwm knows how to go get a document in order to evaluate this.)</p>
+
+<p><strong>schema</strong>:
+<code>$a_1 log:content $a_2</code></p>
+
+<p><strong>requires</strong>:
+<code>$a_1</code> must be an IRI.
+<code>$a_2</code> must be either unbound or a string.</p>
+
+<p><strong>note</strong>:
+The content-type of the information is not given and
 so must be known or guessed.</p>
 
 <dl class='annotations'>
@@ -352,9 +378,15 @@ rdfs:Literal
 <span class='permalink'><a href='#vocab_log_equalTo' title='Permalink for log:equalTo'>(link)</a></span>
 </dt>
 <dd>
-<p>True if the subject and object are the same RDF node (symbol or literal).
-Do not confuse with owl:sameAs.
-A cwm built-in logical operator, RDF graph level.</p>
+<p>Determines if two RDF resources are the same.</p>
+
+<p><strong>schema</strong>:
+<code>$a_1 log:equalTo $a_2</code></p>
+
+<p><strong>definition</strong>:
+<code>true</code> if and only if <code>$a_1</code> and <code>$a_2</code> are the same RDF node (symbol or literal).</p>
+
+<p>Do not confuse with owl:sameAs.</p>
 
 </dd>
 <dt id='vocab_log_findall'>
@@ -418,19 +450,26 @@ unstable
 <span class='permalink'><a href='#vocab_log_implies' title='Permalink for log:implies'>(link)</a></span>
 </dt>
 <dd>
-<p>Logical implication. 
-This is the relation between the antecedent (subject) and
-conclusion (object) of a rule.
+<p>Logical implication. </p>
+
+<p>This is the relation between the antecedent (subject) and
+conclusion (object) of a rule.</p>
+
+<p><strong>schema</strong>:
+<code>$a_1 log:implies $a_2</code></p>
+
+<p><strong>definition</strong>:
 The application of a rule to a knowledge-base is as follows.
-For every substitution which, applied to the antecedent,
-gives a formula which is a subset of the knowledge-base,
+For every substitution which, applied to the antecedent (<code>$a_1</code>),
+gives a formula (<code>$a_2</code>) which is a subset of the knowledge-base,
 then the result of applying that same substitution to the
 conclusion may be added to the knowledge-base.</p>
 
-<p>related: See log:conclusion. 
-(See the CWM manual for command line options to determine how
-rules from different sources are applied to and the results
-added to various formula.)</p>
+<p><strong>requires</strong>:
+<code>$a_1</code> and <code>$a_2</code> must be formulae.</p>
+
+<p><strong>related</strong>:
+See <code>log:conclusion</code>.</p>
 
 <dl class='annotations'>
 <dt>rdfs:domain</dt>
@@ -449,18 +488,26 @@ log:Formula
 <span class='permalink'><a href='#vocab_log_includes' title='Permalink for log:includes'>(link)</a></span>
 </dt>
 <dd>
-<p>The subject formula includes the object formula.
-Formula A includes formula B if there exists some substitution
-which when applied to B creates a formula B&#39; such that for
-every statement in B&#39; is also in A, every variable
+<p>The subject formula includes the object formula.</p>
+
+<p><strong>schema</strong>:
+<code>$a_1 log:includes $a_2</code></p>
+
+<p><strong>definition</strong>:
+<code>$a_1</code> includes <code>$a_2</code> if there exists some substitution
+which when applied to <code>$a_2</code> creates a formula B&#39; such that for
+every statement in B&#39; is also in <code>$a_1</code>, every variable
 universally (or existentially) quantified in B&#39; is quantified in
-the same way in A. </p>
+the same way in <code>$a_1</code>. </p>
 
 <p>Variable substitution is applied recursively to nested compound terms such as
 formulae, lists and sets.</p>
 
-<p>(Understood natively by cwm when in in the antecedent of a rule.
-You can use this to peer inside nested formulae.)</p>
+<p><strong>requires</strong>:
+<code>$a_1</code> and <code>$a_2</code> must be formulae.</p>
+
+<p><strong>note</strong>:
+You can use this to peer inside nested formulae.</p>
 
 <dl class='annotations'>
 <dt>rdfs:domain</dt>
@@ -481,6 +528,18 @@ log:Formula
 <dd>
 <p>The subject formula, expressed as N3, gives this string.</p>
 
+<p><strong>schema</strong>:
+<code>$a_1 log:n3String $a_2</code></p>
+
+<p><strong>definition</strong>:
+<code>$a_1</code>, serialized as N3, gives <code>$a_2</code>.</p>
+
+<p><strong>requires</strong>:
+<code>$a_1</code> is a formula.</p>
+
+<p><strong>related</strong>:
+See <code>log:parsedAsN3</code>.</p>
+
 <dl class='annotations'>
 <dt>rdfs:domain</dt>
 <dd class='domain'>
@@ -498,8 +557,13 @@ log:N3
 <span class='permalink'><a href='#vocab_log_notEqualTo' title='Permalink for log:notEqualTo'>(link)</a></span>
 </dt>
 <dd>
-<p>Equality in this sense is actually the same URI.
-A cwm built-in logical operator.</p>
+<p>Determines if two RDF resources are not the same.</p>
+
+<p><strong>schema</strong>:
+<code>$a_1 log:notEqualTo $a_2</code></p>
+
+<p><strong>definition</strong>:
+<code>true</code> if and only if <code>$a_1</code> and <code>$a_2</code> are not the same RDF node (symbol or literal).</p>
 
 <dl class='annotations'>
 <dt>owl:inverse</dt>
@@ -544,14 +608,16 @@ unstable
 <span class='permalink'><a href='#vocab_log_notIncludes' title='Permalink for log:notIncludes'>(link)</a></span>
 </dt>
 <dd>
-<p>The object formula is NOT a subset of subject.
-True iff log:includes is false.
-The converse of log:includes. (Understood natively by cwm.
-The subject formula may contain variables.
-(In cwm, variables must of course end up getting bound
-before the log:include test can be done, or an infinite result set
-would result)
-Related: See includes</p>
+<p>The object formula is NOT a subset of subject.</p>
+
+<p><strong>schema</strong>:
+<code>$a_1 log:notIncludes $a_2</code></p>
+
+<p><strong>definition</strong>:
+<code>true</code> if and only if <code>log:includes</code> is <code>false</code>. The converse of log:includes.</p>
+
+<p><strong>related</strong>:
+See <code>log:includes</code>.</p>
 
 <dl class='annotations'>
 <dt>rdfs:domain</dt>
@@ -593,6 +659,18 @@ log:String
 <dd>
 <p>The subject string, parsed as N3, gives this formula.</p>
 
+<p><strong>schema</strong>:
+<code>$a_1 log:parsedAsN3 $a_2</code></p>
+
+<p><strong>definition</strong>:
+<code>$a_1</code>, parsed as N3, gives <code>$a_2</code>.</p>
+
+<p><strong>requires</strong>:
+<code>$a_1</code> is a syntactically valid string in N3 format.</p>
+
+<p><strong>related</strong>:
+See <code>log:n3String</code>.</p>
+
 <dl class='annotations'>
 <dt>rdfs:domain</dt>
 <dd class='domain'>
@@ -621,10 +699,20 @@ For anything else, it is itself.</p>
 <span class='permalink'><a href='#vocab_log_rawType' title='Permalink for log:rawType'>(link)</a></span>
 </dt>
 <dd>
-<p>This is a low-level language type, one of log:Formula, log:Literal, 
-log:List, log:Set or log:Other. 
-Example: log:semanticsOrError returns either a formula or a string,
-and you can check which using log:rawType.</p>
+<p>Returns an identifier based on the type of the RDF Resource.</p>
+
+<p><strong>schema</strong>:
+<code>$a_1 log:rawType $a_2</code></p>
+
+<p><strong>definition</strong>:
+<code>true</code> if the type of <code>$a_1</code> is the same as <code>$a_2</code>, or binds the type to <code>$a_2</code>.</p>
+
+<p><strong>requires</strong>:
+<code>$a_2</code> is unbound or one of <code>log:Formula</code>, <code>log:Literal</code>, 
+<code>log:List</code>, <code>log:Set</code> or <code>log:Other</code>. </p>
+
+<p><strong>example</strong>:
+<code>log:semanticsOrError</code> returns either a formula or a string, and you can check which using <code>log:rawType</code>.</p>
 
 <dl class='annotations'>
 <dt>rdfs:range</dt>
@@ -656,20 +744,34 @@ log:String
 <span class='permalink'><a href='#vocab_log_semantics' title='Permalink for log:semantics'>(link)</a></span>
 </dt>
 <dd>
-<p>The log:semantics of a document is the formula.
-achieved by parsing representation of the document.
-For a document in Notation3, log:semantics is the
-log:parsedAsN3 of the log:content of the document.
-For a document in another RDF syntax, it is parsed according to the
-appropriate specification to yield an RDF formula
-(a subclass of N3 log:Formula).
-Evaluates to false if an unrecognized document format is retrieved.</p>
+<p>The log:semantics of a document is the formula
+achieved by parsing representation of the document.</p>
 
-<p>[Aside: Philosophers will be distracted here into worrying about the meaning
+<p><strong>schema</strong>:
+<code>$a_1 log:semantics $a_2</code></p>
+
+<p><strong>definition</strong>:
+For a document in Notation3, <code>log:semantics</code> is the
+<code>log:parsedAsN3</code> of the <code>log:content</code> of the document.</p>
+
+<p>For a document in another RDF syntax, it is parsed according to the
+appropriate specification to yield an RDF formula
+(a subclass of N3 <code>log:Formula</code>).</p>
+
+<p>Evaluates to <code>false</code> if an unrecognized document format is retrieved.</p>
+
+<p><strong>requires</strong>:
+<code>$a_1</code> must be an IRI.</p>
+
+<p><strong>aside</strong>:
+Philosophers will be distracted here into worrying about the meaning
 of meaning. At least we didn&#39;t call this function &quot;meaning&quot;!
 In as much as N3 is used as an interlingua for interoperability
 for different systems, this for an N3 based system is the meaning 
-expressed by a document.]</p>
+expressed by a document.</p>
+
+<p><strong>related</strong>:
+See <code>log:parsedAsN3</code> and <code>log:content</code>.</p>
 
 <dl class='annotations'>
 <dt>rdfs:domain</dt>
@@ -689,8 +791,16 @@ log:Formula
 </dt>
 <dd>
 <p>This connects a document and either the formula it parses to,
-or an error message explaining what went wrong with trying. See log:semantics.
-(Cwm knows how to go get a document and parse it in order to evaluate this.)</p>
+or an error message explaining what went wrong with trying.</p>
+
+<p><strong>schema</strong>:
+<code>$a_1 log:semanticsOrError $a_2</code></p>
+
+<p><strong>requires</strong>:
+<code>$a_1</code> must be an IRI.</p>
+
+<p><strong>related</strong>:
+See <code>log:semantics</code>.</p>
 
 <dl class='annotations'>
 <dt>rdfs:domain</dt>
