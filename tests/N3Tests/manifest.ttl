@@ -214,7 +214,6 @@
       :cwm_syntax_zero-objects.n3
       :cwm_syntax_zero-predicates.n3
       :cwm_time_t1.n3
-      :cwm_time_t1s.n3
       :cwm_unify_reflexive-ref.n3
       :cwm_unify_reflexive.n3
       :cwm_unify_unify1-ref.n3
@@ -1312,10 +1311,6 @@
 :cwm_time_t1.n3  a   test:TestN3PositiveSyntax ;
         mf:action      <cwm_time/t1.n3> ;
         mf:name        "t1" .
-
-:cwm_time_t1s.n3  a  test:TestN3PositiveSyntax ;
-        mf:action      <cwm_time/t1s.n3> ;
-        mf:name        "t1s" .
 
 :cwm_unify_reflexive-ref.n3
         a              test:TestN3PositiveSyntax ;

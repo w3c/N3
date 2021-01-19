@@ -30,7 +30,7 @@
 { :y TEST:inSeconds :x }.
 
 { :t time:inSeconds "1000000000"} log:implies
-{ :t TEST:inSeconds "1000000000"}.
+{ :t TEST:inSeconds 1000000000}.
  
 
 { :y a :TestDate;  time:year :x } log:implies

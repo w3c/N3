@@ -1,5 +1,5 @@
 # From swap/test/ref/includes-builtins.n3
-@prefix : <#> .
+@prefix : <builtins.n3#> .
 
 :test1     a :Success .
 

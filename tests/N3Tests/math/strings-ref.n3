@@ -1,5 +1,5 @@
 # From swap/ref/math1.n3
-@prefix : <#> .
+@prefix : <strings.n3#> .
 
 -3 :valueOf "3 negated" .
 1 :valueOf "7 % 2" .

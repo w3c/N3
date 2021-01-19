@@ -1,4 +1,4 @@
-     @prefix : <#> .
-    
-      [      a :Result ].
-    
+@prefix : <bnodeConclude.n3#> .
+
+[ a :Result ].
+

@@ -1,4 +1,4 @@
-@prefix : <#> .
+@prefix : <matches.n3#> .
 
 :test1a    a :success .
 :test1c    a :success .

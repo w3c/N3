@@ -42,4 +42,5 @@
 
 # Inverse operations
 { ?y math:sin 0}  => { :test4a :object 0;  :ASIN ?y} .
-{ ?y math:tan 0}  => { :test4b :object 0;  :ATAN ?y} .
+{ ?y math:cos 1}  => { :test4b :object 0;  :ACOS ?y} .
+{ ?y math:tan 0}  => { :test4c :object 0;  :ATAN ?y} .
