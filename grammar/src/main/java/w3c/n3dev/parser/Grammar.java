@@ -19,7 +19,7 @@ public class Grammar {
 
 	public enum Grammars {
 
-		turtle, n3, n3ws("n3");
+		turtle, turtlestar, n3, n3ws("n3");
 
 		private String lng;
 		private String clsPrefix;

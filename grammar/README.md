@@ -96,7 +96,8 @@ To generate the JavaScript parser code, download the latest [ANTLR4 runtime](htt
 
 `java -jar path/to/antlr-<version>-complete.jar -Dlanguage=JavaScript n3.g4 -visitor`
 
-(ensure there are no "package" statements at the start of the lexer and parser files)
+- Ensure there are no "package" statements at the start of the lexer and parser files
+- Add the "symbolicNames" variable as a parser property (e.g., `n3Parser.symbolicNames = symbolicNames;`) 
 
 You can then create an `index.js` page for testing the JS parser (and possibly your own visitor code). You should use `npm` for running the code. See [here](https://github.com/antlr/antlr4/blob/master/doc/javascript-target.md) for more information.
 

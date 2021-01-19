@@ -1,0 +1,30 @@
+
+-- CONFIG
+turtlestar (language: turtlestar, parser: turtlestar)
+file: D:\git\n3dev\tests\test.turtlestar
+
+
+-- TESTS
+testing (positive): ..\..\tests\test.turtlestar
+TurtleStarDoc
+ Statement
+  Triples
+   Subject
+    Iri
+     PrefixedName
+      :hello (PNAME_LN)
+   PredicateObjectList
+    Verb
+     Predicate
+      Iri
+       PrefixedName
+        :at (PNAME_LN)
+    ObjectList
+     Object
+      Iri
+       PrefixedName
+        :world (PNAME_LN)
+  . ('.')
+ <EOF>
+
+pass? true
