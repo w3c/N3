@@ -29,10 +29,10 @@
 	:listElementType :stringOrVariable .
 
 :maxOneVar a :VariableTypeRestriction ;
-	:cardinality [ a :Max ; rdf:value 1 ; :scope [ a :ClauseScope ] ] .
-	
+	:cardinality [ a :Max ; rdf:value 1 ] .
+
 :exactOneVar a :VariableTypeRestriction ;
-	:cardinality [ a :Exact ; rdf:value 1 ; :scope [ a :ClauseScope ] ] .
+	:cardinality [ a :Exact ; rdf:value 1 ] .
 
 math:equalTo
 	a :BuiltinDefinition ;
@@ -45,149 +45,79 @@ math:equalTo
 		:object [ :restricts :numeric ]
 	] ;
 	:trueFor [
-		:subjectObject [ :restricts [ :type :Variable ; :exactCardinality 1 ] ]
-	] .
+		:subjectObject [ :restricts :exactOneVar ]
+	] ;
+	:falseFor [	a :Other ] .
 	
 math:greaterThan
 	a :BuiltinDefinition ;
 	:domain [
-		:subject [ :restricts :numericOrVariable ] ;
-		:object [ :restricts :numericOrVariable ]
-	] ;
-	:checkFor [
 		:subject [ :restricts :numeric ] ;
 		:object [ :restricts :numeric ]
 	] ;
-	:falseFor [
-		:subjectObject [ :restricts [ :type :Variable ; :exactCardinality 1 ] ]
-	] ;
-	:trueFor [ a :Other ] .
-
-math:lessThan
-	a :BuiltinDefinition ;
-	:domain [
-		:subject [ :restricts :numericOrVariable ] ;
-		:object [ :restricts :numericOrVariable ]
-	] ;
-	:checkFor [
-		:subject [ :restricts :numeric ] ;
-		:object [ :restricts :numeric ]
-	] ;
-	:falseFor [
-		:subjectObject [ :restricts [ :type :Variable ; :exactCardinality 1 ] ]
-	] ;
-	:trueFor [ a :Other ] .
+	:checkFor [ a :DomainMatch ] ;
+	:falseFor [ a :Other ] .
 	
 math:sum
     a :BuiltinDefinition ;
 	:domain [
-		:subject [
-			:oneOf ( 
-				[ :restricts :numericOrVariableList ]
-				[ :restricts :variable ]
-			) ] ;
-		:object [ :restricts :numericOrVariable ] ;
+		:subject [ :restricts :numericList ] ;
+		:object [ :restricts :numericOrVariable ]
 	] ;
-	:checkFor [
-		:oneOf ( [
-			:subject [ :restricts :numericList ] ;
-			:object [ :restricts :numericOrVariable ]
-		] [
-			:subject [ :listElementType [ :oneOf 
-				( [ :restricts [ :type :Variable ; :maxCardinality 1 ] ] [ :restricts :numeric ] ) ]] ;
-			:object [ :restricts :numeric ]
-		] ) ] ;
-	:trueFor [ a :Other ] .
+	:checkFor [ a :DomainMatch ] ;
+	:falseFor [ a :Other ] .
 	
 math:difference
 	a :BuiltinDefinition ;
 	:domain [
-		:subject [
-			:oneOf (
-				[ :size [ a :Exact ; rdf:value 2 ] ; :listElementType [ :restricts :numericOrVariable ]]
-				[ :restricts :variable ]
-			) ] ;
+		:subject [ 
+			:size [ a :Exact ; rdf:value 2 ] ; :listElementType [ :restricts :numeric ]
+		] ;
 		:object [ :restricts :numericOrVariable ] ;
 	] ;
-	:checkFor [
-		:oneOf ( [ 
-			:subject [ :restricts :numericList ] ;
-			:object [ :restricts :numericOrVariable ]
-		] [
-			:subject [ :listElementType [ :oneOf 
-				( [ :restricts [ :type :Variable ; :maxCardinality 1 ] ] [ :restricts :numeric ] ) ]] ;
-			:object [ :restricts :numeric ]
-		] ) ] ;
-	:trueFor [ a :Other ] .
+	:checkFor [ a :DomainMatch ] ;
+	:falseFor [ a :Other ] .
 	
 math:absoluteValue
 	a :BuiltinDefinition ;
-	:domain [
-		:subject [ :restricts :numericOrVariable ] ;
-		:object [ :restricts :numericOrVariable ] ;
-	] ;
-	:checkFor [ :subject [ :restricts :numeric ] ; :object [ :restricts :numericOrVariable ]] ;
-	:trueFor [ a :Other ] .
+	:domain [ :subject [ :restricts :numeric ] ; :object [ :restricts :numericOrVariable ]] ;
+	:checkFor [ a :DomainMatch ] ;
+	:falseFor [ a :Other ] .
 	
 math:cos 
 	a :BuiltinDefinition ;
 	:domain [
-		:subject [ :restricts :numericOrVariable ] ;
-		:object [ :restricts :numericOrVariable ]
-	] ;
-	:checkFor [ 
 		:oneOf ( [ 
 			:subject [ :restricts :numeric ] ; :object [ :restricts :numericOrVariable ]
 		] [ 
-			:subject [ :restricts :numericOrVariable ] ; [ :restricts :numeric ]
+			:subject [ :restricts :numericOrVariable ] ; :object [ :restricts :numeric ]
 		] ) ] ;
-	:trueFor [ a :Other ] .
+	:checkFor [ a :DomainMatch ] ;
+	:falseFor [ a :Other ] .
 	
 string:scrape
 	a :BuiltinDefinition ;
 	:domain [
-		:subject 
-			[ :oneOf (
-				[ :listElements ( [ :restricts :regexOrVariable ] [ :restricts :stringOrVariable ] ) ]
-				[ :restricts :variable ]
-			) ] ;
+		:subject [ :listElements ( [ :restricts :string ] [ :restricts :regex ] ) ] ;
 		:object [ :restricts :stringOrVariable ]
 	] ;
-	:checkFor [
-		:subject [ :listElements ( [ :restricts :regex ] [ :restricts :string ] ) ] ;
-		:object [ :restricts :stringOrVariable ]
-	] ;
-	:trueFor [ a :Other ] .
+	:checkFor [ a :DomainMatch ] ;
+	:falseFor [ a :Other ] .
 	
 string:concatenation
 	a :BuiltinDefinition ;
-	:domain [
-		:subject 
-			[ :oneOf ( [ :restricts :stringOrVariableList ] [ :restricts :variable ] ) ] ;
-		:object [ :restricts :stringOrVariable ]
-	] ;
-	:checkFor [ 
+	:domain [ 
 		:subject [ :restricts :stringList ] ;
 		:object [ :restricts :stringOrVariable ]
 	] ;
-	:trueFor [ a :Other ] .
+	:checkFor [ a :DomainMatch ] ;
+	:falseFor [ a :Other ] .
 	
 list:memberAt
 	a :BuiltinDefinition ;
 	:domain [
-		:subject 
-			[ :oneOf (
-				[ :listElements ( [ :restricts :listOrVariable ] [ :restricts :numericOrVariable ] ) ]
-				[ :restricts :variable ]
-			) ] ;
-		:object [ :restricts :resourceOrVariable ]
-	] ;
-	:checkFor [ 
-		:oneOf ( [
-			:subject [ :listElements ( [ :restricts :list ] [ :restricts :numeric ] ) ] ;
-			:object [ :oneOf ( [ :restricts :resource ] [ :restricts :variable ] ) ]
-		] [
-			:subject [ :listElements ( [ :restricts :list ] [ :restricts :numericOrVariable ] ) ] ;
-			:object [ :restricts :resource ]
-	] ) ] ;	
-	:trueFor [ a :Other ] .
+		:subject [ :listElements ( [ :restricts :list ] [ :restricts :numeric ] ) ] ;
+		:object [ :oneOf ( [ :restricts :resource ] [ :restricts :variable ] ) ]
+	] ;	
+	:checkFor [ a :DomainMatch ] ;
+	:falseFor [ a :Other ] .
