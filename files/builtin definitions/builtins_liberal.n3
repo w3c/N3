@@ -157,6 +157,30 @@ string:scrape
 	] ;
 	:trueFor [ a :Other ] .
 	
+string:matches
+	a :BuiltinDefinition ;
+	:domain [
+		:subject [ :restricts :any ] ;
+		:object [ :restricts :regexOrVariable ]
+	] ;
+	:checkFor [
+		:subject [ :restricts :concrete ] ;
+		:object [ :restricts :regex ]
+	] ;
+	:trueFor [ a :Other ] .
+	
+string:notMatches
+	a :BuiltinDefinition ;
+	:domain [
+		:subject [ :restricts :any ] ;
+		:object [ :restricts :regexOrVariable ]
+	] ;
+	:checkFor [
+		:subject [ :restricts :concrete ] ;
+		:object [ :restricts :regex ]
+	] ;
+	:trueFor [ a :Other ] .
+	
 string:concatenation
 	a :BuiltinDefinition ;
 	:domain [
@@ -236,16 +260,16 @@ log:test
 log:uri
 	a :BuiltinDefinition;
 	:domain [
-		:subject [ :restricts :stringOrVariable ] ;
-		:object [ :restricts :resourceOrVariable ]
+		:subject [ :restricts :resourceOrVariable ] ;
+		:object [ :restricts :stringOrVariable ]
 	] ;
 	:checkFor [
 		:oneOf ( [ 	
-			:subject [ :restricts :string ] ;
-			:object [ :restricts :resourceOrVariable ]
+			:subject [ :restricts :resourceOrVariable ] ;
+			:object [ :restricts :string ]
 		] [
-		 	:subject [ :restricts :stringOrVariable ] ;
-			:object [ :restricts :resource ]
+		 	:subject [ :restricts :resource ] ;
+			:object [ :restricts :stringOrVariable ]
 		] )
 	] ;
 	:trueFor [ a :Other ] .
