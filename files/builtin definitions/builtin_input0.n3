@@ -1,0 +1,8 @@
+@prefix ex: <http://example.org/> .
+@prefix math: <http://www.w3.org/2000/10/swap/math#> .
+@base <http://example.org/> .
+
+{ 1 math:equalTo 1 } => { :math1 :is :cool } .
+{ ?x math:equalTo ?x } => { :math3 :is :cool } .
+{ "a" math:equalTo 1 } => { :math2 :isnot :cool } .
+{ ?x math:greaterThan ?x } => { :math3 :isnot :cool } .
