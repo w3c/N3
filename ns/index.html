@@ -187,6 +187,41 @@ log:List
 </dd>
 </dl>
 </dd>
+<dt id="vocab_list_iterate">
+<strong>list:iterate</strong>
+<em>iterate</em>
+<span class="permalink"><a href="#vocab_list_iterate" title="Permalink for list:iterate">(link)</a></span>
+</dt>
+<dd>
+<p>Iterates over index/value pairs of the subject list</p>
+
+<p><strong>schema</strong>:
+<code>($a_1 .. $a_n) list:iterate ($i $v)</code></p>
+
+<p><strong>definition</strong>:
+Gets the matching pair of list index and list value for every member of the subject.
+If the object is a variable, it will create a solution for each member of the subject list.
+If any member of the object list is a variable it will create a solution for all matching
+members of the subject list.
+If the object is ground, it evaluates to <code>true</code>, otherwise, <code>false</code>.</p>
+
+<p><strong>requires</strong>:
+<code>$i</code> is an integer.</p>
+
+<p><strong>example</strong>:
+<code>( 1 2 3 ) list:iterate ($i $v).</code></p>
+
+<dl class="annotations">
+<dt>rdfs:domain</dt>
+<dd class="domain">
+log:List
+</dd>
+<dt>rdfs:range</dt>
+<dd class="range">
+log:List
+</dd>
+</dl>
+</dd>
 <dt id="vocab_list_last">
 <strong>list:last</strong>
 <em>in</em>
@@ -390,6 +425,20 @@ This is a convenience, and does not have any value when published as a
 general fact on the web.</p>
 
 </dd>
+<dt id="vocab_log_Document">
+<strong>log:Document</strong>
+<em>log:Document</em>
+<span class="permalink"><a href="#vocab_log_Document" title="Permalink for log:Document">(link)</a></span>
+</dt>
+<dd>
+
+<dl class="annotations">
+<dt>rdfs:subClassOf</dt>
+<dd class="subClassOf">
+http://rdfs.org/ns/void#Dataset
+</dd>
+</dl>
+</dd>
 <dt id="vocab_log_Formula">
 <strong>log:Formula</strong>
 <em>Formula</em>
@@ -416,7 +465,7 @@ log:Type
 <dl class="annotations">
 <dt>rdfs:subClassOf</dt>
 <dd class="subClassOf">
-log:Type, rdf:List
+rdf:List, log:Type
 </dd>
 </dl>
 </dd>
@@ -432,12 +481,6 @@ and this schema, conveys the intent of the author by the semantics defined
 on those specifications, and the semantics defined by the specifications
 of any other identifiers used in the document.</p>
 
-<dl class="annotations">
-<dt>rdfs:subClassOf</dt>
-<dd class="subClassOf">
-http://www.w3.org/2000/10/swap/pim/doc#Work
-</dd>
-</dl>
 </dd>
 <dt id="vocab_log_Other">
 <strong>log:Other</strong>
@@ -465,7 +508,7 @@ log:Type
 <dl class="annotations">
 <dt>rdfs:subClassOf</dt>
 <dd class="subClassOf">
-log:Type, rdfs:Literal
+rdfs:Literal, log:Type
 </dd>
 </dl>
 </dd>
@@ -606,7 +649,7 @@ so must be known or guessed.</p>
 <dl class="annotations">
 <dt>rdfs:domain</dt>
 <dd class="domain">
-http://www.w3.org/2000/10/swap/pim/doc#Work
+log:N3Document
 </dd>
 <dt>rdfs:range</dt>
 <dd class="range">
@@ -640,7 +683,7 @@ rdf:Property
 </dd>
 <dt>rdfs:range</dt>
 <dd class="range">
-http://www.w3.org/2000/10/swap/pim/doc#Work
+log:N3Document
 </dd>
 </dl>
 </dd>
@@ -1102,7 +1145,7 @@ See <code>log:parsedAsN3</code> and <code>log:content</code>.</p>
 <dl class="annotations">
 <dt>rdfs:domain</dt>
 <dd class="domain">
-http://www.w3.org/2000/10/swap/pim/doc#Work
+log:N3Document
 </dd>
 <dt>rdfs:range</dt>
 <dd class="range">
@@ -1131,7 +1174,7 @@ See <code>log:semantics</code>.</p>
 <dl class="annotations">
 <dt>rdfs:domain</dt>
 <dd class="domain">
-http://www.w3.org/2000/10/swap/pim/doc#Work
+log:N3Document
 </dd>
 </dl>
 </dd>

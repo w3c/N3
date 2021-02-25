@@ -132,6 +132,41 @@ log:List
 </dd>
 </dl>
 </dd>
+<dt id='vocab_list_iterate'>
+<strong>list:iterate</strong>
+<em>iterate</em>
+<span class='permalink'><a href='#vocab_list_iterate' title='Permalink for list:iterate'>(link)</a></span>
+</dt>
+<dd>
+<p>Iterates over index/value pairs of the subject list</p>
+
+<p><strong>schema</strong>:
+<code>($a_1 .. $a_n) list:iterate ($i $v)</code></p>
+
+<p><strong>definition</strong>:
+Gets the matching pair of list index and list value for every member of the subject.
+If the object is a variable, it will create a solution for each member of the subject list.
+If any member of the object list is a variable it will create a solution for all matching
+members of the subject list.
+If the object is ground, it evaluates to <code>true</code>, otherwise, <code>false</code>.</p>
+
+<p><strong>requires</strong>:
+<code>$i</code> is an integer.</p>
+
+<p><strong>example</strong>:
+<code>( 1 2 3 ) list:iterate ($i $v).</code></p>
+
+<dl class='annotations'>
+<dt>rdfs:domain</dt>
+<dd class='domain'>
+log:List
+</dd>
+<dt>rdfs:range</dt>
+<dd class='range'>
+log:List
+</dd>
+</dl>
+</dd>
 <dt id='vocab_list_last'>
 <strong>list:last</strong>
 <em>in</em>

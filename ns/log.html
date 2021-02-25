@@ -64,6 +64,20 @@ This is a convenience, and does not have any value when published as a
 general fact on the web.</p>
 
 </dd>
+<dt id='vocab_log_Document'>
+<strong>log:Document</strong>
+<em>log:Document</em>
+<span class='permalink'><a href='#vocab_log_Document' title='Permalink for log:Document'>(link)</a></span>
+</dt>
+<dd>
+
+<dl class='annotations'>
+<dt>rdfs:subClassOf</dt>
+<dd class='subClassOf'>
+http://rdfs.org/ns/void#Dataset
+</dd>
+</dl>
+</dd>
 <dt id='vocab_log_Formula'>
 <strong>log:Formula</strong>
 <em>Formula</em>
@@ -90,7 +104,7 @@ log:Type
 <dl class='annotations'>
 <dt>rdfs:subClassOf</dt>
 <dd class='subClassOf'>
-log:Type, rdf:List
+rdf:List, log:Type
 </dd>
 </dl>
 </dd>
@@ -106,12 +120,6 @@ and this schema, conveys the intent of the author by the semantics defined
 on those specifications, and the semantics defined by the specifications
 of any other identifiers used in the document.</p>
 
-<dl class='annotations'>
-<dt>rdfs:subClassOf</dt>
-<dd class='subClassOf'>
-http://www.w3.org/2000/10/swap/pim/doc#Work
-</dd>
-</dl>
 </dd>
 <dt id='vocab_log_Other'>
 <strong>log:Other</strong>
@@ -139,7 +147,7 @@ log:Type
 <dl class='annotations'>
 <dt>rdfs:subClassOf</dt>
 <dd class='subClassOf'>
-log:Type, rdfs:Literal
+rdfs:Literal, log:Type
 </dd>
 </dl>
 </dd>
@@ -280,7 +288,7 @@ so must be known or guessed.</p>
 <dl class='annotations'>
 <dt>rdfs:domain</dt>
 <dd class='domain'>
-http://www.w3.org/2000/10/swap/pim/doc#Work
+log:N3Document
 </dd>
 <dt>rdfs:range</dt>
 <dd class='range'>
@@ -314,7 +322,7 @@ rdf:Property
 </dd>
 <dt>rdfs:range</dt>
 <dd class='range'>
-http://www.w3.org/2000/10/swap/pim/doc#Work
+log:N3Document
 </dd>
 </dl>
 </dd>
@@ -776,7 +784,7 @@ See <code>log:parsedAsN3</code> and <code>log:content</code>.</p>
 <dl class='annotations'>
 <dt>rdfs:domain</dt>
 <dd class='domain'>
-http://www.w3.org/2000/10/swap/pim/doc#Work
+log:N3Document
 </dd>
 <dt>rdfs:range</dt>
 <dd class='range'>
@@ -805,7 +813,7 @@ See <code>log:semantics</code>.</p>
 <dl class='annotations'>
 <dt>rdfs:domain</dt>
 <dd class='domain'>
-http://www.w3.org/2000/10/swap/pim/doc#Work
+log:N3Document
 </dd>
 </dl>
 </dd>
