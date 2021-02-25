@@ -22,10 +22,21 @@ list:append a rdf:Property, owl:FunctionalProperty;
     rdfs:label "append";
     rdfs:domain log:List;
     rdfs:comment """
-Iff the subject is a list of lists and the concatenation of all those lists 
-is the object, then this is true.
-eg  ( (1 2) (3 4) ) list:append (1 2 3 4).
-The object can be calculated as a function of the subject.
+Concatenates separate lists into a single list
+
+**schema**:
+`($a_1 .. $a_n) list:append $a_s`
+
+**definition**:
+`true` if and only if the subject is a list of lists and the concatenation of all those lists 
+is `$a_s`.
+`$a_s` can be calculated as a function of the subject.
+
+**requires**:
+all `$a_1, .., $a_n` to be lists with all constituent members bound.
+
+**example**:
+`( (1 2) (3 4) ) list:append (1 2 3 4).`
 """;
     rdfs:isDefinedBy <>.
 
@@ -33,8 +44,17 @@ list:first a rdf:Property, owl:FunctionalProperty;
     rdfs:label "first";
     rdfs:domain log:List;
     rdfs:comment """
-Iff the subject is a list and the object is the first thing that list, then this is true.
-The object can be calculated as a function of the list.
+Extracts the first member of a list.
+
+**schema**:
+`($a_1 .. $a_n) list:first $a_s`
+
+**definition**:
+`true` if and only the subject is a list and `$a_s` is the first member of that list.
+`$a_s` can be calculated as a function of the subject.
+
+**requires**:
+all `$a_1, .., $a_n` to be bound.
 """;
     vs:term_status "unstable";
     rdfs:isDefinedBy <>.
@@ -43,7 +63,18 @@ list:in a rdf:Property;
     rdfs:label "in";
     rdfs:range log:List;
     rdfs:comment """
-Iff the object is a list and the subject is in that list, then this is true.
+Determines if an subject is a member of the object list
+or binds every member of the object list to the subject.
+
+**schema**:
+`$a_1 list:in $a_2`
+
+**definition**:
+`true` if and only `$a_2` is a list and `$a_1` is in that list.
+`$a_1` can be calculated from `$a_2`.
+
+**requires**:
+`$a_2` to be a bound list.
 """;
     rdfs:isDefinedBy <>.
 
@@ -51,8 +82,17 @@ list:last a rdf:Property, owl:FunctionalProperty;
     rdfs:label "in";
     rdfs:domain log:List;
     rdfs:comment """
-Iff the subject is a list and the object is the last thing that list, then this is true.
-The object can be calculated as a function of the list.
+Extracts the first member of a list.
+
+**schema**:
+`($a_1 .. $a_n) list:last $a_s`
+
+**definition**:
+`true` if and only the subject is a list and `$a_s` is the last member of that list.
+`$a_s` can be calculated as a function of the subject.
+
+**requires**:
+all `$a_1, .., $a_n` to be bound.
 """;
     rdfs:isDefinedBy <>.
 
@@ -61,8 +101,19 @@ list:length a rdf:Property, owl:FunctionalProperty;
     rdfs:domain log:List;
     rdfs:range xsd:integer;
     rdfs:comment """
-Iff the subject is a list and the object is the last thing that list, then this is true.
-The object can be calculated as a function of the list.
+Calculates the length of a list.
+
+**schema**:
+`($a_1 .. $a_n) list:length $a_s`
+
+**definition**:
+`true` if and only the subject is a list and `$a_s` is integer length of that list.
+`$a_s` can be calculated as a function of the subject.
+
+**requires**:
+
+* all `$a_1, .., $a_n` to be bound.
+* `$a_s`: unbound, `xs:integer` (or its derived types) (see note on type promotion, and casting from string)
 """;
     vs:term_status "unstable";
     rdfs:isDefinedBy <>.
@@ -71,7 +122,18 @@ list:member a rdf:Property;
     rdfs:label "member";
     rdfs:domain log:List;
     rdfs:comment """
-Iff the subject is a list and the object is in that list, then this is true.
+Determines if an object is a member of the subject list
+or binds every member of the subject list to the object.
+
+**schema**:
+`$a_1 list:member $a_2`
+
+**definition**:
+`true` if and only `$a_1` is a list and `$a_2` is in that list.
+`$a_2` can be calculated from `$a_1`.
+
+**requires**:
+`$a_1` to be a bound list.
 """;
     rdfs:isDefinedBy <>.
 
@@ -82,8 +144,9 @@ list:memberAt a rdf:Property;
 Gets the member of a list at a given position (where the position of the first element is 1)
 
 **schema**:
-`(($a_1 .. $a_n) $a_i) list:memberAt $a_m.`
+`(($a_1 .. $a_n) $a_i) list:memberAt $a_m`
 
+**definition**:
 Iff  `($a_1 .. $a_n)` has an element at position `$a_i`,
 and if that element and `$a_m` can unify.
 
@@ -110,11 +173,22 @@ list:remove a rdf:Property, owl:FunctionalProperty;
     rdfs:domain log:List;
     rdfs:range log:List;
     rdfs:comment """
-Iff the subject is a list of two lists, the second component is a subset of the first component
-and the object is a list composed of the members of the first component of the subject with
-all members of the second component of the subject removed, matching left to right.
-eg ( (1 2 3 4) (2 3) ) list:remove (1 4).
-The object can be calculated as a function of the subject.
+Removes the second component of the subject list from the first component of that list.
+
+**schema**:
+`($a_1 $a_2) list:remove $a_3`
+
+**definition**:
+Iff the subject is a list of two lists `$a_1` and `$a_2`, `$a_2` is a subset of `$a_1`
+and `$a_3` is a list composed of the members of the `$a_1` with
+all members of `$a_2` removed, matching left to right.
+`$a_3` can be calculated as a function of the subject.
+
+**requires**:
+`$a_1` and `$a_2` must be bound lists.
+
+**example**:
+`( (1 2 3 4) (2 3) ) list:remove (1 4).`
 """;
     vs:term_status "unstable";
     rdfs:isDefinedBy <>.

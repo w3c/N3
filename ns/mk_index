@@ -1,0 +1,12 @@
+#!/usr/bin/env ruby
+# Generate index.html multiple vocabulary HTML files generated from mk_vocab.
+#
+# Usage: mk_index file*
+require 'nokogumbo'
+require 'haml'
+
+File.open("index.html", "w") do |f|
+  template = File.read("index_template.haml")
+  html = Haml::Engine.new(template, format: :html5).render(self, files: ARGV)
+  f.write html
+end

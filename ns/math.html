@@ -23,6 +23,10 @@
   }
   table.rdfs-definition td {vertical-align: top;}
   .bold {font-weight: bold;}
+  .note, .historyNote, .editorialNote {
+    margin-left: 2em;
+    font-style: italic;
+  }
 </style>
 </head>
 <body>
@@ -31,35 +35,38 @@
 <img alt='W3C' height='48' src='http://www.w3.org/Icons/w3c_home' width='72'>
 </a>
 </p>
-<h1>Schema mathematical built-in functions</h1>
-<div>
+<h3 class='label'>Schema mathematical built-in functions</h3>
+<div class='attribute comment'>
 <p>This is an ontology for computable math functions.</p>
 
-<p>The vocabulary is published by the <a href="https://www.w3.org/community/n3-dev/">W3C Notation-3 Community Group</a>.</p>
-
 </div>
-<section>
-<h2>Vocabulary Terms</h2>
-<section>
-<h3>Class Definitions</h3>
+<div class='wg'>
+<p>The vocabulary is published by the <a href="https://www.w3.org/community/n3-dev/">W3C Notation-3 Community Group</a>.</p>
+</div>
+<section class='terms'>
+<h4>Vocabulary Terms</h4>
+<section class='classes'>
+<h5>Class Definitions</h5>
 <dl>
-<dt id='math_Function'>
+<dt id='vocab_math_Function'>
 <strong>math:Function</strong>
 <em>Function</em>
-<span class='permalink'><a href='#math_Function' title='Permalink for math:Function'>(link)</a></span>
+<span class='permalink'><a href='#vocab_math_Function' title='Permalink for math:Function'>(link)</a></span>
 </dt>
 <dd>
 <p>A math:Function is unique in terms of math:EqualTo.</p>
 
 <dl class='annotations'>
 <dt>rdfs:subClassOf</dt>
-<dd>owl:FunctionalProperty</dd>
+<dd class='subClassOf'>
+owl:FunctionalProperty
+</dd>
 </dl>
 </dd>
-<dt id='math_List'>
+<dt id='vocab_math_List'>
 <strong>math:List</strong>
 <em>List</em>
-<span class='permalink'><a href='#math_List' title='Permalink for math:List'>(link)</a></span>
+<span class='permalink'><a href='#vocab_math_List' title='Permalink for math:List'>(link)</a></span>
 </dt>
 <dd>
 <p>The class of things that are N3 lists where all of the 
@@ -67,13 +74,15 @@ members are math:Value items.</p>
 
 <dl class='annotations'>
 <dt>rdfs:subClassOf</dt>
-<dd>log:List</dd>
+<dd class='subClassOf'>
+log:List
+</dd>
 </dl>
 </dd>
-<dt id='math_LogicalOperator'>
+<dt id='vocab_math_LogicalOperator'>
 <strong>math:LogicalOperator</strong>
 <em>math:LogicalOperator</em>
-<span class='permalink'><a href='#math_LogicalOperator' title='Permalink for math:LogicalOperator'>(link)</a></span>
+<span class='permalink'><a href='#vocab_math_LogicalOperator' title='Permalink for math:LogicalOperator'>(link)</a></span>
 </dt>
 <dd>
 <p>A logical operator allows evaluation eihter way, or testing relationship
@@ -81,85 +90,156 @@ between two values</p>
 
 <dl class='annotations'>
 <dt>rdfs:subClassOf</dt>
-<dd>math:Function, math:ReverseFunction</dd>
+<dd class='subClassOf'>
+math:Function, math:ReverseFunction
+</dd>
 </dl>
 </dd>
-<dt id='math_ReverseFunction'>
+<dt id='vocab_math_ReverseFunction'>
 <strong>math:ReverseFunction</strong>
 <em>math:ReverseFunction</em>
-<span class='permalink'><a href='#math_ReverseFunction' title='Permalink for math:ReverseFunction'>(link)</a></span>
+<span class='permalink'><a href='#vocab_math_ReverseFunction' title='Permalink for math:ReverseFunction'>(link)</a></span>
 </dt>
 <dd>
 <p>A math:ReverseFunction is unambiguous in terms of math:EqualTo.</p>
 
 <dl class='annotations'>
 <dt>rdfs:subClassOf</dt>
-<dd>owl:InverseFunctionalProperty</dd>
+<dd class='subClassOf'>
+owl:InverseFunctionalProperty
+</dd>
 </dl>
 </dd>
-<dt id='math_StrictProperty'>
+<dt id='vocab_math_StrictProperty'>
 <strong>math:StrictProperty</strong>
 <em>StrictProperty</em>
-<span class='permalink'><a href='#math_StrictProperty' title='Permalink for math:StrictProperty'>(link)</a></span>
+<span class='permalink'><a href='#vocab_math_StrictProperty' title='Permalink for math:StrictProperty'>(link)</a></span>
 </dt>
 <dd>
 <p>The class of things that compare values.</p>
 
 <dl class='annotations'>
 <dt>rdfs:subClassOf</dt>
-<dd>rdf:Property</dd>
+<dd class='subClassOf'>
+rdf:Property
+</dd>
 </dl>
 </dd>
-<dt id='math_TwoMemberedList'>
+<dt id='vocab_math_TwoMemberedList'>
 <strong>math:TwoMemberedList</strong>
 <em>TwoMemberedList</em>
-<span class='permalink'><a href='#math_TwoMemberedList' title='Permalink for math:TwoMemberedList'>(link)</a></span>
+<span class='permalink'><a href='#vocab_math_TwoMemberedList' title='Permalink for math:TwoMemberedList'>(link)</a></span>
 </dt>
 <dd>
 <p>This is the class of things that are math lists with only two members.</p>
 
 <dl class='annotations'>
 <dt>rdfs:subClassOf</dt>
-<dd>math:List</dd>
+<dd class='subClassOf'>
+math:List
+</dd>
 </dl>
 </dd>
-<dt id='math_Value'>
+<dt id='vocab_math_Value'>
 <strong>math:Value</strong>
 <em>Value</em>
-<span class='permalink'><a href='#math_Value' title='Permalink for math:Value'>(link)</a></span>
+<span class='permalink'><a href='#vocab_math_Value' title='Permalink for math:Value'>(link)</a></span>
 </dt>
 <dd>
 <p>The class of things that derive from XSD numeric datatypes.</p>
 
 <dl class='annotations'>
 <dt>rdfs:subClassOf</dt>
-<dd>_:g5540</dd>
+<dd class='subClassOf'>
+_:b0
+</dd>
 </dl>
 </dd>
 </dl>
 </section>
-<section>
-<h3>Property Definitions</h3>
+<section class='properties'>
+<h5>Property Definitions</h5>
 <dl>
-<dt id='math_absoluteValue'>
+<dt id='vocab_math_absoluteValue'>
 <strong>math:absoluteValue</strong>
 <em>negation</em>
-<span class='permalink'><a href='#math_absoluteValue' title='Permalink for math:absoluteValue'>(link)</a></span>
+<span class='permalink'><a href='#vocab_math_absoluteValue' title='Permalink for math:absoluteValue'>(link)</a></span>
 </dt>
 <dd>
 <p>The object is calulated as the absolute value of the subject.</p>
 
 <dl class='annotations'>
 <dt>rdfs:domain</dt>
-<dd>math:Value</dd>
+<dd class='domain'>
+math:Value
+</dd>
 <dt>rdfs:range</dt>
-<dd>math:Value</dd>
+<dd class='range'>
+math:Value
+</dd>
 </dl>
 </dd>
-<dt id='math_cos'>
+<dt id='vocab_math_acos'>
+<strong>math:acos</strong>
+<em>acos</em>
+<span class='permalink'><a href='#vocab_math_acos' title='Permalink for math:acos'>(link)</a></span>
+</dt>
+<dd>
+<p>The object is calulated as the arc cosine value of the subject.</p>
+
+<dl class='annotations'>
+<dt>rdfs:domain</dt>
+<dd class='domain'>
+math:Value
+</dd>
+<dt>rdfs:range</dt>
+<dd class='range'>
+math:Value
+</dd>
+</dl>
+</dd>
+<dt id='vocab_math_asin'>
+<strong>math:asin</strong>
+<em>asin</em>
+<span class='permalink'><a href='#vocab_math_asin' title='Permalink for math:asin'>(link)</a></span>
+</dt>
+<dd>
+<p>The object is calulated as the arc sine value of the subject.</p>
+
+<dl class='annotations'>
+<dt>rdfs:domain</dt>
+<dd class='domain'>
+math:Value
+</dd>
+<dt>rdfs:range</dt>
+<dd class='range'>
+math:Value
+</dd>
+</dl>
+</dd>
+<dt id='vocab_math_atan'>
+<strong>math:atan</strong>
+<em>atan</em>
+<span class='permalink'><a href='#vocab_math_atan' title='Permalink for math:atan'>(link)</a></span>
+</dt>
+<dd>
+<p>The object is calulated as the arc tangent value of the subject.</p>
+
+<dl class='annotations'>
+<dt>rdfs:domain</dt>
+<dd class='domain'>
+math:Value
+</dd>
+<dt>rdfs:range</dt>
+<dd class='range'>
+math:Value
+</dd>
+</dl>
+</dd>
+<dt id='vocab_math_cos'>
 <strong>math:cos</strong>
 <em>cos</em>
-<span class='permalink'><a href='#math_cos' title='Permalink for math:cos'>(link)</a></span>
+<span class='permalink'><a href='#vocab_math_cos' title='Permalink for math:cos'>(link)</a></span>
 </dt>
 <dd>
 <p>The subject is an angle expressed in radians.
@@ -167,15 +247,19 @@ The object is calulated as the cosine value of the subject.</p>
 
 <dl class='annotations'>
 <dt>rdfs:domain</dt>
-<dd>math:Value</dd>
+<dd class='domain'>
+math:Value
+</dd>
 <dt>rdfs:range</dt>
-<dd>math:Value</dd>
+<dd class='range'>
+math:Value
+</dd>
 </dl>
 </dd>
-<dt id='math_cosh'>
+<dt id='vocab_math_cosh'>
 <strong>math:cosh</strong>
 <em>cosh</em>
-<span class='permalink'><a href='#math_cosh' title='Permalink for math:cosh'>(link)</a></span>
+<span class='permalink'><a href='#vocab_math_cosh' title='Permalink for math:cosh'>(link)</a></span>
 </dt>
 <dd>
 <p>The subject is an angle expressed in radians.
@@ -183,15 +267,19 @@ The object is calulated as the #hyperbolic cosine value of the subject.</p>
 
 <dl class='annotations'>
 <dt>rdfs:domain</dt>
-<dd>math:Value</dd>
+<dd class='domain'>
+math:Value
+</dd>
 <dt>rdfs:range</dt>
-<dd>math:Value</dd>
+<dd class='range'>
+math:Value
+</dd>
 </dl>
 </dd>
-<dt id='math_degrees'>
+<dt id='vocab_math_degrees'>
 <strong>math:degrees</strong>
 <em>degrees</em>
-<span class='permalink'><a href='#math_degrees' title='Permalink for math:degrees'>(link)</a></span>
+<span class='permalink'><a href='#vocab_math_degrees' title='Permalink for math:degrees'>(link)</a></span>
 </dt>
 <dd>
 <p>The subject is an angle expressed in radians.
@@ -199,15 +287,19 @@ The object is calulated as the conversion in degrees of the value of the subject
 
 <dl class='annotations'>
 <dt>rdfs:domain</dt>
-<dd>math:Value</dd>
+<dd class='domain'>
+math:Value
+</dd>
 <dt>rdfs:range</dt>
-<dd>math:Value</dd>
+<dd class='range'>
+math:Value
+</dd>
 </dl>
 </dd>
-<dt id='math_difference'>
+<dt id='vocab_math_difference'>
 <strong>math:difference</strong>
 <em>difference</em>
-<span class='permalink'><a href='#math_difference' title='Permalink for math:difference'>(link)</a></span>
+<span class='permalink'><a href='#vocab_math_difference' title='Permalink for math:difference'>(link)</a></span>
 </dt>
 <dd>
 <p>The subject is a pair of numbers. The object
@@ -215,15 +307,19 @@ is calculated by subtracting the second number of the pair from the first.</p>
 
 <dl class='annotations'>
 <dt>rdfs:domain</dt>
-<dd>math:TwoMemberedList</dd>
+<dd class='domain'>
+math:TwoMemberedList
+</dd>
 <dt>rdfs:range</dt>
-<dd>math:Value</dd>
+<dd class='range'>
+math:Value
+</dd>
 </dl>
 </dd>
-<dt id='math_equalTo'>
+<dt id='vocab_math_equalTo'>
 <strong>math:equalTo</strong>
 <em>equalTo</em>
-<span class='permalink'><a href='#math_equalTo' title='Permalink for math:equalTo'>(link)</a></span>
+<span class='permalink'><a href='#vocab_math_equalTo' title='Permalink for math:equalTo'>(link)</a></span>
 </dt>
 <dd>
 <p><strong>schema</strong>:
@@ -233,8 +329,10 @@ is calculated by subtracting the second number of the pair from the first.</p>
 checks equality of numbers</p>
 
 <p><strong>definition</strong>:
-<code>true</code> if and only if <code>$a1</code> is equal to <code>$a2</code>. 
-Requires both arguments to be either concrete numerals, or variables bound to a numeral.</p>
+<code>true</code> if and only if <code>$a1</code> is equal to <code>$a2</code>. </p>
+
+<p><strong>requires</strong>:
+<code>$a_1</code> or <code>$a_2</code> (or both) must be either concrete numerals, or variables bound to a numeral.</p>
 
 <p><strong>literal domains</strong>:</p>
 
@@ -245,15 +343,19 @@ Requires both arguments to be either concrete numerals, or variables bound to a 
 
 <dl class='annotations'>
 <dt>rdfs:domain</dt>
-<dd>math:Value</dd>
+<dd class='domain'>
+math:Value
+</dd>
 <dt>rdfs:range</dt>
-<dd>math:Value</dd>
+<dd class='range'>
+math:Value
+</dd>
 </dl>
 </dd>
-<dt id='math_exponentiation'>
+<dt id='vocab_math_exponentiation'>
 <strong>math:exponentiation</strong>
 <em>exponentiation</em>
-<span class='permalink'><a href='#math_exponentiation' title='Permalink for math:exponentiation'>(link)</a></span>
+<span class='permalink'><a href='#vocab_math_exponentiation' title='Permalink for math:exponentiation'>(link)</a></span>
 </dt>
 <dd>
 <p>The subject is a pair of numbers. The object
@@ -261,121 +363,182 @@ is calculated by raising the first number of the power of the second.</p>
 
 <dl class='annotations'>
 <dt>rdfs:domain</dt>
-<dd>math:TwoMemberedList</dd>
+<dd class='domain'>
+math:TwoMemberedList
+</dd>
 <dt>rdfs:range</dt>
-<dd>math:Value</dd>
+<dd class='range'>
+math:Value
+</dd>
 </dl>
 </dd>
-<dt id='math_greaterThan'>
+<dt id='vocab_math_greaterThan'>
 <strong>math:greaterThan</strong>
 <em>greaterThan</em>
-<span class='permalink'><a href='#math_greaterThan' title='Permalink for math:greaterThan'>(link)</a></span>
+<span class='permalink'><a href='#vocab_math_greaterThan' title='Permalink for math:greaterThan'>(link)</a></span>
 </dt>
 <dd>
 <p>True iff the subject is a number which is greater than the object.</p>
 
 <dl class='annotations'>
 <dt>rdfs:domain</dt>
-<dd>math:Value</dd>
+<dd class='domain'>
+math:Value
+</dd>
 <dt>rdfs:range</dt>
-<dd>math:Value</dd>
+<dd class='range'>
+math:Value
+</dd>
 </dl>
 </dd>
-<dt id='math_integerQuotient'>
+<dt id='vocab_math_integerQuotient'>
 <strong>math:integerQuotient</strong>
 <em>integerQuotient</em>
-<span class='permalink'><a href='#math_integerQuotient' title='Permalink for math:integerQuotient'>(link)</a></span>
+<span class='permalink'><a href='#vocab_math_integerQuotient' title='Permalink for math:integerQuotient'>(link)</a></span>
 </dt>
 <dd>
 <p>The subject is a pair of numbers. The object
 is calculated by dividing the first number of the pair by the second, ignoring remainder.</p>
 
 <dl class='annotations'>
+<dt>vs:term_status</dt>
+<dd class='term_status'>
+deprecated
+</dd>
 <dt>rdfs:domain</dt>
-<dd>math:TwoMemberedList</dd>
+<dd class='domain'>
+math:TwoMemberedList
+</dd>
 <dt>rdfs:range</dt>
-<dd>math:Value</dd>
+<dd class='range'>
+math:Value
+</dd>
 </dl>
 </dd>
-<dt id='math_lessThan'>
+<dt id='vocab_math_lessThan'>
 <strong>math:lessThan</strong>
 <em>lessThan</em>
-<span class='permalink'><a href='#math_lessThan' title='Permalink for math:lessThan'>(link)</a></span>
+<span class='permalink'><a href='#vocab_math_lessThan' title='Permalink for math:lessThan'>(link)</a></span>
 </dt>
 <dd>
 <p>True iff the subject is a number which is LESS than a object.</p>
 
 <dl class='annotations'>
 <dt>rdfs:domain</dt>
-<dd>math:Value</dd>
+<dd class='domain'>
+math:Value
+</dd>
 <dt>rdfs:range</dt>
-<dd>math:Value</dd>
+<dd class='range'>
+math:Value
+</dd>
 </dl>
 </dd>
-<dt id='math_negation'>
+<dt id='vocab_math_memberCount'>
+<strong>math:memberCount</strong>
+<em>memberCount</em>
+<span class='permalink'><a href='#vocab_math_memberCount' title='Permalink for math:memberCount'>(link)</a></span>
+</dt>
+<dd>
+<p>The number of items in a list. The subject is a list,
+the object is calculated as the number of members.
+Obsolete, see list:length</p>
+
+<dl class='annotations'>
+<dt>vs:term_status</dt>
+<dd class='term_status'>
+deprecated
+</dd>
+<dt>rdfs:domain</dt>
+<dd class='domain'>
+math:List
+</dd>
+<dt>rdfs:range</dt>
+<dd class='range'>
+math:Value
+</dd>
+</dl>
+</dd>
+<dt id='vocab_math_negation'>
 <strong>math:negation</strong>
 <em>negation</em>
-<span class='permalink'><a href='#math_negation' title='Permalink for math:negation'>(link)</a></span>
+<span class='permalink'><a href='#vocab_math_negation' title='Permalink for math:negation'>(link)</a></span>
 </dt>
 <dd>
 <p>The subject or object is calculated to be the negation of the other.</p>
 
 <dl class='annotations'>
 <dt>rdfs:domain</dt>
-<dd>math:Value</dd>
+<dd class='domain'>
+math:Value
+</dd>
 <dt>rdfs:range</dt>
-<dd>math:Value</dd>
+<dd class='range'>
+math:Value
+</dd>
 </dl>
 </dd>
-<dt id='math_notEqualTo'>
+<dt id='vocab_math_notEqualTo'>
 <strong>math:notEqualTo</strong>
 <em>notEqualTo</em>
-<span class='permalink'><a href='#math_notEqualTo' title='Permalink for math:notEqualTo'>(link)</a></span>
+<span class='permalink'><a href='#vocab_math_notEqualTo' title='Permalink for math:notEqualTo'>(link)</a></span>
 </dt>
 <dd>
 <p>True iff the subject is a number which is NOT EQUAL to a object.</p>
 
 <dl class='annotations'>
 <dt>rdfs:domain</dt>
-<dd>math:Value</dd>
+<dd class='domain'>
+math:Value
+</dd>
 <dt>rdfs:range</dt>
-<dd>math:Value</dd>
+<dd class='range'>
+math:Value
+</dd>
 </dl>
 </dd>
-<dt id='math_notGreaterThan'>
+<dt id='vocab_math_notGreaterThan'>
 <strong>math:notGreaterThan</strong>
 <em>notGreaterThan</em>
-<span class='permalink'><a href='#math_notGreaterThan' title='Permalink for math:notGreaterThan'>(link)</a></span>
+<span class='permalink'><a href='#vocab_math_notGreaterThan' title='Permalink for math:notGreaterThan'>(link)</a></span>
 </dt>
 <dd>
 <p>True iff the subject is a number which is NOT greater than the object.</p>
 
 <dl class='annotations'>
 <dt>rdfs:domain</dt>
-<dd>math:Value</dd>
+<dd class='domain'>
+math:Value
+</dd>
 <dt>rdfs:range</dt>
-<dd>math:Value</dd>
+<dd class='range'>
+math:Value
+</dd>
 </dl>
 </dd>
-<dt id='math_notLessThan'>
+<dt id='vocab_math_notLessThan'>
 <strong>math:notLessThan</strong>
 <em>notlessThan</em>
-<span class='permalink'><a href='#math_notLessThan' title='Permalink for math:notLessThan'>(link)</a></span>
+<span class='permalink'><a href='#vocab_math_notLessThan' title='Permalink for math:notLessThan'>(link)</a></span>
 </dt>
 <dd>
 <p>True iff the subject is a number which is NOT LESS than a object.</p>
 
 <dl class='annotations'>
 <dt>rdfs:domain</dt>
-<dd>math:Value</dd>
+<dd class='domain'>
+math:Value
+</dd>
 <dt>rdfs:range</dt>
-<dd>math:Value</dd>
+<dd class='range'>
+math:Value
+</dd>
 </dl>
 </dd>
-<dt id='math_product'>
+<dt id='vocab_math_product'>
 <strong>math:product</strong>
 <em>product</em>
-<span class='permalink'><a href='#math_product' title='Permalink for math:product'>(link)</a></span>
+<span class='permalink'><a href='#vocab_math_product' title='Permalink for math:product'>(link)</a></span>
 </dt>
 <dd>
 <p>The subject is a list of numbers.
@@ -383,15 +546,19 @@ The object is calculated as the arithmentic product of those numbers.</p>
 
 <dl class='annotations'>
 <dt>rdfs:domain</dt>
-<dd>math:List</dd>
+<dd class='domain'>
+math:List
+</dd>
 <dt>rdfs:range</dt>
-<dd>math:Value</dd>
+<dd class='range'>
+math:Value
+</dd>
 </dl>
 </dd>
-<dt id='math_quotient'>
+<dt id='vocab_math_quotient'>
 <strong>math:quotient</strong>
 <em>quotient</em>
-<span class='permalink'><a href='#math_quotient' title='Permalink for math:quotient'>(link)</a></span>
+<span class='permalink'><a href='#vocab_math_quotient' title='Permalink for math:quotient'>(link)</a></span>
 </dt>
 <dd>
 <p>The subject is a pair of numbers. The object
@@ -399,15 +566,19 @@ is calculated by dividing the first number of the pair by the second.</p>
 
 <dl class='annotations'>
 <dt>rdfs:domain</dt>
-<dd>math:TwoMemberedList</dd>
+<dd class='domain'>
+math:TwoMemberedList
+</dd>
 <dt>rdfs:range</dt>
-<dd>math:Value</dd>
+<dd class='range'>
+math:Value
+</dd>
 </dl>
 </dd>
-<dt id='math_remainder'>
+<dt id='vocab_math_remainder'>
 <strong>math:remainder</strong>
 <em>remainder</em>
-<span class='permalink'><a href='#math_remainder' title='Permalink for math:remainder'>(link)</a></span>
+<span class='permalink'><a href='#vocab_math_remainder' title='Permalink for math:remainder'>(link)</a></span>
 </dt>
 <dd>
 <p>The subject is a pair of integers. The object
@@ -415,15 +586,19 @@ is calculated by dividing the first number of the pair by the second and taking 
 
 <dl class='annotations'>
 <dt>rdfs:domain</dt>
-<dd>math:TwoMemberedList</dd>
+<dd class='domain'>
+math:TwoMemberedList
+</dd>
 <dt>rdfs:range</dt>
-<dd>math:Value</dd>
+<dd class='range'>
+math:Value
+</dd>
 </dl>
 </dd>
-<dt id='math_rounded'>
+<dt id='vocab_math_rounded'>
 <strong>math:rounded</strong>
 <em>rounded</em>
-<span class='permalink'><a href='#math_rounded' title='Permalink for math:rounded'>(link)</a></span>
+<span class='permalink'><a href='#vocab_math_rounded' title='Permalink for math:rounded'>(link)</a></span>
 </dt>
 <dd>
 <p>The object is calulated as the number with no fractional part that is closest to the subject.
@@ -431,15 +606,19 @@ If there are two such numbers, then the one that is closest to positive infinity
 
 <dl class='annotations'>
 <dt>rdfs:domain</dt>
-<dd>math:Value</dd>
+<dd class='domain'>
+math:Value
+</dd>
 <dt>rdfs:range</dt>
-<dd>math:Value</dd>
+<dd class='range'>
+math:Value
+</dd>
 </dl>
 </dd>
-<dt id='math_sin'>
+<dt id='vocab_math_sin'>
 <strong>math:sin</strong>
 <em>sin</em>
-<span class='permalink'><a href='#math_sin' title='Permalink for math:sin'>(link)</a></span>
+<span class='permalink'><a href='#vocab_math_sin' title='Permalink for math:sin'>(link)</a></span>
 </dt>
 <dd>
 <p>The subject is an angle expressed in radians.
@@ -447,15 +626,19 @@ The object is calulated as the sine value of the subject.</p>
 
 <dl class='annotations'>
 <dt>rdfs:domain</dt>
-<dd>math:Value</dd>
+<dd class='domain'>
+math:Value
+</dd>
 <dt>rdfs:range</dt>
-<dd>math:Value</dd>
+<dd class='range'>
+math:Value
+</dd>
 </dl>
 </dd>
-<dt id='math_sinh'>
+<dt id='vocab_math_sinh'>
 <strong>math:sinh</strong>
 <em>sinh</em>
-<span class='permalink'><a href='#math_sinh' title='Permalink for math:sinh'>(link)</a></span>
+<span class='permalink'><a href='#vocab_math_sinh' title='Permalink for math:sinh'>(link)</a></span>
 </dt>
 <dd>
 <p>The subject is an angle expressed in radians.
@@ -463,15 +646,19 @@ The object is calulated as the hyperbolic sine value of the subject.</p>
 
 <dl class='annotations'>
 <dt>rdfs:domain</dt>
-<dd>math:Value</dd>
+<dd class='domain'>
+math:Value
+</dd>
 <dt>rdfs:range</dt>
-<dd>math:Value</dd>
+<dd class='range'>
+math:Value
+</dd>
 </dl>
 </dd>
-<dt id='math_sum'>
+<dt id='vocab_math_sum'>
 <strong>math:sum</strong>
 <em>sum</em>
-<span class='permalink'><a href='#math_sum' title='Permalink for math:sum'>(link)</a></span>
+<span class='permalink'><a href='#vocab_math_sum' title='Permalink for math:sum'>(link)</a></span>
 </dt>
 <dd>
 <p><strong>schema</strong>:
@@ -481,13 +668,10 @@ The object is calulated as the hyperbolic sine value of the subject.</p>
 performs addition of numbers</p>
 
 <p><strong>definition</strong>:
-<code>true</code> if and only if the arithmetic sum of <code>$a_1, .. $a_n</code> equals <code>$a_s</code>.
-Requires either:</p>
+<code>true</code> if and only if the arithmetic sum of <code>$a_1, .. $a_n</code> equals <code>$a_s</code>.</p>
 
-<ol>
-<li>all <code>$a_1, .., $a_n</code> to be bound; or</li>
-<li>all but one <code>$a_i</code> (subject list) to be bound, and <code>$a_s</code> to be bound.</li>
-</ol>
+<p><strong>requires</strong>:
+all <code>$a_1, .., $a_n</code> to be bound.</p>
 
 <p><strong>literal domains</strong>:</p>
 
@@ -498,15 +682,19 @@ Requires either:</p>
 
 <dl class='annotations'>
 <dt>rdfs:domain</dt>
-<dd>log:List</dd>
+<dd class='domain'>
+log:List
+</dd>
 <dt>rdfs:range</dt>
-<dd>math:Value</dd>
+<dd class='range'>
+math:Value
+</dd>
 </dl>
 </dd>
-<dt id='math_tan'>
+<dt id='vocab_math_tan'>
 <strong>math:tan</strong>
 <em>tan</em>
-<span class='permalink'><a href='#math_tan' title='Permalink for math:tan'>(link)</a></span>
+<span class='permalink'><a href='#vocab_math_tan' title='Permalink for math:tan'>(link)</a></span>
 </dt>
 <dd>
 <p>The subject is an angle expressed in radians.
@@ -514,15 +702,19 @@ The object is calulated as the tangent value of the subject.</p>
 
 <dl class='annotations'>
 <dt>rdfs:domain</dt>
-<dd>math:Value</dd>
+<dd class='domain'>
+math:Value
+</dd>
 <dt>rdfs:range</dt>
-<dd>math:Value</dd>
+<dd class='range'>
+math:Value
+</dd>
 </dl>
 </dd>
-<dt id='math_tanh'>
+<dt id='vocab_math_tanh'>
 <strong>math:tanh</strong>
 <em>tanh</em>
-<span class='permalink'><a href='#math_tanh' title='Permalink for math:tanh'>(link)</a></span>
+<span class='permalink'><a href='#vocab_math_tanh' title='Permalink for math:tanh'>(link)</a></span>
 </dt>
 <dd>
 <p>The subject is an angle expressed in radians.
@@ -530,9 +722,13 @@ The object is calulated as the hyperbolic tangent value of the subject.</p>
 
 <dl class='annotations'>
 <dt>rdfs:domain</dt>
-<dd>math:Value</dd>
+<dd class='domain'>
+math:Value
+</dd>
 <dt>rdfs:range</dt>
-<dd>math:Value</dd>
+<dd class='range'>
+math:Value
+</dd>
 </dl>
 </dd>
 </dl>

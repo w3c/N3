@@ -1,0 +1,2555 @@
+<section class='appendix'>
+<h2>Vocabulary Definitions</h2>
+<section class='vocabulary'>
+<h3>Schema for crypto built-in functions</h3>
+<div class="attribute">
+<p>These are terms drawn to match the available functions
+in <a href="http://freshmeat.sourceforge.net/projects/mxcrypto">mxCrypto</a>.</p>
+
+</div>
+<section class="terms">
+<h4>Vocabulary Terms</h4>
+<section class="properties">
+<h5>Property Definitions</h5>
+<dl>
+<dt id="vocab_cr_md5">
+<strong>cr:md5</strong>
+<em>MD5 hash</em>
+<span class="permalink"><a href="#vocab_cr_md5" title="Permalink for cr:md5">(link)</a></span>
+</dt>
+<dd>
+<p>The object is a MD5 hash of the subject.</p>
+
+<dl class="annotations">
+<dt>rdfs:domain</dt>
+<dd class="domain">
+rdfs:Literal
+</dd>
+<dt>rdfs:range</dt>
+<dd class="range">
+cr:string
+</dd>
+</dl>
+</dd>
+<dt id="vocab_cr_sha">
+<strong>cr:sha</strong>
+<em>SHA-1 hash</em>
+<span class="permalink"><a href="#vocab_cr_sha" title="Permalink for cr:sha">(link)</a></span>
+</dt>
+<dd>
+<p>The object is a SHA-1 hash of the subject.</p>
+
+<dl class="annotations">
+<dt>rdfs:domain</dt>
+<dd class="domain">
+rdfs:Literal
+</dd>
+<dt>rdfs:range</dt>
+<dd class="range">
+cr:string
+</dd>
+</dl>
+</dd>
+<dt id="vocab_cr_sha256">
+<strong>cr:sha256</strong>
+<em>SHA-256 hash</em>
+<span class="permalink"><a href="#vocab_cr_sha256" title="Permalink for cr:sha256">(link)</a></span>
+</dt>
+<dd>
+<p>The object is a SHA-256 hash of the subject.</p>
+
+<dl class="annotations">
+<dt>rdfs:domain</dt>
+<dd class="domain">
+rdfs:Literal
+</dd>
+<dt>rdfs:range</dt>
+<dd class="range">
+cr:string
+</dd>
+</dl>
+</dd>
+<dt id="vocab_cr_sha512">
+<strong>cr:sha512</strong>
+<em>SHA-512 hash</em>
+<span class="permalink"><a href="#vocab_cr_sha512" title="Permalink for cr:sha512">(link)</a></span>
+</dt>
+<dd>
+<p>The object is a SHA-512 hash of the subject.</p>
+
+<dl class="annotations">
+<dt>rdfs:domain</dt>
+<dd class="domain">
+rdfs:Literal
+</dd>
+<dt>rdfs:range</dt>
+<dd class="range">
+cr:string
+</dd>
+</dl>
+</dd>
+</dl>
+</section>
+</section>
+</section>
+<section class='vocabulary'>
+<h3>n3 definition of some list functions</h3>
+<div class="attribute comment">
+<p>This is an ontology for computable list functions.</p>
+
+</div>
+<section class="terms">
+<h4>Vocabulary Terms</h4>
+<section class="properties">
+<h5>Property Definitions</h5>
+<dl>
+<dt id="vocab_list_append">
+<strong>list:append</strong>
+<em>append</em>
+<span class="permalink"><a href="#vocab_list_append" title="Permalink for list:append">(link)</a></span>
+</dt>
+<dd>
+<p>Concatenates separate lists into a single list</p>
+
+<p><strong>schema</strong>:
+<code>($a_1 .. $a_n) list:append $a_s</code></p>
+
+<p><strong>definition</strong>:
+<code>true</code> if and only if the subject is a list of lists and the concatenation of all those lists 
+is <code>$a_s</code>.
+<code>$a_s</code> can be calculated as a function of the subject.</p>
+
+<p><strong>requires</strong>:
+all <code>$a_1, .., $a_n</code> to be lists with all constituent members bound.</p>
+
+<p><strong>example</strong>:
+<code>( (1 2) (3 4) ) list:append (1 2 3 4).</code></p>
+
+<dl class="annotations">
+<dt>rdfs:domain</dt>
+<dd class="domain">
+log:List
+</dd>
+</dl>
+</dd>
+<dt id="vocab_list_first">
+<strong>list:first</strong>
+<em>first</em>
+<span class="permalink"><a href="#vocab_list_first" title="Permalink for list:first">(link)</a></span>
+</dt>
+<dd>
+<p>Extracts the first member of a list.</p>
+
+<p><strong>schema</strong>:
+<code>($a_1 .. $a_n) list:first $a_s</code></p>
+
+<p><strong>definition</strong>:
+<code>true</code> if and only the subject is a list and <code>$a_s</code> is the first member of that list.
+<code>$a_s</code> can be calculated as a function of the subject.</p>
+
+<p><strong>requires</strong>:
+all <code>$a_1, .., $a_n</code> to be bound.</p>
+
+<dl class="annotations">
+<dt>vs:term_status</dt>
+<dd class="term_status">
+unstable
+</dd>
+<dt>rdfs:domain</dt>
+<dd class="domain">
+log:List
+</dd>
+</dl>
+</dd>
+<dt id="vocab_list_in">
+<strong>list:in</strong>
+<em>in</em>
+<span class="permalink"><a href="#vocab_list_in" title="Permalink for list:in">(link)</a></span>
+</dt>
+<dd>
+<p>Determines if an subject is a member of the object list
+or binds every member of the object list to the subject.</p>
+
+<p><strong>schema</strong>:
+<code>$a_1 list:in $a_2</code></p>
+
+<p><strong>definition</strong>:
+<code>true</code> if and only <code>$a_2</code> is a list and <code>$a_1</code> is in that list.
+<code>$a_1</code> can be calculated from <code>$a_2</code>.</p>
+
+<p><strong>requires</strong>:
+<code>$a_2</code> to be a bound list.</p>
+
+<dl class="annotations">
+<dt>rdfs:range</dt>
+<dd class="range">
+log:List
+</dd>
+</dl>
+</dd>
+<dt id="vocab_list_last">
+<strong>list:last</strong>
+<em>in</em>
+<span class="permalink"><a href="#vocab_list_last" title="Permalink for list:last">(link)</a></span>
+</dt>
+<dd>
+<p>Extracts the first member of a list.</p>
+
+<p><strong>schema</strong>:
+<code>($a_1 .. $a_n) list:last $a_s</code></p>
+
+<p><strong>definition</strong>:
+<code>true</code> if and only the subject is a list and <code>$a_s</code> is the last member of that list.
+<code>$a_s</code> can be calculated as a function of the subject.</p>
+
+<p><strong>requires</strong>:
+all <code>$a_1, .., $a_n</code> to be bound.</p>
+
+<dl class="annotations">
+<dt>rdfs:domain</dt>
+<dd class="domain">
+log:List
+</dd>
+</dl>
+</dd>
+<dt id="vocab_list_length">
+<strong>list:length</strong>
+<em>length</em>
+<span class="permalink"><a href="#vocab_list_length" title="Permalink for list:length">(link)</a></span>
+</dt>
+<dd>
+<p>Calculates the length of a list.</p>
+
+<p><strong>schema</strong>:
+<code>($a_1 .. $a_n) list:length $a_s</code></p>
+
+<p><strong>definition</strong>:
+<code>true</code> if and only the subject is a list and <code>$a_s</code> is integer length of that list.
+<code>$a_s</code> can be calculated as a function of the subject.</p>
+
+<p><strong>requires</strong>:</p>
+
+<ul>
+<li>all <code>$a_1, .., $a_n</code> to be bound.</li>
+<li>
+<code>$a_s</code>: unbound, <code>xs:integer</code> (or its derived types) (see note on type promotion, and casting from string)</li>
+</ul>
+
+<dl class="annotations">
+<dt>vs:term_status</dt>
+<dd class="term_status">
+unstable
+</dd>
+<dt>rdfs:domain</dt>
+<dd class="domain">
+log:List
+</dd>
+<dt>rdfs:range</dt>
+<dd class="range">
+xsd:integer
+</dd>
+</dl>
+</dd>
+<dt id="vocab_list_member">
+<strong>list:member</strong>
+<em>member</em>
+<span class="permalink"><a href="#vocab_list_member" title="Permalink for list:member">(link)</a></span>
+</dt>
+<dd>
+<p>Determines if an object is a member of the subject list
+or binds every member of the subject list to the object.</p>
+
+<p><strong>schema</strong>:
+<code>$a_1 list:member $a_2</code></p>
+
+<p><strong>definition</strong>:
+<code>true</code> if and only <code>$a_1</code> is a list and <code>$a_2</code> is in that list.
+<code>$a_2</code> can be calculated from <code>$a_1</code>.</p>
+
+<p><strong>requires</strong>:
+<code>$a_1</code> to be a bound list.</p>
+
+<dl class="annotations">
+<dt>rdfs:domain</dt>
+<dd class="domain">
+log:List
+</dd>
+</dl>
+</dd>
+<dt id="vocab_list_memberAt">
+<strong>list:memberAt</strong>
+<em>memberAt</em>
+<span class="permalink"><a href="#vocab_list_memberAt" title="Permalink for list:memberAt">(link)</a></span>
+</dt>
+<dd>
+<p>Gets the member of a list at a given position (where the position of the first element is 1)</p>
+
+<p><strong>schema</strong>:
+<code>(($a_1 .. $a_n) $a_i) list:memberAt $a_m</code></p>
+
+<p><strong>definition</strong>:
+Iff  <code>($a_1 .. $a_n)</code> has an element at position <code>$a_i</code>,
+and if that element and <code>$a_m</code> can unify.</p>
+
+<p><strong>requires</strong>:
+<code>$a_i</code> or <code>$a_m</code> (or both) must be bound.</p>
+
+<p>Note that if <code>$a_i</code> is a variable, this builtin may bind it to more than one value
+(e.g. <code>((“A” “B” “A”) ?i) list:memberAt "A"</code>).</p>
+
+<p><strong>literal domains</strong>:</p>
+
+<ul>
+<li>
+<code>$a_1 .. $a_n</code>, <code>$a_m</code>: unconstrained</li>
+<li>
+<code>$a_i</code>: <code>xs:decimal</code>, <code>xs:float</code>, <code>xs:double</code> within the value space of <code>xs:integer</code>
+(see also note on type promotion and substitution).
+I.e., in case the double/float/decimal's literal's value is within the value space of integers,
+the literal will match the domain.
+In case of a negative integer, the index will count backwards from the length of the list.</li>
+</ul>
+
+<dl class="annotations">
+<dt>vs:term_status</dt>
+<dd class="term_status">
+unstable
+</dd>
+<dt>rdfs:domain</dt>
+<dd class="domain">
+log:List
+</dd>
+</dl>
+</dd>
+<dt id="vocab_list_remove">
+<strong>list:remove</strong>
+<em>remove</em>
+<span class="permalink"><a href="#vocab_list_remove" title="Permalink for list:remove">(link)</a></span>
+</dt>
+<dd>
+<p>Removes the second component of the subject list from the first component of that list.</p>
+
+<p><strong>schema</strong>:
+<code>($a_1 $a_2) list:remove $a_3</code></p>
+
+<p><strong>definition</strong>:
+Iff the subject is a list of two lists <code>$a_1</code> and <code>$a_2</code>, <code>$a_2</code> is a subset of <code>$a_1</code>
+and <code>$a_3</code> is a list composed of the members of the <code>$a_1</code> with
+all members of <code>$a_2</code> removed, matching left to right.
+<code>$a_3</code> can be calculated as a function of the subject.</p>
+
+<p><strong>requires</strong>:
+<code>$a_1</code> and <code>$a_2</code> must be bound lists.</p>
+
+<p><strong>example</strong>:
+<code>( (1 2 3 4) (2 3) ) list:remove (1 4).</code></p>
+
+<dl class="annotations">
+<dt>vs:term_status</dt>
+<dd class="term_status">
+unstable
+</dd>
+<dt>rdfs:domain</dt>
+<dd class="domain">
+log:List
+</dd>
+<dt>rdfs:range</dt>
+<dd class="range">
+log:List
+</dd>
+</dl>
+</dd>
+</dl>
+</section>
+</section>
+</section>
+<section class='vocabulary'>
+<h3>n3 definition of some Semantic Web terms</h3>
+<div class="attribute comment">
+<p>These raise the level above RDF's pure relational data,
+and Web Ontology's ontological level, to allow rules to be expressed
+and inference done. They connect the inference to the web,
+allowing data to be fetched from resources elsewhere, and remote
+servers to be queried.</p>
+
+</div>
+<section class="terms">
+<h4>Vocabulary Terms</h4>
+<section class="classes">
+<h5>Class Definitions</h5>
+<dl>
+<dt id="vocab_log_Chaff">
+<strong>log:Chaff</strong>
+<em>Chaff</em>
+<span class="permalink"><a href="#vocab_log_Chaff" title="Permalink for log:Chaff">(link)</a></span>
+</dt>
+<dd>
+<p>Any statement mentioning anything in this class
+is considered boring and purged by the cwm --purge option.
+This is a convenience, and does not have any value when published as a
+general fact on the web.</p>
+
+</dd>
+<dt id="vocab_log_Formula">
+<strong>log:Formula</strong>
+<em>Formula</em>
+<span class="permalink"><a href="#vocab_log_Formula" title="Permalink for log:Formula">(link)</a></span>
+</dt>
+<dd>
+<p>The class of Notation-3 Formulae</p>
+
+<dl class="annotations">
+<dt>rdfs:subClassOf</dt>
+<dd class="subClassOf">
+log:Type
+</dd>
+</dl>
+</dd>
+<dt id="vocab_log_List">
+<strong>log:List</strong>
+<em>List</em>
+<span class="permalink"><a href="#vocab_log_List" title="Permalink for log:List">(link)</a></span>
+</dt>
+<dd>
+<p>A Notation-3 List, as a resource. A sub-class of an RDF List.</p>
+
+<dl class="annotations">
+<dt>rdfs:subClassOf</dt>
+<dd class="subClassOf">
+log:Type, rdf:List
+</dd>
+</dl>
+</dd>
+<dt id="vocab_log_N3Document">
+<strong>log:N3Document</strong>
+<em>N3Document</em>
+<span class="permalink"><a href="#vocab_log_N3Document" title="Permalink for log:N3Document">(link)</a></span>
+</dt>
+<dd>
+<p>A document which, which parsed as Notation3
+as defined in general by http://www.w3.org/DesignIssues/Notation3.html
+and this schema, conveys the intent of the author by the semantics defined
+on those specifications, and the semantics defined by the specifications
+of any other identifiers used in the document.</p>
+
+<dl class="annotations">
+<dt>rdfs:subClassOf</dt>
+<dd class="subClassOf">
+http://www.w3.org/2000/10/swap/pim/doc#Work
+</dd>
+</dl>
+</dd>
+<dt id="vocab_log_Other">
+<strong>log:Other</strong>
+<em>List</em>
+<span class="permalink"><a href="#vocab_log_Other" title="Permalink for log:Other">(link)</a></span>
+</dt>
+<dd>
+<p>Some other Notation-3 type</p>
+
+<dl class="annotations">
+<dt>rdfs:subClassOf</dt>
+<dd class="subClassOf">
+log:Type
+</dd>
+</dl>
+</dd>
+<dt id="vocab_log_String">
+<strong>log:String</strong>
+<em>List</em>
+<span class="permalink"><a href="#vocab_log_String" title="Permalink for log:String">(link)</a></span>
+</dt>
+<dd>
+<p>An RDF Literal</p>
+
+<dl class="annotations">
+<dt>rdfs:subClassOf</dt>
+<dd class="subClassOf">
+log:Type, rdfs:Literal
+</dd>
+</dl>
+</dd>
+<dt id="vocab_log_Truth">
+<strong>log:Truth</strong>
+<em>Truth</em>
+<span class="permalink"><a href="#vocab_log_Truth" title="Permalink for log:Truth">(link)</a></span>
+</dt>
+<dd>
+<p>Something which is true: believe it as you would believe this.</p>
+
+<p>Understood natively by cwm in that it will execute rules in a formula
+declared a Truth within a formula it is already taking rules from.</p>
+
+</dd>
+<dt id="vocab_log_Type">
+<strong>log:Type</strong>
+<em>Type</em>
+<span class="permalink"><a href="#vocab_log_Type" title="Permalink for log:Type">(link)</a></span>
+</dt>
+<dd>
+<p>The class of Notation3-specifiec resource types.</p>
+
+<dl class="annotations">
+<dt>vs:term_status</dt>
+<dd class="term_status">
+unstable
+</dd>
+</dl>
+</dd>
+</dl>
+</section>
+<section class="properties">
+<h5>Property Definitions</h5>
+<dl>
+<dt id="vocab_log_becomes">
+<strong>log:becomes</strong>
+<em>becomes</em>
+<span class="permalink"><a href="#vocab_log_becomes" title="Permalink for log:becomes">(link)</a></span>
+</dt>
+<dd>
+<p>Built-in to perform RDF linear implication i.e. retracting the subject graph and asserting the object graph.</p>
+
+<dl class="annotations">
+<dt>vs:term_status</dt>
+<dd class="term_status">
+unstable
+</dd>
+</dl>
+</dd>
+<dt id="vocab_log_conclusion">
+<strong>log:conclusion</strong>
+<em>conclusion</em>
+<span class="permalink"><a href="#vocab_log_conclusion" title="Permalink for log:conclusion">(link)</a></span>
+</dt>
+<dd>
+<p>All possible conclusions which can be drawn from a formula.</p>
+
+<p><strong>schema</strong>:
+<code>$a_1 log:conclusion $a_2</code></p>
+
+<p><strong>definition</strong>:
+<code>$a_2</code> is the set of conclusions which can be
+drawn from <code>$a_1</code>, by successively applying any
+rules it contains to the data it contains.</p>
+
+<p><strong>requires</strong>:
+<code>$a_1</code> is a formula
+<code>$a_2</code> is unbound or a formula.</p>
+
+<p><strong>note</strong>:
+This is equivalent to
+cwm's "--think" command line function.
+It does use built-ins, so
+it may for example indirectly invoke other documents, validate
+signatures, etc.</p>
+
+<dl class="annotations">
+<dt>rdfs:domain</dt>
+<dd class="domain">
+log:Formula
+</dd>
+<dt>rdfs:range</dt>
+<dd class="range">
+log:Formula
+</dd>
+</dl>
+</dd>
+<dt id="vocab_log_conjunction">
+<strong>log:conjunction</strong>
+<em>conjunction</em>
+<span class="permalink"><a href="#vocab_log_conjunction" title="Permalink for log:conjunction">(link)</a></span>
+</dt>
+<dd>
+<p>A function to merge formulae: logical AND.</p>
+
+<p><strong>schema</strong>:
+<code>($a_1 .. $a_n) log:conjunction $a_s</code></p>
+
+<p><strong>definition</strong>:
+<code>$a_s</code>, which can be generated, is a formula containing a copy
+of each of the formulae <code>$a_1 .. $a_n</code>.</p>
+
+<p><strong>requires</strong>:
+all <code>$a_1, .., $a_n</code> to be formulae.</p>
+
+<dl class="annotations">
+<dt>rdfs:domain</dt>
+<dd class="domain">
+log:List
+</dd>
+<dt>rdfs:range</dt>
+<dd class="range">
+log:Formula
+</dd>
+</dl>
+</dd>
+<dt id="vocab_log_content">
+<strong>log:content</strong>
+<em>content</em>
+<span class="permalink"><a href="#vocab_log_content" title="Permalink for log:content">(link)</a></span>
+</dt>
+<dd>
+<p>This connects a document and a string that represents it.
+(Cwm knows how to go get a document in order to evaluate this.)</p>
+
+<p><strong>schema</strong>:
+<code>$a_1 log:content $a_2</code></p>
+
+<p><strong>requires</strong>:
+<code>$a_1</code> must be an IRI.
+<code>$a_2</code> must be either unbound or a string.</p>
+
+<p><strong>note</strong>:
+The content-type of the information is not given and
+so must be known or guessed.</p>
+
+<dl class="annotations">
+<dt>rdfs:domain</dt>
+<dd class="domain">
+http://www.w3.org/2000/10/swap/pim/doc#Work
+</dd>
+<dt>rdfs:range</dt>
+<dd class="range">
+log:String
+</dd>
+</dl>
+</dd>
+<dt id="vocab_log_definitiveDocument">
+<strong>log:definitiveDocument</strong>
+<em>definitive document</em>
+<span class="permalink"><a href="#vocab_log_definitiveDocument" title="Permalink for log:definitiveDocument">(link)</a></span>
+</dt>
+<dd>
+<p>When document D is the definitiveDocument for property P,
+any statement X P Y is true iff the semantics of document D
+include that statement.</p>
+
+<p>For example, there may be a definitive document for the zipcode of
+airports by airport code, and so on. This is useful to let a reasoner
+know that it can extend its query to the given document.
+(Cwm will do this if its mode includes "r").</p>
+
+<dl class="annotations">
+<dt>vs:term_status</dt>
+<dd class="term_status">
+deprecated
+</dd>
+<dt>rdfs:domain</dt>
+<dd class="domain">
+rdf:Property
+</dd>
+<dt>rdfs:range</dt>
+<dd class="range">
+http://www.w3.org/2000/10/swap/pim/doc#Work
+</dd>
+</dl>
+</dd>
+<dt id="vocab_log_definitiveService">
+<strong>log:definitiveService</strong>
+<em>definitive service</em>
+<span class="permalink"><a href="#vocab_log_definitiveService" title="Permalink for log:definitiveService">(link)</a></span>
+</dt>
+<dd>
+<p>When service S is the definitiveService for property P,
+any statement X P Y is true iff and only if a query to S returns
+that it is.  The protocol for the service S depends on the scheme.
+For mysql protocol, the URI of the service is like
+<code>sql://user:password@host.domain/database/</code>.</p>
+
+<p>For example, there may be a definitive service for the zipcode of
+airports by airport code, and so on. This is useful to let a reasoner
+know that it can help resolve a query by delegating it to the service
+in question.
+(Cwm will do this if its mode includes "r").</p>
+
+<dl class="annotations">
+<dt>vs:term_status</dt>
+<dd class="term_status">
+deprecated
+</dd>
+<dt>rdfs:domain</dt>
+<dd class="domain">
+rdf:Property
+</dd>
+</dl>
+</dd>
+<dt id="vocab_log_dtlit">
+<strong>log:dtlit</strong>
+<em>log:dtlit</em>
+<span class="permalink"><a href="#vocab_log_dtlit" title="Permalink for log:dtlit">(link)</a></span>
+</dt>
+<dd>
+<p>Takes a list of a string and a URI and creates a datatyped literal.
+For example, <code>{ ("2005-03-30T11:00:00" :tz) log:dtlit ?X } =&gt; { ?X a :Answer } .</code>
+will produce <code>"2005-03-30T11:00:00"^^:tz a :Answer .</code></p>
+
+<dl class="annotations">
+<dt>vs:term_status</dt>
+<dd class="term_status">
+deprecated
+</dd>
+<dt>rdfs:domain</dt>
+<dd class="domain">
+log:List
+</dd>
+<dt>rdfs:range</dt>
+<dd class="range">
+rdfs:Literal
+</dd>
+</dl>
+</dd>
+<dt id="vocab_log_equalTo">
+<strong>log:equalTo</strong>
+<em>equalTo</em>
+<span class="permalink"><a href="#vocab_log_equalTo" title="Permalink for log:equalTo">(link)</a></span>
+</dt>
+<dd>
+<p>Determines if two RDF resources are the same.</p>
+
+<p><strong>schema</strong>:
+<code>$a_1 log:equalTo $a_2</code></p>
+
+<p><strong>definition</strong>:
+<code>true</code> if and only if <code>$a_1</code> and <code>$a_2</code> are the same RDF node (symbol or literal).</p>
+
+<p>Do not confuse with owl:sameAs.</p>
+
+</dd>
+<dt id="vocab_log_findall">
+<strong>log:findall</strong>
+<em>findall</em>
+<span class="permalink"><a href="#vocab_log_findall" title="Permalink for log:findall">(link)</a></span>
+</dt>
+<dd>
+<p>Built-in used as <code>?SCOPE e:findall (?SELECT ?WHERE ?ANSWER).</code>
+Within the subject <code>?SCOPE</code> it unifies <code>?ANSWER</code> with a list that contains
+all the instantiations of <code>?SELECT</code> satisfying the <code>?WHERE</code> clause.</p>
+
+<dl class="annotations">
+<dt>vs:term_status</dt>
+<dd class="term_status">
+unstable
+</dd>
+<dt>rdfs:domain</dt>
+<dd class="domain">
+log:Formula
+</dd>
+<dt>rdfs:range</dt>
+<dd class="range">
+log:List
+</dd>
+</dl>
+</dd>
+<dt id="vocab_log_forAllIn">
+<strong>log:forAllIn</strong>
+<em>forAllIn</em>
+<span class="permalink"><a href="#vocab_log_forAllIn" title="Permalink for log:forAllIn">(link)</a></span>
+</dt>
+<dd>
+<p>Built-in for implementing a scoped universal quantification.</p>
+
+<dl class="annotations">
+<dt>vs:term_status</dt>
+<dd class="term_status">
+unstable
+</dd>
+</dl>
+</dd>
+<dt id="vocab_log_forAllInClosure">
+<strong>log:forAllInClosure</strong>
+<em>forAllInClosure</em>
+<span class="permalink"><a href="#vocab_log_forAllInClosure" title="Permalink for log:forAllInClosure">(link)</a></span>
+</dt>
+<dd>
+<p>Built-in for implementing a scoped universal quantification.</p>
+
+<dl class="annotations">
+<dt>vs:term_status</dt>
+<dd class="term_status">
+unstable
+</dd>
+</dl>
+</dd>
+<dt id="vocab_log_implies">
+<strong>log:implies</strong>
+<em>implies</em>
+<span class="permalink"><a href="#vocab_log_implies" title="Permalink for log:implies">(link)</a></span>
+</dt>
+<dd>
+<p>Logical implication. </p>
+
+<p>This is the relation between the antecedent (subject) and
+conclusion (object) of a rule.</p>
+
+<p><strong>schema</strong>:
+<code>$a_1 log:implies $a_2</code></p>
+
+<p><strong>definition</strong>:
+The application of a rule to a knowledge-base is as follows.
+For every substitution which, applied to the antecedent (<code>$a_1</code>),
+gives a formula (<code>$a_2</code>) which is a subset of the knowledge-base,
+then the result of applying that same substitution to the
+conclusion may be added to the knowledge-base.</p>
+
+<p><strong>requires</strong>:
+<code>$a_1</code> and <code>$a_2</code> must be formulae.</p>
+
+<p><strong>related</strong>:
+See <code>log:conclusion</code>.</p>
+
+<dl class="annotations">
+<dt>rdfs:domain</dt>
+<dd class="domain">
+log:Formula
+</dd>
+<dt>rdfs:range</dt>
+<dd class="range">
+log:Formula
+</dd>
+</dl>
+</dd>
+<dt id="vocab_log_includes">
+<strong>log:includes</strong>
+<em>includes</em>
+<span class="permalink"><a href="#vocab_log_includes" title="Permalink for log:includes">(link)</a></span>
+</dt>
+<dd>
+<p>The subject formula includes the object formula.</p>
+
+<p><strong>schema</strong>:
+<code>$a_1 log:includes $a_2</code></p>
+
+<p><strong>definition</strong>:
+<code>$a_1</code> includes <code>$a_2</code> if there exists some substitution
+which when applied to <code>$a_2</code> creates a formula B' such that for
+every statement in B' is also in <code>$a_1</code>, every variable
+universally (or existentially) quantified in B' is quantified in
+the same way in <code>$a_1</code>. </p>
+
+<p>Variable substitution is applied recursively to nested compound terms such as
+formulae, lists and sets.</p>
+
+<p><strong>requires</strong>:
+<code>$a_1</code> and <code>$a_2</code> must be formulae.</p>
+
+<p><strong>note</strong>:
+You can use this to peer inside nested formulae.</p>
+
+<dl class="annotations">
+<dt>rdfs:domain</dt>
+<dd class="domain">
+log:Formula
+</dd>
+<dt>rdfs:range</dt>
+<dd class="range">
+log:Formula
+</dd>
+</dl>
+</dd>
+<dt id="vocab_log_n3String">
+<strong>log:n3String</strong>
+<em>n3 string</em>
+<span class="permalink"><a href="#vocab_log_n3String" title="Permalink for log:n3String">(link)</a></span>
+</dt>
+<dd>
+<p>The subject formula, expressed as N3, gives this string.</p>
+
+<p><strong>schema</strong>:
+<code>$a_1 log:n3String $a_2</code></p>
+
+<p><strong>definition</strong>:
+<code>$a_1</code>, serialized as N3, gives <code>$a_2</code>.</p>
+
+<p><strong>requires</strong>:
+<code>$a_1</code> is a formula.</p>
+
+<p><strong>related</strong>:
+See <code>log:parsedAsN3</code>.</p>
+
+<dl class="annotations">
+<dt>rdfs:domain</dt>
+<dd class="domain">
+log:Formula
+</dd>
+<dt>rdfs:range</dt>
+<dd class="range">
+log:N3
+</dd>
+</dl>
+</dd>
+<dt id="vocab_log_notEqualTo">
+<strong>log:notEqualTo</strong>
+<em>notEqualTo</em>
+<span class="permalink"><a href="#vocab_log_notEqualTo" title="Permalink for log:notEqualTo">(link)</a></span>
+</dt>
+<dd>
+<p>Determines if two RDF resources are not the same.</p>
+
+<p><strong>schema</strong>:
+<code>$a_1 log:notEqualTo $a_2</code></p>
+
+<p><strong>definition</strong>:
+<code>true</code> if and only if <code>$a_1</code> and <code>$a_2</code> are not the same RDF node (symbol or literal).</p>
+
+<dl class="annotations">
+<dt>owl:inverse</dt>
+<dd class="inverse">
+log:equalTo
+</dd>
+</dl>
+</dd>
+<dt id="vocab_log_notIn">
+<strong>log:notIn</strong>
+<em>notIn</em>
+<span class="permalink"><a href="#vocab_log_notIn" title="Permalink for log:notIn">(link)</a></span>
+</dt>
+<dd>
+<p>Custom built-in for implementing scoped negation-as-failure (SNAF).</p>
+
+<dl class="annotations">
+<dt>vs:term_status</dt>
+<dd class="term_status">
+unstable
+</dd>
+</dl>
+</dd>
+<dt id="vocab_log_notInClosure">
+<strong>log:notInClosure</strong>
+<em>notInClosure</em>
+<span class="permalink"><a href="#vocab_log_notInClosure" title="Permalink for log:notInClosure">(link)</a></span>
+</dt>
+<dd>
+<p>Custom built-in for implementing scoped negation-as-failure (SNAF).</p>
+
+<dl class="annotations">
+<dt>vs:term_status</dt>
+<dd class="term_status">
+unstable
+</dd>
+</dl>
+</dd>
+<dt id="vocab_log_notIncludes">
+<strong>log:notIncludes</strong>
+<em>not includes</em>
+<span class="permalink"><a href="#vocab_log_notIncludes" title="Permalink for log:notIncludes">(link)</a></span>
+</dt>
+<dd>
+<p>The object formula is NOT a subset of subject.</p>
+
+<p><strong>schema</strong>:
+<code>$a_1 log:notIncludes $a_2</code></p>
+
+<p><strong>definition</strong>:
+<code>true</code> if and only if <code>log:includes</code> is <code>false</code>. The converse of log:includes.</p>
+
+<p><strong>related</strong>:
+See <code>log:includes</code>.</p>
+
+<dl class="annotations">
+<dt>rdfs:domain</dt>
+<dd class="domain">
+log:Formula
+</dd>
+<dt>rdfs:range</dt>
+<dd class="range">
+log:Formula
+</dd>
+</dl>
+</dd>
+<dt id="vocab_log_outputString">
+<strong>log:outputString</strong>
+<em>output string</em>
+<span class="permalink"><a href="#vocab_log_outputString" title="Permalink for log:outputString">(link)</a></span>
+</dt>
+<dd>
+<p>The subject is a key and the object is a string,
+where the strings are to be output in the order of the keys.
+See cwm --strings in cwm --help.</p>
+
+<dl class="annotations">
+<dt>vs:term_status</dt>
+<dd class="term_status">
+deprecated
+</dd>
+<dt>rdfs:range</dt>
+<dd class="range">
+log:String
+</dd>
+</dl>
+</dd>
+<dt id="vocab_log_parsedAsN3">
+<strong>log:parsedAsN3</strong>
+<em>parses to N3</em>
+<span class="permalink"><a href="#vocab_log_parsedAsN3" title="Permalink for log:parsedAsN3">(link)</a></span>
+</dt>
+<dd>
+<p>The subject string, parsed as N3, gives this formula.</p>
+
+<p><strong>schema</strong>:
+<code>$a_1 log:parsedAsN3 $a_2</code></p>
+
+<p><strong>definition</strong>:
+<code>$a_1</code>, parsed as N3, gives <code>$a_2</code>.</p>
+
+<p><strong>requires</strong>:
+<code>$a_1</code> is a syntactically valid string in N3 format.</p>
+
+<p><strong>related</strong>:
+See <code>log:n3String</code>.</p>
+
+<dl class="annotations">
+<dt>rdfs:domain</dt>
+<dd class="domain">
+log:N3
+</dd>
+<dt>rdfs:range</dt>
+<dd class="range">
+log:Formula
+</dd>
+</dl>
+</dd>
+<dt id="vocab_log_racine">
+<strong>log:racine</strong>
+<em>racine</em>
+<span class="permalink"><a href="#vocab_log_racine" title="Permalink for log:racine">(link)</a></span>
+</dt>
+<dd>
+<p>For anything identified by a URI with a fragid, this is the
+thing identified by the same URI without a hash or fragid.
+For anything else, it is itself.</p>
+
+</dd>
+<dt id="vocab_log_rawType">
+<strong>log:rawType</strong>
+<em>rawType</em>
+<span class="permalink"><a href="#vocab_log_rawType" title="Permalink for log:rawType">(link)</a></span>
+</dt>
+<dd>
+<p>Returns an identifier based on the type of the RDF Resource.</p>
+
+<p><strong>schema</strong>:
+<code>$a_1 log:rawType $a_2</code></p>
+
+<p><strong>definition</strong>:
+<code>true</code> if the type of <code>$a_1</code> is the same as <code>$a_2</code>, or binds the type to <code>$a_2</code>.</p>
+
+<p><strong>requires</strong>:
+<code>$a_2</code> is unbound or one of <code>log:Formula</code>, <code>log:Literal</code>, 
+<code>log:List</code>, <code>log:Set</code> or <code>log:Other</code>. </p>
+
+<p><strong>example</strong>:
+<code>log:semanticsOrError</code> returns either a formula or a string, and you can check which using <code>log:rawType</code>.</p>
+
+<dl class="annotations">
+<dt>rdfs:range</dt>
+<dd class="range">
+log:Type
+</dd>
+</dl>
+</dd>
+<dt id="vocab_log_rawUri">
+<strong>log:rawUri</strong>
+<em>raw uri</em>
+<span class="permalink"><a href="#vocab_log_rawUri" title="Permalink for log:rawUri">(link)</a></span>
+</dt>
+<dd>
+<p>This allows one to look at the actual string of the URI which identifies this,
+for anything, even a blank node or a formula. This peeks into the internal
+workings of cwm, and so is not normally used. Use log:uri instead.</p>
+
+<dl class="annotations">
+<dt>rdfs:range</dt>
+<dd class="range">
+log:String
+</dd>
+</dl>
+</dd>
+<dt id="vocab_log_semantics">
+<strong>log:semantics</strong>
+<em>semantics</em>
+<span class="permalink"><a href="#vocab_log_semantics" title="Permalink for log:semantics">(link)</a></span>
+</dt>
+<dd>
+<p>The log:semantics of a document is the formula
+achieved by parsing representation of the document.</p>
+
+<p><strong>schema</strong>:
+<code>$a_1 log:semantics $a_2</code></p>
+
+<p><strong>definition</strong>:
+For a document in Notation3, <code>log:semantics</code> is the
+<code>log:parsedAsN3</code> of the <code>log:content</code> of the document.</p>
+
+<p>For a document in another RDF syntax, it is parsed according to the
+appropriate specification to yield an RDF formula
+(a subclass of N3 <code>log:Formula</code>).</p>
+
+<p>Evaluates to <code>false</code> if an unrecognized document format is retrieved.</p>
+
+<p><strong>requires</strong>:
+<code>$a_1</code> must be an IRI.</p>
+
+<p><strong>aside</strong>:
+Philosophers will be distracted here into worrying about the meaning
+of meaning. At least we didn't call this function "meaning"!
+In as much as N3 is used as an interlingua for interoperability
+for different systems, this for an N3 based system is the meaning 
+expressed by a document.</p>
+
+<p><strong>related</strong>:
+See <code>log:parsedAsN3</code> and <code>log:content</code>.</p>
+
+<dl class="annotations">
+<dt>rdfs:domain</dt>
+<dd class="domain">
+http://www.w3.org/2000/10/swap/pim/doc#Work
+</dd>
+<dt>rdfs:range</dt>
+<dd class="range">
+log:Formula
+</dd>
+</dl>
+</dd>
+<dt id="vocab_log_semanticsOrError">
+<strong>log:semanticsOrError</strong>
+<em>semantics or error message</em>
+<span class="permalink"><a href="#vocab_log_semanticsOrError" title="Permalink for log:semanticsOrError">(link)</a></span>
+</dt>
+<dd>
+<p>This connects a document and either the formula it parses to,
+or an error message explaining what went wrong with trying.</p>
+
+<p><strong>schema</strong>:
+<code>$a_1 log:semanticsOrError $a_2</code></p>
+
+<p><strong>requires</strong>:
+<code>$a_1</code> must be an IRI.</p>
+
+<p><strong>related</strong>:
+See <code>log:semantics</code>.</p>
+
+<dl class="annotations">
+<dt>rdfs:domain</dt>
+<dd class="domain">
+http://www.w3.org/2000/10/swap/pim/doc#Work
+</dd>
+</dl>
+</dd>
+<dt id="vocab_log_skolem">
+<strong>log:skolem</strong>
+<em>skolem</em>
+<span class="permalink"><a href="#vocab_log_skolem" title="Permalink for log:skolem">(link)</a></span>
+</dt>
+<dd>
+<p>Built-in to generate a Skolem IRI object which is a function of the arguments in the subject list</p>
+
+<dl class="annotations">
+<dt>vs:term_status</dt>
+<dd class="term_status">
+unstable
+</dd>
+<dt>rdfs:domain</dt>
+<dd class="domain">
+log:List
+</dd>
+<dt>rdfs:range</dt>
+<dd class="range">
+log:String
+</dd>
+</dl>
+</dd>
+<dt id="vocab_log_uri">
+<strong>log:uri</strong>
+<em>log:uri</em>
+<span class="permalink"><a href="#vocab_log_uri" title="Permalink for log:uri">(link)</a></span>
+</dt>
+<dd>
+<p>This allows one to look at the actual string of the URI which identifies this.</p>
+
+<p>(Cwm can get the URI of a resource or get the resource from the URI.)
+This is a level breaker, breaking the rule of not looking inside a
+URI.   Use (eg with  string:match) to replace RDF's old "aboutEach"
+functionality. Use to implement the URI spec and protocol specs, etc.</p>
+
+<dl class="annotations">
+<dt>rdfs:range</dt>
+<dd class="range">
+log:String
+</dd>
+</dl>
+</dd>
+</dl>
+</section>
+<section class="datatypes">
+<h5>Datatype Definitions</h5>
+<dl>
+<dt id="vocab_log_N3">
+<strong>log:N3</strong>
+<em>log:N3</em>
+<span class="permalink"><a href="#vocab_log_N3" title="Permalink for log:N3">(link)</a></span>
+</dt>
+<dd>
+<p>The class log:N3 is the class of N3 literal values.
+log:N3 is an instance of rdfs:Datatype and a subclass of rdfs:Literal.
+The value of log:content of a log:N3Document is a literal with datatype log:N3.</p>
+
+<dl class="annotations">
+<dt>vs:term_status</dt>
+<dd class="term_status">
+unstable
+</dd>
+<dt>rdfs:subClassOf</dt>
+<dd class="subClassOf">
+rdfs:Literal
+</dd>
+</dl>
+</dd>
+</dl>
+</section>
+</section>
+</section>
+<section class='vocabulary'>
+<h3>Schema mathematical built-in functions</h3>
+<div class="attribute comment">
+<p>This is an ontology for computable math functions.</p>
+
+</div>
+<section class="terms">
+<h4>Vocabulary Terms</h4>
+<section class="classes">
+<h5>Class Definitions</h5>
+<dl>
+<dt id="vocab_math_Function">
+<strong>math:Function</strong>
+<em>Function</em>
+<span class="permalink"><a href="#vocab_math_Function" title="Permalink for math:Function">(link)</a></span>
+</dt>
+<dd>
+<p>A math:Function is unique in terms of math:EqualTo.</p>
+
+<dl class="annotations">
+<dt>rdfs:subClassOf</dt>
+<dd class="subClassOf">
+owl:FunctionalProperty
+</dd>
+</dl>
+</dd>
+<dt id="vocab_math_List">
+<strong>math:List</strong>
+<em>List</em>
+<span class="permalink"><a href="#vocab_math_List" title="Permalink for math:List">(link)</a></span>
+</dt>
+<dd>
+<p>The class of things that are N3 lists where all of the 
+members are math:Value items.</p>
+
+<dl class="annotations">
+<dt>rdfs:subClassOf</dt>
+<dd class="subClassOf">
+log:List
+</dd>
+</dl>
+</dd>
+<dt id="vocab_math_LogicalOperator">
+<strong>math:LogicalOperator</strong>
+<em>math:LogicalOperator</em>
+<span class="permalink"><a href="#vocab_math_LogicalOperator" title="Permalink for math:LogicalOperator">(link)</a></span>
+</dt>
+<dd>
+<p>A logical operator allows evaluation eihter way, or testing relationship
+between two values</p>
+
+<dl class="annotations">
+<dt>rdfs:subClassOf</dt>
+<dd class="subClassOf">
+math:Function, math:ReverseFunction
+</dd>
+</dl>
+</dd>
+<dt id="vocab_math_ReverseFunction">
+<strong>math:ReverseFunction</strong>
+<em>math:ReverseFunction</em>
+<span class="permalink"><a href="#vocab_math_ReverseFunction" title="Permalink for math:ReverseFunction">(link)</a></span>
+</dt>
+<dd>
+<p>A math:ReverseFunction is unambiguous in terms of math:EqualTo.</p>
+
+<dl class="annotations">
+<dt>rdfs:subClassOf</dt>
+<dd class="subClassOf">
+owl:InverseFunctionalProperty
+</dd>
+</dl>
+</dd>
+<dt id="vocab_math_StrictProperty">
+<strong>math:StrictProperty</strong>
+<em>StrictProperty</em>
+<span class="permalink"><a href="#vocab_math_StrictProperty" title="Permalink for math:StrictProperty">(link)</a></span>
+</dt>
+<dd>
+<p>The class of things that compare values.</p>
+
+<dl class="annotations">
+<dt>rdfs:subClassOf</dt>
+<dd class="subClassOf">
+rdf:Property
+</dd>
+</dl>
+</dd>
+<dt id="vocab_math_TwoMemberedList">
+<strong>math:TwoMemberedList</strong>
+<em>TwoMemberedList</em>
+<span class="permalink"><a href="#vocab_math_TwoMemberedList" title="Permalink for math:TwoMemberedList">(link)</a></span>
+</dt>
+<dd>
+<p>This is the class of things that are math lists with only two members.</p>
+
+<dl class="annotations">
+<dt>rdfs:subClassOf</dt>
+<dd class="subClassOf">
+math:List
+</dd>
+</dl>
+</dd>
+<dt id="vocab_math_Value">
+<strong>math:Value</strong>
+<em>Value</em>
+<span class="permalink"><a href="#vocab_math_Value" title="Permalink for math:Value">(link)</a></span>
+</dt>
+<dd>
+<p>The class of things that derive from XSD numeric datatypes.</p>
+
+<dl class="annotations">
+<dt>rdfs:subClassOf</dt>
+<dd class="subClassOf">
+_:b0
+</dd>
+</dl>
+</dd>
+</dl>
+</section>
+<section class="properties">
+<h5>Property Definitions</h5>
+<dl>
+<dt id="vocab_math_absoluteValue">
+<strong>math:absoluteValue</strong>
+<em>negation</em>
+<span class="permalink"><a href="#vocab_math_absoluteValue" title="Permalink for math:absoluteValue">(link)</a></span>
+</dt>
+<dd>
+<p>The object is calulated as the absolute value of the subject.</p>
+
+<dl class="annotations">
+<dt>rdfs:domain</dt>
+<dd class="domain">
+math:Value
+</dd>
+<dt>rdfs:range</dt>
+<dd class="range">
+math:Value
+</dd>
+</dl>
+</dd>
+<dt id="vocab_math_acos">
+<strong>math:acos</strong>
+<em>acos</em>
+<span class="permalink"><a href="#vocab_math_acos" title="Permalink for math:acos">(link)</a></span>
+</dt>
+<dd>
+<p>The object is calulated as the arc cosine value of the subject.</p>
+
+<dl class="annotations">
+<dt>rdfs:domain</dt>
+<dd class="domain">
+math:Value
+</dd>
+<dt>rdfs:range</dt>
+<dd class="range">
+math:Value
+</dd>
+</dl>
+</dd>
+<dt id="vocab_math_asin">
+<strong>math:asin</strong>
+<em>asin</em>
+<span class="permalink"><a href="#vocab_math_asin" title="Permalink for math:asin">(link)</a></span>
+</dt>
+<dd>
+<p>The object is calulated as the arc sine value of the subject.</p>
+
+<dl class="annotations">
+<dt>rdfs:domain</dt>
+<dd class="domain">
+math:Value
+</dd>
+<dt>rdfs:range</dt>
+<dd class="range">
+math:Value
+</dd>
+</dl>
+</dd>
+<dt id="vocab_math_atan">
+<strong>math:atan</strong>
+<em>atan</em>
+<span class="permalink"><a href="#vocab_math_atan" title="Permalink for math:atan">(link)</a></span>
+</dt>
+<dd>
+<p>The object is calulated as the arc tangent value of the subject.</p>
+
+<dl class="annotations">
+<dt>rdfs:domain</dt>
+<dd class="domain">
+math:Value
+</dd>
+<dt>rdfs:range</dt>
+<dd class="range">
+math:Value
+</dd>
+</dl>
+</dd>
+<dt id="vocab_math_cos">
+<strong>math:cos</strong>
+<em>cos</em>
+<span class="permalink"><a href="#vocab_math_cos" title="Permalink for math:cos">(link)</a></span>
+</dt>
+<dd>
+<p>The subject is an angle expressed in radians.
+The object is calulated as the cosine value of the subject.</p>
+
+<dl class="annotations">
+<dt>rdfs:domain</dt>
+<dd class="domain">
+math:Value
+</dd>
+<dt>rdfs:range</dt>
+<dd class="range">
+math:Value
+</dd>
+</dl>
+</dd>
+<dt id="vocab_math_cosh">
+<strong>math:cosh</strong>
+<em>cosh</em>
+<span class="permalink"><a href="#vocab_math_cosh" title="Permalink for math:cosh">(link)</a></span>
+</dt>
+<dd>
+<p>The subject is an angle expressed in radians.
+The object is calulated as the #hyperbolic cosine value of the subject.</p>
+
+<dl class="annotations">
+<dt>rdfs:domain</dt>
+<dd class="domain">
+math:Value
+</dd>
+<dt>rdfs:range</dt>
+<dd class="range">
+math:Value
+</dd>
+</dl>
+</dd>
+<dt id="vocab_math_degrees">
+<strong>math:degrees</strong>
+<em>degrees</em>
+<span class="permalink"><a href="#vocab_math_degrees" title="Permalink for math:degrees">(link)</a></span>
+</dt>
+<dd>
+<p>The subject is an angle expressed in radians.
+The object is calulated as the conversion in degrees of the value of the subject.</p>
+
+<dl class="annotations">
+<dt>rdfs:domain</dt>
+<dd class="domain">
+math:Value
+</dd>
+<dt>rdfs:range</dt>
+<dd class="range">
+math:Value
+</dd>
+</dl>
+</dd>
+<dt id="vocab_math_difference">
+<strong>math:difference</strong>
+<em>difference</em>
+<span class="permalink"><a href="#vocab_math_difference" title="Permalink for math:difference">(link)</a></span>
+</dt>
+<dd>
+<p>The subject is a pair of numbers. The object
+is calculated by subtracting the second number of the pair from the first.</p>
+
+<dl class="annotations">
+<dt>rdfs:domain</dt>
+<dd class="domain">
+math:TwoMemberedList
+</dd>
+<dt>rdfs:range</dt>
+<dd class="range">
+math:Value
+</dd>
+</dl>
+</dd>
+<dt id="vocab_math_equalTo">
+<strong>math:equalTo</strong>
+<em>equalTo</em>
+<span class="permalink"><a href="#vocab_math_equalTo" title="Permalink for math:equalTo">(link)</a></span>
+</dt>
+<dd>
+<p><strong>schema</strong>:
+<code>$a1 math:equalTo $a2</code></p>
+
+<p><strong>summary</strong>:
+checks equality of numbers</p>
+
+<p><strong>definition</strong>:
+<code>true</code> if and only if <code>$a1</code> is equal to <code>$a2</code>. </p>
+
+<p><strong>requires</strong>:
+<code>$a_1</code> or <code>$a_2</code> (or both) must be either concrete numerals, or variables bound to a numeral.</p>
+
+<p><strong>literal domains</strong>:</p>
+
+<ul>
+<li>
+<code>$a1</code>: <code>xs:decimal</code> (or its derived types), <code>xs:float</code>, or <code>xs:double</code>  (see note on type promotion, and casting from string)</li>
+<li>
+<code>$a2</code>: <code>xs:decimal</code> (or its derived types), <code>xs:float</code>, or <code>xs:double</code>  (see note on type promotion, and casting from string)</li>
+</ul>
+
+<dl class="annotations">
+<dt>rdfs:domain</dt>
+<dd class="domain">
+math:Value
+</dd>
+<dt>rdfs:range</dt>
+<dd class="range">
+math:Value
+</dd>
+</dl>
+</dd>
+<dt id="vocab_math_exponentiation">
+<strong>math:exponentiation</strong>
+<em>exponentiation</em>
+<span class="permalink"><a href="#vocab_math_exponentiation" title="Permalink for math:exponentiation">(link)</a></span>
+</dt>
+<dd>
+<p>The subject is a pair of numbers. The object
+is calculated by raising the first number of the power of the second.</p>
+
+<dl class="annotations">
+<dt>rdfs:domain</dt>
+<dd class="domain">
+math:TwoMemberedList
+</dd>
+<dt>rdfs:range</dt>
+<dd class="range">
+math:Value
+</dd>
+</dl>
+</dd>
+<dt id="vocab_math_greaterThan">
+<strong>math:greaterThan</strong>
+<em>greaterThan</em>
+<span class="permalink"><a href="#vocab_math_greaterThan" title="Permalink for math:greaterThan">(link)</a></span>
+</dt>
+<dd>
+<p>True iff the subject is a number which is greater than the object.</p>
+
+<dl class="annotations">
+<dt>rdfs:domain</dt>
+<dd class="domain">
+math:Value
+</dd>
+<dt>rdfs:range</dt>
+<dd class="range">
+math:Value
+</dd>
+</dl>
+</dd>
+<dt id="vocab_math_integerQuotient">
+<strong>math:integerQuotient</strong>
+<em>integerQuotient</em>
+<span class="permalink"><a href="#vocab_math_integerQuotient" title="Permalink for math:integerQuotient">(link)</a></span>
+</dt>
+<dd>
+<p>The subject is a pair of numbers. The object
+is calculated by dividing the first number of the pair by the second, ignoring remainder.</p>
+
+<dl class="annotations">
+<dt>vs:term_status</dt>
+<dd class="term_status">
+deprecated
+</dd>
+<dt>rdfs:domain</dt>
+<dd class="domain">
+math:TwoMemberedList
+</dd>
+<dt>rdfs:range</dt>
+<dd class="range">
+math:Value
+</dd>
+</dl>
+</dd>
+<dt id="vocab_math_lessThan">
+<strong>math:lessThan</strong>
+<em>lessThan</em>
+<span class="permalink"><a href="#vocab_math_lessThan" title="Permalink for math:lessThan">(link)</a></span>
+</dt>
+<dd>
+<p>True iff the subject is a number which is LESS than a object.</p>
+
+<dl class="annotations">
+<dt>rdfs:domain</dt>
+<dd class="domain">
+math:Value
+</dd>
+<dt>rdfs:range</dt>
+<dd class="range">
+math:Value
+</dd>
+</dl>
+</dd>
+<dt id="vocab_math_memberCount">
+<strong>math:memberCount</strong>
+<em>memberCount</em>
+<span class="permalink"><a href="#vocab_math_memberCount" title="Permalink for math:memberCount">(link)</a></span>
+</dt>
+<dd>
+<p>The number of items in a list. The subject is a list,
+the object is calculated as the number of members.
+Obsolete, see list:length</p>
+
+<dl class="annotations">
+<dt>vs:term_status</dt>
+<dd class="term_status">
+deprecated
+</dd>
+<dt>rdfs:domain</dt>
+<dd class="domain">
+math:List
+</dd>
+<dt>rdfs:range</dt>
+<dd class="range">
+math:Value
+</dd>
+</dl>
+</dd>
+<dt id="vocab_math_negation">
+<strong>math:negation</strong>
+<em>negation</em>
+<span class="permalink"><a href="#vocab_math_negation" title="Permalink for math:negation">(link)</a></span>
+</dt>
+<dd>
+<p>The subject or object is calculated to be the negation of the other.</p>
+
+<dl class="annotations">
+<dt>rdfs:domain</dt>
+<dd class="domain">
+math:Value
+</dd>
+<dt>rdfs:range</dt>
+<dd class="range">
+math:Value
+</dd>
+</dl>
+</dd>
+<dt id="vocab_math_notEqualTo">
+<strong>math:notEqualTo</strong>
+<em>notEqualTo</em>
+<span class="permalink"><a href="#vocab_math_notEqualTo" title="Permalink for math:notEqualTo">(link)</a></span>
+</dt>
+<dd>
+<p>True iff the subject is a number which is NOT EQUAL to a object.</p>
+
+<dl class="annotations">
+<dt>rdfs:domain</dt>
+<dd class="domain">
+math:Value
+</dd>
+<dt>rdfs:range</dt>
+<dd class="range">
+math:Value
+</dd>
+</dl>
+</dd>
+<dt id="vocab_math_notGreaterThan">
+<strong>math:notGreaterThan</strong>
+<em>notGreaterThan</em>
+<span class="permalink"><a href="#vocab_math_notGreaterThan" title="Permalink for math:notGreaterThan">(link)</a></span>
+</dt>
+<dd>
+<p>True iff the subject is a number which is NOT greater than the object.</p>
+
+<dl class="annotations">
+<dt>rdfs:domain</dt>
+<dd class="domain">
+math:Value
+</dd>
+<dt>rdfs:range</dt>
+<dd class="range">
+math:Value
+</dd>
+</dl>
+</dd>
+<dt id="vocab_math_notLessThan">
+<strong>math:notLessThan</strong>
+<em>notlessThan</em>
+<span class="permalink"><a href="#vocab_math_notLessThan" title="Permalink for math:notLessThan">(link)</a></span>
+</dt>
+<dd>
+<p>True iff the subject is a number which is NOT LESS than a object.</p>
+
+<dl class="annotations">
+<dt>rdfs:domain</dt>
+<dd class="domain">
+math:Value
+</dd>
+<dt>rdfs:range</dt>
+<dd class="range">
+math:Value
+</dd>
+</dl>
+</dd>
+<dt id="vocab_math_product">
+<strong>math:product</strong>
+<em>product</em>
+<span class="permalink"><a href="#vocab_math_product" title="Permalink for math:product">(link)</a></span>
+</dt>
+<dd>
+<p>The subject is a list of numbers.
+The object is calculated as the arithmentic product of those numbers.</p>
+
+<dl class="annotations">
+<dt>rdfs:domain</dt>
+<dd class="domain">
+math:List
+</dd>
+<dt>rdfs:range</dt>
+<dd class="range">
+math:Value
+</dd>
+</dl>
+</dd>
+<dt id="vocab_math_quotient">
+<strong>math:quotient</strong>
+<em>quotient</em>
+<span class="permalink"><a href="#vocab_math_quotient" title="Permalink for math:quotient">(link)</a></span>
+</dt>
+<dd>
+<p>The subject is a pair of numbers. The object
+is calculated by dividing the first number of the pair by the second.</p>
+
+<dl class="annotations">
+<dt>rdfs:domain</dt>
+<dd class="domain">
+math:TwoMemberedList
+</dd>
+<dt>rdfs:range</dt>
+<dd class="range">
+math:Value
+</dd>
+</dl>
+</dd>
+<dt id="vocab_math_remainder">
+<strong>math:remainder</strong>
+<em>remainder</em>
+<span class="permalink"><a href="#vocab_math_remainder" title="Permalink for math:remainder">(link)</a></span>
+</dt>
+<dd>
+<p>The subject is a pair of integers. The object
+is calculated by dividing the first number of the pair by the second and taking the remainder.</p>
+
+<dl class="annotations">
+<dt>rdfs:domain</dt>
+<dd class="domain">
+math:TwoMemberedList
+</dd>
+<dt>rdfs:range</dt>
+<dd class="range">
+math:Value
+</dd>
+</dl>
+</dd>
+<dt id="vocab_math_rounded">
+<strong>math:rounded</strong>
+<em>rounded</em>
+<span class="permalink"><a href="#vocab_math_rounded" title="Permalink for math:rounded">(link)</a></span>
+</dt>
+<dd>
+<p>The object is calulated as the number with no fractional part that is closest to the subject.
+If there are two such numbers, then the one that is closest to positive infinity is returned.</p>
+
+<dl class="annotations">
+<dt>rdfs:domain</dt>
+<dd class="domain">
+math:Value
+</dd>
+<dt>rdfs:range</dt>
+<dd class="range">
+math:Value
+</dd>
+</dl>
+</dd>
+<dt id="vocab_math_sin">
+<strong>math:sin</strong>
+<em>sin</em>
+<span class="permalink"><a href="#vocab_math_sin" title="Permalink for math:sin">(link)</a></span>
+</dt>
+<dd>
+<p>The subject is an angle expressed in radians.
+The object is calulated as the sine value of the subject.</p>
+
+<dl class="annotations">
+<dt>rdfs:domain</dt>
+<dd class="domain">
+math:Value
+</dd>
+<dt>rdfs:range</dt>
+<dd class="range">
+math:Value
+</dd>
+</dl>
+</dd>
+<dt id="vocab_math_sinh">
+<strong>math:sinh</strong>
+<em>sinh</em>
+<span class="permalink"><a href="#vocab_math_sinh" title="Permalink for math:sinh">(link)</a></span>
+</dt>
+<dd>
+<p>The subject is an angle expressed in radians.
+The object is calulated as the hyperbolic sine value of the subject.</p>
+
+<dl class="annotations">
+<dt>rdfs:domain</dt>
+<dd class="domain">
+math:Value
+</dd>
+<dt>rdfs:range</dt>
+<dd class="range">
+math:Value
+</dd>
+</dl>
+</dd>
+<dt id="vocab_math_sum">
+<strong>math:sum</strong>
+<em>sum</em>
+<span class="permalink"><a href="#vocab_math_sum" title="Permalink for math:sum">(link)</a></span>
+</dt>
+<dd>
+<p><strong>schema</strong>:
+<code>($a_1 .. $a_n) math:sum $a_s</code></p>
+
+<p><strong>summary</strong>:
+performs addition of numbers</p>
+
+<p><strong>definition</strong>:
+<code>true</code> if and only if the arithmetic sum of <code>$a_1, .. $a_n</code> equals <code>$a_s</code>.</p>
+
+<p><strong>requires</strong>:
+all <code>$a_1, .., $a_n</code> to be bound.</p>
+
+<p><strong>literal domains</strong>:</p>
+
+<ul>
+<li>
+<code>$a_1 .. $a_n</code> : <code>xs:decimal</code> (or its derived types), <code>xs:float</code>, or <code>xs:double</code> (see note on type promotion, and casting from string)</li>
+<li>
+<code>$a_s</code>: <code>xs:decimal</code> (or its derived types), <code>xs:float</code>, or <code>xs:double</code> (see note on type promotion, and casting from string)</li>
+</ul>
+
+<dl class="annotations">
+<dt>rdfs:domain</dt>
+<dd class="domain">
+log:List
+</dd>
+<dt>rdfs:range</dt>
+<dd class="range">
+math:Value
+</dd>
+</dl>
+</dd>
+<dt id="vocab_math_tan">
+<strong>math:tan</strong>
+<em>tan</em>
+<span class="permalink"><a href="#vocab_math_tan" title="Permalink for math:tan">(link)</a></span>
+</dt>
+<dd>
+<p>The subject is an angle expressed in radians.
+The object is calulated as the tangent value of the subject.</p>
+
+<dl class="annotations">
+<dt>rdfs:domain</dt>
+<dd class="domain">
+math:Value
+</dd>
+<dt>rdfs:range</dt>
+<dd class="range">
+math:Value
+</dd>
+</dl>
+</dd>
+<dt id="vocab_math_tanh">
+<strong>math:tanh</strong>
+<em>tanh</em>
+<span class="permalink"><a href="#vocab_math_tanh" title="Permalink for math:tanh">(link)</a></span>
+</dt>
+<dd>
+<p>The subject is an angle expressed in radians.
+The object is calulated as the hyperbolic tangent value of the subject.</p>
+
+<dl class="annotations">
+<dt>rdfs:domain</dt>
+<dd class="domain">
+math:Value
+</dd>
+<dt>rdfs:range</dt>
+<dd class="range">
+math:Value
+</dd>
+</dl>
+</dd>
+</dl>
+</section>
+</section>
+</section>
+<section class='vocabulary'>
+<h3>String Processing Ontology</h3>
+<div class="attribute comment">
+<p>This is an ontology for computable string functions.
+It is implemented, for example, in CWM and Euler.</p>
+
+</div>
+<section class="terms">
+<h4>Vocabulary Terms</h4>
+<section class="properties">
+<h5>Property Definitions</h5>
+<dl>
+<dt id="vocab_string_concat">
+<strong>string:concat</strong>
+<em>is concatenation of</em>
+<span class="permalink"><a href="#vocab_string_concat" title="Permalink for string:concat">(link)</a></span>
+</dt>
+<dd>
+<p>(obsolete - (was backwards!) - use: string:concatenation)</p>
+
+<dl class="annotations">
+<dt>owl:inverse</dt>
+<dd class="inverse">
+string:concatenation
+</dd>
+<dt>vs:term_status</dt>
+<dd class="term_status">
+deprecated
+</dd>
+<dt>rdfs:domain</dt>
+<dd class="domain">
+log:String
+</dd>
+<dt>rdfs:range</dt>
+<dd class="range">
+log:List
+</dd>
+</dl>
+</dd>
+<dt id="vocab_string_concatenation">
+<strong>string:concatenation</strong>
+<em>concatenate into</em>
+<span class="permalink"><a href="#vocab_string_concatenation" title="Permalink for string:concatenation">(link)</a></span>
+</dt>
+<dd>
+<p><strong>schema</strong>:
+<code>($a_1 .. $a_n) string:concatenation $a_s</code></p>
+
+<p><strong>summary</strong>:
+concatenates the given resources</p>
+
+<p><strong>definition</strong>:
+<code>true</code> if and only if the string concatenation of <code>$a_1, .. $a_n</code> equals <code>$a_s</code>.</p>
+
+<p><strong>requires</strong>:
+all <code>$a_1, .., $a_n</code> to be bound.</p>
+
+<p><strong>literal domains</strong>:</p>
+
+<ul>
+<li>
+<code>$a_1 .. $a_n</code> : <code>xs:string</code> (see note on casting to string)</li>
+<li>
+<code>$a_s</code>: <code>xs:string</code> (see note on casting to string)</li>
+</ul>
+
+<dl class="annotations">
+<dt>rdfs:domain</dt>
+<dd class="domain">
+log:List
+</dd>
+<dt>rdfs:range</dt>
+<dd class="range">
+log:String
+</dd>
+</dl>
+</dd>
+<dt id="vocab_string_contains">
+<strong>string:contains</strong>
+<em>contains</em>
+<span class="permalink"><a href="#vocab_string_contains" title="Permalink for string:contains">(link)</a></span>
+</dt>
+<dd>
+<p>True iff the subject string contains the object string.</p>
+
+<dl class="annotations">
+<dt>rdfs:domain</dt>
+<dd class="domain">
+log:String
+</dd>
+<dt>rdfs:range</dt>
+<dd class="range">
+log:String
+</dd>
+</dl>
+</dd>
+<dt id="vocab_string_containsIgnoringCase">
+<strong>string:containsIgnoringCase</strong>
+<em>contains</em>
+<span class="permalink"><a href="#vocab_string_containsIgnoringCase" title="Permalink for string:containsIgnoringCase">(link)</a></span>
+</dt>
+<dd>
+<p>True iff the subject string contains the object string,
+with the comparison done ignoring the difference between upper case and
+lower case characters.</p>
+
+<dl class="annotations">
+<dt>rdfs:domain</dt>
+<dd class="domain">
+log:String
+</dd>
+<dt>rdfs:range</dt>
+<dd class="range">
+log:String
+</dd>
+</dl>
+</dd>
+<dt id="vocab_string_endsWith">
+<strong>string:endsWith</strong>
+<em>ends with</em>
+<span class="permalink"><a href="#vocab_string_endsWith" title="Permalink for string:endsWith">(link)</a></span>
+</dt>
+<dd>
+<p>True iff the subject string ends with the object string.</p>
+
+<dl class="annotations">
+<dt>rdfs:domain</dt>
+<dd class="domain">
+log:String
+</dd>
+<dt>rdfs:range</dt>
+<dd class="range">
+log:String
+</dd>
+</dl>
+</dd>
+<dt id="vocab_string_equalIgnoringCase">
+<strong>string:equalIgnoringCase</strong>
+<em>contains</em>
+<span class="permalink"><a href="#vocab_string_equalIgnoringCase" title="Permalink for string:equalIgnoringCase">(link)</a></span>
+</dt>
+<dd>
+<p>True iff the subject string is the same as object string
+ignoring differences between upper and lower case.</p>
+
+<dl class="annotations">
+<dt>rdfs:domain</dt>
+<dd class="domain">
+log:String
+</dd>
+<dt>rdfs:range</dt>
+<dd class="range">
+log:String
+</dd>
+</dl>
+</dd>
+<dt id="vocab_string_format">
+<strong>string:format</strong>
+<em>is the string formatted function of</em>
+<span class="permalink"><a href="#vocab_string_format" title="Permalink for string:format">(link)</a></span>
+</dt>
+<dd>
+<p>The subject is a list, whose first member is a format string,
+and whose remaining members are arguments to the format string.
+The formating string is in the style of python's % operator,
+very similar to C's sprintf().
+The object is calculated from the subject.</p>
+
+<dl class="annotations">
+<dt>rdfs:domain</dt>
+<dd class="domain">
+log:List
+</dd>
+<dt>rdfs:range</dt>
+<dd class="range">
+log:String
+</dd>
+</dl>
+</dd>
+<dt id="vocab_string_greaterThan">
+<strong>string:greaterThan</strong>
+<em>is greater than</em>
+<span class="permalink"><a href="#vocab_string_greaterThan" title="Permalink for string:greaterThan">(link)</a></span>
+</dt>
+<dd>
+<p>True iff the string is greater than the object
+when ordered according to Unicode(tm) code order.</p>
+
+<dl class="annotations">
+<dt>rdfs:domain</dt>
+<dd class="domain">
+log:String
+</dd>
+<dt>rdfs:range</dt>
+<dd class="range">
+log:String
+</dd>
+</dl>
+</dd>
+<dt id="vocab_string_lessThan">
+<strong>string:lessThan</strong>
+<em>is less than</em>
+<span class="permalink"><a href="#vocab_string_lessThan" title="Permalink for string:lessThan">(link)</a></span>
+</dt>
+<dd>
+<p>True iff the string is less than the object
+when ordered according to Unicode(tm) code order.</p>
+
+<dl class="annotations">
+<dt>rdfs:domain</dt>
+<dd class="domain">
+log:String
+</dd>
+<dt>rdfs:range</dt>
+<dd class="range">
+log:String
+</dd>
+</dl>
+</dd>
+<dt id="vocab_string_matches">
+<strong>string:matches</strong>
+<em>contains</em>
+<span class="permalink"><a href="#vocab_string_matches" title="Permalink for string:matches">(link)</a></span>
+</dt>
+<dd>
+<p>The subject is a string;
+the object is is a regular expression in the perl, python style.
+It is true iff the string matches the regexp.</p>
+
+<dl class="annotations">
+<dt>rdfs:domain</dt>
+<dd class="domain">
+log:String
+</dd>
+<dt>rdfs:range</dt>
+<dd class="range">
+log:String
+</dd>
+</dl>
+</dd>
+<dt id="vocab_string_notEqualIgnoringCase">
+<strong>string:notEqualIgnoringCase</strong>
+<em>contains</em>
+<span class="permalink"><a href="#vocab_string_notEqualIgnoringCase" title="Permalink for string:notEqualIgnoringCase">(link)</a></span>
+</dt>
+<dd>
+<p>True iff the subject string is the NOT same as object string
+ignoring differences between upper and lower case.</p>
+
+<dl class="annotations">
+<dt>rdfs:domain</dt>
+<dd class="domain">
+log:String
+</dd>
+<dt>rdfs:range</dt>
+<dd class="range">
+log:String
+</dd>
+</dl>
+</dd>
+<dt id="vocab_string_notGreaterThan">
+<strong>string:notGreaterThan</strong>
+<em>is not greater than</em>
+<span class="permalink"><a href="#vocab_string_notGreaterThan" title="Permalink for string:notGreaterThan">(link)</a></span>
+</dt>
+<dd>
+<p>True iff the string is NOT greater than the object
+when ordered according to Unicode(tm) code order.</p>
+
+<dl class="annotations">
+<dt>rdfs:domain</dt>
+<dd class="domain">
+log:String
+</dd>
+<dt>rdfs:range</dt>
+<dd class="range">
+log:String
+</dd>
+</dl>
+</dd>
+<dt id="vocab_string_notLessThan">
+<strong>string:notLessThan</strong>
+<em>is not less than</em>
+<span class="permalink"><a href="#vocab_string_notLessThan" title="Permalink for string:notLessThan">(link)</a></span>
+</dt>
+<dd>
+<p>True iff the string is NOT less than the object
+when ordered according to Unicode(tm) code order.</p>
+
+<dl class="annotations">
+<dt>rdfs:domain</dt>
+<dd class="domain">
+log:String
+</dd>
+<dt>rdfs:range</dt>
+<dd class="range">
+log:String
+</dd>
+</dl>
+</dd>
+<dt id="vocab_string_notMatches">
+<strong>string:notMatches</strong>
+<em>contains</em>
+<span class="permalink"><a href="#vocab_string_notMatches" title="Permalink for string:notMatches">(link)</a></span>
+</dt>
+<dd>
+<p>The subject string;
+the object is is a regular expression in the perl, python style.
+It is true iff the string does NOT match the regexp.</p>
+
+<dl class="annotations">
+<dt>rdfs:domain</dt>
+<dd class="domain">
+log:String
+</dd>
+<dt>rdfs:range</dt>
+<dd class="range">
+log:String
+</dd>
+</dl>
+</dd>
+<dt id="vocab_string_replace">
+<strong>string:replace</strong>
+<em>replace</em>
+<span class="permalink"><a href="#vocab_string_replace" title="Permalink for string:replace">(link)</a></span>
+</dt>
+<dd>
+<p>A built-in for replacing characters or sub.
+takes a list of 3 strings; the first is the
+input data, the second the old and the third the new string.
+The object is calculated as the replaced string.
+For example, ("fofof bar", "of", "baz") string:replace "fbazbaz bar".</p>
+
+<dl class="annotations">
+<dt>rdfs:domain</dt>
+<dd class="domain">
+log:List
+</dd>
+<dt>rdfs:range</dt>
+<dd class="range">
+log:String
+</dd>
+</dl>
+</dd>
+<dt id="vocab_string_scrape">
+<strong>string:scrape</strong>
+<em>scrape</em>
+<span class="permalink"><a href="#vocab_string_scrape" title="Permalink for string:scrape">(link)</a></span>
+</dt>
+<dd>
+<p>The subject is a list of two strings. The second string is
+a regular expression in the perl, python style.
+It must contain one group (a part in parentheses).  If the first string in the list matches
+the regular expression, then the object is calculated as being the
+part of the first string which matches the group.</p>
+
+<dl class="annotations">
+<dt>rdfs:domain</dt>
+<dd class="domain">
+log:List
+</dd>
+<dt>rdfs:range</dt>
+<dd class="range">
+log:String
+</dd>
+</dl>
+</dd>
+<dt id="vocab_string_startsWith">
+<strong>string:startsWith</strong>
+<em>starts with</em>
+<span class="permalink"><a href="#vocab_string_startsWith" title="Permalink for string:startsWith">(link)</a></span>
+</dt>
+<dd>
+<p>True iff the subject string starts with the object string.</p>
+
+<dl class="annotations">
+<dt>rdfs:domain</dt>
+<dd class="domain">
+log:String
+</dd>
+<dt>rdfs:range</dt>
+<dd class="range">
+log:String
+</dd>
+</dl>
+</dd>
+</dl>
+</section>
+</section>
+</section>
+<section class='vocabulary'>
+<h3>n3 definition of some time and date functions</h3>
+<div class="attribute">
+<p>Based on orginal cwm_date and cwm_time by Mark Nottingham</p>
+
+</div>
+<section class="terms">
+<h4>Vocabulary Terms</h4>
+<section class="properties">
+<h5>Property Definitions</h5>
+<dl>
+<dt id="vocab_time_day">
+<strong>time:day</strong>
+<em>day</em>
+<span class="permalink"><a href="#vocab_time_day" title="Permalink for time:day">(link)</a></span>
+</dt>
+<dd>
+<p>Iff the <em>subject</em> is a <code>xsd:dateTime</code> and the <em>object</em> is the integer day component of the dateTime.
+the <em>object</em> can be calculated as a function of the <em>subject</em>.</p>
+
+<dl class="annotations">
+<dt>rdfs:domain</dt>
+<dd class="domain">
+xsd:dateTime
+</dd>
+<dt>rdfs:range</dt>
+<dd class="range">
+xsd:integer
+</dd>
+</dl>
+</dd>
+<dt id="vocab_time_dayOfWeek">
+<strong>time:dayOfWeek</strong>
+<em>day of week</em>
+<span class="permalink"><a href="#vocab_time_dayOfWeek" title="Permalink for time:dayOfWeek">(link)</a></span>
+</dt>
+<dd>
+<p>Iff the <em>subject</em> is a <code>xsd:dateTime</code> and the <em>object</em> is the integer the day number within the week, Sunday being 0.
+the <em>object</em> can be calculated as a function of the <em>subject</em>.</p>
+
+<dl class="annotations">
+<dt>rdfs:domain</dt>
+<dd class="domain">
+xsd:dateTime
+</dd>
+<dt>rdfs:range</dt>
+<dd class="range">
+xsd:integer
+</dd>
+</dl>
+</dd>
+<dt id="vocab_time_gmTime">
+<strong>time:gmTime</strong>
+<em>Universal Time</em>
+<span class="permalink"><a href="#vocab_time_gmTime" title="Permalink for time:gmTime">(link)</a></span>
+</dt>
+<dd>
+<p>Iff the <em>subject</em> is a dateTime format string and the <em>object</em> is the
+result of formatting the Universal Time of processing in the format given.
+If the format string has zero length,
+then the ISOdate standard format is used. 
+<code>[ is time:gmtime of ""]</code>  the therefore the current date time.
+It will end with "Z" as a timezone code.
+the <em>object</em> can be calculated as a function of the <em>subject</em>.
+Rules which use this function will of course NOT be repeatable.</p>
+
+<dl class="annotations">
+<dt>rdfs:domain</dt>
+<dd class="domain">
+time:format
+</dd>
+<dt>rdfs:range</dt>
+<dd class="range">
+xsd:string
+</dd>
+</dl>
+</dd>
+<dt id="vocab_time_hour">
+<strong>time:hour</strong>
+<em>hour</em>
+<span class="permalink"><a href="#vocab_time_hour" title="Permalink for time:hour">(link)</a></span>
+</dt>
+<dd>
+<p>Iff the <em>subject</em> is a <code>xsd:dateTime</code> and the <em>object</em> is the hour year component of the dateTime.
+the <em>object</em> can be calculated as a function of the <em>subject</em>.</p>
+
+<dl class="annotations">
+<dt>rdfs:domain</dt>
+<dd class="domain">
+xsd:dateTime
+</dd>
+<dt>rdfs:range</dt>
+<dd class="range">
+xsd:integer
+</dd>
+</dl>
+</dd>
+<dt id="vocab_time_inSeconds">
+<strong>time:inSeconds</strong>
+<em>in era seconds</em>
+<span class="permalink"><a href="#vocab_time_inSeconds" title="Permalink for time:inSeconds">(link)</a></span>
+</dt>
+<dd>
+<p>Iff the <em>subject</em> is a <code>xsd:dateTime</code> and the <em>object</em> is the integer number of seconds
+since the beginning of the era on a given system.  Don't assume a particular value, always test for it.
+the <em>object</em> can be calculated as a function of the <em>subject</em>.</p>
+
+<p>Cwm implements this as a bidirectional function: you can calculate the
+ISO date from the seconds since the beginning of the era, or vice-versa.</p>
+
+<dl class="annotations">
+<dt>rdfs:domain</dt>
+<dd class="domain">
+xsd:dateTime
+</dd>
+<dt>rdfs:range</dt>
+<dd class="range">
+xsd:integer
+</dd>
+</dl>
+</dd>
+<dt id="vocab_time_localTime">
+<strong>time:localTime</strong>
+<em>local time</em>
+<span class="permalink"><a href="#vocab_time_localTime" title="Permalink for time:localTime">(link)</a></span>
+</dt>
+<dd>
+<p>Iff the <em>subject</em> is a dateTime format string and the <em>object</em> is the
+result of formatting the current time of processing and local timezone in the format given.
+If the format string has zero length,
+then the ISOdate standard format is used. 
+<code>[ is time:gmtime of ""]</code>  the therefore the current date time.
+It will end with "Z" as a timezone code.
+the <em>object</em> can be calculated as a function of the <em>subject</em>.
+Rules which use this function will of course NOT be repeatable.</p>
+
+<dl class="annotations">
+<dt>rdfs:domain</dt>
+<dd class="domain">
+time:format
+</dd>
+<dt>rdfs:range</dt>
+<dd class="range">
+xsd:string
+</dd>
+</dl>
+</dd>
+<dt id="vocab_time_minute">
+<strong>time:minute</strong>
+<em>minute</em>
+<span class="permalink"><a href="#vocab_time_minute" title="Permalink for time:minute">(link)</a></span>
+</dt>
+<dd>
+<p>Iff the <em>subject</em> is a <code>xsd:dateTime</code> and the <em>object</em> is the integer minute component of the dateTime.
+the <em>object</em> can be calculated as a function of the <em>subject</em>.</p>
+
+<dl class="annotations">
+<dt>rdfs:domain</dt>
+<dd class="domain">
+xsd:dateTime
+</dd>
+<dt>rdfs:range</dt>
+<dd class="range">
+xsd:integer
+</dd>
+</dl>
+</dd>
+<dt id="vocab_time_month">
+<strong>time:month</strong>
+<em>month</em>
+<span class="permalink"><a href="#vocab_time_month" title="Permalink for time:month">(link)</a></span>
+</dt>
+<dd>
+<p>Iff the <em>subject</em> is a <code>xsd:dateTime</code> and the <em>object</em> is the integer month component of the dateTime.
+the <em>object</em> can be calculated as a function of the <em>subject</em>.</p>
+
+<dl class="annotations">
+<dt>rdfs:domain</dt>
+<dd class="domain">
+xsd:dateTime
+</dd>
+<dt>rdfs:range</dt>
+<dd class="range">
+xsd:integer
+</dd>
+</dl>
+</dd>
+<dt id="vocab_time_second">
+<strong>time:second</strong>
+<em>second</em>
+<span class="permalink"><a href="#vocab_time_second" title="Permalink for time:second">(link)</a></span>
+</dt>
+<dd>
+<p>Iff the <em>subject</em> is a <code>xsd:dateTime</code> and the <em>object</em> is the integer year component of the dateTime.
+the <em>object</em> can be calculated as a function of the <em>subject</em>.</p>
+
+<dl class="annotations">
+<dt>rdfs:domain</dt>
+<dd class="domain">
+xsd:dateTime
+</dd>
+<dt>rdfs:range</dt>
+<dd class="range">
+xsd:integer
+</dd>
+</dl>
+</dd>
+<dt id="vocab_time_timeZone">
+<strong>time:timeZone</strong>
+<em>timezone offset</em>
+<span class="permalink"><a href="#vocab_time_timeZone" title="Permalink for time:timeZone">(link)</a></span>
+</dt>
+<dd>
+<p>Iff the <em>subject</em> is a <code>xsd:dateTime</code> and the <em>object</em> is the trailing timezone offset
+part, e.g.  "-05:00"..
+the <em>object</em> can be calculated as a function of the <em>subject</em>.</p>
+
+<dl class="annotations">
+<dt>rdfs:domain</dt>
+<dd class="domain">
+xsd:dateTime
+</dd>
+<dt>rdfs:range</dt>
+<dd class="range">
+xsd:string
+</dd>
+</dl>
+</dd>
+<dt id="vocab_time_year">
+<strong>time:year</strong>
+<em>year</em>
+<span class="permalink"><a href="#vocab_time_year" title="Permalink for time:year">(link)</a></span>
+</dt>
+<dd>
+<p>Iff the <em>subject</em> is a <code>xsd:dateTime</code> and the <em>object</em> is the integer year component of the dateTime.
+the <em>object</em> can be calculated as a function of the <em>subject</em>.</p>
+
+<dl class="annotations">
+<dt>rdfs:domain</dt>
+<dd class="domain">
+xsd:dateTime
+</dd>
+<dt>rdfs:range</dt>
+<dd class="range">
+xsd:integer
+</dd>
+</dl>
+</dd>
+</dl>
+</section>
+</section>
+</section>
+</section>

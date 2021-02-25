@@ -4,7 +4,7 @@
 <title>n3 definition of some Semantic Web terms</title>
 <link href='http://www.w3.org/StyleSheets/TR/base' rel='stylesheet'>
 <style>
-  body: {bacground-image: none;}
+  body {background-image: none;}
   dt {margin-top: 2em; font-weight: normal;}
   dd code {display: inline;}
   footer {text-align: center;}
@@ -23,6 +23,10 @@
   }
   table.rdfs-definition td {vertical-align: top;}
   .bold {font-weight: bold;}
+  .note, .historyNote, .editorialNote {
+    margin-left: 2em;
+    font-style: italic;
+  }
 </style>
 </head>
 <body>
@@ -31,26 +35,27 @@
 <img alt='W3C' height='48' src='http://www.w3.org/Icons/w3c_home' width='72'>
 </a>
 </p>
-<h1>n3 definition of some Semantic Web terms</h1>
-<div>
+<h3 class='label'>n3 definition of some Semantic Web terms</h3>
+<div class='attribute comment'>
 <p>These raise the level above RDF&#39;s pure relational data,
 and Web Ontology&#39;s ontological level, to allow rules to be expressed
 and inference done. They connect the inference to the web,
 allowing data to be fetched from resources elsewhere, and remote
 servers to be queried.</p>
 
-<p>The vocabulary is published by the <a href="https://www.w3.org/community/n3-dev/">W3C Notation-3 Community Group</a>.</p>
-
 </div>
-<section>
-<h2>Vocabulary Terms</h2>
-<section>
-<h3>Class Definitions</h3>
+<div class='wg'>
+<p>The vocabulary is published by the <a href="https://www.w3.org/community/n3-dev/">W3C Notation-3 Community Group</a>.</p>
+</div>
+<section class='terms'>
+<h4>Vocabulary Terms</h4>
+<section class='classes'>
+<h5>Class Definitions</h5>
 <dl>
-<dt id='log_Chaff'>
+<dt id='vocab_log_Chaff'>
 <strong>log:Chaff</strong>
 <em>Chaff</em>
-<span class='permalink'><a href='#log_Chaff' title='Permalink for log:Chaff'>(link)</a></span>
+<span class='permalink'><a href='#vocab_log_Chaff' title='Permalink for log:Chaff'>(link)</a></span>
 </dt>
 <dd>
 <p>Any statement mentioning anything in this class
@@ -59,36 +64,40 @@ This is a convenience, and does not have any value when published as a
 general fact on the web.</p>
 
 </dd>
-<dt id='log_Formula'>
+<dt id='vocab_log_Formula'>
 <strong>log:Formula</strong>
 <em>Formula</em>
-<span class='permalink'><a href='#log_Formula' title='Permalink for log:Formula'>(link)</a></span>
+<span class='permalink'><a href='#vocab_log_Formula' title='Permalink for log:Formula'>(link)</a></span>
 </dt>
 <dd>
 <p>The class of Notation-3 Formulae</p>
 
 <dl class='annotations'>
 <dt>rdfs:subClassOf</dt>
-<dd>log:Type</dd>
+<dd class='subClassOf'>
+log:Type
+</dd>
 </dl>
 </dd>
-<dt id='log_List'>
+<dt id='vocab_log_List'>
 <strong>log:List</strong>
 <em>List</em>
-<span class='permalink'><a href='#log_List' title='Permalink for log:List'>(link)</a></span>
+<span class='permalink'><a href='#vocab_log_List' title='Permalink for log:List'>(link)</a></span>
 </dt>
 <dd>
 <p>A Notation-3 List, as a resource. A sub-class of an RDF List.</p>
 
 <dl class='annotations'>
 <dt>rdfs:subClassOf</dt>
-<dd>log:Type, rdf:List</dd>
+<dd class='subClassOf'>
+log:Type, rdf:List
+</dd>
 </dl>
 </dd>
-<dt id='log_N3Document'>
+<dt id='vocab_log_N3Document'>
 <strong>log:N3Document</strong>
 <em>N3Document</em>
-<span class='permalink'><a href='#log_N3Document' title='Permalink for log:N3Document'>(link)</a></span>
+<span class='permalink'><a href='#vocab_log_N3Document' title='Permalink for log:N3Document'>(link)</a></span>
 </dt>
 <dd>
 <p>A document which, which parsed as Notation3
@@ -99,39 +108,45 @@ of any other identifiers used in the document.</p>
 
 <dl class='annotations'>
 <dt>rdfs:subClassOf</dt>
-<dd>http://www.w3.org/2000/10/swap/pim/doc#Work</dd>
+<dd class='subClassOf'>
+http://www.w3.org/2000/10/swap/pim/doc#Work
+</dd>
 </dl>
 </dd>
-<dt id='log_Other'>
+<dt id='vocab_log_Other'>
 <strong>log:Other</strong>
 <em>List</em>
-<span class='permalink'><a href='#log_Other' title='Permalink for log:Other'>(link)</a></span>
+<span class='permalink'><a href='#vocab_log_Other' title='Permalink for log:Other'>(link)</a></span>
 </dt>
 <dd>
 <p>Some other Notation-3 type</p>
 
 <dl class='annotations'>
 <dt>rdfs:subClassOf</dt>
-<dd>log:Type</dd>
+<dd class='subClassOf'>
+log:Type
+</dd>
 </dl>
 </dd>
-<dt id='log_String'>
+<dt id='vocab_log_String'>
 <strong>log:String</strong>
 <em>List</em>
-<span class='permalink'><a href='#log_String' title='Permalink for log:String'>(link)</a></span>
+<span class='permalink'><a href='#vocab_log_String' title='Permalink for log:String'>(link)</a></span>
 </dt>
 <dd>
 <p>An RDF Literal</p>
 
 <dl class='annotations'>
 <dt>rdfs:subClassOf</dt>
-<dd>rdfs:Literal, log:Type</dd>
+<dd class='subClassOf'>
+log:Type, rdfs:Literal
+</dd>
 </dl>
 </dd>
-<dt id='log_Truth'>
+<dt id='vocab_log_Truth'>
 <strong>log:Truth</strong>
 <em>Truth</em>
-<span class='permalink'><a href='#log_Truth' title='Permalink for log:Truth'>(link)</a></span>
+<span class='permalink'><a href='#vocab_log_Truth' title='Permalink for log:Truth'>(link)</a></span>
 </dt>
 <dd>
 <p>Something which is true: believe it as you would believe this.</p>
@@ -140,101 +155,143 @@ of any other identifiers used in the document.</p>
 declared a Truth within a formula it is already taking rules from.</p>
 
 </dd>
-<dt id='log_Type'>
+<dt id='vocab_log_Type'>
 <strong>log:Type</strong>
 <em>Type</em>
-<span class='permalink'><a href='#log_Type' title='Permalink for log:Type'>(link)</a></span>
+<span class='permalink'><a href='#vocab_log_Type' title='Permalink for log:Type'>(link)</a></span>
 </dt>
 <dd>
 <p>The class of Notation3-specifiec resource types.</p>
 
 <dl class='annotations'>
 <dt>vs:term_status</dt>
-<dd>unstable</dd>
+<dd class='term_status'>
+unstable
+</dd>
 </dl>
 </dd>
 </dl>
 </section>
-<section>
-<h3>Property Definitions</h3>
+<section class='properties'>
+<h5>Property Definitions</h5>
 <dl>
-<dt id='log_becomes'>
+<dt id='vocab_log_becomes'>
 <strong>log:becomes</strong>
 <em>becomes</em>
-<span class='permalink'><a href='#log_becomes' title='Permalink for log:becomes'>(link)</a></span>
+<span class='permalink'><a href='#vocab_log_becomes' title='Permalink for log:becomes'>(link)</a></span>
 </dt>
 <dd>
 <p>Built-in to perform RDF linear implication i.e. retracting the subject graph and asserting the object graph.</p>
 
 <dl class='annotations'>
 <dt>vs:term_status</dt>
-<dd>unstable</dd>
+<dd class='term_status'>
+unstable
+</dd>
 </dl>
 </dd>
-<dt id='log_conclusion'>
+<dt id='vocab_log_conclusion'>
 <strong>log:conclusion</strong>
 <em>conclusion</em>
-<span class='permalink'><a href='#log_conclusion' title='Permalink for log:conclusion'>(link)</a></span>
+<span class='permalink'><a href='#vocab_log_conclusion' title='Permalink for log:conclusion'>(link)</a></span>
 </dt>
 <dd>
 <p>All possible conclusions which can be drawn from a formula.</p>
 
-<p>The object of this function, a formula, is the set of conclusions which can be
-drawn from the subject formula, by successively applying any
-rules it contains to the data it contains. This is equivalent to
-cwm&#39;s &quot;--think&quot; command line function.  It does use built-ins, so
+<p><strong>schema</strong>:
+<code>$a_1 log:conclusion $a_2</code></p>
+
+<p><strong>definition</strong>:
+<code>$a_2</code> is the set of conclusions which can be
+drawn from <code>$a_1</code>, by successively applying any
+rules it contains to the data it contains.</p>
+
+<p><strong>requires</strong>:
+<code>$a_1</code> is a formula
+<code>$a_2</code> is unbound or a formula.</p>
+
+<p><strong>note</strong>:
+This is equivalent to
+cwm&#39;s &quot;--think&quot; command line function.
+It does use built-ins, so
 it may for example indirectly invoke other documents, validate
 signatures, etc.</p>
 
 <dl class='annotations'>
 <dt>rdfs:domain</dt>
-<dd>log:Formula</dd>
+<dd class='domain'>
+log:Formula
+</dd>
 <dt>rdfs:range</dt>
-<dd>log:Formula</dd>
+<dd class='range'>
+log:Formula
+</dd>
 </dl>
 </dd>
-<dt id='log_conjunction'>
+<dt id='vocab_log_conjunction'>
 <strong>log:conjunction</strong>
 <em>conjunction</em>
-<span class='permalink'><a href='#log_conjunction' title='Permalink for log:conjunction'>(link)</a></span>
+<span class='permalink'><a href='#vocab_log_conjunction' title='Permalink for log:conjunction'>(link)</a></span>
 </dt>
 <dd>
 <p>A function to merge formulae: logical AND.</p>
 
-<p>The subject is a list of formulae.
-The object, which can be generated, is a formula containing a copy
-of each of the formulae in the list on the left.
-A cwm built-in function.</p>
+<p><strong>schema</strong>:
+<code>($a_1 .. $a_n) log:conjunction $a_s</code></p>
+
+<p><strong>definition</strong>:
+<code>$a_s</code>, which can be generated, is a formula containing a copy
+of each of the formulae <code>$a_1 .. $a_n</code>.</p>
+
+<p><strong>requires</strong>:
+all <code>$a_1, .., $a_n</code> to be formulae.</p>
 
 <dl class='annotations'>
 <dt>rdfs:domain</dt>
-<dd>log:List</dd>
+<dd class='domain'>
+log:List
+</dd>
 <dt>rdfs:range</dt>
-<dd>log:Formula</dd>
+<dd class='range'>
+log:Formula
+</dd>
 </dl>
 </dd>
-<dt id='log_content'>
+<dt id='vocab_log_content'>
 <strong>log:content</strong>
 <em>content</em>
-<span class='permalink'><a href='#log_content' title='Permalink for log:content'>(link)</a></span>
+<span class='permalink'><a href='#vocab_log_content' title='Permalink for log:content'>(link)</a></span>
 </dt>
 <dd>
 <p>This connects a document and a string that represents it.
-(Cwm knows how to go get a document in order to evaluate this.)
-Note that the content-type of the information is not given and
+(Cwm knows how to go get a document in order to evaluate this.)</p>
+
+<p><strong>schema</strong>:
+<code>$a_1 log:content $a_2</code></p>
+
+<p><strong>requires</strong>:
+<code>$a_1</code> must be an IRI.
+<code>$a_2</code> must be either unbound or a string.</p>
+
+<p><strong>note</strong>:
+The content-type of the information is not given and
 so must be known or guessed.</p>
 
 <dl class='annotations'>
 <dt>rdfs:domain</dt>
-<dd>http://www.w3.org/2000/10/swap/pim/doc#Work</dd>
+<dd class='domain'>
+http://www.w3.org/2000/10/swap/pim/doc#Work
+</dd>
 <dt>rdfs:range</dt>
-<dd>log:String</dd>
+<dd class='range'>
+log:String
+</dd>
 </dl>
 </dd>
-<dt id='log_definitiveDocument'>
+<dt id='vocab_log_definitiveDocument'>
 <strong>log:definitiveDocument</strong>
 <em>definitive document</em>
-<span class='permalink'><a href='#log_definitiveDocument' title='Permalink for log:definitiveDocument'>(link)</a></span>
+<span class='permalink'><a href='#vocab_log_definitiveDocument' title='Permalink for log:definitiveDocument'>(link)</a></span>
 </dt>
 <dd>
 <p>When document D is the definitiveDocument for property P,
@@ -247,18 +304,24 @@ know that it can extend its query to the given document.
 (Cwm will do this if its mode includes &quot;r&quot;).</p>
 
 <dl class='annotations'>
-<dt>rdfs:domain</dt>
-<dd>rdf:Property</dd>
-<dt>rdfs:range</dt>
-<dd>http://www.w3.org/2000/10/swap/pim/doc#Work</dd>
 <dt>vs:term_status</dt>
-<dd>deprecated</dd>
+<dd class='term_status'>
+deprecated
+</dd>
+<dt>rdfs:domain</dt>
+<dd class='domain'>
+rdf:Property
+</dd>
+<dt>rdfs:range</dt>
+<dd class='range'>
+http://www.w3.org/2000/10/swap/pim/doc#Work
+</dd>
 </dl>
 </dd>
-<dt id='log_definitiveService'>
+<dt id='vocab_log_definitiveService'>
 <strong>log:definitiveService</strong>
 <em>definitive service</em>
-<span class='permalink'><a href='#log_definitiveService' title='Permalink for log:definitiveService'>(link)</a></span>
+<span class='permalink'><a href='#vocab_log_definitiveService' title='Permalink for log:definitiveService'>(link)</a></span>
 </dt>
 <dd>
 <p>When service S is the definitiveService for property P,
@@ -274,16 +337,20 @@ in question.
 (Cwm will do this if its mode includes &quot;r&quot;).</p>
 
 <dl class='annotations'>
-<dt>rdfs:domain</dt>
-<dd>rdf:Property</dd>
 <dt>vs:term_status</dt>
-<dd>deprecated</dd>
+<dd class='term_status'>
+deprecated
+</dd>
+<dt>rdfs:domain</dt>
+<dd class='domain'>
+rdf:Property
+</dd>
 </dl>
 </dd>
-<dt id='log_dtlit'>
+<dt id='vocab_log_dtlit'>
 <strong>log:dtlit</strong>
 <em>log:dtlit</em>
-<span class='permalink'><a href='#log_dtlit' title='Permalink for log:dtlit'>(link)</a></span>
+<span class='permalink'><a href='#vocab_log_dtlit' title='Permalink for log:dtlit'>(link)</a></span>
 </dt>
 <dd>
 <p>Takes a list of a string and a URI and creates a datatyped literal.
@@ -291,29 +358,41 @@ For example, <code>{ (&quot;2005-03-30T11:00:00&quot; :tz) log:dtlit ?X } =&gt; 
 will produce <code>&quot;2005-03-30T11:00:00&quot;^^:tz a :Answer .</code></p>
 
 <dl class='annotations'>
-<dt>rdfs:domain</dt>
-<dd>log:List</dd>
-<dt>rdfs:range</dt>
-<dd>rdfs:Literal</dd>
 <dt>vs:term_status</dt>
-<dd>deprecated</dd>
+<dd class='term_status'>
+deprecated
+</dd>
+<dt>rdfs:domain</dt>
+<dd class='domain'>
+log:List
+</dd>
+<dt>rdfs:range</dt>
+<dd class='range'>
+rdfs:Literal
+</dd>
 </dl>
 </dd>
-<dt id='log_equalTo'>
+<dt id='vocab_log_equalTo'>
 <strong>log:equalTo</strong>
 <em>equalTo</em>
-<span class='permalink'><a href='#log_equalTo' title='Permalink for log:equalTo'>(link)</a></span>
+<span class='permalink'><a href='#vocab_log_equalTo' title='Permalink for log:equalTo'>(link)</a></span>
 </dt>
 <dd>
-<p>True if the subject and object are the same RDF node (symbol or literal).
-Do not confuse with owl:sameAs.
-A cwm built-in logical operator, RDF graph level.</p>
+<p>Determines if two RDF resources are the same.</p>
+
+<p><strong>schema</strong>:
+<code>$a_1 log:equalTo $a_2</code></p>
+
+<p><strong>definition</strong>:
+<code>true</code> if and only if <code>$a_1</code> and <code>$a_2</code> are the same RDF node (symbol or literal).</p>
+
+<p>Do not confuse with owl:sameAs.</p>
 
 </dd>
-<dt id='log_findall'>
+<dt id='vocab_log_findall'>
 <strong>log:findall</strong>
 <em>findall</em>
-<span class='permalink'><a href='#log_findall' title='Permalink for log:findall'>(link)</a></span>
+<span class='permalink'><a href='#vocab_log_findall' title='Permalink for log:findall'>(link)</a></span>
 </dt>
 <dd>
 <p>Built-in used as <code>?SCOPE e:findall (?SELECT ?WHERE ?ANSWER).</code>
@@ -321,174 +400,240 @@ Within the subject <code>?SCOPE</code> it unifies <code>?ANSWER</code> with a li
 all the instantiations of <code>?SELECT</code> satisfying the <code>?WHERE</code> clause.</p>
 
 <dl class='annotations'>
-<dt>rdfs:domain</dt>
-<dd>log:Formula</dd>
-<dt>rdfs:range</dt>
-<dd>log:List</dd>
 <dt>vs:term_status</dt>
-<dd>unstable</dd>
+<dd class='term_status'>
+unstable
+</dd>
+<dt>rdfs:domain</dt>
+<dd class='domain'>
+log:Formula
+</dd>
+<dt>rdfs:range</dt>
+<dd class='range'>
+log:List
+</dd>
 </dl>
 </dd>
-<dt id='log_forAllIn'>
+<dt id='vocab_log_forAllIn'>
 <strong>log:forAllIn</strong>
 <em>forAllIn</em>
-<span class='permalink'><a href='#log_forAllIn' title='Permalink for log:forAllIn'>(link)</a></span>
+<span class='permalink'><a href='#vocab_log_forAllIn' title='Permalink for log:forAllIn'>(link)</a></span>
 </dt>
 <dd>
 <p>Built-in for implementing a scoped universal quantification.</p>
 
 <dl class='annotations'>
 <dt>vs:term_status</dt>
-<dd>unstable</dd>
+<dd class='term_status'>
+unstable
+</dd>
 </dl>
 </dd>
-<dt id='log_forAllInClosure'>
+<dt id='vocab_log_forAllInClosure'>
 <strong>log:forAllInClosure</strong>
 <em>forAllInClosure</em>
-<span class='permalink'><a href='#log_forAllInClosure' title='Permalink for log:forAllInClosure'>(link)</a></span>
+<span class='permalink'><a href='#vocab_log_forAllInClosure' title='Permalink for log:forAllInClosure'>(link)</a></span>
 </dt>
 <dd>
 <p>Built-in for implementing a scoped universal quantification.</p>
 
 <dl class='annotations'>
 <dt>vs:term_status</dt>
-<dd>unstable</dd>
+<dd class='term_status'>
+unstable
+</dd>
 </dl>
 </dd>
-<dt id='log_implies'>
+<dt id='vocab_log_implies'>
 <strong>log:implies</strong>
 <em>implies</em>
-<span class='permalink'><a href='#log_implies' title='Permalink for log:implies'>(link)</a></span>
+<span class='permalink'><a href='#vocab_log_implies' title='Permalink for log:implies'>(link)</a></span>
 </dt>
 <dd>
-<p>Logical implication. 
-This is the relation between the antecedent (subject) and
-conclusion (object) of a rule.
+<p>Logical implication. </p>
+
+<p>This is the relation between the antecedent (subject) and
+conclusion (object) of a rule.</p>
+
+<p><strong>schema</strong>:
+<code>$a_1 log:implies $a_2</code></p>
+
+<p><strong>definition</strong>:
 The application of a rule to a knowledge-base is as follows.
-For every substitution which, applied to the antecedent,
-gives a formula which is a subset of the knowledge-base,
+For every substitution which, applied to the antecedent (<code>$a_1</code>),
+gives a formula (<code>$a_2</code>) which is a subset of the knowledge-base,
 then the result of applying that same substitution to the
 conclusion may be added to the knowledge-base.</p>
 
-<p>related: See log:conclusion. 
-(See the CWM manual for command line options to determine how
-rules from different sources are applied to and the results
-added to various formula.)</p>
+<p><strong>requires</strong>:
+<code>$a_1</code> and <code>$a_2</code> must be formulae.</p>
+
+<p><strong>related</strong>:
+See <code>log:conclusion</code>.</p>
 
 <dl class='annotations'>
 <dt>rdfs:domain</dt>
-<dd>log:Formula</dd>
+<dd class='domain'>
+log:Formula
+</dd>
 <dt>rdfs:range</dt>
-<dd>log:Formula</dd>
+<dd class='range'>
+log:Formula
+</dd>
 </dl>
 </dd>
-<dt id='log_includes'>
+<dt id='vocab_log_includes'>
 <strong>log:includes</strong>
 <em>includes</em>
-<span class='permalink'><a href='#log_includes' title='Permalink for log:includes'>(link)</a></span>
+<span class='permalink'><a href='#vocab_log_includes' title='Permalink for log:includes'>(link)</a></span>
 </dt>
 <dd>
-<p>The subject formula includes the object formula.
-Formula A includes formula B if there exists some substitution
-which when applied to B creates a formula B&#39; such that for
-every statement in B&#39; is also in A, every variable
+<p>The subject formula includes the object formula.</p>
+
+<p><strong>schema</strong>:
+<code>$a_1 log:includes $a_2</code></p>
+
+<p><strong>definition</strong>:
+<code>$a_1</code> includes <code>$a_2</code> if there exists some substitution
+which when applied to <code>$a_2</code> creates a formula B&#39; such that for
+every statement in B&#39; is also in <code>$a_1</code>, every variable
 universally (or existentially) quantified in B&#39; is quantified in
-the same way in A. </p>
+the same way in <code>$a_1</code>. </p>
 
 <p>Variable substitution is applied recursively to nested compound terms such as
 formulae, lists and sets.</p>
 
-<p>(Understood natively by cwm when in in the antecedent of a rule.
-You can use this to peer inside nested formulae.)</p>
+<p><strong>requires</strong>:
+<code>$a_1</code> and <code>$a_2</code> must be formulae.</p>
+
+<p><strong>note</strong>:
+You can use this to peer inside nested formulae.</p>
 
 <dl class='annotations'>
 <dt>rdfs:domain</dt>
-<dd>log:Formula</dd>
+<dd class='domain'>
+log:Formula
+</dd>
 <dt>rdfs:range</dt>
-<dd>log:Formula</dd>
+<dd class='range'>
+log:Formula
+</dd>
 </dl>
 </dd>
-<dt id='log_n3String'>
+<dt id='vocab_log_n3String'>
 <strong>log:n3String</strong>
 <em>n3 string</em>
-<span class='permalink'><a href='#log_n3String' title='Permalink for log:n3String'>(link)</a></span>
+<span class='permalink'><a href='#vocab_log_n3String' title='Permalink for log:n3String'>(link)</a></span>
 </dt>
 <dd>
 <p>The subject formula, expressed as N3, gives this string.</p>
 
+<p><strong>schema</strong>:
+<code>$a_1 log:n3String $a_2</code></p>
+
+<p><strong>definition</strong>:
+<code>$a_1</code>, serialized as N3, gives <code>$a_2</code>.</p>
+
+<p><strong>requires</strong>:
+<code>$a_1</code> is a formula.</p>
+
+<p><strong>related</strong>:
+See <code>log:parsedAsN3</code>.</p>
+
 <dl class='annotations'>
 <dt>rdfs:domain</dt>
-<dd>log:Formula</dd>
+<dd class='domain'>
+log:Formula
+</dd>
 <dt>rdfs:range</dt>
-<dd>log:N3</dd>
+<dd class='range'>
+log:N3
+</dd>
 </dl>
 </dd>
-<dt id='log_notEqualTo'>
+<dt id='vocab_log_notEqualTo'>
 <strong>log:notEqualTo</strong>
 <em>notEqualTo</em>
-<span class='permalink'><a href='#log_notEqualTo' title='Permalink for log:notEqualTo'>(link)</a></span>
+<span class='permalink'><a href='#vocab_log_notEqualTo' title='Permalink for log:notEqualTo'>(link)</a></span>
 </dt>
 <dd>
-<p>Equality in this sense is actually the same URI.
-A cwm built-in logical operator.</p>
+<p>Determines if two RDF resources are not the same.</p>
+
+<p><strong>schema</strong>:
+<code>$a_1 log:notEqualTo $a_2</code></p>
+
+<p><strong>definition</strong>:
+<code>true</code> if and only if <code>$a_1</code> and <code>$a_2</code> are not the same RDF node (symbol or literal).</p>
 
 <dl class='annotations'>
 <dt>owl:inverse</dt>
-<dd>log:equalTo</dd>
+<dd class='inverse'>
+log:equalTo
+</dd>
 </dl>
 </dd>
-<dt id='log_notIn'>
+<dt id='vocab_log_notIn'>
 <strong>log:notIn</strong>
 <em>notIn</em>
-<span class='permalink'><a href='#log_notIn' title='Permalink for log:notIn'>(link)</a></span>
+<span class='permalink'><a href='#vocab_log_notIn' title='Permalink for log:notIn'>(link)</a></span>
 </dt>
 <dd>
 <p>Custom built-in for implementing scoped negation-as-failure (SNAF).</p>
 
 <dl class='annotations'>
 <dt>vs:term_status</dt>
-<dd>unstable</dd>
+<dd class='term_status'>
+unstable
+</dd>
 </dl>
 </dd>
-<dt id='log_notInClosure'>
+<dt id='vocab_log_notInClosure'>
 <strong>log:notInClosure</strong>
 <em>notInClosure</em>
-<span class='permalink'><a href='#log_notInClosure' title='Permalink for log:notInClosure'>(link)</a></span>
+<span class='permalink'><a href='#vocab_log_notInClosure' title='Permalink for log:notInClosure'>(link)</a></span>
 </dt>
 <dd>
 <p>Custom built-in for implementing scoped negation-as-failure (SNAF).</p>
 
 <dl class='annotations'>
 <dt>vs:term_status</dt>
-<dd>unstable</dd>
+<dd class='term_status'>
+unstable
+</dd>
 </dl>
 </dd>
-<dt id='log_notIncludes'>
+<dt id='vocab_log_notIncludes'>
 <strong>log:notIncludes</strong>
 <em>not includes</em>
-<span class='permalink'><a href='#log_notIncludes' title='Permalink for log:notIncludes'>(link)</a></span>
+<span class='permalink'><a href='#vocab_log_notIncludes' title='Permalink for log:notIncludes'>(link)</a></span>
 </dt>
 <dd>
-<p>The object formula is NOT a subset of subject.
-True iff log:includes is false.
-The converse of log:includes. (Understood natively by cwm.
-The subject formula may contain variables.
-(In cwm, variables must of course end up getting bound
-before the log:include test can be done, or an infinite result set
-would result)
-Related: See includes</p>
+<p>The object formula is NOT a subset of subject.</p>
+
+<p><strong>schema</strong>:
+<code>$a_1 log:notIncludes $a_2</code></p>
+
+<p><strong>definition</strong>:
+<code>true</code> if and only if <code>log:includes</code> is <code>false</code>. The converse of log:includes.</p>
+
+<p><strong>related</strong>:
+See <code>log:includes</code>.</p>
 
 <dl class='annotations'>
 <dt>rdfs:domain</dt>
-<dd>log:Formula</dd>
+<dd class='domain'>
+log:Formula
+</dd>
 <dt>rdfs:range</dt>
-<dd>log:Formula</dd>
+<dd class='range'>
+log:Formula
+</dd>
 </dl>
 </dd>
-<dt id='log_outputString'>
+<dt id='vocab_log_outputString'>
 <strong>log:outputString</strong>
 <em>output string</em>
-<span class='permalink'><a href='#log_outputString' title='Permalink for log:outputString'>(link)</a></span>
+<span class='permalink'><a href='#vocab_log_outputString' title='Permalink for log:outputString'>(link)</a></span>
 </dt>
 <dd>
 <p>The subject is a key and the object is a string,
@@ -496,31 +641,51 @@ where the strings are to be output in the order of the keys.
 See cwm --strings in cwm --help.</p>
 
 <dl class='annotations'>
-<dt>rdfs:range</dt>
-<dd>log:String</dd>
 <dt>vs:term_status</dt>
-<dd>deprecated</dd>
+<dd class='term_status'>
+deprecated
+</dd>
+<dt>rdfs:range</dt>
+<dd class='range'>
+log:String
+</dd>
 </dl>
 </dd>
-<dt id='log_parsedAsN3'>
+<dt id='vocab_log_parsedAsN3'>
 <strong>log:parsedAsN3</strong>
 <em>parses to N3</em>
-<span class='permalink'><a href='#log_parsedAsN3' title='Permalink for log:parsedAsN3'>(link)</a></span>
+<span class='permalink'><a href='#vocab_log_parsedAsN3' title='Permalink for log:parsedAsN3'>(link)</a></span>
 </dt>
 <dd>
 <p>The subject string, parsed as N3, gives this formula.</p>
 
+<p><strong>schema</strong>:
+<code>$a_1 log:parsedAsN3 $a_2</code></p>
+
+<p><strong>definition</strong>:
+<code>$a_1</code>, parsed as N3, gives <code>$a_2</code>.</p>
+
+<p><strong>requires</strong>:
+<code>$a_1</code> is a syntactically valid string in N3 format.</p>
+
+<p><strong>related</strong>:
+See <code>log:n3String</code>.</p>
+
 <dl class='annotations'>
 <dt>rdfs:domain</dt>
-<dd>log:N3</dd>
+<dd class='domain'>
+log:N3
+</dd>
 <dt>rdfs:range</dt>
-<dd>log:Formula</dd>
+<dd class='range'>
+log:Formula
+</dd>
 </dl>
 </dd>
-<dt id='log_racine'>
+<dt id='vocab_log_racine'>
 <strong>log:racine</strong>
 <em>racine</em>
-<span class='permalink'><a href='#log_racine' title='Permalink for log:racine'>(link)</a></span>
+<span class='permalink'><a href='#vocab_log_racine' title='Permalink for log:racine'>(link)</a></span>
 </dt>
 <dd>
 <p>For anything identified by a URI with a fragid, this is the
@@ -528,26 +693,38 @@ thing identified by the same URI without a hash or fragid.
 For anything else, it is itself.</p>
 
 </dd>
-<dt id='log_rawType'>
+<dt id='vocab_log_rawType'>
 <strong>log:rawType</strong>
 <em>rawType</em>
-<span class='permalink'><a href='#log_rawType' title='Permalink for log:rawType'>(link)</a></span>
+<span class='permalink'><a href='#vocab_log_rawType' title='Permalink for log:rawType'>(link)</a></span>
 </dt>
 <dd>
-<p>This is a low-level language type, one of log:Formula, log:Literal, 
-log:List, log:Set or log:Other. 
-Example: log:semanticsOrError returns either a formula or a string,
-and you can check which using log:rawType.</p>
+<p>Returns an identifier based on the type of the RDF Resource.</p>
+
+<p><strong>schema</strong>:
+<code>$a_1 log:rawType $a_2</code></p>
+
+<p><strong>definition</strong>:
+<code>true</code> if the type of <code>$a_1</code> is the same as <code>$a_2</code>, or binds the type to <code>$a_2</code>.</p>
+
+<p><strong>requires</strong>:
+<code>$a_2</code> is unbound or one of <code>log:Formula</code>, <code>log:Literal</code>, 
+<code>log:List</code>, <code>log:Set</code> or <code>log:Other</code>. </p>
+
+<p><strong>example</strong>:
+<code>log:semanticsOrError</code> returns either a formula or a string, and you can check which using <code>log:rawType</code>.</p>
 
 <dl class='annotations'>
 <dt>rdfs:range</dt>
-<dd>log:Type</dd>
+<dd class='range'>
+log:Type
+</dd>
 </dl>
 </dd>
-<dt id='log_rawUri'>
+<dt id='vocab_log_rawUri'>
 <strong>log:rawUri</strong>
 <em>raw uri</em>
-<span class='permalink'><a href='#log_rawUri' title='Permalink for log:rawUri'>(link)</a></span>
+<span class='permalink'><a href='#vocab_log_rawUri' title='Permalink for log:rawUri'>(link)</a></span>
 </dt>
 <dd>
 <p>This allows one to look at the actual string of the URI which identifies this,
@@ -556,73 +733,109 @@ workings of cwm, and so is not normally used. Use log:uri instead.</p>
 
 <dl class='annotations'>
 <dt>rdfs:range</dt>
-<dd>log:String</dd>
+<dd class='range'>
+log:String
+</dd>
 </dl>
 </dd>
-<dt id='log_semantics'>
+<dt id='vocab_log_semantics'>
 <strong>log:semantics</strong>
 <em>semantics</em>
-<span class='permalink'><a href='#log_semantics' title='Permalink for log:semantics'>(link)</a></span>
+<span class='permalink'><a href='#vocab_log_semantics' title='Permalink for log:semantics'>(link)</a></span>
 </dt>
 <dd>
-<p>The log:semantics of a document is the formula.
-achieved by parsing representation of the document.
-For a document in Notation3, log:semantics is the
-log:parsedAsN3 of the log:content of the document.
-For a document in another RDF syntax, it is parsed according to the
-appropriate specification to yield an RDF formula
-(a subclass of N3 log:Formula).
-Evaluates to false if an unrecognized document format is retrieved.</p>
+<p>The log:semantics of a document is the formula
+achieved by parsing representation of the document.</p>
 
-<p>[Aside: Philosophers will be distracted here into worrying about the meaning
+<p><strong>schema</strong>:
+<code>$a_1 log:semantics $a_2</code></p>
+
+<p><strong>definition</strong>:
+For a document in Notation3, <code>log:semantics</code> is the
+<code>log:parsedAsN3</code> of the <code>log:content</code> of the document.</p>
+
+<p>For a document in another RDF syntax, it is parsed according to the
+appropriate specification to yield an RDF formula
+(a subclass of N3 <code>log:Formula</code>).</p>
+
+<p>Evaluates to <code>false</code> if an unrecognized document format is retrieved.</p>
+
+<p><strong>requires</strong>:
+<code>$a_1</code> must be an IRI.</p>
+
+<p><strong>aside</strong>:
+Philosophers will be distracted here into worrying about the meaning
 of meaning. At least we didn&#39;t call this function &quot;meaning&quot;!
 In as much as N3 is used as an interlingua for interoperability
 for different systems, this for an N3 based system is the meaning 
-expressed by a document.]</p>
+expressed by a document.</p>
+
+<p><strong>related</strong>:
+See <code>log:parsedAsN3</code> and <code>log:content</code>.</p>
 
 <dl class='annotations'>
 <dt>rdfs:domain</dt>
-<dd>http://www.w3.org/2000/10/swap/pim/doc#Work</dd>
+<dd class='domain'>
+http://www.w3.org/2000/10/swap/pim/doc#Work
+</dd>
 <dt>rdfs:range</dt>
-<dd>log:Formula</dd>
+<dd class='range'>
+log:Formula
+</dd>
 </dl>
 </dd>
-<dt id='log_semanticsOrError'>
+<dt id='vocab_log_semanticsOrError'>
 <strong>log:semanticsOrError</strong>
 <em>semantics or error message</em>
-<span class='permalink'><a href='#log_semanticsOrError' title='Permalink for log:semanticsOrError'>(link)</a></span>
+<span class='permalink'><a href='#vocab_log_semanticsOrError' title='Permalink for log:semanticsOrError'>(link)</a></span>
 </dt>
 <dd>
 <p>This connects a document and either the formula it parses to,
-or an error message explaining what went wrong with trying. See log:semantics.
-(Cwm knows how to go get a document and parse it in order to evaluate this.)</p>
+or an error message explaining what went wrong with trying.</p>
+
+<p><strong>schema</strong>:
+<code>$a_1 log:semanticsOrError $a_2</code></p>
+
+<p><strong>requires</strong>:
+<code>$a_1</code> must be an IRI.</p>
+
+<p><strong>related</strong>:
+See <code>log:semantics</code>.</p>
 
 <dl class='annotations'>
 <dt>rdfs:domain</dt>
-<dd>http://www.w3.org/2000/10/swap/pim/doc#Work</dd>
+<dd class='domain'>
+http://www.w3.org/2000/10/swap/pim/doc#Work
+</dd>
 </dl>
 </dd>
-<dt id='log_skolem'>
+<dt id='vocab_log_skolem'>
 <strong>log:skolem</strong>
 <em>skolem</em>
-<span class='permalink'><a href='#log_skolem' title='Permalink for log:skolem'>(link)</a></span>
+<span class='permalink'><a href='#vocab_log_skolem' title='Permalink for log:skolem'>(link)</a></span>
 </dt>
 <dd>
 <p>Built-in to generate a Skolem IRI object which is a function of the arguments in the subject list</p>
 
 <dl class='annotations'>
-<dt>rdfs:domain</dt>
-<dd>log:List</dd>
-<dt>rdfs:range</dt>
-<dd>log:String</dd>
 <dt>vs:term_status</dt>
-<dd>unstable</dd>
+<dd class='term_status'>
+unstable
+</dd>
+<dt>rdfs:domain</dt>
+<dd class='domain'>
+log:List
+</dd>
+<dt>rdfs:range</dt>
+<dd class='range'>
+log:String
+</dd>
 </dl>
 </dd>
-<dt id='log_uri'>
+<dt id='vocab_log_uri'>
 <strong>log:uri</strong>
 <em>log:uri</em>
-<span class='permalink'><a href='#log_uri' title='Permalink for log:uri'>(link)</a></span>
+<span class='permalink'><a href='#vocab_log_uri' title='Permalink for log:uri'>(link)</a></span>
 </dt>
 <dd>
 <p>This allows one to look at the actual string of the URI which identifies this.</p>
@@ -634,18 +847,20 @@ functionality. Use to implement the URI spec and protocol specs, etc.</p>
 
 <dl class='annotations'>
 <dt>rdfs:range</dt>
-<dd>log:String</dd>
+<dd class='range'>
+log:String
+</dd>
 </dl>
 </dd>
 </dl>
 </section>
-<section>
-<h3>Datatype Definitions</h3>
+<section class='datatypes'>
+<h5>Datatype Definitions</h5>
 <dl>
-<dt id='log_N3'>
+<dt id='vocab_log_N3'>
 <strong>log:N3</strong>
 <em>log:N3</em>
-<span class='permalink'><a href='#log_N3' title='Permalink for log:N3'>(link)</a></span>
+<span class='permalink'><a href='#vocab_log_N3' title='Permalink for log:N3'>(link)</a></span>
 </dt>
 <dd>
 <p>The class log:N3 is the class of N3 literal values.
@@ -653,18 +868,22 @@ log:N3 is an instance of rdfs:Datatype and a subclass of rdfs:Literal.
 The value of log:content of a log:N3Document is a literal with datatype log:N3.</p>
 
 <dl class='annotations'>
-<dt>rdfs:subClassOf</dt>
-<dd>rdfs:Literal</dd>
 <dt>vs:term_status</dt>
-<dd>unstable</dd>
+<dd class='term_status'>
+unstable
+</dd>
+<dt>rdfs:subClassOf</dt>
+<dd class='subClassOf'>
+rdfs:Literal
+</dd>
 </dl>
 </dd>
 </dl>
 </section>
 </section>
-</body>
 <footer>
 <p>All vocabularies are licensed by contributors under the
 <a href="http://www.w3.org/Consortium/Legal/copyright-software">W3C Software and Document License</a>.</p>
 </footer>
+</body>
 </html>

@@ -47,7 +47,7 @@ math:TwoMemberedList a rdfs:Class; rdfs:label "TwoMemberedList";
    rdfs:subClassOf math:List; 
    rdfs:comment "This is the class of things that are math lists with only two members." .
 
-math:memberCount a math:Function; rdfs:label "memberCount"; 
+math:memberCount a rdf:Property, math:Function; rdfs:label "memberCount"; 
    rdfs:domain math:List; rdfs:range math:Value; 
    rdfs:comment """The number of items in a list. The subject is a list,
 the object is calculated as the number of members.
@@ -88,7 +88,9 @@ checks equality of numbers
 
 **definition**:
 `true` if and only if `$a1` is equal to `$a2`. 
-Requires both arguments to be either concrete numerals, or variables bound to a numeral.
+
+**requires**:
+`$a_1` or `$a_2` (or both) must be either concrete numerals, or variables bound to a numeral.
 
 **literal domains**:
 
@@ -115,10 +117,9 @@ performs addition of numbers
 
 **definition**:
 `true` if and only if the arithmetic sum of `$a_1, .. $a_n` equals `$a_s`.
-Requires either:
 
-1. all `$a_1, .., $a_n` to be bound; or
-2. all but one `$a_i` (subject list) to be bound, and `$a_s` to be bound.
+**requires**:
+all `$a_1, .., $a_n` to be bound.
 
 **literal domains**:
 
@@ -152,6 +153,7 @@ is calculated by dividing the first number of the pair by the second.
 
 math:integerQuotient a rdf:Property, math:Function;
     rdfs:label "integerQuotient";
+    vs:term_status "deprecated";
     rdfs:domain math:TwoMemberedList;
     rdfs:range math:Value;
     rdfs:comment """The subject is a pair of numbers. The object
@@ -165,7 +167,6 @@ math:remainder a rdf:Property, math:Function;
     rdfs:comment """The subject is a pair of integers. The object
 is calculated by dividing the first number of the pair by the second and taking the remainder.
 """.
-
 
 math:exponentiation a rdf:Property, math:Function;
     rdfs:label "exponentiation";
@@ -201,33 +202,33 @@ If there are two such numbers, then the one that is closest to positive infinity
 #  Inverse functions are implemented by using the function backwards
 #  eg for  x math:asin y   say   x is math:sin of y
 
-#math:acos a rdf:Property;
-#   rdfs:label "acos";
-#   rdfs:range math:Value;
-#   rdfs:domain math:Value;
-#   rdfs:comment
-#"""The object is calulated as the arc cosine value of the subject.""".
+math:acos a rdf:Property;
+   rdfs:label "acos";
+   rdfs:range math:Value;
+   rdfs:domain math:Value;
+   rdfs:comment
+"""The object is calulated as the arc cosine value of the subject.""".
 
-#math:asin a rdf:Property;
-#   rdfs:label "asin";
-#   rdfs:range math:Value;
-#   rdfs:domain math:Value;
-#   rdfs:comment
-#"""The object is calulated as the arc sine value of the subject.""".
+math:asin a rdf:Property;
+   rdfs:label "asin";
+   rdfs:range math:Value;
+   rdfs:domain math:Value;
+   rdfs:comment
+"""The object is calulated as the arc sine value of the subject.""".
 
-#math:atan a rdf:Property;
-#   rdfs:label "atan";
-#   rdfs:range math:Value;
-#   rdfs:domain math:Value;
-#   rdfs:comment
-#"""The object is calulated as the arc tangent value of the subject.""".
+math:atan a rdf:Property;
+   rdfs:label "atan";
+   rdfs:range math:Value;
+   rdfs:domain math:Value;
+   rdfs:comment
+"""The object is calulated as the arc tangent value of the subject.""".
 
-#math:atan2 a math:Function;
-#   rdfs:label "atan2";
-#   rdfs:range math:Value;
-#   rdfs:domain math:Value;
-#   rdfs:comment
-#"""The subject is a pair of numbers. The object is calulated as the arc tangent value of the ratio of the two subject values.""".
+math:atan2 a math:Function;
+   rdfs:label "atan2";
+   rdfs:range math:Value;
+   rdfs:domain math:Value;
+   rdfs:comment
+"""The subject is a pair of numbers. The object is calulated as the arc tangent value of the ratio of the two subject values.""".
 
 math:cos a rdf:Property, math:LogicalOperator;
     rdfs:label "cos";

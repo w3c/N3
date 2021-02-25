@@ -23,51 +23,75 @@
       }
       table.rdfs-definition td {vertical-align: top;}
       .bold {font-weight: bold;}
+      .note, .historyNote, .editorialNote {
+        margin-left: 2em;
+        font-style: italic;
+      }
   %body
     %p
       %a{href: "http://www.w3.org/"}
         %img{src: "http://www.w3.org/Icons/w3c_home", alt: "W3C", height: 48, width: 72}
-    %h1<= ontology["rdfs:label"]
-    %div
+    %h3.label<= ontology["rdfs:label"]
+    %div.attribute.comment
       :markdown
         #{ontology["rdfs:comment"]}
 
+    %div.wg
+      :markdown
         The vocabulary is published by the [W3C Notation-3 Community Group](https://www.w3.org/community/n3-dev/).
+    - %w(note historyNote editorialNote).each do |cls|
+      -if ontology["skos:#{cls}"]
+        %div.attribute{class: cls}
+          %h4
+            = {note: "Notes", historyNote: "Historical Note", editorialNote: "Editorial Notes"}[cls.to_sym]
+          :markdown
+            #{ontology["skos:#{cls}"]}
     - if ontology["rdfs:seeAlso"]
-      %strong
-        See Also:
-      %ul
-      - Array(ontology["rdfs:seeAlso"]).each do |uri|
-        %li
-          %a{href: uri}<=uri
-    %section
-      %h2="Vocabulary Terms"
+      %div.attribute.seeAlso
+        %strong
+          See Also:
+        %ul
+        - Array(ontology["rdfs:seeAlso"]).each do |uri|
+          %li
+            %a{href: uri}<=uri
+    %section.terms
+      %h4="Vocabulary Terms"
       :ruby
         sect_defs = [
-         { heading: "Class Definitions", values: Array(classes)},     
-         { heading: "Property Definitions",  values: Array(properties)},
-         { heading: "Datatype Definitions",  values: Array(datatypes)},
+         { cls: :classes, heading: "Class Definitions", values: Array(classes)},     
+         { cls: :properties, heading: "Property Definitions",  values: Array(properties)},
+         { cls: :datatypes, heading: "Datatype Definitions",  values: Array(datatypes)},
         ]
+        example_props = %(skos:example)
+        markdown_props = %(rdfs:comment dc:description skos:note skos:historyNote skos:editorialNote)
       - sect_defs.each do |sect|
         - next if sect[:values].empty?
-        %section
-          %h3<= sect[:heading]
+        %section{class: sect[:cls]}
+          %h5<= sect[:heading]
           %dl
             - sect[:values].sort_by {|c| c['@id']}.each do |defn|
-              %dt{id: defn['@id'].gsub(':', '_')}
+              %dt{id: 'vocab_' + defn['@id'].gsub(':', '_')}
                 %strong<~defn["@id"]
                 %em<~defn.fetch('rdfs:label', defn['@id'])
                 %span{class: :permalink}<
-                  %a{href: "##{defn['@id'].gsub(':', '_')}", title: "Permalink for #{defn['@id']}"}<="(link)"
+                  %a{href: "#vocab_#{defn['@id'].gsub(':', '_')}", title: "Permalink for #{defn['@id']}"}<="(link)"
               %dd
                 :markdown
                   #{defn["rdfs:comment"]}
-                - if %w(rdfs:subClassOf rdfs:subPropertyOf rdfs:domain rdfs:range vs:term_status owl:inverse).any? { |p| defn.has_key?(p)}
+                - if %w(owl:inverse vs:term_status skos:note skos:historyNote skos:editorialNote rdfs:subClassOf rdfs:subPropertyOf rdfs:domain rdfs:range).any? { |p| defn.has_key?(p)}
                   %dl{class: :annotations}
-                    - %w(rdfs:subClassOf rdfs:subPropertyOf rdfs:domain rdfs:range vs:term_status owl:inverse).each do |p|
+                    - %w(owl:inverse vs:term_status skos:example skos:note skos:historyNote skos:editorialNote rdfs:subClassOf rdfs:subPropertyOf rdfs:domain rdfs:range).each do |p|
                       - if defn.has_key?(p)
                         %dt<=p
-                        %dd<= Array(defn[p]).join(", ")
+                        %dd{class: p.split(':').last}
+                          - if markdown_props.include?(p)
+                            :markdown
+                              #{Array(defn[p]).join(", ")}
+                          - elsif example_props.include?(p)
+                            %pre
+                              = Array(defn[p]).join(", ")
+                          - else
+                            = Array(defn[p]).join(", ")
     %footer
       :markdown
         All vocabularies are licensed by contributors under the
