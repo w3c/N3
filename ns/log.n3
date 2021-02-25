@@ -12,7 +12,7 @@
 @prefix owl: <http://www.w3.org/2002/07/owl#>.
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
-@prefix doc: <http://www.w3.org/2000/10/swap/pim/doc#>.
+@prefix void: <http://rdfs.org/ns/void#> .
 @prefix log: <http://www.w3.org/2000/10/swap/log#>.
 @prefix vs: <http://www.w3.org/2003/06/sw-vocab-status/ns#> .
 @prefix : <#>.
@@ -27,9 +27,18 @@ servers to be queried.
 """;
     cc:license <http://www.w3.org/Consortium/Legal/copyright-software> .
 
+log:Document a rdfs:Class; rdfs:subClassOf void:Dataset .
 log:N3Document a rdfs:Class;
     rdfs:label "N3Document";
-    rdfs:subClassOf doc:Work;
+    owl:equivalentClass [ 
+        owl:intersectionOf ( 
+            log:Document
+            [   a owl:Restriction ;
+                owl:onProperty void:feature ;
+                owl:hasValue <http://www.w3.org/ns/formats/N3>
+            ]
+        ) ;
+    ] ;
     rdfs:comment    """A document which, which parsed as Notation3
 as defined in general by http://www.w3.org/DesignIssues/Notation3.html
 and this schema, conveys the intent of the author by the semantics defined
@@ -197,7 +206,7 @@ log:parsedAsN3 a rdf:Property;
     rdfs:range log:N3.
 
 log:semantics a rdf:Property;
-    rdfs:domain doc:Work;
+    rdfs:domain log:N3Document;
     rdfs:range  log:Formula;
     rdfs:label  "semantics";
     rdfs:comment """The log:semantics of a document is the formula.
@@ -216,7 +225,7 @@ for different systems, this for an N3 based system is the meaning
 expressed by a document.]""".
 
 log:semanticsOrError a rdf:Property;
-    rdfs:domain doc:Work;
+    rdfs:domain log:N3Document;
     rdfs:label  "semantics or error message";
     rdfs:comment """This connects a document and either the formula it parses to,
 or an error message explaining what went wrong with trying. See log:semantics.
@@ -224,7 +233,7 @@ or an error message explaining what went wrong with trying. See log:semantics.
 """.
 
 log:content a rdf:Property;
-    rdfs:domain doc:Work;
+    rdfs:domain log:N3Document;
     rdfs:range  log:String;
     rdfs:label  "content";
     rdfs:comment """This connects a document and a string that represents it.
@@ -267,7 +276,7 @@ signatures, etc.
 log:definitiveDocument a rdf:Property;
     rdfs:label "definitive document";
     rdfs:domain rdf:Property;
-    rdfs:range doc:Work;
+    rdfs:range log:N3Document;
     rdfs:comment
 """ When document D is the definitiveDocument for property P,
 any statement X P Y is true iff the semantics of document D
@@ -283,7 +292,7 @@ know that it can extend its query to the given document.
 log:definitiveService a rdf:Property;
     rdfs:label "definitive service";
     rdfs:domain rdf:Property;
-#   rdfs:range doc:Work;
+#   rdfs:range log:N3Document;
     rdfs:comment
 """ When service S is the definitiveService for property P,
 any statement X P Y is true iff and only if a query to S returns
