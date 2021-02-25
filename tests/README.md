@@ -1,5 +1,4 @@
 # Notation3 Tests
-Note that all N3 grammar, evaluation and reasoning tests are currently found [here](https://w3c.github.io/N3/tests/N3Tests).
 
 Tests exist for [N3 grammar](N3Tests/manifest.ttl), [N3 reasoning](N3Tests/manifest-reasoner.ttl), [extended N3 grammar](N3Tests/manifest-extended.ttl) and appropriate [Turtle](TurtleTests/manifest.ttl) tests.
 
