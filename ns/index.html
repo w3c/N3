@@ -390,6 +390,20 @@ This is a convenience, and does not have any value when published as a
 general fact on the web.</p>
 
 </dd>
+<dt id="vocab_log_Document">
+<strong>log:Document</strong>
+<em>log:Document</em>
+<span class="permalink"><a href="#vocab_log_Document" title="Permalink for log:Document">(link)</a></span>
+</dt>
+<dd>
+
+<dl class="annotations">
+<dt>rdfs:subClassOf</dt>
+<dd class="subClassOf">
+http://rdfs.org/ns/void#Dataset
+</dd>
+</dl>
+</dd>
 <dt id="vocab_log_Formula">
 <strong>log:Formula</strong>
 <em>Formula</em>
@@ -416,7 +430,7 @@ log:Type
 <dl class="annotations">
 <dt>rdfs:subClassOf</dt>
 <dd class="subClassOf">
-log:Type, rdf:List
+rdf:List, log:Type
 </dd>
 </dl>
 </dd>
@@ -432,12 +446,6 @@ and this schema, conveys the intent of the author by the semantics defined
 on those specifications, and the semantics defined by the specifications
 of any other identifiers used in the document.</p>
 
-<dl class="annotations">
-<dt>rdfs:subClassOf</dt>
-<dd class="subClassOf">
-http://www.w3.org/2000/10/swap/pim/doc#Work
-</dd>
-</dl>
 </dd>
 <dt id="vocab_log_Other">
 <strong>log:Other</strong>
@@ -465,7 +473,7 @@ log:Type
 <dl class="annotations">
 <dt>rdfs:subClassOf</dt>
 <dd class="subClassOf">
-log:Type, rdfs:Literal
+rdfs:Literal, log:Type
 </dd>
 </dl>
 </dd>
@@ -606,7 +614,7 @@ so must be known or guessed.</p>
 <dl class="annotations">
 <dt>rdfs:domain</dt>
 <dd class="domain">
-http://www.w3.org/2000/10/swap/pim/doc#Work
+log:N3Document
 </dd>
 <dt>rdfs:range</dt>
 <dd class="range">
@@ -640,7 +648,7 @@ rdf:Property
 </dd>
 <dt>rdfs:range</dt>
 <dd class="range">
-http://www.w3.org/2000/10/swap/pim/doc#Work
+log:N3Document
 </dd>
 </dl>
 </dd>
@@ -679,15 +687,27 @@ rdf:Property
 <span class="permalink"><a href="#vocab_log_dtlit" title="Permalink for log:dtlit">(link)</a></span>
 </dt>
 <dd>
-<p>Takes a list of a string and a URI and creates a datatyped literal.
-For example, <code>{ ("2005-03-30T11:00:00" :tz) log:dtlit ?X } =&gt; { ?X a :Answer } .</code>
+<p>Takes a list of a string and a URI and creates a datatyped literal.</p>
+
+<p><strong>schema</strong>:
+<code>($a_1 $a_2) log:dtlit $a_3</code></p>
+
+<p><strong>definition</strong>:
+<code>true</code> if and only if the datatyped literal formed of <code>$a_1</code> and <code>$a_1</code> equals <code>$a_3</code>.</p>
+
+<p>The subject is a list composed of a a string and an IRI and the object
+is a datatyped literal with the value <code>$a_1</code> and datatype <code>$a_2</code>.</p>
+
+<p><strong>requires</strong>:
+<code>$a_1</code> and <code>$a_2</code> to be bound.
+<code>$a_1</code> to be a <code>xs:string</code> (see note on casting to string).
+<code>$a_2</code> to be an IRI.</p>
+
+<p><strong>example</strong>:
+`<code>{ ("2005-03-30T11:00:00" :tz) log:dtlit ?X } =&gt; { ?X a :Answer } .</code>
 will produce <code>"2005-03-30T11:00:00"^^:tz a :Answer .</code></p>
 
 <dl class="annotations">
-<dt>vs:term_status</dt>
-<dd class="term_status">
-deprecated
-</dd>
 <dt>rdfs:domain</dt>
 <dd class="domain">
 log:List
@@ -1102,7 +1122,7 @@ See <code>log:parsedAsN3</code> and <code>log:content</code>.</p>
 <dl class="annotations">
 <dt>rdfs:domain</dt>
 <dd class="domain">
-http://www.w3.org/2000/10/swap/pim/doc#Work
+log:N3Document
 </dd>
 <dt>rdfs:range</dt>
 <dd class="range">
@@ -1131,7 +1151,7 @@ See <code>log:semantics</code>.</p>
 <dl class="annotations">
 <dt>rdfs:domain</dt>
 <dd class="domain">
-http://www.w3.org/2000/10/swap/pim/doc#Work
+log:N3Document
 </dd>
 </dl>
 </dd>
