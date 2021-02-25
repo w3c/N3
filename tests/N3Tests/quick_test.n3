@@ -1,0 +1,4 @@
+@prefix : <https://w3c.github.io/N3/tests/test.n3#> .
+@base <http://example.org/> .
+
+:will :hasAge 36 .
