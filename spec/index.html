@@ -7,7 +7,7 @@
     <script src="https://www.w3.org/Tools/respec/respec-w3c" class="remove" defer></script>
     <script class='remove'>
       var respecConfig = {
-          specStatus: "unofficial",
+          specStatus: "CG-DRAFT",
           editors: [ // here edit the editors
               {
                   name: "Dörthe Arndt",
@@ -32,6 +32,8 @@
               branch: "master"
           },
           shortName: "N3",
+          group: "cg/n3-dev",
+          wgPublicList: "public-n3-dev",
           edDraftURI: "https://w3c.github.io/N3/spec/",
           testSuiteURI: "https://w3c.github.io/N3/tests/",
       localBiblio: {
@@ -145,10 +147,10 @@
           that allows you to directly include a data file here
           -->
         <pre class="example nohighlight">
-	  &lt;http://example.org/#spiderman&gt; &lt;http://example.org/#enemyOf&gt; &lt;http://example.org/#green-goblin&gt; .
-	  &lt;http://example.org/#spiderman&gt; &lt;http://xmlns.com/foaf/0.1/name&gt; "Spiderman" .
-	  &lt;http://example.org/#green-goblin&gt; &lt;http://xmlns.com/foaf/0.1/name&gt; "Green Goblin" .
-	  </pre>
+          &lt;http://example.org/#spiderman&gt; &lt;http://example.org/#enemyOf&gt; &lt;http://example.org/#green-goblin&gt; .
+          &lt;http://example.org/#spiderman&gt; &lt;http://xmlns.com/foaf/0.1/name&gt; "Spiderman" .
+          &lt;http://example.org/#green-goblin&gt; &lt;http://xmlns.com/foaf/0.1/name&gt; "Green Goblin" .
+        </pre>
         <p class="note">There is no inherent order for N3 / RDF triples. This is the same for the relational model, i.e., relational tuples or rows do not have an inherent order. Hence, it is a mistake to associate meaning with the order of a statement in an N3 document: e.g., assuming that the first listed telephone for Spiderman would his landline, and the second one his mobile number.</p>
         <p class="note">Examples will often be written using newlines and tab spaces for readability. However, generally, only the subjects, predicates and objects need to be separated with a whitespace.</p>
         <!-- <pre class="example nohighlight">&lt;http://example.org/#dt&gt; &lt;http://xmlns.com/foaf/0.1/name&gt; &quot;Dominik Tomaszuk&quot; .</pre> -->
@@ -157,16 +159,17 @@
         <h4>Predicate and object lists</h4>
         <p>As shown in the above example, the same subject (e.g., Spiderman) will often be described by several N3 statements. To make these N3 statements less cumbersome, one can put a '<code>;</code>' at the end of an N3 statement to describe the same subject in the subsequent N3 statement (called a "predicate list"):</p>
         <pre class="example nohighlight">
-	  &lt;http://example.org/#spiderman&gt; &lt;http://example.org/#enemyOf&gt; &lt;http://example.org/#green-goblin&gt; ;
-				&lt;http://xmlns.com/foaf/0.1/name&gt; "Spiderman" .
-	  </pre>
+          &lt;http://example.org/#spiderman&gt;
+              &lt;http://example.org/#enemyOf&gt; &lt;http://example.org/#green-goblin&gt; ;
+              &lt;http://xmlns.com/foaf/0.1/name&gt; "Spiderman" .
+        </pre>
         <!-- <pre class="example nohighlight">&lt;http://example.org/#dt&gt; &lt;http://xmlns.com/foaf/0.1/firstName&gt; &quot;Dominik&quot; ;
           &lt;http://xmlns.com/foaf/0.1/lastName&gt; &quot;Tomaszuk&quot; .</pre> -->
         <p>Similarly, a predicate (e.g., name) can often list multiple object values for the same subject (e.g., Spiderman). This can be written by listing the object values separated by a '<code>,</code>':</p>
         <pre class="example nohighlight">
-	  &lt;http://example.org/#spiderman&gt; 
-				&lt;http://xmlns.com/foaf/0.1/name&gt; "Spiderman", "Peter Parker" .
-	  </pre>
+          &lt;http://example.org/#spiderman&gt; 
+              &lt;http://xmlns.com/foaf/0.1/name&gt; "Spiderman", "Peter Parker" .
+        </pre>
         <!-- <pre class="example nohighlight">&lt;http://example.org/#dt&gt; &lt;http://xmlns.com/foaf/0.1/nick&gt; &quot;Domel&quot;, &quot;Misiek&quot;@pl .</pre> -->
       </section>
       <section id='iris'>
@@ -174,19 +177,22 @@
         <p>As mentioned, one typically uses an <abbr title="International Resource Identifier">IRI</abbr> to represent an identifiable entity - such as a person, place, or thing. Until now, we have been writing <dfn id="dfn-absolute-iri">absolute IRIs</dfn> (e.g., <code>http://example.org/#Spiderman</code>) - IRIs that include both the namespace (e.g., <code>http://example.org/#</code>) and the local name (e.g., <code>Spiderman</code>).</p>
         <p>This is a perfectly valid way of writing IRIs, but it is often much easier to write an IRI as a <dfn id="dfn-prefixed-name">prefixed name</dfn> - e.g., <code>ex:Spiderman</code>, which includes a <dfn id="dfn-prefix-label">prefix label</dfn> (e.g., <code>ex</code>) and a <dfn id="dfn-local-name">local name</dfn> (e.g., <code>Spiderman</code>) separated by a colon '<code>:</code>'. The <code>@prefix</code> directive associates a prefix label with a namespace IRI - a prefixed name is turned into an IRI by concatenating the namespace IRI of the prefix label with the local name. For instance, the following is equivalent to using absolute IRIs:</p>
         <pre class="example nohighlight">
-			@prefix ex: &lt;http://www.example.org/#&gt; .
-			ex:green-goblin ex:enemyOf ex:spiderman .
-		</pre>
+          @prefix ex: &lt;http://www.example.org/#&gt; .
+
+          ex:green-goblin ex:enemyOf ex:spiderman .
+        </pre>
         <p>To further simplify prefixed names, one can leave the prefix label empty (e.g., for a namespace that is often used in the N3 document):</p>
         <pre class="example nohighlight">
-			@prefix : &lt;http://www.example.org/#&gt; .
-			:green-goblin :enemyOf :spiderman .
-		</pre>
+          @prefix : &lt;http://www.example.org/#&gt; .
+
+          :green-goblin :enemyOf :spiderman .
+        </pre>
         <p>One can write <dfn id="dfn-relative-iri">relative IRIs</dfn>, e.g., <code>&lt;#Spiderman&gt;</code>, which will be resolved relative to the <em>current base IRI</em>. In other words, a relative IRI is turned into an IRI by concatenating the base IRI with the local name (e.g., <code>Spiderman</code>). A base IRI can be defined using the '@base' directive. For instance, the following is equivalent to the prior example:</p>
         <pre class="example nohighlight">
-			@base &lt;http://www.example.org/#&gt; .
-			&lt;#green-goblin&gt; &lt;#enemyOf&gt; &lt;#spiderman&gt; .
-		</pre>
+          @base &lt;http://www.example.org/#&gt; .
+
+          &lt;#green-goblin&gt; &lt;#enemyOf&gt; &lt;#spiderman&gt; .
+        </pre>
         <p class="note">We recommend listing the <code>@prefix</code> declarations (just like <code>@base</code> declarations) at the top of an N3 document. This is not mandatory however, and they can technically be put anywhere before the prefixed name or relative IRI that relies on the declaration. Subsequent <code>@prefix</code> or <code>PREFIX</code> directives may re-map the same prefix label to another namespace IRI.</p>
         <p class="note">N3 also supports case-insensitive 'PREFIX' and 'BASE' directives, as does Turtle, to align the syntax with SPARQL. Note that the <code>@prefix</code> and <code>@base</code> directives require a trailing '<code>.</code>' after the IRI, but the equivalent<code>PREFIX</code> and <code>BASE</code> must not have a trailing '.'.
         </p>
@@ -201,56 +207,59 @@
         <h3>Literals</h3>
         <p>In general, one uses a literal to represent a textual or numerical (i.e., datatype) value - such as names, dates, height, and so on. Numbers (integers, decimals and doubles) can simply be represented using their numerical value, and booleans can be represented using keywords <code>true</code> or <code>false</code>:</p>
         <pre class="example nohighlight">
-		@prefix : &lt;http://example.org/elements&gt; .
-		@prefix rdfs: &lt;http://www.w3.org/2000/01/rdf-schema#&gt; .		
-		&lt;http://en.wikipedia.org/wiki/Helium&gt;                                                                                 
-				:atomicNumber 2 ;               # xsd:integer                                                                      
-				:atomicMass 4.002602 ;          # xsd:decimal                                                                      
-				:specificGravity 1.663E-4 ;     # xsd:double
-				:isNobleGas true ; 		# xsd:boolean
-				rdfs:label "Helium" .   	# xsd:string
-	</pre>
+            @prefix : &lt;http://example.org/elements&gt; .
+            @prefix rdfs: &lt;http://www.w3.org/2000/01/rdf-schema#&gt; .
+
+            &lt;http://en.wikipedia.org/wiki/Helium&gt;
+              :atomicNumber 2 ;               # xsd:integer
+              :atomicMass 4.002602 ;          # xsd:decimal
+              :specificGravity 1.663E-4 ;     # xsd:double
+              :isNobleGas true ;              # xsd:boolean
+              rdfs:label "Helium" .           # xsd:string
+          </pre>
         <p>For details on what number syntax is supported (e.g., for decimals, doubles), we refer to the <a data-cite="TURTLE#abbrev">RDF 1.1: Turtle (Section 2.5.2)</a> specification.</p>
         <p>Other literals (e.g., date; binary, octal or hex code; XML or JSON code; other types of numbers, such as shorts), and of course strings themselves, need to be written as <b>string literals</b>. For instance, <code>&lt;http://example.org/#spiderman&gt; &lt;http://example.org/#birthDate&gt; "2001-08-10".</code> In that case, the <a data-cite="RDF11-CONCEPTS#dfn-lexical-form">lexical form</a> will include the characters between the delimiter quotes (e.g., <code>2001-08-10</code>).</p>
-		<p>Clearly, this can raise confusion as to what type of literal is being represented - is it a string or some other arbitrary type? You can indicate the datatype of a literal in RDF using the <code>^^</code> symbol and the corresponding <a data-cite="XMLSCHEMA11-2#built-in-datatypes">datatype IRI</a>. The above example then becomes:
-		
-		<pre class="example nohighlight">
-		@prefix xsd: &lt;http://www.w3.org/2001/XMLSchema#&gt; .
-		&lt;http://example.org/#spiderman&gt; 
-			&lt;http://example.org/#birthDate&gt; "2001-08-10"^^xsd:date .
-		</pre>
-		
-		<p>(Take care to add the appropriate <code>xsd</code> prefix declaration.)</p>
-        <p>One can also specify the language of a string literal using the <code>@</code> symbol and the corresponding language tag (as defined in [[BCP47]] - find the registry in [[LNG-TAG]]). For instance:</p>
-        <pre class="example nohighlight">
-		&lt;http://example.org/#spiderman&gt; &lt;http://xmlns.com/foaf/0.1/name&gt; "Spiderman"@en , 
-					"Hombre Araña"@es , "Homme Araignée"@fr .
-		</pre>
-        <p>If you need to describe the base direction as well as the language [[BCP47]] you can use the <code>i18n</code> namespace:</p>
-        <pre class="example nohighlight">
-		@prefix i18n: &lt;https://www.w3.org/ns/i18n#&gt; .
-		@prefix foaf: &lt;http://xmlns.com/foaf/0.1/&gt; .
-		&lt;http://example.org/#spiderman&gt; foaf:name "الرجل العنكبوت"^^i18n:ar-eg_rtl .
-		</pre>
-		
-		<p class="note">If no datatype IRI or language tag is given, the datatype <code>xsd:string</code> will be assumed. In case a language tag is given, the datatype <code>rdf:langString</code> will be assumed. Note that it is not possible to specify both a datatype IRI and a language tag.</p>
-        
-		<p class="note">Integers, decimals and doubles, or booleans, may also be written as string literals with the appropriate datatype IRI. Boolean literals can be written as <code>true</code> or <code>@true</code> and <code>false</code> or <code>@false</code>.</p>
-        
-		<p class="note">There are also <a href="#compoundliteral">other mechanisms</a> for describing the language tag and base direction of RDF literals.</p>
-        
-		<p>There are several ways to write string literals. Until now we have used double-quotes <code>"</code> for delimiting, but one may also use single-quotes <code>'</code>, or even compound delimiters consisting of three double-quotes <code>"""</code> or three single-quotes <code>'''</code>. These other delimiters are useful if the string literal is known to contain single- or double-quotes; e.g., if the string contains single-quotes, one could use double-quotes as delimiters, and vice-versa, to avoid syntax errors. Alternatively, one can also use a '<code>\</code>' for escaping the delimiter each time it occurs within a string literal. If a string can contain newlines (or a quote of any type, and it is impractical or undesirable to escape them), one should use the compound type of delimiter, i.e., <code>"""</code> or <code>'''</code>. For instance:</p>
-        <pre id="string-literal-example" class="example nohighlight">
-@prefix ex: &lt;http://example.org/#&gt; .
-@prefix rdfs: &lt;http://www.w3.org/2000/01/rdf-schema#&gt; .
-@prefix xsd: &lt;http://www.w3.org/2001/XMLSchema#&gt; .
+    <p>Clearly, this can raise confusion as to what type of literal is being represented - is it a string or some other arbitrary type? You can indicate the datatype of a literal in RDF using the <code>^^</code> symbol and the corresponding <a data-cite="XMLSCHEMA11-2#built-in-datatypes">datatype IRI</a>. The above example then becomes:
+    
+    <pre class="example nohighlight">
+      @prefix xsd: &lt;http://www.w3.org/2001/XMLSchema#&gt; .
 
-ex:Spiderman rdfs:label "'Bitten' by a radioactive spider."^^&lt;http://www.w3.org/2001/XMLSchema#string%gt; . # literal with XML Schema string datatype
-ex:Spiderman rdfs:label '"Bitten" by a radioactive spider.'^^xsd:string .	# same as above
-ex:Spiderman rdfs:label """'Bitten' by "what"?
-	A radioactive spider!"""^^xsd:string
-	</pre>
-	      
+      &lt;http://example.org/#spiderman&gt; 
+          &lt;http://example.org/#birthDate&gt; "2001-08-10"^^xsd:date .
+    </pre>
+
+    <p>(Take care to add the appropriate <code>xsd</code> prefix declaration.)</p>
+    <p>One can also specify the language of a string literal using the <code>@</code> symbol and the corresponding language tag (as defined in [[BCP47]] - find the registry in [[LNG-TAG]]). For instance:</p>
+    <pre class="example nohighlight">
+      &lt;http://example.org/#spiderman&gt; &lt;http://xmlns.com/foaf/0.1/name&gt; "Spiderman"@en , 
+          "Hombre Araña"@es , "Homme Araignée"@fr .
+    </pre>
+    <p>If you need to describe the base direction as well as the language [[BCP47]] you can use the <code>i18n</code> namespace:</p>
+    <pre class="example nohighlight">
+      @prefix i18n: &lt;https://www.w3.org/ns/i18n#&gt; .
+      @prefix foaf: &lt;http://xmlns.com/foaf/0.1/&gt; .
+
+      &lt;http://example.org/#spiderman&gt; foaf:name "الرجل العنكبوت"^^i18n:ar-eg_rtl .
+    </pre>
+    
+    <p class="note">If no datatype IRI or language tag is given, the datatype <code>xsd:string</code> will be assumed. In case a language tag is given, the datatype <code>rdf:langString</code> will be assumed. Note that it is not possible to specify both a datatype IRI and a language tag.</p>
+        
+    <p class="note">Integers, decimals and doubles, or booleans, may also be written as string literals with the appropriate datatype IRI. Boolean literals can be written as <code>true</code> or <code>@true</code> and <code>false</code> or <code>@false</code>.</p>
+        
+    <p class="note">There are also <a href="#compoundliteral">other mechanisms</a> for describing the language tag and base direction of RDF literals.</p>
+        
+    <p>There are several ways to write string literals. Until now we have used double-quotes <code>"</code> for delimiting, but one may also use single-quotes <code>'</code>, or even compound delimiters consisting of three double-quotes <code>"""</code> or three single-quotes <code>'''</code>. These other delimiters are useful if the string literal is known to contain single- or double-quotes; e.g., if the string contains single-quotes, one could use double-quotes as delimiters, and vice-versa, to avoid syntax errors. Alternatively, one can also use a '<code>\</code>' for escaping the delimiter each time it occurs within a string literal. If a string can contain newlines (or a quote of any type, and it is impractical or undesirable to escape them), one should use the compound type of delimiter, i.e., <code>"""</code> or <code>'''</code>. For instance:</p>
+    <pre id="string-literal-example" class="example nohighlight">
+      @prefix ex: &lt;http://example.org/#&gt; .
+      @prefix rdfs: &lt;http://www.w3.org/2000/01/rdf-schema#&gt; .
+      @prefix xsd: &lt;http://www.w3.org/2001/XMLSchema#&gt; .
+
+      ex:Spiderman rdfs:label "'Bitten' by a radioactive spider."^^&lt;http://www.w3.org/2001/XMLSchema#string%gt; . # literal with XML Schema string datatype
+      ex:Spiderman rdfs:label '"Bitten" by a radioactive spider.'^^xsd:string . # same as above
+      ex:Spiderman rdfs:label """'Bitten' by "what"?
+      A radioactive spider!"""^^xsd:string
+    </pre>
+        
         <p>In general, the escape symbol '<code>\</code>' (<span class="codepoint">U+005C</span>) may only appear in a string literal as part of <a href="#escseq">an escape sequence</a>. Other restrictions within string literals depend on the delimiter:</p>
         <ul>
           <li>Literals delimited by <code>'</code> (<span class="codepoint">U+0027</span>), may not contain the characters <code>'</code>, <code title="LINE FEED"><sub>LF</sub></code> (<span class="codepoint">U+000A</span>), or <code title="CARRIAGE RETURN"><sub>CR</sub></code> (<span class="codepoint">U+000D</span>).
@@ -293,11 +302,12 @@ ex:Spiderman rdfs:label """'Bitten' by "what"?
           <p>For instance, we might <a data-cite="RDF11-PRIMER#section-blank-node">want to state</a> that the Mona Lisa painting has in its background an unidentified tree, and we want to describe the tree &mdash; such as the painting it is in, and the type of tree:
           <p>
           <pre id="mona-lisa-bnode-id" class="example nohighlight">
-			@prefix ex: &lt;http://example.org/#&gt; .
-			@prefix rdf: &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#&gt; .
-			ex:mona_lisa_painting ex:portrays _:bn .
-			_:bn rdf:type ex:CypressTree .
-			</pre>
+            @prefix ex: &lt;http://example.org/#&gt; .
+            @prefix rdf: &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#&gt; .
+
+            ex:mona_lisa_painting ex:portrays _:bn .
+            _:bn rdf:type ex:CypressTree .
+          </pre>
           <p>In this example, we minted the blank node identifier <code>_:bn</code> to represent the resource that we want to describe.</p>
         </section>
         <section id='bnodeprplist'>
@@ -306,24 +316,25 @@ ex:Spiderman rdfs:label """'Bitten' by "what"?
           <p>For instance, blank nodes are often used to <a data-cite="rdf-primer#structuredproperties">structure composite pieces of information</a>, such as street addresses, telephone numbers and dates. Using the blank node property list syntax, this kind of pattern can be represented quite conveniently as follows:</p>
           <p><strong>TODO: would be ideal if the equivalent simple-triples example could be shown side-by-side with the blank node property list example, like <a href="https://www.w3.org/TR/turtle/#unlabeled-bnodes">here</a>.</strong></p>
           <pre id="address-bnode-prp-list" class="example nohighlight">
-			@prefix ex: &lt;http://example.org/#&gt; .
-			@prefix rdfs: &lt;http://www.w3.org/2000/01/rdf-schema#&gt; .
-			ex:john ex:address [
-				ex:street "Evergreen Terrace" ;
-				ex:number 742 ;
-				ex:town [ 
-					rdfs:label "Springfield"
-				]
-			] .
-			
-			# is equivalent to:
-			
-			ex:john ex:address _:a .
-			_:a ex:street "Evergreen Terrace" .
-			_:a ex:number 742 .
-			_:a ex:town _:t .
-			_:t rdfs:label "Springfield" .
-			</pre>
+            @prefix ex: &lt;http://example.org/#&gt; .
+            @prefix rdfs: &lt;http://www.w3.org/2000/01/rdf-schema#&gt; .
+
+            ex:john ex:address [
+              ex:street "Evergreen Terrace" ;
+              ex:number 742 ;
+              ex:town [ 
+                rdfs:label "Springfield"
+              ]
+            ] .
+      
+            # is equivalent to:
+      
+            ex:john ex:address _:a .
+            _:a ex:street "Evergreen Terrace" .
+            _:a ex:number 742 .
+            _:a ex:town _:t .
+            _:t rdfs:label "Springfield" .
+          </pre>
           <p>As shown, a blank node property list relies on <a href="#polists">predicate lists</a> to easily group statements about blank nodes. We also show the equivalent <a href="#simpletriples">simple triples</a> using blank node identifiers.</p>
           <p class="note">In some cases, using a blank node identifier will simply feel more convenient and natural; e.g., in case you want to describe multiple people with the same address. Of course, we could still use an "inverse" <em>addressOf</em> property to add people with the same address to the blank node property list, i.e., making <code>:john</code> just another element of the composite piece of information.</p>
         </section>
@@ -347,48 +358,53 @@ ex:Spiderman rdfs:label """'Bitten' by "what"?
         <p class="note">To an extent, an N3 collection <a href="#semantics">is equivalent to</a> the more verbose <a data-cite="rdf11-mt#rdf-collections">RDF Collection vocabulary</a>.</p>
         <p>For instance:</p>
         <pre class="example nohighlight">
-		@base &lt;http://example.org/#&gt; .
-		:dl_handbook a :Book ;
-			rdfs:label "The Description Logic Handbook: Theory, implementation, and applications" ;
-			:author ( :deborah :daniele :peter) .
-		</pre>
+          @base &lt;http://example.org/#&gt; .
+
+          :dl_handbook a :Book ;
+              rdfs:label "The Description Logic Handbook: Theory, implementation, and applications" ;
+              :author ( :deborah :daniele :peter) .
+        </pre>
         <p>This states that the value of the author property is the <em>collection resource</em>. <strong>Important</strong>: any additional meaning, e.g., that (<em>a</em>) each member (e.g., <code>:deborah</code>) can be considered as a value of the author property (i.e., the author property "distributes" across the members), or that (<em>b</em>) the first member is the author who put the most effort into the book, <strong>is not given by the N3 semantics</strong>.</p>
         <p>That said, in this example, it would be reasonable to assume these two meanings &mdash; i.e., each member is a separate author of the book, and the first member put the most effort in the book. Nevertheless, such meanings would always be application-specific.</p>
         <p>Alternatively, one could represent this information as follows, in such a way that explicates meaning (<em>a</em>):</p>
         <pre class="example nohighlight">
-		@base &lt;http://example.org/#&gt; .
-		:dl_handbook a :Book ;
-			rdfs:label "The Description Logic Handbook: Theory, implementation, and applications" ;
-			:author :deborah, :daniele, :peter .
-		</pre>
+          @base &lt;http://example.org/#&gt; .
+
+          :dl_handbook a :Book ;
+              rdfs:label "The Description Logic Handbook: Theory, implementation, and applications" ;
+              :author :deborah, :daniele, :peter .
+        </pre>
         <p>I.e., we use an <a href="polists">object list</a> to explicitly state that these members are separate values of the author property. We no longer need to assume meaning (<em>a</em>) since the RDF semantics already explicates that meaning.</p>
         <p class="note">Since N3 / RDF statements do not have an inherent order, this example loses meaning (<em>b</em>) since we no longer know who is the first author.</p>
         <p>In the following example, we state that a resolution was approved by a group with members Fred, Wilma, and Dino:</p>
         <pre class="example nohighlight">
-		@base &lt;http://example.org/#&gt; .
-		:resolution123 :approvedBy (:Fred :Wilma :Dino) .
-		</pre>
+          @base &lt;http://example.org/#&gt; .
+
+          :resolution123 :approvedBy (:Fred :Wilma :Dino) .
+        </pre>
         <p>This states that the <em>collection resource</em> consisting of Fred, Wilma, and Dino approved the resolution. As before, the N3 semantics do not imply that Fred, Wilma, and Dino <em>each individually</em> approved the resolution (i.e., the "approvedBy" property does not distribute across the collection members). In contrast to before, such a meaning, which would have to be application-specific, would not make sense either &mdash; it is possible that Fred and Wilma formed the majority that approved the resolution, and Dino was the dissenting voice.</p>
         <p>In N3, collections may occur as subjects, predicates or objects in a statement. For instance:</p>
         <pre class="example nohighlight">
-		@base &lt;http://example.org/#&gt; .
-		(:Fred :Wilma :Dino) :approved :resolution123 .
-		</pre>
+          @base &lt;http://example.org/#&gt; .
+
+          (:Fred :Wilma :Dino) :approved :resolution123 .
+        </pre>
         <p>Or even:</p>
         <pre class="example nohighlight">
-		@base &lt;http://example.org/#&gt; .
-		(:Fred :Wilma :Dino) (:read :liked :approved) (:resolution1 :resolution2 :resolution3) .
-		</pre>
+          @base &lt;http://example.org/#&gt; .
+
+          (:Fred :Wilma :Dino) (:read :liked :approved) (:resolution1 :resolution2 :resolution3) .
+        </pre>
         <p>As before, any meaning that goes beyond the fact that three collection resources are involved in this statement, would be application-specific &mdash; for instance, that the predicate <code>(:read :liked :approved)</code> means that the subject collection did all those things for all members in the object collection.</p>
         <!--
           <pre class="example nohighlight">
           @prefix foaf: &lt;http://xmlns.com/foaf/0.1/&gt; .
           _:n3
-          	foaf:member (
-          		_:doerthe
-          		_:william
-          		_:dominik
-          	).</pre>
+            foaf:member (
+              _:doerthe
+              _:william
+              _:dominik
+            ).</pre>
               -->
       </section>
       <section id='cformulas'>
@@ -397,29 +413,35 @@ ex:Spiderman rdfs:label """'Bitten' by "what"?
           It is often useful to attach metadata to groups of triples (i.e., RDF graphs) &mdash; to give the provenance, context of version of the information, our opinion on the matter, and so on. We can use cited formulas to quote RDF graphs, and then describe the cited formula using N3 statements. For instance:
         </p>
         <pre class="example nohighlight">
-			@prefix dc: &lt;http://purl.org/dc/terms/&gt; .
-			@base &lt;http://example.org/#&gt; .
-			{ :cervantes dc:wrote :moby_dick } :opinion :lie ;
-				:retrievedFrom &lt;http://lies_r_us.com&gt; ;
-				:retrievedAt "2020-07-12T09:01:33"^^xsd:dateTime .</pre>
+          @prefix dc: &lt;http://purl.org/dc/terms/&gt; .
+          @base &lt;http://example.org/#&gt; .
+
+          { :cervantes dc:wrote :moby_dick } :opinion :lie ;
+            :retrievedFrom &lt;http://lies_r_us.com&gt; ;
+            :retrievedAt "2020-07-12T09:01:33"^^xsd:dateTime .
+        </pre>
         <p>
           Essentially, a cited formula records of the occurrence of an RDF graph (i.e., a <em>quoting</em>, or <em>citing</em>, of the graph). Importantly, a cited formula does not assert the contents of the RDF graph as being true (e.g., <code>:cervantes dc:wrote :moby_dick</code>). In fact, the cited formula is <a href="#semantics">interpreted as a resource on its own</a>.
         </p>
         <p>Since they represent quoted RDF graphs, cited formulas are not "referentially transparent". For instance:</p>
         <pre class="example nohighlight">
-			@prefix dc: &lt;http://purl.org/dc/terms/&gt; .
-			@base &lt;http://example.org/#&gt; .
-			:LoisLane :believes { :Superman :can :fly } .
-		</pre>
+          @prefix dc: &lt;http://purl.org/dc/terms/&gt; .
+          @base &lt;http://example.org/#&gt; .
+
+          :LoisLane :believes { :Superman :can :fly } .
+        </pre>
         <p>This N3 triple states that Lois Lane believes that Superman can fly. Even if it is known that <code>:Superman</code> is the same as <code>:ClarkKent</code>, one cannot infer from this that <code>:ClarkKent</code> can fly. In this case, this is an accurate depiction of Lois Lane's statement at the time &mdash; she did not know that Superman is Clark Kent at that point, so she would certainly not say that Clark Kent is able to fly.</p>
         <p>Cited formulas can be used in any position in an N3 statement. ...</p>
       </section>
       <section id='paths'>
         <h4>Paths</h4>
         <p>(See the <a href="https://www.w3.org/TeamSubmission/n3/#path">initial use cases</a> for the N3 path syntax.)</p>
-        <pre class="example nohighlight">@prefix foaf: &lt;http://xmlns.com/foaf/0.1/&gt; .
-&lt;http://example.org/#dt&gt; foaf:knows &lt;http://example.org/#da&gt; .
-&lt;http://example.org/#dt&gt; ^foaf:knows &lt;http://example.org/#da&gt; .</pre>
+        <pre class="example nohighlight">
+          @prefix foaf: &lt;http://xmlns.com/foaf/0.1/&gt; .
+
+          &lt;http://example.org/#dt&gt; foaf:knows &lt;http://example.org/#da&gt; .
+          &lt;http://example.org/#dt&gt; ^foaf:knows &lt;http://example.org/#da&gt; .
+        </pre>
       </section>
       <section id='variables'>
         <h3>Variables and Quantification</h3>
@@ -433,23 +455,28 @@ here</pre>
       <section id='logimpl'>
         <h3>Logical Implications</h3>
         <p>Bla...</p>
-        <pre class="example nohighlight">@prefix foaf: &lt;http://xmlns.com/foaf/0.1/&gt; .
+        <pre class="example nohighlight">
+          @prefix foaf: &lt;http://xmlns.com/foaf/0.1/&gt; .
 
-{
-_:doerthe foaf:knows _:dominik .
-}
-=&gt;
-{
-_:dominik foaf:knows _:doerthe .
-} .</pre>
+          {
+          _:doerthe foaf:knows _:dominik .
+          }
+          =&gt;
+          {
+          _:dominik foaf:knows _:doerthe .
+          } .
+        </pre>
       </section>
       <section id='keywords'>
         <h4>Keywords and special symbols</h4>
         <p>Bla...</p>
-        <pre class="example nohighlight">@prefix foaf: &lt;http://xmlns.com/foaf/0.1/&gt; .
-&lt;http://example.org/#dt&gt; a foaf:Person ;
-					 foaf:name &quot;Dominik Tomaszuk&quot; ;
-					 = &lt;http://example.org/#dominik&gt; .</pre>
+        <pre class="example nohighlight">
+          @prefix foaf: &lt;http://xmlns.com/foaf/0.1/&gt; .
+
+          &lt;http://example.org/#dt&gt; a foaf:Person ;
+              foaf:name &quot;Dominik Tomaszuk&quot; ;
+              = &lt;http://example.org/#dominik&gt; .
+        </pre>
       </section>
     </section>
     <section id='concepts'>
@@ -529,24 +556,19 @@ _:dominik foaf:knows _:doerthe .
        In this context it is important to note that not only the kind of the quantifier is matters but also its scope, i.e. the exact parts the quantification is valid for, and the exact position of the quantifier. 
 To illustrate that consider the following example:
        </p>
-<pre class="example nohighlight">
-@prefix: &lt;http://example.org/#&gt; .
-:Fred :doubts {_:x a :Unicorn}.
-</pre>
+      <pre class="example nohighlight">
+      @prefix: &lt;http://example.org/#&gt; .
 
-<p>
-Here, the blank node <code>_:x</code> is existentially quantified, but without any further specification, the triple could either mean (a) that there exists some x of which Fred doubts that it is a unicorn or it could mean (b) that Freds doubts that unicorns exist. In case we wanted to make the quantifier explicit, in option a the quantifier would need to be placed at the beginning of the whole expression, for option b it would need to be placed inside the brackets. N3 follows option b, 
-</p>
+      :Fred :doubts {_:x a :Unicorn}.
+      </pre>
 
-<p>
-In the above example, an explicit quantifier of the blank node <code>_:x</code> would be placed inside quoted formula and it would only be scoped on that formula. Similarly, there are many cases in which explicit quantifiers only occur inside a quotation and do therefore not have impact on the surrounding of a fomula. We call such formulas which do not TODO: continue
-</p>
+      <p>
+      Here, the blank node <code>_:x</code> is existentially quantified, but without any further specification, the triple could either mean (a) that there exists some x of which Fred doubts that it is a unicorn or it could mean (b) that Freds doubts that unicorns exist. In case we wanted to make the quantifier explicit, in option a the quantifier would need to be placed at the beginning of the whole expression, for option b it would need to be placed inside the brackets. N3 follows option b, 
+      </p>
 
-
-
-
-
-
+      <p>
+      In the above example, an explicit quantifier of the blank node <code>_:x</code> would be placed inside quoted formula and it would only be scoped on that formula. Similarly, there are many cases in which explicit quantifiers only occur inside a quotation and do therefore not have impact on the surrounding of a fomula. We call such formulas which do not TODO: continue
+      </p>
       </section>
       <section id='sinterpret'>
         <h3>Simple N3 interpretations</h3>
@@ -579,7 +601,7 @@ In the above example, an explicit quantifier of the blank node <code>_:x</code> 
       <section id='whitespace'>
         <h3>Whitespace</h3>
         <p>White space (<a href="#grammar-production-WS">WS production</a>) is used to separate terminals. The amount and type (e.g., newline or space) of white space is only significant within terminals.</p>
-		<p>We note that the <a href="#grammar-production-IRIREF">IRIREF</a> production only allows IRI-encoded white spaces.</p>
+    <p>We note that the <a href="#grammar-production-IRIREF">IRIREF</a> production only allows IRI-encoded white spaces.</p>
       </section>
       <section id='comments'>
         <h3>Comments</h3>
@@ -634,7 +656,7 @@ In the above example, an explicit quantifier of the blank node <code>_:x</code> 
                 </tr>
               </tbody>
             </table>
-            (see the <a href="#grammar-production-ECHAR">ECHAR</a> production)					
+            (see the <a href="#grammar-production-ECHAR">ECHAR</a> production)          
           </li>
           <li>
             Numeric escape sequences. These represent Unicode code points:
@@ -747,25 +769,26 @@ In the above example, an explicit quantifier of the blank node <code>_:x</code> 
         <p>[[[TRIG]]] is itself a superset of the Turtle syntax and includes a compact way to write RDF datasets, i.e., sets of named graphs. In particular, TriG allows the specification of so-called graph statements, which are a pair of an IRI or blank node label and a group of triple statements surrounded by "<code>{</code>" and "<code>}</code>".</p>
         <p>For instance:</p>
         <pre class="example nohighlight">
-    # This document contains a default graph and two named graphs.
-    @prefix rdf: &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#&gt; .
-    @prefix dc: &lt;http://purl.org/dc/terms/&gt; .
-    @prefix foaf: &lt;http://xmlns.com/foaf/0.1/&gt; .
-    # default graph
-    &lt;http://example.org/bob&gt; dc:publisher "Bob" .
-    &lt;http://example.org/alice&gt; dc:publisher "Alice" .
-    &lt;http://example.org/bob&gt;
-    {
-    _:a foaf:name "Bob" .
-    _:a foaf:mbox &lt;mailto:bob@oldcorp.example.org&gt; .
-    _:a foaf:knows _:b .
-    }
-    &lt;http://example.org/alice&gt;
-    {
-    _:b foaf:name "Alice" .
-    _:b foaf:mbox &lt;mailto:alice@work.example.org&gt; .
-    }	
-    </pre>
+          # This document contains a default graph and two named graphs.
+          @prefix rdf: &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#&gt; .
+          @prefix dc: &lt;http://purl.org/dc/terms/&gt; .
+          @prefix foaf: &lt;http://xmlns.com/foaf/0.1/&gt; .
+
+          # default graph
+          &lt;http://example.org/bob&gt; dc:publisher "Bob" .
+          &lt;http://example.org/alice&gt; dc:publisher "Alice" .
+          &lt;http://example.org/bob&gt;
+          {
+          _:a foaf:name "Bob" .
+          _:a foaf:mbox &lt;mailto:bob@oldcorp.example.org&gt; .
+          _:a foaf:knows _:b .
+          }
+          &lt;http://example.org/alice&gt;
+          {
+          _:b foaf:name "Alice" .
+          _:b foaf:mbox &lt;mailto:alice@work.example.org&gt; .
+          } 
+        </pre>
         <p>N3 is not directly compatible with TriG as it does not support this graph statement notation. Nevertheless, since N3 supports quoted graphs (i.e., cited formulas) as part of regular N3 statements, authors can utilize the N3 Named Graphs extension [<strong>X</strong>] for associating names or identifiers with cited formulas. Although applications could easily introduce their own custom predicates for this purpose, we strongly recommend the use of this extension for interoperability purposes.</p>
         <p>The N3 Named Graphs extension [<strong>X</strong>] defines a set of built-ins (used as predicates) to associate names or identifiers with cited formulas, which then become "named graphs". Moreover, each predicate has a well-defined semantics on how the named graph should be interpreted: as quoted graphs (the default N3 interpretation), a partitioning of triples within a dataset context, sets of triples with their own isolated contexts, or specifying relations between local and online graphs.</p>
       </section>
@@ -785,13 +808,13 @@ In the above example, an explicit quantifier of the blank node <code>_:x</code> 
           <p>First, we <em>create a resource</em> that represents the n-ary relation, and then <em>use a set of binary relations</em> to link each participant to this newly minted resource. Each binary relation is hereby given a meaningful name that <em>represents the role of the participant</em> in the n-ary relation.</p>
           <p>For instance, say we want to describe the <em>Purchase</em> relation between a buyer called "John", a purchased book called "Lenny the Lion", the amount paid for the book, and the seller:</p>
           <pre id="nary-book-relation" class="example nohighlight">
-    @prefix ex: &lt;http://example.org/#&gt; .
-    ex:Purchase_1 a ex:Purchase ;
-                  ex:hasBuyer ex:John ;
-                  ex:hasObject ex:Lenny_The_Lion ;
-                  ex:hasAmount 15 ;
-                  ex:hasSeller &lt;http://books.example.com&gt; .
-    </pre>
+            @prefix ex: &lt;http://example.org/#&gt; .
+            ex:Purchase_1 a ex:Purchase ;
+                ex:hasBuyer ex:John ;
+                ex:hasObject ex:Lenny_The_Lion ;
+                ex:hasAmount 15 ;
+                ex:hasSeller &lt;http://books.example.com&gt; .
+          </pre>
           <p class="note">Either you could mint a new IRI for representing the n-ary relation, or simply use a <a href="#bnodes">blank node</a>. E.g., in case other parties may want to refer to the n-ary relation from outside the N3 graph, one could choose to mint a new IRI; else, it will likely be more convenient to use a <a href="#bnodeprplist">blank node property list</a>.</p>
           <p>In other cases, things are more naturally described as <em>properties of relations</em>, rather than n-ary relations &mdash; for instance, the provenance of a piece of information, the trend of someone's body temperature and when the temperature was taken. Nevertheless, these can be represented in the same way as n-ary relation participants.</p>
           <p>We start from the same solution above, i.e., introducing a resource to represent the (in this case, binary) relation, and then linking the two participants to this resource. Subsequently, we use a set of binary relations to attach each descriptive property (e.g., diagnosis probability; temperature trend) to the relation resource.</p>
@@ -801,25 +824,26 @@ In the above example, an explicit quantifier of the blank node <code>_:x</code> 
             @base &lt;http://example.org/#&gt; .
             @prefix xsd: &lt;http://www.w3.org/2001/XMLSchema#&gt; .
             ex:Christine
-            	a       :Person ;
-            	:hasDiagnosis _:Diagnosis_Relation_1 .
+              a       :Person ;
+              :hasDiagnosis _:Diagnosis_Relation_1 .
             
             _:Diagnosis_Relation_1
-            	:diagnosisProbability :HIGH ;
-            	:diagnosisValue :Breast_Tumor_Christine ;
-            	:diagnosisDate ""
+              :diagnosisProbability :HIGH ;
+              :diagnosisValue :Breast_Tumor_Christine ;
+              :diagnosisDate ""
             </pre> -->
           <p>For instance, when describing someone's (e.g., Christine) current temperature, you may want to indicate the absolute value (e.g., 40 degrees), a description of that value (e.g., elevated), the trend compared to the prior value (e.g., rising), and the time the temperature was taken:</p>
           <pre class="example nohighlight">
-    @prefix xsd: &lt;http://www.w3.org/2001/XMLSchema#&gt; .
-    @base &lt;http://example.org/#&gt; .
-    :Christine a :Person ;
-               :hasTemperature _:to1 .
-    _:to1 :temperatureTrend :RISING ;
-          :temperatureValue 40 ;
-          :temperatureDescription :ELEVATED ;
-          :temperatureTime "2020-07-12T09:01:33"^^xsd:dateTime .
-    </pre>
+            @prefix xsd: &lt;http://www.w3.org/2001/XMLSchema#&gt; .
+            @base &lt;http://example.org/#&gt; .
+
+            :Christine a :Person ;
+                       :hasTemperature _:to1 .
+            _:to1 :temperatureTrend :RISING ;
+                  :temperatureValue 40 ;
+                  :temperatureDescription :ELEVATED ;
+                  :temperatureTime "2020-07-12T09:01:33"^^xsd:dateTime .
+          </pre>
           <p>This is possible since we know that the relation resource (e.g., <code>to1</code>) represents the n-ary relation. Hence, any descriptive properties of the relation, in addition to participants in the relation, can simply be attached to the entity.</p>
           <p class="note">In this example, we made a statement with one of the participants (<code>:Christine</code>) as subject, and the relation resource (e.g., <code>_:to1</code>) as object. An alternative would have been to add <code>:Christine</code> as just another element of the n-ary relation, e.g., using a property <code>temperatureOf</code>. Our modeling choice here served to indicate that Christine is somehow the <a data-cite="swbp-n-aryRelations#useCase2">"owner" of the relationship</a>.</p>
           <!-- 
@@ -840,33 +864,36 @@ In the above example, an explicit quantifier of the blank node <code>_:x</code> 
         <h4>Compound literal</h4>
         <p>This solution is inspired by a separate discussion of the RDF community on <em>Language Tagged Strings</em>. The essence of the discussion is to separate the string, as a simple data, from all the various characterizations that may be added to it. This design pattern uses the <code>rdf:CompoundLiteral</code> class, which is in the domain of <code>rdf:language</code> and <code>rdf:direction</code> to be used for describing RDF literal values containing base direction and a possible language tag to be associated with the string value of <code>rdf:value</code> on the same subject.</p>
         <pre class="example nohighlight">
-@prefix foaf: &lt;http://xmlns.com/foaf/0.1/&gt; .
-&lt;http://example.org/#spiderman&gt; foaf:name [
-	rdf:value "الرجل العنكبوت", 
-	rdf:language "ar-eg", 
-	rdf:direction "rtl" 
-] .
+          @prefix foaf: &lt;http://xmlns.com/foaf/0.1/&gt; .
+
+          &lt;http://example.org/#spiderman&gt; foaf:name [
+            rdf:value "الرجل العنكبوت", 
+            rdf:language "ar-eg", 
+            rdf:direction "rtl" 
+          ] .
         </pre>
       </section>
       <section id="reification">
         <h4>Graph quoted inside another graph</h4>
         <p>Reification in the RDF context means the expression of something in a language using the language so that it becomes treatable by the language. RDF graphs consist of RDF statements. If one wants to look objectively at an RDF graph and reason about it is using RDF tools, then it is useful to have a mechanism for describing RDF statements. N3 extends RDF to allow graphs themselves to be another form of literal node. A graph can be quoted inside another graph, as in the example:</p>
         <pre class="example nohighlight">
-@prefix : &lt;http://example.org/&gt;  .
-_:x :graph { 
-  &lt;http://example.org/#spiderman&gt; &lt;http://xmlns.com/foaf/0.1/name&gt; "Spiderman" . 
-} .
-_:x :certainty 0.8 .
+          @prefix : &lt;http://example.org/&gt;  .
+
+          _:x :graph { 
+            &lt;http://example.org/#spiderman&gt; &lt;http://xmlns.com/foaf/0.1/name&gt; "Spiderman" . 
+          } .
+          _:x :certainty 0.8 .
         </pre>
         <p>The above example can also be seen as <a data-cite="rdf11-mt#reification">RDF reification</a>:</p>
         <pre class="example nohighlight">
-@prefix rdf: &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#&gt; .
-@prefix : &lt;http://example.org/&gt; .
-_:x a rdf:Statement ;
-    rdf:subject &lt;http://example.org/#spiderman&gt; ;
-    rdf:predicate &lt;http://xmlns.com/foaf/0.1/name&gt; ;
-    rdf:object "Spiderman" ;
-    :certainty 0.8 .
+          @prefix rdf: &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#&gt; .
+          @prefix : &lt;http://example.org/&gt; .
+
+          _:x a rdf:Statement ;
+              rdf:subject &lt;http://example.org/#spiderman&gt; ;
+              rdf:predicate &lt;http://xmlns.com/foaf/0.1/name&gt; ;
+              rdf:object "Spiderman" ;
+              :certainty 0.8 .
         </pre>
       </section>
     </section>
@@ -882,18 +909,22 @@ _:x a rdf:Statement ;
           <li><code>&amp;apos;</code>: &apos; (apostrophe, U+0027)</li>
         </ul>
       </p>
-      <pre class="example nohighlight">&lt;script type=&quot;text/n3&quot;&gt;
-@prefix : &amp;lt;http://www.example.org/#&amp;gt; .
-:green-goblin :enemyOf :spiderman .
-&lt;/script&gt;
+      <pre class="example nohighlight">
+        &lt;script type=&quot;text/n3&quot;&gt;
+          @prefix : &amp;lt;http://www.example.org/#&amp;gt; .
+
+          :green-goblin :enemyOf :spiderman .
+        &lt;/script&gt;
       </pre>
       <p>When embedded in XHTML N3 data blocks must be enclosed in CDATA sections. Those CDATA markers must be in Turtle comments. If the character sequence <code>]]&gt;</code> occurs in the document it must be escaped using strings escapes (<code>\u005d\u0054\u003e</code>). This will also make N3 safe in polyglot documents served as both <code>text/html</code> and <code>application/xhtml+xml</code>. Failing to use CDATA sections or escape <code>]]&gt;</code> may result in a non well-formed XML document.</p>
-      <pre class="example nohighlight">&lt;script type=&quot;text/n3&quot;&gt;
-# &lt;![CDATA[
-@prefix : &lt;http://www.example.org/#&gt; .
-:green-goblin :enemyOf :spiderman .
-# ]]&gt;
-&lt;/script&gt;
+      <pre class="example nohighlight">
+        &lt;script type=&quot;text/n3&quot;&gt;
+          # &lt;![CDATA[
+          @prefix : &lt;http://www.example.org/#&gt; .
+
+          :green-goblin :enemyOf :spiderman .
+          # ]]&gt;
+        &lt;/script&gt;
       </pre>
     </section>
     <section id='mime' class=appendix>
