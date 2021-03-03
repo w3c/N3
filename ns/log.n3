@@ -469,7 +469,7 @@ Takes a list of a string and an IRI and creates a datatyped literal.
 **definition**:
 `true` if and only if the datatyped literal formed of `$a_1` and `$a_1` equals `$a_3`.
 
-The subject is a list composed of a string and an IRI and the object
+The subject is a list composed of a string and an IRI, and the object
 is a datatyped literal with the value `$a_1` and datatype `$a_2`.
 
 **requires**:
@@ -495,13 +495,13 @@ Takes a list of two strings and creates a language-tagged literal.
 **definition**:
 `true` if and only if the language-tagged literal formed of `$a_1` and `$a_1` equals `$a_3`.
 
-The subject is a list composed of two strings and the object
+The subject is a list composed of two strings, and the object
 is a language-tagged literal with the value `$a_1` and language `$a_2`.
 
 **requires**:
 `$a_1` and `$a_2` to be bound.
-`$a_1` to be a `xs:string` (see note on casting to string).
-`$a_2` to be a `xs:string` in the form of a [BCP47](https://tools.ietf.org/html/bcp47) language tag (see note on casting to string).
+`$a_1` to be an `xs:string` (see note on casting to string).
+`$a_2` to be an `xs:string` in the form of a [BCP47](https://tools.ietf.org/html/bcp47) language tag (see note on casting to string).
 
 **example**:
 ``{ ("hello" "en") log:langlit ?X } => { ?X a :Answer } .`
@@ -606,4 +606,3 @@ For anything else, it is itself.""".
 
 
 # ends
-
