@@ -91,9 +91,9 @@ Iterates over index/value pairs of the subject list
 **definition**:
 Gets the matching pair of list index and list value for every member of the subject.
 If the object is a variable, it will create a solution for each member of the subject list.
-If any member of the object list is a variable it will create a solution for all matching
+If any member of the object list is a variable, it will create a solution for all matching
 members of the subject list.
-If the object is ground, it evaluates to `true`, otherwise, `false`.
+If the object is ground, it evaluates to `true`; otherwise, `false`.
 
 **requires**:
 `$i` is an integer.
@@ -217,4 +217,3 @@ all members of `$a_2` removed, matching left to right.
 """;
     vs:term_status "unstable";
     rdfs:isDefinedBy <>.
-
