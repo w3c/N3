@@ -460,10 +460,53 @@ log:dtlit a rdf:Property;
     rdfs:labe "dtlit";
     rdfs:domain log:List;
     rdfs:range rdfs:Literal;
-    rdfs:comment """Takes a list of a string and a URI and creates a datatyped literal.
-For example, `{ ("2005-03-30T11:00:00" :tz) log:dtlit ?X } => { ?X a :Answer } .`
-will produce `"2005-03-30T11:00:00"^^:tz a :Answer .`""";
-    vs:term_status "deprecated".
+    rdfs:comment """
+Takes a list of a string and an IRI and creates a datatyped literal.
+
+**schema**:
+`($a_1 $a_2) log:dtlit $a_3`
+
+**definition**:
+`true` if and only if the datatyped literal formed of `$a_1` and `$a_1` equals `$a_3`.
+
+The subject is a list composed of a string and an IRI, and the object
+is a datatyped literal with the value `$a_1` and datatype `$a_2`.
+
+**requires**:
+`$a_1` and `$a_2` to be bound.
+`$a_1` to be a `xs:string` (see note on casting to string).
+`$a_2` to be an IRI.
+
+**example**:
+``{ ("2005-03-30T11:00:00" xsd:dateTime) log:dtlit ?X } => { ?X a :Answer } .`
+will produce `"2005-03-30T11:00:00"^^xsd:dateTime a :Answer .`
+""".
+
+log:langlit a rdf:Property;
+    rdfs:labe "langlit";
+    rdfs:domain log:List;
+    rdfs:range rdfs:Literal;
+    rdfs:comment """
+Takes a list of two strings and creates a language-tagged literal.
+
+**schema**:
+`($a_1 $a_2) log:langlit $a_3`
+
+**definition**:
+`true` if and only if the language-tagged literal formed of `$a_1` and `$a_1` equals `$a_3`.
+
+The subject is a list composed of two strings, and the object
+is a language-tagged literal with the value `$a_1` and language `$a_2`.
+
+**requires**:
+`$a_1` and `$a_2` to be bound.
+`$a_1` to be an `xs:string` (see note on casting to string).
+`$a_2` to be an `xs:string` in the form of a [BCP47](https://tools.ietf.org/html/bcp47) language tag (see note on casting to string).
+
+**example**:
+``{ ("hello" "en") log:langlit ?X } => { ?X a :Answer } .`
+will produce `"hello"^^en a :Answer .`
+""".
 
 log:findall a rdf:Property;
     rdfs:label "findall";
@@ -563,4 +606,3 @@ For anything else, it is itself.""".
 
 
 # ends
-
