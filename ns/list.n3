@@ -78,6 +78,31 @@ or binds every member of the object list to the subject.
 """;
     rdfs:isDefinedBy <>.
 
+list:iterate a rdf:Property, owl:FunctionalProperty;
+    rdfs:label "iterate";
+    rdfs:domain log:List;
+    rdfs:range log:List;
+    rdfs:comment """
+Iterates over index/value pairs of the subject list
+
+**schema**:
+`($a_1 .. $a_n) list:iterate ($i $v)`
+
+**definition**:
+Gets the matching pair of list index and list value for every member of the subject.
+If the object is a variable, it will create a solution for each member of the subject list.
+If any member of the object list is a variable, it will create a solution for all matching
+members of the subject list.
+If the object is ground, it evaluates to `true`; otherwise, `false`.
+
+**requires**:
+`$i` is an integer.
+
+**example**:
+`( 1 2 3 ) list:iterate ($i $v).`
+""";
+    rdfs:isDefinedBy <>.
+
 list:last a rdf:Property, owl:FunctionalProperty;
     rdfs:label "in";
     rdfs:domain log:List;
@@ -192,4 +217,3 @@ all members of `$a_2` removed, matching left to right.
 """;
     vs:term_status "unstable";
     rdfs:isDefinedBy <>.
-

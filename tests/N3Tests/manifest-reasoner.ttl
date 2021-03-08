@@ -53,7 +53,7 @@
       :cwm_norm_av1
 
       # list
-      :list_in :list_length :list_member
+      :list_in :list_iterate :list_length :list_member
 
       # From swap/test/list
       :cwm_list_bug1 :cwm_list_bug2 :cwm_list_r1 :cwm_list_unify2 :cwm_list_unify3 :cwm_list_unify4
@@ -404,6 +404,13 @@
   mf:action <list/in.n3>;
   mf:result <list/in-ref.n3>;
   test:options [test:think true; test:conclusions true;] .
+
+:list_iterate a test:TestN3Reason;
+  mf:name      "li-iterate.n3" ;
+  rdfs:comment "list:iterate" ;
+  mf:action <list/iterate.n3>;
+  mf:result <list/iterate-ref.n3>;
+  test:options [test:conclusions true;] .
 
 :list_length a test:TestN3Reason;
   mf:name      "li-length.n3" ;
