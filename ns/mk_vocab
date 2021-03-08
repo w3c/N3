@@ -7,6 +7,7 @@
 #    jsonld --compact --context vocab_context.jsonld --input-format ttl vocab.ttl  -o vocab.jsonld
 require 'linkeddata'
 require 'haml'
+require 'rdf/ordered_repo'
 
 STRIP_PROPS = [RDF::RDFS.comment].map(&:to_s)
 
@@ -14,7 +15,7 @@ ARGV.each do |file|
   basename = file.sub('.n3', '')
   vocab_base = "http://www.w3.org/2000/10/swap/#{basename}"
   File.open(file.sub('.n3', '.html'), "w") do |f|
-    r = RDF::Repository.load(file, base_uri: vocab_base)
+    r = RDF::OrderedRepo.load(file, base_uri: vocab_base)
     JSON::LD::API.fromRDF(r, useNativeTypes: true) do |expanded|
       # Remove leading/trailing and multiple whitespace from selected properties
       expanded.each do |o|
