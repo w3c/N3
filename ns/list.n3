@@ -93,7 +93,9 @@ Gets the matching pair of list index and list value for every member of the subj
 If the object is a variable, it will create a solution for each member of the subject list.
 If any member of the object list is a variable, it will create a solution for all matching
 members of the subject list.
-If the object is ground, it evaluates to `true`; otherwise, `false`.
+If the object is ground, it evaluates to `true`
+if the entry at the specified index matches the specified value;
+otherwise, `false`.
 
 **requires**:
 `$i` is an integer.
