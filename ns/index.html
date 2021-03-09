@@ -2,7 +2,7 @@
 <h2>Vocabulary Definitions</h2>
 <section class='vocabulary'>
 <h3>Schema for crypto built-in functions</h3>
-<div class="attribute">
+<div class="attribute comment">
 <p>These are terms drawn to match the available functions
 in <a href="http://freshmeat.sourceforge.net/projects/mxcrypto">mxCrypto</a>.</p>
 
@@ -27,7 +27,7 @@ rdfs:Literal
 </dd>
 <dt>rdfs:range</dt>
 <dd class="range">
-cr:string
+xsd:string
 </dd>
 </dl>
 </dd>
@@ -46,7 +46,7 @@ rdfs:Literal
 </dd>
 <dt>rdfs:range</dt>
 <dd class="range">
-cr:string
+xsd:string
 </dd>
 </dl>
 </dd>
@@ -65,7 +65,7 @@ rdfs:Literal
 </dd>
 <dt>rdfs:range</dt>
 <dd class="range">
-cr:string
+xsd:string
 </dd>
 </dl>
 </dd>
@@ -84,7 +84,7 @@ rdfs:Literal
 </dd>
 <dt>rdfs:range</dt>
 <dd class="range">
-cr:string
+xsd:string
 </dd>
 </dl>
 </dd>
@@ -203,7 +203,8 @@ Gets the matching pair of list index and list value for every member of the subj
 If the object is a variable, it will create a solution for each member of the subject list.
 If any member of the object list is a variable, it will create a solution for all matching
 members of the subject list.
-If the object is ground, it evaluates to <code>true</code>; otherwise, <code>false</code>.</p>
+If the object is ground and the entry at the specified index matches the specified value, 
+it evaluates to <code>true</code>; otherwise, <code>false</code>.</p>
 
 <p><strong>requires</strong>:
 <code>$i</code> is an integer.</p>
@@ -465,7 +466,7 @@ log:Type
 <dl class="annotations">
 <dt>rdfs:subClassOf</dt>
 <dd class="subClassOf">
-rdf:List, log:Type
+log:Type, rdf:List
 </dd>
 </dl>
 </dd>
@@ -508,7 +509,7 @@ log:Type
 <dl class="annotations">
 <dt>rdfs:subClassOf</dt>
 <dd class="subClassOf">
-rdfs:Literal, log:Type
+log:Type, rdfs:Literal
 </dd>
 </dl>
 </dd>
@@ -2357,8 +2358,7 @@ log:String
 </section>
 <section class='vocabulary'>
 <h3>n3 definition of some time and date functions</h3>
-<div class="attribute">
-<p>Based on orginal cwm_date and cwm_time by Mark Nottingham</p>
+<div class="attribute comment">
 
 </div>
 <section class="terms">
