@@ -23,7 +23,7 @@
 @prefix : <#>.
 
 <>  rdfs:label "n3 definition of some time and date functions";
-    rdfs:comment """Based on orginal cwm\_date and cwm\_time by Mark Nottingham""";
+    rdfs:comment """Based on orginal cwm\\_date and cwm\\_time by Mark Nottingham""";
     cc:license <http://www.w3.org/Consortium/Legal/copyright-software> .
 
 
