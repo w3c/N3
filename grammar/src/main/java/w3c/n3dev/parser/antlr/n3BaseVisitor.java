@@ -223,18 +223,4 @@ public class n3BaseVisitor<T> extends AbstractParseTreeVisitor<T> implements n3V
 	 * {@link #visitChildren} on {@code ctx}.</p>
 	 */
 	@Override public T visitQuickVar(n3Parser.QuickVarContext ctx) { return visitChildren(ctx); }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation returns the result of calling
-	 * {@link #visitChildren} on {@code ctx}.</p>
-	 */
-	@Override public T visitExistential(n3Parser.ExistentialContext ctx) { return visitChildren(ctx); }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation returns the result of calling
-	 * {@link #visitChildren} on {@code ctx}.</p>
-	 */
-	@Override public T visitUniversal(n3Parser.UniversalContext ctx) { return visitChildren(ctx); }
 }

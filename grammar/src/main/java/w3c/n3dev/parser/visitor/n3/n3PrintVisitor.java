@@ -389,34 +389,6 @@ public class n3PrintVisitor extends n3DefaultVisitor {
 		return doVisitChildren(ctx);
 	}
 
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>
-	 * The default implementation returns the result of calling
-	 * {@link #visitChildren} on {@code ctx}.
-	 * </p>
-	 */
-	@Override
-	public Void visitExistential(n3Parser.ExistentialContext ctx) {
-		print("Existential");
-		return doVisitChildren(ctx);
-	}
-
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>
-	 * The default implementation returns the result of calling
-	 * {@link #visitChildren} on {@code ctx}.
-	 * </p>
-	 */
-	@Override
-	public Void visitUniversal(n3Parser.UniversalContext ctx) {
-		print("Universal");
-		return doVisitChildren(ctx);
-	}
-
 	private void print(String element) {
 		StringBuffer str = new StringBuffer();
 		for (int i = 0; i < lvl; i++)

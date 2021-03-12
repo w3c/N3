@@ -373,30 +373,6 @@ public class n3BaseListener implements n3Listener {
 	 * <p>The default implementation does nothing.</p>
 	 */
 	@Override public void exitQuickVar(n3Parser.QuickVarContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void enterExistential(n3Parser.ExistentialContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void exitExistential(n3Parser.ExistentialContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void enterUniversal(n3Parser.UniversalContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void exitUniversal(n3Parser.UniversalContext ctx) { }
 
 	/**
 	 * {@inheritDoc}

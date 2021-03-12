@@ -43,6 +43,8 @@ COMMENT
 n3Statement 
 	: n3Directive
 	| triples
+	| existential
+	| universal
 	;
 
 n3Directive
@@ -195,6 +197,14 @@ quickVar
 	: QuickVarName
 	// only made this a parser rule for consistency 
 	// (all other path-items are also parser rules)
+	;
+
+existential 
+	: '@forSome' iriList
+	;
+
+universal
+	: '@forAll' iriList
 	;
 	
 IRIREF 

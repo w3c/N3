@@ -192,16 +192,4 @@ public interface n3Visitor<T> extends ParseTreeVisitor<T> {
 	 * @return the visitor result
 	 */
 	T visitQuickVar(n3Parser.QuickVarContext ctx);
-	/**
-	 * Visit a parse tree produced by {@link n3Parser#existential}.
-	 * @param ctx the parse tree
-	 * @return the visitor result
-	 */
-	T visitExistential(n3Parser.ExistentialContext ctx);
-	/**
-	 * Visit a parse tree produced by {@link n3Parser#universal}.
-	 * @param ctx the parse tree
-	 * @return the visitor result
-	 */
-	T visitUniversal(n3Parser.UniversalContext ctx);
 }

@@ -309,24 +309,4 @@ public interface n3Listener extends ParseTreeListener {
 	 * @param ctx the parse tree
 	 */
 	void exitQuickVar(n3Parser.QuickVarContext ctx);
-	/**
-	 * Enter a parse tree produced by {@link n3Parser#existential}.
-	 * @param ctx the parse tree
-	 */
-	void enterExistential(n3Parser.ExistentialContext ctx);
-	/**
-	 * Exit a parse tree produced by {@link n3Parser#existential}.
-	 * @param ctx the parse tree
-	 */
-	void exitExistential(n3Parser.ExistentialContext ctx);
-	/**
-	 * Enter a parse tree produced by {@link n3Parser#universal}.
-	 * @param ctx the parse tree
-	 */
-	void enterUniversal(n3Parser.UniversalContext ctx);
-	/**
-	 * Exit a parse tree produced by {@link n3Parser#universal}.
-	 * @param ctx the parse tree
-	 */
-	void exitUniversal(n3Parser.UniversalContext ctx);
 }
