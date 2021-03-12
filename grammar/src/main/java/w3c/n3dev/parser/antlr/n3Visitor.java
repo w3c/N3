@@ -169,12 +169,6 @@ public interface n3Visitor<T> extends ParseTreeVisitor<T> {
 	 */
 	T visitIri(n3Parser.IriContext ctx);
 	/**
-	 * Visit a parse tree produced by {@link n3Parser#iriList}.
-	 * @param ctx the parse tree
-	 * @return the visitor result
-	 */
-	T visitIriList(n3Parser.IriListContext ctx);
-	/**
 	 * Visit a parse tree produced by {@link n3Parser#prefixedName}.
 	 * @param ctx the parse tree
 	 * @return the visitor result

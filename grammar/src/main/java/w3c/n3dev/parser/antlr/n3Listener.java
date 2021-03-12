@@ -270,16 +270,6 @@ public interface n3Listener extends ParseTreeListener {
 	 */
 	void exitIri(n3Parser.IriContext ctx);
 	/**
-	 * Enter a parse tree produced by {@link n3Parser#iriList}.
-	 * @param ctx the parse tree
-	 */
-	void enterIriList(n3Parser.IriListContext ctx);
-	/**
-	 * Exit a parse tree produced by {@link n3Parser#iriList}.
-	 * @param ctx the parse tree
-	 */
-	void exitIriList(n3Parser.IriListContext ctx);
-	/**
 	 * Enter a parse tree produced by {@link n3Parser#prefixedName}.
 	 * @param ctx the parse tree
 	 */

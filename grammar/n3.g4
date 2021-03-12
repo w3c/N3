@@ -174,10 +174,6 @@ iri
 	| prefixedName
 	;
 	
-iriList 
-	: iri ( ',' iri )*
-	;
-	
 prefixedName 
 	: PNAME_NS
 	| PNAME_LN

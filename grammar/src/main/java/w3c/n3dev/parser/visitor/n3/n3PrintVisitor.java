@@ -370,20 +370,6 @@ public class n3PrintVisitor extends n3DefaultVisitor {
 	 * </p>
 	 */
 	@Override
-	public Void visitIriList(n3Parser.IriListContext ctx) {
-		print("IriList");
-		return doVisitChildren(ctx);
-	}
-
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>
-	 * The default implementation returns the result of calling
-	 * {@link #visitChildren} on {@code ctx}.
-	 * </p>
-	 */
-	@Override
 	public Void visitPrefixedName(n3Parser.PrefixedNameContext ctx) {
 		print("PrefixedName");
 		return doVisitChildren(ctx);

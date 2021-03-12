@@ -330,18 +330,6 @@ public class n3BaseListener implements n3Listener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterIriList(n3Parser.IriListContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void exitIriList(n3Parser.IriListContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
 	@Override public void enterPrefixedName(n3Parser.PrefixedNameContext ctx) { }
 	/**
 	 * {@inheritDoc}
