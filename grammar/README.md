@@ -9,13 +9,15 @@ The Turtle grammar was subsequently adapted and extended with N3 constructs (`n3
 
 Changes between the new N3 grammar and the original grammars (Turtle, N3) include:
 - Dropping the `@keywords` section
-- Allowing all "verb" keywords (e.g., `is .. of`, `has`) both with and without `@` prefix
-- Allowing inverted properties at the start of path (e.g., `:s ^:p :o`)
+- "Verb" keywords (e.g., `is .. of`, `has`) can only be used without `@` prefix. This was because of conflicts with some language tags (e.g., `@is` for Icelandic).
+- Allowing inverted properties at the start of path (e.g., `:s <-:p :o`)
 - On top of the grammar, a visitor object checks whether prefixes in `prefixedNames` have been declared
 - Supporting comments in files  
 (strangely, neither N3 nor Turtle seemed to define these in their syntaxes)
-- (*minor*) supporting non-encoded spaces in IRIs  
-(not allowed in Turtle) 
+
+To re-create the HTML grammar from the EBNF file, run the following:
+- gem install ebnf
+- rake
 
 # Testing
 
