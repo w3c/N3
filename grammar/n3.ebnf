@@ -27,15 +27,14 @@
                                           | 'a'
                                           | 'has' expression
                                           | 'is' expression 'of'
-                                          #| '<-' expression # Synonym for is expression of
                                           | '='
                                           | '<='
                                           | '=>'
 
 [13] subject                            ::= expression
 
-[14] predicate                          ::= (expression | '^' expression)
-                                            /* allow first predicate in a path to also be inverted */
+[14] predicate                          ::= (expression | '<-' expression)
+                                            /* allow inverting first predicate in a path */
 
 [15] object                             ::= expression
 
