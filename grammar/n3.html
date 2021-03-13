@@ -11,7 +11,7 @@
       <td>[2]</td>
       <td><code>n3Statement</code></td>
       <td>::=</td>
-      <td><a href="#grammar-production-n3Directive">n3Directive</a> <code>|</code> <a href="#grammar-production-triples">triples</a> <code>|</code> <a href="#grammar-production-existential">existential</a> <code>|</code> <a href="#grammar-production-universal">universal</a></td>
+      <td><a href="#grammar-production-n3Directive">n3Directive</a> <code>|</code> <a href="#grammar-production-triples">triples</a></td>
     </tr>
     <tr id="grammar-production-n3Directive">
       <td>[3]</td>
@@ -157,55 +157,37 @@
       <td>::=</td>
       <td><a href="#grammar-production-IRIREF">IRIREF</a> <code>|</code> <a href="#grammar-production-prefixedName">prefixedName</a></td>
     </tr>
-    <tr id="grammar-production-iriList">
-      <td>[27]</td>
-      <td><code>iriList</code></td>
-      <td>::=</td>
-      <td><a href="#grammar-production-iri">iri</a> <code>(</code> "<code class="grammar-literal">,</code>" <a href="#grammar-production-iri">iri</a><code>)</code> <code>*</code> </td>
-    </tr>
     <tr id="grammar-production-prefixedName">
-      <td>[28]</td>
+      <td>[27]</td>
       <td><code>prefixedName</code></td>
       <td>::=</td>
       <td><a href="#grammar-production-PNAME_NS">PNAME_NS</a> <code>|</code> <a href="#grammar-production-PNAME_LN">PNAME_LN</a></td>
     </tr>
     <tr id="grammar-production-blankNode">
-      <td>[29]</td>
+      <td>[28]</td>
       <td><code>blankNode</code></td>
       <td>::=</td>
       <td><a href="#grammar-production-BLANK_NODE_LABEL">BLANK_NODE_LABEL</a> <code>|</code> <a href="#grammar-production-ANON">ANON</a></td>
     </tr>
     <tr id="grammar-production-quickVar">
-      <td>[30]</td>
+      <td>[29]</td>
       <td><code>quickVar</code></td>
       <td>::=</td>
       <td><a href="#grammar-production-QUICK_VAR_NAME">QUICK_VAR_NAME</a></td>
     </tr>
-    <tr id="grammar-production-existential">
-      <td>[31]</td>
-      <td><code>existential</code></td>
-      <td>::=</td>
-      <td>&quot;@forSome&quot; <a href="#grammar-production-iriList">iriList</a></td>
-    </tr>
-    <tr id="grammar-production-universal">
-      <td>[32]</td>
-      <td><code>universal</code></td>
-      <td>::=</td>
-      <td>&quot;@forAll&quot; <a href="#grammar-production-iriList">iriList</a></td>
-    </tr>
     <tr id="grammar-production-">
       <td colspan=2>@terminals</td>
       <td></td>
-      <td style="text-align: left"><strong># Productions for terminals</strong></td>
+      <td><strong># Productions for terminals</strong></td>
     </tr>
     <tr id="grammar-production-BOOLEAN_LITERAL">
-      <td>[33]</td>
+      <td>[30]</td>
       <td><code>BOOLEAN_LITERAL</code></td>
       <td>::=</td>
       <td>&quot;true&quot; <code>|</code> &quot;false&quot;</td>
     </tr>
     <tr id="grammar-production-STRING">
-      <td>[34]</td>
+      <td>[31]</td>
       <td><code>STRING</code></td>
       <td>::=</td>
       <td><a href="#grammar-production-STRING_LITERAL_QUOTE">STRING_LITERAL_QUOTE</a> <code>|</code> <a href="#grammar-production-STRING_LITERAL_SINGLE_QUOTE">STRING_LITERAL_SINGLE_QUOTE</a> <code>|</code> <a href="#grammar-production-STRING_LITERAL_LONG_SINGLE_QUOTE">STRING_LITERAL_LONG_SINGLE_QUOTE</a> <code>|</code> <a href="#grammar-production-STRING_LITERAL_LONG_QUOTE">STRING_LITERAL_LONG_QUOTE</a></td>
