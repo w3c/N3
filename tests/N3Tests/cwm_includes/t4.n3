@@ -16,10 +16,8 @@
 
 :thesis :is { <#theSky> <#is> <#blue> } .
 
-@forAll :x.
-
-#{ :thesis :is :x. :x log:includes {<#theSky> <#is> <#green>} } log:implies { :test4_bis a :FAILURE } .
-{ :thesis :is :x. :x log:notIncludes {<#theSky> <#is> <#green>} } log:implies { :test4 a :success } .
+#{ :thesis :is ?x. ?x log:includes {<#theSky> <#is> <#green>} } log:implies { :test4_bis a :FAILURE } .
+{ :thesis :is ?x. ?x log:notIncludes {<#theSky> <#is> <#green>} } log:implies { :test4 a :success } .
 
 #ends
 

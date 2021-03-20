@@ -20,16 +20,14 @@
 #
 
 
-@forAll :d, :x, :y, :F, :G.
-
-{ <t10a.n3> log:semantics :F.
-  :F log:includes { :theSky :is :blue}   } log:implies { :test10a a :success } .
+{ <t10a.n3> log:semantics ?F.
+  ?F log:includes { :theSky :is :blue}   } log:implies { :test10a a :success } .
  
-{ <t10a.n3> log:semantics :F.
-  :F log:includes { :theSky :is :green}   } log:implies { :test10-bis a :FAILURE } .
+{ <t10a.n3> log:semantics ?F.
+  ?F log:includes { :theSky :is :green}   } log:implies { :test10-bis a :FAILURE } .
  
-{ <t10a.n3> log:semantics :F.
-  :F log:includes { :theSky :is :x}   } log:implies { :fred local:favoriteColor :x  } .
+{ <t10a.n3> log:semantics ?F.
+  ?F log:includes { :theSky :is ?x}   } log:implies { :fred local:favoriteColor ?x  } .
 
 { :fred local:favoriteColor :blue } log:implies { :test10b a :success}.
  

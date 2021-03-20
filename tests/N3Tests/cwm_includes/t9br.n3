@@ -11,12 +11,10 @@
 
 :e1 :date "2001-09-27".
 
-@forAll :e, :d.
-
 # find events in september 2001
-{ :e :date :d.
-  :d string:notLessThan "2001-09";
-     string:lessThan "2001-10" } log:implies { :e a :Sep2001Event }.
+{ ?e :date ?d.
+  ?d string:notLessThan "2001-09";
+     string:lessThan "2001-10" } log:implies { ?e a :Sep2001Event }.
 
 { :e1 a :Sep2001Event } log:implies { :t1 a :Success. }.
 
