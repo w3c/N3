@@ -1,0 +1,10 @@
+@prefix log: <http://www.w3.org/2000/10/swap/log#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix : <rule8.n3#>.
+@base <http://example.org/> .
+
+<#> rdfs:comment "Match concrete rule terms to data vars" .
+
+?a :b :c .
+{ :a :b :c . :a :b :c } => { :test1 a :SUCCESS } .
+{ :a :b :c . :d :b :c } => { :test2 a :SUCCESS } .

@@ -1,0 +1,22 @@
+@prefix log: <http://www.w3.org/2000/10/swap/log#> .
+
+<builtin5.n3#test> <builtin5.n3#has> {
+<builtin5.n3#we>
+        <builtin5.n3#thought>
+            {<builtin5.n3#will>
+                <builtin5.n3#is>
+                    <builtin5.n3#cool> .
+        } .
+    {?x  <builtin5.n3#thought>
+            {<builtin5.n3#will>
+                <builtin5.n3#is>
+                    <builtin5.n3#cool> .
+        } .
+}  <http://www.w3.org/2000/10/swap/log#implies>
+            {?x  <builtin5.n3#is>
+            <builtin5.n3#wrong> .
+} .
+    <builtin5.n3#we>
+        <builtin5.n3#is>
+            <builtin5.n3#wrong> .
+} .

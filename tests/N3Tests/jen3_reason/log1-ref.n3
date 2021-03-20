@@ -1,0 +1,12 @@
+<log1.n3#log1> <log1.n3#has> "123"^^<http://www.w3.org/2001/XMLSchema#string> .
+<log1.n3#log2> <log1.n3#has> ( "hello" <http://www.w3.org/2001/XMLSchema#string> ) .
+<log1.n3#log3> <log1.n3#has> ( "2.3" <http://www.w3.org/2001/XMLSchema#double> ) .
+<log1.n3#log4> <log1.n3#has> ( "2.3" <http://www.w3.org/2001/XMLSchema#doubleee> ) .
+<log1.n3#log5> a <log1.n3#SUCCESS> .
+<log1.n3#log7> <log1.n3#has> "hello"@en .
+<log1.n3#log8> <log1.n3#has> ( "hello" "n" ) .
+<log1.n3#log9> <log1.n3#has> ( "goedendag" "l" ) .
+<log1.n3#log10> a <log1.n3#SUCCESS> .
+<log1.n3#log11> <log1.n3#has> "http://example.org/hello_world" .
+<log1.n3#log12> <log1.n3#has> <http://example.org/hello_world> .
+<log1.n3#log13> a <log1.n3#SUCCESS> .

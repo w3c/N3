@@ -1,0 +1,9 @@
+@prefix crypto: <http://www.w3.org/2000/10/swap/crypto#> .
+@prefix test: <https://w3c.github.io/N3/tests/test.n3#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix : <crypto1.n3#>.
+
+<#> rdfs:comment "Tests for crypto:sha" .
+
+{ "password" crypto:sha "5baa61e4c9b93f3f0682250b6cf8331b7ee68fd8" } => { :crypt1 a :SUCCESS } .
+{ "password" crypto:sha ?c } => { :crypt2 :has ?c } .

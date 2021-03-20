@@ -1,0 +1,7 @@
+<nested_clauses2.n3#test3> <nested_clauses2.n3#has> {
+    {
+    ?x  <nested_clauses2.n3#b>
+            <nested_clauses2.n3#c> .
+}  <nested_clauses2.n3#b>
+            <nested_clauses2.n3#c> .
+} .

@@ -1,0 +1,9 @@
+<builtin6.n3#test1> <builtin6.n3#has> ( <builtin6.n3#taskA1> <builtin6.n3#taskA2> ) .
+<builtin6.n3#test1> <builtin6.n3#has> ( <builtin6.n3#taskB1> <builtin6.n3#taskB2> <builtin6.n3#taskB3> <builtin6.n3#taskB4> ) .
+<builtin6.n3#test1> <builtin6.n3#has> <builtin6.n3#taskB> .
+<builtin6.n3#test2> <builtin6.n3#has> _:b3 .
+<builtin6.n3#test3> <builtin6.n3#has> _:b1 .
+<builtin6.n3#test5> <builtin6.n3#has> ( <builtin6.n3#taskB1> <builtin6.n3#taskB2> <builtin6.n3#taskB3> <builtin6.n3#taskB4> ) .
+<builtin6.n3#test5> <builtin6.n3#has> <builtin6.n3#taskA> .
+<builtin6.n3#test5> <builtin6.n3#has> <builtin6.n3#taskB> .
+<builtin6.n3#test6> a <builtin6.n3#SUCCESS> .

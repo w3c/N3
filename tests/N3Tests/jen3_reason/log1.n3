@@ -1,0 +1,23 @@
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix log: <http://www.w3.org/2000/10/swap/log#> .
+@prefix : <log1.n3#> .
+
+<#> rdfs:comment "Tests for log:dtlit, log:langlit, log:uri" .
+
+{ (123 xsd:string) log:dtlit ?l } => { :log1 :has ?l } .
+{ (?s ?d) log:dtlit "hello"^^xsd:string } => { :log2 :has (?s ?d) } .
+{ ?l log:dtlit "2.3"^^xsd:double } => { :log3 :has ?l } .
+{ ?l log:dtlit "2.3"^^xsd:doubleee } => { :log4 :has ?l } .
+{ ("123" xsd:int) log:dtlit "123"^^xsd:int } => { :log5 a :SUCCESS } .
+{ ("123" "int") log:dtlit ?l } => { :log6 a :FAILURE } .
+
+{ ("hello" "en") log:langlit ?l } => { :log7 :has ?l } .
+{ (?s ?l) log:langlit "hello"@en } => { :log8 :has (?s ?l) } .
+{ ?l log:langlit "goedendag"@nl } => { :log9 :has ?l } .
+{ ("hello" "en") log:langlit "hello"@en } => { :log10 a :SUCCESS } .
+
+{ <http://example.org/hello_world> log:uri ?s } => { :log11 :has ?s } .
+{ ?u log:uri "http://example.org/hello_world" } => { :log12 :has ?u } .
+{ <http://example.org/hello_world> log:uri "http://example.org/hello_world" } => { :log13 a :SUCCESS } .
+{ "http://example.org/hello_world" log:uri ?u } => { :log14 :has ?u } .

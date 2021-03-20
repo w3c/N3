@@ -1,0 +1,17 @@
+<list2.n3#list1> <list2.n3#has> "p=0, m=x" .
+<list2.n3#list1> <list2.n3#has> "p=1, m=y" .
+<list2.n3#list1> <list2.n3#has> "p=2, m=1" .
+<list2.n3#list2> <list2.n3#has> "a" .
+<list2.n3#list2> <list2.n3#has> "b" .
+<list2.n3#list2> <list2.n3#has> ( "1.0"^^<http://www.w3.org/2001/XMLSchema#decimal> ) .
+<list2.n3#list2> <list2.n3#has> _:b1 .
+<list2.n3#list3> <list2.n3#has> "0"^^<http://www.w3.org/2001/XMLSchema#int> .
+<list2.n3#list3> <list2.n3#has> "3"^^<http://www.w3.org/2001/XMLSchema#int> .
+<list2.n3#list4> <list2.n3#has> "c" .
+<list2.n3#list6> a <list2.n3#SUCCESS> .
+<list2.n3#list8> <list2.n3#has> ( "0"^^<http://www.w3.org/2001/XMLSchema#int> "a" ) .
+<list2.n3#list8> <list2.n3#has> ( "1"^^<http://www.w3.org/2001/XMLSchema#int> "b" ) .
+<list2.n3#list8> <list2.n3#has> ( "2"^^<http://www.w3.org/2001/XMLSchema#int> _:b2 ) .
+<list2.n3#list8> <list2.n3#has> ( "3"^^<http://www.w3.org/2001/XMLSchema#int> ( "1.0"^^<http://www.w3.org/2001/XMLSchema#decimal> ) ) .
+<list2.n3#list10> <list2.n3#has> <list2.n3#ed> .
+<list2.n3#list10> <list2.n3#has> <list2.n3#el> .

@@ -1,0 +1,10 @@
+@prefix log: <http://www.w3.org/2000/10/swap/log#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix : <nested_clauses2.n3#>.
+@base <http://example.org/> .
+
+<#> rdfs:comment "Pulling formulas into a rule that themselves have variables - should be treated as if they were in the rule at compile-time (2)" .
+
+{ ?x :b :c } a :OtherThing .
+{ ?y :b :c } a :Thing .
+{ ?x a :Thing . ?y a :OtherThing } => { :test3 :has ?x } .

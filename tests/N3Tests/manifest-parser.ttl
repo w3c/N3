@@ -231,6 +231,9 @@
       :new_syntax_caret_neg.n3
       :new_syntax_caret_pos.n3
       :new_syntax_inverted_properties.n3
+	  
+	  # From jen3 test suite
+	  :jen3_syntax_neg_at1 :jen3_syntax_neg_iri1 :jen3_syntax_neg_iri2 :jen3_syntax_neg_iri3 :jen3_syntax_pos_inv_pred1 :jen3_syntax_pos_iri2 :jen3_syntax_pos_path1 :jen3_syntax_pos_prefix1 :jen3_syntax_pos_spo1
   ) .
 
 :cwm_andy_D-ref.n3  a  test:TestN3PositiveSyntax ;
@@ -1384,3 +1387,75 @@
         a              test:TestN3PositiveSyntax ;
         mf:action      <new_syntax/inverted_properties.n3> ;
         mf:name        "inverted_properties" .
+
+:jen3_syntax_neg_iri3
+    mf:action <jen3_syntax/neg/iri3.n3> ;
+    a   test:TestN3NegativeSyntax ;
+    a   test:TestN3Syntax ;
+    a   test:TestN3Negative ;
+    rdfs:comment "Ambiguity between backward rules and URIs - this is not allowed" ;
+    mf:result <jen3_syntax/neg/iri3-ref.n3> .
+
+:jen3_syntax_neg_iri2
+    mf:action <jen3_syntax/neg/iri2.n3> ;
+    a   test:TestN3NegativeSyntax ;
+    a   test:TestN3Syntax ;
+    a   test:TestN3Negative ;
+    rdfs:comment "No longer allowing spaces in URIs - that includes newlines" ;
+    mf:result <jen3_syntax/neg/iri2-ref.n3> .
+
+:jen3_syntax_neg_at1
+    mf:action <jen3_syntax/neg/at1.n3> ;
+    a   test:TestN3NegativeSyntax ;
+    a   test:TestN3Syntax ;
+    a   test:TestN3Negative ;
+    rdfs:comment "No longer allowing '@' in expressions" ;
+    mf:result <jen3_syntax/neg/at1-ref.n3> .
+
+:jen3_syntax_neg_iri1
+    mf:action <jen3_syntax/neg/iri1.n3> ;
+    a   test:TestN3NegativeSyntax ;
+    a   test:TestN3Syntax ;
+    a   test:TestN3Negative ;
+    rdfs:comment "No longer allowing spaces in URIs" ;
+    mf:result <jen3_syntax/neg/iri1-ref.n3> .
+
+:jen3_syntax_pos_inv_pred1
+    mf:action <jen3_syntax/pos/inv_pred1.n3> ;
+    a   test:TestN3PositiveSyntax ;
+    a   test:TestN3Syntax ;
+    a   test:TestN3Positive ;
+    rdfs:comment "Tests for inverted predicates" ;
+    mf:result <jen3_syntax/pos/inv_pred1-ref.n3> .
+
+:jen3_syntax_pos_prefix1
+    mf:action <jen3_syntax/pos/prefix1.n3> ;
+    a   test:TestN3PositiveSyntax ;
+    a   test:TestN3Syntax ;
+    a   test:TestN3Positive ;
+    rdfs:comment "No problem to re-define namespaces" ;
+    mf:result <jen3_syntax/pos/prefix1-ref.n3> .
+
+:jen3_syntax_pos_spo1
+    mf:action <jen3_syntax/pos/spo1.n3> ;
+    a   test:TestN3PositiveSyntax ;
+    a   test:TestN3Syntax ;
+    a   test:TestN3Positive ;
+    rdfs:comment "Using all sorts of nodes (literals, blank nodes, ..) in subject and predicate position" ;
+    mf:result <jen3_syntax/pos/spo1-ref.n3> .
+
+:jen3_syntax_pos_iri2
+    mf:action <jen3_syntax/pos/iri2.n3> ;
+    a   test:TestN3PositiveSyntax ;
+    a   test:TestN3Syntax ;
+    a   test:TestN3Positive ;
+    rdfs:comment "Backward rules are allowed, of course - should not be confused with URIs" ;
+    mf:result <jen3_syntax/pos/iri2-ref.n3> .
+
+:jen3_syntax_pos_path1
+    mf:action <jen3_syntax/pos/path1.n3> ;
+    a   test:TestN3PositiveSyntax ;
+    a   test:TestN3Syntax ;
+    a   test:TestN3Positive ;
+    rdfs:comment "A number of resource-path tests" ;
+    mf:result <jen3_syntax/pos/path1-ref.n3> .

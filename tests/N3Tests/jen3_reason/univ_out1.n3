@@ -1,0 +1,21 @@
+@prefix math: <http://www.w3.org/2000/10/swap/math#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix log: <http://www.w3.org/2000/10/swap/log#> .
+@prefix : <univ_out1.n3#> .
+
+<#> rdfs:comment "Tests where statements with variables are inferred - should be converted to witnesses" .
+
+:a :b ?c .
+
+{ :a :b ?c } => { :test1pt1 :has ?c . :test1pt2 :has ?c } .
+{ :a :b ?c } => { :test2 :has ?c } .
+{ (?a 1) math:sum ?s } => { :test3 :has ?s, ?a } .
+
+:C rdfs:subClassOf :D .
+{ ?C rdfs:subClassOf ?D . } => { :test4 :has { { ?x a ?C } => { ?x a ?D } } } .
+
+{ ({ ?li :member ?m } { ?m a :Completed }) log:forAllIn _:x . 
+} => { :test5 :has ?li } .
+
+{ ({ ?li :member ?m } { ?m a :NotCompleted }) log:forAllIn _:x . 
+} => { :test6 :has ?li } .

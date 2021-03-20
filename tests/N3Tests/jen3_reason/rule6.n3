@@ -1,0 +1,12 @@
+@prefix log: <http://www.w3.org/2000/10/swap/log#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix : <rule6.n3#>.
+@base <http://example.org/> .
+
+<#> rdfs:comment "Rule matching itself - should not lead to infinite loops" .
+
+# rule matches itself XD (and the one below)
+{ { ?x :b :c } ?p ?o } => { :test1 :has ?x } .
+
+# this one doesn't match itself!
+{ { ?x :b :c . :d :e :f } ?p ?o } => { :test2 :has ?x } .

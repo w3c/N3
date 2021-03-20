@@ -1,0 +1,26 @@
+@prefix log: <http://www.w3.org/2000/10/swap/log#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix : <rule5.n3#> .
+
+:test2 :has :x .
+{
+	?y  rdf:type :D .
+}  log:implies {
+	:test2 :has ?y .
+} .
+{
+	?x  rdf:type :C .
+}  log:implies {
+	{
+		?y  rdf:type :D .
+	}  log:implies {
+		:test2 :has ?y .
+	} .
+} .
+:test1 :has {
+	{
+		?x  rdf:type :C .
+	}  log:implies {
+		?x  rdf:type :D .
+	} .
+} .

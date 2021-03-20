@@ -1,0 +1,2 @@
+<builtin13.n3#test1> <builtin13.n3#has> "org.apache.jena.reasoner.rulesys.builtins.n3.math.Rounded"^^<http://www.w3.org/2001/XMLSchema#string> .
+<builtin13.n3#test1> <builtin13.n3#has> "org.apache.jena.reasoner.rulesys.builtins.n3.string.Concatenation"^^<http://www.w3.org/2001/XMLSchema#string> .

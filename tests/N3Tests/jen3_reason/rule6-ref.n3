@@ -1,0 +1,11 @@
+<rule6.n3#test1> <rule6.n3#has> {
+    ?x  <rule6.n3#b>
+            <rule6.n3#c> .
+    <rule6.n3#d>
+        <rule6.n3#e>
+            <rule6.n3#f> .
+} .
+<rule6.n3#test1> <rule6.n3#has> {
+    ?x  <rule6.n3#b>
+            <rule6.n3#c> .
+} .

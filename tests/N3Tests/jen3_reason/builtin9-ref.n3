@@ -1,0 +1,28 @@
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<builtin9.n3#test1> <builtin9.n3#has> "2"^^xsd:long .
+<builtin9.n3#test2>
+        <builtin9.n3#has> {
+    <builtin9.n3#d>
+        <builtin9.n3#e> <builtin9.n3#f> .
+} .
+    <builtin9.n3#test5>
+        <builtin9.n3#has> {
+    <builtin9.n3#ed>
+        <builtin9.n3#name> "ed" .
+} .
+    <builtin9.n3#test3>
+        <builtin9.n3#has> {
+    <builtin9.n3#d>
+        <builtin9.n3#e> <builtin9.n3#f> .
+} .
+    <builtin9.n3#test1>
+        <builtin9.n3#has> "2"^^xsd:long .
+    <builtin9.n3#test6>
+        <builtin9.n3#has> {
+    <builtin9.n3#will>
+        <builtin9.n3#name> "will" .
+} .
+    <builtin9.n3#test4>
+        <builtin9.n3#has> {
+} .

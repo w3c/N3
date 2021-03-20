@@ -1,0 +1,4 @@
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<builtin9.n3#test1> <builtin9.n3#has> "4"^^xsd:int .
+<builtin9.n3#test2> <builtin9.n3#has> "6"^^xsd:int .

@@ -1,0 +1,2 @@
+<rule3.n3#somelist> a <rule3.n3#OkList> .
+<rule3.n3#test1> <rule3.n3#has> <rule3.n3#somelist> .

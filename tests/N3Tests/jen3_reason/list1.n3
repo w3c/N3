@@ -1,0 +1,53 @@
+@prefix list: <http://www.w3.org/2000/10/swap/list#> .
+@prefix test: <https://w3c.github.io/N3/tests/test.n3#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix : <list1.n3#>.
+
+<#> rdfs:comment "Tests for list builtins" .
+
+:l :is (1 2 3) .
+
+{ :l :is ?l . ?l list:length ?len } => { :list1 :has ?len } .
+{ (1 2 3) list:length 3 } => { :list2 a :SUCCESS } .
+{ :l :is ?l . ?l list:length 4 } => { :list3 a :FAILURE } .
+{ (4 5 6) list:length 3.1 } => { :list4 a :FAILURE } .
+
+{ (1 2 3) list:member 3 } => { :list5 a :SUCCESS } .
+{ (1 2 3) list:member 9 } => { :list6 a :FAILURE } .
+{ (1 2 3) list:member ?m } => { :list7 :has ?m } .
+{ ({ :will :is :cool } { :dorthe :is :cool } {:ed :isnot :cool}) list:member { ?p :is :cool } } => { :list71 :has ?p } .
+{ ?l list:member 1 } => { :list8 a :SUCCESS } .
+
+{ ((1 2 3) 2) list:memberAt ?m } => { :list9 :has ?m } .
+{ ((1 2 3) ?p) list:memberAt 1 } => { :list10 :has ?p } .
+{ ((1 2 3) 5) list:memberAt ?m } => { :list11 a :FAILURE } .
+{ ((1 2 3) -1) list:memberAt ?m } => { :list111 a :FAILURE } .
+{ (({ :a :b :c } 2 3) 0) list:memberAt { :a :b :c } } => { :list12 a :SUCCESS } .
+{ (({ :a :b :c } 2 3) 0) list:memberAt { :a :b ?x } } => { :list13 :has ?x } .
+{ ((( :a :b :c ) 2 3) 0) list:memberAt ( :a :b :c ) } => { :list14 a :SUCCESS } .
+{ ((( :a :b ?c ) 2 3) 0) list:memberAt ( :a :b ?c ) } => { :list15 a :SUCCESS } .
+
+:l2 :is (((5 6)) ("a" "b")) .
+
+{ ((1 2) (3 4)) list:append (1 2 3 4) } => { :list16 a :SUCCESS }.
+{ ((1 2) (3 4)) list:append (1 2 4) } => { :list17 a :FAILURE }.
+{ ((1 2) ((3) "4")) list:append ?l } => { :list18 :has ?l }.
+{ ((1 2) ?x "a") list:append ?l } => { :list19 a :SUCCESS }.
+{ ?l list:append (1 2 3 4) } => { :list20 a :SUCCESS }.
+# (lists are immutable)
+{ :l2 :is ?l . ?l list:append ?r . :l2 :is (((5 6)) ("a" "b")) } => { :list21 :has ?r }.
+{ ("a" "b" ?z "c") list:append ("a" "b") } => { :list22 a :SUCCESS }.
+
+{ (("a" "b" "c") "c") list:remove ?l } => { :list23 :has ?l } .
+{ (("a" "b" "c") "c") list:remove ("a" "b") } => { :list24 a :SUCCESS } .
+{ (("a" "b" "c") "c") list:remove ("a" "b" "c") } => { :list25 a :FAILURE } .
+{ (("a" "b" "a" "c") "a") list:remove ?l } => { :list26 :has ?l } .
+{ (("a" "b") ?e) list:remove ("a" "b" "f") } => { :list27 a :SUCCESS } .
+{ :l2 :is ?l . (?l ("a" "b")) list:remove ?r } => { :list28 :has ?r } .
+# (lists are immutable)
+{ :l2 :is (((5 6)) ("a" "b")) } => { :list29 a :SUCCESS } .
+
+{ (("a" "b" "c") 2) list:removeAt ?l } => { :list30 :has ?l } .
+{ (("a" "b" "c") -1) list:removeAt ?l } => { :list31 :has ?l } .
+{ (("a" "b" "c") 0) list:removeAt ("b" "c") } => { :list32 a :SUCCESS } .
+{ :l2 :is ?l . (?l 0) list:removeAt ?r } => { :list33 :has ?r } .

@@ -1,0 +1,17 @@
+<rule1.n3#test10> a <rule1.n3#SUCCESS> .
+<rule1.n3#test11> a <rule1.n3#SUCCESS> .
+<rule1.n3#test1> a <rule1.n3#SUCCESS> .
+<rule1.n3#test2> <rule1.n3#has> <rule1.n3#world> .
+<rule1.n3#test3> <rule1.n3#has> "123" .
+<rule1.n3#test5> <rule1.n3#has> <rule1.n3#hello> .
+<rule1.n3#test6> <rule1.n3#has> <rule1.n3#somelist> .
+<rule1.n3#test8> <rule1.n3#has> _:b1 .
+<rule1.n3#test9> <rule1.n3#has> {
+    <rule1.n3#william>
+        <rule1.n3#liedAbout>
+            {
+            <rule1.n3#i>
+                <rule1.n3#wrote>
+                    <rule1.n3#war_and_peace> .
+        } .
+} .

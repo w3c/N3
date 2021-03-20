@@ -1,0 +1,50 @@
+@prefix math: <http://www.w3.org/2000/10/swap/math#> .
+@prefix string: <http://www.w3.org/2000/10/swap/string#> .
+@prefix list: <http://www.w3.org/2000/10/swap/list#> .
+@prefix log: <http://www.w3.org/2000/10/swap/log#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix : <builtin7.n3#> .
+@base <http://example.org/> .
+
+<#> rdfs:comment "Tests for log:collectAllIn" .
+
+(:r1 :r2 :r3 :r4) a :ResourceList .
+
+:r1 :isConstant false .
+:r2 :isConstant true .
+:r3 :isConstant false .
+:r4 :isConstant true.
+
+{	?l a :ResourceList .
+	(?m { ?l list:member ?m . ?m :isConstant false } ?sl) log:collectAllIn _:x .
+	
+} => { :test1 :has ?sl } .
+
+
+(:s1 :s2 :s3) a :ResourceList .
+
+:s1 :isConstant true .
+:s2 :isConstant true .
+:s3 :isConstant true .
+
+(:s4 :s5 :s6) a :ResourceList .
+
+:s4 :isConstant true .
+:s5 :isConstant false .
+:s6 :isConstant true .
+
+{	?l a :ResourceList .
+	(?m { ?l list:member ?m . ?m :isConstant false } ()) log:collectAllIn _:x .
+	
+} => { :test2 :has ?l } .
+
+{	?l a :ResourceList .
+	(?m { ?l list:member ?m . ?m :isConstant false } ( :s5 )) log:collectAllIn _:x .
+	
+} => { :test3 :has ?l } .
+
+
+{	(?x ?y ?z) log:collectAllIn _:x .
+} => { :test4 :has ?x } .

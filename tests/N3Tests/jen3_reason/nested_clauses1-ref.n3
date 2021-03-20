@@ -1,0 +1,13 @@
+<nested_clauses1.n3#test1> <nested_clauses1.n3#has> <nested_clauses1.n3#will> .
+<nested_clauses1.n3#test2> <nested_clauses1.n3#has> {
+    {
+    <nested_clauses1.n3#will>
+        <nested_clauses1.n3#about>
+            <nested_clauses1.n3#one> .
+}  <nested_clauses1.n3#and>
+            {
+            <nested_clauses1.n3#will>
+                <nested_clauses1.n3#about>
+                    <nested_clauses1.n3#another> .
+        } .
+} .

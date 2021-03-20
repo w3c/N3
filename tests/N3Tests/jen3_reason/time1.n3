@@ -1,0 +1,22 @@
+@prefix time: <http://www.w3.org/2000/10/swap/time#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix : <time1.n3#> .
+@base <http://example.org/> .
+
+<#> rdfs:comment "Tests for time builtins" .
+
+{ "2009-01-25T12:00:00-04:00"^^xsd:dateTime time:inSeconds ?s } => { :time1 :has ?s } .
+{ ?d time:inSeconds "1232899200" } => { :time2 :has ?d } .
+{ "2009-01-25T12:00:00-04:00"^^xsd:dateTime time:inSeconds "1232899200" } => { :time3 a :SUCCESS } .
+{ "2009-01-25T12:00:00-04:00"^^xsd:dateTime time:inSeconds "1232899201" } => { :time4 a :FAILURE } .
+
+{ "2009-01-25T13:17:28Z"^^xsd:dateTime time:second ?s } => { :time5 :has ?s } .
+{ "2009-01-25T13:17:28Z"^^xsd:dateTime time:minute ?m } => { :time6 :has ?m } .
+{ "2009-01-25T13:17:28Z"^^xsd:dateTime time:hour ?h } => { :time7 :has ?h } .
+{ "2009-01-25T13:17:28Z"^^xsd:dateTime time:day ?d } => { :time8 :has ?d } .
+{ "2009-01-25T13:17:28Z"^^xsd:dateTime time:month ?m } => { :time9 :has ?m } .
+{ "2009-01-25T13:17:28Z"^^xsd:dateTime time:year ?y } => { :time10 :has ?y } .
+{ "2021-02-23T18:31:00Z"^^xsd:dateTime time:dayOfWeek ?d } => { :time11 :has ?d } .
+
+{ <#> time:currentTime ?t } => { :time12 a :SUCCESS } .

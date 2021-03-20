@@ -1,0 +1,13 @@
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix : <inv_pred.n3#>.
+@base <http://example.org/> .
+
+<#> rdfs:comment "Tests for inverted predicates" .
+
+:paul <-:hasFather :will .
+:paul is :hasFather of :vincent .
+:vinnie has :hasFather :paul .
+:axelle <-:hasFather!:hasFather :paul .
+
+[ :name "ed" ] <-:hasEvilTwin [ :name "will" ] .
+:will :hasEvilTwin :el .

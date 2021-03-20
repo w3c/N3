@@ -1,0 +1,12 @@
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@base <http://example.org/> .
+
+<#> rdfs:comment "No problem to re-define namespaces" .
+
+@prefix ex: <http://example1.org/> .
+
+ex:hello ex:at ex:world .
+
+@prefix ex: <http://example2.org/> .
+
+ex:hello ex:at ex:world .

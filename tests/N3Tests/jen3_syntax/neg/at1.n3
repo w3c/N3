@@ -1,0 +1,7 @@
+@prefix : <https://w3c.github.io/N3/tests/test.n3#>.
+@base <http://example.org/> .
+
+:paul @is :hasFather @of :vincent .
+:vinnie @has :hasFather :paul .
+:will @a :Person .
+{ :will a :Person } :is @true .

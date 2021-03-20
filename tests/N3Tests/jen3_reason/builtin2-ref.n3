@@ -1,0 +1,1 @@
+<builtin2.n3#test1> <builtin2.n3#has> "will was born in 1984"^^<http://www.w3.org/2001/XMLSchema#string> .

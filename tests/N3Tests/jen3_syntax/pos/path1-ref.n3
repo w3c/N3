@@ -1,0 +1,43 @@
+@prefix :        <path1.n3#> .
+@prefix rdf:     <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix log:     <http://www.w3.org/2000/10/swap/log#> .
+@prefix in:      <http://n3.w3c.org/builtin/input#> .
+@prefix xsd:     <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs:    <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix math:    <http://www.w3.org/2000/10/swap/math#> .
+@prefix list:    <http://www.w3.org/2000/10/swap/list#> .
+@base <http://example.org/> .
+
+<path1.n3#ed>
+    <path1.n3#hasFather>
+        _:b12 .
+_:b12  <path1.n3#hasFather>
+        _:b13 .
+_:b13  <path1.n3#hasFather>
+        <path1.n3#peter> .
+
+<path1.n3#hasFather>
+    <path1.n3#hasFather>
+        _:b14 .
+<path1.n3#el>
+    _:b14 <path1.n3#edward> .
+
+<path1.n3#axelle>
+    <path1.n3#hasFather>
+        _:b10 .
+_:b10  <path1.n3#hasFather>
+        _:b11 .
+<path1.n3#vince>
+    <path1.n3#hasFather>
+        _:b11 .
+        
+_:b20  <path1.n3#hasParent>
+        <path1.n3#sonia> .
+_:b20  <path1.n3#hasParent>
+        _:b21 .
+_:b21
+    <path1.n3#hasParent>
+        _:b22 .
+_:b23
+    <path1.n3#hasParent>
+        _:b22 .

@@ -1,0 +1,5 @@
+"it"^^<http://www.w3.org/2001/XMLSchema#string> "sounds"^^<http://www.w3.org/2001/XMLSchema#string> "blah"^^<http://www.w3.org/2001/XMLSchema#string> .
+<spo1.n3#it> "sounds"^^<http://www.w3.org/2001/XMLSchema#string> <spo1.n3#blah> .
+<spo1.n3#it> _:b1 <spo1.n3#blaah> .
+_:b1 <spo1.n3#label> "sounds"^^<http://www.w3.org/2001/XMLSchema#string> .
+<spo1.n3#will> <http://www.w3.org/2002/07/owl#sameAs> <spo1.n3#william> .

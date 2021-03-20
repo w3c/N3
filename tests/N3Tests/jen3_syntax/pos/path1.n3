@@ -1,0 +1,10 @@
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix : <path1.n3#>.
+@base <http://example.org/> .
+
+<#> rdfs:comment "A number of resource-path tests" .
+
+:ed!:hasFather!:hasFather :hasFather :peter .
+:el :hasFather!:hasFather :edward .
+:vince :hasFather :axelle!:hasFather!:hasFather .
+:sonia^:hasParent!:hasParent!:hasParent^:hasParent .

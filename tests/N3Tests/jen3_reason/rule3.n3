@@ -1,0 +1,10 @@
+@prefix log: <http://www.w3.org/2000/10/swap/log#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix : <rule3.n3#>.
+@base <http://example.org/> .
+
+<#> rdfs:comment "Rules that pattern-match with collections + some chaining (2)" .
+
+{ ?l2 a :OkList } => { :test1 :has ?l2 } .
+{ ?l :elements ( 1 2 3 ) } => { ?l a :OkList } .
+:somelist :elements ( 1 2 3 ) .

@@ -1,0 +1,10 @@
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix : <spo1.n3#>.
+@base <http://example.org/> .
+
+<#> rdfs:comment "Using all sorts of nodes (literals, blank nodes, ..) in subject and predicate position" .
+
+:it [ :label """sounds""" ] :blaah  .
+:it "sounds" :blah .
+"it" "sounds" "blah" .
+:will = :william .

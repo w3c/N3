@@ -1,0 +1,7 @@
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix : <iri2.n3#>.
+@base <http://example.org/> .
+
+<#> rdfs:comment "Backward rules are allowed, of course - should not be confused with URIs" .
+
+:s <= :o.

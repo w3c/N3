@@ -88,6 +88,9 @@
       # From swap/test/unify
       :cwm_unify_unify1 :cwm_unify_unify2 :cwm_unify_reflexive
 
+	# From jen3 test suite
+	:jen3_reason_builtin1 :jen3_reason_builtin10 :jen3_reason_builtin11 :jen3_reason_builtin12 :jen3_reason_builtin13 :jen3_reason_builtin2 :jen3_reason_builtin3 :jen3_reason_builtin5 :jen3_reason_builtin6 :jen3_reason_builtin7 :jen3_reason_builtin8 :jen3_reason_builtin9 :jen3_reason_crypto1 :jen3_reason_includes1 :jen3_reason_includes2 :jen3_reason_list1 :jen3_reason_list2 :jen3_reason_log1 :jen3_reason_math1 :jen3_reason_math2 :jen3_reason_nested_clauses1 :jen3_reason_nested_clauses2 :jen3_reason_rule1 :jen3_reason_rule2 :jen3_reason_rule3 :jen3_reason_rule4 :jen3_reason_rule5 :jen3_reason_rule6 :jen3_reason_rule7 :jen3_reason_rule8 :jen3_reason_string1 :jen3_reason_time1 :jen3_reason_trig1 :jen3_reason_univ_out1
+
     ) .
 
 # List tests from swap/tests/includes
@@ -728,3 +731,239 @@
   mf:result <cwm_unify/reflexive-ref.n3>;
   test:options [test:rules true; test:data true] .
 
+:jen3_reason_rule4
+    a   test:TestN3Reason ;
+    a   test:TestN3Positive ;
+    mf:action <jen3_reason/rule4.n3> ;
+    rdfs:comment "Rules that pattern-match with collections + some chaining (3)" ;
+    mf:result <jen3_reason/rule4-ref.n3> .
+
+:jen3_reason_builtin9
+    a   test:TestN3Reason ;
+    a   test:TestN3Positive ;
+    mf:action <jen3_reason/builtin9.n3> ;
+    rdfs:comment "Tests for graph builtins - i.e., graph:length and graph:difference" ;
+    mf:result <jen3_reason/builtin9-ref.n3> .
+
+:jen3_reason_rule6
+    a   test:TestN3Reason ;
+    a   test:TestN3Positive ;
+    mf:action <jen3_reason/rule6.n3> ;
+    rdfs:comment "Rule matching itself - should not lead to infinite loops" ;
+    mf:result <jen3_reason/rule6-ref.n3> .
+
+:jen3_reason_nested_clauses2
+    a   test:TestN3Reason ;
+    a   test:TestN3Positive ;
+    mf:action <jen3_reason/nested_clauses2.n3> ;
+    rdfs:comment "Pulling formulas into a rule that themselves have variables - should be treated as if they were in the rule at compile-time (2)" ;
+    mf:result <jen3_reason/nested_clauses2-ref.n3> .
+
+:jen3_reason_rule8
+    a   test:TestN3Reason ;
+    a   test:TestN3Positive ;
+    mf:action <jen3_reason/rule8.n3> ;
+    rdfs:comment "Match concrete rule terms to data vars" ;
+    mf:result <jen3_reason/rule8-ref.n3> .
+
+:jen3_reason_builtin7
+    a   test:TestN3Reason ;
+    a   test:TestN3Positive ;
+    mf:action <jen3_reason/builtin7.n3> ;
+    rdfs:comment "Tests for log:collectAllIn" ;
+    mf:result <jen3_reason/builtin7-ref.n3> .
+
+:jen3_reason_builtin5
+    a   test:TestN3Reason ;
+    a   test:TestN3Positive ;
+    mf:action <jen3_reason/builtin5.n3> ;
+    rdfs:comment "Test for log:conclusion" ;
+    mf:result <jen3_reason/builtin5-ref.n3> .
+
+:jen3_reason_trig1
+    a   test:TestN3Reason ;
+    a   test:TestN3Positive ;
+    mf:action <jen3_reason/trig1.n3> ;
+    rdfs:comment "Tests for trigonometry builtins" ;
+    mf:result <jen3_reason/trig1-ref.n3> .
+
+:jen3_reason_rule2
+    a   test:TestN3Reason ;
+    a   test:TestN3Positive ;
+    mf:action <jen3_reason/rule2.n3> ;
+    rdfs:comment "Rules that pattern-match with collections + some chaining" ;
+    mf:result <jen3_reason/rule2-ref.n3> .
+
+:jen3_reason_list2
+    a   test:TestN3Reason ;
+    a   test:TestN3Positive ;
+    mf:action <jen3_reason/list2.n3> ;
+    rdfs:comment "Tests for list:iterate" ;
+    mf:result <jen3_reason/list2-ref.n3> .
+
+:jen3_reason_includes1
+    a   test:TestN3Reason ;
+    a   test:TestN3Positive ;
+    mf:action <jen3_reason/includes1.n3> ;
+    rdfs:comment "Many tests for log:(not)includes" ;
+    mf:result <jen3_reason/includes1-ref.n3> .
+
+:jen3_reason_builtin10
+    a   test:TestN3Reason ;
+    a   test:TestN3Positive ;
+    mf:action <jen3_reason/builtin10.n3> ;
+    mf:result <jen3_reason/builtin10-ref.n3> .
+
+:jen3_reason_builtin3
+    a   test:TestN3Reason ;
+    a   test:TestN3Positive ;
+    mf:action <jen3_reason/builtin3.n3> ;
+    rdfs:comment "Tests for 'retrieval builtins' - i.e., log:content, log:semantics(OrError)" ;
+    mf:result <jen3_reason/builtin3-ref.n3> .
+
+:jen3_reason_builtin1
+    a   test:TestN3Reason ;
+    a   test:TestN3Positive ;
+    mf:action <jen3_reason/builtin1.n3> ;
+    rdfs:comment "Math builtin tests (comparison, sum, difference, etc)." ;
+    mf:result <jen3_reason/builtin1-ref.n3> .
+
+:jen3_reason_math1
+    a   test:TestN3Reason ;
+    a   test:TestN3Positive ;
+    mf:action <jen3_reason/math1.n3> ;
+    rdfs:comment "Tests for math:equalTo" ;
+    mf:result <jen3_reason/math1-ref.n3> .
+
+:jen3_reason_builtin12
+    a   test:TestN3Reason ;
+    a   test:TestN3Positive ;
+    mf:action <jen3_reason/builtin12.n3> ;
+    rdfs:comment "Matching predicate variables to builtins should work" ;
+    mf:result <jen3_reason/builtin12-ref.n3> .
+
+:jen3_reason_rule5
+    a   test:TestN3Reason ;
+    a   test:TestN3Positive ;
+    mf:action <jen3_reason/rule5.n3> ;
+    rdfs:comment "Infer your own domain-specific rules!" ;
+    mf:result <jen3_reason/rule5-ref.n3> .
+
+:jen3_reason_rule7
+    a   test:TestN3Reason ;
+    a   test:TestN3Positive ;
+    mf:action <jen3_reason/rule7.n3> ;
+    rdfs:comment "Test that matches rule var to data var" ;
+    mf:result <jen3_reason/rule7-ref.n3> .
+
+:jen3_reason_builtin8
+    a   test:TestN3Reason ;
+    a   test:TestN3Positive ;
+    mf:action <jen3_reason/builtin8.n3> ;
+    rdfs:comment "Tests for log:rawType" ;
+    mf:result <jen3_reason/builtin8-ref.n3> .
+
+:jen3_reason_builtin6
+    a   test:TestN3Reason ;
+    a   test:TestN3Positive ;
+    mf:action <jen3_reason/builtin6.n3> ;
+    rdfs:comment "Tests for log:forAllIn" ;
+    mf:result <jen3_reason/builtin6-ref.n3> .
+
+:jen3_reason_nested_clauses1
+    a   test:TestN3Reason ;
+    a   test:TestN3Positive ;
+    mf:action <jen3_reason/nested_clauses1.n3> ;
+    rdfs:comment "Pulling formulas into a rule that themselves have variables - should be treated as if they were in the rule at compile-time" ;
+    mf:result <jen3_reason/nested_clauses1-ref.n3> .
+
+:jen3_reason_crypto1
+    a   test:TestN3Reason ;
+    a   test:TestN3Positive ;
+    mf:action <jen3_reason/crypto1.n3> ;
+    rdfs:comment "Tests for crypto:sha" ;
+    mf:result <jen3_reason/crypto1-ref.n3> .
+
+:jen3_reason_list1
+    a   test:TestN3Reason ;
+    a   test:TestN3Positive ;
+    mf:action <jen3_reason/list1.n3> ;
+    rdfs:comment "Tests for list builtins" ;
+    mf:result <jen3_reason/list1-ref.n3> .
+
+:jen3_reason_rule1
+    a   test:TestN3Reason ;
+    a   test:TestN3Positive ;
+    mf:action <jen3_reason/rule1.n3> ;
+    rdfs:comment "Some initial rule tests - incl. pattern-matching with formulas" ;
+    mf:result <jen3_reason/rule1-ref.n3> .
+
+:jen3_reason_rule3
+    a   test:TestN3Reason ;
+    a   test:TestN3Positive ;
+    mf:action <jen3_reason/rule3.n3> ;
+    rdfs:comment "Rules that pattern-match with collections + some chaining (2)" ;
+    mf:result <jen3_reason/rule3-ref.n3> .
+
+:jen3_reason_string1
+    a   test:TestN3Reason ;
+    a   test:TestN3Positive ;
+    mf:action <jen3_reason/string1.n3> ;
+    rdfs:comment "Tests for string builtins" ;
+    mf:result <jen3_reason/string1-ref.n3> .
+
+:jen3_reason_log1
+    a   test:TestN3Reason ;
+    a   test:TestN3Positive ;
+    mf:action <jen3_reason/log1.n3> ;
+    rdfs:comment "Tests for log:dtlit, log:langlit, log:uri" ;
+    mf:result <jen3_reason/log1-ref.n3> .
+
+:jen3_reason_includes2
+    a   test:TestN3Reason ;
+    a   test:TestN3Positive ;
+    mf:action <jen3_reason/includes2.n3> ;
+    rdfs:comment "A test for log:includes" ;
+    mf:result <jen3_reason/includes2-ref.n3> .
+
+:jen3_reason_builtin11
+    a   test:TestN3Reason ;
+    a   test:TestN3Positive ;
+    mf:action <jen3_reason/builtin11.n3> ;
+    rdfs:comment "Assertions involving static builtins not allowed (albeit explicitly stated or inferred)" ;
+    mf:result <jen3_reason/builtin11-ref.n3> .
+
+:jen3_reason_univ_out1
+    a   test:TestN3Reason ;
+    a   test:TestN3Positive ;
+    mf:action <jen3_reason/univ_out1.n3> ;
+    rdfs:comment "Tests where statements with variables are inferred - should be converted to witnesses" ;
+    mf:result <jen3_reason/univ_out1-ref.n3> .
+
+:jen3_reason_builtin2
+    a   test:TestN3Reason ;
+    a   test:TestN3Positive ;
+    mf:action <jen3_reason/builtin2.n3> ;
+    rdfs:comment "Internal clause re-ordering required to resolve this." ;
+    mf:result <jen3_reason/builtin2-ref.n3> .
+
+:jen3_reason_time1
+    a   test:TestN3Reason ;
+    a   test:TestN3Positive ;
+    mf:action <jen3_reason/time1.n3> ;
+    rdfs:comment "Tests for time builtins" ;
+    mf:result <jen3_reason/time1-ref.n3> .
+
+:jen3_reason_math2
+    a   test:TestN3Reason ;
+    a   test:TestN3Positive ;
+    mf:action <jen3_reason/math2.n3> ;
+    rdfs:comment "Tests for many math builtins" ;
+    mf:result <jen3_reason/math2-ref.n3> .
+
+:jen3_reason_builtin13
+    a   test:TestN3Reason ;
+    a   test:TestN3Positive ;
+    mf:action <jen3_reason/builtin13.n3> ;
+    rdfs:comment "Early attempt at dogfooding - not used in the end but still a neat test." ;
+    mf:result <jen3_reason/builtin13-ref.n3> .

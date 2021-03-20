@@ -1,0 +1,59 @@
+@prefix math: <http://www.w3.org/2000/10/swap/math#> .
+@prefix string: <http://www.w3.org/2000/10/swap/string#> .
+@prefix list: <http://www.w3.org/2000/10/swap/list#> .
+@prefix log: <http://www.w3.org/2000/10/swap/log#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix : <builtin6.n3#> .
+@base <http://example.org/> .
+
+<#> rdfs:comment "Tests for log:forAllIn" .
+
+:taskA a :CompositeTask ;
+	:member :taskA1 ;
+	:member :taskA2 .
+:taskA1 a :NotCompleted .
+:taskA2 a :Completed .
+
+:taskB a :CompositeTask ;
+	:member :taskB1 ;
+	:member :taskB2 .
+:taskB1 a :Completed .
+:taskB2 a :Completed .
+
+{ ?li a :CompositeTask . 
+  ({ ?li :member ?m } { ?m a :Completed }) log:forAllIn _:x . 
+
+} => { :test1 :has ?li } .
+
+
+{ ({ ?li :member2 ?m } { ?m a :Completed }) log:forAllIn _:x . } => { :test2 :has ?li } .
+{ (?body { ?m a :Completed }) log:forAllIn _:x . } => { :test3 :has ?body } .
+{ ({ ?li :member ?m } ?head) log:forAllIn "a" . } => { :test4 :has ?head } .
+
+
+( :taskA1 :taskA2 ) a :CompositeTask .
+( :taskB1 :taskB2 :taskB3 :taskB4 ) a :CompositeTask .
+:taskB3 a :Completed .
+:taskB4 a :Completed .
+
+{ ?li a :CompositeTask . 
+  ({ ?li list:member ?m } { ?m a :Completed }) log:forAllIn _:x . 
+
+} => { :test5 :has ?li } .
+
+
+( 7 8 9 ) a :NumberList .
+( :r1 :r2 :r3 ) a :ResourceList .
+
+:r1 :matches 7 .
+:r2 :matches 8 .
+:r3 :matches 9 .
+
+{
+	?ln a :NumberList . 
+	?lr a :ResourceList .	
+	( { ?ln list:iterate (?i ?mn) } { ?lr list:iterate (?i ?mr) . ?mr :matches ?mn } ) log:forAllIn _:x .
+
+} => { :test6 a :SUCCESS } .
