@@ -13,10 +13,8 @@
     c:archive <http://lists.w3.org/Archives/Public/w3c-rdfcore-wg/> ]
 ].
 
-@forAll v:doc.
-
-{ v:doc log:uri [ string:startsWith "http://lists.w3.org/Archives/Public/" ] }
-  log:implies { v:doc a :PubliclyReadable }.
+{ ?doc log:uri [ string:startsWith "http://lists.w3.org/Archives/Public/" ] }
+  log:implies { ?doc a :PubliclyReadable }.
 
 
 ###########

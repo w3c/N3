@@ -3,9 +3,7 @@
 
 :Juno :says  { :Mars :too :Successful }.
 
-@forAll :x.
-
-{ :Juno :says  { :Mars :too :x } } =>  { :test :a :x }.
+{ :Juno :says  { :Mars :too ?x } } =>  { :test :a ?x }.
 
 
 #ends

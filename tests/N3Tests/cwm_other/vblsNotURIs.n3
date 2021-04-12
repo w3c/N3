@@ -15,14 +15,12 @@ run it ala:
 @prefix log: <http://www.w3.org/2000/10/swap/log#>.
 @prefix : <#>.
 
-@forAll :i, :o.
-
 :x d12:restrictedBy [ a :Something ].
 
-{ [] d12:restrictedBy :o }
- log:implies { :o a :Found }.
+{ [] d12:restrictedBy ?o }
+ log:implies { ?o a :Found }.
 
-{ [] d12:restrictedBy :o.
-  :o log:uri :i  }
- log:implies { :o :called :i }.
+{ [] d12:restrictedBy ?o.
+  ?o log:uri ?i  }
+ log:implies { ?o :called ?i }.
 

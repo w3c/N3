@@ -33,8 +33,8 @@
       :cwm_includes_list-in.n3
       :cwm_includes_n3ExprFor.n3
       :cwm_includes_quant-implies.n3
-      :cwm_includes_quantifiers.n3
-      :cwm_includes_quantifiers_limited.n3
+      # :cwm_includes_quantifiers.n3 # Uses explicit quantifiers
+      # :cwm_includes_quantifiers_limited.n3 # Uses explicit quantifiers
       :cwm_includes_t1.n3
       :cwm_includes_t10.n3
       :cwm_includes_t10a.n3
@@ -118,7 +118,7 @@
       :cwm_other_testmeta.n3
       :cwm_other_trivial-filter.n3
       :cwm_other_two-route.n3
-      :cwm_other_underbarscope.n3
+      # :cwm_other_underbarscope.n3 # Uses explicit quantifiers
       :cwm_other_vblsNotURIs.n3
       :cwm_reason_danc.n3
       :cwm_reason_double-ref.n3
@@ -176,8 +176,8 @@
       :cwm_syntax_formula-subject.n3
       :cwm_syntax_formula_bnode.n3
       :cwm_syntax_graph-as-object.n3
-      :cwm_syntax_keywords1.n3
-      :cwm_syntax_keywords2.n3
+      # :cwm_syntax_keywords1.n3 # Uses explicit quantifiers
+      # :cwm_syntax_keywords2.n3 # Uses explicit quantifiers
       :cwm_syntax_lstring.n3
       :cwm_syntax_neg-keywords3.n3
       :cwm_syntax_neg-literal-predicate.n3
@@ -193,17 +193,17 @@
       :cwm_syntax_qual-after-user.n3
       :cwm_syntax_qvars1.n3
       :cwm_syntax_qvars2.n3
-      :cwm_syntax_qvars3.n3
-      :cwm_syntax_qvars4.n3
+      # :cwm_syntax_qvars3.n3 # Uses explicit quantifiers
+      # :cwm_syntax_qvars4.n3 # Uses explicit quantifiers
       :cwm_syntax_sep-term.n3
       :cwm_syntax_sib.n3
       :cwm_syntax_space-in-uri-ref.n3
       :cwm_syntax_space-in-uri.n3
       :cwm_syntax_newline-in-uri.n3
-      :cwm_syntax_this-quantifiers-ref.n3
+      # :cwm_syntax_this-quantifiers-ref.n3 # Uses explicit quantifiers
       :cwm_syntax_this-quantifiers-ref2.n3
-      :cwm_syntax_this-quantifiers.n3
-      :cwm_syntax_this-rules-ref.n3
+      # :cwm_syntax_this-quantifiers.n3 # Uses explicit quantifiers
+      # :cwm_syntax_this-rules-ref.n3 # Uses explicit quantifiers
       :cwm_syntax_this-rules-ref2.n3
       :cwm_syntax_this-rules.n3
       :cwm_syntax_too-nested.n3
@@ -226,7 +226,7 @@
       :extra_bad_prefix2.n3
       :extra_good_prefix.n3
 
-      :manifest.ttl
+      :manifest-parser.ttl
 
       :new_syntax_caret_neg.n3
       :new_syntax_caret_pos.n3
@@ -1366,9 +1366,9 @@
   mf:name            "good_prefix" ;
   rdft:approval      rdft:Approved .
 
-:manifest.ttl  a     test:TestN3PositiveSyntax ;
-        mf:action      <manifest.ttl> ;
-        mf:name        "manifest" .
+:manifest-parser.ttl  a     test:TestN3PositiveSyntax ;
+        mf:action      <manifest-parser.ttl> ;
+        mf:name        "manifest-parser" .
 
 :new_syntax_caret_neg.n3
         a              test:TestN3NegativeSyntax ;

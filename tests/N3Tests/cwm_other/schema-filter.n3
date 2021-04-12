@@ -26,8 +26,7 @@
 # @@@ neater syntax for this
 # @@@ way of specifiying the whole process in one file.
 
-@forAll <#x> .
-{<#x> a val:schemaInconsistency} log:implies {<#x> a val:schemaInconsistency}.
+{?x a val:schemaInconsistency} log:implies {?x a val:schemaInconsistency}.
 
 
 # ENDS

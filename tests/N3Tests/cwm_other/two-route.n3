@@ -18,8 +18,6 @@
 
 
 
-@forAll :x, :y, :z.	#
-
 :sky :color :blue.
 
 :grass :color :blue.
@@ -27,9 +25,9 @@
 :sky :sounds :quiet.
 :grass :sounds :quiet.
 
-{ :x :color :blue } log:implies { :x :is :relaxing }.
+{ ?x :color :blue } log:implies { ?x :is :relaxing }.
 
-{ :x :sounds :quiet } log:implies { :x :is :relaxing }.
+{ ?x :sounds :quiet } log:implies { ?x :is :relaxing }.
 
 
 

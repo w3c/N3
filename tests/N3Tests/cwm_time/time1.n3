@@ -1,12 +1,6 @@
  @prefix : <TEST#> .
 @prefix v: <t1.n3#> .
 
- @forAll v:f,
-            v:t,
-            v:x,
-            v:y,
-            v:z .
-
 ""     a v:TestFormat .
 
 "1999-12-31T23:59:59.99Z"     a v:TestDate;

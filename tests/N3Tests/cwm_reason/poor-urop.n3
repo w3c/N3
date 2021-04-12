@@ -6,13 +6,9 @@
 ## agrees with DanC
 ## It must be true!
 
-@forAll :S, :P, :O .
-
-@forAll :S2, :P2, :O2 .
-
 { <timbl.n3>!log:semantics
-   log:supports {:S :P :O} .
+   log:supports {?S ?P ?O} .
   <danc.n3>!log:semantics
-   log:supports {:S :P :O} .
-} => {:S :P :O} .
+   log:supports {?S ?P ?O} .
+} => {?S ?P ?O} .
 
