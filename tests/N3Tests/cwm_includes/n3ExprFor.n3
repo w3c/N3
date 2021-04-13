@@ -2,7 +2,7 @@
 @prefix : <#>.
 
 { """@prefix : <http://example.com/#>.
-   :x :y :z .""" log:n3ExprFor ?x } log:implies { :Blargh_b :semantics ?x }
+   ?x :y :z .""" log:n3ExprFor ?x } log:implies { :Blargh_b :semantics ?x }
 
 .
 # ends
