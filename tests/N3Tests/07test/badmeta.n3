@@ -17,9 +17,8 @@
        cyc:objectActedOn ?DOC } => { ?DOC c:speaks_for ?WHO }.
 
 
-     @forAll :WORK, :SOURCE.
-     { ?SOMEONE c:says ?F. ?F log:includes { :WORK dc:SOURCE :SOURCE } }
-     => { ?SOMEONE cyc:perceives :WORK. }.
+     { ?SOMEONE c:says ?F. ?F log:includes { ?WORK dc:SOURCE ?SOURCE } }
+     => { ?SOMEONE cyc:perceives ?WORK. }.
 
 
   [] a cyc:AffixingSignature; cyc:performer :Bob;

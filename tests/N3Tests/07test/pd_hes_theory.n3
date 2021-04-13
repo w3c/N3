@@ -43,20 +43,20 @@
 :ab :i :a2b2.
 
 #triangle1 non-degenerate
-{:a1 :i ?L. :b1 :i ?L. :c1 :i ?L} => @false.
+{:a1 :i ?L. :b1 :i ?L. :c1 :i ?L} => false.
 
 #triangle2 non-degenerate
-{:a2 :i ?L. :b2 :i ?L. :c2 :i ?L} => @false.
+{:a2 :i ?L. :b2 :i ?L. :c2 :i ?L} => false.
 
 #no corresponding vertices in common
-{:a2 :p :a1} => @false. 
-{:b2 :p :b1} => @false. 
-{:c2 :p :c1} => @false.
+{:a2 :p :a1} => false. 
+{:b2 :p :b1} => false. 
+{:c2 :p :c1} => false.
 
 #no corresponding edges in common
-{:b1c1 :l :b2c2} => @false. 
-{:a1c1 :l :a2c2} => @false. 
-{:a1b1 :l :a2b2} => @false.
+{:b1c1 :l :b2c2} => false. 
+{:a1c1 :l :a2c2} => false. 
+{:a1b1 :l :a2b2} => false.
 
 #pequality for points
 {?P :i ?Q} => {?P :p ?P}.     #sorted incidence
