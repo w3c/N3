@@ -1,9 +1,9 @@
 #  For All in the template for unification
 #
 
-:Juno :says  {:Mars :fights ?y}.
+:Juno :says  {@forAll :y.  :Mars :fights :y}.
 
-{ :Juno :says  {:Mars :fights ?y } } =>  { :test a :SUCCESS }.
+{ :Juno :says  {@forAll :y. :Mars :fights :y } } =>  { :test a :SUCCESS }.
 
 
 #ends

@@ -82,7 +82,7 @@
       :cwm_os_environ.n3
       :cwm_other_anon-prop.n3
       :cwm_other_anonymous_loop.n3
-      :cwm_other_classes.n3
+      # :cwm_other_classes.n3 # Uses explicit quantifiers
       :cwm_other_contexts.n3
       :cwm_other_daml-ex.n3
       :cwm_other_daml-ont.n3
@@ -219,7 +219,7 @@
       :cwm_unify_unify1-ref.n3
       :cwm_unify_unify1.n3
       :cwm_unify_unify2-ref.n3
-      :cwm_unify_unify2.n3
+      # :cwm_unify_unify2.n3 # Uses explicit quantifiers
 
       :extra_bad_inverted_resources.n3
       :extra_bad_prefix.n3
