@@ -3,8 +3,6 @@
 @prefix list: <http://www.w3.org/2000/10/swap/list#> .
 @prefix math: <http://www.w3.org/2000/10/swap/math#> .
 
-@forAll :x , :y , :z .
-
 # Big test
 
 { (	("7" "2")!math:quotient  

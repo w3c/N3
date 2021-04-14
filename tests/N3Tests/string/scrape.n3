@@ -3,10 +3,8 @@
 
 @prefix : <#>.
 
-@forAll :s.
-
 { ("abcdef" "ab(..)ef") string:scrape "cd" } => { :Test1 a :Success }.
 
-{ ("abcdef" "ab(..)ef") string:scrape :s } => { :Test2 :result :s. }.
+{ ("abcdef" "ab(..)ef") string:scrape ?s } => { :Test2 :result ?s. }.
 
-{ ("abXcdef" "ab(..)ef") string:scrape :s } => { :Test3 :result :s }.
+{ ("abXcdef" "ab(..)ef") string:scrape ?s } => { :Test3 :result ?s }.
