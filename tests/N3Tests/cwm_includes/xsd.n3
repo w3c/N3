@@ -3,10 +3,8 @@
 @prefix math: <http://www.w3.org/2000/10/swap/math#>.
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
-@forAll :s .
-
 {("CASH"^^xsd:string
   " IS "^^xsd:Name
   ("2"^^xsd:integer "3"^^xsd:unsignedShort)!math:product
-  "\n") string:concatenation :s
-} => {"Here we go"^^xsd:string log:outputString :s} .
+  "\n") string:concatenation ?s
+} => {"Here we go"^^xsd:string log:outputString ?s} .

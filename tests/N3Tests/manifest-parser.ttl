@@ -33,8 +33,8 @@
       :cwm_includes_list-in.n3
       :cwm_includes_n3ExprFor.n3
       :cwm_includes_quant-implies.n3
-      :cwm_includes_quantifiers.n3
-      :cwm_includes_quantifiers_limited.n3
+      :cwm_includes_quantifiers.n3 # Uses explicit quantifiers
+      :cwm_includes_quantifiers_limited.n3 # Uses explicit quantifiers
       :cwm_includes_t1.n3
       :cwm_includes_t10.n3
       :cwm_includes_t10a.n3
@@ -82,7 +82,7 @@
       :cwm_os_environ.n3
       :cwm_other_anon-prop.n3
       :cwm_other_anonymous_loop.n3
-      :cwm_other_classes.n3
+      :cwm_other_classes.n3 # Uses explicit quantifiers
       :cwm_other_contexts.n3
       :cwm_other_daml-ex.n3
       :cwm_other_daml-ont.n3
@@ -118,7 +118,7 @@
       :cwm_other_testmeta.n3
       :cwm_other_trivial-filter.n3
       :cwm_other_two-route.n3
-      :cwm_other_underbarscope.n3
+      :cwm_other_underbarscope.n3 # Uses explicit quantifiers
       :cwm_other_vblsNotURIs.n3
       :cwm_reason_danc.n3
       :cwm_reason_double-ref.n3
@@ -176,8 +176,8 @@
       :cwm_syntax_formula-subject.n3
       :cwm_syntax_formula_bnode.n3
       :cwm_syntax_graph-as-object.n3
-      :cwm_syntax_keywords1.n3
-      :cwm_syntax_keywords2.n3
+      :cwm_syntax_keywords1.n3 # Uses explicit quantifiers
+      :cwm_syntax_keywords2.n3 # Uses explicit quantifiers
       :cwm_syntax_lstring.n3
       :cwm_syntax_neg-keywords3.n3
       :cwm_syntax_neg-literal-predicate.n3
@@ -193,17 +193,17 @@
       :cwm_syntax_qual-after-user.n3
       :cwm_syntax_qvars1.n3
       :cwm_syntax_qvars2.n3
-      :cwm_syntax_qvars3.n3
-      :cwm_syntax_qvars4.n3
+      :cwm_syntax_qvars3.n3 # Uses explicit quantifiers
+      :cwm_syntax_qvars4.n3 # Uses explicit quantifiers
       :cwm_syntax_sep-term.n3
       :cwm_syntax_sib.n3
       :cwm_syntax_space-in-uri-ref.n3
       :cwm_syntax_space-in-uri.n3
       :cwm_syntax_newline-in-uri.n3
-      :cwm_syntax_this-quantifiers-ref.n3
+      :cwm_syntax_this-quantifiers-ref.n3 # Uses explicit quantifiers
       :cwm_syntax_this-quantifiers-ref2.n3
-      :cwm_syntax_this-quantifiers.n3
-      :cwm_syntax_this-rules-ref.n3
+      :cwm_syntax_this-quantifiers.n3 # Uses explicit quantifiers
+      :cwm_syntax_this-rules-ref.n3 # Uses explicit quantifiers
       :cwm_syntax_this-rules-ref2.n3
       :cwm_syntax_this-rules.n3
       :cwm_syntax_too-nested.n3
@@ -219,14 +219,14 @@
       :cwm_unify_unify1-ref.n3
       :cwm_unify_unify1.n3
       :cwm_unify_unify2-ref.n3
-      :cwm_unify_unify2.n3
+      :cwm_unify_unify2.n3 # Uses explicit quantifiers
 
       :extra_bad_inverted_resources.n3
       :extra_bad_prefix.n3
       :extra_bad_prefix2.n3
       :extra_good_prefix.n3
 
-      :manifest.ttl
+      :manifest-parser.ttl
 
       :new_syntax_caret_neg.n3
       :new_syntax_caret_pos.n3
@@ -342,12 +342,14 @@
 :cwm_includes_quantifiers.n3
         a              test:TestN3PositiveSyntax ;
         mf:action      <cwm_includes/quantifiers.n3> ;
-        mf:name        "quantifiers" .
+        mf:name        "quantifiers" ;
+        rdft:approval  rdft:Rejected .
 
 :cwm_includes_quantifiers_limited.n3
         a              test:TestN3PositiveSyntax ;
         mf:action      <cwm_includes/quantifiers_limited.n3> ;
-        mf:name        "quantifiers_limited" .
+        mf:name        "quantifiers_limited" ;
+        rdft:approval  rdft:Rejected .
 
 :cwm_includes_t1.n3
         a              test:TestN3PositiveSyntax ;
@@ -587,7 +589,8 @@
 :cwm_other_classes.n3
         a              test:TestN3PositiveSyntax ;
         mf:action      <cwm_other/classes.n3> ;
-        mf:name        "classes" .
+        mf:name        "classes" ;
+        rdft:approval  rdft:Rejected .
 
 :cwm_other_contexts.n3
         a              test:TestN3PositiveSyntax ;
@@ -775,7 +778,8 @@
 :cwm_other_underbarscope.n3
         a              test:TestN3PositiveSyntax ;
         mf:action      <cwm_other/underbarscope.n3> ;
-        mf:name        "underbarscope" .
+        mf:name        "underbarscope" ;
+        rdft:approval  rdft:Rejected .
 
 :cwm_other_vblsNotURIs.n3
         a              test:TestN3PositiveSyntax ;
@@ -1195,13 +1199,15 @@
 :cwm_syntax_qvars3.n3
         a              test:TestN3PositiveSyntax ;
         mf:action      <cwm_syntax/qvars3.n3> ;
-        mf:name        "qvars3" .
+        mf:name        "qvars3" ;
+        rdft:approval  rdft:Rejected .
 
 :cwm_syntax_qvars4.n3
         a              test:TestN3NegativeSyntax ;
         mf:action      <cwm_syntax/qvars4.n3> ;
         mf:name        "qvars4" ;
-        rdfs:comment   "using quick-var syntax within @forAll, @forSome" .
+        rdfs:comment   "using quick-var syntax within @forAll, @forSome" ;
+        rdft:approval  rdft:Rejected .
 
 :cwm_syntax_sep-term.n3
         a              test:TestN3PositiveSyntax ;
@@ -1230,7 +1236,8 @@
 :cwm_syntax_this-quantifiers-ref.n3
         a              test:TestN3PositiveSyntax ;
         mf:action      <cwm_syntax/this-quantifiers-ref.n3> ;
-        mf:name        "this-quantifiers-ref" .
+        mf:name        "this-quantifiers-ref" ;
+        rdft:approval  rdft:Rejected .
 
 :cwm_syntax_this-quantifiers-ref2.n3
         a              test:TestN3NegativeSyntax ;
@@ -1249,7 +1256,8 @@
 :cwm_syntax_this-rules-ref.n3
         a              test:TestN3PositiveSyntax ;
         mf:action      <cwm_syntax/this-rules-ref.n3> ;
-        mf:name        "this-rules-ref" .
+        mf:name        "this-rules-ref" ;
+        rdft:approval  rdft:Rejected .
 
 :cwm_syntax_this-rules-ref2.n3
         a              test:TestN3NegativeSyntax ;
@@ -1342,7 +1350,8 @@
         a              test:TestN3PositiveSyntax ;
         mf:action      <cwm_unify/unify2.n3> ;
         mf:name        "unify2" ;
-        rdfs:comment   "(edited to remove reliance on @keywords)" .
+        rdfs:comment   "(edited to remove reliance on @keywords)" ;
+        rdft:approval  rdft:Rejected .
 
 :extra_bad_inverted_resources.n3 a test:TestN3NegativeSyntax ;
         mf:action      <extra/bad_inverted_resources.n3> ;
@@ -1366,9 +1375,9 @@
   mf:name            "good_prefix" ;
   rdft:approval      rdft:Approved .
 
-:manifest.ttl  a     test:TestN3PositiveSyntax ;
-        mf:action      <manifest.ttl> ;
-        mf:name        "manifest" .
+:manifest-parser.ttl  a     test:TestN3PositiveSyntax ;
+        mf:action      <manifest-parser.ttl> ;
+        mf:name        "manifest-parser" .
 
 :new_syntax_caret_neg.n3
         a              test:TestN3NegativeSyntax ;

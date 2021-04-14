@@ -42,32 +42,30 @@
   :title "DVD";
   :output :selector .
 
-@forAll :p, :s, :o, :t .
-
 # Graph rules
 
-{ :p :output :s } log:implies { :p :solidEdge :s } .
+{ ?p :output ?s } log:implies { ?p :solidEdge ?s } .
 
-{ :p :title :s } log:implies { :p gv:label :s } .
+{ ?p :title ?s } log:implies { ?p gv:label ?s } .
 
 # Style rules
 
-{ :s a :AV } log:implies { :s gv:color "black";
+{ ?s a :AV } log:implies { ?s gv:color "black";
                               gv:shape "box" } .
 
-#{ :s a :DocumentSet } log:implies { :s gv:color "black";
+#{ ?s a :DocumentSet } log:implies { ?s gv:color "black";
 #                                       gv:shape "polygon";
 #                                       gv:sides "5" } .
 #
-#{ :s a :Result } log:implies { :s gv:color "blue";
+#{ ?s a :Result } log:implies { ?s gv:color "blue";
 #                                   gv:style "filled";
 #                                   gv:fontcolor "white" } .
 #
-#{ :s a :Source } log:implies { :s gv:shape "Mdiamond" } .
+#{ ?s a :Source } log:implies { ?s gv:shape "Mdiamond" } .
 #
-#{ :s a :Optional } log:implies { :s gv:shape "diamond" } .
+#{ ?s a :Optional } log:implies { ?s gv:shape "diamond" } .
 #
-#{ :s a :Temporary } log:implies { :s gv:color "gray";
+#{ ?s a :Temporary } log:implies { ?s gv:color "gray";
 #                                   gv:style "filled";
 #                                   gv:fontcolor "white" } .
 

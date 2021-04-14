@@ -996,7 +996,9 @@
 :01etc_10tt_proof.n3
         a              test:TestN3PositiveSyntax ;
         mf:action      <01etc/10tt_proof.n3> ;
-        mf:name        "10tt_proof" .
+        mf:name        "10tt_proof" ;
+        rdfs:comment   "Uses @keywords" ;
+        rdft:approval  rdft:Rejected .
 
 :01etc_1tt1.n3  a    test:TestN3PositiveSyntax ;
         mf:action      <01etc/1tt1.n3> ;
@@ -1051,7 +1053,9 @@
 :01etc_4color_proof.n3
         a              test:TestN3PositiveSyntax ;
         mf:action      <01etc/4color_proof.n3> ;
-        mf:name        "4color_proof" .
+        mf:name        "4color_proof" ;
+        rdfs:comment   "Uses @keywords" ;
+        rdft:approval  rdft:Rejected .
 
 :01etc_4color_query.n3
         a              test:TestN3PositiveSyntax ;
@@ -1104,7 +1108,9 @@
 :01etc_agent1-proof.n3
         a              test:TestN3PositiveSyntax ;
         mf:action      <01etc/agent1-proof.n3> ;
-        mf:name        "agent1-proof" .
+        mf:name        "agent1-proof" ;
+        rdfs:comment   "Uses @keywords" ;
+        rdft:approval  rdft:Rejected .
 
 :01etc_agent1-query.n3
         a              test:TestN3PositiveSyntax ;
@@ -1124,7 +1130,9 @@
 :01etc_agent2-proof.n3
         a              test:TestN3PositiveSyntax ;
         mf:action      <01etc/agent2-proof.n3> ;
-        mf:name        "agent2-proof" .
+        mf:name        "agent2-proof" ;
+        rdfs:comment   "Uses @keywords" ;
+        rdft:approval  rdft:Rejected .
 
 :01etc_agent2-query.n3
         a              test:TestN3PositiveSyntax ;
@@ -1138,7 +1146,9 @@
 
 :01etc_answer.n3  a  test:TestN3PositiveSyntax ;
         mf:action      <01etc/answer.n3> ;
-        mf:name        "answer" .
+        mf:name        "answer" ;
+        rdfs:comment   "Uses @keywords" ;
+        rdft:approval  rdft:Rejected .
 
 :01etc_background_rules.n3
         a              test:TestN3PositiveSyntax ;
@@ -1151,7 +1161,9 @@
 
 :01etc_biE.n3  a     test:TestN3PositiveSyntax ;
         mf:action      <01etc/biE.n3> ;
-        mf:name        "biE" .
+        mf:name        "biE" ;
+        rdfs:comment   "Uses @keywords" ;
+        rdft:approval  rdft:Rejected .
 
 :01etc_biP.n3  a     test:TestN3PositiveSyntax ;
         mf:action      <01etc/biP.n3> ;
@@ -1164,17 +1176,23 @@
 :01etc_blueproof001.n3
         a              test:TestN3PositiveSyntax ;
         mf:action      <01etc/blueproof001.n3> ;
-        mf:name        "blueproof001" .
+        mf:name        "blueproof001" ;
+        rdfs:comment   "Uses @keywords" ;
+        rdft:approval  rdft:Rejected .
 
 :01etc_blueproof002.n3
         a              test:TestN3PositiveSyntax ;
         mf:action      <01etc/blueproof002.n3> ;
-        mf:name        "blueproof002" .
+        mf:name        "blueproof002" ;
+        rdfs:comment   "Uses @keywords" ;
+        rdft:approval  rdft:Rejected .
 
 :01etc_blueproof003.n3
         a              test:TestN3PositiveSyntax ;
         mf:action      <01etc/blueproof003.n3> ;
-        mf:name        "blueproof003" .
+        mf:name        "blueproof003" ;
+        rdfs:comment   "Uses @keywords" ;
+        rdft:approval  rdft:Rejected .
 
 :01etc_bmi_instances.n3
         a              test:TestN3PositiveSyntax ;
@@ -1184,7 +1202,9 @@
 :01etc_bmi_proof.n3
         a              test:TestN3PositiveSyntax ;
         mf:action      <01etc/bmi_proof.n3> ;
-        mf:name        "bmi_proof" .
+        mf:name        "bmi_proof" ;
+        rdfs:comment   "Uses @keywords" ;
+        rdft:approval  rdft:Rejected .
 
 :01etc_bmi_query.n3
         a              test:TestN3PositiveSyntax ;
@@ -1213,7 +1233,9 @@
 :01etc_crypto-proof.n3
         a              test:TestN3PositiveSyntax ;
         mf:action      <01etc/crypto-proof.n3> ;
-        mf:name        "crypto-proof" .
+        mf:name        "crypto-proof" ;
+        rdfs:comment   "Uses @keywords" ;
+        rdft:approval  rdft:Rejected .
 
 :01etc_cryptoP.n3  a  test:TestN3PositiveSyntax ;
         mf:action      <01etc/cryptoP.n3> ;
@@ -1237,7 +1259,9 @@
 
 :01etc_deE.n3  a     test:TestN3PositiveSyntax ;
         mf:action      <01etc/deE.n3> ;
-        mf:name        "deE" .
+        mf:name        "deE" ;
+        rdfs:comment   "Uses @keywords" ;
+        rdft:approval  rdft:Rejected .
 
 :01etc_deQ.n3  a     test:TestN3PositiveSyntax ;
         mf:action      <01etc/deQ.n3> ;
@@ -1249,7 +1273,9 @@
 
 :01etc_dpE.n3  a     test:TestN3PositiveSyntax ;
         mf:action      <01etc/dpE.n3> ;
-        mf:name        "dpE" .
+        mf:name        "dpE" ;
+        rdfs:comment   "Uses @keywords" ;
+        rdft:approval  rdft:Rejected .
 
 :01etc_dpQ.n3  a     test:TestN3PositiveSyntax ;
         mf:action      <01etc/dpQ.n3> ;
@@ -1263,7 +1289,9 @@
 :01etc_dpe_proof.n3
         a              test:TestN3PositiveSyntax ;
         mf:action      <01etc/dpe_proof.n3> ;
-        mf:name        "dpe_proof" .
+        mf:name        "dpe_proof" ;
+        rdfs:comment   "Uses @keywords" ;
+        rdft:approval  rdft:Rejected .
 
 :01etc_dpe_query.n3
         a              test:TestN3PositiveSyntax ;
@@ -1278,7 +1306,9 @@
 :01etc_easter-proof.n3
         a              test:TestN3PositiveSyntax ;
         mf:action      <01etc/easter-proof.n3> ;
-        mf:name        "easter-proof" .
+        mf:name        "easter-proof" ;
+        rdfs:comment   "Uses @keywords" ;
+        rdft:approval  rdft:Rejected .
 
 :01etc_easter.n3  a  test:TestN3PositiveSyntax ;
         mf:action      <01etc/easter.n3> ;
@@ -1286,7 +1316,9 @@
 
 :01etc_easterE.n3  a  test:TestN3PositiveSyntax ;
         mf:action      <01etc/easterE.n3> ;
-        mf:name        "easterE" .
+        mf:name        "easterE" ;
+        rdfs:comment   "Uses @keywords" ;
+        rdft:approval  rdft:Rejected .
 
 :01etc_easterF.n3  a  test:TestN3PositiveSyntax ;
         mf:action      <01etc/easterF.n3> ;
@@ -1303,7 +1335,9 @@
 :01etc_einsteinE.n3
         a              test:TestN3PositiveSyntax ;
         mf:action      <01etc/einsteinE.n3> ;
-        mf:name        "einsteinE" .
+        mf:name        "einsteinE" ;
+        rdfs:comment   "Uses @keywords" ;
+        rdft:approval  rdft:Rejected .
 
 :01etc_einsteinQ.n3
         a              test:TestN3PositiveSyntax ;
@@ -1333,7 +1367,9 @@
 :01etc_fcm_proof.n3
         a              test:TestN3PositiveSyntax ;
         mf:action      <01etc/fcm_proof.n3> ;
-        mf:name        "fcm_proof" .
+        mf:name        "fcm_proof" ;
+        rdfs:comment   "Uses @keywords" ;
+        rdft:approval  rdft:Rejected .
 
 :01etc_fgcm-model.n3
         a              test:TestN3PositiveSyntax ;
@@ -1353,7 +1389,9 @@
 :01etc_fgcm_proof.n3
         a              test:TestN3PositiveSyntax ;
         mf:action      <01etc/fgcm_proof.n3> ;
-        mf:name        "fgcm_proof" .
+        mf:name        "fgcm_proof" ;
+        rdfs:comment   "Uses @keywords" ;
+        rdft:approval  rdft:Rejected .
 
 :01etc_fib.n3  a     test:TestN3PositiveSyntax ;
         mf:action      <01etc/fib.n3> ;
@@ -1365,7 +1403,9 @@
 
 :01etc_fibE.n3  a    test:TestN3PositiveSyntax ;
         mf:action      <01etc/fibE.n3> ;
-        mf:name        "fibE" .
+        mf:name        "fibE" ;
+        rdfs:comment   "Uses @keywords" ;
+        rdft:approval  rdft:Rejected .
 
 :01etc_fibQ.n3  a    test:TestN3PositiveSyntax ;
         mf:action      <01etc/fibQ.n3> ;
@@ -1383,7 +1423,9 @@
 :01etc_floatingwoman-proof.n3
         a              test:TestN3PositiveSyntax ;
         mf:action      <01etc/floatingwoman-proof.n3> ;
-        mf:name        "floatingwoman-proof" .
+        mf:name        "floatingwoman-proof" ;
+        rdfs:comment   "Uses @keywords" ;
+        rdft:approval  rdft:Rejected .
 
 :01etc_floatingwoman.n3
         a              test:TestN3PositiveSyntax ;
@@ -1408,7 +1450,9 @@
 :01etc_food-proof.n3
         a              test:TestN3PositiveSyntax ;
         mf:action      <01etc/food-proof.n3> ;
-        mf:name        "food-proof" .
+        mf:name        "food-proof" ;
+        rdfs:comment   "Uses @keywords" ;
+        rdft:approval  rdft:Rejected .
 
 :01etc_food-query.n3
         a              test:TestN3PositiveSyntax ;
@@ -1422,7 +1466,9 @@
 :01etc_food2-proof.n3
         a              test:TestN3PositiveSyntax ;
         mf:action      <01etc/food2-proof.n3> ;
-        mf:name        "food2-proof" .
+        mf:name        "food2-proof" ;
+        rdfs:comment   "Uses @keywords" ;
+        rdft:approval  rdft:Rejected .
 
 :01etc_food2.n3  a   test:TestN3PositiveSyntax ;
         mf:action      <01etc/food2.n3> ;
@@ -1436,7 +1482,9 @@
 :01etc_forAllIn_proof.n3
         a              test:TestN3PositiveSyntax ;
         mf:action      <01etc/forAllIn_proof.n3> ;
-        mf:name        "forAllIn_proof" .
+        mf:name        "forAllIn_proof" ;
+        rdfs:comment   "Uses @keywords" ;
+        rdft:approval  rdft:Rejected .
 
 :01etc_forAllIn_query.n3
         a              test:TestN3PositiveSyntax ;
@@ -1456,7 +1504,9 @@
 :01etc_gedcom-proof.n3
         a              test:TestN3PositiveSyntax ;
         mf:action      <01etc/gedcom-proof.n3> ;
-        mf:name        "gedcom-proof" .
+        mf:name        "gedcom-proof" ;
+        rdfs:comment   "Uses @keywords" ;
+        rdft:approval  rdft:Rejected .
 
 :01etc_gedcom-relations.n3
         a              test:TestN3PositiveSyntax ;
@@ -1489,12 +1539,16 @@
 :01etc_gps-proof1.n3
         a              test:TestN3PositiveSyntax ;
         mf:action      <01etc/gps-proof1.n3> ;
-        mf:name        "gps-proof1" .
+        mf:name        "gps-proof1" ;
+        rdfs:comment   "Uses @keywords" ;
+        rdft:approval  rdft:Rejected .
 
 :01etc_gps-proof2.n3
         a              test:TestN3PositiveSyntax ;
         mf:action      <01etc/gps-proof2.n3> ;
-        mf:name        "gps-proof2" .
+        mf:name        "gps-proof2" ;
+        rdfs:comment   "Uses @keywords" ;
+        rdft:approval  rdft:Rejected .
 
 :01etc_gps-query1.n3
         a              test:TestN3PositiveSyntax ;
@@ -1538,7 +1592,9 @@
 :01etc_graph.proof.n3
         a              test:TestN3PositiveSyntax ;
         mf:action      <01etc/graph.proof.n3> ;
-        mf:name        "graph.proof" .
+        mf:name        "graph.proof" ;
+        rdfs:comment   "Uses @keywords" ;
+        rdft:approval  rdft:Rejected .
 
 :01etc_graphgen.n3  a  test:TestN3PositiveSyntax ;
         mf:action      <01etc/graphgen.n3> ;
@@ -1565,7 +1621,9 @@
 
 :01etc_hanoiE.n3  a  test:TestN3PositiveSyntax ;
         mf:action      <01etc/hanoiE.n3> ;
-        mf:name        "hanoiE" .
+        mf:name        "hanoiE" ;
+        rdfs:comment   "Uses @keywords" ;
+        rdft:approval  rdft:Rejected .
 
 :01etc_hypothesis-001.n3
         a              test:TestN3PositiveSyntax ;
@@ -1586,7 +1644,9 @@
 
 :01etc_iq_proof.n3  a  test:TestN3PositiveSyntax ;
         mf:action      <01etc/iq_proof.n3> ;
-        mf:name        "iq_proof" .
+        mf:name        "iq_proof" ;
+        rdfs:comment   "Uses @keywords" ;
+        rdft:approval  rdft:Rejected .
 
 :01etc_lldmD.n3  a   test:TestN3PositiveSyntax ;
         mf:action      <01etc/lldmD.n3> ;
@@ -1594,7 +1654,9 @@
 
 :01etc_lldmE.n3  a   test:TestN3PositiveSyntax ;
         mf:action      <01etc/lldmE.n3> ;
-        mf:name        "lldmE" .
+        mf:name        "lldmE" ;
+        rdfs:comment   "Uses @keywords" ;
+        rdft:approval  rdft:Rejected .
 
 :01etc_lldmF.n3  a   test:TestN3PositiveSyntax ;
         mf:action      <01etc/lldmF.n3> ;
@@ -1610,7 +1672,9 @@
 
 :01etc_medicE.n3  a  test:TestN3PositiveSyntax ;
         mf:action      <01etc/medicE.n3> ;
-        mf:name        "medicE" .
+        mf:name        "medicE" ;
+        rdfs:comment   "Uses @keywords" ;
+        rdft:approval  rdft:Rejected .
 
 :01etc_medicF.n3  a  test:TestN3PositiveSyntax ;
         mf:action      <01etc/medicF.n3> ;
@@ -1629,7 +1693,9 @@
 :01etc_mmln-gv-proof.n3
         a              test:TestN3PositiveSyntax ;
         mf:action      <01etc/mmln-gv-proof.n3> ;
-        mf:name        "mmln-gv-proof" .
+        mf:name        "mmln-gv-proof" ;
+        rdfs:comment   "Uses @keywords" ;
+        rdft:approval  rdft:Rejected .
 
 :01etc_mmln-gv-query.n3
         a              test:TestN3PositiveSyntax ;
@@ -1643,7 +1709,9 @@
 
 :01etc_mq_proof.n3  a  test:TestN3PositiveSyntax ;
         mf:action      <01etc/mq_proof.n3> ;
-        mf:name        "mq_proof" .
+        mf:name        "mq_proof" ;
+        rdfs:comment   "Uses @keywords" ;
+        rdft:approval  rdft:Rejected .
 
 :01etc_nbbn-model.n3
         a              test:TestN3PositiveSyntax ;
@@ -1663,7 +1731,9 @@
 :01etc_nbbn_proof.n3
         a              test:TestN3PositiveSyntax ;
         mf:action      <01etc/nbbn_proof.n3> ;
-        mf:name        "nbbn_proof" .
+        mf:name        "nbbn_proof" ;
+        rdfs:comment   "Uses @keywords" ;
+        rdft:approval  rdft:Rejected .
 
 :01etc_notIn_answer.n3
         a              test:TestN3PositiveSyntax ;
@@ -1673,7 +1743,9 @@
 :01etc_notIn_proof.n3
         a              test:TestN3PositiveSyntax ;
         mf:action      <01etc/notIn_proof.n3> ;
-        mf:name        "notIn_proof" .
+        mf:name        "notIn_proof" ;
+        rdfs:comment   "Uses @keywords" ;
+        rdft:approval  rdft:Rejected .
 
 :01etc_notIn_query.n3
         a              test:TestN3PositiveSyntax ;
@@ -1687,7 +1759,9 @@
 :01etc_numeral_proof.n3
         a              test:TestN3PositiveSyntax ;
         mf:action      <01etc/numeral_proof.n3> ;
-        mf:name        "numeral_proof" .
+        mf:name        "numeral_proof" ;
+        rdfs:comment   "Uses @keywords" ;
+        rdft:approval  rdft:Rejected .
 
 :01etc_owl-AllDifferent.n3
         a              test:TestN3PositiveSyntax ;
@@ -1862,7 +1936,9 @@
 :01etc_palindrome-proof.n3
         a              test:TestN3PositiveSyntax ;
         mf:action      <01etc/palindrome-proof.n3> ;
-        mf:name        "palindrome-proof" .
+        mf:name        "palindrome-proof" ;
+        rdfs:comment   "Uses @keywords" ;
+        rdft:approval  rdft:Rejected .
 
 :01etc_palindrome-query.n3
         a              test:TestN3PositiveSyntax ;
@@ -1877,7 +1953,9 @@
 :01etc_palindrome2-proof.n3
         a              test:TestN3PositiveSyntax ;
         mf:action      <01etc/palindrome2-proof.n3> ;
-        mf:name        "palindrome2-proof" .
+        mf:name        "palindrome2-proof" ;
+        rdfs:comment   "Uses @keywords" ;
+        rdft:approval  rdft:Rejected .
 
 :01etc_palindrome2-query.n3
         a              test:TestN3PositiveSyntax ;
@@ -1897,7 +1975,9 @@
 :01etc_path-9-3-proof.n3
         a              test:TestN3PositiveSyntax ;
         mf:action      <01etc/path-9-3-proof.n3> ;
-        mf:name        "path-9-3-proof" .
+        mf:name        "path-9-3-proof" ;
+        rdfs:comment   "Uses @keywords" ;
+        rdft:approval  rdft:Rejected .
 
 :01etc_path-9-3.n3  a  test:TestN3PositiveSyntax ;
         mf:action      <01etc/path-9-3.n3> ;
@@ -1909,7 +1989,9 @@
 
 :01etc_pi-proof.n3  a  test:TestN3PositiveSyntax ;
         mf:action      <01etc/pi-proof.n3> ;
-        mf:name        "pi-proof" .
+        mf:name        "pi-proof" ;
+        rdfs:comment   "Uses @keywords" ;
+        rdft:approval  rdft:Rejected .
 
 :01etc_pi-query.n3  a  test:TestN3PositiveSyntax ;
         mf:action      <01etc/pi-query.n3> ;
@@ -1937,50 +2019,70 @@
 :01etc_proof-001.n3
         a              test:TestN3PositiveSyntax ;
         mf:action      <01etc/proof-001.n3> ;
-        mf:name        "proof-001" .
+        mf:name        "proof-001" ;
+        rdfs:comment   "Uses @keywords" ;
+        rdft:approval  rdft:Rejected .
 
 :01etc_proof-10.n3  a  test:TestN3PositiveSyntax ;
         mf:action      <01etc/proof-10.n3> ;
-        mf:name        "proof-10" .
+        mf:name        "proof-10" ;
+        rdfs:comment   "Uses @keywords" ;
+        rdft:approval  rdft:Rejected .
 
 :01etc_proof-100.n3
         a              test:TestN3PositiveSyntax ;
         mf:action      <01etc/proof-100.n3> ;
-        mf:name        "proof-100" .
+        mf:name        "proof-100" ;
+        rdfs:comment   "Uses @keywords" ;
+        rdft:approval  rdft:Rejected .
 
 :01etc_proof-1000.n3
         a              test:TestN3PositiveSyntax ;
         mf:action      <01etc/proof-1000.n3> ;
-        mf:name        "proof-1000" .
+        mf:name        "proof-1000" ;
+        rdfs:comment   "Uses @keywords" ;
+        rdft:approval  rdft:Rejected .
 
 :01etc_proof-10000.n3
         a              test:TestN3PositiveSyntax ;
         mf:action      <01etc/proof-10000.n3> ;
-        mf:name        "proof-10000" .
+        mf:name        "proof-10000" ;
+        rdfs:comment   "Uses @keywords" ;
+        rdft:approval  rdft:Rejected .
 
 :01etc_proof-2-10.n3
         a              test:TestN3PositiveSyntax ;
         mf:action      <01etc/proof-2-10.n3> ;
-        mf:name        "proof-2-10" .
+        mf:name        "proof-2-10" ;
+        rdfs:comment   "Uses @keywords" ;
+        rdft:approval  rdft:Rejected .
 
 :01etc_proof-2-100.n3
         a              test:TestN3PositiveSyntax ;
         mf:action      <01etc/proof-2-100.n3> ;
-        mf:name        "proof-2-100" .
+        mf:name        "proof-2-100" ;
+        rdfs:comment   "Uses @keywords" ;
+        rdft:approval  rdft:Rejected .
 
 :01etc_proof-2-1000.n3
         a              test:TestN3PositiveSyntax ;
         mf:action      <01etc/proof-2-1000.n3> ;
-        mf:name        "proof-2-1000" .
+        mf:name        "proof-2-1000" ;
+        rdfs:comment   "Uses @keywords" ;
+        rdft:approval  rdft:Rejected .
 
 :01etc_proof-2-10000.n3
         a              test:TestN3PositiveSyntax ;
         mf:action      <01etc/proof-2-10000.n3> ;
-        mf:name        "proof-2-10000" .
+        mf:name        "proof-2-10000" ;
+        rdfs:comment   "Uses @keywords" ;
+        rdft:approval  rdft:Rejected .
 
 :01etc_proof.n3  a   test:TestN3PositiveSyntax ;
         mf:action      <01etc/proof.n3> ;
-        mf:name        "proof" .
+        mf:name        "proof" ;
+        rdfs:comment   "Uses @keywords" ;
+        rdft:approval  rdft:Rejected .
 
 :01etc_query-001.n3
         a              test:TestN3PositiveSyntax ;
@@ -2394,7 +2496,9 @@
 :01etc_randomsample-proof.n3
         a              test:TestN3PositiveSyntax ;
         mf:action      <01etc/randomsample-proof.n3> ;
-        mf:name        "randomsample-proof" .
+        mf:name        "randomsample-proof" ;
+        rdfs:comment   "Uses @keywords" ;
+        rdft:approval  rdft:Rejected .
 
 :01etc_randomsample-query.n3
         a              test:TestN3PositiveSyntax ;
@@ -2444,7 +2548,9 @@
 :01etc_resto-proof.n3
         a              test:TestN3PositiveSyntax ;
         mf:action      <01etc/resto-proof.n3> ;
-        mf:name        "resto-proof" .
+        mf:name        "resto-proof" ;
+        rdfs:comment   "Uses @keywords" ;
+        rdft:approval  rdft:Rejected .
 
 :01etc_resto.n3  a   test:TestN3PositiveSyntax ;
         mf:action      <01etc/resto.n3> ;
@@ -2460,7 +2566,9 @@
 
 :01etc_rifE.n3  a    test:TestN3PositiveSyntax ;
         mf:action      <01etc/rifE.n3> ;
-        mf:name        "rifE" .
+        mf:name        "rifE" ;
+        rdfs:comment   "Uses @keywords" ;
+        rdft:approval  rdft:Rejected .
 
 :01etc_rifP.n3  a    test:TestN3PositiveSyntax ;
         mf:action      <01etc/rifP.n3> ;
@@ -2487,7 +2595,9 @@
 :01etc_sdcoding-a-proof.n3
         a              test:TestN3PositiveSyntax ;
         mf:action      <01etc/sdcoding-a-proof.n3> ;
-        mf:name        "sdcoding-a-proof" .
+        mf:name        "sdcoding-a-proof" ;
+        rdfs:comment   "Uses @keywords" ;
+        rdft:approval  rdft:Rejected .
 
 :01etc_sdcoding-a.n3
         a              test:TestN3PositiveSyntax ;
@@ -2502,7 +2612,9 @@
 :01etc_sdcoding-proof.n3
         a              test:TestN3PositiveSyntax ;
         mf:action      <01etc/sdcoding-proof.n3> ;
-        mf:name        "sdcoding-proof" .
+        mf:name        "sdcoding-proof" ;
+        rdfs:comment   "Uses @keywords" ;
+        rdft:approval  rdft:Rejected .
 
 :01etc_sdcoding-q.n3
         a              test:TestN3PositiveSyntax ;
@@ -2531,12 +2643,16 @@
 :01etc_select-proof-extra.n3
         a              test:TestN3PositiveSyntax ;
         mf:action      <01etc/select-proof-extra.n3> ;
-        mf:name        "select-proof-extra" .
+        mf:name        "select-proof-extra" ;
+        rdfs:comment   "Uses @keywords" ;
+        rdft:approval  rdft:Rejected .
 
 :01etc_select-proof.n3
         a              test:TestN3PositiveSyntax ;
         mf:action      <01etc/select-proof.n3> ;
-        mf:name        "select-proof" .
+        mf:name        "select-proof" ;
+        rdfs:comment   "Uses @keywords" ;
+        rdft:approval  rdft:Rejected .
 
 :01etc_select-query.n3
         a              test:TestN3PositiveSyntax ;
@@ -2546,7 +2662,9 @@
 :01etc_skos-extra-rules.n3
         a              test:TestN3PositiveSyntax ;
         mf:action      <01etc/skos-extra-rules.n3> ;
-        mf:name        "skos-extra-rules" .
+        mf:name        "skos-extra-rules" ;
+        rdfs:comment   "Uses @keywords" ;
+        rdft:approval  rdft:Rejected .
 
 :01etc_skos-mapping-sample-snomed-icd10.n3
         a              test:TestN3PositiveSyntax ;
@@ -2566,12 +2684,16 @@
 :01etc_skos-rules.n3
         a              test:TestN3PositiveSyntax ;
         mf:action      <01etc/skos-rules.n3> ;
-        mf:name        "skos-rules" .
+        mf:name        "skos-rules" ;
+        rdfs:comment   "Uses @keywords" ;
+        rdft:approval  rdft:Rejected .
 
 :01etc_skos_mv_proof.n3
         a              test:TestN3PositiveSyntax ;
         mf:action      <01etc/skos_mv_proof.n3> ;
-        mf:name        "skos_mv_proof" .
+        mf:name        "skos_mv_proof" ;
+        rdfs:comment   "Uses @keywords" ;
+        rdft:approval  rdft:Rejected .
 
 :01etc_socrates.n3  a  test:TestN3PositiveSyntax ;
         mf:action      <01etc/socrates.n3> ;
@@ -2585,7 +2707,9 @@
 :01etc_socrates_proof.n3
         a              test:TestN3PositiveSyntax ;
         mf:action      <01etc/socrates_proof.n3> ;
-        mf:name        "socrates_proof" .
+        mf:name        "socrates_proof" ;
+        rdfs:comment   "Uses @keywords" ;
+        rdft:approval  rdft:Rejected .
 
 :01etc_streason-output.n3
         a              test:TestN3PositiveSyntax ;
@@ -2648,7 +2772,9 @@
 :01etc_swet_proof.n3
         a              test:TestN3PositiveSyntax ;
         mf:action      <01etc/swet_proof.n3> ;
-        mf:name        "swet_proof" .
+        mf:name        "swet_proof" ;
+        rdfs:comment   "Uses @keywords" ;
+        rdft:approval  rdft:Rejected .
 
 :01etc_tak.n3  a     test:TestN3PositiveSyntax ;
         mf:action      <01etc/tak.n3> ;
@@ -2656,7 +2782,9 @@
 
 :01etc_takE.n3  a    test:TestN3PositiveSyntax ;
         mf:action      <01etc/takE.n3> ;
-        mf:name        "takE" .
+        mf:name        "takE" ;
+        rdfs:comment   "Uses @keywords" ;
+        rdft:approval  rdft:Rejected .
 
 :01etc_takQ.n3  a    test:TestN3PositiveSyntax ;
         mf:action      <01etc/takQ.n3> ;
@@ -2684,7 +2812,9 @@
 :01etc_test-proof-1000.n3
         a              test:TestN3PositiveSyntax ;
         mf:action      <01etc/test-proof-1000.n3> ;
-        mf:name        "test-proof-1000" .
+        mf:name        "test-proof-1000" ;
+        rdfs:comment   "Uses @keywords" ;
+        rdft:approval  rdft:Rejected .
 
 :01etc_test-query.n3
         a              test:TestN3PositiveSyntax ;
@@ -2697,7 +2827,9 @@
 
 :01etc_testE.n3  a   test:TestN3PositiveSyntax ;
         mf:action      <01etc/testE.n3> ;
-        mf:name        "testE" .
+        mf:name        "testE" ;
+        rdfs:comment   "Uses @keywords" ;
+        rdft:approval  rdft:Rejected .
 
 :01etc_testQ.n3  a   test:TestN3PositiveSyntax ;
         mf:action      <01etc/testQ.n3> ;
@@ -2716,7 +2848,9 @@
 :01etc_test_proof.n3
         a              test:TestN3PositiveSyntax ;
         mf:action      <01etc/test_proof.n3> ;
-        mf:name        "test_proof" .
+        mf:name        "test_proof" ;
+        rdfs:comment   "Uses @keywords" ;
+        rdft:approval  rdft:Rejected .
 
 :01etc_test_query.n3
         a              test:TestN3PositiveSyntax ;
@@ -2736,7 +2870,9 @@
 :01etc_train_model_proof.n3
         a              test:TestN3PositiveSyntax ;
         mf:action      <01etc/train_model_proof.n3> ;
-        mf:name        "train_model_proof" .
+        mf:name        "train_model_proof" ;
+        rdfs:comment   "Uses @keywords" ;
+        rdft:approval  rdft:Rejected .
 
 :01etc_train_query.n3
         a              test:TestN3PositiveSyntax ;
@@ -2759,11 +2895,15 @@
 :01etc_turing_proof.n3
         a              test:TestN3PositiveSyntax ;
         mf:action      <01etc/turing_proof.n3> ;
-        mf:name        "turing_proof" .
+        mf:name        "turing_proof" ;
+        rdfs:comment   "Uses @keywords" ;
+        rdft:approval  rdft:Rejected .
 
 :01etc_usmE.n3  a    test:TestN3PositiveSyntax ;
         mf:action      <01etc/usmE.n3> ;
-        mf:name        "usmE" .
+        mf:name        "usmE" ;
+        rdfs:comment   "Uses @keywords" ;
+        rdft:approval  rdft:Rejected .
 
 :01etc_usmP.n3  a    test:TestN3PositiveSyntax ;
         mf:action      <01etc/usmP.n3> ;
@@ -2780,7 +2920,9 @@
 :01etc_utf8_proof.n3
         a              test:TestN3PositiveSyntax ;
         mf:action      <01etc/utf8_proof.n3> ;
-        mf:name        "utf8_proof" .
+        mf:name        "utf8_proof" ;
+        rdfs:comment   "Uses @keywords" ;
+        rdft:approval  rdft:Rejected .
 
 :01etc_weightStatus_rules.n3
         a              test:TestN3PositiveSyntax ;
@@ -2795,7 +2937,9 @@
 :01etc_witch-proof.n3
         a              test:TestN3PositiveSyntax ;
         mf:action      <01etc/witch-proof.n3> ;
-        mf:name        "witch-proof" .
+        mf:name        "witch-proof" ;
+        rdfs:comment   "Uses @keywords" ;
+        rdft:approval  rdft:Rejected .
 
 :01etc_witch.n3  a   test:TestN3PositiveSyntax ;
         mf:action      <01etc/witch.n3> ;
@@ -2825,7 +2969,9 @@
 
 :04test_D1Q.n3  a    test:TestN3PositiveSyntax ;
         mf:action      <04test/D1Q.n3> ;
-        mf:name        "D1Q" .
+        mf:name        "D1Q" ;
+        rdfs:comment   "Uses @keywords" ;
+        rdft:approval  rdft:Rejected .
 
 :04test_D2.n3  a     test:TestN3PositiveSyntax ;
         mf:action      <04test/D2.n3> ;
@@ -2837,7 +2983,9 @@
 
 :04test_D2Q.n3  a    test:TestN3PositiveSyntax ;
         mf:action      <04test/D2Q.n3> ;
-        mf:name        "D2Q" .
+        mf:name        "D2Q" ;
+        rdfs:comment   "Uses @keywords" ;
+        rdft:approval  rdft:Rejected .
 
 :04test_EntailmentE.n3
         a              test:TestN3PositiveSyntax ;
@@ -2863,7 +3011,7 @@
         mf:action      <04test/LanguageQ.n3> ;
         mf:name        "LanguageQ" ;
         rdfs:comment   "using language (@) tags for quick-vars" ;
-        rdft:approval  rdft:Proposed .
+        rdft:approval  rdft:Rejected .
 
 :04test_LexicalSpaceE.n3
         a              test:TestN3PositiveSyntax ;
@@ -2992,7 +3140,9 @@
 
 :04test_bcE.n3  a    test:TestN3PositiveSyntax ;
         mf:action      <04test/bcE.n3> ;
-        mf:name        "bcE" .
+        mf:name        "bcE" ;
+        rdfs:comment   "Uses @keywords" ;
+        rdft:approval  rdft:Rejected .
 
 :04test_bcF.n3  a    test:TestN3PositiveSyntax ;
         mf:action      <04test/bcF.n3> ;
@@ -3276,7 +3426,9 @@
 
 :04test_exonQ.n3  a  test:TestN3PositiveSyntax ;
         mf:action      <04test/exonQ.n3> ;
-        mf:name        "exonQ" .
+        mf:name        "exonQ" ;
+        rdfs:comment   "Uses @keywords" ;
+        rdft:approval  rdft:Rejected .
 
 :04test_factorial.n3
         a              test:TestN3PositiveSyntax ;
@@ -3369,20 +3521,20 @@
         mf:action      <04test/icalQ001.n3> ;
         mf:name        "icalQ001" ;
         rdfs:comment   "datatype (^^) tag for quick-vars" ;
-        rdft:approval  rdft:Proposed .
+        rdft:approval  rdft:Rejected .
 
 :04test_icalQ002.n3
         a              test:TestN3PositiveSyntax ;
         mf:action      <04test/icalQ002.n3> ;
         mf:name        "icalQ002" ;
         rdfs:comment   "datatype (^^) tag for quick-vars" ;
-        rdft:approval  rdft:Proposed .
+        rdft:approval  rdft:Rejected .
 
 :04test_icalR.n3  a  test:TestN3PositiveSyntax ;
         mf:action      <04test/icalR.n3> ;
         mf:name        "icalR" ;
         rdfs:comment   "datatype (^^) tag for quick-vars" ;
-        rdft:approval  rdft:Proposed .
+        rdft:approval  rdft:Rejected .
 
 :04test_kendallE.n3
         a              test:TestN3PositiveSyntax ;
@@ -3422,7 +3574,9 @@
 :04test_metastaticE.n3
         a              test:TestN3PositiveSyntax ;
         mf:action      <04test/metastaticE.n3> ;
-        mf:name        "metastaticE" .
+        mf:name        "metastaticE" ;
+        rdfs:comment   "Uses @keywords" ;
+        rdft:approval  rdft:Rejected .
 
 :04test_metastaticF.n3
         a              test:TestN3PositiveSyntax ;
@@ -3510,7 +3664,8 @@
 :04test_ontology-for-data-model.n3
         a              test:TestN3PositiveSyntax ;
         mf:action      <04test/ontology-for-data-model.n3> ;
-        mf:name        "ontology-for-data-model" .
+        mf:name        "ontology-for-data-model" ;
+        rdft:approval  rdft:Rejected .
 
 :04test_origin.n3  a  test:TestN3PositiveSyntax ;
         mf:action      <04test/origin.n3> ;
@@ -3552,7 +3707,7 @@
         mf:action      <04test/query-survey-11.n3> ;
         mf:name        "query-survey-11" ;
         rdfs:comment   "using language (@) tags for quick-vars" ;
-        rdft:approval  rdft:Proposed .
+        rdft:approval  rdft:Rejected .
 
 :04test_query-survey-12.n3
         a              test:TestN3PositiveSyntax ;
@@ -3564,7 +3719,7 @@
         mf:action      <04test/query-survey-13.n3> ;
         mf:name        "query-survey-13" ;
         rdfs:comment   "datatype (^^) tag for quick-vars" ;
-        rdft:approval  rdft:Proposed .
+        rdft:approval  rdft:Rejected .
 
 :04test_query-survey-2.n3
         a              test:TestN3PositiveSyntax ;
@@ -3765,7 +3920,9 @@
 :04test_socratesR.n3
         a              test:TestN3PositiveSyntax ;
         mf:action      <04test/socratesR.n3> ;
-        mf:name        "socratesR" .
+        mf:name        "socratesR" ;
+        rdfs:comment   "Uses @keywords" ;
+        rdft:approval  rdft:Rejected .
 
 :04test_srcE.n3  a   test:TestN3PositiveSyntax ;
         mf:action      <04test/srcE.n3> ;
@@ -3860,7 +4017,9 @@
 
 :04test_unsaidQ.n3  a  test:TestN3PositiveSyntax ;
         mf:action      <04test/unsaidQ.n3> ;
-        mf:name        "unsaidQ" .
+        mf:name        "unsaidQ" ;
+        rdfs:comment   "Uses @keywords" ;
+        rdft:approval  rdft:Rejected .
 
 :04test_v.n3  a      test:TestN3PositiveSyntax ;
         mf:action      <04test/v.n3> ;
@@ -4289,7 +4448,7 @@
         mf:action      <07test/biR.n3> ;
         mf:name        "biR" ;
         rdfs:comment   "(edited to remove reliance on @keywords) '+' is element of a list, not allowed in turtle nor n3" ;
-        rdft:approval  rdft:Proposed .
+        rdft:approval  rdft:Rejected .
 
 :07test_bmi_instances.n3
         a              test:TestN3PositiveSyntax ;
@@ -4308,7 +4467,8 @@
 
 :07test_cd.n3  a     test:TestN3PositiveSyntax ;
         mf:action      <07test/cd.n3> ;
-        mf:name        "cd" .
+        mf:name        "cd" ;
+        rdft:approval  rdft:Rejected .
 
 :07test_cdE.n3  a    test:TestN3PositiveSyntax ;
         mf:action      <07test/cdE.n3> ;
@@ -4473,7 +4633,9 @@
 :07test_fgcm_proof.n3
         a              test:TestN3PositiveSyntax ;
         mf:action      <07test/fgcm_proof.n3> ;
-        mf:name        "fgcm_proof" .
+        mf:name        "fgcm_proof" ;
+        rdfs:comment   "Uses @keywords" ;
+        rdft:approval  rdft:Rejected .
 
 :07test_fgcm_result.n3
         a              test:TestN3PositiveSyntax ;
@@ -4507,7 +4669,9 @@
 :07test_gmpbnodeE1.n3
         a              test:TestN3PositiveSyntax ;
         mf:action      <07test/gmpbnodeE1.n3> ;
-        mf:name        "gmpbnodeE1" .
+        mf:name        "gmpbnodeE1" ;
+        rdfs:comment   "Uses @keywords" ;
+        rdft:approval  rdft:Rejected .
 
 :07test_gmpbnodeE2.n3
         a              test:TestN3PositiveSyntax ;
@@ -5066,12 +5230,16 @@
 :07test_resto-cwm-proof.n3
         a              test:TestN3PositiveSyntax ;
         mf:action      <07test/resto-cwm-proof.n3> ;
-        mf:name        "resto-cwm-proof" .
+        mf:name        "resto-cwm-proof" ;
+        rdfs:comment   "Uses @keywords" ;
+        rdft:approval  rdft:Rejected .
 
 :07test_resto-cwm-proof2.n3
         a              test:TestN3PositiveSyntax ;
         mf:action      <07test/resto-cwm-proof2.n3> ;
-        mf:name        "resto-cwm-proof2" .
+        mf:name        "resto-cwm-proof2" ;
+        rdfs:comment   "Uses @keywords" ;
+        rdft:approval  rdft:Rejected .
 
 :07test_resto-proof.n3
         a              test:TestN3PositiveSyntax ;
@@ -5405,7 +5573,9 @@
 
 :07test_utf8.n3  a   test:TestN3PositiveSyntax ;
         mf:action      <07test/utf8.n3> ;
-        mf:name        "utf8" .
+        mf:name        "utf8" ;
+        rdfs:comment   "Uses @keywords" ;
+        rdft:approval  rdft:Rejected .
 
 :07test_wetC100.n3  a  test:TestN3PositiveSyntax ;
         mf:action      <07test/wetC100.n3> ;

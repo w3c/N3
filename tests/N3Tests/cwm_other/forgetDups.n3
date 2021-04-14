@@ -19,17 +19,13 @@
 @prefix string: <http://www.w3.org/2000/10/swap/string#>.
 @prefix : <#>.
 
-@forAll :x, :y, :z, :p, :q.
-
-@forAll :s1, :s2.
-
-{ :x = :y.
-  :x log:rawUri :s1.  # Levelbreaker - cheats by looking at URI of bnode
-  :y log:rawUri :s2.
-  :s1 string:lessThan :s2.
+{ ?x = ?y.
+  ?x log:rawUri ?s1.  # Levelbreaker - cheats by looking at URI of bnode
+  ?y log:rawUri ?s2.
+  ?s1 string:lessThan ?s2.
 }
   log:implies {
-   :y a log:Chaff.
-#   :s2 :forgottenInFavorOf :s1 # diagnostic/audit info
+   ?y a log:Chaff.
+#   ?s2 :forgottenInFavorOf ?s1 # diagnostic/audit info
   }.
 

@@ -1881,14 +1881,14 @@
    mf:action    <turtle-syntax-bad-n3-extras-10.ttl> ;
    .
 
-<#turtle-syntax-bad-n3-extras-11> a rdft:TestTurtleNegativeSyntax, test:TestN3PositiveSyntax ;
+<#turtle-syntax-bad-n3-extras-11> a rdft:TestTurtleNegativeSyntax, test:TestN3NegativeSyntax ;
    mf:name    "turtle-syntax-bad-n3-extras-11" ;
    rdfs:comment "@forSome is not Turtle (negative test)" ;
    rdft:approval rdft:Approved ;
    mf:action    <turtle-syntax-bad-n3-extras-11.ttl> ;
    .
 
-<#turtle-syntax-bad-n3-extras-12> a rdft:TestTurtleNegativeSyntax, test:TestN3PositiveSyntax ;
+<#turtle-syntax-bad-n3-extras-12> a rdft:TestTurtleNegativeSyntax, test:TestN3NegativeSyntax ;
    mf:name    "turtle-syntax-bad-n3-extras-12" ;
    rdfs:comment "@forAll is not Turtle (negative test)" ;
    rdft:approval rdft:Approved ;

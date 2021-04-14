@@ -26,7 +26,5 @@ contact:homePageAddress a ont:UnambiguousProperty.
 
 @prefix log: <http://www.w3.org/2000/10/swap/log#>.
 
-@forAll :x.
-
-{ :x :hairColor :red; :birthPlace :KC }
+{ ?x :hairColor :red; :birthPlace :KC }
   log:implies { :test1 a :Success }.

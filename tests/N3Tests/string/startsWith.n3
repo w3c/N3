@@ -2,8 +2,6 @@
 @prefix string: <http://www.w3.org/2000/10/swap/string#>.
 @prefix : <#>.
 
-@forAll :x, :y, :z, :p, :q.
-
 { "asdfghjkl" string:startsWith "asd" } log:implies { :test1 a :success }.
 
 { "asdfghjkl" string:startsWith "ass" } log:implies { :test2 a :FAILURE }.

@@ -19,17 +19,15 @@
 
 # These should be derivable from the axiomatic semantics for DAML+OIL
 
-@forAll :x, :y, :z, :p, :q.
+{ ?x = ?y } log:implies { ?y = ?x }. # symmetric
+{ ?x = [ = ?z] } log:implies { ?x = ?z }. # transitive
+{ ?x ?p ?y. ?x = ?z. ?p log:notEqualTo log:forAll, log:forSome} log:implies { ?z ?p ?y }.
+{ ?x ?p ?y. ?p = ?q. ?p log:notEqualTo log:forAll, log:forSome} log:implies { ?x ?q ?y }.
+{ ?x ?p ?y. ?y = ?z. ?p log:notEqualTo log:forAll, log:forSome} log:implies { ?x ?p ?z }.
 
-{ :x = :y } log:implies { :y = :x }. # symmetric
-{ :x = [ = :z] } log:implies { :x = :z }. # transitive
-{ :x :p :y. :x = :z. :p log:notEqualTo log:forAll, log:forSome} log:implies { :z :p :y }.
-{ :x :p :y. :p = :q. :p log:notEqualTo log:forAll, log:forSome} log:implies { :x :q :y }.
-{ :x :p :y. :y = :z. :p log:notEqualTo log:forAll, log:forSome} log:implies { :x :p :z }.
+{  ?p a ont:UniqueProperty. } log:implies
+ { { ?x ?p ?y. ?x ?p ?z. } log:implies  { ?y = ?z } }.
 
-{  :p a ont:UniqueProperty. } log:implies
- { { :x :p :y. :x :p :z. } log:implies  { :y = :z } }.
-
-{  :p a ont:UnambiguousProperty. } log:implies
- { { :x :p :z. :y :p :z. } log:implies  { :x = :y } }.
+{  ?p a ont:UnambiguousProperty. } log:implies
+ { { ?x ?p ?z. ?y ?p ?z. } log:implies  { ?x = ?y } }.
 

@@ -9,11 +9,9 @@
 
 @prefix : <v#>.
 
-@forAll :a, :b, :c, :x, :y, :z.
-
 ( "one"  "two" ) a :whatever.
 
-{ (:a :b) a :whatever } log:implies { :a a :SUCCESS. :b a :SUCCESS }.
+{ (?a ?b) a :whatever } log:implies { ?a a :SUCCESS. ?b a :SUCCESS }.
 
-# { :x a :whatever } log:implies { :x :is """ The list ( "one"  "two" )""" }.
+# { ?x a :whatever } log:implies { ?x :is """ The list ( "one"  "two" )""" }.
 

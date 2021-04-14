@@ -10,13 +10,10 @@
 
 # SimplifiedDanC challenge  - simplied version of rules13.n3
 
-@forAll <#p> .
-
-{  <#p> a daml:TransitiveProperty . } log:implies
+{  ?p a daml:TransitiveProperty . } log:implies
 
 {
-    @forAll <#x> , <#y> , <#z>.
-    { <#x> <#p> <#y>. <#y> <#p> <#z>. } log:implies { <#x> <#p> <#z>. }.
+    { ?x ?p ?y. ?y ?p ?z. } log:implies { ?x ?p ?z. }.
 } .
 
 

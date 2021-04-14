@@ -23,13 +23,12 @@ _:ablp
 # modal stuff
 
 @prefix log: <http://www.w3.org/2000/10/swap/log#>.
-@forAll :s, :s2, :subj, :pred, :obj, :subj2, :pred2, :obj2, :A, :B.
 
 :says s:label "says";
      s:domain :Principal.
 
 # idemopotency?
-{ :A :says { :A :says :s } } => { :A :says :s }.
+{ ?A :says { ?A :says :s } } => { ?A :says ?s }.
 
 :speaks_for s:label "speaks for";
 	  s:isDefinedBy _:ablp;
@@ -38,10 +37,10 @@ _:ablp
 
 { ?A :speaks_for ?B . ?A :says ?s } => { ?B :says ?s }.
 
-{ ?A :says :s. ?A :says { :s => :s2 }} => { ?A :says :s2 }.
+{ ?A :says ?s. ?A :says { ?s => ?s2 }} => { ?A :says ?s2 }.
 
-{ :A :says { :s => :s2 } } => { { :A :says :s } => { :A :says :s2 } }.
-{ ?A a :Principal. :s a log:Truth } => { ?A :says :s }.
+{ ?A :says { ?s => ?s2 } } => { { ?A :says ?s } => { ?A :says ?s2 } }.
+{ ?A a :Principal. ?s a log:Truth } => { ?A :says ?s }.
 
 :quoting a owl:FunctionalProperty;
          s:domain rdf:List; # of 2 principals
@@ -53,9 +52,9 @@ _:ablp
 
 # blows up in fwd chainer:
 # { ?A :says ?p. ?A :says ?q. } => { ?A :says [ is log:conjunction of (?p ?q)]}.
-{ ?A :says { :subj :pred :obj }.
-  ?A :says { :subj2 :pred2 :obj2 }. } =>
-   { ?A :says { :subj :pred :obj. :subj2 :pred2 :obj2 }}.
+{ ?A :says { ?subj ?pred ?obj }.
+  ?A :says { ?subj2 ?pred2 ?obj2 }. } =>
+   { ?A :says { ?subj ?pred ?obj. ?subj2 ?pred2 ?obj2 }}.
 
 ######
 
@@ -65,9 +64,9 @@ _:ablp
 { ?A :controls ?s . ?A :says ?s } => { ?s a log:Truth } . #level-breaker.
 
 # constrained version of the rule:
-{ ?A :controls_spo ( :subj :pred :obj ) ;
-   :says ?F. ?F log:includes { :subj :pred :obj } }
- => { :subj :pred :obj }.
+{ ?A :controls_spo ( ?subj ?pred ?obj ) ;
+   :says ?F. ?F log:includes { ?subj ?pred ?obj } }
+ => { ?subj ?pred ?obj }.
 
 # special case
 
@@ -75,8 +74,8 @@ _:ablp
   s:domain :Principal;
   s:range rdf:Property.
 
-{ ?A :controls_property :pred.
-  ?A :says ?F. ?F log:includes { :subj :pred :obj } } => { :subj :pred :obj }.
+{ ?A :controls_property ?pred.
+  ?A :says ?F. ?F log:includes { ?subj ?pred ?obj } } => { ?subj ?pred ?obj }.
 
 #####
 # Theorems to help cwm
@@ -89,5 +88,5 @@ _:ablp
 # A :says s # idemopotency of :says
 
 # partial treatment of log:Truth
-{ { :subj :pred :obj } a log:Truth } => { :subj :pred :obj }.
+{ { ?subj ?pred ?obj } a log:Truth } => { ?subj ?pred ?obj }.
 

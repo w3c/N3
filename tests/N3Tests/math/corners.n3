@@ -2,8 +2,6 @@
 @prefix : <#> .
 @prefix math: <http://www.w3.org/2000/10/swap/math#> .
 
-@forAll :x , :y , :z .
-
 # Corner cases:
 
 { () math:sum ?x } =>  { ?x :valueOf " () math:sum ?x  --- should be 0" }.

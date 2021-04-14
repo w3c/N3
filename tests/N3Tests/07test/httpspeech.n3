@@ -9,29 +9,27 @@
 @prefix str: <http://www.w3.org/2000/10/swap/string#>.
 @prefix c: <speech#>.
 
-@forAll :E, :RES.
-
 # A 200 response gives an entity corresponding to a resource.
 {
-  :RES log:uri ?I.
+  ?RES log:uri ?I.
   ?CONNECTION ht:requests ?R. ?R list:member ?Q.
   ?Q ht:methodName "GET";
     ht:absoluteURI ?I;
     ht:resp ?A.
   ?A ht:statusCodeNumber "200".
 # or:    ht:sc <http://www.w3.org/2008/http-statusCodes#statusCode200>
-  ?A :asEntity :E.
+  ?A :asEntity ?E.
 }
-=> { ?CONNECTION c:says { :E :corresponds_to :RES } }.
+=> { ?CONNECTION c:says { ?E :corresponds_to ?RES } }.
 
 # origin servers control correspondence in their domain
 {
-  ?CONNECTION c:says { :E :corresponds_to :RES }. # needed for fwd chaining
+  ?CONNECTION c:says { ?E :corresponds_to ?RES }. # needed for fwd chaining
 
   ?CONNECTION ht:connectionAuthority ?A.
-  :RES log:uri ?I.
+  ?RES log:uri ?I.
   (?I "http://([^/]+)/") str:search (?A).
-} => { ?CONNECTION c:controls_spo ( :E :corresponds_to :RES )}.
+} => { ?CONNECTION c:controls_spo ( ?E :corresponds_to ?RES )}.
 
 { 
  ("http://example.org/1995/manifesto"

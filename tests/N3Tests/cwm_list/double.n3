@@ -8,20 +8,18 @@
 @prefix : <#>.
 
 
-@forAll :a, :s.
-
 "Ostrich" a :foobar.
 
 {
-:a a :foobar.
+?a a :foobar.
    ( 
- :a
+ ?a
 
- :a
+ ?a
 
-    ) string:concatenation :s.
+    ) string:concatenation ?s.
 
-}=>{ "00" log:outputString :s }.
+}=>{ "00" log:outputString ?s }.
 
 #ends
 
