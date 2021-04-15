@@ -54,6 +54,7 @@
       table.grammar, table.grammar th, table.grammar td {
         border: none;
         padding: 2px;
+        vertical-align: top;
       }
       table.grammar td:nth-child(2) {
         text-align: right;
@@ -438,6 +439,13 @@
       </section>
       <section id='paths'>
         <h4>Paths</h4>
+        <p>It is often useful to describe a relationship between
+          two resources which spans several other resources.
+          Notation3 provides a syntax similar to
+          <a data-cite="SPARQL11-QUERY#propertypaths">SPARQL property paths</a> [[SPARQL11-QUERY]].
+          In abbr title="Notation3">N3</abbr>-turtle syntax,
+          a <a href="#grammar-production-path">path</a> starts
+          with a </p>
         <p>(See the <a href="https://www.w3.org/TeamSubmission/n3/#path">initial use cases</a> for the N3 path syntax.)</p>
         <pre class="example nohighlight">
           @prefix foaf: &lt;http://xmlns.com/foaf/0.1/&gt; .
