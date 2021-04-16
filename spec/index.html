@@ -441,19 +441,37 @@
         <h4>Paths</h4>
         <p>It is often useful to describe a relationship between
           two resources which spans several other resources.
-          Notation3 provides a syntax similar to
+          <abbr title="Notation3">N3</abbr> provides a syntax similar to
           <a data-cite="SPARQL11-QUERY#propertypaths">SPARQL property paths</a> [[SPARQL11-QUERY]].
-          In abbr title="Notation3">N3</abbr>-turtle syntax,
+          <abbr title="Notation3">N3</abbr> has the concept of a <dfn data-lt="resource path">path</dfn>
+          used to describe a relationship from some <a>N3 triple element</a>
+          to a <a>blank node</a>.
+          In the <abbr title="Notation3">N3</abbr>-turtle syntax,
           a <a href="#grammar-production-path">path</a> starts
-          with a </p>
-        <p>(See the <a href="https://www.w3.org/TeamSubmission/n3/#path">initial use cases</a> for the N3 path syntax.)</p>
-        <pre class="example nohighlight">
-          @prefix foaf: &lt;http://xmlns.com/foaf/0.1/&gt; .
+          with a <a href="#grammar-production-pathItem">pathItem</a>
+          representing a specific <a>N3 triple element</a>
+          followed by a path of one or more predicates, using a combination
+          of forward and reverse relationships.
+          In the forward direction, a path describes a chain from a specific
+          <a>N3 triple element</a> (such as an IRI) to a <a>blank node</a>.
+          In the reverse direction, it describes the relationship
+          from a <a>blank node</a> to some <a>N3 triple element</a>.</p>
 
-          &lt;http://example.org/#dt&gt; foaf:knows &lt;http://example.org/#da&gt; .
-          &lt;http://example.org/#dt&gt; ^foaf:knows &lt;http://example.org/#da&gt; .
-        </pre>
+        <p class="note">In SPARQL, a property path is used in the
+          <a data-cite="RDF11-CONCEPTS#dfn-predicate">predicate</a>
+          position to describe a string of relationships between
+          a <a data-cite="RDF11-CONCEPTS#dfn-subject">subject</a>
+          and an <a data-cite="RDF11-CONCEPTS#dfn-object">object</a> resource.
+          Although unrestricted in <abbr title="Notation3">N3</abbr>, a
+          <a>resource path</a> is most often used in the
+          <a data-cite="RDF11-CONCEPTS#dfn-subject">subject</a> or
+          <a data-cite="RDF11-CONCEPTS#dfn-object">object</a> position.</p>
+
+        <p class="ednote">TODO Provide several examples
+          of resource paths along with the `&lt;-` reverse property syntax.</p>
+
       </section>
+
       <section id='variables'>
         <h3>Variables and Quantification</h3>
         <p>Bla...</p>
@@ -919,14 +937,13 @@ To illustrate that consider the following example:
       <h2>Embedding N3 in HTML documents</h2>
       <p>HTML [[HTML5]] <code>script</code> element can be used to embed data blocks in documents. N3 can be easily embedded in <code>script</code> with the <code>type</code> attribute set to <code>text/n3</code>.</p>
       <p>Such content may be escaped as indicated below:</p>
-        <ul>
-          <li><code>&amp;amp;</code>: &amp; (ampersand, U+0026)</li>
-          <li><code>&amp;lt;</code>: &lt; (less-than sign, U+003C)</li>
-          <li><code>&amp;gt;</code>: &gt; (greater-than sign, U+003E)</li>
-          <li><code>&amp;quot;</code>: &quot; (quotation mark, U+0022)</li>
-          <li><code>&amp;apos;</code>: &apos; (apostrophe, U+0027)</li>
-        </ul>
-      </p>
+      <ul>
+        <li><code>&amp;amp;</code>: &amp; (ampersand, U+0026)</li>
+        <li><code>&amp;lt;</code>: &lt; (less-than sign, U+003C)</li>
+        <li><code>&amp;gt;</code>: &gt; (greater-than sign, U+003E)</li>
+        <li><code>&amp;quot;</code>: &quot; (quotation mark, U+0022)</li>
+        <li><code>&amp;apos;</code>: &apos; (apostrophe, U+0027)</li>
+      </ul>
       <pre class="example nohighlight">
         &lt;script type=&quot;text/n3&quot;&gt;
           @prefix : &amp;lt;http://www.example.org/#&amp;gt; .
