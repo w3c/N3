@@ -161,7 +161,7 @@
       </section>
       <section id='polists'>
         <h4>Predicate and object lists</h4>
-        <p>As shown in the above example, the same subject (e.g., Spiderman) will often be described by several N3 statements. To make these N3 statements less cumbersome, one can put a '<code>;</code>' at the end of an N3 statement to describe the same subject in the subsequent N3 statement (called a "<a href="#polists">predicate list</a>"):</p>
+        <p>As shown in the above example, the same subject (e.g., Spiderman) will often be described by several N3 statements. To make these N3 statements less cumbersome, one can put a semicolon ("<code>;</code>") at the end of an N3 statement to describe the same subject in the subsequent N3 statement (called a "<a href="#polists">predicate list</a>"):</p>
         <pre class="example nohighlight">
           &lt;http://example.org/#spiderman&gt;
               &lt;http://example.org/#enemyOf&gt; &lt;http://example.org/#green-goblin&gt; ;
@@ -178,8 +178,8 @@
       </section>
       <section id='iris'>
         <h3>IRIs</h3>
-        <p>As mentioned, one typically uses an <abbr title="International Resource Identifier">IRI</abbr> to represent an identifiable entity - such as a person, place, or thing. Until now, we have been writing <dfn data-lt="absolute iri">absolute IRIs</dfn> (e.g., <code>http://example.org/#Spiderman</code>) - IRIs that include both the namespace (e.g., <code>http://example.org/#</code>) and the local name (e.g., <code>Spiderman</code>).</p>
-        <p>This is a perfectly valid way of writing IRIs, but it is often much easier to write an IRI as a <dfn>prefixed name</dfn> - e.g., <code>ex:Spiderman</code>, which includes a <dfn>prefix label</dfn> (e.g., <code>ex</code>) and a <dfn>local name</dfn> (e.g., <code>Spiderman</code>) separated by a colon '<code>:</code>'. The <code>@prefix</code> directive associates a prefix label with a namespace IRI - a prefixed name is turned into an IRI by concatenating the namespace IRI of the prefix label with the local name. For instance, the following is equivalent to using absolute IRIs:</p>
+        <p>As mentioned, one typically uses an <abbr title="International Resource Identifier">IRI</abbr> to represent an identifiable entity &mdash; such as a person, place, or thing. Until now, we have been writing <dfn data-lt="absolute iri">absolute IRIs</dfn> (e.g., <code>http://example.org/#Spiderman</code>) &mdash; IRIs that include both the namespace (e.g., <code>http://example.org/#</code>) and the local name (e.g., <code>Spiderman</code>).</p>
+        <p>This is a perfectly valid way of writing IRIs, but it is often much easier to write an IRI as a <dfn>prefixed name</dfn> &mdash; e.g., <code>ex:Spiderman</code>, which includes a <dfn>prefix label</dfn> (e.g., <code>ex</code>) and a <dfn>local name</dfn> (e.g., <code>Spiderman</code>) separated by a colon ("<code>:</code>"). The <code>@prefix</code> directive associates a prefix label with a namespace IRI &mdash; a prefixed name is turned into an IRI by concatenating the namespace IRI of the prefix label with the local name. For instance, the following is equivalent to using absolute IRIs:</p>
         <pre class="example nohighlight">
           @prefix ex: &lt;http://www.example.org/#&gt; .
 
@@ -191,7 +191,7 @@
 
           :green-goblin :enemyOf :spiderman .
         </pre>
-        <p>One can write <dfn data-lt="relative iri">relative IRIs</dfn>, e.g., <code>&lt;#Spiderman&gt;</code>, which will be resolved relative to the <em>current base IRI</em>. In other words, a relative IRI is turned into an IRI by concatenating the base IRI with the local name (e.g., <code>Spiderman</code>). A base IRI can be defined using the '@base' directive. For instance, the following is equivalent to the prior example:</p>
+        <p>One can write <dfn data-lt="relative iri">relative IRIs</dfn>, e.g., <code>&lt;#Spiderman&gt;</code>, which will be resolved relative to the <em>current base IRI</em>. In other words, a relative IRI is turned into an IRI by concatenating the base IRI with the local name (e.g., <code>Spiderman</code>). A base IRI can be defined using the `@base` directive. For instance, the following is equivalent to the prior example:</p>
         <pre class="example nohighlight">
           @base &lt;http://www.example.org/#&gt; .
 
@@ -299,7 +299,7 @@
             There likely already exists an IRI that identifies the resource, and we don't want to mint a new IRI for a resource that likely already has one (nor do we want to do an extensive search to find out what that IRI is).
           </li>
         </ul>
-        <p>Instead, you can use <dfn data-cite="RDF11-CONCEPTS#dfn-blank-node">blank nodes</dfn> to talk about resources. They are existential variables, i.e., stating the existence of a thing without identifying that thing. (In fact, a blank node is equivalent to an explicit <a href="#variables">existential variable</a> in N3, aside from some scoping issues). Blank nodes can be represented in several ways:</p>
+        <p>Instead, you can use <dfn data-cite="RDF11-CONCEPTS#dfn-blank-node">blank nodes</dfn> to talk about resources. They are existential variables; i.e., they state the existence of a thing without identifying that thing. (In fact, aside from some scoping issues, a blank node is equivalent to an explicit <a href="#variables">existential variable</a> in N3.) Blank nodes can be represented in several ways:</p>
         <section id='bnodeids'>
           <h4>Blank node identifiers</h4>
           <p>A blank node can be represented by a blank node identifier, which is unique within the N3 graph, expressed as <code>_:</code> followed by a blank node label (e.g., <code>_:someLabel</code>). Then, we use this identifier to describe a resource in the same way we have been doing.</p>
@@ -537,7 +537,7 @@ here</pre>
           <a>quoted graphs</a>,
           and of one implication sign.
           The latter is denoted by the `log:implies` builtin to indicate implication. 
-          In N3-turtle syntax `log:implies` MAY be represented using the symbol <code>=&gt;</code>.
+          In N3-turtle syntax, `log:implies` MAY be represented using the symbol <code>=&gt;</code>.
         </p>
         <p>
           The set of <dfn data-lt="quantifier">N3 quantifiers</dfn> consists of the universal quantifier and the existential quantifier.
@@ -563,7 +563,7 @@ here</pre>
       <section id='formulas'>
         <h3>Formulas</h3>
         <p>
-          An <dfn>N3 triple</dfn> consists of the three components subject, predicate and object, each being an N3 triple element.
+          An <dfn>N3 triple</dfn> consists of three components &mdash; subject, predicate, and object &mdash; each being an N3 triple element.
         </p>
         <p>
           A <dfn data-lt="quantified formula">quantified N3 formula</dfn> consists of pair of a <a>quantification</a> 
@@ -574,7 +574,7 @@ here</pre>
           For a quantified N3 formula <code>Qx f</code>, we call <code>x</code> the quantified element and say that <code>x</code> is quantified in <code>f</code>.
         </p>
         <p>
-          An <dfn>N3 formula</dfn> is either an <a>N3 triple</a>, a <a>quantified N3 formula</a> 
+          An <dfn>N3 formula</dfn> is either an <a>N3 triple</a>, a <a>quantified N3 formula</a>, 
           or a sequence of <a>N3 formulas</a>. 
         </p>
       </section>
@@ -587,7 +587,7 @@ here</pre>
            <section id='cgraphs'>
         <h3>Closed graphs and ground formulas</h3>
         <p>
-        N3 supports implicit quantification, that is, one can state quantified variables without explicitely stating the quantifier. To do that, we use <a>universal variables</a>, which are implicitely universally quantified, and <a data-cite="RDF11-CONCEPTS#dfn-blank-node">blank nodes</a>, these are implicitely existentially quantified. 
+        N3 supports implicit quantification; that is, one can state quantified variables without explicitly stating the quantifier. To do that, we use <a>universal variables</a>, which are implicitly universally quantified, and <a data-cite="RDF11-CONCEPTS#dfn-blank-node">blank nodes</a>, which are implicitly existentially quantified. 
         </p>
        <p>
        In this context it is important to note that not only the kind of the quantifier is matters but also its scope, i.e. the exact parts the quantification is valid for, and the exact position of the quantifier. 
@@ -776,7 +776,7 @@ To illustrate that consider the following example:
         <p>Below, we indicate some important differences between this production and N3:</p>
         <ul>
           <li>
-            Like N3, SPARQL permits literals as the subject of RDF triples. But, in contrast to N3, it does not allow literals as the predicate of RDF triples. Similarly, N3 allows for <a href="#bnodeprplist">blank node property lists</a> and collections in any position, whereas SPARQL only allows them in the subject or object position.
+            Like N3, SPARQL permits literals as the subject of RDF triples, but, in contrast to N3, it does not allow literals as the predicate of RDF triples. Similarly, N3 allows for <a href="#bnodeprplist">blank node property lists</a> and collections in any position, whereas SPARQL only allows them in the subject or object position.
           </li>
           <li>
             Like N3, SPARQL permits variables in any part of the triple. But, in contrast to N3, SPARQL allows writing variables as both <code>?name</code> and <code>$name</code>, whereas N3 only allows <code>?name</code>.
