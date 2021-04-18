@@ -518,7 +518,6 @@
         <p>Since they represent quoted RDF graphs, cited formulas are not "referentially transparent". For instance:</p>
         <pre class="example nohighlight" data-transform="updateExample">
           <!--
-          @prefix dc: <http://purl.org/dc/terms/> .
           @base <http://example.org/#> .
 
           :LoisLane :believes { :Superman :can :fly } .
@@ -529,23 +528,28 @@
       </section>
       <section id='paths'>
         <h4>Paths</h4>
-        <p>It is often useful to describe a relationship between
+        <p>It also useful to describe a relationship between
           two resources which spans several other anonymous resources.
           <abbr title="Notation3">N3</abbr> provides a syntax similar to
-          <a data-cite="SPARQL11-QUERY#propertypaths">SPARQL property paths</a> [[SPARQL11-QUERY]].
-          <abbr title="Notation3">N3</abbr> has the concept of a <dfn data-lt="resource path">path</dfn>
+          <a data-cite="SPARQL11-QUERY#propertypaths">SPARQL property paths</a> [[SPARQL11-QUERY]].</p>
+        <p><abbr title="Notation3">N3</abbr> has the concept of a <dfn data-lt="resource path">path</dfn>
           used to describe a relationship from some <a>N3 triple element</a>
           to a <a>blank node</a>.
           In the <abbr title="Notation3">N3</abbr>-turtle syntax,
           a <a href="#grammar-production-path">path</a> starts
           with a <a href="#grammar-production-pathItem">pathItem</a>
           representing a specific <a>N3 triple element</a>
-          followed by a path of one or more predicates, using a combination
-          of forward and reverse relationships.
-          In the forward direction, a path describes a chain from a specific
+          followed by a path of one or more predicates,
+          separated by directional indicators for
+          forward (`!`) and reverse (`^`) relationships.
+          In the forward direction, a path describes a relationship from a specific
           <a>N3 triple element</a> (such as an IRI) to a <a>blank node</a>.
           In the reverse direction, it describes the relationship
-          from a <a>blank node</a> to some <a>N3 triple element</a>.</p>
+          from a <a>blank node</a> to some <a>N3 triple element</a>.
+          Successive indicator/<a href="#grammar-production-pathItem">pathItem</a>
+          pairs describe subsequent relationships with the trailing
+          <a href="#grammar-production-pathItem">pathItem</a> describing
+          the relationship <a data-cite="RDF11-CONCEPTS#dfn-predicate">predicate</a>.</p>
 
         <p class="note">In SPARQL, a property path is used in the
           <a data-cite="RDF11-CONCEPTS#dfn-predicate">predicate</a>
@@ -557,8 +561,67 @@
           <a data-cite="RDF11-CONCEPTS#dfn-subject">subject</a> or
           <a data-cite="RDF11-CONCEPTS#dfn-object">object</a> position.</p>
 
-        <p class="ednote">TODO Provide several examples
-          of resource paths along with the `&lt;-` reverse property syntax.</p>
+        <p>Each path segment can be thought of as a shorthand for
+          an existing relationship.
+          For example, for a
+          <a data-cite="RDF11-CONCEPTS#dfn-predicate">predicate</a> <em>p</em>
+          and <a href="#grammar-production-pathItem">pathItem</a> or <a>path</a> `x`,
+          <code>x!<em>p</em></code> is equivalent to
+          <code>[ is <em>p</em> of x ]</code>.
+          Similarly, <code>x^<em>p</em></code> is equivalent to
+          <code>[ <em>p</em> x ]</code>.
+          Thus, the result is always a <a>blank node</a>.</p>
+
+        <p>The expansion of a <a>path</a> is equivalent to unwinding
+          these relationships.</p>
+
+        <aside class="example" title="Forward path chain">
+          <p>The following example of a forward path describes
+            a relationship between Joe's mother's office's zipcode:</p>
+
+          <pre data-transform="updateExample">
+            <!--
+            @base <http://example.org/#> .
+
+            :joe!:mother!:office!:zip a :Zipcode .
+            -->
+          </pre>
+
+          <p>This could equally well be represented by the more verbose:</p>
+
+          <pre data-transform="updateExample">
+            <!--
+            @base <http://example.org/#> .
+
+            [is :zip of [is :office of [is :mother of :joe]]] a :ZipCode .
+            -->
+          </pre>
+        </aside>
+
+
+        <aside class="example" title="Mixed path chain">
+          <p>The following example of a path composed of both forward
+            and reverse relationship describes
+            a someone who is Joe's grandmother:</p>
+
+          <pre data-transform="updateExample">
+            <!--
+            @base <http://example.org/#> .
+
+            :joe!:mother^:mother a :Person .
+            -->
+          </pre>
+
+          <p>This could equally well be represented by the more verbose:</p>
+
+          <pre data-transform="updateExample">
+            <!--
+            @base <http://example.org/#> .
+
+             [ :mother [is :mother of :joe]] a :Person .
+            -->
+          </pre>
+        </aside>
 
       </section>
 
