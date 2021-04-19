@@ -171,7 +171,7 @@
           <a href="#variables">quantifications</a> for variables, and so on.
           We introduce these elements below.</p>
         <p>Comments are indicated using a separate '#'
-          (i.e., not part of another <abbr title="Notation3">N3</abbr> symbol, such as an IRI)
+          (i.e., not part of another <abbr title="Notation3">N3</abbr> symbol, such as an <a>IRI</a>)
           and continue until the end of  the line.
         </p>
       </section>
@@ -183,8 +183,9 @@
           <a data-cite="RDF11-CONCEPTS#dfn-object">object</a>,
           separated by whitespace and terminated by '`.`'
           after each <a>triple</a>.
-          For now, we will asssume that a resource is represented either by an <a href="#iris">IRI</a> or a <a href="#literals">literal</a>.
-          In general, one uses an IRI to identify, well, an identifiable entity,
+          For now, we will asssume that a resource is represented either
+          by an <a>IRI</a> or a <a href="#literals">literal</a>.
+          In general, one uses an <a>IRI</a> to identify, well, an identifiable entity,
           such as a person, place, or thing &mdash;
           a literal is used for a textual or numerical (i.e., datatype) value,
           such as names, dates, height, and so on.</p>
@@ -207,7 +208,7 @@
       </section>
       <section id='polists'>
         <h4>Predicate and object lists</h4>
-        <p>As shown in the above example, the same subject (e.g., Spiderman) will often be described by several <a>N3 statements</a>. To make these <a>N3 statements</a> less cumbersome, one can put a semicolon ("<code>;</code>") at the end of an <a>N3 statement</a> to describe the same subject in the subsequent <a>N3 statement</a> (called a "<a href="#polists">predicate list</a>"):</p>
+        <p>As shown in the above example, the same subject (e.g., Spiderman) will often be described by several <a>N3 statements</a>. To make these <a>N3 statements</a> less cumbersome, one can put a semicolon ("<code>;</code>") at the end of an <a>N3 statement</a> to describe the same subject in the subsequent <a>N3 statement</a> (called a "<a href="#polists">predicate object list</a>"):</p>
         <pre class="example nohighlight" data-transform="updateExample">
           <!--
           <http://example.org/#spiderman>
@@ -228,8 +229,28 @@
       </section>
       <section id='iris'>
         <h3>IRIs</h3>
-        <p>As mentioned, one typically uses an <abbr title="International Resource Identifier">IRI</abbr> to represent an identifiable entity &mdash; such as a person, place, or thing. Until now, we have been writing <dfn data-lt="absolute iri">absolute IRIs</dfn> (e.g., <code>http://example.org/#Spiderman</code>) &mdash; IRIs that include both the namespace (e.g., <code>http://example.org/#</code>) and the local name (e.g., <code>Spiderman</code>).</p>
-        <p>This is a perfectly valid way of writing IRIs, but it is often much easier to write an IRI as a <dfn>prefixed name</dfn> &mdash; e.g., <code>ex:Spiderman</code>, which includes a <dfn>prefix label</dfn> (e.g., <code>ex</code>) and a <dfn>local name</dfn> (e.g., <code>Spiderman</code>) separated by a colon ("<code>:</code>"). The <code>@prefix</code> directive associates a prefix label with a namespace IRI &mdash; a prefixed name is turned into an IRI by concatenating the namespace IRI of the prefix label with the local name. For instance, the following is equivalent to using absolute IRIs:</p>
+        <p>As mentioned, one typically uses an
+          <abbr title="International Resource Identifier">IRI</abbr>
+          to represent an identifiable entity &mdash;
+          such as a person, place, or thing.
+          Until now, we have been writing
+          <dfn data-lt="absolute iri|iri">IRIs</dfn> [[RFC3987]]
+          (e.g., <code>http://example.org/#Spiderman</code>) &mdash;
+          which include both the namespace
+          (e.g., <code>http://example.org/#</code>)
+          and the <dfn>local name</dfn> (e.g., <code>Spiderman</code>).</p>
+
+        <p>This is a perfectly valid way of writing IRIs,
+          but it is often much easier to write an IRI as a
+          <dfn>prefixed name</dfn> &mdash; e.g., <code>ex:Spiderman</code>,
+          which includes a <dfn>prefix label</dfn> (e.g., <code>ex</code>)
+          and a <a>local name</a> (e.g., <code>Spiderman</code>)
+          separated by a colon ("<code>:</code>").
+          The <code>@prefix</code> directive associates a <a>prefix label</a>
+          with a <dfn>namespace IRI</dfn> &mdash; a prefixed name is turned into an IRI
+          by <a data-cite="RFC3986#section-5.2">resolving</a> the
+          <a>prefix label</a> against the <a>namespace IRI</a>.
+          For instance, the following is equivalent to using <a>absolute IRIs</a>:</p>
         <pre class="example nohighlight" data-transform="updateExample">
           <!--
           @prefix ex: <http://www.example.org/#> .
@@ -237,7 +258,7 @@
           ex:green-goblin ex:enemyOf ex:spiderman .
           -->
         </pre>
-        <p>To further simplify prefixed names, one can leave the prefix label empty (e.g., for a namespace that is often used in the <a>N3 document</a>):</p>
+        <p>To further simplify prefixed names, one can leave the <a>prefix label</a> empty (e.g., for a namespace that is often used in the <a>N3 document</a>):</p>
         <pre class="example nohighlight" data-transform="updateExample">
           <!--
           @prefix : <http://www.example.org/#> .
@@ -245,7 +266,17 @@
           :green-goblin :enemyOf :spiderman .
           -->
         </pre>
-        <p>One can write <dfn data-lt="relative iri">relative IRIs</dfn>, e.g., <code>&lt;#Spiderman&gt;</code>, which will be resolved relative to the <em>current base IRI</em>. In other words, a relative IRI is turned into an IRI by concatenating the base IRI with the local name (e.g., <code>Spiderman</code>). A base IRI can be defined using the `@base` directive. For instance, the following is equivalent to the prior example:</p>
+
+        <p>One can write
+          <dfn data-lt="relative iri">relative IRI references</dfn>,
+          e.g., <code>&lt;#Spiderman&gt;</code>,
+          which will be resolved relative to the <em>current <a>base IRI</a></em>.
+          A <a>relative IRI reference</a> is turned into an <a>absolute IRI</a>
+          by <a data-cite="RFC3987#section-6.5">resolving</a>
+          the <a>base IRI</a> relative to the <a>local name</a>
+          (e.g., <code>Spiderman</code>).
+          A <dfn>base IRI</dfn> is defined using the `@base` directive.
+          For instance, the following is equivalent to the prior example:</p>
         <pre class="example nohighlight" data-transform="updateExample">
           <!--
           @base <http://www.example.org/#> .
@@ -253,10 +284,13 @@
           <#green-goblin> <#enemyOf> <#spiderman> .
           -->
         </pre>
-        <p class="note">We recommend listing the <code>@prefix</code> declarations (just like <code>@base</code> declarations) at the top of an <a>N3 document</a>. This is not mandatory however, and they can technically be put anywhere before the prefixed name or relative IRI that relies on the declaration. Subsequent <code>@prefix</code> or <code>PREFIX</code> directives may re-map the same prefix label to another namespace IRI.</p>
-        <p class="note"><abbr title="Notation3">N3</abbr> also supports case-insensitive 'PREFIX' and 'BASE' directives, as does Turtle, to align the syntax with SPARQL. Note that the <code>@prefix</code> and <code>@base</code> directives require a trailing '<code>.</code>' after the IRI, but the equivalent<code>PREFIX</code> and <code>BASE</code> must not have a trailing '.'.
+        <p>Specifics of <a>relative IRI reference</a>
+          <a data-cite="RFC3986#section-5.2">resolution</a> are described in
+          <a href="#irires" class="sectionRef"></a>.</p>
+
+        <p class="note">We recommend listing the <code>@prefix</code> declarations (just like <code>@base</code> declarations) at the top of an <a>N3 document</a>. This is not mandatory however, and they can technically be put anywhere before the prefixed name or <a>relative IRI</a> that relies on the declaration. Subsequent <code>@prefix</code> or <code>PREFIX</code> directives may re-map the same <a>prefix label</a> to another <a>namespace IRI</a>.</p>
+        <p class="note"><abbr title="Notation3">N3</abbr> also supports case-insensitive 'PREFIX' and 'BASE' directives, as does Turtle, to align the syntax with SPARQL. Note that the <code>@prefix</code> and <code>@base</code> directives require a trailing '<code>.</code>' after the <a>IRI</a>, but the equivalent<code>PREFIX</code> and <code>BASE</code> must not have a trailing '.'.
         </p>
-        <p class="note">Specifics of relative IRI resolution are defined in <a data-cite="TURTLE#sec-iri-references">the Turtle spec</a>.</p>
         <!-- <pre class="example nohighlight">@prefix foaf: &lt;http://xmlns.com/foaf/0.1/&gt; .
           @prefix : &lt;http://example.org/#&gt;
           
@@ -281,7 +315,7 @@
         </pre>
         <p>For details on what number syntax is supported (e.g., for decimals, doubles), we refer to the <a data-cite="TURTLE#abbrev">RDF 1.1: Turtle (Section 2.5.2)</a> specification.</p>
         <p>Other literals (e.g., date; binary, octal or hex code; XML or JSON code; other types of numbers, such as shorts), and of course strings themselves, need to be written as <b>string literals</b>. For instance, <code>&lt;http://example.org/#spiderman&gt; &lt;http://example.org/#birthDate&gt; "2001-08-10".</code> In that case, the <a data-cite="RDF11-CONCEPTS#dfn-lexical-form">lexical form</a> will include the characters between the delimiter quotes (e.g., <code>2001-08-10</code>).</p>
-    <p>Clearly, this can raise confusion as to what type of literal is being represented &mdash; is it a string or some other arbitrary type? You can indicate the datatype of a literal in RDF using the <code>^^</code> symbol and the corresponding <a data-cite="XMLSCHEMA11-2#built-in-datatypes">datatype IRI</a>. The above example then becomes:
+    <p>Clearly, this can raise confusion as to what type of literal is being represented &mdash; is it a string or some other arbitrary type? You can indicate the datatype of a literal in RDF using the <code>^^</code> symbol and the corresponding <dfn data-cite="XMLSCHEMA11-2#built-in-datatypes">datatype IRI</dfn>. The above example then becomes:
     
     <pre class="example nohighlight" data-transform="updateExample">
       <!--
@@ -310,9 +344,9 @@
       -->
     </pre>
     
-    <p class="note">If no datatype IRI or language tag is given, the datatype <code>xsd:string</code> will be assumed. In case a language tag is given, the datatype <code>rdf:langString</code> will be assumed. Note that it is not possible to specify both a datatype IRI and a language tag.</p>
+    <p class="note">If no <a>datatype IRI</a> or language tag is given, the datatype <code>xsd:string</code> will be assumed. In case a language tag is given, the datatype <code>rdf:langString</code> will be assumed. Note that it is not possible to specify both a <a>datatype IRI</a> and a language tag.</p>
         
-    <p class="note">Integers, decimals and doubles, or booleans, may also be written as string literals with the appropriate datatype IRI. Boolean literals can be written as <code>true</code> or <code>@true</code> and <code>false</code> or <code>@false</code>.</p>
+    <p class="note">Integers, decimals and doubles, or booleans, may also be written as string literals with the appropriate <a>datatype IRI</a>. Boolean literals can be written as <code>true</code> or <code>@true</code> and <code>false</code> or <code>@false</code>.</p>
         
     <p class="note">There are also <a href="#compoundliteral">other mechanisms</a> for describing the language tag and base direction of RDF literals.</p>
         
@@ -361,16 +395,16 @@
         <p>When describing resources in RDF, one often runs into the following situations:</p>
         <ul>
           <li>
-            It is not worth identifying the resource with an IRI, since it is unlikely that other <a>N3 graphs</a> will refer to the resource. In these cases, it is quite inconvenient and even redundant to mint a new IRI each time.
+            It is not worth identifying the resource with an <a>IRI</a>, since it is unlikely that other <a>N3 graphs</a> will refer to the resource. In these cases, it is quite inconvenient and even redundant to mint a new <a>IRI</a> each time.
           </li>
           <li>
-            There likely already exists an IRI that identifies the resource, and we don't want to mint a new IRI for a resource that likely already has one (nor do we want to do an extensive search to find out what that IRI is).
+            There likely already exists an <a>IRI</a> that identifies the resource, and we don't want to mint a new <a>IRI</a> for a resource that likely already has one (nor do we want to do an extensive search to find out what that <a>IRI</a> is).
           </li>
         </ul>
-        <p>Instead, you can use <dfn data-cite="RDF11-CONCEPTS#dfn-blank-node">blank nodes</dfn> to talk about resources. They are existential variables; i.e., they state the existence of a thing without identifying that thing. (In fact, aside from some scoping issues, a blank node is equivalent to an explicit <a href="#variables">existential variable</a> in <abbr title="Notation3">N3</abbr>.) Blank nodes can be represented in several ways:</p>
+        <p>Instead, you can use <dfn data-cite="RDF11-CONCEPTS#dfn-blank-node">blank nodes</dfn> to talk about resources. They are existential variables; i.e., they state the existence of a thing without identifying that thing. (In fact, aside from some scoping issues, a <a>blank node</a> is equivalent to an explicit <a href="#variables">existential variable</a> in <abbr title="Notation3">N3</abbr>.) <a>Blank nodes</a> can be represented in several ways:</p>
         <section id='bnodeids'>
           <h4>Blank node identifiers</h4>
-          <p>A blank node can be represented by a blank node identifier, which is unique within the <a>N3 graph</a>, expressed as <code>_:</code> followed by a blank node label (e.g., <code>_:someLabel</code>). Then, we use this identifier to describe a resource in the same way we have been doing.</p>
+          <p>A <a>blank node</a> can be represented by a <dfn data-cite="RDF11-CONCEPTS#dfn-blank-node-identifier">blank node identifier</dfn>, which is unique within the <a>N3 graph</a>, expressed as <code>_:</code> followed by a blank node label (e.g., <code>_:someLabel</code>). Then, we use this identifier to describe a resource in the same way we have been doing.</p>
           <p>For instance, we might <a data-cite="RDF11-PRIMER#section-blank-node">want to state</a> that the Mona Lisa painting has in its background an unidentified tree, and we want to describe the tree &mdash; such as the painting it is in, and the type of tree:
           <p>
           <pre id="mona-lisa-bnode-id"
@@ -384,13 +418,13 @@
             _:bn rdf:type ex:CypressTree .
             -->
           </pre>
-          <p>In this example, we minted the blank node identifier <code>_:bn</code> to represent the resource that we want to describe.</p>
+          <p>In this example, we minted the <a>blank node identifier</a> <code>_:bn</code> to represent the resource that we want to describe.</p>
         </section>
         <section id='bnodeprplist'>
           <h4>Blank node property lists</h4>
-          <p>Using a <a href="#bnodeids">blank node identifier</a> requires introducing a new identifier for each blank node. Although they're not quite as hard to mint as IRIs, in many cases it is redundant to even introduce such an identifier.</p>
-          <p>For instance, blank nodes are often used to <a data-cite="rdf-primer#structuredproperties">structure composite pieces of information</a>, such as street addresses, telephone numbers and dates. Using the blank node property list syntax, this kind of pattern can be represented quite conveniently as follows:</p>
-          <p><strong>TODO: would be ideal if the equivalent simple-triples example could be shown side-by-side with the blank node property list example, like <a href="https://www.w3.org/TR/turtle/#unlabeled-bnodes">here</a>.</strong></p>
+          <p>Using a <a>blank node identifier</a> requires introducing a new identifier for each <a>blank node</a>. Although they're not quite as hard to mint as <a>IRIs</a>, in many cases it is redundant to even introduce such an identifier.</p>
+          <p>For instance, <a>blank nodes</a> are often used to <a data-cite="rdf-primer#structuredproperties">structure composite pieces of information</a>, such as street addresses, telephone numbers and dates. Using the <a href="#grammar-production-blankNodePropertyList">blank node property list</a> syntax, this kind of pattern can be represented quite conveniently as follows:</p>
+          <p><strong>TODO: would be ideal if the equivalent simple-triples example could be shown side-by-side with the <a href="#bnodeprplist">blank node property lists</a> example, like <a href="https://www.w3.org/TR/turtle/#unlabeled-bnodes">here</a>.</strong></p>
           <pre id="address-bnode-prp-list"
                class="example nohighlight"
                data-transform="updateExample">
@@ -415,15 +449,15 @@
             _:t rdfs:label "Springfield" .
             -->
           </pre>
-          <p>As shown, a blank node property list relies on <a href="#polists">predicate lists</a> to easily group statements about blank nodes. We also show the equivalent <a href="#simpletriples">simple triples</a> using blank node identifiers.</p>
-          <p class="note">In some cases, using a blank node identifier will simply feel more convenient and natural; e.g., in case you want to describe multiple people with the same address. Of course, we could still use an "inverse" <em>addressOf</em> property to add people with the same address to the blank node property list, i.e., making <code>:john</code> just another element of the composite piece of information.</p>
+          <p>As shown, a <a href="#bnodeprplist">blank node property lists</a> relies on <a href="#polists">predicate object lists</a> to easily group statements about <a>blank nodes</a>. We also show the equivalent <a href="#simpletriples">simple triples</a> using <a>blank node identifiers</a>.</p>
+          <p class="note">In some cases, using a <a>blank node identifier</a> will simply feel more convenient and natural; e.g., in case you want to describe multiple people with the same address. Of course, we could still use an "inverse" <em>addressOf</em> property to add people with the same address to the <a href="#bnodeprplist">blank node property lists</a>, i.e., making <code>:john</code> just another element of the composite piece of information.</p>
         </section>
         <section id="bnode-use-cases">
           <h4>Blank node use cases</h4>
-          <p>Below, we summarize typical use cases where blank nodes are used to describe resources.</p>
-          <p><strong>Unknown resources</strong>: we might <a href="rdf-primer#section-blank-node">want to state</a> that the Mona Lisa painting has in its background an unidentified tree, which we know to be a cypress tree. We could mint an IRI such as "mona-lisa-cypress-tree", but we feel that would be redundant &mdash; we simply want to describe the tree, such as the painting it is in, and the type of tree. We're not particularly interested in allowing other <a>N3 graphs</a> to refer to the tree. Moreover, there may already exist an IRI for that particular tree, and we don't want to mint another IRI to refer to the same tree (nor do we want to lookup this existing IRI).</p>
-          <p><strong>Composite information</strong>: when describing <a data-cite="rdf-primer#structuredproperties">composite pieces of information</a>, such as street addresses, telephone numbers and dates, it would be quite redundant to mint an IRI just for the purpose of structuring this information. It is unlikely that anyone outside this <a>N3 graph</a> would ever need to refer directly to the IRI. Instead, one can use an RDF blank node to connect the "composed" piece of information, e.g., the street address, to its composite values, e.g., street name, number, and city.</p>
-          <p><strong>N-ary relations</strong>: blank nodes are a convenient way to represent <a href="#naryrel">n-ary relations in <abbr title="Notation3">N3</abbr></a>.</p>
+          <p>Below, we summarize typical use cases where <a>blank nodes</a> are used to describe resources.</p>
+          <p><strong>Unknown resources</strong>: we might <a href="rdf-primer#section-blank-node">want to state</a> that the Mona Lisa painting has in its background an unidentified tree, which we know to be a cypress tree. We could mint an <a>IRI</a> such as "mona-lisa-cypress-tree", but we feel that would be redundant &mdash; we simply want to describe the tree, such as the painting it is in, and the type of tree. We're not particularly interested in allowing other <a>N3 graphs</a> to refer to the tree. Moreover, there may already exist an <a>IRI</a> for that particular tree, and we don't want to mint another <a>IRI</a> to refer to the same tree (nor do we want to lookup this existing <a>IRI</a>).</p>
+          <p><strong>Composite information</strong>: when describing <a data-cite="rdf-primer#structuredproperties">composite pieces of information</a>, such as street addresses, telephone numbers and dates, it would be quite redundant to mint an a>IRI</a> just for the purpose of structuring this information. It is unlikely that anyone outside this <a>N3 graph</a> would ever need to refer directly to the a>IRI</a>. Instead, one can use an <a data-lt="blank node">RDF blank node</a> to connect the "composed" piece of information, e.g., the street address, to its composite values, e.g., street name, number, and city.</p>
+          <p><strong>N-ary relations</strong>: <a>blank nodes</a> are a convenient way to represent <a href="#naryrel">n-ary relations in <abbr title="Notation3">N3</abbr></a>.</p>
           <!--
             <pre class="example nohighlight">@prefix foaf: &lt;http://xmlns.com/foaf/0.1/&gt; .
             
@@ -458,7 +492,7 @@
               :author :deborah, :daniele, :peter .
           -->
         </pre>
-        <p>I.e., we use an <a href="polists">object list</a> to explicitly state that these members are separate values of the author property. We no longer need to assume meaning (<em>a</em>) since the RDF semantics already explicates that meaning.</p>
+        <p>I.e., we use an <a href="grammar-production-objectList">object list</a> to explicitly state that these members are separate values of the author property. We no longer need to assume meaning (<em>a</em>) since the RDF semantics already explicates that meaning.</p>
         <p class="note">Since <abbr title="Notation3">N3</abbr> / RDF statements do not have an inherent order, this example loses meaning (<em>b</em>) since we no longer know who is the first author.</p>
         <p>In the following example, we state that a resolution was approved by a group with members Fred, Wilma, and Dino:</p>
         <pre class="example nohighlight" data-transform="updateExample">
@@ -541,9 +575,9 @@
           representing a specific <a>N3 triple element</a>
           followed by a path of one or more predicates,
           separated by directional indicators for
-          forward (`!`) and reverse (`^`) relationships.
+          forward ("`!`") and reverse ("`^`") relationships.
           In the forward direction, a path describes a relationship from a specific
-          <a>N3 triple element</a> (such as an IRI) to a <a>blank node</a>.
+          <a>N3 triple element</a> (such as an a>IRI</a>) to a <a>blank node</a>.
           In the reverse direction, it describes the relationship
           from a <a>blank node</a> to some <a>N3 triple element</a>.
           Successive indicator/<a href="#grammar-production-pathItem">pathItem</a>
@@ -786,7 +820,7 @@ To illustrate that consider the following example:
       <p>The <abbr title="Notation3">N3</abbr> Working Group made the following decisions that modify the <a>N3 grammar</a> as originally presented in [[N3]]:
       <ul>
         <li>
-          Dropping the <code>@keywords</code> declaration. It is complex and difficult to explain. Also, when using the declaration, <a>N3 documents</a> look wholly different from when it is not being used, since it allows local names in the default namespace to be listed without the "<code>:</code>" symbol.
+          Dropping the <code>@keywords</code> declaration. It is complex and difficult to explain. Also, when using the declaration, <a>N3 documents</a> look wholly different from when it is not being used, since it allows <a>local names</a> in the default namespace to be listed without the "<code>:</code>" symbol.
         </li>
         <li>
           Supporting all verb and boolean keywords (<code>is .. of</code>, <code>has</code>, <code>a</code>, <code>true</code>, <code>false</code>) both with and without "<code>@</code>" prefix. Turtle supports the <code>a</code> keyword, i.e., without an "<code>@</code>", but requires the symbol for the <code>@prefix</code> and <code>@base</code> declarations. The <a data-cite="N3#grammar">original N3 grammar</a> required the "<code>@</code>" prefix for all verb and boolean keywords. Hence, this decision was made for compatibility with Turtle as well as to avoid an unintuitive grammar, i.e., where some keywords have the "<code>@</code>" prefix and some don't.
@@ -882,26 +916,22 @@ To illustrate that consider the following example:
             (see the <a href="#grammar-production-UCHAR">UCHAR</a> production)
           </li>
           <li>
-            Escape sequences in <a href="#dfn-local-name">local names</a>. These escape the following reserved characters in the local name part of prefixed names: <code>_ ~ . - ! $ & \ ( ) * + , ; = / ? # @ %</code> (see the <a href="#grammar-production-PN_LOCAL_ESC">PN_LOCAL_ESC</a> production)
+            Escape sequences in <a>local names</a>. These escape the following reserved characters in the local name part of prefixed names: <code>_ ~ . - ! $ & \ ( ) * + , ; = / ? # @ %</code> (see the <a href="#grammar-production-PN_LOCAL_ESC">PN_LOCAL_ESC</a> production)
           </li>
         </ul>
       </section>
       <section id='irires'>
         <h3>IRI resolution</h3>
-        <p> Relative IRIs are resolved with base IRIs using the algorithm in the Uniform Resource Identifier (URI) Generic Syntax [[RFC3986]] Section 5.2, "Relative Resolution". Since [[RFC3986]] pertains to URIs instead of IRIs, in the aforementioned algorithm, characters that are additionally allowed in IRI references are simply treated in the same way that unreserved characters are treated in URI references, per Section 6.5 of Internationalized Resource Identifiers (IRIs) [[RFC3987]]. Neither Syntax-Based Normalization nor Scheme-Based Normalization (described in Sections 6.2.2 and 6.2.3 of [[RFC3986]]) are performed.</p>
-        <p>In descending order of precedence, the following describes how Base IRIs are established:</p>
-        <ol>
-          <li>
-            The <abbr title="Notation3">N3</abbr> <code>@base</code> or <code>BASE</code> directive can be used to define the Base IRI, per [[RFC3986]] Section 5.1.1, "Base URI Embedded in Content".
-          </li>
-          <li>
-            If no Base IRI is embedded: if the <a>N3 document</a>'s retrieval context is known, then the enclosing entity's (e.g., message or archive) Base IRI will be used, as per [[RFC3986]] Section 5.1.2, "Base URI from the Encapsulating Entity". A mechanism for embedding a Base IRI within MIME container types is defined by MHTML [RFC2557] Section 5, "Base URIs for resolution of relative URIs". For instance, the HTML BASE directive or Content-Location header can be used within a MIME multipart container, as per [[RFC2557]], or the XML BASE directive within a SOAP envelope [[XMLBASE]].
-          </li>
-          <li>
-            If no Base IRI is embedded, and no encapsulated entity exists: if a IRI was used to retrieve the <a>N3 document</a>, then that IRI will be considered the Base IRI, as per [[RFC3986]] Section 5.1.3, "Base URI from the Retrieval URI".
-          </li>
-          <li>If none of the above apply, then the Base IRI will be defined by the context of the application, as per [[RFC3986]] Section 5.1.4, "Default Base URI".</li>
-        </ol>
+        <p> Relative IRIs are resolved with <a>base IRIs</a> using the algorithm in [[[RFC3986]]] [[RFC3986]]
+          <a data-cite="RFC3986#section-5.2">Section 5.2 "Relative Resolution"</a>
+          as supplemented by
+          <a data-cite="RFC3987#section-6.5">Section 6.5</a>
+          of [[[RFC3987]]] [[RFC3997]].</p>
+
+        <p>The <abbr title="Notation3">N3</abbr> <code>@base</code>
+          or <code>BASE</code> directive can be used to
+          define the <a>Base IRI</a>,
+          per [[RFC3986]] <a data-cite="RFC3986#section-5.1.1">Section 5.1.1 "Base URI Embedded in Conent"</a>.</p>
       </section>
       <section id='pathres'>
         <h3>Path resolution</h3>
@@ -962,7 +992,7 @@ To illustrate that consider the following example:
       </section>
       <section id="rel-n3-trig">
         <h3>TriG</h3>
-        <p>[[[TRIG]]] is itself a superset of the Turtle syntax and includes a compact way to write RDF datasets, i.e., sets of named graphs. In particular, TriG allows the specification of so-called graph statements, which are a pair of an IRI or blank node label and a group of triple statements surrounded by "<code>{</code>" and "<code>}</code>".</p>
+        <p>[[[TRIG]]] is itself a superset of the Turtle syntax and includes a compact way to write RDF datasets, i.e., sets of named graphs. In particular, TriG allows the specification of so-called graph statements, which are a pair of an <a>IRI</a> or blank node label and a group of triple statements surrounded by "<code>{</code>" and "<code>}</code>".</p>
         <p>For instance:</p>
         <pre class="example nohighlight" data-transform="updateExample">
           <!--
@@ -1018,7 +1048,7 @@ To illustrate that consider the following example:
             -->
 
           </pre>
-          <p class="note">Either you could mint a new IRI for representing the n-ary relation, or simply use a <a href="#bnodes">blank node</a>. E.g., in case other parties may want to refer to the n-ary relation from outside the <abbr title="Notation3">N3</abbr> graph, one could choose to mint a new IRI; else, it will likely be more convenient to use a <a href="#bnodeprplist">blank node property list</a>.</p>
+          <p class="note">Either you could mint a new <a>IRI</a> for representing the n-ary relation, or simply use a <a href="#bnodes">blank node</a>. E.g., in case other parties may want to refer to the n-ary relation from outside the <abbr title="Notation3">N3</abbr> graph, one could choose to mint a new <a>IRI</a>; else, it will likely be more convenient to use a <a href="#bnodeprplist">blank node property list</a>.</p>
           <p>In other cases, things are more naturally described as <em>properties of relations</em>, rather than n-ary relations &mdash; for instance, the provenance of a piece of information, the trend of someone's body temperature and when the temperature was taken. Nevertheless, these can be represented in the same way as n-ary relation participants.</p>
           <p>We start from the same solution above, i.e., introducing a resource to represent the (in this case, binary) relation, and then linking the two participants to this resource. Subsequently, we use a set of binary relations to attach each descriptive property (e.g., diagnosis probability; temperature trend) to the relation resource.</p>
           <!-- <p>For instance, when describing a diagnosis (e.g., breast cancer) of someone (e.g., Christine), you may want to indicate the probability of the diagnosis, and the date at which the diagnosis was made:</p>
@@ -1157,7 +1187,7 @@ To illustrate that consider the following example:
         <dt>Encoding considerations:</dt>
         <dd>The syntax of Notation3 is expressed over code points in Unicode [[UNICODE]]. The encoding is always UTF-8 [[UTF-8]]. Unicode code points may also be expressed using an \uXXXX (U+0000 to U+FFFF) or \UXXXXXXXX syntax (for U+10000 onwards) where X is a hexadecimal digit [0-9A-Fa-f]</dd>
         <dt>Security considerations:</dt>
-        <dd>Notation3 is a general-purpose assertion language; applications may evaluate given data to infer more assertions or to dereference IRIs, invoking the security considerations of the scheme for that IRI. Note in particular, the privacy issues in [[RFC3023]] section 10 for HTTP IRIs. Data obtained from an inaccurate or malicious data source may lead to inaccurate or misleading conclusions, as well as the dereferencing of unintended IRIs. Care must be taken to align the trust in consulted resources with the sensitivity of the intended use of the data; inferences of potential medical treatments would likely require different trust than inferences for trip planning. Notation3 is used to express arbitrary application data; security considerations will vary by domain of use. Security tools and protocols applicable to text (e.g. PGP encryption, MD5 sum validation, password-protected compression) may also be used on Notation3 documents. Security/privacy protocols must be imposed which reflect the sensitivity of the embedded information. Notation3 can express data which is presented to the user, for example, RDF Schema labels. Application rendering strings retrieved from untrusted Notation3 documents must ensure that malignant strings may not be used to mislead the reader. The security considerations in the media type registration for XML ([[RFC3023]] section 10) provide additional guidance around the expression of arbitrary data and markup. Notation3 uses IRIs as term identifiers. Applications interpreting data expressed in Notation3 should address the security issues of Internationalized Resource Identifiers (IRIs) [[RFC3987]] Section 8, as well as Uniform Resource Identifier (URI): Generic Syntax [[RFC3986]] Section 7. Multiple IRIs may have the same appearance. Characters in different scripts may look similar (a Cyrillic "о" may appear similar to a Latin "o"). A character followed by combining characters may have the same visual representation as another character (LATIN SMALL LETTER E followed by COMBINING ACUTE ACCENT has the same visual representation as LATIN SMALL LETTER E WITH ACUTE). Any person or application that is writing or interpreting data in Notation3 must take care to use the IRI that matches the intended semantics, and avoid IRIs that make look similar. Further information about matching of similar characters can be found in Unicode Security Considerations [[UNICODE-SECURITY]] and Internationalized Resource Identifiers (IRIs) [[RFC3987]] Section 8.</dd>
+        <dd>Notation3 is a general-purpose assertion language; applications may evaluate given data to infer more assertions or to dereference <a>IRIs</a>, invoking the security considerations of the scheme for that <a>IRI</a>. Note in particular, the privacy issues in [[RFC3023]] section 10 for HTTP <a>IRIs</a>. Data obtained from an inaccurate or malicious data source may lead to inaccurate or misleading conclusions, as well as the dereferencing of unintended <a>IRIs</a>. Care must be taken to align the trust in consulted resources with the sensitivity of the intended use of the data; inferences of potential medical treatments would likely require different trust than inferences for trip planning. Notation3 is used to express arbitrary application data; security considerations will vary by domain of use. Security tools and protocols applicable to text (e.g. PGP encryption, MD5 sum validation, password-protected compression) may also be used on Notation3 documents. Security/privacy protocols must be imposed which reflect the sensitivity of the embedded information. Notation3 can express data which is presented to the user, for example, RDF Schema labels. Application rendering strings retrieved from untrusted Notation3 documents must ensure that malignant strings may not be used to mislead the reader. The security considerations in the media type registration for XML ([[RFC3023]] section 10) provide additional guidance around the expression of arbitrary data and markup. Notation3 uses <a>IRIs</a> as term identifiers. Applications interpreting data expressed in Notation3 should address the security issues of Internationalized Resource Identifiers (<a>IRIs</a>) [[RFC3987]] Section 8, as well as Uniform Resource Identifier (URI): Generic Syntax [[RFC3986]] Section 7. Multiple <a>IRIs</a> may have the same appearance. Characters in different scripts may look similar (a Cyrillic "о" may appear similar to a Latin "o"). A character followed by combining characters may have the same visual representation as another character (LATIN SMALL LETTER E followed by COMBINING ACUTE ACCENT has the same visual representation as LATIN SMALL LETTER E WITH ACUTE). Any person or application that is writing or interpreting data in Notation3 must take care to use the <a>IRI</a> that matches the intended semantics, and avoid <a>IRIs</a> that make look similar. Further information about matching of similar characters can be found in Unicode Security Considerations [[UNICODE-SECURITY]] and Internationalized Resource Identifiers (<a>IRIs</a>) [[RFC3987]] Section 8.</dd>
         <dt>Interoperability considerations:</dt>
         <dd>Not Applicable</dd>
         <dt>Published specification:</dt>
