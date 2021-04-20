@@ -208,7 +208,7 @@
       </section>
       <section id='polists'>
         <h4>Predicate and object lists</h4>
-        <p>As shown in the above example, the same subject (e.g., Spiderman) will often be described by several <a>N3 statements</a>. To make these <a>N3 statements</a> less cumbersome, one can put a semicolon ("<code>;</code>") at the end of an <a>N3 statement</a> to describe the same subject in the subsequent <a>N3 statement</a> (called a "<a href="#polists">predicate object list</a>"):</p>
+        <p>As shown in the above example, the same subject (here, Spiderman) will often be described by several <a>N3 statements</a>. To make these <a>N3 statements</a> less cumbersome, one can put a semicolon ("<code>;</code>") at the end of an <a>N3 statement</a> to describe the same subject in the subsequent <a>N3 statement</a> (called a "<a href="#polists">predicate object list</a>"):</p>
         <pre class="example nohighlight" data-transform="updateExample">
           <!--
           <http://example.org/#spiderman>
@@ -246,10 +246,11 @@
           which includes a <dfn>prefix label</dfn> (e.g., <code>ex</code>)
           and a <a>local name</a> (e.g., <code>Spiderman</code>)
           separated by a colon ("<code>:</code>").
-          The <code>@prefix</code> directive associates a <a>prefix label</a>
-          with a <dfn>namespace IRI</dfn> &mdash; a prefixed name is turned into an IRI
-          by <a data-cite="RFC3986#section-5.2">resolving</a> the
-          <a>prefix label</a> against the <a>namespace IRI</a>.
+          The `@prefix` or `PREFIX` directives associate a <a>prefix label</a>
+          with a <dfn>namespace IRI</dfn> &mdash; a prefixed name is turned into an <a>IRI</a>
+          by concatenating the <a>namespace IRI</a>
+          with the <a>prefix label</a>.
+          Subsequent `@prefix` or `PREFIX` directives may re-map the same <a>prefix label</a>.
           For instance, the following is equivalent to using <a>absolute IRIs</a>:</p>
         <pre class="example nohighlight" data-transform="updateExample">
           <!--
@@ -266,6 +267,23 @@
           :green-goblin :enemyOf :spiderman .
           -->
         </pre>
+
+        <div class="note">
+          <p>Prefixed names are a superset of XML QNames.
+            They differ in that the local part of prefixed names may include:</p>
+
+          <ul>
+          <li>leading digits, e.g. `leg:3032571` or `isbn13:9780136019701`</li>
+          <li>non leading colons, e.g. `og:video:height`</li>
+          <li>reserved character escape sequences, e.g. `wgs:lat\-long`</li>
+          </ul>
+        </div>
+
+        <p class="note">
+          The `@prefix` and `@base` directives require a trailing `'.'` after the <a>IRI</a>,
+          the equalivent `PREFIX` and `BASE` must not have a trailing `'.'`
+          after the <a>IRI</a> part of the directive.
+        </p>
 
         <p>One can write
           <dfn data-lt="relative iri">relative IRI references</dfn>,
@@ -288,8 +306,23 @@
           <a data-cite="RFC3986#section-5.2">resolution</a> are described in
           <a href="#irires" class="sectionRef"></a>.</p>
 
-        <p class="note">We recommend listing the <code>@prefix</code> declarations (just like <code>@base</code> declarations) at the top of an <a>N3 document</a>. This is not mandatory however, and they can technically be put anywhere before the prefixed name or <a>relative IRI</a> that relies on the declaration. Subsequent <code>@prefix</code> or <code>PREFIX</code> directives may re-map the same <a>prefix label</a> to another <a>namespace IRI</a>.</p>
-        <p class="note"><abbr title="Notation3">N3</abbr> also supports case-insensitive 'PREFIX' and 'BASE' directives, as does Turtle, to align the syntax with SPARQL. Note that the <code>@prefix</code> and <code>@base</code> directives require a trailing '<code>.</code>' after the <a>IRI</a>, but the equivalent<code>PREFIX</code> and <code>BASE</code> must not have a trailing '.'.
+        <p class="note">We recommend listing the `@prefix` or `PREFIX` declarations
+          (just like `@base` or `BASE` declarations)
+          at the top of an <a>N3 document</a>.
+          This is not mandatory, however,
+          and they can technically be put anywhere before
+          the <a>prefixed name</a> or <a>relative IRI</a>
+          that relies on the declaration.
+          Subsequent @prefix` or `PREFIX` directives may re-map
+          the same <a>prefix label</a> to another <a>namespace IRI</a>.</p>
+
+        <p class="note"><abbr title="Notation3">N3</abbr> also supports
+          case-insensitive 'PREFIX' and 'BASE' directives, as does Turtle,
+          to align the syntax with SPARQL.
+          Note that the <code>@prefix</code> and <code>@base</code> directives
+          require a trailing '<code>.</code>' after the <a>IRI</a>,
+          but the equivalent<code>PREFIX</code> and <code>BASE</code>
+          must not have a trailing '.'.
         </p>
         <!-- <pre class="example nohighlight">@prefix foaf: &lt;http://xmlns.com/foaf/0.1/&gt; .
           @prefix : &lt;http://example.org/#&gt;
@@ -456,7 +489,7 @@
           <h4>Blank node use cases</h4>
           <p>Below, we summarize typical use cases where <a>blank nodes</a> are used to describe resources.</p>
           <p><strong>Unknown resources</strong>: we might <a href="rdf-primer#section-blank-node">want to state</a> that the Mona Lisa painting has in its background an unidentified tree, which we know to be a cypress tree. We could mint an <a>IRI</a> such as "mona-lisa-cypress-tree", but we feel that would be redundant &mdash; we simply want to describe the tree, such as the painting it is in, and the type of tree. We're not particularly interested in allowing other <a>N3 graphs</a> to refer to the tree. Moreover, there may already exist an <a>IRI</a> for that particular tree, and we don't want to mint another <a>IRI</a> to refer to the same tree (nor do we want to lookup this existing <a>IRI</a>).</p>
-          <p><strong>Composite information</strong>: when describing <a data-cite="rdf-primer#structuredproperties">composite pieces of information</a>, such as street addresses, telephone numbers and dates, it would be quite redundant to mint an a>IRI</a> just for the purpose of structuring this information. It is unlikely that anyone outside this <a>N3 graph</a> would ever need to refer directly to the a>IRI</a>. Instead, one can use an <a data-lt="blank node">RDF blank node</a> to connect the "composed" piece of information, e.g., the street address, to its composite values, e.g., street name, number, and city.</p>
+          <p><strong>Composite information</strong>: when describing <a data-cite="rdf-primer#structuredproperties">composite pieces of information</a>, such as street addresses, telephone numbers and dates, it would be quite redundant to mint an <a>IRI</a> just for the purpose of structuring this information. It is unlikely that anyone outside this <a>N3 graph</a> would ever need to refer directly to the <a>IRI</a>. Instead, one can use an <a data-lt="blank node">RDF blank node</a> to connect the "composed" piece of information, e.g., the street address, to its composite values, e.g., street name, number, and city.</p>
           <p><strong>N-ary relations</strong>: <a>blank nodes</a> are a convenient way to represent <a href="#naryrel">n-ary relations in <abbr title="Notation3">N3</abbr></a>.</p>
           <!--
             <pre class="example nohighlight">@prefix foaf: &lt;http://xmlns.com/foaf/0.1/&gt; .
@@ -577,7 +610,7 @@
           separated by directional indicators for
           forward ("`!`") and reverse ("`^`") relationships.
           In the forward direction, a path describes a relationship from a specific
-          <a>N3 triple element</a> (such as an a>IRI</a>) to a <a>blank node</a>.
+          <a>N3 triple element</a> (such as an <a>IRI</a>) to a <a>blank node</a>.
           In the reverse direction, it describes the relationship
           from a <a>blank node</a> to some <a>N3 triple element</a>.
           Successive indicator/<a href="#grammar-production-pathItem">pathItem</a>
@@ -931,7 +964,9 @@ To illustrate that consider the following example:
         <p>The <abbr title="Notation3">N3</abbr> <code>@base</code>
           or <code>BASE</code> directive can be used to
           define the <a>Base IRI</a>,
-          per [[RFC3986]] <a data-cite="RFC3986#section-5.1.1">Section 5.1.1 "Base URI Embedded in Conent"</a>.</p>
+          per [[RFC3986]] <a data-cite="RFC3986#section-5.1.1">Section 5.1.1 "Base URI Embedded in Conent"</a>.
+          Each `@base` or `BASE` directive sets a new In-Scope <a>Base IRI</a>,
+          relative to the previous <a>base IRI</a>.</p>
       </section>
       <section id='pathres'>
         <h3>Path resolution</h3>
