@@ -107,7 +107,7 @@
       <p>Below, we elaborate on the main characteristics of <abbr title="Notation3">N3</abbr>:</p>
       <ul>
         <li>
-          <strong><abbr title="Notation3">N3</abbr> is a superset of RDF and <abbr title="Terse RDF Triple Language">Turtle</abbr>.</strong> One can write any valid [[[Turtle]]] graph, and it will be valid in <abbr title="Notation3">N3</abbr> as well. Importantly, this means that all of Turtle's syntactic sugar is available in <abbr title="Notation3">N3</abbr> &mdash; including <a href="#polists">predicate and object lists</a>, unlabeled blank nodes, and <a>collections</a>. Moreover, <strong><a>collections</a> are first-class citizens</strong> in <abbr title="Notation3">N3</abbr>, with an associated set of built-ins for accessing and manipulating them.
+          <strong><abbr title="Notation3">N3</abbr> is a superset of RDF and <abbr title="Terse RDF Triple Language">Turtle</abbr>.</strong> One can write any valid [[[Turtle]]] graph, and it will be valid in <abbr title="Notation3">N3</abbr> as well. Importantly, this means that all of Turtle's syntactic sugar is available in <abbr title="Notation3">N3</abbr> &mdash; including <a href="#polists">predicate and object lists</a>, unlabeled blank nodes, and <a>collections</a>. Moreover, <strong><a>collections</a> are first-class citizens</strong> in <abbr title="Notation3">N3</abbr>, with an associated set of <a>built-ins</a> for accessing and manipulating them.
         </li>
         <li>
           <strong><abbr title="Notation3">N3</abbr> adds an If-Then style of decision making in the form of logical implications and variables.</strong> Logical implications allow making If-Then style inferences via modus ponens (where implementations may apply either backward- or forward-chaining). Variables in such rules may be quantified either universally or existentially; in the latter case, they are comparable to blank nodes. 
@@ -116,10 +116,10 @@
           <strong><abbr title="Notation3">N3</abbr> supports quoting and describing graphs of statements (e.g., recording provenance).</strong> In an open web environment, as an unbounded sea of (semi-)connected sources, one should be made aware of, and given the ability to disseminate, the provenance of information, among other things. A quoted graph includes a conjunction of quoted statements. It allows expression of where the particular statements (e.g., message, document) came from, at what time they were stated and by whom, and, in general, any other description of them.
         </li>
         <li>
-          <strong><abbr title="Notation3">N3</abbr> includes a core set of built-ins for accessing remote online information.</strong> In an open web environment, any online source may have information that supports decision making. The <code>log:semantics</code> built-in allows pulling in (parsed) logical expressions from remote online locations; the <code>log:conclusion</code> built-in allows calculating the deductive closure of any logical expression, whether local or remote. Subsequently, down-stream operations may, for instance, check whether other expressions are included, or not included, within these logical expressions.
+          <strong><abbr title="Notation3">N3</abbr> includes a core set of <a>built-ins</a> for accessing remote online information.</strong> In an open web environment, any online source may have information that supports decision making. The <code>log:semantics</code> <a>built-in</a> allows pulling in (parsed) logical expressions from remote online locations; the <code>log:conclusion</code> <a>built-in</a> allows calculating the deductive closure of any logical expression, whether local or remote. Subsequently, down-stream operations may, for instance, check whether other expressions are included, or not included, within these logical expressions.
         </li>
         <li>
-          <strong><abbr title="Notation3">N3</abbr> supports a scoped version of negation-as-failure.</strong> In an open web environment, it is often useful to check whether or not online information supports, or allows derivation of, a given set of facts. However, it will not be possible nor useful to check whether the whole Semantic Web <em>does not</em> support a given set of facts at some time &mdash; any online source, unknown to the reasoner at the time, or added after the question was asked, may hold a positive answer. Instead, a useful question in this setting is whether a <em>specific</em> piece of information, at a given point in time, does or does not support, or does or does not allow the derivation of, a set of facts. When tightly scoped to a specific information source, and at a specific time, this kind of negation-as-failure will not be influenced by other, unknown online sources. This is referred to as <em>scoped negation as failure,</em> and is supported by <abbr title="Notation3">N3</abbr>'s <code>log:notIncludes</code> built-in.
+          <strong><abbr title="Notation3">N3</abbr> supports a scoped version of negation-as-failure.</strong> In an open web environment, it is often useful to check whether or not online information supports, or allows derivation of, a given set of facts. However, it will not be possible nor useful to check whether the whole Semantic Web <em>does not</em> support a given set of facts at some time &mdash; any online source, unknown to the reasoner at the time, or added after the question was asked, may hold a positive answer. Instead, a useful question in this setting is whether a <em>specific</em> piece of information, at a given point in time, does or does not support, or does or does not allow the derivation of, a set of facts. When tightly scoped to a specific information source, and at a specific time, this kind of negation-as-failure will not be influenced by other, unknown online sources. This is referred to as <em>scoped negation as failure,</em> and is supported by <abbr title="Notation3">N3</abbr>'s <code>log:notIncludes</code> <a>built-in</a>.
         </li>
       </ul>
       <section id='namespaces'>
@@ -607,7 +607,7 @@
           with a <a href="#grammar-production-pathItem">pathItem</a>
           representing a specific <a>N3 triple element</a>
           followed by a path of one or more predicates,
-          separated by directional indicators for
+          separated by <a>directional indicator</a>s for
           forward ("`!`") and reverse ("`^`") relationships.
           In the forward direction, a path describes a relationship from a specific
           <a>N3 triple element</a> (such as an <a>IRI</a>) to a <a>blank node</a>.
@@ -694,7 +694,7 @@
 
       <section id='variables'>
         <h3>Variables and Quantification</h3>
-        <p>Bla...</p>
+        <p class="ednote">Bla...</p>
         <pre class="example" data-transform="updateExample">
           <!--
           Preformatted Text 
@@ -707,7 +707,7 @@
       </section>
       <section id='logimpl'>
         <h3>Logical Implications</h3>
-        <p>Bla...</p>
+        <p class="ednote">Bla...</p>
         <pre class="example nohighlight" data-transform="updateExample">
           <!--
           @prefix foaf: <http://xmlns.com/foaf/0.1/> .
@@ -724,7 +724,7 @@
       </section>
       <section id='keywords'>
         <h4>Keywords and special symbols</h4>
-        <p>Bla...</p>
+        <p class="ednote">Bla...</p>
         <pre class="example nohighlight" data-transform="updateExample">
           <!--
           @prefix foaf: <http://xmlns.com/foaf/0.1/> .
@@ -764,7 +764,7 @@
           <a>lists</a>,
           <a>quoted graphs</a>,
           and of one implication sign.
-          The latter is denoted by the `log:implies` builtin to indicate implication. 
+          The latter is denoted by the `log:implies` <a>built-in</a> to indicate implication. 
           In <abbr title="Notation3">N3</abbr>-turtle syntax, `log:implies` MAY be represented using the symbol <code>=&gt;</code>.
         </p>
         <p>
@@ -836,15 +836,34 @@ To illustrate that consider the following example:
       </section>
       <section id='sinterpret'>
         <h3>Simple N3 interpretations</h3>
-        <p>Bla...</p>
+        <p class="ednote">Bla...</p>
       </section>
       <section id='sneg'>
         <h3>Scoped Negation</h3>
-        <p>Bla...</p>
+        <p class="ednote">Bla...</p>
       </section>
       <section id='builtins'>
-        <h3>N3 Builtins</h3>
-        <p>Bla...</p>
+        <h3>N3 Built-ins</h3>
+        <p><abbr title="Notation3">N3</abbr> defines a core set of <dfn>built-ins</dfn> defined
+          in a set of vocabularies with defined semantics
+          for querying and manipulating <a>N3 documents</a>.
+          Built-ins are denoted by a controlled IRI defined in
+          one of the core namespaces:</p>
+        <ul>
+          <li><a href="../ns/crypto.html">Crypto</a> –
+            <a href="http://www.w3.org/2000/10/swap/crypto#">http://www.w3.org/2000/10/swap/crypto#</a>,</li>
+          <li><a href="../ns/list.html">List</a> –
+            <a href="http://www.w3.org/2000/10/swap/list#">http://www.w3.org/2000/10/swap/list#</a>,</li>
+          <li><a href="../ns/log.html">Log</a> –
+            <a href="http://www.w3.org/2000/10/swap/log#">http://www.w3.org/2000/10/swap/log#</a>,</li>
+          <li><a href="../ns/math.html">Math</a> –
+            <a href="http://www.w3.org/2000/10/swap/math#">http://www.w3.org/2000/10/swap/math#</a>,</li>
+          <li><a href="../ns/string.html">String</a> –
+            <a href="http://www.w3.org/2000/10/swap/string#">http://www.w3.org/2000/10/swap/string#</a>, and</li>
+          <li><a href="../ns/time.html">Time</a> –
+            <a href="http://www.w3.org/2000/10/swap/time#">http://www.w3.org/2000/10/swap/time#</a>.</li>
+        </ul>
+        <p class="ednote">Bla...</p>
       </section>
     </section>
     <section id='n3grammar'>
@@ -970,11 +989,39 @@ To illustrate that consider the following example:
       </section>
       <section id='pathres'>
         <h3>Path resolution</h3>
-        <p>Bla...</p>
+        <p><a>Paths</a> are resolved into zero or more <a>N3 triples</a>
+          and a single <a>N3 triple element</a> which is used as the
+          <a href="#grammar-production-expression">expression</a> value
+          of the <a>path</a>.
+          This is done by recursively processing the <a>path</a>,
+          in reverse, from the
+          last <dfn>directional indicator</dfn> ("`!`") or ("`^`").
+          The result of resolving a <a>path</a> into an
+          <a href="#grammar-production-expression">expression</a>
+          and set of emitted <a>N3 triples</a>
+          MUST be equivalent to using the following algorithm:</p>
+        <ol class="algorithm">
+          <li>If <a>path</a> |p| matches the <a href="#grammar-production-pathItem">pathItem</a> production,
+            the |p| can be reduced no further, return |p|
+            as the result.</li>
+          <li>Otherwise, separate the |p| into two components |path| and |pred|
+            from the last occurance of the <a>directional indicator</a> |dir|.</li>
+          <li>Create |obj| by invoking this algorithm recursively
+            using |path| for |p|.</li>
+          <li>If |dir| is "`!`",
+            emit a new <a>N3 triple</a>
+            (|obj| |pred| |B|) where |B| is a novel <a>blank node</a>.
+            return |obj| as the result.</li>
+          <li>Otherwise, |dir| is "`^`",
+            emit a new <a>N3 triple</a>
+            (|B| |pred| |obj|) where |bn| is a novel <a>blank node</a>.
+            return |B| as the result.</li>
+          </li>
+        </ol>
       </section>
       <section id='grammar'>
         <h3>Grammar</h3>
-        <p>Blah...</p>
+        <p class="ednote">Blah...</p>
         <div data-include="../grammar/n3.html"></div>
         <p>A textual version of this grammar may be found <a href="../grammar/n3.ebnf">here</a>.</p>
       </section>
@@ -1053,7 +1100,7 @@ To illustrate that consider the following example:
           -->
         </pre>
         <p><abbr title="Notation3">N3</abbr> is not directly compatible with TriG as it does not support this graph statement notation. Nevertheless, since <abbr title="Notation3">N3</abbr> supports quoted graphs (i.e., cited formulas) as part of regular <a>N3 statements</a>, authors can utilize the N3 Named Graphs extension [<strong>X</strong>] for associating names or identifiers with cited formulas. Although applications could easily introduce their own custom predicates for this purpose, we strongly recommend the use of this extension for interoperability purposes.</p>
-        <p>The N3 Named Graphs extension [<strong>X</strong>] defines a set of built-ins (used as predicates) to associate names or identifiers with cited formulas, which then become "named graphs". Moreover, each predicate has a well-defined semantics on how the named graph should be interpreted: as quoted graphs (the default <abbr title="Notation3">N3</abbr> interpretation), a partitioning of triples within a dataset context, sets of triples with their own isolated contexts, or specifying relations between local and online graphs.</p>
+        <p>The N3 Named Graphs extension [<strong>X</strong>] defines a set of <a>built-ins</a> (used as predicates) to associate names or identifiers with cited formulas, which then become "named graphs". Moreover, each predicate has a well-defined semantics on how the named graph should be interpreted: as quoted graphs (the default <abbr title="Notation3">N3</abbr> interpretation), a partitioning of triples within a dataset context, sets of triples with their own isolated contexts, or specifying relations between local and online graphs.</p>
       </section>
     </section>
     <section id='patterns' class=informative>
