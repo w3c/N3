@@ -103,23 +103,23 @@
     <section id='introduction'>
       <h2>Introduction</h2>
       <p>The Semantic Web represents a vision of online, interconnected and logical information. The core building block is a logical formalism called the Resource Description Framework (RDF) ([[[RDF11-PRIMER]]]). In RDF, one can express a logical graph as a conjunction of statements that describe properties of subject resources; and then describe the resource objects of those properties; and so on; resulting in a connected graph of logical information. It builds on the fundamental pointer mechanism of the Web, i.e., the Uniform Resource Identifier (URI), also known as International Resource Identifier (<abbr title="International Resource Identifier">IRI</abbr>), as a means to identify any RDF resource, ranging from abstract concepts (the book "Moby Dick") to physical (a paper copy of the book "Moby Dick") to electronic objects (an e-book copy of "Moby Dick"). People have used RDF to build vast quantities of online, connected knowledge graphs. The Semantic Web has allowed for decision making within an open web environment of shared knowledge graphs, as opposed to a closed system of locally believed facts.</p>
-      <p>Notation3 Logic, or <abbr title="Notation3">N3</abbr> for short, aims to improve decision-making abilities in an open web environment &mdash; by (a) extending the logical representation abilities of RDF and (b) allowing to access, operate on, and reason over online information. In line with the design ethos of RDF, <abbr title="Notation3">N3</abbr> attempts to walk the line between, on the one hand, ease-of-use by authors and simplicity of reasoning for developers; and, on the other hand, an extended utility and practicality for building real-world applications.</p>
+      <p>Notation3 Logic, or <abbr title="Notation3">N3</abbr> for short, aims to improve decision-making abilities in an open web environment &mdash; by (a) extending the logical representation abilities of RDF and (b) allowing access to, operation on, and reasoning over online information. In line with the design ethos of RDF, <abbr title="Notation3">N3</abbr> attempts to walk the line between, on the one hand, ease-of-use by authors and simplicity of reasoning for developers; and, on the other hand, extended utility and practicality for building real-world applications.</p>
       <p>Below, we elaborate on the main characteristics of <abbr title="Notation3">N3</abbr>:</p>
       <ul>
         <li>
-          <strong><abbr title="Notation3">N3</abbr> is a superset of RDF and <abbr title="Terse RDF Triple Language">Turtle</abbr>.</strong> One can write any valid [[[turtle]]] graph and it will be valid in <abbr title="Notation3">N3</abbr> as well. Importantly, this means that all of Turtle's syntactic sugar is available in <abbr title="Notation3">N3</abbr> &mdash; including <a href="#polists">predicate and object lists</a>, unlabeled blank nodes, and <a>collections</a>. Moreover, <strong><a>collections</a> are first-class citizens</strong> in <abbr title="Notation3">N3</abbr>, with an associated set of built-ins for accessing and manipulating them.
+          <strong><abbr title="Notation3">N3</abbr> is a superset of RDF and <abbr title="Terse RDF Triple Language">Turtle</abbr>.</strong> One can write any valid [[[Turtle]]] graph, and it will be valid in <abbr title="Notation3">N3</abbr> as well. Importantly, this means that all of Turtle's syntactic sugar is available in <abbr title="Notation3">N3</abbr> &mdash; including <a href="#polists">predicate and object lists</a>, unlabeled blank nodes, and <a>collections</a>. Moreover, <strong><a>collections</a> are first-class citizens</strong> in <abbr title="Notation3">N3</abbr>, with an associated set of built-ins for accessing and manipulating them.
         </li>
         <li>
-          <strong><abbr title="Notation3">N3</abbr> adds an If-Then style of decision making in the form of logical implications and variables.</strong> Logical implications allow making If-Then style inferences via modus ponens (where implementations may apply either backward- or forward-chaining). Variables in such rules may be either universally or existentially quantified &mdash; in the latter case, they are comparable to blank nodes. 
+          <strong><abbr title="Notation3">N3</abbr> adds an If-Then style of decision making in the form of logical implications and variables.</strong> Logical implications allow making If-Then style inferences via modus ponens (where implementations may apply either backward- or forward-chaining). Variables in such rules may be quantified either universally or existentially; in the latter case, they are comparable to blank nodes. 
         </li>
         <li>
-          <strong><abbr title="Notation3">N3</abbr> supports quoting and describing graphs of statements (e.g., recording provenance).</strong> In an open web environment, as an unbounded sea of (semi-)connected sources, one should be made aware of, and given the ability to disseminate, the provenance of information, among others. A quoted graph includes a conjunction of quoted statements. It allows expressing where the particular statements (e.g., message, document) came from, at what time they were stated and by whom, and, in general, what other kinds of statements can be made about them.
+          <strong><abbr title="Notation3">N3</abbr> supports quoting and describing graphs of statements (e.g., recording provenance).</strong> In an open web environment, as an unbounded sea of (semi-)connected sources, one should be made aware of, and given the ability to disseminate, the provenance of information, among other things. A quoted graph includes a conjunction of quoted statements. It allows expression of where the particular statements (e.g., message, document) came from, at what time they were stated and by whom, and, in general, any other description of them.
         </li>
         <li>
-          <strong><abbr title="Notation3">N3</abbr> includes a core set of builtins for accessing remote online information.</strong> In an open web environment, any online source may have information to support decision making. The <code>log:semantics</code> builtin allows pulling in (parsed) logical expressions from remote online locations; the <code>log:conclusion</code> built-in allows calculating the deductive closure of any logical expression, albeit local or remote. Subsequently, down-stream operations may, for instance, check whether other expressions are included, or not included, within these logical expressions.
+          <strong><abbr title="Notation3">N3</abbr> includes a core set of built-ins for accessing remote online information.</strong> In an open web environment, any online source may have information that supports decision making. The <code>log:semantics</code> built-in allows pulling in (parsed) logical expressions from remote online locations; the <code>log:conclusion</code> built-in allows calculating the deductive closure of any logical expression, whether local or remote. Subsequently, down-stream operations may, for instance, check whether other expressions are included, or not included, within these logical expressions.
         </li>
         <li>
-          <strong><abbr title="Notation3">N3</abbr> supports a scoped version of negation-as-failure.</strong> In an open web environment, it is often useful to check whether online information supports or not, or allows to derive or not, a given set of facts. But, it will not be possible nor useful to check whether the whole Semantic Web <em>does not</em> support a given set of facts at some time &mdash; any online source, unknown to the reasoner at the time, or added after the question was asked, may hold a positive answer. Instead, a useful question in this setting is whether a <em>specific</em> piece of information, at a given point in time, does not support, or does not allow the derivation of, a set of facts. When tightly scoped to a specific information source, and at a specific time, this kind of negation-as-failure will not influenced by other, unknown online sources. This is referred to as scoped negation as failure, and is supported by <abbr title="Notation3">N3</abbr>'s <code>log:notIncludes</code> built-in.
+          <strong><abbr title="Notation3">N3</abbr> supports a scoped version of negation-as-failure.</strong> In an open web environment, it is often useful to check whether or not online information supports, or allows derivation of, a given set of facts. However, it will not be possible nor useful to check whether the whole Semantic Web <em>does not</em> support a given set of facts at some time &mdash; any online source, unknown to the reasoner at the time, or added after the question was asked, may hold a positive answer. Instead, a useful question in this setting is whether a <em>specific</em> piece of information, at a given point in time, does or does not support, or does or does not allow the derivation of, a set of facts. When tightly scoped to a specific information source, and at a specific time, this kind of negation-as-failure will not be influenced by other, unknown online sources. This is referred to as <em>scoped negation as failure,</em> and is supported by <abbr title="Notation3">N3</abbr>'s <code>log:notIncludes</code> built-in.
         </li>
       </ul>
       <section id='namespaces'>
@@ -155,17 +155,17 @@
 
     <section id='language' class=informative>
       <h2>Language</h2>
-      <p>The aim of this section is to provide an informal overview of the <abbr title="Notation3">N3</abbr> language and its different features. Where possible, this section borrows from, or is at least based on, the [[[turtle]]] specification. More formal definitions will follow in the subsequent sections.
+      <p>The aim of this section is to provide an informal overview of the <abbr title="Notation3">N3</abbr> language and its different features. Where possible, this section borrows from, or is at least based on, the [[[Turtle]]] specification. More formal definitions will follow in the subsequent sections.
       </p>
       <section id='n3doc'>
         <h3>N3 document</h3>
         <p>An <dfn>N3 document</dfn> represents an <a>N3 graph</a> in a compact textual form. An <dfn>N3 graph</dfn>,
           in its simplest form, is a series of <dfn data-lt="n3 triple|statement|triple">N3 statements</dfn> or <a>triples</a>,
-          each describing a resource's relationships and written as a triple:
+          each describing one relationship of a resource, and written as a triple:
           <a data-cite="RDF11-CONCEPTS#dfn-subject">subject</a>,
           <a data-cite="RDF11-CONCEPTS#dfn-predicate">predicate</a>, and
           <a data-cite="RDF11-CONCEPTS#dfn-object">object</a>.
-          An <a>N3 graph</a> can have many more elements -
+          An <a>N3 graph</a> can have many more elements &mdash;
           <a href="#cformulas">cited formulas</a> for quoting sets of statements,
           <a href="#logimpl">logical implications</a> for If-Then style, rule-based reasoning,
           <a href="#variables">quantifications</a> for variables, and so on.
@@ -188,8 +188,8 @@
           In general, one uses an <a>IRI</a> to identify, well, an identifiable entity,
           such as a person, place, or thing &mdash;
           a literal is used for a textual or numerical (i.e., datatype) value,
-          such as names, dates, height, and so on.</p>
-        <p>The three <a>N3 triples</a> below highlights the emnity between Spiderman and the Green Goblin, and lists the names of these two individuals:</p>
+          such as name, date, height, and so on.</p>
+        <p>The three <a>N3 triples</a> below highlight the enmity between Spiderman and the Green Goblin, and lists the names of these two individuals:</p>
         <!-- 
           NOTE: there is a data-include attribute 
           (https://github.com/w3c/respec/wiki/ReSpec-Editor's-Guide#inclusions--transformations)
@@ -202,7 +202,7 @@
           <http://example.org/#green-goblin> <http://xmlns.com/foaf/0.1/name> "Green Goblin" .
             -->
         </pre>
-        <p class="note">There is no inherent order for <abbr title="Notation3">N3</abbr> / RDF triples. This is the same for the relational model, i.e., relational tuples or rows do not have an inherent order. Hence, it is a mistake to associate meaning with the order of a statement in an <abbr title="Notation3">N3</abbr> document: e.g., assuming that the first listed telephone for Spiderman would his landline, and the second one his mobile number.</p>
+        <p class="note">There is no inherent order for <abbr title="Notation3">N3</abbr> or RDF triples. The same is true for the relational model, i.e., relational tuples or rows do not have an inherent order. Hence, it is a mistake to associate meaning with the order of statements in an <abbr title="Notation3">N3</abbr> document; for instance, it would be an error to assume that the first listed telephone for Spiderman would be his landline, and the second one his mobile number.</p>
         <p class="note">Examples will often be written using newlines and tab spaces for readability. However, generally, only the subjects, predicates and objects need to be separated with a whitespace.</p>
         <!-- <pre class="example nohighlight">&lt;http://example.org/#dt&gt; &lt;http://xmlns.com/foaf/0.1/name&gt; &quot;Dominik Tomaszuk&quot; .</pre> -->
       </section>
@@ -299,7 +299,7 @@
       </section>
       <section id='literals'>
         <h3>Literals</h3>
-        <p>In general, one uses a literal to represent a textual or numerical (i.e., datatype) value &mdash; such as names, dates, height, and so on. Numbers (integers, decimals and doubles) can simply be represented using their numerical value, and booleans can be represented using keywords <code>true</code> or <code>false</code>:</p>
+        <p>In general, one uses a literal to represent a textual or numerical (i.e., datatype) value &mdash; such as name, date, height, and so on. Numbers (integers, decimals, and doubles) can simply be represented using their numerical value, and booleans can be represented using keywords <code>true</code> or <code>false</code>:</p>
         <pre class="example nohighlight" data-transform="updateExample">
           <!--
           @prefix : <http://example.org/elements> .
