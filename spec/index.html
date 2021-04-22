@@ -1001,9 +1001,16 @@ To illustrate that consider the following example:
           and set of emitted <a>N3 triples</a>
           MUST be equivalent to using the following algorithm:</p>
         <ol class="algorithm">
-          <li>If <a href="#grammar-production-path">path</a> |p| matches the <a href="#grammar-production-pathItem">pathItem</a> production, and no prior reduction took place, then return |p| as the result.</li>
-          <li>If <a href="#grammar-production-path">path</a> |p| matches the <a href="#grammar-production-pathItem">pathItem</a> production, and some prior reduction took place, then return the last created blank node |B| as the result.</li>
-          <li>Otherwise, separate |p| into two components |pathItem| and |path|, based on the next occurrence of the <a>directional indicator</a> |dir|.</li>
+          <li>If <a href="#grammar-production-path">path</a> |p| matches the 
+            <a href="#grammar-production-pathItem">pathItem</a> production, 
+            and no prior reduction took place, 
+            then return |p| as the result.</li>
+          <li>If <a href="#grammar-production-path">path</a> |p| matches the 
+            <a href="#grammar-production-pathItem">pathItem</a> production, 
+            and some prior reduction took place, 
+            then return the last created blank node |B| as the result.</li>
+          <li>Otherwise, separate |p| into two components |pathItem| and |path|, 
+            based on the next occurrence of the <a>directional indicator</a> |dir|.</li>
           <li>If this is the first reduction of path |p|, 
           |dir| is "`!`", 
           and |pathItem2| stands for the next item within the path,
