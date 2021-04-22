@@ -1001,21 +1001,32 @@ To illustrate that consider the following example:
           and set of emitted <a>N3 triples</a>
           MUST be equivalent to using the following algorithm:</p>
         <ol class="algorithm">
-          <li>If <a>path</a> |p| matches the <a href="#grammar-production-pathItem">pathItem</a> production,
-            the |p| can be reduced no further, return |p|
-            as the result.</li>
-          <li>Otherwise, separate the |p| into two components |path| and |pred|
-            from the last occurance of the <a>directional indicator</a> |dir|.</li>
-          <li>Create |obj| by invoking this algorithm recursively
-            using |path| for |p|.</li>
-          <li>If |dir| is "`!`",
-            emit a new <a>N3 triple</a>
-            (|obj| |pred| |B|) where |B| is a novel <a>blank node</a>.
-            return |obj| as the result.</li>
-          <li>Otherwise, |dir| is "`^`",
-            emit a new <a>N3 triple</a>
-            (|B| |pred| |obj|) where |bn| is a novel <a>blank node</a>.
-            return |B| as the result.</li>
+          <li>If <a href="#grammar-production-path">path</a> |p| matches the <a href="#grammar-production-pathItem">pathItem</a> production, and no prior reduction took place, then return |p| as the result.</li>
+          <li>If <a href="#grammar-production-path">path</a> |p| matches the <a href="#grammar-production-pathItem">pathItem</a> production, and some prior reduction took place, then return the last created blank node |B| as the result.</li>
+          <li>Otherwise, separate |p| into two components |pathItem| and |path|, based on the next occurrence of the <a>directional indicator</a> |dir|.</li>
+          <li>If this is the first reduction of path |p|, 
+          |dir| is "`!`", 
+          and |pathItem2| stands for the next item within the path,
+          emit a new <a>N3 triple</a>
+          (|pathItem| |pathItem2| |B|) where |B| is a novel <a>blank node</a>.
+          </li>
+          <li>If this is the first reduction of path |p|, 
+          |dir| is "`^`", 
+          and |pathItem2| stands for the next item within the path,
+          emit a new <a>N3 triple</a>
+          (|B| |pathItem2| |pathItem|) where |B| is a novel <a>blank node</a>.
+          </li>
+          <li>If this is a subsequent reduction of path |p|, 
+          |dir| is "`!`", 
+          and |B_(n-1)| stands for the previously created blank node,
+          emit a new <a>N3 triple</a>
+          (|B_(n-1)| |pathItem| |B|) where |B| is a novel <a>blank node</a>.
+          </li>
+          <li>If this is a subsequent reduction of path |p|, 
+          |dir| is "`^`", 
+          and |B_(n-1)| stands for the previously created blank node,
+          emit a new <a>N3 triple</a>
+          (|B| |pathItem| |B_(n-1)| where |B| is a novel <a>blank node</a>.
           </li>
         </ol>
       </section>
