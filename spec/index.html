@@ -1006,9 +1006,9 @@ To illustrate that consider the following example:
             <h4>Right to Left Algorithm</h4>
             <p>The first algorithm describes a means
               of processing a <a href="#grammar-production-path">path</a>
-              starting with from the right hand side of the <a>path</a>.
+              starting from the right hand side of the <a>path</a>.
               This is essentially the algorithm described
-              in <a data-cite="N3#path">the Team Submission</a>.</p>
+              in the <a data-cite="N3#path">Team Submission</a>.</p>
 
             <p>Processing is performed by
               recursively processing the <a>path</a> |p|,
@@ -1026,7 +1026,7 @@ To illustrate that consider the following example:
                 as the result.</li>
               <li>Otherwise, separate the |p| into two components
                 <var>p<sub>n-1</sub></var> and <var>pred<sub>n</sub></var>
-                from the last occurance of the
+                on the last occurrence of the
                 <a>directional indicator</a> <var>dir<sub>n</sub></var>.</li>
               <li>Create <var>obj<sub>n</sub></var>
                 by invoking this algorithm recursively
@@ -1047,8 +1047,8 @@ To illustrate that consider the following example:
             </ol>
 
             <aside class="example"
-                   title="Processing :jon!:father right to left">
-              <p>Starting with the <a>path</a> |p| set to `:jon!:father`:</p>
+                  title="Processing :john!:father right to left">
+              <p>Starting with the <a>path</a> |p| set to `:john!:father`:</p>
               <ul>
                 <li>Step 1 does not apply, as `:john!:father` is not a
                   <a href="#grammar-production-pathItem">pathItem</a>.</li>
@@ -1066,19 +1066,19 @@ To illustrate that consider the following example:
                     <li><var>obj<sub>n</sub></var> is `:john`.</li>
                   </ul>
                 </li>
-                <li>Step 4 matches because <var>dir<sub>n</sub></var> is  "`!`".
+                <li>Step 5 matches because <var>dir<sub>n</sub></var> is  "`!`".
                   The triple (`:john` `:father` <var>B<sub>n</sub></var>) is emitted.</li>
-                <li>Step 6 returns <var>B<sub>n</sub></var>.</li>
+                <li>Step 7 returns <var>B<sub>n</sub></var>.</li>
               </ul>
             </aside>
 
             <aside class="example"
-                   title="Processing :jon!:father!:mother right to left">
-              <p>Starting with the <a>path</a> |p| set to `jon!:father!:mother`:</p>
+                   title="Processing :john^:father!:mother right to left">
+              <p>Starting with the <a>path</a> |p| set to `john^:father!:mother`:</p>
               <ul>
-                <li>Step 1 does not apply, as `jon!:father!:mother` is not a
+                <li>Step 1 does not apply, as `john^:father!:mother` is not a
                   <a href="#grammar-production-pathItem">pathItem</a>.</li>
-                <li>Step 2 separates `jon!:father!:mother` into
+                <li>Step 2 separates `john!:father!:mother` into
                   <var>p<sub>n-1</sub></var> `:john!:father`,
                   <var>pred<sub>n</sub></var> `:mother`, and
                   <var>dir<sub>n</sub></var> "`!`".</li>
@@ -1102,18 +1102,18 @@ To illustrate that consider the following example:
                         <li><var>obj<sub>n-1</sub></var> is `:john`.</li>
                       </ul>
                     </li>
-                    <li>Step 4 matches because |dir| is  "`!`".
+                    <li>Step 6 matches because |dir| is  "`^`".
                       The triple (`:john` `:father` <var>B<sub>n-1</sub></var>) is emitted.</li>
-                    <li>Step 6 returns <var>B<sub>n-1</sub></var>.</li>
+                    <li>Step 7 returns <var>B<sub>n-1</sub></var>.</li>
                     <li><var>obj<sub>n</sub></var> is
                       <var>B<sub>n-1</sub></var>.</li>
                   </ul>
                 </li>
-                <li>Step 4 matches because |dir| is  "`!`".
+               <li>Step 5 matches because |dir| is  "`!`".
                   The triple
                   (<var>B<sub>n-1</sub> `:mother` <var>B<sub>n</sub></var>)
                   is emitted.</li>
-                <li>Step 6 returns <var>B<sub>n</sub></var>.</li>
+                <li>Step 7 returns <var>B<sub>n</sub></var>.</li>
               </ul>
             </aside>
           </section>
@@ -1122,27 +1122,25 @@ To illustrate that consider the following example:
             <h4>Left to Right Algorithm</h4>
             <p>The second algorithm describes a means
               of processing a <a href="#grammar-production-path">path</a>
-              starting with from the left hand side of a <a>path</a>.
+              starting from the left hand side of a <a>path</a>.
               This is useful for an implementation based
               on the parser productions described in the grammar
-              which can create events in this order.</p>
+              that create events in this order (i.e., event-based).</p>
 
             <p>Processing is performed by
               iteratively processing the <a>path</a> <var>p</var>,
-              from the first
-              <a href="#grammar-production-pathItem">pathItem</a>.
+              in forward direction, from the first directional indicator ("!") or ("^").
               The result of resolving <var>p</var> into an
               <a href="#grammar-production-expression">expression</a>
               and set of emitted <a>N3 triples</a>
               MUST be equivalent to using the following algorithm:</p>
 
-            <p>Repeat the following algorithm steps starting by
+
+            <p>Repeat the following algorithm steps, starting by
               initializing |n| to `0`,
-              separating |p| into two components 
-              <var>B<sub>0</sub></var> and
-              <var>p<sub>0</sub></var>
-              based on the next occurrence of the
-              <a>directional indicator</a> <var>dir<sub>0</sub></var>
+              setting <var>B<sub>0</sub></var> to the first <a href="#grammar-production-pathItem">pathItem</a>, 
+              setting <var>pred<sub>0</sub></var> to the second <a href="#grammar-production-pathItem">pathItem</a>,
+              and <a>directional indicator</a> <var>dir<sub>0</sub></var> to the first occurrence of the     <a>directional indicator</a>,
               until return.</p>
 
             <p class="note"><var>B<sub>0</sub></var> starts
@@ -1153,19 +1151,16 @@ To illustrate that consider the following example:
               <li>If <var>dir<sub>n</sub></var> is `null`,
                 return <var>B<sub>n</sub></var>.</li>
               <li>Increment |n|,
-                separate <var>p<sub>n-1</sub></var> into two components
-                <var>item<sub>n</sub></var> and <var>p<sub>n</sub></var>
-                based on the next occurrence of the
-                <a>directional indicator</a> <var>dir<sub>n</sub></var>,
-                if any,
-                and set <var>B<sub>n</sub></var>
-                to a novel <a>blank node</a>.</li>
+              set <var>B<sub>n</sub></var> to a novel blank node, 
+              set <var>dir<sub>n</sub></var> to the next occurrence of the <a>directional indicator</a> <var>dir<sub>n</sub></var> (if any), 
+              set <var>pred<sub>n</sub></var> to the next <a>pathItem</a> (if any).
+             </li>
               <li>If <var>dir<sub>n-1</sub></var> is "`!`",
                 emit a new <a>N3 triple</a>
-                (<var>B<sub>n-1</sub></var> <var>item<sub>n</sub></var> <var>B<sub>n</sub></var>).</li>
+                (<var>B<sub>n-1</sub></var> <var>pred<sub>n-1</sub></var> <var>B<sub>n</sub></var>).</li>
               <li>Otherwise, if <var>dir<sub>n-1</sub></var> is "`^`",
                 emit a new <a>N3 triple</a>
-                (<var>B<sub>n</sub></var> <var>item<sub>n</sub></var> <var>B<sub>n-1</sub></var>).</li>
+                (<var>B<sub>n</sub></var> <var>pred<sub>n-1</sub></var> <var>B<sub>n-1</sub></var>).</li>
             </ol>
 
             <aside class="example"
