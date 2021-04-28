@@ -607,7 +607,7 @@
           with a <a href="#grammar-production-pathItem">pathItem</a>
           representing a specific <a>N3 triple element</a>
           followed by a path of one or more predicates,
-          separated by <a>directional indicator</a>s for
+          separated by <a>directional indicators</a> for
           forward ("`!`") and reverse ("`^`") relationships.
           In the forward direction, a path describes a relationship from a specific
           <a>N3 triple element</a> (such as an <a>IRI</a>) to a <a>blank node</a>.
@@ -1008,7 +1008,12 @@ To illustrate that consider the following example:
               of processing a <a href="#grammar-production-path">path</a>
               starting from the right hand side of the <a>path</a>.
               This is essentially the algorithm described
-              in the <a data-cite="N3#path">Team Submission</a>.</p>
+              in the <a data-cite="N3#path">Team Submission</a>.
+              This is useful for an implementation based
+              processing an Abstract Syntax Tree generated
+              by a parser, or where the entire path
+              is treated as a token and language-specific
+              tools are used to process it further.</p>
 
             <p>Processing is performed by
               recursively processing the <a>path</a> |p|,
@@ -1056,8 +1061,7 @@ To illustrate that consider the following example:
                   <var>p<sub>n-1</sub></var> `:john`,
                   <var>pred<sub>n</sub></var> `:father`, and
                   <var>dir<sub>n</sub></var> "`!`".</li>
-                <li>Step 3 creates <var>B<sub>n</sub></var>.</li>
-                <li>Step 4 sets <var>obj<sub>n</sub></var>
+                <li>Step 3 sets <var>obj<sub>n</sub></var>
                   by calling the algorithm
                   recursively using |p| `:john`.
                   <ul>
@@ -1066,6 +1070,7 @@ To illustrate that consider the following example:
                     <li><var>obj<sub>n</sub></var> is `:john`.</li>
                   </ul>
                 </li>
+                <li>Step 4 creates <var>B<sub>n</sub></var>.</li>
                 <li>Step 5 matches because <var>dir<sub>n</sub></var> is  "`!`".
                   The triple (`:john` `:father` <var>B<sub>n</sub></var>) is emitted.</li>
                 <li>Step 7 returns <var>B<sub>n</sub></var>.</li>
@@ -1078,7 +1083,7 @@ To illustrate that consider the following example:
               <ul>
                 <li>Step 1 does not apply, as `john^:father!:mother` is not a
                   <a href="#grammar-production-pathItem">pathItem</a>.</li>
-                <li>Step 2 separates `john!:father!:mother` into
+                <li>Step 2 separates `:john^:father!:mother` into
                   <var>p<sub>n-1</sub></var> `:john^:father`,
                   <var>pred<sub>n</sub></var> `:mother`, and
                   <var>dir<sub>n</sub></var> "`!`".</li>
@@ -1129,102 +1134,97 @@ To illustrate that consider the following example:
 
             <p>Processing is performed by
               iteratively processing the <a>path</a> <var>p</var>,
-              in forward direction, from the first directional indicator ("!") or ("^").
+              in the forward direction,
+              from the first <a>directional indicator</a> (`"!"`) or (`"^"`).
               The result of resolving <var>p</var> into an
               <a href="#grammar-production-expression">expression</a>
               and set of emitted <a>N3 triples</a>
               MUST be equivalent to using the following algorithm:</p>
 
-
-            <p>Repeat the following algorithm steps, starting by
-              initializing |n| to `0`,
-              setting <var>B<sub>0</sub></var> to the first <a href="#grammar-production-pathItem">pathItem</a>, 
-              setting <var>pred<sub>0</sub></var> to the second <a href="#grammar-production-pathItem">pathItem</a>,
-              and <a>directional indicator</a> <var>dir<sub>0</sub></var> to the first occurrence of the     <a>directional indicator</a>,
-              until return.</p>
+            <p>Initialize |n| to `0` and
+              <var>B<sub>0</sub></var> to the first
+              <a href="#grammar-production-pathItem">pathItem</a> in |p|.
+              Repeat the following algorithm steps until return.</p>
 
             <p class="note"><var>B<sub>0</sub></var> starts
-              as the first pathItem in |p|, but is updated to
+              as the first <a href="#grammar-production-pathItem">pathItem</a> in |p|,
+              but is updated to
               a novel <a>blank node</a> on subsequent iterations.</p>
 
             <ol>
-              <li>If |n| equals the length of |p|, 
-              return <var>B<sub>n</sub></var>.</li>
+              <li>If |n| equals the number of <a>directional indicators</a> in |p|, 
+                return <var>B<sub>n</sub></var>.</li>
               <li>Increment |n|,
-              set <var>B<sub>n</sub></var> to a novel blank node, 
-              set <var>dir<sub>n</sub></var> to the next occurrence of the <a>directional indicator</a> <var>dir<sub>n</sub></var> (if any), 
-              set <var>pred<sub>n</sub></var> to the next <a>pathItem</a> (if any).
-             </li>
-              <li>If <var>dir<sub>n-1</sub></var> is "`!`",
+                set <var>B<sub>n</sub></var> to a novel <a>blank node</a>, 
+                set <var>dir<sub>n</sub></var> to the next (<var>n<sub>th</sub></var>)
+                <a>directional indicator</a> <var>dir<sub>n</sub></var>
+                (if any), 
+                set <var>pred<sub>n</sub></var> to the next
+                <a href="#grammar-production-pathItem">pathItem</a>
+                (if any).</li>
+              <li>If <var>dir<sub>n</sub></var> is "`!`",
                 emit a new <a>N3 triple</a>
-                (<var>B<sub>n-1</sub></var> <var>pred<sub>n-1</sub></var> <var>B<sub>n</sub></var>).</li>
-              <li>Otherwise, if <var>dir<sub>n-1</sub></var> is "`^`",
+                (<var>B<sub>n-1</sub></var> <var>pred<sub>n</sub></var> <var>B<sub>n</sub></var>).</li>
+              <li>Otherwise, if <var>dir<sub>n</sub></var> is "`^`",
                 emit a new <a>N3 triple</a>
-                (<var>B<sub>n</sub></var> <var>pred<sub>n-1</sub></var> <var>B<sub>n-1</sub></var>).</li>
+                (<var>B<sub>n</sub></var> <var>pred<sub>n</sub></var> <var>B<sub>n-1</sub></var>).</li>
             </ol>
 
             <aside class="example"
-                   title="Processing :jon!:father left to right">
-              <p>Starting with the <a>path</a> |p| set to `:jon!:father`;
-                |n| is `0`,
-                <var>B<sub>0</sub></var> is `:john`,
-                <var>p<sub>0</sub></var> is `:father`, and
-                <var>dir<sub>0</sub></var> is "`!`":</p>
+                   title="Processing :john!:father left to right">
+              <p>Starting with the <a>path</a> |p| set to `:john!:father`;
+                |n| is `0` and
+                <var>B<sub>0</sub></var> is `:john`:</p>
               <ul>
-                <li>Step 1 does not apply,
-                  as <var>dir<sub>0</sub></var> is not `null`.</li>
-                <li>Step 2 sets |n| to `1`,
-                  <var>item<sub>1</sub></var> to `:father`,
-                  <var>dir<sub>1</sub></var> to `null`,
-                  <var>p<sub>1</sub></var> to `null`, and
-                  <var>B<sub>1</sub></var> a novel <a>blank node</a>.</li>
+                <li>Step 1 does not apply, as |n| is `0`.</li>
+                <li>Step 2 increments |n| to `1`,
+                  sets <var>B<sub>1</sub></var> to a novel <a>blank node</a>,
+                  <var>dir<sub>1</sub></var> to "`!`", and
+                  <var>pred<sub>1</sub></var> to `:father`.</li>
                 <li>Step 3 emits
                   (`:john` `:father` <var>B<sub>1</sub></var>),
                   as <var>dir<sub>0</sub></var> is "`!`"</li>
-                <li>Looping back to step 1, |n| is 1:
+                <li>Looping back to step 1, |n| is `1`:
                   <ul>
                     <li>Step 1 returns <var>B<sub>1</sub></var>
-                      as <var>dir<sub>1</sub></var> is `null`.</li>
+                      as |n| is `1`, which is the number of
+                      directional indicators in `:john!:father`.</li>
                   </ul>
                 </li>
               </ul>
             </aside>
 
             <aside class="example"
-                   title="Processing :jon!:father!:mother left to right">
+                   title="Processing :john^:father!:mother left to right">
               <p>Starting with the <a>path</a> |p| set to
-                `:jon!:father!:mother`;
-                |n| is `0`,
-                <var>B<sub>0</sub></var> is `:john`,
-                <var>p<sub>0</sub></var> is `:father!:mother`, and
-                <var>dir<sub>0</sub></var> is "`!`":</p>
+                `:john^:father!:mother`;
+                |n| is `0` and 
+                <var>B<sub>0</sub></var> is `:john`:</p>
               <ul>
                 <li>Step 1 does not apply,
-                  as <var>dir<sub>0</sub></var> is not `null`.</li>
-                <li>Step 2 sets |n| to `1`,
-                  <var>item<sub>1</sub></var> to `:father`,
-                  <var>dir<sub>1</sub></var> to "`!`",
-                  <var>p<sub>1</sub></var> to `:mother`, and
-                  <var>B<sub>1</sub></var> a novel <a>blank node</a>.</li>
-                <li>Step 3 emits
-                  (`:john` `:father` <var>B<sub>1</sub></var>),
-                  as <var>dir<sub>0</sub></var> is "`!`"</li>
-                <li>Looping back to step 1, |n| is 1:
+                  as <var>dir<sub>0</sub></var> is `0`.</li>
+                <li>Step 2 increments |n| to `1`,
+                  sets <var>B<sub>1</sub></var> to a novel <a>blank node</a>,
+                  <var>dir<sub>1</sub></var> to "`^`", and
+                  <var>pred<sub>1</sub></var> to `:father`.</li>
+                <li>Step 4 emits
+                  (<var>B<sub>1</sub></var> `:father` `:john`),
+                  as <var>dir<sub>0</sub></var> is "`^`"</li>
+                <li>Looping back to step 1, |n| is `1`:
                   <ul>
-                    <li>Step 1 does not apply,
-                      as <var>dir<sub>1</sub></var> is not `null`.</li>
-                    <li>Step 2 sets |n| to `2`,
-                      <var>item<sub>2</sub></var> to `:mother`,
-                      <var>dir<sub>2</sub></var> to `null`,
-                      <var>p<sub>2</sub></var> to `null`, and
-                      <var>B<sub>2</sub></var> a novel <a>blank node</a>.</li>
+                    <li>Step 1 does not apply, as |n| is `1`.</li>
+                    <li>Step 2 increments |n| to `2`,
+                      sets <var>B<sub>2</sub></var> to a novel <a>blank node</a>,
+                      <var>dir<sub>2</sub></var> to "`!`", and
+                      <var>pred<sub>2</sub></var> to `:mother`.</li>
                     <li>Step 3 emits
                       (<var>B<sub>1</sub></var> `:mother` <var>B<sub>2</sub></var>),
-                      as <var>dir<sub>1</sub></var> is "`!`"</li>
-                    <li>Looping back to step 1, |n| is 3:
+                      as <var>dir<sub>2</sub></var> is "`!`"</li>
+                    <li>Looping back to step 1, |n| is `2`:
                       <ul>
                         <li>Step 1 returns <var>B<sub>2</sub></var>
-                          as <var>dir<sub>2</sub></var> is `null`.</li>
+                          as |n| is `2`, which is the number of
+                          directional indicators in `:john^:father!:mother`.</li>
                       </ul>
                     </li>
                   </ul>
