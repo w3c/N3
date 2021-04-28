@@ -1079,19 +1079,19 @@ To illustrate that consider the following example:
                 <li>Step 1 does not apply, as `john^:father!:mother` is not a
                   <a href="#grammar-production-pathItem">pathItem</a>.</li>
                 <li>Step 2 separates `john!:father!:mother` into
-                  <var>p<sub>n-1</sub></var> `:john!:father`,
+                  <var>p<sub>n-1</sub></var> `:john^:father`,
                   <var>pred<sub>n</sub></var> `:mother`, and
                   <var>dir<sub>n</sub></var> "`!`".</li>
                 <li>Step 3 creates <var>B<sub>n</sub></var>.</li>
                 <li>Step 4 sets <var>obj<sub>n</sub></var> by calling the algorithm
-                  recursively using |p| `:john!:father`.
+                  recursively using |p| `:john^:father`.
                   <ul>
-                    <li>Step 1 does not apply, as `:john!:father` is not a
+                    <li>Step 1 does not apply, as `:john^:father` is not a
                       <a href="#grammar-production-pathItem">pathItem</a>.</li>
-                    <li>Step 2 separates `:john!:father` into
+                    <li>Step 2 separates `:john^:father` into
                       <var>p<sub>n-2</sub></var> `:john`,
                       <var>pred<sub>n-1</sub></var> `:father`, and
-                      <var>dir<sub>n-1</sub></var> "`!`".</li>
+                      <var>dir<sub>n-1</sub></var> "`^`".</li>
                     <li>Step 3 creates <var>B<sub>n-1</sub></var>.</li>
                     <li>Step 4 sets <var>obj<sub>n-1</sub></var>
                       by calling the algorithm
@@ -1103,7 +1103,7 @@ To illustrate that consider the following example:
                       </ul>
                     </li>
                     <li>Step 6 matches because |dir| is  "`^`".
-                      The triple (`:john` `:father` <var>B<sub>n-1</sub></var>) is emitted.</li>
+                      The triple (<var>B<sub>n-1</sub></var> `:father` `:john`) is emitted.</li>
                     <li>Step 7 returns <var>B<sub>n-1</sub></var>.</li>
                     <li><var>obj<sub>n</sub></var> is
                       <var>B<sub>n-1</sub></var>.</li>
@@ -1148,8 +1148,8 @@ To illustrate that consider the following example:
               a novel <a>blank node</a> on subsequent iterations.</p>
 
             <ol>
-              <li>If <var>dir<sub>n</sub></var> is `null`,
-                return <var>B<sub>n</sub></var>.</li>
+              <li>If |n| equals the length of |p|, 
+              return <var>B<sub>n</sub></var>.</li>
               <li>Increment |n|,
               set <var>B<sub>n</sub></var> to a novel blank node, 
               set <var>dir<sub>n</sub></var> to the next occurrence of the <a>directional indicator</a> <var>dir<sub>n</sub></var> (if any), 
