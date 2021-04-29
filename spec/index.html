@@ -434,7 +434,12 @@
             There likely already exists an <a>IRI</a> that identifies the resource, and we don't want to mint a new <a>IRI</a> for a resource that likely already has one (nor do we want to do an extensive search to find out what that <a>IRI</a> is).
           </li>
         </ul>
-        <p>Instead, you can use <dfn data-cite="RDF11-CONCEPTS#dfn-blank-node">blank nodes</dfn> to talk about resources. They are existential variables; i.e., they state the existence of a thing without identifying that thing. (In fact, aside from some scoping issues, a <a>blank node</a> is equivalent to an explicit <a href="#variables">existential variable</a> in <abbr title="Notation3">N3</abbr>.) <a>Blank nodes</a> can be represented in several ways:</p>
+        <p>Instead, you can use
+          <dfn data-cite="RDF11-CONCEPTS#dfn-blank-node">blank nodes</dfn>
+          to talk about resources.
+          They are existential variables;
+          i.e., they state the existence of a thing without identifying that thing.
+          <a>Blank nodes</a> can be represented in several ways:</p>
         <section id='bnodeids'>
           <h4>Blank node identifiers</h4>
           <p>A <a>blank node</a> can be represented by a <dfn data-cite="RDF11-CONCEPTS#dfn-blank-node-identifier">blank node identifier</dfn>, which is unique within the <a>N3 graph</a>, expressed as <code>_:</code> followed by a blank node label (e.g., <code>_:someLabel</code>). Then, we use this identifier to describe a resource in the same way we have been doing.</p>
@@ -631,12 +636,12 @@
         <p>Each path segment can be thought of as a shorthand for
           an existing relationship.
           For example, for a
-          <a data-cite="RDF11-CONCEPTS#dfn-predicate">predicate</a> <em>p</em>
-          and <a href="#grammar-production-pathItem">pathItem</a> or <a>path</a> `x`,
-          <code>x!<em>p</em></code> is equivalent to
-          <code>[ is <em>p</em> of x ]</code>.
-          Similarly, <code>x^<em>p</em></code> is equivalent to
-          <code>[ <em>p</em> x ]</code>.
+          <a data-cite="RDF11-CONCEPTS#dfn-predicate">predicate</a> |p|
+          and <a href="#grammar-production-pathItem">pathItem</a> or <a>path</a> |x|,
+          <code><var>x</var>!<var>p</var></code> is equivalent to
+          <code>[ is <var>p</var> of <var>x</var> ]</code>.
+          Similarly, <code><var>x</var>^<var>p</var></code> is equivalent to
+          <code>[ <var>p</var> <var>x</var> ]</code>.
           Thus, the result is always a <a>blank node</a>.</p>
 
         <p>The expansion of a <a>path</a> is equivalent to unwinding
@@ -791,14 +796,13 @@
       <section id='formulae'>
         <h3>Formulae</h3>
         <p>
-          A <dfn data-lt="quantified formula|quantified formulae|quantified n3 formulae">quantified N3 formula</dfn> consists of pair of a <a>quantification</a> 
-          and an 
-          <a>N3 formula</a>
-          f, where a <dfn>quantification</dfn>
-          consists of a <a>quantifier</a> <code>Q</code> and an <a data-cite="RDF11-CONCEPTS#dfn-IRI">IRI</a> <code>x</code>. 
-          For a quantified N3 formula <code>Qx f</code>, we call <code>x</code> the quantified element and say that <code>x</code> is quantified in <code>f</code>.
+          A <dfn data-lt="quantified formula|quantified formulae|quantified n3 formulae">quantified N3 formula</dfn>
+          consists of pair of a <a>quantification</a> and an
+          <a>N3 formula</a> `f`,
+          where a <dfn>quantification</dfn>
+          consists of a <a>quantifier</a> |Q| and an <a data-cite="RDF11-CONCEPTS#dfn-IRI">IRI</a> |x|. 
+          For a quantified N3 formula <code>Qx <var>f</var></code>, we call |x| the quantified element and say that |x| is quantified in |f|.
         </p>
-        <p>
           An <dfn data-lt="n3 formulae">N3 formula</dfn> is either an <a>N3 statement</a>, a <a>quantified N3 formula</a>, 
           or a sequence of <a>N3 formulae</a>. 
         </p>
@@ -812,7 +816,12 @@
            <section id='cgraphs'>
         <h3>Closed graphs and ground formulae</h3>
         <p>
-        <abbr title="Notation3">N3</abbr> supports implicit quantification; that is, one can state quantified variables without explicitly stating the quantifier. To do that, we use <a>universal variables</a>, which are implicitly universally quantified, and <a data-cite="RDF11-CONCEPTS#dfn-blank-node">blank nodes</a>, which are implicitly existentially quantified. 
+        <abbr title="Notation3">N3</abbr> supports implicit quantification;
+        that is, one can state quantified variables without explicitly stating the quantifier.
+        To do that, we use <a>universal variables</a>,
+        which are implicitly universally quantified, and
+        <a data-cite="RDF11-CONCEPTS#dfn-blank-node">blank nodes</a>,
+        which are implicitly existentially quantified. 
         </p>
        <p>
        In this context it is important to note that not only the kind of the quantifier is matters but also its scope, i.e. the exact parts the quantification is valid for, and the exact position of the quantifier. 
@@ -826,13 +835,13 @@ To illustrate that consider the following example:
         -->
       </pre>
 
-      <p>
-      Here, the blank node <code>_:x</code> is existentially quantified, but without any further specification, the triple could either mean (a) that there exists some x of which Fred doubts that it is a unicorn or it could mean (b) that Freds doubts that unicorns exist. In case we wanted to make the quantifier explicit, in option a the quantifier would need to be placed at the beginning of the whole expression, for option b it would need to be placed inside the brackets. <abbr title="Notation3">N3</abbr> follows option b, 
-      </p>
-
-      <p>
-      In the above example, an explicit quantifier of the blank node <code>_:x</code> would be placed inside quoted formula and it would only be scoped on that formula. Similarly, there are many cases in which explicit quantifiers only occur inside a quotation and do therefore not have impact on the surrounding of a fomula. We call such formulae which do not TODO: continue
-      </p>
+       <p>Here,  the blank node `_:x` is existentially  quantified,
+         but without any further  specification,
+         the triple could  either mean
+         (a) that  there exists some |x| of which Fred doubts that it is a  unicorn, or it could  mean
+         (b) that Freds  doubts that  unicorns  exist.
+         <abbr title="Notation3">N3</abbr>  follows
+option (b).</p>
       </section>
       <section id='sinterpret'>
         <h3>Simple N3 interpretations</h3>
