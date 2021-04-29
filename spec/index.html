@@ -113,7 +113,7 @@
           <strong><abbr title="Notation3">N3</abbr> adds an If-Then style of decision making in the form of logical implications and variables.</strong> Logical implications allow making If-Then style inferences via modus ponens (where implementations may apply either backward- or forward-chaining). Variables in such rules may be quantified either universally or existentially; in the latter case, they are comparable to blank nodes. 
         </li>
         <li>
-          <strong><abbr title="Notation3">N3</abbr> supports quoting and describing graphs of statements (e.g., recording provenance).</strong> In an open web environment, as an unbounded sea of (semi-)connected sources, one should be made aware of, and given the ability to disseminate, the provenance of information, among other things. A quoted graph includes a conjunction of quoted statements. It allows expression of where the particular statements (e.g., message, document) came from, at what time they were stated and by whom, and, in general, any other description of them.
+          <strong><abbr title="Notation3">N3</abbr> supports quoting and describing graphs of statements (e.g., recording provenance).</strong> In an open web environment, as an unbounded sea of (semi-)connected sources, one should be made aware of, and given the ability to disseminate, the provenance of information, among other things. A <a>quoted graph</a> includes a conjunction of quoted statements. It allows expression of where the particular statements (e.g., message, document) came from, at what time they were stated and by whom, and, in general, any other description of them.
         </li>
         <li>
           <strong><abbr title="Notation3">N3</abbr> includes a core set of <a>built-ins</a> for accessing remote online information.</strong> In an open web environment, any online source may have information that supports decision making. The <code>log:semantics</code> <a>built-in</a> allows pulling in (parsed) logical expressions from remote online locations; the <code>log:conclusion</code> <a>built-in</a> allows calculating the deductive closure of any logical expression, whether local or remote. Subsequently, down-stream operations may, for instance, check whether other expressions are included, or not included, within these logical expressions.
@@ -166,7 +166,7 @@
           <a data-cite="RDF11-CONCEPTS#dfn-predicate">predicate</a>, and
           <a data-cite="RDF11-CONCEPTS#dfn-object">object</a>.
           An <a>N3 graph</a> can have many more elements &mdash;
-          <a href="#cformulas">cited formulas</a> for quoting sets of statements,
+          <a>cited formulae</a> for quoting sets of statements,
           <a href="#logimpl">logical implications</a> for If-Then style, rule-based reasoning,
           <a href="#variables">quantifications</a> for variables, and so on.
           We introduce these elements below.</p>
@@ -564,10 +564,10 @@
             ).</pre>
               -->
       </section>
-      <section id='cformulas'>
-        <h3>Cited Formulas</h3>
+      <section id='cformulae'>
+        <h3>Cited Formulae</h3>
         <p>
-          It is often useful to attach metadata to groups of triples (i.e., RDF graphs) &mdash; to give the provenance, context of version of the information, our opinion on the matter, and so on. We can use cited formulas to quote RDF graphs, and then describe the cited formula using <a>N3 statements</a>. For instance:
+          It is often useful to attach metadata to groups of triples (i.e., RDF graphs) &mdash; to give the provenance, context of version of the information, our opinion on the matter, and so on. We can use <dfn data-lt="cited formula">cited formulae</dfn> to quote RDF graphs, and then describe the <a>cited formula</a> using <a>N3 statements</a>. For instance:
         </p>
         <pre class="example nohighlight" data-transform="updateExample">
           <!--
@@ -580,9 +580,9 @@
           -->
         </pre>
         <p>
-          Essentially, a cited formula records of the occurrence of an RDF graph (i.e., a <em>quoting</em>, or <em>citing</em>, of the graph). Importantly, a cited formula does not assert the contents of the RDF graph as being true (e.g., <code>:cervantes dc:wrote :moby_dick</code>). In fact, the cited formula is <a href="#semantics">interpreted as a resource on its own</a>.
+          Essentially, a <a>cited formula</a> records of the occurrence of an RDF graph (i.e., a <em>quoting</em>, or <em>citing</em>, of the graph). Importantly, a <a>cited formula</a> does not assert the contents of the RDF graph as being true (e.g., <code>:cervantes dc:wrote :moby_dick</code>). In fact, the <a>cited formula</a> is <a href="#semantics">interpreted as a resource on its own</a>.
         </p>
-        <p>Since they represent quoted RDF graphs, cited formulas are not "referentially transparent". For instance:</p>
+        <p>Since they represent quoted RDF graphs, <a>cited formulae</a> are not "referentially transparent". For instance:</p>
         <pre class="example nohighlight" data-transform="updateExample">
           <!--
           @base <http://example.org/#> .
@@ -591,7 +591,7 @@
           -->
         </pre>
         <p>This <a>N3 statement</a> states that Lois Lane believes that Superman can fly. Even if it is known that <code>:Superman</code> is the same as <code>:ClarkKent</code>, one cannot infer from this that <code>:ClarkKent</code> can fly. In this case, this is an accurate depiction of Lois Lane's statement at the time &mdash; she did not know that Superman is Clark Kent at that point, so she would certainly not say that Clark Kent is able to fly.</p>
-        <p>Cited formulas can be used in any position in an <a>N3 statement</a>. ...</p>
+        <p><a>Cited formulae</a> can be used in any position in an <a>N3 statement</a>. ...</p>
       </section>
       <section id='paths'>
         <h4>Paths</h4>
@@ -784,14 +784,14 @@
           The empty list in <abbr title="Notation3">N3</abbr> is equivalent to the empty list in RDF and can thus also be represented using <a href="https://www.w3.org/TR/rdf11-mt/#rdf-interpretations">rdf:nil</a>.
         </p>
         <p>
-          <dfn data-lt="quotes">Quoted graphs</dfn> are <abbr title="Notation3">N3</abbr> formulas which are surrounded by quoting signs. 
+          <dfn data-lt="quotes">Quoted graphs</dfn> are <abbr title="Notation3">N3</abbr> formulae which are surrounded by quoting signs. 
           In <abbr title="Notation3">N3</abbr>-turtle syntax we denote these quoting signs as curly brackets <code>{}</code>.
         </p>
       </section>
-      <section id='formulas'>
-        <h3>Formulas</h3>
+      <section id='formulae'>
+        <h3>Formulae</h3>
         <p>
-          A <dfn data-lt="quantified formula">quantified N3 formula</dfn> consists of pair of a <a>quantification</a> 
+          A <dfn data-lt="quantified formula|quantified formulae|quantified n3 formulae">quantified N3 formula</dfn> consists of pair of a <a>quantification</a> 
           and an 
           <a>N3 formula</a>
           f, where a <dfn>quantification</dfn>
@@ -799,18 +799,18 @@
           For a quantified N3 formula <code>Qx f</code>, we call <code>x</code> the quantified element and say that <code>x</code> is quantified in <code>f</code>.
         </p>
         <p>
-          An <dfn>N3 formula</dfn> is either an <a>N3 statement</a>, a <a>quantified N3 formula</a>, 
-          or a sequence of <a>N3 formulas</a>. 
+          An <dfn data-lt="n3 formulae">N3 formula</dfn> is either an <a>N3 statement</a>, a <a>quantified N3 formula</a>, 
+          or a sequence of <a>N3 formulae</a>. 
         </p>
       </section>
     </section>
     <section id='semantics'>
       <h2>Semantics</h2>
-      <p>On top of the syntax as described above, we now define <abbr title="Notation3">N3</abbr>'s semantics. As an auxiliary construct we first introduce closed formulas and ground terms and
-      then give a definition of simple interpretations. These are interpretations for formulas which do not include negation or any special buil-in functions.
+      <p>On top of the syntax as described above, we now define <abbr title="Notation3">N3</abbr>'s semantics. As an auxiliary construct we first introduce closed formulae and ground terms and
+      then give a definition of simple interpretations. These are interpretations for formulae which do not include negation or any special buil-in functions.
       </p>
            <section id='cgraphs'>
-        <h3>Closed graphs and ground formulas</h3>
+        <h3>Closed graphs and ground formulae</h3>
         <p>
         <abbr title="Notation3">N3</abbr> supports implicit quantification; that is, one can state quantified variables without explicitly stating the quantifier. To do that, we use <a>universal variables</a>, which are implicitly universally quantified, and <a data-cite="RDF11-CONCEPTS#dfn-blank-node">blank nodes</a>, which are implicitly existentially quantified. 
         </p>
@@ -831,7 +831,7 @@ To illustrate that consider the following example:
       </p>
 
       <p>
-      In the above example, an explicit quantifier of the blank node <code>_:x</code> would be placed inside quoted formula and it would only be scoped on that formula. Similarly, there are many cases in which explicit quantifiers only occur inside a quotation and do therefore not have impact on the surrounding of a fomula. We call such formulas which do not TODO: continue
+      In the above example, an explicit quantifier of the blank node <code>_:x</code> would be placed inside quoted formula and it would only be scoped on that formula. Similarly, there are many cases in which explicit quantifiers only occur inside a quotation and do therefore not have impact on the surrounding of a fomula. We call such formulae which do not TODO: continue
       </p>
       </section>
       <section id='sinterpret'>
@@ -1249,7 +1249,7 @@ To illustrate that consider the following example:
         <p>Important differences with Turtle are the following:</p>
         <ul>
           <li>Literals are allowed at any s/p/o position (i.e., subject, predicate or object) in a statement. See the <a href="#grammar-production-pathItem">pathItem</a> production, which is (eventually) referenced by the "subject", "predicate" and "object" productions.</li>
-          <li>Cited formulas (i.e., between "<code>{</code>" and "<code>}</code>"), which are allowed in any s/p/o position in a statement. See the <a href="#grammar-production-pathItem">pathItem</a> production.</li>
+          <li><a>Cited formulae</a> (i.e., between "<code>{</code>" and "<code>}</code>"), which are allowed in any s/p/o position in a statement. See the <a href="#grammar-production-pathItem">pathItem</a> production.</li>
           <li><dfn data-lt="quickvar">Quick-variables</dfn> (e.g., "<code>?x</code>"), which are allowed in any s/p/o position in a statement. See the <a href="#grammar-production-pathItem">pathItem</a> production.</li>
           <li>A path syntax, comparable to (but not quite as extensive as) the <a data-cite="sparql11-query#propertypaths">SPARQL 1.1 Property Path</a> syntax. See the <a href="#grammar-production-path">path</a> production.</li>
           <li>The possibility to invert the predicate within a statement. See the <a href="#grammar-production-predicate">predicate</a> production.</li>
@@ -1313,8 +1313,8 @@ To illustrate that consider the following example:
           } 
           -->
         </pre>
-        <p><abbr title="Notation3">N3</abbr> is not directly compatible with TriG as it does not support this graph statement notation. Nevertheless, since <abbr title="Notation3">N3</abbr> supports quoted graphs (i.e., cited formulas) as part of regular <a>N3 statements</a>, authors can utilize the N3 Named Graphs extension [<strong>X</strong>] for associating names or identifiers with cited formulas. Although applications could easily introduce their own custom predicates for this purpose, we strongly recommend the use of this extension for interoperability purposes.</p>
-        <p>The N3 Named Graphs extension [<strong>X</strong>] defines a set of <a>built-ins</a> (used as predicates) to associate names or identifiers with cited formulas, which then become "named graphs". Moreover, each predicate has a well-defined semantics on how the named graph should be interpreted: as quoted graphs (the default <abbr title="Notation3">N3</abbr> interpretation), a partitioning of triples within a dataset context, sets of triples with their own isolated contexts, or specifying relations between local and online graphs.</p>
+        <p><abbr title="Notation3">N3</abbr> is not directly compatible with TriG as it does not support this graph statement notation. Nevertheless, since <abbr title="Notation3">N3</abbr> supports <a>quoted graphs</a> (i.e., <a>cited formulae</a>) as part of regular <a>N3 statements</a>, authors can utilize the N3 Named Graphs extension [<strong>X</strong>] for associating names or identifiers with <a>cited formulae</a>. Although applications could easily introduce their own custom predicates for this purpose, we strongly recommend the use of this extension for interoperability purposes.</p>
+        <p>The N3 Named Graphs extension [<strong>X</strong>] defines a set of <a>built-ins</a> (used as predicates) to associate names or identifiers with <a>cited formulae</a>, which then become "named graphs". Moreover, each predicate has a well-defined semantics on how the named graph should be interpreted: as <a>quoted graphs</a> (the default <abbr title="Notation3">N3</abbr> interpretation), a partitioning of triples within a dataset context, sets of triples with their own isolated contexts, or specifying relations between local and online graphs.</p>
       </section>
     </section>
     <section id='patterns' class=informative>
