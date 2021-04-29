@@ -462,7 +462,7 @@
           <h4>Blank node property lists</h4>
           <p>Using a <a>blank node identifier</a> requires introducing a new identifier for each <a>blank node</a>. Although they're not quite as hard to mint as <a>IRIs</a>, in many cases it is redundant to even introduce such an identifier.</p>
           <p>For instance, <a>blank nodes</a> are often used to <a data-cite="rdf-primer#structuredproperties">structure composite pieces of information</a>, such as street addresses, telephone numbers and dates. Using the <a href="#grammar-production-blankNodePropertyList">blank node property list</a> syntax, this kind of pattern can be represented quite conveniently as follows:</p>
-          <p><strong>TODO: would be ideal if the equivalent simple-triples example could be shown side-by-side with the <a href="#bnodeprplist">blank node property lists</a> example, like <a href="https://www.w3.org/TR/turtle/#unlabeled-bnodes">here</a>.</strong></p>
+          <p class="ednote">TODO: would be ideal if the equivalent simple-triples example could be shown side-by-side with the <a href="#bnodeprplist">blank node property lists</a> example, like <a href="https://www.w3.org/TR/turtle/#unlabeled-bnodes">here</a>.</p>
           <pre id="address-bnode-prp-list"
                class="example nohighlight"
                data-transform="updateExample">
@@ -789,8 +789,15 @@
           The empty list in <abbr title="Notation3">N3</abbr> is equivalent to the empty list in RDF and can thus also be represented using <a href="https://www.w3.org/TR/rdf11-mt/#rdf-interpretations">rdf:nil</a>.
         </p>
         <p>
-          <dfn data-lt="quotes">Quoted graphs</dfn> are <abbr title="Notation3">N3</abbr> formulae which are surrounded by quoting signs. 
+          <dfn data-lt="quotes">Quoted graphs</dfn> are <a>N3 formulae</a> which are surrounded by quoting signs. 
           In <abbr title="Notation3">N3</abbr>-turtle syntax we denote these quoting signs as curly brackets <code>{}</code>.
+          <div class="ednote">We use both <a>quoted graphs</a>,
+            and <a>cited formulae</a>.
+            The destinction can be confusing,
+            particularly as they use the same syntactic representation.
+            We also define <a>quantified N3 formulae</a> and <a>N3 formulae</a>.
+            We need a section that clarifies the different interpretations,
+            or we need to merge some of these definitions.</div>
         </p>
       </section>
       <section id='formulae'>
