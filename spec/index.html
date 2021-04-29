@@ -107,7 +107,7 @@
       <p>Below, we elaborate on the main characteristics of <abbr title="Notation3">N3</abbr>:</p>
       <ul>
         <li>
-          <strong><abbr title="Notation3">N3</abbr> is a superset of RDF and <abbr title="Terse RDF Triple Language">Turtle</abbr>.</strong> One can write any valid [[[Turtle]]] graph, and it will be valid in <abbr title="Notation3">N3</abbr> as well. Importantly, this means that all of Turtle's syntactic sugar is available in <abbr title="Notation3">N3</abbr> &mdash; including <a href="#polists">predicate and object lists</a>, unlabeled blank nodes, and <a>collections</a>. Moreover, <strong><a>collections</a> are first-class citizens</strong> in <abbr title="Notation3">N3</abbr>, with an associated set of <a>built-ins</a> for accessing and manipulating them.
+          <strong><abbr title="Notation3">N3</abbr> is a superset of RDF and <abbr title="Terse RDF Triple Language">Turtle</abbr>.</strong> One can write any valid [[[Turtle]]] graph, and it will be valid in <abbr title="Notation3">N3</abbr> as well. Importantly, this means that all of Turtle's syntactic sugar is available in <abbr title="Notation3">N3</abbr> &mdash; including <a href="#polists">predicate and object lists</a>, unlabeled blank nodes, and <a>collections</a>. Moreover, <strong><a>collections</a> are first-class citizens</strong> in <abbr title="Notation3">N3</abbr>, with an associated set of <a>builtins</a> for accessing and manipulating them.
         </li>
         <li>
           <strong><abbr title="Notation3">N3</abbr> adds an If-Then style of decision making in the form of logical implications and variables.</strong> Logical implications allow making If-Then style inferences via modus ponens (where implementations may apply either backward- or forward-chaining). Variables in such rules may be quantified either universally or existentially; in the latter case, they are comparable to blank nodes. 
@@ -116,10 +116,10 @@
           <strong><abbr title="Notation3">N3</abbr> supports quoting and describing graphs of statements (e.g., recording provenance).</strong> In an open web environment, as an unbounded sea of (semi-)connected sources, one should be made aware of, and given the ability to disseminate, the provenance of information, among other things. A quoted graph includes a conjunction of quoted statements. It allows expression of where the particular statements (e.g., message, document) came from, at what time they were stated and by whom, and, in general, any other description of them.
         </li>
         <li>
-          <strong><abbr title="Notation3">N3</abbr> includes a core set of <a>built-ins</a> for accessing remote online information.</strong> In an open web environment, any online source may have information that supports decision making. The <code>log:semantics</code> <a>built-in</a> allows pulling in (parsed) logical expressions from remote online locations; the <code>log:conclusion</code> <a>built-in</a> allows calculating the deductive closure of any logical expression, whether local or remote. Subsequently, down-stream operations may, for instance, check whether other expressions are included, or not included, within these logical expressions.
+          <strong><abbr title="Notation3">N3</abbr> includes a core set of <a>builtins</a> for accessing remote online information.</strong> In an open web environment, any online source may have information that supports decision making. The <code>log:semantics</code> <a>builtin</a> allows pulling in (parsed) logical expressions from remote online locations; the <code>log:conclusion</code> <a>builtin</a> allows calculating the deductive closure of any logical expression, whether local or remote. Subsequently, down-stream operations may, for instance, check whether other expressions are included, or not included, within these logical expressions.
         </li>
         <li>
-          <strong><abbr title="Notation3">N3</abbr> supports a scoped version of negation-as-failure.</strong> In an open web environment, it is often useful to check whether or not online information supports, or allows derivation of, a given set of facts. However, it will not be possible nor useful to check whether the whole Semantic Web <em>does not</em> support a given set of facts at some time &mdash; any online source, unknown to the reasoner at the time, or added after the question was asked, may hold a positive answer. Instead, a useful question in this setting is whether a <em>specific</em> piece of information, at a given point in time, does or does not support, or does or does not allow the derivation of, a set of facts. When tightly scoped to a specific information source, and at a specific time, this kind of negation-as-failure will not be influenced by other, unknown online sources. This is referred to as <em>scoped negation as failure,</em> and is supported by <abbr title="Notation3">N3</abbr>'s <code>log:notIncludes</code> <a>built-in</a>.
+          <strong><abbr title="Notation3">N3</abbr> supports a scoped version of negation-as-failure.</strong> In an open web environment, it is often useful to check whether or not online information supports, or allows derivation of, a given set of facts. However, it will not be possible nor useful to check whether the whole Semantic Web <em>does not</em> support a given set of facts at some time &mdash; any online source, unknown to the reasoner at the time, or added after the question was asked, may hold a positive answer. Instead, a useful question in this setting is whether a <em>specific</em> piece of information, at a given point in time, does or does not support, or does or does not allow the derivation of, a set of facts. When tightly scoped to a specific information source, and at a specific time, this kind of negation-as-failure will not be influenced by other, unknown online sources. This is referred to as <em>scoped negation as failure,</em> and is supported by <abbr title="Notation3">N3</abbr>'s <code>log:notIncludes</code> <a>builtin</a>.
         </li>
       </ul>
       <section id='namespaces'>
@@ -348,7 +348,7 @@
         </pre>
         <p>For details on what number syntax is supported (e.g., for decimals, doubles), we refer to the <a data-cite="TURTLE#abbrev">RDF 1.1: Turtle (Section 2.5.2)</a> specification.</p>
         <p>Other literals (e.g., date; binary, octal or hex code; XML or JSON code; other types of numbers, such as shorts), and of course strings themselves, need to be written as <b>string literals</b>. For instance, <code>&lt;http://example.org/#spiderman&gt; &lt;http://example.org/#birthDate&gt; "2001-08-10".</code> In that case, the <a data-cite="RDF11-CONCEPTS#dfn-lexical-form">lexical form</a> will include the characters between the delimiter quotes (e.g., <code>2001-08-10</code>).</p>
-    <p>Clearly, this can raise confusion as to what type of literal is being represented &mdash; is it a string or some other arbitrary type? You can indicate the datatype of a literal in RDF using the <code>^^</code> symbol and the corresponding <dfn data-cite="XMLSCHEMA11-2#built-in-datatypes">datatype IRI</dfn>. The above example then becomes:
+    <p>Clearly, this can raise confusion as to what type of literal is being represented &mdash; is it a string or some other arbitrary type? You can indicate the datatype of a literal in RDF using the <code>^^</code> symbol and the corresponding <dfn data-cite="XMLSCHEMA11-2#builtin-datatypes">datatype IRI</dfn>. The above example then becomes:
     
     <pre class="example nohighlight" data-transform="updateExample">
       <!--
@@ -764,7 +764,7 @@
           <a>lists</a>,
           <a>quoted graphs</a>,
           and of one implication sign.
-          The latter is denoted by the `log:implies` <a>built-in</a> to indicate implication. 
+          The latter is denoted by the `log:implies` <a>builtin</a> to indicate implication. 
           In <abbr title="Notation3">N3</abbr>-turtle syntax, `log:implies` MAY be represented using the symbol <code>=&gt;</code>.
         </p>
         <p>
@@ -843,12 +843,12 @@ To illustrate that consider the following example:
         <p class="ednote">Bla...</p>
       </section>
       <section id='builtins'>
-        <h3>N3 Built-ins</h3>
-        <p><abbr title="Notation3">N3</abbr> defines a core set of <dfn>built-ins</dfn> defined
-          in a set of vocabularies with defined semantics
-          for querying and manipulating <a>N3 documents</a>.
-          Built-ins are denoted by a controlled IRI defined in
-          one of the core namespaces:</p>
+        <h3>N3 builtins</h3>
+        <p><abbr title="Notation3">N3</abbr> defines a core set of <dfn>builtins</dfn>: these are predicates 
+		with pre-defined semantics for querying, manipulating and reasoning over <a>N3 documents</a>. 
+		Builtins are grouped into distinct vocabularies depending on the <a>N3 triple elements</a> they operate on (e.g., string, list), 
+		or their particular topic (e.g., time, crypto, log).
+		Builtins are denoted by a controlled IRI defined in one of the core builtin namespaces:</p>
         <ul>
           <li><a href="../ns/crypto.html">Crypto</a> –
             <a href="http://www.w3.org/2000/10/swap/crypto#">http://www.w3.org/2000/10/swap/crypto#</a>,</li>
@@ -863,7 +863,91 @@ To illustrate that consider the following example:
           <li><a href="../ns/time.html">Time</a> –
             <a href="http://www.w3.org/2000/10/swap/time#">http://www.w3.org/2000/10/swap/time#</a>.</li>
         </ul>
-        <p class="ednote">Bla...</p>
+		<section id="builtins_args">
+			<h4>Input and output arguments</h4>
+			<p>An N3 <a>builtin</a> operates on its arguments. An argument is a placeholder that refers to an <a>N3 triple element</a> from the <dfn>builtin statement</dfn>, i.e., the <a>N3 statement</a> where the builtin acts as a predicate. The set of arguments, the N3 triple elements they refer to in the builtin statement (i.e., their referents), and their <a href="#builtin_arg_domains">expected datatypes</a>, are defined per N3 builtin.</p>
+			<p>In the simplest case, there are two arguments that respectively refer to the subject and object of the builtin statement. For instance, statements such as `1 math:lessThan 2` are true if the subject is less than the object. Hence, builtin `math:lessThan` has two arguments `$a_1` and `$a_2`, which is written as follows: `$a_1 math:lessThan $a_2`. (In this section, arguments are prefixed with `$a`.)</p>			
+			<p>Arguments can be also represent a "deconstruction" of the subject or object in case of lists or cited formulas. For instance, `(1 2 3) math:sum 6` calculates the sum of a list of numbers. Hence, the builtin `math:sum` has arguments `$a_1` .. `$a_n` and `$a_sum`, which is written as follows: `($a_1 .. $a_n) math:sum $a_sum`. </p>			
+			<p>In a builtin statement, if an argument refers to a concrete <a>N3 triple element</a> (i.e., either a concrete literal or a bound variable), we call its referent a builtin <dfn>input</dfn>, else, we call it a builtin <dfn>output</dfn>, within the builtin statement.			
+			<p>In some cases, an N3 builtin will only support outputs for one argument:
+				e.g., `math:sum` only supports outputs for `$a_sum`.
+				In other cases, an N3 builtin only supports inputs for all arguments: 
+				e.g., `math:lessThan` only supports inputs for `$a_1` and `$a_2`.
+				In rarer cases, an N3 builtin can support outputs for several arguments. 
+				E.g., for `35 math:cos ?x`, the `math:cos` of `35` will be calculated; for `?x math:cos 0.57` the inverse operation (`math:acos`) for `0.57` will be calculated.
+			</p>
+		</section>
+		<section id="builtin_arg_domains">
+			<h4>Argument domains</h4>
+			<p>An N3 builtin has an expected datatype for its arguments, called the <dfn>domain datatype</dfn>. If the datatype of an argument referent or value, called the <dfn>value datatype</dfn>, does not match the domain datatype, it may be possible to cast the value's datatype to, or substitute it for, the domain datatype.</p>
+			<p>If the <a>value datatype</a> and <a>domain datatype</a> do not match, and no casting or substitution is possible, the builtin statement will be considered false. (This is in line with the concept of the builtin <a>theory box</a>: a BPG search using the builtin statement will not match any statement in the theory box when literal datatypes do not match.</p>
+			
+			<h5>Numeric datatype promotion and substitution</h5>
+			<p>If the numeric <a>value datatype</a> does not match the <a>domain datatype</a>, it may be possible to promote or substitute the numeric value datatype:</p>
+			
+			<p><b>Numeric type promotion</b>: A numeric value datatype that <a href="https://www.w3.org/TR/xmlschema-2/#dt-derived">is derived from</a> the domain datatype can be promoted to the latter (e.g., `xs:integer` is derived from `xs:decimal`). This is done by casting the original value to the required datatype.</p>
+			<p>If there is no direct derivation relation between the value and domain datatype, the following numeric type promotions can take place:
+				<ul>
+					<li>A value of type `xs:float` (or any type derived from `xs:float`) can be promoted to type `xs:double`. The result is an `xs:double` value that is the same as the original value.</li>
+					<li>A value of type `xs:decimal` (or any type derived from `xs:decimal`) can be promoted to either of the types `xs:float` or `xs:double`.</li>
+				</ul>
+			</p>
+			
+			<p><b>Numeric type substitution</b>: If <i>all values</i> have the same numeric datatype, and this datatype <a href="https://www.w3.org/TR/xmlschema-2/#dt-derived">is derived from</a> the domain datatype (e.g., `xs:integer` is derived from `xs:decimal`), then the values can be used without any casting. For example, if two `xs:integer` values are used for input where `xs:decimal` domains are expected, then the values retain their datatype as `xs:integer`. The substituted numeric datatype (in this case, `xs:integer`) will also apply to the builtin's output, if any.</p>
+
+			<p><b>Builtins operating on any numeric type</b>: some N3 builtins (e.g., `math:sum`) operate on values of any numeric type (i.e., `xs:numeric`, the union of `xs:double`, `xs:float`, and `xs:decimal`). I.e., their concrete input values may present any combination of numeric types. In that case, the builtin can only be applied if all value datatypes can be promoted into <i>a common numeric datatype</i> in the ordered list `(xs:integer, xs:decimal, xs:float, xs:double)`. If so, at that point, we rely on numeric type substitution. For instance:
+				<ul>
+					<li>For a builtin with `xs:numeric` domain datatypes, given two value datatypes `xs:integer` and `xs:decimal`, the `xs:integer` value will be promoted to `xs:decimal` as the common numeric datatype. At that point, the two `xs:decimal` datatypes can be substituted for `xs:numeric` (numeric type substitution). If the builtin has an output, then the calculated value for this output will also have datatype `xs:decimal`.</li>
+					<li>For a builtin with `xs:numeric` domain datatypes, given two values with datatype `xs:integer`, the `xs:integer` datatype will simply be substituted for `xs:numeric`. If the builtin has an output, then the calculated value for the output will also have datatype `xs:integer`.</li>
+				</ul>
+			</p>
+			
+			<h5>Other kinds of datatype casting</h5>
+
+			<p>If the non-numeric <a>value datatype</a> does not match the <a>domain datatype</a>, it may be possible to cast the value datatype to the domain datatype:</p>
+			
+			<h6>String</h6>
+			<p>A literal will be considered a "string" when it has an `xs:string` datatype, a `rdf:langString` datatype due to the presence of a language tag, or when it lacks a datatype.</p>
+			
+			<p><b>Casting from string</b>: if an input value has an `xs:string` datatype that does not match the domain, it may be possible to cast the string to the domain datatype, as <a href="https://www.w3.org/TR/xpath-functions/#casting-from-strings">defined in XPath</a>. The resulting value representation must be a valid lexical form for the domain datatype.</p>
+			<p><b>Casting to string</b>: if an input value is an IRI, or any kind of literal (incl. type `xs:anyUri` or its derivations), and the domain is `xs:string`, then the value will be cast to a string as <a href="https://www.w3.org/TR/xpath-functions/#casting-to-string">defined in XPath</a> along with additional rules <a href="https://www.w3.org/TR/sparql11-query/#FunctionMapping">defined for SPARQL 1.1</a>.</p>
+			
+			<h6>Other datatypes</h6>
+			
+			<p>Other types of datatype casting may take place as <a href="https://www.w3.org/TR/xpath-functions/#casting">defined in XPath</a>. 
+
+			<p class="ednote">There is a useful chart for casting primitive types to primitive types in <a href="https://www.w3.org/TR/xpath-functions/#casting-from-primitive-to-primitive">XPath</a>, a subset of which is defined for <a href="https://www.w3.org/TR/sparql11-query/#FunctionMapping">SPARQL</a>.</p>
+		</section>
+		<section id="builtin_operations">
+			<h4>Builtin operations</h4>
+			<p>For each N3 builtin, an N3 system implements the following two operations: (1) check the truthfulness of a builtin statement, and (2) calculate values for the outputs so as to ensure the truthfulness of the builtin statement. These operations must include casting or substituting values to different domains, as discussed in <a href="#builtin_arg_domains">Argument domains</a>.</p>
+			<p>Depending on the builtin <a>inputs</a> and <a>outputs</a>, the following will take place:</p>
+			<p>If a <a>builtin statement</a> only has inputs, then an N3 system will check the truthfulness of the statement. For instance, in the statement `(2 1) math:sum 3`, the builtin `math:sum` will check whether `2 + 1 = 3`.</p>
+			<p>If a <a>builtin statement</a> has one or more outputs, then an N3 system will either:
+				<ul>
+					<li>check the truthfulness of the statement, or </li>
+					<li>calculate one or more values for the outputs so as to ensure the truthfulness</li>
+				</ul>
+				For example:
+				<ul>
+					<li>Given `(2 1) math:sum ?s`, the N3 system will calculate value `3` for output `?s`.</li>
+					<li>Given `(?a 1) math:sum ?s`, the N3 system returns true, since there are infinite numbers of sums that match this pattern.</li>
+					<li>Given `(1 "a" 3) list:member ?m`, the N3 system will calculate three values for output `?m`, namely `1`, `"a"` and `3`.</li>
+				</ul>
+			</p>
+		</section>
+		<section id="builtin_theory_box">
+			<h4>Builtin theory box</h4>
+			<p>A builtin statement can be more conveniently be seen as a <i>constrained</i> basic graph pattern (BPG) search on the N3 builtin’s <dfn>theory box</dfn>, defined to include all truthful builtin statements for the N3 builtin.</p>
+			<p>The two operations mentioned in <a href="#builtin_operations">Builtin operations</a>, i.e., (1) checking the truthfulness of a builtin statement, and (2) calculating output values so as to ensure the truthfulness, can be defined in terms of this constrained BGP search. This leaves the particular theory box to be defined per N3 builtin.</p>
+			
+			<p>For eample, for the `math:sum` builtin, simply put, the theory box includes all builtin statements `($a_1 .. $a_n) math:sum $a_sum` where the sum of `$a_1 .. $a_n` equals `$a_sum`. Regarding operation (1), the builtin statement `(2 1) math:sum 3` is found in the builtin's theory box, meaning the statement is true. Regarding operation (2), the builtin statement `(2 1) math:sum ?sum`, matches the builtin statement `(2 1) math:sum 3` in the builtin's theory box. Hence, `3` is calculated as value for output `?sum` that ensures the truthfulness of the builtin statement.</p>
+			
+			<p>This BPG search is <i>constrained</i> in that it will never return infinite numbers of values. For instance, for the `math:sum` builtin, the theory box includes an infinite number of truthful builtin statements matching the builtin statement `(?a 1) math:sum ?s`. In this case, instead of calculating infinite numbers of values, the truthfulness of the statement will simply be acknowledged.</p>
+			
+			<p class="ednote">It may be counter-intuitive that a <a>builtin statement</a>, where the variables needed to calculate an <a>output</a> are not all concrete <a>inputs</a> (e.g., `(?a 1) math:sum ?s`), will not cause an N3 rule to fail, since the builtin statement will be considered true.<br /><br />
+			This may have unintended consequences, i.e., instead of the rule failing, rule heads will be instantiated that include unbound universal variables (e.g., `?sum`). As a result, N3 systems are expected to generate witnesses in such cases (link..).</p>
+		</section>
       </section>
     </section>
     <section id='n3grammar'>
@@ -1314,7 +1398,7 @@ To illustrate that consider the following example:
           -->
         </pre>
         <p><abbr title="Notation3">N3</abbr> is not directly compatible with TriG as it does not support this graph statement notation. Nevertheless, since <abbr title="Notation3">N3</abbr> supports quoted graphs (i.e., cited formulas) as part of regular <a>N3 statements</a>, authors can utilize the N3 Named Graphs extension [<strong>X</strong>] for associating names or identifiers with cited formulas. Although applications could easily introduce their own custom predicates for this purpose, we strongly recommend the use of this extension for interoperability purposes.</p>
-        <p>The N3 Named Graphs extension [<strong>X</strong>] defines a set of <a>built-ins</a> (used as predicates) to associate names or identifiers with cited formulas, which then become "named graphs". Moreover, each predicate has a well-defined semantics on how the named graph should be interpreted: as quoted graphs (the default <abbr title="Notation3">N3</abbr> interpretation), a partitioning of triples within a dataset context, sets of triples with their own isolated contexts, or specifying relations between local and online graphs.</p>
+        <p>The N3 Named Graphs extension [<strong>X</strong>] defines a set of <a>builtins</a> (used as predicates) to associate names or identifiers with cited formulas, which then become "named graphs". Moreover, each predicate has a well-defined semantics on how the named graph should be interpreted: as quoted graphs (the default <abbr title="Notation3">N3</abbr> interpretation), a partitioning of triples within a dataset context, sets of triples with their own isolated contexts, or specifying relations between local and online graphs.</p>
       </section>
     </section>
     <section id='patterns' class=informative>
