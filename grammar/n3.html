@@ -175,7 +175,7 @@
       <td>::=</td>
       <td><a href="#grammar-production-QUICK_VAR_NAME">QUICK_VAR_NAME</a></td>
     </tr>
-    <tr id="grammar-production-">
+    <tr id="grammar-production-terminals">
       <td colspan=2>@terminals</td>
       <td></td>
       <td><strong># Productions for terminals</strong></td>
@@ -334,7 +334,7 @@
     <tr>
       <td colspan=2></td>
       <td>|</td>
-      <td><code>[</code> <code class="grammar-char-escape"><abbr title="unicode 'Ϳ'">#x037F</abbr></code><code class="grammar-literal">-</code><code class="grammar-char-escape"><abbr title="unicode '῿'">#x1FFF</abbr></code><code>]</code></td>
+      <td><code>[</code> <code class="grammar-char-escape"><abbr title="unicode 'Ϳ'">#x037F</abbr></code><code class="grammar-literal">-</code><code class="grammar-char-escape">#x1FFF</code><code>]</code></td>
     </tr>
     <tr>
       <td colspan=2></td>
@@ -344,22 +344,22 @@
     <tr>
       <td colspan=2></td>
       <td>|</td>
-      <td><code>[</code> <code class="grammar-char-escape"><abbr title="unicode '⁰'">#x2070</abbr></code><code class="grammar-literal">-</code><code class="grammar-char-escape"><abbr title="unicode '↏'">#x218F</abbr></code><code>]</code></td>
+      <td><code>[</code> <code class="grammar-char-escape"><abbr title="unicode '⁰'">#x2070</abbr></code><code class="grammar-literal">-</code><code class="grammar-char-escape">#x218F</code><code>]</code></td>
     </tr>
     <tr>
       <td colspan=2></td>
       <td>|</td>
-      <td><code>[</code> <code class="grammar-char-escape"><abbr title="unicode 'Ⰰ'">#x2C00</abbr></code><code class="grammar-literal">-</code><code class="grammar-char-escape"><abbr title="unicode '⿯'">#x2FEF</abbr></code><code>]</code></td>
+      <td><code>[</code> <code class="grammar-char-escape"><abbr title="unicode 'Ⰰ'">#x2C00</abbr></code><code class="grammar-literal">-</code><code class="grammar-char-escape">#x2FEF</code><code>]</code></td>
     </tr>
     <tr>
       <td colspan=2></td>
       <td>|</td>
-      <td><code>[</code> <code class="grammar-char-escape"><abbr title="unicode '、'">#x3001</abbr></code><code class="grammar-literal">-</code><code class="grammar-char-escape"><abbr title="unicode '퟿'">#xD7FF</abbr></code><code>]</code></td>
+      <td><code>[</code> <code class="grammar-char-escape"><abbr title="unicode '、'">#x3001</abbr></code><code class="grammar-literal">-</code><code class="grammar-char-escape">#xD7FF</code><code>]</code></td>
     </tr>
     <tr>
       <td colspan=2></td>
       <td>|</td>
-      <td><code>[</code> <code class="grammar-char-escape"><abbr title="unicode '豈'">#xF900</abbr></code><code class="grammar-literal">-</code><code class="grammar-char-escape"><abbr title="unicode '﷏'">#xFDCF</abbr></code><code>]</code></td>
+      <td><code>[</code> <code class="grammar-char-escape">#xF900</code><code class="grammar-literal">-</code><code class="grammar-char-escape">#xFDCF</code><code>]</code></td>
     </tr>
     <tr>
       <td colspan=2></td>
@@ -369,7 +369,7 @@
     <tr>
       <td colspan=2></td>
       <td>|</td>
-      <td><code>[</code> <code class="grammar-char-escape"><abbr title="unicode '𐀀'">#x00010000</abbr></code><code class="grammar-literal">-</code><code class="grammar-char-escape"><abbr title="unicode '󯿿'">#x000EFFFF</abbr></code><code>]</code> </td>
+      <td><code>[</code> <code class="grammar-char-escape"><abbr title="unicode '𐀀'">#x00010000</abbr></code><code class="grammar-literal">-</code><code class="grammar-char-escape">#x000EFFFF</code><code>]</code> </td>
     </tr>
     <tr id="grammar-production-PN_CHARS_U">
       <td>[165s]</td>
@@ -437,7 +437,7 @@
       <td>::=</td>
       <td><code>(</code> "<code class="grammar-literal">#</code>" <code>-</code> &quot;#x&quot;<code>)</code>  <code>[</code> <code class="grammar-literal">^</code><code class="grammar-char-escape"><abbr title="new line">#x0A</abbr></code><code class="grammar-char-escape"><abbr title="form feed">#x0C</abbr></code><code class="grammar-char-escape"><abbr title="carriage return">#x0D</abbr></code><code>]</code> <code>*</code> </td>
     </tr>
-    <tr id="grammar-production-">
+    <tr id="grammar-production-pass">
       <td colspan=2>@pass</td>
       <td></td>
       <td><code>(</code> <a href="#grammar-production-WS">WS</a> <code>|</code> <a href="#grammar-production-COMMENT">COMMENT</a><code>)</code> <code>*</code> </td>
