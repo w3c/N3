@@ -857,114 +857,194 @@ To illustrate that consider the following example:
         <h3>Scoped Negation</h3>
         <p class="ednote">Bla...</p>
       </section>
-      <section id='builtins'>
-        <h3>N3 builtins</h3>
-        <p><abbr title="Notation3">N3</abbr> defines a core set of <dfn>builtins</dfn>: these are predicates 
-		with pre-defined semantics for querying, manipulating and reasoning over <a>N3 documents</a>. 
-		Builtins are grouped into distinct vocabularies depending on the <a>N3 triple elements</a> they operate on (e.g., string, list), 
-		or their particular topic (e.g., time, crypto, log).
-		Builtins are denoted by a controlled IRI defined in one of the core builtin namespaces:</p>
-        <ul>
-          <li><a href="../ns/crypto.html">Crypto</a> –
-            <a href="http://www.w3.org/2000/10/swap/crypto#">http://www.w3.org/2000/10/swap/crypto#</a>,</li>
-          <li><a href="../ns/list.html">List</a> –
-            <a href="http://www.w3.org/2000/10/swap/list#">http://www.w3.org/2000/10/swap/list#</a>,</li>
-          <li><a href="../ns/log.html">Log</a> –
-            <a href="http://www.w3.org/2000/10/swap/log#">http://www.w3.org/2000/10/swap/log#</a>,</li>
-          <li><a href="../ns/math.html">Math</a> –
-            <a href="http://www.w3.org/2000/10/swap/math#">http://www.w3.org/2000/10/swap/math#</a>,</li>
-          <li><a href="../ns/string.html">String</a> –
-            <a href="http://www.w3.org/2000/10/swap/string#">http://www.w3.org/2000/10/swap/string#</a>, and</li>
-          <li><a href="../ns/time.html">Time</a> –
-            <a href="http://www.w3.org/2000/10/swap/time#">http://www.w3.org/2000/10/swap/time#</a>.</li>
-        </ul>
-		<section id="builtins_args">
-			<h4>Input and output arguments</h4>
-			<p>An N3 <a>builtin</a> operates on its arguments. An argument is a placeholder that refers to an <a>N3 triple element</a> from the <dfn>builtin statement</dfn>, i.e., the <a>N3 statement</a> where the builtin acts as a predicate. The set of arguments, the N3 triple elements they refer to in the builtin statement (i.e., their referents), and their <a href="#builtin_arg_domains">expected datatypes</a>, are defined per N3 builtin.</p>
-			<p>In the simplest case, there are two arguments that respectively refer to the subject and object of the builtin statement. For instance, statements such as `1 math:lessThan 2` are true if the subject is less than the object. Hence, builtin `math:lessThan` has two arguments `$a_1` and `$a_2`, which is written as follows: `$a_1 math:lessThan $a_2`. (In this section, arguments are prefixed with `$a`.)</p>			
-			<p>Arguments can be also represent a "deconstruction" of the subject or object in case of lists or cited formulas. For instance, `(1 2 3) math:sum 6` calculates the sum of a list of numbers. Hence, the builtin `math:sum` has arguments `$a_1` .. `$a_n` and `$a_sum`, which is written as follows: `($a_1 .. $a_n) math:sum $a_sum`. </p>			
-			<p>In a builtin statement, if an argument refers to a concrete <a>N3 triple element</a> (i.e., either a concrete literal or a bound variable), we call its referent a builtin <dfn>input</dfn>, else, we call it a builtin <dfn>output</dfn>, within the builtin statement.			
-			<p>In some cases, an N3 builtin will only support outputs for one argument:
-				e.g., `math:sum` only supports outputs for `$a_sum`.
-				In other cases, an N3 builtin only supports inputs for all arguments: 
-				e.g., `math:lessThan` only supports inputs for `$a_1` and `$a_2`.
-				In rarer cases, an N3 builtin can support outputs for several arguments. 
-				E.g., for `35 math:cos ?x`, the `math:cos` of `35` will be calculated; for `?x math:cos 0.57` the inverse operation (`math:acos`) for `0.57` will be calculated.
-			</p>
-		</section>
-		<section id="builtin_arg_domains">
-			<h4>Argument domains</h4>
-			<p>An N3 builtin has an expected datatype for its arguments, called the <dfn>domain datatype</dfn>. If the datatype of an argument referent or value, called the <dfn>value datatype</dfn>, does not match the domain datatype, it may be possible to cast the value's datatype to, or substitute it for, the domain datatype.</p>
-			<p>If the <a>value datatype</a> and <a>domain datatype</a> do not match, and no casting or substitution is possible, the builtin statement will be considered false. (This is in line with the concept of the builtin <a>theory box</a>: a BPG search using the builtin statement will not match any statement in the theory box when literal datatypes do not match.</p>
-			
-			<h5>Numeric datatype promotion and substitution</h5>
-			<p>If the numeric <a>value datatype</a> does not match the <a>domain datatype</a>, it may be possible to promote or substitute the numeric value datatype:</p>
-			
-			<p><b>Numeric type promotion</b>: A numeric value datatype that <a href="https://www.w3.org/TR/xmlschema-2/#dt-derived">is derived from</a> the domain datatype can be promoted to the latter (e.g., `xs:integer` is derived from `xs:decimal`). This is done by casting the original value to the required datatype.</p>
-			<p>If there is no direct derivation relation between the value and domain datatype, the following numeric type promotions can take place:
-				<ul>
-					<li>A value of type `xs:float` (or any type derived from `xs:float`) can be promoted to type `xs:double`. The result is an `xs:double` value that is the same as the original value.</li>
-					<li>A value of type `xs:decimal` (or any type derived from `xs:decimal`) can be promoted to either of the types `xs:float` or `xs:double`.</li>
-				</ul>
-			</p>
-			
-			<p><b>Numeric type substitution</b>: If <i>all values</i> have the same numeric datatype, and this datatype <a href="https://www.w3.org/TR/xmlschema-2/#dt-derived">is derived from</a> the domain datatype (e.g., `xs:integer` is derived from `xs:decimal`), then the values can be used without any casting. For example, if two `xs:integer` values are used for input where `xs:decimal` domains are expected, then the values retain their datatype as `xs:integer`. The substituted numeric datatype (in this case, `xs:integer`) will also apply to the builtin's output, if any.</p>
+	</section>
+  <section id='builtins'>
+	<h3>N3 builtins</h3>
+	<p><abbr title="Notation3">N3</abbr> defines a core set of <dfn>builtins</dfn>: these are predicates 
+	with pre-defined semantics for querying, manipulating and reasoning over <a>N3 documents</a>. 
+	Builtins are grouped into distinct vocabularies depending on the <a>N3 triple elements</a> they operate on (e.g., string, list), 
+	or their particular topic (e.g., time, crypto, log).
+	Builtins are denoted by a controlled IRI defined in one of the core builtin namespaces:</p>
+	<ul>
+	  <li><a href="../ns/crypto.html">Crypto</a> –
+		<a href="http://www.w3.org/2000/10/swap/crypto#">http://www.w3.org/2000/10/swap/crypto#</a>,</li>
+	  <li><a href="../ns/list.html">List</a> –
+		<a href="http://www.w3.org/2000/10/swap/list#">http://www.w3.org/2000/10/swap/list#</a>,</li>
+	  <li><a href="../ns/log.html">Log</a> –
+		<a href="http://www.w3.org/2000/10/swap/log#">http://www.w3.org/2000/10/swap/log#</a>,</li>
+	  <li><a href="../ns/math.html">Math</a> –
+		<a href="http://www.w3.org/2000/10/swap/math#">http://www.w3.org/2000/10/swap/math#</a>,</li>
+	  <li><a href="../ns/string.html">String</a> –
+		<a href="http://www.w3.org/2000/10/swap/string#">http://www.w3.org/2000/10/swap/string#</a>, and</li>
+	  <li><a href="../ns/time.html">Time</a> –
+		<a href="http://www.w3.org/2000/10/swap/time#">http://www.w3.org/2000/10/swap/time#</a>.</li>
+	</ul>
+	<section id="builtins_args">
+		<h4>Input and output arguments</h4>
+		<p>An N3 <a>builtin</a> operates on its arguments. An <dfn>argument</dfn> is a placeholder that refers to an <a>N3 triple element</a> from the <dfn>builtin statement</dfn>, i.e., the <a>N3 statement</a> where the builtin acts as a predicate.</p>
+		<p>In the simplest case, there are two arguments that respectively refer to the subject and object of the builtin statement. For instance, statements such as `1 math:lessThan 2` are true if the subject is less than the object. Hence, builtin `math:lessThan` has two arguments `$a_1` and `$a_2`, which is written as follows: `$a_1 math:lessThan $a_2`. (In this section, arguments are prefixed with `$a`.)</p>
+		<p>Arguments can be also represent a "deconstruction" of the subject or object in case of lists or cited formulas. For instance, `(1 2 3) math:sum 6` calculates the sum of a list of numbers. Hence, the builtin `math:sum` has arguments `$a_1` .. `$a_n` and `$a_sum`, which is written as follows: `($a_1 .. $a_n) math:sum $a_sum`. </p>			
+		<p>In a builtin statement, if an argument refers to a concrete <a>N3 triple element</a> (i.e., either a concrete literal or a bound variable) within the builtin statement, we call its referent a builtin <dfn>input</dfn>, else, we call its referent a builtin <dfn>output</dfn>.
+		<p>In some cases, an N3 builtin will only support outputs for one argument:
+			e.g., `math:sum` only supports outputs for `$a_sum`.
+			In other cases, an N3 builtin only supports inputs for all arguments: 
+			e.g., `math:lessThan` only supports inputs for `$a_1` and `$a_2`.
+			In rarer cases, an N3 builtin can support outputs for several arguments. 
+			E.g., for `35 math:cos ?x`, the `math:cos` of `35` will be calculated; for `?x math:cos 0.57` the inverse operation (`math:acos`) for `0.57` will be calculated.
+		</p>
+		<p>The set of arguments, and whether they are allowed to have inputs or outputs, are defined per N3 builtin. An argument that is allowed to have output referents is called an <dfn>output argument</dfn>, else it is called an <dfn>input argument</dfn>.</p>
+		<p class="ednote">The choice of allowing an argument as output is typically dictated by the need to avoid an infinite amount of results, intractable calculations, and general constraints that weigh utility vs. implementation difficulty.</p>
+	</section>
+	<section id="builtin_arg_domains">
+		<h4>Argument domains</h4>
+		<p>An N3 builtin has an expected datatype for its arguments, called the <dfn>domain datatype</dfn>. If the datatype of an argument referent or value, called the <dfn>value datatype</dfn>, does not match the domain datatype, it may be possible to cast the value's datatype to, or substitute it for, the domain datatype.</p>
+		<p>The expected datatypes of arguments, i.e., domain datatypes, are defined per N3 builtin.</p>
+		<p>If the <a>value datatype</a> and <a>domain datatype</a> do not match, and no casting or substitution is possible, the builtin statement will be considered false. (This is in line with the concept of the builtin <a>theory box</a>: a BPG search using the builtin statement will not match any statement in the theory box when literal datatypes do not match.</p>
+		
+		<h5>Numeric datatype promotion and substitution</h5>
+		<p>If the numeric <a>value datatype</a> does not match the <a>domain datatype</a>, it may be possible to promote or substitute the numeric value datatype:</p>
+		
+		<p><b>Numeric type promotion</b>: A numeric value datatype that <a href="https://www.w3.org/TR/xmlschema-2/#dt-derived">is derived from</a> the domain datatype can be promoted to the latter (e.g., `xs:integer` is derived from `xs:decimal`). This is done by casting the original value to the required datatype.</p>
+		<p>If there is no direct derivation relation between the value and domain datatype, the following numeric type promotions can take place:
+			<ul>
+				<li>A value of type `xs:float` (or any type derived from `xs:float`) can be promoted to type `xs:double`. The result is an `xs:double` value that is the same as the original value.</li>
+				<li>A value of type `xs:decimal` (or any type derived from `xs:decimal`) can be promoted to either of the types `xs:float` or `xs:double`.</li>
+			</ul>
+		</p>
+		
+		<p><b>Numeric type substitution</b>: If <i>all values</i> have the same numeric datatype, and this datatype <a href="https://www.w3.org/TR/xmlschema-2/#dt-derived">is derived from</a> the domain datatype (e.g., `xs:integer` is derived from `xs:decimal`), then the values can be used without any casting. For example, if two `xs:integer` values are used for input where `xs:decimal` domains are expected, then the values retain their datatype as `xs:integer`. The substituted numeric datatype (in this case, `xs:integer`) will also apply to the builtin's output, if any.</p>
 
-			<p><b>Builtins operating on any numeric type</b>: some N3 builtins (e.g., `math:sum`) operate on values of any numeric type (i.e., `xs:numeric`, the union of `xs:double`, `xs:float`, and `xs:decimal`). I.e., their concrete input values may present any combination of numeric types. In that case, the builtin can only be applied if all value datatypes can be promoted into <i>a common numeric datatype</i> in the ordered list `(xs:integer, xs:decimal, xs:float, xs:double)`. If so, at that point, we rely on numeric type substitution. For instance:
-				<ul>
-					<li>For a builtin with `xs:numeric` domain datatypes, given two value datatypes `xs:integer` and `xs:decimal`, the `xs:integer` value will be promoted to `xs:decimal` as the common numeric datatype. At that point, the two `xs:decimal` datatypes can be substituted for `xs:numeric` (numeric type substitution). If the builtin has an output, then the calculated value for this output will also have datatype `xs:decimal`.</li>
-					<li>For a builtin with `xs:numeric` domain datatypes, given two values with datatype `xs:integer`, the `xs:integer` datatype will simply be substituted for `xs:numeric`. If the builtin has an output, then the calculated value for the output will also have datatype `xs:integer`.</li>
-				</ul>
-			</p>
-			
-			<h5>Other kinds of datatype casting</h5>
+		<p><b>Builtins operating on any numeric type</b>: some N3 builtins (e.g., `math:sum`) operate on values of any numeric type (i.e., `xs:numeric`, the union of `xs:double`, `xs:float`, and `xs:decimal`). I.e., their concrete input values may present any combination of numeric types. In that case, the builtin can only be applied if all value datatypes can be promoted into <i>a common numeric datatype</i> in the ordered list `(xs:integer, xs:decimal, xs:float, xs:double)`. If so, at that point, we rely on numeric type substitution. For instance:
+			<ul>
+				<li>For a builtin with `xs:numeric` domain datatypes, given two value datatypes `xs:integer` and `xs:decimal`, the `xs:integer` value will be promoted to `xs:decimal` as the common numeric datatype. At that point, the two `xs:decimal` datatypes can be substituted for `xs:numeric` (numeric type substitution). If the builtin has an output, then the calculated value for this output will also have datatype `xs:decimal`.</li>
+				<li>For a builtin with `xs:numeric` domain datatypes, given two values with datatype `xs:integer`, the `xs:integer` datatype will simply be substituted for `xs:numeric`. If the builtin has an output, then the calculated value for the output will also have datatype `xs:integer`.</li>
+			</ul>
+		</p>
+		
+		<h5>Other kinds of datatype casting</h5>
 
-			<p>If the non-numeric <a>value datatype</a> does not match the <a>domain datatype</a>, it may be possible to cast the value datatype to the domain datatype:</p>
-			
-			<h6>String</h6>
-			<p>A literal will be considered a "string" when it has an `xs:string` datatype, a `rdf:langString` datatype due to the presence of a language tag, or when it lacks a datatype.</p>
-			
-			<p><b>Casting from string</b>: if an input value has an `xs:string` datatype that does not match the domain, it may be possible to cast the string to the domain datatype, as <a href="https://www.w3.org/TR/xpath-functions/#casting-from-strings">defined in XPath</a>. The resulting value representation must be a valid lexical form for the domain datatype.</p>
-			<p><b>Casting to string</b>: if an input value is an IRI, or any kind of literal (incl. type `xs:anyUri` or its derivations), and the domain is `xs:string`, then the value will be cast to a string as <a href="https://www.w3.org/TR/xpath-functions/#casting-to-string">defined in XPath</a> along with additional rules <a href="https://www.w3.org/TR/sparql11-query/#FunctionMapping">defined for SPARQL 1.1</a>.</p>
-			
-			<h6>Other datatypes</h6>
-			
-			<p>Other types of datatype casting may take place as <a href="https://www.w3.org/TR/xpath-functions/#casting">defined in XPath</a>. 
+		<p>If the non-numeric <a>value datatype</a> does not match the <a>domain datatype</a>, it may be possible to cast the value datatype to the domain datatype:</p>
+		
+		<h6>String</h6>
+		<p>A literal will be considered a "string" when it has an `xs:string` datatype, a `rdf:langString` datatype due to the presence of a language tag, or when it lacks a datatype.</p>
+		
+		<p><b>Casting from string</b>: if an input value has an `xs:string` datatype that does not match the domain, it may be possible to cast the string to the domain datatype, as <a href="https://www.w3.org/TR/xpath-functions/#casting-from-strings">defined in XPath</a>. The resulting value representation must be a valid lexical form for the domain datatype.</p>
+		<p><b>Casting to string</b>: if an input value is an IRI, or any kind of literal (incl. type `xs:anyUri` or its derivations), and the domain is `xs:string`, then the value will be cast to a string as <a href="https://www.w3.org/TR/xpath-functions/#casting-to-string">defined in XPath</a> along with additional rules <a href="https://www.w3.org/TR/sparql11-query/#FunctionMapping">defined for SPARQL 1.1</a>.</p>
+		
+		<h6>Other datatypes</h6>
+		
+		<p>Other types of datatype casting may take place as <a href="https://www.w3.org/TR/xpath-functions/#casting">defined in XPath</a>. 
 
-			<p class="ednote">There is a useful chart for casting primitive types to primitive types in <a href="https://www.w3.org/TR/xpath-functions/#casting-from-primitive-to-primitive">XPath</a>, a subset of which is defined for <a href="https://www.w3.org/TR/sparql11-query/#FunctionMapping">SPARQL</a>.</p>
-		</section>
-		<section id="builtin_operations">
-			<h4>Builtin operations</h4>
-			<p>For each N3 builtin, an N3 system implements the following two operations: (1) check the truthfulness of a builtin statement, and (2) calculate values for the outputs so as to ensure the truthfulness of the builtin statement. These operations must include casting or substituting values to different domains, as discussed in <a href="#builtin_arg_domains">Argument domains</a>.</p>
-			<p>Depending on the builtin <a>inputs</a> and <a>outputs</a>, the following will take place:</p>
-			<p>If a <a>builtin statement</a> only has inputs, then an N3 system will check the truthfulness of the statement. For instance, in the statement `(2 1) math:sum 3`, the builtin `math:sum` will check whether `2 + 1 = 3`.</p>
-			<p>If a <a>builtin statement</a> has one or more outputs, then an N3 system will either:
+		<p class="ednote">There is a useful chart for casting primitive types to primitive types in <a href="https://www.w3.org/TR/xpath-functions/#casting-from-primitive-to-primitive">XPath</a>, a subset of which is defined for <a href="https://www.w3.org/TR/sparql11-query/#FunctionMapping">SPARQL</a>.</p>
+	</section>
+	<section id="builtin_operations">
+		<h4>Builtin operations</h4>
+						
+		<p>Generally, depending on the builtin <a>inputs</a> and <a>outputs</a> in a <a>builtin statement</a>, the following will take place:
+			<ol>
+				<li><dfn>checking</dfn> the truthfulness of the statement, or </li>
+				<li><dfn>calculating</dfn> one or more values for the outputs so as to ensure the truthfulness</li>
+			</ol>
+		</p>
+		<p>If a builtin statement only has inputs, the truthfulness of the statement will be checked. For instance, in the statement `(2 1) math:sum 3`, the builtin `math:sum` will check whether `2 + 1 = 3`.</p>
+		<p>If a builtin statement has both inputs and outputs, one or more values can be calculated for the outputs so as to ensure its truthfulness. For instance, given `(2 1) math:sum ?s`, the N3 system will calculate value `3` for output `?s`.</p>
+		<p>These operations may include casting or substituting values to different domains, as discussed in <a href="#builtin_arg_domains">Argument domains</a>.</p>
+			
+		<h5>Builtin theory box</h5>
+		<p>Before elaborating on these operations, we point out that a builtin statement can be more conventiently seen as a <i>constrained</i> basic graph pattern (BPG) search on the N3 builtin’s <dfn>theory box</dfn>, defined to include all truthful builtin statements for the N3 builtin.</p>
+		<p>The two operations mentioned, i.e., <a>checking</a> and <a>calculating</a>, can be defined in terms of this constrained BGP search. This leaves the particular theory box to be defined per N3 builtin. N3 builtins are currently not defined in this manner, though.</p>
+		
+		<p>For eample, for the `math:sum` builtin, simply put, the theory box includes all builtin statements `($a_1 .. $a_n) math:sum $a_sum`, where all arguments have datatype `xs:numeric`, and where the sum of `$a_1 .. $a_n` equals `$a_sum`. Regarding operation (1), the builtin statement `(2 1) math:sum 3` is found in the builtin's theory box, meaning the statement is true. Regarding operation (2), the builtin statement `(2 1) math:sum ?sum`, matches the builtin statement `(2 1) math:sum 3` in the builtin's theory box. Hence, `3` is calculated as value for output `?sum` that ensures the truthfulness of the builtin statement.</p>
+		
+		<p>This BPG search is <i>constrained</i> in that it will never return infinite numbers of values. For instance, for the `math:sum` builtin, the theory box includes an infinite number of truthful builtin statements matching the builtin statement `(?a 1) math:sum ?s`. In this case, instead of calculating infinite numbers of values, the truthfulness of the statement will simply be acknowledged.</p>
+		
+		<p class="endnote">The BGP search is, technically speaking, further constrained depending on what arguments are allowed as <a>outputs</a>. For example, the builtin statement `(1 ?o) math:sum 2` only matches a single statement in the builtin's theory box, but the `math:sum` builtin only allows the sum to be an output.</p>
+		
+		<p class="ednote">It may be counter-intuitive that a <a>builtin statement</a>, where the variables needed to calculate an <a>output</a> are not all concrete <a>inputs</a> (e.g., `(?a 1) math:sum ?s`), will not cause an N3 rule to fail, since the builtin statement will be considered true.<br /><br />
+		This may have unintended consequences, i.e., instead of the rule failing, rule heads will be instantiated that include unbound universal variables (e.g., `?sum`). As a result, N3 systems are expected to generate witnesses in such cases (link..).</p>
+		
+		<h5>Builtin algorithm</h5>
+		<p>In line with the concept of a builtin theory box, we can define an algorithm to perform <a>checking</a> and <a>calculating</a> operations.</p>
+		<p>Depending on the definition of the builtin, with supported <a>output arguments</a> and <a>domain datatypes</a>, and the builtin <a>inputs</a> and <a>outputs</a> found in <a>builtin </a>statement:</p>		
+		<ol>
+			<li>If the <a>value datatypes</a> of inputs do not correspond to <a>domain datatypes</a> of arguments, and no datatype casting is possible, then the builtin statement is false. For instance, 
 				<ul>
-					<li>check the truthfulness of the statement, or </li>
-					<li>calculate one or more values for the outputs so as to ensure the truthfulness</li>
+					<li>Given `(2 "a") math:sum 3`, since the value datatype `xs:string` of input `"a"` does not match domain datatype `xs:numeric`, and no casting is possible, the builtin statement is false.</li>
 				</ul>
-				For example:
-				<ul>
-					<li>Given `(2 1) math:sum ?s`, the N3 system will calculate value `3` for output `?s`.</li>
-					<li>Given `(?a 1) math:sum ?s`, the N3 system returns true, since there are infinite numbers of sums that match this pattern.</li>
-					<li>Given `(1 "a" 3) list:member ?m`, the N3 system will calculate three values for output `?m`, namely `1`, `"a"` and `3`.</li>
-				</ul>
-			</p>
+			This is in line with the theory box concept: ...
+			</li>
+			<li>Else:
+				<ol>
+					<li>If only builtin <a>inputs</a> are found in a builtin statement, then the truthfulness of the statement will be checked. For instance,
+						<ul>
+							<li>Given `(2 1) math:sum 3`, since `2 + 1 = 3` is true, the builtin statement is true.</li>
+							<li>Given `(2 1) math:sum 5`, since `2 + 1 = 5` is false, the builtin statement is false.</li>
+						</ul>
+						This is in line with the theory box concept: ...
+					</li>
+					<li>Else:
+						<ol>
+							<li>If builtin <a>outputs</a> in a builtin statement are not referents of a builtin <a>output argument</a>, then the builtin statement is considered true. For instance, 
+								<ul>
+									<li>Given `(?a 1) math:sum ?s`, since `?a` is not a referent of an output argument, the builtin statement is true.</li>
+									<li>Given `?l math:sum 5`, since `?l` is not a referent of an output argument, the builtin statement is true.</li>
+								</ul>
+								This is in line with the theory box concept: ...
+							</li>
+							<li>If builtin <a>outputs</a> in a builtin statement are all referents of builtin <a>output arguments</a>, then, if possible, values can be calculated for the outputs so as to ensure the truthfulness of the builtin statement. If this is not possible, then the builtin statement is false. For instance, 
+								<ul>
+									<li>Given `(2 1) math:sum ?s`, the value `3` can be calculated and bound to output `?s` , and the resulting builtin statement is true.</li>
+									<li>Given `(1 "a" 3) list:member ?m`, three values can be calculated and bound to output `?m`, namely `1`, `"a"` and `3`, and the resulting builtin statements are true.</li>
+									<li>Given `("a" "b" "c") list:member (?p "x")`, no values can be calculated for output `?p` since `"x"` does not occur in the input list, and the builtin statement is false.</li>
+								</ul>
+								This is in line with the theory box concept: ...
+							</li>
+						</ol>
+					</li>
+				</ol>
+			</li>
+		</ol>
+				
+				</p>
+		
+	</section>
+	<section id="builtins_core">
+		<h4>Core builtins</h4>
+		<p>A builtin definition is structured as follows:
+			<ul>
+				<li><b>schema</b>: set of <a>arguments</a> defined in terms of the <a>N3 triple elements</a> in a builtin statement for which they are placeholders.</li>
+				<li><b>domain</b>: expected <a>domain datatypes</a> for the builtin arguments. Casting may take place if the <a>value datatype</a> does not correspond to the domain datatype.</li>
+				<li><b>inputs and outputs</b>: <a>input arguments</a> and <a>output arguments</a>.</li>
+				<li><b>summary</b>: a human-readable summary of the function of the builtin.</li>
+			</ul>
+		</p>
+		
+		<section id="builtins_math">
+			<h4>Math builtins</h4>
+			<p>Core math builtins can be found in the <a href="https://github.com/w3c/N3/blob/master/ns/math.n3">provisionary namespace file</a>.</p>
 		</section>
-		<section id="builtin_theory_box">
-			<h4>Builtin theory box</h4>
-			<p>A builtin statement can be more conveniently be seen as a <i>constrained</i> basic graph pattern (BPG) search on the N3 builtin’s <dfn>theory box</dfn>, defined to include all truthful builtin statements for the N3 builtin.</p>
-			<p>The two operations mentioned in <a href="#builtin_operations">Builtin operations</a>, i.e., (1) checking the truthfulness of a builtin statement, and (2) calculating output values so as to ensure the truthfulness, can be defined in terms of this constrained BGP search. This leaves the particular theory box to be defined per N3 builtin.</p>
-			
-			<p>For eample, for the `math:sum` builtin, simply put, the theory box includes all builtin statements `($a_1 .. $a_n) math:sum $a_sum` where the sum of `$a_1 .. $a_n` equals `$a_sum`. Regarding operation (1), the builtin statement `(2 1) math:sum 3` is found in the builtin's theory box, meaning the statement is true. Regarding operation (2), the builtin statement `(2 1) math:sum ?sum`, matches the builtin statement `(2 1) math:sum 3` in the builtin's theory box. Hence, `3` is calculated as value for output `?sum` that ensures the truthfulness of the builtin statement.</p>
-			
-			<p>This BPG search is <i>constrained</i> in that it will never return infinite numbers of values. For instance, for the `math:sum` builtin, the theory box includes an infinite number of truthful builtin statements matching the builtin statement `(?a 1) math:sum ?s`. In this case, instead of calculating infinite numbers of values, the truthfulness of the statement will simply be acknowledged.</p>
-			
-			<p class="ednote">It may be counter-intuitive that a <a>builtin statement</a>, where the variables needed to calculate an <a>output</a> are not all concrete <a>inputs</a> (e.g., `(?a 1) math:sum ?s`), will not cause an N3 rule to fail, since the builtin statement will be considered true.<br /><br />
-			This may have unintended consequences, i.e., instead of the rule failing, rule heads will be instantiated that include unbound universal variables (e.g., `?sum`). As a result, N3 systems are expected to generate witnesses in such cases (link..).</p>
+		<section id="builtins_string">
+			<h4>String builtins</h4>
+			<p>Core string builtins can be found in the <a href="https://github.com/w3c/N3/blob/master/ns/string.n3">provisionary namespace file</a>.</p>
 		</section>
-      </section>
-    </section>
+		<section id="builtins_list">
+			<h4>List builtins</h4>
+			<p>Core list builtins can be found in the <a href="https://github.com/w3c/N3/blob/master/ns/list.n3">provisionary namespace file</a>.</p>
+		</section>
+		<section id="builtins_log">
+			<h4>Log builtins</h4>
+			<p>Core log builtins can be found in the <a href="https://github.com/w3c/N3/blob/master/ns/log.n3">provisionary namespace file</a>.</p>
+		</section>
+		<section id="builtins_time">
+			<h4>Time builtins</h4>
+			<p>Core time builtins can be found in the <a href="https://github.com/w3c/N3/blob/master/ns/time.n3">provisionary namespace file</a>.</p>
+		</section>
+		<section id="builtins_crypto">
+			<h4>Crypto builtins</h4>
+			<p>Core crypto builtins can be found in the <a href="https://github.com/w3c/N3/blob/master/ns/crypto.n3">provisionary namespace file</a>.</p>
+		</section>
+	</section>
+  </section>
     <section id='n3grammar'>
       <h2><abbr title="Extended Backus–Naur Form">EBNF</abbr> Grammar</h2>
       <p>The <a data-cite="TURTLE#sec-grammar-grammar">Turtle grammar</a> was used as the starting point for the <dfn>N3 grammar</dfn>, which was subsequently adapted and extended with <abbr title="Notation3">N3</abbr> constructs.</p>
