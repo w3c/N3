@@ -168,7 +168,7 @@
           An <a>N3 graph</a> can have many more elements &mdash;
           <a>cited formulae</a> for quoting sets of statements,
           <a href="#logimpl">logical implications</a> for If-Then style, rule-based reasoning,
-          <a href="#variables">quantifications</a> for variables, and so on.
+          quantifications for <a>variables</a>, and so on.
           We introduce these elements below.</p>
         <p>Comments are indicated using a separate '#'
           (i.e., not part of another <abbr title="Notation3">N3</abbr> symbol, such as an <a>IRI</a>)
@@ -379,7 +379,7 @@
     
     <p class="note">If no <a>datatype IRI</a> or language tag is given, the datatype <code>xsd:string</code> will be assumed. In case a language tag is given, the datatype <code>rdf:langString</code> will be assumed. Note that it is not possible to specify both a <a>datatype IRI</a> and a language tag.</p>
         
-    <p class="note">Integers, decimals and doubles, or booleans, may also be written as string literals with the appropriate <a>datatype IRI</a>. Boolean literals can be written as <code>true</code> and <code>false</code>.</p>
+    <p class="note">Integers, decimals, doubles, and booleans may also be written as string literals with the appropriate <a>datatype IRI</a>. Boolean literals can be written as <code>true</code> and <code>false</code>.</p>
         
     <p class="note">There are also <a href="#compoundliteral">other mechanisms</a> for describing the language tag and base direction of RDF literals.</p>
         
@@ -438,7 +438,7 @@
           <dfn data-cite="RDF11-CONCEPTS#dfn-blank-node">blank nodes</dfn>
           to talk about resources.
           They are existential variables;
-          i.e., they state the existence of a thing without identifying that thing.
+          that is, they state the existence of a thing without identifying that thing.
           <a>Blank nodes</a> can be represented in several ways:</p>
         <section id='bnodeids'>
           <h4>Blank node identifiers</h4>
@@ -572,7 +572,7 @@
       <section id='cformulae'>
         <h3>Cited Formulae</h3>
         <p>
-          It is often useful to attach metadata to groups of triples (i.e., RDF graphs) &mdash; to give the provenance, context of version of the information, our opinion on the matter, and so on. We can use <dfn data-lt="cited formula">cited formulae</dfn> to quote RDF graphs, and then describe the <a>cited formula</a> using <a>N3 statements</a>. For instance:
+          It is often useful to attach metadata to groups of triples (such as RDF graphs, named or unnamed) &mdash; to give the provenance, context, or version of the information, our opinion on the matter, and so on. We can use <dfn data-lt="cited formula">cited formulae</dfn> to quote RDF graphs, and then describe the <a>cited formulae</a> using <a>N3 statements</a>. For instance:
         </p>
         <pre class="example nohighlight" data-transform="updateExample">
           <!--
@@ -790,7 +790,7 @@
         </p>
         <p>
           <dfn data-lt="quotes">Quoted graphs</dfn> are <a>N3 formulae</a> which are surrounded by quoting signs. 
-          In <abbr title="Notation3">N3</abbr>-turtle syntax we denote these quoting signs as curly brackets <code>{}</code>.
+          In <abbr title="Notation3">N3</abbr>-turtle syntax, we denote these quoting signs as curly brackets <code>{}</code>.
           <div class="ednote">We use both <a>quoted graphs</a>,
             and <a>cited formulae</a>.
             The destinction can be confusing,
@@ -818,7 +818,7 @@
     <section id='semantics'>
       <h2>Semantics</h2>
       <p>On top of the syntax as described above, we now define <abbr title="Notation3">N3</abbr>'s semantics. As an auxiliary construct we first introduce closed formulae and ground terms and
-      then give a definition of simple interpretations. These are interpretations for formulae which do not include negation or any special buil-in functions.
+      then give a definition of simple interpretations. These are interpretations for formulae which do not include negation nor any special built-in functions.
       </p>
            <section id='cgraphs'>
         <h3>Closed graphs and ground formulae</h3>
@@ -842,13 +842,12 @@ To illustrate that consider the following example:
         -->
       </pre>
 
-       <p>Here,  the blank node `_:x` is existentially  quantified,
-         but without any further  specification,
-         the triple could  either mean
-         (a) that  there exists some |x| of which Fred doubts that it is a  unicorn, or it could  mean
-         (b) that Freds  doubts that  unicorns  exist.
-         <abbr title="Notation3">N3</abbr>  follows
-option (b).</p>
+       <p>Here, the blank node `_:x` is existentially quantified,
+         but without any further specification,
+         the triple could mean either
+         (a) that there exists some |x| of which Fred doubts that it is a unicorn, or 
+         (b) that Fred doubts that unicorns exist.
+         <abbr title="Notation3">N3</abbr> follows option (b).</p>
       </section>
       <section id='sinterpret'>
         <h3>Simple N3 interpretations</h3>
@@ -1265,11 +1264,11 @@ option (b).</p>
         <p>Important differences with Turtle are the following:</p>
         <ul>
           <li>Literals are allowed at any s/p/o position (i.e., subject, predicate or object) in a statement. See the <a href="#grammar-production-pathItem">pathItem</a> production, which is (eventually) referenced by the "subject", "predicate" and "object" productions.</li>
-          <li><a>Cited formulae</a> (i.e., between "<code>{</code>" and "<code>}</code>"), which are allowed in any s/p/o position in a statement. See the <a href="#grammar-production-pathItem">pathItem</a> production.</li>
+         <li><abbr title="Notation3">N3</abbr> includes <a>cited formulae</a> (i.e., between "<code>{</code>" and "<code>}</code>"), which are allowed in any s/p/o position in a statement. See the <a href="#grammar-production-pathItem">pathItem</a> production.</li>
           <li><dfn data-lt="quickvar">Quick-variables</dfn> (e.g., "<code>?x</code>"), which are allowed in any s/p/o position in a statement. See the <a href="#grammar-production-pathItem">pathItem</a> production.</li>
           <li>A path syntax, comparable to (but not quite as extensive as) the <a data-cite="sparql11-query#propertypaths">SPARQL 1.1 Property Path</a> syntax. See the <a href="#grammar-production-path">path</a> production.</li>
           <li>The possibility to invert the predicate within a statement. See the <a href="#grammar-production-predicate">predicate</a> production.</li>
-          <li>An additional set of keywords, incl. "<code>is .. of</code>", "<code>has</code>", "<code>=</code>", "<code>=></code>", "<code>&lt;=</code>", in addition to Turtle's "<code>a</code>" keyword (among others). All keywords can be optionally preceded by "<code>@</code>", for consistency with the "<code>@prefix</code>" and "<code>@base"</code> keywords.</li>
+          <li>An additional set of keywords, including "<code>is .. of</code>", "<code>has</code>", "<code>=</code>", "<code>=></code>", "<code>&lt;=</code>", in addition to Turtle's "<code>a</code>" keyword (among others). All keywords can be optionally preceded by "<code>@</code>", for consistency with the "<code>@prefix</code>" and "<code>@base"</code> keywords.</li>
         </ul>
       </section>
       <section id="rel-n3-sparql">
