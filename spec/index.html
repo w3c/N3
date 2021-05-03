@@ -168,7 +168,7 @@
           An <a>N3 graph</a> can have many more elements &mdash;
           <a>cited formulae</a> for quoting sets of statements,
           <a href="#logimpl">logical implications</a> for If-Then style, rule-based reasoning,
-          quantifications for <a>variables</a>, and so on.
+          quantifications for variables, and so on.
           We introduce these elements below.</p>
         <p>Comments are indicated using a separate '#'
           (i.e., not part of another <abbr title="Notation3">N3</abbr> symbol, such as an <a>IRI</a>)
@@ -893,7 +893,8 @@ To illustrate that consider the following example:
 			E.g., for `35 math:cos ?x`, the `math:cos` of `35` will be calculated; for `?x math:cos 0.57` the inverse operation (`math:acos`) for `0.57` will be calculated.
 		</p>
 		<p>The set of arguments, and whether they are allowed to have inputs or outputs, are defined per N3 builtin. An argument that is allowed to have output referents is called an <dfn>output argument</dfn>, else it is called an <dfn>input argument</dfn>.</p>
-		<p class="ednote">The choice of allowing an argument as output is typically dictated by the need to avoid an infinite amount of results, intractable calculations, and general constraints that weigh utility vs. implementation difficulty.</p>
+		<p class="ednote">The choice of allowing an argument as output is typically dictated by the need to avoid an infinite amount of results, intractable calculations, and general constraints that weigh utility vs. implementation difficulty.<br /><br />
+		For instance, it would be perfectly possible to allow a single operand argument in `math:sum` to be an output in case the result argument is an input (e.g., `(1 ?o ?3) math:sum 6`) &mdash; but this complicates the implementation of the builtin while offering only limited utility.</p>
 	</section>
 	<section id="builtin_arg_domains">
 		<h4>Argument domains</h4>
@@ -961,7 +962,7 @@ To illustrate that consider the following example:
 		<p class="endnote">The BGP search is, technically speaking, further constrained depending on what arguments are allowed as <a>outputs</a>. For example, the builtin statement `(1 ?o) math:sum 2` only matches a single statement in the builtin's theory box, but the `math:sum` builtin only allows the sum to be an output.</p>
 		
 		<p class="ednote">It may be counter-intuitive that a <a>builtin statement</a>, where the variables needed to calculate an <a>output</a> are not all concrete <a>inputs</a> (e.g., `(?a 1) math:sum ?s`), will not cause an N3 rule to fail, since the builtin statement will be considered true.<br /><br />
-		This may have unintended consequences, i.e., instead of the rule failing, rule heads will be instantiated that include unbound universal variables (e.g., `?sum`). As a result, N3 systems are expected to generate witnesses in such cases (link..).</p>
+		This may have unintended consequences: instead of the rule failing, rule heads will be instantiated that include unbound universal variables (e.g., `?sum`). As a result, N3 systems are expected to generate witnesses in such cases (link..).</p>
 		
 		<h5>Builtin algorithm</h5>
 		<p>In line with the concept of a builtin theory box, we can define an algorithm to perform <a>checking</a> and <a>calculating</a> operations.</p>
@@ -971,7 +972,6 @@ To illustrate that consider the following example:
 				<ul>
 					<li>Given `(2 "a") math:sum 3`, since the value datatype `xs:string` of input `"a"` does not match domain datatype `xs:numeric`, and no casting is possible, the builtin statement is false.</li>
 				</ul>
-			This is in line with the theory box concept: ...
 			</li>
 			<li>Else:
 				<ol>
@@ -980,7 +980,6 @@ To illustrate that consider the following example:
 							<li>Given `(2 1) math:sum 3`, since `2 + 1 = 3` is true, the builtin statement is true.</li>
 							<li>Given `(2 1) math:sum 5`, since `2 + 1 = 5` is false, the builtin statement is false.</li>
 						</ul>
-						This is in line with the theory box concept: ...
 					</li>
 					<li>Else:
 						<ol>
@@ -989,7 +988,6 @@ To illustrate that consider the following example:
 									<li>Given `(?a 1) math:sum ?s`, since `?a` is not a referent of an output argument, the builtin statement is true.</li>
 									<li>Given `?l math:sum 5`, since `?l` is not a referent of an output argument, the builtin statement is true.</li>
 								</ul>
-								This is in line with the theory box concept: ...
 							</li>
 							<li>If builtin <a>outputs</a> in a builtin statement are all referents of builtin <a>output arguments</a>, then, if possible, values can be calculated for the outputs so as to ensure the truthfulness of the builtin statement. If this is not possible, then the builtin statement is false. For instance, 
 								<ul>
@@ -997,7 +995,6 @@ To illustrate that consider the following example:
 									<li>Given `(1 "a" 3) list:member ?m`, three values can be calculated and bound to output `?m`, namely `1`, `"a"` and `3`, and the resulting builtin statements are true.</li>
 									<li>Given `("a" "b" "c") list:member (?p "x")`, no values can be calculated for output `?p` since `"x"` does not occur in the input list, and the builtin statement is false.</li>
 								</ul>
-								This is in line with the theory box concept: ...
 							</li>
 						</ol>
 					</li>
@@ -1012,38 +1009,27 @@ To illustrate that consider the following example:
 		<h4>Core builtins</h4>
 		<p>A builtin definition is structured as follows:
 			<ul>
-				<li><b>schema</b>: set of <a>arguments</a> defined in terms of the <a>N3 triple elements</a> in a builtin statement for which they are placeholders.</li>
+				<li><b>schema</b>: set of <a>arguments</a> defined in terms of the <a>N3 triple elements</a> in a builtin statement for which they act as placeholders.</li>
 				<li><b>domain</b>: expected <a>domain datatypes</a> for the builtin arguments. Casting may take place if the <a>value datatype</a> does not correspond to the domain datatype.</li>
 				<li><b>inputs and outputs</b>: <a>input arguments</a> and <a>output arguments</a>.</li>
 				<li><b>summary</b>: a human-readable summary of the function of the builtin.</li>
 			</ul>
 		</p>
-		
-		<section id="builtins_math">
-			<h4>Math builtins</h4>
-			<p>Core math builtins can be found in the <a href="https://github.com/w3c/N3/blob/master/ns/math.n3">provisionary namespace file</a>.</p>
-		</section>
-		<section id="builtins_string">
-			<h4>String builtins</h4>
-			<p>Core string builtins can be found in the <a href="https://github.com/w3c/N3/blob/master/ns/string.n3">provisionary namespace file</a>.</p>
-		</section>
-		<section id="builtins_list">
-			<h4>List builtins</h4>
-			<p>Core list builtins can be found in the <a href="https://github.com/w3c/N3/blob/master/ns/list.n3">provisionary namespace file</a>.</p>
-		</section>
-		<section id="builtins_log">
-			<h4>Log builtins</h4>
-			<p>Core log builtins can be found in the <a href="https://github.com/w3c/N3/blob/master/ns/log.n3">provisionary namespace file</a>.</p>
-		</section>
-		<section id="builtins_time">
-			<h4>Time builtins</h4>
-			<p>Core time builtins can be found in the <a href="https://github.com/w3c/N3/blob/master/ns/time.n3">provisionary namespace file</a>.</p>
-		</section>
-		<section id="builtins_crypto">
-			<h4>Crypto builtins</h4>
-			<p>Core crypto builtins can be found in the <a href="https://github.com/w3c/N3/blob/master/ns/crypto.n3">provisionary namespace file</a>.</p>
-		</section>
+		<p>Core builtins can be found in their provisionary namespace files:
+			<ul>
+				<li><a href="https://github.com/w3c/N3/blob/master/ns/math.n3">math</li>
+				<li><a href="https://github.com/w3c/N3/blob/master/ns/string.n3">string</li>
+				<li><a href="https://github.com/w3c/N3/blob/master/ns/list.n3">list</li>
+				<li><a href="https://github.com/w3c/N3/blob/master/ns/log.n3">log</li>
+				<li><a href="https://github.com/w3c/N3/blob/master/ns/time.n3">time</li>
+				<li><a href="https://github.com/w3c/N3/blob/master/ns/crypto.n3">crypto</li>
+			</ul>
+		</p>
 	</section>
+	<section id="builtins_logic">
+		<h4>Logic builtins</h4>
+		<p>Here we look at how the various logic builtins can be combined and utilized to realize advanced use cases.</p>
+	</section>	
   </section>
     <section id='n3grammar'>
       <h2><abbr title="Extended Backus–Naur Form">EBNF</abbr> Grammar</h2>
@@ -1493,7 +1479,7 @@ To illustrate that consider the following example:
           -->
         </pre>
         <p><abbr title="Notation3">N3</abbr> is not directly compatible with TriG as it does not support this graph statement notation. Nevertheless, since <abbr title="Notation3">N3</abbr> supports <a>quoted graphs</a> (i.e., <a>cited formulae</a>) as part of regular <a>N3 statements</a>, authors can utilize the N3 Named Graphs extension [<strong>X</strong>] for associating names or identifiers with <a>cited formulae</a>. Although applications could easily introduce their own custom predicates for this purpose, we strongly recommend the use of this extension for interoperability purposes.</p>
-        <p>The N3 Named Graphs extension [<strong>X</strong>] defines a set of <a>built-ins</a> (used as predicates) to associate names or identifiers with <a>cited formulae</a>, which then become "named graphs". Moreover, each predicate has a well-defined semantics on how the named graph should be interpreted: as <a>quoted graphs</a> (the default <abbr title="Notation3">N3</abbr> interpretation), a partitioning of triples within a dataset context, sets of triples with their own isolated contexts, or specifying relations between local and online graphs.</p>
+        <p>The N3 Named Graphs extension [<strong>X</strong>] defines a set of <a>builtins</a> (used as predicates) to associate names or identifiers with <a>cited formulae</a>, which then become "named graphs". Moreover, each predicate has a well-defined semantics on how the named graph should be interpreted: as <a>quoted graphs</a> (the default <abbr title="Notation3">N3</abbr> interpretation), a partitioning of triples within a dataset context, sets of triples with their own isolated contexts, or specifying relations between local and online graphs.</p>
       </section>
     </section>
     <section id='patterns' class=informative>
