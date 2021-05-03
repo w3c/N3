@@ -348,7 +348,7 @@
         </pre>
         <p>For details on what number syntax is supported (e.g., for decimals, doubles), we refer to the <a data-cite="TURTLE#abbrev">RDF 1.1: Turtle (Section 2.5.2)</a> specification.</p>
         <p>Other literals (e.g., date; binary, octal or hex code; XML or JSON code; other types of numbers, such as shorts), and of course strings themselves, need to be written as <b>string literals</b>. For instance, <code>&lt;http://example.org/#spiderman&gt; &lt;http://example.org/#birthDate&gt; "2001-08-10".</code> In that case, the <a data-cite="RDF11-CONCEPTS#dfn-lexical-form">lexical form</a> will include the characters between the delimiter quotes (e.g., <code>2001-08-10</code>).</p>
-    <p>Clearly, this can raise confusion as to what type of literal is being represented &mdash; is it a string or some other arbitrary type? You can indicate the datatype of a literal in RDF using the <code>^^</code> symbol and the corresponding <dfn data-cite="XMLSCHEMA11-2#builtin-datatypes">datatype IRI</dfn>. The above example then becomes:
+    <p>Clearly, this can raise confusion as to what type of literal is being represented &mdash; is it a string or some other arbitrary type? You can indicate the datatype of a literal in RDF using the <code>^^</code> symbol and the corresponding <dfn data-cite="XMLSCHEMA11-2#built-in-datatypes">datatype IRI</dfn>. The above example then becomes:
     
     <pre class="example nohighlight" data-transform="updateExample">
       <!--
