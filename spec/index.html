@@ -858,6 +858,7 @@ To illustrate that consider the following example:
         <p class="ednote">Bla...</p>
       </section>
 	</section>
+	
   <section id='builtins'>
 	<h3>N3 builtins</h3>
 	<p><abbr title="Notation3">N3</abbr> defines a core set of <dfn>builtins</dfn>: these are predicates 
@@ -865,20 +866,32 @@ To illustrate that consider the following example:
 	Builtins are grouped into distinct vocabularies depending on the <a>N3 triple elements</a> they operate on (e.g., string, list), 
 	or their particular topic (e.g., time, crypto, log).
 	Builtins are denoted by a controlled IRI defined in one of the core builtin namespaces:</p>
-	<ul>
-	  <li><a href="../ns/crypto.html">Crypto</a> –
-		<a href="http://www.w3.org/2000/10/swap/crypto#">http://www.w3.org/2000/10/swap/crypto#</a>,</li>
-	  <li><a href="../ns/list.html">List</a> –
-		<a href="http://www.w3.org/2000/10/swap/list#">http://www.w3.org/2000/10/swap/list#</a>,</li>
-	  <li><a href="../ns/log.html">Log</a> –
-		<a href="http://www.w3.org/2000/10/swap/log#">http://www.w3.org/2000/10/swap/log#</a>,</li>
-	  <li><a href="../ns/math.html">Math</a> –
-		<a href="http://www.w3.org/2000/10/swap/math#">http://www.w3.org/2000/10/swap/math#</a>,</li>
-	  <li><a href="../ns/string.html">String</a> –
-		<a href="http://www.w3.org/2000/10/swap/string#">http://www.w3.org/2000/10/swap/string#</a>, and</li>
-	  <li><a href="../ns/time.html">Time</a> –
-		<a href="http://www.w3.org/2000/10/swap/time#">http://www.w3.org/2000/10/swap/time#</a>.</li>
-	</ul>
+		<ul>
+		  <li><a href="../ns/crypto.html">Crypto</a> –
+			<a href="http://www.w3.org/2000/10/swap/crypto#">http://www.w3.org/2000/10/swap/crypto#</a>,</li>
+		  <li><a href="../ns/list.html">List</a> –
+			<a href="http://www.w3.org/2000/10/swap/list#">http://www.w3.org/2000/10/swap/list#</a>,</li>
+		  <li><a href="../ns/log.html">Log</a> –
+			<a href="http://www.w3.org/2000/10/swap/log#">http://www.w3.org/2000/10/swap/log#</a>,</li>
+		  <li><a href="../ns/math.html">Math</a> –
+			<a href="http://www.w3.org/2000/10/swap/math#">http://www.w3.org/2000/10/swap/math#</a>,</li>
+		  <li><a href="../ns/string.html">String</a> –
+			<a href="http://www.w3.org/2000/10/swap/string#">http://www.w3.org/2000/10/swap/string#</a>, and</li>
+		  <li><a href="../ns/time.html">Time</a> –
+			<a href="http://www.w3.org/2000/10/swap/time#">http://www.w3.org/2000/10/swap/time#</a>.</li>
+		</ul>
+	
+	<p>A builtin definition is structured as follows:
+		<ul>
+			<li><b>schema</b>: set of <a>arguments</a> defined in terms of the <a>N3 triple elements</a> in a builtin statement for which they act as placeholders.</li>
+			<li><b>domain</b>: expected <a>domain datatypes</a> for the builtin arguments. Casting may take place if the <a>value datatype</a> does not correspond to the domain datatype.</li>
+			<li><b>inputs and outputs</b>: <a>input arguments</a> and <a>output arguments</a>.</li>
+			<li><b>summary</b>: a human-readable summary of the function of the builtin.</li>
+		</ul>
+		
+		We define these concepts in more detail below.
+	</p>
+	
 	<section id="builtins_args">
 		<h4>Input and output arguments</h4>
 		<p>An N3 <a>builtin</a> operates on its arguments. An <dfn>argument</dfn> is a placeholder that refers to an <a>N3 triple element</a> from the <dfn>builtin statement</dfn>, i.e., the <a>N3 statement</a> where the builtin acts as a predicate.</p>
@@ -896,6 +909,7 @@ To illustrate that consider the following example:
 		<p class="ednote">The choice of allowing an argument as output is typically dictated by the need to avoid an infinite amount of results, intractable calculations, and general constraints that weigh utility vs. implementation difficulty.<br /><br />
 		For instance, it would be perfectly possible to allow a single operand argument in `math:sum` to be an output in case the result argument is an input (e.g., `(1 ?o ?3) math:sum 6`) &mdash; but this complicates the implementation of the builtin while offering only limited utility.</p>
 	</section>
+	
 	<section id="builtin_arg_domains">
 		<h4>Argument domains</h4>
 		<p>An N3 builtin has an expected datatype for its arguments, called the <dfn>domain datatype</dfn>. If the datatype of an argument referent or value, called the <dfn>value datatype</dfn>, does not match the domain datatype, it may be possible to cast the value's datatype to, or substitute it for, the domain datatype.</p>
@@ -938,6 +952,7 @@ To illustrate that consider the following example:
 
 		<p class="ednote">There is a useful chart for casting primitive types to primitive types in <a href="https://www.w3.org/TR/xpath-functions/#casting-from-primitive-to-primitive">XPath</a>, a subset of which is defined for <a href="https://www.w3.org/TR/sparql11-query/#FunctionMapping">SPARQL</a>.</p>
 	</section>
+	
 	<section id="builtin_operations">
 		<h4>Builtin operations</h4>
 						
@@ -1000,37 +1015,54 @@ To illustrate that consider the following example:
 					</li>
 				</ol>
 			</li>
-		</ol>
-				
-				</p>
+		</ol>		
+	</section>
+	
+	<section id="builtins_use_cases">
+		<h4>Builtin use cases</h4>
+		<p>Here we look at how the various builtins can be combined and utilized in example use cases.</p>
 		
-	</section>
-	<section id="builtins_core">
-		<h4>Core builtins</h4>
-		<p>A builtin definition is structured as follows:
-			<ul>
-				<li><b>schema</b>: set of <a>arguments</a> defined in terms of the <a>N3 triple elements</a> in a builtin statement for which they act as placeholders.</li>
-				<li><b>domain</b>: expected <a>domain datatypes</a> for the builtin arguments. Casting may take place if the <a>value datatype</a> does not correspond to the domain datatype.</li>
-				<li><b>inputs and outputs</b>: <a>input arguments</a> and <a>output arguments</a>.</li>
-				<li><b>summary</b>: a human-readable summary of the function of the builtin.</li>
-			</ul>
-		</p>
-		<p>Core builtins can be found in their provisionary namespace files:
-			<ul>
-				<li><a href="https://github.com/w3c/N3/blob/master/ns/math.n3">math</li>
-				<li><a href="https://github.com/w3c/N3/blob/master/ns/string.n3">string</li>
-				<li><a href="https://github.com/w3c/N3/blob/master/ns/list.n3">list</li>
-				<li><a href="https://github.com/w3c/N3/blob/master/ns/log.n3">log</li>
-				<li><a href="https://github.com/w3c/N3/blob/master/ns/time.n3">time</li>
-				<li><a href="https://github.com/w3c/N3/blob/master/ns/crypto.n3">crypto</li>
-			</ul>
-		</p>
-	</section>
-	<section id="builtins_logic">
-		<h4>Logic builtins</h4>
-		<p>Here we look at how the various logic builtins can be combined and utilized to realize advanced use cases.</p>
+		<h5>Task workflows</h5>
+		
+		<p>Using `log:forAllIn`, one can check whether certain elements adhere to a given condition, and, if so, infer a conclusion. 
+		For instance, to denote a task as completed in case all its subtasks are completed:</p>
+		
+		<pre class="example nohighlight" data-transform="updateExample">
+          <!--
+			:taskA a :CompositeTask ;
+				:subtask :taskA1 ;
+				:subtask :taskA2 .
+			:taskA1 a :Completed .
+			:taskA2 a :Completed .
+			
+			{ ?task a :CompositeTask . 
+			({ ?task :subtask ?subtask } { ?subtask a :Completed }) log:forAllIn _:x . 
+
+			} => { ?task a :Completed } .
+		  -->
+		</pre>
+		<p>In case the implication `{ ?task :subtask ?m } { ?m a :Completed }` holds for all statements for the current context `_:x`, then the <a>builtin statement</a> will be true, and the conclusion `?task a :Completed` will be inferred.</p>
+		
+		<p>Using `log:collectAllIn`, one can collect all elements adhering to certain conditions into a list.
+		For instance, to collect all completed tasks within a given workflow:
+		
+		<pre class="example nohighlight" data-transform="updateExample">
+          <!--
+			:workflowA a :Workflow ;
+				:includes :taskA , :taskB .
+			:taskA a :Completed .
+			:taskB a :Completed .
+			
+			{ ?workflow a :Workflow;
+			  (?task { ?workflow :includes ?task . ?task a :Completed } ?completed) log:collectAllIn _:x .
+			
+			} => { ?workflow :completed ?completed } .
+		  -->
+		  <p>The <a>builtin statement</a> collects all `?task` bindings, i.e., for which the `{ ?workflow :includes ?task . ?task a :Completed }` statements are true, into the `?completed` list for the current context `_:x`, and infers the conclusion.</p>
+		</pre>		
 	</section>	
   </section>
+  
     <section id='n3grammar'>
       <h2><abbr title="Extended Backus–Naur Form">EBNF</abbr> Grammar</h2>
       <p>The <a data-cite="TURTLE#sec-grammar-grammar">Turtle grammar</a> was used as the starting point for the <dfn>N3 grammar</dfn>, which was subsequently adapted and extended with <abbr title="Notation3">N3</abbr> constructs.</p>
