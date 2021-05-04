@@ -905,7 +905,7 @@ To illustrate that consider the following example:
 			In rarer cases, an N3 built-in can support outputs for several arguments. 
 			E.g., for `35 math:cos ?x`, the `math:cos` of `35` will be calculated; for `?x math:cos 0.57` the inverse operation (`math:acos`) for `0.57` will be calculated.
 		</p>
-		<p>The set of arguments, and whether they are allowed to have inputs or outputs, are defined per N3 built-in. An argument that is allowed to have output referents is called an <dfn>output argument</dfn>, else it is called an <dfn>input argument</dfn>.</p>
+		<p>The set of arguments, and whether they are allowed to have inputs or outputs, are defined per N3 built-in. An argument that is allowed to have output referents is called an <dfn>output argument</dfn>; otherwise, it is called an <dfn>input argument</dfn>.</p>
 		<p class="ednote">The choice of allowing an argument as output is typically dictated by the need to avoid an infinite amount of results, intractable calculations, and general constraints that weigh utility vs. implementation difficulty.<br /><br />
 		For instance, it would be perfectly possible to allow a single operand argument in `math:sum` to be an output in case the result argument is an input (e.g., `(1 ?o ?3) math:sum 6`) &mdash; but this complicates the implementation of the built-in while offering only limited utility.</p>
 	</section>
