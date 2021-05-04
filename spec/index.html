@@ -902,8 +902,8 @@ To illustrate that consider the following example:
 			e.g., `math:sum` only supports outputs for `$a_sum`.
 			In other cases, an N3 built-in only supports inputs for all arguments: 
 			e.g., `math:lessThan` only supports inputs for `$a_1` and `$a_2`.
-			In rarer cases, an N3 built-in can support outputs for several arguments. 
-			E.g., for `35 math:cos ?x`, the `math:cos` of `35` will be calculated; for `?x math:cos 0.57` the inverse operation (`math:acos`) for `0.57` will be calculated.
+			In rarer cases, an N3 built-in can support outputs for several arguments:
+			e.g., for `35 math:cos ?x`, the `math:cos` of `35` will be calculated; for `?x math:cos 0.57` the inverse operation (`math:acos`) for `0.57` will be calculated.
 		</p>
 		<p>The set of arguments, and whether they are allowed to have inputs or outputs, are defined per N3 built-in. An argument that is allowed to have output referents is called an <dfn>output argument</dfn>; otherwise, it is called an <dfn>input argument</dfn>.</p>
 		<p class="ednote">The choice of allowing an argument as output is typically dictated by the need to avoid an infinite amount of results, intractable calculations, and general constraints that weigh utility vs. implementation difficulty.<br /><br />
