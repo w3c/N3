@@ -113,16 +113,16 @@ _:b10
     rdft:approval rdft:Approved ;
     test:options _:b12 .
 
-#:math_remainder
-#    a   test:TestN3 ;
-#    a   test:TestN3Positive ;
-#    a   test:TestN3Reason ;
-#    rdfs:comment "Test math:remainder" ;
-#    mf:action <file://D:/git/n3dev/william-vw/N3/tests/N3Tests/math/remainder.n3> ;
-#    mf:name "remainder.n3" ;
-#    mf:result <file://D:/git/n3dev/william-vw/N3/tests/N3Tests/math/remainder-ref.n3> ;
-#    rdft:approval rdft:Approved ;
-#    test:options _:b13 .
+:math_remainder
+    a   test:TestN3 ;
+    a   test:TestN3Positive ;
+    a   test:TestN3Reason ;
+    rdfs:comment "Test math:remainder" ;
+    mf:action <file://D:/git/n3dev/william-vw/N3/tests/N3Tests/math/remainder.n3> ;
+    mf:name "remainder.n3" ;
+    mf:result <file://D:/git/n3dev/william-vw/N3/tests/N3Tests/math/remainder-ref.n3> ;
+    rdft:approval rdft:Approved ;
+    test:options _:b13 .
 
 :cwm_list_r1
     a   test:TestN3 ;
@@ -269,16 +269,16 @@ _:b29
     rdft:approval rdft:Rejected ;
     test:options _:b6 .
 
-#:math_inf
-#    a   test:TestN3 ;
-#    a   test:TestN3Positive ;
-#    a   test:TestN3Reason ;
-#    rdfs:comment "Test infinities and NaN" ;
-#    mf:action <file://D:/git/n3dev/william-vw/N3/tests/N3Tests/math/inf.n3> ;
-#    mf:name "inf.n3" ;
-#    mf:result <file://D:/git/n3dev/william-vw/N3/tests/N3Tests/math/inf-ref.n3> ;
-#    rdft:approval rdft:Approved ;
-#    test:options _:b31 .
+:math_inf
+    a   test:TestN3 ;
+    a   test:TestN3Positive ;
+    a   test:TestN3Reason ;
+    rdfs:comment "Test infinities and NaN" ;
+    mf:action <file://D:/git/n3dev/william-vw/N3/tests/N3Tests/math/inf.n3> ;
+    mf:name "inf.n3" ;
+    mf:result <file://D:/git/n3dev/william-vw/N3/tests/N3Tests/math/inf-ref.n3> ;
+    rdft:approval rdft:Approved ;
+    test:options _:b31 .
 
 _:b32
     test:conclusions "true"^^xsd:boolean ;
