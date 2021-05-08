@@ -8,13 +8,6 @@
      @prefix : <unify3.n3#> .
     
     17     a :RESULT .
-      ( <a>
-         (
-            <b>
-            17
-            <c> )
-        <d> )
-         a :TestCase .
     
     :THIS_TEST     a :SUCCESS .
     
