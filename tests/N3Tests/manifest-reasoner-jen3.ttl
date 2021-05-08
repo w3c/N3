@@ -1013,16 +1013,16 @@ _:b56
     rdft:approval rdft:Approved ;
     test:options _:b37 .
 
-#:cwm_includes_t11
-#    a   test:TestN3 ;
-#    a   test:TestN3Positive ;
-#    a   test:TestN3Reason ;
-#    rdfs:comment "log:resolvesTo and log:includes - schema checking." ;
-#    mf:action <file://D:/git/n3dev/william-vw/N3/tests/N3Tests/cwm_includes/t11.n3> ;
-#    mf:name "includes-t11.n3" ;
-#    mf:result <file://D:/git/n3dev/william-vw/N3/tests/N3Tests/cwm_includes/t11-ref.n3> ;
-#    rdft:approval rdft:Approved ;
-#    test:options _:b65 .
+:cwm_includes_t11
+    a   test:TestN3 ;
+    a   test:TestN3Positive ;
+    a   test:TestN3Reason ;
+    rdfs:comment "log:resolvesTo and log:includes - schema checking." ;
+    mf:action <file://D:/git/n3dev/william-vw/N3/tests/N3Tests/cwm_includes/t11.n3> ;
+    mf:name "includes-t11.n3" ;
+    mf:result <file://D:/git/n3dev/william-vw/N3/tests/N3Tests/cwm_includes/t11-ref.n3> ;
+    rdft:approval rdft:Approved ;
+    test:options _:b65 .
 
 _:b81
     test:conclusions "true"^^xsd:boolean ;

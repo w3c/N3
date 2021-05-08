@@ -1,6 +1,7 @@
 # From swap/test/ref/bi-t11.n3
 @prefix : <foo.n3#> .
 
+:is a :UsedProperty .
 :includesTest2     a :success .
 :includesTest3     a :success .
 
