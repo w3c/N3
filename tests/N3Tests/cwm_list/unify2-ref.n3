@@ -8,7 +8,5 @@
      @prefix : <unify2.n3#> .
     
     17     a :RESULT .
-      ( 17 )
-         a :TestCase .
     
 #ENDS

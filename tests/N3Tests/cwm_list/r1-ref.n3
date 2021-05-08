@@ -10,8 +10,5 @@
     "one"     a :SUCCESS .
     
     "two"     a :SUCCESS .
-      ( "one"
-        "two" )
-         a :whatever .
     
 #ENDS

@@ -6,7 +6,6 @@
 
 #   Base was: file:///Users/gregg/Projects/rdf-n3/spec/test-files/reason/t9.n3
     
-    <a>     a <Success>;
-         <b> <c> .
+    <a>     a <Success> .
     
 #ENDS
