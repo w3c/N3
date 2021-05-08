@@ -1189,31 +1189,31 @@ _:b59
     rdft:approval rdft:Approved ;
     test:options _:b86 .
 
-#:math_product
-#    a   test:TestN3 ;
-#    a   test:TestN3Positive ;
-#    a   test:TestN3Reason ;
-#    rdfs:comment "Test math:product" ;
-#    mf:action <file://D:/git/n3dev/william-vw/N3/tests/N3Tests/math/product.n3> ;
-#    mf:name "product.n3" ;
-#    mf:result <file://D:/git/n3dev/william-vw/N3/tests/N3Tests/math/product-ref.n3> ;
-#    rdft:approval rdft:Approved ;
-#    test:options _:b82 .
+:math_product
+    a   test:TestN3 ;
+    a   test:TestN3Positive ;
+    a   test:TestN3Reason ;
+    rdfs:comment "Test math:product" ;
+    mf:action <file://D:/git/n3dev/william-vw/N3/tests/N3Tests/math/product.n3> ;
+    mf:name "product.n3" ;
+    mf:result <file://D:/git/n3dev/william-vw/N3/tests/N3Tests/math/product-ref.n3> ;
+    rdft:approval rdft:Approved ;
+    test:options _:b82 .
 
 _:b87
     test:think "true"^^xsd:boolean ;
     test:data "true"^^xsd:boolean .
 
-#:cwm_string_uriEncode
-#    a   test:TestN3 ;
-#    a   test:TestN3Positive ;
-#    a   test:TestN3Reason ;
-#    rdfs:comment "string:encodeForURI and encodeForFragID" ;
-#    mf:action <file://D:/git/n3dev/william-vw/N3/tests/N3Tests/cwm_string/uriEncode.n3> ;
-#    mf:name "string-uriEncode.n3" ;
-#    mf:result <file://D:/git/n3dev/william-vw/N3/tests/N3Tests/cwm_string/uriEncode-out.n3> ;
-#    rdft:approval rdft:Approved ;
-#    test:options _:b9 .
+:cwm_string_uriEncode
+    a   test:TestN3 ;
+    a   test:TestN3Positive ;
+    a   test:TestN3Reason ;
+    rdfs:comment "string:encodeForURI and encodeForFragID. Currently rejected since this is an unknown builtin." ;
+    mf:action <file://D:/git/n3dev/william-vw/N3/tests/N3Tests/cwm_string/uriEncode.n3> ;
+    mf:name "string-uriEncode.n3" ;
+    mf:result <file://D:/git/n3dev/william-vw/N3/tests/N3Tests/cwm_string/uriEncode-out.n3> ;
+    rdft:approval rdft:Rejected ;
+    test:options _:b9 .
 
 test:TestN3NegativeSyntax
     rdfs:subClassOf test:TestN3Negative ;
