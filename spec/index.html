@@ -103,28 +103,28 @@
     <section id='introduction'>
       <h2>Introduction</h2>
       <p>The Semantic Web represents a vision of online, interconnected and logical information. The core building block is a logical formalism called the Resource Description Framework (RDF) ([[[RDF11-PRIMER]]]). In RDF, one can express a logical graph as a conjunction of statements that describe properties of subject resources; and then describe the resource objects of those properties; and so on; resulting in a connected graph of logical information. It builds on the fundamental pointer mechanism of the Web, i.e., the Uniform Resource Identifier (URI), also known as International Resource Identifier (<abbr title="International Resource Identifier">IRI</abbr>), as a means to identify any RDF resource, ranging from abstract concepts (the book "Moby Dick") to physical (a paper copy of the book "Moby Dick") to electronic objects (an e-book copy of "Moby Dick"). People have used RDF to build vast quantities of online, connected knowledge graphs. The Semantic Web has allowed for decision making within an open web environment of shared knowledge graphs, as opposed to a closed system of locally believed facts.</p>
-      <p>Notation3 Logic, or <abbr title="Notation3">N3</abbr> for short, aims to improve decision-making abilities in an open web environment &mdash; by (a) extending the logical representation abilities of RDF and (b) allowing access to, operation on, and reasoning over online information. In line with the design ethos of RDF, <abbr title="Notation3">N3</abbr> attempts to walk the line between, on the one hand, ease-of-use by authors and simplicity of reasoning for developers; and, on the other hand, extended utility and practicality for building real-world applications.</p>
-      <p>Below, we elaborate on the main characteristics of <abbr title="Notation3">N3</abbr>:</p>
+      <p>Notation3 Logic, or N3 for short, aims to improve decision-making abilities in an open web environment &mdash; by (a) extending the logical representation abilities of RDF and (b) allowing access to, operation on, and reasoning over online information. In line with the design ethos of RDF, N3 attempts to walk the line between, on the one hand, ease-of-use by authors and simplicity of reasoning for developers; and, on the other hand, extended utility and practicality for building real-world applications.</p>
+      <p>Below, we elaborate on the main characteristics of N3:</p>
       <ul>
         <li>
-          <strong><abbr title="Notation3">N3</abbr> is a superset of RDF and <abbr title="Terse RDF Triple Language">Turtle</abbr>.</strong> One can write any valid [[[Turtle]]] graph, and it will be valid in <abbr title="Notation3">N3</abbr> as well. Importantly, this means that all of Turtle's syntactic sugar is available in <abbr title="Notation3">N3</abbr> &mdash; including <a href="#polists">predicate and object lists</a>, unlabeled blank nodes, and <a>collections</a>. Moreover, <strong><a>collections</a> are first-class citizens</strong> in <abbr title="Notation3">N3</abbr>, with an associated set of <a>built-ins</a> for accessing and manipulating them.
+          <strong>N3 is a superset of RDF and <abbr title="Terse RDF Triple Language">Turtle</abbr>.</strong> One can write any valid [[[Turtle]]] graph, and it will be valid in N3 as well. Importantly, this means that all of Turtle's syntactic sugar is available in N3 &mdash; including <a href="#polists">predicate and object lists</a>, unlabeled blank nodes, and <a>collections</a>. Moreover, <strong><a>collections</a> are first-class citizens</strong> in N3, with an associated set of <a>built-ins</a> for accessing and manipulating them.
         </li>
         <li>
-          <strong><abbr title="Notation3">N3</abbr> adds an If-Then style of decision making in the form of logical implications and variables.</strong> Logical implications allow making If-Then style inferences via modus ponens (where implementations may apply either backward- or forward-chaining). Variables in such rules may be quantified either universally or existentially; in the latter case, they are comparable to blank nodes. 
+          <strong>N3 adds an If-Then style of decision making in the form of logical implications and variables.</strong> Logical implications allow making If-Then style inferences via modus ponens (where implementations may apply either backward- or forward-chaining). Variables in such rules may be quantified either universally or existentially; in the latter case, they are comparable to blank nodes. 
         </li>
         <li>
-          <strong><abbr title="Notation3">N3</abbr> supports quoting and describing graphs of statements (e.g., recording provenance).</strong> In an open web environment, as an unbounded sea of (semi-)connected sources, one should be made aware of, and given the ability to disseminate, the provenance of information, among other things. A <a>quoted graph</a> includes a conjunction of quoted statements. It allows expression of where the particular statements (e.g., message, document) came from, at what time they were stated and by whom, and, in general, any other description of them.
+          <strong>N3 supports quoting and describing graphs of statements (e.g., recording provenance).</strong> In an open web environment, as an unbounded sea of (semi-)connected sources, one should be made aware of, and given the ability to disseminate, the provenance of information, among other things. A <a>quoted graph</a> includes a conjunction of quoted statements. It allows expression of where the particular statements (e.g., message, document) came from, at what time they were stated and by whom, and, in general, any other description of them.
         </li>
         <li>
-          <strong><abbr title="Notation3">N3</abbr> includes a core set of <a>built-ins</a> for accessing remote online information.</strong> In an open web environment, any online source may have information that supports decision making. The <code>log:semantics</code> <a>built-in</a> allows pulling in (parsed) logical expressions from remote online locations; the <code>log:conclusion</code> <a>built-in</a> allows calculating the deductive closure of any logical expression, whether local or remote. Subsequently, down-stream operations may, for instance, check whether other expressions are included, or not included, within these logical expressions.
+          <strong>N3 includes a core set of <a>built-ins</a> for accessing remote online information.</strong> In an open web environment, any online source may have information that supports decision making. The <code>log:semantics</code> <a>built-in</a> allows pulling in (parsed) logical expressions from remote online locations; the <code>log:conclusion</code> <a>built-in</a> allows calculating the deductive closure of any logical expression, whether local or remote. Subsequently, down-stream operations may, for instance, check whether other expressions are included, or not included, within these logical expressions.
         </li>
         <li>
-          <strong><abbr title="Notation3">N3</abbr> supports a scoped version of negation-as-failure.</strong> In an open web environment, it is often useful to check whether or not online information supports, or allows derivation of, a given set of facts. However, it will not be possible nor useful to check whether the whole Semantic Web <em>does not</em> support a given set of facts at some time &mdash; any online source, unknown to the reasoner at the time, or added after the question was asked, may hold a positive answer. Instead, a useful question in this setting is whether a <em>specific</em> piece of information, at a given point in time, does or does not support, or does or does not allow the derivation of, a set of facts. When tightly scoped to a specific information source, and at a specific time, this kind of negation-as-failure will not be influenced by other, unknown online sources. This is referred to as <em>scoped negation as failure,</em> and is supported by <abbr title="Notation3">N3</abbr>'s <code>log:notIncludes</code> <a>built-in</a>.
+          <strong>N3 supports a scoped version of negation-as-failure.</strong> In an open web environment, it is often useful to check whether or not online information supports, or allows derivation of, a given set of facts. However, it will not be possible nor useful to check whether the whole Semantic Web <em>does not</em> support a given set of facts at some time &mdash; any online source, unknown to the reasoner at the time, or added after the question was asked, may hold a positive answer. Instead, a useful question in this setting is whether a <em>specific</em> piece of information, at a given point in time, does or does not support, or does or does not allow the derivation of, a set of facts. When tightly scoped to a specific information source, and at a specific time, this kind of negation-as-failure will not be influenced by other, unknown online sources. This is referred to as <em>scoped negation as failure,</em> and is supported by N3's <code>log:notIncludes</code> <a>built-in</a>.
         </li>
       </ul>
       <section id='namespaces'>
         <h3>Namespaces</h3>
-        <p>The namespace for <abbr title="Notation3">N3</abbr> is <code>...</code>. <abbr title="Notation3">N3</abbr> also makes extensive use of terms from other vocabularies, in particular.... </p>
+        <p>The namespace for N3 is <code>...</code>. N3 also makes extensive use of terms from other vocabularies, in particular.... </p>
         <p>Namespaces and prefixes used in examples in the document are shown in the following table.</p>
         <table id="table-namespaces-examples">
           <thead>
@@ -155,7 +155,7 @@
 
     <section id='language' class=informative>
       <h2>Language</h2>
-      <p>The aim of this section is to provide an informal overview of the <abbr title="Notation3">N3</abbr> language and its different features. Where possible, this section borrows from, or is at least based on, the [[[Turtle]]] specification. More formal definitions will follow in the subsequent sections.
+      <p>The aim of this section is to provide an informal overview of the N3 language and its different features. Where possible, this section borrows from, or is at least based on, the [[[Turtle]]] specification. More formal definitions will follow in the subsequent sections.
       </p>
       <section id='n3doc'>
         <h3>N3 document</h3>
@@ -171,7 +171,7 @@
           quantifications for variables, and so on.
           We introduce these elements below.</p>
         <p>Comments are indicated using a separate '#'
-          (i.e., not part of another <abbr title="Notation3">N3</abbr> symbol, such as an <a>IRI</a>)
+          (i.e., not part of another N3 symbol, such as an <a>IRI</a>)
           and continue until the end of  the line.
         </p>
       </section>
@@ -202,7 +202,7 @@
           <http://example.org/#green-goblin> <http://xmlns.com/foaf/0.1/name> "Green Goblin" .
             -->
         </pre>
-        <p class="note">There is no inherent order for <abbr title="Notation3">N3</abbr> or RDF triples. The same is true for the relational model, i.e., relational tuples or rows do not have an inherent order. Hence, it is a mistake to associate meaning with the order of statements in an <abbr title="Notation3">N3</abbr> document; for instance, it would be an error to assume that the first listed telephone for Spiderman would be his landline, and the second one his mobile number.</p>
+        <p class="note">There is no inherent order for N3 or RDF triples. The same is true for the relational model, i.e., relational tuples or rows do not have an inherent order. Hence, it is a mistake to associate meaning with the order of statements in an N3 document; for instance, it would be an error to assume that the first listed telephone for Spiderman would be his landline, and the second one his mobile number.</p>
         <p class="note">Examples will often be written using newlines and tab spaces for readability. However, generally, only the subjects, predicates and objects need to be separated with a whitespace.</p>
         <!-- <pre class="example nohighlight">&lt;http://example.org/#dt&gt; &lt;http://xmlns.com/foaf/0.1/name&gt; &quot;Dominik Tomaszuk&quot; .</pre> -->
       </section>
@@ -229,8 +229,7 @@
       </section>
       <section id='iris'>
         <h3>IRIs</h3>
-        <p>As mentioned, one typically uses an
-          <abbr title="International Resource Identifier">IRI</abbr>
+        <p>As mentioned, one typically uses an IRI
           to represent an identifiable entity &mdash;
           such as a person, place, or thing.
           Until now, we have been writing
@@ -316,7 +315,7 @@
           Subsequent @prefix` or `PREFIX` directives may re-map
           the same <a>prefix label</a> to another <a>namespace IRI</a>.</p>
 
-        <p class="note"><abbr title="Notation3">N3</abbr> also supports
+        <p class="note">N3 also supports
           case-insensitive 'PREFIX' and 'BASE' directives, as does Turtle,
           to align the syntax with SPARQL.
           Note that the <code>@prefix</code> and <code>@base</code> directives
@@ -495,7 +494,7 @@
           <p>Below, we summarize typical use cases where <a>blank nodes</a> are used to describe resources.</p>
           <p><strong>Unknown resources</strong>: we might <a href="rdf-primer#section-blank-node">want to state</a> that the Mona Lisa painting has in its background an unidentified tree, which we know to be a cypress tree. We could mint an <a>IRI</a> such as "mona-lisa-cypress-tree", but we feel that would be redundant &mdash; we simply want to describe the tree, such as the painting it is in, and the type of tree. We're not particularly interested in allowing other <a>N3 graphs</a> to refer to the tree. Moreover, there may already exist an <a>IRI</a> for that particular tree, and we don't want to mint another <a>IRI</a> to refer to the same tree (nor do we want to lookup this existing <a>IRI</a>).</p>
           <p><strong>Composite information</strong>: when describing <a data-cite="rdf-primer#structuredproperties">composite pieces of information</a>, such as street addresses, telephone numbers and dates, it would be quite redundant to mint an <a>IRI</a> just for the purpose of structuring this information. It is unlikely that anyone outside this <a>N3 graph</a> would ever need to refer directly to the <a>IRI</a>. Instead, one can use an <a data-lt="blank node">RDF blank node</a> to connect the "composed" piece of information, e.g., the street address, to its composite values, e.g., street name, number, and city.</p>
-          <p><strong>N-ary relations</strong>: <a>blank nodes</a> are a convenient way to represent <a href="#naryrel">n-ary relations in <abbr title="Notation3">N3</abbr></a>.</p>
+          <p><strong>N-ary relations</strong>: <a>blank nodes</a> are a convenient way to represent <a href="#naryrel">n-ary relations in N3</a>.</p>
           <!--
             <pre class="example nohighlight">@prefix foaf: &lt;http://xmlns.com/foaf/0.1/&gt; .
             
@@ -506,7 +505,7 @@
       </section>
       <section id='collections'>
         <h3>Collections</h3>
-        <p>We often need to describe collections of things, e.g., a book written by several authors, listing the students in a course, or listing the software modules in a package. <abbr title="Notation3">N3</abbr> provides a succinct <dfn data-lt="n3 collection|n3 list|list">collection</dfn> syntax to represent (possibly empty) collections of terms enclosed by <code>(</code> <code>)</code>. The contained things are called "<dfn data-lt="collection member">members</dfn>".</p>
+        <p>We often need to describe collections of things, e.g., a book written by several authors, listing the students in a course, or listing the software modules in a package. N3 provides a succinct <dfn data-lt="n3 collection|n3 list|list">collection</dfn> syntax to represent (possibly empty) collections of terms enclosed by <code>(</code> <code>)</code>. The contained things are called "<dfn data-lt="collection member">members</dfn>".</p>
         <p class="note">To an extent, an N3 collection <a href="#semantics">is equivalent to</a> the more verbose <a data-cite="rdf11-mt#rdf-collections">RDF Collection vocabulary</a>.</p>
         <p>For instance:</p>
         <pre class="example nohighlight" data-transform="updateExample">
@@ -518,7 +517,7 @@
               :author ( :deborah :daniele :peter) .
           -->
         </pre>
-        <p>This states that the value of the author property is the <em>collection resource</em>. <strong>Important</strong>: any additional meaning, e.g., that (<em>a</em>) each member (e.g., <code>:deborah</code>) can be considered as a value of the author property (i.e., the author property "distributes" across the members), or that (<em>b</em>) the first member is the author who put the most effort into the book, <strong>is not given by the <abbr title="Notation3">N3</abbr> semantics</strong>.</p>
+        <p>This states that the value of the author property is the <em>collection resource</em>. <strong>Important</strong>: any additional meaning, e.g., that (<em>a</em>) each member (e.g., <code>:deborah</code>) can be considered as a value of the author property (i.e., the author property "distributes" across the members), or that (<em>b</em>) the first member is the author who put the most effort into the book, <strong>is not given by the N3 semantics</strong>.</p>
         <p>That said, in this example, it would be reasonable to assume these two meanings &mdash; i.e., each member is a separate author of the book, and the first member put the most effort in the book. Nevertheless, such meanings would always be application-specific.</p>
         <p>Alternatively, one could represent this information as follows, in such a way that explicates meaning (<em>a</em>):</p>
         <pre class="example nohighlight" data-transform="updateExample">
@@ -531,7 +530,7 @@
           -->
         </pre>
         <p>I.e., we use an <a href="grammar-production-objectList">object list</a> to explicitly state that these members are separate values of the author property. We no longer need to assume meaning (<em>a</em>) since the RDF semantics already explicates that meaning.</p>
-        <p class="note">Since <abbr title="Notation3">N3</abbr> / RDF statements do not have an inherent order, this example loses meaning (<em>b</em>) since we no longer know who is the first author.</p>
+        <p class="note">Since N3 / RDF statements do not have an inherent order, this example loses meaning (<em>b</em>) since we no longer know who is the first author.</p>
         <p>In the following example, we state that a resolution was approved by a group with members Fred, Wilma, and Dino:</p>
         <pre class="example nohighlight" data-transform="updateExample">
           <!--
@@ -540,8 +539,8 @@
           :resolution123 :approvedBy (:Fred :Wilma :Dino) .
           -->
         </pre>
-        <p>This states that the <em>collection resource</em> consisting of Fred, Wilma, and Dino approved the resolution. As before, the <abbr title="Notation3">N3</abbr> semantics do not imply that Fred, Wilma, and Dino <em>each individually</em> approved the resolution (i.e., the "approvedBy" property does not distribute across the <a>collection members</a>). In contrast to before, such a meaning, which would have to be application-specific, would not make sense either &mdash; it is possible that Fred and Wilma formed the majority that approved the resolution, and Dino was the dissenting voice.</p>
-        <p>In <abbr title="Notation3">N3</abbr>, collections may occur as subjects, predicates or objects in a statement. For instance:</p>
+        <p>This states that the <em>collection resource</em> consisting of Fred, Wilma, and Dino approved the resolution. As before, the N3 semantics do not imply that Fred, Wilma, and Dino <em>each individually</em> approved the resolution (i.e., the "approvedBy" property does not distribute across the <a>collection members</a>). In contrast to before, such a meaning, which would have to be application-specific, would not make sense either &mdash; it is possible that Fred and Wilma formed the majority that approved the resolution, and Dino was the dissenting voice.</p>
+        <p>In N3, collections may occur as subjects, predicates or objects in a statement. For instance:</p>
         <pre class="example nohighlight" data-transform="updateExample">
           <!--
           @base <http://example.org/#> .
@@ -602,12 +601,12 @@
         <h4>Paths</h4>
         <p>It also useful to describe a relationship between
           two resources which spans several other anonymous resources.
-          <abbr title="Notation3">N3</abbr> provides a syntax similar to
+          N3 provides a syntax similar to
           <a data-cite="SPARQL11-QUERY#propertypaths">SPARQL property paths</a> [[SPARQL11-QUERY]].</p>
-        <p><abbr title="Notation3">N3</abbr> has the concept of a <dfn data-lt="resource path">path</dfn>
+        <p>N3 has the concept of a <dfn data-lt="resource path">path</dfn>
           used to describe a relationship from some <a>N3 triple element</a>
           to a <a>blank node</a>.
-          In the <abbr title="Notation3">N3</abbr>-turtle syntax,
+          In the N3-turtle syntax,
           a <a href="#grammar-production-path">path</a> starts
           with a <a href="#grammar-production-pathItem">pathItem</a>
           representing a specific <a>N3 triple element</a>
@@ -628,7 +627,7 @@
           position to describe a string of relationships between
           a <a data-cite="RDF11-CONCEPTS#dfn-subject">subject</a>
           and an <a data-cite="RDF11-CONCEPTS#dfn-object">object</a> resource.
-          Although unrestricted in <abbr title="Notation3">N3</abbr>, a
+          Although unrestricted in N3, a
           <a>resource path</a> is most often used in the
           <a data-cite="RDF11-CONCEPTS#dfn-subject">subject</a> or
           <a data-cite="RDF11-CONCEPTS#dfn-object">object</a> position.</p>
@@ -744,17 +743,17 @@
     <section id='concepts'>
       <h2>Syntactic Concepts and Terminology</h2>
       <p> 
-        In this section we give an overview of the syntax of <abbr title="Notation3">N3</abbr>.
-        <abbr title="Notation3">N3</abbr> is an extension of RDF. We use the following concepts from the [[[RDF11-CONCEPTS]]]: <a data-cite="RDF11-CONCEPTS#dfn-iri">IRI</a>, <a data-cite="RDF11-CONCEPTS#dfn-rdf-triple">RDF triple</a>, <a data-cite="RDF11-CONCEPTS#dfn-rdf-graph">RDF graph</a>, <a data-cite="RDF11-CONCEPTS#dfn-subject">subject</a>, <a data-cite="RDF11-CONCEPTS#dfn-predicate">predicate</a>, <a data-cite="RDF11-CONCEPTS#dfn-object">object</a>, <a data-cite="RDF11-CONCEPTS#dfn-rdf-source">RDF source</a>, <a data-cite="RDF11-CONCEPTS#dfn-node">node</a>, <a data-cite="RDF11-CONCEPTS#dfn-blank-node">blank node</a>, <a data-cite="RDF11-CONCEPTS#dfn-literal">literal</a>,  <a data-cite="RDF11-CONCEPTS#dfn-graph-isomorphism">isomorphic</a>, and <a data-cite="RDF11-CONCEPTS#dfn-generalized-rdf-triple">generalized RDF triples, graphs, and datasets</a>. 
+        In this section we give an overview of the syntax of N3.
+        N3 is an extension of RDF. We use the following concepts from the [[[RDF11-CONCEPTS]]]: <a data-cite="RDF11-CONCEPTS#dfn-iri">IRI</a>, <a data-cite="RDF11-CONCEPTS#dfn-rdf-triple">RDF triple</a>, <a data-cite="RDF11-CONCEPTS#dfn-rdf-graph">RDF graph</a>, <a data-cite="RDF11-CONCEPTS#dfn-subject">subject</a>, <a data-cite="RDF11-CONCEPTS#dfn-predicate">predicate</a>, <a data-cite="RDF11-CONCEPTS#dfn-object">object</a>, <a data-cite="RDF11-CONCEPTS#dfn-rdf-source">RDF source</a>, <a data-cite="RDF11-CONCEPTS#dfn-node">node</a>, <a data-cite="RDF11-CONCEPTS#dfn-blank-node">blank node</a>, <a data-cite="RDF11-CONCEPTS#dfn-literal">literal</a>,  <a data-cite="RDF11-CONCEPTS#dfn-graph-isomorphism">isomorphic</a>, and <a data-cite="RDF11-CONCEPTS#dfn-generalized-rdf-triple">generalized RDF triples, graphs, and datasets</a>. 
       </p>
       <p>
-        The examples above as well as the examples in the remainder of this document all follow <abbr title="Notation3">N3</abbr>-turtle syntax which is also the standard syntax for <abbr title="Notation3">N3</abbr>. 
-        It is however possible, to use alternative syntaxes as long as the translation to <abbr title="Notation3">N3</abbr> turtle syntax is clearly defined.
+        The examples above as well as the examples in the remainder of this document all follow N3-turtle syntax which is also the standard syntax for N3. 
+        It is however possible, to use alternative syntaxes as long as the translation to N3 turtle syntax is clearly defined.
       </p>
       <section id='terms'>
         <h3>Terms</h3>
         <p>
-          In order to define the set of all terms of <abbr title="Notation3">N3</abbr> we to add several definitions to the RDF concepts above which extend the syntax of RDF to <abbr title="Notation3">N3</abbr>: 
+          In order to define the set of all terms of N3 we to add several definitions to the RDF concepts above which extend the syntax of RDF to N3: 
         </p>
         <p>
           The set of <dfn>N3 symbols</dfn> consists of the set of <a>N3 triple elements</a> and the 
@@ -770,27 +769,27 @@
           <a>quoted graphs</a>,
           and of one implication sign.
           The latter is denoted by the `log:implies` <a>built-in</a> to indicate implication. 
-          In <abbr title="Notation3">N3</abbr>-turtle syntax, `log:implies` MAY be represented using the symbol <code>=&gt;</code>.
+          In N3-turtle syntax, `log:implies` MAY be represented using the symbol <code>=&gt;</code>.
         </p>
         <p>
           The set of <dfn data-lt="quantifier">N3 quantifiers</dfn> consists of the universal quantifier and the existential quantifier.
-          In <abbr title="Notation3">N3</abbr>-turtle syntax,
+          In N3-turtle syntax,
           we denote the universal quantifier using <a>universal variables</a>
           and the existential quantifier using <a>blank nodes</a>.
         </p>
         <p>
           The set of <dfn data-lt="universal">universal variables</dfn> is an arbitrary set of symbols which is disjoint to all other <a>N3 triple elements</a>. 
-          In <abbr title="Notation3">N3</abbr>-turtle syntax, universal variables are represented by strings starting with a question mark <code>?</code>.
+          In N3-turtle syntax, universal variables are represented by strings starting with a question mark <code>?</code>.
         </p>
         <p>
           <dfn>Lists</dfn> are ordered sets consisting of zero or more <a>N3 triple elements</a>. 
-          We call the list which has no elements the empty list. In <abbr title="Notation3">N3</abbr>-turtle syntax, 
+          We call the list which has no elements the empty list. In N3-turtle syntax, 
           we indicate lists by using round brackets <code>()</code>. 
-          The empty list in <abbr title="Notation3">N3</abbr> is equivalent to the empty list in RDF and can thus also be represented using <a href="https://www.w3.org/TR/rdf11-mt/#rdf-interpretations">rdf:nil</a>.
+          The empty list in N3 is equivalent to the empty list in RDF and can thus also be represented using <a href="https://www.w3.org/TR/rdf11-mt/#rdf-interpretations">rdf:nil</a>.
         </p>
         <p>
           <dfn data-lt="quotes">Quoted graphs</dfn> are <a>N3 formulae</a> which are surrounded by quoting signs. 
-          In <abbr title="Notation3">N3</abbr>-turtle syntax, we denote these quoting signs as curly brackets <code>{}</code>.
+          In N3-turtle syntax, we denote these quoting signs as curly brackets <code>{}</code>.
           <div class="ednote">We use both <a>quoted graphs</a>,
             and <a>cited formulae</a>.
             The destinction can be confusing,
@@ -817,13 +816,13 @@
     </section>
     <section id='semantics'>
       <h2>Semantics</h2>
-      <p>On top of the syntax as described above, we now define <abbr title="Notation3">N3</abbr>'s semantics. As an auxiliary construct we first introduce closed formulae and ground terms and
+      <p>On top of the syntax as described above, we now define N3's semantics. As an auxiliary construct we first introduce closed formulae and ground terms and
       then give a definition of simple interpretations. These are interpretations for formulae which do not include negation nor any special built-in functions.
       </p>
            <section id='cgraphs'>
         <h3>Closed graphs and ground formulae</h3>
         <p>
-        <abbr title="Notation3">N3</abbr> supports implicit quantification;
+        N3 supports implicit quantification;
         that is, one can state quantified variables without explicitly stating the quantifier.
         To do that, we use <a>universal variables</a>,
         which are implicitly universally quantified, and
@@ -847,7 +846,7 @@ To illustrate that consider the following example:
          the triple could mean either
          (a) that there exists some |x| of which Fred doubts that it is a unicorn, or 
          (b) that Fred doubts that unicorns exist.
-         <abbr title="Notation3">N3</abbr> follows option (b).</p>
+         N3 follows option (b).</p>
       </section>
       <section id='sinterpret'>
         <h3>Simple N3 interpretations</h3>
@@ -859,7 +858,7 @@ To illustrate that consider the following example:
       </section>
       <section id='builtins'>
         <h3>N3 Built-ins</h3>
-        <p><abbr title="Notation3">N3</abbr> defines a core set of <dfn>built-ins</dfn> defined
+        <p>N3 defines a core set of <dfn>built-ins</dfn> defined
           in a set of vocabularies with defined semantics
           for querying and manipulating <a>N3 documents</a>.
           Built-ins are denoted by a controlled IRI defined in
@@ -883,8 +882,8 @@ To illustrate that consider the following example:
     </section>
     <section id='n3grammar'>
       <h2><abbr title="Extended Backus–Naur Form">EBNF</abbr> Grammar</h2>
-      <p>The <a data-cite="TURTLE#sec-grammar-grammar">Turtle grammar</a> was used as the starting point for the <dfn>N3 grammar</dfn>, which was subsequently adapted and extended with <abbr title="Notation3">N3</abbr> constructs.</p>
-      <p>The <abbr title="Notation3">N3</abbr> Working Group made the following decisions that modify the <a>N3 grammar</a> as originally presented in [[N3]]:
+      <p>The <a data-cite="TURTLE#sec-grammar-grammar">Turtle grammar</a> was used as the starting point for the <dfn>N3 grammar</dfn>, which was subsequently adapted and extended with N3 constructs.</p>
+      <p>The N3 Working Group made the following decisions that modify the <a>N3 grammar</a> as originally presented in [[N3]]:
       <ul>
         <li>
           Dropping the <code>@keywords</code> declaration. It is complex and difficult to explain. Also, when using the declaration, <a>N3 documents</a> look wholly different from when it is not being used, since it allows <a>local names</a> in the default namespace to be listed without the "<code>:</code>" symbol.
@@ -995,7 +994,7 @@ To illustrate that consider the following example:
           <a data-cite="RFC3987#section-6.5">Section 6.5</a>
           of [[[RFC3987]]] [[RFC3997]].</p>
 
-        <p>The <abbr title="Notation3">N3</abbr> <code>@base</code>
+        <p>The N3 <code>@base</code>
           or <code>BASE</code> directive can be used to
           define the <a>Base IRI</a>,
           per [[RFC3986]] <a data-cite="RFC3986#section-5.1.1">Section 5.1.1 "Base URI Embedded in Conent"</a>.
@@ -1259,12 +1258,12 @@ To illustrate that consider the following example:
       <h2>Relationship to Other Languages</h2>
       <section id="rel-n3-turtle">
         <h3>Turtle</h3>
-        <p><abbr title="Notation3">N3</abbr> is a superset of [[[turtle]]], meaning that all valid Turtle documents will be valid in <abbr title="Notation3">N3</abbr> as well. The inverse is not true, i.e., a valid <a>N3 document</a> will not always be valid in Turtle.</p>
+        <p>N3 is a superset of [[[turtle]]], meaning that all valid Turtle documents will be valid in N3 as well. The inverse is not true, i.e., a valid <a>N3 document</a> will not always be valid in Turtle.</p>
         <p>The current <a>N3 grammar</a> started from the <a data-cite="TURTLE#sec-grammar">Turtle grammar</a> which was adapted and extended to be in line with the <a data-cite="N3#grammar">original N3 grammar</a>. Hence, many of the grammar productions will be much more similar to the Turtle grammar than the initial N3 grammar.</p>
         <p>Important differences with Turtle are the following:</p>
         <ul>
           <li>Literals are allowed at any s/p/o position (i.e., subject, predicate or object) in a statement. See the <a href="#grammar-production-pathItem">pathItem</a> production, which is (eventually) referenced by the "subject", "predicate" and "object" productions.</li>
-         <li><abbr title="Notation3">N3</abbr> includes <a>cited formulae</a> (i.e., between "<code>{</code>" and "<code>}</code>"), which are allowed in any s/p/o position in a statement. See the <a href="#grammar-production-pathItem">pathItem</a> production.</li>
+         <li>N3 includes <a>cited formulae</a> (i.e., between "<code>{</code>" and "<code>}</code>"), which are allowed in any s/p/o position in a statement. See the <a href="#grammar-production-pathItem">pathItem</a> production.</li>
           <li><dfn data-lt="quickvar">Quick-variables</dfn> (e.g., "<code>?x</code>"), which are allowed in any s/p/o position in a statement. See the <a href="#grammar-production-pathItem">pathItem</a> production.</li>
           <li>A path syntax, comparable to (but not quite as extensive as) the <a data-cite="sparql11-query#propertypaths">SPARQL 1.1 Property Path</a> syntax. See the <a href="#grammar-production-path">path</a> production.</li>
           <li>The possibility to invert the predicate within a statement. See the <a href="#grammar-production-predicate">predicate</a> production.</li>
@@ -1274,19 +1273,19 @@ To illustrate that consider the following example:
       <section id="rel-n3-sparql">
         <h3>SPARQL</h3>
         <p>The <abbr title="SPARQL Protocol and RDF Query Language">SPARQL</abbr> 1.1 Query Language (SPARQL) [[SPARQL11-QUERY]] uses a Turtle-style [[turtle]] syntax for its <a data-cite="sparql11-query#rTriplesBlock">TriplesBlock production</a>. Differences between Turtle and SPARQL are elaborated in the <a data-cite="turtle#sec-diff-sparql">Turtle specification</a>.</p>
-        <p>Below, we indicate some important differences between this production and <abbr title="Notation3">N3</abbr>:</p>
+        <p>Below, we indicate some important differences between this production and N3:</p>
         <ul>
           <li>
-            Like <abbr title="Notation3">N3</abbr>, SPARQL permits literals as the subject of RDF triples, but, in contrast to <abbr title="Notation3">N3</abbr>, it does not allow literals as the predicate of RDF triples. Similarly, <abbr title="Notation3">N3</abbr> allows for <a href="#bnodeprplist">blank node property lists</a> and <a>collections</a> in any position, whereas SPARQL only allows them in the subject or object position.
+            Like N3, SPARQL permits literals as the subject of RDF triples, but, in contrast to N3, it does not allow literals as the predicate of RDF triples. Similarly, N3 allows for <a href="#bnodeprplist">blank node property lists</a> and <a>collections</a> in any position, whereas SPARQL only allows them in the subject or object position.
           </li>
           <li>
-            Like <abbr title="Notation3">N3</abbr>, SPARQL permits variables in any part of the triple. But, in contrast to <abbr title="Notation3">N3</abbr>, SPARQL allows writing variables as both <code>?name</code> and <code>$name</code>, whereas <abbr title="Notation3">N3</abbr> only allows <code>?name</code>.
+            Like N3, SPARQL permits variables in any part of the triple. But, in contrast to N3, SPARQL allows writing variables as both <code>?name</code> and <code>$name</code>, whereas N3 only allows <code>?name</code>.
           </li>
           <li>
-            <abbr title="Notation3">N3</abbr> allows <a href="#iris">prefix and base directives</a> anywhere outside of a triple. In SPARQL, they are only allowed in the <a data-cite="sparql11-query#rPrologue">Prologue</a> (i.e., at the start of the SPARQL query). However, in general, we also recommend listing prolog and base directives at the start of <a>N3 documents</a>.
+            N3 allows <a href="#iris">prefix and base directives</a> anywhere outside of a triple. In SPARQL, they are only allowed in the <a data-cite="sparql11-query#rPrologue">Prologue</a> (i.e., at the start of the SPARQL query). However, in general, we also recommend listing prolog and base directives at the start of <a>N3 documents</a>.
           </li>
           <li>
-            In <abbr title="Notation3">N3</abbr>, most keywords (including <code>@prefix</code> and <code>@base</code> directives) are case sensitive, but most keywords in SPARQL are case-insensitive (aside from <code>a</code>). An exception in <abbr title="Notation3">N3</abbr> are the <code>PREFIX</code> and <code>BASE</code> directives, which are derived from SPARQL and are case insensitive in <abbr title="Notation3">N3</abbr> as well.
+            In N3, most keywords (including <code>@prefix</code> and <code>@base</code> directives) are case sensitive, but most keywords in SPARQL are case-insensitive (aside from <code>a</code>). An exception in N3 are the <code>PREFIX</code> and <code>BASE</code> directives, which are derived from SPARQL and are case insensitive in N3 as well.
           </li>
           <li>
             The <a href="#paths">N3 path syntax</a> resembles the <a data-cite="sparql11-query#propertypaths">SPARQL 1.1 Property Path</a> syntax, but there are important differences: 
@@ -1295,7 +1294,7 @@ To illustrate that consider the following example:
                 It is assumed that the <strong>path starts from a resource (<em>IR</em>) instead of a property (<em>IP</em>)</strong>. Hence, they are meant to be used in the subject and object positions, rather than the predicate position as is the case for SPARQL 1.1 property paths. This has important repercussions on how <a href="#pathres">paths are resolved</a>. Note that paths are unrelated to the inverted notation <code>^</code> for predicates (see the <a href="#grammar-production-predicate">predicate</a> production)
               </li>
               <li>
-                Compared to SPARQL, <abbr title="Notation3">N3</abbr> only supports the <em>SequencePath</em> and <em>InversePath</em> expressions, but with syntactic differences: the '<code>!</code>' symbol is used to separate path items, whereas the '<code>^</code>' symbol is used to indicate an inverse predicate.
+                Compared to SPARQL, N3 only supports the <em>SequencePath</em> and <em>InversePath</em> expressions, but with syntactic differences: the '<code>!</code>' symbol is used to separate path items, whereas the '<code>^</code>' symbol is used to indicate an inverse predicate.
               </li>
             </ul>
         </ul>
@@ -1328,19 +1327,19 @@ To illustrate that consider the following example:
           } 
           -->
         </pre>
-        <p><abbr title="Notation3">N3</abbr> is not directly compatible with TriG as it does not support this graph statement notation. Nevertheless, since <abbr title="Notation3">N3</abbr> supports <a>quoted graphs</a> (i.e., <a>cited formulae</a>) as part of regular <a>N3 statements</a>, authors can utilize the N3 Named Graphs extension [<strong>X</strong>] for associating names or identifiers with <a>cited formulae</a>. Although applications could easily introduce their own custom predicates for this purpose, we strongly recommend the use of this extension for interoperability purposes.</p>
-        <p>The N3 Named Graphs extension [<strong>X</strong>] defines a set of <a>built-ins</a> (used as predicates) to associate names or identifiers with <a>cited formulae</a>, which then become "named graphs". Moreover, each predicate has a well-defined semantics on how the named graph should be interpreted: as <a>quoted graphs</a> (the default <abbr title="Notation3">N3</abbr> interpretation), a partitioning of triples within a dataset context, sets of triples with their own isolated contexts, or specifying relations between local and online graphs.</p>
+        <p>N3 is not directly compatible with TriG as it does not support this graph statement notation. Nevertheless, since N3 supports <a>quoted graphs</a> (i.e., <a>cited formulae</a>) as part of regular <a>N3 statements</a>, authors can utilize the N3 Named Graphs extension [<strong>X</strong>] for associating names or identifiers with <a>cited formulae</a>. Although applications could easily introduce their own custom predicates for this purpose, we strongly recommend the use of this extension for interoperability purposes.</p>
+        <p>The N3 Named Graphs extension [<strong>X</strong>] defines a set of <a>built-ins</a> (used as predicates) to associate names or identifiers with <a>cited formulae</a>, which then become "named graphs". Moreover, each predicate has a well-defined semantics on how the named graph should be interpreted: as <a>quoted graphs</a> (the default N3 interpretation), a partitioning of triples within a dataset context, sets of triples with their own isolated contexts, or specifying relations between local and online graphs.</p>
       </section>
     </section>
     <section id='patterns' class=informative>
       <h3>Design Patterns</h3>
-      <p>In this section, we present common patterns to solve often-occurring problems, for instance regarding data modeling, in <abbr title="Notation3">N3</abbr>.</p>
+      <p>In this section, we present common patterns to solve often-occurring problems, for instance regarding data modeling, in N3.</p>
       <section id="naryrel">
         <h4>N-ary Relations</h4>
         <p>Until now, we only considered binary relations between entities and/or values. But, many types of relations are <em>ternary, quaternary, or, in general, n-ary in nature</em>, i.e., they have an arbitrary number of participants. Typical examples are purchase, employment, membership, .. relations.</p>
         <p>In other cases, we want to describe <em>properties of relations</em> &mdash; such as the provenance of a piece of information, or the probability of a diagnosis. But, in essence, this is the same problem as representing n-ary relations.</p>
         <p>There are several ways of representing n-ary relations in RDF &mdash; these are described in [[[swbp-n-aryRelations]]].</p>
-        <p>Below, we illustrate options for representing n-ary relations in <abbr title="Notation3">N3</abbr> in particular.</p>
+        <p>Below, we illustrate options for representing n-ary relations in N3 in particular.</p>
         <section id="nary-binary-rel">
           <h4>Using sets of binary relations</h4>
           <p>In general, it is possible to convert any n-ary relation into an equivalent set of binary relations. This is a convenient solution, since we already know how to represent binary relations.</p>
@@ -1359,7 +1358,7 @@ To illustrate that consider the following example:
             -->
 
           </pre>
-          <p class="note">Either you could mint a new <a>IRI</a> for representing the n-ary relation, or simply use a <a href="#bnodes">blank node</a>. E.g., in case other parties may want to refer to the n-ary relation from outside the <abbr title="Notation3">N3</abbr> graph, one could choose to mint a new <a>IRI</a>; else, it will likely be more convenient to use a <a href="#bnodeprplist">blank node property list</a>.</p>
+          <p class="note">Either you could mint a new <a>IRI</a> for representing the n-ary relation, or simply use a <a href="#bnodes">blank node</a>. E.g., in case other parties may want to refer to the n-ary relation from outside the N3 graph, one could choose to mint a new <a>IRI</a>; else, it will likely be more convenient to use a <a href="#bnodeprplist">blank node property list</a>.</p>
           <p>In other cases, things are more naturally described as <em>properties of relations</em>, rather than n-ary relations &mdash; for instance, the provenance of a piece of information, the trend of someone's body temperature and when the temperature was taken. Nevertheless, these can be represented in the same way as n-ary relation participants.</p>
           <p>We start from the same solution above, i.e., introducing a resource to represent the (in this case, binary) relation, and then linking the two participants to this resource. Subsequently, we use a set of binary relations to attach each descriptive property (e.g., diagnosis probability; temperature trend) to the relation resource.</p>
           <!-- <p>For instance, when describing a diagnosis (e.g., breast cancer) of someone (e.g., Christine), you may want to indicate the probability of the diagnosis, and the date at which the diagnosis was made:</p>
@@ -1423,7 +1422,7 @@ To illustrate that consider the following example:
       </section>
       <section id="reification">
         <h4>Graph quoted inside another graph</h4>
-        <p>Reification in the RDF context means the expression of something in a language using the language so that it becomes treatable by the language. RDF graphs consist of RDF statements. If one wants to look objectively at an RDF graph and reason about it is using RDF tools, then it is useful to have a mechanism for describing RDF statements. <abbr title="Notation3">N3</abbr> extends RDF to allow graphs themselves to be another form of literal node. A graph can be quoted inside another graph, as in the example:</p>
+        <p>Reification in the RDF context means the expression of something in a language using the language so that it becomes treatable by the language. RDF graphs consist of RDF statements. If one wants to look objectively at an RDF graph and reason about it is using RDF tools, then it is useful to have a mechanism for describing RDF statements. N3 extends RDF to allow graphs themselves to be another form of literal node. A graph can be quoted inside another graph, as in the example:</p>
         <pre class="example nohighlight" data-transform="updateExample">
           <!--
           @prefix : <http://example.org/>  .
@@ -1451,7 +1450,7 @@ To illustrate that consider the following example:
     </section>
     <section id='in-html' class="appendix informative">
       <h2>Embedding N3 in HTML documents</h2>
-      <p>HTML [[HTML5]] <code>script</code> element can be used to embed data blocks in documents. <abbr title="Notation3">N3</abbr> can be easily embedded in <code>script</code> with the <code>type</code> attribute set to <code>text/n3</code>.</p>
+      <p>HTML [[HTML5]] <code>script</code> element can be used to embed data blocks in documents. N3 can be easily embedded in <code>script</code> with the <code>type</code> attribute set to <code>text/n3</code>.</p>
       <p>Such content may be escaped as indicated below:</p>
       <ul>
         <li><code>&amp;amp;</code>: &amp; (ampersand, U+0026)</li>
@@ -1469,7 +1468,7 @@ To illustrate that consider the following example:
         </script>
         -->
       </pre>
-      <p>When embedded in XHTML N3 data blocks must be enclosed in CDATA sections. Those CDATA markers must be in Turtle comments. If the character sequence <code>]]&gt;</code> occurs in the document it must be escaped using strings escapes (<code>\u005d\u0054\u003e</code>). This will also make <abbr title="Notation3">N3</abbr> safe in polyglot documents served as both <code>text/html</code> and <code>application/xhtml+xml</code>. Failing to use CDATA sections or escape <code>]]&gt;</code> may result in a non well-formed XML document.</p>
+      <p>When embedded in XHTML N3 data blocks must be enclosed in CDATA sections. Those CDATA markers must be in Turtle comments. If the character sequence <code>]]&gt;</code> occurs in the document it must be escaped using strings escapes (<code>\u005d\u0054\u003e</code>). This will also make N3 safe in polyglot documents served as both <code>text/html</code> and <code>application/xhtml+xml</code>. Failing to use CDATA sections or escape <code>]]&gt;</code> may result in a non well-formed XML document.</p>
       <p class="ednote">Check this, I don't think that CDATA is required for XHTML any longer. See <a data-cite="JSON-LD11#embedding-json-ld-in-html-documents"></a>.</p>
       <pre class="example nohighlight" data-transform="updateExample">
         <!--
