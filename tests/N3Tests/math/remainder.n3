@@ -4,8 +4,12 @@
 # Integer divided by integer
 { ("2" "4") math:remainder 2 } => {:test1a a :SUCCESS}.
 { (2 4) math:remainder 2 } => {:test1b a :SUCCESS}.
-{ (-2 4) math:remainder 2 } => {:test1c a :SUCCESS}.
-{ (2 -4) math:remainder -2 } => {:test1d a :SUCCESS}.
+
+# alternatives possible here
+# (e.g., implemented differently in Java, it seems)
+#{ (-2 4) math:remainder 2 } => {:test1c a :SUCCESS}.
+#{ (2 -4) math:remainder -2 } => {:test1d a :SUCCESS}.
+
 { (-2 -4) math:remainder -2 } => {:test1e a :SUCCESS}.
 { (0 2) math:remainder 0 } => {:test1f a :SUCCESS}.
 
