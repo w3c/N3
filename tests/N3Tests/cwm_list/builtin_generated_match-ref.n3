@@ -8,9 +8,6 @@
      @prefix : <builtin_generated_match.n3#> .
     
     ()     a :Thing .
-      (  (
-            :q ) )
-         a :Thing .
     
     :q     a :GreatThing .
     
