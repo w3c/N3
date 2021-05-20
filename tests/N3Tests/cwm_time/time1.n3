@@ -1,5 +1,6 @@
  @prefix : <TEST#> .
 @prefix v: <t1.n3#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
 "1999-12-31T23:59:59.99Z" :day 31;
      :dayOfWeek 5;
@@ -19,7 +20,7 @@
      :second 0;
      :year 2000 .
 
-"2001-09-09T01:46:40Z"     :inSeconds 1000000000 .
+"2001-09-09T01:46:40Z"^^xsd:dateTime     :inSeconds 1000000000 .
 
 "2002" :dayOfWeek 2;
      :inSeconds 1009843200;
