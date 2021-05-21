@@ -63,7 +63,7 @@
 
 # We may need the schema as a formula too:
 
-{     ?p :schema [ log:semantics ?F ] } log:implies { ?p :schemaFormula ?F }. 
+#{     ?p :schema [ log:semantics ?F ] } log:implies { ?p :schemaFormula ?F }. 
 
 #  If there is no schema found, then we flag a problem
 
