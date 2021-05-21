@@ -8,5 +8,6 @@
      @prefix : <reflexive.n3#> .
      
      :Steve :talksTo :Joe  .
+     { ?s :talksTo ?s } log:implies {?s :admits "I talk to myself"} .
     
 #ENDS
