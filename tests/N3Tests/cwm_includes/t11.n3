@@ -58,7 +58,7 @@
 #
 
 { ?p a :UsedProperty .
-  ?p log:semantics [log:includes { ?p s:isDefinedBy ?s }] } log:implies {?p :schema :s}.
+  ?p log:semantics [log:includes { ?p s:isDefinedBy ?s }] } log:implies {?p :schema ?s}.
 
 
 # We may need the schema as a formula too:
