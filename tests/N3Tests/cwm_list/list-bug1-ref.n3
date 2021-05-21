@@ -6,11 +6,7 @@
 
 #   Base was: file:///Users/gregg/Projects/rdf-n3/spec/test-files/list-bug1.n3
      @prefix : <list-bug1.n3#> .
-    
-      ( <a>
-        <b> )
-         a <twoer> .
-    
+        
     <a>     :RESULT <b> .
     
 #ENDS

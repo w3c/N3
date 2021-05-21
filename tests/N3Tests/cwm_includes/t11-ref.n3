@@ -1,6 +1,25 @@
 # From swap/test/ref/bi-t11.n3
 @prefix : <foo.n3#> .
+@prefix rdf:  <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 
-:includesTest2     a :success .
-:includesTest3     a :success .
-
+:includesTest3
+    rdf:type :success .
+:is
+    rdf:type :Property_declared .
+:is
+    :schemaFormula {
+:theSky
+    rdfs:isDefinedBy <file:///home/william-vw/projects/n3/william-vw/N3/tests/N3Tests/cwm_includes/foo.n3> .
+:is
+    rdf:type rdf:Property .
+:is
+    rdfs:isDefinedBy <file:///home/william-vw/projects/n3/william-vw/N3/tests/N3Tests/cwm_includes/foo.n3> .
+:blue
+    rdfs:isDefinedBy <file:///home/william-vw/projects/n3/william-vw/N3/tests/N3Tests/cwm_includes/foo.n3> .        } .
+:is
+    :schema <file:///home/william-vw/projects/n3/william-vw/N3/tests/N3Tests/cwm_includes/foo.n3> .
+:is
+    rdf:type :UsedProperty .
+:includesTest2
+    rdf:type :success .

@@ -58,12 +58,12 @@
 #
 
 { ?p a :UsedProperty .
-  ?p log:semantics [log:includes { ?p s:isDefinedBy ?s }] } log:implies {?p :schema :s}.
+  ?p log:semantics [log:includes { ?p s:isDefinedBy ?s }] } log:implies {?p :schema ?s}.
 
 
 # We may need the schema as a formula too:
 
-{     ?p :schema [ log:semantics ?F ] } log:implies { ?p :schemaFormula ?F }. 
+#{     ?p :schema [ log:semantics ?F ] } log:implies { ?p :schemaFormula ?F }. 
 
 #  If there is no schema found, then we flag a problem
 

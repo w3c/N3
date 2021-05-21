@@ -6,9 +6,7 @@
 
 #   Base was: file:///Users/gregg/Projects/rdf-n3/spec/test-files/reason/t3.n3
      @prefix : <t3.n3#> .
-    
-    :a     :b :c .
-    
+        
     :a2     :b2 :c2 .
     
 #ENDS

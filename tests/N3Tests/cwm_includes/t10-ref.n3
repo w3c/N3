@@ -3,5 +3,5 @@
 @prefix local: <t10.n3#>.
 
 :test10a     a :success .
-:fred local:favoriteColor :blue
+:fred local:favoriteColor :blue .
 :test10b     a :success .

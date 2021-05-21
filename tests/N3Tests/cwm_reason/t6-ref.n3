@@ -6,9 +6,7 @@
 
 #   Base was: file:///Users/gregg/Projects/rdf-n3/spec/test-files/reason/t6.n3
      @prefix : <t6.n3#> .
-    
-    :joe     a :player;
-         :friend :kev;
-         :height "1.6" .
+     
+        :joe     a :player .
     
 #ENDS

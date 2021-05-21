@@ -6,7 +6,9 @@
 
 #   Base was: file:///Users/gregg/Projects/rdf-n3/spec/test-files/unify/reflexive.n3
      @prefix : <reflexive.n3#> .
-    
-    :Steve     :talksTo :Joe .
+     @prefix log: <http://www.w3.org/2000/10/swap/log#> .
+     
+     :Steve :talksTo :Joe  .
+     { ?s :talksTo ?s } log:implies {?s :admits "I talk to myself"} .
     
 #ENDS
