@@ -1,3 +1,0 @@
-@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
-
-<#> rdfs:comment "Ambiguity between backward rules and URIs - this is not allowed" .

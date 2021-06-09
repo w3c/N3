@@ -1,4 +1,0 @@
-@prefix : <iri1.n3#>.
-@base <http://example.org/> .
-
-:s <= p> :o.

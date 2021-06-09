@@ -1,9 +1,0 @@
-@prefix log: <http://www.w3.org/2000/10/swap/log#> .
-@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
-@prefix : <rule7.n3#>.
-@base <http://example.org/> .
-
-<#> rdfs:comment "Test that matches rule var to data var" .
-
-?x :p :z .
-{ ?y :p :z } => { :test1 :has ?y } .
