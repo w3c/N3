@@ -2,6 +2,8 @@
 @prefix time: <http://www.w3.org/2000/10/swap/time#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 
+<#> rdfs:comment "Time builtins" .
+
 { "2009-01-25T12:00:00-04:00"^^xsd:dateTime time:inSeconds ?s } => { :time1 :has ?s } .
 
 { "2009-01-25T13:17:28Z"^^xsd:dateTime time:second ?s } => { :time1 :has ?s } .

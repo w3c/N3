@@ -1,0 +1,12 @@
+@prefix math: <http://www.w3.org/2000/10/swap/math#> .
+@prefix log: <http://www.w3.org/2000/10/swap/log#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix : <https://raw.githubusercontent.com/w3c/N3/master/tests/N3Tests/builtin3.n3#> .
+
+<#> rdfs:comment "Retrieve online formula and check its contents" .
+
+{ 	<https://raw.githubusercontent.com/w3c/N3/master/tests/N3Tests/quick_test.n3> log:semantics ?f .
+	?f log:includes { ?person :hasAge ?age } .
+ 	?age math:greaterThan 35 .
+       
+} => { ?person a :Old } .

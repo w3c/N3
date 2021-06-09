@@ -2,7 +2,7 @@
 @prefix list: <http://www.w3.org/2000/10/swap/list#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 
-<#> rdfs:comment "Selecting subsets of collections" .
+<#> rdfs:comment "Selecting subsets of lists" .
 
 (:r1 :r2 :r3 :r4) a :ResourceList .
 

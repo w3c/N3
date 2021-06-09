@@ -1,7 +1,7 @@
 @prefix log: <http://www.w3.org/2000/10/swap/log#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 
-<#> rdfs:comment "Test equality of cited formulas" .
+<#> rdfs:comment "Check equality of cited formulas" .
 
 { { 
 	?x :hasName "ed" ;

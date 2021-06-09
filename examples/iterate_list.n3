@@ -4,7 +4,7 @@
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix : <list-iterate.n3#>.
 
-<#> rdfs:comment "Tests for list:iterate" .
+<#> rdfs:comment "Iterate over contents of a list" .
 
 { ( "x" "y" 1 ) list:iterate ( ?p ?m ) . ( "pos=" ?p ", member=" ?m ) string:concatenation ?s } => { :list1 :has ?s } .
 { ( { :will :is :real} { :ed :isnot :real } { :el :isnot :real } ) list:iterate ( ?i { ?p :isnot :real } ) } => 

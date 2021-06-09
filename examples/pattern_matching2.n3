@@ -1,3 +1,5 @@
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+
 <#> rdfs:comment "Peer into formulas (introspect) to infer conclusions" .
 
 { :ed :wrote :war_and_peace } a :Lie .

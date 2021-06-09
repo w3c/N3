@@ -1,6 +1,8 @@
 @prefix log: <http://www.w3.org/2000/10/swap/log#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 
+<#> rdfs:comment "Check whether a condition holds for all elements in a select set" .
+
 :taskA a :CompositeTask ;
 	:member :taskA1 ;
 	:member :taskA2 .
