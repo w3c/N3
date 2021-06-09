@@ -1,0 +1,12 @@
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix log: <http://www.w3.org/2000/10/swap/log#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+
+<#> rdfs:comment "Reason about a particular formula embedded in the document" .
+
+:myFormula rdf:value {
+	:we :thought { :ed :is :cool } .
+	{ ?x :thought { :ed :is :cool } } => { ?x :is :wrong } .
+} .
+
+{ ?myFormula rdf:value ?f . ?f log:conclusion ?c } => { :test :has ?c } .

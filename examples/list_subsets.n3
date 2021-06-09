@@ -1,0 +1,17 @@
+@prefix log: <http://www.w3.org/2000/10/swap/log#> .
+@prefix list: <http://www.w3.org/2000/10/swap/list#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+
+<#> rdfs:comment "Selecting subsets of collections" .
+
+(:r1 :r2 :r3 :r4) a :ResourceList .
+
+:r1 :isConstant false .
+:r2 :isConstant true .
+:r3 :isConstant false .
+:r4 :isConstant true.
+
+{	?l a :ResourceList .
+	(?m { ?l list:member ?m . ?m :isConstant false } ?varList) log:collectAllIn _:x .
+	
+} => { ?varList a :VariableList } .

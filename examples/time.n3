@@ -1,0 +1,13 @@
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix time: <http://www.w3.org/2000/10/swap/time#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+
+{ "2009-01-25T12:00:00-04:00"^^xsd:dateTime time:inSeconds ?s } => { :time1 :has ?s } .
+
+{ "2009-01-25T13:17:28Z"^^xsd:dateTime time:second ?s } => { :time1 :has ?s } .
+{ "2009-01-25T13:17:28Z"^^xsd:dateTime time:minute ?m } => { :time2 :has ?m } .
+{ "2009-01-25T13:17:28Z"^^xsd:dateTime time:hour ?h } => { :time3 :has ?h } .
+{ "2009-01-25T13:17:28Z"^^xsd:dateTime time:day ?d } => { :time4 :has ?d } .
+{ "2009-01-25T13:17:28Z"^^xsd:dateTime time:month ?m } => { :time5 :has ?m } .
+{ "2009-01-25T13:17:28Z"^^xsd:dateTime time:year ?y } => { :time6 :has ?y } .
+{ "2021-02-23T18:31:00Z"^^xsd:dateTime time:dayOfWeek ?d } => { :time7 :has ?d } .

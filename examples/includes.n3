@@ -1,0 +1,28 @@
+@prefix log: <http://www.w3.org/2000/10/swap/log#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+{ { 
+	?x :hasName "ed" ;
+		:hasAge ?y ;
+		:hasColor "perrywinkle blue"
+
+} log:includes {
+	:ed :hasName "ed" ;
+		:hasAge 36 .
+	
+} } => {
+	:test1 a :SUCCESS
+} .
+
+
+{ { 
+	?x :hasName "ed" ;
+		:hasAge ?y
+
+} log:notIncludes {
+	:ed :hasName "ed" ;
+		:hasAge 36 ;
+		:hasColor "perrywinkle blue"
+	
+} } => {
+	:test2 a :SUCCESS
+} .

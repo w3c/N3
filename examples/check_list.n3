@@ -1,0 +1,20 @@
+@prefix log: <http://www.w3.org/2000/10/swap/log#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+
+:taskA a :CompositeTask ;
+	:member :taskA1 ;
+	:member :taskA2 .
+:taskA1 a :NotCompleted .
+:taskA2 a :Completed .
+
+:taskB a :CompositeTask ;
+	:member :taskB1 ;
+	:member :taskB2 .
+:taskB1 a :Completed .
+:taskB2 a :Completed .
+
+
+{ ?t a :CompositeTask . 
+  ({ ?t :member ?t2 } { ?t2 a :Completed }) log:forAllIn _:x . 
+
+} => { ?t a :Completed } .

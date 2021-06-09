@@ -1,0 +1,5 @@
+@prefix string: <http://www.w3.org/2000/10/swap/string#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix : <https://raw.githubusercontent.com/w3c/N3/master/tests/N3Tests/builtin3.n3#> .
+
+{ ("hello world" "(.*)ll.*") string:scrape ?s . (?s "y!") string:concatenation ?s2 } => { :test :has ?s2 } .

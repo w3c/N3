@@ -1,0 +1,7 @@
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+
+<#> rdfs:comment "Infer your own domain-specific OWL2 RL rules!" .
+
+:ed a :ClassB .
+:ClassB rdfs:subClassOf :ClassA .
+{ ?C rdfs:subClassOf ?D . } => { { ?x a ?C } => { ?x a ?D } } .
