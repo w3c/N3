@@ -832,35 +832,7 @@ Maybe we could get back to that example when we introduce rules or also with bui
       <p>On top of the syntax as described above, we now define N3's semantics. As an auxiliary construct we first introduce closed formulae and ground terms and
       then give a definition of simple interpretations. These are interpretations for formulae which do not include negation nor any special built-in functions.
       </p>
-           <section id='cgraphs'>
-        <h3>Closed graphs and ground formulae</h3>
-        <p>
-        <abbr title="Notation3">N3</abbr> supports implicit quantification;
-        that is, one can state quantified variables without explicitly stating the quantifier.
-        To do that, we use <a>universal variables</a>,
-        which are implicitly universally quantified, and
-        <a data-cite="RDF11-CONCEPTS#dfn-blank-node">blank nodes</a>,
-        which are implicitly existentially quantified.
-        </p>
-       <p>
-       In this context it is important to note that not only the kind of the quantifier is matters but also its scope, i.e. the exact parts the quantification is valid for, and the exact position of the quantifier.
-To illustrate that consider the following example:
-       </p>
-      <pre class="example nohighlight" data-transform="updateExample">
-        <!--
-        @prefix: <http://example.org/#> .
-
-        :Fred :doubts {_:x a :Unicorn}.
-        -->
-      </pre>
-
-       <p>Here, the blank node `_:x` is existentially quantified,
-         but without any further specification,
-         the triple could mean either
-         (a) that there exists some |x| of which Fred doubts that it is a unicorn, or
-         (b) that Fred doubts that unicorns exist.
-         <abbr title="Notation3">N3</abbr> follows option (b).</p>
-      </section>
+    
       <section id='sinterpret'>
         <h3>Simple N3 interpretations</h3>
 
