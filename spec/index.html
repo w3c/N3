@@ -821,18 +821,48 @@ Maybe we could get back to that example when we introduce rules or also with bui
           In N3-turtle syntax, we denote these quoting signs as curly brackets <code>{}</code>.
         </p>
         <p>
-          An <dfn id="N3-triple">N3 triple</dfn> consists of the three components subject, predicate and object, each being an N3 triple element.
+          An <dfn id="N3-triple">N3 triple</dfn> consists of the three components subject, predicate and object, each being an <a>N3 triple element</a>.
         </p>
         <p>
           An <dfn data-lt="N3 formulae">N3 formula</dfn> is a set of <a href="#N3-triple">N3 triples</a>.
         </p>
+        <p>Let <code>T</code>  be the set of <a>N3 triple elements</a> and <code>dc:T&xrarr;T</code> a function defined as follows:
+          <l>
+  <li><code>dc(c)=dc(c<sub>1</sub>)&cup;...&cup;dc(c<sub>n</sub>)</code>, if <code>c=(c<sub>1</sub>... c<sub>n</sub>)</code> is a list,</li>
+  <li><code>dc(c)={c} </code>else.</li>
+</l>
+
+          For each <a href="#N3-triple">N3 triple</a> <code>t= s p o</code> we call the set <code>dc(t)=dc(s)&cup;dc(p)&cup;dc(o)</code>
+           the <dfn id="dir-comp">direct components</dfn> of <code>t</code>. For each <a>N3 formula</a> the set of
+           its direct components is the union of the direct components of the triples it contains. </p>
+
+           <p>Let <code>T</code>  be the set of <a>N3 triple elements</a> and <code>F</code> the set of <a>N3 formula</a>. We define the function
+              <code>nc:T&cup;F&xrarr;T</code> a function defined as follows:
+             <l>
+          <li><code>nc(e)=nc(e<sub>1</sub>)&cup;...&cup;nc(e<sub>n</sub>)</code>, if <code>e=e<sub>1</sub>... e<sub>n</sub></code> is an <a>N3 formula</a> and <code>e<sub>1</sub>)&cup;...&cup;nc(e<sub>n</sub></code>
+            are <a>N3 triples</a>,</li>
+            <li><code>nc(e)=nc(e<sub>1</sub>)&cup;nc(e<sub>2</sub>)&cup;nc(e<sub>3</sub>)</code>, if <code>e=e<sub>1</sub> c<sub>2</sub> e<sub>3</sub></code> is an <a>N3 triple</a> and
+              <code>e<sub>1</sub>, c<sub>2</sub>, e<sub>3</sub></code> are <a>N3 triple elements</a>,</li>
+           <li><code>nc(e)=nc(e<sub>1</sub>)&cup;...&cup;nc(e<sub>n</sub>)</code>, if <code>e=(e<sub>1</sub>... e<sub>n</sub>)</code> is a list,</li>
+           <li><code>nc(e)=dc(e<sub>1</sub>)&cup; nc(e<sub>1</sub>)</code>,
+             if <code>e={e<sub>1</sub>}</code> is a <a>cited formula</a>,</li>
+           <li><code>nc(e)=&empty;</code> else.</li>
+
+          For each <a>N3 formula</a> <code>f</code>, we call <code>nc(f)</code> the set of <dfn id="nest-comp">nested components</dfn>.
+
+
+          </p>
+
+
+      <p>
+       We call an <a>N3 formula</a> <dfn data-lt="ground">ground</dfn> if its direct and nested components do not contain <a>blank nodes</a> nor <a>universal variables</a>.</p>
+      <p> We call an <a>N3 formula</a> <dfn data-lt="closed">closed</dfn> if its direct and nested components do not contain <a>universal variables</a> and its direct components do not contain <a>blank nodes</a>.
+      </p>
       </section>
 
 
-      <p>On top of the syntax as described above, we now define N3's semantics. As an auxiliary construct we first introduce closed formulae and ground terms and
-      then give a definition of simple interpretations. These are interpretations for formulae which do not include negation nor any special built-in functions.
-      </p>
-    
+
+
       <section id='sinterpret'>
         <h3>Simple N3 interpretations</h3>
 
@@ -877,7 +907,7 @@ Maybe we could get back to that example when we introduce rules or also with bui
           Supporting all verb and boolean keywords (<code>is .. of</code>, <code>has</code>, <code>a</code>, <code>true</code>, <code>false</code>) both with and without "<code>@</code>" prefix. Turtle supports the <code>a</code> keyword, i.e., without an "<code>@</code>", but requires the symbol for the <code>@prefix</code> and <code>@base</code> declarations. The <a data-cite="N3#grammar">original N3 grammar</a> required the "<code>@</code>" prefix for all verb and boolean keywords. Hence, this decision was made for compatibility with Turtle as well as to avoid an unintuitive grammar, i.e., where some keywords have the "<code>@</code>" prefix and some don't.
         </li>
         <li>
-          Representing an inverted property using the <code>&lt;-</code> symbol. The <a data-cite="N3#grammar">original N3 grammar</a> allowed the inverting of a property by using the <code>@is .. @of</code> construct. But, this construct can be unintuitive when property names are more verbosely specified (e.g., <code>:hasFather</code>), leading to statements such as <code>?x @is :hasFather @of ?y</code>. The <code>is .. of</code> construct is still supported, but the above statement can now be represented as follows: <code>?x &lt;- :hasFather ?y</code>.
+          Representing an inverted property using the <code>&ltcomponents-</code> symbol. The <a data-cite="N3#grammar">original N3 grammar</a> allowed the inverting of a property by using the <code>@is .. @of</code> construct. But, this construct can be unintuitive when property names are more verbosely specified (e.g., <code>:hasFather</code>), leading to statements such as <code>?x @is :hasFather @of ?y</code>. The <code>is .. of</code> construct is still supported, but the above statement can now be represented as follows: <code>?x &lt;- :hasFather ?y</code>.
         </li>
       </ul>
       <section id='whitespace'>
