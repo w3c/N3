@@ -839,7 +839,8 @@ Maybe we could get back to that example when we introduce rules or also with bui
            <p>Let <code>T</code>  be the set of <a>N3 triple elements</a> and <code>F</code> the set of <a>N3 formula</a>. We define the function
               <code>nc:T&cup;F&xrarr;T</code> a function defined as follows:
              <l>
-          <li><code>nc(e)=nc(e<sub>1</sub>)&cup;...&cup;nc(e<sub>n</sub>)</code>, if <code>e=e<sub>1</sub>... e<sub>n</sub></code> is an <a>N3 formula</a> and <code>e<sub>1</sub>)&cup;...&cup;nc(e<sub>n</sub></code>
+          <li><code>nc(e)=nc(e<sub>1</sub>)&cup;...&cup; nc(e<sub>n</sub>)</code>,
+            if <code>e=e<sub>1</sub>... e<sub>n</sub></code> is an <a>N3 formula</a> and <code>e<sub>1</sub>...e<sub>n</sub></code>
             are <a>N3 triples</a>,</li>
             <li><code>nc(e)=nc(e<sub>1</sub>)&cup;nc(e<sub>2</sub>)&cup;nc(e<sub>3</sub>)</code>, if <code>e=e<sub>1</sub> c<sub>2</sub> e<sub>3</sub></code> is an <a>N3 triple</a> and
               <code>e<sub>1</sub>, c<sub>2</sub>, e<sub>3</sub></code> are <a>N3 triple elements</a>,</li>
@@ -847,17 +848,43 @@ Maybe we could get back to that example when we introduce rules or also with bui
            <li><code>nc(e)=dc(e<sub>1</sub>)&cup; nc(e<sub>1</sub>)</code>,
              if <code>e={e<sub>1</sub>}</code> is a <a>cited formula</a>,</li>
            <li><code>nc(e)=&empty;</code> else.</li>
-
+            </l>
           For each <a>N3 formula</a> <code>f</code>, we call <code>nc(f)</code> the set of <dfn id="nest-comp">nested components</dfn>.
 
 
           </p>
-
+          <p>
+           We call an <a>N3 formula</a> <dfn data-lt="nesting-free">nesting free</dfn> if it  has only direct components.</p>
+           <p>
 
       <p>
-       We call an <a>N3 formula</a> <dfn data-lt="ground">ground</dfn> if its direct and nested components do not contain <a>blank nodes</a> nor <a>universal variables</a>.</p>
-      <p> We call an <a>N3 formula</a> <dfn data-lt="closed">closed</dfn> if its direct and nested components do not contain <a>universal variables</a> and its direct components do not contain <a>blank nodes</a>.
+       We call an <a>N3 formula</a> <dfn data-lt="ground">ground</dfn> if its direct and nested
+       components do not contain <a>blank nodes</a> nor <a>universal variables</a>.</p>
+       <p>
+        We call an <a>N3 formula</a> <dfn id="uv-free">universal free</dfn> if its direct and nested
+        components do not contain <a>universal variables</a>.</p>
+      <p> We call an <a>N3 formula</a> <dfn data-lt="closed">closed</dfn> if its direct and nested components do not contain <a>universal variables</a>
+        and its direct components do not contain <a>blank nodes</a>. We denote the set of closed quoted graphs by CG.
       </p>
+      <p>
+
+        Two <a href="#uv-free">universal-</a> and <a>nesting free</a> <a>N3 formulae</a> G and G' are <dfn data-lt="isomorphic">isomorphic</dfn> (that is, they have an identical form)
+        if there is a bijection M between the sets of nodes of the two formulae, such that:
+        <ol>
+        <li>M maps blank nodes to blank nodes.</li>
+        <li>M(lit)=lit for all RDF literals lit which are nodes of G.</li>
+        <li>M(iri)=iri for all IRIs iri which are nodes of G.</li>
+        <li>M((e<sub>1</sub>... e<sub>n</sub>))=(M(e<sub>1</sub>)... M(e<sub>n</sub>)) for all lists  e=(e<sub>1</sub>... e<sub>n</sub>) which are nodes of G.</li>
+        <li>The triple ( s, p, o ) is in G if and only if the triple ( M(s), M(p), M(o) ) is in G'.</li>
+
+      </ol>
+
+      </p>
+      <p>
+        For universal free <a>N3 formulae</a>  which can contain nested elements we extend the above definion.
+      </p>
+    
+
       </section>
 
 
@@ -865,7 +892,19 @@ Maybe we could get back to that example when we introduce rules or also with bui
 
       <section id='sinterpret'>
         <h3>Simple N3 interpretations</h3>
-
+      <p>
+      A <dfn data-lt="simpleI">simple N3 interpretation</dfn> is a structure I consisting of:
+      <ol>
+        <li> A non-empty set IR of resources, called the domain or universe of I.</li>
+        <li> A set IP, called the set of properties of I.</li>
+        <li> A mapping IEXT from IP into the powerset of IR x IR i.e. the set of sets of pairs < x, y > with x and y in IR.</li>
+        <li> A mapping IS from IRIs into (IR union IP). </li>
+        <li> A partial mapping IL from literals into (IR union IP). </li>
+        <li> A mapping IG from the  CG into (IR union IP). </li>
+        </ol>
+        IEXT(x), called the extension of x, is a set of pairs which identify the arguments for which the property is true, that is, a binary relational extension.
+        The distinction between IR and IL will become significant below when the semantics of datatypes are defined. IL is allowed to be partial because some literals may fail to have a referent.
+      </p>
       </section>
       <section id='sneg'>
         <h3>Scoped Negation</h3>
