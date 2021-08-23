@@ -165,18 +165,26 @@
 
     <section id='language' class=informative>
       <h2>Language</h2>
-      <p>The aim of this section is to provide an informal overview of the N3 language and its different features. Where possible, this section borrows from, or is at least based on, the [[[Turtle]]] specification. More formal definitions will follow in the subsequent sections.
+      <p>The aim of this section is to provide an informal overview of the N3 language and its different features.
+        Where possible, this section borrows from, or is at least based on, the [[[Turtle]]] specification.
+        More formal definitions will follow in the subsequent sections.
+      </p>
+      <p>
+        All examples shown here and in the remainder of this document follow
+        <abbr title="Notation3">N3</abbr>-turtle syntax which is also the standard syntax for <abbr title="Notation3">N3</abbr>.
+        It is however possible, to use alternative syntaxes as long as the translation to <abbr title="Notation3">N3</abbr> turtle syntax is clearly defined.
       </p>
       <section id='n3doc'>
         <h3>N3 document</h3>
-        <p>An <dfn>N3 document</dfn> represents an <a>N3 graph</a> in a compact textual form. An <dfn>N3 graph</dfn>
+        <p>An <dfn>N3 document</dfn> represents an <a>N3 graph</a> in a compact textual form. An <dfn>N3 graph</dfn>, also called <dfn>N3 formula</dfn> or simply
+          <dfn>formula</dfn>
           is a series of <dfn data-lt="n3 triple|statement|triple">N3 statements</dfn>. These are written as <a>triples</a> consisting of:
           <a data-cite="RDF11-CONCEPTS#dfn-subject">subject</a>,
           <a data-cite="RDF11-CONCEPTS#dfn-predicate">predicate</a>, and
           <a data-cite="RDF11-CONCEPTS#dfn-object">object</a>.
           In its simplest form a triple expresses a relation between resources,
           but N3 also contains elements allowing more advanced statements &mdash;
-          <a>cited formulae</a> for quoting sets of statements,
+          <a>quoted graphs</a> for quoting sets of statements,
           <a href="#logimpl">logical implications</a> for If-Then style, rule-based reasoning,
           quantified variables, and so on.
           We introduce these elements below.</p>
@@ -769,13 +777,6 @@ Maybe we could get back to that example when we introduce rules or also with bui
          or <a href="#bnodeprplist">blank node property lists</a> as these can be seen as syntactic sugar.
         </p>
         <p>
-          All examples shown earlier as well as the examples in the remainder of this document follow <abbr title="Notation3">N3</abbr>-turtle syntax which is also the standard syntax for <abbr title="Notation3">N3</abbr>.
-          It is however possible, to use alternative syntaxes as long as the translation to <abbr title="Notation3">N3</abbr> turtle syntax is clearly defined.
-        </p>
-        <p class="ednote">
-          Maybe we put that statement earlier?
-          </p>
-        <p>
         <abbr title="Notation3">N3</abbr> is an extension of RDF.
         We use the following concepts from the [[[RDF11-CONCEPTS]]]: <a data-cite="RDF11-CONCEPTS#section-IRIs">IRI</a>, <a data-cite="RDF11-CONCEPTS#section-triples">RDF triple</a>, <a data-cite="RDF11-CONCEPTS#section-rdf-graph">RDF graph</a>, <a data-cite="RDF11-CONCEPTS#section-triples">subject</a>,
         <a data-cite="RDF11-CONCEPTS#section-triples">predicate</a>, <a data-cite="RDF11-CONCEPTS#section-triples">object</a>, <a data-cite="RDF11-CONCEPTS#dfn-rdf-source">RDF source</a>,
@@ -798,8 +799,8 @@ Maybe we could get back to that example when we introduce rules or also with bui
           <a data-cite="RDF11-CONCEPTS#dfn-blank-node">blank nodes</a>,
           <a data-cite="RDF11-CONCEPTS#dfn-literal">literals</a>,
           <a href="#dfn-universals">universal variables</a>,
-          <a href="#lists">lists</a>,
-          and <a href="#quotes">cited formulae</a>.
+          <!--<a href="#lists">lists</a>,-->
+          and <a href="#quotes">quoted N3 graphs</a>.
           The set of <a data-cite="RDF11-CONCEPTS#dfn-iri">IRIs</a> conatians the implication sign denoted by the <a>built-in</a> <code>log:implies</code>.
           This symbol indicates logical implication and MAY in N3-turtle syntax also be represented using the symbols <code>=&gt;</code>.
           The set of <a data-cite="RDF11-CONCEPTS#dfn-literal">literals</a> contains the two boolean literals <code>false</code> and <code>true</code>.
@@ -809,13 +810,14 @@ Maybe we could get back to that example when we introduce rules or also with bui
           The set of <dfn id="dfn-universals">universal variables</dfn> is an arbitrary set of symbols which is disjoint to all other <a>N3 triple elements</a>.
           In N3-turtle syntax, universal variables are represented by strings starting with a question mark <code>?</code>.
         </p>
-        <p>
+        <!--<p>
           <dfn id="lists">Lists</dfn> are ordered sets consisting of zero or more  <a>N3 triple elements</a>.
           We call the list which has no elements the empty list. In N3-turtle syntax,
           we indicate lists by using round brackets <code>()</code>.
           The empty list in <abbr title="Notation3">N3</abbr> is equivalent to the empty list in RDF and can
           thus also be represented using <a href="https://www.w3.org/TR/rdf11-mt/#rdf-interpretations">rdf:nil</a>.
         </p>
+      -->
         <p>
           <dfn id="def-quotes">Cited formulae</dfn> (sometimes also called quoted graphs) are <a>N3 formulae</a> which are surrounded by quoting signs.
           In N3-turtle syntax, we denote these quoting signs as curly brackets <code>{}</code>.
@@ -862,13 +864,20 @@ Maybe we could get back to that example when we introduce rules or also with bui
        components do not contain <a>blank nodes</a> nor <a>universal variables</a>.</p>
        <p>
         We call an <a>N3 formula</a> <dfn id="uv-free">universal free</dfn> if its direct and nested
-        components do not contain <a>universal variables</a>.</p>
-      <p> We call an <a>N3 formula</a> <dfn data-lt="closed">closed</dfn> if its direct and nested components do not contain <a>universal variables</a>
-        and its direct components do not contain <a>blank nodes</a>. We denote the set of closed quoted graphs by CG.
-      </p>
-      <p>
+        components do not contain <a>universal variables</a>. We denote the set of universal free quoted graphs by QG.</p>
 
-        Two <a href="#uv-free">universal-</a> and <a>nesting free</a> <a>N3 formulae</a> G and G' are <dfn data-lt="isomorphic">isomorphic</dfn> (that is, they have an identical form)
+      <p> We call an <a>N3 formula</a> <dfn data-lt="closed">closed</dfn> if its direct and nested components do not contain <a>universal variables</a>,
+        its direct components do not contain <a>blank nodes</a> and its nested components do only contain blank nodes if they are not subject or object to the predicate
+        <code>log:implies</code>.
+      </p>
+      <p class="ednote">
+        Clarify what "contains" means.
+      </p>
+
+
+      <p>
+        Two <a href="#uv-free">universal free</a> <a>N3 formulae</a> G and G'
+        are <dfn data-lt="isomorphic">isomorphic</dfn> (that is, they have an identical form)
         if there is a bijection M between the sets of nodes of the two formulae, such that:
         <ol>
         <li>M maps blank nodes to blank nodes.</li>
@@ -876,14 +885,11 @@ Maybe we could get back to that example when we introduce rules or also with bui
         <li>M(iri)=iri for all IRIs iri which are nodes of G.</li>
         <li>M((e<sub>1</sub>... e<sub>n</sub>))=(M(e<sub>1</sub>)... M(e<sub>n</sub>)) for all lists  e=(e<sub>1</sub>... e<sub>n</sub>) which are nodes of G.</li>
         <li>The triple ( s, p, o ) is in G if and only if the triple ( M(s), M(p), M(o) ) is in G'.</li>
-
+        <li>M({F})={F'} where the nested graph F is isomorphic to F'.</li>
       </ol>
+      We write G&equiv;G'.
+      </p>
 
-      </p>
-      <p>
-        For universal free <a>N3 formulae</a>  which can contain nested elements we extend the above definion.
-      </p>
-    
 
       </section>
 
@@ -900,11 +906,85 @@ Maybe we could get back to that example when we introduce rules or also with bui
         <li> A mapping IEXT from IP into the powerset of IR x IR i.e. the set of sets of pairs < x, y > with x and y in IR.</li>
         <li> A mapping IS from IRIs into (IR union IP). </li>
         <li> A partial mapping IL from literals into (IR union IP). </li>
-        <li> A mapping IG from the  CG into (IR union IP). </li>
+        <li> A mapping IG from closed graphs into (IR union IP), such that IG(E)=IG(F) for all closed graphs E&equiv;F. </li>
         </ol>
         IEXT(x), called the extension of x, is a set of pairs which identify the arguments for which the property is true, that is, a binary relational extension.
         The distinction between IR and IL will become significant below when the semantics of datatypes are defined. IL is allowed to be partial because some literals may fail to have a referent.
       </p>
+      <p>
+        The denotation of a closed N3 graph in a simple interpretation I is then given by the following rules,
+        where the interpretation is also treated as a function from expressions (names, triples and graphs) to elements of the universe and truth values:
+      </p>
+      <p>
+        <dfn data-lt="semantics">Semantic conditions for closed graphs</dfn>
+        <ul>
+        <li>if E is a literal then I(E) = IL(E)</li>
+        <li>if E is an IRI then I(E) = IS(E)</li>
+        <li>if E is a universal free quoted graph then I(E)=IG(E) and IG(E)&equiv;E</li>
+        <li>if E is a closed triple s p o. with p	&#8800; log:implies, or s&notin;QG&cup;{true,false} or o&notin;QG&cup;{true,false}, then I(E) = true if</li>
+          <ul>
+        <li>I(p) is in IP and the pair <I(s),I(o)> is in IEXT(I(p))</li>
+
+            <li>otherwise I(E) = false.</li>
+        </ul>
+        <li>if E is a triple of the form {f} log:implies {g}. then E is true if from I(f)=true follows that I(g)=true. </li>
+        <li>if E is a triple of the form {f} log:implies false. then E is true if I(f)=false. </li>
+          <li>if E is a triple of the form true log:implies {g}. then E is true if I(g)=true. </li>
+          <li>if E is a triple of the form {f} log:implies true. or false log:implies {g}. then I(E)=true.</li>
+          <li> if E=true log:implies false. then I(E)=false., </li>
+          <li>  if E is of the form false log:implies false. or true log:implies true., then I(E)=true.</li>
+        <li>if E is a closed N3 graph then I(E) = false if I(E') = false for some triple E' in E, otherwise I(E) =true.</li>
+      </ul>
+      </p>
+       <section>
+         <h4>Blank nodes</h4>
+         <p>
+         Blank nodes are treated as simply indicating the existence of a thing,
+         without using an IRI to identify any particular thing.
+         This is not the same as assuming that the blank node indicates an 'unknown' IRI.
+       </p>
+        <p>
+         Suppose I is a simple interpretation and A is a mapping from a set of blank nodes to the
+         resources and predicates IR&cup;IP of I.
+         Define the mapping [I+A] to be I on names, and A on blank nodes on the set:
+         [I+A](x)=I(x) when x is a name and [I+A](x)=A(x)
+         when x is a blank node;
+         and extend this mapping to triples and N3 graphs using the rules given above for closed graphs.
+         Then the semantic conditions for an N3 graph are:
+       </p>
+       <p>
+         <dfn data-lt="semantics">Semantic conditions for blank nodes</dfn>
+         If E is a universal free N3 graph then I(E) = true if
+         <ul>
+           <li>
+              there exists some A such that for all triples T in E for which p	&#8800; log:implies, or s&notin;QG&cup;{true,false} or o&notin;QG&cup;{true,false}
+              [I+A](T)=true.
+           </li>
+           <li>if E is a triple of the form {f} log:implies {g}. then E is true if there are some blank node mappings A
+             and A' such that from [I+A](f)=true follows that [I+I'](g)=true. </li>
+           <li>if E is a triple of the form {f} log:implies false. then E is true if [I+A](f)=false for all blank node mappings A. </li>
+             <li>if E is a triple of the form true log:implies {g}. then E is true if [I+A](g)=true for some A. </li>
+             <li>if E is a triple of the form {f} log:implies true. or false log:implies {g}. then I(E)=true.</li>
+             <li> if E is of the  form false log:implies false. or true log:implies true., then I(E)=true.</li>
+           <li>
+             otherwise I(E)= false.
+           </li>
+        </ul>
+
+       </p>
+         <p>
+         Mappings from blank nodes to referents are not part
+         of the definition of a simple interpretation,
+         since the truth condition refers only to some such mapping.
+         Blank nodes themselves differ from other nodes in not being assigned a denotation by a simple interpretation,
+         reflecting the intuition that they have no 'global' meaning.
+       </p>
+
+      </section>
+      <section>
+        <h4>Universals</h4>
+     </section>
+
       </section>
       <section id='sneg'>
         <h3>Scoped Negation</h3>
