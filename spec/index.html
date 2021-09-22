@@ -921,7 +921,7 @@ Maybe we could get back to that example when we introduce rules or also with bui
         The distinction between IR and IL will become significant below when the semantics of datatypes are defined. IL is allowed to be partial because some literals may fail to have a referent.
       </p>
       <p class="ednote">
-        Lists are not really covered yet. Definition via RDF or directly?
+        Lists are not  covered yet. Definition via RDF or directly?
       </p>
       <p>
         The denotation of a closed N3 graph in a simple interpretation I is then given by the following rules,
@@ -949,15 +949,70 @@ Maybe we could get back to that example when we introduce rules or also with bui
       </ul>
       </p>
        <section>
-         <h4>Blank nodes</h4>
+         <h4>Blank nodes and universals</h4>
          <p>
-         Blank nodes are treated as simply indicating the existence of a thing,
+         Just as in RDF, blank nodes are treated as simply indicating the existence of a thing,
          without using an IRI to identify any particular thing.
          This is not the same as assuming that the blank node indicates an 'unknown' IRI.
        </p>
-        <p>
-         Suppose I is a simple interpretation and A is a mapping from a set of blank nodes to the
+       <p>
+         In order to interpret blank nodes, we use a mapping A from a set of blank nodes to the
          resources and predicates IR&cup;IP of I.
+      </p>
+       <p>
+       Universals are treated as indicating universal statements about things. They are typically used in rules. Universal variables are quantified
+       on top of the graph.
+     </p>
+
+        <p>
+         Suppose I is a simple interpretation, A is a mapping from a set of blank nodes to the
+         resources and predicates IR&cup;IP of I, U is a mapping from the set of universals to the resources and predicates IR&cup;IP of I and
+         V is a mapping from the set of universals to the set of IRIs, literals, blank nodes and closed quoted graphs.
+       </p>
+       <p>
+         Define the mapping [I+U/V+A] as follows:
+         <ul>
+           <li>
+             if E is an IRI or literal, [I+U/V+A](E)=I(E);
+           </li>
+           <li>
+             if E is a blank node, [I+U/V+A]=A(E);
+           </li>
+           <li>
+             if E is a universal, [I+U/V+A](E)=U(E);
+          </li>
+          <li>
+            if E is a quoted graph, [I+U/V+A](E)=V(E), where V(E) is the closed graph we get by replacing each universal x occurring in E by its image V(x).
+          </li>
+         </ul>
+         We extend this mapping to triples and N3 graphs using the rules given above for closed graphs.
+         Then the semantic conditions for an N3 graph are:
+       </p>
+        <p>
+         <dfn data-lt="busemantics">Semantic conditions for blank nodes and universals</dfn>
+         Let E be an N3 graph and I an interpretation of that graph.
+         Then I(E) = true if for all U and V such that for all universals x of I, U(x)=I(V(x)), the following holds:
+         <ul>
+           <li>
+              there exists some A such that for all triples T in E which are no rules
+              [I+U/V+A](T)=true.;
+           </li>
+           <li> for each rule in E of the form {f} log:implies {g}. in E there exist some blank node mappings A
+             and A' such that from [I+U/V+A](f)=true follows that [I+U/V+A'](g)=true.; </li>
+           <li>for each rule in E of the form {f} log:implies false.  [I+U/V+A'](f)=false for all blank node mappings A. </li>
+             <li>for each rule in E of the form true log:implies {g}.  [I+U/V+A'](g)=true for some A. </li>
+             <li>E does not contain the rule true log:implies false.;</li>
+          <!--   <li>for each triple T in E of the form {f} log:implies true. or false log:implies {g}. then I(E)=true.</li>
+             <li> if E is of the  form false log:implies false., true log:implies true., or false log:implies true., then I(E)=true.</li> -->
+           <li>
+             otherwise I(E)= false.
+           </li>
+        </ul>
+       </p>
+
+       <!--
+       <p>
+
          Define the mapping [I+A] to be I on names, and A on blank nodes on the set:
          [I+A](x)=I(x) when x is a name and [I+A](x)=A(x)
          when x is a blank node;
@@ -995,12 +1050,8 @@ Maybe we could get back to that example when we introduce rules or also with bui
       </section>
       <section>
         <h4>Universals</h4>
-        <p class="ednote">
-          Definitions below are not finished yet.
-        </p>
         Universals are treated as indicating universal statements about things. They are typically used in rules. Universal variables are quantified
         on top of the graph.
-
         <p>
         For the interpretation of universal variables we define two kinds of mappings.
         <ul>
@@ -1023,7 +1074,7 @@ Maybe we could get back to that example when we introduce rules or also with bui
           Then the semantic conditions for an N3 graph are:
         </p>
         <p>
-          <dfn data-lt="usemantics">Semantic conditions for universals</dfn>
+          <dfn data-lt="usemantics">Semantic conditions for blank nodes and universals</dfn>
           Let E be N3 graph then I(E) = true if
           <ul>
             <li>
@@ -1044,7 +1095,7 @@ Maybe we could get back to that example when we introduce rules or also with bui
         </p>
 
      </section>
-
+-->
       </section>
       <section id='sneg'>
         <h3>Scoped Negation</h3>
