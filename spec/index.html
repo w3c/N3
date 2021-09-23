@@ -982,7 +982,7 @@ Maybe we could get back to that example when we introduce rules or also with bui
              if E is a universal, [I+U/V+A](E)=U(E);
           </li>
           <li>
-            if E is a quoted graph, [I+U/V+A](E)=V(E), where V(E) is the closed graph we get by replacing each universal x occurring in E by its image V(x).
+            if E is a quoted graph, [I+U/V+A](E)=I(V(E)), where V(E) is the closed graph we get by replacing each universal x occurring in E by its image V(x).
           </li>
          </ul>
          We extend this mapping to triples and N3 graphs using the rules given above for closed graphs.
@@ -1010,7 +1010,8 @@ Maybe we could get back to that example when we introduce rules or also with bui
         </ul>
        </p>
        <p class="ednote">
-         we need to directly clarify how nested rules are handled, i.e. that we need a new blank node mapping for each nested rule. That is covered in the definition but not really clear.
+         we need to directly clarify how nested rules are handled, i.e. that we need a new blank node mapping for each nested rule.
+         That is covered in the definition but it is not really clear.
        </p>
        <!--
        <p>
