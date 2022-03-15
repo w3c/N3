@@ -1,1 +1,1 @@
-cat multi-query | eye --nope evaluate_lipid_profile.n3 composite.n3 condition.n3 next.n3 --multi-query 2>/dev/null
+cat multi-query | eye --nope evaluate_lipid_profile.n3 composite.n3 condition.n3 next.n3 --multi-query
