@@ -1,0 +1,45 @@
+prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+prefix math: <http://www.w3.org/2000/10/swap/math#>
+prefix state: <http://niche.cs.dal.ca/ns/state.owl#>
+prefix cond: <http://niche.cs.dal.ca/ns/condition/base.owl#>
+prefix gl: <http://niche.cs.dal.ca/ns/glean/base.owl#>
+prefix cig: <http://niche.cs.dal.ca/ns/cig/cig.owl#>
+prefix fhir: <http://hl7.org/fhir/>
+prefix : <http://niche.cs.dal.ca/ns/cig/kidney_statins.owl#>
+
+:Evaluate_Lipid_Profile a gl:CompositeTask ;
+	# state:in gl:Inactive ;
+	gl:conditional false ; 
+	
+	rdfs:label "Evaluate lipid profile" ;
+	
+	#gl:root true ;
+	state:in gl:Active ;
+	
+	cig:inputFile "/cig/lipid/input/evaluate_lipid_profile.n3" ;
+	
+	gl:subTask :measure_lipid_profile ;
+	gl:firstTask :measure_lipid_profile .
+	
+	
+:measure_lipid_profile a gl:DecisionTask ;
+	state:in gl:Inactive ;
+	gl:conditional false ;
+	
+	rdfs:label "Measure lipid profile" ;
+	
+	rdfs:comment """1.	Total cholesterol
+2.	LDL cholesterol 
+3.	HDL cholesterol 
+4.	Triglycerides""" ;
+
+	gl:next :rule_out_secondary_causes .
+
+
+:rule_out_secondary_causes a gl:DecisionTask ;
+	state:in gl:Inactive ;
+	gl:conditional false ; 
+	
+	rdfs:label "Rule out secondary causes" ; 
+	
+	rdfs:comment """Investigate and treat remediable secondary causes of dyslipidemia.""" .

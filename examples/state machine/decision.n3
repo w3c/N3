@@ -1,0 +1,97 @@
+prefix log: <http://www.w3.org/2000/10/swap/log#>
+prefix math: <http://www.w3.org/2000/10/swap/math#>
+prefix list: <http://www.w3.org/2000/10/swap/list#>
+prefix string: <http://www.w3.org/2000/10/swap/string#>
+prefix state: <http://niche.cs.dal.ca/ns/state.owl#>
+prefix : <http://niche.cs.dal.ca/ns/glean/base.owl#>
+
+
+# - if a decision task is active, then ready its branches
+# (if a branch's precondition is met, then it will be activated; condition.n3)
+
+{	{ 	?decision a :DecisionTask ;
+			state:in :Activated ; # activated task (not inactive or discarded)
+			:decisionBranch ?branch
+		
+	} a state:Guard .
+	
+	?branch state:in :Inactive # inactive branch
+	
+} state:transit { ?branch state:in :Ready } ; # branch in ready state
+  state:reason :readyBranchesOfActiveDecisionTask .
+
+
+# Note that decisionBranch and branchTarget are sub-tasks of next (workflow.owl);  
+# so if a DecisionTask is discarded, then this discarded state will be propagated (next.n3)
+
+
+# - if a decision task has an active branch, then complete the decision task 
+
+{	{ 	?decision a :DecisionTask ;
+			:decisionBranch ?branch .
+		?branch state:in :Active # active branch
+		
+	} a state:Guard .
+	
+	?decision state:in :Active # decision task in active state
+	
+} state:transit { ?decision state:in :Completed } ; # complete decision task
+  state:reason :completeDecisionTaskWithActiveBranch .
+
+
+# - if at least one branch is active, then discard other branches
+
+{	{	?decision a :DecisionTask ;
+		# at least one branch was activated
+			state:in :Completed .
+		
+		# discard the remaining branches 
+		# (i.e., those in the ready state: see below)
+		?decision :decisionBranch ?branch .
+	
+	} a state:Guard .
+	
+	?branch state:in :Ready . # branch in ready state
+
+} state:transit { ?branch state:in :Discarded } ; # discard branch
+  state:reason :discardRemainingBranchesInCaseOfActiveBranch .
+
+
+# - issue a warning if multiple branches are activated at runtime 
+# (this is a regular rule)
+
+{	?decision a :DecisionTask ;
+		# decision task in completed state 
+		# (at least one active branch)
+		state:in :Completed .
+	
+	# collect all currently active branches in "actives" list
+	(?active
+	{	?decision :decisionBranch ?active .
+		?active state:in :Active }
+		
+	?actives) log:collectAllIn <> .
+
+	# "actives" has more than one member
+	?actives list:length ?len .
+	?len math:greaterThan 1 .
+	
+	# create a warning
+	( "decision task " ?decision " has " ?len " activated branches, which means their conditions are overlapping" ) 
+		string:concatenation ?warning .
+
+} => { <> :warning ?warning } .
+
+
+# - if a branch was activated, then ready its target task
+
+{	{	?branch a :DecisionBranch ;
+			state:in :Active ; # (this means its precondition was met!)
+			:branchTarget ?task
+			
+	} a state:Guard .
+	
+	?task state:in :Inactive .
+	
+} state:transit { ?task state:in :Ready } ;
+  state:reason :readyTaskOfActiveBranch .
