@@ -1,0 +1,5 @@
+Simple example of "dialogical reasoning" which is reasoning in a query
+answer loop with the possibility that triples can be "consumed and
+produced as resources".
+
+To test the example, run ./test and check the multi-answer.n3 result.
