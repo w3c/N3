@@ -1,1 +1,0 @@
-cat multi-query | eye --quiet --nope socrates.n3 --multi-query 2>/dev/null

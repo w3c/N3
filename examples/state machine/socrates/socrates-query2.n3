@@ -1,4 +1,4 @@
+PREFIX log: <http://www.w3.org/2000/10/swap/log#>
 PREFIX : <http://example.org/socrates#>
-PREFIX e: <http://eulersharp.sourceforge.net/2003/03swap/log-rules#>
 
-{{:Plato a ?WHAT} e:becomes {:Socrates a ?WHAT}} => {:Socrates a ?WHAT}.
+{{:Plato a ?WHAT} log:becomes {:Socrates a ?WHAT}} => {:Socrates a ?WHAT}.

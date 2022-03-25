@@ -1,0 +1,24 @@
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX : <http://example.org/socrates#>
+PREFIX log: <http://www.w3.org/2000/10/swap/log#>
+
+:Plato a :Human.
+:Plato a :Mortal.
+
+
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX : <http://example.org/socrates#>
+PREFIX log: <http://www.w3.org/2000/10/swap/log#>
+
+:Socrates a :Human.
+:Socrates a :Mortal.
+
+
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX : <http://example.org/socrates#>
+PREFIX log: <http://www.w3.org/2000/10/swap/log#>
+
+:Plato a :Human.
+:Plato a :Mortal.
+
+
