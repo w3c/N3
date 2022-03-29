@@ -1,0 +1,2 @@
+#!/bin/bash
+cat multi-query | eye --quiet --nope socrates.n3 --multi-query > multi-answer.n3

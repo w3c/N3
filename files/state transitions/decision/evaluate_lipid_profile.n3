@@ -6,14 +6,19 @@ prefix gl: <http://niche.cs.dal.ca/ns/glean/base.owl#>
 prefix cig: <http://niche.cs.dal.ca/ns/cig/cig.owl#>
 prefix fhir: <http://hl7.org/fhir/>
 prefix : <http://niche.cs.dal.ca/ns/cig/kidney_statins.owl#>
+PREFIX e: <http://eulersharp.sourceforge.net/2003/03swap/log-rules#>
 
 :measure_lipid_profile a gl:DecisionTask ;
 	state:in gl:Active ;
 
 	gl:decisionBranch :branch0 , :branch1 .
 
+<<<<<<< HEAD:files/state transitions/decision/evaluate_lipid_profile.n3
 :branch0
 		state:in gl:Inactive .
 		 
 :branch1 
 		state:in gl:Inactive .
+=======
+} => { :measure_lipid_profile gl:done true } .
+>>>>>>> 99f13482b35591a2e279c061d21ef13dae563012:examples/state machine/to_completed.n3
