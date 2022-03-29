@@ -1,0 +1,30 @@
+prefix log: <http://www.w3.org/2000/10/swap/log#>
+prefix math: <http://www.w3.org/2000/10/swap/math#>
+prefix state: <http://niche.cs.dal.ca/ns/state.owl#>
+prefix : <http://niche.cs.dal.ca/ns/glean/base.owl#>
+base <http://niche.cs.dal.ca/ns/glean/base.owl#>
+prefix e: <http://eulersharp.sourceforge.net/2003/03swap/log-rules#>
+prefix ckd: <http://niche.cs.dal.ca/ns/cig/kidney_statins.owl#>
+
+{   ?cmpdState state:includes ?atomState .
+
+} => {
+    {   ?task state:in ?cmpdState .
+        
+    } <= {  ?task state:in ?atomState .
+            ?cmpdState state:includes ?atomState }
+} .
+
+# e.g., 
+#{   ?task state:in :Idle .
+#    
+#} <= {  ?task state:in :Inactive .
+#        :Idle state:includes :Inactive } .
+
+
+{   ?cmpdState a state:CompoundState .
+
+    _:x e:findall (?atomState { ?cmpdState state:includes ?atomState} ?atomStates) .
+    
+} => { ?cmpdState state:atomStateList ?atomStates } .
+

@@ -1,0 +1,53 @@
+prefix log: <http://www.w3.org/2000/10/swap/log#>
+prefix state: <http://niche.cs.dal.ca/ns/state.owl#>
+prefix : <http://niche.cs.dal.ca/ns/glean/base.owl#>
+@prefix e: <http://eulersharp.sourceforge.net/2003/03swap/log-rules#>.
+
+# - given a sequential relation, if the prior entity is complete, then ready the following entity  
+
+{	?e1 :next ?e2 . # sequential relation between ?e1 and ?e2
+	?e1 state:in :Completed . # completed prior entity
+	
+	{ ?e2 state:in :Inactive } # following entity in inactive state
+		e:becomes
+			{ ?e2 state:in :Ready ; state:reason :readyNextOfCompletedTask }
+
+} => { ?e2 state:in :Ready } .
+
+
+# - given a sequential relation, if all prior entities were discarded, then discard the following entity 
+# (propagate discarded state to all following entities)
+
+{	# occurs in at least one sequential relation
+	?e :next ?e2 .
+	# for all sequential relations, prior entity was discarded
+	( { ?e1 :next ?e2 } { ?e1 state:in :Discarded } ) log:forAllIn _:x .
+
+	{ ?e2 state:in :Inactive } # following entity in inactive state
+		e:becomes
+			{ ?e2 state:in :Discarded ; state:reason :discardNextOfDiscardedEntities }
+
+} => { ?e2 state:in :Discarded } . # discarded following entity
+
+
+# - if an active task is an end-point, then complete it
+
+{	?task a :EndPoint .
+	
+	{ ?task state:in :Active } # task in activate state
+		e:becomes
+			{ ?task state:in :Completed ; state:reason :completeEndPointTask } .
+
+} => { ?task state:in :Completed } . # complete the task
+
+  
+# - if an active task does not involve any user action, then complete it
+
+{	# task does not involve an action
+	?task :involvesAction false .
+	
+	{ ?task state:in :Active } # task in activate state
+		e:becomes
+			{ ?task state:in :Completed ; state:reason :completeTaskNotInvolvingAction } .
+	
+} => { ?task state:in :Completed } . # complete the task

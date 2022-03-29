@@ -6,9 +6,11 @@ prefix gl: <http://niche.cs.dal.ca/ns/glean/base.owl#>
 prefix cig: <http://niche.cs.dal.ca/ns/cig/cig.owl#>
 prefix fhir: <http://hl7.org/fhir/>
 prefix : <http://niche.cs.dal.ca/ns/cig/kidney_statins.owl#>
+PREFIX e: <http://eulersharp.sourceforge.net/2003/03swap/log-rules#>
 
-#:measure_lipid_profile gl:done true .
+#:patient0 a cig:Patient ; :ckd_status :not_newly_identified ; :ckd_treatment :kidney_transplant .
 
-{ true e:becomes { :measure_lipid_profile gl:done true } 
-
-} => { :measure_lipid_profile gl:done true } .
+:testa cond:anyOf (
+	[ cond:premise { ?patient a cig:Patient ; :ckd_status :newly_identified } ] 
+	[ cond:premise { ?patient a cig:Patient ; :ckd_status :not_newly_identified } ] 
+) .

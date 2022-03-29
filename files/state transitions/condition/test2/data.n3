@@ -1,0 +1,20 @@
+prefix owl: <http://www.w3.org/2002/07/owl#>
+prefix log: <http://www.w3.org/2000/10/swap/log#>
+prefix list: <http://www.w3.org/2000/10/swap/list#>
+prefix cond: <http://niche.cs.dal.ca/ns/condition/base.owl#>
+prefix cig: <http://niche.cs.dal.ca/ns/glean/cig.owl#>
+PREFIX e: <http://eulersharp.sourceforge.net/2003/03swap/log-rules#>
+prefix : <http://niche.cs.dal.ca/ns/condition/base.owl#>
+
+:patient0 a cig:Patient ; :ckd_status :not_newly_identified ; :ckd_treatment :kidney_transplant .
+
+{   true e:becomes {
+        :patient0 a cig:Patient ; 
+            :ckd_status :not_newly_identified ; 
+            :ckd_treatment :kidney_transplant
+        }
+} => { 
+    :patient0 a cig:Patient ; 
+        :ckd_status :not_newly_identified ; 
+        :ckd_treatment :kidney_transplant 
+} .

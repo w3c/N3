@@ -7,5 +7,13 @@ prefix cig: <http://niche.cs.dal.ca/ns/cig/cig.owl#>
 prefix fhir: <http://hl7.org/fhir/>
 prefix : <http://niche.cs.dal.ca/ns/cig/kidney_statins.owl#>
 
-{ ?x state:in ?y } => { ?x state:in ?y } .
-#{ ?x ?p ?y } => { ?x ?p ?y } .
+:measure_lipid_profile a gl:DecisionTask ;
+	state:in gl:Active ;
+
+	gl:decisionBranch :branch0 , :branch1 .
+
+:branch0
+		state:in gl:Inactive .
+		 
+:branch1 
+		state:in gl:Inactive .

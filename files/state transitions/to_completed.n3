@@ -1,0 +1,20 @@
+prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+prefix math: <http://www.w3.org/2000/10/swap/math#>
+prefix state: <http://niche.cs.dal.ca/ns/state.owl#>
+prefix cond: <http://niche.cs.dal.ca/ns/condition/base.owl#>
+prefix gl: <http://niche.cs.dal.ca/ns/glean/base.owl#>
+prefix cig: <http://niche.cs.dal.ca/ns/cig/cig.owl#>
+prefix fhir: <http://hl7.org/fhir/>
+prefix : <http://niche.cs.dal.ca/ns/cig/kidney_statins.owl#>
+PREFIX e: <http://eulersharp.sourceforge.net/2003/03swap/log-rules#>
+
+:measure_lipid_profile gl:done true .
+
+#{ true e:becomes { :measure_lipid_profile gl:done true } 
+#
+#} => { :measure_lipid_profile gl:done true } .
+
+#{ { :measure_lipid_profile a gl:DecisionTask } 
+#        e:becomes { :measure_lipid_profile gl:done true } 
+#
+#} => { :measure_lipid_profile gl:done true } .

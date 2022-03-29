@@ -1,0 +1,62 @@
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+prefix list: <http://www.w3.org/2000/10/swap/list#>
+
+{	?x ?p ?y .
+	?p rdfs:domain ?d .
+	
+} => { ?x a ?d } .
+
+
+{	?x ?p ?y .
+	?p rdfs:range ?r .
+	
+} => { ?y a ?r } .
+
+
+{	?x a ?c1 . ?c1 rdfs:subClassOf ?c2
+
+} => { ?x a ?c2 } .	
+
+
+{	?x ?p1 ?y . ?p1 rdfs:subPropertyOf ?p2 .
+
+} => { ?x ?p2 ?y } .	
+
+
+{ 	?x owl:hasValue ?y .
+	?x owl:onProperty ?p .
+	?u ?p ?y .
+
+} => { ?u a ?x } .
+
+
+{	?c1 owl:equivalentClass ?c2 .
+	?x a ?c1 .
+
+} => { ?x a ?c2 } .
+
+
+{	?c1 owl:equivalentClass ?c2 .
+
+} => { ?c2 owl:equivalentClass ?c1 } .
+
+
+{	?c owl:unionOf ?x .
+	?x list:member ?cl .
+
+} => { ?cl rdfs:subClassOf ?c } .
+
+
+#{	?p a owl:TransitiveProperty.
+#	?x ?p ?y.
+#	?y ?p ?z.
+#
+#} => {	?x ?p ?z.} .
+
+
+{	?x owl:hasValue ?y.
+	?x owl:onProperty ?p.
+	?u a ?x.
+
+} => {	?u ?p ?y.} .

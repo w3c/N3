@@ -1,0 +1,3 @@
+eye --nope ../../condition.n3 data.n3 test.n3 --query query.n3
+
+cat multi-query | eye --nope ../../condition.n3 test.n3 --multi-query

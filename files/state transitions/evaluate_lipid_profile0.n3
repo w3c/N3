@@ -7,6 +7,9 @@ prefix cig: <http://niche.cs.dal.ca/ns/cig/cig.owl#>
 prefix fhir: <http://hl7.org/fhir/>
 prefix : <http://niche.cs.dal.ca/ns/cig/kidney_statins.owl#>
 
+:obs0 fhir:Observation.code :code_abnormal_lipid_profile ;
+	fhir:Observation.valueBoolean true .
+
 :Evaluate_Lipid_Profile a gl:CompositeTask ;
 	# state:in gl:Inactive ;
 	gl:conditional false ; 
@@ -23,7 +26,7 @@ prefix : <http://niche.cs.dal.ca/ns/cig/kidney_statins.owl#>
 	
 	
 :measure_lipid_profile a gl:DecisionTask ;
-	state:in gl:Inactive ;
+	state:in gl:Active ;
 	gl:conditional false ;
 	
 	rdfs:label "Measure lipid profile" ;
@@ -33,7 +36,31 @@ prefix : <http://niche.cs.dal.ca/ns/cig/kidney_statins.owl#>
 3.	HDL cholesterol 
 4.	Triglycerides""" ;
 
-	gl:next :rule_out_secondary_causes .
+	gl:decisionBranch :branch0 , :branch1 .
+	
+:branch0 
+		a gl:DecisionBranch ;
+		
+		state:in gl:Inactive ;
+		gl:conditional true ;
+		
+		gl:precondition :pre0 ;
+
+		gl:branchTarget :rule_out_secondary_causes .
+
+:branch1
+		a gl:DecisionBranch ;
+
+		state:in gl:Inactive ;
+		gl:conditional true ;
+		
+		gl:precondition :pre1 ;
+
+		gl:branchTarget :no_dyslipidemia .
+
+
+:pre0 cond:conditionMet true .
+:pre1 cond:conditionMet false .
 
 
 :rule_out_secondary_causes a gl:DecisionTask ;
@@ -41,5 +68,12 @@ prefix : <http://niche.cs.dal.ca/ns/cig/kidney_statins.owl#>
 	gl:conditional false ; 
 	
 	rdfs:label "Rule out secondary causes" ; 
-	
 	rdfs:comment """Investigate and treat remediable secondary causes of dyslipidemia.""" .
+
+
+:no_dyslipidemia a gl:EndPoint ;
+	state:in gl:Inactive ;
+	gl:conditional false ; 
+	
+	rdfs:label "No action" ;
+	rdfs:comment "No further measurement of lipid profile." .

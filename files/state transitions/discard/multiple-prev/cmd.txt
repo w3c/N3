@@ -1,0 +1,1 @@
+eye --nope ../glean.owl ../owl2rl.n3 ../states.n3 test.n3 ../condition.n3 ../task_condition.n3 ../composite.n3 ../next.n3 ../decision.n3 --query ../query.n3

@@ -1,0 +1,32 @@
+prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+prefix math: <http://www.w3.org/2000/10/swap/math#>
+prefix log: <http://www.w3.org/2000/10/swap/log#>
+prefix state: <http://niche.cs.dal.ca/ns/state.owl#>
+prefix cond: <http://niche.cs.dal.ca/ns/condition/base.owl#>
+prefix gl: <http://niche.cs.dal.ca/ns/glean/base.owl#>
+prefix cig: <http://niche.cs.dal.ca/ns/cig/cig.owl#>
+prefix fhir: <http://hl7.org/fhir/>
+prefix e: <http://eulersharp.sourceforge.net/2003/03swap/log-rules#>
+prefix : <http://niche.cs.dal.ca/ns/cig/kidney_statins.owl#>
+
+{   
+    :measure_lipid_profile state:in ?s0 . 
+    ?s0 a state:AtomicState ; log:notEqualTo gl:Discarded .
+    
+    :rule_out_secondary_causes state:in ?s1 . 
+    ?s1 a state:AtomicState ; log:notEqualTo gl:Discarded .
+    
+    :no_dyslipidemia state:in ?s2 . 
+    ?s2 a state:AtomicState ; log:notEqualTo gl:Discarded .
+
+    {   :measure_lipid_profile state:in ?s0 .
+        :rule_out_secondary_causes state:in ?s1 .
+        :no_dyslipidemia state:in ?s2 .
+    } e:becomes
+        {   :measure_lipid_profile state:in gl:Discarded .
+            :rule_out_secondary_causes state:in gl:Discarded .
+            :no_dyslipidemia state:in gl:Discarded }
+
+} => {  :measure_lipid_profile state:in gl:Discarded .
+        :rule_out_secondary_causes state:in gl:Discarded .
+        :no_dyslipidemia state:in gl:Discarded } .

@@ -1,0 +1,69 @@
+prefix log: <http://www.w3.org/2000/10/swap/log#>
+prefix math: <http://www.w3.org/2000/10/swap/math#>
+prefix list: <http://www.w3.org/2000/10/swap/list#>
+prefix string: <http://www.w3.org/2000/10/swap/string#>
+prefix state: <http://niche.cs.dal.ca/ns/state.owl#>
+PREFIX e: <http://eulersharp.sourceforge.net/2003/03swap/log-rules#>
+prefix : <http://niche.cs.dal.ca/ns/glean/base.owl#>
+
+# - if a decision task is active, then ready its branches
+# (if a branch's precondition is met, then it will be activated; condition.n3)
+
+{	?decision a :DecisionTask ;
+		state:in :Active ; # activated task (not inactive or discarded)
+		:decisionBranch ?branch .
+
+	{ ?branch state:in :Inactive } # inactive branch
+		e:becomes
+			{ ?branch state:in :Ready ; state:reason :readyBranchesOfActiveDecisionTask } .
+
+} => { ?branch state:in :Ready } .
+
+
+# Note that decisionBranch and branchTarget are sub-tasks of next (workflow.owl);  
+# so if a DecisionTask is discarded, then this discarded state will be propagated (next.n3)
+
+
+# - if a decision task has an active branch, then complete the decision task 
+
+{	?decision a :DecisionTask ;
+		:decisionBranch ?branch .
+	?branch state:in :Active . # active branch
+	
+	{ ?decision state:in :Active } # decision task in active state
+		e:becomes
+			{ ?decision state:in :Completed ; state:reason :completeDecisionTaskWithActiveBranch }
+	
+} => { ?decision state:in :Completed } . # complete decision task
+
+
+
+# - if at least one branch is active, then discard other branches
+
+{	?decision a :DecisionTask ;
+		# at least one branch was activated
+		state:in :Completed .
+	
+	# discard the remaining branches 
+	# (i.e., those in the ready state: see below)
+	?decision :decisionBranch ?branch .
+	
+	{ ?branch state:in :Ready } # branch in ready state
+		e:becomes
+			{ ?branch state:in :Discarded ; state:reason :discardRemainingBranchesInCaseOfActiveBranch }
+
+} => { ?branch state:in :Discarded } . # discard branch
+
+
+
+# - if a branch was activated, then ready its target task
+
+{	?branch a :DecisionBranch ;
+		state:in :Active ; # (this means its precondition was met!)
+		:branchTarget ?task .
+
+	{ ?task state:in :Inactive } 
+		e:becomes
+			{ ?task state:in :Ready ; state:reason :readyTaskOfActiveBranch }
+	
+} => { ?task state:in :Ready } .

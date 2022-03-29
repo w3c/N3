@@ -1,0 +1,24 @@
+prefix owl: <http://www.w3.org/2002/07/owl#>
+prefix log: <http://www.w3.org/2000/10/swap/log#>
+prefix list: <http://www.w3.org/2000/10/swap/list#>
+prefix cond: <http://niche.cs.dal.ca/ns/condition/base.owl#>
+prefix : <http://niche.cs.dal.ca/ns/condition/base.owl#>
+
+
+{	?x cond:premise ?clause .
+	
+} => { { ?x cond:conditionMet true } <= ?clause } .
+
+
+{	?x cond:conditionMet true
+} <= { 	
+	?x cond:anyOf ?disjunction .
+	?disjunction!list:member cond:conditionMet true . 
+} .
+
+
+{	?x cond:conditionMet true 	
+} <= { 
+	?x cond:allOf ?conjunction .
+	( { ?conjunction list:member ?clause } { ?clause cond:conditionMet true } ) log:forAllIn _:x . 
+} .

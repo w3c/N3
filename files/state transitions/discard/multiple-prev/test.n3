@@ -1,0 +1,17 @@
+prefix math: <http://www.w3.org/2000/10/swap/math#>
+prefix state: <http://niche.cs.dal.ca/ns/state.owl#>
+prefix cond: <http://niche.cs.dal.ca/ns/condition/base.owl#>
+prefix gl: <http://niche.cs.dal.ca/ns/glean/base.owl#>
+prefix : <http://niche.cs.dal.ca/ns/glean/base.owl#>
+
+:tX1 a gl:Task ;
+	state:in gl:Discarded .
+:tX2 a gl:Task ;
+	#state:in gl:Active .
+	state:in gl:Discarded .
+	
+:tY a gl:Task ; 
+	state:in gl:Inactive .
+
+:tX1 gl:next :tY .
+:tX2 gl:next :tY .

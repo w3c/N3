@@ -1,0 +1,367 @@
+@prefix : <http://niche.cs.dal.ca/ns/glean/base.owl#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix cond: <http://niche.cs.dal.ca/ns/condition/base.owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@base <http://niche.cs.dal.ca/ns/glean/base.owl> .
+
+<http://niche.cs.dal.ca/ns/glean/base.owl> rdf:type owl:Ontology ;
+                                            owl:imports <http://niche.cs.dal.ca/ns/state.owl> .
+
+#################################################################
+#    Annotation properties
+#################################################################
+
+###  http://niche.cs.dal.ca/ns/state.owl#includes
+<http://niche.cs.dal.ca/ns/state.owl#includes> rdf:type owl:AnnotationProperty .
+
+
+#################################################################
+#    Object Properties
+#################################################################
+
+###  http://niche.cs.dal.ca/ns/condition/base.owl#allOf
+cond:allOf rdf:type owl:ObjectProperty .
+
+
+###  http://niche.cs.dal.ca/ns/condition/base.owl#anyOf
+cond:anyOf rdf:type owl:ObjectProperty .
+
+
+###  http://niche.cs.dal.ca/ns/glean/base.owl#branchTarget
+:branchTarget rdf:type owl:ObjectProperty ;
+              rdfs:subPropertyOf :next ;
+              rdfs:domain :DecisionBranch ;
+              rdfs:range :Task .
+
+
+###  http://niche.cs.dal.ca/ns/glean/base.owl#condition
+:condition rdf:type owl:ObjectProperty ;
+           rdfs:domain :Entity ;
+           rdfs:range cond:Condition .
+
+
+###  http://niche.cs.dal.ca/ns/glean/base.owl#decisionBranch
+:decisionBranch rdf:type owl:ObjectProperty ;
+                rdfs:subPropertyOf :next ;
+                rdfs:domain :DecisionTask ;
+                rdfs:range :DecisionBranch .
+
+
+###  http://niche.cs.dal.ca/ns/glean/base.owl#input
+:input rdf:type owl:ObjectProperty .
+
+
+###  http://niche.cs.dal.ca/ns/glean/base.owl#next
+:next rdf:type owl:ObjectProperty ;
+      rdfs:domain :Entity ;
+      rdfs:range :Entity .
+
+
+###  http://niche.cs.dal.ca/ns/glean/base.owl#parallelBranch
+:parallelBranch rdf:type owl:ObjectProperty ;
+                rdfs:subPropertyOf :next ;
+                rdfs:domain :ParallelSplit ;
+                rdfs:range :Task .
+
+
+###  http://niche.cs.dal.ca/ns/glean/base.owl#precondition
+:precondition rdf:type owl:ObjectProperty ;
+              rdfs:subPropertyOf :condition .
+
+
+###  http://niche.cs.dal.ca/ns/glean/base.owl#source
+:source rdf:type owl:ObjectProperty ;
+        rdfs:domain :Workflow .
+
+
+###  http://niche.cs.dal.ca/ns/glean/base.owl#subTask
+:subTask rdf:type owl:ObjectProperty ;
+         rdfs:domain :CompositeTask ;
+         rdfs:range :Task .
+
+
+###  http://niche.cs.dal.ca/ns/glean/base.owl#syncPoint
+:syncPoint rdf:type owl:ObjectProperty ;
+           rdfs:domain :ParallelSplit .
+
+
+###  http://niche.cs.dal.ca/ns/glean/base.owl#temporal
+:temporal rdf:type owl:ObjectProperty .
+
+
+###  http://niche.cs.dal.ca/ns/glean/base.owl#whileCondition
+:whileCondition rdf:type owl:ObjectProperty ;
+                rdfs:subPropertyOf :condition ;
+                rdfs:domain :WhileLoop .
+
+
+
+#################################################################
+#    Data properties
+#################################################################
+
+###  http://niche.cs.dal.ca/ns/condition/base.owl#conditionMet
+cond:conditionMet rdf:type owl:DatatypeProperty ;
+                  rdfs:range xsd:boolean .
+
+
+###  http://niche.cs.dal.ca/ns/glean/base.owl#conditional
+:conditional rdf:type owl:DatatypeProperty ;
+             rdfs:domain :Entity ;
+             rdfs:range xsd:boolean .
+
+
+###  http://niche.cs.dal.ca/ns/glean/base.owl#currentIteration
+:currentIteration rdf:type owl:DatatypeProperty ;
+                  rdfs:domain :ForLoop ;
+                  rdfs:range xsd:integer .
+
+
+###  http://niche.cs.dal.ca/ns/glean/base.owl#involvesAction
+:involvesAction rdf:type owl:DatatypeProperty ;
+                rdfs:domain :Task ;
+                rdfs:range xsd:boolean .
+
+
+###  http://niche.cs.dal.ca/ns/glean/base.owl#loaded
+:loaded rdf:type owl:DatatypeProperty ;
+        rdfs:domain :Workflow ;
+        rdfs:range xsd:boolean .
+
+
+###  http://niche.cs.dal.ca/ns/glean/base.owl#mergeNr
+:mergeNr rdf:type owl:DatatypeProperty ;
+         rdfs:domain :MergeNr ;
+         rdfs:range xsd:int .
+
+
+###  http://niche.cs.dal.ca/ns/glean/base.owl#numIterations
+:numIterations rdf:type owl:DatatypeProperty ;
+               rdfs:domain :ForLoop ;
+               rdfs:range xsd:integer .
+
+
+#################################################################
+#    Classes
+#################################################################
+
+###  http://niche.cs.dal.ca/ns/condition/base.owl#Condition
+cond:Condition rdf:type owl:Class .
+
+
+###  http://niche.cs.dal.ca/ns/glean/base.owl#Argument
+:Argument rdf:type owl:Class ;
+          rdfs:subClassOf :Entity .
+
+
+###  http://niche.cs.dal.ca/ns/glean/base.owl#CompositeTask
+:CompositeTask rdf:type owl:Class ;
+               rdfs:subClassOf :Task .
+
+
+###  http://niche.cs.dal.ca/ns/glean/base.owl#Cycle
+:Cycle rdf:type owl:Class ;
+       rdfs:subClassOf :CompositeTask .
+
+
+###  http://niche.cs.dal.ca/ns/glean/base.owl#DecisionBranch
+:DecisionBranch rdf:type owl:Class ;
+                rdfs:subClassOf :Entity ,
+                                [ rdf:type owl:Restriction ;
+                                  owl:onProperty :conditional ;
+                                  owl:hasValue "true"^^xsd:boolean
+                                ] .
+
+
+###  http://niche.cs.dal.ca/ns/glean/base.owl#DecisionTask
+:DecisionTask rdf:type owl:Class ;
+              rdfs:subClassOf :Task .
+
+
+###  http://niche.cs.dal.ca/ns/glean/base.owl#EndPoint
+:EndPoint rdf:type owl:Class ;
+          rdfs:subClassOf :Task .
+
+
+###  http://niche.cs.dal.ca/ns/glean/base.owl#Entity
+:Entity rdf:type owl:Class .
+
+
+###  http://niche.cs.dal.ca/ns/glean/base.owl#ForLoop
+:ForLoop rdf:type owl:Class ;
+         rdfs:subClassOf :Cycle .
+
+
+###  http://niche.cs.dal.ca/ns/glean/base.owl#MergeAll
+:MergeAll rdf:type owl:Class ;
+          rdfs:subClassOf :SyncPoint .
+
+
+###  http://niche.cs.dal.ca/ns/glean/base.owl#MergeAllAndContinue
+:MergeAllAndContinue rdf:type owl:Class ;
+                     rdfs:subClassOf :MergeAll ,
+                                     :MergeAndContinue .
+
+
+###  http://niche.cs.dal.ca/ns/glean/base.owl#MergeAndCancel
+:MergeAndCancel rdf:type owl:Class ;
+                rdfs:subClassOf :SyncPoint .
+
+
+###  http://niche.cs.dal.ca/ns/glean/base.owl#MergeAndContinue
+:MergeAndContinue rdf:type owl:Class ;
+                  rdfs:subClassOf :SyncPoint .
+
+
+###  http://niche.cs.dal.ca/ns/glean/base.owl#MergeAny
+:MergeAny rdf:type owl:Class ;
+          rdfs:subClassOf :SyncPoint .
+
+
+###  http://niche.cs.dal.ca/ns/glean/base.owl#MergeAnyAndCancel
+:MergeAnyAndCancel rdf:type owl:Class ;
+                   rdfs:subClassOf :MergeAndCancel ,
+                                   :MergeAny .
+
+
+###  http://niche.cs.dal.ca/ns/glean/base.owl#MergeAnyAndContinue
+:MergeAnyAndContinue rdf:type owl:Class ;
+                     rdfs:subClassOf :MergeAndContinue ,
+                                     :MergeAny .
+
+
+###  http://niche.cs.dal.ca/ns/glean/base.owl#MergeNr
+:MergeNr rdf:type owl:Class ;
+         rdfs:subClassOf :SyncPoint .
+
+
+###  http://niche.cs.dal.ca/ns/glean/base.owl#MergeNrAndCancel
+:MergeNrAndCancel rdf:type owl:Class ;
+                  rdfs:subClassOf :MergeAndCancel ,
+                                  :MergeNr .
+
+
+###  http://niche.cs.dal.ca/ns/glean/base.owl#MergeNrAndContinue
+:MergeNrAndContinue rdf:type owl:Class ;
+                    rdfs:subClassOf :MergeAndContinue ,
+                                    :MergeNr .
+
+
+###  http://niche.cs.dal.ca/ns/glean/base.owl#ParallelSplit
+:ParallelSplit rdf:type owl:Class ;
+               rdfs:subClassOf :Task .
+
+
+###  http://niche.cs.dal.ca/ns/glean/base.owl#SyncPoint
+:SyncPoint rdf:type owl:Class ;
+           rdfs:subClassOf :Task .
+
+
+###  http://niche.cs.dal.ca/ns/glean/base.owl#Task
+:Task rdf:type owl:Class ;
+      rdfs:subClassOf :Entity .
+
+
+###  http://niche.cs.dal.ca/ns/glean/base.owl#WhileLoop
+:WhileLoop rdf:type owl:Class ;
+           rdfs:subClassOf :Cycle .
+
+
+###  http://niche.cs.dal.ca/ns/glean/base.owl#Workflow
+:Workflow rdf:type owl:Class ;
+          rdfs:subClassOf :CompositeTask .
+
+
+###  http://niche.cs.dal.ca/ns/state.owl#AtomicState
+<http://niche.cs.dal.ca/ns/state.owl#AtomicState> rdf:type owl:Class .
+
+
+###  http://niche.cs.dal.ca/ns/state.owl#CompoundState
+<http://niche.cs.dal.ca/ns/state.owl#CompoundState> rdf:type owl:Class .
+
+
+#################################################################
+#    Individuals
+#################################################################
+
+###  http://niche.cs.dal.ca/ns/condition/base.owl#Other
+cond:Other rdf:type owl:NamedIndividual ,
+                    cond:Condition .
+
+
+###  http://niche.cs.dal.ca/ns/glean/base.owl#Activated
+:Activated rdf:type owl:NamedIndividual ,
+                    <http://niche.cs.dal.ca/ns/state.owl#CompoundState> ;
+           <http://niche.cs.dal.ca/ns/state.owl#includes> :Active ,
+                                                          :Completed .
+
+
+###  http://niche.cs.dal.ca/ns/glean/base.owl#Active
+:Active rdf:type owl:NamedIndividual ,
+                 <http://niche.cs.dal.ca/ns/state.owl#AtomicState> .
+
+
+###  http://niche.cs.dal.ca/ns/glean/base.owl#Completed
+:Completed rdf:type owl:NamedIndividual ,
+                    <http://niche.cs.dal.ca/ns/state.owl#AtomicState> .
+
+
+###  http://niche.cs.dal.ca/ns/glean/base.owl#Discarded
+:Discarded rdf:type owl:NamedIndividual ,
+                    <http://niche.cs.dal.ca/ns/state.owl#AtomicState> .
+
+
+###  http://niche.cs.dal.ca/ns/glean/base.owl#Done
+:Done rdf:type owl:NamedIndividual ,
+               <http://niche.cs.dal.ca/ns/state.owl#CompoundState> ;
+      <http://niche.cs.dal.ca/ns/state.owl#includes> :Completed ,
+                                                     :Discarded .
+
+
+###  http://niche.cs.dal.ca/ns/glean/base.owl#Idle
+:Idle rdf:type owl:NamedIndividual ,
+               <http://niche.cs.dal.ca/ns/state.owl#CompoundState> ;
+      <http://niche.cs.dal.ca/ns/state.owl#includes> :Completed ,
+                                                     :Discarded ,
+                                                     :Inactive .
+
+
+###  http://niche.cs.dal.ca/ns/glean/base.owl#Inactive
+:Inactive rdf:type owl:NamedIndividual ,
+                   <http://niche.cs.dal.ca/ns/state.owl#AtomicState> .
+
+
+###  http://niche.cs.dal.ca/ns/glean/base.owl#NewIteration
+:NewIteration rdf:type owl:NamedIndividual ,
+                       <http://niche.cs.dal.ca/ns/state.owl#CompoundState> ;
+              <http://niche.cs.dal.ca/ns/state.owl#includes> :Completed ,
+                                                             :Ready .
+
+
+###  http://niche.cs.dal.ca/ns/glean/base.owl#NotDone
+:NotDone rdf:type owl:NamedIndividual ,
+                  <http://niche.cs.dal.ca/ns/state.owl#CompoundState> ;
+         <http://niche.cs.dal.ca/ns/state.owl#includes> :Active ,
+                                                        :Inactive ,
+                                                        :Ready .
+
+
+###  http://niche.cs.dal.ca/ns/glean/base.owl#Ready
+:Ready rdf:type owl:NamedIndividual ,
+                <http://niche.cs.dal.ca/ns/state.owl#AtomicState> .
+
+
+###  http://niche.cs.dal.ca/ns/glean/base.owl#Resetting
+:Resetting rdf:type owl:NamedIndividual ,
+                    <http://niche.cs.dal.ca/ns/state.owl#AtomicState> .
+
+
+###  http://niche.cs.dal.ca/ns/glean/base.owl#Started
+:Started rdf:type owl:NamedIndividual ,
+                  <http://niche.cs.dal.ca/ns/state.owl#AtomicState> .
+
+
+###  Generated by the OWL API (version 4.5.9.2019-02-01T07:24:44Z) https://github.com/owlcs/owlapi

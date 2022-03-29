@@ -1,0 +1,3 @@
+true e:becomes graph1       # graph1 toevoegen
+graph2 e:becomes true       # graph2 verwijderen
+graph1 e:becomes graph2  # graph1 verwijderen en graph2 toevoegen
