@@ -13,12 +13,8 @@ PREFIX e: <http://eulersharp.sourceforge.net/2003/03swap/log-rules#>
 
 	gl:decisionBranch :branch0 , :branch1 .
 
-<<<<<<< HEAD:files/state transitions/decision/evaluate_lipid_profile.n3
 :branch0
 		state:in gl:Inactive .
 		 
 :branch1 
 		state:in gl:Inactive .
-=======
-} => { :measure_lipid_profile gl:done true } .
->>>>>>> 99f13482b35591a2e279c061d21ef13dae563012:examples/state machine/to_completed.n3

@@ -14,7 +14,7 @@ prefix : <http://niche.cs.dal.ca/ns/cig/kidney_statins.owl#>
 #} => { :Evaluate_Lipid_Profile state:in ?y ; state:reason ?reason } .
 
 #{ ?x state:in ?y } => { ?x state:in ?y } .
-{ ?x state:in ?y . ?y a state:AtomicState } => { ?x state:in ?y } .
+#{ ?x state:in ?y . ?y a state:AtomicState } => { ?x state:in ?y } .
 { ?x state:in ?y . ?y a state:AtomicState . ?x state:reason ?r } => { ?x state:in ?y ; state:reason ?r } .
 #{ ?x state:reason ?r } => { ?x state:reason ?r } .
 #{ ?x state:in ?y ; state:reason ?reason } => { ?x state:in ?y ; state:reason ?reason } .

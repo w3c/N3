@@ -8,13 +8,15 @@ prefix fhir: <http://hl7.org/fhir/>
 prefix : <http://niche.cs.dal.ca/ns/cig/kidney_statins.owl#>
 PREFIX e: <http://eulersharp.sourceforge.net/2003/03swap/log-rules#>
 
-:measure_lipid_profile gl:done true .
+#:obs0 fhir:Observation.code :code_abnormal_lipid_profile ;
+#    fhir:Observation.valueBoolean true .
+#}
 
-#{ true e:becomes { :measure_lipid_profile gl:done true } 
-#
-#} => { :measure_lipid_profile gl:done true } .
-
-#{ { :measure_lipid_profile a gl:DecisionTask } 
-#        e:becomes { :measure_lipid_profile gl:done true } 
-#
-#} => { :measure_lipid_profile gl:done true } .
+{   true e:becomes {
+        :obs0 fhir:Observation.code :code_abnormal_lipid_profile ;
+	        fhir:Observation.valueBoolean true .
+        }
+} => { 
+    :obs0 fhir:Observation.code :code_abnormal_lipid_profile ;
+        fhir:Observation.valueBoolean true .
+} .

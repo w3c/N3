@@ -1,8 +1,1 @@
-echo query.n3 | eye --nope evaluate_lipid_profile0.n3 task_condition.n3 decision.n3 --multi-query 2>/dev/null
-
-eye --nope evaluate_lipid_profile.n3 condition.n3 task_condition.n3 decision.n3 --query query.n3
-echo query.n3 | eye --nope evaluate_lipid_profile.n3 condition.n3 task_condition.n3 decision.n3 --multi-query 2>/dev/null
-echo query.n3 | eye --nope glean.owl owl2rl.n3 states.n3 evaluate_lipid_profile.n3 --multi-query
-
-echo query.n3 | eye --nope glean.owl owl2rl.n3 states.n3 evaluate_lipid_profile.n3 condition.n3 task_condition.n3 composite.n3 next.n3 decision.n3 --multi-query
-eye --nope glean.owl owl2rl.n3 states.n3 evaluate_lipid_profile.n3 condition.n3 task_condition.n3 composite.n3 next.n3 decision.n3 --query query.n3
+cat multi-query | eye --nope glean.owl owl2rl.n3 states.n3 evaluate_lipid_profile.n3 condition.n3 task_condition.n3 composite.n3 next.n3 decision.n3 --multi-query

@@ -10,9 +10,11 @@ prefix e: <http://eulersharp.sourceforge.net/2003/03swap/log-rules#>
 {	?entity :conditional true .
 	?entity!:precondition cond:conditionMet true .
 
+	[] e:trace ?entity .
+
 	{ ?entity state:in :Ready }
 		e:becomes 
-			{ ?entity state:in :Active ; state:reason :activateTaskWithConditionMet } .
+			{ ?entity state:in :Active ; state:reason :activateEntityWithConditionMet } .
 
 } => { ?entity state:in :Active } .
 
@@ -24,6 +26,6 @@ prefix e: <http://eulersharp.sourceforge.net/2003/03swap/log-rules#>
 
 	{ ?entity state:in :Ready }
 		e:becomes 
-			{ ?entity state:in :Active ; state:reason :activateNonConditionalTask } .
+			{ ?entity state:in :Active ; state:reason :activateNonConditionalEntity } .
 
 } => { ?entity state:in :Active } .
