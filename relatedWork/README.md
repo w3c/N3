@@ -5,6 +5,7 @@ Here, we list projects and implementations related to N3.
 * Cwm: https://www.w3.org/2000/10/swap/doc/cwm.html ("prototype" N3 reasoner developed by TBL)
 * jen3: https://github.com/william-vw/jen3 ([Apache Jena](https://jena.apache.org/) extended with N3 reasoning)
 * Data-Fu: https://aifb.kit.edu/web/Linked_Data-Fu (reasoner and language supporting a subset of N3)
+* roxi: https://github.com/pbonte/roxi (N3 reasoner in rust)
 
 
 # Useful tools
