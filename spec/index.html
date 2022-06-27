@@ -186,7 +186,7 @@
       <section id='n3doc'>
         <h3>N3 document</h3>
         <p>An <dfn>N3 document</dfn> represents an <a>N3 graph</a> in a compact textual form. An <dfn>N3 graph</dfn>
-          is a series of <dfn data-lt="n3 triple|statement|triple">N3 statements</dfn>. These are written as <a>triples</a> consisting of:
+          is a series of <dfn data-lt="statement|triple">N3 statements</dfn>. These are written as <a>triples</a> consisting of:
           <a data-cite="RDF11-CONCEPTS#dfn-subject">subject</a>,
           <a data-cite="RDF11-CONCEPTS#dfn-predicate">predicate</a>, and
           <a data-cite="RDF11-CONCEPTS#dfn-object">object</a>.
@@ -604,7 +604,7 @@ Maybe we could get back to that example when we introduce rules or also with bui
       <section id='cformulae'>
         <h3>Cited Formulae</h3>
         <p>
-          It is often useful to attach metadata to groups of triples (such as RDF graphs, named or unnamed) &mdash; to give the provenance, context, or version of the information, our opinion on the matter, and so on. We can use <dfn data-lt="cited formula">cited formulae</dfn> to quote RDF graphs, and then describe the <a>cited formulae</a> using <a>N3 statements</a>. For instance:
+          It is often useful to attach metadata to groups of triples (such as RDF graphs, named or unnamed) &mdash; to give the provenance, context, or version of the information, our opinion on the matter, and so on. We can use <a>cited formulae</a> to quote RDF graphs, and then describe the <a>cited formulae</a> using <a>N3 statements</a>. For instance:
         </p>
         <pre class="example nohighlight" data-transform="updateExample">
           <!--
@@ -805,7 +805,7 @@ Maybe we could get back to that example when we introduce rules or also with bui
     We extend these definitions by introducing the following concepts:
         </p>
       <!--  <p>
-          The set of <dfn id="dfn-n3-symbols">N3 symbols</dfn> consists of the set of <a>N3 triple elements</a> and the
+          The set of <dfn>N3 symbols</dfn> consists of the set of <a>N3 triple elements</a> and the
           <a>universal variables</a> which are defined below.
         </p> -->
         <p>
@@ -814,48 +814,48 @@ Maybe we could get back to that example when we introduce rules or also with bui
           <a data-cite="RDF11-CONCEPTS#dfn-blank-node">blank nodes</a>,
           <a data-cite="RDF11-CONCEPTS#dfn-literal">literals</a>,
           <a href="#dfn-universals">universal variables</a>,
-          <a href="#lists">lists</a>,
-          and <a href="#quotes">cited formulae</a>.
+          <a>lists</a>,
+          and <a>cited formulae</a>.
           The set of <a data-cite="RDF11-CONCEPTS#dfn-iri">IRIs</a> conatians the implication sign denoted by the <a>built-in</a> <code>log:implies</code>.
           This symbol indicates logical implication and MAY in N3-turtle syntax also be represented using the symbols <code>=&gt;</code>.
           The set of <a data-cite="RDF11-CONCEPTS#dfn-literal">literals</a> contains the two boolean literals <code>false</code> and <code>true</code>.
           The latter can also be written as <code>{}</code> in N3 turtle syntax.
         </p>
         <p>
-          The set of <dfn id="dfn-universals">universal variables</dfn> is an arbitrary set of symbols which is disjoint to all other <a>N3 triple elements</a>.
+          The set of <dfn data-lt="universals">universal variables</dfn> is an arbitrary set of symbols which is disjoint to all other <a>N3 triple elements</a>.
           In N3-turtle syntax, universal variables are represented by strings starting with a question mark <code>?</code>.
         </p>
         <p>
-          <dfn id="lists">Lists</dfn> are ordered sets consisting of zero or more  <a>N3 triple elements</a>.
+          <dfn>Lists</dfn> are ordered sets consisting of zero or more  <a>N3 triple elements</a>.
           We call the list which has no elements the empty list. In N3-turtle syntax,
           we indicate lists by using round brackets <code>()</code>.
           The empty list in <abbr title="Notation3">N3</abbr> is equivalent to the empty list in RDF and can
           thus also be represented using <a href="https://www.w3.org/TR/rdf11-mt/#rdf-interpretations">rdf:nil</a>.
         </p>
         <p>
-          <dfn id="def-quotes">Cited formulae</dfn> (sometimes also called quoted graphs) are <a>N3 formulae</a> which are surrounded by quoting signs.
+          <dfn data-lt="quoted graphs|cited formula">Cited formulae</dfn> (sometimes also called <a>quoted graphs</a>) are <a>N3 formulae</a> which are surrounded by quoting signs.
           In N3-turtle syntax, we denote these quoting signs as curly brackets <code>{}</code>.
         </p>
         <p>
-          An <dfn id="N3-triple">N3 triple</dfn> consists of the three components subject, predicate and object, each being an <a>N3 triple element</a>.
+          An <dfn>N3 triple</dfn> consists of the three components subject, predicate and object, each being an <a>N3 triple element</a>.
         </p>
         <p>
-          An <dfn data-lt="N3 formulae">N3 formula</dfn> is a set of <a href="#N3-triple">N3 triples</a>.
+          An <dfn data-lt="N3 formulae">N3 formula</dfn> is a set of <a>N3 triples</a>.
         </p>
         <p>Let <code>T</code>  be the set of <a>N3 triple elements</a> and <code>dc:T&xrarr;T</code> a function defined as follows:
-          <l>
+          <ul>
   <li><code>dc(c)=dc(c<sub>1</sub>)&cup;...&cup;dc(c<sub>n</sub>)</code>, if <code>c=(c<sub>1</sub>... c<sub>n</sub>)</code> is a list,</li>
   <li><code>dc(c)={c} </code>else.</li>
-</l>
+</ul>
 
-          For each <a href="#N3-triple">N3 triple</a> <code>t= s p o</code> we call the set <code>dc(t)=dc(s)&cup;dc(p)&cup;dc(o)</code>
-           the <dfn id="dir-comp">direct components</dfn> of <code>t</code>. For each <a>N3 formula</a> the set of
+          For each <a>N3 triple</a> <code>t= s p o</code> we call the set <code>dc(t)=dc(s)&cup;dc(p)&cup;dc(o)</code>
+           the <dfn data-lt="dir-comp">direct components</dfn> of <code>t</code>. For each <a>N3 formula</a> the set of
            its direct components is the union of the direct components of the triples it contains. </p>
 
            <p>Let <code>T</code>  be the set of <a>N3 triple elements</a> and <code>F</code> the set of <a>N3 formula</a>. We define the function
               <code>nc:T&cup;F&xrarr;T</code> a function defined as follows:
-             <l>
-          <li><code>nc(e)=nc(e<sub>1</sub>)&cup;...&cup;nc(e<sub>n</sub>)</code>, if <code>e=e<sub>1</sub>... e<sub>n</sub></code> is an <a>N3 formula</a> and <code>e<sub>1</sub>)&cup;...&cup;nc(e<sub>n</sub></code>
+           <ul>
+           <li><code>nc(e)=nc(e<sub>1</sub>)&cup;...&cup;nc(e<sub>n</sub>)</code>, if <code>e=e<sub>1</sub>... e<sub>n</sub></code> is an <a>N3 formula</a> and <code>e<sub>1</sub>)&cup;...&cup;nc(e<sub>n</sub></code>
             are <a>N3 triples</a>,</li>
             <li><code>nc(e)=nc(e<sub>1</sub>)&cup;nc(e<sub>2</sub>)&cup;nc(e<sub>3</sub>)</code>, if <code>e=e<sub>1</sub> c<sub>2</sub> e<sub>3</sub></code> is an <a>N3 triple</a> and
               <code>e<sub>1</sub>, c<sub>2</sub>, e<sub>3</sub></code> are <a>N3 triple elements</a>,</li>
@@ -863,17 +863,19 @@ Maybe we could get back to that example when we introduce rules or also with bui
            <li><code>nc(e)=dc(e<sub>1</sub>)&cup; nc(e<sub>1</sub>)</code>,
              if <code>e={e<sub>1</sub>}</code> is a <a>cited formula</a>,</li>
            <li><code>nc(e)=&empty;</code> else.</li>
+           </ul>
 
-          For each <a>N3 formula</a> <code>f</code>, we call <code>nc(f)</code> the set of <dfn id="nest-comp">nested components</dfn>.
+          For each <a>N3 formula</a> <code>f</code>, we call <code>nc(f)</code> the set of <dfn>nested components</dfn>.
 
 
           </p>
 
 
       <p>
-       We call an <a>N3 formula</a> <dfn data-lt="ground">ground</dfn> if its direct and nested components do not contain <a>blank nodes</a> nor <a>universal variables</a>.</p>
-      <p> We call an <a>N3 formula</a> <dfn data-lt="closed">closed</dfn> if its direct and nested components do not contain <a>universal variables</a> and its direct components do not contain <a>blank nodes</a>.
+       We call an <a>N3 formula</a> <dfn>ground</dfn> if its direct and <a>nested components</a> do not contain <a>blank nodes</a> nor <a>universal variables</a>.</p>
+      <p> We call an <a>N3 formula</a> <dfn>closed</dfn> if its direct and <a>nested components</a> do not contain <a>universal variables</a> and its <a>direct components</a> do not contain <a>blank nodes</a>.
       </p>
+      <p class="EDNOTE">ReSpec complains because <a>ground</a> and <a>closed</a> are defined but not used.</p>
       </section>
 
 
@@ -1294,7 +1296,9 @@ Maybe we could get back to that example when we introduce rules or also with bui
         <ul>
           <li>Literals are allowed at any s/p/o position (i.e., subject, predicate or object) in a statement. See the <a href="#grammar-production-pathItem">pathItem</a> production, which is (eventually) referenced by the "subject", "predicate" and "object" productions.</li>
          <li>N3 includes <a>cited formulae</a> (i.e., between "<code>{</code>" and "<code>}</code>"), which are allowed in any s/p/o position in a statement. See the <a href="#grammar-production-pathItem">pathItem</a> production.</li>
-          <li><dfn data-lt="quickvar">Quick-variables</dfn> (e.g., "<code>?x</code>"), which are allowed in any s/p/o position in a statement. See the <a href="#grammar-production-pathItem">pathItem</a> production.</li>
+          <li><dfn data-lt="quickvar">Quick-variables</dfn> (e.g., "<code>?x</code>"), which are allowed in any s/p/o position in a statement. See the <a href="#grammar-production-pathItem">pathItem</a> production.
+            <span class="ednote">ReSpec complains becuse <a>quickvar</a> is defined but not used.</span>
+          </li>
           <li>A path syntax, comparable to (but not quite as extensive as) the <a data-cite="sparql11-query#propertypaths">SPARQL 1.1 Property Path</a> syntax. See the <a href="#grammar-production-path">path</a> production.</li>
           <li>The possibility to invert the predicate within a statement. See the <a href="#grammar-production-predicate">predicate</a> production.</li>
           <li>An additional set of keywords, including "<code>is .. of</code>", "<code>has</code>", "<code>=</code>", "<code>=></code>", "<code>&lt;=</code>", in addition to Turtle's "<code>a</code>" keyword (among others). All keywords can be optionally preceded by "<code>@</code>", for consistency with the "<code>@prefix</code>" and "<code>@base"</code> keywords.</li>
@@ -1565,7 +1569,7 @@ Maybe we could get back to that example when we introduce rules or also with bui
         <li>Added `&lt;-` to represent an inverted property as a synonym of `is` <a href="#grammar-production-expression">expression</a> `of`.
         <li>Removed `@true` and `@false` in favor of `true` and `false`.</li>
         <li>Removed `@has`.</li>
-        <li>Removed support for explicit <a>N3 quantifiers</a>
+        <li>Removed support for explicit <strong>N3 quantifiers</strong>
           (`@forSome` and `@forAll`).</li>
         <li>Removed whitespace from the
           <a href="#grammar-production-IRIREF">IRIREF</a> grammar terminal
