@@ -488,7 +488,7 @@
         <section id='bnodeprplist'>
           <h4>Blank node property lists</h4>
           <p>Using a <a>blank node identifier</a> requires introducing a new identifier for each <a>blank node</a>. Although they're not quite as hard to mint as <a>IRIs</a>, in many cases it is redundant to even introduce such an identifier.</p>
-          <p>For instance, <a>blank nodes</a> are often used to <a data-cite="rdf-primer#structuredproperties">structure composite pieces of information</a>, such as street addresses, telephone numbers and dates. Using the <a href="#grammar-production-blankNodePropertyList">blank node property list</a> syntax, this kind of pattern can be represented quite conveniently as follows:</p>
+          <p>For instance, <a>blank nodes</a> are often used to <a data-cite="rdf11-primer#structuredproperties">structure composite pieces of information</a>, such as street addresses, telephone numbers and dates. Using the <a href="#grammar-production-blankNodePropertyList">blank node property list</a> syntax, this kind of pattern can be represented quite conveniently as follows:</p>
           <p class="ednote">TODO: would be ideal if the equivalent simple-triples example could be shown side-by-side with the <a href="#bnodeprplist">blank node property lists</a> example, like <a href="https://www.w3.org/TR/turtle/#unlabeled-bnodes">here</a>.</p>
           <pre id="address-bnode-prp-list"
                class="example nohighlight"
@@ -520,8 +520,8 @@
         <section id="bnode-use-cases">
           <h4>Blank node use cases</h4>
           <p>Below, we summarize typical use cases where <a>blank nodes</a> are used to describe resources.</p>
-          <p><strong>Unknown resources</strong>: we might <a href="rdf-primer#section-blank-node">want to state</a> that the Mona Lisa painting has in its background an unidentified tree, which we know to be a cypress tree. We could mint an <a>IRI</a> such as "mona-lisa-cypress-tree", but we feel that would be redundant &mdash; we simply want to describe the tree, such as the painting it is in, and the type of tree. We're not particularly interested in allowing other <a>N3 graphs</a> to refer to the tree. Moreover, there may already exist an <a>IRI</a> for that particular tree, and we don't want to mint another <a>IRI</a> to refer to the same tree (nor do we want to lookup this existing <a>IRI</a>).</p>
-          <p><strong>Composite information</strong>: when describing <a data-cite="rdf-primer#structuredproperties">composite pieces of information</a>, such as street addresses, telephone numbers and dates, it would be quite redundant to mint an <a>IRI</a> just for the purpose of structuring this information. It is unlikely that anyone outside this <a>N3 graph</a> would ever need to refer directly to the <a>IRI</a>. Instead, one can use an <a data-lt="blank node">RDF blank node</a> to connect the "composed" piece of information, e.g., the street address, to its composite values, e.g., street name, number, and city.</p>
+          <p><strong>Unknown resources</strong>: we might <a href="rdf11-primer#section-blank-node">want to state</a> that the Mona Lisa painting has in its background an unidentified tree, which we know to be a cypress tree. We could mint an <a>IRI</a> such as "mona-lisa-cypress-tree", but we feel that would be redundant &mdash; we simply want to describe the tree, such as the painting it is in, and the type of tree. We're not particularly interested in allowing other <a>N3 graphs</a> to refer to the tree. Moreover, there may already exist an <a>IRI</a> for that particular tree, and we don't want to mint another <a>IRI</a> to refer to the same tree (nor do we want to lookup this existing <a>IRI</a>).</p>
+          <p><strong>Composite information</strong>: when describing <a data-cite="rdf11-primer#structuredproperties">composite pieces of information</a>, such as street addresses, telephone numbers and dates, it would be quite redundant to mint an <a>IRI</a> just for the purpose of structuring this information. It is unlikely that anyone outside this <a>N3 graph</a> would ever need to refer directly to the <a>IRI</a>. Instead, one can use an <a data-lt="blank node">RDF blank node</a> to connect the "composed" piece of information, e.g., the street address, to its composite values, e.g., street name, number, and city.</p>
           <p><strong>N-ary relations</strong>: <a>blank nodes</a> are a convenient way to represent <a href="#naryrel">n-ary relations in N3</a>.</p>
           <!--
             <pre class="example nohighlight">@prefix foaf: &lt;http://xmlns.com/foaf/0.1/&gt; .
@@ -562,7 +562,7 @@ Maybe we could get back to that example when we introduce rules or also with bui
               :author :deborah, :daniele, :peter .
           -->
         </pre>
-        <p>I.e., we use an <a href="grammar-production-objectList">object list</a> to explicitly state that these members are separate values of the author property. We no longer need to assume meaning (<em>a</em>) since the RDF semantics already explicates that meaning.</p>
+        <p>I.e., we use an <a href="#grammar-production-objectList">object list</a> to explicitly state that these members are separate values of the author property. We no longer need to assume meaning (<em>a</em>) since the RDF semantics already explicates that meaning.</p>
         <p class="note">Since N3 / RDF statements do not have an inherent order, this example loses meaning (<em>b</em>) since we no longer know who is the first author.</p>
         <p>In the following example, we state that a resolution was approved by a group with members Fred, Wilma, and Dino:</p>
         <pre class="example nohighlight" data-transform="updateExample">
