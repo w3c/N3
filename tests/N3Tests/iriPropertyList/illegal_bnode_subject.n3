@@ -1,0 +1,3 @@
+@prefix : <http://example.com/> .
+
+[ id _:bn :p :o] .

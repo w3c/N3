@@ -1,0 +1,9 @@
+@prefix a: <http://foo/a#> .
+
+a:a a:p [
+  id a:node1
+  a:p2 [
+    id a:node0
+    a:p3 "v1" , "v2" ;
+    a:p4 "v3" ] ;
+  a:p5 "v4" ] .
