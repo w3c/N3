@@ -97,7 +97,7 @@ xsd:integer
 <p>Iff the <em>subject</em> is a dateTime format string and the <em>object</em> is the
 result of formatting the Universal Time of processing in the format given.
 If the format string has zero length,
-then the ISOdate standard format is used. 
+then the ISOdate standard format is used.
 <code>[ is time:gmtime of &quot;&quot;]</code>  the therefore the current date time.
 It will end with &quot;Z&quot; as a timezone code.
 the <em>object</em> can be calculated as a function of the <em>subject</em>.
@@ -120,7 +120,7 @@ xsd:string
 <span class='permalink'><a href='#vocab_time_hour' title='Permalink for time:hour'>(link)</a></span>
 </dt>
 <dd>
-<p>Iff the <em>subject</em> is a <code>xsd:dateTime</code> and the <em>object</em> is the hour year component of the dateTime.
+<p>Iff the <em>subject</em> is a <code>xsd:dateTime</code> and the <em>object</em> is the integer hours component of the dateTime.
 the <em>object</em> can be calculated as a function of the <em>subject</em>.</p>
 
 <dl class='annotations'>
@@ -141,9 +141,8 @@ xsd:integer
 </dt>
 <dd>
 <p>Iff the <em>subject</em> is a <code>xsd:dateTime</code> and the <em>object</em> is the integer number of seconds
-since the beginning of the era on a given system.  Don&#39;t assume a particular value, always test for it.
+since the beginning of the era on a given system.  Don't assume a particular value, always test for it.
 the <em>object</em> can be calculated as a function of the <em>subject</em>.</p>
-
 <p>Cwm implements this as a bidirectional function: you can calculate the
 ISO date from the seconds since the beginning of the era, or vice-versa.</p>
 
@@ -167,7 +166,7 @@ xsd:integer
 <p>Iff the <em>subject</em> is a dateTime format string and the <em>object</em> is the
 result of formatting the current time of processing and local timezone in the format given.
 If the format string has zero length,
-then the ISOdate standard format is used. 
+then the ISOdate standard format is used.
 <code>[ is time:gmtime of &quot;&quot;]</code>  the therefore the current date time.
 It will end with &quot;Z&quot; as a timezone code.
 the <em>object</em> can be calculated as a function of the <em>subject</em>.
@@ -190,7 +189,7 @@ xsd:string
 <span class='permalink'><a href='#vocab_time_minute' title='Permalink for time:minute'>(link)</a></span>
 </dt>
 <dd>
-<p>Iff the <em>subject</em> is a <code>xsd:dateTime</code> and the <em>object</em> is the integer minute component of the dateTime.
+<p>Iff the <em>subject</em> is a <code>xsd:dateTime</code> and the <em>object</em> is the integer minutes component of the dateTime.
 the <em>object</em> can be calculated as a function of the <em>subject</em>.</p>
 
 <dl class='annotations'>
@@ -230,7 +229,7 @@ xsd:integer
 <span class='permalink'><a href='#vocab_time_second' title='Permalink for time:second'>(link)</a></span>
 </dt>
 <dd>
-<p>Iff the <em>subject</em> is a <code>xsd:dateTime</code> and the <em>object</em> is the integer year component of the dateTime.
+<p>Iff the <em>subject</em> is a <code>xsd:dateTime</code> and the <em>object</em> is the integer seconds component of the dateTime.
 the <em>object</em> can be calculated as a function of the <em>subject</em>.</p>
 
 <dl class='annotations'>
