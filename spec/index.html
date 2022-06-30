@@ -900,33 +900,37 @@ Maybe we could get back to that example when we introduce rules or also with bui
         <p>
           An <dfn data-lt="N3 formulae">N3 formula</dfn> is a set of <a>N3 triples</a>.
         </p>
-        <p>Let <code>T</code>  be the set of <a>N3 triple elements</a> and <code>dc:T&xrarr;T</code> a function defined as follows:
-          <ul>
-  <li><code>dc(c)=dc(c<sub>1</sub>)&cup;...&cup;dc(c<sub>n</sub>)</code>, if <code>c=(c<sub>1</sub>... c<sub>n</sub>)</code> is a list,</li>
-  <li><code>dc(c)={c} </code>else.</li>
+        <p>Let <code>T</code>  be the set of <a>N3 triple elements</a> and <code>dc:T&xrarr;T</code> a function defined as follows:</p>
+        <ul>
+          <li><code>dc(c)=dc(c<sub>1</sub>)&cup;...&cup;dc(c<sub>n</sub>)</code>, if <code>c=(c<sub>1</sub>... c<sub>n</sub>)</code> is a list,</li>
+<li><code>dc(c)={c} </code>else.</li>
 </ul>
 
-          For each <a>N3 triple</a> <code>t= s p o</code> we call the set <code>dc(t)=dc(s)&cup;dc(p)&cup;dc(o)</code>
+          <p>For each <a>N3 triple</a> <code>t= s p o</code> we call the set <code>dc(t)=dc(s)&cup;dc(p)&cup;dc(o)</code>
            the <dfn data-lt="dir-comp">direct components</dfn> of <code>t</code>. For each <a>N3 formula</a> the set of
            its direct components is the union of the direct components of the triples it contains. </p>
 
            <p>Let <code>T</code>  be the set of <a>N3 triple elements</a> and <code>F</code> the set of <a>N3 formula</a>. We define the function
-              <code>nc:T&cup;F&xrarr;T</code> a function defined as follows:
+              <code>nc:T&cup;F&xrarr;T</code> a function defined as follows:</p>
            <ul>
-           <li><code>nc(e)=nc(e<sub>1</sub>)&cup;...&cup;nc(e<sub>n</sub>)</code>, if <code>e=e<sub>1</sub>... e<sub>n</sub></code> is an <a>N3 formula</a> and <code>e<sub>1</sub>)&cup;...&cup;nc(e<sub>n</sub></code>
-            are <a>N3 triples</a>,</li>
-            <li><code>nc(e)=nc(e<sub>1</sub>)&cup;nc(e<sub>2</sub>)&cup;nc(e<sub>3</sub>)</code>, if <code>e=e<sub>1</sub> c<sub>2</sub> e<sub>3</sub></code> is an <a>N3 triple</a> and
-              <code>e<sub>1</sub>, c<sub>2</sub>, e<sub>3</sub></code> are <a>N3 triple elements</a>,</li>
-           <li><code>nc(e)=nc(e<sub>1</sub>)&cup;...&cup;nc(e<sub>n</sub>)</code>, if <code>e=(e<sub>1</sub>... e<sub>n</sub>)</code> is a list,</li>
-           <li><code>nc(e)=dc(e<sub>1</sub>)&cup; nc(e<sub>1</sub>)</code>,
-             if <code>e={e<sub>1</sub>}</code> is a <a>cited formula</a>,</li>
-           <li><code>nc(e)=&empty;</code> else.</li>
+             <li><code>nc(e)=nc(e<sub>1</sub>)&cup;...&cup;nc(e<sub>n</sub>)</code>,
+               if <code>e=e<sub>1</sub>... e<sub>n</sub></code> is an <a>N3 formula</a> and <code>e<sub>1</sub>)&cup;...&cup;nc(e<sub>n</sub></code> are <a>N3 triples</a>,</li>
+             <li><code>nc(e)=nc(e<sub>1</sub>)&cup;nc(e<sub>2</sub>)&cup;nc(e<sub>3</sub>)</code>,
+               if <code>e=e<sub>1</sub> c<sub>2</sub> e<sub>3</sub></code>
+               is an <a>N3 triple</a>
+               and <code>e<sub>1</sub>, c<sub>2</sub>, e<sub>3</sub></code>
+               are <a>N3 triple elements</a>,</li>
+             <li><code>nc(e)=nc(e<sub>1</sub>)&cup;...&cup;nc(e<sub>n</sub>)</code>,
+               if <code>e=(e<sub>1</sub>... e<sub>n</sub>)</code> is a list,</li>
+             <li><code>nc(e)=dc(e<sub>1</sub>)&cup; nc(e<sub>1</sub>)</code>,
+               if <code>e={e<sub>1</sub>}</code> is a <a>cited formula</a>,</li>
+             <li><code>nc(e)=&empty;</code> else.</li>
            </ul>
 
-          For each <a>N3 formula</a> <code>f</code>, we call <code>nc(f)</code> the set of <dfn>nested components</dfn>.
-
-
-          </p>
+     <p>
+       For each <a>N3 formula</a> <code>f</code>,
+       we call <code>nc(f)</code> the set of <dfn>nested components</dfn>.
+     </p>
 
 
       <p>
@@ -983,7 +987,7 @@ Maybe we could get back to that example when we introduce rules or also with bui
           Supporting all verb and boolean keywords (<code>is .. of</code>, <code>has</code>, <code>a</code>, <code>true</code>, <code>false</code>) both with and without "<code>@</code>" prefix. Turtle supports the <code>a</code> keyword, i.e., without an "<code>@</code>", but requires the symbol for the <code>@prefix</code> and <code>@base</code> declarations. The <a data-cite="N3#grammar">original N3 grammar</a> required the "<code>@</code>" prefix for all verb and boolean keywords. Hence, this decision was made for compatibility with Turtle as well as to avoid an unintuitive grammar, i.e., where some keywords have the "<code>@</code>" prefix and some don't.
         </li>
         <li>
-          Representing an inverted property using the <code>&ltcomponents-</code> symbol. The <a data-cite="N3#grammar">original N3 grammar</a> allowed the inverting of a property by using the <code>@is .. @of</code> construct. But, this construct can be unintuitive when property names are more verbosely specified (e.g., <code>:hasFather</code>), leading to statements such as <code>?x @is :hasFather @of ?y</code>. The <code>is .. of</code> construct is still supported, but the above statement can now be represented as follows: <code>?x &lt;- :hasFather ?y</code>.
+          Representing an inverted property using the <code>&lt;components-</code> symbol. The <a data-cite="N3#grammar">original N3 grammar</a> allowed the inverting of a property by using the <code>@is .. @of</code> construct. But, this construct can be unintuitive when property names are more verbosely specified (e.g., <code>:hasFather</code>), leading to statements such as <code>?x @is :hasFather @of ?y</code>. The <code>is .. of</code> construct is still supported, but the above statement can now be represented as follows: <code>?x &lt;- :hasFather ?y</code>.
         </li>
       </ul>
       <section id='whitespace'>
@@ -1221,7 +1225,7 @@ Maybe we could get back to that example when we introduce rules or also with bui
                 </li>
                <li>Step 5 matches because |dir| is  "`!`".
                   The triple
-                  (<var>B<sub>n-1</sub> `:mother` <var>B<sub>n</sub></var>)
+                  (<var>B<sub>n-1</sub></var> `:mother` <var>B<sub>n</sub></var>)
                   is emitted.</li>
                 <li>Step 7 returns <var>B<sub>n</sub></var>.</li>
               </ul>
