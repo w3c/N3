@@ -64,6 +64,13 @@
       table.grammar td:nth-child(2) {
         text-align: right;
       }
+      table.ex, .ex th, .ex td {
+        border: none;
+        padding: 0;
+      }
+      .ex th {
+        text-align: center;
+      }
     </style>
     <script>
       function _esc(s) {
@@ -356,6 +363,49 @@
 
           &lt;http://example.org/#doerthe&gt; foaf:knows &lt;http://example.org/#dominik&gt; .
           :doerthe foaf:knows :dominik .</pre> -->
+
+        <section id='iriprplist'>
+          <h4>IRI property lists</h4>
+          <p>Similar to the <a href="#grammar-production-blankNodePropertyList">blank node property list</a>
+            discussed in <a href="#bnodeprplist" class="sectionRef"></a>,
+            an <a href="#grammar-production-iriPropertyList">IRI property list</a>
+            allows statements on the same resource to be kept together
+            in the context of a referencing property allowing
+            statements to be embedded within other statements.
+            See <a data-cite="JSON-LD11#embedding">Embedding</a> in [[JSON-LD11]] for a discussion of a similar feature in another format.
+          </p>
+          <p>An example showing the same statements using and without using this feature follows:</p>
+
+          <table class="ex">
+            <tr><th>Embedded:</th><th>Unfolded:</th></tr>
+            <tr>
+            <td><pre class="example" id="iri-prp-list" data-transform="updateExample">
+              <!--
+              @prefix : <http://example.org/#> .
+              @prefix foaf: <http://xmlns.com/foaf/0.1/>
+
+              :spiderman foaf:name "Spiderman" ;
+                :enemyOf [ id :green-goblin ;
+                  foaf:name "Green Goblin"
+                ] .
+              -->
+            </pre></td>
+            <td><pre class="example" id="iri-prp-list-unfolded" data-transform="updateExample">
+              <!--
+              @prefix : <http://example.org/#> .
+              @prefix foaf: <http://xmlns.com/foaf/0.1/>
+
+              :spiderman foaf:name "Spiderman" ;
+                :enemyOf :green-goblin .
+
+              :green-goblin foaf:name "Green Goblin" .
+              -->
+            </pre></td>
+            </tr>
+          </table>
+
+          <p>As shown, a <a href="#iriprplist">IRI property lists</a> relies on <a href="#polists">predicate object lists</a> to easily group statements about a given <a>IRI</a></p>
+        </section>
       </section>
       <section id='literals'>
         <h3>Literals</h3>
