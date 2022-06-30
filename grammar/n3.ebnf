@@ -47,6 +47,7 @@
                                           | quickVar
                                           | collection
                                           | blankNodePropertyList
+                                          | iriPropertyList
                                           | literal
                                           | formula
 
@@ -56,45 +57,50 @@
 
 [20] blankNodePropertyList              ::= '[' predicateObjectList ']'
 
-[21] collection                         ::= '(' object* ')'
+[21] iriPropertyList                    ::= IPLSTART iri predicateObjectList ']'
 
-[22] formula                            ::= '{' formulaContent? '}'
+[22] collection                         ::= '(' object* ')'
 
-[23] formulaContent                     ::= n3Statement ('.' formulaContent?)?
+[23] formula                            ::= '{' formulaContent? '}'
+
+[24] formulaContent                     ::= n3Statement ('.' formulaContent?)?
                                           | sparqlDirective formulaContent?
 
-[24] numericLiteral                     ::= INTEGER | DECIMAL | DOUBLE
+[25] numericLiteral                     ::= DOUBLE | DECIMAL | INTEGER
 
-[25] rdfLiteral                         ::= STRING (LANGTAG | '^^' iri)?
+[26] rdfLiteral                         ::= STRING (LANGTAG | '^^' iri)?
 
-[26] iri                                ::= IRIREF | prefixedName
+[27] iri                                ::= IRIREF | prefixedName
 
-[27] prefixedName                       ::= PNAME_NS | PNAME_LN
+[28] prefixedName                       ::= PNAME_LN | PNAME_NS
                                             # PNAME_NS will be matched for ':' (i.e., "empty") prefixedNames
                                             # hence this cannot be a lexer rule; for s/p/o of only ':', PNAME_NS will be returned
                                             # instead of PrefixedName token
 
-[28] blankNode                          ::=  BLANK_NODE_LABEL | ANON
+[29] blankNode                          ::=  BLANK_NODE_LABEL | ANON
 
-[29] quickVar                           ::= QUICK_VAR_NAME
+[30] quickVar                           ::= QUICK_VAR_NAME
                                             # only made this a parser rule for consistency
                                             # (all other path-items are also parser rules)
 
 @terminals
 
-[30] BOOLEAN_LITERAL                    ::= 'true' | 'false'
+[31] BOOLEAN_LITERAL                    ::= 'true' | 'false'
 
-[31] STRING                             ::= STRING_LITERAL_QUOTE
-                                          | STRING_LITERAL_SINGLE_QUOTE
-                                          | STRING_LITERAL_LONG_SINGLE_QUOTE
+[32] STRING                             ::= STRING_LITERAL_LONG_SINGLE_QUOTE
                                           | STRING_LITERAL_LONG_QUOTE
+                                          | STRING_LITERAL_QUOTE
+                                          | STRING_LITERAL_SINGLE_QUOTE
+
+/* Note, this must be matched before '[' */
+[33] IPLSTART                           ::= '[' WS* 'id'
 
 /* borrowed from SPARQL spec, which excludes newlines and other nastiness */
 [139s] IRIREF                           ::= '<' ([^<>"{}|^`\]-[#x00-#x20] | UCHAR)* '>'
 [140s] PNAME_NS                         ::= PN_PREFIX? ':'
 [141s] PNAME_LN                         ::= PNAME_NS PN_LOCAL
 [142s] BLANK_NODE_LABEL                 ::= '_:' ( PN_CHARS_U | [0-9] ) ((PN_CHARS|'.')* PN_CHARS)?
-[145s] LANGTAG                                 ::= "@" [a-zA-Z]+ ( "-" [a-zA-Z0-9]+ )*
+[145s] LANGTAG                          ::= "@" ([a-zA-Z]+ ( "-" [a-zA-Z0-9]+ )*)
 [146s] INTEGER                          ::= [0-9]+
 [147s] DECIMAL                          ::= [0-9]* '.' [0-9]+
 [148s] DOUBLE                           ::= [0-9]+ '.' [0-9]* EXPONENT
@@ -131,5 +137,3 @@
 
 # Ignore all whitespace and comments between non-terminals
 @pass           ( WS | COMMENT )*
-
-

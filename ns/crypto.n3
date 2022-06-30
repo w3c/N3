@@ -24,9 +24,7 @@
 <>  rdfs:label "Schema for crypto built-in functions";
     rdfs:comment """These are terms drawn to match the available functions
 in [mxCrypto](http://freshmeat.sourceforge.net/projects/mxcrypto).""";
-    cc:license <http://www.w3.org/Consortium/Legal/copyright-software>;
-    rdfs:seeAlso <http://www.amk.ca/python/writing/pycrypt/>,
-        <http://www.amk.ca/python/code/crypto.html> .
+    cc:license <http://www.w3.org/Consortium/Legal/copyright-software> .
 
 #####################################################################
 #

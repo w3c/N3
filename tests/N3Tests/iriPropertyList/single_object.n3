@@ -1,0 +1,6 @@
+@prefix a: <http://foo/a#> .
+a:b a:oneRef [
+  id a:node0
+  a:pp "1" ;
+  a:qq "2"
+] .

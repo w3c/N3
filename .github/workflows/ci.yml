@@ -42,6 +42,5 @@ jobs:
       with:
         TOOLCHAIN: respec
         SOURCE: spec/index.html
-        VALIDATE_LINKS: true
+        VALIDATE_LINKS: false
         VALIDATE_MARKUP: true
-    
