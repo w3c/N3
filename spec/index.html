@@ -538,32 +538,40 @@
         <section id='bnodeprplist'>
           <h4>Blank node property lists</h4>
           <p>Using a <a>blank node identifier</a> requires introducing a new identifier for each <a>blank node</a>. Although they're not quite as hard to mint as <a>IRIs</a>, in many cases it is redundant to even introduce such an identifier.</p>
-          <p>For instance, <a>blank nodes</a> are often used to <a data-cite="RDF11-PRIMER#structuredproperties">structure composite pieces of information</a>, such as street addresses, telephone numbers and dates. Using the <a href="#grammar-production-blankNodePropertyList">blank node property list</a> syntax, this kind of pattern can be represented quite conveniently as follows:</p>
-          <p class="ednote">TODO: would be ideal if the equivalent simple-triples example could be shown side-by-side with the <a href="#bnodeprplist">blank node property lists</a> example, like <a href="https://www.w3.org/TR/turtle/#unlabeled-bnodes">here</a>.</p>
-          <pre id="address-bnode-prp-list"
-               class="example nohighlight"
-               data-transform="updateExample">
-            <!--
-            @prefix ex: <http://example.org/#> .
-            @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+          <p>For instance, <a>blank nodes</a> are often used to structure composite pieces of information, such as street addresses, telephone numbers and dates. Using the <a href="#grammar-production-blankNodePropertyList">blank node property list</a> syntax, this kind of pattern can be represented quite conveniently as follows:</p>
+          <p class="ednote">Formerly <a data-cite="RDF11-PRIMER#structuredproperties">structure composite pieces of information</a> was a reference into [[RDF11-PRIMER]] which does not exist.</p>
 
-            ex:john ex:address [
-              ex:street "Evergreen Terrace" ;
-              ex:number 742 ;
-              ex:town [
-                rdfs:label "Springfield"
-              ]
-            ] .
+          <table class="ex">
+            <tr><th>Abbreviated:</th><th>Corresponding simple triples:</th></tr>
+            <tr>
+            <td><pre class="example" id="address-bnode-prp-list" data-transform="updateExample">
+              <!--
+                @prefix ex: <http://example.org/#> .
+                @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 
-            # is equivalent to:
+                ex:john ex:address [
+                  ex:street "Evergreen Terrace" ;
+                  ex:number 742 ;
+                  ex:town [
+                    rdfs:label "Springfield"
+                  ]
+                ] .
+              -->
+            </pre></td>
+            <td><pre class="example" id="address-bnode-prp-list-simplified" data-transform="updateExample">
+              <!--
+                @prefix ex: <http://example.org/#> .
+                @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 
-            ex:john ex:address _:a .
-            _:a ex:street "Evergreen Terrace" .
-            _:a ex:number 742 .
-            _:a ex:town _:t .
-            _:t rdfs:label "Springfield" .
-            -->
-          </pre>
+                ex:john ex:address _:a .
+                _:a ex:street "Evergreen Terrace" .
+                _:a ex:number 742 .
+                _:a ex:town _:t .
+                _:t rdfs:label "Springfield" .
+              -->
+            </pre></td>
+            </tr>
+          </table>
           <p>As shown, a <a href="#bnodeprplist">blank node property lists</a> relies on <a href="#polists">predicate object lists</a> to easily group statements about <a>blank nodes</a>. We also show the equivalent <a href="#simpletriples">simple triples</a> using <a>blank node identifiers</a>.</p>
           <p class="note">In some cases, using a <a>blank node identifier</a> will simply feel more convenient and natural; e.g., in case you want to describe multiple people with the same address. Of course, we could still use an "inverse" <em>addressOf</em> property to add people with the same address to the <a href="#bnodeprplist">blank node property lists</a>, i.e., making <code>:john</code> just another element of the composite piece of information.</p>
         </section>
