@@ -79,7 +79,7 @@ time:hour a rdf:Property, owl:FunctionalProperty;
     rdfs:domain xsd:dateTime;
     rdfs:range xsd:integer;
     rdfs:comment """
-Iff the _subject_ is a `xsd:dateTime` and the _object_ is the hour year component of the dateTime.
+Iff the _subject_ is a `xsd:dateTime` and the _object_ is the integer hours component of the dateTime.
 the _object_ can be calculated as a function of the _subject_.
 """;
     rdfs:isDefinedBy <>.
@@ -89,7 +89,7 @@ time:minute a rdf:Property, owl:FunctionalProperty;
     rdfs:domain xsd:dateTime;
     rdfs:range xsd:integer;
     rdfs:comment """
-Iff the _subject_ is a `xsd:dateTime` and the _object_ is the integer minute component of the dateTime.
+Iff the _subject_ is a `xsd:dateTime` and the _object_ is the integer minutes component of the dateTime.
 the _object_ can be calculated as a function of the _subject_.
 """;
     rdfs:isDefinedBy <>.
@@ -99,7 +99,7 @@ time:second a rdf:Property, owl:FunctionalProperty;
     rdfs:domain xsd:dateTime;
     rdfs:range xsd:integer;
     rdfs:comment """
-Iff the _subject_ is a `xsd:dateTime` and the _object_ is the integer year component of the dateTime.
+Iff the _subject_ is a `xsd:dateTime` and the _object_ is the integer seconds component of the dateTime.
 the _object_ can be calculated as a function of the _subject_.
 """;
     rdfs:isDefinedBy <>.

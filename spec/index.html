@@ -64,6 +64,13 @@
       table.grammar td:nth-child(2) {
         text-align: right;
       }
+      table.ex, .ex th, .ex td {
+        border: none;
+        padding: 0;
+      }
+      .ex th {
+        text-align: center;
+      }
     </style>
     <script>
       function _esc(s) {
@@ -153,8 +160,24 @@
               <td><code>http://xmlns.com/foaf/0.1/</code></td>
             </tr>
             <tr>
-              <td><code>...</code></td>
-              <td><code>...</code></td>
+              <td><code>ex</code></td>
+              <td><code>http://www.example.org/#</code></td>
+            </tr>
+            <tr>
+              <td><code>i18n</code></td>
+              <td><code>https://www.w3.org/ns/i18n#</code></td>
+            </tr>
+            <tr>
+              <td><code>rdf</code></td>
+              <td><code>http://www.w3.org/1999/02/22-rdf-syntax-ns#</code></td>
+            </tr>
+            <tr>
+              <td><code>rdfs</code></td>
+              <td><code>http://www.w3.org/2000/01/rdf-schema#</code></td>
+            </tr>
+            <tr>
+              <td><code>xsd</code></td>
+              <td><code>http://www.w3.org/2001/XMLSchema#</code></td>
             </tr>
           </tbody>
         </table>
@@ -170,7 +193,7 @@
       <section id='n3doc'>
         <h3>N3 document</h3>
         <p>An <dfn>N3 document</dfn> represents an <a>N3 graph</a> in a compact textual form. An <dfn>N3 graph</dfn>
-          is a series of <dfn data-lt="n3 triple|statement|triple">N3 statements</dfn>. These are written as <a>triples</a> consisting of:
+          is a series of <dfn data-lt="statement|triple">N3 statements</dfn>. These are written as <a>triples</a> consisting of:
           <a data-cite="RDF11-CONCEPTS#dfn-subject">subject</a>,
           <a data-cite="RDF11-CONCEPTS#dfn-predicate">predicate</a>, and
           <a data-cite="RDF11-CONCEPTS#dfn-object">object</a>.
@@ -340,6 +363,49 @@
 
           &lt;http://example.org/#doerthe&gt; foaf:knows &lt;http://example.org/#dominik&gt; .
           :doerthe foaf:knows :dominik .</pre> -->
+
+        <section id='iriprplist'>
+          <h4>IRI property lists</h4>
+          <p>Similar to the <a href="#grammar-production-blankNodePropertyList">blank node property list</a>
+            discussed in <a href="#bnodeprplist" class="sectionRef"></a>,
+            an <a href="#grammar-production-iriPropertyList">IRI property list</a>
+            allows statements on the same resource to be kept together
+            in the context of a referencing property allowing
+            statements to be embedded within other statements.
+            See <a data-cite="JSON-LD11#embedding">Embedding</a> in [[JSON-LD11]] for a discussion of a similar feature in another format.
+          </p>
+          <p>An example showing the same statements using and without using this feature follows:</p>
+
+          <table class="ex">
+            <tr><th>Embedded:</th><th>Unfolded:</th></tr>
+            <tr>
+            <td><pre class="example" id="iri-prp-list" data-transform="updateExample">
+              <!--
+              @prefix : <http://example.org/#> .
+              @prefix foaf: <http://xmlns.com/foaf/0.1/>
+
+              :spiderman foaf:name "Spiderman" ;
+                :enemyOf [ id :green-goblin ;
+                  foaf:name "Green Goblin"
+                ] .
+              -->
+            </pre></td>
+            <td><pre class="example" id="iri-prp-list-unfolded" data-transform="updateExample">
+              <!--
+              @prefix : <http://example.org/#> .
+              @prefix foaf: <http://xmlns.com/foaf/0.1/>
+
+              :spiderman foaf:name "Spiderman" ;
+                :enemyOf :green-goblin .
+
+              :green-goblin foaf:name "Green Goblin" .
+              -->
+            </pre></td>
+            </tr>
+          </table>
+
+          <p>As shown, a <a href="#iriprplist">IRI property lists</a> relies on <a href="#polists">predicate object lists</a> to easily group statements about a given <a>IRI</a></p>
+        </section>
       </section>
       <section id='literals'>
         <h3>Literals</h3>
@@ -472,40 +538,48 @@
         <section id='bnodeprplist'>
           <h4>Blank node property lists</h4>
           <p>Using a <a>blank node identifier</a> requires introducing a new identifier for each <a>blank node</a>. Although they're not quite as hard to mint as <a>IRIs</a>, in many cases it is redundant to even introduce such an identifier.</p>
-          <p>For instance, <a>blank nodes</a> are often used to <a data-cite="rdf-primer#structuredproperties">structure composite pieces of information</a>, such as street addresses, telephone numbers and dates. Using the <a href="#grammar-production-blankNodePropertyList">blank node property list</a> syntax, this kind of pattern can be represented quite conveniently as follows:</p>
-          <p class="ednote">TODO: would be ideal if the equivalent simple-triples example could be shown side-by-side with the <a href="#bnodeprplist">blank node property lists</a> example, like <a href="https://www.w3.org/TR/turtle/#unlabeled-bnodes">here</a>.</p>
-          <pre id="address-bnode-prp-list"
-               class="example nohighlight"
-               data-transform="updateExample">
-            <!--
-            @prefix ex: <http://example.org/#> .
-            @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+          <p>For instance, <a>blank nodes</a> are often used to structure composite pieces of information, such as street addresses, telephone numbers and dates. Using the <a href="#grammar-production-blankNodePropertyList">blank node property list</a> syntax, this kind of pattern can be represented quite conveniently as follows:</p>
+          <p class="ednote">Formerly <a data-cite="RDF11-PRIMER#structuredproperties">structure composite pieces of information</a> was a reference into [[RDF11-PRIMER]] which does not exist.</p>
 
-            ex:john ex:address [
-              ex:street "Evergreen Terrace" ;
-              ex:number 742 ;
-              ex:town [
-                rdfs:label "Springfield"
-              ]
-            ] .
+          <table class="ex">
+            <tr><th>Abbreviated:</th><th>Corresponding simple triples:</th></tr>
+            <tr>
+            <td><pre class="example" id="address-bnode-prp-list" data-transform="updateExample">
+              <!--
+                @prefix ex: <http://example.org/#> .
+                @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 
-            # is equivalent to:
+                ex:john ex:address [
+                  ex:street "Evergreen Terrace" ;
+                  ex:number 742 ;
+                  ex:town [
+                    rdfs:label "Springfield"
+                  ]
+                ] .
+              -->
+            </pre></td>
+            <td><pre class="example" id="address-bnode-prp-list-simplified" data-transform="updateExample">
+              <!--
+                @prefix ex: <http://example.org/#> .
+                @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 
-            ex:john ex:address _:a .
-            _:a ex:street "Evergreen Terrace" .
-            _:a ex:number 742 .
-            _:a ex:town _:t .
-            _:t rdfs:label "Springfield" .
-            -->
-          </pre>
+                ex:john ex:address _:a .
+                _:a ex:street "Evergreen Terrace" .
+                _:a ex:number 742 .
+                _:a ex:town _:t .
+                _:t rdfs:label "Springfield" .
+              -->
+            </pre></td>
+            </tr>
+          </table>
           <p>As shown, a <a href="#bnodeprplist">blank node property lists</a> relies on <a href="#polists">predicate object lists</a> to easily group statements about <a>blank nodes</a>. We also show the equivalent <a href="#simpletriples">simple triples</a> using <a>blank node identifiers</a>.</p>
           <p class="note">In some cases, using a <a>blank node identifier</a> will simply feel more convenient and natural; e.g., in case you want to describe multiple people with the same address. Of course, we could still use an "inverse" <em>addressOf</em> property to add people with the same address to the <a href="#bnodeprplist">blank node property lists</a>, i.e., making <code>:john</code> just another element of the composite piece of information.</p>
         </section>
         <section id="bnode-use-cases">
           <h4>Blank node use cases</h4>
           <p>Below, we summarize typical use cases where <a>blank nodes</a> are used to describe resources.</p>
-          <p><strong>Unknown resources</strong>: we might <a href="rdf-primer#section-blank-node">want to state</a> that the Mona Lisa painting has in its background an unidentified tree, which we know to be a cypress tree. We could mint an <a>IRI</a> such as "mona-lisa-cypress-tree", but we feel that would be redundant &mdash; we simply want to describe the tree, such as the painting it is in, and the type of tree. We're not particularly interested in allowing other <a>N3 graphs</a> to refer to the tree. Moreover, there may already exist an <a>IRI</a> for that particular tree, and we don't want to mint another <a>IRI</a> to refer to the same tree (nor do we want to lookup this existing <a>IRI</a>).</p>
-          <p><strong>Composite information</strong>: when describing <a data-cite="rdf-primer#structuredproperties">composite pieces of information</a>, such as street addresses, telephone numbers and dates, it would be quite redundant to mint an <a>IRI</a> just for the purpose of structuring this information. It is unlikely that anyone outside this <a>N3 graph</a> would ever need to refer directly to the <a>IRI</a>. Instead, one can use an <a data-lt="blank node">RDF blank node</a> to connect the "composed" piece of information, e.g., the street address, to its composite values, e.g., street name, number, and city.</p>
+          <p><strong>Unknown resources</strong>: we might <a data-cite="RDF11-PRIMER#section-blank-node">want to state</a> that the Mona Lisa painting has in its background an unidentified tree, which we know to be a cypress tree. We could mint an <a>IRI</a> such as "mona-lisa-cypress-tree", but we feel that would be redundant &mdash; we simply want to describe the tree, such as the painting it is in, and the type of tree. We're not particularly interested in allowing other <a>N3 graphs</a> to refer to the tree. Moreover, there may already exist an <a>IRI</a> for that particular tree, and we don't want to mint another <a>IRI</a> to refer to the same tree (nor do we want to lookup this existing <a>IRI</a>).</p>
+          <p><strong>Composite information</strong>: when describing <a data-cite="RDF11-PRIMER#structuredproperties">composite pieces of information</a>, such as street addresses, telephone numbers and dates, it would be quite redundant to mint an <a>IRI</a> just for the purpose of structuring this information. It is unlikely that anyone outside this <a>N3 graph</a> would ever need to refer directly to the <a>IRI</a>. Instead, one can use an <a data-lt="blank node">RDF blank node</a> to connect the "composed" piece of information, e.g., the street address, to its composite values, e.g., street name, number, and city.</p>
           <p><strong>N-ary relations</strong>: <a>blank nodes</a> are a convenient way to represent <a href="#naryrel">n-ary relations in N3</a>.</p>
           <!--
             <pre class="example nohighlight">@prefix foaf: &lt;http://xmlns.com/foaf/0.1/&gt; .
@@ -546,7 +620,7 @@ Maybe we could get back to that example when we introduce rules or also with bui
               :author :deborah, :daniele, :peter .
           -->
         </pre>
-        <p>I.e., we use an <a href="grammar-production-objectList">object list</a> to explicitly state that these members are separate values of the author property. We no longer need to assume meaning (<em>a</em>) since the RDF semantics already explicates that meaning.</p>
+        <p>I.e., we use an <a href="#grammar-production-objectList">object list</a> to explicitly state that these members are separate values of the author property. We no longer need to assume meaning (<em>a</em>) since the RDF semantics already explicates that meaning.</p>
         <p class="note">Since N3 / RDF statements do not have an inherent order, this example loses meaning (<em>b</em>) since we no longer know who is the first author.</p>
         <p>In the following example, we state that a resolution was approved by a group with members Fred, Wilma, and Dino:</p>
         <pre class="example nohighlight" data-transform="updateExample">
@@ -588,7 +662,7 @@ Maybe we could get back to that example when we introduce rules or also with bui
       <section id='cformulae'>
         <h3>Cited Formulae</h3>
         <p>
-          It is often useful to attach metadata to groups of triples (such as RDF graphs, named or unnamed) &mdash; to give the provenance, context, or version of the information, our opinion on the matter, and so on. We can use <dfn data-lt="cited formula">cited formulae</dfn> to quote RDF graphs, and then describe the <a>cited formulae</a> using <a>N3 statements</a>. For instance:
+          It is often useful to attach metadata to groups of triples (such as RDF graphs, named or unnamed) &mdash; to give the provenance, context, or version of the information, our opinion on the matter, and so on. We can use <a>cited formulae</a> to quote RDF graphs, and then describe the <a>cited formulae</a> using <a>N3 statements</a>. For instance:
         </p>
         <pre class="example nohighlight" data-transform="updateExample">
           <!--
@@ -789,7 +863,7 @@ Maybe we could get back to that example when we introduce rules or also with bui
     We extend these definitions by introducing the following concepts:
         </p>
       <!--  <p>
-          The set of <dfn id="dfn-n3-symbols">N3 symbols</dfn> consists of the set of <a>N3 triple elements</a> and the
+          The set of <dfn>N3 symbols</dfn> consists of the set of <a>N3 triple elements</a> and the
           <a>universal variables</a> which are defined below.
         </p> -->
         <p>
@@ -798,66 +872,72 @@ Maybe we could get back to that example when we introduce rules or also with bui
           <a data-cite="RDF11-CONCEPTS#dfn-blank-node">blank nodes</a>,
           <a data-cite="RDF11-CONCEPTS#dfn-literal">literals</a>,
           <a href="#dfn-universals">universal variables</a>,
-          <a href="#lists">lists</a>,
-          and <a href="#quotes">cited formulae</a>.
+          <a>lists</a>,
+          and <a>cited formulae</a>.
           The set of <a data-cite="RDF11-CONCEPTS#dfn-iri">IRIs</a> conatians the implication sign denoted by the <a>built-in</a> <code>log:implies</code>.
           This symbol indicates logical implication and MAY in N3-turtle syntax also be represented using the symbols <code>=&gt;</code>.
           The set of <a data-cite="RDF11-CONCEPTS#dfn-literal">literals</a> contains the two boolean literals <code>false</code> and <code>true</code>.
           The latter can also be written as <code>{}</code> in N3 turtle syntax.
         </p>
         <p>
-          The set of <dfn id="dfn-universals">universal variables</dfn> is an arbitrary set of symbols which is disjoint to all other <a>N3 triple elements</a>.
+          The set of <dfn data-lt="universals">universal variables</dfn> is an arbitrary set of symbols which is disjoint to all other <a>N3 triple elements</a>.
           In N3-turtle syntax, universal variables are represented by strings starting with a question mark <code>?</code>.
         </p>
         <p>
-          <dfn id="lists">Lists</dfn> are ordered sets consisting of zero or more  <a>N3 triple elements</a>.
+          <dfn>Lists</dfn> are ordered sets consisting of zero or more  <a>N3 triple elements</a>.
           We call the list which has no elements the empty list. In N3-turtle syntax,
           we indicate lists by using round brackets <code>()</code>.
           The empty list in <abbr title="Notation3">N3</abbr> is equivalent to the empty list in RDF and can
           thus also be represented using <a href="https://www.w3.org/TR/rdf11-mt/#rdf-interpretations">rdf:nil</a>.
         </p>
         <p>
-          <dfn id="def-quotes">Cited formulae</dfn> (sometimes also called quoted graphs) are <a>N3 formulae</a> which are surrounded by quoting signs.
+          <dfn data-lt="quoted graphs|cited formula">Cited formulae</dfn> (sometimes also called <a>quoted graphs</a>) are <a>N3 formulae</a> which are surrounded by quoting signs.
           In N3-turtle syntax, we denote these quoting signs as curly brackets <code>{}</code>.
         </p>
         <p>
-          An <dfn id="N3-triple">N3 triple</dfn> consists of the three components subject, predicate and object, each being an <a>N3 triple element</a>.
+          An <dfn>N3 triple</dfn> consists of the three components subject, predicate and object, each being an <a>N3 triple element</a>.
         </p>
         <p>
-          An <dfn data-lt="N3 formulae">N3 formula</dfn> is a set of <a href="#N3-triple">N3 triples</a>.
+          An <dfn data-lt="N3 formulae">N3 formula</dfn> is a set of <a>N3 triples</a>.
         </p>
-        <p>Let <code>T</code>  be the set of <a>N3 triple elements</a> and <code>dc:T&xrarr;T</code> a function defined as follows:
-          <l>
-  <li><code>dc(c)=dc(c<sub>1</sub>)&cup;...&cup;dc(c<sub>n</sub>)</code>, if <code>c=(c<sub>1</sub>... c<sub>n</sub>)</code> is a list,</li>
-  <li><code>dc(c)={c} </code>else.</li>
-</l>
+        <p>Let <code>T</code>  be the set of <a>N3 triple elements</a> and <code>dc:T&xrarr;T</code> a function defined as follows:</p>
+        <ul>
+          <li><code>dc(c)=dc(c<sub>1</sub>)&cup;...&cup;dc(c<sub>n</sub>)</code>, if <code>c=(c<sub>1</sub>... c<sub>n</sub>)</code> is a list,</li>
+<li><code>dc(c)={c} </code>else.</li>
+</ul>
 
-          For each <a href="#N3-triple">N3 triple</a> <code>t= s p o</code> we call the set <code>dc(t)=dc(s)&cup;dc(p)&cup;dc(o)</code>
-           the <dfn id="dir-comp">direct components</dfn> of <code>t</code>. For each <a>N3 formula</a> the set of
+          <p>For each <a>N3 triple</a> <code>t= s p o</code> we call the set <code>dc(t)=dc(s)&cup;dc(p)&cup;dc(o)</code>
+           the <dfn data-lt="dir-comp">direct components</dfn> of <code>t</code>. For each <a>N3 formula</a> the set of
            its direct components is the union of the direct components of the triples it contains. </p>
 
            <p>Let <code>T</code>  be the set of <a>N3 triple elements</a> and <code>F</code> the set of <a>N3 formula</a>. We define the function
-              <code>nc:T&cup;F&xrarr;T</code> a function defined as follows:
-             <l>
-          <li><code>nc(e)=nc(e<sub>1</sub>)&cup;...&cup;nc(e<sub>n</sub>)</code>, if <code>e=e<sub>1</sub>... e<sub>n</sub></code> is an <a>N3 formula</a> and <code>e<sub>1</sub>)&cup;...&cup;nc(e<sub>n</sub></code>
-            are <a>N3 triples</a>,</li>
-            <li><code>nc(e)=nc(e<sub>1</sub>)&cup;nc(e<sub>2</sub>)&cup;nc(e<sub>3</sub>)</code>, if <code>e=e<sub>1</sub> c<sub>2</sub> e<sub>3</sub></code> is an <a>N3 triple</a> and
-              <code>e<sub>1</sub>, c<sub>2</sub>, e<sub>3</sub></code> are <a>N3 triple elements</a>,</li>
-           <li><code>nc(e)=nc(e<sub>1</sub>)&cup;...&cup;nc(e<sub>n</sub>)</code>, if <code>e=(e<sub>1</sub>... e<sub>n</sub>)</code> is a list,</li>
-           <li><code>nc(e)=dc(e<sub>1</sub>)&cup; nc(e<sub>1</sub>)</code>,
-             if <code>e={e<sub>1</sub>}</code> is a <a>cited formula</a>,</li>
-           <li><code>nc(e)=&empty;</code> else.</li>
+              <code>nc:T&cup;F&xrarr;T</code> a function defined as follows:</p>
+           <ul>
+             <li><code>nc(e)=nc(e<sub>1</sub>)&cup;...&cup;nc(e<sub>n</sub>)</code>,
+               if <code>e=e<sub>1</sub>... e<sub>n</sub></code> is an <a>N3 formula</a> and <code>e<sub>1</sub>)&cup;...&cup;nc(e<sub>n</sub></code> are <a>N3 triples</a>,</li>
+             <li><code>nc(e)=nc(e<sub>1</sub>)&cup;nc(e<sub>2</sub>)&cup;nc(e<sub>3</sub>)</code>,
+               if <code>e=e<sub>1</sub> c<sub>2</sub> e<sub>3</sub></code>
+               is an <a>N3 triple</a>
+               and <code>e<sub>1</sub>, c<sub>2</sub>, e<sub>3</sub></code>
+               are <a>N3 triple elements</a>,</li>
+             <li><code>nc(e)=nc(e<sub>1</sub>)&cup;...&cup;nc(e<sub>n</sub>)</code>,
+               if <code>e=(e<sub>1</sub>... e<sub>n</sub>)</code> is a list,</li>
+             <li><code>nc(e)=dc(e<sub>1</sub>)&cup; nc(e<sub>1</sub>)</code>,
+               if <code>e={e<sub>1</sub>}</code> is a <a>cited formula</a>,</li>
+             <li><code>nc(e)=&empty;</code> else.</li>
+           </ul>
 
-          For each <a>N3 formula</a> <code>f</code>, we call <code>nc(f)</code> the set of <dfn id="nest-comp">nested components</dfn>.
-
-
-          </p>
+     <p>
+       For each <a>N3 formula</a> <code>f</code>,
+       we call <code>nc(f)</code> the set of <dfn>nested components</dfn>.
+     </p>
 
 
       <p>
-       We call an <a>N3 formula</a> <dfn data-lt="ground">ground</dfn> if its direct and nested components do not contain <a>blank nodes</a> nor <a>universal variables</a>.</p>
-      <p> We call an <a>N3 formula</a> <dfn data-lt="closed">closed</dfn> if its direct and nested components do not contain <a>universal variables</a> and its direct components do not contain <a>blank nodes</a>.
+       We call an <a>N3 formula</a> <dfn>ground</dfn> if its direct and <a>nested components</a> do not contain <a>blank nodes</a> nor <a>universal variables</a>.</p>
+      <p> We call an <a>N3 formula</a> <dfn>closed</dfn> if its direct and <a>nested components</a> do not contain <a>universal variables</a> and its <a>direct components</a> do not contain <a>blank nodes</a>.
       </p>
+      <p class="EDNOTE">ReSpec complains because <a>ground</a> and <a>closed</a> are defined but not used.</p>
       </section>
 
 
@@ -879,17 +959,17 @@ Maybe we could get back to that example when we introduce rules or also with bui
           Built-ins are denoted by a controlled IRI defined in
           one of the core namespaces:</p>
         <ul>
-          <li><a href="../ns/crypto.html">Crypto</a> –
+          <li><a href="crypto.html">Crypto</a> –
             <a href="http://www.w3.org/2000/10/swap/crypto#">http://www.w3.org/2000/10/swap/crypto#</a>,</li>
-          <li><a href="../ns/list.html">List</a> –
+          <li><a href="list.html">List</a> –
             <a href="http://www.w3.org/2000/10/swap/list#">http://www.w3.org/2000/10/swap/list#</a>,</li>
-          <li><a href="../ns/log.html">Log</a> –
+          <li><a href="log.html">Log</a> –
             <a href="http://www.w3.org/2000/10/swap/log#">http://www.w3.org/2000/10/swap/log#</a>,</li>
-          <li><a href="../ns/math.html">Math</a> –
+          <li><a href="math.html">Math</a> –
             <a href="http://www.w3.org/2000/10/swap/math#">http://www.w3.org/2000/10/swap/math#</a>,</li>
-          <li><a href="../ns/string.html">String</a> –
+          <li><a href="string.html">String</a> –
             <a href="http://www.w3.org/2000/10/swap/string#">http://www.w3.org/2000/10/swap/string#</a>, and</li>
-          <li><a href="../ns/time.html">Time</a> –
+          <li><a href="time.html">Time</a> –
             <a href="http://www.w3.org/2000/10/swap/time#">http://www.w3.org/2000/10/swap/time#</a>.</li>
         </ul>
 
@@ -907,7 +987,7 @@ Maybe we could get back to that example when we introduce rules or also with bui
           Supporting all verb and boolean keywords (<code>is .. of</code>, <code>has</code>, <code>a</code>, <code>true</code>, <code>false</code>) both with and without "<code>@</code>" prefix. Turtle supports the <code>a</code> keyword, i.e., without an "<code>@</code>", but requires the symbol for the <code>@prefix</code> and <code>@base</code> declarations. The <a data-cite="N3#grammar">original N3 grammar</a> required the "<code>@</code>" prefix for all verb and boolean keywords. Hence, this decision was made for compatibility with Turtle as well as to avoid an unintuitive grammar, i.e., where some keywords have the "<code>@</code>" prefix and some don't.
         </li>
         <li>
-          Representing an inverted property using the <code>&ltcomponents-</code> symbol. The <a data-cite="N3#grammar">original N3 grammar</a> allowed the inverting of a property by using the <code>@is .. @of</code> construct. But, this construct can be unintuitive when property names are more verbosely specified (e.g., <code>:hasFather</code>), leading to statements such as <code>?x @is :hasFather @of ?y</code>. The <code>is .. of</code> construct is still supported, but the above statement can now be represented as follows: <code>?x &lt;- :hasFather ?y</code>.
+          Representing an inverted property using the <code>&lt;components-</code> symbol. The <a data-cite="N3#grammar">original N3 grammar</a> allowed the inverting of a property by using the <code>@is .. @of</code> construct. But, this construct can be unintuitive when property names are more verbosely specified (e.g., <code>:hasFather</code>), leading to statements such as <code>?x @is :hasFather @of ?y</code>. The <code>is .. of</code> construct is still supported, but the above statement can now be represented as follows: <code>?x &lt;- :hasFather ?y</code>.
         </li>
       </ul>
       <section id='whitespace'>
@@ -1145,7 +1225,7 @@ Maybe we could get back to that example when we introduce rules or also with bui
                 </li>
                <li>Step 5 matches because |dir| is  "`!`".
                   The triple
-                  (<var>B<sub>n-1</sub> `:mother` <var>B<sub>n</sub></var>)
+                  (<var>B<sub>n-1</sub></var> `:mother` <var>B<sub>n</sub></var>)
                   is emitted.</li>
                 <li>Step 7 returns <var>B<sub>n</sub></var>.</li>
               </ul>
@@ -1265,7 +1345,7 @@ Maybe we could get back to that example when we introduce rules or also with bui
       <section id='grammar'>
         <h3>Grammar</h3>
         <div data-include="../grammar/n3.html"></div>
-        <p>A textual version of this grammar may be found <a href="../grammar/n3.ebnf">here</a>.</p>
+        <p>A textual version of this grammar may be found <a href="n3.ebnf">here</a>.</p>
       </section>
     </section>
     <section class=informative>
@@ -1278,7 +1358,9 @@ Maybe we could get back to that example when we introduce rules or also with bui
         <ul>
           <li>Literals are allowed at any s/p/o position (i.e., subject, predicate or object) in a statement. See the <a href="#grammar-production-pathItem">pathItem</a> production, which is (eventually) referenced by the "subject", "predicate" and "object" productions.</li>
          <li>N3 includes <a>cited formulae</a> (i.e., between "<code>{</code>" and "<code>}</code>"), which are allowed in any s/p/o position in a statement. See the <a href="#grammar-production-pathItem">pathItem</a> production.</li>
-          <li><dfn data-lt="quickvar">Quick-variables</dfn> (e.g., "<code>?x</code>"), which are allowed in any s/p/o position in a statement. See the <a href="#grammar-production-pathItem">pathItem</a> production.</li>
+          <li><dfn data-lt="quickvar">Quick-variables</dfn> (e.g., "<code>?x</code>"), which are allowed in any s/p/o position in a statement. See the <a href="#grammar-production-pathItem">pathItem</a> production.
+            <span class="ednote">ReSpec complains becuse <a>quickvar</a> is defined but not used.</span>
+          </li>
           <li>A path syntax, comparable to (but not quite as extensive as) the <a data-cite="sparql11-query#propertypaths">SPARQL 1.1 Property Path</a> syntax. See the <a href="#grammar-production-path">path</a> production.</li>
           <li>The possibility to invert the predicate within a statement. See the <a href="#grammar-production-predicate">predicate</a> production.</li>
           <li>An additional set of keywords, including "<code>is .. of</code>", "<code>has</code>", "<code>=</code>", "<code>=></code>", "<code>&lt;=</code>", in addition to Turtle's "<code>a</code>" keyword (among others). All keywords can be optionally preceded by "<code>@</code>", for consistency with the "<code>@prefix</code>" and "<code>@base"</code> keywords.</li>
@@ -1549,7 +1631,7 @@ Maybe we could get back to that example when we introduce rules or also with bui
         <li>Added `&lt;-` to represent an inverted property as a synonym of `is` <a href="#grammar-production-expression">expression</a> `of`.
         <li>Removed `@true` and `@false` in favor of `true` and `false`.</li>
         <li>Removed `@has`.</li>
-        <li>Removed support for explicit <a>N3 quantifiers</a>
+        <li>Removed support for explicit <strong>N3 quantifiers</strong>
           (`@forSome` and `@forAll`).</li>
         <li>Removed whitespace from the
           <a href="#grammar-production-IRIREF">IRIREF</a> grammar terminal

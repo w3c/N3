@@ -1,0 +1,6 @@
+<http://foo/a#node0> <http://foo/a#p3> "v1" .
+<http://foo/a#node0> <http://foo/a#p3> "v2" .
+<http://foo/a#node0> <http://foo/a#p4> "v3" .
+<http://foo/a#node1> <http://foo/a#p2> <http://foo/a#node0> .
+<http://foo/a#node1> <http://foo/a#p5> "v4" .
+<http://foo/a#a> <http://foo/a#p> <http://foo/a#node1> .

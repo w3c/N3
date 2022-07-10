@@ -1,0 +1,3 @@
+<http://foo/a#node0> <http://foo/a#pp> "1" .
+<http://foo/a#node0> <http://foo/a#qq> "2" .
+<http://foo/a#b> <http://foo/a#oneRef> <http://foo/a#node0> .
