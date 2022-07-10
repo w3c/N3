@@ -48,11 +48,18 @@ public class RdfTestManifest {
 			Statement stmt = stmtIt.next();
 			Resource testCase = stmt.getSubject();
 
-			Statement status = testCase.getProperty(manifest.createProperty(NS.uri("rdft", "approval")));
-			if (status != null && status.getObject().asResource().getURI().equals(NS.uri("rdft", "Rejected"))) {
-				Log.i("skipping (rejected): " + testCase);
+			Statement statusStmt = testCase.getProperty(manifest.createProperty(NS.uri("rdft", "approval")));
+			if (statusStmt != null) {
+				Resource status = statusStmt.getObject().asResource();
 
-				continue;
+				if (status.getURI().equals(NS.uri("rdft", "Rejected"))) {
+					Log.i("skipping (rejected): " + testCase);
+					continue;
+
+				} else if (status.getURI().equals(NS.uri("rdft", "Proposed"))) {
+					Log.i("skipping (proposed): " + testCase);
+					continue;
+				}
 			}
 
 			Statement actionStmt = testCase.getProperty(manifest.createProperty(NS.uri("mf:action")));
