@@ -1404,35 +1404,35 @@
         mf:name        "inverted_properties" .
 
 :new_syntax_iriPropertyList_not_embedded.n3
-        a              test:TestN3Eval ;
+        a              test:TestN3PositiveSyntax ;
         mf:action      <iriPropertyList/not_embedded.n3> ;
         mf:result      <iriPropertyList/not_embedded.nt> ;
         mf:name        "not_embedded.n3";
         rdfs:comment   "bare iriPropertyList" .
 
 :new_syntax_iriPropertyList_with_whitespace.n3
-        a              test:TestN3Eval ;
+        a              test:TestN3PositiveSyntax ;
         mf:action      <iriPropertyList/with_whitespace.n3> ;
         mf:result      <iriPropertyList/with_whitespace.nt> ;
         mf:name        "with_whitespace.n3";
         rdfs:comment   "iriPropertyList with whitespace" .
 
 :new_syntax_iriPropertyList_with_newline.n3
-        a              test:TestN3Eval ;
+        a              test:TestN3PositiveSyntax ;
         mf:action      <iriPropertyList/with_newline.n3> ;
         mf:result      <iriPropertyList/with_newline.nt> ;
         mf:name        "with_newline.n3";
         rdfs:comment   "iriPropertyList with newline" .
 
 :new_syntax_iriPropertyList_single_object.n3
-        a              test:TestN3Eval ;
+        a              test:TestN3PositiveSyntax ;
         mf:action      <iriPropertyList/single_object.n3> ;
         mf:result      <iriPropertyList/single_object.nt> ;
         mf:name        "single_object.n3";
         rdfs:comment   "iriPropertyList single object" .
 
 :new_syntax_iriPropertyList_nested_resources.n3
-        a              test:TestN3Eval ;
+        a              test:TestN3PositiveSyntax ;
         mf:action      <iriPropertyList/nested_resources.n3> ;
         mf:result      <iriPropertyList/nested_resources.nt> ;
         mf:name        "nested_resources.n3";
