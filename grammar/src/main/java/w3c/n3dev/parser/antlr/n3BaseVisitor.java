@@ -159,6 +159,13 @@ public class n3BaseVisitor<T> extends AbstractParseTreeVisitor<T> implements n3V
 	 * <p>The default implementation returns the result of calling
 	 * {@link #visitChildren} on {@code ctx}.</p>
 	 */
+	@Override public T visitIriPropertyList(n3Parser.IriPropertyListContext ctx) { return visitChildren(ctx); }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation returns the result of calling
+	 * {@link #visitChildren} on {@code ctx}.</p>
+	 */
 	@Override public T visitCollection(n3Parser.CollectionContext ctx) { return visitChildren(ctx); }
 	/**
 	 * {@inheritDoc}

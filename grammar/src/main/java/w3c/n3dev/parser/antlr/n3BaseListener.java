@@ -258,6 +258,18 @@ public class n3BaseListener implements n3Listener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
+	@Override public void enterIriPropertyList(n3Parser.IriPropertyListContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitIriPropertyList(n3Parser.IriPropertyListContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
 	@Override public void enterCollection(n3Parser.CollectionContext ctx) { }
 	/**
 	 * {@inheritDoc}

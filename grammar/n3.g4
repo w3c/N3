@@ -119,7 +119,8 @@ pathItem
 	| blankNode 
 	| quickVar 
 	| collection 
-	| blankNodePropertyList 
+	| blankNodePropertyList
+	| iriPropertyList 
 	| literal 
 	| formula
 	;
@@ -132,6 +133,10 @@ literal
 	
 blankNodePropertyList 
 	: '[' predicateObjectList ']'
+	;
+	
+iriPropertyList
+	: IPLSTART iri predicateObjectList ']'
 	;
 		
 collection 
@@ -264,6 +269,10 @@ ECHAR
 	
 WS 
 	: [\u0020\u0009\u000D\u000A] -> skip /* #x20=space #x9=character tabulation #xD=carriage return #xA=new line */
+	;
+	
+IPLSTART
+	: '[' WS* 'id'
 	;
 	
  ANON 

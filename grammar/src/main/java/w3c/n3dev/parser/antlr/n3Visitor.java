@@ -133,6 +133,12 @@ public interface n3Visitor<T> extends ParseTreeVisitor<T> {
 	 */
 	T visitBlankNodePropertyList(n3Parser.BlankNodePropertyListContext ctx);
 	/**
+	 * Visit a parse tree produced by {@link n3Parser#iriPropertyList}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitIriPropertyList(n3Parser.IriPropertyListContext ctx);
+	/**
 	 * Visit a parse tree produced by {@link n3Parser#collection}.
 	 * @param ctx the parse tree
 	 * @return the visitor result

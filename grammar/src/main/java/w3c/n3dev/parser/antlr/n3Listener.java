@@ -210,6 +210,16 @@ public interface n3Listener extends ParseTreeListener {
 	 */
 	void exitBlankNodePropertyList(n3Parser.BlankNodePropertyListContext ctx);
 	/**
+	 * Enter a parse tree produced by {@link n3Parser#iriPropertyList}.
+	 * @param ctx the parse tree
+	 */
+	void enterIriPropertyList(n3Parser.IriPropertyListContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link n3Parser#iriPropertyList}.
+	 * @param ctx the parse tree
+	 */
+	void exitIriPropertyList(n3Parser.IriPropertyListContext ctx);
+	/**
 	 * Enter a parse tree produced by {@link n3Parser#collection}.
 	 * @param ctx the parse tree
 	 */
