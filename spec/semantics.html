@@ -1,0 +1,556 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Notation 3 Semantics</title>
+    <script
+      src="https://www.w3.org/Tools/respec/respec-w3c"
+      class="remove"
+      defer
+    ></script>
+    <script class="remove">
+      // All config options at https://respec.org/docs/
+      var respecConfig = {
+        specStatus: "CG-DRAFT",
+        editors: [
+          {
+            "name": "Dörthe Arndt",
+            "url": "https://iccl.inf.tu-dresden.de/web/D%C3%B6rthe_Arndt/en",
+            "company": "TU Dresden",
+            "companyURL": "https://tu-dresden.de/",
+            "w3cid": 111308,
+          },{
+            "name": "Pierre-Antoine Champin",
+            "url": "http://champin.net/",
+            "company": "W3C",
+            "companyURL": "https://www.w3.org/",
+            "orcid": "0000-0001-7046-4474",
+            "w3cid": 42931,
+          },
+        ],
+        github: "w3c/N3",
+        shortName: "n3-semantics",
+        xref: "web-platform",
+	group: "n3-dev",
+        format: "markdown",
+      };
+    </script>
+    <!-- Katex -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/katex.min.css" integrity="sha384-Xi8rHCmBmhbuyyhbI88391ZKP2dmfnOl4rT9ZfRI7mLTdk1wblIUnrIq35nqwEvC" crossorigin="anonymous">
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/katex.min.js" integrity="sha384-X/XCfMm41VSsqRNQgDerQczD69XqmjOOOwYQvr/uuC+j4OPoNhVgjdGFwhvN02Ja" crossorigin="anonymous"></script>
+    <!-- To automatically render math in text elements, include the auto-render extension: -->
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/contrib/auto-render.min.js" integrity="sha384-+XBljXPPiv+OzfbB3cVmLHf4hdUFHlWNZN5spNQ7rmHTXpd7WvJum6fIACpNNfIR" crossorigin="anonymous"
+        onload="renderMathInElement(document.body);"></script>-
+    <script>
+    document.addEventListener("DOMContentLoaded", function() {
+        renderMathInElement(document.body, {
+          // customised options
+          // • auto-render specific keys, e.g.:
+          delimiters: [
+              {left: '$$', right: '$$', display: true},
+              {left: '$', right: '$', display: false},
+              {left: '\\(', right: '\\)', display: false},
+              {left: '\\[', right: '\\]', display: true}
+          ],
+          // • rendering keys, e.g.:
+          throwOnError : true
+        });
+    });
+    </script>
+  </head>
+  <body>
+    <section id="abstract">
+      <p>This is required.</p>
+    </section>
+    <section id="sotd">
+      <p>This is required.</p>
+    </section>
+    <section class="informative">
+      <h2>Introduction</h2>
+      <p>Some informative introductory text.</p>
+      <aside class="note" title="A useful note">
+        <p>I'm a note!</p>
+      </aside>
+    </section>
+
+    <section>
+      <h2>Abstract syntax</h2>
+      <p class=issue>
+        Should this be a normative section, or a reference to a normative section in the "main" spec?
+      </p>
+      <p>The set of <dfn>atomic terms</dfn> consists of</p>
+      <ul>
+        <li>the set $C$ of IRIs,
+        <li>the set $L$ of Literals,
+        <li>the set $V$ of Variables.
+      </ul>
+      <p>A <dfn>term</dfn> can be</p>
+      <ul>
+        <li>an <a>atomic term</a>,
+        <li>a (possibly empty) list of <a>terms</a>,
+        <li>a <dfn>quoted graph</dfn> $&lt;G&gt;$ where $G$ is a finite <a>graph</a> (see below).
+      </ul>
+      <p>A <dfn>triple</dfn> is made of</p>
+      <ul>
+        <li>a term called the <dfn>subject</dfn> of the triple,
+        <li>a term called the <dfn>predicate</dfn> of the triple,
+        <li>a term called the <dfn>object</dfn> of the triple.
+      </ul>
+      <p>A <dfn>graph</dfn> is a tuple $(U, E, F)$ where</p>
+      <ul>
+        <li>$U \subseteq V$ is a set of <dfn data-lt="universally scoped|universal">universally scoped variables</dfn>,
+        <li>$E \subseteq V$ is a set of <dfn data-lt="existentially scoped|existential">existentially scoped variables</dfn>,
+        <li>$F$ is a (possibly empty) set of <a>triples</a>.
+      </ul>
+      <p>A <a>graph</a> $G=(U, E, F)$ is finite if the sets $U$, $E$ and $F$ are finite.</p>
+      <div class=issue>
+        Question: RDF does not expect finte graphs. Do we need all graphs to be finite (we should at least expect all cited graphs to be finite, otherwise we cannot quantify over them).
+      </div>
+      <div class=note>
+        In this context, an RDF graph is a graph which does not contain quoted graphs nor lists and for which $U=\emptyset.$   
+      </div>
+    </section>
+<!--
+
+### Various definitions
+
+* a term is a **direct constituent** of
+    + a list $l$ if it is 
+      - an element of $l$, or
+      - a *direct constituent* of a list-element of $l$;
+     
+    * a triple $t$ if it is 
+      - a direct constituent of the subject, predicate or object of $t$, or
+      - the subject, predicate or object of $t$;
+
+    * a graph $G=(U, E, F)$ if it is
+      - a *direct constituent* of a triple $t ∈ F$.
+
+    We denote the set of direct constituents of a graph $G$ as $DC(G)$.
+<!-- :::info
+Note that the definition treats lists in a special way. The direct components of the triple  $\texttt{:s :p (:o :n)}$ are $\texttt{:s}$,  $\texttt{:p}$, $\texttt{(:o :n)}$, $\texttt{:o}$ and $\texttt{:n}$.  
+:::
+->
+    
+* a term is a **constituent** of a graph $G_1$ if it is either
+    * a *direct constituent* of $G_1$, or
+    * a *constituent* of $G_2$, where the quoted graph $<G_2>$ is a direct constituent of $G_1$.
+
+    We denote the set of constituents of a graph $G$ as $C(G)$.
+:::info
+Note that the definition makes a difference between graphs and quoted graphs. This difference is crucial for the definitions below: a graph is not the same as a quoted graph.
+::: 
+
+* the set $FV$ of **free** variables in a term is defined as follows:
+    * $FV(x)=\emptyset$ if $x \in C\cup L$,
+    * $FV(x)=\{x\}$ if $x\in V$,
+    * $FV(x)=FV(x_1)\cup\ldots\cup FV(x_n)$ if $x=(x_1 \ldots x_n)$ is a list,
+    * $FV(x)=FV(s)\cup FV(p) \cup FV(o)$ if $x=(s,p,o)$ is a triple,
+    * $FV(x)=\bigcup_{t\in x} FV(t)$ if $x$ is a set of triples,
+    * $FV(x)=(\bigcup_{y\in DC(F)} FV(y))\setminus(U\cup E)$ if $x=<(U,E,F)>$ is a quoted graph,
+    
+
+* for a graph $G=(U,E,F)$ and a variable $v\in V\cap C(G)$ and we say that $v$  is **free** in $G$ iff $v\not\in U\cup E$ and there exists $x\in DC(G)$ such that $v\in FV(x)$.  Otherwise we call $v$ **scoped** in $G$.
+
+* We denote the set of variables which are free in $G$ as $FV(G)$.
+
+
+    
+* a graph $G=(U,E,F)$ is **closed** if if all variables $v\in C(G)\cap V$ are scoped in $G$.
+
+
+* a term is **ground** if it is either
+  - an IRI,
+  - a Literal,
+  - a list of *ground* terms or the empty list,
+  - a quoted graph $<G>$ if $G$ is closed.
+
+* We denote the set of *ground terms* as $T_G$
+
+    
+
+
+* a triple is **ground** if all of its direct constituents are ground. 
+* a graph $G=(U,E,F)$ is **ground** if $E=U=\emptyset$ and all triples in $F$ are ground.
+
+A graph $G=(U,E,F)$ can also contain quantified variables $v\in U\cup E$ which do not occur in any triple of $F$. These variables do not contribute to the interpretation of the graph. In order to simplify our considerations below,  we introduce the notion of *normalised graphs*: 
+    
+For each graph $G=(U,E,F)$, wecall $G^N=(U\cap (FV(F)), E\cap(FV(F), F))$ the **normalisation**  of $G$.
+
+  
+
+ ### Isomorphisms  
+    
+
+    
+A graph $<G=(U,E, F)>$ is called **quotation-free** if it does not contain quoted graphs.
+ 
+Two *quotation-free* graphs $G_1=(U_1, E_1, F_1)$ and $G_2=(U_2, E_2, F_2)$ are **isomorphic** (that is, they have an identical form) if there is a bijection $M$ between the direct components of the *normalisions*  of the two graphs, such that:
+* $M$ maps variables to variables
+* $M(lit)=lit$ for all literals $lit$ which are direct constituents of $G_1$,
+* $M(iri)=iri$ for all IRIs $iri$ which are direct constituents of $G_1$,
+* $M((l_1,\ldots, l_n) )= (M(l_1),\ldots, M(l_n) )$ for all lists $(l_1,\ldots, l_n)$ which are direct constituents of $G_1$,
+*  $M(E_1)=\{M(x)|x\in E_1\cap FV(F_1)\}=E_2\cap FV(F_2)$,
+*  $M(U_1)=\{M(x)|x\in U_1\cap FV(F_1)\}=U_2 \cap FV(F_2)$,
+* the triple $( s, p, o )$ is in $F_1$ if and only if the triple $( M(s), M(p), M(o) )$ is in $F_2$.
+
+<!--  * $M(<G_1>)=<M(G_1)>$ for all quoted graphs $<G_1>$ which are constituents of $G$.
+->
+
+
+ <!--   
+Two *quotation-free* graphs $G_1=(U_1, E_1, F_1)$ and $G_2=(U_2, E_2, F_2)$ are **isomorphic** (that is, they have an identical form) if there is a bijection $M$ between the variables of the *normalisions*  of the two graphs, such that: $M(G_1^N)=G^N_2$.
+->
+<!--
+:::info
+MAY BE split the "cleaning" of G1 and G2 from the mapping itself
+→ G1 is isomorphic to G2 if there is a mapping M from clean(G1) to clean(G2)
+where clean(.) is removing "unused" quantified variables ?
+:::
+->
+
+<!--
+* $M$ maps variables to variables.
+* $M(lit)=lit$ for all literals $lit$ which are constituents of $F_1$.
+* $M(iri)=iri$ for all IRIs $iri$ which are  constituents of $F_1$.
+* $M((l_1,\ldots, l_n) )= (M(l_1),\ldots, M(l_n) )$ for all lists $(l_1,\ldots, l_n)$ of constituents of $F_1$.
+*  $M(E_1\cap FV(G_1))=E_2\cap FV(G_2)$ and $M(U_1\cap FV(G_1))=U_2\cap FV(G_2)$, where $M(S)$ means that we apply $M$ to each element of the set $S$.
+* The triple $( s, p, o )$ is in $F_1$ if and only if the triple  $( M(s), M(p), M(o) )$ is in $F_2$.
+->
+
+We call a bijection $M$ fulfilling the requirements above a **simple isomorphism** from $G_1$ to $G_2$.  
+    
+We write $M(G_1)=G_2$ and $M(F_1)=F_2$ to indicate that $M$ is an isomorphism between the the graphs $G_1$ and $G_2$ and between the sets of triples $F_1$ and $F_2$, respectively.
+
+
+
+
+
+ 
+In order to extend the above definition to graphs containing quotations, we need an auxiliary notion. For two mappings $M$ and $N$ from constituents to constituents, we define their **combination** as follows:
+    
+*    $M\bullet N(v)=N(v)$ if $v\in dom(N)$
+*    $M\bullet N(v)=M(v)$ if $v\not\in dom(N)$
+
+<!--
+Let $G_1=(U_1, E_1, F_1)$ and $G_2=(U_2, E_2, F_2)$ be two graphs and $M$ a bijection between the variables of the *normalisations* of the two graphs. For all quoted graphs $<G_1^\prime>$ which are direct components of $F_1$, we call a bijection  $N$ from the direct variables of $G_1^\prime$ to variables such that $M \bullet N (G_1^\prime)$ is the *normalisation* of $G_2^\prime$ and  $<G_2^\prime>$ is a direct component of $G_2$, an **extension** of $M$. 
+->
+    
+With this definition we can now extend the previous definition.
+    
+Two graphs $G_1=(U_1, E_1, F_1)$ and $G_2=(U_2, E_2, F_2)$ are **isomorphic** if there is a bijection $M$ between the components of the *normalisations* of the two graphs and bijections $N_{p,t}$ from variables to variables for each occurrence of a quoted graph $<G_1^\prime>\in DC(F_1)$ in position $p\in\{ subject, predicate, object\}$ in triple $t\in F_1$ such that $M\bullet N_{p,t}$ is an isomorphism from $G_1^\prime$ to a graph $G_2^\prime$ and $<G_2^\prime>\in DC(G_2)$, such that $M$ fulfills the requirements of a *simple isomorphism* with the following extension for triples containing cited graphs:
+   * $M(t=(s,p,o))=(L_{subject,t}(s),L_{predicate,t}(p),L_{object,t}(o))$
+where $L_{p,t}$ is defined as follows:
+    $L_{p,t}(x)= \begin{cases} <(M\bullet N_{p,t}(G_1^\prime)> \text{if } x=<G_1^\prime> \text{is a quoted graph}\\
+    M(x), \text{ else}
+    \end{cases}$
+Concretely, that means, that the triple $t=( s, p, o )$ is in $F_1$ if and only if the triple $(L_{subject,t}(s),L_{predicate,t}(p),L_{object,t}(o))$ is in $F_2$.
+    
+<!--, such that $M$ satisfies the constraints of a *simple isomorphism* from $G_1$ to $G_2$ with the following addition for quoted graphs:
+
+For each triple $(s, p, o)\in F_1$ there exist bijections $N_s, N_p, N_o$ from variables to variables
+    
+$L(x)= \begin{cases} <M\bullet N_{pos,G^\prime}(G^\prime)> \text{if } x=<G^\prime> \text{is a quoted graph occuring in position } pos\\
+    M(x), \text{ else}
+    \end{cases}$
+->
+ 
+
+
+
+
+
+<!--* $M(<G_1^\prime>)= <M\bullet N(G^\prime)>$ where $N$ is an extension of $M$ and $M\bullet N$ an isomorphism.
+->
+<!--A triple $( s, p, o )$ is in $F_1$ if and only if for each  quoted graph $<G^\prime>$  in subject, predicate or object position there exists an extension  $N_{pos,G^\prime}$, $pos\in\{subject, predicate, object\}$ such that the triple  $(L(s), L(p), L(o))$ is in $F_2$, where $L$ is defined as follows:
+    
+$L(x)= \begin{cases} <M\bullet N_{pos,G^\prime}(G^\prime)> \text{if } x=<G^\prime> \text{is a quoted graph occuring in position } pos\\
+    M(x), \text{ else}
+    \end{cases}$
+->
+<!--    
+```
+# G1
+:s :p { @forSome X. X :p :o }.
+    
+# G2
+:s :p { @forSome Y. Y :p :o }.
+:s :p { @forSome Z. Z :p :o }.
+```
+    
+:::info
+There is a bijection B between F1 and F2 such that, for each t1 in F2
+- either t1 and B(t2) do not contain quoted graphs, and M(t1) = t2
+- or they contain one quoted graph each and there exist N such that M∙N(t1) = t2
+- or they contain several quoted graphs and...
+
+:::
+ ->     
+ 
+
+    
+In that case we write $G_1 \simeq G_2$. 
+
+
+    
+
+
+<!--
+Let $M$ be a mapping from $A$ to $B$ and $S$ a set. The **restriction** $M|_S$ is the mapping we get by restricting the domain of M to $A\cap S$.
+   
+
+    
+
+* for all quotation-free quoted graph which which are nodes of $F_1$ there exists a bijection $N$ from the variables in $E_1\cup U_1$ to the variables in $E_2\cup U_2$, such that 
+    * $N(E_1)=E_2$
+    * $N(U_1)=U_2$
+    * M
+-> 
+
+::: warning
+Todo: provide a proof that two isomorphic graphs do have the same meaning. (but that is for below, after the semantics)  
+:::
+<!--
+* if $<S, G>$ is a quoted graph, $var_f(<S, G>)$ is the set of constituent variables of $G$ that are neither in $S$ nor scoped in $G$ (**free variables** of the quoted graph)
+->
+
+
+## Base semantics
+
+A **basic interpretation** $I$ is defined by:
+
+* a set $Δ_I$ (**domain**),
+* a mapping $D_I$ (**denotation**)  from $C ∪ L$ to $Δ_I$,
+  such that its restriction to $C$ is a total mapping,
+* a mapping $Q_I$ (**quoted graphs**)  from ground quoted graphs to ground quoted graphs, such that
+    + for any quoted graphs $<G>$ if $Q_1(<G>)=<H> \implies H \simeq G$
+    + for two quoted graphs $<G_1>$ and $<G_2>$: $G_1 \simeq G_2\implies Q_I(G_1)=Q_I(G_2)$,,
+* A subset $EXT_I$ (**extension**) of $Δ_I^3$.
+
+:::info
+This definition is generally "compatible" with RDF simple interpretations, with the following superficial changes:
+* IR becomes $Δ_I$,
+* IP is assumed, without loss of generality, to be a subset of $Δ_I$,
+* IS and IL have been merged in $D_I$,
+* IEXT can be derived from $EXT_I$; formally: $IEXT(p) = \{(s,o)|(s,p,o) ∈ EXT_I\}$; conversely: $EXT_I = ⋃_{p∈IP} \{(s,p,o)| (s,o) ∈ IEXT(p\}$.
+:::
+    
+::: warning
+In our definition the graphs ```{_:x :p :o. _:y :p :o}``` and ```{_:z :p :o.}``` do not necessarily  have the same meaning. Is that something we want and should fix? (I think that could be fixed, but I would need to investigate here)
+    
+In EYE, both graphs are `log:equalTo`, but do not unify by default: http://ppr.cs.dal.ca:3002/n3/editor/s/qsjm5gRx
+    
+Decision: they are not equal, but we define `log:equalTo` as in EYE.
+:::
+    
+::: info
+Note that ```{:s :p :o}``` and ```{@forSome :A. :s :p :o.}``` are isomorphic. 
+    
+This has been discussed in the Community group and that is also how EYE and CWM consider them: http://ppr.cs.dal.ca:3002/n3/editor/s/ctJyZSWM
+    
+
+:::
+    
+
+
+
+
+
+
+
+### Semantic conditions for ground graphs
+Given $I$ a basic interpretation, we define $I(x) =$
+* $D_I(x)$ if $x$ is an IRI or a Literal,
+* $(I(x_1), I(x_2),...)$ if $x$ is a list $(x_1, x_2, ...)$ and all $I(x_i)$ are defined,
+* $Q_I(x)$ if $x$ is a quoted graph,
+* $I(x)=true$ if $x=(s, p ,o)$ is a ground triple and $(I(s), I(p) ,I(o))\in EXT_I$, otherwise $I(x)=false$,
+* $I(x)=false$ if $x=F$ is a set of ground triples and $I(t)=false$ for some triple $t\in F$, otherwise $I(x) =true$,
+* $I(F)$ if $x=(\emptyset, \emptyset, F)$ is a ground graph
+
+    
+
+### Assignments
+
+Given a basic interpretation $I$ and a set of variables $V$. We call a mapping $A$  from $V$ to $Δ_I\times T_G$ such that $A(v)=(A_1(v),A_2(v))$ and $I(A_2(v))=A_1(v)$ an **Assignment** for $V$.
+    
+    
+Note that for an interpretation $I$ and two assignments $A$ for a set $V_1$ and $B$ for a set $V_2$ of variables, the combination $A\bullet B$ is an assignment for $V_1\cup V_2$.
+
+### Total applications
+
+    
+Let $G=(U,E,F)$ be a graph and $M$ be a mapping from $V$ into a set $S$.
+
+
+    
+A **total application** $M^t(G)$ of $M$ is defined as follows:
+    
+Let $G$ = $(U, E, F)$, and $N$ = $M|_{FV(G)}$ the restriction of $M$ to the free variables of $G$.
+$M^t(G) = (U, E, \{ (N^t(s), N^t(p), N^t(o)) | \; (s, p, o) \in F \})$ such that:
+    
+* If $x\in V\cap FV(G)$ then $N^t(x)=N(x)$
+* If $x=(x_1, x_2... x_n)$ is a list, then $N^t(x)=(N^t(x_1), N^t(x_2)... N^t(x_n))$
+* If $x=<H>$ is a quoted graph  then $N^t(x) = <N^t(H)>$.
+* $N^t(x)=x$ else.
+   
+
+  
+    
+### Interpretation with assignment
+For a closed graph $G=(U,E,F)$, a basic interpretation $I$ and an assignment $A$ on the set of variables $U\cup E$ of $G$. 
+    
+We define $I[A](x)$ as
+  * $A_1(x)$ if $x ∈ dom(A)$ and $x$ is a direct constituent of $G$,
+  * $(I[A](l_1),\cdots,I[A](l_n))$ if $x=(l_1,\cdots l_n)$ is a list,
+  * $Q_I(<A_2^t(H)>)$ if $x=<H>$ is a quoted graph,
+  * $I(x)$ otherwise.
+    
+
+    
+
+For a closed graph $G=(U, E, F)$ and a basic interptetation $I$, we say that the interpretation $I(G)=true$ if for all assignments $A$ for $U$ there exist an assignment $B$ for $E$ such that $I[A\bullet B](F)=true$. We also write that as $I\models G$.
+
+::: info
+Note that the interpretation of a variable $x$ depends on its position in a graph. In the expression ```x p <{}, {}, (x q r)>```, the first  `x` is interpreted as $A_1(x)$ while the second is interpreted as $A_2(x)$.
+:::   
+    
+### Assignments and free variables 
+Let $G=(U,E,F)$ be a graph. We say that $G$ is true under the interpretation $I$ and the assignment $A$ if $I[A]\models G$. That is, for each Assignment $A^1$ for the variables in $U$ there exists an assignment $B^1$ for the variables in $E$ such that $I[A\bullet A^1\bullet B^1](F)=true$.
+   
+
+
+
+
+
+
+
+### Entailment
+
+Let $G$ and $H$ be two graphs, we say that $G$ **entails** $H$, noted $G ⊨ H$,
+iff for every interpretation $I$ s.t. $I ⊨ G$ implies $I ⊨ H$.
+
+## Examples of basic entailment
+
+TODO
+
+
+## Log-Interpretations
+
+
+:::info
+This section defines a semantic extension enforcing the specific semantics of (some of) the builtins in the `log:` namespace.
+:::
+    
+For the definitions below, we assume that the set of literals $L$ contains the two boolean literals `true` and `false`. The literal `true` stands for the quoted graph $<(\emptyset, \emptyset, \emptyset)>$.  
+
+::: warning
+Below we define the log-triples. The list of logical termsas introduced below needs to be extended, whenerver we define a "new" logical predicate.
+:::
+
+The set of **logical predicates** $LP$ contains the predicate `log:implies`.
+
+
+Let $I$ be an Interpretation for a graph $G=(U, E, F)$. Then $G$ is true under **log-interpretation** ($I\models_{log} G$) if for each assignment $A$ for $U$ there exists an assignment $B$ for $E$ such that:
+* $I[A\bullet B](F)=true$, and
+* for all triples $(s,p,o)\in F$ with $p\in LP$, $I[A\bullet B]\models_{log}(s,p,o)$.
+
+We define the meaning of $I[A\bullet B]\models_{log}(s,p,o)$ depending on the concrete $p\in LP$.
+
+We call a graph $G=(U, E, F)$ **log-free**, if $p\not\in LP$ for all triples $(s,p,o)\in F$. 
+    
+Note that all *log-free* graphs which are true under simple interpretation are also true under log-interpretation.
+
+
+
+### Constraints for `log:implies` 
+    
+<!-- We call a triple   $t = < G_1 >\texttt{log:implies} < G_2 >$ where  $< G_1=(U_1, E_1, F_1) >$ and $< G_2 = (U_2, E_2, F_2) >$ are quoted graphs an **implication**.
+->    
+    
+If $t = (s, \texttt{log:implies}, o )$ is a triple, then 
+$I[A\bullet B]\models_{log} t$ if
+
+* $I[A\bullet B](s)=< G_1>$ and $I[A\bullet B](o)=<G_2>$ are quoted graphs and $I[A\bullet B]\models_{log} G_2$holds if $I[A\bullet B]\models_{log} G_1$, or
+* $I[A\bullet B](s)=< G_1>$ is a quoted graph and $I[A\bullet B](o)=I(\texttt{false})$ and $I[A\bullet B]\not\models_{log} G_1$, or
+* $I[A\bullet B](s)$ is not a quoted graph or $I[A\bullet B](o)$ is neither a quoted graph nor $I(\texttt{false})$.
+
+
+:::warning
+With the above definition, the rule `?x log:implies ?y.` cannot have a model. Since we can replace the consequence by true and by false. So, we can basically derive anything. Alternatively, we could ask for $s=< G_1>$ and $I[A\bullet B](o)=<G_2>$, then we only allow an "open" consequence.
+::: 
+    
+::: info
+With the above,
+```
+:s :p :o.
+?x log:implies {:a :b :c}. 
+```
+ yields `:a :b :c.` This is even implemented in EYE, however, if we replace `:s :p :o.`by a rule like `{:c :d :e}=>{:f :g :h}.` The derivation does not work in EYE.
+http://ppr.cs.dal.ca:3002/n3/editor/s/LfkrfMxO
+:::
+
+:::warning
+ Think carefully about `_:x log:implies ?y.` and `{:simon :says ?x} log:implies ?x.`. What do we do here? Is that even a problem? 
+Currently that is supported by our semantics.
+:::
+
+:::info
+With the rules above, the triple
+    `:simon :says {_:x a :Unicorn}.`
+and
+    `{:simon :says {?y a :Unicorn}.}=>{:simon :is :wrong}.`
+    
+would not yield
+    `:simon :is :wrong.`
+    
+Question for us: Is that a problem? 
+    
+    
+Should we be able to add some derivation like that with an explicit grounding predicate?
+:::
+    
+:::warning
+The simple derivation
+    `:s :p _:x.`
+    `{ :s :p ?y.}=>{:a :b ?y}`
+which entail 
+    `:a :b _:x.`
+works here, but we still need to prove that or at least argue why this is the case.
+
+:::
+    
+:::info
+PA's tricky question: consider
+```
+@forAll :X.
+:alice a :Student.
+{ :X a :Student } => { :X a :Person }.
+
+{ { :alice a :Student } => { :alice a :Person } } => { :test :pass 1 }.
+{ @forAll :Z. { :Z a :Student } => { :Z a :Person } } => { :test :pass 2 }.
+
+:X a :Student.
+
+{ :bob a :Student } => { :test :pass 3 }.
+{ @forAll :Z. :Z a :Student } => { :test :pass 4 }.
+{ @forAll :Z. :Z a :Person } => { :test :pass 5 }.
+```
+It seems to me that all tests should pass (according to the semantics).
+However, implementing them correctly looks challenging... (it is not as simple as looking for 'instances' of the rule's body)
+:::
+    
+:::info
+~~1-3 work in EYE, look here: [link](http://ppr.cs.dal.ca:3002/n3/editor/s/6Z1LiegF)~~
+
+~~Eye does not support universal quantification of direct constituents, so I guess that is why 4 and 5 are not firering.~~
+    
+~~I would argue that test 5 involves more reasoning than simply applying modus ponens and that goes too far.~~
+    
+There was a bug in the source above. Actually EYE passes all tests.
+    
+CWM passes one.
+:::
+-->
+  </body>
+</html>
+
