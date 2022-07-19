@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
   <head>
     <meta charset="utf-8" />
     <title>Notation 3 Semantics</title>
@@ -40,7 +40,7 @@
     <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/katex.min.js" integrity="sha384-X/XCfMm41VSsqRNQgDerQczD69XqmjOOOwYQvr/uuC+j4OPoNhVgjdGFwhvN02Ja" crossorigin="anonymous"></script>
     <!-- To automatically render math in text elements, include the auto-render extension: -->
     <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/contrib/auto-render.min.js" integrity="sha384-+XBljXPPiv+OzfbB3cVmLHf4hdUFHlWNZN5spNQ7rmHTXpd7WvJum6fIACpNNfIR" crossorigin="anonymous"
-        onload="renderMathInElement(document.body);"></script>-
+        onload="renderMathInElement(document.body);"></script>
     <script>
     document.addEventListener("DOMContentLoaded", function() {
         renderMathInElement(document.body, {
@@ -109,8 +109,79 @@
       <div class=note>
         In this context, an RDF graph is a graph which does not contain quoted graphs nor lists and for which $U=\emptyset.$   
       </div>
+      <section>
+        <h2>Various definitions</h2>
+
+        <ul>
+          <li>A term is a <dfn>direct constituent</dfn> of
+          <ul>
+            <li>a list $l$ if it is 
+              <ul>
+                <li>an element of $l$, or
+                <li>a <a>direct constituent</a> of a list-element of $l$;
+              </ul>
+            <li>a <a>triple</a> $t$ if it is
+              <ul>
+                <li>a <a>direct constituent</a> of the <a>subject</a>, <a>predicate</a> or <a>object</a> of $t$, or
+                <li>the <a>subject</a>, <a>predicate</a> or <a>object</a> of $t$;
+              </ul>
+            <li>a <a>graph</a> $G=(U, E, F)$ if it is
+              <ul>
+                <li>a <a>direct constituent</a> of a <a>triple</a> $t ∈ F$.
+              </ul>
+          </ul>
+          We denote the set of direct constituents of a graph $G$ as $DC(G)$.
+
+          <li>A term is a <dfn>constituent</dfn> of a <a>graph</a> $G_1$ if it is either
+            <ul>  
+              <li>a <a>direct constituent</a> of $G_1$, or
+              <li>a <a>constituent</a> of $G_2$, where the <a>quoted graph</a> $&lt;G_2&gt;$ is a <a>direct constituent</a> of $G_1$.
+            </ul>
+        
+            We denote the set of constituents of a graph $G$ as $C(G)$.
+
+            <p class=note>Note that the definition makes a difference between <a>graphs</a> and <a>quoted graphs</a>. This difference is crucial for the definitions below: a graph is not the same as a quoted graph.</p>
+
+            <li>The set $FV$ of <dfn data-lt="free">free variables</dfn> in a term is defined as follows:
+              <ul>
+                <li>$FV(x) = ∅$ if $x ∈ C ∪ L$,
+                <li>$FV(x) = \{x\}$ if $x ∈ V$,
+                <li>$FV(x) = FV(x_1) ∪ … ∪ FV(x_n)$ if $x=(x_1 … x_n)$ is a list,
+                <li>$FV(x) = FV(s) ∪ FV(p) ∪ FV(o)$ if $x=(s,p,o)$ is a <a>triple</a>,
+                <li>$FV(x) = ⋃_{t ∈ x} FV(t)$ if $x$ is a set of <a>triples</a>,
+                <li>$FV(x) = (⋃_{y ∈ DC(F)} FV(y))\setminus(U ∪ E)$ if $x=&lt;(U,E,F)&gt;$ is a <a>quoted graph</a>,
+              </ul>
+
+              For a <a>graph</a> $G=(U,E,F)$ and a variable $v\in V\cap C(G)$:
+              <ul>
+                <li>we say that $v$  is <a>free</a> in $G$ iff $v\not\in U\cup E$ and there exists $x\in DC(G)$ such that $v\in FV(x)$;
+                <li>otherwise we call $v$ <dfn data-lt="scoped variable">scoped</dfn> in $G$;
+                <li>we denote the set of variables which are <a>free</a> in $G$ as $FV(G)$.
+              </ul>
+
+            <li>A <a>graph</a> $G=(U,E,F)$ is <dfn data-lt="closed graph">closed</dfn> if all variables $v\in C(G)\cap V$ are scoped in $G$.
+
+            <li>A term is <dfn data-lt="ground term">ground</dfn> if it is either
+              <ul>
+                <li>an IRI,
+                <li>a Literal,
+                <li>a list of <a>ground</a> terms or the empty list,
+                <li>a <a>quoted graph</a> $&lt;G&gt;$ if $G$ is <a>closed</a>.
+              </ul>
+
+              <p>We denote the set of <a>ground terms</a> as $T_G$.
+
+              <p>A <a>triple</a> is <a>ground</a> if all of its <a>direct constituents</a> are <a>ground</a>.</p>
+
+              <p>A graph $G=(U,E,F)$ is <a>ground</a> if $E=U=\emptyset$ and all <a>triples</a> in $F$ are <a>ground</a>.</p>
+        </ul>
+
+        <p>A <a>graph</a> $G=(U,E,F)$ can also contain quantified variables $v\in U\cup E$ which do not occur in any <a>triple</a> of $F$. These variables do not contribute to the interpretation of the graph. In order to simplify our considerations below, we introduce the notion of normalised graphs: 
+    
+        <p>For each graph $G=(U,E,F)$, we call $G^N=(U\cap (FV(F)), E\cap(FV(F), F))$ the <dfn data-lt="normalised|normalised graph">normalisation</dfn> of $G$.
+
     </section>
-    <section>
+  </section>
   </body>
 </html>
 
