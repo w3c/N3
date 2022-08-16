@@ -107,7 +107,7 @@
         Question: RDF does not expect finte graphs. Do we need all graphs to be finite (we should at least expect all cited graphs to be finite, otherwise we cannot quantify over them).
       </div>
       <div class=note>
-        In this context, an RDF graph is a graph which does not contain quoted graphs nor lists and for which $U=\emptyset.$   
+        In this context, an RDF graph is a graph which does not contain quoted graphs nor lists and for which $U=\emptyset.$
       </div>
       <section>
         <h2>Various definitions</h2>
@@ -115,7 +115,7 @@
         <ul>
           <li>A term is a <dfn>direct constituent</dfn> of
           <ul>
-            <li>a list $l$ if it is 
+            <li>a list $l$ if it is
               <ul>
                 <li>an element of $l$, or
                 <li>a <a>direct constituent</a> of a list-element of $l$;
@@ -133,11 +133,11 @@
           We denote the set of direct constituents of a graph $G$ as $DC(G)$.
 
           <li>A term is a <dfn>constituent</dfn> of a <a>graph</a> $G_1$ if it is either
-            <ul>  
+            <ul>
               <li>a <a>direct constituent</a> of $G_1$, or
               <li>a <a>constituent</a> of $G_2$, where the <a>quoted graph</a> $&lt;G_2&gt;$ is a <a>direct constituent</a> of $G_1$.
             </ul>
-        
+
             We denote the set of constituents of a graph $G$ as $C(G)$.
 
             <p class=note>Note that the definition makes a difference between <a>graphs</a> and <a>quoted graphs</a>. This difference is crucial for the definitions below: a graph is not the same as a quoted graph.</p>
@@ -176,12 +176,63 @@
               <p>A graph $G=(U,E,F)$ is <a>ground</a> if $E=U=\emptyset$ and all <a>triples</a> in $F$ are <a>ground</a>.</p>
         </ul>
 
-        <p>A <a>graph</a> $G=(U,E,F)$ can also contain quantified variables $v\in U\cup E$ which do not occur in any <a>triple</a> of $F$. These variables do not contribute to the interpretation of the graph. In order to simplify our considerations below, we introduce the notion of normalised graphs: 
-    
-        <p>For each graph $G=(U,E,F)$, we call $G^N=(U\cap (FV(F)), E\cap(FV(F), F))$ the <dfn data-lt="normalised|normalised graph">normalisation</dfn> of $G$.
+        <p>A <a>graph</a> $G=(U,E,F)$ can also contain quantified variables $v\in U\cup E$ which do not occur in any <a>triple</a> of $F$. These variables do not contribute to the interpretation of the graph. In order to simplify our considerations below, we introduce the notion of normalised graphs:</p>
 
+        <p>For each graph $G=(U,E,F)$, we call $G^N=(U\cap (FV(F)), E\cap(FV(F), F))$ the <dfn data-lt="normalised|normalised graph">normalisation</dfn> of $G$.</p>
+
+        <section>
+          <h2>Isomorphism</h2>
+
+          <p>A graph $&lt;G=(U,E, F)&gt;$ is called <dfn>quotation-free</dfn> if it does not contain quoted graphs.</p>
+
+          <p>Two <a>quotation-free</a> graphs $G_1=(U_1, E_1, F_1)$ and $G_2=(U_2, E_2, F_2)$ are <dfn>isomorphic</dfn> (that is, they have an identical form) if there is a bijection $M$ between the direct components of the <a>normalisations</a> of the two graphs, such that:</p>
+
+          <ul>
+            <li>$M$ maps variables to variables
+            <li>$M(lit)=lit$ for all literals $lit$ which are direct constituents of $G_1$,
+            <li>$M(iri)=iri$ for all IRIs $iri$ which are direct constituents of $G_1$,
+            <li>$M((l_1,\ldots, l_n) )= (M(l_1),\ldots, M(l_n) )$ for all lists $(l_1,\ldots, l_n)$ which are direct constituents of $G_1$,
+            <li> $M(E_1)=\{M(x)|x\in E_1\cap FV(F_1)\}=E_2\cap FV(F_2)$,
+            <li> $M(U_1)=\{M(x)|x\in U_1\cap FV(F_1)\}=U_2 \cap FV(F_2)$,
+            <li>the triple $( s, p, o )$ is in $F_1$ if and only if the triple $( M(s), M(p), M(o) )$ is in $F_2$.
+          </ul>
+
+          <p>We call a bijection $M$ fulfilling the requirements above a <dfn>simple isomorphism</dfn> from $G_1$ to $G_2$.</p>
+
+          <p>We write $M(G_1)=G_2$ and $M(F_1)=F_2$ to indicate that $M$ is an isomorphism between the the graphs $G_1$ and $G_2$ and between the sets of triples $F_1$ and $F_2$, respectively.</p>
+
+          <p>In order to extend the above definition to graphs containing quotations, we need an auxiliary notion. For two mappings $M$ and $N$ from constituents to constituents, we define their <dfn>combination</dfn> as follows:</p>
+
+          <ul>
+            <li>$M\bullet N(v)=N(v)$ if $v\in dom(N)$
+            <li>$M\bullet N(v)=M(v)$ if $v\not\in dom(N)$
+          </ul>
+
+          <p>With this definition we can now extend the previous definition.</p>
+
+          <p>Two graphs $G_1=(U_1, E_1, F_1)$ and $G_2=(U_2, E_2, F_2)$ are <a>isomorphic</a> if there is a bijection $M$ between the components of the <a>normalisations</a> of the two graphs and bijections $N_{p,t}$ from variables to variables for each occurrence of a quoted graph $&lt;G_1^\prime&gt;\in DC(F_1)$ in position $p\in\{ subject, predicate, object\}$ in triple $t\in F_1$ such that $M\bullet N_{p,t}$ is an isomorphism from $G_1^\prime$ to a graph $G_2^\prime$ and $&lt;G_2^\prime&gt;\in DC(G_2)$, such that $M$ fulfills the requirements of a <a>simple isomorphism</a> with the following extension for triples containing quoted graphs:</p>
+
+          <ul>
+            <li>$M(t=(s,p,o))=(L_{subject,t}(s),L_{predicate,t}(p),L_{object,t}(o))$
+              where $L_{p,t}$ is defined as follows:
+
+              $$L_{p,t}(x)= \begin{cases}
+                &lt;M\bullet N_{p,t}(G_1^\prime)&gt; \text{if } x=&lt;G_1^\prime&gt; \text{is a quoted graph}\\
+                M(x), \text{ else}
+              \end{cases}$$
+
+              Concretely, that means, that the triple $t=( s, p, o )$ is in $F_1$ if and only if the triple $(L_{subject,t}(s),L_{predicate,t}(p),L_{object,t}(o))$ is in $F_2$.
+          </ul>
+
+          <p>In that case we write $G_1 \simeq G_2$.</p>
+
+          <p class="issue">
+            Todo: provide a proof that two isomorphic graphs do have the same meaning. (but that is for below, after the semantics)
+          </p>
+
+        </section>
+      </section>
     </section>
-  </section>
   </body>
 </html>
 
