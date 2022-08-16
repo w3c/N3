@@ -233,6 +233,67 @@
         </section>
       </section>
     </section>
+
+    <section>
+      <h2>Base Semantics</h2>
+
+      <p>A <dfn>basic interpretation</dfn> $I$ is defined by:</p>
+
+      <ul>
+
+        
+        <li>a set $Δ_I$ (<dfn>domain</dfn>),
+        <li>a mapping $D_I$ (<dfn>denotation</dfn>)  from $C ∪ L$ to $Δ_I$,
+          such that its restriction to $C$ is a total mapping,
+        <li>a mapping $Q_I$ from ground quoted graphs to ground quoted graphs, such that<ul>
+
+            <li>for any quoted graphs $&lt;G&gt;$ if $Q_1(&lt;G&gt;)=&lt;H&gt; \implies H \simeq G$
+            <li>for two quoted graphs $&lt;G_1&gt;$ and $&lt;G_2&gt;$: $G_1 \simeq G_2\implies Q_I(G_1)=Q_I(G_2)$,,
+          </ul>
+        <li>A subset $EXT_I$ (<dfn>extension</dfn>) of $Δ_I^3$.
+      </ul>
+    
+      <div class="note">
+        <p>This definition is generally "compatible" with RDF simple interpretations, with the following superficial changes:</p>
+        <ul>
+          <li>IR becomes $Δ_I$,
+          <li>IP is assumed, without loss of generality, to be a subset of $Δ_I$,
+          <li>IS and IL have been merged in $D_I$,
+          <li>IEXT can be derived from $EXT_I$; formally: $IEXT(p) = \{(s,o)|(s,p,o) ∈ EXT_I\}$; conversely: $EXT_I = ⋃_{p∈IP} \{(s,p,o)| (s,o) ∈ IEXT(p\}$.
+        </ul>
+      </div>
+
+    
+      <div class="issue">
+        <p>In our definition the graphs <code>{_:x :p :o. _:y :p :o}</code> and <code>{_:z :p :o.}</code> do not necessarily  have the same meaning. Is that something we want and should fix? (I think that could be fixed, but I would need to investigate here)</p>
+    
+        <p>In EYE, both graphs are `log:equalTo`, but do not unify by default: <a href="http://ppr.cs.dal.ca:3002/n3/editor/s/qsjm5gRx">http://ppr.cs.dal.ca:3002/n3/editor/s/qsjm5gRx</a></p>
+            
+        <p>Decision: they are not equal, but we define `log:equalTo` as in EYE.</p>
+      </div>
+
+      <div class="note">
+        <p>Note that <code>{:s :p :o}</code> and <code>{@forSome :A. :s :p :o.}</code> are isomorphic.</p>
+    
+        <p>This has been discussed in the Community group and that is also how EYE and CWM consider them: <a href="http://ppr.cs.dal.ca:3002/n3/editor/s/ctJyZSWM">http://ppr.cs.dal.ca:3002/n3/editor/s/ctJyZSWM</a></p>
+      </div>
+
+      <section>
+        <h2>Semantic conditions for ground graphs</h2>
+
+        <p>Given $I$ a basic interpretation, we define $I(x) =$</p>
+
+        <ul>
+          <li>$D_I(x)$ if $x$ is an IRI or a Literal,
+          <li>$(I(x_1), I(x_2),...)$ if $x$ is a list $(x_1, x_2, ...)$ and all $I(x_i)$ are defined,
+          <li>$Q_I(x)$ if $x$ is a quoted graph,
+          <li>$I(x)=true$ if $x=(s, p ,o)$ is a ground triple and $(I(s), I(p) ,I(o))\in EXT_I$, otherwise $I(x)=false$,
+          <li>$I(x)=false$ if $x=F$ is a set of ground triples and $I(t)=false$ for some triple $t\in F$, otherwise $I(x) =true$,
+          <li>$I(F)$ if $x=(\emptyset, \emptyset, F)$ is a ground graph
+        </ul>
+      </section>
+
+    </section>
   </body>
 </html>
 
