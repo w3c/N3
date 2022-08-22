@@ -149,7 +149,7 @@
                 <li>$FV(x) = FV(x_1) ∪ … ∪ FV(x_n)$ if $x=(x_1 … x_n)$ is a list,
                 <li>$FV(x) = FV(s) ∪ FV(p) ∪ FV(o)$ if $x=(s,p,o)$ is a <a>triple</a>,
                 <li>$FV(x) = ⋃_{t ∈ x} FV(t)$ if $x$ is a set of <a>triples</a>,
-                <li>$FV(x) = (⋃_{y ∈ DC(F)} FV(y))\setminus(U ∪ E)$ if $x=&lt;(U,E,F)&gt;$ is a <a>quoted graph</a>,
+                <li>$FV(x) = FV(F)\setminus(U ∪ E)$ if $x=&lt;U,E,F &gt;$ is a <a>quoted graph</a>,
               </ul>
 
               For a <a>graph</a> $G=(U,E,F)$ and a variable $v\in V\cap C(G)$:
@@ -178,22 +178,55 @@
 
         <p>A <a>graph</a> $G=(U,E,F)$ can also contain quantified variables $v\in U\cup E$ which do not occur in any <a>triple</a> of $F$. These variables do not contribute to the interpretation of the graph. In order to simplify our considerations below, we introduce the notion of normalised graphs:</p>
 
-        <p>For each graph $G=(U,E,F)$, we call $G^N=(U\cap (FV(F)), E\cap(FV(F), F))$ the <dfn data-lt="normalised|normalised graph">normalisation</dfn> of $G$.</p>
+        <p>For each graph $G=(U,E,F)$, we call $G^N=(U\cap (FV(F)), E\cap(FV(F)), F)$ the <dfn data-lt="normalised|normalised graph">normalisation</dfn> of $G$.</p>
+
+        <p>For two mappings $M$ and $N$ from constituents to constituents, we define their <dfn>combination</dfn> as follows:</p>
+
+        <ul>
+          <li>$M\bullet N(v)=N(v)$ if $v\in dom(N)$
+          <li>$M\bullet N(v)=M(v)$ if $v\not\in dom(N)$
+        </ul>
 
         <section>
           <h2>Isomorphism</h2>
 
-          <p>A graph $&lt;G=(U,E, F)&gt;$ is called <dfn>quotation-free</dfn> if it does not contain quoted graphs.</p>
 
-          <p>Two <a>quotation-free</a> graphs $G_1=(U_1, E_1, F_1)$ and $G_2=(U_2, E_2, F_2)$ are <dfn>isomorphic</dfn> (that is, they have an identical form) if there is a bijection $M$ between the direct components of the <a>normalisations</a> of the two graphs, such that:</p>
+
+
+          <p>Two graphs $G_1$ and $G_2$ are <dfn>isomorphic</dfn> (that is, they have an identical form)
+            if there is a bijection $M$ between the direct components of the <a>normalisations</a> $G_1^N=(U_1, E_1, F_1)$
+            and $G_2^N=(U_2, E_2, F_2)$ of the two graphs, such that:</p>
 
           <ul>
             <li>$M$ maps variables to variables
             <li>$M(lit)=lit$ for all literals $lit$ which are direct constituents of $G_1$,
             <li>$M(iri)=iri$ for all IRIs $iri$ which are direct constituents of $G_1$,
             <li>$M((l_1,\ldots, l_n) )= (M(l_1),\ldots, M(l_n) )$ for all lists $(l_1,\ldots, l_n)$ which are direct constituents of $G_1$,
-            <li> $M(E_1)=\{M(x)|x\in E_1\cap FV(F_1)\}=E_2\cap FV(F_2)$,
-            <li> $M(U_1)=\{M(x)|x\in U_1\cap FV(F_1)\}=U_2 \cap FV(F_2)$,
+            <li> $M(E_1)=\{M(x)|x\in E_1\}=E_2$,
+            <li> $M(U_1)=\{M(x)|x\in U_1\}=U_2$,
+            <li> $M(&lt;G_1^{\prime}&gt)=&lt;(P(U_1^\prime), P(E_1^\prime), M\bullet P(F_1^{\prime}))&gt;$ for all quoted graphs
+              $&lt;G_1^{\prime}&gt\in DC(G_1)$ and their nomalisations
+              $G_1^{\prime N}=(U_1', E_1', F_1')$ where $P$ is some bijection
+              between $U_1'\cup E_1'$ and $U_2'\cup E_2'$ such that
+              $G_2^{\prime N}=(U_2', E_2', F_2')=(P(U_1^\prime), P(E_1^\prime), M\bullet P(F_1^{\prime}))$ and $&lt;G_2^{\prime}&gt\in DC(G_2)$.
+            <li>the triple $( s, p, o )$ is in $F_1$ if and only if the triple $( M(s), M(p), M(o) )$ is in $F_2$.
+          </ul>
+
+          <p>We call a bijection $M$ fulfilling the requirements above an <dfn>isomorphism</dfn> from $G_1$ to $G_2$.</p>
+<!---
+          <p>A graph $&lt;G=(U,E, F)&gt;$ is called <dfn>quotation-free</dfn> if it does not contain quoted graphs.</p>
+
+          <p>Two <a>quotation-free</a> graphs $G_1$ and $G_2$ are <dfn>isomorphic</dfn> (that is, they have an identical form)
+            if there is a bijection $M$ between the direct components of the <a>normalisations</a> $G_1^N=(U_1, E_1, F_1)$
+            and $G_2^N=(U_2, E_2, F_2)$ of the two graphs, such that:</p>
+
+          <ul>
+            <li>$M$ maps variables to variables
+            <li>$M(lit)=lit$ for all literals $lit$ which are direct constituents of $G_1$,
+            <li>$M(iri)=iri$ for all IRIs $iri$ which are direct constituents of $G_1$,
+            <li>$M((l_1,\ldots, l_n) )= (M(l_1),\ldots, M(l_n) )$ for all lists $(l_1,\ldots, l_n)$ which are direct constituents of $G_1$,
+            <li> $M(E_1)=\{M(x)|x\in E_1\}=E_2$,
+            <li> $M(U_1)=\{M(x)|x\in U_1\}=U_2$,
             <li>the triple $( s, p, o )$ is in $F_1$ if and only if the triple $( M(s), M(p), M(o) )$ is in $F_2$.
           </ul>
 
@@ -225,6 +258,11 @@
           </ul>
 
           <p>In that case we write $G_1 \simeq G_2$.</p>
+    !--->
+    <p class="issue">
+      Isomorphism: work in progress; wording needs to be changed for quoted graphs (there exist different possible images, we need the
+      last condition for at least one);
+    </p>
 
           <p class="issue">
             Todo: provide a proof that two isomorphic graphs do have the same meaning. (but that is for below, after the semantics)
@@ -241,7 +279,7 @@
 
       <ul>
 
-        
+
         <li>a set $Δ_I$ (<dfn>domain</dfn>),
         <li>a mapping $D_I$ (<dfn>denotation</dfn>)  from $C ∪ L$ to $Δ_I$,
           such that its restriction to $C$ is a total mapping,
@@ -252,7 +290,7 @@
           </ul>
         <li>A subset $EXT_I$ (<dfn>extension</dfn>) of $Δ_I^3$.
       </ul>
-    
+
       <div class="note">
         <p>This definition is generally "compatible" with RDF simple interpretations, with the following superficial changes:</p>
         <ul>
@@ -263,18 +301,18 @@
         </ul>
       </div>
 
-    
+
       <div class="issue">
         <p>In our definition the graphs <code>{_:x :p :o. _:y :p :o}</code> and <code>{_:z :p :o.}</code> do not necessarily  have the same meaning. Is that something we want and should fix? (I think that could be fixed, but I would need to investigate here)</p>
-    
+
         <p>In EYE, both graphs are `log:equalTo`, but do not unify by default: <a href="http://ppr.cs.dal.ca:3002/n3/editor/s/qsjm5gRx">http://ppr.cs.dal.ca:3002/n3/editor/s/qsjm5gRx</a></p>
-            
+
         <p>Decision: they are not equal, but we define `log:equalTo` as in EYE.</p>
       </div>
 
       <div class="note">
         <p>Note that <code>{:s :p :o}</code> and <code>{@forSome :A. :s :p :o.}</code> are isomorphic.</p>
-    
+
         <p>This has been discussed in the Community group and that is also how EYE and CWM consider them: <a href="http://ppr.cs.dal.ca:3002/n3/editor/s/ctJyZSWM">http://ppr.cs.dal.ca:3002/n3/editor/s/ctJyZSWM</a></p>
       </div>
 
@@ -296,4 +334,3 @@
     </section>
   </body>
 </html>
-
