@@ -180,7 +180,7 @@
 
         <p>For each graph $G=(U,E,F)$, we call $G^N=(U\cap (FV(F)), E\cap(FV(F)), F)$ the <dfn data-lt="normalised|normalised graph">normalisation</dfn> of $G$.</p>
 
-        <p>For two mappings $M$ and $N$ from constituents to constituents, we define their <dfn class="lint-ignore">combination</dfn> as follows:</p>
+        <p>For two mappings $M$ and $N$ from constituents to constituents, we define their <dfn>combination</dfn> as follows:</p>
 
         <ul>
           <li>$M\bullet N(v)=N(v)$ if $v\in dom(N)$
@@ -193,22 +193,22 @@
 
 
 
-          <p>Two graphs $G_1$ and $G_2$ are <dfn class="lint-ignore">isomorphic</dfn> (that is, they have an identical form)
-            if there is a bijection $M$ between the direct components of the <a>normalisations</a> $G_1^N=(U_1, E_1, F_1)$
+          <p>Two <a>graphs</a> $G_1$ and $G_2$ are <dfn class="lint-ignore">isomorphic</dfn> (that is, they have an identical form)
+            if there is a bijection $M$ between the <a>constituents</a> of the <a>normalisations</a> $G_1^N=(U_1, E_1, F_1)$
             and $G_2^N=(U_2, E_2, F_2)$ of the two graphs, such that:</p>
 
           <ul>
             <li>$M$ maps variables to variables
-            <li>$M(lit)=lit$ for all literals $lit$ which are direct constituents of $G_1$,
-            <li>$M(iri)=iri$ for all IRIs $iri$ which are direct constituents of $G_1$,
-            <li>$M((l_1,\ldots, l_n) )= (M(l_1),\ldots, M(l_n) )$ for all lists $(l_1,\ldots, l_n)$ which are direct constituents of $G_1$,
+            <li>$M(lit)=lit$ for all literals $lit$ which are <a>constituents</a> of $G_1$,
+            <li>$M(iri)=iri$ for all IRIs $iri$ which are <a>constituents</a> of $G_1$,
+            <li>$M((l_1,\ldots, l_n) )= (M(l_1),\ldots, M(l_n) )$ for all lists $(l_1,\ldots, l_n)$ which are <a>constituents</a> of $G_1$,
             <li> $M(E_1)=\{M(x)|x\in E_1\}=E_2$,
             <li> $M(U_1)=\{M(x)|x\in U_1\}=U_2$,
             <li>the triple $( x_1, x_2, x_3 )$ is in $F_1$ if and only if a triple $( y_1, y_2, y_3 )$ is in $F_2$ such that, for all $i \in [1, 2, 3]$<ul>
-              <li>if $x_i$ is a quoted graph, then $y_i$ is also a quoted graph, and<ul>
+              <li>if $x_i$ is a <a>quoted graph</a>, then $y_i$ is also a quoted graph, and<ul>
                 <li>$x_i = &lt;G_1'&gt;$ with $G_1^{\prime N}= (U_1', E_1', F_1')$,
                 <li>$y_i = &lt;G_2'&gt;$ with $G_2^{\prime N}= (U_2', E_2', F_2')$,
-                <li>there is a bijection $P$ between $U_1'\cup E_1'$ and $U_2'\cup E_2'$ such that
+                <li>there is a bijection $P$ between $U_1'\cup E_1'$ and $U_2'\cup E_2'$ such that<br>
                 $U_2' = P(U_1')$, $E_2' = P(E_1')$ and $F_2' = M\bullet P(F_1')$
               </ul>
               <li>otherwise $y_i = M(x_i)$,
@@ -230,7 +230,7 @@
     <section>
       <h2>Base Semantics</h2>
 
-      <p>A <dfn class="lint-ignore">basic interpretation</dfn> $I$ is defined by:</p>
+      <p>A <dfn data-lt="interpretation">basic interpretation</dfn> $I$ is defined by:</p>
 
       <ul>
 
@@ -238,7 +238,7 @@
         <li>a set $Δ_I$ (<dfn class="lint-ignore">domain</dfn>),
         <li>a mapping $D_I$ (<dfn class="lint-ignore">denotation</dfn>)  from $C ∪ L$ to $Δ_I$,
           such that its restriction to $C$ is a total mapping,
-        <li>a mapping $Q_I$ from ground quoted graphs to ground quoted graphs, such that<ul>
+        <li>a mapping $Q_I$ from <a>ground</a> <a>quoted graphs</a> to ground quoted graphs, such that<ul>
 
             <li>for any quoted graphs $&lt;G&gt;$ if $Q_1(&lt;G&gt;)=&lt;H&gt; \implies H \simeq G$
             <li>for two quoted graphs $&lt;G_1&gt;$ and $&lt;G_2&gt;$: $G_1 \simeq G_2\implies Q_I(G_1)=Q_I(G_2)$,,
@@ -274,16 +274,143 @@
       <section>
         <h2>Semantic conditions for ground graphs</h2>
 
-        <p>Given $I$ a basic interpretation, we define $I(x) =$</p>
+        <p>Given $I$ a <a>basic interpretation</a>, we define $I(x) =$</p>
 
         <ul>
           <li>$D_I(x)$ if $x$ is an IRI or a Literal,
           <li>$(I(x_1), I(x_2),...)$ if $x$ is a list $(x_1, x_2, ...)$ and all $I(x_i)$ are defined,
-          <li>$Q_I(x)$ if $x$ is a quoted graph,
-          <li>$I(x)=true$ if $x=(s, p ,o)$ is a ground triple and $(I(s), I(p) ,I(o))\in EXT_I$, otherwise $I(x)=false$,
+          <li>$Q_I(x)$ if $x$ is a <a>quoted graph</a>,
+          <li>$I(x)=true$ if $x=(s, p ,o)$ is a <a>ground</a> <a>triple</a> and $(I(s), I(p) ,I(o))\in EXT_I$, otherwise $I(x)=false$,
           <li>$I(x)=false$ if $x=F$ is a set of ground triples and $I(t)=false$ for some triple $t\in F$, otherwise $I(x) =true$,
-          <li>$I(F)$ if $x=(\emptyset, \emptyset, F)$ is a ground graph
+          <li>$I(F)$ if $x=(\emptyset, \emptyset, F)$ is a <a>ground</a> <a>graph</a>
         </ul>
+      </section>
+
+      <section>
+        <h2>Assignment</h2>
+
+        <p>Given a <a>basic interpretation</a> $I$ and a set of variables $V$. We call a mapping $A$ from $V$ to $Δ_I\times T_G$ such that $A(v)=(A_1(v),A_2(v))$ and $I(A_2(v))=A_1(v)$ an <dfn>assignment</dfn> for $V$.</p>
+
+        <p>Note that for an interpretation $I$ and two assignments $A$ for a set $V_1$ and $B$ for a set $V_2$ of variables, the <a>combination</a> $A\bullet B$ is an assignment for $V_1\cup V_2$.</p>
+      </section>
+
+      <section>
+        <h2>Total application</h2>
+
+        <p>Let $G=(U,E,F)$ be a graph, $M$ be a mapping from $V$ into a set $S$, and $N = M|_{FV(G)}$ the restriction of $M$ to the <a>free variables</a> of $G$.</p>
+
+        <p>A <dfn class="lint-ignore">total application</dfn> $M^t(G)$ of $M$ is defined as follows:</p>
+
+        <p>$M^t(G) = (U, E, \{ (N^t(s), N^t(p), N^t(o)) | \; (s, p, o) \in F \})$ such that:</p>
+
+        <ul>
+          <li>If $x\in FV(G)$ then $N^t(x)=N(x)$
+          <li>If $x=(x_1, x_2... x_n)$ is a list, then $N^t(x)=(N^t(x_1), N^t(x_2)... N^t(x_n))$
+          <li>If $x=&lt;H&gt;$ is a quoted graph then $N^t(x) = &lt;N^t(H)&gt;$.
+          <li>$N^t(x)=x$ else.
+        </ul>
+      </section>
+
+      <section>
+        <h2>Interpretation with assignment</h2>
+
+        <p>For a <a>closed graph</a> $G=(U,E,F)$, a <a>basic interpretation</a> $I$ and an <a>assignment</a> $A$ on the set of variables $U\cup E$ of $G$.</p>
+
+        <p>We define $I[A](x)$ as</p>
+
+        <ul>
+          <li> $A_1(x)$ if $x ∈ dom(A)$ and $x$ is a <a>direct constituent</a> of $G$,
+          <li> $(I[A](l_1),\cdots,I[A](l_n))$ if $x=(l_1,\cdots l_n)$ is a list,
+          <li> $Q_I(&lt;A_2^t(H)&gt;)$ if $x=&lt;H&gt;$ is a quoted graph,
+          <li> $I(x)$ otherwise.
+        </ul>
+
+        <p>For a closed graph $G=(U, E, F)$ and a basic interptetation $I$, we say that the interpretation $I(G)=true$ if for all assignments $A$ for $U$ there exist an assignment $B$ for $E$ such that $I[A\bullet B](F)=true$. We also write that as $I\models G$.</p>
+
+        <p class="note">Note that the interpretation of a variable $x$ depends on its position in a graph. In the expression $(x, p, &lt;(∅, ∅, {(x, q, r)})&gt;$, the first  $x$ is interpreted as $A_1(x)$ while the second is interpreted as $A_2(x)$.</p>
+      </section>
+
+      <section>
+        <h2>Assignments and free variables</h2>
+        <p>Let $G=(U,E,F)$ be a <a>graph</a>. We say that $G$ is true under the <a>interpretation</a> $I$ and the <a>assignment</a> $A$ if $I[A]\models G$. That is, for each assignment $A^1$ for the variables in $U$ there exists an assignment $B^1$ for the variables in $E$ such that $I[A\bullet A^1\bullet B^1](F)=true$.</p>
+      </section>
+
+      <section>
+        <h2>Entailment</h2>
+
+        <p>Let $G$ and $H$ be two graphs, we say that $G$ <dfn data-lt="entailment">entails</dfn> $H$, noted $G ⊨ H$,
+        if and only if for every interpretation $I$ such that $I ⊨ G$, $I ⊨ H$.</p>
+
+        <p class="issue">TODO give examples of basic <a>entailment</a>.</p>
+      </section>
+    </section>
+    <section>
+      <h2>Log-interpretation</h2>
+
+      <p>This section defines a semantic extension enforcing the specific semantics of (some of) the builtins in the <a href="../ns/log.html">`log:`</a> namespace.</p>
+
+      <p>For the definitions below, we assume that the set of literals $L$ contains the two boolean literals `true` and `false`. The literal `true` stands for the quoted graph $&lt;(\emptyset, \emptyset, \emptyset)&gt;$.</p>
+
+      <p>The set of <dfn class="lint-ignore" data-lt="logical predicate">logical predicates</dfn> $LP$ contains the predicate `log:implies`. <span class="issue">TODO This list needs to be extended whenever we define a "new" logical predicate.</span></p>
+
+      <p>Let $I$ be an <a>interpretation</a> for a <a>graph</a> $G=(U, E, F)$. Then $G$ is true under <dfn>log-interpretation</dfn> (noted $I\models_{log} G$) if for each <a>assignment</a> $A$ for $U$ there exists an assignment $B$ for $E$ such that:</p>
+
+      <ul>
+        <li> $I[A\bullet B](F)=true$, and
+        <li> for all triples $(s,p,o)\in F$ with $p\in LP$, $I[A\bullet B]\models_{log}(s,p,o)$.
+      </ul>
+
+      <p>We define the meaning of $I[A\bullet B]\models_{log}(s,p,o)$ depending on the concrete $p\in LP$, in the rest of this section.</p>
+
+      <p>We call a graph $G=(U, E, F)$ <dfn>log-free</dfn>, if $p\not\in LP$ for all triples $(s,p,o)\in F$. Note that all <a>log-free</a> graphs which are true under simple <a>interpretation</a> are also true under <a>log-interpretation</a>.</p>
+
+      <section>
+        <h2>Constraints for `log:implies`</h2>
+
+          <!-- We call a triple   $t = < G_1 >\texttt{log:implies} < G_2 >$ where  $< G_1=(U_1, E_1, F_1) >$ and $< G_2 = (U_2, E_2, F_2) >$ are quoted graphs an **implication**.
+          -->
+
+          <p>If $t = (s, \texttt{log:implies}, o )$ is a triple, then $I[A\bullet B]\models_{log} t$ if</p>
+
+          <ul>
+            <li>$I[A\bullet B](s)&lt; G_1&gt;$ and $I[A\bullet B](o)=&lt;G_2&gt;$ are <a>quoted graphs</a> and $I[A\bullet B]\models_{log} G_2$ holds if $I[A\bullet B]\models_{log} G_1$, or
+            <li>$I[A\bullet B](s)=&lt;G_1&gt;$ is a quoted graph and $I[A\bullet B](o)=I(\texttt{false})$ and $I[A\bullet B]\not\models_{log} G_1$, or
+            <li>$I[A\bullet B](s)$ is not a quoted graph or $I[A\bullet B](o)$ is neither a quoted graph nor $I(\texttt{false})$.
+          </ul>
+
+          <div class="issue">With the above definition, the rule `?x log:implies ?y.` cannot have a model. Since we can replace the consequence by true and by false. So, we can basically derive anything. Alternatively, we could ask for $s=&lt;G_1&gt;$ and $I[A\bullet B](o)=&lt;G_2&gt;$, then we only allow an "open" consequence.</div>
+
+          <div class="note">With the above,
+            <pre><code>
+:s :p :o.
+?x log:implies {:a :b :c}.
+            </code></pre>
+           yields `:a :b :c.` This is even implemented in EYE, however, if we replace `:s :p :o.`by a rule like `{:c :d :e}=>{:f :g :h}.` The derivation does not work in EYE.
+           <a href="http://ppr.cs.dal.ca:3002/n3/editor/s/LfkrfMxO">http://ppr.cs.dal.ca:3002/n3/editor/s/LfkrfMxO</a>
+          </div>
+
+          <div class="issue">Think carefully about `_:x log:implies ?y.` and `{:simon :says ?x} log:implies ?x.`. What do we do here? Is that even a problem? Currently that is supported by our semantics.</div>
+
+          <div class="note">PA's tricky question: consider
+            <pre><code>
+@forAll :X.
+:alice a :Student.
+{ :X a :Student } => { :X a :Person }.
+
+{ { :alice a :Student } => { :alice a :Person } } => { :test :pass 1 }.
+{ @forAll :Z. { :Z a :Student } => { :Z a :Person } } => { :test :pass 2 }.
+
+:X a :Student.
+
+{ :bob a :Student } => { :test :pass 3 }.
+{ @forAll :Z. :Z a :Student } => { :test :pass 4 }.
+{ @forAll :Z. :Z a :Person } => { :test :pass 5 }.
+            </code></pre>
+            <p>It seems to me that all tests should pass (according to the semantics).
+            However, implementing them correctly looks challenging... (it is not as simple as looking for 'instances' of the rule's body).</p>
+            <p>EYE passes all tests. CWM Only passes none. <a href="http://ppr.cs.dal.ca:3002/n3/editor/s/wgG6GZrN">http://ppr.cs.dal.ca:3002/n3/editor/s/wgG6GZrN</a></p>
+          </div>
+
       </section>
 
     </section>
