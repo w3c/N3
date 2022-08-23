@@ -98,8 +98,8 @@
       </ul>
       <p>A <dfn>graph</dfn> is a tuple $(U, E, F)$ where</p>
       <ul>
-        <li>$U \subseteq V$ is a (possibly empty) set of <dfn data-lt="universally scoped|universal">universally scoped variables</dfn>,
-        <li>$E \subseteq V$ is a (possibly empty) set of <dfn data-lt="existentially scoped|existential">existentially scoped variables</dfn>,
+        <li>$U \subseteq V$ is a (possibly empty) set of <dfn class="lint-ignore" data-lt="universally scoped|universal">universally scoped variables</dfn>,
+        <li>$E \subseteq V$ is a (possibly empty) set of <dfn class="lint-ignore" data-lt="existentially scoped|existential">existentially scoped variables</dfn>,
         <li>$F$ is a (possibly empty) set of <a>triples</a>.
       </ul>
       <p>A <a>graph</a> $G=(U, E, F)$ is finite if the sets $U$, $E$ and $F$ are finite.</p>
@@ -155,7 +155,7 @@
               For a <a>graph</a> $G=(U,E,F)$ and a variable $v\in V\cap C(G)$:
               <ul>
                 <li>we say that $v$  is <a>free</a> in $G$ iff $v\not\in U\cup E$ and there exists $x\in DC(G)$ such that $v\in FV(x)$;
-                <li>otherwise we call $v$ <dfn data-lt="scoped variable">scoped</dfn> in $G$;
+                <li>otherwise we call $v$ <dfn class="lint-ignore" data-lt="scoped variable">scoped</dfn> in $G$;
                 <li>we denote the set of variables which are <a>free</a> in $G$ as $FV(G)$.
               </ul>
 
@@ -230,20 +230,20 @@
     <section>
       <h2>Base Semantics</h2>
 
-      <p>A <dfn>basic interpretation</dfn> $I$ is defined by:</p>
+      <p>A <dfn class="lint-ignore">basic interpretation</dfn> $I$ is defined by:</p>
 
       <ul>
 
 
-        <li>a set $Δ_I$ (<dfn>domain</dfn>),
-        <li>a mapping $D_I$ (<dfn>denotation</dfn>)  from $C ∪ L$ to $Δ_I$,
+        <li>a set $Δ_I$ (<dfn class="lint-ignore">domain</dfn>),
+        <li>a mapping $D_I$ (<dfn class="lint-ignore">denotation</dfn>)  from $C ∪ L$ to $Δ_I$,
           such that its restriction to $C$ is a total mapping,
         <li>a mapping $Q_I$ from ground quoted graphs to ground quoted graphs, such that<ul>
 
             <li>for any quoted graphs $&lt;G&gt;$ if $Q_1(&lt;G&gt;)=&lt;H&gt; \implies H \simeq G$
             <li>for two quoted graphs $&lt;G_1&gt;$ and $&lt;G_2&gt;$: $G_1 \simeq G_2\implies Q_I(G_1)=Q_I(G_2)$,,
           </ul>
-        <li>A subset $EXT_I$ (<dfn>extension</dfn>) of $Δ_I^3$.
+        <li>A subset $EXT_I$ (<dfn class="lint-ignore">extension</dfn>) of $Δ_I^3$.
       </ul>
 
       <div class="note">
