@@ -180,7 +180,7 @@
 
         <p>For each graph $G=(U,E,F)$, we call $G^N=(U\cap (FV(F)), E\cap(FV(F)), F)$ the <dfn data-lt="normalised|normalised graph">normalisation</dfn> of $G$.</p>
 
-        <p>For two mappings $M$ and $N$ from constituents to constituents, we define their <dfn>combination</dfn> as follows:</p>
+        <p>For two mappings $M$ and $N$ from constituents to constituents, we define their <dfn class="lint-ignore">combination</dfn> as follows:</p>
 
         <ul>
           <li>$M\bullet N(v)=N(v)$ if $v\in dom(N)$
@@ -193,7 +193,7 @@
 
 
 
-          <p>Two graphs $G_1$ and $G_2$ are <dfn>isomorphic</dfn> (that is, they have an identical form)
+          <p>Two graphs $G_1$ and $G_2$ are <dfn class="lint-ignore">isomorphic</dfn> (that is, they have an identical form)
             if there is a bijection $M$ between the direct components of the <a>normalisations</a> $G_1^N=(U_1, E_1, F_1)$
             and $G_2^N=(U_2, E_2, F_2)$ of the two graphs, such that:</p>
 
@@ -204,66 +204,21 @@
             <li>$M((l_1,\ldots, l_n) )= (M(l_1),\ldots, M(l_n) )$ for all lists $(l_1,\ldots, l_n)$ which are direct constituents of $G_1$,
             <li> $M(E_1)=\{M(x)|x\in E_1\}=E_2$,
             <li> $M(U_1)=\{M(x)|x\in U_1\}=U_2$,
-            <li> $M(&lt;G_1^{\prime}&gt)=&lt;(P(U_1^\prime), P(E_1^\prime), M\bullet P(F_1^{\prime}))&gt;$ for all quoted graphs
-              $&lt;G_1^{\prime}&gt\in DC(G_1)$ and their nomalisations
-              $G_1^{\prime N}=(U_1', E_1', F_1')$ where $P$ is some bijection
-              between $U_1'\cup E_1'$ and $U_2'\cup E_2'$ such that
-              $G_2^{\prime N}=(U_2', E_2', F_2')=(P(U_1^\prime), P(E_1^\prime), M\bullet P(F_1^{\prime}))$ and $&lt;G_2^{\prime}&gt\in DC(G_2)$.
-            <li>the triple $( s, p, o )$ is in $F_1$ if and only if the triple $( M(s), M(p), M(o) )$ is in $F_2$.
+            <li>the triple $( x_1, x_2, x_3 )$ is in $F_1$ if and only if a triple $( y_1, y_2, y_3 )$ is in $F_2$ such that, for all $i \in [1, 2, 3]$<ul>
+              <li>if $x_i$ is a quoted graph, then $y_i$ is also a quoted graph, and<ul>
+                <li>$x_i = &lt;G_1'&gt;$ with $G_1^{\prime N}= (U_1', E_1', F_1')$,
+                <li>$y_i = &lt;G_2'&gt;$ with $G_2^{\prime N}= (U_2', E_2', F_2')$,
+                <li>there is a bijection $P$ between $U_1'\cup E_1'$ and $U_2'\cup E_2'$ such that
+                $U_2' = P(U_1')$, $E_2' = P(E_1')$ and $F_2' = M\bullet P(F_1')$
+              </ul>
+              <li>otherwise $y_i = M(x_i)$,
+            </ul>
           </ul>
 
-          <p>We call a bijection $M$ fulfilling the requirements above an <dfn>isomorphism</dfn> from $G_1$ to $G_2$.</p>
-<!---
-          <p>A graph $&lt;G=(U,E, F)&gt;$ is called <dfn>quotation-free</dfn> if it does not contain quoted graphs.</p>
-
-          <p>Two <a>quotation-free</a> graphs $G_1$ and $G_2$ are <dfn>isomorphic</dfn> (that is, they have an identical form)
-            if there is a bijection $M$ between the direct components of the <a>normalisations</a> $G_1^N=(U_1, E_1, F_1)$
-            and $G_2^N=(U_2, E_2, F_2)$ of the two graphs, such that:</p>
-
-          <ul>
-            <li>$M$ maps variables to variables
-            <li>$M(lit)=lit$ for all literals $lit$ which are direct constituents of $G_1$,
-            <li>$M(iri)=iri$ for all IRIs $iri$ which are direct constituents of $G_1$,
-            <li>$M((l_1,\ldots, l_n) )= (M(l_1),\ldots, M(l_n) )$ for all lists $(l_1,\ldots, l_n)$ which are direct constituents of $G_1$,
-            <li> $M(E_1)=\{M(x)|x\in E_1\}=E_2$,
-            <li> $M(U_1)=\{M(x)|x\in U_1\}=U_2$,
-            <li>the triple $( s, p, o )$ is in $F_1$ if and only if the triple $( M(s), M(p), M(o) )$ is in $F_2$.
-          </ul>
-
-          <p>We call a bijection $M$ fulfilling the requirements above a <dfn>simple isomorphism</dfn> from $G_1$ to $G_2$.</p>
-
-          <p>We write $M(G_1)=G_2$ and $M(F_1)=F_2$ to indicate that $M$ is an isomorphism between the the graphs $G_1$ and $G_2$ and between the sets of triples $F_1$ and $F_2$, respectively.</p>
-
-          <p>In order to extend the above definition to graphs containing quotations, we need an auxiliary notion. For two mappings $M$ and $N$ from constituents to constituents, we define their <dfn>combination</dfn> as follows:</p>
-
-          <ul>
-            <li>$M\bullet N(v)=N(v)$ if $v\in dom(N)$
-            <li>$M\bullet N(v)=M(v)$ if $v\not\in dom(N)$
-          </ul>
-
-          <p>With this definition we can now extend the previous definition.</p>
-
-          <p>Two graphs $G_1=(U_1, E_1, F_1)$ and $G_2=(U_2, E_2, F_2)$ are <a>isomorphic</a> if there is a bijection $M$ between the components of the <a>normalisations</a> of the two graphs and bijections $N_{p,t}$ from variables to variables for each occurrence of a quoted graph $&lt;G_1^\prime&gt;\in DC(F_1)$ in position $p\in\{ subject, predicate, object\}$ in triple $t\in F_1$ such that $M\bullet N_{p,t}$ is an isomorphism from $G_1^\prime$ to a graph $G_2^\prime$ and $&lt;G_2^\prime&gt;\in DC(G_2)$, such that $M$ fulfills the requirements of a <a>simple isomorphism</a> with the following extension for triples containing quoted graphs:</p>
-
-          <ul>
-            <li>$M(t=(s,p,o))=(L_{subject,t}(s),L_{predicate,t}(p),L_{object,t}(o))$
-              where $L_{p,t}$ is defined as follows:
-
-              $$L_{p,t}(x)= \begin{cases}
-                &lt;M\bullet N_{p,t}(G_1^\prime)&gt; \text{if } x=&lt;G_1^\prime&gt; \text{is a quoted graph}\\
-                M(x), \text{ else}
-              \end{cases}$$
-
-              Concretely, that means, that the triple $t=( s, p, o )$ is in $F_1$ if and only if the triple $(L_{subject,t}(s),L_{predicate,t}(p),L_{object,t}(o))$ is in $F_2$.
-          </ul>
-
-          <p>In that case we write $G_1 \simeq G_2$.</p>
-    !--->
-    <p class="issue">
-      Isomorphism: work in progress; wording needs to be changed for quoted graphs (there exist different possible images, we need the
-      last condition for at least one);
-    </p>
-
+          <p>We call a bijection $M$ fulfilling the requirements above an <dfn class="lint-ignore">isomorphism</dfn> from $G_1$ to $G_2$. <span class="note">It follows from the definition that $M^{-1}$ is also an <a>isomorphism</a> from $G_2$ to $G_1$.</span></p>
+          <p class="issue">
+            Todo: provide examples of isomorphic graphs.
+          </p>
           <p class="issue">
             Todo: provide a proof that two isomorphic graphs do have the same meaning. (but that is for below, after the semantics)
           </p>
