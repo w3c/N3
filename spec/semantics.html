@@ -194,28 +194,41 @@
 
 
           <p>Two <a>graphs</a> $G_1$ and $G_2$ are <dfn class="lint-ignore">isomorphic</dfn> (that is, they have an identical form)
-            if there is a bijection $M$ between the <a>constituents</a> of the <a>normalisations</a> $G_1^N=(U_1, E_1, F_1)$
-            and $G_2^N=(U_2, E_2, F_2)$ of the two graphs, such that:</p>
-
-          <ul>
-            <li>$M$ maps variables to variables
-            <li>$M(lit)=lit$ for all literals $lit$ which are <a>constituents</a> of $G_1$,
-            <li>$M(iri)=iri$ for all IRIs $iri$ which are <a>constituents</a> of $G_1$,
-            <li>$M((l_1,\ldots, l_n) )= (M(l_1),\ldots, M(l_n) )$ for all lists $(l_1,\ldots, l_n)$ which are <a>constituents</a> of $G_1$,
-            <li> $M(E_1)=\{M(x)|x\in E_1\}=E_2$,
-            <li> $M(U_1)=\{M(x)|x\in U_1\}=U_2$,
-            <li>the triple $( x_1, x_2, x_3 )$ is in $F_1$ if and only if a triple $( y_1, y_2, y_3 )$ is in $F_2$ such that, for all $i \in [1, 2, 3]$<ul>
+            if there is a bijection $M$, called <dfn class="lint-ignore">isomorphism</dfn>, between the atomic constituents of the <a>normalisations</a> $G_1^N=(U_1, E_1, F_1)$
+            and $G_2^N=(U_2, E_2, F_2)$ of the two graphs and a bijection $N$ from $F_1$ to $F_2$ such that </p>
+            <ul>
+              <li>$M$ maps variables to variables
+              <li>$M(lit)=lit$ for all literals $lit$ which are <a>constituents</a> of $G_1$,
+              <li>$M(iri)=iri$ for all IRIs $iri$ which are <a>constituents</a> of $G_1$,
+              <li> $\{M(x)|x\in E_1\}=E_2$,
+              <li> $\{M(x)|x\in U_1\}=U_2$,
+          <!--  <li>$N((l_1,\ldots, l_n) )= (N(l_1),\ldots, N(l_n) )$ for all lists $(l_1,\ldots, l_n)$ which are <a>constituents</a> of $G_1$,
+!-->
+            <li>for each triple $t=( x_1, x_2, x_3 )$ in $F_1$, $N(t)=( y_1, y_2, y_3 )$ is such that
+              for all $i \in [1, 2, 3]$<ul>
               <li>if $x_i$ is a <a>quoted graph</a>, then $y_i$ is also a quoted graph, and<ul>
                 <li>$x_i = &lt;G_1'&gt;$ with $G_1^{\prime N}= (U_1', E_1', F_1')$,
                 <li>$y_i = &lt;G_2'&gt;$ with $G_2^{\prime N}= (U_2', E_2', F_2')$,
                 <li>there is a bijection $P$ between $U_1'\cup E_1'$ and $U_2'\cup E_2'$ such that<br>
-                $U_2' = P(U_1')$, $E_2' = P(E_1')$ and $F_2' = M\bullet P(F_1')$
+                   $M\bullet P$ is an isomorphism from $G_1'$ to $G_2'$.
               </ul>
+              <li> if $x_i=(l_1, \ldots, l_n)$ is a list, then $y_i=(k_1, \ldots, k_n)$ is also a list and for all $j\in[1,\ldots, n]$
+                <ul>
+                  <li> if $l_j$ is a a <a>quoted graph</a>, then $k_j$ is also a quoted graph, and<ul>
+                    <li>$l_j= &lt;G_{1,j}&gt;$ with $G_{1,j}^{N}= (U_{1,j}, E_{1,j}, F_{1,j})$,
+                    <li>$k_j = &lt;G_{2,j}&gt;$ with $G_{2,j}^{N}= (U_{2,j}, E_{2,j}, F_{2,j})$,
+                    <li>there is a bijection $P$ between $U_{1,j}\cup E_{1,j}$ and $U_{2,j}\cup E_{2,j}$ such that<br>
+                       $M\bullet P$ is an isomorphism from $G_{1,j}$ to $G_{2,j}$.
+                  </ul>
+                  <li> otherwise $k_j=M(l_j)$
+                </ul>
               <li>otherwise $y_i = M(x_i)$,
             </ul>
           </ul>
-
-          <p>We call a bijection $M$ fulfilling the requirements above an <dfn class="lint-ignore">isomorphism</dfn> from $G_1$ to $G_2$. <span class="note">It follows from the definition that $M^{-1}$ is also an <a>isomorphism</a> from $G_2$ to $G_1$.</span></p>
+          <!---<p>We call a bijection $M$ fulfilling the requirements above an <dfn class="lint-ignore">isomorphism</dfn> from $G_1$ to $G_2$.</p>
+          !-->
+          <p class="note">It follows from the definition that if $M$ is an isomorphism from $G_1$ to $G_2$ that $M^{-1}$ is
+             an <a>isomorphism</a> from $G_2$ to $G_1$.</p>
           <p class="issue">
             Todo: provide examples of isomorphic graphs.
           </p>
