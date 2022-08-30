@@ -189,7 +189,29 @@
 
         <section>
           <h2>Isomorphism</h2>
-
+          <p>
+          Let $M$ be a bijection between $V$ and $V$, we define:
+            <ul>
+          <li> a graph $G_1$ is isomorphic to $G_2$ under $M$ iff, $G_1^N =(U_1,E_1,F_1)$ and
+            $G_2^N=(U_2,E_2,F_2)$ and
+            <ul>
+              <li> $M(U_1) = U_2$ and $M(E_1)= E_2$
+              <li> $F_1$ is isomorphic to $F_2$ under $M$
+            </ul>
+          <li> a set of triples $F_1$ is isomorphic under $M$ to a set of triples $F_2$ if there is a bijection $N$ from $F_1$ to $F_2$ such that,
+            for each triple $t_1=(s_1, p_1, o_1)\in F_1$,   $N((s_1, p_1, o_2)=(s_2, p_2, o_2)\in F_2$ and $s_1$, $p_1$ and $o_1$ are isomorphic
+            under $M$ to $s_2$, $p_2$ and $o_2$ respectively
+          <li>a variable $v$ is isomorphic under $M$ to $M(v)$,
+          <li> an IRI or Literal is isomorphic to itself
+        <li> a list $l_1$ is isomorphic under $M$ to a list $l_2$ if the elements of $l_1$ are
+          isomorphic under $M$ to the corresponding elements of $l_2$
+          <li> a quoted graph $< G_1 >$ is isomorphic under $M$ to
+            $< G_2 >$
+            if for $G_1^{N} =(U_1,E_1,F_1)$ and $G_2^{N}=(U_2,E_2,F_2)$
+            there is a bijection $P$ between $U_1 \cup E_1$ and $U_2 \cup E_2$
+            such that $G_1$ is isomorphic to $G_2$ under $M\bullet P$.
+        </ul>
+         </p>
 
 
 
