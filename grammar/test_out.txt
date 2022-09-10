@@ -1,30 +1,277 @@
 
 -- CONFIG
-turtlestar (language: turtlestar, parser: turtlestar)
-file: D:\git\n3dev\tests\test.turtlestar
+n3 (language: n3, parser: n3)
+folder: /Users/wvw/git/n3/N3/tests/N3Tests
+using manifest: ../tests/N3Tests/manifest-parser.ttl
 
 
 -- TESTS
-testing (positive): ..\..\tests\test.turtlestar
-TurtleStarDoc
- Statement
-  Triples
-   Subject
-    Iri
-     PrefixedName
-      :hello (PNAME_LN)
-   PredicateObjectList
-    Verb
-     Predicate
-      Iri
-       PrefixedName
-        :at (PNAME_LN)
-    ObjectList
-     Object
-      Iri
-       PrefixedName
-        :world (PNAME_LN)
-  . ('.')
- <EOF>
+parsing ../tests/N3Tests/manifest-parser.ttl
+assuming base = file:\\/Users/wvw/git/n3/N3/grammar\
 
-pass? true
+testing (positive): ../tests/N3Tests/cwm_unify/unify2-ref.n3
+testing (positive): ../tests/N3Tests/cwm_reason/t2.n3
+testing (positive): ../tests/N3Tests/cwm_supports/simple-ref.n3
+skipping (proposed): file:///Users/wvw/git/n3/N3/grammar/#cwm_syntax_too-nested.n3
+testing (positive): ../tests/N3Tests/cwm_includes/t10a.n3
+testing (positive): ../tests/N3Tests/cwm_syntax/nested.n3
+testing (positive): ../tests/N3Tests/cwm_includes/bnode-conclude-ref.n3
+testing (positive): ../tests/N3Tests/cwm_other/daml-ont.n3
+testing (positive): ../tests/N3Tests/cwm_i18n/umlaut.n3
+testing (positive): ../tests/N3Tests/cwm_list/unify3.n3
+testing (positive): ../tests/N3Tests/cwm_includes/t3.n3
+testing (positive): ../tests/N3Tests/cwm_includes/concat-ref.n3
+testing (positive): ../tests/N3Tests/cwm_syntax/boolean-ref.n3
+testing (positive): ../tests/N3Tests/cwm_other/schema-rules.n3
+testing (positive): ../tests/N3Tests/cwm_other/sameDan.n3
+testing (positive): ../tests/N3Tests/cwm_other/daml-ex.n3
+testing (positive): ../tests/N3Tests/cwm_math/quotient_string.n3
+testing (positive): ../tests/N3Tests/cwm_includes/conclusion.n3
+testing (positive): ../tests/N3Tests/cwm_syntax/bad-preds-formula.n3
+testing (positive): ../tests/N3Tests/cwm_string/roughly.n3
+testing (positive): ../tests/N3Tests/cwm_includes/t1.n3
+testing (positive): ../tests/N3Tests/cwm_syntax/space-in-uri-ref.n3
+testing (positive): ../tests/N3Tests/cwm_other/rdfcore-tests.n3
+testing (positive): ../tests/N3Tests/cwm_reason/danc.n3
+testing (positive): ../tests/N3Tests/cwm_list/unify4-ref.n3
+testing (positive): ../tests/N3Tests/cwm_time/t1.n3
+testing (positive): ../tests/N3Tests/cwm_other/contexts.n3
+testing (positive): ../tests/N3Tests/cwm_reason/t4.n3
+testing (positive): ../tests/N3Tests/cwm_other/resolves-rdf.n3
+testing (positive): ../tests/N3Tests/cwm_includes/bnodeConclude.n3
+skipping (rejected): file:///Users/wvw/git/n3/N3/grammar/#cwm_includes_quantifiers.n3
+testing (positive): ../tests/N3Tests/cwm_includes/quant-implies.n3
+testing (positive): ../tests/N3Tests/cwm_syntax/formula-subject.n3
+testing (positive): ../tests/N3Tests/cwm_includes/t4.n3
+testing (positive): ../tests/N3Tests/cwm_string/roughly-out.n3
+testing (positive): ../tests/N3Tests/cwm_list/bnode_in_list_in_list.n3
+skipping (rejected): file:///Users/wvw/git/n3/N3/grammar/#cwm_other_underbarscope.n3
+testing (positive): ../tests/N3Tests/cwm_other/vblsNotURIs.n3
+testing (positive): ../tests/N3Tests/cwm_other/anon-prop.n3
+testing (positive): ../tests/N3Tests/cwm_i18n/hiragana.n3
+testing (positive): ../tests/N3Tests/cwm_unify/unify1-ref.n3
+testing (positive): ../tests/N3Tests/cwm_includes/t2.n3
+testing (positive): ../tests/N3Tests/cwm_other/sameThing.n3
+testing (positive): ../tests/N3Tests/cwm_reason/rename-loop.n3
+testing (positive): ../tests/N3Tests/cwm_reason/t2-ref.n3
+testing (positive): ../tests/N3Tests/cwm_other/t00.n3
+testing (positive): ../tests/N3Tests/cwm_includes/xsd.n3
+testing (positive): ../tests/N3Tests/cwm_other/lists.n3
+testing (positive): ../tests/N3Tests/cwm_syntax/qvars1.n3
+testing (positive): ../tests/N3Tests/cwm_norm/av.n3
+testing (positive): ../tests/N3Tests/cwm_syntax/zero-predicates.n3
+testing (positive): ../tests/N3Tests/iriPropertyList/single_object.n3
+testing (positive): ../tests/N3Tests/cwm_reason/t5.n3
+testing (positive): ../tests/N3Tests/cwm_other/rules12.n3
+testing (positive): ../tests/N3Tests/cwm_includes/conjunction.n3
+testing (positive): ../tests/N3Tests/cwm_includes/t10.n3
+testing (positive): ../tests/N3Tests/cwm_syntax/trailing-semicolon-ref.nt
+testing (positive): ../tests/N3Tests/cwm_syntax/neg-single-quote.n3
+testing (positive): ../tests/N3Tests/cwm_reason/double-ref.n3
+testing (positive): ../tests/N3Tests/cwm_reason/f9.n3
+testing (positive): ../tests/N3Tests/cwm_math/long.n3
+testing (positive): ../tests/N3Tests/cwm_includes/foo.n3
+testing (positive): ../tests/N3Tests/cwm_list/unify3-ref.n3
+testing (positive): ../tests/N3Tests/cwm_reason/timbl.n3
+testing (positive): ../tests/N3Tests/cwm_reason/t3.n3
+testing (positive): ../tests/N3Tests/cwm_list/append.n3
+testing (positive): ../tests/N3Tests/cwm_other/t00-ref.n3
+testing (positive): ../tests/N3Tests/cwm_reason/single_gen.n3
+testing (positive): ../tests/N3Tests/cwm_reason/t9-ref.n3
+testing (positive): ../tests/N3Tests/cwm_syntax/bad-preds.n3
+testing (positive): ../tests/N3Tests/cwm_other/trivial-filter.n3
+testing (positive): ../tests/N3Tests/cwm_other/log-filter.n3
+testing (positive): ../tests/N3Tests/cwm_other/smush-query.n3
+testing (positive): ../tests/N3Tests/cwm_os/argv.n3
+testing (positive): ../tests/N3Tests/cwm_other/reluri-1.n3
+testing (positive): ../tests/N3Tests/cwm_unify/reflexive-ref.n3
+testing (positive): ../tests/N3Tests/cwm_list/r1-ref.n3
+testing (positive): ../tests/N3Tests/cwm_syntax/sep-term.n3
+testing (positive): ../tests/N3Tests/cwm_syntax/base-ref.n3
+testing (positive): ../tests/N3Tests/cwm_other/filter-bnodes.n3
+testing (positive): ../tests/N3Tests/cwm_other/schema-filter.n3
+testing (positive): ../tests/N3Tests/cwm_string/uriEncode.n3
+testing (positive): ../tests/N3Tests/cwm_list/unify4.n3
+testing (positive): ../tests/N3Tests/cwm_reason/t4-ref.n3
+testing (positive): ../tests/N3Tests/cwm_reason/t5-ref.n3
+testing (positive): ../tests/N3Tests/cwm_list/list-bug2.n3
+testing (positive): ../tests/N3Tests/cwm_os/environ.n3
+testing (positive): ../tests/N3Tests/cwm_syntax/decimal-ref.n3
+testing (positive): ../tests/N3Tests/cwm_list/unify5-ref.n3
+testing (positive): ../tests/N3Tests/iriPropertyList/not_embedded.n3
+testing (positive): ../tests/N3Tests/cwm_math/math-test.n3
+testing (positive): ../tests/N3Tests/cwm_andy/D.n3
+testing (positive): ../tests/N3Tests/cwm_other/rules13.n3
+skipping (rejected): file:///Users/wvw/git/n3/N3/grammar/#cwm_other_classes.n3
+testing (positive): ../tests/N3Tests/cwm_list/append-ref.n3
+testing (positive): ../tests/N3Tests/cwm_includes/t11.n3
+testing (positive): ../tests/N3Tests/cwm_includes/conjunction-ref.n3
+testing (positive): ../tests/N3Tests/cwm_reason/t8.n3
+skipping (rejected): file:///Users/wvw/git/n3/N3/grammar/#cwm_syntax_qvars3.n3
+testing (positive): ../tests/N3Tests/cwm_list/builtin_generated_match.n3
+testing (positive): ../tests/N3Tests/cwm_unify/unify1.n3
+testing (positive): ../tests/N3Tests/cwm_includes/uri-object-invalid.n3
+testing (positive): ../tests/N3Tests/cwm_reason/t1-ref.n3
+testing (positive): ../tests/N3Tests/cwm_unify/reflexive.n3
+testing (positive): ../tests/N3Tests/cwm_other/invalid-ex.n3
+testing (positive): ../tests/N3Tests/cwm_list/double.n3
+testing (positive): ../tests/N3Tests/cwm_syntax/graph-as-object.n3
+testing (positive): ../tests/N3Tests/cwm_andy/D-ref.n3
+testing (positive): ../tests/N3Tests/cwm_syntax/qual-after-user.n3
+testing (positive): ../tests/N3Tests/cwm_list/unify2.n3
+testing (positive): ../tests/N3Tests/cwm_list/construct.n3
+testing (positive): ../tests/N3Tests/cwm_other/forgetDups.n3
+testing (positive): ../tests/N3Tests/cwm_includes/t8.n3
+testing (positive): ../tests/N3Tests/cwm_other/lists-simple.n3
+testing (positive): ../tests/N3Tests/cwm_other/t01-ref.n3
+testing (positive): ../tests/N3Tests/cwm_i18n/i18n.n3
+testing (positive): ../tests/N3Tests/cwm_includes/list-in.n3
+testing (positive): ../tests/N3Tests/cwm_list/unify2-ref.n3
+testing (positive): ../tests/N3Tests/new_syntax/inverted_properties.n3
+testing (positive): ../tests/N3Tests/extra/good_prefix.n3
+testing (positive): ../tests/N3Tests/cwm_other/dec-div.n3
+testing (positive): ../tests/N3Tests/cwm_string/uriEncode-out.n3
+testing (positive): ../tests/N3Tests/cwm_list/list-bug1.n3
+testing (positive): ../tests/N3Tests/cwm_syntax/formula-simple-1.n3
+testing (positive): ../tests/N3Tests/cwm_reason/t6.n3
+testing (positive): ../tests/N3Tests/iriPropertyList/with_newline.n3
+testing (positive): ../tests/N3Tests/cwm_norm/av-ref.n3
+testing (positive): ../tests/N3Tests/cwm_other/regression.n3
+testing (positive): ../tests/N3Tests/cwm_includes/genBnodeInNestedFormula.n3
+testing (positive): ../tests/N3Tests/cwm_reason/t9.n3
+testing (positive): ../tests/N3Tests/cwm_includes/n3ExprFor.n3
+testing (positive): ../tests/N3Tests/cwm_syntax/a1.n3
+testing (positive): ../tests/N3Tests/cwm_string/endsWith.n3
+testing (positive): ../tests/N3Tests/cwm_reason/double.n3
+testing (positive): ../tests/N3Tests/cwm_other/t01.n3
+testing (positive): ../tests/N3Tests/cwm_list/r1.n3
+testing (positive): ../tests/N3Tests/cwm_other/testmeta.n3
+skipping (rejected): file:///Users/wvw/git/n3/N3/grammar/#cwm_syntax_this-rules-ref.n3
+testing (positive): ../tests/N3Tests/cwm_syntax/BnodeAcrossFormulae.n3
+testing (positive): ../tests/N3Tests/cwm_other/kb1.n3
+testing (positive): ../tests/N3Tests/cwm_includes/conclusion-simple.n3
+testing (positive): ../tests/N3Tests/cwm_other/smush-schema.n3
+testing (positive): ../tests/N3Tests/cwm_syntax/one-bnode.n3
+testing (positive): ../tests/N3Tests/cwm_includes/uri-startswith.n3
+testing (positive): ../tests/N3Tests/cwm_math/trigo.ref.n3
+testing (positive): ../tests/N3Tests/cwm_syntax/formula_bnode.n3
+testing (positive): ../tests/N3Tests/cwm_reason/t3-ref.n3
+testing (positive): ../tests/N3Tests/cwm_syntax/qvars2.n3
+testing (positive): ../tests/N3Tests/cwm_other/reflexive.n3
+testing (positive): ../tests/N3Tests/cwm_includes/concat.n3
+testing (positive): ../tests/N3Tests/cwm_other/anonymous_loop.n3
+testing (positive): ../tests/N3Tests/cwm_syntax/embedded-dot-in-qname.n3
+testing (positive): ../tests/N3Tests/cwm_syntax/neg-literal-predicate.n3
+testing (positive): ../tests/N3Tests/cwm_reason/t6-ref.n3
+testing (positive): ../tests/N3Tests/cwm_reason/t8-ref.n3
+testing (positive): ../tests/N3Tests/cwm_includes/list-in-ref.n3
+testing (positive): ../tests/N3Tests/cwm_list/unify5.n3
+testing (positive): ../tests/N3Tests/new_syntax/caret_pos.n3
+testing (positive): ../tests/N3Tests/cwm_syntax/decimal.n3
+testing (positive): ../tests/N3Tests/cwm_supports/simple.n3
+testing (positive): ../tests/N3Tests/cwm_list/builtin_generated_match-ref.n3
+testing (positive): ../tests/N3Tests/cwm_reason/poor-urop.n3
+testing (positive): ../tests/N3Tests/cwm_syntax/colon-no-qname.n3
+testing (positive): ../tests/N3Tests/cwm_list/unify1.n3
+testing (positive): ../tests/N3Tests/cwm_string/endsWith-out.n3
+testing (positive): ../tests/N3Tests/cwm_syntax/base.n3
+testing (positive): ../tests/N3Tests/cwm_syntax/bad-preds-literal.n3
+skipping (rejected): file:///Users/wvw/git/n3/N3/grammar/#cwm_syntax_this-quantifiers-ref.n3
+testing (positive): ../tests/N3Tests/cwm_reason/socrates-ref.n3
+testing (positive): ../tests/N3Tests/cwm_other/two-route.n3
+testing (positive): ../tests/N3Tests/cwm_other/equiv-syntax.n3
+testing (positive): ../tests/N3Tests/cwm_includes/t6.n3
+testing (positive): ../tests/N3Tests/cwm_reason/socrates.n3
+testing (positive): ../tests/N3Tests/cwm_list/last.n3
+testing (positive): ../tests/N3Tests/cwm_list/list-bug2-ref.n3
+testing (positive): ../tests/N3Tests/cwm_includes/builtins.n3
+testing (positive): ../tests/N3Tests/cwm_i18n/n3string.n3
+testing (positive): ../tests/N3Tests/cwm_includes/t9br.n3
+testing (positive): ../tests/N3Tests/iriPropertyList/nested_resources.n3
+skipping (rejected): file:///Users/wvw/git/n3/N3/grammar/#cwm_includes_quantifiers_limited.n3
+testing (positive): ../tests/N3Tests/cwm_syntax/neg-formula-predicate.n3
+testing (positive): ../tests/N3Tests/cwm_syntax/sib.n3
+testing (positive): ../tests/N3Tests/cwm_list/list-bug1-ref.n3
+testing (positive): ../tests/N3Tests/cwm_other/reflexive-ref.n3
+testing (positive): ../tests/N3Tests/iriPropertyList/with_whitespace.n3
+skipping (rejected): file:///Users/wvw/git/n3/N3/grammar/#cwm_unify_unify2.n3
+testing (positive): ../tests/N3Tests/cwm_syntax/boolean.n3
+testing (positive): ../tests/N3Tests/cwm_syntax/zero-length-lname.n3
+testing (positive): ../tests/N3Tests/manifest-parser.ttl
+testing (positive): ../tests/N3Tests/cwm_other/daml-pref.n3
+testing (positive): ../tests/N3Tests/cwm_reason/t1.n3
+skipping (rejected): file:///Users/wvw/git/n3/N3/grammar/#cwm_syntax_keywords2.n3
+testing (negative): trailing-dot-in-qname.n3
+ERROR: trailing-dot-in-qname.n3 [parser] (@5:30) syntaxError for [@8,95:95='.',<1>,5:30] - extraneous input '.' expecting {<EOF>, '@prefix', '@base', '[', '(', '{', BooleanLiteral, String, IRIREF, PNAME_NS, PNAME_LN, BLANK_NODE_LABEL, INTEGER, DECIMAL, DOUBLE, IPLSTART, ANON, QuickVarName, BASE, PREFIX}
+skipping (rejected): file:///Users/wvw/git/n3/N3/grammar/#cwm_syntax_this-rules.n3
+testing (negative): caret_neg.n3
+ERROR: caret_neg.n3 [parser] (@1:17) syntaxError for [@4,17:17='.',<1>,1:17] - mismatched input '.' expecting {'[', '(', '{', BooleanLiteral, String, IRIREF, PNAME_NS, PNAME_LN, BLANK_NODE_LABEL, INTEGER, DECIMAL, DOUBLE, IPLSTART, ANON, QuickVarName}
+testing (negative): bad_prefix.n3
+ERROR: bad_prefix.n3 [parser]: prefixError: referencing unknown prefix ("bad") in "bad:s"
+ERROR: bad_prefix.n3 [parser]: prefixError: referencing unknown prefix ("bad") in "bad:p"
+testing (negative): illegal_subject_list.n3
+ERROR: illegal_subject_list.n3 [parser] (@3:8) syntaxError for [@6,43:43=',',<5>,3:8] - extraneous input ',' expecting {'a', 'has', 'is', '=', '<=', '=>', '<-', '[', '(', '{', BooleanLiteral, String, IRIREF, PNAME_NS, PNAME_LN, BLANK_NODE_LABEL, INTEGER, DECIMAL, DOUBLE, IPLSTART, ANON, QuickVarName}
+ERROR: illegal_subject_list.n3 [parser] (@3:17) syntaxError for [@9,52:53=':o',<28>,3:17] - extraneous input ':o' expecting ']'
+testing (negative): illegal_semicolon.n3
+ERROR: illegal_semicolon.n3 [parser] (@3:8) syntaxError for [@6,43:43=';',<4>,3:8] - extraneous input ';' expecting {'a', 'has', 'is', '=', '<=', '=>', '<-', '[', '(', '{', BooleanLiteral, String, IRIREF, PNAME_NS, PNAME_LN, BLANK_NODE_LABEL, INTEGER, DECIMAL, DOUBLE, IPLSTART, ANON, QuickVarName}
+testing (negative): neg-keywords3.n3
+ERROR: neg-keywords3.n3 [parser] (@1:0) syntaxError for [@0,0:8='@keywords',<30>,1:0] - extraneous input '@keywords' expecting {<EOF>, '@prefix', '@base', '[', '(', '{', BooleanLiteral, String, IRIREF, PNAME_NS, PNAME_LN, BLANK_NODE_LABEL, INTEGER, DECIMAL, DOUBLE, IPLSTART, ANON, QuickVarName, BASE, PREFIX}
+ERROR: neg-keywords3.n3 [parser] (@1:16) syntaxError for [@2,16:16='.',<1>,1:16] - mismatched input '.' expecting PNAME_NS
+ERROR: neg-keywords3.n3 [parser] (@1:21) syntaxError for [@4,21:26='prefix',<49>,1:21] - missing '.' at 'prefix'
+ERROR: neg-keywords3.n3 [parser] (@1:28) syntaxError for [@5,28:29=':f',<28>,1:28] - mismatched input ':f' expecting {'.', 'a', 'has', 'is', '=', '<=', '=>', '<-', '!', '^', '[', '(', '{', BooleanLiteral, String, IRIREF, PNAME_NS, PNAME_LN, BLANK_NODE_LABEL, INTEGER, DECIMAL, DOUBLE, IPLSTART, ANON, QuickVarName}
+skipping (rejected): file:///Users/wvw/git/n3/N3/grammar/#cwm_syntax_this-rules-ref2.n3
+testing (negative): djb1.n3
+ERROR: djb1.n3 [parser] (@3:8) syntaxError for [@10,89:89='.',<1>,3:8] - mismatched input '.' expecting {'[', '(', '{', BooleanLiteral, String, IRIREF, PNAME_NS, PNAME_LN, BLANK_NODE_LABEL, INTEGER, DECIMAL, DOUBLE, IPLSTART, ANON, QuickVarName}
+testing (negative): bad_inverted_resources.n3
+ERROR: bad_inverted_resources.n3 [parser] (@1:0) syntaxError for [@0,0:0='^',<15>,1:0] - extraneous input '^' expecting {<EOF>, '@prefix', '@base', '[', '(', '{', BooleanLiteral, String, IRIREF, PNAME_NS, PNAME_LN, BLANK_NODE_LABEL, INTEGER, DECIMAL, DOUBLE, IPLSTART, ANON, QuickVarName, BASE, PREFIX}
+ERROR: bad_inverted_resources.n3 [parser] (@1:19) syntaxError for [@8,19:19='}',<21>,1:19] - mismatched input '}' expecting {'[', '(', '{', BooleanLiteral, String, IRIREF, PNAME_NS, PNAME_LN, BLANK_NODE_LABEL, INTEGER, DECIMAL, DOUBLE, IPLSTART, ANON, QuickVarName}
+testing (negative): strquot.n3
+ERROR: strquot.n3 [lexer] (@10:17) syntaxError for null - token recognition error at: '"\\\"\a' LexerNoViableAltException('"')
+ERROR: strquot.n3 [parser] (@10:24) syntaxError for [@18,219:220='\b',<40>,10:24] - mismatched input '\b' expecting {'[', '(', '{', BooleanLiteral, String, IRIREF, PNAME_NS, PNAME_LN, BLANK_NODE_LABEL, INTEGER, DECIMAL, DOUBLE, IPLSTART, ANON, QuickVarName}
+ERROR: strquot.n3 [lexer] (@10:32) syntaxError for null - token recognition error at: '\v' LexerNoViableAltException('\')
+ERROR: strquot.n3 [lexer] (@10:34) syntaxError for null - token recognition error at: '".\n' LexerNoViableAltException('"')
+skipping (rejected): file:///Users/wvw/git/n3/N3/grammar/#cwm_syntax_this-quantifiers-ref2.n3
+testing (negative): illegal_bnode_subject.n3
+ERROR: illegal_bnode_subject.n3 [parser] (@3:5) syntaxError for [@5,40:43='_:bn',<29>,3:5] - extraneous input '_:bn' expecting {IRIREF, PNAME_NS, PNAME_LN}
+ERROR: illegal_bnode_subject.n3 [parser] (@3:15) syntaxError for [@8,50:50=']',<17>,3:15] - mismatched input ']' expecting {'[', '(', '{', BooleanLiteral, String, IRIREF, PNAME_NS, PNAME_LN, BLANK_NODE_LABEL, INTEGER, DECIMAL, DOUBLE, IPLSTART, ANON, QuickVarName}
+skipping (rejected): file:///Users/wvw/git/n3/N3/grammar/#cwm_syntax_this-quantifiers.n3
+testing (negative): newline-in-uri.n3
+ERROR: newline-in-uri.n3 [lexer] (@3:0) syntaxError for null - token recognition error at: '<http://example.com/iri ' LexerNoViableAltException('<')
+ERROR: newline-in-uri.n3 [parser] (@3:24) syntaxError for [@3,55:58='with',<50>,3:24] - extraneous input 'with' expecting {<EOF>, '@prefix', '@base', '[', '(', '{', BooleanLiteral, String, IRIREF, PNAME_NS, PNAME_LN, BLANK_NODE_LABEL, INTEGER, DECIMAL, DOUBLE, IPLSTART, ANON, QuickVarName, BASE, PREFIX}
+ERROR: newline-in-uri.n3 [lexer] (@6:0) syntaxError for null - token recognition error at: '>' LexerNoViableAltException('>')
+testing (negative): space-in-uri.n3
+ERROR: space-in-uri.n3 [lexer] (@5:0) syntaxError for null - token recognition error at: '<http://example.com/foo ' LexerNoViableAltException('<')
+ERROR: space-in-uri.n3 [parser] (@5:24) syntaxError for [@4,130:132='bar',<50>,5:24] - extraneous input 'bar' expecting {<EOF>, '@prefix', '@base', '[', '(', '{', BooleanLiteral, String, IRIREF, PNAME_NS, PNAME_LN, BLANK_NODE_LABEL, INTEGER, DECIMAL, DOUBLE, IPLSTART, ANON, QuickVarName, BASE, PREFIX}
+ERROR: space-in-uri.n3 [lexer] (@5:27) syntaxError for null - token recognition error at: '>' LexerNoViableAltException('>')
+testing (negative): zero-objects.n3
+ERROR: zero-objects.n3 [parser] (@1:6) syntaxError for [@2,6:6='.',<1>,1:6] - mismatched input '.' expecting {'[', '(', '{', BooleanLiteral, String, IRIREF, PNAME_NS, PNAME_LN, BLANK_NODE_LABEL, INTEGER, DECIMAL, DOUBLE, IPLSTART, ANON, QuickVarName}
+skipping (rejected): file:///Users/wvw/git/n3/N3/grammar/#cwm_syntax_qvars4.n3
+skipping (rejected): file:///Users/wvw/git/n3/N3/grammar/#extra_bad_prefix2.n3
+testing (negative): neg-thisadoc.n3
+ERROR: neg-thisadoc.n3 [parser] (@1:0) syntaxError for [@0,0:8='@keywords',<30>,1:0] - mismatched input '@keywords' expecting {<EOF>, '@prefix', '@base', '[', '(', '{', BooleanLiteral, String, IRIREF, PNAME_NS, PNAME_LN, BLANK_NODE_LABEL, INTEGER, DECIMAL, DOUBLE, IPLSTART, ANON, QuickVarName, BASE, PREFIX}
+testing (negative): trigo-test.n3
+ERROR: trigo-test.n3 [parser] (@31:32) syntaxError for [@111,914:915='of',<9>,31:32] - extraneous input 'of' expecting {'[', '(', '{', BooleanLiteral, String, IRIREF, PNAME_NS, PNAME_LN, BLANK_NODE_LABEL, INTEGER, DECIMAL, DOUBLE, IPLSTART, ANON, QuickVarName}
+ERROR: trigo-test.n3 [parser] (@35:32) syntaxError for [@160,1105:1106='of',<9>,35:32] - extraneous input 'of' expecting {'[', '(', '{', BooleanLiteral, String, IRIREF, PNAME_NS, PNAME_LN, BLANK_NODE_LABEL, INTEGER, DECIMAL, DOUBLE, IPLSTART, ANON, QuickVarName}
+ERROR: trigo-test.n3 [parser] (@39:32) syntaxError for [@209,1301:1302='of',<9>,39:32] - extraneous input 'of' expecting {'[', '(', '{', BooleanLiteral, String, IRIREF, PNAME_NS, PNAME_LN, BLANK_NODE_LABEL, INTEGER, DECIMAL, DOUBLE, IPLSTART, ANON, QuickVarName}
+ERROR: trigo-test.n3 [parser] (@43:33) syntaxError for [@258,1497:1498='of',<9>,43:33] - extraneous input 'of' expecting {'[', '(', '{', BooleanLiteral, String, IRIREF, PNAME_NS, PNAME_LN, BLANK_NODE_LABEL, INTEGER, DECIMAL, DOUBLE, IPLSTART, ANON, QuickVarName}
+ERROR: trigo-test.n3 [parser] (@47:33) syntaxError for [@307,1696:1697='of',<9>,47:33] - extraneous input 'of' expecting {'[', '(', '{', BooleanLiteral, String, IRIREF, PNAME_NS, PNAME_LN, BLANK_NODE_LABEL, INTEGER, DECIMAL, DOUBLE, IPLSTART, ANON, QuickVarName}
+ERROR: trigo-test.n3 [parser] (@51:33) syntaxError for [@356,1895:1896='of',<9>,51:33] - extraneous input 'of' expecting {'[', '(', '{', BooleanLiteral, String, IRIREF, PNAME_NS, PNAME_LN, BLANK_NODE_LABEL, INTEGER, DECIMAL, DOUBLE, IPLSTART, ANON, QuickVarName}
+testing (negative): qname-as-prefix-in-decl.n3
+ERROR: qname-as-prefix-in-decl.n3 [parser] (@3:9) syntaxError for [@1,89:95='foo:bar',<28>,3:9] - mismatched input 'foo:bar' expecting PNAME_NS
+skipping (rejected): file:///Users/wvw/git/n3/N3/grammar/#cwm_syntax_keywords1.n3
+
+
+-- RESULTS
+total # tests = 198
+
+> positive tests:
+# failed = 0
+failed: []
+
+> negative tests:
+# failed = 0
+failed: []
+
+> skipped tests:
+# skipped = 0
+skipped: []
