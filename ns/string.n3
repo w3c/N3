@@ -29,24 +29,9 @@ string:concat a rdf:Property, owl:InverseFunctionalProperty;   # obj = list of s
 string:concatenation a rdf:Property, owl:FunctionalProperty;
     rdfs:definedBy <>;  
     rdfs:label "concatenate into";
-    rdfs:comment  """
-**schema**:
-`($a_1 .. $a_n) string:concatenation $a_s`
-
-**summary**:
-concatenates the given resources
-
-**definition**:
-`true` if and only if the string concatenation of `$a_1, .. $a_n` equals `$a_s`.
-
-**requires**:
-all `$a_1, .., $a_n` to be bound.
-
-**literal domains**:
-
-* `$a_1 .. $a_n` : `xs:string` (see note on casting to string)
-* `$a_s`: `xs:string` (see note on casting to string)
-""";
+    rdfs:comment  """Concatenates the given strings. 
+    
+`true` if and only if the string concatenation of `$s_1, .. $s_n` equals `$o`.""";
     rdfs:domain log:List;
     rdfs:range  log:String.
 

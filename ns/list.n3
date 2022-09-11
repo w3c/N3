@@ -21,176 +21,94 @@
 list:append a rdf:Property, owl:FunctionalProperty;
     rdfs:label "append";
     rdfs:domain log:List;
-    rdfs:comment """
-Concatenates separate lists into a single list
+    rdfs:comment """Concatenates separate lists into a single list. 
 
-**schema**:
-`($a_1 .. $a_n) list:append $a_s`
+`true` if and only if the subject is a list of lists and the concatenation of all those lists is `$o`.
 
-**definition**:
-`true` if and only if the subject is a list of lists and the concatenation of all those lists 
-is `$a_s`.
-`$a_s` can be calculated as a function of the subject.
+`$o` can be calculated as a function of the subject. 
 
-**requires**:
-all `$a_1, .., $a_n` to be lists with all constituent members bound.
-
-**example**:
-`( (1 2) (3 4) ) list:append (1 2 3 4).`
-""";
+Example: `( (1 2) (3 4) ) list:append (1 2 3 4).`""";
     rdfs:isDefinedBy <>.
 
 list:first a rdf:Property, owl:FunctionalProperty;
     rdfs:label "first";
     rdfs:domain log:List;
-    rdfs:comment """
-Extracts the first member of a list.
+    rdfs:comment """Extracts the first member of a list. 
 
-**schema**:
-`($a_1 .. $a_n) list:first $a_s`
+`true` if and only the subject is a list and `$o` is the first member of that list.
 
-**definition**:
-`true` if and only the subject is a list and `$a_s` is the first member of that list.
-`$a_s` can be calculated as a function of the subject.
-
-**requires**:
-all `$a_1, .., $a_n` to be bound.
-""";
+`$o` can be calculated as a function of the subject.""";
     vs:term_status "unstable";
     rdfs:isDefinedBy <>.
 
 list:in a rdf:Property;
     rdfs:label "in";
     rdfs:range log:List;
-    rdfs:comment """
-Determines if an subject is a member of the object list
-or binds every member of the object list to the subject.
+    rdfs:comment """Determines if an subject is a member of the object list or binds every member of the object list to the subject.
 
-**schema**:
-`$a_1 list:in $a_2`
+`true` if and only `$o` is a list and `$s` is in that list.
 
-**definition**:
-`true` if and only `$a_2` is a list and `$a_1` is in that list.
-`$a_1` can be calculated from `$a_2`.
-
-**requires**:
-`$a_2` to be a bound list.
-""";
+`$s` can be calculated from `$o`.""";
     rdfs:isDefinedBy <>.
 
 list:iterate a rdf:Property, owl:FunctionalProperty;
     rdfs:label "iterate";
     rdfs:domain log:List;
     rdfs:range log:List;
-    rdfs:comment """
-Iterates over index/value pairs of the subject list
-
-**schema**:
-`($a_1 .. $a_n) list:iterate ($i $v)`
-
-**definition**:
+    rdfs:comment """Iterates over index/value pairs of the subject list.
 Gets the matching pair of list index and list value for every member of the subject.
 If the object is a variable, it will create a solution for each member of the subject list.
 If any member of the object list is a variable, it will create a solution for all matching
 members of the subject list.
+
 If the object is ground and the entry at the specified index matches the specified value, 
 it evaluates to `true`; otherwise, `false`.
 
-**requires**:
-`$i` is an integer.
-
-**example**:
-`( 1 2 3 ) list:iterate ($i $v).`
-""";
+Example: `( 1 2 3 ) list:iterate ($i $v).`""";
     rdfs:isDefinedBy <>.
 
 list:last a rdf:Property, owl:FunctionalProperty;
     rdfs:label "in";
     rdfs:domain log:List;
-    rdfs:comment """
-Extracts the first member of a list.
+    rdfs:comment """Extracts the first member of a list. 
 
-**schema**:
-`($a_1 .. $a_n) list:last $a_s`
+`true` if and only the subject is a list and `$o` is the last member of that list.
 
-**definition**:
-`true` if and only the subject is a list and `$a_s` is the last member of that list.
-`$a_s` can be calculated as a function of the subject.
-
-**requires**:
-all `$a_1, .., $a_n` to be bound.
-""";
+`$o` can be calculated as a function of the subject.""";
     rdfs:isDefinedBy <>.
 
 list:length a rdf:Property, owl:FunctionalProperty;
     rdfs:label "length";
     rdfs:domain log:List;
     rdfs:range xsd:integer;
-    rdfs:comment """
-Calculates the length of a list.
+    rdfs:comment """Calculates the length of a list.
 
-**schema**:
-`($a_1 .. $a_n) list:length $a_s`
+`true` if and only the subject is a list and `$o` is integer length of that list.
 
-**definition**:
-`true` if and only the subject is a list and `$a_s` is integer length of that list.
-`$a_s` can be calculated as a function of the subject.
-
-**requires**:
-
-* all `$a_1, .., $a_n` to be bound.
-* `$a_s`: unbound, `xs:integer` (or its derived types) (see note on type promotion, and casting from string)
-""";
+`$o` can be calculated as a function of the subject.""";
     vs:term_status "unstable";
     rdfs:isDefinedBy <>.
 
 list:member a rdf:Property;
     rdfs:label "member";
     rdfs:domain log:List;
-    rdfs:comment """
-Determines if an object is a member of the subject list
-or binds every member of the subject list to the object.
+    rdfs:comment """Determines if an object is a member of the subject list or binds every member of the subject list to the object.
 
-**schema**:
-`$a_1 list:member $a_2`
+`true` if and only `$s` is a list and `o` is in that list.
 
-**definition**:
-`true` if and only `$a_1` is a list and `$a_2` is in that list.
-`$a_2` can be calculated from `$a_1`.
-
-**requires**:
-`$a_1` to be a bound list.
-""";
+`$o` can be calculated from `$s`.""";
     rdfs:isDefinedBy <>.
 
 list:memberAt a rdf:Property;
     rdfs:label "memberAt";
     rdfs:domain log:List;
-    rdfs:comment """
-Gets the member of a list at a given position (where the position of the first element is 1)
+    rdfs:comment """Gets the member of a list at a given position (where the position of the first element is 1).
 
-**schema**:
-`(($a_1 .. $a_n) $a_i) list:memberAt $a_m`
+`true` if and only if `$s_0` has an element at position `$s_1`, and if that element and `$o` can unify.
 
-**definition**:
-Iff  `($a_1 .. $a_n)` has an element at position `$a_i`,
-and if that element and `$a_m` can unify.
+Note that if `$s_1` is a variable, this builtin may bind it to more than one value (e.g. `((“A” “B” “A”) ?i) list:memberAt "A"`).
 
-**requires**:
-`$a_i` or `$a_m` (or both) must be bound.
-
-Note that if `$a_i` is a variable, this builtin may bind it to more than one value
-(e.g. `((“A” “B” “A”) ?i) list:memberAt "A"`).
-
-**literal domains**:
-
-* `$a_1 .. $a_n`, `$a_m`: unconstrained
-* `$a_i`: `xs:decimal`, `xs:float`, `xs:double` within the value space of `xs:integer`
-  (see also note on type promotion and substitution).
-I.e., in case the double/float/decimal's literal's value is within the value space of integers,
-the literal will match the domain.
-In case of a negative integer, the index will count backwards from the length of the list.
-""";
+In case of a negative integer, the index will count backwards from the length of the list.""";
     vs:term_status "unstable";
     rdfs:isDefinedBy <>.
 
@@ -198,23 +116,12 @@ list:remove a rdf:Property, owl:FunctionalProperty;
     rdfs:label "remove";
     rdfs:domain log:List;
     rdfs:range log:List;
-    rdfs:comment """
-Removes the second component of the subject list from the first component of that list.
+    rdfs:comment """Removes the second component of the subject list from the first component of that list.
 
-**schema**:
-`($a_1 $a_2) list:remove $a_3`
+`true` if and only if the subject is a list of two lists `$s_1` and `$s_2`, `$s_2` is a subset of `$s_1` and `$o` is a list composed of the members of the `$s_1` with all members of `$s_2` removed, matching left to right.
 
-**definition**:
-Iff the subject is a list of two lists `$a_1` and `$a_2`, `$a_2` is a subset of `$a_1`
-and `$a_3` is a list composed of the members of the `$a_1` with
-all members of `$a_2` removed, matching left to right.
-`$a_3` can be calculated as a function of the subject.
+`$o` can be calculated as a function of the subject.
 
-**requires**:
-`$a_1` and `$a_2` must be bound lists.
-
-**example**:
-`( (1 2 3 4) (2 3) ) list:remove (1 4).`
-""";
+Example: `( (1 2 3 4) (2 3) ) list:remove (1 4).`""";
     vs:term_status "unstable";
     rdfs:isDefinedBy <>.

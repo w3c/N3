@@ -59,73 +59,43 @@ Obsolete, see list:length""";
 
 math:greaterThan a rdf:Property, math:StrictProperty;
    rdfs:label "greaterThan"; 
-   rdfs:comment """True iff the subject is a number which is greater than the object.""";
+   rdfs:comment """`true` if and only if the subject is a number which is greater than the object.""";
    rdfs:domain math:Value; rdfs:range math:Value .
 
 math:notGreaterThan a rdf:Property, math:StrictProperty;
     rdfs:label "notGreaterThan"; 
-    rdfs:comment """True iff the subject is a number which is NOT greater than the object.""";
+    rdfs:comment """`true` if and only if the subject is a number which is NOT greater than the object.""";
     rdfs:domain math:Value; rdfs:range math:Value .
 
 math:lessThan a rdf:Property, math:StrictProperty;
    rdfs:label "lessThan"; 
-   rdfs:comment """True iff the subject is a number which is LESS than a object.""";
+   rdfs:comment """`true` if and only if the subject is a number which is LESS than a object.""";
    rdfs:domain math:Value; rdfs:range math:Value .
 
 math:notLessThan a rdf:Property, math:StrictProperty;
    rdfs:label "notlessThan"; 
-   rdfs:comment """True iff the subject is a number which is NOT LESS than a object.""";
+   rdfs:comment """`true` if and only if the subject is a number which is NOT LESS than a object.""";
    rdfs:domain math:Value; rdfs:range math:Value .
 
 math:equalTo a rdf:Property, math:StrictProperty;
    rdfs:label "equalTo"; 
-   rdfs:comment """
-**schema**:
-`$a1 math:equalTo $a2`
-
-**summary**:
-checks equality of numbers
-
-**definition**:
-`true` if and only if `$a1` is equal to `$a2`. 
-
-**requires**:
-`$a_1` or `$a_2` (or both) must be either concrete numerals, or variables bound to a numeral.
-
-**literal domains**:
-
-* `$a1`: `xs:decimal` (or its derived types), `xs:float`, or `xs:double`  (see note on type promotion, and casting from string)
-* `$a2`: `xs:decimal` (or its derived types), `xs:float`, or `xs:double`  (see note on type promotion, and casting from string)
-""";
+   rdfs:comment """Checks equality of numbers.
+   
+`true` if and only if `$s` is equal to `$o`.""";
    rdfs:domain math:Value; rdfs:range math:Value .
 
 math:notEqualTo a rdf:Property, math:StrictProperty;
    rdfs:label "notEqualTo"; 
-   rdfs:comment """True iff the subject is a number which is NOT EQUAL to a object.""";
+   rdfs:comment """`true` if and only if the subject is a number which is NOT EQUAL to a object.""";
    rdfs:domain math:Value; rdfs:range math:Value .
 
 math:sum a rdf:Property, math:Function;
     rdfs:label "sum";
     rdfs:domain log:List;
     rdfs:range math:Value;
-    rdfs:comment """
-**schema**:
-`($a_1 .. $a_n) math:sum $a_s`
+    rdfs:comment """Performs addition of numbers. 
 
-**summary**:
-performs addition of numbers
-
-**definition**:
-`true` if and only if the arithmetic sum of `$a_1, .. $a_n` equals `$a_s`.
-
-**requires**:
-all `$a_1, .., $a_n` to be bound.
-
-**literal domains**:
-
-* `$a_1 .. $a_n` : `xs:decimal` (or its derived types), `xs:float`, or `xs:double` (see note on type promotion, and casting from string)
-* `$a_s`: `xs:decimal` (or its derived types), `xs:float`, or `xs:double` (see note on type promotion, and casting from string)
-""".
+`true` if and only if the arithmetic sum of `$s_1, .. $s_n` equals `$o`.""".
 
 math:difference a rdf:Property, math:Function;
     rdfs:label "difference";
