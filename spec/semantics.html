@@ -213,7 +213,7 @@
             such that $G_1$ is isomorphic to $G_2$ under $M\bullet P$.
         </ul>
 
-  We call a graph $G_1$ <dfn class="lint-ignore">isomorphic</dfn> to a graph $G_2$ if
+  We call a graph $G_1$ <dfn class="lint-ignore">isomorphic</dfn> to a graph $G_2$, written as $G_1\simeq G_2$, if
   there exists some $M$ such that $G_1$ is isomorphic to $G_2$ under $M$.
 </p>
 
@@ -253,9 +253,23 @@
 !-->
 
           <p class="note">If $G_1$ is isomorphic to $G_2$ then $G_2$ is also isomorphic to $G_1$.</p>
-          <p class="issue">
-            Todo: provide examples of isomorphic graphs.
-          </p>
+          <div class="note">
+            <p>
+            Consider the following graphs:
+              <ul>
+                <li> $G_1$:{<code>_:x :knows :p. :p :says {_:x a :genious}.</code>}
+                  or in abstract syntax:
+                  <code>({}, {x}, {(x, knows, p), (p, says <{}, {x} {(x, a, genious)}>)})</code>
+                  <li> $G_2:$ {<code>_:y :knows :p. :p :says {_:x a :genious}.</code>}
+                    or in abstract syntax:
+                    <code>({}, {y}, {(y, knows, p), (p, says <{}, {x} {(x, a, genious)}>)})</code>
+                    <li> $G_3:$ {<code>_:y :knows :p. :p :says {_:x a _:z}.</code>}
+                      or in abstract syntax:
+                      <code>({}, {y}, {(y, knows, p), (p, says <{}, {x, z} {(x, a, z)}>)})</code>
+              </ul>
+              Then $G_1$ is isomorphic to $G_2$ but not to $G_3$.
+            </p>
+          </div>
           <p class="issue">
             Todo: provide a proof that two isomorphic graphs do have the same meaning. (but that is for below, after the semantics)
           </p>
@@ -278,7 +292,7 @@
         <li>a mapping $Q_I$ from <a>ground</a> <a>quoted graphs</a> to ground quoted graphs, such that<ul>
 
             <li>for any quoted graphs $&lt;G&gt;$ if $Q_1(&lt;G&gt;)=&lt;H&gt; \implies H \simeq G$
-            <li>for two quoted graphs $&lt;G_1&gt;$ and $&lt;G_2&gt;$: $G_1 \simeq G_2\implies Q_I(G_1)=Q_I(G_2)$,,
+            <li>for two quoted graphs $&lt;G_1&gt;$ and $&lt;G_2&gt;$: $G_1 \simeq G_2\implies Q_I(G_1)=Q_I(G_2)$,
           </ul>
         <li>A subset $EXT_I$ (<dfn class="lint-ignore">extension</dfn>) of $Δ_I^3$.
       </ul>
@@ -410,7 +424,7 @@
           <p>If $t = (s, \texttt{log:implies}, o )$ is a triple, then $I[A\bullet B]\models_{log} t$ if</p>
 
           <ul>
-            <li>$I[A\bullet B](s)&lt; G_1&gt;$ and $I[A\bullet B](o)=&lt;G_2&gt;$ are <a>quoted graphs</a> and $I[A\bullet B]\models_{log} G_2$ holds if $I[A\bullet B]\models_{log} G_1$, or
+            <li>$I[A\bullet B](s)=&lt; G_1&gt;$ and $I[A\bullet B](o)=&lt;G_2&gt;$ are <a>quoted graphs</a> and $I[A\bullet B]\models_{log} G_2$ holds if $I[A\bullet B]\models_{log} G_1$, or
             <li>$I[A\bullet B](s)=&lt;G_1&gt;$ is a quoted graph and $I[A\bullet B](o)=I(\texttt{false})$ and $I[A\bullet B]\not\models_{log} G_1$, or
             <li>$I[A\bullet B](s)$ is not a quoted graph or $I[A\bullet B](o)$ is neither a quoted graph nor $I(\texttt{false})$.
           </ul>
