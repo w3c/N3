@@ -17,7 +17,7 @@ Here, we list projects and implementations related to N3.
 
 ## Introductory Material
 
-* Notation3 Logic: A Practical Introduction. ([presentation](http://ruleml.org/talks/DoertheArndtWilliamWoensel-Notation3-RuleMLWebinar-2022-2-23.pdf))
+* Notation3 Logic: A Practical Introduction. ([presentation](https://drive.google.com/file/d/18m8m-gqaOdPe1YLg7KdgKrMAesero-pn/view))
 
 ## Using N3 rules for vocabulary mapping
 
@@ -36,7 +36,12 @@ Github repo: https://github.com/william-vw/ui_gen
 
 ## Implementing a Finite State Machine using N3 rules
 
-* Explainable Decision Support using Task Network Models in Notation3: Computerizing Lipid Management Clinical Guidelines as Interactive Task Networks.  
-To be presented at the [20th International Conference on Artificial Intelligence in Medicine (AIME 2022)](https://aime22.aimedicine.info/).
+* Explainable Decision Support using Task Network Models in Notation3: Computerizing Lipid Management Clinical Guidelines as Interactive Task Networks. ([paper](https://link.springer.com/chapter/10.1007/978-3-031-09342-5_1))  
+Presented at the [20th International Conference on Artificial Intelligence in Medicine (AIME 2022)](https://aime22.aimedicine.info/).
 
 Github repo: https://github.com/william-vw/glean
+
+## TPAC 2022
+Presentation material from [TPAC 2022](https://www.w3.org/2022/09/TPAC/):  
+[Semantics slides](https://docs.google.com/presentation/d/1Gj7jJMe0r1Gt3KhaFG0nGb7u6EDim21Ph7TEQTeBU8g/edit#slide=id.p1)  
+[Builtins slides](https://docs.google.com/presentation/d/13qKSBmjSXNUgFTsXa0l7HpXnbM9wxf9q/edit?usp=sharing&ouid=103358970104079015755&rtpof=true&sd=true )
