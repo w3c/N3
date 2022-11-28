@@ -1,0 +1,55 @@
+@prefix dc1: <http://purl.org/dc/terms/> .
+@prefix fno: <https://w3id.org/function/ontology#> .
+@prefix log: <http://www.w3.org/2000/10/swap/log#> .
+@prefix n3.list: <http://www.builtins/etc#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+n3.list:iterate a fno:Function ;
+    dc1:description """Iterates over index/value pairs of the subject list. Gets pairs of index and element for every member of the subject.
+        $s+ list:iterate $o[*]
+    For each element of $s, the builtin will unify $o with a list ( $e0 $e1 )
+    where         $e0 [xsd:integer]: index in $s
+        $e1 [concrete]: element in $s
+        """ ;
+    fno:constraints ( [ a fno:Constraint ;
+                dc1:description "Domain can be a variable" ;
+                fno:expression {_:_:Formula3} ;
+                fno:prefixes ( [ a fno:Prefix ;
+                            fno:iri "http://www.w3.org/2000/10/swap/log#" ;
+                            fno:prefix "log" ] [ a fno:Prefix ;
+                            fno:iri "http://www.w3.org/2000/10/swap/list#" ;
+                            fno:prefix "list" ] [ a fno:Prefix ;
+                            fno:iri "urn:" ;
+                            fno:prefix "" ] ) ] [ a fno:Constraint ;
+                dc1:description "Domain can be a list" ;
+                fno:expression {_:_:Formula6} ;
+                fno:prefixes ( [ a fno:Prefix ;
+                            fno:iri "http://www.w3.org/2000/10/swap/log#" ;
+                            fno:prefix "log" ] [ a fno:Prefix ;
+                            fno:iri "http://www.w3.org/2000/10/swap/list#" ;
+                            fno:prefix "list" ] [ a fno:Prefix ;
+                            fno:iri "urn:" ;
+                            fno:prefix "" ] ) ] ) ;
+    fno:name "concatentation" ;
+    fno:object ( [ a rdf:Property ;
+                fno:parameter ( [ a fno:Output ;
+                            dc1:description "index in $s" ;
+                            fno:mode "*" ;
+                            fno:predicate "$o.0" ;
+                            fno:required true ;
+                            fno:type "xs:integer" ] [ a fno:Output ;
+                            dc1:description "element in $s" ;
+                            fno:mode "*" ;
+                            fno:predicate "$o.1" ;
+                            fno:required true ;
+                            fno:type "concrete" ] ) ] ) ;
+    fno:subject ( [ a rdf:Property ;
+                fno:parameter ( [ a fno:Parameter ;
+                            dc1:description "" ;
+                            fno:mode "+" ;
+                            fno:predicate "$s" ;
+                            fno:required true ;
+                            fno:type log:list ] ) ] ) .
+
+

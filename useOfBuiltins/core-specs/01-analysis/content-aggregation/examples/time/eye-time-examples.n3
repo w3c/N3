@@ -1,0 +1,11 @@
+@prefix log: <http://www.w3.org/2000/10/swap/log#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix time: <http://www.w3.org/2000/10/swap/time#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix : <http://eulersharp.sourceforge.net/2007/07test#>.
+
+
+### unit tests for time: builtins
+{"2006-12-14"^^xsd:date time:day "14"} => {:timed1 :result true}.
+{"2006-12-14"^^xsd:date time:month "12"} => {:timem1 :result true}.
+{"2006-12-14"^^xsd:date time:year "2006"} => {:timey1 :result true}.
