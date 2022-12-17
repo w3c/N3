@@ -1,481 +1,1597 @@
 @prefix crypto: <http://www.w3.org/2000/10/swap/crypto#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix fno: <https://w3id.org/function/ontology#> .
 @prefix list: <http://www.w3.org/2000/10/swap/list#> .
 @prefix log: <http://www.w3.org/2000/10/swap/log#> .
 @prefix math: <http://www.w3.org/2000/10/swap/math#> .
-@prefix ns1: <http://www.w3.org/2003/06/sw-vocab-status/ns#> .
-@prefix owl: <http://www.w3.org/2002/07/owl#> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix string: <http://www.w3.org/2000/10/swap/string#> .
-@prefix time1: <http://www.w3.org/2000/10/swap/time#> .
+@prefix time: <http://www.w3.org/2000/10/swap/time#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
-crypto:sha a rdf:Property,
-        owl:FunctionalProperty,
-        owl:InverseFunctionalProperty ;
-    rdfs:label "SHA-1 hash" ;
-    rdfs:comment "The object is a SHA-1 hash of the subject." ;
-    rdfs:domain rdfs:Literal ;
-    rdfs:range xsd:string .
 
-list:append a rdf:Property,
-        owl:FunctionalProperty ;
-    rdfs:label "append" ;
-    rdfs:comment """Concatenates separate lists into a single list. 
-
+crypto:sha a fno:Function ;
+    dcterms:comment "The object is a SHA-1 hash of the subject." ;
+    fno:example ( [ a fno:Test ;
+                dcterms:description """
+                This is an example for a built-in function.
+            """ ;
+                rdfs:seeAlso <http://ppr.cs.dal.ca:3002/n3/editor/?formula=%40prefix%20%3A%20%3C%3A%3E%20.%0A%40prefix%20string%3A%20%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F10%2Fswap%2Fstring%23%3E%20.%0A%0A%3ALet%20%3Astring%20%22placeholder%22%20.%0A%0A%7B%20%3ALet%20%3Astring%20%3Fx%20.%20%7D%0A%3D%3E%0A%7B%20%3Aresult%20%3Ais%20%3Fx%20.%20%7D.%20> ;
+                fno:expression """{
+                @prefix : <:> .
+                @prefix string: <http://www.w3.org/2000/10/swap/string#> .
+                :Let :string "placeholder" .
+                { :Let :string ?x . } => { :result :is ?x . } .
+            }""" ;
+                fno:result """
+                <:result> <:is> "placeholder". 
+            """ ] ) ;
+    fno:name "SHA-1 hash" ;
+    fno:object ( [ a rdf:Property ;
+                fno:parameter ( [ a fno:Output ;
+                            dcterms:description "" ;
+                            fno:mode "*" ;
+                            fno:predicate "$o.0" ;
+                            fno:required true ;
+                            fno:type xsd:string ] ) ] ) ;
+    fno:subject ( [ a rdf:Property ;
+                fno:parameter ( [ a fno:Parameter ;
+                            dcterms:description "" ;
+                            fno:mode "+" ;
+                            fno:predicate "$s" ;
+                            fno:required true ;
+                            fno:type rdfs:Literal ] ) ] ) .
+list:append a fno:Function ;
+    dcterms:comment """Concatenates separate lists into a single list. 
 `true` if and only if the subject is a list of lists and the concatenation of all those lists is `$o`.
-
 `$o` can be calculated as a function of the subject. 
-
 Example: `( (1 2) (3 4) ) list:append (1 2 3 4).`""" ;
-    rdfs:domain log:List ;
-    rdfs:isDefinedBy <file:///Users/timothyduval/Library/Mobile%20Documents/com~apple~CloudDocs/00_unifylogic/50-clients/w3c/N3/ns/list.n3> .
-
-list:in a rdf:Property ;
-    rdfs:label "in" ;
-    rdfs:comment """Determines if an subject is a member of the object list or binds every member of the object list to the subject.
-
+    fno:example ( [ a fno:Test ;
+                dcterms:description """
+                This is an example for a built-in function.
+            """ ;
+                rdfs:seeAlso <http://ppr.cs.dal.ca:3002/n3/editor/?formula=%40prefix%20%3A%20%3C%3A%3E%20.%0A%40prefix%20string%3A%20%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F10%2Fswap%2Fstring%23%3E%20.%0A%0A%3ALet%20%3Astring%20%22placeholder%22%20.%0A%0A%7B%20%3ALet%20%3Astring%20%3Fx%20.%20%7D%0A%3D%3E%0A%7B%20%3Aresult%20%3Ais%20%3Fx%20.%20%7D.%20> ;
+                fno:expression """{
+                @prefix : <:> .
+                @prefix string: <http://www.w3.org/2000/10/swap/string#> .
+                :Let :string "placeholder" .
+                { :Let :string ?x . } => { :result :is ?x . } .
+            }""" ;
+                fno:result """
+                <:result> <:is> "placeholder". 
+            """ ] ) ;
+    fno:name "append" ;
+    fno:subject ( [ a rdf:Property ;
+                fno:parameter ( [ a fno:Parameter ;
+                            dcterms:description "" ;
+                            fno:mode "+" ;
+                            fno:predicate "$s" ;
+                            fno:required true ;
+                            fno:type log:List ] ) ] ) .
+list:in a fno:Function ;
+    dcterms:comment """Determines if an subject is a member of the object list or binds every member of the object list to the subject.
 `true` if and only `$o` is a list and `$s` is in that list.
-
 `$s` can be calculated from `$o`.""" ;
-    rdfs:isDefinedBy <file:///Users/timothyduval/Library/Mobile%20Documents/com~apple~CloudDocs/00_unifylogic/50-clients/w3c/N3/ns/list.n3> ;
-    rdfs:range log:List .
-
-list:last a rdf:Property,
-        owl:FunctionalProperty ;
-    rdfs:label "in" ;
-    rdfs:comment """Extracts the first member of a list. 
-
+    fno:example ( [ a fno:Test ;
+                dcterms:description """
+                This is an example for a built-in function.
+            """ ;
+                rdfs:seeAlso <http://ppr.cs.dal.ca:3002/n3/editor/?formula=%40prefix%20%3A%20%3C%3A%3E%20.%0A%40prefix%20string%3A%20%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F10%2Fswap%2Fstring%23%3E%20.%0A%0A%3ALet%20%3Astring%20%22placeholder%22%20.%0A%0A%7B%20%3ALet%20%3Astring%20%3Fx%20.%20%7D%0A%3D%3E%0A%7B%20%3Aresult%20%3Ais%20%3Fx%20.%20%7D.%20> ;
+                fno:expression """{
+                @prefix : <:> .
+                @prefix string: <http://www.w3.org/2000/10/swap/string#> .
+                :Let :string "placeholder" .
+                { :Let :string ?x . } => { :result :is ?x . } .
+            }""" ;
+                fno:result """
+                <:result> <:is> "placeholder". 
+            """ ] ) ;
+    fno:name "in" ;
+    fno:object ( [ a rdf:Property ;
+                fno:parameter ( [ a fno:Output ;
+                            dcterms:description "" ;
+                            fno:mode "*" ;
+                            fno:predicate "$o.0" ;
+                            fno:required true ;
+                            fno:type log:List ] ) ] ) .
+list:last a fno:Function ;
+    dcterms:comment """Extracts the first member of a list. 
 `true` if and only the subject is a list and `$o` is the last member of that list.
-
 `$o` can be calculated as a function of the subject.""" ;
-    rdfs:domain log:List ;
-    rdfs:isDefinedBy <file:///Users/timothyduval/Library/Mobile%20Documents/com~apple~CloudDocs/00_unifylogic/50-clients/w3c/N3/ns/list.n3> .
-
-list:member a rdf:Property ;
-    rdfs:label "member" ;
-    rdfs:comment """Determines if an object is a member of the subject list or binds every member of the subject list to the object.
-
+    fno:example ( [ a fno:Test ;
+                dcterms:description """
+                This is an example for a built-in function.
+            """ ;
+                rdfs:seeAlso <http://ppr.cs.dal.ca:3002/n3/editor/?formula=%40prefix%20%3A%20%3C%3A%3E%20.%0A%40prefix%20string%3A%20%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F10%2Fswap%2Fstring%23%3E%20.%0A%0A%3ALet%20%3Astring%20%22placeholder%22%20.%0A%0A%7B%20%3ALet%20%3Astring%20%3Fx%20.%20%7D%0A%3D%3E%0A%7B%20%3Aresult%20%3Ais%20%3Fx%20.%20%7D.%20> ;
+                fno:expression """{
+                @prefix : <:> .
+                @prefix string: <http://www.w3.org/2000/10/swap/string#> .
+                :Let :string "placeholder" .
+                { :Let :string ?x . } => { :result :is ?x . } .
+            }""" ;
+                fno:result """
+                <:result> <:is> "placeholder". 
+            """ ] ) ;
+    fno:name "in" ;
+    fno:subject ( [ a rdf:Property ;
+                fno:parameter ( [ a fno:Parameter ;
+                            dcterms:description "" ;
+                            fno:mode "+" ;
+                            fno:predicate "$s" ;
+                            fno:required true ;
+                            fno:type log:List ] ) ] ) .
+list:member a fno:Function ;
+    dcterms:comment """Determines if an object is a member of the subject list or binds every member of the subject list to the object.
 `true` if and only `$s` is a list and `o` is in that list.
-
 `$o` can be calculated from `$s`.""" ;
-    rdfs:domain log:List ;
-    rdfs:isDefinedBy <file:///Users/timothyduval/Library/Mobile%20Documents/com~apple~CloudDocs/00_unifylogic/50-clients/w3c/N3/ns/list.n3> .
-
-log:conclusion a rdf:Property ;
-    rdfs:label "conclusion" ;
-    rdfs:comment """All possible conclusions which can be drawn from a formula.
-
+    fno:example ( [ a fno:Test ;
+                dcterms:description """
+                This is an example for a built-in function.
+            """ ;
+                rdfs:seeAlso <http://ppr.cs.dal.ca:3002/n3/editor/?formula=%40prefix%20%3A%20%3C%3A%3E%20.%0A%40prefix%20string%3A%20%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F10%2Fswap%2Fstring%23%3E%20.%0A%0A%3ALet%20%3Astring%20%22placeholder%22%20.%0A%0A%7B%20%3ALet%20%3Astring%20%3Fx%20.%20%7D%0A%3D%3E%0A%7B%20%3Aresult%20%3Ais%20%3Fx%20.%20%7D.%20> ;
+                fno:expression """{
+                @prefix : <:> .
+                @prefix string: <http://www.w3.org/2000/10/swap/string#> .
+                :Let :string "placeholder" .
+                { :Let :string ?x . } => { :result :is ?x . } .
+            }""" ;
+                fno:result """
+                <:result> <:is> "placeholder". 
+            """ ] ) ;
+    fno:name "member" ;
+    fno:subject ( [ a rdf:Property ;
+                fno:parameter ( [ a fno:Parameter ;
+                            dcterms:description "" ;
+                            fno:mode "+" ;
+                            fno:predicate "$s" ;
+                            fno:required true ;
+                            fno:type log:List ] ) ] ) .
+log:conclusion a fno:Function ;
+    dcterms:comment """All possible conclusions which can be drawn from a formula.
 `true` if and only if `$o` is the set of conclusions which can be drawn from `$s`, by successively applying any rules it contains to the data it contains.
 Note: this is equivalent to cwm's "--think" command line function. It does use built-ins, so it may for example indirectly invoke other documents, validate signatures, etc.""" ;
-    rdfs:domain log:Formula ;
-    rdfs:range log:Formula .
-
-log:conjunction a rdf:Property ;
-    rdfs:label "conjunction" ;
-    rdfs:comment """A function to merge formulae: logical AND.
-
+    fno:example ( [ a fno:Test ;
+                dcterms:description """
+                This is an example for a built-in function.
+            """ ;
+                rdfs:seeAlso <http://ppr.cs.dal.ca:3002/n3/editor/?formula=%40prefix%20%3A%20%3C%3A%3E%20.%0A%40prefix%20string%3A%20%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F10%2Fswap%2Fstring%23%3E%20.%0A%0A%3ALet%20%3Astring%20%22placeholder%22%20.%0A%0A%7B%20%3ALet%20%3Astring%20%3Fx%20.%20%7D%0A%3D%3E%0A%7B%20%3Aresult%20%3Ais%20%3Fx%20.%20%7D.%20> ;
+                fno:expression """{
+                @prefix : <:> .
+                @prefix string: <http://www.w3.org/2000/10/swap/string#> .
+                :Let :string "placeholder" .
+                { :Let :string ?x . } => { :result :is ?x . } .
+            }""" ;
+                fno:result """
+                <:result> <:is> "placeholder". 
+            """ ] ) ;
+    fno:name "conclusion" ;
+    fno:object ( [ a rdf:Property ;
+                fno:parameter ( [ a fno:Output ;
+                            dcterms:description "" ;
+                            fno:mode "*" ;
+                            fno:predicate "$o.0" ;
+                            fno:required true ;
+                            fno:type log:Formula ] ) ] ) ;
+    fno:subject ( [ a rdf:Property ;
+                fno:parameter ( [ a fno:Parameter ;
+                            dcterms:description "" ;
+                            fno:mode "+" ;
+                            fno:predicate "$s" ;
+                            fno:required true ;
+                            fno:type log:Formula ] ) ] ) .
+log:conjunction a fno:Function ;
+    dcterms:comment """A function to merge formulae: logical AND.
 `true` if and only if `o`, which can be generated, is a formula containing a copy of each of the formulae `$s_1 .. $s_n`.""" ;
-    rdfs:domain log:List ;
-    rdfs:range log:Formula .
-
-log:content a rdf:Property ;
-    rdfs:label "content" ;
-    rdfs:comment """This connects a document and a string that represents it. (Cwm knows how to go get a document in order to evaluate this.)
+    fno:example ( [ a fno:Test ;
+                dcterms:description """
+                This is an example for a built-in function.
+            """ ;
+                rdfs:seeAlso <http://ppr.cs.dal.ca:3002/n3/editor/?formula=%40prefix%20%3A%20%3C%3A%3E%20.%0A%40prefix%20string%3A%20%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F10%2Fswap%2Fstring%23%3E%20.%0A%0A%3ALet%20%3Astring%20%22placeholder%22%20.%0A%0A%7B%20%3ALet%20%3Astring%20%3Fx%20.%20%7D%0A%3D%3E%0A%7B%20%3Aresult%20%3Ais%20%3Fx%20.%20%7D.%20> ;
+                fno:expression """{
+                @prefix : <:> .
+                @prefix string: <http://www.w3.org/2000/10/swap/string#> .
+                :Let :string "placeholder" .
+                { :Let :string ?x . } => { :result :is ?x . } .
+            }""" ;
+                fno:result """
+                <:result> <:is> "placeholder". 
+            """ ] ) ;
+    fno:name "conjunction" ;
+    fno:object ( [ a rdf:Property ;
+                fno:parameter ( [ a fno:Output ;
+                            dcterms:description "" ;
+                            fno:mode "*" ;
+                            fno:predicate "$o.0" ;
+                            fno:required true ;
+                            fno:type log:Formula ] ) ] ) ;
+    fno:subject ( [ a rdf:Property ;
+                fno:parameter ( [ a fno:Parameter ;
+                            dcterms:description "" ;
+                            fno:mode "+" ;
+                            fno:predicate "$s" ;
+                            fno:required true ;
+                            fno:type log:List ] ) ] ) .
+log:content a fno:Function ;
+    dcterms:comment """This connects a document and a string that represents it. (Cwm knows how to go get a document in order to evaluate this.)
 Note: the content-type of the information is not given and so must be known or guessed.""" ;
-    rdfs:domain log:N3Document ;
-    rdfs:range log:String .
-
-log:dtlit a rdf:Property ;
-    rdfs:comment """Takes a list of a string and an IRI and creates a datatyped literal.
-The subject is a list composed of a string and an IRI, and the object is a datatyped literal with the value `$s_1` and datatype `$s_2`.
-
-`true` if and only if the datatyped literal formed of `$s_0` and `$s_1` equals `$o`.
-
-Example: ``{ ("2005-03-30T11:00:00" xsd:dateTime) log:dtlit ?X } => { ?X a :Answer } .` will produce `"2005-03-30T11:00:00"^^xsd:dateTime a :Answer .`""" ;
-    rdfs:domain log:List ;
-    rdfs:labe "dtlit" ;
-    rdfs:range rdfs:Literal .
-
-log:includes a rdf:Property ;
-    rdfs:label "includes" ;
-    rdfs:comment """The subject formula includes the object formula.
-
+    fno:example ( [ a fno:Test ;
+                dcterms:description """
+                This is an example for a built-in function.
+            """ ;
+                rdfs:seeAlso <http://ppr.cs.dal.ca:3002/n3/editor/?formula=%40prefix%20%3A%20%3C%3A%3E%20.%0A%40prefix%20string%3A%20%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F10%2Fswap%2Fstring%23%3E%20.%0A%0A%3ALet%20%3Astring%20%22placeholder%22%20.%0A%0A%7B%20%3ALet%20%3Astring%20%3Fx%20.%20%7D%0A%3D%3E%0A%7B%20%3Aresult%20%3Ais%20%3Fx%20.%20%7D.%20> ;
+                fno:expression """{
+                @prefix : <:> .
+                @prefix string: <http://www.w3.org/2000/10/swap/string#> .
+                :Let :string "placeholder" .
+                { :Let :string ?x . } => { :result :is ?x . } .
+            }""" ;
+                fno:result """
+                <:result> <:is> "placeholder". 
+            """ ] ) ;
+    fno:name "content" ;
+    fno:object ( [ a rdf:Property ;
+                fno:parameter ( [ a fno:Output ;
+                            dcterms:description "" ;
+                            fno:mode "*" ;
+                            fno:predicate "$o.0" ;
+                            fno:required true ;
+                            fno:type log:String ] ) ] ) ;
+    fno:subject ( [ a rdf:Property ;
+                fno:parameter ( [ a fno:Parameter ;
+                            dcterms:description "" ;
+                            fno:mode "+" ;
+                            fno:predicate "$s" ;
+                            fno:required true ;
+                            fno:type log:N3Document ] ) ] ) .
+log:dtlit fno:example ( [ a fno:Test ;
+                dcterms:description """
+                This is an example for a built-in function.
+            """ ;
+                rdfs:seeAlso <http://ppr.cs.dal.ca:3002/n3/editor/?formula=%40prefix%20%3A%20%3C%3A%3E%20.%0A%40prefix%20string%3A%20%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F10%2Fswap%2Fstring%23%3E%20.%0A%0A%3ALet%20%3Astring%20%22placeholder%22%20.%0A%0A%7B%20%3ALet%20%3Astring%20%3Fx%20.%20%7D%0A%3D%3E%0A%7B%20%3Aresult%20%3Ais%20%3Fx%20.%20%7D.%20> ;
+                fno:expression """{
+                @prefix : <:> .
+                @prefix string: <http://www.w3.org/2000/10/swap/string#> .
+                :Let :string "placeholder" .
+                { :Let :string ?x . } => { :result :is ?x . } .
+            }""" ;
+                fno:result """
+                <:result> <:is> "placeholder". 
+            """ ] ) ;
+    fno:object ( [ a rdf:Property ;
+                fno:parameter ( [ a fno:Output ;
+                            dcterms:description "" ;
+                            fno:mode "*" ;
+                            fno:predicate "$o.0" ;
+                            fno:required true ;
+                            fno:type rdfs:Literal ] ) ] ) ;
+    fno:subject ( [ a rdf:Property ;
+                fno:parameter ( [ a fno:Parameter ;
+                            dcterms:description "" ;
+                            fno:mode "+" ;
+                            fno:predicate "$s" ;
+                            fno:required true ;
+                            fno:type log:List ] ) ] ) .
+log:equalTo a fno:Function ;
+    dcterms:comment """Determines if two RDF resources are the same.
+`true` if and only if `$s` and `$o` are the same RDF node (symbol or literal).
+Not to be confused with owl:sameAs.""" ;
+    fno:example ( [ a fno:Test ;
+                dcterms:description """
+                This is an example for a built-in function.
+            """ ;
+                rdfs:seeAlso <http://ppr.cs.dal.ca:3002/n3/editor/?formula=%40prefix%20%3A%20%3C%3A%3E%20.%0A%40prefix%20string%3A%20%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F10%2Fswap%2Fstring%23%3E%20.%0A%0A%3ALet%20%3Astring%20%22placeholder%22%20.%0A%0A%7B%20%3ALet%20%3Astring%20%3Fx%20.%20%7D%0A%3D%3E%0A%7B%20%3Aresult%20%3Ais%20%3Fx%20.%20%7D.%20> ;
+                fno:expression """{
+                @prefix : <:> .
+                @prefix string: <http://www.w3.org/2000/10/swap/string#> .
+                :Let :string "placeholder" .
+                { :Let :string ?x . } => { :result :is ?x . } .
+            }""" ;
+                fno:result """
+                <:result> <:is> "placeholder". 
+            """ ] ) ;
+    fno:name "equalTo" .
+log:includes a fno:Function ;
+    dcterms:comment """The subject formula includes the object formula.
 `true` if and only if `s` includes `$o` if there exists some substitution which when applied to `$o` creates a formula B' such that for every statement in B' is also in `$s`, every variable universally (or existentially) quantified in B' is quantified in the same way in `$s`. 
-
 Variable substitution is applied recursively to nested compound terms such as formulae, lists and sets.
-
 Note: you can use this to peer inside nested formulae.""" ;
-    rdfs:domain log:Formula ;
-    rdfs:isDefinedBy <file:///Users/timothyduval/Library/Mobile%20Documents/com~apple~CloudDocs/00_unifylogic/50-clients/w3c/N3/ns/log.n3> ;
-    rdfs:range log:Formula .
-
-log:notEqualTo a rdf:Property ;
-    rdfs:label "notEqualTo" ;
-    rdfs:comment """Determines if two RDF resources are not the same.
-
+    fno:example ( [ a fno:Test ;
+                dcterms:description """
+                This is an example for a built-in function.
+            """ ;
+                rdfs:seeAlso <http://ppr.cs.dal.ca:3002/n3/editor/?formula=%40prefix%20%3A%20%3C%3A%3E%20.%0A%40prefix%20string%3A%20%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F10%2Fswap%2Fstring%23%3E%20.%0A%0A%3ALet%20%3Astring%20%22placeholder%22%20.%0A%0A%7B%20%3ALet%20%3Astring%20%3Fx%20.%20%7D%0A%3D%3E%0A%7B%20%3Aresult%20%3Ais%20%3Fx%20.%20%7D.%20> ;
+                fno:expression """{
+                @prefix : <:> .
+                @prefix string: <http://www.w3.org/2000/10/swap/string#> .
+                :Let :string "placeholder" .
+                { :Let :string ?x . } => { :result :is ?x . } .
+            }""" ;
+                fno:result """
+                <:result> <:is> "placeholder". 
+            """ ] ) ;
+    fno:name "includes" ;
+    fno:object ( [ a rdf:Property ;
+                fno:parameter ( [ a fno:Output ;
+                            dcterms:description "" ;
+                            fno:mode "*" ;
+                            fno:predicate "$o.0" ;
+                            fno:required true ;
+                            fno:type log:Formula ] ) ] ) ;
+    fno:subject ( [ a rdf:Property ;
+                fno:parameter ( [ a fno:Parameter ;
+                            dcterms:description "" ;
+                            fno:mode "+" ;
+                            fno:predicate "$s" ;
+                            fno:required true ;
+                            fno:type log:Formula ] ) ] ) .
+log:notEqualTo a fno:Function ;
+    dcterms:comment """Determines if two RDF resources are not the same.
 `true` if and only if `$s` and `$o` are not the same RDF node (symbol or literal).""" ;
-    owl:inverse log:equalTo .
-
-log:notIncludes a rdf:Property ;
-    rdfs:label "not includes" ;
-    rdfs:comment """The object formula is NOT a subset of subject.
-
+    fno:example ( [ a fno:Test ;
+                dcterms:description """
+                This is an example for a built-in function.
+            """ ;
+                rdfs:seeAlso <http://ppr.cs.dal.ca:3002/n3/editor/?formula=%40prefix%20%3A%20%3C%3A%3E%20.%0A%40prefix%20string%3A%20%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F10%2Fswap%2Fstring%23%3E%20.%0A%0A%3ALet%20%3Astring%20%22placeholder%22%20.%0A%0A%7B%20%3ALet%20%3Astring%20%3Fx%20.%20%7D%0A%3D%3E%0A%7B%20%3Aresult%20%3Ais%20%3Fx%20.%20%7D.%20> ;
+                fno:expression """{
+                @prefix : <:> .
+                @prefix string: <http://www.w3.org/2000/10/swap/string#> .
+                :Let :string "placeholder" .
+                { :Let :string ?x . } => { :result :is ?x . } .
+            }""" ;
+                fno:result """
+                <:result> <:is> "placeholder". 
+            """ ] ) ;
+    fno:name "notEqualTo" .
+log:notIncludes a fno:Function ;
+    dcterms:comment """The object formula is NOT a subset of subject.
 `true` if and only if `log:includes` is `false`. The converse of log:includes.
-
 Related: see `log:includes`.""" ;
-    rdfs:domain log:Formula ;
-    rdfs:isDefinedBy <file:///Users/timothyduval/Library/Mobile%20Documents/com~apple~CloudDocs/00_unifylogic/50-clients/w3c/N3/ns/log.n3> ;
-    rdfs:range log:Formula .
-
-log:outputString a rdf:Property ;
-    rdfs:label "output string" ;
-    rdfs:comment """The subject is a key and the object is a string,
+    fno:example ( [ a fno:Test ;
+                dcterms:description """
+                This is an example for a built-in function.
+            """ ;
+                rdfs:seeAlso <http://ppr.cs.dal.ca:3002/n3/editor/?formula=%40prefix%20%3A%20%3C%3A%3E%20.%0A%40prefix%20string%3A%20%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F10%2Fswap%2Fstring%23%3E%20.%0A%0A%3ALet%20%3Astring%20%22placeholder%22%20.%0A%0A%7B%20%3ALet%20%3Astring%20%3Fx%20.%20%7D%0A%3D%3E%0A%7B%20%3Aresult%20%3Ais%20%3Fx%20.%20%7D.%20> ;
+                fno:expression """{
+                @prefix : <:> .
+                @prefix string: <http://www.w3.org/2000/10/swap/string#> .
+                :Let :string "placeholder" .
+                { :Let :string ?x . } => { :result :is ?x . } .
+            }""" ;
+                fno:result """
+                <:result> <:is> "placeholder". 
+            """ ] ) ;
+    fno:name "not includes" ;
+    fno:object ( [ a rdf:Property ;
+                fno:parameter ( [ a fno:Output ;
+                            dcterms:description "" ;
+                            fno:mode "*" ;
+                            fno:predicate "$o.0" ;
+                            fno:required true ;
+                            fno:type log:Formula ] ) ] ) ;
+    fno:subject ( [ a rdf:Property ;
+                fno:parameter ( [ a fno:Parameter ;
+                            dcterms:description "" ;
+                            fno:mode "+" ;
+                            fno:predicate "$s" ;
+                            fno:required true ;
+                            fno:type log:Formula ] ) ] ) .
+log:outputString a fno:Function ;
+    dcterms:comment """The subject is a key and the object is a string,
 where the strings are to be output in the order of the keys.
 See cwm --strings in cwm --help.
 """ ;
-    rdfs:range log:String ;
-    ns1:term_status "deprecated" .
-
-log:parsedAsN3 a rdf:Property ;
-    rdfs:label "parses to N3" ;
-    rdfs:comment """The subject string, parsed as N3, gives this formula.
-
+    fno:example ( [ a fno:Test ;
+                dcterms:description """
+                This is an example for a built-in function.
+            """ ;
+                rdfs:seeAlso <http://ppr.cs.dal.ca:3002/n3/editor/?formula=%40prefix%20%3A%20%3C%3A%3E%20.%0A%40prefix%20string%3A%20%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F10%2Fswap%2Fstring%23%3E%20.%0A%0A%3ALet%20%3Astring%20%22placeholder%22%20.%0A%0A%7B%20%3ALet%20%3Astring%20%3Fx%20.%20%7D%0A%3D%3E%0A%7B%20%3Aresult%20%3Ais%20%3Fx%20.%20%7D.%20> ;
+                fno:expression """{
+                @prefix : <:> .
+                @prefix string: <http://www.w3.org/2000/10/swap/string#> .
+                :Let :string "placeholder" .
+                { :Let :string ?x . } => { :result :is ?x . } .
+            }""" ;
+                fno:result """
+                <:result> <:is> "placeholder". 
+            """ ] ) ;
+    fno:name "output string" ;
+    fno:object ( [ a rdf:Property ;
+                fno:parameter ( [ a fno:Output ;
+                            dcterms:description "" ;
+                            fno:mode "*" ;
+                            fno:predicate "$o.0" ;
+                            fno:required true ;
+                            fno:type log:String ] ) ] ) .
+log:parsedAsN3 a fno:Function ;
+    dcterms:comment """The subject string, parsed as N3, gives this formula.
 `true` if and only if `$s`, parsed as N3, gives `$o`.
-
 `$s` should be a syntactically valid string in N3 format.
-
 Related: see `log:n3String`.""" ;
-    rdfs:domain log:N3 ;
-    rdfs:range log:Formula .
-
-log:rawType a rdf:Property,
-        owl:FunctionalProperty ;
-    rdfs:label "rawType" ;
-    rdfs:comment """Returns an identifier based on the type of the RDF Resource.
-
+    fno:example ( [ a fno:Test ;
+                dcterms:description """
+                This is an example for a built-in function.
+            """ ;
+                rdfs:seeAlso <http://ppr.cs.dal.ca:3002/n3/editor/?formula=%40prefix%20%3A%20%3C%3A%3E%20.%0A%40prefix%20string%3A%20%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F10%2Fswap%2Fstring%23%3E%20.%0A%0A%3ALet%20%3Astring%20%22placeholder%22%20.%0A%0A%7B%20%3ALet%20%3Astring%20%3Fx%20.%20%7D%0A%3D%3E%0A%7B%20%3Aresult%20%3Ais%20%3Fx%20.%20%7D.%20> ;
+                fno:expression """{
+                @prefix : <:> .
+                @prefix string: <http://www.w3.org/2000/10/swap/string#> .
+                :Let :string "placeholder" .
+                { :Let :string ?x . } => { :result :is ?x . } .
+            }""" ;
+                fno:result """
+                <:result> <:is> "placeholder". 
+            """ ] ) ;
+    fno:name "parses to N3" ;
+    fno:object ( [ a rdf:Property ;
+                fno:parameter ( [ a fno:Output ;
+                            dcterms:description "" ;
+                            fno:mode "*" ;
+                            fno:predicate "$o.0" ;
+                            fno:required true ;
+                            fno:type log:Formula ] ) ] ) ;
+    fno:subject ( [ a rdf:Property ;
+                fno:parameter ( [ a fno:Parameter ;
+                            dcterms:description "" ;
+                            fno:mode "+" ;
+                            fno:predicate "$s" ;
+                            fno:required true ;
+                            fno:type log:N3 ] ) ] ) .
+log:rawType a fno:Function ;
+    dcterms:comment """Returns an identifier based on the type of the RDF Resource.
 `true` if the type of `$s` is the same as `$o`, or binds the type to `$o`.
-
 `$o` is unbound or one of `log:Formula`, `log:Literal`, `log:List`, `log:Set` or `log:Other`.
-
 Example: `log:semanticsOrError` returns either a formula or a string, and you can check which using `log:rawType`. """ ;
-    rdfs:range log:Type .
-
-log:semantics a rdf:Property ;
-    rdfs:label "semantics" ;
-    rdfs:comment """The log:semantics of a document is the formula achieved by parsing representation of the document.
+    fno:example ( [ a fno:Test ;
+                dcterms:description """
+                This is an example for a built-in function.
+            """ ;
+                rdfs:seeAlso <http://ppr.cs.dal.ca:3002/n3/editor/?formula=%40prefix%20%3A%20%3C%3A%3E%20.%0A%40prefix%20string%3A%20%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F10%2Fswap%2Fstring%23%3E%20.%0A%0A%3ALet%20%3Astring%20%22placeholder%22%20.%0A%0A%7B%20%3ALet%20%3Astring%20%3Fx%20.%20%7D%0A%3D%3E%0A%7B%20%3Aresult%20%3Ais%20%3Fx%20.%20%7D.%20> ;
+                fno:expression """{
+                @prefix : <:> .
+                @prefix string: <http://www.w3.org/2000/10/swap/string#> .
+                :Let :string "placeholder" .
+                { :Let :string ?x . } => { :result :is ?x . } .
+            }""" ;
+                fno:result """
+                <:result> <:is> "placeholder". 
+            """ ] ) ;
+    fno:name "rawType" ;
+    fno:object ( [ a rdf:Property ;
+                fno:parameter ( [ a fno:Output ;
+                            dcterms:description "" ;
+                            fno:mode "*" ;
+                            fno:predicate "$o.0" ;
+                            fno:required true ;
+                            fno:type log:Type ] ) ] ) .
+log:semantics a fno:Function ;
+    dcterms:comment """The log:semantics of a document is the formula achieved by parsing representation of the document.
 For a document in Notation3, `log:semantics` is the `log:parsedAsN3` of the `log:content` of the document.
 For a document in another RDF syntax, it is parsed according to the appropriate specification to yield an RDF formula (a subclass of N3 `log:Formula`).
 Evaluates to `false` if an unrecognized document format is retrieved.
 Aside: Philosophers will be distracted here into worrying about the meaning of meaning. At least we didn't call this function "meaning"! 
 In as much as N3 is used as an interlingua for interoperability for different systems, this for an N3 based system is the meaning expressed by a document.
 Related: see `log:parsedAsN3` and `log:content`.""" ;
-    rdfs:domain log:N3Document ;
-    rdfs:range log:Formula .
-
-log:semanticsOrError a rdf:Property ;
-    rdfs:label "semantics or error message" ;
-    rdfs:comment """This connects a document and either the formula it parses to, or an error message explaining what went wrong with trying.
+    fno:example ( [ a fno:Test ;
+                dcterms:description """
+                This is an example for a built-in function.
+            """ ;
+                rdfs:seeAlso <http://ppr.cs.dal.ca:3002/n3/editor/?formula=%40prefix%20%3A%20%3C%3A%3E%20.%0A%40prefix%20string%3A%20%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F10%2Fswap%2Fstring%23%3E%20.%0A%0A%3ALet%20%3Astring%20%22placeholder%22%20.%0A%0A%7B%20%3ALet%20%3Astring%20%3Fx%20.%20%7D%0A%3D%3E%0A%7B%20%3Aresult%20%3Ais%20%3Fx%20.%20%7D.%20> ;
+                fno:expression """{
+                @prefix : <:> .
+                @prefix string: <http://www.w3.org/2000/10/swap/string#> .
+                :Let :string "placeholder" .
+                { :Let :string ?x . } => { :result :is ?x . } .
+            }""" ;
+                fno:result """
+                <:result> <:is> "placeholder". 
+            """ ] ) ;
+    fno:name "semantics" ;
+    fno:object ( [ a rdf:Property ;
+                fno:parameter ( [ a fno:Output ;
+                            dcterms:description "" ;
+                            fno:mode "*" ;
+                            fno:predicate "$o.0" ;
+                            fno:required true ;
+                            fno:type log:Formula ] ) ] ) ;
+    fno:subject ( [ a rdf:Property ;
+                fno:parameter ( [ a fno:Parameter ;
+                            dcterms:description "" ;
+                            fno:mode "+" ;
+                            fno:predicate "$s" ;
+                            fno:required true ;
+                            fno:type log:N3Document ] ) ] ) .
+log:semanticsOrError a fno:Function ;
+    dcterms:comment """This connects a document and either the formula it parses to, or an error message explaining what went wrong with trying.
 Related: see `log:semantics`.""" ;
-    rdfs:domain log:N3Document .
-
-log:uri a rdf:Property ;
-    rdfs:comment """This allows one to look at the actual string of the URI which identifies this.
-
+    fno:example ( [ a fno:Test ;
+                dcterms:description """
+                This is an example for a built-in function.
+            """ ;
+                rdfs:seeAlso <http://ppr.cs.dal.ca:3002/n3/editor/?formula=%40prefix%20%3A%20%3C%3A%3E%20.%0A%40prefix%20string%3A%20%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F10%2Fswap%2Fstring%23%3E%20.%0A%0A%3ALet%20%3Astring%20%22placeholder%22%20.%0A%0A%7B%20%3ALet%20%3Astring%20%3Fx%20.%20%7D%0A%3D%3E%0A%7B%20%3Aresult%20%3Ais%20%3Fx%20.%20%7D.%20> ;
+                fno:expression """{
+                @prefix : <:> .
+                @prefix string: <http://www.w3.org/2000/10/swap/string#> .
+                :Let :string "placeholder" .
+                { :Let :string ?x . } => { :result :is ?x . } .
+            }""" ;
+                fno:result """
+                <:result> <:is> "placeholder". 
+            """ ] ) ;
+    fno:name "semantics or error message" ;
+    fno:subject ( [ a rdf:Property ;
+                fno:parameter ( [ a fno:Parameter ;
+                            dcterms:description "" ;
+                            fno:mode "+" ;
+                            fno:predicate "$s" ;
+                            fno:required true ;
+                            fno:type log:N3Document ] ) ] ) .
+log:uri a fno:Function ;
+    dcterms:comment """This allows one to look at the actual string of the URI which identifies this.
 (Cwm can get the URI of a resource or get the resource from the URI.)
 This is a level breaker, breaking the rule of not looking inside a
 URI.   Use (eg with  string:match) to replace RDF's old "aboutEach"
 functionality. Use to implement the URI spec and protocol specs, etc.
 """ ;
-    rdfs:label "uri" ;
-    rdfs:range log:String .
-
-math:absoluteValue a rdf:Property,
-        math:Function ;
-    rdfs:label "negation" ;
-    rdfs:comment "The object is calulated as the absolute value of the subject." ;
-    rdfs:domain math:Value ;
-    rdfs:range math:Value .
-
-math:cos a rdf:Property,
-        math:LogicalOperator ;
-    rdfs:label "cos" ;
-    rdfs:comment """The subject is an angle expressed in radians.
+    fno:example ( [ a fno:Test ;
+                dcterms:description """
+                This is an example for a built-in function.
+            """ ;
+                rdfs:seeAlso <http://ppr.cs.dal.ca:3002/n3/editor/?formula=%40prefix%20%3A%20%3C%3A%3E%20.%0A%40prefix%20string%3A%20%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F10%2Fswap%2Fstring%23%3E%20.%0A%0A%3ALet%20%3Astring%20%22placeholder%22%20.%0A%0A%7B%20%3ALet%20%3Astring%20%3Fx%20.%20%7D%0A%3D%3E%0A%7B%20%3Aresult%20%3Ais%20%3Fx%20.%20%7D.%20> ;
+                fno:expression """{
+                @prefix : <:> .
+                @prefix string: <http://www.w3.org/2000/10/swap/string#> .
+                :Let :string "placeholder" .
+                { :Let :string ?x . } => { :result :is ?x . } .
+            }""" ;
+                fno:result """
+                <:result> <:is> "placeholder". 
+            """ ] ) ;
+    fno:name "uri" ;
+    fno:object ( [ a rdf:Property ;
+                fno:parameter ( [ a fno:Output ;
+                            dcterms:description "" ;
+                            fno:mode "*" ;
+                            fno:predicate "$o.0" ;
+                            fno:required true ;
+                            fno:type log:String ] ) ] ) .
+math:absoluteValue a fno:Function ;
+    dcterms:comment "The object is calulated as the absolute value of the subject." ;
+    fno:example ( [ a fno:Test ;
+                dcterms:description """
+                This is an example for a built-in function.
+            """ ;
+                rdfs:seeAlso <http://ppr.cs.dal.ca:3002/n3/editor/?formula=%40prefix%20%3A%20%3C%3A%3E%20.%0A%40prefix%20string%3A%20%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F10%2Fswap%2Fstring%23%3E%20.%0A%0A%3ALet%20%3Astring%20%22placeholder%22%20.%0A%0A%7B%20%3ALet%20%3Astring%20%3Fx%20.%20%7D%0A%3D%3E%0A%7B%20%3Aresult%20%3Ais%20%3Fx%20.%20%7D.%20> ;
+                fno:expression """{
+                @prefix : <:> .
+                @prefix string: <http://www.w3.org/2000/10/swap/string#> .
+                :Let :string "placeholder" .
+                { :Let :string ?x . } => { :result :is ?x . } .
+            }""" ;
+                fno:result """
+                <:result> <:is> "placeholder". 
+            """ ] ) ;
+    fno:name "negation" ;
+    fno:object ( [ a rdf:Property ;
+                fno:parameter ( [ a fno:Output ;
+                            dcterms:description "" ;
+                            fno:mode "*" ;
+                            fno:predicate "$o.0" ;
+                            fno:required true ;
+                            fno:type math:Value ] ) ] ) ;
+    fno:subject ( [ a rdf:Property ;
+                fno:parameter ( [ a fno:Parameter ;
+                            dcterms:description "" ;
+                            fno:mode "+" ;
+                            fno:predicate "$s" ;
+                            fno:required true ;
+                            fno:type math:Value ] ) ] ) .
+math:cos a fno:Function ;
+    dcterms:comment """The subject is an angle expressed in radians.
 The object is calulated as the cosine value of the subject.""" ;
-    rdfs:domain math:Value ;
-    rdfs:range math:Value .
-
-math:degrees a rdf:Property,
-        math:LogicalOperator ;
-    rdfs:label "degrees" ;
-    rdfs:comment """The subject is an angle expressed in radians.
+    fno:example ( [ a fno:Test ;
+                dcterms:description """
+                This is an example for a built-in function.
+            """ ;
+                rdfs:seeAlso <http://ppr.cs.dal.ca:3002/n3/editor/?formula=%40prefix%20%3A%20%3C%3A%3E%20.%0A%40prefix%20string%3A%20%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F10%2Fswap%2Fstring%23%3E%20.%0A%0A%3ALet%20%3Astring%20%22placeholder%22%20.%0A%0A%7B%20%3ALet%20%3Astring%20%3Fx%20.%20%7D%0A%3D%3E%0A%7B%20%3Aresult%20%3Ais%20%3Fx%20.%20%7D.%20> ;
+                fno:expression """{
+                @prefix : <:> .
+                @prefix string: <http://www.w3.org/2000/10/swap/string#> .
+                :Let :string "placeholder" .
+                { :Let :string ?x . } => { :result :is ?x . } .
+            }""" ;
+                fno:result """
+                <:result> <:is> "placeholder". 
+            """ ] ) ;
+    fno:name "cos" ;
+    fno:object ( [ a rdf:Property ;
+                fno:parameter ( [ a fno:Output ;
+                            dcterms:description "" ;
+                            fno:mode "*" ;
+                            fno:predicate "$o.0" ;
+                            fno:required true ;
+                            fno:type math:Value ] ) ] ) ;
+    fno:subject ( [ a rdf:Property ;
+                fno:parameter ( [ a fno:Parameter ;
+                            dcterms:description "" ;
+                            fno:mode "+" ;
+                            fno:predicate "$s" ;
+                            fno:required true ;
+                            fno:type math:Value ] ) ] ) .
+math:degrees a fno:Function ;
+    dcterms:comment """The subject is an angle expressed in radians.
 The object is calulated as the conversion in degrees of the value of the subject.""" ;
-    rdfs:domain math:Value ;
-    rdfs:range math:Value .
-
-math:difference a rdf:Property,
-        math:Function ;
-    rdfs:label "difference" ;
-    rdfs:comment """The subject is a pair of numbers. The object
+    fno:example ( [ a fno:Test ;
+                dcterms:description """
+                This is an example for a built-in function.
+            """ ;
+                rdfs:seeAlso <http://ppr.cs.dal.ca:3002/n3/editor/?formula=%40prefix%20%3A%20%3C%3A%3E%20.%0A%40prefix%20string%3A%20%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F10%2Fswap%2Fstring%23%3E%20.%0A%0A%3ALet%20%3Astring%20%22placeholder%22%20.%0A%0A%7B%20%3ALet%20%3Astring%20%3Fx%20.%20%7D%0A%3D%3E%0A%7B%20%3Aresult%20%3Ais%20%3Fx%20.%20%7D.%20> ;
+                fno:expression """{
+                @prefix : <:> .
+                @prefix string: <http://www.w3.org/2000/10/swap/string#> .
+                :Let :string "placeholder" .
+                { :Let :string ?x . } => { :result :is ?x . } .
+            }""" ;
+                fno:result """
+                <:result> <:is> "placeholder". 
+            """ ] ) ;
+    fno:name "degrees" ;
+    fno:object ( [ a rdf:Property ;
+                fno:parameter ( [ a fno:Output ;
+                            dcterms:description "" ;
+                            fno:mode "*" ;
+                            fno:predicate "$o.0" ;
+                            fno:required true ;
+                            fno:type math:Value ] ) ] ) ;
+    fno:subject ( [ a rdf:Property ;
+                fno:parameter ( [ a fno:Parameter ;
+                            dcterms:description "" ;
+                            fno:mode "+" ;
+                            fno:predicate "$s" ;
+                            fno:required true ;
+                            fno:type math:Value ] ) ] ) .
+math:difference a fno:Function ;
+    dcterms:comment """The subject is a pair of numbers. The object
 is calculated by subtracting the second number of the pair from the first.
 """ ;
-    rdfs:domain math:TwoMemberedList ;
-    rdfs:range math:Value .
-
-math:exponentiation a rdf:Property,
-        math:Function ;
-    rdfs:label "exponentiation" ;
-    rdfs:comment """The subject is a pair of numbers. The object
+    fno:example ( [ a fno:Test ;
+                dcterms:description """
+                This is an example for a built-in function.
+            """ ;
+                rdfs:seeAlso <http://ppr.cs.dal.ca:3002/n3/editor/?formula=%40prefix%20%3A%20%3C%3A%3E%20.%0A%40prefix%20string%3A%20%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F10%2Fswap%2Fstring%23%3E%20.%0A%0A%3ALet%20%3Astring%20%22placeholder%22%20.%0A%0A%7B%20%3ALet%20%3Astring%20%3Fx%20.%20%7D%0A%3D%3E%0A%7B%20%3Aresult%20%3Ais%20%3Fx%20.%20%7D.%20> ;
+                fno:expression """{
+                @prefix : <:> .
+                @prefix string: <http://www.w3.org/2000/10/swap/string#> .
+                :Let :string "placeholder" .
+                { :Let :string ?x . } => { :result :is ?x . } .
+            }""" ;
+                fno:result """
+                <:result> <:is> "placeholder". 
+            """ ] ) ;
+    fno:name "difference" ;
+    fno:object ( [ a rdf:Property ;
+                fno:parameter ( [ a fno:Output ;
+                            dcterms:description "" ;
+                            fno:mode "*" ;
+                            fno:predicate "$o.0" ;
+                            fno:required true ;
+                            fno:type math:Value ] ) ] ) ;
+    fno:subject ( [ a rdf:Property ;
+                fno:parameter ( [ a fno:Parameter ;
+                            dcterms:description "" ;
+                            fno:mode "+" ;
+                            fno:predicate "$s" ;
+                            fno:required true ;
+                            fno:type math:TwoMemberedList ] ) ] ) .
+math:exponentiation a fno:Function ;
+    dcterms:comment """The subject is a pair of numbers. The object
 is calculated by raising the first number of the power of the second.
 """ ;
-    rdfs:domain math:TwoMemberedList ;
-    rdfs:range math:Value .
-
-math:negation a rdf:Property,
-        math:Function ;
-    rdfs:label "negation" ;
-    rdfs:comment "The subject or object is calculated to be the negation of the other." ;
-    rdfs:domain math:Value ;
-    rdfs:range math:Value .
-
-math:product a rdf:Property,
-        math:Function ;
-    rdfs:label "product" ;
-    rdfs:comment """The subject is a list of numbers.
+    fno:example ( [ a fno:Test ;
+                dcterms:description """
+                This is an example for a built-in function.
+            """ ;
+                rdfs:seeAlso <http://ppr.cs.dal.ca:3002/n3/editor/?formula=%40prefix%20%3A%20%3C%3A%3E%20.%0A%40prefix%20string%3A%20%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F10%2Fswap%2Fstring%23%3E%20.%0A%0A%3ALet%20%3Astring%20%22placeholder%22%20.%0A%0A%7B%20%3ALet%20%3Astring%20%3Fx%20.%20%7D%0A%3D%3E%0A%7B%20%3Aresult%20%3Ais%20%3Fx%20.%20%7D.%20> ;
+                fno:expression """{
+                @prefix : <:> .
+                @prefix string: <http://www.w3.org/2000/10/swap/string#> .
+                :Let :string "placeholder" .
+                { :Let :string ?x . } => { :result :is ?x . } .
+            }""" ;
+                fno:result """
+                <:result> <:is> "placeholder". 
+            """ ] ) ;
+    fno:name "exponentiation" ;
+    fno:object ( [ a rdf:Property ;
+                fno:parameter ( [ a fno:Output ;
+                            dcterms:description "" ;
+                            fno:mode "*" ;
+                            fno:predicate "$o.0" ;
+                            fno:required true ;
+                            fno:type math:Value ] ) ] ) ;
+    fno:subject ( [ a rdf:Property ;
+                fno:parameter ( [ a fno:Parameter ;
+                            dcterms:description "" ;
+                            fno:mode "+" ;
+                            fno:predicate "$s" ;
+                            fno:required true ;
+                            fno:type math:TwoMemberedList ] ) ] ) .
+math:negation a fno:Function ;
+    dcterms:comment "The subject or object is calculated to be the negation of the other." ;
+    fno:example ( [ a fno:Test ;
+                dcterms:description """
+                This is an example for a built-in function.
+            """ ;
+                rdfs:seeAlso <http://ppr.cs.dal.ca:3002/n3/editor/?formula=%40prefix%20%3A%20%3C%3A%3E%20.%0A%40prefix%20string%3A%20%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F10%2Fswap%2Fstring%23%3E%20.%0A%0A%3ALet%20%3Astring%20%22placeholder%22%20.%0A%0A%7B%20%3ALet%20%3Astring%20%3Fx%20.%20%7D%0A%3D%3E%0A%7B%20%3Aresult%20%3Ais%20%3Fx%20.%20%7D.%20> ;
+                fno:expression """{
+                @prefix : <:> .
+                @prefix string: <http://www.w3.org/2000/10/swap/string#> .
+                :Let :string "placeholder" .
+                { :Let :string ?x . } => { :result :is ?x . } .
+            }""" ;
+                fno:result """
+                <:result> <:is> "placeholder". 
+            """ ] ) ;
+    fno:name "negation" ;
+    fno:object ( [ a rdf:Property ;
+                fno:parameter ( [ a fno:Output ;
+                            dcterms:description "" ;
+                            fno:mode "*" ;
+                            fno:predicate "$o.0" ;
+                            fno:required true ;
+                            fno:type math:Value ] ) ] ) ;
+    fno:subject ( [ a rdf:Property ;
+                fno:parameter ( [ a fno:Parameter ;
+                            dcterms:description "" ;
+                            fno:mode "+" ;
+                            fno:predicate "$s" ;
+                            fno:required true ;
+                            fno:type math:Value ] ) ] ) .
+math:product a fno:Function ;
+    dcterms:comment """The subject is a list of numbers.
 The object is calculated as the arithmentic product of those numbers.
 """ ;
-    rdfs:domain math:List ;
-    rdfs:range math:Value .
-
-math:quotient a rdf:Property,
-        math:Function ;
-    rdfs:label "quotient" ;
-    rdfs:comment """The subject is a pair of numbers. The object
+    fno:example ( [ a fno:Test ;
+                dcterms:description """
+                This is an example for a built-in function.
+            """ ;
+                rdfs:seeAlso <http://ppr.cs.dal.ca:3002/n3/editor/?formula=%40prefix%20%3A%20%3C%3A%3E%20.%0A%40prefix%20string%3A%20%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F10%2Fswap%2Fstring%23%3E%20.%0A%0A%3ALet%20%3Astring%20%22placeholder%22%20.%0A%0A%7B%20%3ALet%20%3Astring%20%3Fx%20.%20%7D%0A%3D%3E%0A%7B%20%3Aresult%20%3Ais%20%3Fx%20.%20%7D.%20> ;
+                fno:expression """{
+                @prefix : <:> .
+                @prefix string: <http://www.w3.org/2000/10/swap/string#> .
+                :Let :string "placeholder" .
+                { :Let :string ?x . } => { :result :is ?x . } .
+            }""" ;
+                fno:result """
+                <:result> <:is> "placeholder". 
+            """ ] ) ;
+    fno:name "product" ;
+    fno:object ( [ a rdf:Property ;
+                fno:parameter ( [ a fno:Output ;
+                            dcterms:description "" ;
+                            fno:mode "*" ;
+                            fno:predicate "$o.0" ;
+                            fno:required true ;
+                            fno:type math:Value ] ) ] ) ;
+    fno:subject ( [ a rdf:Property ;
+                fno:parameter ( [ a fno:Parameter ;
+                            dcterms:description "" ;
+                            fno:mode "+" ;
+                            fno:predicate "$s" ;
+                            fno:required true ;
+                            fno:type math:List ] ) ] ) .
+math:quotient a fno:Function ;
+    dcterms:comment """The subject is a pair of numbers. The object
 is calculated by dividing the first number of the pair by the second.
 """ ;
-    rdfs:domain math:TwoMemberedList ;
-    rdfs:range math:Value .
-
-math:remainder a rdf:Property,
-        math:Function ;
-    rdfs:label "remainder" ;
-    rdfs:comment """The subject is a pair of integers. The object
+    fno:example ( [ a fno:Test ;
+                dcterms:description """
+                This is an example for a built-in function.
+            """ ;
+                rdfs:seeAlso <http://ppr.cs.dal.ca:3002/n3/editor/?formula=%40prefix%20%3A%20%3C%3A%3E%20.%0A%40prefix%20string%3A%20%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F10%2Fswap%2Fstring%23%3E%20.%0A%0A%3ALet%20%3Astring%20%22placeholder%22%20.%0A%0A%7B%20%3ALet%20%3Astring%20%3Fx%20.%20%7D%0A%3D%3E%0A%7B%20%3Aresult%20%3Ais%20%3Fx%20.%20%7D.%20> ;
+                fno:expression """{
+                @prefix : <:> .
+                @prefix string: <http://www.w3.org/2000/10/swap/string#> .
+                :Let :string "placeholder" .
+                { :Let :string ?x . } => { :result :is ?x . } .
+            }""" ;
+                fno:result """
+                <:result> <:is> "placeholder". 
+            """ ] ) ;
+    fno:name "quotient" ;
+    fno:object ( [ a rdf:Property ;
+                fno:parameter ( [ a fno:Output ;
+                            dcterms:description "" ;
+                            fno:mode "*" ;
+                            fno:predicate "$o.0" ;
+                            fno:required true ;
+                            fno:type math:Value ] ) ] ) ;
+    fno:subject ( [ a rdf:Property ;
+                fno:parameter ( [ a fno:Parameter ;
+                            dcterms:description "" ;
+                            fno:mode "+" ;
+                            fno:predicate "$s" ;
+                            fno:required true ;
+                            fno:type math:TwoMemberedList ] ) ] ) .
+math:remainder a fno:Function ;
+    dcterms:comment """The subject is a pair of integers. The object
 is calculated by dividing the first number of the pair by the second and taking the remainder.
 """ ;
-    rdfs:domain math:TwoMemberedList ;
-    rdfs:range math:Value .
-
-math:rounded a rdf:Property,
-        math:Function ;
-    rdfs:label "rounded" ;
-    rdfs:comment """The object is calulated as the number with no fractional part that is closest to the subject.
+    fno:example ( [ a fno:Test ;
+                dcterms:description """
+                This is an example for a built-in function.
+            """ ;
+                rdfs:seeAlso <http://ppr.cs.dal.ca:3002/n3/editor/?formula=%40prefix%20%3A%20%3C%3A%3E%20.%0A%40prefix%20string%3A%20%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F10%2Fswap%2Fstring%23%3E%20.%0A%0A%3ALet%20%3Astring%20%22placeholder%22%20.%0A%0A%7B%20%3ALet%20%3Astring%20%3Fx%20.%20%7D%0A%3D%3E%0A%7B%20%3Aresult%20%3Ais%20%3Fx%20.%20%7D.%20> ;
+                fno:expression """{
+                @prefix : <:> .
+                @prefix string: <http://www.w3.org/2000/10/swap/string#> .
+                :Let :string "placeholder" .
+                { :Let :string ?x . } => { :result :is ?x . } .
+            }""" ;
+                fno:result """
+                <:result> <:is> "placeholder". 
+            """ ] ) ;
+    fno:name "remainder" ;
+    fno:object ( [ a rdf:Property ;
+                fno:parameter ( [ a fno:Output ;
+                            dcterms:description "" ;
+                            fno:mode "*" ;
+                            fno:predicate "$o.0" ;
+                            fno:required true ;
+                            fno:type math:Value ] ) ] ) ;
+    fno:subject ( [ a rdf:Property ;
+                fno:parameter ( [ a fno:Parameter ;
+                            dcterms:description "" ;
+                            fno:mode "+" ;
+                            fno:predicate "$s" ;
+                            fno:required true ;
+                            fno:type math:TwoMemberedList ] ) ] ) .
+math:rounded a fno:Function ;
+    dcterms:comment """The object is calulated as the number with no fractional part that is closest to the subject.
 If there are two such numbers, then the one that is closest to positive infinity is returned.
 """ ;
-    rdfs:domain math:Value ;
-    rdfs:range math:Value .
-
-math:sin a rdf:Property,
-        math:LogicalOperator ;
-    rdfs:label "sin" ;
-    rdfs:comment """The subject is an angle expressed in radians.
+    fno:example ( [ a fno:Test ;
+                dcterms:description """
+                This is an example for a built-in function.
+            """ ;
+                rdfs:seeAlso <http://ppr.cs.dal.ca:3002/n3/editor/?formula=%40prefix%20%3A%20%3C%3A%3E%20.%0A%40prefix%20string%3A%20%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F10%2Fswap%2Fstring%23%3E%20.%0A%0A%3ALet%20%3Astring%20%22placeholder%22%20.%0A%0A%7B%20%3ALet%20%3Astring%20%3Fx%20.%20%7D%0A%3D%3E%0A%7B%20%3Aresult%20%3Ais%20%3Fx%20.%20%7D.%20> ;
+                fno:expression """{
+                @prefix : <:> .
+                @prefix string: <http://www.w3.org/2000/10/swap/string#> .
+                :Let :string "placeholder" .
+                { :Let :string ?x . } => { :result :is ?x . } .
+            }""" ;
+                fno:result """
+                <:result> <:is> "placeholder". 
+            """ ] ) ;
+    fno:name "rounded" ;
+    fno:object ( [ a rdf:Property ;
+                fno:parameter ( [ a fno:Output ;
+                            dcterms:description "" ;
+                            fno:mode "*" ;
+                            fno:predicate "$o.0" ;
+                            fno:required true ;
+                            fno:type math:Value ] ) ] ) ;
+    fno:subject ( [ a rdf:Property ;
+                fno:parameter ( [ a fno:Parameter ;
+                            dcterms:description "" ;
+                            fno:mode "+" ;
+                            fno:predicate "$s" ;
+                            fno:required true ;
+                            fno:type math:Value ] ) ] ) .
+math:sin a fno:Function ;
+    dcterms:comment """The subject is an angle expressed in radians.
 The object is calulated as the sine value of the subject.""" ;
-    rdfs:domain math:Value ;
-    rdfs:range math:Value .
-
-math:sinh a rdf:Property,
-        math:LogicalOperator ;
-    rdfs:label "sinh" ;
-    rdfs:comment """The subject is an angle expressed in radians.
+    fno:example ( [ a fno:Test ;
+                dcterms:description """
+                This is an example for a built-in function.
+            """ ;
+                rdfs:seeAlso <http://ppr.cs.dal.ca:3002/n3/editor/?formula=%40prefix%20%3A%20%3C%3A%3E%20.%0A%40prefix%20string%3A%20%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F10%2Fswap%2Fstring%23%3E%20.%0A%0A%3ALet%20%3Astring%20%22placeholder%22%20.%0A%0A%7B%20%3ALet%20%3Astring%20%3Fx%20.%20%7D%0A%3D%3E%0A%7B%20%3Aresult%20%3Ais%20%3Fx%20.%20%7D.%20> ;
+                fno:expression """{
+                @prefix : <:> .
+                @prefix string: <http://www.w3.org/2000/10/swap/string#> .
+                :Let :string "placeholder" .
+                { :Let :string ?x . } => { :result :is ?x . } .
+            }""" ;
+                fno:result """
+                <:result> <:is> "placeholder". 
+            """ ] ) ;
+    fno:name "sin" ;
+    fno:object ( [ a rdf:Property ;
+                fno:parameter ( [ a fno:Output ;
+                            dcterms:description "" ;
+                            fno:mode "*" ;
+                            fno:predicate "$o.0" ;
+                            fno:required true ;
+                            fno:type math:Value ] ) ] ) ;
+    fno:subject ( [ a rdf:Property ;
+                fno:parameter ( [ a fno:Parameter ;
+                            dcterms:description "" ;
+                            fno:mode "+" ;
+                            fno:predicate "$s" ;
+                            fno:required true ;
+                            fno:type math:Value ] ) ] ) .
+math:sinh a fno:Function ;
+    dcterms:comment """The subject is an angle expressed in radians.
 The object is calulated as the hyperbolic sine value of the subject.""" ;
-    rdfs:domain math:Value ;
-    rdfs:range math:Value .
-
-math:sum a rdf:Property,
-        math:Function ;
-    rdfs:label "sum" ;
-    rdfs:comment """Performs addition of numbers. 
-
+    fno:example ( [ a fno:Test ;
+                dcterms:description """
+                This is an example for a built-in function.
+            """ ;
+                rdfs:seeAlso <http://ppr.cs.dal.ca:3002/n3/editor/?formula=%40prefix%20%3A%20%3C%3A%3E%20.%0A%40prefix%20string%3A%20%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F10%2Fswap%2Fstring%23%3E%20.%0A%0A%3ALet%20%3Astring%20%22placeholder%22%20.%0A%0A%7B%20%3ALet%20%3Astring%20%3Fx%20.%20%7D%0A%3D%3E%0A%7B%20%3Aresult%20%3Ais%20%3Fx%20.%20%7D.%20> ;
+                fno:expression """{
+                @prefix : <:> .
+                @prefix string: <http://www.w3.org/2000/10/swap/string#> .
+                :Let :string "placeholder" .
+                { :Let :string ?x . } => { :result :is ?x . } .
+            }""" ;
+                fno:result """
+                <:result> <:is> "placeholder". 
+            """ ] ) ;
+    fno:name "sinh" ;
+    fno:object ( [ a rdf:Property ;
+                fno:parameter ( [ a fno:Output ;
+                            dcterms:description "" ;
+                            fno:mode "*" ;
+                            fno:predicate "$o.0" ;
+                            fno:required true ;
+                            fno:type math:Value ] ) ] ) ;
+    fno:subject ( [ a rdf:Property ;
+                fno:parameter ( [ a fno:Parameter ;
+                            dcterms:description "" ;
+                            fno:mode "+" ;
+                            fno:predicate "$s" ;
+                            fno:required true ;
+                            fno:type math:Value ] ) ] ) .
+math:sum a fno:Function ;
+    dcterms:comment """Performs addition of numbers. 
 `true` if and only if the arithmetic sum of `$s_1, .. $s_n` equals `$o`.""" ;
-    rdfs:domain log:List ;
-    rdfs:range math:Value .
-
-math:tan a rdf:Property,
-        math:LogicalOperator ;
-    rdfs:label "tan" ;
-    rdfs:comment """The subject is an angle expressed in radians.
+    fno:example ( [ a fno:Test ;
+                dcterms:description """
+                This is an example for a built-in function.
+            """ ;
+                rdfs:seeAlso <http://ppr.cs.dal.ca:3002/n3/editor/?formula=%40prefix%20%3A%20%3C%3A%3E%20.%0A%40prefix%20string%3A%20%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F10%2Fswap%2Fstring%23%3E%20.%0A%0A%3ALet%20%3Astring%20%22placeholder%22%20.%0A%0A%7B%20%3ALet%20%3Astring%20%3Fx%20.%20%7D%0A%3D%3E%0A%7B%20%3Aresult%20%3Ais%20%3Fx%20.%20%7D.%20> ;
+                fno:expression """{
+                @prefix : <:> .
+                @prefix string: <http://www.w3.org/2000/10/swap/string#> .
+                :Let :string "placeholder" .
+                { :Let :string ?x . } => { :result :is ?x . } .
+            }""" ;
+                fno:result """
+                <:result> <:is> "placeholder". 
+            """ ] ) ;
+    fno:name "sum" ;
+    fno:object ( [ a rdf:Property ;
+                fno:parameter ( [ a fno:Output ;
+                            dcterms:description "" ;
+                            fno:mode "*" ;
+                            fno:predicate "$o.0" ;
+                            fno:required true ;
+                            fno:type math:Value ] ) ] ) ;
+    fno:subject ( [ a rdf:Property ;
+                fno:parameter ( [ a fno:Parameter ;
+                            dcterms:description "" ;
+                            fno:mode "+" ;
+                            fno:predicate "$s" ;
+                            fno:required true ;
+                            fno:type log:List ] ) ] ) .
+math:tan a fno:Function ;
+    dcterms:comment """The subject is an angle expressed in radians.
 The object is calulated as the tangent value of the subject.""" ;
-    rdfs:domain math:Value ;
-    rdfs:range math:Value .
-
-math:tanh a rdf:Property,
-        math:LogicalOperator ;
-    rdfs:label "tanh" ;
-    rdfs:comment """The subject is an angle expressed in radians.
+    fno:example ( [ a fno:Test ;
+                dcterms:description """
+                This is an example for a built-in function.
+            """ ;
+                rdfs:seeAlso <http://ppr.cs.dal.ca:3002/n3/editor/?formula=%40prefix%20%3A%20%3C%3A%3E%20.%0A%40prefix%20string%3A%20%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F10%2Fswap%2Fstring%23%3E%20.%0A%0A%3ALet%20%3Astring%20%22placeholder%22%20.%0A%0A%7B%20%3ALet%20%3Astring%20%3Fx%20.%20%7D%0A%3D%3E%0A%7B%20%3Aresult%20%3Ais%20%3Fx%20.%20%7D.%20> ;
+                fno:expression """{
+                @prefix : <:> .
+                @prefix string: <http://www.w3.org/2000/10/swap/string#> .
+                :Let :string "placeholder" .
+                { :Let :string ?x . } => { :result :is ?x . } .
+            }""" ;
+                fno:result """
+                <:result> <:is> "placeholder". 
+            """ ] ) ;
+    fno:name "tan" ;
+    fno:object ( [ a rdf:Property ;
+                fno:parameter ( [ a fno:Output ;
+                            dcterms:description "" ;
+                            fno:mode "*" ;
+                            fno:predicate "$o.0" ;
+                            fno:required true ;
+                            fno:type math:Value ] ) ] ) ;
+    fno:subject ( [ a rdf:Property ;
+                fno:parameter ( [ a fno:Parameter ;
+                            dcterms:description "" ;
+                            fno:mode "+" ;
+                            fno:predicate "$s" ;
+                            fno:required true ;
+                            fno:type math:Value ] ) ] ) .
+math:tanh a fno:Function ;
+    dcterms:comment """The subject is an angle expressed in radians.
 The object is calulated as the hyperbolic tangent value of the subject.""" ;
-    rdfs:domain math:Value ;
-    rdfs:range math:Value .
-
-string:contains a rdf:Property ;
-    rdfs:label "contains" ;
-    rdfs:comment "True iff the subject string contains the object string." ;
-    rdfs:definedBy <file:///Users/timothyduval/Library/Mobile%20Documents/com~apple~CloudDocs/00_unifylogic/50-clients/w3c/N3/ns/string.n3> ;
-    rdfs:domain log:String ;
-    rdfs:range log:String .
-
-string:containsIgnoringCase a rdf:Property ;
-    rdfs:label "contains" ;
-    rdfs:comment """True iff the subject string contains the object string,
+    fno:example ( [ a fno:Test ;
+                dcterms:description """
+                This is an example for a built-in function.
+            """ ;
+                rdfs:seeAlso <http://ppr.cs.dal.ca:3002/n3/editor/?formula=%40prefix%20%3A%20%3C%3A%3E%20.%0A%40prefix%20string%3A%20%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F10%2Fswap%2Fstring%23%3E%20.%0A%0A%3ALet%20%3Astring%20%22placeholder%22%20.%0A%0A%7B%20%3ALet%20%3Astring%20%3Fx%20.%20%7D%0A%3D%3E%0A%7B%20%3Aresult%20%3Ais%20%3Fx%20.%20%7D.%20> ;
+                fno:expression """{
+                @prefix : <:> .
+                @prefix string: <http://www.w3.org/2000/10/swap/string#> .
+                :Let :string "placeholder" .
+                { :Let :string ?x . } => { :result :is ?x . } .
+            }""" ;
+                fno:result """
+                <:result> <:is> "placeholder". 
+            """ ] ) ;
+    fno:name "tanh" ;
+    fno:object ( [ a rdf:Property ;
+                fno:parameter ( [ a fno:Output ;
+                            dcterms:description "" ;
+                            fno:mode "*" ;
+                            fno:predicate "$o.0" ;
+                            fno:required true ;
+                            fno:type math:Value ] ) ] ) ;
+    fno:subject ( [ a rdf:Property ;
+                fno:parameter ( [ a fno:Parameter ;
+                            dcterms:description "" ;
+                            fno:mode "+" ;
+                            fno:predicate "$s" ;
+                            fno:required true ;
+                            fno:type math:Value ] ) ] ) .
+string:contains a fno:Function ;
+    dcterms:comment "True iff the subject string contains the object string." ;
+    fno:example ( [ a fno:Test ;
+                dcterms:description """
+                This is an example for a built-in function.
+            """ ;
+                rdfs:seeAlso <http://ppr.cs.dal.ca:3002/n3/editor/?formula=%40prefix%20%3A%20%3C%3A%3E%20.%0A%40prefix%20string%3A%20%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F10%2Fswap%2Fstring%23%3E%20.%0A%0A%3ALet%20%3Astring%20%22placeholder%22%20.%0A%0A%7B%20%3ALet%20%3Astring%20%3Fx%20.%20%7D%0A%3D%3E%0A%7B%20%3Aresult%20%3Ais%20%3Fx%20.%20%7D.%20> ;
+                fno:expression """{
+                @prefix : <:> .
+                @prefix string: <http://www.w3.org/2000/10/swap/string#> .
+                :Let :string "placeholder" .
+                { :Let :string ?x . } => { :result :is ?x . } .
+            }""" ;
+                fno:result """
+                <:result> <:is> "placeholder". 
+            """ ] ) ;
+    fno:name "contains" ;
+    fno:object ( [ a rdf:Property ;
+                fno:parameter ( [ a fno:Output ;
+                            dcterms:description "" ;
+                            fno:mode "*" ;
+                            fno:predicate "$o.0" ;
+                            fno:required true ;
+                            fno:type log:String ] ) ] ) ;
+    fno:subject ( [ a rdf:Property ;
+                fno:parameter ( [ a fno:Parameter ;
+                            dcterms:description "" ;
+                            fno:mode "+" ;
+                            fno:predicate "$s" ;
+                            fno:required true ;
+                            fno:type log:String ] ) ] ) .
+string:containsIgnoringCase a fno:Function ;
+    dcterms:comment """True iff the subject string contains the object string,
 with the comparison done ignoring the difference between upper case and
 lower case characters.""" ;
-    rdfs:definedBy <file:///Users/timothyduval/Library/Mobile%20Documents/com~apple~CloudDocs/00_unifylogic/50-clients/w3c/N3/ns/string.n3> ;
-    rdfs:domain log:String ;
-    rdfs:range log:String .
-
-string:endsWith a rdf:Property ;
-    rdfs:label "ends with" ;
-    rdfs:comment "True iff the subject string ends with the object string." ;
-    rdfs:definedBy <file:///Users/timothyduval/Library/Mobile%20Documents/com~apple~CloudDocs/00_unifylogic/50-clients/w3c/N3/ns/string.n3> ;
-    rdfs:domain log:String ;
-    rdfs:range log:String .
-
-string:equalIgnoringCase a rdf:Property ;
-    rdfs:label "contains" ;
-    rdfs:comment """True iff the subject string is the same as object string
+    fno:example ( [ a fno:Test ;
+                dcterms:description """
+                This is an example for a built-in function.
+            """ ;
+                rdfs:seeAlso <http://ppr.cs.dal.ca:3002/n3/editor/?formula=%40prefix%20%3A%20%3C%3A%3E%20.%0A%40prefix%20string%3A%20%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F10%2Fswap%2Fstring%23%3E%20.%0A%0A%3ALet%20%3Astring%20%22placeholder%22%20.%0A%0A%7B%20%3ALet%20%3Astring%20%3Fx%20.%20%7D%0A%3D%3E%0A%7B%20%3Aresult%20%3Ais%20%3Fx%20.%20%7D.%20> ;
+                fno:expression """{
+                @prefix : <:> .
+                @prefix string: <http://www.w3.org/2000/10/swap/string#> .
+                :Let :string "placeholder" .
+                { :Let :string ?x . } => { :result :is ?x . } .
+            }""" ;
+                fno:result """
+                <:result> <:is> "placeholder". 
+            """ ] ) ;
+    fno:name "contains" ;
+    fno:object ( [ a rdf:Property ;
+                fno:parameter ( [ a fno:Output ;
+                            dcterms:description "" ;
+                            fno:mode "*" ;
+                            fno:predicate "$o.0" ;
+                            fno:required true ;
+                            fno:type log:String ] ) ] ) ;
+    fno:subject ( [ a rdf:Property ;
+                fno:parameter ( [ a fno:Parameter ;
+                            dcterms:description "" ;
+                            fno:mode "+" ;
+                            fno:predicate "$s" ;
+                            fno:required true ;
+                            fno:type log:String ] ) ] ) .
+string:endsWith a fno:Function ;
+    dcterms:comment "True iff the subject string ends with the object string." ;
+    fno:example ( [ a fno:Test ;
+                dcterms:description """
+                This is an example for a built-in function.
+            """ ;
+                rdfs:seeAlso <http://ppr.cs.dal.ca:3002/n3/editor/?formula=%40prefix%20%3A%20%3C%3A%3E%20.%0A%40prefix%20string%3A%20%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F10%2Fswap%2Fstring%23%3E%20.%0A%0A%3ALet%20%3Astring%20%22placeholder%22%20.%0A%0A%7B%20%3ALet%20%3Astring%20%3Fx%20.%20%7D%0A%3D%3E%0A%7B%20%3Aresult%20%3Ais%20%3Fx%20.%20%7D.%20> ;
+                fno:expression """{
+                @prefix : <:> .
+                @prefix string: <http://www.w3.org/2000/10/swap/string#> .
+                :Let :string "placeholder" .
+                { :Let :string ?x . } => { :result :is ?x . } .
+            }""" ;
+                fno:result """
+                <:result> <:is> "placeholder". 
+            """ ] ) ;
+    fno:name "ends with" ;
+    fno:object ( [ a rdf:Property ;
+                fno:parameter ( [ a fno:Output ;
+                            dcterms:description "" ;
+                            fno:mode "*" ;
+                            fno:predicate "$o.0" ;
+                            fno:required true ;
+                            fno:type log:String ] ) ] ) ;
+    fno:subject ( [ a rdf:Property ;
+                fno:parameter ( [ a fno:Parameter ;
+                            dcterms:description "" ;
+                            fno:mode "+" ;
+                            fno:predicate "$s" ;
+                            fno:required true ;
+                            fno:type log:String ] ) ] ) .
+string:equalIgnoringCase a fno:Function ;
+    dcterms:comment """True iff the subject string is the same as object string
 ignoring differences between upper and lower case.""" ;
-    rdfs:definedBy <file:///Users/timothyduval/Library/Mobile%20Documents/com~apple~CloudDocs/00_unifylogic/50-clients/w3c/N3/ns/string.n3> ;
-    rdfs:domain log:String ;
-    rdfs:range log:String .
-
-string:greaterThan a rdf:Property ;
-    rdfs:label "is greater than" ;
-    rdfs:comment """True iff the string is greater than the object
+    fno:example ( [ a fno:Test ;
+                dcterms:description """
+                This is an example for a built-in function.
+            """ ;
+                rdfs:seeAlso <http://ppr.cs.dal.ca:3002/n3/editor/?formula=%40prefix%20%3A%20%3C%3A%3E%20.%0A%40prefix%20string%3A%20%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F10%2Fswap%2Fstring%23%3E%20.%0A%0A%3ALet%20%3Astring%20%22placeholder%22%20.%0A%0A%7B%20%3ALet%20%3Astring%20%3Fx%20.%20%7D%0A%3D%3E%0A%7B%20%3Aresult%20%3Ais%20%3Fx%20.%20%7D.%20> ;
+                fno:expression """{
+                @prefix : <:> .
+                @prefix string: <http://www.w3.org/2000/10/swap/string#> .
+                :Let :string "placeholder" .
+                { :Let :string ?x . } => { :result :is ?x . } .
+            }""" ;
+                fno:result """
+                <:result> <:is> "placeholder". 
+            """ ] ) ;
+    fno:name "contains" ;
+    fno:object ( [ a rdf:Property ;
+                fno:parameter ( [ a fno:Output ;
+                            dcterms:description "" ;
+                            fno:mode "*" ;
+                            fno:predicate "$o.0" ;
+                            fno:required true ;
+                            fno:type log:String ] ) ] ) ;
+    fno:subject ( [ a rdf:Property ;
+                fno:parameter ( [ a fno:Parameter ;
+                            dcterms:description "" ;
+                            fno:mode "+" ;
+                            fno:predicate "$s" ;
+                            fno:required true ;
+                            fno:type log:String ] ) ] ) .
+string:greaterThan a fno:Function ;
+    dcterms:comment """True iff the string is greater than the object
 when ordered according to Unicode(tm) code order.""" ;
-    rdfs:definedBy <file:///Users/timothyduval/Library/Mobile%20Documents/com~apple~CloudDocs/00_unifylogic/50-clients/w3c/N3/ns/string.n3> ;
-    rdfs:domain log:String ;
-    rdfs:range log:String .
-
-string:lessThan a rdf:Property ;
-    rdfs:label "is less than" ;
-    rdfs:comment """True iff the string is less than the object
+    fno:example ( [ a fno:Test ;
+                dcterms:description """
+                This is an example for a built-in function.
+            """ ;
+                rdfs:seeAlso <http://ppr.cs.dal.ca:3002/n3/editor/?formula=%40prefix%20%3A%20%3C%3A%3E%20.%0A%40prefix%20string%3A%20%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F10%2Fswap%2Fstring%23%3E%20.%0A%0A%3ALet%20%3Astring%20%22placeholder%22%20.%0A%0A%7B%20%3ALet%20%3Astring%20%3Fx%20.%20%7D%0A%3D%3E%0A%7B%20%3Aresult%20%3Ais%20%3Fx%20.%20%7D.%20> ;
+                fno:expression """{
+                @prefix : <:> .
+                @prefix string: <http://www.w3.org/2000/10/swap/string#> .
+                :Let :string "placeholder" .
+                { :Let :string ?x . } => { :result :is ?x . } .
+            }""" ;
+                fno:result """
+                <:result> <:is> "placeholder". 
+            """ ] ) ;
+    fno:name "is greater than" ;
+    fno:object ( [ a rdf:Property ;
+                fno:parameter ( [ a fno:Output ;
+                            dcterms:description "" ;
+                            fno:mode "*" ;
+                            fno:predicate "$o.0" ;
+                            fno:required true ;
+                            fno:type log:String ] ) ] ) ;
+    fno:subject ( [ a rdf:Property ;
+                fno:parameter ( [ a fno:Parameter ;
+                            dcterms:description "" ;
+                            fno:mode "+" ;
+                            fno:predicate "$s" ;
+                            fno:required true ;
+                            fno:type log:String ] ) ] ) .
+string:lessThan a fno:Function ;
+    dcterms:comment """True iff the string is less than the object
 when ordered according to Unicode(tm) code order.""" ;
-    rdfs:definedBy <file:///Users/timothyduval/Library/Mobile%20Documents/com~apple~CloudDocs/00_unifylogic/50-clients/w3c/N3/ns/string.n3> ;
-    rdfs:domain log:String ;
-    rdfs:range log:String .
-
-string:matches a rdf:Property ;
-    rdfs:label "contains" ;
-    rdfs:comment """The subject is a string;
+    fno:example ( [ a fno:Test ;
+                dcterms:description """
+                This is an example for a built-in function.
+            """ ;
+                rdfs:seeAlso <http://ppr.cs.dal.ca:3002/n3/editor/?formula=%40prefix%20%3A%20%3C%3A%3E%20.%0A%40prefix%20string%3A%20%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F10%2Fswap%2Fstring%23%3E%20.%0A%0A%3ALet%20%3Astring%20%22placeholder%22%20.%0A%0A%7B%20%3ALet%20%3Astring%20%3Fx%20.%20%7D%0A%3D%3E%0A%7B%20%3Aresult%20%3Ais%20%3Fx%20.%20%7D.%20> ;
+                fno:expression """{
+                @prefix : <:> .
+                @prefix string: <http://www.w3.org/2000/10/swap/string#> .
+                :Let :string "placeholder" .
+                { :Let :string ?x . } => { :result :is ?x . } .
+            }""" ;
+                fno:result """
+                <:result> <:is> "placeholder". 
+            """ ] ) ;
+    fno:name "is less than" ;
+    fno:object ( [ a rdf:Property ;
+                fno:parameter ( [ a fno:Output ;
+                            dcterms:description "" ;
+                            fno:mode "*" ;
+                            fno:predicate "$o.0" ;
+                            fno:required true ;
+                            fno:type log:String ] ) ] ) ;
+    fno:subject ( [ a rdf:Property ;
+                fno:parameter ( [ a fno:Parameter ;
+                            dcterms:description "" ;
+                            fno:mode "+" ;
+                            fno:predicate "$s" ;
+                            fno:required true ;
+                            fno:type log:String ] ) ] ) .
+string:matches a fno:Function ;
+    dcterms:comment """The subject is a string;
 the object is is a regular expression in the perl, python style.
 It is true iff the string matches the regexp.""" ;
-    rdfs:definedBy <file:///Users/timothyduval/Library/Mobile%20Documents/com~apple~CloudDocs/00_unifylogic/50-clients/w3c/N3/ns/string.n3> ;
-    rdfs:domain log:String ;
-    rdfs:range log:String .
-
-string:notEqualIgnoringCase a rdf:Property ;
-    rdfs:label "contains" ;
-    rdfs:comment """True iff the subject string is the NOT same as object string
+    fno:example ( [ a fno:Test ;
+                dcterms:description """
+                This is an example for a built-in function.
+            """ ;
+                rdfs:seeAlso <http://ppr.cs.dal.ca:3002/n3/editor/?formula=%40prefix%20%3A%20%3C%3A%3E%20.%0A%40prefix%20string%3A%20%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F10%2Fswap%2Fstring%23%3E%20.%0A%0A%3ALet%20%3Astring%20%22placeholder%22%20.%0A%0A%7B%20%3ALet%20%3Astring%20%3Fx%20.%20%7D%0A%3D%3E%0A%7B%20%3Aresult%20%3Ais%20%3Fx%20.%20%7D.%20> ;
+                fno:expression """{
+                @prefix : <:> .
+                @prefix string: <http://www.w3.org/2000/10/swap/string#> .
+                :Let :string "placeholder" .
+                { :Let :string ?x . } => { :result :is ?x . } .
+            }""" ;
+                fno:result """
+                <:result> <:is> "placeholder". 
+            """ ] ) ;
+    fno:name "contains" ;
+    fno:object ( [ a rdf:Property ;
+                fno:parameter ( [ a fno:Output ;
+                            dcterms:description "" ;
+                            fno:mode "*" ;
+                            fno:predicate "$o.0" ;
+                            fno:required true ;
+                            fno:type log:String ] ) ] ) ;
+    fno:subject ( [ a rdf:Property ;
+                fno:parameter ( [ a fno:Parameter ;
+                            dcterms:description "" ;
+                            fno:mode "+" ;
+                            fno:predicate "$s" ;
+                            fno:required true ;
+                            fno:type log:String ] ) ] ) .
+string:notEqualIgnoringCase a fno:Function ;
+    dcterms:comment """True iff the subject string is the NOT same as object string
 ignoring differences between upper and lower case.""" ;
-    rdfs:definedBy <file:///Users/timothyduval/Library/Mobile%20Documents/com~apple~CloudDocs/00_unifylogic/50-clients/w3c/N3/ns/string.n3> ;
-    rdfs:domain log:String ;
-    rdfs:range log:String .
-
-string:notGreaterThan a rdf:Property ;
-    rdfs:label "is not greater than" ;
-    rdfs:comment """True iff the string is NOT greater than the object
+    fno:example ( [ a fno:Test ;
+                dcterms:description """
+                This is an example for a built-in function.
+            """ ;
+                rdfs:seeAlso <http://ppr.cs.dal.ca:3002/n3/editor/?formula=%40prefix%20%3A%20%3C%3A%3E%20.%0A%40prefix%20string%3A%20%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F10%2Fswap%2Fstring%23%3E%20.%0A%0A%3ALet%20%3Astring%20%22placeholder%22%20.%0A%0A%7B%20%3ALet%20%3Astring%20%3Fx%20.%20%7D%0A%3D%3E%0A%7B%20%3Aresult%20%3Ais%20%3Fx%20.%20%7D.%20> ;
+                fno:expression """{
+                @prefix : <:> .
+                @prefix string: <http://www.w3.org/2000/10/swap/string#> .
+                :Let :string "placeholder" .
+                { :Let :string ?x . } => { :result :is ?x . } .
+            }""" ;
+                fno:result """
+                <:result> <:is> "placeholder". 
+            """ ] ) ;
+    fno:name "contains" ;
+    fno:object ( [ a rdf:Property ;
+                fno:parameter ( [ a fno:Output ;
+                            dcterms:description "" ;
+                            fno:mode "*" ;
+                            fno:predicate "$o.0" ;
+                            fno:required true ;
+                            fno:type log:String ] ) ] ) ;
+    fno:subject ( [ a rdf:Property ;
+                fno:parameter ( [ a fno:Parameter ;
+                            dcterms:description "" ;
+                            fno:mode "+" ;
+                            fno:predicate "$s" ;
+                            fno:required true ;
+                            fno:type log:String ] ) ] ) .
+string:notGreaterThan a fno:Function ;
+    dcterms:comment """True iff the string is NOT greater than the object
 when ordered according to Unicode(tm) code order.""" ;
-    rdfs:definedBy <file:///Users/timothyduval/Library/Mobile%20Documents/com~apple~CloudDocs/00_unifylogic/50-clients/w3c/N3/ns/string.n3> ;
-    rdfs:domain log:String ;
-    rdfs:range log:String .
-
-string:notLessThan a rdf:Property ;
-    rdfs:label "is not less than" ;
-    rdfs:comment """True iff the string is NOT less than the object
+    fno:example ( [ a fno:Test ;
+                dcterms:description """
+                This is an example for a built-in function.
+            """ ;
+                rdfs:seeAlso <http://ppr.cs.dal.ca:3002/n3/editor/?formula=%40prefix%20%3A%20%3C%3A%3E%20.%0A%40prefix%20string%3A%20%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F10%2Fswap%2Fstring%23%3E%20.%0A%0A%3ALet%20%3Astring%20%22placeholder%22%20.%0A%0A%7B%20%3ALet%20%3Astring%20%3Fx%20.%20%7D%0A%3D%3E%0A%7B%20%3Aresult%20%3Ais%20%3Fx%20.%20%7D.%20> ;
+                fno:expression """{
+                @prefix : <:> .
+                @prefix string: <http://www.w3.org/2000/10/swap/string#> .
+                :Let :string "placeholder" .
+                { :Let :string ?x . } => { :result :is ?x . } .
+            }""" ;
+                fno:result """
+                <:result> <:is> "placeholder". 
+            """ ] ) ;
+    fno:name "is not greater than" ;
+    fno:object ( [ a rdf:Property ;
+                fno:parameter ( [ a fno:Output ;
+                            dcterms:description "" ;
+                            fno:mode "*" ;
+                            fno:predicate "$o.0" ;
+                            fno:required true ;
+                            fno:type log:String ] ) ] ) ;
+    fno:subject ( [ a rdf:Property ;
+                fno:parameter ( [ a fno:Parameter ;
+                            dcterms:description "" ;
+                            fno:mode "+" ;
+                            fno:predicate "$s" ;
+                            fno:required true ;
+                            fno:type log:String ] ) ] ) .
+string:notLessThan a fno:Function ;
+    dcterms:comment """True iff the string is NOT less than the object
 when ordered according to Unicode(tm) code order.""" ;
-    rdfs:definedBy <file:///Users/timothyduval/Library/Mobile%20Documents/com~apple~CloudDocs/00_unifylogic/50-clients/w3c/N3/ns/string.n3> ;
-    rdfs:domain log:String ;
-    rdfs:range log:String .
-
-string:notMatches a rdf:Property ;
-    rdfs:label "contains" ;
-    rdfs:comment """The subject string;
+    fno:example ( [ a fno:Test ;
+                dcterms:description """
+                This is an example for a built-in function.
+            """ ;
+                rdfs:seeAlso <http://ppr.cs.dal.ca:3002/n3/editor/?formula=%40prefix%20%3A%20%3C%3A%3E%20.%0A%40prefix%20string%3A%20%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F10%2Fswap%2Fstring%23%3E%20.%0A%0A%3ALet%20%3Astring%20%22placeholder%22%20.%0A%0A%7B%20%3ALet%20%3Astring%20%3Fx%20.%20%7D%0A%3D%3E%0A%7B%20%3Aresult%20%3Ais%20%3Fx%20.%20%7D.%20> ;
+                fno:expression """{
+                @prefix : <:> .
+                @prefix string: <http://www.w3.org/2000/10/swap/string#> .
+                :Let :string "placeholder" .
+                { :Let :string ?x . } => { :result :is ?x . } .
+            }""" ;
+                fno:result """
+                <:result> <:is> "placeholder". 
+            """ ] ) ;
+    fno:name "is not less than" ;
+    fno:object ( [ a rdf:Property ;
+                fno:parameter ( [ a fno:Output ;
+                            dcterms:description "" ;
+                            fno:mode "*" ;
+                            fno:predicate "$o.0" ;
+                            fno:required true ;
+                            fno:type log:String ] ) ] ) ;
+    fno:subject ( [ a rdf:Property ;
+                fno:parameter ( [ a fno:Parameter ;
+                            dcterms:description "" ;
+                            fno:mode "+" ;
+                            fno:predicate "$s" ;
+                            fno:required true ;
+                            fno:type log:String ] ) ] ) .
+string:notMatches a fno:Function ;
+    dcterms:comment """The subject string;
 the object is is a regular expression in the perl, python style.
 It is true iff the string does NOT match the regexp.""" ;
-    rdfs:definedBy <file:///Users/timothyduval/Library/Mobile%20Documents/com~apple~CloudDocs/00_unifylogic/50-clients/w3c/N3/ns/string.n3> ;
-    rdfs:domain log:String ;
-    rdfs:range log:String .
-
-string:replace a rdf:Property ;
-    rdfs:label "replace" ;
-    rdfs:comment """A built-in for replacing characters or sub.
+    fno:example ( [ a fno:Test ;
+                dcterms:description """
+                This is an example for a built-in function.
+            """ ;
+                rdfs:seeAlso <http://ppr.cs.dal.ca:3002/n3/editor/?formula=%40prefix%20%3A%20%3C%3A%3E%20.%0A%40prefix%20string%3A%20%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F10%2Fswap%2Fstring%23%3E%20.%0A%0A%3ALet%20%3Astring%20%22placeholder%22%20.%0A%0A%7B%20%3ALet%20%3Astring%20%3Fx%20.%20%7D%0A%3D%3E%0A%7B%20%3Aresult%20%3Ais%20%3Fx%20.%20%7D.%20> ;
+                fno:expression """{
+                @prefix : <:> .
+                @prefix string: <http://www.w3.org/2000/10/swap/string#> .
+                :Let :string "placeholder" .
+                { :Let :string ?x . } => { :result :is ?x . } .
+            }""" ;
+                fno:result """
+                <:result> <:is> "placeholder". 
+            """ ] ) ;
+    fno:name "contains" ;
+    fno:object ( [ a rdf:Property ;
+                fno:parameter ( [ a fno:Output ;
+                            dcterms:description "" ;
+                            fno:mode "*" ;
+                            fno:predicate "$o.0" ;
+                            fno:required true ;
+                            fno:type log:String ] ) ] ) ;
+    fno:subject ( [ a rdf:Property ;
+                fno:parameter ( [ a fno:Parameter ;
+                            dcterms:description "" ;
+                            fno:mode "+" ;
+                            fno:predicate "$s" ;
+                            fno:required true ;
+                            fno:type log:String ] ) ] ) .
+string:replace a fno:Function ;
+    dcterms:comment """A built-in for replacing characters or sub.
 takes a list of 3 strings; the first is the
 input data, the second the old and the third the new string.
 The object is calculated as the replaced string.
 For example, ("fofof bar", "of", "baz") string:replace "fbazbaz bar".""" ;
-    rdfs:definedBy <file:///Users/timothyduval/Library/Mobile%20Documents/com~apple~CloudDocs/00_unifylogic/50-clients/w3c/N3/ns/string.n3> ;
-    rdfs:domain log:List ;
-    rdfs:range log:String .
-
-string:scrape a rdf:Property ;
-    rdfs:label "scrape" ;
-    rdfs:comment """The subject is a list of two strings. The second string is
+    fno:example ( [ a fno:Test ;
+                dcterms:description """
+                This is an example for a built-in function.
+            """ ;
+                rdfs:seeAlso <http://ppr.cs.dal.ca:3002/n3/editor/?formula=%40prefix%20%3A%20%3C%3A%3E%20.%0A%40prefix%20string%3A%20%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F10%2Fswap%2Fstring%23%3E%20.%0A%0A%3ALet%20%3Astring%20%22placeholder%22%20.%0A%0A%7B%20%3ALet%20%3Astring%20%3Fx%20.%20%7D%0A%3D%3E%0A%7B%20%3Aresult%20%3Ais%20%3Fx%20.%20%7D.%20> ;
+                fno:expression """{
+                @prefix : <:> .
+                @prefix string: <http://www.w3.org/2000/10/swap/string#> .
+                :Let :string "placeholder" .
+                { :Let :string ?x . } => { :result :is ?x . } .
+            }""" ;
+                fno:result """
+                <:result> <:is> "placeholder". 
+            """ ] ) ;
+    fno:name "replace" ;
+    fno:object ( [ a rdf:Property ;
+                fno:parameter ( [ a fno:Output ;
+                            dcterms:description "" ;
+                            fno:mode "*" ;
+                            fno:predicate "$o.0" ;
+                            fno:required true ;
+                            fno:type log:String ] ) ] ) ;
+    fno:subject ( [ a rdf:Property ;
+                fno:parameter ( [ a fno:Parameter ;
+                            dcterms:description "" ;
+                            fno:mode "+" ;
+                            fno:predicate "$s" ;
+                            fno:required true ;
+                            fno:type log:List ] ) ] ) .
+string:scrape a fno:Function ;
+    dcterms:comment """The subject is a list of two strings. The second string is
 a regular expression in the perl, python style.
 It must contain one group (a part in parentheses).  If the first string in the list matches
 the regular expression, then the object is calculated as being the
 part of the first string which matches the group.""" ;
-    rdfs:definedBy <file:///Users/timothyduval/Library/Mobile%20Documents/com~apple~CloudDocs/00_unifylogic/50-clients/w3c/N3/ns/string.n3> ;
-    rdfs:domain log:List ;
-    rdfs:range log:String .
-
-string:startsWith a rdf:Property ;
-    rdfs:label "starts with" ;
-    rdfs:comment "True iff the subject string starts with the object string." ;
-    rdfs:definedBy <file:///Users/timothyduval/Library/Mobile%20Documents/com~apple~CloudDocs/00_unifylogic/50-clients/w3c/N3/ns/string.n3> ;
-    rdfs:domain log:String ;
-    rdfs:range log:String .
-
-time1:day a rdf:Property,
-        owl:FunctionalProperty ;
-    rdfs:label "day" ;
-    rdfs:comment """
+    fno:example ( [ a fno:Test ;
+                dcterms:description """
+                This is an example for a built-in function.
+            """ ;
+                rdfs:seeAlso <http://ppr.cs.dal.ca:3002/n3/editor/?formula=%40prefix%20%3A%20%3C%3A%3E%20.%0A%40prefix%20string%3A%20%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F10%2Fswap%2Fstring%23%3E%20.%0A%0A%3ALet%20%3Astring%20%22placeholder%22%20.%0A%0A%7B%20%3ALet%20%3Astring%20%3Fx%20.%20%7D%0A%3D%3E%0A%7B%20%3Aresult%20%3Ais%20%3Fx%20.%20%7D.%20> ;
+                fno:expression """{
+                @prefix : <:> .
+                @prefix string: <http://www.w3.org/2000/10/swap/string#> .
+                :Let :string "placeholder" .
+                { :Let :string ?x . } => { :result :is ?x . } .
+            }""" ;
+                fno:result """
+                <:result> <:is> "placeholder". 
+            """ ] ) ;
+    fno:name "scrape" ;
+    fno:object ( [ a rdf:Property ;
+                fno:parameter ( [ a fno:Output ;
+                            dcterms:description "" ;
+                            fno:mode "*" ;
+                            fno:predicate "$o.0" ;
+                            fno:required true ;
+                            fno:type log:String ] ) ] ) ;
+    fno:subject ( [ a rdf:Property ;
+                fno:parameter ( [ a fno:Parameter ;
+                            dcterms:description "" ;
+                            fno:mode "+" ;
+                            fno:predicate "$s" ;
+                            fno:required true ;
+                            fno:type log:List ] ) ] ) .
+string:startsWith a fno:Function ;
+    dcterms:comment "True iff the subject string starts with the object string." ;
+    fno:example ( [ a fno:Test ;
+                dcterms:description """
+                This is an example for a built-in function.
+            """ ;
+                rdfs:seeAlso <http://ppr.cs.dal.ca:3002/n3/editor/?formula=%40prefix%20%3A%20%3C%3A%3E%20.%0A%40prefix%20string%3A%20%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F10%2Fswap%2Fstring%23%3E%20.%0A%0A%3ALet%20%3Astring%20%22placeholder%22%20.%0A%0A%7B%20%3ALet%20%3Astring%20%3Fx%20.%20%7D%0A%3D%3E%0A%7B%20%3Aresult%20%3Ais%20%3Fx%20.%20%7D.%20> ;
+                fno:expression """{
+                @prefix : <:> .
+                @prefix string: <http://www.w3.org/2000/10/swap/string#> .
+                :Let :string "placeholder" .
+                { :Let :string ?x . } => { :result :is ?x . } .
+            }""" ;
+                fno:result """
+                <:result> <:is> "placeholder". 
+            """ ] ) ;
+    fno:name "starts with" ;
+    fno:object ( [ a rdf:Property ;
+                fno:parameter ( [ a fno:Output ;
+                            dcterms:description "" ;
+                            fno:mode "*" ;
+                            fno:predicate "$o.0" ;
+                            fno:required true ;
+                            fno:type log:String ] ) ] ) ;
+    fno:subject ( [ a rdf:Property ;
+                fno:parameter ( [ a fno:Parameter ;
+                            dcterms:description "" ;
+                            fno:mode "+" ;
+                            fno:predicate "$s" ;
+                            fno:required true ;
+                            fno:type log:String ] ) ] ) .
+time:day a fno:Function ;
+    dcterms:comment """
 `true` if and only if $s is a `xsd:dateTime` and $o is the integer day component of the dateTime.
-
 $o can be calculated as a function of $s.
 """ ;
-    rdfs:domain xsd:dateTime ;
-    rdfs:isDefinedBy <file:///Users/timothyduval/Library/Mobile%20Documents/com~apple~CloudDocs/00_unifylogic/50-clients/w3c/N3/ns/time.n3> ;
-    rdfs:range xsd:integer .
-
-time1:month a rdf:Property,
-        owl:FunctionalProperty ;
-    rdfs:label "month" ;
-    rdfs:comment """
+    fno:example ( [ a fno:Test ;
+                dcterms:description """
+                This is an example for a built-in function.
+            """ ;
+                rdfs:seeAlso <http://ppr.cs.dal.ca:3002/n3/editor/?formula=%40prefix%20%3A%20%3C%3A%3E%20.%0A%40prefix%20string%3A%20%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F10%2Fswap%2Fstring%23%3E%20.%0A%0A%3ALet%20%3Astring%20%22placeholder%22%20.%0A%0A%7B%20%3ALet%20%3Astring%20%3Fx%20.%20%7D%0A%3D%3E%0A%7B%20%3Aresult%20%3Ais%20%3Fx%20.%20%7D.%20> ;
+                fno:expression """{
+                @prefix : <:> .
+                @prefix string: <http://www.w3.org/2000/10/swap/string#> .
+                :Let :string "placeholder" .
+                { :Let :string ?x . } => { :result :is ?x . } .
+            }""" ;
+                fno:result """
+                <:result> <:is> "placeholder". 
+            """ ] ) ;
+    fno:name "day" ;
+    fno:object ( [ a rdf:Property ;
+                fno:parameter ( [ a fno:Output ;
+                            dcterms:description "" ;
+                            fno:mode "*" ;
+                            fno:predicate "$o.0" ;
+                            fno:required true ;
+                            fno:type xsd:integer ] ) ] ) ;
+    fno:subject ( [ a rdf:Property ;
+                fno:parameter ( [ a fno:Parameter ;
+                            dcterms:description "" ;
+                            fno:mode "+" ;
+                            fno:predicate "$s" ;
+                            fno:required true ;
+                            fno:type xsd:dateTime ] ) ] ) .
+time:month a fno:Function ;
+    dcterms:comment """
 `true` if and only if $s is a `xsd:dateTime` and $o is the integer month component of the dateTime.
-
 $o can be calculated as a function of $s.
 """ ;
-    rdfs:domain xsd:dateTime ;
-    rdfs:isDefinedBy <file:///Users/timothyduval/Library/Mobile%20Documents/com~apple~CloudDocs/00_unifylogic/50-clients/w3c/N3/ns/time.n3> ;
-    rdfs:range xsd:integer .
-
-time1:year a rdf:Property,
-        owl:FunctionalProperty ;
-    rdfs:label "year" ;
-    rdfs:comment """
+    fno:example ( [ a fno:Test ;
+                dcterms:description """
+                This is an example for a built-in function.
+            """ ;
+                rdfs:seeAlso <http://ppr.cs.dal.ca:3002/n3/editor/?formula=%40prefix%20%3A%20%3C%3A%3E%20.%0A%40prefix%20string%3A%20%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F10%2Fswap%2Fstring%23%3E%20.%0A%0A%3ALet%20%3Astring%20%22placeholder%22%20.%0A%0A%7B%20%3ALet%20%3Astring%20%3Fx%20.%20%7D%0A%3D%3E%0A%7B%20%3Aresult%20%3Ais%20%3Fx%20.%20%7D.%20> ;
+                fno:expression """{
+                @prefix : <:> .
+                @prefix string: <http://www.w3.org/2000/10/swap/string#> .
+                :Let :string "placeholder" .
+                { :Let :string ?x . } => { :result :is ?x . } .
+            }""" ;
+                fno:result """
+                <:result> <:is> "placeholder". 
+            """ ] ) ;
+    fno:name "month" ;
+    fno:object ( [ a rdf:Property ;
+                fno:parameter ( [ a fno:Output ;
+                            dcterms:description "" ;
+                            fno:mode "*" ;
+                            fno:predicate "$o.0" ;
+                            fno:required true ;
+                            fno:type xsd:integer ] ) ] ) ;
+    fno:subject ( [ a rdf:Property ;
+                fno:parameter ( [ a fno:Parameter ;
+                            dcterms:description "" ;
+                            fno:mode "+" ;
+                            fno:predicate "$s" ;
+                            fno:required true ;
+                            fno:type xsd:dateTime ] ) ] ) .
+time:year a fno:Function ;
+    dcterms:comment """
 `true` if and only if $s is a `xsd:dateTime` and $o is the integer year component of the dateTime.
-
 $o can be calculated as a function of $s.
 """ ;
-    rdfs:domain xsd:dateTime ;
-    rdfs:isDefinedBy <file:///Users/timothyduval/Library/Mobile%20Documents/com~apple~CloudDocs/00_unifylogic/50-clients/w3c/N3/ns/time.n3> ;
-    rdfs:range xsd:integer .
-
-log:equalTo a rdf:Property,
-        owl:FunctionalProperty,
-        owl:InverseFunctionalProperty ;
-    rdfs:label "equalTo" ;
-    rdfs:comment """Determines if two RDF resources are the same.
-
-`true` if and only if `$s` and `$o` are the same RDF node (symbol or literal).
-
-Not to be confused with owl:sameAs.""" .
-
+    fno:example ( [ a fno:Test ;
+                dcterms:description """
+                This is an example for a built-in function.
+            """ ;
+                rdfs:seeAlso <http://ppr.cs.dal.ca:3002/n3/editor/?formula=%40prefix%20%3A%20%3C%3A%3E%20.%0A%40prefix%20string%3A%20%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F10%2Fswap%2Fstring%23%3E%20.%0A%0A%3ALet%20%3Astring%20%22placeholder%22%20.%0A%0A%7B%20%3ALet%20%3Astring%20%3Fx%20.%20%7D%0A%3D%3E%0A%7B%20%3Aresult%20%3Ais%20%3Fx%20.%20%7D.%20> ;
+                fno:expression """{
+                @prefix : <:> .
+                @prefix string: <http://www.w3.org/2000/10/swap/string#> .
+                :Let :string "placeholder" .
+                { :Let :string ?x . } => { :result :is ?x . } .
+            }""" ;
+                fno:result """
+                <:result> <:is> "placeholder". 
+            """ ] ) ;
+    fno:name "year" ;
+    fno:object ( [ a rdf:Property ;
+                fno:parameter ( [ a fno:Output ;
+                            dcterms:description "" ;
+                            fno:mode "*" ;
+                            fno:predicate "$o.0" ;
+                            fno:required true ;
+                            fno:type xsd:integer ] ) ] ) ;
+    fno:subject ( [ a rdf:Property ;
+                fno:parameter ( [ a fno:Parameter ;
+                            dcterms:description "" ;
+                            fno:mode "+" ;
+                            fno:predicate "$s" ;
+                            fno:required true ;
+                            fno:type xsd:dateTime ] ) ] ) .

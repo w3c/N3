@@ -7,7 +7,7 @@
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix string: <http://www.w3.org/2000/10/swap/string#> .
-@prefix time1: <http://www.w3.org/2000/10/swap/time#> .
+@prefix time: <http://www.w3.org/2000/10/swap/time#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
 
@@ -1445,7 +1445,7 @@ string:startsWith a fno:Function ;
                             fno:predicate "$s" ;
                             fno:required true ;
                             fno:type log:String ] ) ] ) .
-time1:day a fno:Function ;
+time:day a fno:Function ;
     dcterms:comment """
 `true` if and only if $s is a `xsd:dateTime` and $o is the integer day component of the dateTime.
 $o can be calculated as a function of $s.
@@ -1478,7 +1478,7 @@ $o can be calculated as a function of $s.
                             fno:predicate "$s" ;
                             fno:required true ;
                             fno:type xsd:dateTime ] ) ] ) .
-time1:month a fno:Function ;
+time:month a fno:Function ;
     dcterms:comment """
 `true` if and only if $s is a `xsd:dateTime` and $o is the integer month component of the dateTime.
 $o can be calculated as a function of $s.
@@ -1511,7 +1511,7 @@ $o can be calculated as a function of $s.
                             fno:predicate "$s" ;
                             fno:required true ;
                             fno:type xsd:dateTime ] ) ] ) .
-time1:year a fno:Function ;
+time:year a fno:Function ;
     dcterms:comment """
 `true` if and only if $s is a `xsd:dateTime` and $o is the integer year component of the dateTime.
 $o can be calculated as a function of $s.
