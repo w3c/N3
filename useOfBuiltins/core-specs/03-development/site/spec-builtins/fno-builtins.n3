@@ -9,24 +9,23 @@
 @prefix string: <http://www.w3.org/2000/10/swap/string#> .
 @prefix time: <http://www.w3.org/2000/10/swap/time#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
-
-
 crypto:sha a fno:Function ;
     dcterms:comment "The object is a SHA-1 hash of the subject." ;
-    fno:example ( [ a fno:Test ;
+    fno:example (  [ a fno:Test ;
                 dcterms:description """
-                This is an example for a built-in function.
+This is an example for a built-in function.
             """ ;
                 rdfs:seeAlso <http://ppr.cs.dal.ca:3002/n3/editor/?formula=%40prefix%20%3A%20%3C%3A%3E%20.%0A%40prefix%20string%3A%20%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F10%2Fswap%2Fstring%23%3E%20.%0A%0A%3ALet%20%3Astring%20%22placeholder%22%20.%0A%0A%7B%20%3ALet%20%3Astring%20%3Fx%20.%20%7D%0A%3D%3E%0A%7B%20%3Aresult%20%3Ais%20%3Fx%20.%20%7D.%20> ;
-                fno:expression """{
-                @prefix : <:> .
-                @prefix string: <http://www.w3.org/2000/10/swap/string#> .
-                :Let :string "placeholder" .
-                { :Let :string ?x . } => { :result :is ?x . } .
-            }""" ;
+                fno:expression """
+@prefix : <:> .
+@prefix string: <http://www.w3.org/2000/10/swap/string#> .
+:Let :string "placeholder" .
+{ :Let :string ?x . } => { :result :is ?x . } .
+            """ ;
                 fno:result """
                 <:result> <:is> "placeholder". 
-            """ ] ) ;
+            """ ]
+            ) ;
     fno:name "SHA-1 hash" ;
     fno:object ( [ a rdf:Property ;
                 fno:parameter ( [ a fno:Output ;
@@ -49,19 +48,45 @@ list:append a fno:Function ;
 Example: `( (1 2) (3 4) ) list:append (1 2 3 4).`""" ;
     fno:example ( [ a fno:Test ;
                 dcterms:description """
-                This is an example for a built-in function.
+This is an example for a built-in function.
             """ ;
                 rdfs:seeAlso <http://ppr.cs.dal.ca:3002/n3/editor/?formula=%40prefix%20%3A%20%3C%3A%3E%20.%0A%40prefix%20string%3A%20%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F10%2Fswap%2Fstring%23%3E%20.%0A%0A%3ALet%20%3Astring%20%22placeholder%22%20.%0A%0A%7B%20%3ALet%20%3Astring%20%3Fx%20.%20%7D%0A%3D%3E%0A%7B%20%3Aresult%20%3Ais%20%3Fx%20.%20%7D.%20> ;
-                fno:expression """{
-                @prefix : <:> .
-                @prefix string: <http://www.w3.org/2000/10/swap/string#> .
-                :Let :string "placeholder" .
-                { :Let :string ?x . } => { :result :is ?x . } .
-            }""" ;
+                fno:expression """
+@prefix : <:> .
+@prefix string: <http://www.w3.org/2000/10/swap/string#> .
+:Let :string "placeholder" .
+{ :Let :string ?x . } => { :result :is ?x . } .
+            """ ;
                 fno:result """
                 <:result> <:is> "placeholder". 
             """ ] ) ;
     fno:name "append" ;
+    fno:subject ( [ a rdf:Property ;
+                fno:parameter ( [ a fno:Parameter ;
+                            dcterms:description "" ;
+                            fno:mode "+" ;
+                            fno:predicate "$s" ;
+                            fno:required true ;
+                            fno:type log:List ] ) ] ) .
+list:first a fno:Function ;
+    dcterms:comment """Extracts the first member of a list. 
+`true` if and only the subject is a list and `$o` is the first member of that list.
+`$o` can be calculated as a function of the subject.""" ;
+    fno:example ( [ a fno:Test ;
+                dcterms:description """
+This is an example for a built-in function.
+            """ ;
+                rdfs:seeAlso <http://ppr.cs.dal.ca:3002/n3/editor/?formula=%40prefix%20%3A%20%3C%3A%3E%20.%0A%40prefix%20string%3A%20%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F10%2Fswap%2Fstring%23%3E%20.%0A%0A%3ALet%20%3Astring%20%22placeholder%22%20.%0A%0A%7B%20%3ALet%20%3Astring%20%3Fx%20.%20%7D%0A%3D%3E%0A%7B%20%3Aresult%20%3Ais%20%3Fx%20.%20%7D.%20> ;
+                fno:expression """
+@prefix : <:> .
+@prefix string: <http://www.w3.org/2000/10/swap/string#> .
+:Let :string "placeholder" .
+{ :Let :string ?x . } => { :result :is ?x . } .
+            """ ;
+                fno:result """
+                <:result> <:is> "placeholder". 
+            """ ] ) ;
+    fno:name "first" ;
     fno:subject ( [ a rdf:Property ;
                 fno:parameter ( [ a fno:Parameter ;
                             dcterms:description "" ;
@@ -75,15 +100,15 @@ list:in a fno:Function ;
 `$s` can be calculated from `$o`.""" ;
     fno:example ( [ a fno:Test ;
                 dcterms:description """
-                This is an example for a built-in function.
+This is an example for a built-in function.
             """ ;
                 rdfs:seeAlso <http://ppr.cs.dal.ca:3002/n3/editor/?formula=%40prefix%20%3A%20%3C%3A%3E%20.%0A%40prefix%20string%3A%20%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F10%2Fswap%2Fstring%23%3E%20.%0A%0A%3ALet%20%3Astring%20%22placeholder%22%20.%0A%0A%7B%20%3ALet%20%3Astring%20%3Fx%20.%20%7D%0A%3D%3E%0A%7B%20%3Aresult%20%3Ais%20%3Fx%20.%20%7D.%20> ;
-                fno:expression """{
-                @prefix : <:> .
-                @prefix string: <http://www.w3.org/2000/10/swap/string#> .
-                :Let :string "placeholder" .
-                { :Let :string ?x . } => { :result :is ?x . } .
-            }""" ;
+                fno:expression """
+@prefix : <:> .
+@prefix string: <http://www.w3.org/2000/10/swap/string#> .
+:Let :string "placeholder" .
+{ :Let :string ?x . } => { :result :is ?x . } .
+            """ ;
                 fno:result """
                 <:result> <:is> "placeholder". 
             """ ] ) ;
@@ -95,25 +120,96 @@ list:in a fno:Function ;
                             fno:predicate "$o.0" ;
                             fno:required true ;
                             fno:type log:List ] ) ] ) .
+list:iterate a fno:Function ;
+    dcterms:comment """Iterates over index/value pairs of the subject list.
+Gets the matching pair of list index and list value for every member of the subject.
+If the object is a variable, it will create a solution for each member of the subject list.
+If any member of the object list is a variable, it will create a solution for all matching
+members of the subject list.
+If the object is ground and the entry at the specified index matches the specified value, 
+it evaluates to `true`; otherwise, `false`.
+Example: `( 1 2 3 ) list:iterate ($i $v).`""" ;
+    fno:example ( [ a fno:Test ;
+                dcterms:description """
+This is an example for a built-in function.
+            """ ;
+                rdfs:seeAlso <http://ppr.cs.dal.ca:3002/n3/editor/?formula=%40prefix%20%3A%20%3C%3A%3E%20.%0A%40prefix%20string%3A%20%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F10%2Fswap%2Fstring%23%3E%20.%0A%0A%3ALet%20%3Astring%20%22placeholder%22%20.%0A%0A%7B%20%3ALet%20%3Astring%20%3Fx%20.%20%7D%0A%3D%3E%0A%7B%20%3Aresult%20%3Ais%20%3Fx%20.%20%7D.%20> ;
+                fno:expression """
+@prefix : <:> .
+@prefix string: <http://www.w3.org/2000/10/swap/string#> .
+:Let :string "placeholder" .
+{ :Let :string ?x . } => { :result :is ?x . } .
+            """ ;
+                fno:result """
+                <:result> <:is> "placeholder". 
+            """ ] ) ;
+    fno:name "iterate" ;
+    fno:object ( [ a rdf:Property ;
+                fno:parameter ( [ a fno:Output ;
+                            dcterms:description "" ;
+                            fno:mode "*" ;
+                            fno:predicate "$o.0" ;
+                            fno:required true ;
+                            fno:type log:List ] ) ] ) ;
+    fno:subject ( [ a rdf:Property ;
+                fno:parameter ( [ a fno:Parameter ;
+                            dcterms:description "" ;
+                            fno:mode "+" ;
+                            fno:predicate "$s" ;
+                            fno:required true ;
+                            fno:type log:List ] ) ] ) .
 list:last a fno:Function ;
     dcterms:comment """Extracts the first member of a list. 
 `true` if and only the subject is a list and `$o` is the last member of that list.
 `$o` can be calculated as a function of the subject.""" ;
     fno:example ( [ a fno:Test ;
                 dcterms:description """
-                This is an example for a built-in function.
+This is an example for a built-in function.
             """ ;
                 rdfs:seeAlso <http://ppr.cs.dal.ca:3002/n3/editor/?formula=%40prefix%20%3A%20%3C%3A%3E%20.%0A%40prefix%20string%3A%20%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F10%2Fswap%2Fstring%23%3E%20.%0A%0A%3ALet%20%3Astring%20%22placeholder%22%20.%0A%0A%7B%20%3ALet%20%3Astring%20%3Fx%20.%20%7D%0A%3D%3E%0A%7B%20%3Aresult%20%3Ais%20%3Fx%20.%20%7D.%20> ;
-                fno:expression """{
-                @prefix : <:> .
-                @prefix string: <http://www.w3.org/2000/10/swap/string#> .
-                :Let :string "placeholder" .
-                { :Let :string ?x . } => { :result :is ?x . } .
-            }""" ;
+                fno:expression """
+@prefix : <:> .
+@prefix string: <http://www.w3.org/2000/10/swap/string#> .
+:Let :string "placeholder" .
+{ :Let :string ?x . } => { :result :is ?x . } .
+            """ ;
                 fno:result """
                 <:result> <:is> "placeholder". 
             """ ] ) ;
     fno:name "in" ;
+    fno:subject ( [ a rdf:Property ;
+                fno:parameter ( [ a fno:Parameter ;
+                            dcterms:description "" ;
+                            fno:mode "+" ;
+                            fno:predicate "$s" ;
+                            fno:required true ;
+                            fno:type log:List ] ) ] ) .
+list:length a fno:Function ;
+    dcterms:comment """Calculates the length of a list.
+`true` if and only the subject is a list and `$o` is integer length of that list.
+`$o` can be calculated as a function of the subject.""" ;
+    fno:example ( [ a fno:Test ;
+                dcterms:description """
+This is an example for a built-in function.
+            """ ;
+                rdfs:seeAlso <http://ppr.cs.dal.ca:3002/n3/editor/?formula=%40prefix%20%3A%20%3C%3A%3E%20.%0A%40prefix%20string%3A%20%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F10%2Fswap%2Fstring%23%3E%20.%0A%0A%3ALet%20%3Astring%20%22placeholder%22%20.%0A%0A%7B%20%3ALet%20%3Astring%20%3Fx%20.%20%7D%0A%3D%3E%0A%7B%20%3Aresult%20%3Ais%20%3Fx%20.%20%7D.%20> ;
+                fno:expression """
+@prefix : <:> .
+@prefix string: <http://www.w3.org/2000/10/swap/string#> .
+:Let :string "placeholder" .
+{ :Let :string ?x . } => { :result :is ?x . } .
+            """ ;
+                fno:result """
+                <:result> <:is> "placeholder". 
+            """ ] ) ;
+    fno:name "length" ;
+    fno:object ( [ a rdf:Property ;
+                fno:parameter ( [ a fno:Output ;
+                            dcterms:description "" ;
+                            fno:mode "*" ;
+                            fno:predicate "$o.0" ;
+                            fno:required true ;
+                            fno:type xsd:integer ] ) ] ) ;
     fno:subject ( [ a rdf:Property ;
                 fno:parameter ( [ a fno:Parameter ;
                             dcterms:description "" ;
@@ -127,19 +223,80 @@ list:member a fno:Function ;
 `$o` can be calculated from `$s`.""" ;
     fno:example ( [ a fno:Test ;
                 dcterms:description """
-                This is an example for a built-in function.
+This is an example for a built-in function.
             """ ;
                 rdfs:seeAlso <http://ppr.cs.dal.ca:3002/n3/editor/?formula=%40prefix%20%3A%20%3C%3A%3E%20.%0A%40prefix%20string%3A%20%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F10%2Fswap%2Fstring%23%3E%20.%0A%0A%3ALet%20%3Astring%20%22placeholder%22%20.%0A%0A%7B%20%3ALet%20%3Astring%20%3Fx%20.%20%7D%0A%3D%3E%0A%7B%20%3Aresult%20%3Ais%20%3Fx%20.%20%7D.%20> ;
-                fno:expression """{
-                @prefix : <:> .
-                @prefix string: <http://www.w3.org/2000/10/swap/string#> .
-                :Let :string "placeholder" .
-                { :Let :string ?x . } => { :result :is ?x . } .
-            }""" ;
+                fno:expression """
+@prefix : <:> .
+@prefix string: <http://www.w3.org/2000/10/swap/string#> .
+:Let :string "placeholder" .
+{ :Let :string ?x . } => { :result :is ?x . } .
+            """ ;
                 fno:result """
                 <:result> <:is> "placeholder". 
             """ ] ) ;
     fno:name "member" ;
+    fno:subject ( [ a rdf:Property ;
+                fno:parameter ( [ a fno:Parameter ;
+                            dcterms:description "" ;
+                            fno:mode "+" ;
+                            fno:predicate "$s" ;
+                            fno:required true ;
+                            fno:type log:List ] ) ] ) .
+list:memberAt a fno:Function ;
+    dcterms:comment """Gets the member of a list at a given position (where the position of the first element is 1).
+`true` if and only if `$s_0` has an element at position `$s_1`, and if that element and `$o` can unify.
+Note that if `$s_1` is a variable, this builtin may bind it to more than one value (e.g. `((“A” “B” “A”) ?i) list:memberAt "A"`).
+In case of a negative integer, the index will count backwards from the length of the list.""" ;
+    fno:example ( [ a fno:Test ;
+                dcterms:description """
+This is an example for a built-in function.
+            """ ;
+                rdfs:seeAlso <http://ppr.cs.dal.ca:3002/n3/editor/?formula=%40prefix%20%3A%20%3C%3A%3E%20.%0A%40prefix%20string%3A%20%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F10%2Fswap%2Fstring%23%3E%20.%0A%0A%3ALet%20%3Astring%20%22placeholder%22%20.%0A%0A%7B%20%3ALet%20%3Astring%20%3Fx%20.%20%7D%0A%3D%3E%0A%7B%20%3Aresult%20%3Ais%20%3Fx%20.%20%7D.%20> ;
+                fno:expression """
+@prefix : <:> .
+@prefix string: <http://www.w3.org/2000/10/swap/string#> .
+:Let :string "placeholder" .
+{ :Let :string ?x . } => { :result :is ?x . } .
+            """ ;
+                fno:result """
+                <:result> <:is> "placeholder". 
+            """ ] ) ;
+    fno:name "memberAt" ;
+    fno:subject ( [ a rdf:Property ;
+                fno:parameter ( [ a fno:Parameter ;
+                            dcterms:description "" ;
+                            fno:mode "+" ;
+                            fno:predicate "$s" ;
+                            fno:required true ;
+                            fno:type log:List ] ) ] ) .
+list:remove a fno:Function ;
+    dcterms:comment """Removes the second component of the subject list from the first component of that list.
+`true` if and only if the subject is a list of two lists `$s_1` and `$s_2`, `$s_2` is a subset of `$s_1` and `$o` is a list composed of the members of the `$s_1` with all members of `$s_2` removed, matching left to right.
+`$o` can be calculated as a function of the subject.
+Example: `( (1 2 3 4) (2 3) ) list:remove (1 4).`""" ;
+    fno:example ( [ a fno:Test ;
+                dcterms:description """
+This is an example for a built-in function.
+            """ ;
+                rdfs:seeAlso <http://ppr.cs.dal.ca:3002/n3/editor/?formula=%40prefix%20%3A%20%3C%3A%3E%20.%0A%40prefix%20string%3A%20%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F10%2Fswap%2Fstring%23%3E%20.%0A%0A%3ALet%20%3Astring%20%22placeholder%22%20.%0A%0A%7B%20%3ALet%20%3Astring%20%3Fx%20.%20%7D%0A%3D%3E%0A%7B%20%3Aresult%20%3Ais%20%3Fx%20.%20%7D.%20> ;
+                fno:expression """
+@prefix : <:> .
+@prefix string: <http://www.w3.org/2000/10/swap/string#> .
+:Let :string "placeholder" .
+{ :Let :string ?x . } => { :result :is ?x . } .
+            """ ;
+                fno:result """
+                <:result> <:is> "placeholder". 
+            """ ] ) ;
+    fno:name "remove" ;
+    fno:object ( [ a rdf:Property ;
+                fno:parameter ( [ a fno:Output ;
+                            dcterms:description "" ;
+                            fno:mode "*" ;
+                            fno:predicate "$o.0" ;
+                            fno:required true ;
+                            fno:type log:List ] ) ] ) ;
     fno:subject ( [ a rdf:Property ;
                 fno:parameter ( [ a fno:Parameter ;
                             dcterms:description "" ;
@@ -153,15 +310,15 @@ log:conclusion a fno:Function ;
 Note: this is equivalent to cwm's "--think" command line function. It does use built-ins, so it may for example indirectly invoke other documents, validate signatures, etc.""" ;
     fno:example ( [ a fno:Test ;
                 dcterms:description """
-                This is an example for a built-in function.
+This is an example for a built-in function.
             """ ;
                 rdfs:seeAlso <http://ppr.cs.dal.ca:3002/n3/editor/?formula=%40prefix%20%3A%20%3C%3A%3E%20.%0A%40prefix%20string%3A%20%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F10%2Fswap%2Fstring%23%3E%20.%0A%0A%3ALet%20%3Astring%20%22placeholder%22%20.%0A%0A%7B%20%3ALet%20%3Astring%20%3Fx%20.%20%7D%0A%3D%3E%0A%7B%20%3Aresult%20%3Ais%20%3Fx%20.%20%7D.%20> ;
-                fno:expression """{
-                @prefix : <:> .
-                @prefix string: <http://www.w3.org/2000/10/swap/string#> .
-                :Let :string "placeholder" .
-                { :Let :string ?x . } => { :result :is ?x . } .
-            }""" ;
+                fno:expression """
+@prefix : <:> .
+@prefix string: <http://www.w3.org/2000/10/swap/string#> .
+:Let :string "placeholder" .
+{ :Let :string ?x . } => { :result :is ?x . } .
+            """ ;
                 fno:result """
                 <:result> <:is> "placeholder". 
             """ ] ) ;
@@ -185,15 +342,15 @@ log:conjunction a fno:Function ;
 `true` if and only if `o`, which can be generated, is a formula containing a copy of each of the formulae `$s_1 .. $s_n`.""" ;
     fno:example ( [ a fno:Test ;
                 dcterms:description """
-                This is an example for a built-in function.
+This is an example for a built-in function.
             """ ;
                 rdfs:seeAlso <http://ppr.cs.dal.ca:3002/n3/editor/?formula=%40prefix%20%3A%20%3C%3A%3E%20.%0A%40prefix%20string%3A%20%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F10%2Fswap%2Fstring%23%3E%20.%0A%0A%3ALet%20%3Astring%20%22placeholder%22%20.%0A%0A%7B%20%3ALet%20%3Astring%20%3Fx%20.%20%7D%0A%3D%3E%0A%7B%20%3Aresult%20%3Ais%20%3Fx%20.%20%7D.%20> ;
-                fno:expression """{
-                @prefix : <:> .
-                @prefix string: <http://www.w3.org/2000/10/swap/string#> .
-                :Let :string "placeholder" .
-                { :Let :string ?x . } => { :result :is ?x . } .
-            }""" ;
+                fno:expression """
+@prefix : <:> .
+@prefix string: <http://www.w3.org/2000/10/swap/string#> .
+:Let :string "placeholder" .
+{ :Let :string ?x . } => { :result :is ?x . } .
+            """ ;
                 fno:result """
                 <:result> <:is> "placeholder". 
             """ ] ) ;
@@ -217,15 +374,15 @@ log:content a fno:Function ;
 Note: the content-type of the information is not given and so must be known or guessed.""" ;
     fno:example ( [ a fno:Test ;
                 dcterms:description """
-                This is an example for a built-in function.
+This is an example for a built-in function.
             """ ;
                 rdfs:seeAlso <http://ppr.cs.dal.ca:3002/n3/editor/?formula=%40prefix%20%3A%20%3C%3A%3E%20.%0A%40prefix%20string%3A%20%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F10%2Fswap%2Fstring%23%3E%20.%0A%0A%3ALet%20%3Astring%20%22placeholder%22%20.%0A%0A%7B%20%3ALet%20%3Astring%20%3Fx%20.%20%7D%0A%3D%3E%0A%7B%20%3Aresult%20%3Ais%20%3Fx%20.%20%7D.%20> ;
-                fno:expression """{
-                @prefix : <:> .
-                @prefix string: <http://www.w3.org/2000/10/swap/string#> .
-                :Let :string "placeholder" .
-                { :Let :string ?x . } => { :result :is ?x . } .
-            }""" ;
+                fno:expression """
+@prefix : <:> .
+@prefix string: <http://www.w3.org/2000/10/swap/string#> .
+:Let :string "placeholder" .
+{ :Let :string ?x . } => { :result :is ?x . } .
+            """ ;
                 fno:result """
                 <:result> <:is> "placeholder". 
             """ ] ) ;
@@ -244,17 +401,22 @@ Note: the content-type of the information is not given and so must be known or g
                             fno:predicate "$s" ;
                             fno:required true ;
                             fno:type log:N3Document ] ) ] ) .
-log:dtlit fno:example ( [ a fno:Test ;
+log:dtlit a fno:Function ;
+    dcterms:comment """Takes a list of a string and an IRI and creates a datatyped literal.
+The subject is a list composed of a string and an IRI, and the object is a datatyped literal with the value `$s_1` and datatype `$s_2`.
+`true` if and only if the datatyped literal formed of `$s_0` and `$s_1` equals `$o`.
+Example: ``{ ("2005-03-30T11:00:00" xsd:dateTime) log:dtlit ?X } => { ?X a :Answer } .` will produce `"2005-03-30T11:00:00"^^xsd:dateTime a :Answer .`""" ;
+    fno:example ( [ a fno:Test ;
                 dcterms:description """
-                This is an example for a built-in function.
+This is an example for a built-in function.
             """ ;
                 rdfs:seeAlso <http://ppr.cs.dal.ca:3002/n3/editor/?formula=%40prefix%20%3A%20%3C%3A%3E%20.%0A%40prefix%20string%3A%20%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F10%2Fswap%2Fstring%23%3E%20.%0A%0A%3ALet%20%3Astring%20%22placeholder%22%20.%0A%0A%7B%20%3ALet%20%3Astring%20%3Fx%20.%20%7D%0A%3D%3E%0A%7B%20%3Aresult%20%3Ais%20%3Fx%20.%20%7D.%20> ;
-                fno:expression """{
-                @prefix : <:> .
-                @prefix string: <http://www.w3.org/2000/10/swap/string#> .
-                :Let :string "placeholder" .
-                { :Let :string ?x . } => { :result :is ?x . } .
-            }""" ;
+                fno:expression """
+@prefix : <:> .
+@prefix string: <http://www.w3.org/2000/10/swap/string#> .
+:Let :string "placeholder" .
+{ :Let :string ?x . } => { :result :is ?x . } .
+            """ ;
                 fno:result """
                 <:result> <:is> "placeholder". 
             """ ] ) ;
@@ -278,19 +440,36 @@ log:equalTo a fno:Function ;
 Not to be confused with owl:sameAs.""" ;
     fno:example ( [ a fno:Test ;
                 dcterms:description """
-                This is an example for a built-in function.
+This is an example for a built-in function.
             """ ;
                 rdfs:seeAlso <http://ppr.cs.dal.ca:3002/n3/editor/?formula=%40prefix%20%3A%20%3C%3A%3E%20.%0A%40prefix%20string%3A%20%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F10%2Fswap%2Fstring%23%3E%20.%0A%0A%3ALet%20%3Astring%20%22placeholder%22%20.%0A%0A%7B%20%3ALet%20%3Astring%20%3Fx%20.%20%7D%0A%3D%3E%0A%7B%20%3Aresult%20%3Ais%20%3Fx%20.%20%7D.%20> ;
-                fno:expression """{
-                @prefix : <:> .
-                @prefix string: <http://www.w3.org/2000/10/swap/string#> .
-                :Let :string "placeholder" .
-                { :Let :string ?x . } => { :result :is ?x . } .
-            }""" ;
+                fno:expression """
+@prefix : <:> .
+@prefix string: <http://www.w3.org/2000/10/swap/string#> .
+:Let :string "placeholder" .
+{ :Let :string ?x . } => { :result :is ?x . } .
+            """ ;
                 fno:result """
                 <:result> <:is> "placeholder". 
             """ ] ) ;
     fno:name "equalTo" .
+log:forAllIn a fno:Function ;
+    dcterms:comment "Built-in for implementing a scoped universal quantification." ;
+    fno:example ( [ a fno:Test ;
+                dcterms:description """
+This is an example for a built-in function.
+            """ ;
+                rdfs:seeAlso <http://ppr.cs.dal.ca:3002/n3/editor/?formula=%40prefix%20%3A%20%3C%3A%3E%20.%0A%40prefix%20string%3A%20%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F10%2Fswap%2Fstring%23%3E%20.%0A%0A%3ALet%20%3Astring%20%22placeholder%22%20.%0A%0A%7B%20%3ALet%20%3Astring%20%3Fx%20.%20%7D%0A%3D%3E%0A%7B%20%3Aresult%20%3Ais%20%3Fx%20.%20%7D.%20> ;
+                fno:expression """
+@prefix : <:> .
+@prefix string: <http://www.w3.org/2000/10/swap/string#> .
+:Let :string "placeholder" .
+{ :Let :string ?x . } => { :result :is ?x . } .
+            """ ;
+                fno:result """
+                <:result> <:is> "placeholder". 
+            """ ] ) ;
+    fno:name "forAllIn" .
 log:includes a fno:Function ;
     dcterms:comment """The subject formula includes the object formula.
 `true` if and only if `s` includes `$o` if there exists some substitution which when applied to `$o` creates a formula B' such that for every statement in B' is also in `$s`, every variable universally (or existentially) quantified in B' is quantified in the same way in `$s`. 
@@ -298,15 +477,15 @@ Variable substitution is applied recursively to nested compound terms such as fo
 Note: you can use this to peer inside nested formulae.""" ;
     fno:example ( [ a fno:Test ;
                 dcterms:description """
-                This is an example for a built-in function.
+This is an example for a built-in function.
             """ ;
                 rdfs:seeAlso <http://ppr.cs.dal.ca:3002/n3/editor/?formula=%40prefix%20%3A%20%3C%3A%3E%20.%0A%40prefix%20string%3A%20%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F10%2Fswap%2Fstring%23%3E%20.%0A%0A%3ALet%20%3Astring%20%22placeholder%22%20.%0A%0A%7B%20%3ALet%20%3Astring%20%3Fx%20.%20%7D%0A%3D%3E%0A%7B%20%3Aresult%20%3Ais%20%3Fx%20.%20%7D.%20> ;
-                fno:expression """{
-                @prefix : <:> .
-                @prefix string: <http://www.w3.org/2000/10/swap/string#> .
-                :Let :string "placeholder" .
-                { :Let :string ?x . } => { :result :is ?x . } .
-            }""" ;
+                fno:expression """
+@prefix : <:> .
+@prefix string: <http://www.w3.org/2000/10/swap/string#> .
+:Let :string "placeholder" .
+{ :Let :string ?x . } => { :result :is ?x . } .
+            """ ;
                 fno:result """
                 <:result> <:is> "placeholder". 
             """ ] ) ;
@@ -325,20 +504,54 @@ Note: you can use this to peer inside nested formulae.""" ;
                             fno:predicate "$s" ;
                             fno:required true ;
                             fno:type log:Formula ] ) ] ) .
+log:langlit a fno:Function ;
+    dcterms:comment """Takes a list of two strings and creates a language-tagged literal.
+The subject is a list composed of two strings, and the object is a language-tagged literal with the value `$s_1` and language `$s_2`.
+`true` if and only if the language-tagged literal formed of `$s_1` and `$s_2` equals `$s_3`.
+`$s_2` should be a string in the form of a [BCP47](https://tools.ietf.org/html/bcp47) language tag.
+Example: `{ ("hello" "en") log:langlit ?X } => { ?X a :Answer } .` will produce `"hello"^^en a :Answer .`""" ;
+    fno:example ( [ a fno:Test ;
+                dcterms:description """
+This is an example for a built-in function.
+            """ ;
+                rdfs:seeAlso <http://ppr.cs.dal.ca:3002/n3/editor/?formula=%40prefix%20%3A%20%3C%3A%3E%20.%0A%40prefix%20string%3A%20%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F10%2Fswap%2Fstring%23%3E%20.%0A%0A%3ALet%20%3Astring%20%22placeholder%22%20.%0A%0A%7B%20%3ALet%20%3Astring%20%3Fx%20.%20%7D%0A%3D%3E%0A%7B%20%3Aresult%20%3Ais%20%3Fx%20.%20%7D.%20> ;
+                fno:expression """
+@prefix : <:> .
+@prefix string: <http://www.w3.org/2000/10/swap/string#> .
+:Let :string "placeholder" .
+{ :Let :string ?x . } => { :result :is ?x . } .
+            """ ;
+                fno:result """
+                <:result> <:is> "placeholder". 
+            """ ] ) ;
+    fno:object ( [ a rdf:Property ;
+                fno:parameter ( [ a fno:Output ;
+                            dcterms:description "" ;
+                            fno:mode "*" ;
+                            fno:predicate "$o.0" ;
+                            fno:required true ;
+                            fno:type rdfs:Literal ] ) ] ) ;
+    fno:subject ( [ a rdf:Property ;
+                fno:parameter ( [ a fno:Parameter ;
+                            dcterms:description "" ;
+                            fno:mode "+" ;
+                            fno:predicate "$s" ;
+                            fno:required true ;
+                            fno:type log:List ] ) ] ) .
 log:notEqualTo a fno:Function ;
     dcterms:comment """Determines if two RDF resources are not the same.
 `true` if and only if `$s` and `$o` are not the same RDF node (symbol or literal).""" ;
     fno:example ( [ a fno:Test ;
                 dcterms:description """
-                This is an example for a built-in function.
+This is an example for a built-in function.
             """ ;
                 rdfs:seeAlso <http://ppr.cs.dal.ca:3002/n3/editor/?formula=%40prefix%20%3A%20%3C%3A%3E%20.%0A%40prefix%20string%3A%20%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F10%2Fswap%2Fstring%23%3E%20.%0A%0A%3ALet%20%3Astring%20%22placeholder%22%20.%0A%0A%7B%20%3ALet%20%3Astring%20%3Fx%20.%20%7D%0A%3D%3E%0A%7B%20%3Aresult%20%3Ais%20%3Fx%20.%20%7D.%20> ;
-                fno:expression """{
-                @prefix : <:> .
-                @prefix string: <http://www.w3.org/2000/10/swap/string#> .
-                :Let :string "placeholder" .
-                { :Let :string ?x . } => { :result :is ?x . } .
-            }""" ;
+                fno:expression """
+@prefix : <:> .
+@prefix string: <http://www.w3.org/2000/10/swap/string#> .
+:Let :string "placeholder" .
+{ :Let :string ?x . } => { :result :is ?x . } .
+            """ ;
                 fno:result """
                 <:result> <:is> "placeholder". 
             """ ] ) ;
@@ -349,15 +562,15 @@ log:notIncludes a fno:Function ;
 Related: see `log:includes`.""" ;
     fno:example ( [ a fno:Test ;
                 dcterms:description """
-                This is an example for a built-in function.
+This is an example for a built-in function.
             """ ;
                 rdfs:seeAlso <http://ppr.cs.dal.ca:3002/n3/editor/?formula=%40prefix%20%3A%20%3C%3A%3E%20.%0A%40prefix%20string%3A%20%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F10%2Fswap%2Fstring%23%3E%20.%0A%0A%3ALet%20%3Astring%20%22placeholder%22%20.%0A%0A%7B%20%3ALet%20%3Astring%20%3Fx%20.%20%7D%0A%3D%3E%0A%7B%20%3Aresult%20%3Ais%20%3Fx%20.%20%7D.%20> ;
-                fno:expression """{
-                @prefix : <:> .
-                @prefix string: <http://www.w3.org/2000/10/swap/string#> .
-                :Let :string "placeholder" .
-                { :Let :string ?x . } => { :result :is ?x . } .
-            }""" ;
+                fno:expression """
+@prefix : <:> .
+@prefix string: <http://www.w3.org/2000/10/swap/string#> .
+:Let :string "placeholder" .
+{ :Let :string ?x . } => { :result :is ?x . } .
+            """ ;
                 fno:result """
                 <:result> <:is> "placeholder". 
             """ ] ) ;
@@ -383,15 +596,15 @@ See cwm --strings in cwm --help.
 """ ;
     fno:example ( [ a fno:Test ;
                 dcterms:description """
-                This is an example for a built-in function.
+This is an example for a built-in function.
             """ ;
                 rdfs:seeAlso <http://ppr.cs.dal.ca:3002/n3/editor/?formula=%40prefix%20%3A%20%3C%3A%3E%20.%0A%40prefix%20string%3A%20%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F10%2Fswap%2Fstring%23%3E%20.%0A%0A%3ALet%20%3Astring%20%22placeholder%22%20.%0A%0A%7B%20%3ALet%20%3Astring%20%3Fx%20.%20%7D%0A%3D%3E%0A%7B%20%3Aresult%20%3Ais%20%3Fx%20.%20%7D.%20> ;
-                fno:expression """{
-                @prefix : <:> .
-                @prefix string: <http://www.w3.org/2000/10/swap/string#> .
-                :Let :string "placeholder" .
-                { :Let :string ?x . } => { :result :is ?x . } .
-            }""" ;
+                fno:expression """
+@prefix : <:> .
+@prefix string: <http://www.w3.org/2000/10/swap/string#> .
+:Let :string "placeholder" .
+{ :Let :string ?x . } => { :result :is ?x . } .
+            """ ;
                 fno:result """
                 <:result> <:is> "placeholder". 
             """ ] ) ;
@@ -410,15 +623,15 @@ log:parsedAsN3 a fno:Function ;
 Related: see `log:n3String`.""" ;
     fno:example ( [ a fno:Test ;
                 dcterms:description """
-                This is an example for a built-in function.
+This is an example for a built-in function.
             """ ;
                 rdfs:seeAlso <http://ppr.cs.dal.ca:3002/n3/editor/?formula=%40prefix%20%3A%20%3C%3A%3E%20.%0A%40prefix%20string%3A%20%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F10%2Fswap%2Fstring%23%3E%20.%0A%0A%3ALet%20%3Astring%20%22placeholder%22%20.%0A%0A%7B%20%3ALet%20%3Astring%20%3Fx%20.%20%7D%0A%3D%3E%0A%7B%20%3Aresult%20%3Ais%20%3Fx%20.%20%7D.%20> ;
-                fno:expression """{
-                @prefix : <:> .
-                @prefix string: <http://www.w3.org/2000/10/swap/string#> .
-                :Let :string "placeholder" .
-                { :Let :string ?x . } => { :result :is ?x . } .
-            }""" ;
+                fno:expression """
+@prefix : <:> .
+@prefix string: <http://www.w3.org/2000/10/swap/string#> .
+:Let :string "placeholder" .
+{ :Let :string ?x . } => { :result :is ?x . } .
+            """ ;
                 fno:result """
                 <:result> <:is> "placeholder". 
             """ ] ) ;
@@ -444,15 +657,15 @@ log:rawType a fno:Function ;
 Example: `log:semanticsOrError` returns either a formula or a string, and you can check which using `log:rawType`. """ ;
     fno:example ( [ a fno:Test ;
                 dcterms:description """
-                This is an example for a built-in function.
+This is an example for a built-in function.
             """ ;
                 rdfs:seeAlso <http://ppr.cs.dal.ca:3002/n3/editor/?formula=%40prefix%20%3A%20%3C%3A%3E%20.%0A%40prefix%20string%3A%20%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F10%2Fswap%2Fstring%23%3E%20.%0A%0A%3ALet%20%3Astring%20%22placeholder%22%20.%0A%0A%7B%20%3ALet%20%3Astring%20%3Fx%20.%20%7D%0A%3D%3E%0A%7B%20%3Aresult%20%3Ais%20%3Fx%20.%20%7D.%20> ;
-                fno:expression """{
-                @prefix : <:> .
-                @prefix string: <http://www.w3.org/2000/10/swap/string#> .
-                :Let :string "placeholder" .
-                { :Let :string ?x . } => { :result :is ?x . } .
-            }""" ;
+                fno:expression """
+@prefix : <:> .
+@prefix string: <http://www.w3.org/2000/10/swap/string#> .
+:Let :string "placeholder" .
+{ :Let :string ?x . } => { :result :is ?x . } .
+            """ ;
                 fno:result """
                 <:result> <:is> "placeholder". 
             """ ] ) ;
@@ -474,15 +687,15 @@ In as much as N3 is used as an interlingua for interoperability for different sy
 Related: see `log:parsedAsN3` and `log:content`.""" ;
     fno:example ( [ a fno:Test ;
                 dcterms:description """
-                This is an example for a built-in function.
+This is an example for a built-in function.
             """ ;
                 rdfs:seeAlso <http://ppr.cs.dal.ca:3002/n3/editor/?formula=%40prefix%20%3A%20%3C%3A%3E%20.%0A%40prefix%20string%3A%20%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F10%2Fswap%2Fstring%23%3E%20.%0A%0A%3ALet%20%3Astring%20%22placeholder%22%20.%0A%0A%7B%20%3ALet%20%3Astring%20%3Fx%20.%20%7D%0A%3D%3E%0A%7B%20%3Aresult%20%3Ais%20%3Fx%20.%20%7D.%20> ;
-                fno:expression """{
-                @prefix : <:> .
-                @prefix string: <http://www.w3.org/2000/10/swap/string#> .
-                :Let :string "placeholder" .
-                { :Let :string ?x . } => { :result :is ?x . } .
-            }""" ;
+                fno:expression """
+@prefix : <:> .
+@prefix string: <http://www.w3.org/2000/10/swap/string#> .
+:Let :string "placeholder" .
+{ :Let :string ?x . } => { :result :is ?x . } .
+            """ ;
                 fno:result """
                 <:result> <:is> "placeholder". 
             """ ] ) ;
@@ -506,15 +719,15 @@ log:semanticsOrError a fno:Function ;
 Related: see `log:semantics`.""" ;
     fno:example ( [ a fno:Test ;
                 dcterms:description """
-                This is an example for a built-in function.
+This is an example for a built-in function.
             """ ;
                 rdfs:seeAlso <http://ppr.cs.dal.ca:3002/n3/editor/?formula=%40prefix%20%3A%20%3C%3A%3E%20.%0A%40prefix%20string%3A%20%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F10%2Fswap%2Fstring%23%3E%20.%0A%0A%3ALet%20%3Astring%20%22placeholder%22%20.%0A%0A%7B%20%3ALet%20%3Astring%20%3Fx%20.%20%7D%0A%3D%3E%0A%7B%20%3Aresult%20%3Ais%20%3Fx%20.%20%7D.%20> ;
-                fno:expression """{
-                @prefix : <:> .
-                @prefix string: <http://www.w3.org/2000/10/swap/string#> .
-                :Let :string "placeholder" .
-                { :Let :string ?x . } => { :result :is ?x . } .
-            }""" ;
+                fno:expression """
+@prefix : <:> .
+@prefix string: <http://www.w3.org/2000/10/swap/string#> .
+:Let :string "placeholder" .
+{ :Let :string ?x . } => { :result :is ?x . } .
+            """ ;
                 fno:result """
                 <:result> <:is> "placeholder". 
             """ ] ) ;
@@ -526,6 +739,37 @@ Related: see `log:semantics`.""" ;
                             fno:predicate "$s" ;
                             fno:required true ;
                             fno:type log:N3Document ] ) ] ) .
+log:skolem a fno:Function ;
+    dcterms:comment "Built-in to generate a Skolem IRI object which is a function of the arguments in the subject list" ;
+    fno:example ( [ a fno:Test ;
+                dcterms:description """
+This is an example for a built-in function.
+            """ ;
+                rdfs:seeAlso <http://ppr.cs.dal.ca:3002/n3/editor/?formula=%40prefix%20%3A%20%3C%3A%3E%20.%0A%40prefix%20string%3A%20%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F10%2Fswap%2Fstring%23%3E%20.%0A%0A%3ALet%20%3Astring%20%22placeholder%22%20.%0A%0A%7B%20%3ALet%20%3Astring%20%3Fx%20.%20%7D%0A%3D%3E%0A%7B%20%3Aresult%20%3Ais%20%3Fx%20.%20%7D.%20> ;
+                fno:expression """
+@prefix : <:> .
+@prefix string: <http://www.w3.org/2000/10/swap/string#> .
+:Let :string "placeholder" .
+{ :Let :string ?x . } => { :result :is ?x . } .
+            """ ;
+                fno:result """
+                <:result> <:is> "placeholder". 
+            """ ] ) ;
+    fno:name "skolem" ;
+    fno:object ( [ a rdf:Property ;
+                fno:parameter ( [ a fno:Output ;
+                            dcterms:description "" ;
+                            fno:mode "*" ;
+                            fno:predicate "$o.0" ;
+                            fno:required true ;
+                            fno:type log:String ] ) ] ) ;
+    fno:subject ( [ a rdf:Property ;
+                fno:parameter ( [ a fno:Parameter ;
+                            dcterms:description "" ;
+                            fno:mode "+" ;
+                            fno:predicate "$s" ;
+                            fno:required true ;
+                            fno:type log:List ] ) ] ) .
 log:uri a fno:Function ;
     dcterms:comment """This allows one to look at the actual string of the URI which identifies this.
 (Cwm can get the URI of a resource or get the resource from the URI.)
@@ -535,19 +779,18 @@ functionality. Use to implement the URI spec and protocol specs, etc.
 """ ;
     fno:example ( [ a fno:Test ;
                 dcterms:description """
-                This is an example for a built-in function.
+This is an example for a built-in function.
             """ ;
                 rdfs:seeAlso <http://ppr.cs.dal.ca:3002/n3/editor/?formula=%40prefix%20%3A%20%3C%3A%3E%20.%0A%40prefix%20string%3A%20%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F10%2Fswap%2Fstring%23%3E%20.%0A%0A%3ALet%20%3Astring%20%22placeholder%22%20.%0A%0A%7B%20%3ALet%20%3Astring%20%3Fx%20.%20%7D%0A%3D%3E%0A%7B%20%3Aresult%20%3Ais%20%3Fx%20.%20%7D.%20> ;
-                fno:expression """{
-                @prefix : <:> .
-                @prefix string: <http://www.w3.org/2000/10/swap/string#> .
-                :Let :string "placeholder" .
-                { :Let :string ?x . } => { :result :is ?x . } .
-            }""" ;
+                fno:expression """
+@prefix : <:> .
+@prefix string: <http://www.w3.org/2000/10/swap/string#> .
+:Let :string "placeholder" .
+{ :Let :string ?x . } => { :result :is ?x . } .
+            """ ;
                 fno:result """
                 <:result> <:is> "placeholder". 
             """ ] ) ;
-    fno:name "uri" ;
     fno:object ( [ a rdf:Property ;
                 fno:parameter ( [ a fno:Output ;
                             dcterms:description "" ;
@@ -559,19 +802,112 @@ math:absoluteValue a fno:Function ;
     dcterms:comment "The object is calulated as the absolute value of the subject." ;
     fno:example ( [ a fno:Test ;
                 dcterms:description """
-                This is an example for a built-in function.
+This is an example for a built-in function.
             """ ;
                 rdfs:seeAlso <http://ppr.cs.dal.ca:3002/n3/editor/?formula=%40prefix%20%3A%20%3C%3A%3E%20.%0A%40prefix%20string%3A%20%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F10%2Fswap%2Fstring%23%3E%20.%0A%0A%3ALet%20%3Astring%20%22placeholder%22%20.%0A%0A%7B%20%3ALet%20%3Astring%20%3Fx%20.%20%7D%0A%3D%3E%0A%7B%20%3Aresult%20%3Ais%20%3Fx%20.%20%7D.%20> ;
-                fno:expression """{
-                @prefix : <:> .
-                @prefix string: <http://www.w3.org/2000/10/swap/string#> .
-                :Let :string "placeholder" .
-                { :Let :string ?x . } => { :result :is ?x . } .
-            }""" ;
+                fno:expression """
+@prefix : <:> .
+@prefix string: <http://www.w3.org/2000/10/swap/string#> .
+:Let :string "placeholder" .
+{ :Let :string ?x . } => { :result :is ?x . } .
+            """ ;
                 fno:result """
                 <:result> <:is> "placeholder". 
             """ ] ) ;
     fno:name "negation" ;
+    fno:object ( [ a rdf:Property ;
+                fno:parameter ( [ a fno:Output ;
+                            dcterms:description "" ;
+                            fno:mode "*" ;
+                            fno:predicate "$o.0" ;
+                            fno:required true ;
+                            fno:type math:Value ] ) ] ) ;
+    fno:subject ( [ a rdf:Property ;
+                fno:parameter ( [ a fno:Parameter ;
+                            dcterms:description "" ;
+                            fno:mode "+" ;
+                            fno:predicate "$s" ;
+                            fno:required true ;
+                            fno:type math:Value ] ) ] ) .
+math:acos a fno:Function ;
+    dcterms:comment "The object is calulated as the arc cosine value of the subject." ;
+    fno:example ( [ a fno:Test ;
+                dcterms:description """
+This is an example for a built-in function.
+            """ ;
+                rdfs:seeAlso <http://ppr.cs.dal.ca:3002/n3/editor/?formula=%40prefix%20%3A%20%3C%3A%3E%20.%0A%40prefix%20string%3A%20%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F10%2Fswap%2Fstring%23%3E%20.%0A%0A%3ALet%20%3Astring%20%22placeholder%22%20.%0A%0A%7B%20%3ALet%20%3Astring%20%3Fx%20.%20%7D%0A%3D%3E%0A%7B%20%3Aresult%20%3Ais%20%3Fx%20.%20%7D.%20> ;
+                fno:expression """
+@prefix : <:> .
+@prefix string: <http://www.w3.org/2000/10/swap/string#> .
+:Let :string "placeholder" .
+{ :Let :string ?x . } => { :result :is ?x . } .
+            """ ;
+                fno:result """
+                <:result> <:is> "placeholder". 
+            """ ] ) ;
+    fno:name "acos" ;
+    fno:object ( [ a rdf:Property ;
+                fno:parameter ( [ a fno:Output ;
+                            dcterms:description "" ;
+                            fno:mode "*" ;
+                            fno:predicate "$o.0" ;
+                            fno:required true ;
+                            fno:type math:Value ] ) ] ) ;
+    fno:subject ( [ a rdf:Property ;
+                fno:parameter ( [ a fno:Parameter ;
+                            dcterms:description "" ;
+                            fno:mode "+" ;
+                            fno:predicate "$s" ;
+                            fno:required true ;
+                            fno:type math:Value ] ) ] ) .
+math:asin a fno:Function ;
+    dcterms:comment "The object is calulated as the arc sine value of the subject." ;
+    fno:example ( [ a fno:Test ;
+                dcterms:description """
+This is an example for a built-in function.
+            """ ;
+                rdfs:seeAlso <http://ppr.cs.dal.ca:3002/n3/editor/?formula=%40prefix%20%3A%20%3C%3A%3E%20.%0A%40prefix%20string%3A%20%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F10%2Fswap%2Fstring%23%3E%20.%0A%0A%3ALet%20%3Astring%20%22placeholder%22%20.%0A%0A%7B%20%3ALet%20%3Astring%20%3Fx%20.%20%7D%0A%3D%3E%0A%7B%20%3Aresult%20%3Ais%20%3Fx%20.%20%7D.%20> ;
+                fno:expression """
+@prefix : <:> .
+@prefix string: <http://www.w3.org/2000/10/swap/string#> .
+:Let :string "placeholder" .
+{ :Let :string ?x . } => { :result :is ?x . } .
+            """ ;
+                fno:result """
+                <:result> <:is> "placeholder". 
+            """ ] ) ;
+    fno:name "asin" ;
+    fno:object ( [ a rdf:Property ;
+                fno:parameter ( [ a fno:Output ;
+                            dcterms:description "" ;
+                            fno:mode "*" ;
+                            fno:predicate "$o.0" ;
+                            fno:required true ;
+                            fno:type math:Value ] ) ] ) ;
+    fno:subject ( [ a rdf:Property ;
+                fno:parameter ( [ a fno:Parameter ;
+                            dcterms:description "" ;
+                            fno:mode "+" ;
+                            fno:predicate "$s" ;
+                            fno:required true ;
+                            fno:type math:Value ] ) ] ) .
+math:atan a fno:Function ;
+    dcterms:comment "The object is calulated as the arc tangent value of the subject." ;
+    fno:example ( [ a fno:Test ;
+                dcterms:description """
+This is an example for a built-in function.
+            """ ;
+                rdfs:seeAlso <http://ppr.cs.dal.ca:3002/n3/editor/?formula=%40prefix%20%3A%20%3C%3A%3E%20.%0A%40prefix%20string%3A%20%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F10%2Fswap%2Fstring%23%3E%20.%0A%0A%3ALet%20%3Astring%20%22placeholder%22%20.%0A%0A%7B%20%3ALet%20%3Astring%20%3Fx%20.%20%7D%0A%3D%3E%0A%7B%20%3Aresult%20%3Ais%20%3Fx%20.%20%7D.%20> ;
+                fno:expression """
+@prefix : <:> .
+@prefix string: <http://www.w3.org/2000/10/swap/string#> .
+:Let :string "placeholder" .
+{ :Let :string ?x . } => { :result :is ?x . } .
+            """ ;
+                fno:result """
+                <:result> <:is> "placeholder". 
+            """ ] ) ;
+    fno:name "atan" ;
     fno:object ( [ a rdf:Property ;
                 fno:parameter ( [ a fno:Output ;
                             dcterms:description "" ;
@@ -591,19 +927,51 @@ math:cos a fno:Function ;
 The object is calulated as the cosine value of the subject.""" ;
     fno:example ( [ a fno:Test ;
                 dcterms:description """
-                This is an example for a built-in function.
+This is an example for a built-in function.
             """ ;
                 rdfs:seeAlso <http://ppr.cs.dal.ca:3002/n3/editor/?formula=%40prefix%20%3A%20%3C%3A%3E%20.%0A%40prefix%20string%3A%20%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F10%2Fswap%2Fstring%23%3E%20.%0A%0A%3ALet%20%3Astring%20%22placeholder%22%20.%0A%0A%7B%20%3ALet%20%3Astring%20%3Fx%20.%20%7D%0A%3D%3E%0A%7B%20%3Aresult%20%3Ais%20%3Fx%20.%20%7D.%20> ;
-                fno:expression """{
-                @prefix : <:> .
-                @prefix string: <http://www.w3.org/2000/10/swap/string#> .
-                :Let :string "placeholder" .
-                { :Let :string ?x . } => { :result :is ?x . } .
-            }""" ;
+                fno:expression """
+@prefix : <:> .
+@prefix string: <http://www.w3.org/2000/10/swap/string#> .
+:Let :string "placeholder" .
+{ :Let :string ?x . } => { :result :is ?x . } .
+            """ ;
                 fno:result """
                 <:result> <:is> "placeholder". 
             """ ] ) ;
     fno:name "cos" ;
+    fno:object ( [ a rdf:Property ;
+                fno:parameter ( [ a fno:Output ;
+                            dcterms:description "" ;
+                            fno:mode "*" ;
+                            fno:predicate "$o.0" ;
+                            fno:required true ;
+                            fno:type math:Value ] ) ] ) ;
+    fno:subject ( [ a rdf:Property ;
+                fno:parameter ( [ a fno:Parameter ;
+                            dcterms:description "" ;
+                            fno:mode "+" ;
+                            fno:predicate "$s" ;
+                            fno:required true ;
+                            fno:type math:Value ] ) ] ) .
+math:cosh a fno:Function ;
+    dcterms:comment """The subject is an angle expressed in radians.
+The object is calulated as the #hyperbolic cosine value of the subject.""" ;
+    fno:example ( [ a fno:Test ;
+                dcterms:description """
+This is an example for a built-in function.
+            """ ;
+                rdfs:seeAlso <http://ppr.cs.dal.ca:3002/n3/editor/?formula=%40prefix%20%3A%20%3C%3A%3E%20.%0A%40prefix%20string%3A%20%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F10%2Fswap%2Fstring%23%3E%20.%0A%0A%3ALet%20%3Astring%20%22placeholder%22%20.%0A%0A%7B%20%3ALet%20%3Astring%20%3Fx%20.%20%7D%0A%3D%3E%0A%7B%20%3Aresult%20%3Ais%20%3Fx%20.%20%7D.%20> ;
+                fno:expression """
+@prefix : <:> .
+@prefix string: <http://www.w3.org/2000/10/swap/string#> .
+:Let :string "placeholder" .
+{ :Let :string ?x . } => { :result :is ?x . } .
+            """ ;
+                fno:result """
+                <:result> <:is> "placeholder". 
+            """ ] ) ;
+    fno:name "cosh" ;
     fno:object ( [ a rdf:Property ;
                 fno:parameter ( [ a fno:Output ;
                             dcterms:description "" ;
@@ -623,15 +991,15 @@ math:degrees a fno:Function ;
 The object is calulated as the conversion in degrees of the value of the subject.""" ;
     fno:example ( [ a fno:Test ;
                 dcterms:description """
-                This is an example for a built-in function.
+This is an example for a built-in function.
             """ ;
                 rdfs:seeAlso <http://ppr.cs.dal.ca:3002/n3/editor/?formula=%40prefix%20%3A%20%3C%3A%3E%20.%0A%40prefix%20string%3A%20%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F10%2Fswap%2Fstring%23%3E%20.%0A%0A%3ALet%20%3Astring%20%22placeholder%22%20.%0A%0A%7B%20%3ALet%20%3Astring%20%3Fx%20.%20%7D%0A%3D%3E%0A%7B%20%3Aresult%20%3Ais%20%3Fx%20.%20%7D.%20> ;
-                fno:expression """{
-                @prefix : <:> .
-                @prefix string: <http://www.w3.org/2000/10/swap/string#> .
-                :Let :string "placeholder" .
-                { :Let :string ?x . } => { :result :is ?x . } .
-            }""" ;
+                fno:expression """
+@prefix : <:> .
+@prefix string: <http://www.w3.org/2000/10/swap/string#> .
+:Let :string "placeholder" .
+{ :Let :string ?x . } => { :result :is ?x . } .
+            """ ;
                 fno:result """
                 <:result> <:is> "placeholder". 
             """ ] ) ;
@@ -656,15 +1024,15 @@ is calculated by subtracting the second number of the pair from the first.
 """ ;
     fno:example ( [ a fno:Test ;
                 dcterms:description """
-                This is an example for a built-in function.
+This is an example for a built-in function.
             """ ;
                 rdfs:seeAlso <http://ppr.cs.dal.ca:3002/n3/editor/?formula=%40prefix%20%3A%20%3C%3A%3E%20.%0A%40prefix%20string%3A%20%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F10%2Fswap%2Fstring%23%3E%20.%0A%0A%3ALet%20%3Astring%20%22placeholder%22%20.%0A%0A%7B%20%3ALet%20%3Astring%20%3Fx%20.%20%7D%0A%3D%3E%0A%7B%20%3Aresult%20%3Ais%20%3Fx%20.%20%7D.%20> ;
-                fno:expression """{
-                @prefix : <:> .
-                @prefix string: <http://www.w3.org/2000/10/swap/string#> .
-                :Let :string "placeholder" .
-                { :Let :string ?x . } => { :result :is ?x . } .
-            }""" ;
+                fno:expression """
+@prefix : <:> .
+@prefix string: <http://www.w3.org/2000/10/swap/string#> .
+:Let :string "placeholder" .
+{ :Let :string ?x . } => { :result :is ?x . } .
+            """ ;
                 fno:result """
                 <:result> <:is> "placeholder". 
             """ ] ) ;
@@ -683,21 +1051,54 @@ is calculated by subtracting the second number of the pair from the first.
                             fno:predicate "$s" ;
                             fno:required true ;
                             fno:type math:TwoMemberedList ] ) ] ) .
+math:equalTo a fno:Function ;
+    dcterms:comment """Checks equality of numbers.
+   
+`true` if and only if `$s` is equal to `$o`.""" ;
+    fno:example ( [ a fno:Test ;
+                dcterms:description """
+This is an example for a built-in function.
+            """ ;
+                rdfs:seeAlso <http://ppr.cs.dal.ca:3002/n3/editor/?formula=%40prefix%20%3A%20%3C%3A%3E%20.%0A%40prefix%20string%3A%20%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F10%2Fswap%2Fstring%23%3E%20.%0A%0A%3ALet%20%3Astring%20%22placeholder%22%20.%0A%0A%7B%20%3ALet%20%3Astring%20%3Fx%20.%20%7D%0A%3D%3E%0A%7B%20%3Aresult%20%3Ais%20%3Fx%20.%20%7D.%20> ;
+                fno:expression """
+@prefix : <:> .
+@prefix string: <http://www.w3.org/2000/10/swap/string#> .
+:Let :string "placeholder" .
+{ :Let :string ?x . } => { :result :is ?x . } .
+            """ ;
+                fno:result """
+                <:result> <:is> "placeholder". 
+            """ ] ) ;
+    fno:name "equalTo" ;
+    fno:object ( [ a rdf:Property ;
+                fno:parameter ( [ a fno:Output ;
+                            dcterms:description "" ;
+                            fno:mode "*" ;
+                            fno:predicate "$o.0" ;
+                            fno:required true ;
+                            fno:type math:Value ] ) ] ) ;
+    fno:subject ( [ a rdf:Property ;
+                fno:parameter ( [ a fno:Parameter ;
+                            dcterms:description "" ;
+                            fno:mode "+" ;
+                            fno:predicate "$s" ;
+                            fno:required true ;
+                            fno:type math:Value ] ) ] ) .
 math:exponentiation a fno:Function ;
     dcterms:comment """The subject is a pair of numbers. The object
 is calculated by raising the first number of the power of the second.
 """ ;
     fno:example ( [ a fno:Test ;
                 dcterms:description """
-                This is an example for a built-in function.
+This is an example for a built-in function.
             """ ;
                 rdfs:seeAlso <http://ppr.cs.dal.ca:3002/n3/editor/?formula=%40prefix%20%3A%20%3C%3A%3E%20.%0A%40prefix%20string%3A%20%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F10%2Fswap%2Fstring%23%3E%20.%0A%0A%3ALet%20%3Astring%20%22placeholder%22%20.%0A%0A%7B%20%3ALet%20%3Astring%20%3Fx%20.%20%7D%0A%3D%3E%0A%7B%20%3Aresult%20%3Ais%20%3Fx%20.%20%7D.%20> ;
-                fno:expression """{
-                @prefix : <:> .
-                @prefix string: <http://www.w3.org/2000/10/swap/string#> .
-                :Let :string "placeholder" .
-                { :Let :string ?x . } => { :result :is ?x . } .
-            }""" ;
+                fno:expression """
+@prefix : <:> .
+@prefix string: <http://www.w3.org/2000/10/swap/string#> .
+:Let :string "placeholder" .
+{ :Let :string ?x . } => { :result :is ?x . } .
+            """ ;
                 fno:result """
                 <:result> <:is> "placeholder". 
             """ ] ) ;
@@ -716,23 +1117,178 @@ is calculated by raising the first number of the power of the second.
                             fno:predicate "$s" ;
                             fno:required true ;
                             fno:type math:TwoMemberedList ] ) ] ) .
+math:greaterThan a fno:Function ;
+    dcterms:comment "`true` if and only if the subject is a number which is greater than the object." ;
+    fno:example ( [ a fno:Test ;
+                dcterms:description """
+This is an example for a built-in function.
+            """ ;
+                rdfs:seeAlso <http://ppr.cs.dal.ca:3002/n3/editor/?formula=%40prefix%20%3A%20%3C%3A%3E%20.%0A%40prefix%20string%3A%20%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F10%2Fswap%2Fstring%23%3E%20.%0A%0A%3ALet%20%3Astring%20%22placeholder%22%20.%0A%0A%7B%20%3ALet%20%3Astring%20%3Fx%20.%20%7D%0A%3D%3E%0A%7B%20%3Aresult%20%3Ais%20%3Fx%20.%20%7D.%20> ;
+                fno:expression """
+@prefix : <:> .
+@prefix string: <http://www.w3.org/2000/10/swap/string#> .
+:Let :string "placeholder" .
+{ :Let :string ?x . } => { :result :is ?x . } .
+            """ ;
+                fno:result """
+                <:result> <:is> "placeholder". 
+            """ ] ) ;
+    fno:name "greaterThan" ;
+    fno:object ( [ a rdf:Property ;
+                fno:parameter ( [ a fno:Output ;
+                            dcterms:description "" ;
+                            fno:mode "*" ;
+                            fno:predicate "$o.0" ;
+                            fno:required true ;
+                            fno:type math:Value ] ) ] ) ;
+    fno:subject ( [ a rdf:Property ;
+                fno:parameter ( [ a fno:Parameter ;
+                            dcterms:description "" ;
+                            fno:mode "+" ;
+                            fno:predicate "$s" ;
+                            fno:required true ;
+                            fno:type math:Value ] ) ] ) .
+math:lessThan a fno:Function ;
+    dcterms:comment "`true` if and only if the subject is a number which is LESS than a object." ;
+    fno:example ( [ a fno:Test ;
+                dcterms:description """
+This is an example for a built-in function.
+            """ ;
+                rdfs:seeAlso <http://ppr.cs.dal.ca:3002/n3/editor/?formula=%40prefix%20%3A%20%3C%3A%3E%20.%0A%40prefix%20string%3A%20%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F10%2Fswap%2Fstring%23%3E%20.%0A%0A%3ALet%20%3Astring%20%22placeholder%22%20.%0A%0A%7B%20%3ALet%20%3Astring%20%3Fx%20.%20%7D%0A%3D%3E%0A%7B%20%3Aresult%20%3Ais%20%3Fx%20.%20%7D.%20> ;
+                fno:expression """
+@prefix : <:> .
+@prefix string: <http://www.w3.org/2000/10/swap/string#> .
+:Let :string "placeholder" .
+{ :Let :string ?x . } => { :result :is ?x . } .
+            """ ;
+                fno:result """
+                <:result> <:is> "placeholder". 
+            """ ] ) ;
+    fno:name "lessThan" ;
+    fno:object ( [ a rdf:Property ;
+                fno:parameter ( [ a fno:Output ;
+                            dcterms:description "" ;
+                            fno:mode "*" ;
+                            fno:predicate "$o.0" ;
+                            fno:required true ;
+                            fno:type math:Value ] ) ] ) ;
+    fno:subject ( [ a rdf:Property ;
+                fno:parameter ( [ a fno:Parameter ;
+                            dcterms:description "" ;
+                            fno:mode "+" ;
+                            fno:predicate "$s" ;
+                            fno:required true ;
+                            fno:type math:Value ] ) ] ) .
 math:negation a fno:Function ;
     dcterms:comment "The subject or object is calculated to be the negation of the other." ;
     fno:example ( [ a fno:Test ;
                 dcterms:description """
-                This is an example for a built-in function.
+This is an example for a built-in function.
             """ ;
                 rdfs:seeAlso <http://ppr.cs.dal.ca:3002/n3/editor/?formula=%40prefix%20%3A%20%3C%3A%3E%20.%0A%40prefix%20string%3A%20%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F10%2Fswap%2Fstring%23%3E%20.%0A%0A%3ALet%20%3Astring%20%22placeholder%22%20.%0A%0A%7B%20%3ALet%20%3Astring%20%3Fx%20.%20%7D%0A%3D%3E%0A%7B%20%3Aresult%20%3Ais%20%3Fx%20.%20%7D.%20> ;
-                fno:expression """{
-                @prefix : <:> .
-                @prefix string: <http://www.w3.org/2000/10/swap/string#> .
-                :Let :string "placeholder" .
-                { :Let :string ?x . } => { :result :is ?x . } .
-            }""" ;
+                fno:expression """
+@prefix : <:> .
+@prefix string: <http://www.w3.org/2000/10/swap/string#> .
+:Let :string "placeholder" .
+{ :Let :string ?x . } => { :result :is ?x . } .
+            """ ;
                 fno:result """
                 <:result> <:is> "placeholder". 
             """ ] ) ;
     fno:name "negation" ;
+    fno:object ( [ a rdf:Property ;
+                fno:parameter ( [ a fno:Output ;
+                            dcterms:description "" ;
+                            fno:mode "*" ;
+                            fno:predicate "$o.0" ;
+                            fno:required true ;
+                            fno:type math:Value ] ) ] ) ;
+    fno:subject ( [ a rdf:Property ;
+                fno:parameter ( [ a fno:Parameter ;
+                            dcterms:description "" ;
+                            fno:mode "+" ;
+                            fno:predicate "$s" ;
+                            fno:required true ;
+                            fno:type math:Value ] ) ] ) .
+math:notEqualTo a fno:Function ;
+    dcterms:comment "`true` if and only if the subject is a number which is NOT EQUAL to a object." ;
+    fno:example ( [ a fno:Test ;
+                dcterms:description """
+This is an example for a built-in function.
+            """ ;
+                rdfs:seeAlso <http://ppr.cs.dal.ca:3002/n3/editor/?formula=%40prefix%20%3A%20%3C%3A%3E%20.%0A%40prefix%20string%3A%20%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F10%2Fswap%2Fstring%23%3E%20.%0A%0A%3ALet%20%3Astring%20%22placeholder%22%20.%0A%0A%7B%20%3ALet%20%3Astring%20%3Fx%20.%20%7D%0A%3D%3E%0A%7B%20%3Aresult%20%3Ais%20%3Fx%20.%20%7D.%20> ;
+                fno:expression """
+@prefix : <:> .
+@prefix string: <http://www.w3.org/2000/10/swap/string#> .
+:Let :string "placeholder" .
+{ :Let :string ?x . } => { :result :is ?x . } .
+            """ ;
+                fno:result """
+                <:result> <:is> "placeholder". 
+            """ ] ) ;
+    fno:name "notEqualTo" ;
+    fno:object ( [ a rdf:Property ;
+                fno:parameter ( [ a fno:Output ;
+                            dcterms:description "" ;
+                            fno:mode "*" ;
+                            fno:predicate "$o.0" ;
+                            fno:required true ;
+                            fno:type math:Value ] ) ] ) ;
+    fno:subject ( [ a rdf:Property ;
+                fno:parameter ( [ a fno:Parameter ;
+                            dcterms:description "" ;
+                            fno:mode "+" ;
+                            fno:predicate "$s" ;
+                            fno:required true ;
+                            fno:type math:Value ] ) ] ) .
+math:notGreaterThan a fno:Function ;
+    dcterms:comment "`true` if and only if the subject is a number which is NOT greater than the object." ;
+    fno:example ( [ a fno:Test ;
+                dcterms:description """
+This is an example for a built-in function.
+            """ ;
+                rdfs:seeAlso <http://ppr.cs.dal.ca:3002/n3/editor/?formula=%40prefix%20%3A%20%3C%3A%3E%20.%0A%40prefix%20string%3A%20%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F10%2Fswap%2Fstring%23%3E%20.%0A%0A%3ALet%20%3Astring%20%22placeholder%22%20.%0A%0A%7B%20%3ALet%20%3Astring%20%3Fx%20.%20%7D%0A%3D%3E%0A%7B%20%3Aresult%20%3Ais%20%3Fx%20.%20%7D.%20> ;
+                fno:expression """
+@prefix : <:> .
+@prefix string: <http://www.w3.org/2000/10/swap/string#> .
+:Let :string "placeholder" .
+{ :Let :string ?x . } => { :result :is ?x . } .
+            """ ;
+                fno:result """
+                <:result> <:is> "placeholder". 
+            """ ] ) ;
+    fno:name "notGreaterThan" ;
+    fno:object ( [ a rdf:Property ;
+                fno:parameter ( [ a fno:Output ;
+                            dcterms:description "" ;
+                            fno:mode "*" ;
+                            fno:predicate "$o.0" ;
+                            fno:required true ;
+                            fno:type math:Value ] ) ] ) ;
+    fno:subject ( [ a rdf:Property ;
+                fno:parameter ( [ a fno:Parameter ;
+                            dcterms:description "" ;
+                            fno:mode "+" ;
+                            fno:predicate "$s" ;
+                            fno:required true ;
+                            fno:type math:Value ] ) ] ) .
+math:notLessThan a fno:Function ;
+    dcterms:comment "`true` if and only if the subject is a number which is NOT LESS than a object." ;
+    fno:example ( [ a fno:Test ;
+                dcterms:description """
+This is an example for a built-in function.
+            """ ;
+                rdfs:seeAlso <http://ppr.cs.dal.ca:3002/n3/editor/?formula=%40prefix%20%3A%20%3C%3A%3E%20.%0A%40prefix%20string%3A%20%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F10%2Fswap%2Fstring%23%3E%20.%0A%0A%3ALet%20%3Astring%20%22placeholder%22%20.%0A%0A%7B%20%3ALet%20%3Astring%20%3Fx%20.%20%7D%0A%3D%3E%0A%7B%20%3Aresult%20%3Ais%20%3Fx%20.%20%7D.%20> ;
+                fno:expression """
+@prefix : <:> .
+@prefix string: <http://www.w3.org/2000/10/swap/string#> .
+:Let :string "placeholder" .
+{ :Let :string ?x . } => { :result :is ?x . } .
+            """ ;
+                fno:result """
+                <:result> <:is> "placeholder". 
+            """ ] ) ;
+    fno:name "notlessThan" ;
     fno:object ( [ a rdf:Property ;
                 fno:parameter ( [ a fno:Output ;
                             dcterms:description "" ;
@@ -753,15 +1309,15 @@ The object is calculated as the arithmentic product of those numbers.
 """ ;
     fno:example ( [ a fno:Test ;
                 dcterms:description """
-                This is an example for a built-in function.
+This is an example for a built-in function.
             """ ;
                 rdfs:seeAlso <http://ppr.cs.dal.ca:3002/n3/editor/?formula=%40prefix%20%3A%20%3C%3A%3E%20.%0A%40prefix%20string%3A%20%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F10%2Fswap%2Fstring%23%3E%20.%0A%0A%3ALet%20%3Astring%20%22placeholder%22%20.%0A%0A%7B%20%3ALet%20%3Astring%20%3Fx%20.%20%7D%0A%3D%3E%0A%7B%20%3Aresult%20%3Ais%20%3Fx%20.%20%7D.%20> ;
-                fno:expression """{
-                @prefix : <:> .
-                @prefix string: <http://www.w3.org/2000/10/swap/string#> .
-                :Let :string "placeholder" .
-                { :Let :string ?x . } => { :result :is ?x . } .
-            }""" ;
+                fno:expression """
+@prefix : <:> .
+@prefix string: <http://www.w3.org/2000/10/swap/string#> .
+:Let :string "placeholder" .
+{ :Let :string ?x . } => { :result :is ?x . } .
+            """ ;
                 fno:result """
                 <:result> <:is> "placeholder". 
             """ ] ) ;
@@ -786,15 +1342,15 @@ is calculated by dividing the first number of the pair by the second.
 """ ;
     fno:example ( [ a fno:Test ;
                 dcterms:description """
-                This is an example for a built-in function.
+This is an example for a built-in function.
             """ ;
                 rdfs:seeAlso <http://ppr.cs.dal.ca:3002/n3/editor/?formula=%40prefix%20%3A%20%3C%3A%3E%20.%0A%40prefix%20string%3A%20%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F10%2Fswap%2Fstring%23%3E%20.%0A%0A%3ALet%20%3Astring%20%22placeholder%22%20.%0A%0A%7B%20%3ALet%20%3Astring%20%3Fx%20.%20%7D%0A%3D%3E%0A%7B%20%3Aresult%20%3Ais%20%3Fx%20.%20%7D.%20> ;
-                fno:expression """{
-                @prefix : <:> .
-                @prefix string: <http://www.w3.org/2000/10/swap/string#> .
-                :Let :string "placeholder" .
-                { :Let :string ?x . } => { :result :is ?x . } .
-            }""" ;
+                fno:expression """
+@prefix : <:> .
+@prefix string: <http://www.w3.org/2000/10/swap/string#> .
+:Let :string "placeholder" .
+{ :Let :string ?x . } => { :result :is ?x . } .
+            """ ;
                 fno:result """
                 <:result> <:is> "placeholder". 
             """ ] ) ;
@@ -819,15 +1375,15 @@ is calculated by dividing the first number of the pair by the second and taking 
 """ ;
     fno:example ( [ a fno:Test ;
                 dcterms:description """
-                This is an example for a built-in function.
+This is an example for a built-in function.
             """ ;
                 rdfs:seeAlso <http://ppr.cs.dal.ca:3002/n3/editor/?formula=%40prefix%20%3A%20%3C%3A%3E%20.%0A%40prefix%20string%3A%20%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F10%2Fswap%2Fstring%23%3E%20.%0A%0A%3ALet%20%3Astring%20%22placeholder%22%20.%0A%0A%7B%20%3ALet%20%3Astring%20%3Fx%20.%20%7D%0A%3D%3E%0A%7B%20%3Aresult%20%3Ais%20%3Fx%20.%20%7D.%20> ;
-                fno:expression """{
-                @prefix : <:> .
-                @prefix string: <http://www.w3.org/2000/10/swap/string#> .
-                :Let :string "placeholder" .
-                { :Let :string ?x . } => { :result :is ?x . } .
-            }""" ;
+                fno:expression """
+@prefix : <:> .
+@prefix string: <http://www.w3.org/2000/10/swap/string#> .
+:Let :string "placeholder" .
+{ :Let :string ?x . } => { :result :is ?x . } .
+            """ ;
                 fno:result """
                 <:result> <:is> "placeholder". 
             """ ] ) ;
@@ -852,15 +1408,15 @@ If there are two such numbers, then the one that is closest to positive infinity
 """ ;
     fno:example ( [ a fno:Test ;
                 dcterms:description """
-                This is an example for a built-in function.
+This is an example for a built-in function.
             """ ;
                 rdfs:seeAlso <http://ppr.cs.dal.ca:3002/n3/editor/?formula=%40prefix%20%3A%20%3C%3A%3E%20.%0A%40prefix%20string%3A%20%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F10%2Fswap%2Fstring%23%3E%20.%0A%0A%3ALet%20%3Astring%20%22placeholder%22%20.%0A%0A%7B%20%3ALet%20%3Astring%20%3Fx%20.%20%7D%0A%3D%3E%0A%7B%20%3Aresult%20%3Ais%20%3Fx%20.%20%7D.%20> ;
-                fno:expression """{
-                @prefix : <:> .
-                @prefix string: <http://www.w3.org/2000/10/swap/string#> .
-                :Let :string "placeholder" .
-                { :Let :string ?x . } => { :result :is ?x . } .
-            }""" ;
+                fno:expression """
+@prefix : <:> .
+@prefix string: <http://www.w3.org/2000/10/swap/string#> .
+:Let :string "placeholder" .
+{ :Let :string ?x . } => { :result :is ?x . } .
+            """ ;
                 fno:result """
                 <:result> <:is> "placeholder". 
             """ ] ) ;
@@ -884,15 +1440,15 @@ math:sin a fno:Function ;
 The object is calulated as the sine value of the subject.""" ;
     fno:example ( [ a fno:Test ;
                 dcterms:description """
-                This is an example for a built-in function.
+This is an example for a built-in function.
             """ ;
                 rdfs:seeAlso <http://ppr.cs.dal.ca:3002/n3/editor/?formula=%40prefix%20%3A%20%3C%3A%3E%20.%0A%40prefix%20string%3A%20%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F10%2Fswap%2Fstring%23%3E%20.%0A%0A%3ALet%20%3Astring%20%22placeholder%22%20.%0A%0A%7B%20%3ALet%20%3Astring%20%3Fx%20.%20%7D%0A%3D%3E%0A%7B%20%3Aresult%20%3Ais%20%3Fx%20.%20%7D.%20> ;
-                fno:expression """{
-                @prefix : <:> .
-                @prefix string: <http://www.w3.org/2000/10/swap/string#> .
-                :Let :string "placeholder" .
-                { :Let :string ?x . } => { :result :is ?x . } .
-            }""" ;
+                fno:expression """
+@prefix : <:> .
+@prefix string: <http://www.w3.org/2000/10/swap/string#> .
+:Let :string "placeholder" .
+{ :Let :string ?x . } => { :result :is ?x . } .
+            """ ;
                 fno:result """
                 <:result> <:is> "placeholder". 
             """ ] ) ;
@@ -916,15 +1472,15 @@ math:sinh a fno:Function ;
 The object is calulated as the hyperbolic sine value of the subject.""" ;
     fno:example ( [ a fno:Test ;
                 dcterms:description """
-                This is an example for a built-in function.
+This is an example for a built-in function.
             """ ;
                 rdfs:seeAlso <http://ppr.cs.dal.ca:3002/n3/editor/?formula=%40prefix%20%3A%20%3C%3A%3E%20.%0A%40prefix%20string%3A%20%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F10%2Fswap%2Fstring%23%3E%20.%0A%0A%3ALet%20%3Astring%20%22placeholder%22%20.%0A%0A%7B%20%3ALet%20%3Astring%20%3Fx%20.%20%7D%0A%3D%3E%0A%7B%20%3Aresult%20%3Ais%20%3Fx%20.%20%7D.%20> ;
-                fno:expression """{
-                @prefix : <:> .
-                @prefix string: <http://www.w3.org/2000/10/swap/string#> .
-                :Let :string "placeholder" .
-                { :Let :string ?x . } => { :result :is ?x . } .
-            }""" ;
+                fno:expression """
+@prefix : <:> .
+@prefix string: <http://www.w3.org/2000/10/swap/string#> .
+:Let :string "placeholder" .
+{ :Let :string ?x . } => { :result :is ?x . } .
+            """ ;
                 fno:result """
                 <:result> <:is> "placeholder". 
             """ ] ) ;
@@ -948,15 +1504,15 @@ math:sum a fno:Function ;
 `true` if and only if the arithmetic sum of `$s_1, .. $s_n` equals `$o`.""" ;
     fno:example ( [ a fno:Test ;
                 dcterms:description """
-                This is an example for a built-in function.
+This is an example for a built-in function.
             """ ;
                 rdfs:seeAlso <http://ppr.cs.dal.ca:3002/n3/editor/?formula=%40prefix%20%3A%20%3C%3A%3E%20.%0A%40prefix%20string%3A%20%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F10%2Fswap%2Fstring%23%3E%20.%0A%0A%3ALet%20%3Astring%20%22placeholder%22%20.%0A%0A%7B%20%3ALet%20%3Astring%20%3Fx%20.%20%7D%0A%3D%3E%0A%7B%20%3Aresult%20%3Ais%20%3Fx%20.%20%7D.%20> ;
-                fno:expression """{
-                @prefix : <:> .
-                @prefix string: <http://www.w3.org/2000/10/swap/string#> .
-                :Let :string "placeholder" .
-                { :Let :string ?x . } => { :result :is ?x . } .
-            }""" ;
+                fno:expression """
+@prefix : <:> .
+@prefix string: <http://www.w3.org/2000/10/swap/string#> .
+:Let :string "placeholder" .
+{ :Let :string ?x . } => { :result :is ?x . } .
+            """ ;
                 fno:result """
                 <:result> <:is> "placeholder". 
             """ ] ) ;
@@ -980,15 +1536,15 @@ math:tan a fno:Function ;
 The object is calulated as the tangent value of the subject.""" ;
     fno:example ( [ a fno:Test ;
                 dcterms:description """
-                This is an example for a built-in function.
+This is an example for a built-in function.
             """ ;
                 rdfs:seeAlso <http://ppr.cs.dal.ca:3002/n3/editor/?formula=%40prefix%20%3A%20%3C%3A%3E%20.%0A%40prefix%20string%3A%20%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F10%2Fswap%2Fstring%23%3E%20.%0A%0A%3ALet%20%3Astring%20%22placeholder%22%20.%0A%0A%7B%20%3ALet%20%3Astring%20%3Fx%20.%20%7D%0A%3D%3E%0A%7B%20%3Aresult%20%3Ais%20%3Fx%20.%20%7D.%20> ;
-                fno:expression """{
-                @prefix : <:> .
-                @prefix string: <http://www.w3.org/2000/10/swap/string#> .
-                :Let :string "placeholder" .
-                { :Let :string ?x . } => { :result :is ?x . } .
-            }""" ;
+                fno:expression """
+@prefix : <:> .
+@prefix string: <http://www.w3.org/2000/10/swap/string#> .
+:Let :string "placeholder" .
+{ :Let :string ?x . } => { :result :is ?x . } .
+            """ ;
                 fno:result """
                 <:result> <:is> "placeholder". 
             """ ] ) ;
@@ -1012,15 +1568,15 @@ math:tanh a fno:Function ;
 The object is calulated as the hyperbolic tangent value of the subject.""" ;
     fno:example ( [ a fno:Test ;
                 dcterms:description """
-                This is an example for a built-in function.
+This is an example for a built-in function.
             """ ;
                 rdfs:seeAlso <http://ppr.cs.dal.ca:3002/n3/editor/?formula=%40prefix%20%3A%20%3C%3A%3E%20.%0A%40prefix%20string%3A%20%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F10%2Fswap%2Fstring%23%3E%20.%0A%0A%3ALet%20%3Astring%20%22placeholder%22%20.%0A%0A%7B%20%3ALet%20%3Astring%20%3Fx%20.%20%7D%0A%3D%3E%0A%7B%20%3Aresult%20%3Ais%20%3Fx%20.%20%7D.%20> ;
-                fno:expression """{
-                @prefix : <:> .
-                @prefix string: <http://www.w3.org/2000/10/swap/string#> .
-                :Let :string "placeholder" .
-                { :Let :string ?x . } => { :result :is ?x . } .
-            }""" ;
+                fno:expression """
+@prefix : <:> .
+@prefix string: <http://www.w3.org/2000/10/swap/string#> .
+:Let :string "placeholder" .
+{ :Let :string ?x . } => { :result :is ?x . } .
+            """ ;
                 fno:result """
                 <:result> <:is> "placeholder". 
             """ ] ) ;
@@ -1039,19 +1595,52 @@ The object is calulated as the hyperbolic tangent value of the subject.""" ;
                             fno:predicate "$s" ;
                             fno:required true ;
                             fno:type math:Value ] ) ] ) .
+string:concatenation a fno:Function ;
+    dcterms:comment """Concatenates the given strings. 
+    
+`true` if and only if the string concatenation of `$s_1, .. $s_n` equals `$o`.""" ;
+    fno:example ( [ a fno:Test ;
+                dcterms:description """
+This is an example for a built-in function.
+            """ ;
+                rdfs:seeAlso <http://ppr.cs.dal.ca:3002/n3/editor/?formula=%40prefix%20%3A%20%3C%3A%3E%20.%0A%40prefix%20string%3A%20%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F10%2Fswap%2Fstring%23%3E%20.%0A%0A%3ALet%20%3Astring%20%22placeholder%22%20.%0A%0A%7B%20%3ALet%20%3Astring%20%3Fx%20.%20%7D%0A%3D%3E%0A%7B%20%3Aresult%20%3Ais%20%3Fx%20.%20%7D.%20> ;
+                fno:expression """
+@prefix : <:> .
+@prefix string: <http://www.w3.org/2000/10/swap/string#> .
+:Let :string "placeholder" .
+{ :Let :string ?x . } => { :result :is ?x . } .
+            """ ;
+                fno:result """
+                <:result> <:is> "placeholder". 
+            """ ] ) ;
+    fno:name "concatenate into" ;
+    fno:object ( [ a rdf:Property ;
+                fno:parameter ( [ a fno:Output ;
+                            dcterms:description "" ;
+                            fno:mode "*" ;
+                            fno:predicate "$o.0" ;
+                            fno:required true ;
+                            fno:type log:String ] ) ] ) ;
+    fno:subject ( [ a rdf:Property ;
+                fno:parameter ( [ a fno:Parameter ;
+                            dcterms:description "" ;
+                            fno:mode "+" ;
+                            fno:predicate "$s" ;
+                            fno:required true ;
+                            fno:type log:List ] ) ] ) .
 string:contains a fno:Function ;
     dcterms:comment "True iff the subject string contains the object string." ;
     fno:example ( [ a fno:Test ;
                 dcterms:description """
-                This is an example for a built-in function.
+This is an example for a built-in function.
             """ ;
                 rdfs:seeAlso <http://ppr.cs.dal.ca:3002/n3/editor/?formula=%40prefix%20%3A%20%3C%3A%3E%20.%0A%40prefix%20string%3A%20%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F10%2Fswap%2Fstring%23%3E%20.%0A%0A%3ALet%20%3Astring%20%22placeholder%22%20.%0A%0A%7B%20%3ALet%20%3Astring%20%3Fx%20.%20%7D%0A%3D%3E%0A%7B%20%3Aresult%20%3Ais%20%3Fx%20.%20%7D.%20> ;
-                fno:expression """{
-                @prefix : <:> .
-                @prefix string: <http://www.w3.org/2000/10/swap/string#> .
-                :Let :string "placeholder" .
-                { :Let :string ?x . } => { :result :is ?x . } .
-            }""" ;
+                fno:expression """
+@prefix : <:> .
+@prefix string: <http://www.w3.org/2000/10/swap/string#> .
+:Let :string "placeholder" .
+{ :Let :string ?x . } => { :result :is ?x . } .
+            """ ;
                 fno:result """
                 <:result> <:is> "placeholder". 
             """ ] ) ;
@@ -1076,15 +1665,15 @@ with the comparison done ignoring the difference between upper case and
 lower case characters.""" ;
     fno:example ( [ a fno:Test ;
                 dcterms:description """
-                This is an example for a built-in function.
+This is an example for a built-in function.
             """ ;
                 rdfs:seeAlso <http://ppr.cs.dal.ca:3002/n3/editor/?formula=%40prefix%20%3A%20%3C%3A%3E%20.%0A%40prefix%20string%3A%20%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F10%2Fswap%2Fstring%23%3E%20.%0A%0A%3ALet%20%3Astring%20%22placeholder%22%20.%0A%0A%7B%20%3ALet%20%3Astring%20%3Fx%20.%20%7D%0A%3D%3E%0A%7B%20%3Aresult%20%3Ais%20%3Fx%20.%20%7D.%20> ;
-                fno:expression """{
-                @prefix : <:> .
-                @prefix string: <http://www.w3.org/2000/10/swap/string#> .
-                :Let :string "placeholder" .
-                { :Let :string ?x . } => { :result :is ?x . } .
-            }""" ;
+                fno:expression """
+@prefix : <:> .
+@prefix string: <http://www.w3.org/2000/10/swap/string#> .
+:Let :string "placeholder" .
+{ :Let :string ?x . } => { :result :is ?x . } .
+            """ ;
                 fno:result """
                 <:result> <:is> "placeholder". 
             """ ] ) ;
@@ -1107,15 +1696,15 @@ string:endsWith a fno:Function ;
     dcterms:comment "True iff the subject string ends with the object string." ;
     fno:example ( [ a fno:Test ;
                 dcterms:description """
-                This is an example for a built-in function.
+This is an example for a built-in function.
             """ ;
                 rdfs:seeAlso <http://ppr.cs.dal.ca:3002/n3/editor/?formula=%40prefix%20%3A%20%3C%3A%3E%20.%0A%40prefix%20string%3A%20%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F10%2Fswap%2Fstring%23%3E%20.%0A%0A%3ALet%20%3Astring%20%22placeholder%22%20.%0A%0A%7B%20%3ALet%20%3Astring%20%3Fx%20.%20%7D%0A%3D%3E%0A%7B%20%3Aresult%20%3Ais%20%3Fx%20.%20%7D.%20> ;
-                fno:expression """{
-                @prefix : <:> .
-                @prefix string: <http://www.w3.org/2000/10/swap/string#> .
-                :Let :string "placeholder" .
-                { :Let :string ?x . } => { :result :is ?x . } .
-            }""" ;
+                fno:expression """
+@prefix : <:> .
+@prefix string: <http://www.w3.org/2000/10/swap/string#> .
+:Let :string "placeholder" .
+{ :Let :string ?x . } => { :result :is ?x . } .
+            """ ;
                 fno:result """
                 <:result> <:is> "placeholder". 
             """ ] ) ;
@@ -1139,15 +1728,15 @@ string:equalIgnoringCase a fno:Function ;
 ignoring differences between upper and lower case.""" ;
     fno:example ( [ a fno:Test ;
                 dcterms:description """
-                This is an example for a built-in function.
+This is an example for a built-in function.
             """ ;
                 rdfs:seeAlso <http://ppr.cs.dal.ca:3002/n3/editor/?formula=%40prefix%20%3A%20%3C%3A%3E%20.%0A%40prefix%20string%3A%20%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F10%2Fswap%2Fstring%23%3E%20.%0A%0A%3ALet%20%3Astring%20%22placeholder%22%20.%0A%0A%7B%20%3ALet%20%3Astring%20%3Fx%20.%20%7D%0A%3D%3E%0A%7B%20%3Aresult%20%3Ais%20%3Fx%20.%20%7D.%20> ;
-                fno:expression """{
-                @prefix : <:> .
-                @prefix string: <http://www.w3.org/2000/10/swap/string#> .
-                :Let :string "placeholder" .
-                { :Let :string ?x . } => { :result :is ?x . } .
-            }""" ;
+                fno:expression """
+@prefix : <:> .
+@prefix string: <http://www.w3.org/2000/10/swap/string#> .
+:Let :string "placeholder" .
+{ :Let :string ?x . } => { :result :is ?x . } .
+            """ ;
                 fno:result """
                 <:result> <:is> "placeholder". 
             """ ] ) ;
@@ -1166,20 +1755,55 @@ ignoring differences between upper and lower case.""" ;
                             fno:predicate "$s" ;
                             fno:required true ;
                             fno:type log:String ] ) ] ) .
+string:format a fno:Function ;
+    dcterms:comment """The subject is a list, whose first member is a format string,
+and whose remaining members are arguments to the format string.
+The formating string is in the style of python's % operator,
+very similar to C's sprintf().
+The object is calculated from the subject.""" ;
+    fno:example ( [ a fno:Test ;
+                dcterms:description """
+This is an example for a built-in function.
+            """ ;
+                rdfs:seeAlso <http://ppr.cs.dal.ca:3002/n3/editor/?formula=%40prefix%20%3A%20%3C%3A%3E%20.%0A%40prefix%20string%3A%20%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F10%2Fswap%2Fstring%23%3E%20.%0A%0A%3ALet%20%3Astring%20%22placeholder%22%20.%0A%0A%7B%20%3ALet%20%3Astring%20%3Fx%20.%20%7D%0A%3D%3E%0A%7B%20%3Aresult%20%3Ais%20%3Fx%20.%20%7D.%20> ;
+                fno:expression """
+@prefix : <:> .
+@prefix string: <http://www.w3.org/2000/10/swap/string#> .
+:Let :string "placeholder" .
+{ :Let :string ?x . } => { :result :is ?x . } .
+            """ ;
+                fno:result """
+                <:result> <:is> "placeholder". 
+            """ ] ) ;
+    fno:name "is the string formatted function of" ;
+    fno:object ( [ a rdf:Property ;
+                fno:parameter ( [ a fno:Output ;
+                            dcterms:description "" ;
+                            fno:mode "*" ;
+                            fno:predicate "$o.0" ;
+                            fno:required true ;
+                            fno:type log:String ] ) ] ) ;
+    fno:subject ( [ a rdf:Property ;
+                fno:parameter ( [ a fno:Parameter ;
+                            dcterms:description "" ;
+                            fno:mode "+" ;
+                            fno:predicate "$s" ;
+                            fno:required true ;
+                            fno:type log:List ] ) ] ) .
 string:greaterThan a fno:Function ;
     dcterms:comment """True iff the string is greater than the object
 when ordered according to Unicode(tm) code order.""" ;
     fno:example ( [ a fno:Test ;
                 dcterms:description """
-                This is an example for a built-in function.
+This is an example for a built-in function.
             """ ;
                 rdfs:seeAlso <http://ppr.cs.dal.ca:3002/n3/editor/?formula=%40prefix%20%3A%20%3C%3A%3E%20.%0A%40prefix%20string%3A%20%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F10%2Fswap%2Fstring%23%3E%20.%0A%0A%3ALet%20%3Astring%20%22placeholder%22%20.%0A%0A%7B%20%3ALet%20%3Astring%20%3Fx%20.%20%7D%0A%3D%3E%0A%7B%20%3Aresult%20%3Ais%20%3Fx%20.%20%7D.%20> ;
-                fno:expression """{
-                @prefix : <:> .
-                @prefix string: <http://www.w3.org/2000/10/swap/string#> .
-                :Let :string "placeholder" .
-                { :Let :string ?x . } => { :result :is ?x . } .
-            }""" ;
+                fno:expression """
+@prefix : <:> .
+@prefix string: <http://www.w3.org/2000/10/swap/string#> .
+:Let :string "placeholder" .
+{ :Let :string ?x . } => { :result :is ?x . } .
+            """ ;
                 fno:result """
                 <:result> <:is> "placeholder". 
             """ ] ) ;
@@ -1203,15 +1827,15 @@ string:lessThan a fno:Function ;
 when ordered according to Unicode(tm) code order.""" ;
     fno:example ( [ a fno:Test ;
                 dcterms:description """
-                This is an example for a built-in function.
+This is an example for a built-in function.
             """ ;
                 rdfs:seeAlso <http://ppr.cs.dal.ca:3002/n3/editor/?formula=%40prefix%20%3A%20%3C%3A%3E%20.%0A%40prefix%20string%3A%20%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F10%2Fswap%2Fstring%23%3E%20.%0A%0A%3ALet%20%3Astring%20%22placeholder%22%20.%0A%0A%7B%20%3ALet%20%3Astring%20%3Fx%20.%20%7D%0A%3D%3E%0A%7B%20%3Aresult%20%3Ais%20%3Fx%20.%20%7D.%20> ;
-                fno:expression """{
-                @prefix : <:> .
-                @prefix string: <http://www.w3.org/2000/10/swap/string#> .
-                :Let :string "placeholder" .
-                { :Let :string ?x . } => { :result :is ?x . } .
-            }""" ;
+                fno:expression """
+@prefix : <:> .
+@prefix string: <http://www.w3.org/2000/10/swap/string#> .
+:Let :string "placeholder" .
+{ :Let :string ?x . } => { :result :is ?x . } .
+            """ ;
                 fno:result """
                 <:result> <:is> "placeholder". 
             """ ] ) ;
@@ -1236,15 +1860,15 @@ the object is is a regular expression in the perl, python style.
 It is true iff the string matches the regexp.""" ;
     fno:example ( [ a fno:Test ;
                 dcterms:description """
-                This is an example for a built-in function.
+This is an example for a built-in function.
             """ ;
                 rdfs:seeAlso <http://ppr.cs.dal.ca:3002/n3/editor/?formula=%40prefix%20%3A%20%3C%3A%3E%20.%0A%40prefix%20string%3A%20%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F10%2Fswap%2Fstring%23%3E%20.%0A%0A%3ALet%20%3Astring%20%22placeholder%22%20.%0A%0A%7B%20%3ALet%20%3Astring%20%3Fx%20.%20%7D%0A%3D%3E%0A%7B%20%3Aresult%20%3Ais%20%3Fx%20.%20%7D.%20> ;
-                fno:expression """{
-                @prefix : <:> .
-                @prefix string: <http://www.w3.org/2000/10/swap/string#> .
-                :Let :string "placeholder" .
-                { :Let :string ?x . } => { :result :is ?x . } .
-            }""" ;
+                fno:expression """
+@prefix : <:> .
+@prefix string: <http://www.w3.org/2000/10/swap/string#> .
+:Let :string "placeholder" .
+{ :Let :string ?x . } => { :result :is ?x . } .
+            """ ;
                 fno:result """
                 <:result> <:is> "placeholder". 
             """ ] ) ;
@@ -1268,15 +1892,15 @@ string:notEqualIgnoringCase a fno:Function ;
 ignoring differences between upper and lower case.""" ;
     fno:example ( [ a fno:Test ;
                 dcterms:description """
-                This is an example for a built-in function.
+This is an example for a built-in function.
             """ ;
                 rdfs:seeAlso <http://ppr.cs.dal.ca:3002/n3/editor/?formula=%40prefix%20%3A%20%3C%3A%3E%20.%0A%40prefix%20string%3A%20%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F10%2Fswap%2Fstring%23%3E%20.%0A%0A%3ALet%20%3Astring%20%22placeholder%22%20.%0A%0A%7B%20%3ALet%20%3Astring%20%3Fx%20.%20%7D%0A%3D%3E%0A%7B%20%3Aresult%20%3Ais%20%3Fx%20.%20%7D.%20> ;
-                fno:expression """{
-                @prefix : <:> .
-                @prefix string: <http://www.w3.org/2000/10/swap/string#> .
-                :Let :string "placeholder" .
-                { :Let :string ?x . } => { :result :is ?x . } .
-            }""" ;
+                fno:expression """
+@prefix : <:> .
+@prefix string: <http://www.w3.org/2000/10/swap/string#> .
+:Let :string "placeholder" .
+{ :Let :string ?x . } => { :result :is ?x . } .
+            """ ;
                 fno:result """
                 <:result> <:is> "placeholder". 
             """ ] ) ;
@@ -1300,15 +1924,15 @@ string:notGreaterThan a fno:Function ;
 when ordered according to Unicode(tm) code order.""" ;
     fno:example ( [ a fno:Test ;
                 dcterms:description """
-                This is an example for a built-in function.
+This is an example for a built-in function.
             """ ;
                 rdfs:seeAlso <http://ppr.cs.dal.ca:3002/n3/editor/?formula=%40prefix%20%3A%20%3C%3A%3E%20.%0A%40prefix%20string%3A%20%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F10%2Fswap%2Fstring%23%3E%20.%0A%0A%3ALet%20%3Astring%20%22placeholder%22%20.%0A%0A%7B%20%3ALet%20%3Astring%20%3Fx%20.%20%7D%0A%3D%3E%0A%7B%20%3Aresult%20%3Ais%20%3Fx%20.%20%7D.%20> ;
-                fno:expression """{
-                @prefix : <:> .
-                @prefix string: <http://www.w3.org/2000/10/swap/string#> .
-                :Let :string "placeholder" .
-                { :Let :string ?x . } => { :result :is ?x . } .
-            }""" ;
+                fno:expression """
+@prefix : <:> .
+@prefix string: <http://www.w3.org/2000/10/swap/string#> .
+:Let :string "placeholder" .
+{ :Let :string ?x . } => { :result :is ?x . } .
+            """ ;
                 fno:result """
                 <:result> <:is> "placeholder". 
             """ ] ) ;
@@ -1332,15 +1956,15 @@ string:notLessThan a fno:Function ;
 when ordered according to Unicode(tm) code order.""" ;
     fno:example ( [ a fno:Test ;
                 dcterms:description """
-                This is an example for a built-in function.
+This is an example for a built-in function.
             """ ;
                 rdfs:seeAlso <http://ppr.cs.dal.ca:3002/n3/editor/?formula=%40prefix%20%3A%20%3C%3A%3E%20.%0A%40prefix%20string%3A%20%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F10%2Fswap%2Fstring%23%3E%20.%0A%0A%3ALet%20%3Astring%20%22placeholder%22%20.%0A%0A%7B%20%3ALet%20%3Astring%20%3Fx%20.%20%7D%0A%3D%3E%0A%7B%20%3Aresult%20%3Ais%20%3Fx%20.%20%7D.%20> ;
-                fno:expression """{
-                @prefix : <:> .
-                @prefix string: <http://www.w3.org/2000/10/swap/string#> .
-                :Let :string "placeholder" .
-                { :Let :string ?x . } => { :result :is ?x . } .
-            }""" ;
+                fno:expression """
+@prefix : <:> .
+@prefix string: <http://www.w3.org/2000/10/swap/string#> .
+:Let :string "placeholder" .
+{ :Let :string ?x . } => { :result :is ?x . } .
+            """ ;
                 fno:result """
                 <:result> <:is> "placeholder". 
             """ ] ) ;
@@ -1365,15 +1989,15 @@ the object is is a regular expression in the perl, python style.
 It is true iff the string does NOT match the regexp.""" ;
     fno:example ( [ a fno:Test ;
                 dcterms:description """
-                This is an example for a built-in function.
+This is an example for a built-in function.
             """ ;
                 rdfs:seeAlso <http://ppr.cs.dal.ca:3002/n3/editor/?formula=%40prefix%20%3A%20%3C%3A%3E%20.%0A%40prefix%20string%3A%20%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F10%2Fswap%2Fstring%23%3E%20.%0A%0A%3ALet%20%3Astring%20%22placeholder%22%20.%0A%0A%7B%20%3ALet%20%3Astring%20%3Fx%20.%20%7D%0A%3D%3E%0A%7B%20%3Aresult%20%3Ais%20%3Fx%20.%20%7D.%20> ;
-                fno:expression """{
-                @prefix : <:> .
-                @prefix string: <http://www.w3.org/2000/10/swap/string#> .
-                :Let :string "placeholder" .
-                { :Let :string ?x . } => { :result :is ?x . } .
-            }""" ;
+                fno:expression """
+@prefix : <:> .
+@prefix string: <http://www.w3.org/2000/10/swap/string#> .
+:Let :string "placeholder" .
+{ :Let :string ?x . } => { :result :is ?x . } .
+            """ ;
                 fno:result """
                 <:result> <:is> "placeholder". 
             """ ] ) ;
@@ -1400,15 +2024,15 @@ The object is calculated as the replaced string.
 For example, ("fofof bar", "of", "baz") string:replace "fbazbaz bar".""" ;
     fno:example ( [ a fno:Test ;
                 dcterms:description """
-                This is an example for a built-in function.
+This is an example for a built-in function.
             """ ;
                 rdfs:seeAlso <http://ppr.cs.dal.ca:3002/n3/editor/?formula=%40prefix%20%3A%20%3C%3A%3E%20.%0A%40prefix%20string%3A%20%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F10%2Fswap%2Fstring%23%3E%20.%0A%0A%3ALet%20%3Astring%20%22placeholder%22%20.%0A%0A%7B%20%3ALet%20%3Astring%20%3Fx%20.%20%7D%0A%3D%3E%0A%7B%20%3Aresult%20%3Ais%20%3Fx%20.%20%7D.%20> ;
-                fno:expression """{
-                @prefix : <:> .
-                @prefix string: <http://www.w3.org/2000/10/swap/string#> .
-                :Let :string "placeholder" .
-                { :Let :string ?x . } => { :result :is ?x . } .
-            }""" ;
+                fno:expression """
+@prefix : <:> .
+@prefix string: <http://www.w3.org/2000/10/swap/string#> .
+:Let :string "placeholder" .
+{ :Let :string ?x . } => { :result :is ?x . } .
+            """ ;
                 fno:result """
                 <:result> <:is> "placeholder". 
             """ ] ) ;
@@ -1435,15 +2059,15 @@ the regular expression, then the object is calculated as being the
 part of the first string which matches the group.""" ;
     fno:example ( [ a fno:Test ;
                 dcterms:description """
-                This is an example for a built-in function.
+This is an example for a built-in function.
             """ ;
                 rdfs:seeAlso <http://ppr.cs.dal.ca:3002/n3/editor/?formula=%40prefix%20%3A%20%3C%3A%3E%20.%0A%40prefix%20string%3A%20%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F10%2Fswap%2Fstring%23%3E%20.%0A%0A%3ALet%20%3Astring%20%22placeholder%22%20.%0A%0A%7B%20%3ALet%20%3Astring%20%3Fx%20.%20%7D%0A%3D%3E%0A%7B%20%3Aresult%20%3Ais%20%3Fx%20.%20%7D.%20> ;
-                fno:expression """{
-                @prefix : <:> .
-                @prefix string: <http://www.w3.org/2000/10/swap/string#> .
-                :Let :string "placeholder" .
-                { :Let :string ?x . } => { :result :is ?x . } .
-            }""" ;
+                fno:expression """
+@prefix : <:> .
+@prefix string: <http://www.w3.org/2000/10/swap/string#> .
+:Let :string "placeholder" .
+{ :Let :string ?x . } => { :result :is ?x . } .
+            """ ;
                 fno:result """
                 <:result> <:is> "placeholder". 
             """ ] ) ;
@@ -1466,15 +2090,15 @@ string:startsWith a fno:Function ;
     dcterms:comment "True iff the subject string starts with the object string." ;
     fno:example ( [ a fno:Test ;
                 dcterms:description """
-                This is an example for a built-in function.
+This is an example for a built-in function.
             """ ;
                 rdfs:seeAlso <http://ppr.cs.dal.ca:3002/n3/editor/?formula=%40prefix%20%3A%20%3C%3A%3E%20.%0A%40prefix%20string%3A%20%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F10%2Fswap%2Fstring%23%3E%20.%0A%0A%3ALet%20%3Astring%20%22placeholder%22%20.%0A%0A%7B%20%3ALet%20%3Astring%20%3Fx%20.%20%7D%0A%3D%3E%0A%7B%20%3Aresult%20%3Ais%20%3Fx%20.%20%7D.%20> ;
-                fno:expression """{
-                @prefix : <:> .
-                @prefix string: <http://www.w3.org/2000/10/swap/string#> .
-                :Let :string "placeholder" .
-                { :Let :string ?x . } => { :result :is ?x . } .
-            }""" ;
+                fno:expression """
+@prefix : <:> .
+@prefix string: <http://www.w3.org/2000/10/swap/string#> .
+:Let :string "placeholder" .
+{ :Let :string ?x . } => { :result :is ?x . } .
+            """ ;
                 fno:result """
                 <:result> <:is> "placeholder". 
             """ ] ) ;
@@ -1500,19 +2124,53 @@ $o can be calculated as a function of $s.
 """ ;
     fno:example ( [ a fno:Test ;
                 dcterms:description """
-                This is an example for a built-in function.
+This is an example for a built-in function.
             """ ;
                 rdfs:seeAlso <http://ppr.cs.dal.ca:3002/n3/editor/?formula=%40prefix%20%3A%20%3C%3A%3E%20.%0A%40prefix%20string%3A%20%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F10%2Fswap%2Fstring%23%3E%20.%0A%0A%3ALet%20%3Astring%20%22placeholder%22%20.%0A%0A%7B%20%3ALet%20%3Astring%20%3Fx%20.%20%7D%0A%3D%3E%0A%7B%20%3Aresult%20%3Ais%20%3Fx%20.%20%7D.%20> ;
-                fno:expression """{
-                @prefix : <:> .
-                @prefix string: <http://www.w3.org/2000/10/swap/string#> .
-                :Let :string "placeholder" .
-                { :Let :string ?x . } => { :result :is ?x . } .
-            }""" ;
+                fno:expression """
+@prefix : <:> .
+@prefix string: <http://www.w3.org/2000/10/swap/string#> .
+:Let :string "placeholder" .
+{ :Let :string ?x . } => { :result :is ?x . } .
+            """ ;
                 fno:result """
                 <:result> <:is> "placeholder". 
             """ ] ) ;
     fno:name "day" ;
+    fno:object ( [ a rdf:Property ;
+                fno:parameter ( [ a fno:Output ;
+                            dcterms:description "" ;
+                            fno:mode "*" ;
+                            fno:predicate "$o.0" ;
+                            fno:required true ;
+                            fno:type xsd:integer ] ) ] ) ;
+    fno:subject ( [ a rdf:Property ;
+                fno:parameter ( [ a fno:Parameter ;
+                            dcterms:description "" ;
+                            fno:mode "+" ;
+                            fno:predicate "$s" ;
+                            fno:required true ;
+                            fno:type xsd:dateTime ] ) ] ) .
+time:minute a fno:Function ;
+    dcterms:comment """
+`true` if and only if $s is a `xsd:dateTime` and $o is the integer minutes component of the dateTime.
+$o can be calculated as a function of $s.
+""" ;
+    fno:example ( [ a fno:Test ;
+                dcterms:description """
+This is an example for a built-in function.
+            """ ;
+                rdfs:seeAlso <http://ppr.cs.dal.ca:3002/n3/editor/?formula=%40prefix%20%3A%20%3C%3A%3E%20.%0A%40prefix%20string%3A%20%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F10%2Fswap%2Fstring%23%3E%20.%0A%0A%3ALet%20%3Astring%20%22placeholder%22%20.%0A%0A%7B%20%3ALet%20%3Astring%20%3Fx%20.%20%7D%0A%3D%3E%0A%7B%20%3Aresult%20%3Ais%20%3Fx%20.%20%7D.%20> ;
+                fno:expression """
+@prefix : <:> .
+@prefix string: <http://www.w3.org/2000/10/swap/string#> .
+:Let :string "placeholder" .
+{ :Let :string ?x . } => { :result :is ?x . } .
+            """ ;
+                fno:result """
+                <:result> <:is> "placeholder". 
+            """ ] ) ;
+    fno:name "minute" ;
     fno:object ( [ a rdf:Property ;
                 fno:parameter ( [ a fno:Output ;
                             dcterms:description "" ;
@@ -1534,15 +2192,15 @@ $o can be calculated as a function of $s.
 """ ;
     fno:example ( [ a fno:Test ;
                 dcterms:description """
-                This is an example for a built-in function.
+This is an example for a built-in function.
             """ ;
                 rdfs:seeAlso <http://ppr.cs.dal.ca:3002/n3/editor/?formula=%40prefix%20%3A%20%3C%3A%3E%20.%0A%40prefix%20string%3A%20%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F10%2Fswap%2Fstring%23%3E%20.%0A%0A%3ALet%20%3Astring%20%22placeholder%22%20.%0A%0A%7B%20%3ALet%20%3Astring%20%3Fx%20.%20%7D%0A%3D%3E%0A%7B%20%3Aresult%20%3Ais%20%3Fx%20.%20%7D.%20> ;
-                fno:expression """{
-                @prefix : <:> .
-                @prefix string: <http://www.w3.org/2000/10/swap/string#> .
-                :Let :string "placeholder" .
-                { :Let :string ?x . } => { :result :is ?x . } .
-            }""" ;
+                fno:expression """
+@prefix : <:> .
+@prefix string: <http://www.w3.org/2000/10/swap/string#> .
+:Let :string "placeholder" .
+{ :Let :string ?x . } => { :result :is ?x . } .
+            """ ;
                 fno:result """
                 <:result> <:is> "placeholder". 
             """ ] ) ;
@@ -1561,6 +2219,75 @@ $o can be calculated as a function of $s.
                             fno:predicate "$s" ;
                             fno:required true ;
                             fno:type xsd:dateTime ] ) ] ) .
+time:second a fno:Function ;
+    dcterms:comment """
+`true` if and only if $s is a `xsd:dateTime` and $o is the integer seconds component of the dateTime.
+$o can be calculated as a function of $s.
+""" ;
+    fno:example ( [ a fno:Test ;
+                dcterms:description """
+This is an example for a built-in function.
+            """ ;
+                rdfs:seeAlso <http://ppr.cs.dal.ca:3002/n3/editor/?formula=%40prefix%20%3A%20%3C%3A%3E%20.%0A%40prefix%20string%3A%20%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F10%2Fswap%2Fstring%23%3E%20.%0A%0A%3ALet%20%3Astring%20%22placeholder%22%20.%0A%0A%7B%20%3ALet%20%3Astring%20%3Fx%20.%20%7D%0A%3D%3E%0A%7B%20%3Aresult%20%3Ais%20%3Fx%20.%20%7D.%20> ;
+                fno:expression """
+@prefix : <:> .
+@prefix string: <http://www.w3.org/2000/10/swap/string#> .
+:Let :string "placeholder" .
+{ :Let :string ?x . } => { :result :is ?x . } .
+            """ ;
+                fno:result """
+                <:result> <:is> "placeholder". 
+            """ ] ) ;
+    fno:name "second" ;
+    fno:object ( [ a rdf:Property ;
+                fno:parameter ( [ a fno:Output ;
+                            dcterms:description "" ;
+                            fno:mode "*" ;
+                            fno:predicate "$o.0" ;
+                            fno:required true ;
+                            fno:type xsd:integer ] ) ] ) ;
+    fno:subject ( [ a rdf:Property ;
+                fno:parameter ( [ a fno:Parameter ;
+                            dcterms:description "" ;
+                            fno:mode "+" ;
+                            fno:predicate "$s" ;
+                            fno:required true ;
+                            fno:type xsd:dateTime ] ) ] ) .
+time:timeZone a fno:Function ;
+    dcterms:comment """
+`true` if and only if $s is a `xsd:dateTime` and $o is the trailing timezone offset
+part, e.g.  "-05:00"..
+$o can be calculated as a function of $s.
+""" ;
+    fno:example ( [ a fno:Test ;
+                dcterms:description """
+This is an example for a built-in function.
+            """ ;
+                rdfs:seeAlso <http://ppr.cs.dal.ca:3002/n3/editor/?formula=%40prefix%20%3A%20%3C%3A%3E%20.%0A%40prefix%20string%3A%20%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F10%2Fswap%2Fstring%23%3E%20.%0A%0A%3ALet%20%3Astring%20%22placeholder%22%20.%0A%0A%7B%20%3ALet%20%3Astring%20%3Fx%20.%20%7D%0A%3D%3E%0A%7B%20%3Aresult%20%3Ais%20%3Fx%20.%20%7D.%20> ;
+                fno:expression """
+@prefix : <:> .
+@prefix string: <http://www.w3.org/2000/10/swap/string#> .
+:Let :string "placeholder" .
+{ :Let :string ?x . } => { :result :is ?x . } .
+            """ ;
+                fno:result """
+                <:result> <:is> "placeholder". 
+            """ ] ) ;
+    fno:name "timezone offset" ;
+    fno:object ( [ a rdf:Property ;
+                fno:parameter ( [ a fno:Output ;
+                            dcterms:description "" ;
+                            fno:mode "*" ;
+                            fno:predicate "$o.0" ;
+                            fno:required true ;
+                            fno:type xsd:string ] ) ] ) ;
+    fno:subject ( [ a rdf:Property ;
+                fno:parameter ( [ a fno:Parameter ;
+                            dcterms:description "" ;
+                            fno:mode "+" ;
+                            fno:predicate "$s" ;
+                            fno:required true ;
+                            fno:type xsd:dateTime ] ) ] ) .
 time:year a fno:Function ;
     dcterms:comment """
 `true` if and only if $s is a `xsd:dateTime` and $o is the integer year component of the dateTime.
@@ -1568,15 +2295,15 @@ $o can be calculated as a function of $s.
 """ ;
     fno:example ( [ a fno:Test ;
                 dcterms:description """
-                This is an example for a built-in function.
+This is an example for a built-in function.
             """ ;
                 rdfs:seeAlso <http://ppr.cs.dal.ca:3002/n3/editor/?formula=%40prefix%20%3A%20%3C%3A%3E%20.%0A%40prefix%20string%3A%20%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F10%2Fswap%2Fstring%23%3E%20.%0A%0A%3ALet%20%3Astring%20%22placeholder%22%20.%0A%0A%7B%20%3ALet%20%3Astring%20%3Fx%20.%20%7D%0A%3D%3E%0A%7B%20%3Aresult%20%3Ais%20%3Fx%20.%20%7D.%20> ;
-                fno:expression """{
-                @prefix : <:> .
-                @prefix string: <http://www.w3.org/2000/10/swap/string#> .
-                :Let :string "placeholder" .
-                { :Let :string ?x . } => { :result :is ?x . } .
-            }""" ;
+                fno:expression """
+@prefix : <:> .
+@prefix string: <http://www.w3.org/2000/10/swap/string#> .
+:Let :string "placeholder" .
+{ :Let :string ?x . } => { :result :is ?x . } .
+            """ ;
                 fno:result """
                 <:result> <:is> "placeholder". 
             """ ] ) ;

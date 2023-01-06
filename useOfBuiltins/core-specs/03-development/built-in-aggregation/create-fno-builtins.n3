@@ -12,6 +12,19 @@
 @prefix time: <http://www.w3.org/2000/10/swap/time#> .
 @prefix list: <http://www.w3.org/2000/10/swap/list#> .
 
+# RERUN ME TO CATCH THE ONES WE MISSED THAT DIDN'T HAVE A LABEL
+{   <core-builtins.n3> log:semantics ?semantics .
+    ?semantics log:includes { 
+        ?s a rdf:Property ;
+              rdfs:comment ?comment ;
+	    .
+    }. 
+}
+=>
+{   ?s a fno:Function ;
+        dcterms:comment ?comment ;
+	.        
+}.
 
 {   <core-builtins.n3> log:semantics ?semantics .
     ?semantics log:includes { 
