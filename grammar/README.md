@@ -111,9 +111,8 @@ Then, you can package all of the code into a single JS file so it can be include
 
 - Copy all generated parser & lexer files under the `editor/parser/n3` folder
 
-*NB*: you may need to manually remove 'package' statements in the auto-generated `n3Lexer.js` and `n3Parser.js` files.  
-  
-- Under the `editor/` folder, run the following: `npx webpack --config webpack.config.js` 
+- Under the `editor/` folder, run the following: `npx webpack --config webpack.config.js`  
+*NB*: set `minimize` to `false` for easier debugging
 
 
 ## Contributing
