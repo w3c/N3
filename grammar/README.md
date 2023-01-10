@@ -107,11 +107,9 @@ Then, you can package all of the code into a single JS file so it can be include
 
 - Install `webpack` for `npm` (see [here](https://webpack.js.org/guides/installation/#local-installation))
   
-- Create a webpack.config.js file (see `js/webpack.config.js` for an example; normally, you only need to change your entry point)  
+- Create a `webpack.config.js` file (see `js/webpack.config.js` for an example; normally, you only need to change your entry point)  
 
-- Copy all generated parser & lexer files under the `editor/parser/n3` folder
-
-- Under the `editor/` folder, run the following: `npx webpack --config webpack.config.js`  
+- Run the following: `npx webpack --config webpack.config.js`  
 *NB*: set `minimize` to `false` for easier debugging
 
 
