@@ -107,7 +107,7 @@ Then, you can package all of the code into a single JS file so it can be include
 
 - Install `webpack` for `npm` (see [here](https://webpack.js.org/guides/installation/#local-installation))
   
-- Create a `webpack.config.js` file (see `js/webpack.config.js` for an example; normally, you only need to change your entry point)  
+- Create a `webpack.config.js` file (see N3 editor's [`webpack.config.js`](https://github.com/william-vw/n3-editor-js/blob/master/editor/webpack.config.js) for an example)  
 
 - Run the following: `npx webpack --config webpack.config.js`  
 *NB*: set `minimize` to `false` for easier debugging
