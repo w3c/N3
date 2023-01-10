@@ -986,7 +986,7 @@
         <a data-cite="RDF11-CONCEPTS#dfn-literal">literals</a>,
         <a href="#dfn-universals">universal variables</a>,
         <a>lists</a>,
-        and <a>cited formulae</a>.
+        and <a>quoted graphs</a>.
         The set of <a data-cite="RDF11-CONCEPTS#dfn-iri">IRIs</a> conatians the implication sign denoted by the
         <a>built-in</a> <code>log:implies</code>.
         This symbol indicates logical implication and MAY in N3-turtle syntax also be represented using the symbols
@@ -1009,7 +1009,7 @@
         thus also be represented using <a href="https://www.w3.org/TR/rdf11-mt/#rdf-interpretations">rdf:nil</a>.
       </p>
       <p>
-        <dfn data-lt="quoted graphs|cited formula">Quoted graphs</dfn> (sometimes also called <a>cited formulae</a>) are
+        <dfn data-lt="quoted graphs|cited formula">Quoted graphs</dfn> (sometimes also called cited formulae) are
         <a>N3 formulae</a> which are surrounded by quoting signs.
         In N3-turtle syntax, we denote these quoting signs as curly brackets <code>{}</code>.
       </p>
@@ -1549,7 +1549,7 @@
         <li>Literals are allowed at any s/p/o position (i.e., subject, predicate or object) in a statement. See the <a
             href="#grammar-production-pathItem">pathItem</a> production, which is (eventually) referenced by the
           "subject", "predicate" and "object" productions.</li>
-        <li>N3 includes <a>cited formulae</a> (i.e., between "<code>{</code>" and "<code>}</code>"), which are allowed
+        <li>N3 includes <a>quoted graphs</a> (i.e., between "<code>{</code>" and "<code>}</code>"), which are allowed
           in any s/p/o position in a statement. See the <a href="#grammar-production-pathItem">pathItem</a> production.
         </li>
         <li><dfn data-lt="quickvar">Quick-variables</dfn> (e.g., "<code>?x</code>"), which are allowed in any s/p/o
@@ -1649,13 +1649,13 @@
           -->
         </pre>
       <p>N3 is not directly compatible with TriG as it does not support this graph statement notation. Nevertheless,
-        since N3 supports <a>quoted graphs</a> (i.e., <a>cited formulae</a>) as part of regular <a>N3 statements</a>,
+        since N3 supports <a>quoted graphs</a> as part of regular <a>N3 statements</a>,
         authors can utilize the N3 Named Graphs extension [<strong>X</strong>] for associating names or identifiers with
-        <a>cited formulae</a>. Although applications could easily introduce their own custom predicates for this
+        <a>quoted graphs</a>. Although applications could easily introduce their own custom predicates for this
         purpose, we strongly recommend the use of this extension for interoperability purposes.
       </p>
       <p>The N3 Named Graphs extension [<strong>X</strong>] defines a set of <a>built-ins</a> (used as predicates) to
-        associate names or identifiers with <a>cited formulae</a>, which then become "named graphs". Moreover, each
+        associate names or identifiers with <a>quoted graphs</a>, which then become "named graphs". Moreover, each
         predicate has a well-defined semantics on how the named graph should be interpreted: as <a>quoted graphs</a>
         (the default N3 interpretation), a partitioning of triples within a dataset context, sets of triples with their
         own isolated contexts, or specifying relations between local and online graphs.</p>
