@@ -448,7 +448,7 @@
       <pre class="example nohighlight" data-transform="updateExample">
       <!--
       @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
-      @base : <http://example.org/#> .
+      @prefix : <http://example.org/#> .
 
       :spiderman
           :birthDate "2001-08-10"^^xsd:date .
@@ -463,7 +463,7 @@
       <pre class="example nohighlight" data-transform="updateExample">
       <!--
       @prefix foaf: <http://xmlns.com/foaf/0.1/> .
-      @base : <http://example.org/#> .
+      @prefix : <http://example.org/#> .
 
       :spiderman foaf:name "Spiderman"@en ,
           "Hombre Araña"@es , "Homme Araignée"@fr .
@@ -475,7 +475,7 @@
       <!--
       @prefix i18n: <https://www.w3.org/ns/i18n#> .
       @prefix foaf: <http://xmlns.com/foaf/0.1/> .
-      @base : <http://example.org/#> .
+      @prefix : <http://example.org/#> .
 
       :spiderman foaf:name "الرجل العنكبوت"^^i18n:ar-eg_rtl .
       -->
@@ -499,9 +499,9 @@
       <!--
       @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
       @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
-      @base <http://example.org/#> .
+      @prefix <http://example.org/#> .
 
-      :Spiderman rdfs:label 
+      :spiderman rdfs:label 
           '"Bitten" by a radioactive spider.' ,
           "\"Bitten\" by a radioactive spider." ,
           """'Bitten' by "what"?
@@ -686,7 +686,7 @@
       <p>For instance:</p>
       <pre class="example nohighlight" data-transform="updateExample">
           <!--
-          @base <http://example.org/#> .
+          @prefix <http://example.org/#> .
 
           :description_logic_handbook a :Book ;
               :author ( :deborah :daniele :peter) .
@@ -715,7 +715,7 @@
       <p>In N3, collections may occur as subjects, predicates or objects in a statement. For instance:</p>
       <pre class="example nohighlight" data-transform="updateExample">
           <!--
-          @base <http://example.org/#> .
+          @prefix <http://example.org/#> .
 
           (:Fred :Wilma :Dino) :approved :resolution123 .
           -->
@@ -723,7 +723,7 @@
       <p>Or even:</p>
       <pre class="example nohighlight" data-transform="updateExample">
           <!--
-          @base <http://example.org/#> .
+          @prefix <http://example.org/#> .
 
           (:Fred :Wilma :Dino) (:read :liked :approved) (:resolution1 :resolution2 :resolution3) .
           -->
@@ -755,7 +755,7 @@
       <pre class="example nohighlight" data-transform="updateExample">
           <!--
           @prefix dc: <http://purl.org/dc/terms/> .
-          @base <http://example.org/#> .
+          @prefix <http://example.org/#> .
 
           { :cervantes dc:wrote :moby_dick } :opinion :lie ;
             :retrievedFrom <http://lies_r_us.com> ;
@@ -773,7 +773,7 @@
         instance:</p>
       <pre class="example nohighlight" data-transform="updateExample">
           <!--
-          @base <http://example.org/#> .
+          @prefix <http://example.org/#> .
 
           :LoisLane :believes { :Superman :can :fly } .
           -->
@@ -788,106 +788,79 @@
     </section>
     <section id='paths'>
       <h4>Resource Paths</h4>
-      <p>Previously, we introduced <a>blank nodes</a> as a convenient way to describe "anonymous" resources, i.e.,
-        without needing to identify them with an <a>IRI</a>.
-        got until here
-        ---
-        In some cases, it can be useful to describe a relationship between two resources that spans several other anonymous resources.
-        For that purpose, N3 provides a syntax similar to <a data-cite="SPARQL11-QUERY#propertypaths">SPARQL property paths</a> [[SPARQL11-QUERY]].
-      </p>
-      <p>N3 has the concept of a <dfn data-lt="resource path">path</dfn>
-        used to describe a relationship from some <a>N3 triple element</a>
-        to a <a>blank node</a>.
-        In the N3-turtle syntax,
-        a <a href="#grammar-production-path">path</a> starts
-        with a <a href="#grammar-production-pathItem">pathItem</a>
-        representing a specific <a>N3 triple element</a>
-        followed by a path of one or more predicates,
-        separated by <a>directional indicators</a> for
-        forward ("`!`") and reverse ("`^`") relationships.
-        In the forward direction, a path describes a relationship from a specific
-        <a>N3 triple element</a> (such as an <a>IRI</a>) to a <a>blank node</a>.
-        In the reverse direction, it describes the relationship
-        from a <a>blank node</a> to some <a>N3 triple element</a>.
-        Successive indicator/<a href="#grammar-production-pathItem">pathItem</a>
-        pairs describe subsequent relationships with the trailing
-        <a href="#grammar-production-pathItem">pathItem</a> describing
-        the relationship <a data-cite="RDF11-CONCEPTS#dfn-predicate">predicate</a>.
-      </p>
+      <p>Similar to <a data-cite="SPARQL11-QUERY#propertypaths">SPARQL property paths</a> [[SPARQL11-QUERY]], 
+        N3 <dfn>resource paths</dfn> concisely express paths between resources, 
+        in case intermediary resources on the path are not relevant.</p>
+
+        <p>A <a>resource path</a> starts from a subject resource, followed by one or more predicates;
+          each predicate is separated by a <dfn>directional indicator</dfn> to follow the predicate either forward (`!`) or in reverse (`^`).
+        For example, the following example describes the city of Joe's mother's office's address:</p>
+
+        <pre class="example nohighlight" data-transform="updateExample">
+            <!--
+            @prefix : <http://example.org/#> .
+
+            :joe!:hasMother!:hasOffice!:hasAddress :hasCity "Metropolis" .
+            -->
+          </pre>
+
+        <p>In this example, the intermediary resources &mdash; Joe's mother, her office, and its address &mdash; 
+          are not described or referenced further, so the more concise <a>resource path</a> syntax can be used.</p>
+
+        <p>The expansion of this shorthand syntax uses blank nodes to express the path between the two resources.
+          The example above is equivalent to the following (using blank node identifiers for clarity):</p>
+
+        <pre class="example nohighlight" data-transform="updateExample">
+            <!--
+            @prefix : <http://example.org/#> .
+
+            :joe :hasMother _:m . 
+            _:m :hasOffice _:o . 
+            _:o :hasAddress _:a . 
+            _:a :hasCity "Metropolis" .
+            -->
+          </pre>
+
+        <p>In other words, each predicate in <a>resource path</a> is expanded into a statement,
+        with as subject either the starting resource, or prior blank node object; and as object a newly minted blank node. </p>
+
+        <p>Relations can also be followed in reverse using the reverse (`^`) indicator.
+          The following example, starting from `joe`,  follows the `hasMother` predicate to Joe's mother, 
+          and then follows the `hasMother` predicate in reverse (thus pointing to someone who has the same mother):</p>
+
+        <pre class="example nohighlight" data-transform="updateExample">
+            <!--
+            @prefix : <http://example.org/#> .
+
+            :joe!:hasMother^:hasMother a :Person .
+            -->
+          </pre>
+
+        <p>This could equally well be represented by the more verbose:</p>
+
+        <pre class="example nohighlight" data-transform="updateExample">
+            <!--
+            @prefix : <http://example.org/#> .
+
+            :joe :hasMother _:m.
+            _:d :hasMother _:m.
+            _:d a :Person.
+            -->
+          </pre>
 
       <p class="note">In SPARQL, a property path is used in the
-        <a data-cite="RDF11-CONCEPTS#dfn-predicate">predicate</a>
-        position to describe a string of relationships between
-        a <a data-cite="RDF11-CONCEPTS#dfn-subject">subject</a>
-        and an <a data-cite="RDF11-CONCEPTS#dfn-object">object</a> resource.
-        Although unrestricted in N3, a
-        <a>resource path</a> is most often used in the
-        <a data-cite="RDF11-CONCEPTS#dfn-subject">subject</a> or
+        <a data-cite="RDF11-CONCEPTS#dfn-predicate">predicate</a> position to describe a string of relationships between
+        a <a data-cite="RDF11-CONCEPTS#dfn-subject">subject</a> and an <a data-cite="RDF11-CONCEPTS#dfn-object">object</a> resource.
+        In contrast, a N3 <a>resource path</a> is most often used in the <a data-cite="RDF11-CONCEPTS#dfn-subject">subject</a> or
         <a data-cite="RDF11-CONCEPTS#dfn-object">object</a> position.
+        Using a <a>resource path</a> in the predicate position, although technically allowed, is often a mistake.
+        For instance, the following N3 <a>resource path</a>: <br />
+        &nbsp;&nbsp;&nbsp;&nbsp;`:joe :hasAddress!:hasCity "Metropolis" .`<br />
+        Would lead to the following expansion:<br />
+        &nbsp;&nbsp;&nbsp;&nbsp;`:joe _:bn_1 "Metropolis" .`<br />
+        &nbsp;&nbsp;&nbsp;&nbsp;`:hasAddress :hasCity _:bn_1 .`<br />
+        Which is likely not the intention of the author.
       </p>
-
-      <p>Each path segment can be thought of as a shorthand for
-        an existing relationship.
-        For example, for a
-        <a data-cite="RDF11-CONCEPTS#dfn-predicate">predicate</a> |p|
-        and <a href="#grammar-production-pathItem">pathItem</a> or <a>path</a> |x|,
-        <code><var>x</var>!<var>p</var></code> is equivalent to
-        <code>[ is <var>p</var> of <var>x</var> ]</code>.
-        Similarly, <code><var>x</var>^<var>p</var></code> is equivalent to
-        <code>[ <var>p</var> <var>x</var> ]</code>.
-        Thus, the result is always a <a>blank node</a>.
-      </p>
-
-      <p>The expansion of a <a>path</a> is equivalent to unwinding
-        these relationships.</p>
-
-      <aside class="example" title="Forward path chain">
-        <p>The following example of a forward path describes
-          a relationship between Joe's mother's office's zipcode:</p>
-
-        <pre data-transform="updateExample">
-            <!--
-            @base <http://example.org/#> .
-
-            :joe!:mother!:office!:zip a :Zipcode .
-            -->
-          </pre>
-
-        <p>This could equally well be represented by the more verbose:</p>
-
-        <pre data-transform="updateExample">
-            <!--
-            @base <http://example.org/#> .
-
-            [is :zip of [is :office of [is :mother of :joe]]] a :ZipCode .
-            -->
-          </pre>
-      </aside>
-
-
-      <aside class="example" title="Mixed path chain">
-        <p>The following example of a path composed of both forward
-          and reverse relationship describes
-          a someone who is Joe's grandmother:</p>
-
-        <pre data-transform="updateExample">
-            <!--
-            @base <http://example.org/#> .
-
-            :joe!:mother^:mother a :Person .
-            -->
-          </pre>
-
-        <p>This could equally well be represented by the more verbose:</p>
-
-        <pre data-transform="updateExample">
-            <!--
-            @base <http://example.org/#> .
-
-             [ :mother [is :mother of :joe]] a :Person .
-            -->
-          </pre>
-      </aside>
 
     </section>
 
@@ -1264,8 +1237,8 @@
         relative to the previous <a>base IRI</a>.</p>
     </section>
     <section id='pathres'>
-      <h3>Path resolution</h3>
-      <p><a>Paths</a> are resolved into zero or more <a>N3 triples</a>
+      <h3>Resource path resolution</h3>
+      <p><a>Resource paths</a> are resolved into zero or more <a>N3 triples</a>
         and a single <a>N3 triple element</a> which is used as the
         <a href="#grammar-production-expression">expression</a> value
         of the <a>path</a>.
@@ -1296,7 +1269,7 @@
         <p>Processing is performed by
           recursively processing the <a>path</a> |p|,
           in reverse, from the
-          last <dfn>directional indicator</dfn> ("`!`") or ("`^`").
+          last <a>directional indicator</a> (`!`) or (`^`).
           The result of resolving |p| into an
           <a href="#grammar-production-expression">expression</a>
           and set of emitted <a>N3 triples</a>
@@ -1426,7 +1399,7 @@
         <p>Processing is performed by
           iteratively processing the <a>path</a> <var>p</var>,
           in the forward direction,
-          from the first <a>directional indicator</a> (`"!"`) or (`"^"`).
+          from the first <a>directional indicator</a> (`!`) or (`^`).
           The result of resolving <var>p</var> into an
           <a href="#grammar-production-expression">expression</a>
           and set of emitted <a>N3 triples</a>
