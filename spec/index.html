@@ -154,10 +154,11 @@
         <a>built-ins</a> for accessing and manipulating them.
       </li>
       <li>
-        <strong>N3 adds logical implications and universal variables.</strong>
-        Logical implications with variables allow making expressive If-Then style inferences via modus ponens (where
-        implementations may apply either backward- or forward-chaining).
-        Rule variables may be quantified either universally or existentially.
+        <strong>N3 adds declarative programming.</strong>
+        N3 allows making statements about the world, which include logical implications with variables 
+        &mdash; these can very loosely be compared to If-Then statements. 
+        Subsequently, an N3 reasoner can draw inferences from these statements, 
+        which allows for problem solving, automating decision making, or simply enriching your Knowledge Graph.
       </li>
       <li>
         <strong>N3 supports quoting and describing graphs of statements.</strong>
@@ -203,7 +204,7 @@
           href="#literals">literals</a> or <a href="#bnodes">blank nodes</a>. N3 also allows more advanced elements and
         statements &mdash;
         <a>quoted graphs</a> for quoting sets of statements,
-        <a href="#logimpl">logical implications</a> for rule-based reasoning, quantified variables, builtin statements,
+        <a href="#n3rules">logical implications</a> for rule-based reasoning, quantified variables, builtin statements,
         and so on.
         We introduce these types of elements and statements below.
       </p>
@@ -790,7 +791,8 @@
       <h4>Resource Paths</h4>
       <p>Similar to <a data-cite="SPARQL11-QUERY#propertypaths">SPARQL property paths</a> [[SPARQL11-QUERY]], 
         N3 <dfn>resource paths</dfn> concisely express paths between resources, 
-        when intermediary resources on the path are not relevant.</p>
+        when intermediary resources on the path are not relevant.
+        In practice, <a>resource paths</a> are most useful in <a href="#n3rules">N3 rules</a>.</p>
 
         <p>A <a>resource path</a> starts from a subject resource, followed by one or more predicates;
           each predicate is separated by a <dfn>directional indicator</dfn> to follow the predicate either forward (`!`) or in reverse (`^`).
@@ -877,22 +879,68 @@ _:d a :Person.
           -->
         </pre>
     </section>
-    <section id='logimpl'>
-      <h3>Logical Implications</h3>
+    <section id='n3rules'>
+      <h3>N3 rules</h3>
 
-      <pre class="example nohighlight" data-transform="updateExample">
+      <p>N3 supports declarative programming by allowing to make statements about the world,
+        including <dfn>logical implications</dfn>, or <dfn>N3 rules</dfn>, which can be loosely compared to If-Then statements.
+        Based on the N3 semantics, so-called inferences can be drawn from these statements. 
+        An N3 reasoner can draw such inferences automatically, 
+        which allows for automated problem solving, decision making, or simply enriching your Knowledge Graph.</p>
+
+        <p>For instance, the following is an <a>N3 rule</a>:</p>
+
+        <pre class="example nohighlight" data-transform="updateExample">
           <!--
           @prefix foaf: <http://xmlns.com/foaf/0.1/> .
+          @prefix : <http://example.org/#>.
 
-          {
-          _:doerthe foaf:knows _:dominik .
-          }
-          =>
-          {
-          _:dominik foaf:knows _:doerthe .
+          { :weather a :Raining
+          } => {
+            :weather a :Cloudy
           } .
-          -->
+        -->
         </pre>
+
+        <p>This is a logical construct, such as a conjunction (AND) and disjunction (OR). 
+        Stating such a <a>logical implication</a> means that, in case the premise is true (it is raining), 
+        the conclusion must be true as well (it is cloudy). 
+        If this is not the case &mdash; i.e., raining does not imply that it is cloudy 
+        &mdash; the implication would be false.
+        However, since all statements in N3 (and RDF) are true by default, this is not possible.
+        Hence, whenever the premise holds, then we can safely infer the conclusion: 
+        for the example above, if we state `:weather a :Raining`, then we can safely infer `:weater a :Cloudy`.
+        <a>N3 rules</a> can be loosely compared to If-Then statements in imperative programming languages.
+      </p>
+        
+        <p><a>N3 rules</a> are most useful when they include variables. 
+          For instance, the following includes a universal variable (prefixed by `?`):
+        </p>
+        <pre class="example nohighlight" data-transform="updateExample">
+          <!--
+          @prefix foaf: <http://xmlns.com/foaf/0.1/> .
+          @prefix : <http://example.org/#>.
+
+          :spiderman a :SuperHero .
+
+          { ?x a :SuperHero
+          } => {
+            ?x a :Imaginary
+          } .
+        -->
+        </pre>
+
+        <p>
+          This states that the <a>N3 rule</a> is true for each value of variable `?x`. 
+          In other words, in case the premise is true for a particular value for `?x`
+          (being a super hero), 
+          then the conclusion must be true for that value as well (being imaginary).
+          For the example above, the premise is true for value `:spiderman`, 
+          meaning we can infer the conclusion for that value, i.e., 
+          `:spiderman a :Imaginary`.
+        </p>
+
+      </p>
     </section>
     <section id='keywords'>
       <h4>Keywords and special symbols</h4>
