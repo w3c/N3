@@ -94,11 +94,11 @@
     function unComment(doc, content) {
       // perform transformations to make it render and prettier
       return content
-        .replace(/<!--/, '')
-          .replace(/--> /, '')
-            .replace(/< !\s*-\s*-/g, '<!--')
-            .replace(/-\s*- >/g, '-->')
-            .replace(/-\s*-\s*&gt;/g, '--&gt;');
+        .replace(/\<!--/, '')
+        .replace(/--\>/, '')
+        .replace(/< !\s*-\s*-/g, '<!--')
+        .replace(/-\s*- >/g, '-->')
+        .replace(/-\s*-\s*&gt;/g, '--&gt;');
     }
 
     function updateExample(doc, content) {
@@ -140,8 +140,8 @@
       stage for decision making within an open environment of interconnected knowledge graphs, as opposed to a closed
       system of locally trusted facts.</p>
     <p>Notation3 Logic, or N3 for short, aims to implement such decision-making abilities in an open web environment
-      &mdash; by (a) extending the representational abilities of RDF and (b) allowing access to and reasoning over
-      online information.
+      &mdash; by (a) extending the representational abilities of RDF and (b) allowing access to, operating on, 
+      and reasoning over online information.
       N3 attempts to walk the line between, on the one hand, ease-of-use by authors and simplicity of reasoning for
       developers; and, on the other hand, extended utility and practicality for building real-world applications.</p>
     <p>The main characteristics of N3 are as follows:</p>
@@ -151,14 +151,14 @@
         Any valid [[[Turtle]]] graph will be valid in N3 as well, meaning that all of Turtle's syntactic sugar is
         available in N3 &mdash; including <a href="#polists">predicate and object lists</a> and unlabeled blank nodes.
         Moreover, <strong><a>collections</a> are first-class citizens</strong> in N3, with an associated set of
-        <a>built-ins</a> for accessing and manipulating them.
+        <a>builtins</a> for accessing and manipulating them.
       </li>
       <li>
         <strong>N3 adds declarative programming.</strong>
         N3 allows making statements about the world, which include logical implications with variables 
-        &mdash; these can very loosely be compared to If-Then statements. 
+        &mdash; these can loosely be compared to If-Then statements. 
         Subsequently, an N3 reasoner can draw inferences from these statements, 
-        which allows for problem solving, automating decision making, or simply enriching your Knowledge Graph.
+        allowing for problem solving, automating decision making, or simply enriching your Knowledge Graph.
       </li>
       <li>
         <strong>N3 supports quoting and describing graphs of statements.</strong>
@@ -167,17 +167,17 @@
         general.
       </li>
       <li>
-        <strong>N3 includes <a>built-ins</a> for accessing online knowledge.</strong>
+        <strong>N3 includes builtins for accessing online knowledge.</strong>
         To dynamically retrieve online knowledge for decision making, the <code>log:content</code>,
         <code>log:semantics</code>, and <code>log:conclusion</code> builtins allow pulling in, parsing, and reasoning
         over logical expressions from online or local sources.
       </li>
       <li>
         <strong>N3 supports a scoped version of negation-as-failure.</strong>
-        It can be useful to check whether a <em>specific online source or local graph</em>, at a given point in time,
-        does or does not support a set of facts.
+        It can be useful to check whether a <em>specific online source, local quoted graph, or even the N3 document itself</em>, 
+        at a given point in time, does or does not support a set of facts.
         This is referred to as <em>scoped negation as failure,</em> and is supported by N3's
-        <code>log:notIncludes</code> <a>built-in</a>.
+        <code>log:collectAllIn</code>, <code>log:forAllIn</code>, and <code>log:notIncludes</code> builtin.
       </li>
     </ul>
     <!-- <p class="ednote">Should we highlight <code>log:semantics</code> and <code>log:conclusion</code> that much? They are still causing lots of discussion.
@@ -197,26 +197,23 @@
       <p>An <dfn>N3 document</dfn> represents an <a>N3 graph</a> in a compact textual form. An <dfn>N3 graph</dfn>
         is a series of <dfn data-lt="statement|triple">N3 statements</dfn>. These are written as <a>triples</a>
         consisting of a
-        <a data-cite="RDF11-CONCEPTS#dfn-subject">subject</a>,
-        <a data-cite="RDF11-CONCEPTS#dfn-predicate">predicate</a>, and
-        <a data-cite="RDF11-CONCEPTS#dfn-object">object</a>.
-        In its simplest form, a triple expresses a relation between <a href="#iris">IRIs</a>, <a
-          href="#literals">literals</a> or <a href="#bnodes">blank nodes</a>. N3 also allows more advanced elements and
-        statements &mdash;
-        <a>quoted graphs</a> for quoting sets of statements,
-        <a href="#n3rules">logical implications</a> for rule-based reasoning, quantified variables, builtin statements,
-        and so on.
-        We introduce these types of elements and statements below.
+        <a data-cite="RDF11-CONCEPTS#dfn-subject"><dfn>subject</dfn></a>,
+        <a data-cite="RDF11-CONCEPTS#dfn-predicate"><dfn>predicate</dfn></a>, and
+        <a data-cite="RDF11-CONCEPTS#dfn-object"><dfn>object</dfn></a> resource.
+        An <a data-cite="RDF11-CONCEPTS#resources-and-statements"><dfn data-lt="resource|N3 resource">N3 resource</dfn></a> can be an RDF <a href="#iris">IRI</a>, <a
+          href="#literals">literal</a> or <a href="#bnodes">blank node</a>; or an N3 <a>quoted graph</a>, <a>collection</a>, 
+          <a href="#n3rules">logical implication</a>, <a>variable</a> or <a>N3 builtin</a>.
+        We introduce these types of resources and statements below.
       </p>
       <p>Comments are indicated using a separate '#' and continue until the end of the line.
       </p>
     </section>
     <section id='simpletriples'>
       <h4>Simple triples</h4>
-      <p>The simplest <a>N3 statement</a> or <a>triple</a> is a sequence of
+      <p>The simplest <a>N3 statement</a> or <a>triple</a> is a sequence of a
         <a data-cite="RDF11-CONCEPTS#dfn-subject">subject</a>,
         <a data-cite="RDF11-CONCEPTS#dfn-predicate">predicate</a>, and
-        <a data-cite="RDF11-CONCEPTS#dfn-object">object</a>,
+        <a data-cite="RDF11-CONCEPTS#dfn-object">object</a> resource,
         separated by whitespace and terminated by '`.`' after each <a>triple</a>.
       <p>In the example below, three <a>N3 triples</a> highlight the enmity between Spiderman and the Green Goblin and
         lists their human-readable names:</p>
@@ -785,11 +782,263 @@
         Indeed, this is an accurate depiction of Lois Lane's statement at the time &mdash; 
         as she did not know that Superman is Clark Kent at that point, 
         she would certainly not be saying that Clark Kent can fly.</p>
+    </section>
+
+    <section id='n3rules'>
+      <h3>N3 Rules</h3>
+
+      <p>N3 supports declarative programming by allowing to make statements about the world,
+        including logical implications, or <dfn data-lt="logical implication|N3 rule">N3 rules</dfn>, which can be loosely compared to If-Then statements.
+        Based on the N3 semantics, so-called inferences can be drawn from these statements. 
+        An N3 reasoner can draw such inferences automatically, to support
+        problem solving, decision making, or simply enriching your Knowledge Graph.</p>
+
+        <p>For instance, the following is an <a>N3 rule</a>:</p>
+
+        <pre class="example nohighlight" data-transform="updateExample">
+          <!--
+          @prefix foaf: <http://xmlns.com/foaf/0.1/> .
+          @prefix : <http://example.org/#>.
+
+          { :weather a :Raining
+          } => {
+            :weather a :Cloudy
+          } .
+        -->
+        </pre>
+
+        <p>
+          This is a logical construct, such as a conjunction (AND) and disjunction (OR). 
+          Stating such a <a>logical implication</a> means that, in case the <dfn data-lt="premise|rule premise">rule premise</dfn> is true (it is raining), 
+          the <dfn data-lt="conclusion|rule conclusion">rule conclusion</dfn> must be true as well (it is cloudy). 
+          If this is not the case &mdash; raining does not imply that it is cloudy 
+          &mdash; the implication would be false. 
+          However, this is not possible, since all statements in N3 (and RDF) are true by default.
+        </p>
+        
+        <p>
+          Hence, when the <a>premise</a> holds, then we can safely infer the <a>conclusion</a>. 
+          This is also referred to as <dfn data-lt="fire|firing">firing</dfn> the rule.
+          For the example above, if we state `:weather a :Raining`, then we can safely infer `:weater a :Cloudy`.
+        </p>
+
+        <p class="note">
+          An <a>N3 rule</a> is actually a N3 statement, where the <a>subject</a> and <a>object</a> constitute <a>quoted graphs</a>,
+          and the <a>predicate</a> is `log:implies`, with symbol `=&gt;` as syntactic sugar.
+          <!-- For backward chaining rules (see <a href="n3rulechaining">rule chaining</a>), 
+          the predicate is `log:impliedBy`, with symbol `&lt;=` as syntactic sugar. -->
+          <!-- In fact, these predicates themselves are <a>N3 builtins</a>. -->
+        </p>
+
+        <section id='n3rulevars'>
+          <h3>Rule Variables</h3>
+        
+          <p><a>N3 rules</a> are most useful when they include <dfn>variables</dfn>. 
+            For instance, the following includes a universal variable (prefixed by `?`):
+          </p>
+          <pre class="example nohighlight" data-transform="updateExample">
+            <!--
+            @prefix foaf: <http://xmlns.com/foaf/0.1/> .
+            @prefix : <http://example.org/#>.
+
+            :spiderman a :SuperHero .
+
+            { ?x a :SuperHero
+            } => {
+              ?x a :Imaginary
+            } .
+          -->
+          </pre>
+
+          <p>
+            This states that the <a>N3 rule</a> is true for each value of variable `?x`: 
+            when the <a>premise</a> is true for a particular value for `?x`
+            (being a super hero), 
+            then the <a>conclusion</a> must be true for that value as well (being imaginary).
+            For the example above, the <a>premise</a> is true for value `:spiderman`, 
+            meaning we can infer the <a>conclusion</a> for that value, i.e., 
+            `:spiderman a :Imaginary`.
+          </p>
+          <p class="note">
+            More technically, the triples in the <a>rule premise</a>
+            (e.g., `?x a :SuperHero`) can be seen as <dfn><a data-cite="SPARQL11-QUERY#QSynTriples">triple patterns</a></dfn>.
+            In order to <a>fire</a> the rule, these triple patterns are matched to concrete triples 
+            in the <a>N3 document</a>. 
+            If a match is successful, concrete resources from the matching triple (e.g., `:spiderman`)
+             are bound to the triple pattern's <a>variables</a> (e.g., `?x`).
+            These bound variable values are then used in the inferred conclusion (e.g., `:spiderman a :Imaginary`).
+          </p>
+        </section>
+
+        <section id='n3rulechaining'>
+          <h3>Rule Chaining</h3>
+
+          <p>In practice, a pivotal feature is that <a>N3 rules</a> can be "chained": 
+            a rule can depend on the results of other rules. For example:
+          </p>
+
+          <pre id="chaining_example" class="example nohighlight" data-transform="updateExample">
+            <!--
+            @prefix foaf: <http://xmlns.com/foaf/0.1/> .
+            @prefix : <http://example.org/#>.
+            
+            :spiderman a :WebSlinger .
+            :44th :traffic :heavy .
+            
+            { ?slinger a :WebSlinger } => { ?slinger :locomotion :flying } .
+
+            { ?heli a :Helicopter } => { ?heli :locomotion :flying  } .
+
+            { ?flyer :locomotion :flying . ?street :traffic :heavy } 
+              =>  { ?street :suitable-observer ?flyer } .
+            -->
+          </pre>
+
+          <p>
+            The third <a>N3 rule</a> relies on the <a>rule conclusion</a> (`:locomotion`) of the first two rules:
+            if one of those rules <a>fire</a>, i.e., inferring a flying locomotion for a resource,
+            then the third rule would <a>fire</a> as well, i.e., inferring that the resource
+            would be a suitable observer for a street with heavy traffic.
+            <!-- Hence the term "chaining"; rules 1 and 2 each form a chain with rule 3. -->
+            This allows for a modularization of N3 code: 
+            the first two rules separately decide when something supports a flying locomotion;
+            the third rule determines what the general effects of flying locomotion are.
+          </p>
+
+          <p>
+            Following the 
+          </p>
+          
+          <p class="note">
+            Variable names only have to be unique within a rule, and not across rules. 
+            For instance, in the <a href="#chaining_example">prior example</a>,
+            we simply could have named every variable `?x`. 
+            As with general coding practices, it is typically a good idea to give variables a 
+            meaningful name.
+          </p>
+        </p>
+
+        <p>
+          <!-- TODO have a section on N3 reasoners -->
+          An N3 reasoner, which can draw inferences from <a>N3 rules</a>, 
+          can operate in forward chaining, backward chaining, or some hybrid mode.
+          An <a>N3 rule</a> can also indicate which mode should be used, 
+          by using the appropriate predicate. 
+          Up until now, we have been utilizing `=&gt;`, which is syntactic sugar for `log:implies` and
+          directs the reasoner to operate in forward chaining mode.
+          The `&lt;=` predicate, syntactic sugar for `log:impliedBy`, indicates a backward chaining mode.
+        </p>
+        <p>
+          For instance, the following is equivalent to the <a href="#chaining_example">prior example</a>
+          and combines forward and backward chaining:
+          <pre id="backward_chaining_example" class="example nohighlight" data-transform="updateExample">
+            <!--
+            @prefix foaf: <http://xmlns.com/foaf/0.1/> .
+            @prefix : <http://example.org/#>.
+            
+            :spiderman a :WebSlinger .
+
+            { ?slinger :locomotion :flying } <= { ?slinger a :WebSlinger } .
+
+            { ?heli :locomotion :flying } <= { ?heli a :Helicopter } .
+
+            { ?flyer :locomotion :flying . ?street :traffic :heavy } 
+              =>  { ?street :suitable-observer ?flyer } .
+            -->
+          </pre>
+        </p>
+
+        <p>
+          In a nutshell, forward reasoning presents a bottom-up approach: 
+          starting from a set of initial and inferred statements, 
+          a reasoner will <a>fire</a> any N3 rule where the <a>premise</a> holds,
+          each time adding the inferences to the set, until no more N3 rules can be fired.
+          Backward chaining is a top-down approach: given a query, such as `?x :locomotion :flying`,
+          the reasoner will search for any rules with <a>conclusions</a> that may satisfy the query (e.g., first and second rule). 
+          Then, it will check whether the <a>premises</a> of those rules hold, which may, in itself,
+          require searching for rules with matching <a>conclusions</a>.
+          Regarding general expressivity, these two reasoning modes can be considered equivalent.
+          A detailed discussion of these two reasoning modes, their subtle differences and impacts on performance,
+          is beyond the scope of this primer.
+        </p>
+      </section>
+
+      <section id='builtins'>
+        <h4>N3 Builtins</h4>
+        <p>
+          An <dfn data-lt="N3 builtin|builtin">N3 builtin</dfn> implements an arbitrary operation on an N3 <a>resource</a> or even <a>N3 document</a>.
+          <a>Builtins</a> include mathematic, string, time and cryptography operators, 
+          operations on collections and graphs, and logical operations in general.</p>
+        <p>
+          <!-- An <a>N3 builtin</a> can be used within an <a>N3 rule</a> as part of an <a>N3 statement</a>. -->
+          For instance, the following example calculates a person's height in meters:
+        </p>
+        <pre id="builtin_age_example" class="example nohighlight" data-transform="updateExample">
+          <!--
+          { ?person :heightInCm ?cm .
+            ( ?cm 100 ) math:product ?m .
+          } => { ?person :heightInMeter ?m } .
+        -->
+        </pre>
+        <p>
+            An <a>N3 builtin</a> is used as the <a>predicate</a> in an <dfn data-lt="N3 builtin statement|builtin statement">N3 builtin statement</dfn>, 
+            where the <a>subject</a> and <a>object</a> act as input or output arguments. 
+            In the example above, the second <a>premise</a> triple constitutes a <a>builtin statement</a>: 
+            `math:product` calculates the product of the literals in the subject <a>collection</a>, i.e., the person's height in cm and 100, 
+            and then binds the result to the object variable `?m`.
+        </p>
+
+        <p>The example below is more complicated, iterating over collection elements and constructing a string for each element:</p>
+        <pre id="iterate_example" class="example nohighlight" data-transform="updateExample">
+           <!--
+          :race :finalists ( :flash :superman :spiderman ) .
+          
+          { :race ?finalists ?finalists .
+            ?finalists list:iterate ( ?i ?finalist ) .
+            ( ?i ". " ?finalist "<br />" ) string:concatenation ?entry
+
+          } => { :race :entries ?entry } .
+        -->
+        </pre>
+
+        <p>
+          The second and third <a>premise</a> triples constitute <a>builtin statements</a>.
+          The `list:iterate` builtin iterates over all elements in the subject collection (`?finalists`);
+          for each element, it binds its index and the element itself to the variables in the object collection (`?i` and `?finalist`), 
+          respectively.
+          The `string:concatenation` builtin concatenates all resources in the subject collection, 
+          and binds the result to the object variable (`?entry`). This will lead to the following output:<br />
+          <code>
+            1. flash<br />
+            2. superman<br />
+            3. spiderman<br />
+          </code>
+        </p>
+
+        <p class="note">
+          A <a>builtin statement</a> can be seen as a <a>triple pattern</a> that, for each builtin result, yields "matching" triples. 
+          In this view, for the example above, the `list:iterate` statement yields the following triples:<br />
+          <code>
+            ( :flash :superman :spiderman ) list:iterate ( 1 :flash ) .<br />
+            ( :flash :superman :spiderman ) list:iterate ( 2 :superman ) .<br />
+            ( :flash :superman :spiderman ) list:iterate ( 3 :spiderman ) .<br />
+          </code>
+          <br />
+          As with a <a data-cite="SPARQL11-QUERY#basicpatterns">SPARQL</a> query, for each matching triple, 
+          a consistent set of variable bindings is attempted with the other triple patterns.
+          For each consistent set of variable bindings, the rule conclusion is instantiated and inferred.
+          In the example above, this leads to 3 distinct results.
+        </p>
+
+        <!-- <p>The `log:collectAllIn` and `log:forAllIn` builtins are logical operators that support a Scoped Negation As Failure. </p> -->
+
+      </section>
 
     </section>
+
     <section id='paths'>
       <h4>Resource Paths</h4>
-      <p>Similar to <a data-cite="SPARQL11-QUERY#propertypaths">SPARQL property paths</a> [[SPARQL11-QUERY]], 
+      <p>Similar to <a data-cite="SPARQL11-QUERY#propertypaths">SPARQL property paths</a>, 
         N3 <dfn>resource paths</dfn> concisely express paths between resources, 
         when intermediary resources on the path are not relevant.
         In practice, <a>resource paths</a> are most useful in <a href="#n3rules">N3 rules</a>.</p>
@@ -879,69 +1128,6 @@ _:d a :Person.
           -->
         </pre>
     </section>
-    <section id='n3rules'>
-      <h3>N3 rules</h3>
-
-      <p>N3 supports declarative programming by allowing to make statements about the world,
-        including <dfn>logical implications</dfn>, or <dfn>N3 rules</dfn>, which can be loosely compared to If-Then statements.
-        Based on the N3 semantics, so-called inferences can be drawn from these statements. 
-        An N3 reasoner can draw such inferences automatically, 
-        which allows for automated problem solving, decision making, or simply enriching your Knowledge Graph.</p>
-
-        <p>For instance, the following is an <a>N3 rule</a>:</p>
-
-        <pre class="example nohighlight" data-transform="updateExample">
-          <!--
-          @prefix foaf: <http://xmlns.com/foaf/0.1/> .
-          @prefix : <http://example.org/#>.
-
-          { :weather a :Raining
-          } => {
-            :weather a :Cloudy
-          } .
-        -->
-        </pre>
-
-        <p>This is a logical construct, such as a conjunction (AND) and disjunction (OR). 
-        Stating such a <a>logical implication</a> means that, in case the premise is true (it is raining), 
-        the conclusion must be true as well (it is cloudy). 
-        If this is not the case &mdash; i.e., raining does not imply that it is cloudy 
-        &mdash; the implication would be false.
-        However, since all statements in N3 (and RDF) are true by default, this is not possible.
-        Hence, whenever the premise holds, then we can safely infer the conclusion: 
-        for the example above, if we state `:weather a :Raining`, then we can safely infer `:weater a :Cloudy`.
-        <a>N3 rules</a> can be loosely compared to If-Then statements in imperative programming languages.
-      </p>
-        
-        <p><a>N3 rules</a> are most useful when they include variables. 
-          For instance, the following includes a universal variable (prefixed by `?`):
-        </p>
-        <pre class="example nohighlight" data-transform="updateExample">
-          <!--
-          @prefix foaf: <http://xmlns.com/foaf/0.1/> .
-          @prefix : <http://example.org/#>.
-
-          :spiderman a :SuperHero .
-
-          { ?x a :SuperHero
-          } => {
-            ?x a :Imaginary
-          } .
-        -->
-        </pre>
-
-        <p>
-          This states that the <a>N3 rule</a> is true for each value of variable `?x`. 
-          In other words, in case the premise is true for a particular value for `?x`
-          (being a super hero), 
-          then the conclusion must be true for that value as well (being imaginary).
-          For the example above, the premise is true for value `:spiderman`, 
-          meaning we can infer the conclusion for that value, i.e., 
-          `:spiderman a :Imaginary`.
-        </p>
-
-      </p>
-    </section>
     <section id='keywords'>
       <h4>Keywords and special symbols</h4>
 
@@ -1010,7 +1196,7 @@ _:d a :Person.
         <a>lists</a>,
         and <a>quoted graphs</a>.
         The set of <a data-cite="RDF11-CONCEPTS#dfn-iri">IRIs</a> conatians the implication sign denoted by the
-        <a>built-in</a> <code>log:implies</code>.
+        <a>builtin</a> <code>log:implies</code>.
         This symbol indicates logical implication and MAY in N3-turtle syntax also be represented using the symbols
         <code>=&gt;</code>.
         The set of <a data-cite="RDF11-CONCEPTS#dfn-literal">literals</a> contains the two boolean literals
@@ -1103,7 +1289,7 @@ _:d a :Person.
       <h3>Scoped Negation</h3>
 
     </section>
-    <section id='builtins'>
+    <!-- <section id='builtins'>
       <h3>N3 Built-ins</h3>
       <p>N3 defines a core set of <dfn>built-ins</dfn> defined
         in a set of vocabularies with defined semantics
@@ -1130,8 +1316,7 @@ _:d a :Person.
           <a href="http://www.w3.org/2000/10/swap/time#">http://www.w3.org/2000/10/swap/time#</a>.
         </li>
       </ul>
-
-    </section>
+    </section> -->
   </section>
   <section id='n3grammar'>
     <h2><abbr title="Extended Backus–Naur Form">EBNF</abbr> Grammar</h2>
@@ -1676,12 +1861,18 @@ _:d a :Person.
         <a>quoted graphs</a>. Although applications could easily introduce their own custom predicates for this
         purpose, we strongly recommend the use of this extension for interoperability purposes.
       </p>
-      <p>The N3 Named Graphs extension [<strong>X</strong>] defines a set of <a>built-ins</a> (used as predicates) to
+      <p>The N3 Named Graphs extension [<strong>X</strong>] defines a set of <a>builtins</a> (used as predicates) to
         associate names or identifiers with <a>quoted graphs</a>, which then become "named graphs". Moreover, each
         predicate has a well-defined semantics on how the named graph should be interpreted: as <a>quoted graphs</a>
         (the default N3 interpretation), a partitioning of triples within a dataset context, sets of triples with their
         own isolated contexts, or specifying relations between local and online graphs.</p>
     </section>
+
+    <section>
+      <h4>RDF-star</h4>
+      <p>TODO</p>
+    </section>
+
   </section>
   <section id='patterns' class=informative>
     <h3>Design Patterns</h3>
