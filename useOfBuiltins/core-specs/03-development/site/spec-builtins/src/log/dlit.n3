@@ -1,0 +1,40 @@
+@prefix log: <http://www.w3.org/2000/10/swap/log#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix fno: <https://w3id.org/function/ontology#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+log:dtlit a fno:Function ;
+    dcterms:comment """Takes a list of a string and an IRI and creates a datatyped literal.
+The subject is a list composed of a string and an IRI, and the object is a datatyped literal with the value `$s_1` and datatype `$s_2`.
+`true` if and only if the datatyped literal formed of `$s_0` and `$s_1` equals `$o`.
+Example: ``{ ("2005-03-30T11:00:00" xsd:dateTime) log:dtlit ?X } => { ?X a :Answer } .` will produce `"2005-03-30T11:00:00"^^xsd:dateTime a :Answer .`""" ;
+    fno:example ( [ a fno:Test ;
+                dcterms:description """
+This is an example for a built-in function.
+            """ ;
+                rdfs:seeAlso <http://ppr.cs.dal.ca:3002/n3/editor/?formula=%40prefix%20%3A%20%3C%3A%3E%20.%0A%40prefix%20string%3A%20%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F10%2Fswap%2Fstring%23%3E%20.%0A%0A%3ALet%20%3Astring%20%22placeholder%22%20.%0A%0A%7B%20%3ALet%20%3Astring%20%3Fx%20.%20%7D%0A%3D%3E%0A%7B%20%3Aresult%20%3Ais%20%3Fx%20.%20%7D.%20> ;
+                fno:expression """
+@prefix : <:> .
+@prefix string: <http://www.w3.org/2000/10/swap/string#> .
+:Let :string "placeholder" .
+{ :Let :string ?x . } => { :result :is ?x . } .
+            """ ;
+                fno:result """
+                <:result> <:is> "placeholder". 
+            """ ] ) ;
+    fno:object ( [ a rdf:Property ;
+                fno:parameter ( [ a fno:Output ;
+                            dcterms:description "" ;
+                            fno:mode "*" ;
+                            fno:predicate "$o.0" ;
+                            fno:required true ;
+                            fno:type rdfs:Literal ] ) ] ) ;
+    fno:subject ( [ a rdf:Property ;
+                fno:parameter ( [ a fno:Parameter ;
+                            dcterms:description "" ;
+                            fno:mode "+" ;
+                            fno:predicate "$s" ;
+                            fno:required true ;
+                            fno:type log:List ] ) ] ) .
