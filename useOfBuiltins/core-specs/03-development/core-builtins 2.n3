@@ -1,0 +1,832 @@
+@prefix crypto: <http://www.w3.org/2000/10/swap/crypto#> .
+@prefix list: <http://www.w3.org/2000/10/swap/list#> .
+@prefix log: <http://www.w3.org/2000/10/swap/log#> .
+@prefix ns1: <http://www.w3.org/2003/06/sw-vocab-status/ns#> .
+@prefix ns2: <http://creativecommons.org/ns#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix string: <http://www.w3.org/2000/10/swap/string#> .
+@prefix time1: <http://www.w3.org/2000/10/swap/time#> .
+@prefix void: <http://rdfs.org/ns/void#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+log:Chaff a rdfs:Class ;
+    rdfs:label "Chaff" ;
+    rdfs:comment """Any statement mentioning anything in this class
+is considered boring and purged by the cwm --purge option.
+This is a convenience, and does not have any value when published as a
+general fact on the web.""" .
+
+log:Document a rdfs:Class ;
+    rdfs:subClassOf void:Dataset .
+
+log:Formula a rdfs:Class ;
+    rdfs:label "Formula" ;
+    rdfs:comment "The class of Notation-3 Formulae" ;
+    rdfs:subClassOf log:Type .
+
+log:List a rdfs:Class ;
+    rdfs:label "List" ;
+    rdfs:comment "A Notation-3 List, as a resource. A sub-class of an RDF List." ;
+    rdfs:subClassOf rdf:List,
+        log:Type .
+
+log:N3Document a rdfs:Class ;
+    rdfs:label "N3Document" ;
+    rdfs:comment """A document which, which parsed as Notation3
+as defined in general by http://www.w3.org/DesignIssues/Notation3.html
+and this schema, conveys the intent of the author by the semantics defined
+on those specifications, and the semantics defined by the specifications
+of any other identifiers used in the document.
+""" ;
+    owl:equivalentClass [ owl:intersectionOf ( log:Document [ a owl:Restriction ;
+                        owl:hasValue <http://www.w3.org/ns/formats/N3> ;
+                        owl:onProperty void:feature ] ) ] .
+
+log:Other a rdfs:Class ;
+    rdfs:label "List" ;
+    rdfs:comment "Some other Notation-3 type" ;
+    rdfs:subClassOf log:Type .
+
+log:String a rdfs:Class ;
+    rdfs:label "List" ;
+    rdfs:comment "An RDF Literal" ;
+    rdfs:subClassOf rdfs:Literal,
+        log:Type .
+
+log:Truth a rdfs:Class ;
+    rdfs:label "Truth" ;
+    rdfs:comment """Something which is true: believe it as you would believe this.
+
+Understood natively by cwm in that it will execute rules in a formula
+declared a Truth within a formula it is already taking rules from.""" .
+
+log:Type a rdfs:Class ;
+    rdfs:label "Type" ;
+    rdfs:comment """
+The class of Notation3-specifiec resource types.
+""" ;
+    ns1:term_status "unstable" .
+
+<file:///Users/timothyduval/Library/Mobile%20Documents/com~apple~CloudDocs/00_unifylogic/50-clients/w3c/N3/ns/crypto.n3> rdfs:label "Schema for crypto built-in functions" ;
+    ns2:license <http://www.w3.org/Consortium/Legal/copyright-software> ;
+    rdfs:comment """These are terms drawn to match the available functions
+in [mxCrypto](http://freshmeat.sourceforge.net/projects/mxcrypto).""" .
+
+crypto:md5 a rdf:Property,
+        owl:FunctionalProperty,
+        owl:InverseFunctionalProperty ;
+    rdfs:label "MD5 hash" ;
+    rdfs:comment "The object is a MD5 hash of the subject." ;
+    rdfs:domain rdfs:Literal ;
+    rdfs:range xsd:string .
+
+crypto:sha a rdf:Property,
+        owl:FunctionalProperty,
+        owl:InverseFunctionalProperty ;
+    rdfs:label "SHA-1 hash" ;
+    rdfs:comment "The object is a SHA-1 hash of the subject." ;
+    rdfs:domain rdfs:Literal ;
+    rdfs:range xsd:string .
+
+crypto:sha256 a rdf:Property,
+        owl:FunctionalProperty,
+        owl:InverseFunctionalProperty ;
+    rdfs:label "SHA-256 hash" ;
+    rdfs:comment "The object is a SHA-256 hash of the subject." ;
+    rdfs:domain rdfs:Literal ;
+    rdfs:range xsd:string .
+
+crypto:sha512 a rdf:Property,
+        owl:FunctionalProperty,
+        owl:InverseFunctionalProperty ;
+    rdfs:label "SHA-512 hash" ;
+    rdfs:comment "The object is a SHA-512 hash of the subject." ;
+    rdfs:domain rdfs:Literal ;
+    rdfs:range xsd:string .
+
+list:append a rdf:Property,
+        owl:FunctionalProperty ;
+    rdfs:label "append" ;
+    rdfs:comment """Concatenates separate lists into a single list. 
+
+`true` if and only if the subject is a list of lists and the concatenation of all those lists is `$o`.
+
+`$o` can be calculated as a function of the subject. 
+
+Example: `( (1 2) (3 4) ) list:append (1 2 3 4).`""" ;
+    rdfs:domain log:List ;
+    rdfs:isDefinedBy <file:///Users/timothyduval/Library/Mobile%20Documents/com~apple~CloudDocs/00_unifylogic/50-clients/w3c/N3/ns/list.n3> .
+
+list:first a rdf:Property,
+        owl:FunctionalProperty ;
+    rdfs:label "first" ;
+    rdfs:comment """Extracts the first member of a list. 
+
+`true` if and only the subject is a list and `$o` is the first member of that list.
+
+`$o` can be calculated as a function of the subject.""" ;
+    rdfs:domain log:List ;
+    rdfs:isDefinedBy <file:///Users/timothyduval/Library/Mobile%20Documents/com~apple~CloudDocs/00_unifylogic/50-clients/w3c/N3/ns/list.n3> ;
+    ns1:term_status "unstable" .
+
+list:in a rdf:Property ;
+    rdfs:label "in" ;
+    rdfs:comment """Determines if an subject is a member of the object list or binds every member of the object list to the subject.
+
+`true` if and only `$o` is a list and `$s` is in that list.
+
+`$s` can be calculated from `$o`.""" ;
+    rdfs:isDefinedBy <file:///Users/timothyduval/Library/Mobile%20Documents/com~apple~CloudDocs/00_unifylogic/50-clients/w3c/N3/ns/list.n3> ;
+    rdfs:range log:List .
+
+list:iterate a rdf:Property,
+        owl:FunctionalProperty ;
+    rdfs:label "iterate" ;
+    rdfs:comment """Iterates over index/value pairs of the subject list.
+Gets the matching pair of list index and list value for every member of the subject.
+If the object is a variable, it will create a solution for each member of the subject list.
+If any member of the object list is a variable, it will create a solution for all matching
+members of the subject list.
+
+If the object is ground and the entry at the specified index matches the specified value, 
+it evaluates to `true`; otherwise, `false`.
+
+Example: `( 1 2 3 ) list:iterate ($i $v).`""" ;
+    rdfs:domain log:List ;
+    rdfs:isDefinedBy <file:///Users/timothyduval/Library/Mobile%20Documents/com~apple~CloudDocs/00_unifylogic/50-clients/w3c/N3/ns/list.n3> ;
+    rdfs:range log:List .
+
+list:last a rdf:Property,
+        owl:FunctionalProperty ;
+    rdfs:label "in" ;
+    rdfs:comment """Extracts the first member of a list. 
+
+`true` if and only the subject is a list and `$o` is the last member of that list.
+
+`$o` can be calculated as a function of the subject.""" ;
+    rdfs:domain log:List ;
+    rdfs:isDefinedBy <file:///Users/timothyduval/Library/Mobile%20Documents/com~apple~CloudDocs/00_unifylogic/50-clients/w3c/N3/ns/list.n3> .
+
+list:length a rdf:Property,
+        owl:FunctionalProperty ;
+    rdfs:label "length" ;
+    rdfs:comment """Calculates the length of a list.
+
+`true` if and only the subject is a list and `$o` is integer length of that list.
+
+`$o` can be calculated as a function of the subject.""" ;
+    rdfs:domain log:List ;
+    rdfs:isDefinedBy <file:///Users/timothyduval/Library/Mobile%20Documents/com~apple~CloudDocs/00_unifylogic/50-clients/w3c/N3/ns/list.n3> ;
+    rdfs:range xsd:integer ;
+    ns1:term_status "unstable" .
+
+list:member a rdf:Property ;
+    rdfs:label "member" ;
+    rdfs:comment """Determines if an object is a member of the subject list or binds every member of the subject list to the object.
+
+`true` if and only `$s` is a list and `o` is in that list.
+
+`$o` can be calculated from `$s`.""" ;
+    rdfs:domain log:List ;
+    rdfs:isDefinedBy <file:///Users/timothyduval/Library/Mobile%20Documents/com~apple~CloudDocs/00_unifylogic/50-clients/w3c/N3/ns/list.n3> .
+
+list:memberAt a rdf:Property ;
+    rdfs:label "memberAt" ;
+    rdfs:comment """Gets the member of a list at a given position (where the position of the first element is 1).
+
+`true` if and only if `$s_0` has an element at position `$s_1`, and if that element and `$o` can unify.
+
+Note that if `$s_1` is a variable, this builtin may bind it to more than one value (e.g. `((“A” “B” “A”) ?i) list:memberAt "A"`).
+
+In case of a negative integer, the index will count backwards from the length of the list.""" ;
+    rdfs:domain log:List ;
+    rdfs:isDefinedBy <file:///Users/timothyduval/Library/Mobile%20Documents/com~apple~CloudDocs/00_unifylogic/50-clients/w3c/N3/ns/list.n3> ;
+    ns1:term_status "unstable" .
+
+list:remove a rdf:Property,
+        owl:FunctionalProperty ;
+    rdfs:label "remove" ;
+    rdfs:comment """Removes the second component of the subject list from the first component of that list.
+
+`true` if and only if the subject is a list of two lists `$s_1` and `$s_2`, `$s_2` is a subset of `$s_1` and `$o` is a list composed of the members of the `$s_1` with all members of `$s_2` removed, matching left to right.
+
+`$o` can be calculated as a function of the subject.
+
+Example: `( (1 2 3 4) (2 3) ) list:remove (1 4).`""" ;
+    rdfs:domain log:List ;
+    rdfs:isDefinedBy <file:///Users/timothyduval/Library/Mobile%20Documents/com~apple~CloudDocs/00_unifylogic/50-clients/w3c/N3/ns/list.n3> ;
+    rdfs:range log:List ;
+    ns1:term_status "unstable" .
+
+log:becomes a rdf:Property ;
+    rdfs:label "becomes" ;
+    rdfs:comment """
+Built-in to perform RDF linear implication i.e. retracting the subject graph and asserting the object graph.
+""" ;
+    ns1:term_status "unstable" .
+
+log:conclusion a rdf:Property ;
+    rdfs:label "conclusion" ;
+    rdfs:comment """All possible conclusions which can be drawn from a formula.
+
+`true` if and only if `$o` is the set of conclusions which can be drawn from `$s`, by successively applying any rules it contains to the data it contains.
+Note: this is equivalent to cwm's "--think" command line function. It does use built-ins, so it may for example indirectly invoke other documents, validate signatures, etc.""" ;
+    rdfs:domain log:Formula ;
+    rdfs:range log:Formula .
+
+log:conjunction a rdf:Property ;
+    rdfs:label "conjunction" ;
+    rdfs:comment """A function to merge formulae: logical AND.
+
+`true` if and only if `o`, which can be generated, is a formula containing a copy of each of the formulae `$s_1 .. $s_n`.""" ;
+    rdfs:domain log:List ;
+    rdfs:range log:Formula .
+
+log:content a rdf:Property ;
+    rdfs:label "content" ;
+    rdfs:comment """This connects a document and a string that represents it. (Cwm knows how to go get a document in order to evaluate this.)
+Note: the content-type of the information is not given and so must be known or guessed.""" ;
+    rdfs:domain log:N3Document ;
+    rdfs:range log:String .
+
+log:definitiveDocument a rdf:Property ;
+    rdfs:label "definitive document" ;
+    rdfs:comment """ When document D is the definitiveDocument for property P,
+any statement X P Y is true iff the semantics of document D
+include that statement.
+
+For example, there may be a definitive document for the zipcode of
+airports by airport code, and so on. This is useful to let a reasoner
+know that it can extend its query to the given document.
+(Cwm will do this if its mode includes "r").
+""" ;
+    rdfs:domain rdf:Property ;
+    rdfs:range log:N3Document ;
+    ns1:term_status "deprecated" .
+
+log:definitiveService a rdf:Property ;
+    rdfs:label "definitive service" ;
+    rdfs:comment """ When service S is the definitiveService for property P,
+any statement X P Y is true iff and only if a query to S returns
+that it is.  The protocol for the service S depends on the scheme.
+For mysql protocol, the URI of the service is like
+`sql://user:password@host.domain/database/`.
+
+For example, there may be a definitive service for the zipcode of
+airports by airport code, and so on. This is useful to let a reasoner
+know that it can help resolve a query by delegating it to the service
+in question.
+(Cwm will do this if its mode includes "r").
+""" ;
+    rdfs:domain rdf:Property ;
+    ns1:term_status "deprecated" .
+
+log:dtlit a rdf:Property ;
+    rdfs:comment """Takes a list of a string and an IRI and creates a datatyped literal.
+The subject is a list composed of a string and an IRI, and the object is a datatyped literal with the value `$s_1` and datatype `$s_2`.
+
+`true` if and only if the datatyped literal formed of `$s_0` and `$s_1` equals `$o`.
+
+Example: ``{ ("2005-03-30T11:00:00" xsd:dateTime) log:dtlit ?X } => { ?X a :Answer } .` will produce `"2005-03-30T11:00:00"^^xsd:dateTime a :Answer .`""" ;
+    rdfs:domain log:List ;
+    rdfs:labe "dtlit" ;
+    rdfs:range rdfs:Literal .
+
+log:forAll a log:SyntaxArc ;
+    rdfs:label "for All" ;
+    rdfs:comment """A is true for any object in place of B.
+This is NOT a real rdf property in its behavior - a pseudo-property.
+For examples substitution is not permitted on its object.""" ;
+    rdfs:domain log:Formula ;
+    ns1:term_status "unstable" .
+
+log:forAllIn a rdf:Property ;
+    rdfs:label "forAllIn" ;
+    rdfs:comment "Built-in for implementing a scoped universal quantification." ;
+    ns1:term_status "unstable" .
+
+log:forAllInClosure a rdf:Property ;
+    rdfs:label "forAllInClosure" ;
+    rdfs:comment "Built-in for implementing a scoped universal quantification." ;
+    ns1:term_status "unstable" .
+
+log:forSome a rdf:SyntaxArc ;
+    rdfs:label "for Some" ;
+    rdfs:comment """A is true for some object for which here we use B. This
+is NOT a real rdf property in its behavior - a pseudo-property.
+For example, removal of it from a formula does not
+preserve truth, and substitution is not permitted on its object.""" ;
+    rdfs:domain log:Formula ;
+    ns1:term_status "unstable" .
+
+log:implies a rdf:Property ;
+    rdfs:label "implies" ;
+    rdfs:comment """Logical implication. 
+This is the relation between the antecedent (subject) and conclusion (object) of a rule.
+The application of a rule to a knowledge-base is as follows.
+For every substitution which, applied to the antecedent (`$s`), gives a formula (`$o`) which is a subset of the knowledge-base, then the result of applying that same substitution to the conclusion may be added to the knowledge-base.
+Related: see `log:conclusion`.""" ;
+    rdfs:domain log:Formula ;
+    rdfs:isDefinedBy <file:///Users/timothyduval/Library/Mobile%20Documents/com~apple~CloudDocs/00_unifylogic/50-clients/w3c/N3/ns/log.n3> ;
+    rdfs:range log:Formula .
+
+log:includes a rdf:Property ;
+    rdfs:label "includes" ;
+    rdfs:comment """The subject formula includes the object formula.
+
+`true` if and only if `s` includes `$o` if there exists some substitution which when applied to `$o` creates a formula B' such that for every statement in B' is also in `$s`, every variable universally (or existentially) quantified in B' is quantified in the same way in `$s`. 
+
+Variable substitution is applied recursively to nested compound terms such as formulae, lists and sets.
+
+Note: you can use this to peer inside nested formulae.""" ;
+    rdfs:domain log:Formula ;
+    rdfs:isDefinedBy <file:///Users/timothyduval/Library/Mobile%20Documents/com~apple~CloudDocs/00_unifylogic/50-clients/w3c/N3/ns/log.n3> ;
+    rdfs:range log:Formula .
+
+log:langlit a rdf:Property ;
+    rdfs:comment """Takes a list of two strings and creates a language-tagged literal.
+The subject is a list composed of two strings, and the object is a language-tagged literal with the value `$s_1` and language `$s_2`.
+
+`true` if and only if the language-tagged literal formed of `$s_1` and `$s_2` equals `$s_3`.
+
+`$s_2` should be a string in the form of a [BCP47](https://tools.ietf.org/html/bcp47) language tag.
+
+Example: `{ ("hello" "en") log:langlit ?X } => { ?X a :Answer } .` will produce `"hello"^^en a :Answer .`""" ;
+    rdfs:domain log:List ;
+    rdfs:labe "langlit" ;
+    rdfs:range rdfs:Literal .
+
+log:n3String a rdf:Property ;
+    rdfs:label "n3 string" ;
+    rdfs:comment """The subject formula, expressed as N3, gives this string.
+
+`true` if and only if `$s`, serialized as N3, gives `$o`.
+
+Related: see `log:parsedAsN3`.""" ;
+    rdfs:domain log:Formula ;
+    rdfs:range log:N3 .
+
+log:notEqualTo a rdf:Property ;
+    rdfs:label "notEqualTo" ;
+    rdfs:comment """Determines if two RDF resources are not the same.
+
+`true` if and only if `$s` and `$o` are not the same RDF node (symbol or literal).""" ;
+    owl:inverse log:equalTo .
+
+log:notIn a rdf:Property ;
+    rdfs:label "notIn" ;
+    rdfs:comment "Custom built-in for implementing scoped negation-as-failure (SNAF)." ;
+    ns1:term_status "unstable" .
+
+log:notInClosure a rdf:Property ;
+    rdfs:label "notInClosure" ;
+    rdfs:comment "Custom built-in for implementing scoped negation-as-failure (SNAF)." ;
+    ns1:term_status "unstable" .
+
+log:notIncludes a rdf:Property ;
+    rdfs:label "not includes" ;
+    rdfs:comment """The object formula is NOT a subset of subject.
+
+`true` if and only if `log:includes` is `false`. The converse of log:includes.
+
+Related: see `log:includes`.""" ;
+    rdfs:domain log:Formula ;
+    rdfs:isDefinedBy <file:///Users/timothyduval/Library/Mobile%20Documents/com~apple~CloudDocs/00_unifylogic/50-clients/w3c/N3/ns/log.n3> ;
+    rdfs:range log:Formula .
+
+log:outputString a rdf:Property ;
+    rdfs:label "output string" ;
+    rdfs:comment """The subject is a key and the object is a string,
+where the strings are to be output in the order of the keys.
+See cwm --strings in cwm --help.
+""" ;
+    rdfs:range log:String ;
+    ns1:term_status "deprecated" .
+
+log:parsedAsN3 a rdf:Property ;
+    rdfs:label "parses to N3" ;
+    rdfs:comment """The subject string, parsed as N3, gives this formula.
+
+`true` if and only if `$s`, parsed as N3, gives `$o`.
+
+`$s` should be a syntactically valid string in N3 format.
+
+Related: see `log:n3String`.""" ;
+    rdfs:domain log:N3 ;
+    rdfs:range log:Formula .
+
+log:racine a rdf:Property ;
+    rdfs:label "racine" ;
+    rdfs:comment """For anything identified by a URI with a fragid, this is the
+thing identified by the same URI without a hash or fragid.
+For anything else, it is itself.""" .
+
+log:rawType a rdf:Property,
+        owl:FunctionalProperty ;
+    rdfs:label "rawType" ;
+    rdfs:comment """Returns an identifier based on the type of the RDF Resource.
+
+`true` if the type of `$s` is the same as `$o`, or binds the type to `$o`.
+
+`$o` is unbound or one of `log:Formula`, `log:Literal`, `log:List`, `log:Set` or `log:Other`.
+
+Example: `log:semanticsOrError` returns either a formula or a string, and you can check which using `log:rawType`. """ ;
+    rdfs:range log:Type .
+
+log:rawUri a rdf:Property ;
+    rdfs:label "raw uri" ;
+    rdfs:comment """This allows one to look at the actual string of the URI which identifies this,
+for anything, even a blank node or a formula. This peeks into the internal
+workings of cwm, and so is not normally used. Use log:uri instead.
+""" ;
+    rdfs:range log:String .
+
+log:semantics a rdf:Property ;
+    rdfs:label "semantics" ;
+    rdfs:comment """The log:semantics of a document is the formula achieved by parsing representation of the document.
+For a document in Notation3, `log:semantics` is the `log:parsedAsN3` of the `log:content` of the document.
+For a document in another RDF syntax, it is parsed according to the appropriate specification to yield an RDF formula (a subclass of N3 `log:Formula`).
+Evaluates to `false` if an unrecognized document format is retrieved.
+Aside: Philosophers will be distracted here into worrying about the meaning of meaning. At least we didn't call this function "meaning"! 
+In as much as N3 is used as an interlingua for interoperability for different systems, this for an N3 based system is the meaning expressed by a document.
+Related: see `log:parsedAsN3` and `log:content`.""" ;
+    rdfs:domain log:N3Document ;
+    rdfs:range log:Formula .
+
+log:semanticsOrError a rdf:Property ;
+    rdfs:label "semantics or error message" ;
+    rdfs:comment """This connects a document and either the formula it parses to, or an error message explaining what went wrong with trying.
+Related: see `log:semantics`.""" ;
+    rdfs:domain log:N3Document .
+
+log:skolem a rdf:Property ;
+    rdfs:label "skolem" ;
+    rdfs:comment "Built-in to generate a Skolem IRI object which is a function of the arguments in the subject list" ;
+    rdfs:domain log:List ;
+    rdfs:range log:String ;
+    ns1:term_status "unstable" .
+
+log:uri a rdf:Property ;
+    rdfs:comment """This allows one to look at the actual string of the URI which identifies this.
+
+(Cwm can get the URI of a resource or get the resource from the URI.)
+This is a level breaker, breaking the rule of not looking inside a
+URI.   Use (eg with  string:match) to replace RDF's old "aboutEach"
+functionality. Use to implement the URI spec and protocol specs, etc.
+""" ;
+    rdfs:lable "uri" ;
+    rdfs:range log:String .
+
+string:concat a rdf:Property,
+        owl:InverseFunctionalProperty ;
+    rdfs:label "is concatenation of" ;
+    rdfs:comment "(obsolete - (was backwards!) - use: string:concatenation)" ;
+    rdfs:definedBy <file:///Users/timothyduval/Library/Mobile%20Documents/com~apple~CloudDocs/00_unifylogic/50-clients/w3c/N3/ns/string.n3> ;
+    rdfs:domain log:String ;
+    rdfs:range log:List ;
+    owl:inverse string:concatenation ;
+    ns1:term_status "deprecated" .
+
+string:contains a rdf:Property ;
+    rdfs:label "contains" ;
+    rdfs:comment "True iff the subject string contains the object string." ;
+    rdfs:definedBy <file:///Users/timothyduval/Library/Mobile%20Documents/com~apple~CloudDocs/00_unifylogic/50-clients/w3c/N3/ns/string.n3> ;
+    rdfs:domain log:String ;
+    rdfs:range log:String .
+
+string:containsIgnoringCase a rdf:Property ;
+    rdfs:label "contains" ;
+    rdfs:comment """True iff the subject string contains the object string,
+with the comparison done ignoring the difference between upper case and
+lower case characters.""" ;
+    rdfs:definedBy <file:///Users/timothyduval/Library/Mobile%20Documents/com~apple~CloudDocs/00_unifylogic/50-clients/w3c/N3/ns/string.n3> ;
+    rdfs:domain log:String ;
+    rdfs:range log:String .
+
+string:endsWith a rdf:Property ;
+    rdfs:label "ends with" ;
+    rdfs:comment "True iff the subject string ends with the object string." ;
+    rdfs:definedBy <file:///Users/timothyduval/Library/Mobile%20Documents/com~apple~CloudDocs/00_unifylogic/50-clients/w3c/N3/ns/string.n3> ;
+    rdfs:domain log:String ;
+    rdfs:range log:String .
+
+string:equalIgnoringCase a rdf:Property ;
+    rdfs:label "contains" ;
+    rdfs:comment """True iff the subject string is the same as object string
+ignoring differences between upper and lower case.""" ;
+    rdfs:definedBy <file:///Users/timothyduval/Library/Mobile%20Documents/com~apple~CloudDocs/00_unifylogic/50-clients/w3c/N3/ns/string.n3> ;
+    rdfs:domain log:String ;
+    rdfs:range log:String .
+
+string:format a rdf:Property,
+        owl:FunctionalProperty ;
+    rdfs:label "is the string formatted function of" ;
+    rdfs:comment """The subject is a list, whose first member is a format string,
+and whose remaining members are arguments to the format string.
+The formating string is in the style of python's % operator,
+very similar to C's sprintf().
+The object is calculated from the subject.""" ;
+    rdfs:definedBy <file:///Users/timothyduval/Library/Mobile%20Documents/com~apple~CloudDocs/00_unifylogic/50-clients/w3c/N3/ns/string.n3> ;
+    rdfs:domain log:List ;
+    rdfs:range log:String .
+
+string:greaterThan a rdf:Property ;
+    rdfs:label "is greater than" ;
+    rdfs:comment """True iff the string is greater than the object
+when ordered according to Unicode(tm) code order.""" ;
+    rdfs:definedBy <file:///Users/timothyduval/Library/Mobile%20Documents/com~apple~CloudDocs/00_unifylogic/50-clients/w3c/N3/ns/string.n3> ;
+    rdfs:domain log:String ;
+    rdfs:range log:String .
+
+string:lessThan a rdf:Property ;
+    rdfs:label "is less than" ;
+    rdfs:comment """True iff the string is less than the object
+when ordered according to Unicode(tm) code order.""" ;
+    rdfs:definedBy <file:///Users/timothyduval/Library/Mobile%20Documents/com~apple~CloudDocs/00_unifylogic/50-clients/w3c/N3/ns/string.n3> ;
+    rdfs:domain log:String ;
+    rdfs:range log:String .
+
+string:matches a rdf:Property ;
+    rdfs:label "contains" ;
+    rdfs:comment """The subject is a string;
+the object is is a regular expression in the perl, python style.
+It is true iff the string matches the regexp.""" ;
+    rdfs:definedBy <file:///Users/timothyduval/Library/Mobile%20Documents/com~apple~CloudDocs/00_unifylogic/50-clients/w3c/N3/ns/string.n3> ;
+    rdfs:domain log:String ;
+    rdfs:range log:String .
+
+string:notEqualIgnoringCase a rdf:Property ;
+    rdfs:label "contains" ;
+    rdfs:comment """True iff the subject string is the NOT same as object string
+ignoring differences between upper and lower case.""" ;
+    rdfs:definedBy <file:///Users/timothyduval/Library/Mobile%20Documents/com~apple~CloudDocs/00_unifylogic/50-clients/w3c/N3/ns/string.n3> ;
+    rdfs:domain log:String ;
+    rdfs:range log:String .
+
+string:notGreaterThan a rdf:Property ;
+    rdfs:label "is not greater than" ;
+    rdfs:comment """True iff the string is NOT greater than the object
+when ordered according to Unicode(tm) code order.""" ;
+    rdfs:definedBy <file:///Users/timothyduval/Library/Mobile%20Documents/com~apple~CloudDocs/00_unifylogic/50-clients/w3c/N3/ns/string.n3> ;
+    rdfs:domain log:String ;
+    rdfs:range log:String .
+
+string:notLessThan a rdf:Property ;
+    rdfs:label "is not less than" ;
+    rdfs:comment """True iff the string is NOT less than the object
+when ordered according to Unicode(tm) code order.""" ;
+    rdfs:definedBy <file:///Users/timothyduval/Library/Mobile%20Documents/com~apple~CloudDocs/00_unifylogic/50-clients/w3c/N3/ns/string.n3> ;
+    rdfs:domain log:String ;
+    rdfs:range log:String .
+
+string:notMatches a rdf:Property ;
+    rdfs:label "contains" ;
+    rdfs:comment """The subject string;
+the object is is a regular expression in the perl, python style.
+It is true iff the string does NOT match the regexp.""" ;
+    rdfs:definedBy <file:///Users/timothyduval/Library/Mobile%20Documents/com~apple~CloudDocs/00_unifylogic/50-clients/w3c/N3/ns/string.n3> ;
+    rdfs:domain log:String ;
+    rdfs:range log:String .
+
+string:replace a rdf:Property ;
+    rdfs:label "replace" ;
+    rdfs:comment """A built-in for replacing characters or sub.
+takes a list of 3 strings; the first is the
+input data, the second the old and the third the new string.
+The object is calculated as the replaced string.
+For example, ("fofof bar", "of", "baz") string:replace "fbazbaz bar".""" ;
+    rdfs:definedBy <file:///Users/timothyduval/Library/Mobile%20Documents/com~apple~CloudDocs/00_unifylogic/50-clients/w3c/N3/ns/string.n3> ;
+    rdfs:domain log:List ;
+    rdfs:range log:String .
+
+string:scrape a rdf:Property ;
+    rdfs:label "scrape" ;
+    rdfs:comment """The subject is a list of two strings. The second string is
+a regular expression in the perl, python style.
+It must contain one group (a part in parentheses).  If the first string in the list matches
+the regular expression, then the object is calculated as being the
+part of the first string which matches the group.""" ;
+    rdfs:definedBy <file:///Users/timothyduval/Library/Mobile%20Documents/com~apple~CloudDocs/00_unifylogic/50-clients/w3c/N3/ns/string.n3> ;
+    rdfs:domain log:List ;
+    rdfs:range log:String .
+
+string:startsWith a rdf:Property ;
+    rdfs:label "starts with" ;
+    rdfs:comment "True iff the subject string starts with the object string." ;
+    rdfs:definedBy <file:///Users/timothyduval/Library/Mobile%20Documents/com~apple~CloudDocs/00_unifylogic/50-clients/w3c/N3/ns/string.n3> ;
+    rdfs:domain log:String ;
+    rdfs:range log:String .
+
+time1:day a rdf:Property,
+        owl:FunctionalProperty ;
+    rdfs:label "day" ;
+    rdfs:comment """
+`true` if and only if $s is a `xsd:dateTime` and $o is the integer day component of the dateTime.
+
+$o can be calculated as a function of $s.
+""" ;
+    rdfs:domain xsd:dateTime ;
+    rdfs:isDefinedBy <file:///Users/timothyduval/Library/Mobile%20Documents/com~apple~CloudDocs/00_unifylogic/50-clients/w3c/N3/ns/time.n3> ;
+    rdfs:range xsd:integer .
+
+time1:dayOfWeek a rdf:Property,
+        owl:FunctionalProperty ;
+    rdfs:label "day of week" ;
+    rdfs:comment """
+`true` if and only if $s is a `xsd:dateTime` and $o is the integer the day number within the week, Sunday being 0.
+
+$o can be calculated as a function of $s.
+""" ;
+    rdfs:domain xsd:dateTime ;
+    rdfs:isDefinedBy <file:///Users/timothyduval/Library/Mobile%20Documents/com~apple~CloudDocs/00_unifylogic/50-clients/w3c/N3/ns/time.n3> ;
+    rdfs:range xsd:integer .
+
+time1:gmTime a rdf:Property,
+        owl:FunctionalProperty ;
+    rdfs:label "Universal Time" ;
+    rdfs:comment """
+`true` if and only if $s is a dateTime format string and $o is the
+result of formatting the Universal Time of processing in the format given.
+
+If the format string has zero length,
+then the ISOdate standard format is used. 
+
+`[ is time:gmtime of ""]`  the therefore the current date time.
+
+It will end with "Z" as a timezone code.
+
+$o can be calculated as a function of $s.
+
+Rules which use this function will of course NOT be repeatable.
+""" ;
+    rdfs:domain time1:format ;
+    rdfs:isDefinedBy <file:///Users/timothyduval/Library/Mobile%20Documents/com~apple~CloudDocs/00_unifylogic/50-clients/w3c/N3/ns/time.n3> ;
+    rdfs:range xsd:string .
+
+time1:hour a rdf:Property,
+        owl:FunctionalProperty ;
+    rdfs:label "hour" ;
+    rdfs:comment """
+`true` if and only if $s is a `xsd:dateTime` and $o is the integer hours component of the dateTime.
+
+$o can be calculated as a function of $s.
+""" ;
+    rdfs:domain xsd:dateTime ;
+    rdfs:isDefinedBy <file:///Users/timothyduval/Library/Mobile%20Documents/com~apple~CloudDocs/00_unifylogic/50-clients/w3c/N3/ns/time.n3> ;
+    rdfs:range xsd:integer .
+
+time1:inSeconds a rdf:Property,
+        owl:FunctionalProperty,
+        owl:InverseFunctionalProperty ;
+    rdfs:label "in era seconds" ;
+    rdfs:comment """
+`true` if and only if the $s is a `xsd:dateTime` and the $o is the integer number of seconds
+since the beginning of the era on a given system.  Don't assume a particular value, always test for it.
+
+$o can be calculated as a function of $s.
+
+Cwm implements this as a bidirectional function: you can calculate the
+ISO date from the seconds since the beginning of the era, or vice-versa.
+""" ;
+    rdfs:domain xsd:dateTime ;
+    rdfs:isDefinedBy <file:///Users/timothyduval/Library/Mobile%20Documents/com~apple~CloudDocs/00_unifylogic/50-clients/w3c/N3/ns/time.n3> ;
+    rdfs:range xsd:integer .
+
+time1:localTime a rdf:Property,
+        owl:FunctionalProperty ;
+    rdfs:label "local time" ;
+    rdfs:comment """
+`true` if and only if $s is a dateTime format string and $o is the
+result of formatting the current time of processing and local timezone in the format given.
+
+If the format string has zero length,
+then the ISOdate standard format is used. 
+
+`[ is time:gmtime of ""]`  the therefore the current date time.
+
+It will end with "Z" as a timezone code.
+
+$o can be calculated as a function of $s.
+
+Rules which use this function will of course NOT be repeatable.
+""" ;
+    rdfs:domain time1:format ;
+    rdfs:isDefinedBy <file:///Users/timothyduval/Library/Mobile%20Documents/com~apple~CloudDocs/00_unifylogic/50-clients/w3c/N3/ns/time.n3> ;
+    rdfs:range xsd:string .
+
+time1:minute a rdf:Property,
+        owl:FunctionalProperty ;
+    rdfs:label "minute" ;
+    rdfs:comment """
+`true` if and only if $s is a `xsd:dateTime` and $o is the integer minutes component of the dateTime.
+
+$o can be calculated as a function of $s.
+""" ;
+    rdfs:domain xsd:dateTime ;
+    rdfs:isDefinedBy <file:///Users/timothyduval/Library/Mobile%20Documents/com~apple~CloudDocs/00_unifylogic/50-clients/w3c/N3/ns/time.n3> ;
+    rdfs:range xsd:integer .
+
+time1:month a rdf:Property,
+        owl:FunctionalProperty ;
+    rdfs:label "month" ;
+    rdfs:comment """
+`true` if and only if $s is a `xsd:dateTime` and $o is the integer month component of the dateTime.
+
+$o can be calculated as a function of $s.
+""" ;
+    rdfs:domain xsd:dateTime ;
+    rdfs:isDefinedBy <file:///Users/timothyduval/Library/Mobile%20Documents/com~apple~CloudDocs/00_unifylogic/50-clients/w3c/N3/ns/time.n3> ;
+    rdfs:range xsd:integer .
+
+time1:second a rdf:Property,
+        owl:FunctionalProperty ;
+    rdfs:label "second" ;
+    rdfs:comment """
+`true` if and only if $s is a `xsd:dateTime` and $o is the integer seconds component of the dateTime.
+
+$o can be calculated as a function of $s.
+""" ;
+    rdfs:domain xsd:dateTime ;
+    rdfs:isDefinedBy <file:///Users/timothyduval/Library/Mobile%20Documents/com~apple~CloudDocs/00_unifylogic/50-clients/w3c/N3/ns/time.n3> ;
+    rdfs:range xsd:integer .
+
+time1:timeZone a rdf:Property,
+        owl:FunctionalProperty ;
+    rdfs:label "timezone offset" ;
+    rdfs:comment """
+`true` if and only if $s is a `xsd:dateTime` and $o is the trailing timezone offset
+part, e.g.  "-05:00"..
+
+$o can be calculated as a function of $s.
+""" ;
+    rdfs:domain xsd:dateTime ;
+    rdfs:isDefinedBy <file:///Users/timothyduval/Library/Mobile%20Documents/com~apple~CloudDocs/00_unifylogic/50-clients/w3c/N3/ns/time.n3> ;
+    rdfs:range xsd:string .
+
+time1:year a rdf:Property,
+        owl:FunctionalProperty ;
+    rdfs:label "year" ;
+    rdfs:comment """
+`true` if and only if $s is a `xsd:dateTime` and $o is the integer year component of the dateTime.
+
+$o can be calculated as a function of $s.
+""" ;
+    rdfs:domain xsd:dateTime ;
+    rdfs:isDefinedBy <file:///Users/timothyduval/Library/Mobile%20Documents/com~apple~CloudDocs/00_unifylogic/50-clients/w3c/N3/ns/time.n3> ;
+    rdfs:range xsd:integer .
+
+log:equalTo a rdf:Property,
+        owl:FunctionalProperty,
+        owl:InverseFunctionalProperty ;
+    rdfs:label "equalTo" ;
+    rdfs:comment """Determines if two RDF resources are the same.
+
+`true` if and only if `$s` and `$o` are the same RDF node (symbol or literal).
+
+Not to be confused with owl:sameAs.""" .
+
+string:concatenation a rdf:Property,
+        owl:FunctionalProperty ;
+    rdfs:label "concatenate into" ;
+    rdfs:comment """Concatenates the given strings. 
+    
+`true` if and only if the string concatenation of `$s_1, .. $s_n` equals `$o`.""" ;
+    rdfs:definedBy <file:///Users/timothyduval/Library/Mobile%20Documents/com~apple~CloudDocs/00_unifylogic/50-clients/w3c/N3/ns/string.n3> ;
+    rdfs:domain log:List ;
+    rdfs:range log:String .
+
+log:N3 a rdfs:Datatype ;
+    rdfs:comment """
+The class log:N3 is the class of N3 literal values.
+log:N3 is an instance of rdfs:Datatype and a subclass of rdfs:Literal.
+The value of log:content of a log:N3Document is a literal with datatype log:N3.
+""" ;
+    rdfs:subClassOf rdfs:Literal ;
+    ns1:term_status "unstable" .
+
+<file:///Users/timothyduval/Library/Mobile%20Documents/com~apple~CloudDocs/00_unifylogic/50-clients/w3c/N3/ns/log.n3> rdfs:label "n3 definition of some Semantic Web terms" ;
+    ns2:license <http://www.w3.org/Consortium/Legal/copyright-software> ;
+    rdfs:comment """
+These raise the level above RDF's pure relational data,
+and Web Ontology's ontological level, to allow rules to be expressed
+and inference done. They connect the inference to the web,
+allowing data to be fetched from resources elsewhere, and remote
+servers to be queried.
+""" .
+
+<file:///Users/timothyduval/Library/Mobile%20Documents/com~apple~CloudDocs/00_unifylogic/50-clients/w3c/N3/ns/list.n3> rdfs:label "n3 definition of some list functions" ;
+    ns2:license <http://www.w3.org/Consortium/Legal/copyright-software> ;
+    rdfs:comment "This is an ontology for computable list functions." .
+
+<file:///Users/timothyduval/Library/Mobile%20Documents/com~apple~CloudDocs/00_unifylogic/50-clients/w3c/N3/ns/time.n3> rdfs:label "n3 definition of some time and date functions" ;
+    ns2:license <http://www.w3.org/Consortium/Legal/copyright-software> ;
+    rdfs:comment "Based on orginal cwm\\_date and cwm\\_time by Mark Nottingham" .
+
+<file:///Users/timothyduval/Library/Mobile%20Documents/com~apple~CloudDocs/00_unifylogic/50-clients/w3c/N3/ns/string.n3> rdfs:label "String Processing Ontology" ;
+    ns2:license <http://www.w3.org/Consortium/Legal/copyright-software> ;
+    rdfs:comment """This is an ontology for computable string functions.
+It is implemented, for example, in CWM and Euler.
+""" .
+

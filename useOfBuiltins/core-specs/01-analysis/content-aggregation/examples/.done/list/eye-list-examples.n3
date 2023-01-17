@@ -1,0 +1,20 @@
+@prefix math: <http://www.w3.org/2000/10/swap/math#>.
+@prefix list: <http://www.w3.org/2000/10/swap/list#>.
+@prefix string: <http://www.w3.org/2000/10/swap/string#>.
+@prefix time: <http://www.w3.org/2000/10/swap/time#>.
+@prefix log: <http://www.w3.org/2000/10/swap/log#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix med: <http://eulersharp.sourceforge.net/2006/02swap/med#>.
+@prefix e: <http://eulersharp.sourceforge.net/2003/03swap/log-rules#>.
+@prefix : <http://eulersharp.sourceforge.net/2007/07test#>.
+@prefix fl: <http://eulersharp.sourceforge.net/2003/03swap/fl-rules#>.
+
+
+### unit tests for list: builtins
+{((:a :b :c) (:d :e)) list:append (:a :b :c :d :e)} => {:lista1 :result true}.
+{(:a :b :c) list:first :a} => {:listf1 :result true}.
+{:c list:in (:a :b :c)} => {:listi1 :result true}.
+{(:a :b :c) list:last :c} => {:listl1 :result true}.
+{(:a :b :c :d) list:member :b} => {:listm1 :result true}.
+{(:a :b :c) list:rest (:b :c)} => {:listr1 :result true}.

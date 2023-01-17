@@ -11,6 +11,8 @@ local.properties
 .recommenders
 .classpath
 .project
+.ipynb_checkpoints
+.DS_Store
 RemoteSystemsTempFiles
 
 # External tool builders
