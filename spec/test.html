@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Test</title>
+
+    <script src="lib/jquery-3.5.1.min.js"></script>
+    <script src="lib/shortcut.js"></script>
+    <script src="lib/codemirror-5.54.0/lib/codemirror.js"></script>
+    <link rel="stylesheet" href="lib/codemirror-5.54.0/lib/codemirror.css">
+    <link rel="stylesheet" href="lib/codemirror-5.54.0/addon/lint/lint.css">
+    <script src="lib/codemirror-5.54.0/addon/lint/lint.js"></script>
+    <script src="lib/codemirror-5.54.0/addon/edit/matchbrackets.js"></script>
+    <script src="lib/dist/n3Main.js"></script>
+    <script src="lib/codemirror-n3/namespaces.js"></script>
+    <script src="lib/codemirror-n3/lint.js"></script>
+    <script src="lib/codemirror-n3/n3-mode.js"></script>
+    <link rel="stylesheet" href="lib/codemirror-n3/rdf.css">
+    <!-- <link rel="stylesheet" href="lib/default.css"> -->
+
+    <style>
+        div.CodeMirror {
+            width: 500px;
+            height: 200px;
+            border: 1px solid #ddd;
+            margin: 15px 0 5px 0
+        }
+    </style>
+
+    <script>
+        function loaded() {
+            $('.code').each((idx, txtarea) => {
+                editor = CodeMirror.fromTextArea(txtarea, {
+                    lineNumbers: true,
+                    gutters: ["CodeMirror-lint-markers"],
+                    mode: 'n3',
+                    theme: "default rdf",
+                    // TODO this should follow code-mirrors idiom
+                    // (registering a helper) but not getting that to work
+                    lint: n3.lint(),
+                    matchBrackets: true
+                })
+            })
+        }
+    </script>
+
+</head>
+
+<body onload="loaded()">
+
+    <textarea rows=10 cols=50 class="code"></textarea>
+    <textarea rows=10 cols=50 class="code"></textarea>
+    <textarea rows=10 cols=50 class="code"></textarea>
+
+
+</body>
+
+</html>
