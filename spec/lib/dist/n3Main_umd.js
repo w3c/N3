@@ -7,7 +7,7 @@
 		exports["n3Main"] = factory();
 	else
 		root["n3Main"] = factory();
-})(this, () => {
+})(window, () => {
 return /******/ (() => { // webpackBootstrap
 /******/ 	var __webpack_modules__ = ({
 
@@ -16347,14 +16347,15 @@ class n3PrefixListener extends n3Listener {
 	}
 
 	processPrefix(pNameNs, iriRef) {
-		if (pNameNs == null)
+        // edit wvw..
+		if (pNameNs == null || iriRef == null)
 			return
 
 		var prefix = pNameNs.getText().trim();
 		prefix = prefix.substring(0, prefix.length - 1)
 
-		var uri = this.iri(iriRef);
-		this.prefixes[prefix] = uri;
+        var uri = this.iri(iriRef);
+        this.prefixes[prefix] = uri;
 	}
 
 	// Exit a parse tree produced by n3Parser#prefixedName.

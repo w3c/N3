@@ -17,7 +17,7 @@
     <script src="lib/codemirror-n3/lint.js"></script>
     <script src="lib/codemirror-n3/n3-mode.js"></script>
     <link rel="stylesheet" href="lib/codemirror-n3/rdf.css">
-    <!-- <link rel="stylesheet" href="lib/default.css"> -->
+    <link rel="stylesheet" href="lib/default.css">
 
     <style>
         div.CodeMirror {
@@ -36,9 +36,7 @@
                     gutters: ["CodeMirror-lint-markers"],
                     mode: 'n3',
                     theme: "default rdf",
-                    // TODO this should follow code-mirrors idiom
-                    // (registering a helper) but not getting that to work
-                    lint: n3.lint(),
+                    lint: n3Lint(() => { }, n3),
                     matchBrackets: true
                 })
             })
