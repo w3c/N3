@@ -966,12 +966,13 @@
       <section id='builtins'>
         <h4>N3 Builtins</h4>
         <p>
-          An <dfn data-lt="N3 builtin|builtin">N3 builtin</dfn> implements an arbitrary operation on an N3 <a>resource</a> or even <a>N3 document</a>.
-          <a>Builtins</a> include mathematic, string, time and cryptography operators, 
+          An <dfn data-lt="N3 builtin|builtin">N3 builtin</dfn> implements an arbitrary operation on an N3 <a>resource</a> or even 
+          an entire <a>N3 document</a>.
+          Builtins include mathematic, string, time and cryptography operators, 
           operations on collections and graphs, and logical operations in general.</p>
         <p>
           <!-- An <a>N3 builtin</a> can be used within an <a>N3 rule</a> as part of an <a>N3 statement</a>. -->
-          For instance, the following example calculates a person's height in meters:
+          As a simple example, the rule below uses the `math:product` builtin to calculate a person's height in meters:
         </p>
         <pre id="builtin_age_example" class="example nohighlight" data-transform="updateExample">
           <!--
@@ -981,14 +982,18 @@
         -->
         </pre>
         <p>
-            An <a>N3 builtin</a> is used as the <a>predicate</a> in an <dfn data-lt="N3 builtin statement|builtin statement">N3 builtin statement</dfn>, 
+            An <a>N3 builtin</a> is used as the <a>predicate</a> in an 
+            <dfn data-lt="N3 builtin statement|builtin statement">N3 builtin statement</dfn>, 
             where the <a>subject</a> and <a>object</a> act as input or output arguments. 
-            In the example above, the second <a>premise</a> triple constitutes a <a>builtin statement</a>: 
-            `math:product` calculates the product of the literals in the subject <a>collection</a>, i.e., the person's height in cm and 100, 
-            and then binds the result to the object variable `?m`.
+            In the example above, the second triple constitutes a <a>builtin statement</a>: 
+            the subject constitutes the input, as `math:product` calculates the product the subject <a>collection</a> elements
+            (i.e., the person's height in cm and 100); the object constitutes the output, 
+            as the result is then bound to the object variable `?m`.
         </p>
 
-        <p>The example below is more complicated, iterating over collection elements and constructing a string for each element:</p>
+        <p><a>N3 builtins</a> can generate multiple results. 
+          Below, we use the `list:iterate` builtin to iterate over collection elements,
+           and subsequently constructs a string for each element:</p>
         <pre id="iterate_example" class="example nohighlight" data-transform="updateExample">
            <!--
           :race :finalists ( :flash :superman :spiderman ) .
@@ -1002,11 +1007,17 @@
         </pre>
 
         <p>
-          The second and third <a>premise</a> triples constitute <a>builtin statements</a>.
-          The `list:iterate` builtin iterates over all elements in the subject collection (`?finalists`);
-          for each element, it binds its index and the element itself to the variables in the object collection (`?i` and `?finalist`), 
-          respectively.
-          The `string:concatenation` builtin concatenates all resources in the subject collection, 
+          The `list:iterate` builtin iterates over all elements in the subject collection (`?finalists`).
+          For each element, it binds its index, and the element itself, to the variables in the object collection 
+          (`?i` and `?finalist`, respectively). 
+          Hence, the `list:iterate` builtin generates multiple sets of bindings for the `?i` and `?finalist` variables:<br />
+          
+          <code>( ?i = 1, ?finalist = :flash )</code><br />
+          <code>( ?i = 2, ?finalist = :superman )</code><br />
+          <code>( ?i = 3, ?finalist = :spiderman )</code><br />
+          <br />
+
+          For each set of bindings, the `string:concatenation` builtin concatenates the resources in the subject collection, 
           and binds the result to the object variable (`?entry`). This will lead to the following output:<br />
           <code>
             1. flash<br />
@@ -1016,21 +1027,88 @@
         </p>
 
         <p class="note">
-          A <a>builtin statement</a> can be seen as a <a>triple pattern</a> that, for each builtin result, yields "matching" triples. 
-          In this view, for the example above, the `list:iterate` statement yields the following triples:<br />
+          A <a>builtin statement</a> can be seen as a <a>triple pattern</a> that, for each builtin result, 
+          yields one or more "matching" triples depending on the builtin. For the example above:<br />
           <code>
             ( :flash :superman :spiderman ) list:iterate ( 1 :flash ) .<br />
             ( :flash :superman :spiderman ) list:iterate ( 2 :superman ) .<br />
             ( :flash :superman :spiderman ) list:iterate ( 3 :spiderman ) .<br />
           </code>
           <br />
-          As with a <a data-cite="SPARQL11-QUERY#basicpatterns">SPARQL</a> query, for each matching triple, 
-          a consistent set of variable bindings is attempted with the other triple patterns.
-          For each consistent set of variable bindings, the rule conclusion is instantiated and inferred.
-          In the example above, this leads to 3 distinct results.
+          As with a <a data-cite="SPARQL11-QUERY#basicpatterns">SPARQL</a> query, for each "matching triple", 
+          a join is attempted with the remaining triples in the rule <a>premise</a>.
+          Hence, for each matching triple, the `string:concatenation` <a>builtin statement</a> is evaluated.
+          Finally, for each consistent set of variable bindings, the rule conclusion is instantiated and inferred.
         </p>
 
-        <!-- <p>The `log:collectAllIn` and `log:forAllIn` builtins are logical operators that support a Scoped Negation As Failure. </p> -->
+        <p>
+          <a>N3 builtins</a> can also operate on an entire <a>N3 document</a>.
+          The `log:collectAllIn` and `log:forAllIn` builtins are logical operators that support a negation-as-failure
+          scoped on the current document (SNAF).
+          For instance, the rule below uses `log:collectAllIn` to collect all of spiderman's defeated villains:
+          <pre id="collectallin_example" class="example nohighlight" data-transform="updateExample">
+            <!--
+            :spiderman a :SuperHero .
+            :green-goblin :enemyOf :spiderman ;
+              :defeated true .
+           :doctor-octopus :enemyOf :spiderman ;
+              :defeated true .
+            :sandman :enemyOf :spiderman ;
+              :defeated false .
+
+            { 
+              ?hero a :SuperHero .
+              (?enemy
+              {
+                  ?enemy :enemyOf ?hero ;
+                    :defeated true .
+              }
+              ?enemies) 
+                  log:collectAllIn _:t .
+
+           } => { ?hero :defeatedEnemies ?enemies } .
+         -->
+         </pre>
+          
+         The `log:collectAllIn` builtin accepts as subject a collection that includes:
+         <ul>
+            <li>a variable of which the values will be collected (`?enemy`),</li>
+            <li>a <i>where</i> clause with triple patterns that constrain this variable, and</li>
+            <li>a variable bound to the resulting collection of values (`?enemies`).</li>
+         </ul>
+         The <i>where</i> clause is evaluated on the current <a>N3 document</a>;
+         meaning this document acts as the scope, 
+         and all results beyond this scope are considered false (SNAF).
+         This leads to the following result:<br />
+         &nbsp;&nbsp;&nbsp;&nbsp;<code>:spiderman :defeatedEnemies ( :green-goblin :doctor-octopus )</code><br />
+        </p>
+        <p>
+          The example below uses `log:forAllIn` to determine whether a super-hero's identity is safe:
+          <pre id="forallin_example" class="example nohighlight" data-transform="updateExample">
+            <!--
+            :spiderman a :SuperHero .
+            :mary-jane :knowsIdentityOf :spiderman ;
+              :keepsSecrets true .
+           :aunt-may :knowsIdentityOf :spiderman ;
+              :keepsSecrets true .
+
+            { 
+              ?hero a :SuperHero .
+              ( { ?person :knowsIdentityOf ?hero } { ?person :keepsSecrets true } )               
+                log:forAllIn _:t .
+
+           } => { ?hero :secretIdentitySafe true } .
+         -->
+         </pre>
+          The `log:forAllIn` builtin accepts as subject a collection with two clauses of a logical implication.
+          If, for all cases where the first clause holds, the second clause holds as well,
+          then the logical implication is true.
+          In this example, the implication is true when, for each person who knows the identity of spiderman, 
+          this person can keep a secret. 
+          In this case the rule will fire, as both `mary-jane-watson` and `aunt-may` can keep secrets.
+        </p>
+
+        <!-- TODO log:content, log:semantics, log:(not)Includes -->
 
       </section>
 
@@ -1115,19 +1193,6 @@ _:d a :Person.
 
     </section>
 
-    <section id='variables'>
-      <h3>Variables and Quantification</h3>
-
-      <pre class="example" data-transform="updateExample">
-          <!--
-          Preformatted Text
-          all
-          whitespaces
-          are important
-          here
-          -->
-        </pre>
-    </section>
     <section id='keywords'>
       <h4>Keywords and special symbols</h4>
 
