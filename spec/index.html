@@ -140,7 +140,7 @@
       stage for decision making within an open environment of interconnected knowledge graphs, as opposed to a closed
       system of locally trusted facts.</p>
     <p>Notation3 Logic, or N3 for short, aims to implement such decision-making abilities in an open web environment
-      &mdash; by (a) extending the representational abilities of RDF and (b) allowing access to, operating on, 
+      &mdash; by (a) extending the representational abilities of RDF and (b) allowing access to, operating on,
       and reasoning over online information.
       N3 attempts to walk the line between, on the one hand, ease-of-use by authors and simplicity of reasoning for
       developers; and, on the other hand, extended utility and practicality for building real-world applications.</p>
@@ -155,9 +155,9 @@
       </li>
       <li>
         <strong>N3 adds declarative programming.</strong>
-        N3 allows making statements about the world, which include logical implications with variables 
-        &mdash; these can loosely be compared to If-Then statements. 
-        Subsequently, an N3 reasoner can draw inferences from these statements, 
+        N3 allows making statements about the world, which include logical implications with variables
+        &mdash; these can loosely be compared to If-Then statements.
+        Subsequently, an N3 reasoner can draw inferences from these statements,
         allowing for problem solving, automating decision making, or simply enriching your Knowledge Graph.
       </li>
       <li>
@@ -174,7 +174,8 @@
       </li>
       <li>
         <strong>N3 supports a scoped version of negation-as-failure.</strong>
-        It can be useful to check whether a <em>specific online source, local quoted graph, or even the N3 document itself</em>, 
+        It can be useful to check whether a <em>specific online source, local quoted graph, or even the N3 document
+          itself</em>,
         at a given point in time, does or does not support a set of facts.
         This is referred to as <em>scoped negation as failure,</em> and is supported by N3's
         <code>log:collectAllIn</code>, <code>log:forAllIn</code>, and <code>log:notIncludes</code> builtin.
@@ -200,9 +201,10 @@
         <a data-cite="RDF11-CONCEPTS#dfn-subject"><dfn>subject</dfn></a>,
         <a data-cite="RDF11-CONCEPTS#dfn-predicate"><dfn>predicate</dfn></a>, and
         <a data-cite="RDF11-CONCEPTS#dfn-object"><dfn>object</dfn></a> resource.
-        An <a data-cite="RDF11-CONCEPTS#resources-and-statements"><dfn data-lt="resource|N3 resource">N3 resource</dfn></a> can be an RDF <a href="#iris">IRI</a>, <a
-          href="#literals">literal</a> or <a href="#bnodes">blank node</a>; or an N3 <a>quoted graph</a>, <a>collection</a>, 
-          <a href="#n3rules">logical implication</a>, <a>variable</a> or <a>N3 builtin</a>.
+        An <a data-cite="RDF11-CONCEPTS#resources-and-statements"><dfn data-lt="resource|N3 resource">N3
+            resource</dfn></a> can be an RDF <a href="#iris">IRI</a>, <a href="#literals">literal</a> or <a
+          href="#bnodes">blank node</a>; or an N3 <a>quoted graph</a>, <a>collection</a>,
+        <a href="#n3rules">logical implication</a>, <a>variable</a> or <a>N3 builtin</a>.
         We introduce these types of resources and statements below.
       </p>
       <p>Comments are indicated using a separate '#' and continue until the end of the line.
@@ -269,7 +271,7 @@
     </section>
     <section id='iris'>
       <h3>IRIs</h3>
-      <p>An IRI is used to represent an identifiable entity &mdash; such as a person, place, or thing. 
+      <p>An IRI is used to represent an identifiable entity &mdash; such as a person, place, or thing.
         Until now, we have been writing absolute <dfn data-lt="absolute iri|iri">IRIs</dfn> [[RFC3987]] (e.g.,
         <code>http://example.org/#Spiderman</code>), which include both the namespace (e.g.,
         <code>http://example.org/#</code>) and the local name (e.g., <code>Spiderman</code>).
@@ -293,11 +295,11 @@
           -->
         </pre>
 
-        <p class="note">N3 also supports
-          case-insensitive `PREFIX` and `BASE` directives, as does Turtle,
-          to align the syntax with SPARQL (see <a href="#grammar">grammar</a>). 
-          These do not have a trailing '.'.
-        </p>
+      <p class="note">N3 also supports
+        case-insensitive `PREFIX` and `BASE` directives, as does Turtle,
+        to align the syntax with SPARQL (see <a href="#grammar">grammar</a>).
+        These do not have a trailing '.'.
+      </p>
 
       <p>To further simplify prefixed names, one can leave the <a>prefix label</a> empty (e.g., for an often-used
         namespace):</p>
@@ -309,8 +311,10 @@
           -->
         </pre>
 
-      <p>One can also write <dfn data-lt="relative iri">relative IRI references</dfn>, e.g., <code>&lt;#Spiderman&gt;</code>.
-        A relative IRI reference is <a data-cite="RFC3987#section-6.5">resolved</a>, i.e., turned into an <a>absolute IRI</a>, by concatenating the base IRI with the <a>local name</a> (e.g., <code>Spiderman</code>).
+      <p>One can also write <dfn data-lt="relative iri">relative IRI references</dfn>, e.g.,
+        <code>&lt;#Spiderman&gt;</code>.
+        A relative IRI reference is <a data-cite="RFC3987#section-6.5">resolved</a>, i.e., turned into an <a>absolute
+          IRI</a>, by concatenating the base IRI with the <a>local name</a> (e.g., <code>Spiderman</code>).
         A <dfn>base IRI</dfn> is defined using the `@base` directive.
         For instance, the following is equivalent to the <a href="#empty-prefix-example">prior example</a>:
       </p>
@@ -352,25 +356,30 @@
           &lt;http://example.org/#doerthe&gt; foaf:knows &lt;http://example.org/#dominik&gt; .
           :doerthe foaf:knows :dominik .</pre> -->
 
-        <section id='iriprplist'>
-          <h4>IRI property lists</h4>
-          <p>
-            In many cases, an <a>IRI</a> occurs only once as an object, and is then further described as a subject in other statements
-            (e.g., see a <a href="#prefixed-names-example">prior example</a>). 
-            The <a href="#iri-prp-list-unfolded">example below</a> illustrates how this may result in difficult-to-read code:
-            to find descriptions of <a>IRI</a> objects such as `tobey-maguire` or `willem-dafoe`, one must scan the full <a>N3 graph</a>,
-            as they are only described near the end.</p>
+      <section id='iriprplist'>
+        <h4>IRI property lists</h4>
+        <p>
+          In many cases, an <a>IRI</a> occurs only once as an object, and is then further described as a subject in
+          other statements
+          (e.g., see a <a href="#prefixed-names-example">prior example</a>).
+          The <a href="#iri-prp-list-unfolded">example below</a> illustrates how this may result in difficult-to-read
+          code:
+          to find descriptions of <a>IRI</a> objects such as `tobey-maguire` or `willem-dafoe`, one must scan the full
+          <a>N3 graph</a>,
+          as they are only described near the end.
+        </p>
 
-          <p>Using the IRI property list syntax, descriptions of these object <a>IRIs</a> can be directly "embedded" within the object position:</p>
-  
-          <table class="ex">
-            <tr>
-              <th>Using basic statements:</th>
-              <th>Using IRI property lists:</th>
-            </tr>
-            <tr>
-              <td>
-                <pre class="example no-highlight" id="iri-prp-list-unfolded" data-transform="updateExample">
+        <p>Using the IRI property list syntax, descriptions of these object <a>IRIs</a> can be directly "embedded"
+          within the object position:</p>
+
+        <table class="ex">
+          <tr>
+            <th>Using basic statements:</th>
+            <th>Using IRI property lists:</th>
+          </tr>
+          <tr>
+            <td>
+              <pre class="example no-highlight" id="iri-prp-list-unfolded" data-transform="updateExample">
                   <!--
                   @prefix : <http://example.org/#> .
                   @prefix foaf: <http://xmlns.com/foaf/0.1/> .
@@ -386,9 +395,9 @@
                   :willem-dafoe a :Actor .
                   -->
                 </pre>
-              </td>
-              <td>
-                <pre class="example no-highlight" id="iri-prp-list" data-transform="updateExample">
+            </td>
+            <td>
+              <pre class="example no-highlight" id="iri-prp-list" data-transform="updateExample">
                   <!--
                   @prefix : <http://example.org/#> .
                   @prefix foaf: <http://xmlns.com/foaf/0.1/> .
@@ -405,22 +414,24 @@
                     ] .
                   -->
                 </pre>
-              </td>
-            </tr>
-          </table>
-  
-          <p>IRI property lists build on the <a href="#polists">predicate object list</a> syntax to group statements about <a>IRIs</a>.
+            </td>
+          </tr>
+        </table>
+
+        <p>IRI property lists build on the <a href="#polists">predicate object list</a> syntax to group statements about
+          <a>IRIs</a>.
           One can use <a href="#object-lists-example">objects lists</a> in this syntax as well.
-          </p>
+        </p>
 
-          <p class="note">See also the <a href="#bnodeprplist">blank node property list</a> syntax.</p>
-          <p class="note">See <a data-cite="JSON-LD11#embedding">embedding</a> in [[JSON-LD11]] for a discussion of a similar feature in
-            another format.</p>
+        <p class="note">See also the <a href="#bnodeprplist">blank node property list</a> syntax.</p>
+        <p class="note">See <a data-cite="JSON-LD11#embedding">embedding</a> in [[JSON-LD11]] for a discussion of a
+          similar feature in
+          another format.</p>
 
-        </section>
+      </section>
 
     </section>
-    
+
     <section id='literals'>
       <h3>Literals</h3>
       <p>Literals are used to represent a textual or numerical (i.e., datatype) value, such as name,
@@ -439,9 +450,12 @@
             rdfs:label "Helium" .           # xsd:string
           -->
         </pre>
-      <p>For details on numerical syntaxes (e.g., decimals, doubles), we refer to the <a
-          data-cite="TURTLE#abbrev">RDF 1.1: Turtle (Section 2.5.2)</a> specification.</p>
-      <p>Other literals, such as strings, but also dates, binary, octal or hex code, XML or JSON code, or other types of numbers (e.g., shorts), need to be written as <b>string literals</b>. If the literal is not a string, its particular datatype must be indicated using the <code>^^</code> symbol and the corresponding <dfn data-cite="XMLSCHEMA11-2#built-in-datatypes">datatype IRI</dfn>. For instance:</p>
+      <p>For details on numerical syntaxes (e.g., decimals, doubles), we refer to the <a data-cite="TURTLE#abbrev">RDF
+          1.1: Turtle (Section 2.5.2)</a> specification.</p>
+      <p>Other literals, such as strings, but also dates, binary, octal or hex code, XML or JSON code, or other types of
+        numbers (e.g., shorts), need to be written as <b>string literals</b>. If the literal is not a string, its
+        particular datatype must be indicated using the <code>^^</code> symbol and the corresponding <dfn
+          data-cite="XMLSCHEMA11-2#built-in-datatypes">datatype IRI</dfn>. For instance:</p>
 
       <pre class="example nohighlight" data-transform="updateExample">
       <!--
@@ -453,8 +467,8 @@
       -->
     </pre>
 
-    The literal's <a data-cite="RDF11-CONCEPTS#dfn-lexical-form">lexical form</a> will include the characters between
-    the delimiter quotes (e.g., <code>2001-08-10</code>).
+      The literal's <a data-cite="RDF11-CONCEPTS#dfn-lexical-form">lexical form</a> will include the characters between
+      the delimiter quotes (e.g., <code>2001-08-10</code>).
 
       <p>The language of the string literal can be indicated using the <code>@</code> symbol and the corresponding
         language tag (as defined in [[BCP47]] &mdash; find the registry in [[LNG-TAG]]). For instance:</p>
@@ -490,9 +504,13 @@
       <p class="note">There are also <a href="#compoundliteral">other mechanisms</a> for describing the language tag and
         base direction of RDF literals.</p>
 
-      <p>In case the the string literal itself contains the string delimiter (e.g., double quotes), or includes newlines, other string delimiters can be used, i.e., single quotes or compound delimiters <code>"""</code> or <code>'''</code>.
-        Alternatively, one can also use a '<code>\</code>' for escaping the delimiter each time it occurs within a string literal. 
-        For instance:</p>
+      <p>In case the the string literal itself contains the string delimiter (e.g., double quotes), or includes
+        newlines, other string delimiters can be used, i.e., single quotes or compound delimiters <code>"""</code> or
+        <code>'''</code>.
+        Alternatively, one can also use a '<code>\</code>' for escaping the delimiter each time it occurs within a
+        string literal.
+        For instance:
+      </p>
       <pre id="string-literal-example" class="example nohighlight" data-transform="updateExample">
       <!--
       @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
@@ -547,7 +565,8 @@
           will refer to it.
         </li>
         <li>
-          There likely already exists an <a>IRI</a> for the resource, and we don't want to do an extensive search to find out what it is.
+          There likely already exists an <a>IRI</a> for the resource, and we don't want to do an extensive search to
+          find out what it is.
         </li>
       </ul>
       <p>Instead, you can use <dfn>blank nodes</dfn> to talk about resources.
@@ -558,10 +577,12 @@
       <section id='bnodeids'>
         <h4>Blank node identifiers</h4>
         <p>A <a>blank node</a> can be represented by a <dfn data-cite="RDF11-CONCEPTS#dfn-blank-node-identifier">blank
-            node identifier</dfn>, which is unique within the <a>N3 graph</a>, expressed as <code>_:someLabel</code>. 
-            Then, we use this identifier within our <a>N3 graph</a> to describe the corresponding resource, same as with an <a>IRI</a>.
+            node identifier</dfn>, which is unique within the <a>N3 graph</a>, expressed as <code>_:someLabel</code>.
+          Then, we use this identifier within our <a>N3 graph</a> to describe the corresponding resource, same as with
+          an <a>IRI</a>.
         <p>For instance, this <a data-cite="RDF11-PRIMER#section-blank-node">example</a> shows that the Mona Lisa
-           has an unidentified tree in its background. We don't want to concretely identify this tree, but we do want to describe it &mdash; 
+          has an unidentified tree in its background. We don't want to concretely identify this tree, but we do want to
+          describe it &mdash;
           such as the painting it is in, and the type of tree:
         <p>
         <pre id="mona-lisa-bnode-id" class="example nohighlight" data-transform="updateExample">
@@ -573,22 +594,24 @@
             _:someTree rdf:type ex:CypressTree .
             -->
           </pre>
-        <p>In this example, we minted a <a>blank node identifier</a> <code>_:someTree</code> to represent the resource that
-          we want to describe. Note that this identifier is only usable within our local <a>N3 graph</a> &mdash; 
+        <p>In this example, we minted a <a>blank node identifier</a> <code>_:someTree</code> to represent the resource
+          that
+          we want to describe. Note that this identifier is only usable within our local <a>N3 graph</a> &mdash;
           if you want other <a>N3 graphs</a> to describe it, you should represent it using an <a>IRI</a>.</p>
       </section>
       <section id='bnodeprplist'>
         <h4>Blank node property lists</h4>
         <p>Using a <a>blank node identifier</a> requires introducing a new identifier for each <a>blank node</a>.
-          In many cases, however, a blank node occurs only once as an object, 
-          and is then further described as a subject in other statements, such as in the <a href="#mona-lisa-bnode-id">prior example</a>.
+          In many cases, however, a blank node occurs only once as an object,
+          and is then further described as a subject in other statements, such as in the <a
+            href="#mona-lisa-bnode-id">prior example</a>.
           In those cases, a more convenient syntax can be used.</p>
-          <p>
-          The <a href="#address-bnode-prp-list-simplified">example below</a> shows a more elaborate example: 
-          identifiers `_:a` and `_:t` are used as object in only one statement, 
-          and are then described as subject in other statements. 
+        <p>
+          The <a href="#address-bnode-prp-list-simplified">example below</a> shows a more elaborate example:
+          identifiers `_:a` and `_:t` are used as object in only one statement,
+          and are then described as subject in other statements.
           Using the blank node property list syntax, these cases can be represented as follows:</p>
-        
+
         <table class="ex">
           <tr>
             <th>Using blank node identifiers:</th>
@@ -626,11 +649,12 @@
 
         <p class="note">See also the <a href="#iriprplist">IRI property list</a> syntax.</p>
 
-        <p>As mentioned, this syntax is useful for cases where a blank node occurs only once as an object. 
-          In case the blank node occurs several times as an object, such as describing multiple people with the same address,
+        <p>As mentioned, this syntax is useful for cases where a blank node occurs only once as an object.
+          In case the blank node occurs several times as an object, such as describing multiple people with the same
+          address,
           one should use blank node identifiers. For instance:
 
-            <pre class="example no-highlight" id="address-multiple-people" data-transform="updateExample">
+        <pre class="example no-highlight" id="address-multiple-people" data-transform="updateExample">
               <!--
                 @prefix ex: <http://example.org/#> .
 
@@ -641,8 +665,8 @@
                 _:a ex:town [ ex:name "Springfield" ] .
               -->
             </pre>
-            <p>We can still use the blank node property list syntax for describing the town, 
-              as this blank node still only occurs once as object.</p>
+        <p>We can still use the blank node property list syntax for describing the town,
+          as this blank node still only occurs once as object.</p>
         </p>
       </section>
 
@@ -657,12 +681,14 @@
           <a>IRI</a> for that particular tree, and we don't want to mint another <a>IRI</a> to refer to the same tree
           (nor do we want to lookup this existing <a>IRI</a>).
         </p>
-        <p><strong>Composite information</strong>: when describing composite pieces of information, such as street addresses,
+        <p><strong>Composite information</strong>: when describing composite pieces of information, such as street
+          addresses,
           telephone numbers and dates, it is often unlikely that anyone outside this <a>N3 graph</a> would need to refer
-          to this address or its pieces. 
+          to this address or its pieces.
           Hence, it would be redundant to mint an <a>IRI</a> just for the purpose of structuring this information.
           Instead, one can use a <a data-lt="blank node">blank node</a> to connect the
-          "composed" pieces of information, e.g., the street address, to its composite values, e.g., street name, number,
+          "composed" pieces of information, e.g., the street address, to its composite values, e.g., street name,
+          number,
           and city, as shown in <a href="#address-bnode-prp-list">this example</a>.</p>
         <p><strong>N-ary relations</strong>: <a>blank nodes</a> are a convenient way to represent <a
             href="#nary-binary-rel">n-ary relations in N3</a>.</p>
@@ -676,7 +702,7 @@
     </section>
     <section id='collections'>
       <h3>Collections</h3>
-      <p>We often need to describe ordered collections of things, e.g., a book written by several authors, 
+      <p>We often need to describe ordered collections of things, e.g., a book written by several authors,
         listing the students in a course, or the software modules within a package. N3 provides a succinct <dfn
           data-lt="n3 collection|n3 list|list">collection</dfn> syntax to represent ordered collections of
         resources enclosed by <code>(</code> <code>)</code>. The contained resources are called <dfn
@@ -691,25 +717,25 @@
           -->
         </pre>
       <p>This states that the value of the author property is the <em>collection resource</em>.</p>
-      <p class="note"><strong>Any additional meaning is not given by the N3 semantics</strong>. 
+      <p class="note"><strong>Any additional meaning is not given by the N3 semantics</strong>.
         For instance, this example does not imply that each member (e.g.,
         <code>:deborah</code>) can be considered as a value of the author property &mdash; i.e., the author property
-        does not "distribute" across the members. 
+        does not "distribute" across the members.
         For that matter, it is also not implied that the first member put the most effort into the book.
-        Any additional meaning, such as each member being an author of the book, 
+        Any additional meaning, such as each member being an author of the book,
         and the ordering reflecting the authors' effort, would always be application-specific.<br />
-      <br />
-      In general, to implement such application-specific meanings, N3 rules could be used.
-      Alternatively, one could use an <a href="#object-lists-example">object list</a> 
-      to explicitly state that each of these resources are authors of the book: <br />
-      &nbsp;&nbsp;&nbsp;&nbsp;`:description_logic_handbook :author :deborah, :daniele, :peter .`<br />
-      However, since RDF (and thus N3) statements do not have an inherent order, this example loses meaning 
+        <br />
+        In general, to implement such application-specific meanings, N3 rules could be used.
+        Alternatively, one could use an <a href="#object-lists-example">object list</a>
+        to explicitly state that each of these resources are authors of the book: <br />
+        &nbsp;&nbsp;&nbsp;&nbsp;`:description_logic_handbook :author :deborah, :daniele, :peter .`<br />
+        However, since RDF (and thus N3) statements do not have an inherent order, this example loses meaning
         as we no longer know who can be considered the "first" author.
       </p>
 
       <p class="note">To an extent, an N3 collection <a href="#semantics">is equivalent to</a> the more verbose <a
-        data-cite="rdf11-mt#rdf-collections">RDF Collection vocabulary</a>.</p>
-      
+          data-cite="rdf11-mt#rdf-collections">RDF Collection vocabulary</a>.</p>
+
       <p>In N3, collections may occur as subjects, predicates or objects in a statement. For instance:</p>
       <pre class="example nohighlight" data-transform="updateExample">
           <!--
@@ -728,7 +754,7 @@
         </pre>
       <p>As before: any meaning that goes beyond the fact that 3 <a>collection</a> resources are involved in this
         statement, would be application-specific.</p>
-        <!-- &mdash; for instance, that the predicate
+      <!-- &mdash; for instance, that the predicate
         <code>(:read :liked :approved)</code> means that the subject <a>collection</a> did all those things for all
         members in the object <a>collection</a>. -->
       <!--
@@ -745,8 +771,8 @@
     <section id='quotedgraphs'>
       <h3>Quoted Graphs</h3>
       <p>
-        It is often useful to attach metadata to groups of triples &mdash; 
-        to give the provenance, context, or version of the information, our opinion on the matter, and so on. 
+        It is often useful to attach metadata to groups of triples &mdash;
+        to give the provenance, context, or version of the information, our opinion on the matter, and so on.
         We can use <a>quoted graphs</a> to quote RDF graphs, and then describe the <a>quoted graph</a> using <a>N3
           statements</a>. For instance:
       </p>
@@ -778,9 +804,9 @@
         </pre>
       <p>This <a>N3 statement</a> states that Lois Lane believes that Superman can fly.
         Even if it is known that <code>:Superman</code> is the same as <code>:ClarkKent</code>, one cannot infer from
-        this that Lois Lane believes that <code>:ClarkKent</code> can fly. 
-        Indeed, this is an accurate depiction of Lois Lane's statement at the time &mdash; 
-        as she did not know that Superman is Clark Kent at that point, 
+        this that Lois Lane believes that <code>:ClarkKent</code> can fly.
+        Indeed, this is an accurate depiction of Lois Lane's statement at the time &mdash;
+        as she did not know that Superman is Clark Kent at that point,
         she would certainly not be saying that Clark Kent can fly.</p>
     </section>
 
@@ -788,14 +814,15 @@
       <h3>N3 Rules</h3>
 
       <p>N3 supports declarative programming by allowing to make statements about the world,
-        including logical implications, or <dfn data-lt="logical implication|N3 rule">N3 rules</dfn>, which can be loosely compared to If-Then statements.
-        Based on the N3 semantics, so-called inferences can be drawn from these statements. 
+        including logical implications, or <dfn data-lt="logical implication|N3 rule">N3 rules</dfn>, which can be
+        loosely compared to If-Then statements.
+        Based on the N3 semantics, so-called inferences can be drawn from these statements.
         An N3 reasoner can draw such inferences automatically, to support
         problem solving, decision making, or simply enriching your Knowledge Graph.</p>
 
-        <p>For instance, the following is an <a>N3 rule</a>:</p>
+      <p>For instance, the following is an <a>N3 rule</a>:</p>
 
-        <pre class="example nohighlight" data-transform="updateExample">
+      <pre class="example nohighlight" data-transform="updateExample">
           <!--
           @prefix foaf: <http://xmlns.com/foaf/0.1/> .
           @prefix : <http://example.org/#>.
@@ -807,36 +834,38 @@
         -->
         </pre>
 
-        <p>
-          This is a logical construct, such as a conjunction (AND) and disjunction (OR). 
-          Stating such a <a>logical implication</a> means that, in case the <dfn data-lt="premise|rule premise">rule premise</dfn> is true (it is raining), 
-          the <dfn data-lt="conclusion|rule conclusion">rule conclusion</dfn> must be true as well (it is cloudy). 
-          If this is not the case &mdash; raining does not imply that it is cloudy 
-          &mdash; the implication would be false. 
-          However, this is not possible, since all statements in N3 (and RDF) are true by default.
-        </p>
-        
-        <p>
-          Hence, when the <a>premise</a> holds, then we can safely infer the <a>conclusion</a>. 
-          This is also referred to as <dfn data-lt="fire|firing">firing</dfn> the rule.
-          For the example above, if we state `:weather a :Raining`, then we can safely infer `:weater a :Cloudy`.
-        </p>
+      <p>
+        This is a logical construct, such as a conjunction (AND) and disjunction (OR).
+        Stating such a <a>logical implication</a> means that, in case the <dfn data-lt="premise|rule premise">rule
+          premise</dfn> is true (it is raining),
+        the <dfn data-lt="conclusion|rule conclusion">rule conclusion</dfn> must be true as well (it is cloudy).
+        If this is not the case &mdash; raining does not imply that it is cloudy
+        &mdash; the implication would be false.
+        However, this is not possible, since all statements in N3 (and RDF) are true by default.
+      </p>
 
-        <p class="note">
-          An <a>N3 rule</a> is actually a N3 statement, where the <a>subject</a> and <a>object</a> constitute <a>quoted graphs</a>,
-          and the <a>predicate</a> is `log:implies`, with symbol `=&gt;` as syntactic sugar.
-          <!-- For backward chaining rules (see <a href="n3rulechaining">rule chaining</a>), 
+      <p>
+        Hence, when the <a>premise</a> holds, then we can safely infer the <a>conclusion</a>.
+        This is also referred to as <dfn data-lt="fire|firing">firing</dfn> the rule.
+        For the example above, if we state `:weather a :Raining`, then we can safely infer `:weater a :Cloudy`.
+      </p>
+
+      <p class="note">
+        An <a>N3 rule</a> is actually a N3 statement, where the <a>subject</a> and <a>object</a> constitute <a>quoted
+          graphs</a>,
+        and the <a>predicate</a> is `log:implies`, with symbol `=&gt;` as syntactic sugar.
+        <!-- For backward chaining rules (see <a href="n3rulechaining">rule chaining</a>), 
           the predicate is `log:impliedBy`, with symbol `&lt;=` as syntactic sugar. -->
-          <!-- In fact, these predicates themselves are <a>N3 builtins</a>. -->
-        </p>
+        <!-- In fact, these predicates themselves are <a>N3 builtins</a>. -->
+      </p>
 
-        <section id='n3rulevars'>
-          <h3>Rule Variables</h3>
-        
-          <p><a>N3 rules</a> are most useful when they include <dfn>variables</dfn>. 
-            For instance, the following includes a universal variable (prefixed by `?`):
-          </p>
-          <pre class="example nohighlight" data-transform="updateExample">
+      <section id='n3rulevars'>
+        <h3>Rule Variables</h3>
+
+        <p><a>N3 rules</a> are most useful when they include <dfn>variables</dfn>.
+          For instance, the following includes a universal variable (prefixed by `?`):
+        </p>
+        <pre class="example nohighlight" data-transform="updateExample">
             <!--
             @prefix foaf: <http://xmlns.com/foaf/0.1/> .
             @prefix : <http://example.org/#>.
@@ -850,34 +879,35 @@
           -->
           </pre>
 
-          <p>
-            This states that the <a>N3 rule</a> is true for each value of variable `?x`: 
-            when the <a>premise</a> is true for a particular value for `?x`
-            (being a super hero), 
-            then the <a>conclusion</a> must be true for that value as well (being imaginary).
-            For the example above, the <a>premise</a> is true for value `:spiderman`, 
-            meaning we can infer the <a>conclusion</a> for that value, i.e., 
-            `:spiderman a :Imaginary`.
-          </p>
-          <p class="note">
-            More technically, the triples in the <a>rule premise</a>
-            (e.g., `?x a :SuperHero`) can be seen as <dfn><a data-cite="SPARQL11-QUERY#QSynTriples">triple patterns</a></dfn>.
-            In order to <a>fire</a> the rule, these triple patterns are matched to concrete triples 
-            in the <a>N3 document</a>. 
-            If a match is successful, concrete resources from the matching triple (e.g., `:spiderman`)
-             are bound to the triple pattern's <a>variables</a> (e.g., `?x`).
-            These bound variable values are then used in the inferred conclusion (e.g., `:spiderman a :Imaginary`).
-          </p>
-        </section>
+        <p>
+          This states that the <a>N3 rule</a> is true for each value of variable `?x`:
+          when the <a>premise</a> is true for a particular value for `?x`
+          (being a super hero),
+          then the <a>conclusion</a> must be true for that value as well (being imaginary).
+          For the example above, the <a>premise</a> is true for value `:spiderman`,
+          meaning we can infer the <a>conclusion</a> for that value, i.e.,
+          `:spiderman a :Imaginary`.
+        </p>
+        <p class="note">
+          More technically, the triples in the <a>rule premise</a>
+          (e.g., `?x a :SuperHero`) can be seen as <dfn><a data-cite="SPARQL11-QUERY#QSynTriples">triple
+              patterns</a></dfn>.
+          In order to <a>fire</a> the rule, these triple patterns are matched to concrete triples
+          in the <a>N3 document</a>.
+          If a match is successful, concrete resources from the matching triple (e.g., `:spiderman`)
+          are bound to the triple pattern's <a>variables</a> (e.g., `?x`).
+          These bound variable values are then used in the inferred conclusion (e.g., `:spiderman a :Imaginary`).
+        </p>
+      </section>
 
-        <section id='n3rulechaining'>
-          <h3>Rule Chaining</h3>
+      <section id='n3rulechaining'>
+        <h3>Rule Chaining</h3>
 
-          <p>In practice, a pivotal feature is that <a>N3 rules</a> can be "chained": 
-            a rule can depend on the results of other rules. For example:
-          </p>
+        <p>In practice, a pivotal feature is that <a>N3 rules</a> can be "chained":
+          a rule can depend on the results of other rules. For example:
+        </p>
 
-          <pre id="chaining_example" class="example nohighlight" data-transform="updateExample">
+        <pre id="chaining_example" class="example nohighlight" data-transform="updateExample">
             <!--
             @prefix foaf: <http://xmlns.com/foaf/0.1/> .
             @prefix : <http://example.org/#>.
@@ -894,36 +924,32 @@
             -->
           </pre>
 
-          <p>
-            The third <a>N3 rule</a> relies on the <a>rule conclusion</a> (`:locomotion`) of the first two rules:
-            if one of those rules <a>fire</a>, i.e., inferring a flying locomotion for a resource,
-            then the third rule would <a>fire</a> as well, i.e., inferring that the resource
-            would be a suitable observer for a street with heavy traffic.
-            <!-- Hence the term "chaining"; rules 1 and 2 each form a chain with rule 3. -->
-            This allows for a modularization of N3 code: 
-            the first two rules separately decide when something supports a flying locomotion;
-            the third rule determines what the general effects of flying locomotion are.
-          </p>
+        <p>
+          The third <a>N3 rule</a> relies on the <a>rule conclusion</a> (`:locomotion`) of the first two rules:
+          if one of those rules <a>fire</a>, i.e., inferring a flying locomotion for a resource,
+          then the third rule would <a>fire</a> as well, i.e., inferring that the resource
+          would be a suitable observer for a street with heavy traffic.
+          <!-- Hence the term "chaining"; rules 1 and 2 each form a chain with rule 3. -->
+          This allows for a modularization of N3 code:
+          the first two rules separately decide when something supports a flying locomotion;
+          the third rule determines what the general effects of flying locomotion are.
+        </p>
 
-          <p>
-            Following the 
-          </p>
-          
-          <p class="note">
-            Variable names only have to be unique within a rule, and not across rules. 
-            For instance, in the <a href="#chaining_example">prior example</a>,
-            we simply could have named every variable `?x`. 
-            As with general coding practices, it is typically a good idea to give variables a 
-            meaningful name.
-          </p>
+        <p class="note">
+          Variable names only have to be unique within a rule, and not across rules.
+          For instance, in the <a href="#chaining_example">prior example</a>,
+          we simply could have named every variable `?x`.
+          As with general coding practices, it is typically a good idea to give variables a
+          meaningful name.
+        </p>
         </p>
 
         <p>
           <!-- TODO have a section on N3 reasoners -->
-          An N3 reasoner, which can draw inferences from <a>N3 rules</a>, 
+          An N3 reasoner, which can draw inferences from <a>N3 rules</a>,
           can operate in forward chaining, backward chaining, or some hybrid mode.
-          An <a>N3 rule</a> can also indicate which mode should be used, 
-          by using the appropriate predicate. 
+          An <a>N3 rule</a> can also indicate which mode should be used,
+          by using the appropriate predicate.
           Up until now, we have been utilizing `=&gt;`, which is syntactic sugar for `log:implies` and
           directs the reasoner to operate in forward chaining mode.
           The `&lt;=` predicate, syntactic sugar for `log:impliedBy`, indicates a backward chaining mode.
@@ -931,7 +957,7 @@
         <p>
           For instance, the following is equivalent to the <a href="#chaining_example">prior example</a>
           and combines forward and backward chaining:
-          <pre id="backward_chaining_example" class="example nohighlight" data-transform="updateExample">
+        <pre id="backward_chaining_example" class="example nohighlight" data-transform="updateExample">
             <!--
             @prefix foaf: <http://xmlns.com/foaf/0.1/> .
             @prefix : <http://example.org/#>.
@@ -949,12 +975,13 @@
         </p>
 
         <p>
-          In a nutshell, forward reasoning presents a bottom-up approach: 
-          starting from a set of initial and inferred statements, 
+          In a nutshell, forward reasoning presents a bottom-up approach:
+          starting from a set of initial and inferred statements,
           a reasoner will <a>fire</a> any N3 rule where the <a>premise</a> holds,
           each time adding the inferences to the set, until no more N3 rules can be fired.
           Backward chaining is a top-down approach: given a query, such as `?x :locomotion :flying`,
-          the reasoner will search for any rules with <a>conclusions</a> that may satisfy the query (e.g., first and second rule). 
+          the reasoner will search for any rules with <a>conclusions</a> that may satisfy the query (e.g., first and
+          second rule).
           Then, it will check whether the <a>premises</a> of those rules hold, which may, in itself,
           require searching for rules with matching <a>conclusions</a>.
           Regarding general expressivity, these two reasoning modes can be considered equivalent.
@@ -962,39 +989,46 @@
           is beyond the scope of this primer.
         </p>
       </section>
+    </section>
 
-      <section id='builtins'>
-        <h4>N3 Builtins</h4>
-        <p>
-          An <dfn data-lt="N3 builtin|builtin">N3 builtin</dfn> implements an arbitrary operation on an N3 <a>resource</a> or even 
-          an entire <a>N3 document</a>.
-          Builtins include mathematic, string, time and cryptography operators, 
-          operations on collections and graphs, and logical operations in general.</p>
-        <p>
-          <!-- An <a>N3 builtin</a> can be used within an <a>N3 rule</a> as part of an <a>N3 statement</a>. -->
-          As a simple example, the rule below uses the `math:product` builtin to calculate a person's height in meters:
-        </p>
-        <pre id="builtin_age_example" class="example nohighlight" data-transform="updateExample">
+    <section id='builtins'>
+      <h4>N3 Builtins</h4>
+      <p>
+        An <dfn data-lt="N3 builtin|builtin">N3 builtin</dfn> is used within a <a>N3 rule</a> to
+        implement an arbitrary operation on an N3 <a>resource</a> or even an entire <a>N3 document</a>.
+        Builtins include mathematic, string, time and cryptography operators,
+        operations on collections and graphs, and logical operations in general.</p>
+
+      <h5>Simple Builtins</h5>
+
+      <p>
+        <!-- An <a>N3 builtin</a> can be used within an <a>N3 rule</a> as part of an <a>N3 statement</a>. -->
+        As a simple example, the rule below uses the `math:product` builtin to calculate a person's height in meters:
+      </p>
+      <pre id="builtin_age_example" class="example nohighlight" data-transform="updateExample">
           <!--
           { ?person :heightInCm ?cm .
             ( ?cm 100 ) math:product ?m .
           } => { ?person :heightInMeter ?m } .
         -->
         </pre>
-        <p>
-            An <a>N3 builtin</a> is used as the <a>predicate</a> in an 
-            <dfn data-lt="N3 builtin statement|builtin statement">N3 builtin statement</dfn>, 
-            where the <a>subject</a> and <a>object</a> act as input or output arguments. 
-            In the example above, the second triple constitutes a <a>builtin statement</a>: 
-            the subject constitutes the input, as `math:product` calculates the product the subject <a>collection</a> elements
-            (i.e., the person's height in cm and 100); the object constitutes the output, 
-            as the result is then bound to the object variable `?m`.
-        </p>
+      <p>
+        An <a>N3 builtin</a> is used as the <a>predicate</a> in an
+        <dfn data-lt="N3 builtin statement|builtin statement">N3 builtin statement</dfn>,
+        where the <a>subject</a> and <a>object</a> act as input or output arguments.
+        In the example above, the second triple constitutes a <a>builtin statement</a>:
+        the subject constitutes the input, as `math:product` calculates the product the subject <a>collection</a>
+        elements
+        (i.e., the person's height in cm and 100); the object constitutes the output,
+        as the result is then bound to the object variable `?m`.
+      </p>
 
-        <p><a>N3 builtins</a> can generate multiple results. 
-          Below, we use the `list:iterate` builtin to iterate over collection elements,
-           and subsequently constructs a string for each element:</p>
-        <pre id="iterate_example" class="example nohighlight" data-transform="updateExample">
+      <h5>Builtins with Multiple Results</h5>
+
+      <p><a>N3 builtins</a> can generate multiple results.
+        Below, we use the `list:iterate` builtin to iterate over collection elements,
+        and subsequently constructs a string for each element:</p>
+      <pre id="iterate_example" class="example nohighlight" data-transform="updateExample">
            <!--
           :race :finalists ( :flash :superman :spiderman ) .
           
@@ -1006,55 +1040,60 @@
         -->
         </pre>
 
-        <p>
-          The `list:iterate` builtin iterates over all elements in the subject collection (`?finalists`).
-          For each element, it binds its index, and the element itself, to the variables in the object collection 
-          (`?i` and `?finalist`, respectively). 
-          Hence, the `list:iterate` builtin generates multiple sets of bindings for the `?i` and `?finalist` variables:<br />
-          
-          <code>( ?i = 1, ?finalist = :flash )</code><br />
-          <code>( ?i = 2, ?finalist = :superman )</code><br />
-          <code>( ?i = 3, ?finalist = :spiderman )</code><br />
-          <br />
+      <p>
+        The `list:iterate` builtin iterates over all elements in the subject collection (`?finalists`).
+        For each element, it binds its index, and the element itself, to the variables in the object collection
+        (`?i` and `?finalist`, respectively).
+        Hence, the `list:iterate` builtin generates multiple sets of bindings for the `?i` and `?finalist`
+        variables:<br />
 
-          For each set of bindings, the `string:concatenation` builtin concatenates the resources in the subject collection, 
-          and binds the result to the object variable (`?entry`). This will lead to the following output:<br />
-          <code>
+        <code>( ?i = 1, ?finalist = :flash )</code><br />
+        <code>( ?i = 2, ?finalist = :superman )</code><br />
+        <code>( ?i = 3, ?finalist = :spiderman )</code><br />
+        <br />
+
+        For each set of bindings, the `string:concatenation` builtin concatenates the resources in the subject
+        collection,
+        and binds the result to the object variable (`?entry`). This will lead to the following output:<br />
+        <code>
             1. flash<br />
             2. superman<br />
             3. spiderman<br />
           </code>
-        </p>
+      </p>
 
-        <p class="note">
-          A <a>builtin statement</a> can be seen as a <a>triple pattern</a> that, for each builtin result, 
-          yields one or more "matching" triples depending on the builtin. For the example above:<br />
-          <code>
+      <p class="note">
+        A <a>builtin statement</a> can be seen as a <a>triple pattern</a> that, for each builtin result,
+        yields one or more "matching" triples depending on the builtin. For the example above:<br />
+        <code>
             ( :flash :superman :spiderman ) list:iterate ( 1 :flash ) .<br />
             ( :flash :superman :spiderman ) list:iterate ( 2 :superman ) .<br />
             ( :flash :superman :spiderman ) list:iterate ( 3 :spiderman ) .<br />
           </code>
-          <br />
-          As with a <a data-cite="SPARQL11-QUERY#basicpatterns">SPARQL</a> query, for each "matching triple", 
-          a join is attempted with the remaining triples in the rule <a>premise</a>.
-          Hence, for each matching triple, the `string:concatenation` <a>builtin statement</a> is evaluated.
-          Finally, for each consistent set of variable bindings, the rule conclusion is instantiated and inferred.
-        </p>
+        <br />
+        As with a <a data-cite="SPARQL11-QUERY#basicpatterns">SPARQL</a> query, for each "matching triple",
+        a join is attempted with the remaining triples in the rule <a>premise</a>.
+        Hence, for each matching triple, the `string:concatenation` <a>builtin statement</a> is evaluated.
+        Finally, for each consistent set of variable bindings, the rule conclusion is instantiated and inferred.
+      </p>
 
-        <p>
-          <a>N3 builtins</a> can also operate on an entire <a>N3 document</a>.
-          The `log:collectAllIn` and `log:forAllIn` builtins are logical operators that support a negation-as-failure
-          scoped on the current document (SNAF).
-          For instance, the rule below uses `log:collectAllIn` to collect all of spiderman's defeated villains:
-          <pre id="collectallin_example" class="example nohighlight" data-transform="updateExample">
+      <h5>Scoped Negation as Failure (SNAF)</h5>
+
+      <p>
+        <a>N3 builtins</a> can also operate on a local <a>quoted graph</a> or even an entire <a>N3 document</a>.
+        The `log:collectAllIn`, `log:forAllIn`, and `log:notIncludes` builtins are logical operators that
+        support a negation-as-failure scoped on the <a>builtin statement</a> object:
+        the object can be a quoted graph or a <a>blank node</a>, in which case the current document is the scope.
+        For instance, the rule below uses `log:collectAllIn` to collect all of spiderman's defeated villains
+        found in the current document:
+      <pre id="collectallin_example" class="example nohighlight" data-transform="updateExample">
             <!--
+            @prefix log: <http://www.w3.org/2000/10/swap/log#> . 
+
             :spiderman a :SuperHero .
-            :green-goblin :enemyOf :spiderman ;
-              :defeated true .
-           :doctor-octopus :enemyOf :spiderman ;
-              :defeated true .
-            :sandman :enemyOf :spiderman ;
-              :defeated false .
+            :green-goblin :enemyOf :spiderman ; :defeated true .
+           :doctor-octopus :enemyOf :spiderman ; :defeated true .
+            :sandman :enemyOf :spiderman ; :defeated false .
 
             { 
               ?hero a :SuperHero .
@@ -1069,23 +1108,24 @@
            } => { ?hero :defeatedEnemies ?enemies } .
          -->
          </pre>
-          
-         The `log:collectAllIn` builtin accepts as subject a collection that includes:
-         <ul>
-            <li>a variable of which the values will be collected (`?enemy`),</li>
-            <li>a <i>where</i> clause with triple patterns that constrain this variable, and</li>
-            <li>a variable bound to the resulting collection of values (`?enemies`).</li>
-         </ul>
-         The <i>where</i> clause is evaluated on the current <a>N3 document</a>;
-         meaning this document acts as the scope, 
-         and all results beyond this scope are considered false (SNAF).
-         This leads to the following result:<br />
-         &nbsp;&nbsp;&nbsp;&nbsp;<code>:spiderman :defeatedEnemies ( :green-goblin :doctor-octopus )</code><br />
-        </p>
-        <p>
-          The example below uses `log:forAllIn` to determine whether a super-hero's identity is safe:
-          <pre id="forallin_example" class="example nohighlight" data-transform="updateExample">
+
+      The `log:collectAllIn` builtin accepts as subject a collection that includes:
+      <ul>
+        <li>a variable of which the values will be collected (`?enemy`),</li>
+        <li>a <i>where</i> clause with triple patterns that constrain this variable, and</li>
+        <li>a variable bound to the resulting collection of values (`?enemies`).</li>
+      </ul>
+      The <i>where</i> clause is evaluated on the given scope, in this case, the current <a>N3 document</a>;
+      all potential results beyond this scope are considered false (SNAF).
+      This leads to the following result:<br />
+      &nbsp;&nbsp;&nbsp;&nbsp;<code>:spiderman :defeatedEnemies ( :green-goblin :doctor-octopus )</code><br />
+      </p>
+      <p>
+        The example below uses `log:forAllIn` to determine whether a super-hero's identity is safe:
+      <pre id="forallin_example" class="example nohighlight" data-transform="updateExample">
             <!--
+            @prefix log: <http://www.w3.org/2000/10/swap/log#> . 
+
             :spiderman a :SuperHero .
             :mary-jane :knowsIdentityOf :spiderman ;
               :keepsSecrets true .
@@ -1095,37 +1135,143 @@
             { 
               ?hero a :SuperHero .
               ( { ?person :knowsIdentityOf ?hero } { ?person :keepsSecrets true } )               
-                log:forAllIn _:t .
+                    log:forAllIn _:t .
 
            } => { ?hero :secretIdentitySafe true } .
          -->
          </pre>
-          The `log:forAllIn` builtin accepts as subject a collection with two clauses of a logical implication.
-          If, for all cases where the first clause holds, the second clause holds as well,
-          then the logical implication is true.
-          In this example, the implication is true when, for each person who knows the identity of spiderman, 
-          this person can keep a secret. 
-          In this case the rule will fire, as both `mary-jane-watson` and `aunt-may` can keep secrets.
-        </p>
+      The `log:forAllIn` builtin accepts as subject a collection with two clauses of a logical implication.
+      If, for all cases where the first clause holds, the second clause holds as well,
+      then the logical implication is true.
+      In this example, the implication is true when, for each person who knows the identity of spiderman,
+      this person can keep a secret.
+      In this case the rule will fire, as both `mary-jane-watson` and `aunt-may` can keep secrets.
+      </p>
 
-        <!-- TODO log:content, log:semantics, log:(not)Includes -->
+      <p class="note">
+        In the two examples above, the <a>blank node</a> object `_:t` indicates the current <a>N3 document</a>
+        as scope. Alternatively, a <a>quoted graph</a> can be used as the scope as well.
+        This is illustrated in the `log:notIncludes` example below.
+      </p>
 
-      </section>
+      <p>
+        The `log:notIncludes` builtin checks whether the given scope <i>does not include</i> a given clause.
+        The example below uses a <a>quoted graph</a> as scope, instead of the current <a>N3 document</a>,
+        as was the case for the prior two examples.
+        The rule finds any of spiderman's enemies who have not been defeated, at least,
+        as reported by the Daily Bugle:
+      <pre id="notincludes_example" class="example nohighlight" data-transform="updateExample">
+            <!--
+            @prefix log: <http://www.w3.org/2000/10/swap/log#> . 
+            
+            :spiderman :hasEnemy :green-goblin , :doctor-octopus, :sandman .
+            {
+              :green-goblin :defeatedBy :spiderman .
+              :doctor-octopus :defeatedBy :spiderman .
 
+            } :reportedBy :daily_bugle .
+
+            { 
+              :spiderman :hasEnemy ?enemy .
+              ?graph :reportedBy :daily_bugle .
+              ?graph log:notIncludes { ?enemy :defeatedBy ?hero } .
+
+            } => { ?enemy a :Undefeated } .
+         -->
+         </pre>
+      For each of spiderman's enemies (`?enemy`), the rule checks whether the <a>quoted graph</a> `?graph`,
+      as reported by the `:daily_bugle`, does not include any statement where the enemy has been defeated.
+      If so, we infer that this enemy is undefeated, in this case, `:sandman`.
+      </p>
+
+      <p class="note">
+        The counterpart of `log:notIncludes` is `log:includes`, which checks whether the given object scope
+        <i>includes</i> a given clause.
+      </p>
+
+      <h5>Access Online Knowledge</h5>
+      <p>
+        To dynamically retrieve online knowledge within a <a>N3 rule</a>, the <code>log:content</code>,
+        <code>log:semantics</code>, and <code>log:conclusion</code> builtins allow pulling in, parsing, and reasoning
+        over logical expressions from online sources.
+      </p>
+      <p>
+        The example below uses `log:content` to retrieve an online HTML page,
+        and subsequently extracts its title:
+      <pre id="content_example" class="example nohighlight" data-transform="updateExample">
+            <!--
+            @prefix log: <http://www.w3.org/2000/10/swap/log#> . 
+            @prefix string: <http://www.w3.org/2000/10/swap/string#> . 
+
+            {
+                <http://example.com> log:content ?content .
+                ( ?content "<title>(.*?)</title>") string:scrape ?title .
+            } => {
+                <http://example.com> :title ?title . 
+            } .
+          </p>
+          -->
+          </pre>
+      </p>
+
+      <p>
+        In the rule below, the `log:semantics` builtin retrieves an online source and subsequently parses it a <a>quoted
+          graph</a>:
+      <pre id="content_example" class="example nohighlight" data-transform="updateExample">
+          <!--
+          @prefix log: <http://www.w3.org/2000/10/swap/log#> . 
+          @prefix : <http://example.com> .
+
+          { 	
+            <https://raw.githubusercontent.com/w3c/N3/master/tests/N3Tests/people.n3> log:semantics ?g .
+            ( ?person { ?person a :Person  } ?persons ) 
+                  log:collectAllIn ?g .
+                 
+          } => { 
+              <https://raw.githubusercontent.com/w3c/N3/master/tests/N3Tests/people.n3>
+                  :people ?persons
+           } .
+           -->
+          </pre>
+      Subsequently, `log:collectAllIn` is used to collect all persons found within the online source.
+      </p>
+
+      <p>
+        The `log:conclusion` builtin allows generating the closure of a given <a>quoted graph</a>,
+        i.e., extending the graph with all applicable rule inferences.
+        This includes <a>quoted graphs</a> retrieved and parsed from online sources. For example:
+      <pre id="content_example" class="example nohighlight" data-transform="updateExample">
+          <!--
+          @prefix log: <http://www.w3.org/2000/10/swap/log#> . 
+          @prefix : <http://example.com/> .
+
+          { 	<https://raw.githubusercontent.com/w3c/N3/master/tests/N3Tests/rules.n3> log:semantics ?g .
+            ?g log:conclusion ?closure .
+                
+          } => { 
+              <https://raw.githubusercontent.com/w3c/N3/master/tests/N3Tests/rules.n3>
+                  :inferences ?closure
+          } .
+           -->
+          </pre>
+          Instead of simply printing the inferences, one could, e.g., use the `log:forAllIn` builtin to
+          check whether all persons listed in the online source are indeed inferred to be animals as well.
+      </p>
     </section>
 
     <section id='paths'>
       <h4>Resource Paths</h4>
-      <p>Similar to <a data-cite="SPARQL11-QUERY#propertypaths">SPARQL property paths</a>, 
-        N3 <dfn>resource paths</dfn> concisely express paths between resources, 
+      <p>Similar to <a data-cite="SPARQL11-QUERY#propertypaths">SPARQL property paths</a>,
+        N3 <dfn>resource paths</dfn> concisely express paths between resources,
         when intermediary resources on the path are not relevant.
         In practice, <a>resource paths</a> are most useful in <a href="#n3rules">N3 rules</a>.</p>
 
-        <p>A <a>resource path</a> starts from a subject resource, followed by one or more predicates;
-          each predicate is separated by a <dfn>directional indicator</dfn> to follow the predicate either forward (`!`) or in reverse (`^`).
+      <p>A <a>resource path</a> starts from a subject resource, followed by one or more predicates;
+        each predicate is separated by a <dfn>directional indicator</dfn> to follow the predicate either forward (`!`)
+        or in reverse (`^`).
         For example, the following example describes the city of Joe's mother's office's address:</p>
 
-        <pre class="example nohighlight" data-transform="updateExample">
+      <pre class="example nohighlight" data-transform="updateExample">
             <!--
 @prefix : <http://example.org/#> .
 
@@ -1133,13 +1279,13 @@
             -->
           </pre>
 
-        <p>In this example, the intermediary resources &mdash; Joe's mother, her office, and its address &mdash; 
-          are not described or referenced further, so the more concise <a>resource path</a> syntax can be used.</p>
+      <p>In this example, the intermediary resources &mdash; Joe's mother, her office, and its address &mdash;
+        are not described or referenced further, so the more concise <a>resource path</a> syntax can be used.</p>
 
-        <p>The expansion of this shorthand syntax uses blank nodes to express the path between the two resources.
-          The example above is equivalent to the following (using blank node identifiers for clarity):</p>
+      <p>The expansion of this shorthand syntax uses blank nodes to express the path between the two resources.
+        The example above is equivalent to the following (using blank node identifiers for clarity):</p>
 
-        <pre class="example nohighlight" data-transform="updateExample">
+      <pre class="example nohighlight" data-transform="updateExample">
             <!--
 @prefix : <http://example.org/#> .
 
@@ -1150,14 +1296,15 @@ _:a :hasCity "Metropolis" .
             -->
           </pre>
 
-        <p>In other words, each predicate in <a>resource path</a> is expanded into a statement,
-        with as subject either the starting resource, or prior blank node object; and as object a newly minted blank node. </p>
+      <p>In other words, each predicate in <a>resource path</a> is expanded into a statement,
+        with as subject either the starting resource, or prior blank node object; and as object a newly minted blank
+        node. </p>
 
-        <p>Relations can also be followed in reverse using the reverse (`^`) indicator.
-          The following example, starting from `joe`,  follows the `hasMother` predicate to Joe's mother, 
-          and then follows the `hasMother` predicate in reverse (thus pointing to someone who has the same mother):</p>
+      <p>Relations can also be followed in reverse using the reverse (`^`) indicator.
+        The following example, starting from `joe`, follows the `hasMother` predicate to Joe's mother,
+        and then follows the `hasMother` predicate in reverse (thus pointing to someone who has the same mother):</p>
 
-        <pre class="example nohighlight" data-transform="updateExample">
+      <pre class="example nohighlight" data-transform="updateExample">
             <!--
 @prefix : <http://example.org/#> .
 
@@ -1165,9 +1312,9 @@ _:a :hasCity "Metropolis" .
             -->
           </pre>
 
-        <p>This could equally well be represented by the more verbose:</p>
+      <p>This could equally well be represented by the more verbose:</p>
 
-        <pre class="example nohighlight" data-transform="updateExample">
+      <pre class="example nohighlight" data-transform="updateExample">
             <!--
 @prefix : <http://example.org/#> .
 
@@ -1179,8 +1326,10 @@ _:d a :Person.
 
       <p class="note">In SPARQL, a property path is used in the
         <a data-cite="RDF11-CONCEPTS#dfn-predicate">predicate</a> position to describe a string of relationships between
-        a <a data-cite="RDF11-CONCEPTS#dfn-subject">subject</a> and an <a data-cite="RDF11-CONCEPTS#dfn-object">object</a> resource.
-        In contrast, an N3 <a>resource path</a> is most often used in the <a data-cite="RDF11-CONCEPTS#dfn-subject">subject</a> or
+        a <a data-cite="RDF11-CONCEPTS#dfn-subject">subject</a> and an <a
+          data-cite="RDF11-CONCEPTS#dfn-object">object</a> resource.
+        In contrast, an N3 <a>resource path</a> is most often used in the <a
+          data-cite="RDF11-CONCEPTS#dfn-subject">subject</a> or
         <a data-cite="RDF11-CONCEPTS#dfn-object">object</a> position.
         Using a <a>resource path</a> in the predicate position, although technically allowed, is often a mistake.
         For instance, the following N3 <a>resource path</a>: <br />
