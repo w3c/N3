@@ -168,8 +168,8 @@
       </li>
       <li>
         <strong>N3 includes builtins for accessing online knowledge.</strong>
-        To dynamically retrieve online knowledge for decision making, the <code>log:content</code>,
-        <code>log:semantics</code>, and <code>log:conclusion</code> builtins allow pulling in, parsing, and reasoning
+        To dynamically retrieve online knowledge for decision making, the <code>log:semantics</code> 
+        and <code>log:conclusion</code> builtins allow pulling in, parsing, and reasoning
         over logical expressions from online or local sources.
       </li>
       <li>
@@ -1191,15 +1191,15 @@
 
       <h5>Access Online Knowledge</h5>
       <p>
-        To dynamically retrieve online knowledge within a <a>N3 rule</a>, the <code>log:content</code>,
-        <code>log:semantics</code>, and <code>log:conclusion</code> builtins allow pulling in, parsing, and reasoning
+        To dynamically retrieve online knowledge within a <a>N3 rule</a>,
+        <code>log:semantics</code> and <code>log:conclusion</code> builtins allow pulling in, parsing, and reasoning
         over logical expressions from online sources.
       </p>
-      <p>
+      <!-- <p>
         The example below uses `log:content` to retrieve an online HTML page,
         and subsequently extracts its title:
-      <pre id="content_example" class="example nohighlight" data-transform="updateExample">
-            <!--
+      <pre id="content_example" class="example nohighlight" data-transform="updateExample"> -->
+      <!--
             @prefix log: <http://www.w3.org/2000/10/swap/log#> . 
             @prefix string: <http://www.w3.org/2000/10/swap/string#> . 
 
@@ -1210,8 +1210,8 @@
                 <http://example.com> :title ?title . 
             } .
           -->
-          </pre>
-      </p>
+      <!-- </pre>
+      </p> -->
 
       <p>
         In the rule below, the `log:semantics` builtin retrieves an online source and subsequently parses it a <a>quoted
@@ -1400,7 +1400,8 @@ _:d a :Person.
     <section id="educational">
       <h4>Educational Resources</h4>
       <ul>
-        <li><a href="https://drive.google.com/file/d/18m8m-gqaOdPe1YLg7KdgKrMAesero-pn/view">Notation3 Logic: A Practical Introduction</a>. 
+        <li><a href="https://drive.google.com/file/d/18m8m-gqaOdPe1YLg7KdgKrMAesero-pn/view">Notation3 Logic: A
+            Practical Introduction</a>.
         </li>
         <li>
           TODO
