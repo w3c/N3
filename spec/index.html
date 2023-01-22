@@ -1254,8 +1254,8 @@
           } .
            -->
           </pre>
-          Instead of simply printing the inferences, one could, e.g., use the `log:forAllIn` builtin to
-          check whether all persons listed in the online source are indeed inferred to be animals as well.
+      Instead of simply printing the inferences, one could, e.g., use the `log:forAllIn` builtin to
+      check whether all persons listed in the online source are indeed inferred to be animals as well.
       </p>
     </section>
 
@@ -1344,6 +1344,7 @@ _:d a :Person.
 
     <section id='keywords'>
       <h4>Keywords and special symbols</h4>
+      <p>TODO</p>
 
       <pre class="example nohighlight" data-transform="updateExample">
           <!--
@@ -1356,6 +1357,60 @@ _:d a :Person.
         </pre>
     </section>
   </section>
+
+  <section id="useful_resources">
+    <h4>Useful Resources</h4>
+    <p>
+      Here, we list useful tools and educational resources on N3.
+      For other related work, such as publications and projects,
+      we refer to our <a href="https://github.com/w3c/N3/tree/master/relatedWork">GitHub folder</a>.
+    </p>
+
+    <section id="n3_reasoners">
+      <h4>N3 Reasoners</h4>
+      <ul>
+        <li>EYE: <a href="https://josd.github.io/eye/">https://josd.github.io/eye/</a> (advanced N3 reasoner, used in
+          industrial settings)</li>
+        <li>jen3: <a href="https://github.com/william-vw/jen3">https://github.com/william-vw/jen3</a> (<a
+            href="https://jena.apache.org/">Apache Jena</a> extended with N3
+          reasoning)</li>
+        <li>roxi: <a href="https://github.com/pbonte/roxi">https://github.com/pbonte/roxi</a> (N3 reasoner in rust)</li>
+        <li>Data-Fu: <a href="https://aifb.kit.edu/web/Linked_Data-Fu">https://aifb.kit.edu/web/Linked_Data-Fu</a>
+          (reasoner and language supporting a subset of N3)</li>
+        <li>Cwm: <a href="https://www.w3.org/2000/10/swap/doc/cwm.html">https://www.w3.org/2000/10/swap/doc/cwm.html</a>
+          ("prototype" N3 reasoner developed by TBL; no longer
+          maintained)</li>
+      </ul>
+    </section>
+
+    <section id="n3_editors">
+      <h4>N3 Editors</h4>
+      <ul>
+        <li>Online N3-editor: <a
+            href="https://github.com/william-vw/n3-editor-js">https://github.com/william-vw/n3-editor-js</a>
+          (live demo: <a href="http://ppr.cs.dal.ca:3002/n3/editor/">http://ppr.cs.dal.ca:3002/n3/editor/</a>,
+          <a href="https://n3-editor.herokuapp.com/n3/editor/">https://n3-editor.herokuapp.com/n3/editor/</a>)
+        </li>
+        <li>VSCode N3 extension with language, execution, and debugging support:
+          <a
+            href="https://marketplace.visualstudio.com/items?itemName=w3cn3.n3-lang-exec">https://marketplace.visualstudio.com/items?itemName=w3cn3.n3-lang-exec</a>
+        </li>
+      </ul>
+      </p>
+    </section>
+    <section id="educational">
+      <h4>Educational Resources</h4>
+      <ul>
+        <li><a href="https://drive.google.com/file/d/18m8m-gqaOdPe1YLg7KdgKrMAesero-pn/view">Notation3 Logic: A Practical Introduction</a>. 
+        </li>
+        <li>
+          TODO
+        </li>
+      </ul>
+
+    </section>
+  </section>
+
   <section id='semantics'>
     <h2>Semantics</h2>
     <section id='terms'>
@@ -1386,8 +1441,8 @@ _:d a :Person.
         <a data-cite="RDF11-CONCEPTS#section-triples">predicate</a>, <a
           data-cite="RDF11-CONCEPTS#section-triples">object</a>, <a data-cite="RDF11-CONCEPTS#dfn-rdf-source">RDF
           source</a>,
-        <a data-cite="RDF11-CONCEPTS#dfn-node">node</a>, <a data-cite="RDF11-CONCEPTS#dfn-blank-node">blank node</a>, <a
-          data-cite="RDF11-CONCEPTS#dfn-literal">literal</a>,
+        <a data-cite="RDF11-CONCEPTS#dfn-node">node</a>, <a data-cite="RDF11-CONCEPTS#dfn-blank-node">blank node</a>,
+        <a data-cite="RDF11-CONCEPTS#dfn-literal">literal</a>,
         <a data-cite="RDF11-CONCEPTS#graph-isomorphism">isomorphic</a>,
         and <a data-cite="RDF11-CONCEPTS#section-generalized-rdf">generalized RDF triples, graphs, and datasets</a>.
       </p>
@@ -1418,7 +1473,8 @@ _:d a :Person.
         The latter can also be written as <code>{}</code> in N3 turtle syntax.
       </p>
       <p>
-        The set of <dfn data-lt="universals">universal variables</dfn> is an arbitrary set of symbols which is disjoint
+        The set of <dfn data-lt="universals">universal variables</dfn> is an arbitrary set of symbols which is
+        disjoint
         to all other <a>N3 triple elements</a>.
         In N3-turtle syntax, universal variables are represented by strings starting with a question mark
         <code>?</code>.
@@ -1442,7 +1498,8 @@ _:d a :Person.
       <p>
         An <dfn data-lt="N3 formulae">N3 formula</dfn> is a set of <a>N3 triples</a>.
       </p>
-      <p>Let <code>T</code> be the set of <a>N3 triple elements</a> and <code>dc:T&xrarr;T</code> a function defined as
+      <p>Let <code>T</code> be the set of <a>N3 triple elements</a> and <code>dc:T&xrarr;T</code> a function defined
+        as
         follows:</p>
       <ul>
         <li><code>dc(c)=dc(c<sub>1</sub>)&cup;...&cup;dc(c<sub>n</sub>)</code>, if
@@ -1455,7 +1512,8 @@ _:d a :Person.
         the <dfn data-lt="dir-comp">direct components</dfn> of <code>t</code>. For each <a>N3 formula</a> the set of
         its direct components is the union of the direct components of the triples it contains. </p>
 
-      <p>Let <code>T</code> be the set of <a>N3 triple elements</a> and <code>F</code> the set of <a>N3 formula</a>. We
+      <p>Let <code>T</code> be the set of <a>N3 triple elements</a> and <code>F</code> the set of <a>N3 formula</a>.
+        We
         define the function
         <code>nc:T&cup;F&xrarr;T</code> a function defined as follows:
       </p>
@@ -1541,30 +1599,36 @@ _:d a :Person.
     <ul>
       <li>
         Dropping the <code>@keywords</code> declaration. It is complex and difficult to explain. Also, when using the
-        declaration, <a>N3 documents</a> look wholly different from when it is not being used, since it allows <a>local
+        declaration, <a>N3 documents</a> look wholly different from when it is not being used, since it allows
+        <a>local
           names</a> in the default namespace to be listed without the "<code>:</code>" symbol.
       </li>
       <li>
         Supporting all verb and boolean keywords (<code>is .. of</code>, <code>has</code>, <code>a</code>,
         <code>true</code>, <code>false</code>) both with and without "<code>@</code>" prefix. Turtle supports the
-        <code>a</code> keyword, i.e., without an "<code>@</code>", but requires the symbol for the <code>@prefix</code>
+        <code>a</code> keyword, i.e., without an "<code>@</code>", but requires the symbol for the
+        <code>@prefix</code>
         and <code>@base</code> declarations. The <a data-cite="N3#grammar">original N3 grammar</a> required the
-        "<code>@</code>" prefix for all verb and boolean keywords. Hence, this decision was made for compatibility with
+        "<code>@</code>" prefix for all verb and boolean keywords. Hence, this decision was made for compatibility
+        with
         Turtle as well as to avoid an unintuitive grammar, i.e., where some keywords have the "<code>@</code>" prefix
         and some don't.
       </li>
       <li>
         Representing an inverted property using the <code>&lt;components-</code> symbol. The <a
           data-cite="N3#grammar">original N3 grammar</a> allowed the inverting of a property by using the
-        <code>@is .. @of</code> construct. But, this construct can be unintuitive when property names are more verbosely
-        specified (e.g., <code>:hasFather</code>), leading to statements such as <code>?x @is :hasFather @of ?y</code>.
+        <code>@is .. @of</code> construct. But, this construct can be unintuitive when property names are more
+        verbosely
+        specified (e.g., <code>:hasFather</code>), leading to statements such as
+        <code>?x @is :hasFather @of ?y</code>.
         The <code>is .. of</code> construct is still supported, but the above statement can now be represented as
         follows: <code>?x &lt;- :hasFather ?y</code>.
       </li>
     </ul>
     <section id='whitespace'>
       <h3>Whitespace</h3>
-      <p>White space (<a href="#grammar-production-WS">WS production</a>) is used to separate terminals. The amount and
+      <p>White space (<a href="#grammar-production-WS">WS production</a>) is used to separate terminals. The amount
+        and
         type of white space (e.g., newline (`%0A`) or space (`%20`)) is only significant within terminals.</p>
       <p>We note that the <a href="#grammar-production-IRIREF">IRIREF</a> production only allows IRI-encoded white
         spaces.</p>
@@ -1573,7 +1637,8 @@ _:d a :Person.
       <h3>Comments</h3>
       <p>Comments are indicated using a "<code>#</code>" symbol outside an N3 terminal (e.g., <a
           href="#grammar-production-IRIREF">IRIREF</a>, <a href="#grammar-production-STRING">STRING</a>) and will
-        continue until the end of the line (indicated by <code>\r</code>, <code>\n</code> or <code>\f</code>) or end of
+        continue until the end of the line (indicated by <code>\r</code>, <code>\n</code> or <code>\f</code>) or end
+        of
         file, if there is no end of line marker.</p>
       <p>All recognized comment terminals will be skipped by the grammar (i.e., a resulting parser will not call
         listener or visitor code when encountering a comment.)</p>
@@ -1642,7 +1707,8 @@ _:d a :Person.
                 <td>'\u' <a href="#grammar-production-HEX">hex</a> <a href="#grammar-production-HEX">hex</a> <a
                     href="#grammar-production-HEX">hex</a> <a href="#grammar-production-HEX">hex</a></td>
                 <td>A Unicode character in the range U+0000 to U+FFFF inclusive
-                  corresponding to the value encoded by the four hexadecimal digits interpreted from most significant to
+                  corresponding to the value encoded by the four hexadecimal digits interpreted from most significant
+                  to
                   least significant digit.
                 </td>
               </tr>
@@ -1661,7 +1727,8 @@ _:d a :Person.
           (see the <a href="#grammar-production-UCHAR">UCHAR</a> production)
         </li>
         <li>
-          Escape sequences in <a>local names</a>. These escape the following reserved characters in the local name part
+          Escape sequences in <a>local names</a>. These escape the following reserved characters in the local name
+          part
           of prefixed names: <code>_ ~ . - ! $ & \ ( ) * + , ; = / ? # @ %</code> (see the <a
             href="#grammar-production-PN_LOCAL_ESC">PN_LOCAL_ESC</a> production)
         </li>
@@ -1971,7 +2038,8 @@ _:d a :Person.
             href="#grammar-production-pathItem">pathItem</a> production, which is (eventually) referenced by the
           "subject", "predicate" and "object" productions.</li>
         <li>N3 includes <a>quoted graphs</a> (i.e., between "<code>{</code>" and "<code>}</code>"), which are allowed
-          in any s/p/o position in a statement. See the <a href="#grammar-production-pathItem">pathItem</a> production.
+          in any s/p/o position in a statement. See the <a href="#grammar-production-pathItem">pathItem</a>
+          production.
         </li>
         <li><dfn data-lt="quickvar">Quick-variables</dfn> (e.g., "<code>?x</code>"), which are allowed in any s/p/o
           position in a statement. See the <a href="#grammar-production-pathItem">pathItem</a> production.
@@ -1983,7 +2051,8 @@ _:d a :Person.
         <li>The possibility to invert the predicate within a statement. See the <a
             href="#grammar-production-predicate">predicate</a> production.</li>
         <li>An additional set of keywords, including "<code>is .. of</code>", "<code>has</code>", "<code>=</code>",
-          "<code>=></code>", "<code>&lt;=</code>", in addition to Turtle's "<code>a</code>" keyword (among others). All
+          "<code>=></code>", "<code>&lt;=</code>", in addition to Turtle's "<code>a</code>" keyword (among others).
+          All
           keywords can be optionally preceded by "<code>@</code>", for consistency with the "<code>@prefix</code>" and
           "<code>@base"</code> keywords.</li>
       </ul>
@@ -2025,7 +2094,8 @@ _:d a :Person.
             <li>
               It is assumed that the <strong>path starts from a resource (<em>IR</em>) instead of a property
                 (<em>IP</em>)</strong>. Hence, they are meant to be used in the subject and object positions, rather
-              than the predicate position as is the case for SPARQL 1.1 property paths. This has important repercussions
+              than the predicate position as is the case for SPARQL 1.1 property paths. This has important
+              repercussions
               on how <a href="#pathres">paths are resolved</a>. Note that paths are unrelated to the inverted notation
               <code>^</code> for predicates (see the <a href="#grammar-production-predicate">predicate</a> production)
             </li>
@@ -2071,14 +2141,16 @@ _:d a :Person.
         </pre>
       <p>N3 is not directly compatible with TriG as it does not support this graph statement notation. Nevertheless,
         since N3 supports <a>quoted graphs</a> as part of regular <a>N3 statements</a>,
-        authors can utilize the N3 Named Graphs extension [<strong>X</strong>] for associating names or identifiers with
+        authors can utilize the N3 Named Graphs extension [<strong>X</strong>] for associating names or identifiers
+        with
         <a>quoted graphs</a>. Although applications could easily introduce their own custom predicates for this
         purpose, we strongly recommend the use of this extension for interoperability purposes.
       </p>
       <p>The N3 Named Graphs extension [<strong>X</strong>] defines a set of <a>builtins</a> (used as predicates) to
         associate names or identifiers with <a>quoted graphs</a>, which then become "named graphs". Moreover, each
         predicate has a well-defined semantics on how the named graph should be interpreted: as <a>quoted graphs</a>
-        (the default N3 interpretation), a partitioning of triples within a dataset context, sets of triples with their
+        (the default N3 interpretation), a partitioning of triples within a dataset context, sets of triples with
+        their
         own isolated contexts, or specifying relations between local and online graphs.</p>
     </section>
 
@@ -2094,11 +2166,13 @@ _:d a :Person.
       modeling, in N3.</p>
     <section id="naryrel">
       <h4>N-ary Relations</h4>
-      <p>Until now, we only considered binary relations between entities and/or values. But, many types of relations are
+      <p>Until now, we only considered binary relations between entities and/or values. But, many types of relations
+        are
         <em>ternary, quaternary, or, in general, n-ary in nature</em>, i.e., they have an arbitrary number of
         participants. Typical examples are purchase, employment, membership, .. relations.
       </p>
-      <p>In other cases, we want to describe <em>properties of relations</em> &mdash; such as the provenance of a piece
+      <p>In other cases, we want to describe <em>properties of relations</em> &mdash; such as the provenance of a
+        piece
         of information, or the probability of a diagnosis. But, in essence, this is the same problem as representing
         n-ary relations.</p>
       <p>There are several ways of representing n-ary relations in RDF &mdash; these are described in
@@ -2106,10 +2180,12 @@ _:d a :Person.
       <p>Below, we illustrate options for representing n-ary relations in N3 in particular.</p>
       <section id="nary-binary-rel">
         <h4>Using sets of binary relations</h4>
-        <p>In general, it is possible to convert any n-ary relation into an equivalent set of binary relations. This is
+        <p>In general, it is possible to convert any n-ary relation into an equivalent set of binary relations. This
+          is
           a convenient solution, since we already know how to represent binary relations.</p>
         <p>First, we <em>create a resource</em> that represents the n-ary relation, and then <em>use a set of binary
-            relations</em> to link each participant to this newly minted resource. Each binary relation is hereby given
+            relations</em> to link each participant to this newly minted resource. Each binary relation is hereby
+          given
           a meaningful name that <em>represents the role of the participant</em> in the n-ary relation.</p>
         <p>For instance, say we want to describe the <em>Purchase</em> relation between a buyer called "John", a
           purchased book called "Lenny the Lion", the amount paid for the book, and the seller:</p>
@@ -2134,7 +2210,8 @@ _:d a :Person.
           n-ary relation participants.</p>
         <p>We start from the same solution above, i.e., introducing a resource to represent the (in this case, binary)
           relation, and then linking the two participants to this resource. Subsequently, we use a set of binary
-          relations to attach each descriptive property (e.g., diagnosis probability; temperature trend) to the relation
+          relations to attach each descriptive property (e.g., diagnosis probability; temperature trend) to the
+          relation
           resource.</p>
         <!-- <p>For instance, when describing a diagnosis (e.g., breast cancer) of someone (e.g., Christine), you may want to indicate the probability of the diagnosis, and the date at which the diagnosis was made:</p>
             <pre id="" class="example nohighlight">
@@ -2167,10 +2244,12 @@ _:d a :Person.
             -->
           </pre>
         <p>This is possible since we know that the relation resource (e.g., <code>to1</code>) represents the n-ary
-          relation. Hence, any descriptive properties of the relation, in addition to participants in the relation, can
+          relation. Hence, any descriptive properties of the relation, in addition to participants in the relation,
+          can
           simply be attached to the entity.</p>
         <p class="note">In this example, we made a statement with one of the participants (<code>:Christine</code>) as
-          subject, and the relation resource (e.g., <code>_:to1</code>) as object. An alternative would have been to add
+          subject, and the relation resource (e.g., <code>_:to1</code>) as object. An alternative would have been to
+          add
           <code>:Christine</code> as just another element of the n-ary relation, e.g., using a property
           <code>temperatureOf</code>. Our modeling choice here served to indicate that Christine is somehow the <a
             data-cite="swbp-n-aryRelations#useCase2">"owner" of the relationship</a>.
@@ -2182,7 +2261,8 @@ _:d a :Person.
       </section>
       <section>
         <h4>Using collections</h4>
-        <p>An even easier solution is to use a <a>collection</a> to keep all the participants of the n-ary relation. For
+        <p>An even easier solution is to use a <a>collection</a> to keep all the participants of the n-ary relation.
+          For
           instance: ...
           A clear advantage of this approach is that it is easier and much less verbose to write down.
           However, the roles each participant play in the n-ary relation are no longer explicated. For instance: ..
@@ -2195,8 +2275,10 @@ _:d a :Person.
       <h4>Compound literal</h4>
       <p>This solution is inspired by a separate discussion of the RDF community on <em>Language Tagged Strings</em>.
         The essence of the discussion is to separate the string, as a simple data, from all the various
-        characterizations that may be added to it. This design pattern uses the <code>rdf:CompoundLiteral</code> class,
-        which is in the domain of <code>rdf:language</code> and <code>rdf:direction</code> to be used for describing RDF
+        characterizations that may be added to it. This design pattern uses the <code>rdf:CompoundLiteral</code>
+        class,
+        which is in the domain of <code>rdf:language</code> and <code>rdf:direction</code> to be used for describing
+        RDF
         literal values containing base direction and a possible language tag to be associated with the string value of
         <code>rdf:value</code> on the same subject.
       </p>
@@ -2215,9 +2297,11 @@ _:d a :Person.
     <section id="reification">
       <h4>Graph quoted inside another graph</h4>
       <p>Reification in the RDF context means the expression of something in a language using the language so that it
-        becomes treatable by the language. RDF graphs consist of RDF statements. If one wants to look objectively at an
+        becomes treatable by the language. RDF graphs consist of RDF statements. If one wants to look objectively at
+        an
         RDF graph and reason about it is using RDF tools, then it is useful to have a mechanism for describing RDF
-        statements. N3 extends RDF to allow graphs themselves to be another form of literal node. A graph can be quoted
+        statements. N3 extends RDF to allow graphs themselves to be another form of literal node. A graph can be
+        quoted
         inside another graph, as in the example:</p>
       <pre class="example nohighlight" data-transform="updateExample">
           <!--
@@ -2307,14 +2391,16 @@ _:d a :Person.
       <dt>Security considerations:</dt>
       <dd>Notation3 is a general-purpose assertion language; applications may evaluate given data to infer more
         assertions or to dereference <a>IRIs</a>, invoking the security considerations of the scheme for that
-        <a>IRI</a>. Note in particular, the privacy issues in [[RFC3023]] section 10 for HTTP <a>IRIs</a>. Data obtained
+        <a>IRI</a>. Note in particular, the privacy issues in [[RFC3023]] section 10 for HTTP <a>IRIs</a>. Data
+        obtained
         from an inaccurate or malicious data source may lead to inaccurate or misleading conclusions, as well as the
         dereferencing of unintended <a>IRIs</a>. Care must be taken to align the trust in consulted resources with the
         sensitivity of the intended use of the data; inferences of potential medical treatments would likely require
         different trust than inferences for trip planning. Notation3 is used to express arbitrary application data;
         security considerations will vary by domain of use. Security tools and protocols applicable to text (e.g. PGP
         encryption, MD5 sum validation, password-protected compression) may also be used on Notation3 documents.
-        Security/privacy protocols must be imposed which reflect the sensitivity of the embedded information. Notation3
+        Security/privacy protocols must be imposed which reflect the sensitivity of the embedded information.
+        Notation3
         can express data which is presented to the user, for example, RDF Schema labels. Application rendering strings
         retrieved from untrusted Notation3 documents must ensure that malignant strings may not be used to mislead the
         reader. The security considerations in the media type registration for XML ([[RFC3023]] section 10) provide
@@ -2322,7 +2408,8 @@ _:d a :Person.
         identifiers. Applications interpreting data expressed in Notation3 should address the security issues of
         Internationalized Resource Identifiers (<a>IRIs</a>) [[RFC3987]] Section 8, as well as Uniform Resource
         Identifier (URI): Generic Syntax [[RFC3986]] Section 7. Multiple <a>IRIs</a> may have the same appearance.
-        Characters in different scripts may look similar (a Cyrillic "о" may appear similar to a Latin "o"). A character
+        Characters in different scripts may look similar (a Cyrillic "о" may appear similar to a Latin "o"). A
+        character
         followed by combining characters may have the same visual representation as another character (LATIN SMALL
         LETTER E followed by COMBINING ACUTE ACCENT has the same visual representation as LATIN SMALL LETTER E WITH
         ACUTE). Any person or application that is writing or interpreting data in Notation3 must take care to use the
@@ -2336,7 +2423,8 @@ _:d a :Person.
       <dd>This specification.</dd>
       <dt>Applications which use this media type:</dt>
       <dd>Any programming environment that requires the exchange of directed graphs. Implementations of Notation3 have
-        been created for JavaScript, Python, Java, and Prolog. It may be used by some web services and clients consuming
+        been created for JavaScript, Python, Java, and Prolog. It may be used by some web services and clients
+        consuming
         their data.</dd>
       <dt>Additional information:</dt>
       <dt>Magic number(s):</dt>
