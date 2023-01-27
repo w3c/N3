@@ -19,6 +19,10 @@ Here, we list projects and implementations related to N3.
 
 * Notation3 Logic: A Practical Introduction. ([presentation](https://drive.google.com/file/d/18m8m-gqaOdPe1YLg7KdgKrMAesero-pn/view))
 
+## Using N3 rules for multiple semantics of named graphs
+* Towards Supporting Multiple Semantics of Named Graphs Using N3 Rules ([paper](https://github.com/w3c/N3/blob/master/relatedWork/Towards%20Supporting%20Multiple%20Semantics%20of%20Named%20Graphs%20Using%20N3%20Rules.pdf))  
+Presented at the [3rd International Joint Conference on Rules and Reasoning (RuleML+RR 2019)](https://rulemlrr19.inf.unibz.it/) conference.
+
 ## Using N3 rules for vocabulary mapping
 
 * Decentralization Rules: Linking Solid Pods in Different Vocabularies using Notation3 ([paper](https://github.com/doerthe/oslo-to-fhir/blob/main/paper/Decentralisation_rules.pdf))  
@@ -34,7 +38,7 @@ Presented at the [4th International Workshop on Semantic Web Meets Health Data M
 
 Github repo: https://github.com/william-vw/ui_gen
 
-## Implementing a Finite State Machine using N3 rules
+## Using N3 rules to implement a Finite State Machine
 
 * Explainable Decision Support using Task Network Models in Notation3: Computerizing Lipid Management Clinical Guidelines as Interactive Task Networks. ([paper](https://link.springer.com/chapter/10.1007/978-3-031-09342-5_1))  
 Presented at the [20th International Conference on Artificial Intelligence in Medicine (AIME 2022)](https://aime22.aimedicine.info/).
