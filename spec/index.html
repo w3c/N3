@@ -2083,15 +2083,20 @@ _:d a :Person.
       </section>
       <section>
         <h4>Using collections</h4>
-        <!-- TODO -->
         <p>An alternative solution is to use a <a>collection</a> to keep all the participants of the n-ary relation.
-          For
-          instance: ...
+          For instance:
+          <pre class="example nohighlight" data-transform="updateExample">
+            <!--
+            @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+            @base <http://example.org/#> .
+
+            :avengers :members ( :iron_man :captain_america :spiderman ) .
+            -->
+          </pre>
           A clear advantage of this approach is that it is easier and much less verbose to write down.
-          However, the roles each participant play in the n-ary relation are no longer explicated. For instance: ..
-          What roles do X, Y and Z play in this relation? One could answer that question by having a tailored schema:
-          ...  
-          TODO
+          However, the roles each participant play in the n-ary relation are no longer explicated. 
+          This is not a problem when the participants do not have different roles, as in the example above &mdash;
+          they all play the same role of group member.
         </p>
       </section>
     </section>
