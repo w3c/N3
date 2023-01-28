@@ -98,6 +98,9 @@
       margin-bottom: 25px;
     }
 
+    .open_editor {
+      font-size: 14px;
+    }
   </style>
   <script>
     function _esc(s) {
@@ -157,6 +160,7 @@
         })
 
         let id = txtarea.getAttribute('id');
+        let formula = encodeURIComponent(txtarea.value);
 
         // move  textarea's id to wrapper element
         if (id) {
@@ -173,8 +177,9 @@
         let btnDiv = $("<div class='button_container'></div>");
         btnDiv.insertAfter(wrapper);
 
-        let openEditorBtn = $("<button class='open_editor'>open in editor</button>");
-        btnDiv.append(openEditorBtn); 
+        let editorUrl = `http://ppr.cs.dal.ca:3002/n3/editor/?formula=${formula}`;
+        let openEditorLnk = $(`<a href="${editorUrl}" class='open_editor' target='_blank'>open in editor 🚀</a>`);
+        btnDiv.append(openEditorLnk); 
 
         exampleCnt++;
       });
