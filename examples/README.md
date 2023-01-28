@@ -1,1 +1,1 @@
-See also https://josd.github.io/eye/reasoning/#examples-and-test-cases for more advanced test cases.
+See also https://eyereasoner.github.io/eye/#examples-and-test-cases for more advanced test cases.

@@ -1,7 +1,7 @@
 Here, we list projects and implementations related to N3. 
 
 # Reasoners
-* EYE: https://josd.github.io/eye/ (advanced N3 reasoner, used in industrial settings)
+* EYE: https://github.com/eyereasoner/eye (advanced N3 reasoner, used in industrial settings)
 * Cwm: https://www.w3.org/2000/10/swap/doc/cwm.html ("prototype" N3 reasoner developed by TBL)
 * jen3: https://github.com/william-vw/jen3 ([Apache Jena](https://jena.apache.org/) extended with N3 reasoning)
 * Data-Fu: https://aifb.kit.edu/web/Linked_Data-Fu (reasoner and language supporting a subset of N3)
