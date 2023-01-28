@@ -33,16 +33,31 @@
 				// will consume anything matching the regex
 				stream.match(/^[^\s\u00a0>]*>?/);
 				return "atom";
+			} else if (ch == "?") {
+				stream.match(/^[^\s\u00a0>]*>?/);
+				return "variable-2";
+			} else if (ch == "_" && stream.match(/^:/, false)) {
+				stream.match(/^:[^\s\u00a0>]*>?/);
+				return "variable-2";
 			} else if (ch == "\"" || ch == "'") {
 				// eat all tokens until (non-esc) closing quote
 				state.tokenize = tokenLiteral(ch);
 				return state.tokenize(stream, state);
+			} else if (/\d/.test(ch)) {
+				stream.match(/\d+(\.\d*)?/);
+				return "number";
+			} else if (ch == "t" && stream.match(/^rue/, false)) {
+				stream.match(/^rue/);
+				return "number"
+			} else if (ch == "f" && stream.match(/^alse/, false)) {
+				stream.match(/^alse/);
+				return "number"
 			// allows keeping separate state per nested element
 			} else if (/[{}\(\),\.;\[\]]/.test(ch)) {
 				curPunc = ch;
 				return null;
-			// eat entire comment
 			} else if (ch == "#") {
+				// eat entire comment
 				stream.skipToEnd();
 				return "comment";
 			// eat all operator chars
