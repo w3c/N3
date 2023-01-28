@@ -93,6 +93,11 @@
       font-size: 14px;
     }
 
+    .button_container {
+      text-align: right;
+      margin-bottom: 25px;
+    }
+
   </style>
   <script>
     function _esc(s) {
@@ -161,9 +166,15 @@
         } else
           id = `n3-example-${exampleCnt}`;
 
-        let wrapper = editor.getWrapperElement();
+        let wrapper = $(editor.getWrapperElement());
         let link = $(`<a id='${id}' class='self-link' href='#${id}'>N3 example ${exampleCnt}</a>`);
-        link.insertBefore($(wrapper));
+        link.insertBefore(wrapper);
+
+        let btnDiv = $("<div class='button_container'></div>");
+        btnDiv.insertAfter(wrapper);
+
+        let openEditorBtn = $("<button class='open_editor'>open in editor</button>");
+        btnDiv.append(openEditorBtn); 
 
         exampleCnt++;
       });
@@ -2069,7 +2080,7 @@ _:x :certainty 0.8 .</textarea>
   </section>
   <section id='semantics'>
     <h2>Semantics</h2>
-    <p>The formal semantics of N3 is currently a work in progress.</p>
+    <p>The formal semantics of N3 is a work in progress.</p>
   </section>
   <section id='in-html' class="appendix informative">
     <h2>Embedding N3 in HTML documents</h2>
