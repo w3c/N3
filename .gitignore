@@ -62,7 +62,6 @@ RemoteSystemsTempFiles
 
 # custom
 *.zip
-**/codemirror-5.54.0/
 
 
 #ubuntu backup-files
