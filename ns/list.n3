@@ -125,3 +125,28 @@ list:remove a rdf:Property, owl:FunctionalProperty;
 Example: `( (1 2 3 4) (2 3) ) list:remove (1 4).`""";
     vs:term_status "unstable";
     rdfs:isDefinedBy <>.
+
+list:union rdf:type rdf:Property;
+    rdfs:label "union";
+    rdfs:domain log:List;
+    rdfs:range log:List;
+    rdfs:comment "The union of the elements of the list.";
+    vs:term_status "unstable";
+    rdfs:isDefinedBy <>.
+
+log:intersection a rdf:Property;
+    rdfs:label "intersection";
+    rdfs:domain log:List;
+    rdfs:range log:List;
+    rdfs:comment "The intersection of the elements of the list.";
+    vs:term_status "unstable";
+    rdfs:isDefinedBy <>.
+
+log:except a rdf:Property;
+    rdfs:label "except";
+    rdfs:domain log:List;
+    rdfs:range log:List;
+    rdfs:comment "Returns a list which contains exactly those items which are in  the first list and not in the second list.";
+    vs:term_status "unstable";
+    rdfs:isDefinedBy <>.
+ 
