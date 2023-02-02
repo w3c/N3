@@ -168,5 +168,35 @@ It is true iff the string does NOT match the regexp.""";
     rdfs:domain log:String;
     rdfs:range  log:String.
 
+string:length a rdf:Property;
+    rdfs:definedBy <>;  
+    rdfs:label  "length";
+    rdfs:comment  "The length of a string." ;
+    rdfs:domain log:String;
+    rdfs:range math:Value.
+
+string:substring a rdf:Property;
+    rdfs:definedBy <>;  
+    rdfs:label  "substring";
+    rdfs:comment  """The substring of a string.
+                    subject = list with string, start-index and end-index
+                    object = substring
+                    """ ;
+    rdfs:domain log:List;
+    rdfs:range log:String.
+
+string:uppercase a rdf:Property;
+    rdfs:definedBy <>;  
+    rdfs:label  "upper-case";
+    rdfs:comment  "The upper-case of a string." ;
+    rdfs:domain log:String;
+    rdfs:range log:String.
+
+string:lowercase a rdf:Property;
+    rdfs:definedBy <>;  
+    rdfs:label  "lower-case";
+    rdfs:comment  "The lower-case of a string." ;
+    rdfs:domain log:String;
+    rdfs:range log:String.
 
 #ends
