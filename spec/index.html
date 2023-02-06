@@ -16,7 +16,7 @@
           company: "University of Ottawa",
           companyURL: "https://www.uottawa.ca/",
           mailto: "wvanwoen@uottawa.ca"
-        }, 
+        },
         {
           name: "Dörthe Arndt",
           company: "TU Dresden",
@@ -84,7 +84,8 @@
       text-align: center;
     }
 
-    .n3code , .ex {
+    .n3code,
+    .ex {
       width: 100%;
     }
 
@@ -141,50 +142,50 @@
   <!-- <script src="https://eyereasoner.github.io/eye-js/2/latest/index.js"></script> -->
 
   <script>
-  function loaded() {
-    document.respec.ready.then(function () {
+    function loaded() {
+      document.respec.ready.then(function () {
 
-      exampleCnt = 1;
-      $('.n3code').each((idx, txtarea) => {
-        // put appropriate height for textarea
-        txtarea.style.height = txtarea.scrollHeight + "px";
+        exampleCnt = 1;
+        $('.n3code').each((idx, txtarea) => {
+          // put appropriate height for textarea
+          txtarea.style.height = txtarea.scrollHeight + "px";
 
-        // create new codemirror editor
-        editor = CodeMirror.fromTextArea(txtarea, {
+          // create new codemirror editor
+          editor = CodeMirror.fromTextArea(txtarea, {
             lineNumbers: true,
             gutters: ["CodeMirror-lint-markers"],
             mode: 'n3',
             theme: "default rdf",
             lint: n3Lint(() => { }, n3),
             matchBrackets: true
-        })
+          })
 
-        let id = txtarea.getAttribute('id');
-        let formula = encodeURIComponent(txtarea.value);
+          let id = txtarea.getAttribute('id');
+          let formula = encodeURIComponent(txtarea.value);
 
-        // move  textarea's id to wrapper element
-        if (id) {
-          editor.getWrapperElement().setAttribute('id', txtarea.getAttribute('id'));
-          txtarea.removeAttribute('id');
-        
-        } else
-          id = `n3-example-${exampleCnt}`;
+          // move  textarea's id to wrapper element
+          if (id) {
+            editor.getWrapperElement().setAttribute('id', txtarea.getAttribute('id'));
+            txtarea.removeAttribute('id');
 
-        let wrapper = $(editor.getWrapperElement());
-        let link = $(`<a id='${id}' class='self-link' href='#${id}'>N3 example ${exampleCnt}</a>`);
-        link.insertBefore(wrapper);
+          } else
+            id = `n3-example-${exampleCnt}`;
 
-        let btnDiv = $("<div class='button_container'></div>");
-        btnDiv.insertAfter(wrapper);
+          let wrapper = $(editor.getWrapperElement());
+          let link = $(`<a id='${id}' class='self-link' href='#${id}'>N3 example ${exampleCnt}</a>`);
+          link.insertBefore(wrapper);
 
-        let editorUrl = `http://editor.notation3.org/?formula=${formula}`;
-        let openEditorLnk = $(`<a href="${editorUrl}" class='open_editor' target='_blank'>open in editor 🚀</a>`);
-        btnDiv.append(openEditorLnk); 
+          let btnDiv = $("<div class='button_container'></div>");
+          btnDiv.insertAfter(wrapper);
 
-        exampleCnt++;
+          let editorUrl = `http://editor.notation3.org/?formula=${formula}`;
+          let openEditorLnk = $(`<a href="${editorUrl}" class='open_editor' target='_blank'>open in editor 🚀</a>`);
+          btnDiv.append(openEditorLnk);
+
+          exampleCnt++;
+        });
       });
-    });
-  }
+    }
   </script>
 
 </head>
@@ -249,7 +250,7 @@
       </li>
       <li>
         <strong>N3 includes builtins for accessing online knowledge.</strong>
-        To dynamically retrieve online knowledge for decision making, the <code>log:semantics</code> 
+        To dynamically retrieve online knowledge for decision making, the <code>log:semantics</code>
         and <code>log:conclusion</code> builtins allow pulling in, parsing, and reasoning
         over logical expressions from online or local sources.
       </li>
@@ -266,15 +267,19 @@
         Maybe we could highlight other useful built-ins instead? Of course, then we would need other constructs for snaf</p> -->
   </section>
   <section id="conformance">
+    In addition to sections marked as non-normative, any guidelines, diagrams, examples, and notes in this
+    specification are non-normative. This means they are not considered part of the formal specification; rather,
+    they are meant to clarify aspects and help with understanding. 
+    Everything else in this specification is normative.
   </section>
 
-  <section id='language' class=informative>
+  <section id='language' class='informative'>
     <h2>Language</h2>
     <p>The aim of this section is to provide an informal overview of the N3 language and its different features. Where
       possible, this section is based on the [[[Turtle]]] specification. More formal definitions will follow in the
       subsequent sections.
     </p>
-    <section id='n3doc'>
+    <section id='n3doc' class='informative'>
       <h3>N3 document</h3>
       <p>An <dfn>N3 document</dfn> represents an <a>N3 graph</a> in a compact textual form. An <dfn>N3 graph</dfn>
         is a series of <dfn data-lt="statement|triple">N3 statements</dfn>. These are written as <a>triples</a>
@@ -291,7 +296,7 @@
       <p>Comments are indicated using a separate '#' and continue until the end of the line.
       </p>
     </section>
-    <section id='simpletriples'>
+    <section id='simpletriples' class='informative'>
       <h4>Simple triples</h4>
       <p>The simplest <a>N3 statement</a> or <a>triple</a> is a sequence of a
         <a data-cite="RDF11-CONCEPTS#dfn-subject">subject</a>,
@@ -305,7 +310,7 @@
           (https://github.com/w3c/respec/wiki/ReSpec-Editor's-Guide#inclusions--transformations)
           that allows you to directly include a data file here
           -->
-        <textarea id="basic-triples-example" class="n3code"><http://example.org/#spiderman> <http://example.org/#enemyOf> <http://example.org/#green-goblin> .
+      <textarea id="basic-triples-example" class="n3code"><http://example.org/#spiderman> <http://example.org/#enemyOf> <http://example.org/#green-goblin> .
 <http://example.org/#spiderman> <http://xmlns.com/foaf/0.1/name> "Spiderman" .
 <http://example.org/#green-goblin> <http://xmlns.com/foaf/0.1/name> "Green Goblin" .</textarea>
 
@@ -321,7 +326,7 @@
       <!-- <p class="note">Examples will often be written using newlines and tab spaces for readability. However, generally, only the subjects, predicates and objects need to be separated with a whitespace.</p> -->
       <!-- <pre class="example nohighlight">&lt;http://example.org/#dt&gt; &lt;http://xmlns.com/foaf/0.1/name&gt; &quot;Dominik Tomaszuk&quot; .</pre> -->
     </section>
-    <section id='polists'>
+    <section id='polists' class='informative'>
       <h4>Predicate and object lists</h4>
       <p>As shown in the above example, the same subject (here, Spiderman) will often be described by several <a>N3
           statements</a>.
@@ -338,7 +343,7 @@
     <http://xmlns.com/foaf/0.1/name> "Spiderman", "Peter Parker" .</textarea>
       <!-- <pre class="example nohighlight">&lt;http://example.org/#dt&gt; &lt;http://xmlns.com/foaf/0.1/nick&gt; &quot;Domel&quot;, &quot;Misiek&quot;@pl .</pre> -->
     </section>
-    <section id='iris'>
+    <section id='iris' class='informative'>
       <h3>IRIs</h3>
       <p>An IRI is used to represent an identifiable entity &mdash; such as a person, place, or thing.
         Until now, we have been writing absolute <dfn data-lt="absolute iri|iri">IRIs</dfn> [[RFC3987]] (e.g.,
@@ -413,7 +418,7 @@ ex:green-goblin foaf:name "Green Goblin" .</textarea>
           &lt;http://example.org/#doerthe&gt; foaf:knows &lt;http://example.org/#dominik&gt; .
           :doerthe foaf:knows :dominik .</pre> -->
 
-      <section id='iriprplist'>
+      <section id='iriprplist' class='informative'>
         <h4>IRI property lists</h4>
         <p>
           In many cases, an <a>IRI</a> occurs only once as an object, and is then further described as a subject in
@@ -482,7 +487,7 @@ ex:green-goblin foaf:name "Green Goblin" .</textarea>
 
     </section>
 
-    <section id='literals'>
+    <section id='literals' class='informative'>
       <h3>Literals</h3>
       <p>Literals are used to represent a textual or numerical (i.e., datatype) value, such as name,
         date, height, and so on. Numbers (integers, decimals, and doubles) are simply represented using their
@@ -586,7 +591,7 @@ ex:green-goblin foaf:name "Green Goblin" .</textarea>
           an example.''' .
           </pre> -->
     </section>
-    <section id='bnodes'>
+    <section id='bnodes' class='informative'>
       <h3>Blank Nodes</h3>
       <p>When describing resources in RDF, you can run into the following situations:</p>
       <ul>
@@ -604,7 +609,7 @@ ex:green-goblin foaf:name "Green Goblin" .</textarea>
         <a>Blank nodes</a> can be represented in several ways, as described below.
         For details, please refer to ([[[RDF11-CONCEPTS]]]).
       </p>
-      <section id='bnodeids'>
+      <section id='bnodeids' class='informative'>
         <h4>Blank node identifiers</h4>
         <p>A <a>blank node</a> can be represented by a <dfn data-cite="RDF11-CONCEPTS#dfn-blank-node-identifier">blank
             node identifier</dfn>, which is unique within the <a>N3 graph</a>, expressed as <code>_:someLabel</code>.
@@ -615,7 +620,7 @@ ex:green-goblin foaf:name "Green Goblin" .</textarea>
           describe it &mdash;
           such as the painting it is in, and the type of tree:
         <p>
-        <textarea id="mona-lisa-bnode-id" class="n3code">@prefix ex: <http://example.org/#> .
+          <textarea id="mona-lisa-bnode-id" class="n3code">@prefix ex: <http://example.org/#> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 
 ex:mona_lisa_painting ex:portrays _:someTree .
@@ -625,7 +630,7 @@ _:someTree rdf:type ex:CypressTree .</textarea>
           we want to describe. Note that this identifier is only usable within our local <a>N3 graph</a> &mdash;
           if you want other <a>N3 graphs</a> to describe it, you should represent it using an <a>IRI</a>.</p>
       </section>
-      <section id='bnodeprplist'>
+      <section id='bnodeprplist' class='informative'>
         <h4>Blank node property lists</h4>
         <p>Using a <a>blank node identifier</a> requires introducing a new identifier for each <a>blank node</a>.
           In many cases, however, a blank node occurs only once as an object,
@@ -672,7 +677,7 @@ ex:john ex:address [
           address,
           one should use blank node identifiers. For instance:
 
-        <textarea class="n3code" id="address-multiple-people">@prefix ex: <http://example.org/#> .
+          <textarea class="n3code" id="address-multiple-people">@prefix ex: <http://example.org/#> .
 
 ex:john ex:address _:a .
 ex:sally ex:address _:a .
@@ -684,7 +689,7 @@ _:a ex:town [ ex:name "Springfield" ] .</textarea>
         </p>
       </section>
 
-      <section id="bnode-use-cases">
+      <section id="bnode-use-cases" class='informative'>
         <h4>Blank node use cases</h4>
         <p>Below, we summarize typical use cases where <a>blank nodes</a> are used to describe resources.</p>
         <p><strong>Unknown resources</strong>: we might <a data-cite="RDF11-PRIMER#section-blank-node">want to state</a>
@@ -714,12 +719,13 @@ _:a ex:town [ ex:name "Springfield" ] .</textarea>
             -->
       </section>
     </section>
-    <section id='collections'>
+    <section id='collections' class='informative'>
       <h3>Collections</h3>
       <p>We often need to describe ordered collections of things, e.g., a book written by several authors,
-        listing the students in a course, or the software modules within a package. N3 provides a succinct <dfn
-          data-lt="n3 collection|n3 list|list">collection</dfn> syntax to represent ordered collections of
-        resources enclosed by <code>(</code> <code>)</code>. The contained resources are called <dfn
+        listing the students in a course, or the software modules within a package. N3 supports <dfn
+          data-lt="n3 collection|n3 list|list">collections</dfn> as first-class citizens 
+          to represent ordered collections of resources enclosed by <code>(</code> <code>)</code>. 
+          The contained resources are called <dfn
           data-lt="collection member">members</dfn>.</p>
       <p>For instance:</p>
       <textarea class="n3code">@prefix : <http://example.org/#> .
@@ -744,7 +750,10 @@ _:a ex:town [ ex:name "Springfield" ] .</textarea>
       </p>
 
       <p class="note">To an extent, an N3 collection <a href="#semantics">is equivalent to</a> the more verbose <a
-          data-cite="rdf11-mt#rdf-collections">RDF Collection vocabulary</a>.</p>
+          data-cite="rdf11-mt#rdf-collections">RDF Collection vocabulary</a>.
+        We refer to the <a href="https://www.w3.org/TeamSubmission/n3/#lists">original N3 submission</a> 
+        for the additional axioms needed for this equivalency.
+      </p>
 
       <p>In N3, collections may occur as subjects, predicates or objects in a statement. For instance:</p>
       <textarea class="n3code">@prefix : <http://example.org/#> .
@@ -770,7 +779,7 @@ _:a ex:town [ ex:name "Springfield" ] .</textarea>
             ).</pre>
               -->
     </section>
-    <section id='quotedgraphs'>
+    <section id='quotedgraphs' class='informative'>
       <h3>Quoted Graphs</h3>
       <p>
         It is often useful to attach metadata to groups of triples &mdash;
@@ -805,7 +814,7 @@ _:a ex:town [ ex:name "Springfield" ] .</textarea>
         she would certainly not be saying that Clark Kent can fly.</p>
     </section>
 
-    <section id='n3rules'>
+    <section id='n3rules' class='informative'>
       <h3>N3 Rules</h3>
 
       <p>N3 supports declarative programming by allowing to make statements about the world,
@@ -850,7 +859,7 @@ _:a ex:town [ ex:name "Springfield" ] .</textarea>
         <!-- In fact, these predicates themselves are <a>N3 builtins</a>. -->
       </p>
 
-      <section id='n3rulevars'>
+      <section id='n3rulevars' class='informative'>
         <h3>Rule Variables</h3>
 
         <p><a>N3 rules</a> are more useful when they include <dfn>variables</dfn>.
@@ -887,7 +896,7 @@ _:a ex:town [ ex:name "Springfield" ] .</textarea>
         </p>
       </section>
 
-      <section id='n3rulechaining'>
+      <section id='n3rulechaining' class='informative'>
         <h3>Rule Chaining</h3>
 
         <p>In practice, a pivotal feature is that <a>N3 rules</a> can be "chained":
@@ -928,7 +937,6 @@ _:a ex:town [ ex:name "Springfield" ] .</textarea>
         </p>
 
         <p>
-          <!-- TODO have a section on N3 reasoners -->
           An N3 reasoner, which can draw inferences from <a>N3 rules</a>,
           can operate in forward chaining, backward chaining, or some hybrid mode.
           An <a>N3 rule</a> can also indicate which mode should be used,
@@ -940,7 +948,7 @@ _:a ex:town [ ex:name "Springfield" ] .</textarea>
         <p>
           For instance, the following is equivalent to the <a href="#chaining_example">prior example</a>
           and combines forward and backward chaining:
-        <textarea class="n3code" id="backward_chaining_example">@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+          <textarea class="n3code" id="backward_chaining_example">@prefix foaf: <http://xmlns.com/foaf/0.1/> .
 @prefix : <http://example.org/#>.
             
 :spiderman a :WebSlinger .
@@ -970,7 +978,7 @@ _:a ex:town [ ex:name "Springfield" ] .</textarea>
       </section>
     </section>
 
-    <section id='builtins'>
+    <section id='builtins' class='informative'>
       <h4>N3 Builtins</h4>
       <p>
         An <dfn data-lt="N3 builtin|builtin">N3 builtin</dfn> is used within a <a>N3 rule</a> to
@@ -1064,7 +1072,7 @@ _:a ex:town [ ex:name "Springfield" ] .</textarea>
         the object can be a quoted graph or a <a>blank node</a>, in which case the current document is the scope.
         For instance, the rule below uses `log:collectAllIn` to collect all of spiderman's defeated villains
         found in the current document:
-      <textarea class="n3code" id="collectallin_example">@prefix log: <http://www.w3.org/2000/10/swap/log#> . 
+        <textarea class="n3code" id="collectallin_example">@prefix log: <http://www.w3.org/2000/10/swap/log#> . 
 @prefix : <http://example.org/#>.
 
 :spiderman a :SuperHero .
@@ -1083,7 +1091,7 @@ _:a ex:town [ ex:name "Springfield" ] .</textarea>
 
 } => { ?hero :defeatedEnemies ?enemies } .</textarea>
 
-      The `log:collectAllIn` builtin accepts as subject a collection that includes:
+        The `log:collectAllIn` builtin accepts as subject a collection that includes:
       <ul>
         <li>a variable of which the values will be collected (`?enemy`),</li>
         <li>a <i>where</i> clause with triple patterns that constrain this variable, and</li>
@@ -1096,7 +1104,7 @@ _:a ex:town [ ex:name "Springfield" ] .</textarea>
       </p>
       <p>
         The example below uses `log:forAllIn` to determine whether a super-hero's identity is safe:
-      <textarea class="n3code" id="forallin_example">@prefix log: <http://www.w3.org/2000/10/swap/log#> . 
+        <textarea class="n3code" id="forallin_example">@prefix log: <http://www.w3.org/2000/10/swap/log#> . 
 @prefix : <http://example.org/#> .
 
 :spiderman a :SuperHero .
@@ -1111,12 +1119,12 @@ _:a ex:town [ ex:name "Springfield" ] .</textarea>
       log:forAllIn _:t .
 
 } => { ?hero :secretIdentitySafe true } .</textarea>
-      The `log:forAllIn` builtin accepts as subject a collection with two clauses of a logical implication.
-      If, for all cases where the first clause holds, the second clause holds as well,
-      then the logical implication is true.
-      In this example, the implication is true when, for each person who knows the identity of spiderman,
-      this person can keep a secret.
-      In this case the rule will fire, as both `mary-jane-watson` and `aunt-may` can keep secrets.
+        The `log:forAllIn` builtin accepts as subject a collection with two clauses of a logical implication.
+        If, for all cases where the first clause holds, the second clause holds as well,
+        then the logical implication is true.
+        In this example, the implication is true when, for each person who knows the identity of spiderman,
+        this person can keep a secret.
+        In this case the rule will fire, as both `mary-jane-watson` and `aunt-may` can keep secrets.
       </p>
 
       <p class="note">
@@ -1131,7 +1139,7 @@ _:a ex:town [ ex:name "Springfield" ] .</textarea>
         as was the case for the prior two examples.
         The rule finds any of spiderman's enemies who have not been defeated, at least,
         as reported by the Daily Bugle:
-      <textarea class="n3code" id="notincludes_example">@prefix log: <http://www.w3.org/2000/10/swap/log#> . 
+        <textarea class="n3code" id="notincludes_example">@prefix log: <http://www.w3.org/2000/10/swap/log#> . 
 @prefix : <http://example.org/#> .    
 
 :spiderman :hasEnemy :green-goblin , :doctor-octopus, :sandman .
@@ -1147,9 +1155,9 @@ _:a ex:town [ ex:name "Springfield" ] .</textarea>
   ?graph log:notIncludes { ?enemy :defeatedBy ?hero } .
 
 } => { ?enemy a :Undefeated } .</textarea>
-      For each of spiderman's enemies (`?enemy`), the rule checks whether the <a>quoted graph</a> `?graph`,
-      as reported by the `:daily_bugle`, does not include any statement where the enemy has been defeated.
-      If so, we infer that this enemy is undefeated, in this case, `:sandman`.
+        For each of spiderman's enemies (`?enemy`), the rule checks whether the <a>quoted graph</a> `?graph`,
+        as reported by the `:daily_bugle`, does not include any statement where the enemy has been defeated.
+        If so, we infer that this enemy is undefeated, in this case, `:sandman`.
       </p>
 
       <p class="note">
@@ -1184,7 +1192,7 @@ _:a ex:town [ ex:name "Springfield" ] .</textarea>
       <p>
         In the rule below, the `log:semantics` builtin retrieves an online source and subsequently parses it a <a>quoted
           graph</a>:
-      <textarea class="n3code" id="content_example">@prefix log: <http://www.w3.org/2000/10/swap/log#> . 
+        <textarea class="n3code" id="content_example">@prefix log: <http://www.w3.org/2000/10/swap/log#> . 
 @prefix : <http://example.com> .
 
 { 	
@@ -1196,14 +1204,14 @@ _:a ex:town [ ex:name "Springfield" ] .</textarea>
   <https://raw.githubusercontent.com/w3c/N3/master/tests/N3Tests/people.n3>
     :people ?persons
 } .</textarea>
-      Subsequently, `log:collectAllIn` is used to collect all persons found within the online source.
+        Subsequently, `log:collectAllIn` is used to collect all persons found within the online source.
       </p>
 
       <p>
         The `log:conclusion` builtin allows generating the closure of a given <a>quoted graph</a>,
         i.e., extending the graph with all applicable rule inferences.
         This includes <a>quoted graphs</a> retrieved and parsed from online sources. For example:
-      <textarea class="n3code" id="content_example">@prefix log: <http://www.w3.org/2000/10/swap/log#> . 
+        <textarea class="n3code" id="content_example">@prefix log: <http://www.w3.org/2000/10/swap/log#> . 
 @prefix : <http://example.com/> .
 
 {  <https://raw.githubusercontent.com/w3c/N3/master/tests/N3Tests/rules.n3> log:semantics ?g .
@@ -1213,12 +1221,12 @@ _:a ex:town [ ex:name "Springfield" ] .</textarea>
    <https://raw.githubusercontent.com/w3c/N3/master/tests/N3Tests/rules.n3>
      :inferences ?closure
 } .</textarea>
-      Instead of simply printing the inferences, one could, e.g., use the `log:forAllIn` builtin to
-      check whether all persons listed in the online source are indeed inferred to be animals as well.
+        Instead of simply printing the inferences, one could, e.g., use the `log:forAllIn` builtin to
+        check whether all persons listed in the online source are indeed inferred to be animals as well.
       </p>
     </section>
 
-    <section id='paths'>
+    <section id='paths' class='informative'>
       <h4>Resource Paths</h4>
       <p>Similar to <a data-cite="SPARQL11-QUERY#propertypaths">SPARQL property paths</a>,
         N3 <dfn>resource paths</dfn> concisely express paths between resources,
@@ -1759,7 +1767,7 @@ _:d a :Person.</textarea>
           data-cite="sparql11-query#rTriplesBlock">TriplesBlock production</a>. Differences between Turtle and SPARQL
         are elaborated in the <a data-cite="turtle#sec-diff-sparql">Turtle specification</a>.</p>
       <p>Below, we indicate some important differences between the <a
-        data-cite="sparql11-query#rTriplesBlock">TriplesBlock production</a> and N3:</p>
+          data-cite="sparql11-query#rTriplesBlock">TriplesBlock production</a> and N3:</p>
       <ul>
         <li>
           Like N3, SPARQL permits literals as the subject of RDF triples, but, in contrast to N3, it does not allow
@@ -1812,7 +1820,7 @@ _:d a :Person.</textarea>
         pair of an <a>IRI</a> or blank node label and a group of triple statements surrounded by "<code>{</code>" and
         "<code>}</code>".</p>
       <p>For instance:</p>
-<pre class="example nohighlight" data-transform="updateExample">
+      <pre class="example nohighlight" data-transform="updateExample">
   <!-- 
   # This document contains a default graph and two named graphs.
   @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
@@ -1837,10 +1845,11 @@ _:d a :Person.</textarea>
 </pre>
       <p>N3 is not directly compatible with TriG as it does not support this graph statement notation. Nevertheless,
         since N3 supports <a>quoted graphs</a> as part of regular <a>N3 statements</a>,
-        authors can utilize the <a href="https://github.com/IDLabRese arch/N3NamedGraphSemantics">N3 Named Graphs extension</a>;
-        this extension allows associating names or identifiers with <a>quoted graphs</a>. 
+        authors can utilize the <a href="https://github.com/IDLabRese arch/N3NamedGraphSemantics">N3 Named Graphs
+          extension</a>;
+        this extension allows associating names or identifiers with <a>quoted graphs</a>.
         For instance:
-<textarea class="n3code">
+        <textarea class="n3code">
   @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
   @prefix dc: <http://purl.org/dc/terms/> .
   @prefix foaf: <http://xmlns.com/foaf/0.1/> .
@@ -1977,7 +1986,7 @@ _:to1 :temperatureTrend :RISING ;
 
 :avengers :members ( :iron_man :captain_america :spiderman ) .</textarea>
           A clear advantage of this approach is that it is easier and much less verbose to write down.
-          However, the roles each participant play in the n-ary relation are no longer explicated. 
+          However, the roles each participant play in the n-ary relation are no longer explicated.
           This is not a problem when the participants do not have different roles, as in the example above &mdash;
           they all play the same role of group member.
         </p>
@@ -1985,11 +1994,12 @@ _:to1 :temperatureTrend :RISING ;
     </section>
     <section id="compoundliteral">
       <h4>Compound literal</h4>
-      <p>This solution is inspired by a separate discussion within the RDF community on <em>Language Tagged Strings</em>.
-        The essence of the discussion is to separate the string, as a simple data, from its various characterizations, 
-        such as reading direction and language. 
-        This design pattern uses the <code>rdf:CompoundLiteral</code> class together with the 
-        <code>rdf:language</code>, <code>rdf:direction</code>, and <code>rdf:value</code> properties 
+      <p>This solution is inspired by a separate discussion within the RDF community on <em>Language Tagged
+          Strings</em>.
+        The essence of the discussion is to separate the string, as a simple data, from its various characterizations,
+        such as reading direction and language.
+        This design pattern uses the <code>rdf:CompoundLiteral</code> class together with the
+        <code>rdf:language</code>, <code>rdf:direction</code>, and <code>rdf:value</code> properties
         to respectively describe literal values on the base direction, language, and string value of the subject.
       </p>
       <textarea class="n3code">@prefix foaf: <http://xmlns.com/foaf/0.1/> .
@@ -2003,7 +2013,7 @@ _:to1 :temperatureTrend :RISING ;
     </section>
     <section id="reification">
       <h4>Quoted graphs</h4>
-      <p><a>Quoted graphs</a> allow attaching metadata to groups of triples, 
+      <p><a>Quoted graphs</a> allow attaching metadata to groups of triples,
         such as the provenance, context, version, opinion, probability, etc.
         See the example below:</p>
       <textarea class="n3code">@prefix : <http://example.org/>  .
@@ -2012,9 +2022,9 @@ _:x :graph {
   <http://example.org/#spiderman> <http://xmlns.com/foaf/0.1/name> "Peter Parker" .
 } .
 _:x :certainty 0.8 .</textarea>
-      <p>Importantly, as discussed in the <a>quoted graphs</a> section, 
-        a quoted graph does not assert the contents of the RDF graph as being true. 
-        This allows expressing examples such as above, 
+      <p>Importantly, as discussed in the <a>quoted graphs</a> section,
+        a quoted graph does not assert the contents of the RDF graph as being true.
+        This allows expressing examples such as above,
         where the statement within the quoted graph should not be asserted.</p>
     </section>
   </section>
@@ -2050,7 +2060,7 @@ _:x :certainty 0.8 .</textarea>
     </p>
     <p class="ednote">Check this, I don't think that CDATA is required for XHTML any longer. See <a
         data-cite="JSON-LD11#embedding-json-ld-in-html-documents"></a>.</p>
-      <pre class="example nohighlight" data-transform="updateExample">
+    <pre class="example nohighlight" data-transform="updateExample">
         <!--
         <script type="text/n3">
           # <![CDATA[
