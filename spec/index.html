@@ -721,10 +721,9 @@ _:a ex:town [ ex:name "Springfield" ] .</textarea>
       <h3>Collections</h3>
       <p>We often need to describe ordered collections of things, e.g., a book written by several authors,
         listing the students in a course, or the software modules within a package. N3 supports <dfn
-          data-lt="n3 collection|n3 list|list">collections</dfn> as first-class citizens 
-          to represent ordered collections of resources enclosed by <code>(</code> <code>)</code>. 
-          The contained resources are called <dfn
-          data-lt="collection member">members</dfn>.</p>
+          data-lt="n3 collection|n3 list|list">collections</dfn> as first-class citizens
+        to represent ordered collections of resources enclosed by <code>(</code> <code>)</code>.
+        The contained resources are called <dfn data-lt="collection member">members</dfn>.</p>
       <p>For instance:</p>
       <textarea class="n3code">@prefix : <http://example.org/#> .
 
@@ -749,7 +748,7 @@ _:a ex:town [ ex:name "Springfield" ] .</textarea>
 
       <p class="note">To an extent, an N3 collection <a href="#semantics">is equivalent to</a> the more verbose <a
           data-cite="rdf11-mt#rdf-collections">RDF Collection vocabulary</a>.
-        We refer to the <a href="https://www.w3.org/TeamSubmission/n3/#lists">original N3 submission</a> 
+        We refer to the <a href="https://www.w3.org/TeamSubmission/n3/#lists">original N3 submission</a>
         for the additional axioms needed for this equivalency.
       </p>
 
@@ -1153,6 +1152,7 @@ _:a ex:town [ ex:name "Springfield" ] .</textarea>
   ?graph log:notIncludes { ?enemy :defeatedBy ?hero } .
 
 } => { ?enemy a :Undefeated } .</textarea>
+      <p>
         For each of spiderman's enemies (`?enemy`), the rule checks whether the <a>quoted graph</a> `?graph`,
         as reported by the `:daily_bugle`, does not include any statement where the enemy has been defeated.
         If so, we infer that this enemy is undefeated, in this case, `:sandman`.
@@ -1190,7 +1190,7 @@ _:a ex:town [ ex:name "Springfield" ] .</textarea>
       <p>
         In the rule below, the `log:semantics` builtin retrieves an online source and subsequently parses it a <a>quoted
           graph</a>:
-        <textarea class="n3code" id="content_example">@prefix log: <http://www.w3.org/2000/10/swap/log#> . 
+        <textarea class="n3code" id="semantics-example">@prefix log: <http://www.w3.org/2000/10/swap/log#> . 
 @prefix : <http://example.com> .
 
 { 	
@@ -1209,7 +1209,7 @@ _:a ex:town [ ex:name "Springfield" ] .</textarea>
         The `log:conclusion` builtin allows generating the closure of a given <a>quoted graph</a>,
         i.e., extending the graph with all applicable rule inferences.
         This includes <a>quoted graphs</a> retrieved and parsed from online sources. For example:
-        <textarea class="n3code" id="content_example">@prefix log: <http://www.w3.org/2000/10/swap/log#> . 
+        <textarea class="n3code" id="concl-example">@prefix log: <http://www.w3.org/2000/10/swap/log#> . 
 @prefix : <http://example.com/> .
 
 {  <https://raw.githubusercontent.com/w3c/N3/master/tests/N3Tests/rules.n3> log:semantics ?g .
@@ -1340,8 +1340,7 @@ _:d a :Person.</textarea>
       <p>Comments are indicated using a "<code>#</code>" symbol outside an N3 terminal (e.g., <a
           href="#grammar-production-IRIREF">IRIREF</a>, <a href="#grammar-production-STRING">STRING</a>) and will
         continue until the end of the line (indicated by <code>\r</code>, <code>\n</code> or <code>\f</code>) or end
-        of
-        file, if there is no end of line marker.</p>
+        of file, if there is no end of line marker.</p>
       <p>All recognized comment terminals will be skipped by the grammar (i.e., a resulting parser will not call
         listener or visitor code when encountering a comment.)</p>
     </section>
