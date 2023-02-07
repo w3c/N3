@@ -1,0 +1,6 @@
+@prefix : <http://example.com/> .
+
+:william a :Person .
+:doerthe a :Person .
+
+{ ?x a :Person } => { ?x a :Animal } .

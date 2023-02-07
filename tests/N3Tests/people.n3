@@ -1,0 +1,5 @@
+@prefix : <http://example.com/> .
+
+:william a :Person .
+:doerthe a :Person .
+:gregg a :Person .
