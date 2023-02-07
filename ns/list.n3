@@ -125,3 +125,67 @@ list:remove a rdf:Property, owl:FunctionalProperty;
 Example: `( (1 2 3 4) (2 3) ) list:remove (1 4).`""";
     vs:term_status "unstable";
     rdfs:isDefinedBy <>.
+
+list:min a rdf:Property;
+    rdfs:label "min";
+    rdfs:domain log:List;
+    rdfs:range math:Value;
+    rdfs:comment "It returns the minimum value.";
+    vs:term_status "unstable";
+    rdfs:isDefinedBy <>.
+
+list:max rdf:Property;
+    rdfs:label "max";
+    rdfs:domain log:List;
+    rdfs:range math:Value;
+    rdfs:comment "It returns the maximum value.";
+    vs:term_status "unstable";
+    rdfs:isDefinedBy <>.
+
+list:sum rdf:Property;
+    rdfs:label "sum";
+    rdfs:domain log:List;
+    rdfs:range math:Value;
+    rdfs:comment "It returns the sum of all values.";
+    vs:term_status "unstable";
+    rdfs:isDefinedBy <>.
+
+list:avg rdf:Property;
+    rdfs:label "avg";
+    rdfs:domain log:List;
+    rdfs:range math:Value;
+    rdfs:comment "It returns the average of all values.";
+    vs:term_status "unstable";
+    rdfs:isDefinedBy <>.
+
+list:median rdf:Property;
+    rdfs:label "median";
+    rdfs:domain log:List;
+    rdfs:range math:Value;
+    rdfs:comment "It returns the median of all values.";
+    vs:term_status "unstable";
+    rdfs:isDefinedBy <>.
+
+list:mode rdf:Property;
+    rdfs:label "mode";
+    rdfs:domain log:List;
+    rdfs:range math:Value;
+    rdfs:comment "It returns the mode of all values.";
+    vs:term_status "unstable";
+    rdfs:isDefinedBy <>.
+
+list:variance rdf:Property;
+    rdfs:label "variance";
+    rdfs:domain log:List;
+    rdfs:range math:Value;
+    rdfs:comment "It returns the variance of all values.";
+    vs:term_status "unstable";
+    rdfs:isDefinedBy <>.
+
+list:stddev rdf:Property;
+    rdfs:label "stddev";
+    rdfs:domain log:List;
+    rdfs:range math:Value;
+    rdfs:comment "It returns the standard deviation of all values.";
+    vs:term_status "unstable";
+    rdfs:isDefinedBy <>.
