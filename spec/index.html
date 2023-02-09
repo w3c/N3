@@ -988,22 +988,23 @@ _:a ex:town [ ex:name "Springfield" ] .</textarea>
 
       <p>
         <!-- An <a>N3 builtin</a> can be used within an <a>N3 rule</a> as part of an <a>N3 statement</a>. -->
-        As a simple example, the rule below uses the `math:product` builtin to calculate a person's height in meters:
+        As a simple example, the rule below uses the `math:quotient` builtin to calculate a person's height in meters:
       </p>
       <textarea class="n3code" id="builtin_age_example">@prefix math: <http://www.w3.org/2000/10/swap/math#> .
 @prefix : <http://example.org/#>.
 
+:spiderman :heightInCm 180 .
+
 { ?person :heightInCm ?cm .
-  ( ?cm 100 ) math:product ?m .
+  ( ?cm 100 ) math:quotient ?m .
 } => { ?person :heightInMeter ?m } .</textarea>
       <p>
         An <a>N3 builtin</a> is used as the <a>predicate</a> in an
         <dfn data-lt="N3 builtin statement|builtin statement">N3 builtin statement</dfn>,
         where the <a>subject</a> and <a>object</a> act as input or output arguments.
         In the example above, the second triple constitutes a <a>builtin statement</a>:
-        the subject constitutes the input, as `math:product` calculates the product the subject <a>collection</a>
-        elements
-        (i.e., the person's height in cm and 100); the object constitutes the output,
+        the subject is the input, as `math:quotient` calculates the quotient of the subject <a>collection</a>
+        elements (i.e., the person's height in cm and 100); the object constitutes the output,
         as the result is then bound to the object variable `?m`.
       </p>
 
