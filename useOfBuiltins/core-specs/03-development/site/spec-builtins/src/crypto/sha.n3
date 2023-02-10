@@ -4,8 +4,10 @@
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix vs: <http://www.w3.org/2003/06/sw-vocab-status/ns#> .
 
 crypto:sha a fno:Function ;
+    vs:term_status  "unstable" ;
     dcterms:comment "The object is a SHA-1 hash of the subject." ;
     fno:example (  [ a fno:Test ;
                 dcterms:description """
