@@ -44,15 +44,50 @@ cr:sha a rdf:Property, owl:FunctionalProperty, owl:InverseFunctionalProperty;
     rdfs:comment "The object is a SHA-1 hash of the subject.";
     rdfs:domain rdfs:Literal;
     rdfs:range xsd:string.
+crypto:sha224 rdf:type rdf:Property , owl:FunctionalProperty , owl:InverseFunctionalProperty ;
+            rdfs:comment "The object is a SHA-2 hash (224 bits) of the subject." ;
+            rdfs:domain rdfs:Literal;
+            rdfs:label "SHA2-224 hash" ;
+            rdfs:range xsd:string.
 
-cr:sha256 a rdf:Property, owl:FunctionalProperty, owl:InverseFunctionalProperty;
-    rdfs:label "SHA-256 hash";
-    rdfs:comment "The object is a SHA-256 hash of the subject.";
-    rdfs:domain rdfs:Literal;
-    rdfs:range xsd:string.
+crypto:sha256 rdf:type rdf:Property , owl:FunctionalProperty , owl:InverseFunctionalProperty ;
+            rdfs:comment "The object is a SHA-2 hash (256 bits) of the subject." ;
+            rdfs:domain rdfs:Literal;
+            rdfs:label "SHA2-256 hash" ;
+            rdfs:range xsd:string.
 
-cr:sha512 a rdf:Property, owl:FunctionalProperty, owl:InverseFunctionalProperty;
-    rdfs:label "SHA-512 hash";
-    rdfs:comment "The object is a SHA-512 hash of the subject.";
-    rdfs:domain rdfs:Literal;
-    rdfs:range xsd:string.
+crypto:sha384 rdf:type rdf:Property , owl:FunctionalProperty , owl:InverseFunctionalProperty ;
+            rdfs:comment "The object is a SHA-2 hash (384 bits) of the subject." ;
+            rdfs:domain rdfs:Literal;
+            rdfs:label "SHA2-384 hash" ;
+            rdfs:range xsd:string.
+
+crypto:sha512 rdf:type rdf:Property , owl:FunctionalProperty , owl:InverseFunctionalProperty ;
+            rdfs:comment "The object is a SHA-2 hash (512 bits) of the subject." ;
+            rdfs:domain rdfs:Literal;
+            rdfs:label "SHA2-512 hash" ;
+            rdfs:range xsd:string.
+
+crypto:sha3224 rdf:type rdf:Property , owl:FunctionalProperty , owl:InverseFunctionalProperty ;
+            rdfs:comment "The object is a sha-3 hash (224 bits) of the subject." ;
+            rdfs:domain rdfs:Literal;
+            rdfs:label "sha3-224 hash" ;
+            rdfs:range xsd:string.
+
+crypto:sha3256 rdf:type rdf:Property , owl:FunctionalProperty , owl:InverseFunctionalProperty ;
+            rdfs:comment "The object is a sha-3 hash (256 bits) of the subject." ;
+            rdfs:domain rdfs:Literal;
+            rdfs:label "sha3-256 hash" ;
+            rdfs:range xsd:string.
+
+crypto:sha3384 rdf:type rdf:Property , owl:FunctionalProperty , owl:InverseFunctionalProperty ;
+            rdfs:comment "The object is a sha-3 hash (384 bits) of the subject." ;
+            rdfs:domain rdfs:Literal;
+            rdfs:label "sha3-384 hash" ;
+            rdfs:range xsd:string.
+
+crypto:sha3512 rdf:type rdf:Property , owl:FunctionalProperty , owl:InverseFunctionalProperty ;
+            rdfs:comment "The object is a sha-3 hash (512 bits) of the subject." ;
+            rdfs:domain rdfs:Literal;
+            rdfs:label "sha3-512 hash" ;
+            rdfs:range xsd:string.
