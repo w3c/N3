@@ -15,4 +15,4 @@ web:
 	curl -s https://api.csswg.org/bikeshed/ -F file=@index.bs -F force=1 > index.html	
 
 builtins:
-	find src -type f | paste -s -d ' ' - | xargs eye --nope --quiet --pass > builtins.n3
+	find src -type f -name '*.n3' | paste -s -d ' ' - | xargs eye --nope --quiet --pass > builtins.n3
