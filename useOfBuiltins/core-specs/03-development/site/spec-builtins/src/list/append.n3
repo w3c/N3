@@ -10,8 +10,7 @@ list:append a fno:Function ;
     vs:term_status  "testing" ;
     dcterms:comment """Concatenates separate lists into a single list. 
 `true` if and only if the subject is a list of lists and the concatenation of all those lists is `$o`.
-`$o` can be calculated as a function of the subject. 
-Example: `( (1 2) (3 4) ) list:append (1 2 3 4).`""" ;
+`$o` can be calculated as a function of the subject.""" ;
     fno:example ( 
             [ a fno:Test ;
                 dcterms:description """
