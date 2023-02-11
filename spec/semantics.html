@@ -83,7 +83,7 @@
       <section class="informative">
         <h3>Motivation</h3>
    <p>Notation3 supports implicit quantification. If blank nodes are used in triples, they stand for implicit existentially
-   quantified variables. In case of universals, i.e., variables starting with a question-mark, are used, they stand for implicit
+   quantified variables. In case universals (i.e., variables starting with a question mark in the concrete syntax) are used, they stand for implicit
    universally quantified variables. Implicit universal quantification is always global, that is, implicit universal quantification
    always spans over the full graph. Implicit existential quantification is always local, that is, it spans the local graph 
    (e.g., if implicit existential quantification occurs in a quoted graph, it spans only the quoted graph).
@@ -101,9 +101,12 @@
         <h3>Terms, Triples and Graphs</h3>
 
 As in the concrete syntax, abstract graphs consist of triples of terms. N3 covers all terms present in
-RDF, that is Literals, IRIs or blank nodes. Additionally, we can have universals in N3. As the abstract syntax supports direct
+RDF, that is, <a href="https://www.w3.org/TR/rdf11-concepts/#section-Graph-Literal">Literals</a>, 
+<a href="https://www.w3.org/TR/rdf11-concepts/#section-IRIs">IRIs</a> and 
+<a href="https://www.w3.org/TR/rdf11-concepts/#section-blank-nodes">blank nodes</a>. 
+Additionally, we can have universals in N3. As the abstract syntax supports direct
 quantification, we represent blank nodes and universals as variables and add their intended quantification seperately.
-We thus come to the concept of atomic terms.
+We thus come to the following concept of atomic terms.
       <p>The set of <dfn>atomic terms</dfn> consists of</p>
       <ul>
         <li>the set $C$ of IRIs,
@@ -112,6 +115,12 @@ We thus come to the concept of atomic terms.
       </ul>
 N3 additionally supports the quotation of graphs and treats lists as first-class-citizens. We therefore have an extended
 concept of terms:
+
+<p class=issue>
+  Should we use the term lists or collections? 
+  The <a href="https://www.w3.org/TeamSubmission/n3/#lists">team submission</a> uses lists, 
+  but we use collections elsewhere..
+</p>
 
       <p>A <dfn>term</dfn> can be</p>
       <ul>
@@ -129,16 +138,17 @@ With these terms we can now form triples.
       <div class=issue>
         Maybe we could introduce some blue example box which we would then use for mapping examples?
       </div>
-In the abstract syntax, all quantification is explicitely and blank nodes and universals are expressed as variables. Ignoring
+
+<!-- <p>In the abstract syntax, all quantification is explicit and blank nodes and universals are expressed as variables. Ignoring
 quantification, the triple
    <code>_:x :p "text".</code>
-becomes $(x, \text{:p}, \text{"literal"})$.
+becomes $(x, \text{:p}, \text{"literal"})$.</p> -->
 
 <div class=note>
-in contrast to RDF, N3 allows all kinds of terms in all positions of a triple. The triple <code>:s _:x :o.</code> and its (yet unquantified)
-abstract conterpart $(\text{:s}, x, \text{:o})$ are valid in N3. Even lists of graphs can appear in predicate position of a triple.
+In contrast to RDF, N3 allows all kinds of terms in all positions of a triple. The triple <code>:s _:x :o.</code> are valid in N3. 
+Even lists or quoted graphs can appear in predicate position of a triple.
 </div>
-In order to add quantification to the unordered concept of a set of triples (an RDF graph), the concept of a graph in N3 abstract
+In order to add quantification to the concept of an unordered set of triples (an RDF graph), the concept of a graph in N3 abstract
 syntax adds quantification as an external statement. Each set of triples comes with information about variables quantified in the graph.
 To do so, we define:
       <p>A <dfn>graph</dfn> is a tuple $(U, E, F)$ where</p>
@@ -151,8 +161,9 @@ To do so, we define:
 As we will see in the semantics section below, the sets $U$ and $E$ act like quantifiers with variables for the graph and its subgraphs.
 
 <p>
-In order to also provide some intuition, we consider a few translations from concrete N3 syntax to abstract syntax. The triples
-on the left-hand-side of our examples should be considered as graphs, on the right-hand side we give the counterpart in core logic.
+To some intuition on the correspondence between concrete N3 syntax and abstract N3 syntax, we provide some examples below. 
+The triples on the left-hand-side of our examples should be considered graphs in the concrete N3 syntax, 
+and the right-hand side provides the counterpart in abstract N3 syntax.
 
 <ol>
   <li> <code>:socrates :knows _:x.</code> becomes $(\{\},\{x\},\{(\text{:socrates}, \text{:knows}, x)\})$
@@ -169,8 +180,7 @@ on the left-hand-side of our examples should be considered as graphs, on the rig
       <li> <code>_:y :says {?x a :Mortal}. </code> becomes <br>
          <small>$(\{x\},\{y\},\{(y, \text{:says}, <(\{\},\{\},\{(x, \text{rdf:type}, \text{:Mortal})\})>)$ </small>
 </ol>
-We will re-use
-the examples below in the following sections.
+We will re-use these examples in the following sections.
 </p>
 <!--       <div class=issue>
         Question: RDF does not expect finte graphs. Do we need all graphs to be finite (we should at least expect all cited graphs to be finite, otherwise we cannot quantify over them).
@@ -178,7 +188,7 @@ the examples below in the following sections.
 -->
       <div class=note>
         In this context, an RDF graph is a graph which does not contain quoted graphs nor lists and for which $U=\emptyset.$
-        The blank nodes occurring in the graph would get labled and stored in $E$.
+        The blank nodes occurring in the graph would be labeled and stored in $E$.
       </div>
             </section>
       <section>
