@@ -6,7 +6,7 @@ List of N3 implementations
 * [eye](https://github.com/josd/eye) Euler Yet another proof Engine
 
 ## In Progress
-* [Apache Jena] extending Jena system with full N3 support (william.van.woensel@gmail.com)  
+* [jen3](https://github.com/william-vw/jen3) extending Jena system with full N3 support (william.van.woensel@gmail.com)  
 * [Ruby RDF::N3](https://github.com/ruby-rdf/rdf-n3) a Reader and Writer for the [RDF.rb](https://github.com/ruby-rdf/rdf)
   ecosystem which includes limited provisional capabilities.
 

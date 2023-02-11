@@ -11,6 +11,8 @@ local.properties
 .recommenders
 .classpath
 .project
+.ipynb_checkpoints
+.DS_Store
 RemoteSystemsTempFiles
 
 # External tool builders
@@ -60,10 +62,7 @@ RemoteSystemsTempFiles
 
 # custom
 *.zip
-**/codemirror-5.54.0/
 
 
 #ubuntu backup-files
 *~
-
-.DS_Store

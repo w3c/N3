@@ -1,0 +1,99 @@
+@prefix dc: <http://purl.org/dc/terms/> .
+@prefix dcg: <urn:dcg:>.
+@prefix fno: <https://w3id.org/function/ontology#> .
+@prefix list: <https://w3id.org/function/ontology#List> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix uml: <http://schema.omg.org/spec/UML/2.1#> .
+@prefix bi-string: <http://www.builtins/etc#>.  
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix dcg: <:dev:dcg:> .
+@prefix : <urn:example:> .
+
+bi-string:concatenation a fno:Function ;
+    fno:name "concatentation" ;
+    dc:description "Returns the concatenation of the string values of the arguments." ;
+    fno:expects (
+        [ a fno:Signature ;
+            fno:parameter ( 
+                [ a fno:Parameter ; fno:predicate "arg1" ; fno:type "xs:anyAtomicType?" ; fno:required "true"^^xsd:boolean ]
+                [ a fno:Parameter ; fno:predicate "arg2" ; fno:type "xs:anyAtomicType?" ; fno:required "true"^^xsd:boolean ]
+                [ a fno:Parameter ; fno:predicate "separator" ; fno:type "xs:anyAtomicType?" ; fno:required "true"^^xsd:boolean ] 
+        )]
+        [ a fno:Signature ;
+            fno:parameter ( 
+                [ a fno:Parameter ; fno:predicate "arg1" ; fno:type "xs:anyAtomicType?" ; fno:required "true"^^xsd:boolean  ]
+                [ a fno:Parameter ; fno:predicate "arg2" ; fno:type "xs:anyAtomicType?" ; fno:required "true"^^xsd:boolean  ]
+                [ a fno:Parameter ; fno:predicate "separator" ; fno:type "xs:anyAtomicType?" ; fno:required "true"^^xsd:boolean ] 
+                [ a fno:Parameter ; fno:predicate "flags" ; fno:type "xs:anyAtomicType?" ; fno:required "true"^^xsd:boolean  ]                     
+        )]
+    ) ;
+    # more documentation: side-effects, e.g. which built-ins (e.g., log:content, log:semantics) talk to the outside the closed world. 
+    fno:properties # determinism, behavior(++, +, --, -, ?, @) need a home
+    fno:returns ( 
+        [ a fno:Signature ;
+            fno:parameter ( 
+                [ a fno:Output ; fno:predicate "ex:result" ; fno:type "xs:string" ; fno:required "true"^^xsd:boolean  ] 
+        )]
+        [ a fno:Signature ;
+            fno:parameter ( 
+                [ a fno:Output ; fno:predicate "ex:result" ; fno:type "xs:string" ; fno:required "true"^^xsd:boolean  ] 
+                [ a fno:Output ; fno:predicate "ex:arguments" ; fno:type "xs:string*" ; fno:required "false"^^xsd:boolean  ]                     
+        )]
+    ) ;
+    fno:rules (         # constraints on the signatures of this function
+        [ a fno:Rule ;
+            dc:description "Strings passed for concatenation can only be equal to values listed in the grammar" ;
+            fno:prefixes ( 
+                    [ a fno:Prefix ; fno:prefix "log" ; fno:iri "http://www.w3.org/2000/10/swap/log#" ]
+                    [ a fno:Prefix ; fno:prefix "string" ; fno:iri "http://www.w3.org/2000/10/swap/string#" ]                        
+                    [ a fno:Prefix ; fno:prefix "list" ; fno:iri "http://www.w3.org/2000/10/swap/list#" ]
+                    [ a fno:Prefix ; fno:prefix "dcg" ; fno:iri "urn:dcg:" ]                                                
+                    [ a fno:Prefix ; fno:prefix "" ; fno:iri "urn:" ]                                                                        
+                        ) ;
+
+                    
+            fno:constraint {    # type definition 
+                    { () dev:memberRestriction ?Y . } <= true.                        
+                    { ?List dev:memberRestriction ?Z . } <=
+                    {
+                        ?List list:firstRest (?H ?T) .
+                        ?H list:in ("a" "b") .
+                        ?T dev:memberRestriction ?Z.
+                    }.
+            };
+        ]
+    ) ;
+    fno:example (
+        [ a fno:Test ;
+            dc:description """
+                    Create concatenation of X
+                    X a list of stringables
+                    Y a stringable or a variable
+            """ ;
+            fno:input """
+                :Let :strings ( "hello" " " "world" ) .
+            """ ;
+            fno:declarations (
+                "@prefix : <urn:example:> ."
+                "@prefix string: <http://www.w3.org/2000/10/swap/string#> ."
+            ) ;
+            fno:expression {
+                { :Let :strings ?X . 
+                ?X string:concatenation ?Y .
+                }
+                =>
+                {   
+                    ?X :concatenation ?Y .
+                } .
+            } ;
+            fno:result """
+                ("hello" " " "world") urn:example:concatenation "hello world". 
+            """
+            ;
+        ]
+    );
+                            
+.           

@@ -32,9 +32,10 @@ time:inSeconds a rdf:Property, owl:FunctionalProperty, owl:InverseFunctionalProp
     rdfs:domain xsd:dateTime;
     rdfs:range xsd:integer;
     rdfs:comment """
-Iff the _subject_ is a `xsd:dateTime` and the _object_ is the integer number of seconds
+`true` if and only if the $s is a `xsd:dateTime` and the $o is the integer number of seconds
 since the beginning of the era on a given system.  Don't assume a particular value, always test for it.
-the _object_ can be calculated as a function of the _subject_.
+
+$o can be calculated as a function of $s.
 
 Cwm implements this as a bidirectional function: you can calculate the
 ISO date from the seconds since the beginning of the era, or vice-versa.
@@ -49,8 +50,9 @@ time:year a rdf:Property, owl:FunctionalProperty;
     rdfs:domain xsd:dateTime;
     rdfs:range xsd:integer;
     rdfs:comment """
-Iff the _subject_ is a `xsd:dateTime` and the _object_ is the integer year component of the dateTime.
-the _object_ can be calculated as a function of the _subject_.
+`true` if and only if $s is a `xsd:dateTime` and $o is the integer year component of the dateTime.
+
+$o can be calculated as a function of $s.
 """;
     rdfs:isDefinedBy <>.
 
@@ -59,8 +61,9 @@ time:month a rdf:Property, owl:FunctionalProperty;
     rdfs:domain xsd:dateTime;
     rdfs:range xsd:integer;
     rdfs:comment """
-Iff the _subject_ is a `xsd:dateTime` and the _object_ is the integer month component of the dateTime.
-the _object_ can be calculated as a function of the _subject_.
+`true` if and only if $s is a `xsd:dateTime` and $o is the integer month component of the dateTime.
+
+$o can be calculated as a function of $s.
 """;
     rdfs:isDefinedBy <>.
 
@@ -69,8 +72,9 @@ time:day a rdf:Property, owl:FunctionalProperty;
     rdfs:domain xsd:dateTime;
     rdfs:range xsd:integer;
     rdfs:comment """
-Iff the _subject_ is a `xsd:dateTime` and the _object_ is the integer day component of the dateTime.
-the _object_ can be calculated as a function of the _subject_.
+`true` if and only if $s is a `xsd:dateTime` and $o is the integer day component of the dateTime.
+
+$o can be calculated as a function of $s.
 """;
     rdfs:isDefinedBy <>.
 
@@ -79,8 +83,9 @@ time:hour a rdf:Property, owl:FunctionalProperty;
     rdfs:domain xsd:dateTime;
     rdfs:range xsd:integer;
     rdfs:comment """
-Iff the _subject_ is a `xsd:dateTime` and the _object_ is the integer hours component of the dateTime.
-the _object_ can be calculated as a function of the _subject_.
+`true` if and only if $s is a `xsd:dateTime` and $o is the integer hours component of the dateTime.
+
+$o can be calculated as a function of $s.
 """;
     rdfs:isDefinedBy <>.
 
@@ -89,8 +94,9 @@ time:minute a rdf:Property, owl:FunctionalProperty;
     rdfs:domain xsd:dateTime;
     rdfs:range xsd:integer;
     rdfs:comment """
-Iff the _subject_ is a `xsd:dateTime` and the _object_ is the integer minutes component of the dateTime.
-the _object_ can be calculated as a function of the _subject_.
+`true` if and only if $s is a `xsd:dateTime` and $o is the integer minutes component of the dateTime.
+
+$o can be calculated as a function of $s.
 """;
     rdfs:isDefinedBy <>.
 
@@ -99,8 +105,9 @@ time:second a rdf:Property, owl:FunctionalProperty;
     rdfs:domain xsd:dateTime;
     rdfs:range xsd:integer;
     rdfs:comment """
-Iff the _subject_ is a `xsd:dateTime` and the _object_ is the integer seconds component of the dateTime.
-the _object_ can be calculated as a function of the _subject_.
+`true` if and only if $s is a `xsd:dateTime` and $o is the integer seconds component of the dateTime.
+
+$o can be calculated as a function of $s.
 """;
     rdfs:isDefinedBy <>.
 
@@ -109,9 +116,10 @@ time:timeZone a rdf:Property, owl:FunctionalProperty;
     rdfs:domain xsd:dateTime;
     rdfs:range xsd:string;
     rdfs:comment """
-Iff the _subject_ is a `xsd:dateTime` and the _object_ is the trailing timezone offset
+`true` if and only if $s is a `xsd:dateTime` and $o is the trailing timezone offset
 part, e.g.  "-05:00"..
-the _object_ can be calculated as a function of the _subject_.
+
+$o can be calculated as a function of $s.
 """;
     rdfs:isDefinedBy <>.
 
@@ -123,8 +131,9 @@ time:dayOfWeek a rdf:Property, owl:FunctionalProperty;
     rdfs:domain xsd:dateTime;
     rdfs:range xsd:integer;
     rdfs:comment """
-Iff the _subject_ is a `xsd:dateTime` and the _object_ is the integer the day number within the week, Sunday being 0.
-the _object_ can be calculated as a function of the _subject_.
+`true` if and only if $s is a `xsd:dateTime` and $o is the integer the day number within the week, Sunday being 0.
+
+$o can be calculated as a function of $s.
 """;
     rdfs:isDefinedBy <>.
 
@@ -136,13 +145,18 @@ time:gmTime a rdf:Property, owl:FunctionalProperty;
     rdfs:domain time:format;
     rdfs:range xsd:string;
     rdfs:comment """
-Iff the _subject_ is a dateTime format string and the _object_ is the
+`true` if and only if $s is a dateTime format string and $o is the
 result of formatting the Universal Time of processing in the format given.
+
 If the format string has zero length,
 then the ISOdate standard format is used. 
+
 `[ is time:gmtime of ""]`  the therefore the current date time.
+
 It will end with "Z" as a timezone code.
-the _object_ can be calculated as a function of the _subject_.
+
+$o can be calculated as a function of $s.
+
 Rules which use this function will of course NOT be repeatable.
 """;
     rdfs:isDefinedBy <>.
@@ -152,13 +166,18 @@ time:localTime a rdf:Property, owl:FunctionalProperty;
     rdfs:domain time:format;
     rdfs:range xsd:string;
     rdfs:comment """
-Iff the _subject_ is a dateTime format string and the _object_ is the
+`true` if and only if $s is a dateTime format string and $o is the
 result of formatting the current time of processing and local timezone in the format given.
+
 If the format string has zero length,
 then the ISOdate standard format is used. 
+
 `[ is time:gmtime of ""]`  the therefore the current date time.
+
 It will end with "Z" as a timezone code.
-the _object_ can be calculated as a function of the _subject_.
+
+$o can be calculated as a function of $s.
+
 Rules which use this function will of course NOT be repeatable.
 """;
     rdfs:isDefinedBy <>.

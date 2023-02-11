@@ -1,0 +1,84 @@
+    @prefix dc: <http://purl.org/dc/terms/> .
+    @prefix fno: <https://w3id.org/function/ontology#> .
+    @prefix owl: <http://www.w3.org/2002/07/owl#> .
+    @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+    @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+    @prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+    @prefix uml: <http://schema.omg.org/spec/UML/2.1#> .
+    @prefix string: <http://www.w3.org/2000/10/swap/string#>.  
+    @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+    @prefix : <urn:example:> .
+
+    string:concatenation a fno:Function ;
+        fno:name "concatentation" ;
+        dc:description "Returns the concatenation of the string values of the arguments." ;
+        fno:expects (
+            [ a fno:Signature ( 
+                    [ a fno:Parameter ; fno:predicate "arg1" ; fno:type "xs:anyAtomicType?" ; fno:required "true"^^xsd:boolean ]
+                    [ a fno:Parameter ; fno:predicate "arg2" ; fno:type "xs:anyAtomicType?" ; fno:required "true"^^xsd:boolean ]
+                    [ a fno:Parameter ; fno:predicate "separator" ; fno:type "xs:anyAtomicType?" ; fno:required "true"^^xsd:boolean ] 
+            )]
+            [ a fno:Signature ( 
+                    [ a fno:Parameter ; fno:predicate "arg1" ; fno:type "xs:anyAtomicType?" ; fno:required "true"^^xsd:boolean  ]
+                    [ a fno:Parameter ; fno:predicate "arg2" ; fno:type "xs:anyAtomicType?" ; fno:required "true"^^xsd:boolean  ]
+                    [ a fno:Parameter ; fno:predicate "separator" ; fno:type "xs:anyAtomicType?" ; fno:required "true"^^xsd:boolean ] 
+                    [ a fno:Parameter ; fno:predicate "flags" ; fno:type "xs:anyAtomicType?" ; fno:required "true"^^xsd:boolean  ]                     
+            )]
+            
+
+        ) ;
+        #fno:returns ( "xs:string" ) ;
+        fno:returns ( 
+            [ a fno:Output ; fno:predicate "ex:arguments" ; fno:type "xs:string*" ; fno:required "false"^^xsd:boolean  ] 
+            [ a fno:Parameter ; fno:predicate "ex:result" ; fno:type "xs:string" ; fno:required "true"^^xsd:boolean  ] 
+        ) ;
+        fno:rules ( 
+            [ a  {}=>{}  ]
+            
+            [ a { {}=>{} } ]
+
+        ) ;
+
+        fno:example (
+            [ a fno:Test ;
+                fno:expression "string:concatenation(\'un\', \'grateful\')" ;
+                fno:result "\"ungrateful\"" ]
+            [ a fno:Test ;
+                fno:expression """
+                    @prefix : &lt;urn:example:&gt; .
+                    @prefix string: &lt;http://www.w3.org/2000/10/swap/string#&gt; .
+
+                    :Let :strings ( \"hello\" \" \" \"world\" ) .
+
+                    {
+                        :Let :strings ?X .
+
+                        # Create concatenation of X
+                        #    X a list of stringables
+                        #    Y a stringable or a variable
+                        ?X string:concatenation ?Y .
+
+                        # E.g. this evaluates to true 
+                        ?X string:concatenation \"hello world\" .
+                    }
+                    =&gt; 
+                    {   
+                        ?X :concatenation ?Y .
+                    } .
+                """ ;
+
+                
+                fno:result """
+                    @prefix : &lt;urn:example:&gt;.
+                    @prefix string: &lt;http://www.w3.org/2000/10/swap/string#&gt;.
+
+                    (\"hello\" \" \" \"world\") &lt;urn:example:concatenation&gt; \"hello world\".                
+                """
+                 ] 
+
+
+
+            ) ;
+
+                
+        .

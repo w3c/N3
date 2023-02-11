@@ -1,0 +1,19 @@
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix log: <http://www.w3.org/2000/10/swap/log#>.
+@prefix string: <http://www.w3.org/2000/10/swap/string#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix : <http://eulersharp.sourceforge.net/2007/07test#>.
+
+### unit tests for string: builtins
+{("eul" "er") string:concatenation "euler"} => {:strc1 :result true}.
+{("€" "Ø"@en-US) string:concatenation "€Ø"} => {:strc2 :result true}.
+{("test " "is \"ok\"") string:concatenation "test is \"ok\""} => {:strc3 :result true}.
+{"Rob Smith"^^xsd:string string:contains "Smith"} => {:strcn1 :result true}.
+{"Rob Smith"@en string:contains "Smith"@en} => {:strcn2 :result true}.
+{"Tim" string:containsIgnoringCase "IM"} => {:strci1 :result true}.
+{"abracadabra" string:matches "(a|b|r|c|d)+"} => {:strm1 :result true}.
+{("http://example.org/1995/manifesto" "http://([^/]+)/([^/]+)") string:scrape "example.org"} => {:strs1 :result true}.
+{("{x" "{(.)") string:scrape "x"} => {:strs2 :result true}.
+{("http://example.org/1995/manifesto" "http://([^/]+)/([^/]+)") string:search ("example.org" "1995")} => {:strs3 :result true}.
+{"euler" string:startsWith "eu"} => {:strs4 :result true}.
+

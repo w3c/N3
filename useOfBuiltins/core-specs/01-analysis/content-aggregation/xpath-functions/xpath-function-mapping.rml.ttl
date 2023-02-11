@@ -1,0 +1,109 @@
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix fnml:   <http://semweb.mmlab.be/ns/fnml#> .
+@prefix fno:   <https://w3id.org/function/ontology#> .
+@prefix grel:   <http://users.ugent.be/~bjdmeest/function/grel.ttl#> .
+@prefix idlab-fn: <http://example.com/idlab/function/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix ql: <http://semweb.mmlab.be/ns/ql#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix rml: <http://semweb.mmlab.be/ns/rml#> .
+@prefix rr: <http://www.w3.org/ns/r2rml#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix xpath-fn: <http://www.w3.org/2005/xpath-functions#> .
+@prefix xpath-math: <http://www.w3.org/2005/xpath-functions/math#> .
+@prefix xpath-map: <http://www.w3.org/2005/xpath-functions/map#> .
+@prefix xpath-array: <http://www.w3.org/2005/xpath-functions/array#> .
+@prefix xpath-op: <http://www.w3.org/2005/xpath-functions/op#> .
+@prefix : <http://www.w3c.org/rml-mappings/xpath/3.1#>.
+
+# # =================================================================================================
+# #   XPATH 3.1 FN FUNCTIONS
+# # =================================================================================================
+# :FunctionMapping a rr:TriplesMap;
+#   rml:logicalSource [
+#     rml:source "function-catalog.xml" ;
+#     rml:iterator "//fos:function[@prefix='fn']" ;
+#     rml:referenceFormulation ql:XPath;
+#   ];
+
+#   rr:subjectMap [
+#     rr:template "http://www.w3.org/2005/xpath-functions#{@name}";
+#     rr:class fno:Function
+#   ];
+
+#   rr:predicateObjectMap [
+#     rr:predicate fno:name;
+#     rr:objectMap [
+#       rml:reference "@name"
+#     ]
+#   ];
+#   rr:predicateObjectMap [
+#     rr:predicate dcterms:description;
+#     rr:objectMap [
+#       rml:reference "fos:summary/p"
+#     ]
+#   ];
+# .
+  
+# =================================================================================================
+#   FUNCTION PARAMETERS
+# =================================================================================================
+
+:ParameterMapping a rr:TriplesMap;
+    rml:logicalSource [
+        rml:source "function-catalog.xml" ;
+        rml:referenceFormulation ql:XPath ;
+        rml:iterator "//fos:function[@prefix='fn']/fos:signatures/fos:proto/fos:arg" ;
+    ];
+
+    rr:subjectMap [
+        # BLANK NODE NAME IS THE FUNCTION NAME + SIGNATURE # + PARAMETER NAME 
+        rr:template "ParameterBlankNode.{../../../@prefix}.{../@name}.{position()}";
+        rr:termType rr:BlankNode; ;
+    ];
+
+    rr:predicateObjectMap [
+        rr:predicate fno:predicate;
+        rr:objectMap [
+            rr:template "http://www.w3.org/2005/xpath-functions#{encode-for-uri(@name)}"
+        ];
+    ];
+    rr:predicateObjectMap [
+        rr:predicate fno:type;
+        rr:objectMap [
+            rml:reference "@type"
+        ];
+    ];    
+    rr:predicateObjectMap [
+        rr:predicate fno:required;
+        rr:objectMap [
+            rr:constant "true"
+        ];
+    ]    
+.
+
+# :ParameterMapping a rr:TriplesMap;
+#     rml:logicalSource [
+#         rml:source "function-catalog.xml";
+#         rml:referenceFormulation ql:XPath;
+#         rml:iterator "//fos:function[@prefix='fn']"
+#     ];
+
+#     rr:subjectMap [
+#         rr:template "http://www.w3.org/2005/xpath-functions#{@name}" ;
+#         rr:class owl:Class ;
+#     ];
+
+#     rr:predicateObjectMap [
+#         rr:predicate fno:expects;
+#         rr:objectMap [
+#             rr:parentTriplesMap :FNOExpectsMapping;
+#             rr:joinCondition [
+#                 rr:child "@name";
+#                 rr:parent "../@name"
+#             ];
+#         ];
+#     ]
+    

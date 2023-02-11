@@ -1,0 +1,3 @@
+memberRestrictions --> [].
+memberRestrictions --> ["a"], memberRestrictions.
+

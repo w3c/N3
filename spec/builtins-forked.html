@@ -1,0 +1,1759 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset='utf-8'>
+    <title>Notation3</title>
+    <!-- <script async class='remove' src='respec-w3c.js'></script> -->
+    <script src="https://www.w3.org/Tools/respec/respec-w3c" class="remove" defer></script>
+    <script class='remove'>
+      var respecConfig = {
+          specStatus: "CG-DRAFT",
+          editors: [ // here edit the editors
+              {
+                  name: "Dörthe Arndt",
+                  company: "Ghent University - imec",
+                  companyURL: "https://www.ugent.be/ea/idlab/en",
+                  mailto: "doerthe.arndt@ugent.be"
+              },
+              {
+                  name: "William Van Woensel",
+                  company: "Dalhousie University",
+                  companyURL: "https://www.dal.ca/",
+                  mailto: "william.van.woensel@dal.ca"
+              },
+              {
+                  name: "Dominik Tomaszuk",
+                  company: "University of Bialystok",
+                  companyURL: "https://uwb.edu.pl",
+                  mailto: "d.tomaszuk@uwb.edu.pl"
+              }],
+          github: {
+              repoURL: "https://github.com/w3c/N3",
+              branch: "master"
+          },
+          shortName: "N3",
+          group: "cg/n3-dev",
+          wgPublicList: "public-n3-dev",
+          edDraftURI: "https://w3c.github.io/N3/spec/",
+          testSuiteURI: "https://w3c.github.io/N3/tests/",
+      localBiblio: {
+      "LNG-TAG": {
+      title: "Language Subtag Registry",
+      href: "http://www.iana.org/assignments/language-subtag-registry/language-subtag-registry",
+      publisher: "IANA"
+      }
+      }
+      };
+    </script>
+    <style>
+      table, th, td {
+        border: 1px solid black;
+        border-collapse: collapse;
+        padding: 5px;
+      }
+      table.grammar, table.grammar th, table.grammar td {
+        border: none;
+        padding: 2px;
+        vertical-align: top;
+      }
+      table.grammar td:nth-child(2) {
+        text-align: right;
+      }
+      .algorithm ol {
+        counter-reset: numsection;
+        list-style-type: none;
+      }
+      .algorithm ol>li {
+        margin: 0.5em 0;
+      }
+      .algorithm ol>li:before {
+        font-weight: bold;
+        counter-increment: numsection;
+        content: counters(numsection, ".") ") ";
+      }
+    </style>
+    <script>
+      function _esc(s) {
+        return s.replace(/&/g,'&amp;')
+          .replace(/>/g,'&gt;')
+          .replace(/"/g,'&quot;')
+          .replace(/</g,'&lt;');
+      }
+
+      function unComment(doc, content) {
+        // perform transformations to make it render and prettier
+        return content
+          .replace(/<!--/, '')
+          .replace(/-->/, '')
+          .replace(/< !\s*-\s*-/g, '<!--')
+          .replace(/-\s*- >/g, '-->')
+          .replace(/-\s*-\s*&gt;/g, '--&gt;');
+      }
+
+      function updateExample(doc, content) {
+        // perform transformations to make it render and prettier
+        return _esc(unComment(doc, content));
+      }
+    </script>
+  </head>
+  <body>
+    <section id='abstract'>
+      <p>
+        This document defines Notation 3 (also known as <abbr title="Notation3">N3</abbr>), an assertion and logic language which is a superset of <abbr title="Resource Description Framework">RDF</abbr>.
+      </p>
+    </section>
+    <section id='sotd'>
+      <p>
+        This is very early draft of the Notation3 specification.
+      </p>
+    </section>
+    <!--
+      How to edit this HTML?
+      https://dev.w3.org/2008/video/mediaann/ReSpec.js/documentation.html
+      https://github.com/w3c/respec
+      -->
+    <section id='introduction'>
+      <h2>Introduction</h2>
+      <p>The Semantic Web represents a vision of online, interconnected and logical information. The core building block is a logical formalism called the Resource Description Framework (RDF) ([[[RDF11-PRIMER]]]). In RDF, one can express a logical graph as a conjunction of statements that describe properties of subject resources; and then describe the resource objects of those properties; and so on; resulting in a connected graph of logical information. It builds on the fundamental pointer mechanism of the Web, i.e., the Uniform Resource Identifier (URI), also known as International Resource Identifier (<abbr title="International Resource Identifier">IRI</abbr>), as a means to identify any RDF resource, ranging from abstract concepts (the book "Moby Dick") to physical (a paper copy of the book "Moby Dick") to electronic objects (an e-book copy of "Moby Dick"). People have used RDF to build vast quantities of online, connected knowledge graphs. The Semantic Web has allowed for decision making within an open web environment of shared knowledge graphs, as opposed to a closed system of locally believed facts.</p>
+      <p>Notation3 Logic, or <abbr title="Notation3">N3</abbr> for short, aims to improve decision-making abilities in an open web environment &mdash; by (a) extending the logical representation abilities of RDF and (b) allowing access to, operation on, and reasoning over online information. In line with the design ethos of RDF, <abbr title="Notation3">N3</abbr> attempts to walk the line between, on the one hand, ease-of-use by authors and simplicity of reasoning for developers; and, on the other hand, extended utility and practicality for building real-world applications.</p>
+      <p>Below, we elaborate on the main characteristics of <abbr title="Notation3">N3</abbr>:</p>
+      <ul>
+        <li>
+          <strong><abbr title="Notation3">N3</abbr> is a superset of RDF and <abbr title="Terse RDF Triple Language">Turtle</abbr>.</strong> One can write any valid [[[Turtle]]] graph, and it will be valid in <abbr title="Notation3">N3</abbr> as well. Importantly, this means that all of Turtle's syntactic sugar is available in <abbr title="Notation3">N3</abbr> &mdash; including <a href="#polists">predicate and object lists</a>, unlabeled blank nodes, and <a>collections</a>. Moreover, <strong><a>collections</a> are first-class citizens</strong> in <abbr title="Notation3">N3</abbr>, with an associated set of <a>built-ins</a> for accessing and manipulating them.
+        </li>
+        <li>
+          <strong><abbr title="Notation3">N3</abbr> adds an If-Then style of decision making in the form of logical implications and variables.</strong> Logical implications allow making If-Then style inferences via modus ponens (where implementations may apply either backward- or forward-chaining). Variables in such rules may be quantified either universally or existentially; in the latter case, they are comparable to blank nodes. 
+        </li>
+        <li>
+          <strong><abbr title="Notation3">N3</abbr> supports quoting and describing graphs of statements (e.g., recording provenance).</strong> In an open web environment, as an unbounded sea of (semi-)connected sources, one should be made aware of, and given the ability to disseminate, the provenance of information, among other things. A <a>quoted graph</a> includes a conjunction of quoted statements. It allows expression of where the particular statements (e.g., message, document) came from, at what time they were stated and by whom, and, in general, any other description of them.
+        </li>
+        <li>
+          <strong><abbr title="Notation3">N3</abbr> includes a core set of <a>built-ins</a> for accessing remote online information.</strong> In an open web environment, any online source may have information that supports decision making. The <code>log:semantics</code> <a>built-in</a> allows pulling in (parsed) logical expressions from remote online locations; the <code>log:conclusion</code> <a>built-in</a> allows calculating the deductive closure of any logical expression, whether local or remote. Subsequently, down-stream operations may, for instance, check whether other expressions are included, or not included, within these logical expressions.
+        </li>
+        <li>
+          <strong><abbr title="Notation3">N3</abbr> supports a scoped version of negation-as-failure.</strong> In an open web environment, it is often useful to check whether or not online information supports, or allows derivation of, a given set of facts. However, it will not be possible nor useful to check whether the whole Semantic Web <em>does not</em> support a given set of facts at some time &mdash; any online source, unknown to the reasoner at the time, or added after the question was asked, may hold a positive answer. Instead, a useful question in this setting is whether a <em>specific</em> piece of information, at a given point in time, does or does not support, or does or does not allow the derivation of, a set of facts. When tightly scoped to a specific information source, and at a specific time, this kind of negation-as-failure will not be influenced by other, unknown online sources. This is referred to as <em>scoped negation as failure,</em> and is supported by <abbr title="Notation3">N3</abbr>'s <code>log:notIncludes</code> <a>built-in</a>.
+        </li>
+      </ul>
+      <section id='namespaces'>
+        <h3>Namespaces</h3>
+        <p>The namespace for <abbr title="Notation3">N3</abbr> is <code>...</code>. <abbr title="Notation3">N3</abbr> also makes extensive use of terms from other vocabularies, in particular.... </p>
+        <p>Namespaces and prefixes used in examples in the document are shown in the following table.</p>
+        <table id="table-namespaces-examples">
+          <thead>
+            <tr>
+              <th>Prefix</th>
+              <th>Namespace</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><code>dc</code></td>
+              <td><code>http://purl.org/dc/elements/1.1/</code></td>
+            </tr>
+            <tr>
+              <td><code>foaf</code></td>
+              <td><code>http://xmlns.com/foaf/0.1/</code></td>
+            </tr>
+            <tr>
+              <td><code>...</code></td>
+              <td><code>...</code></td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+    </section>
+    <section id="conformance">
+    </section>
+
+    <section id='language' class=informative>
+      <h2>Language</h2>
+      <p>The aim of this section is to provide an informal overview of the <abbr title="Notation3">N3</abbr> language and its different features. Where possible, this section borrows from, or is at least based on, the [[[Turtle]]] specification. More formal definitions will follow in the subsequent sections.
+      </p>
+      <section id='n3doc'>
+        <h3>N3 document</h3>
+        <p>An <dfn>N3 document</dfn> represents an <a>N3 graph</a> in a compact textual form. An <dfn>N3 graph</dfn>,
+          in its simplest form, is a series of <dfn data-lt="n3 triple|statement|triple">N3 statements</dfn> or <a>triples</a>,
+          each describing one relationship of a resource, and written as a triple:
+          <a data-cite="RDF11-CONCEPTS#dfn-subject">subject</a>,
+          <a data-cite="RDF11-CONCEPTS#dfn-predicate">predicate</a>, and
+          <a data-cite="RDF11-CONCEPTS#dfn-object">object</a>.
+          An <a>N3 graph</a> can have many more elements &mdash;
+          <a>cited formulae</a> for quoting sets of statements,
+          <a href="#logimpl">logical implications</a> for If-Then style, rule-based reasoning,
+          quantifications for variables, and so on.
+          We introduce these elements below.</p>
+        <p>Comments are indicated using a separate '#'
+          (i.e., not part of another <abbr title="Notation3">N3</abbr> symbol, such as an <a>IRI</a>)
+          and continue until the end of  the line.
+        </p>
+      </section>
+      <section id='simpletriples'>
+        <h4>Simple triples</h4>
+        <p>The simplest <a>N3 statement</a> or <a>triple</a> is a sequence of
+          <a data-cite="RDF11-CONCEPTS#dfn-subject">subject</a>, 
+          <a data-cite="RDF11-CONCEPTS#dfn-predicate">predicate</a>, and
+          <a data-cite="RDF11-CONCEPTS#dfn-object">object</a>,
+          separated by whitespace and terminated by '`.`'
+          after each <a>triple</a>.
+          For now, we will asssume that a resource is represented either
+          by an <a>IRI</a> or a <a href="#literals">literal</a>.
+          In general, one uses an <a>IRI</a> to identify, well, an identifiable entity,
+          such as a person, place, or thing &mdash;
+          a literal is used for a textual or numerical (i.e., datatype) value,
+          such as name, date, height, and so on.</p>
+        <p>The three <a>N3 triples</a> below highlight the enmity between Spiderman and the Green Goblin, and lists the names of these two individuals:</p>
+        <!-- 
+          NOTE: there is a data-include attribute 
+          (https://github.com/w3c/respec/wiki/ReSpec-Editor's-Guide#inclusions--transformations)
+          that allows you to directly include a data file here
+          -->
+        <pre class="example nohighlight" data-transform="updateExample">
+          <!--
+          <http://example.org/#spiderman> <http://example.org/#enemyOf> <http://example.org/#green-goblin> .
+          <http://example.org/#spiderman> <http://xmlns.com/foaf/0.1/name> "Spiderman" .
+          <http://example.org/#green-goblin> <http://xmlns.com/foaf/0.1/name> "Green Goblin" .
+            -->
+        </pre>
+        <p class="note">There is no inherent order for <abbr title="Notation3">N3</abbr> or RDF triples. The same is true for the relational model, i.e., relational tuples or rows do not have an inherent order. Hence, it is a mistake to associate meaning with the order of statements in an <abbr title="Notation3">N3</abbr> document; for instance, it would be an error to assume that the first listed telephone for Spiderman would be his landline, and the second one his mobile number.</p>
+        <p class="note">Examples will often be written using newlines and tab spaces for readability. However, generally, only the subjects, predicates and objects need to be separated with a whitespace.</p>
+        <!-- <pre class="example nohighlight">&lt;http://example.org/#dt&gt; &lt;http://xmlns.com/foaf/0.1/name&gt; &quot;Dominik Tomaszuk&quot; .</pre> -->
+      </section>
+      <section id='polists'>
+        <h4>Predicate and object lists</h4>
+        <p>As shown in the above example, the same subject (here, Spiderman) will often be described by several <a>N3 statements</a>. To make these <a>N3 statements</a> less cumbersome, one can put a semicolon ("<code>;</code>") at the end of an <a>N3 statement</a> to describe the same subject in the subsequent <a>N3 statement</a> (called a "<a href="#polists">predicate object list</a>"):</p>
+        <pre class="example nohighlight" data-transform="updateExample">
+          <!--
+          <http://example.org/#spiderman>
+              <http://example.org/#enemyOf> <http://example.org/#green-goblin> ;
+              <http://xmlns.com/foaf/0.1/name> "Spiderman" .
+          -->
+        </pre>
+        <!-- <pre class="example nohighlight">&lt;http://example.org/#dt&gt; &lt;http://xmlns.com/foaf/0.1/firstName&gt; &quot;Dominik&quot; ;
+          &lt;http://xmlns.com/foaf/0.1/lastName&gt; &quot;Tomaszuk&quot; .</pre> -->
+        <p>Similarly, a predicate (e.g., name) can often list multiple object values for the same subject (e.g., Spiderman). This can be written by listing the object values separated by a '<code>,</code>':</p>
+        <pre class="example nohighlight" data-transform="updateExample">
+          <!--
+          <http://example.org/#spiderman> 
+              <http://xmlns.com/foaf/0.1/name> "Spiderman", "Peter Parker" .
+          -->
+        </pre>
+        <!-- <pre class="example nohighlight">&lt;http://example.org/#dt&gt; &lt;http://xmlns.com/foaf/0.1/nick&gt; &quot;Domel&quot;, &quot;Misiek&quot;@pl .</pre> -->
+      </section>
+      <section id='iris'>
+        <h3>IRIs</h3>
+        <p>As mentioned, one typically uses an
+          <abbr title="International Resource Identifier">IRI</abbr>
+          to represent an identifiable entity &mdash;
+          such as a person, place, or thing.
+          Until now, we have been writing
+          <dfn data-lt="absolute iri|iri">IRIs</dfn> [[RFC3987]]
+          (e.g., <code>http://example.org/#Spiderman</code>) &mdash;
+          which include both the namespace
+          (e.g., <code>http://example.org/#</code>)
+          and the <dfn>local name</dfn> (e.g., <code>Spiderman</code>).</p>
+
+        <p>This is a perfectly valid way of writing IRIs,
+          but it is often much easier to write an IRI as a
+          <dfn>prefixed name</dfn> &mdash; e.g., <code>ex:Spiderman</code>,
+          which includes a <dfn>prefix label</dfn> (e.g., <code>ex</code>)
+          and a <a>local name</a> (e.g., <code>Spiderman</code>)
+          separated by a colon ("<code>:</code>").
+          The `@prefix` or `PREFIX` directives associate a <a>prefix label</a>
+          with a <dfn>namespace IRI</dfn> &mdash; a prefixed name is turned into an <a>IRI</a>
+          by concatenating the <a>namespace IRI</a>
+          with the <a>prefix label</a>.
+          Subsequent `@prefix` or `PREFIX` directives may re-map the same <a>prefix label</a>.
+          For instance, the following is equivalent to using <a>absolute IRIs</a>:</p>
+        <pre class="example nohighlight" data-transform="updateExample">
+          <!--
+          @prefix ex: <http://www.example.org/#> .
+
+          ex:green-goblin ex:enemyOf ex:spiderman .
+          -->
+        </pre>
+        <p>To further simplify prefixed names, one can leave the <a>prefix label</a> empty (e.g., for a namespace that is often used in the <a>N3 document</a>):</p>
+        <pre class="example nohighlight" data-transform="updateExample">
+          <!--
+          @prefix : <http://www.example.org/#> .
+
+          :green-goblin :enemyOf :spiderman .
+          -->
+        </pre>
+
+        <div class="note">
+          <p>Prefixed names are a superset of XML QNames.
+            They differ in that the local part of prefixed names may include:</p>
+
+          <ul>
+          <li>leading digits, e.g. `leg:3032571` or `isbn13:9780136019701`</li>
+          <li>non leading colons, e.g. `og:video:height`</li>
+          <li>reserved character escape sequences, e.g. `wgs:lat\-long`</li>
+          </ul>
+        </div>
+
+        <p class="note">
+          The `@prefix` and `@base` directives require a trailing `'.'` after the <a>IRI</a>,
+          the equalivent `PREFIX` and `BASE` must not have a trailing `'.'`
+          after the <a>IRI</a> part of the directive.
+        </p>
+
+        <p>One can write
+          <dfn data-lt="relative iri">relative IRI references</dfn>,
+          e.g., <code>&lt;#Spiderman&gt;</code>,
+          which will be resolved relative to the <em>current <a>base IRI</a></em>.
+          A <a>relative IRI reference</a> is turned into an <a>absolute IRI</a>
+          by <a data-cite="RFC3987#section-6.5">resolving</a>
+          the <a>base IRI</a> relative to the <a>local name</a>
+          (e.g., <code>Spiderman</code>).
+          A <dfn>base IRI</dfn> is defined using the `@base` directive.
+          For instance, the following is equivalent to the prior example:</p>
+        <pre class="example nohighlight" data-transform="updateExample">
+          <!--
+          @base <http://www.example.org/#> .
+
+          <#green-goblin> <#enemyOf> <#spiderman> .
+          -->
+        </pre>
+        <p>Specifics of <a>relative IRI reference</a>
+          <a data-cite="RFC3986#section-5.2">resolution</a> are described in
+          <a href="#irires" class="sectionRef"></a>.</p>
+
+        <p class="note">We recommend listing the `@prefix` or `PREFIX` declarations
+          (just like `@base` or `BASE` declarations)
+          at the top of an <a>N3 document</a>.
+          This is not mandatory, however,
+          and they can technically be put anywhere before
+          the <a>prefixed name</a> or <a>relative IRI</a>
+          that relies on the declaration.
+          Subsequent @prefix` or `PREFIX` directives may re-map
+          the same <a>prefix label</a> to another <a>namespace IRI</a>.</p>
+
+        <p class="note"><abbr title="Notation3">N3</abbr> also supports
+          case-insensitive 'PREFIX' and 'BASE' directives, as does Turtle,
+          to align the syntax with SPARQL.
+          Note that the <code>@prefix</code> and <code>@base</code> directives
+          require a trailing '<code>.</code>' after the <a>IRI</a>,
+          but the equivalent<code>PREFIX</code> and <code>BASE</code>
+          must not have a trailing '.'.
+        </p>
+        <!-- <pre class="example nohighlight">@prefix foaf: &lt;http://xmlns.com/foaf/0.1/&gt; .
+          @prefix : &lt;http://example.org/#&gt;
+          
+          &lt;http://example.org/#doerthe&gt; foaf:knows &lt;http://example.org/#dominik&gt; .
+          :doerthe foaf:knows :dominik .</pre> -->
+      </section>
+      <section id='literals'>
+        <h3>Literals</h3>
+        <p>In general, one uses a literal to represent a textual or numerical (i.e., datatype) value &mdash; such as name, date, height, and so on. Numbers (integers, decimals, and doubles) can simply be represented using their numerical value, and booleans can be represented using keywords <code>true</code> or <code>false</code>:</p>
+        <pre class="example nohighlight" data-transform="updateExample">
+          <!--
+          @prefix : <http://example.org/elements> .
+          @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+
+          <http://en.wikipedia.org/wiki/Helium>
+            :atomicNumber 2 ;               # xsd:integer
+            :atomicMass 4.002602 ;          # xsd:decimal
+            :specificGravity 1.663E-4 ;     # xsd:double
+            :isNobleGas true ;              # xsd:boolean
+            rdfs:label "Helium" .           # xsd:string
+          -->
+        </pre>
+        <p>For details on what number syntax is supported (e.g., for decimals, doubles), we refer to the <a data-cite="TURTLE#abbrev">RDF 1.1: Turtle (Section 2.5.2)</a> specification.</p>
+        <p>Other literals (e.g., date; binary, octal or hex code; XML or JSON code; other types of numbers, such as shorts), and of course strings themselves, need to be written as <b>string literals</b>. For instance, <code>&lt;http://example.org/#spiderman&gt; &lt;http://example.org/#birthDate&gt; "2001-08-10".</code> In that case, the <a data-cite="RDF11-CONCEPTS#dfn-lexical-form">lexical form</a> will include the characters between the delimiter quotes (e.g., <code>2001-08-10</code>).</p>
+    <p>Clearly, this can raise confusion as to what type of literal is being represented &mdash; is it a string or some other arbitrary type? You can indicate the datatype of a literal in RDF using the <code>^^</code> symbol and the corresponding <dfn data-cite="XMLSCHEMA11-2#built-in-datatypes">datatype IRI</dfn>. The above example then becomes:
+    
+    <pre class="example nohighlight" data-transform="updateExample">
+      <!--
+      @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+      <http://example.org/#spiderman> 
+          <http://example.org/#birthDate> "2001-08-10"^^xsd:date .
+      -->
+    </pre>
+
+    <p>(Take care to add the appropriate <code>xsd</code> prefix declaration.)</p>
+    <p>One can also specify the language of a string literal using the <code>@</code> symbol and the corresponding language tag (as defined in [[BCP47]] &mdash; find the registry in [[LNG-TAG]]). For instance:</p>
+    <pre class="example nohighlight" data-transform="updateExample">
+      <!--
+      <http://example.org/#spiderman> <http://xmlns.com/foaf/0.1/name> "Spiderman"@en , 
+          "Hombre Araña"@es , "Homme Araignée"@fr .
+      -->
+    </pre>
+    <p>If you need to describe the base direction as well as the language [[BCP47]] you can use the <code>i18n</code> namespace:</p>
+    <pre class="example nohighlight" data-transform="updateExample">
+      <!--
+      @prefix i18n: <https://www.w3.org/ns/i18n#> .
+      @prefix foaf: <http://xmlns.com/foaf/0.1/> .
+
+      <http://example.org/#spiderman> foaf:name "الرجل العنكبوت"^^i18n:ar-eg_rtl .
+      -->
+    </pre>
+    
+    <p class="note">If no <a>datatype IRI</a> or language tag is given, the datatype <code>xsd:string</code> will be assumed. In case a language tag is given, the datatype <code>rdf:langString</code> will be assumed. Note that it is not possible to specify both a <a>datatype IRI</a> and a language tag.</p>
+        
+    <p class="note">Integers, decimals, doubles, and booleans may also be written as string literals with the appropriate <a>datatype IRI</a>. Boolean literals can be written as <code>true</code> and <code>false</code>.</p>
+        
+    <p class="note">There are also <a href="#compoundliteral">other mechanisms</a> for describing the language tag and base direction of RDF literals.</p>
+        
+    <p>There are several ways to write string literals. Until now we have used double-quotes <code>"</code> for delimiting, but one may also use single-quotes <code>'</code>, or even compound delimiters consisting of three double-quotes <code>"""</code> or three single-quotes <code>'''</code>. These other delimiters are useful if the string literal is known to contain single- or double-quotes; e.g., if the string contains single-quotes, one could use double-quotes as delimiters, and vice-versa, to avoid syntax errors. Alternatively, one can also use a '<code>\</code>' for escaping the delimiter each time it occurs within a string literal. If a string can contain newlines (or a quote of any type, and it is impractical or undesirable to escape them), one should use the compound type of delimiter, i.e., <code>"""</code> or <code>'''</code>. For instance:</p>
+    <pre id="string-literal-example"
+         class="example nohighlight"
+         data-transform="updateExample">
+      <!--
+      @prefix ex: <http://example.org/#> .
+      @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+      @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+      ex:Spiderman rdfs:label "'Bitten' by a radioactive spider."^^<http://www.w3.org/2001/XMLSchema#string%gt; . # literal with XML Schema string datatype
+      ex:Spiderman rdfs:label '"Bitten" by a radioactive spider.'^^xsd:string . # same as above
+      ex:Spiderman rdfs:label """'Bitten' by "what"?
+      A radioactive spider!"""^^xsd:string .
+      -->
+    </pre>
+        
+        <p>In general, the escape symbol '<code>\</code>' (<span class="codepoint">U+005C</span>) may only appear in a string literal as part of <a href="#escseq">an escape sequence</a>. Other restrictions within string literals depend on the delimiter:</p>
+        <ul>
+          <li>Literals delimited by <code>'</code> (<span class="codepoint">U+0027</span>), may not contain the characters <code>'</code>, <code title="LINE FEED"><sub>LF</sub></code> (<span class="codepoint">U+000A</span>), or <code title="CARRIAGE RETURN"><sub>CR</sub></code> (<span class="codepoint">U+000D</span>).
+          </li>
+          <li>Literals delimited by <code>&quot;</code>, may not contain the characters <code>&quot;</code>, <code title="LINE FEED"><sub>LF</sub></code>, or <code title="CARRIAGE RETURN"><sub>CR</sub></code>.
+          </li>
+          <li>Literals delimited by <code>'''</code> may not contain the sequence of characters <code>'''</code>.
+          </li>
+          <li>Literals delimited by <code>&quot;&quot;&quot;</code> may not contain the sequence of characters <code>&quot;&quot;&quot;</code>.</li>
+        </ul>
+        <!-- <pre class="example nohighlight">@prefix : &lt;http://example.org/vocab/&gt; .
+          @prefix rdfs: &lt;http://www.w3.org/2000/01/rdf-schema#&gt; .
+          @prefix xsd: &lt;http://www.w3.org/2001/XMLSchema#&gt; .
+          
+          _:x rdfs:comment &quot;This is an example.&quot;^^xsd:string . # literal with XML Schema string datatype
+          _:x rdfs:comment &quot;This is an example.&quot;^^&lt;http://www.w3.org/2001/XMLSchema#string&gt; . # same as above
+          _:x rdfs:comment &quot;This is an example.&quot; .  # same again
+          _:x rdfs:comment &quot;To jest przykład.&quot;@pl . # literal with a language tag
+          _:x rdfs:comment 'Ceci est un exemple.'@fr . # literal delimited by single quote
+          _:x rdfs:comment '''This # literal with embedded new lines
+          is
+          an example.''' .
+          </pre> -->
+      </section>
+      <section id='bnodes'>
+        <h3>Blank Nodes</h3>
+        <p>When describing resources in RDF, one often runs into the following situations:</p>
+        <ul>
+          <li>
+            It is not worth identifying the resource with an <a>IRI</a>, since it is unlikely that other <a>N3 graphs</a> will refer to the resource. In these cases, it is quite inconvenient and even redundant to mint a new <a>IRI</a> each time.
+          </li>
+          <li>
+            There likely already exists an <a>IRI</a> that identifies the resource, and we don't want to mint a new <a>IRI</a> for a resource that likely already has one (nor do we want to do an extensive search to find out what that <a>IRI</a> is).
+          </li>
+        </ul>
+        <p>Instead, you can use
+          <dfn data-cite="RDF11-CONCEPTS#dfn-blank-node">blank nodes</dfn>
+          to talk about resources.
+          They are existential variables;
+          that is, they state the existence of a thing without identifying that thing.
+          <a>Blank nodes</a> can be represented in several ways:</p>
+        <section id='bnodeids'>
+          <h4>Blank node identifiers</h4>
+          <p>A <a>blank node</a> can be represented by a <dfn data-cite="RDF11-CONCEPTS#dfn-blank-node-identifier">blank node identifier</dfn>, which is unique within the <a>N3 graph</a>, expressed as <code>_:</code> followed by a blank node label (e.g., <code>_:someLabel</code>). Then, we use this identifier to describe a resource in the same way we have been doing.</p>
+          <p>For instance, we might <a data-cite="RDF11-PRIMER#section-blank-node">want to state</a> that the Mona Lisa painting has in its background an unidentified tree, and we want to describe the tree &mdash; such as the painting it is in, and the type of tree:
+          <p>
+          <pre id="mona-lisa-bnode-id"
+               class="example nohighlight"
+               data-transform="updateExample">
+            <!--
+            @prefix ex: <http://example.org/#> .
+            @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+
+            ex:mona_lisa_painting ex:portrays _:bn .
+            _:bn rdf:type ex:CypressTree .
+            -->
+          </pre>
+          <p>In this example, we minted the <a>blank node identifier</a> <code>_:bn</code> to represent the resource that we want to describe.</p>
+        </section>
+        <section id='bnodeprplist'>
+          <h4>Blank node property lists</h4>
+          <p>Using a <a>blank node identifier</a> requires introducing a new identifier for each <a>blank node</a>. Although they're not quite as hard to mint as <a>IRIs</a>, in many cases it is redundant to even introduce such an identifier.</p>
+          <p>For instance, <a>blank nodes</a> are often used to <a data-cite="rdf-primer#structuredproperties">structure composite pieces of information</a>, such as street addresses, telephone numbers and dates. Using the <a href="#grammar-production-blankNodePropertyList">blank node property list</a> syntax, this kind of pattern can be represented quite conveniently as follows:</p>
+          <p class="ednote">TODO: would be ideal if the equivalent simple-triples example could be shown side-by-side with the <a href="#bnodeprplist">blank node property lists</a> example, like <a href="https://www.w3.org/TR/turtle/#unlabeled-bnodes">here</a>.</p>
+          <pre id="address-bnode-prp-list"
+               class="example nohighlight"
+               data-transform="updateExample">
+            <!--
+            @prefix ex: <http://example.org/#> .
+            @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+
+            ex:john ex:address [
+              ex:street "Evergreen Terrace" ;
+              ex:number 742 ;
+              ex:town [ 
+                rdfs:label "Springfield"
+              ]
+            ] .
+      
+            # is equivalent to:
+      
+            ex:john ex:address _:a .
+            _:a ex:street "Evergreen Terrace" .
+            _:a ex:number 742 .
+            _:a ex:town _:t .
+            _:t rdfs:label "Springfield" .
+            -->
+          </pre>
+          <p>As shown, a <a href="#bnodeprplist">blank node property lists</a> relies on <a href="#polists">predicate object lists</a> to easily group statements about <a>blank nodes</a>. We also show the equivalent <a href="#simpletriples">simple triples</a> using <a>blank node identifiers</a>.</p>
+          <p class="note">In some cases, using a <a>blank node identifier</a> will simply feel more convenient and natural; e.g., in case you want to describe multiple people with the same address. Of course, we could still use an "inverse" <em>addressOf</em> property to add people with the same address to the <a href="#bnodeprplist">blank node property lists</a>, i.e., making <code>:john</code> just another element of the composite piece of information.</p>
+        </section>
+        <section id="bnode-use-cases">
+          <h4>Blank node use cases</h4>
+          <p>Below, we summarize typical use cases where <a>blank nodes</a> are used to describe resources.</p>
+          <p><strong>Unknown resources</strong>: we might <a href="rdf-primer#section-blank-node">want to state</a> that the Mona Lisa painting has in its background an unidentified tree, which we know to be a cypress tree. We could mint an <a>IRI</a> such as "mona-lisa-cypress-tree", but we feel that would be redundant &mdash; we simply want to describe the tree, such as the painting it is in, and the type of tree. We're not particularly interested in allowing other <a>N3 graphs</a> to refer to the tree. Moreover, there may already exist an <a>IRI</a> for that particular tree, and we don't want to mint another <a>IRI</a> to refer to the same tree (nor do we want to lookup this existing <a>IRI</a>).</p>
+          <p><strong>Composite information</strong>: when describing <a data-cite="rdf-primer#structuredproperties">composite pieces of information</a>, such as street addresses, telephone numbers and dates, it would be quite redundant to mint an <a>IRI</a> just for the purpose of structuring this information. It is unlikely that anyone outside this <a>N3 graph</a> would ever need to refer directly to the <a>IRI</a>. Instead, one can use an <a data-lt="blank node">RDF blank node</a> to connect the "composed" piece of information, e.g., the street address, to its composite values, e.g., street name, number, and city.</p>
+          <p><strong>N-ary relations</strong>: <a>blank nodes</a> are a convenient way to represent <a href="#naryrel">n-ary relations in <abbr title="Notation3">N3</abbr></a>.</p>
+          <!--
+            <pre class="example nohighlight">@prefix foaf: &lt;http://xmlns.com/foaf/0.1/&gt; .
+            
+            _:doerthe foaf:knows _:dominik .
+            _:dominik foaf:knows [ foaf:firstName &quot;William&quot; ].</pre>
+            -->
+        </section>
+      </section>
+      <section id='collections'>
+        <h3>Collections</h3>
+        <p>We often need to describe collections of things, e.g., a book written by several authors, listing the students in a course, or listing the software modules in a package. <abbr title="Notation3">N3</abbr> provides a succinct <dfn data-lt="n3 collection|n3 list|list">collection</dfn> syntax to represent (possibly empty) collections of terms enclosed by <code>(</code> <code>)</code>. The contained things are called "<dfn data-lt="collection member">members</dfn>".</p>
+        <p class="note">To an extent, an N3 collection <a href="#semantics">is equivalent to</a> the more verbose <a data-cite="rdf11-mt#rdf-collections">RDF Collection vocabulary</a>.</p>
+        <p>For instance:</p>
+        <pre class="example nohighlight" data-transform="updateExample">
+          <!--
+          @base <http://example.org/#> .
+
+          :dl_handbook a :Book ;
+              rdfs:label "The Description Logic Handbook: Theory, implementation, and applications" ;
+              :author ( :deborah :daniele :peter) .
+          -->
+        </pre>
+        <p>This states that the value of the author property is the <em>collection resource</em>. <strong>Important</strong>: any additional meaning, e.g., that (<em>a</em>) each member (e.g., <code>:deborah</code>) can be considered as a value of the author property (i.e., the author property "distributes" across the members), or that (<em>b</em>) the first member is the author who put the most effort into the book, <strong>is not given by the <abbr title="Notation3">N3</abbr> semantics</strong>.</p>
+        <p>That said, in this example, it would be reasonable to assume these two meanings &mdash; i.e., each member is a separate author of the book, and the first member put the most effort in the book. Nevertheless, such meanings would always be application-specific.</p>
+        <p>Alternatively, one could represent this information as follows, in such a way that explicates meaning (<em>a</em>):</p>
+        <pre class="example nohighlight" data-transform="updateExample">
+          <!--
+          @base <http://example.org/#> .
+
+          :dl_handbook a :Book ;
+              rdfs:label "The Description Logic Handbook: Theory, implementation, and applications" ;
+              :author :deborah, :daniele, :peter .
+          -->
+        </pre>
+        <p>I.e., we use an <a href="grammar-production-objectList">object list</a> to explicitly state that these members are separate values of the author property. We no longer need to assume meaning (<em>a</em>) since the RDF semantics already explicates that meaning.</p>
+        <p class="note">Since <abbr title="Notation3">N3</abbr> / RDF statements do not have an inherent order, this example loses meaning (<em>b</em>) since we no longer know who is the first author.</p>
+        <p>In the following example, we state that a resolution was approved by a group with members Fred, Wilma, and Dino:</p>
+        <pre class="example nohighlight" data-transform="updateExample">
+          <!--
+          @base <http://example.org/#> .
+
+          :resolution123 :approvedBy (:Fred :Wilma :Dino) .
+          -->
+        </pre>
+        <p>This states that the <em>collection resource</em> consisting of Fred, Wilma, and Dino approved the resolution. As before, the <abbr title="Notation3">N3</abbr> semantics do not imply that Fred, Wilma, and Dino <em>each individually</em> approved the resolution (i.e., the "approvedBy" property does not distribute across the <a>collection members</a>). In contrast to before, such a meaning, which would have to be application-specific, would not make sense either &mdash; it is possible that Fred and Wilma formed the majority that approved the resolution, and Dino was the dissenting voice.</p>
+        <p>In <abbr title="Notation3">N3</abbr>, collections may occur as subjects, predicates or objects in a statement. For instance:</p>
+        <pre class="example nohighlight" data-transform="updateExample">
+          <!--
+          @base <http://example.org/#> .
+
+          (:Fred :Wilma :Dino) :approved :resolution123 .
+          -->
+        </pre>
+        <p>Or even:</p>
+        <pre class="example nohighlight" data-transform="updateExample">
+          <!--
+          @base <http://example.org/#> .
+
+          (:Fred :Wilma :Dino) (:read :liked :approved) (:resolution1 :resolution2 :resolution3) .
+          -->
+        </pre>
+        <p>As before, any meaning that goes beyond the fact that three <a>collection</a> resources are involved in this statement, would be application-specific &mdash; for instance, that the predicate <code>(:read :liked :approved)</code> means that the subject <a>collection</a> did all those things for all members in the object <a>collection</a>.</p>
+        <!--
+          <pre class="example nohighlight">
+          @prefix foaf: &lt;http://xmlns.com/foaf/0.1/&gt; .
+          _:n3
+            foaf:member (
+              _:doerthe
+              _:william
+              _:dominik
+            ).</pre>
+              -->
+      </section>
+      <section id='cformulae'>
+        <h3>Cited Formulae</h3>
+        <p>
+          It is often useful to attach metadata to groups of triples (such as RDF graphs, named or unnamed) &mdash; to give the provenance, context, or version of the information, our opinion on the matter, and so on. We can use <dfn data-lt="cited formula">cited formulae</dfn> to quote RDF graphs, and then describe the <a>cited formulae</a> using <a>N3 statements</a>. For instance:
+        </p>
+        <pre class="example nohighlight" data-transform="updateExample">
+          <!--
+          @prefix dc: <http://purl.org/dc/terms/> .
+          @base <http://example.org/#> .
+
+          { :cervantes dc:wrote :moby_dick } :opinion :lie ;
+            :retrievedFrom <http://lies_r_us.com> ;
+            :retrievedAt "2020-07-12T09:01:33"^^xsd:dateTime .
+          -->
+        </pre>
+        <p>
+          Essentially, a <a>cited formula</a> records of the occurrence of an RDF graph (i.e., a <em>quoting</em>, or <em>citing</em>, of the graph). Importantly, a <a>cited formula</a> does not assert the contents of the RDF graph as being true (e.g., <code>:cervantes dc:wrote :moby_dick</code>). In fact, the <a>cited formula</a> is <a href="#semantics">interpreted as a resource on its own</a>.
+        </p>
+        <p>Since they represent quoted RDF graphs, <a>cited formulae</a> are not "referentially transparent". For instance:</p>
+        <pre class="example nohighlight" data-transform="updateExample">
+          <!--
+          @base <http://example.org/#> .
+
+          :LoisLane :believes { :Superman :can :fly } .
+          -->
+        </pre>
+        <p>This <a>N3 statement</a> states that Lois Lane believes that Superman can fly. Even if it is known that <code>:Superman</code> is the same as <code>:ClarkKent</code>, one cannot infer from this that <code>:ClarkKent</code> can fly. In this case, this is an accurate depiction of Lois Lane's statement at the time &mdash; she did not know that Superman is Clark Kent at that point, so she would certainly not say that Clark Kent is able to fly.</p>
+        <p><a>Cited formulae</a> can be used in any position in an <a>N3 statement</a>. ...</p>
+      </section>
+      <section id='paths'>
+        <h4>Paths</h4>
+        <p>It also useful to describe a relationship between
+          two resources which spans several other anonymous resources.
+          <abbr title="Notation3">N3</abbr> provides a syntax similar to
+          <a data-cite="SPARQL11-QUERY#propertypaths">SPARQL property paths</a> [[SPARQL11-QUERY]].</p>
+        <p><abbr title="Notation3">N3</abbr> has the concept of a <dfn data-lt="resource path">path</dfn>
+          used to describe a relationship from some <a>N3 triple element</a>
+          to a <a>blank node</a>.
+          In the <abbr title="Notation3">N3</abbr>-turtle syntax,
+          a <a href="#grammar-production-path">path</a> starts
+          with a <a href="#grammar-production-pathItem">pathItem</a>
+          representing a specific <a>N3 triple element</a>
+          followed by a path of one or more predicates,
+          separated by <a>directional indicators</a> for
+          forward ("`!`") and reverse ("`^`") relationships.
+          In the forward direction, a path describes a relationship from a specific
+          <a>N3 triple element</a> (such as an <a>IRI</a>) to a <a>blank node</a>.
+          In the reverse direction, it describes the relationship
+          from a <a>blank node</a> to some <a>N3 triple element</a>.
+          Successive indicator/<a href="#grammar-production-pathItem">pathItem</a>
+          pairs describe subsequent relationships with the trailing
+          <a href="#grammar-production-pathItem">pathItem</a> describing
+          the relationship <a data-cite="RDF11-CONCEPTS#dfn-predicate">predicate</a>.</p>
+
+        <p class="note">In SPARQL, a property path is used in the
+          <a data-cite="RDF11-CONCEPTS#dfn-predicate">predicate</a>
+          position to describe a string of relationships between
+          a <a data-cite="RDF11-CONCEPTS#dfn-subject">subject</a>
+          and an <a data-cite="RDF11-CONCEPTS#dfn-object">object</a> resource.
+          Although unrestricted in <abbr title="Notation3">N3</abbr>, a
+          <a>resource path</a> is most often used in the
+          <a data-cite="RDF11-CONCEPTS#dfn-subject">subject</a> or
+          <a data-cite="RDF11-CONCEPTS#dfn-object">object</a> position.</p>
+
+        <p>Each path segment can be thought of as a shorthand for
+          an existing relationship.
+          For example, for a
+          <a data-cite="RDF11-CONCEPTS#dfn-predicate">predicate</a> |p|
+          and <a href="#grammar-production-pathItem">pathItem</a> or <a>path</a> |x|,
+          <code><var>x</var>!<var>p</var></code> is equivalent to
+          <code>[ is <var>p</var> of <var>x</var> ]</code>.
+          Similarly, <code><var>x</var>^<var>p</var></code> is equivalent to
+          <code>[ <var>p</var> <var>x</var> ]</code>.
+          Thus, the result is always a <a>blank node</a>.</p>
+
+        <p>The expansion of a <a>path</a> is equivalent to unwinding
+          these relationships.</p>
+
+        <aside class="example" title="Forward path chain">
+          <p>The following example of a forward path describes
+            a relationship between Joe's mother's office's zipcode:</p>
+
+          <pre data-transform="updateExample">
+            <!--
+            @base <http://example.org/#> .
+
+            :joe!:mother!:office!:zip a :Zipcode .
+            -->
+          </pre>
+
+          <p>This could equally well be represented by the more verbose:</p>
+
+          <pre data-transform="updateExample">
+            <!--
+            @base <http://example.org/#> .
+
+            [is :zip of [is :office of [is :mother of :joe]]] a :ZipCode .
+            -->
+          </pre>
+        </aside>
+
+
+        <aside class="example" title="Mixed path chain">
+          <p>The following example of a path composed of both forward
+            and reverse relationship describes
+            a someone who is Joe's grandmother:</p>
+
+          <pre data-transform="updateExample">
+            <!--
+            @base <http://example.org/#> .
+
+            :joe!:mother^:mother a :Person .
+            -->
+          </pre>
+
+          <p>This could equally well be represented by the more verbose:</p>
+
+          <pre data-transform="updateExample">
+            <!--
+            @base <http://example.org/#> .
+
+             [ :mother [is :mother of :joe]] a :Person .
+            -->
+          </pre>
+        </aside>
+
+      </section>
+
+      <section id='variables'>
+        <h3>Variables and Quantification</h3>
+        <p class="ednote">Bla...</p>
+        <pre class="example" data-transform="updateExample">
+          <!--
+          Preformatted Text 
+          all
+          whitespaces
+          are important
+          here
+          -->
+        </pre>
+      </section>
+      <section id='logimpl'>
+        <h3>Logical Implications</h3>
+        <p class="ednote">Bla...</p>
+        <pre class="example nohighlight" data-transform="updateExample">
+          <!--
+          @prefix foaf: <http://xmlns.com/foaf/0.1/> .
+
+          {
+          _:doerthe foaf:knows _:dominik .
+          }
+          =>
+          {
+          _:dominik foaf:knows _:doerthe .
+          } .
+          -->
+        </pre>
+      </section>
+      <section id='keywords'>
+        <h4>Keywords and special symbols</h4>
+        <p class="ednote">Bla...</p>
+        <pre class="example nohighlight" data-transform="updateExample">
+          <!--
+          @prefix foaf: <http://xmlns.com/foaf/0.1/> .
+
+          <http://example.org/#dt> a foaf:Person ;
+              foaf:name "Dominik Tomaszuk" ;
+              = <http://example.org/#dominik> .
+          -->
+        </pre>
+      </section>
+    </section>
+    <section id='concepts'>
+      <h2>Syntactic Concepts and Terminology</h2>
+      <p> 
+        In this section we give an overview of the syntax of <abbr title="Notation3">N3</abbr>.
+        <abbr title="Notation3">N3</abbr> is an extension of RDF. We use the following concepts from the [[[RDF11-CONCEPTS]]]: <a data-cite="RDF11-CONCEPTS#dfn-iri">IRI</a>, <a data-cite="RDF11-CONCEPTS#dfn-rdf-triple">RDF triple</a>, <a data-cite="RDF11-CONCEPTS#dfn-rdf-graph">RDF graph</a>, <a data-cite="RDF11-CONCEPTS#dfn-subject">subject</a>, <a data-cite="RDF11-CONCEPTS#dfn-predicate">predicate</a>, <a data-cite="RDF11-CONCEPTS#dfn-object">object</a>, <a data-cite="RDF11-CONCEPTS#dfn-rdf-source">RDF source</a>, <a data-cite="RDF11-CONCEPTS#dfn-node">node</a>, <a data-cite="RDF11-CONCEPTS#dfn-blank-node">blank node</a>, <a data-cite="RDF11-CONCEPTS#dfn-literal">literal</a>,  <a data-cite="RDF11-CONCEPTS#dfn-graph-isomorphism">isomorphic</a>, and <a data-cite="RDF11-CONCEPTS#dfn-generalized-rdf-triple">generalized RDF triples, graphs, and datasets</a>. 
+      </p>
+      <p>
+        The examples above as well as the examples in the remainder of this document all follow <abbr title="Notation3">N3</abbr>-turtle syntax which is also the standard syntax for <abbr title="Notation3">N3</abbr>. 
+        It is however possible, to use alternative syntaxes as long as the translation to <abbr title="Notation3">N3</abbr> turtle syntax is clearly defined.
+      </p>
+      <section id='terms'>
+        <h3>Terms</h3>
+        <p>
+          In order to define the set of all terms of <abbr title="Notation3">N3</abbr> we to add several definitions to the RDF concepts above which extend the syntax of RDF to <abbr title="Notation3">N3</abbr>: 
+        </p>
+        <p>
+          The set of <dfn>N3 symbols</dfn> consists of the set of <a>N3 triple elements</a> and the 
+          <a>universal variables</a> which are defined below.
+        </p>
+        <p>
+          The set of <dfn data-lt="triple element|n3 triple element">N3 triple elements</dfn> consists of the disjoint sets of
+          <a data-cite="RDF11-CONCEPTS#dfn-iri">IRIs</a>, 
+          <a data-cite="RDF11-CONCEPTS#dfn-blank-node">blank nodes</a>,
+          <a data-cite="RDF11-CONCEPTS#dfn-literal">literals</a>,  
+          <a>universal variables</a>,
+          <a>lists</a>,
+          <a>quoted graphs</a>,
+          and of one implication sign.
+          The latter is denoted by the `log:implies` <a>built-in</a> to indicate implication. 
+          In <abbr title="Notation3">N3</abbr>-turtle syntax, `log:implies` MAY be represented using the symbol <code>=&gt;</code>.
+        </p>
+        <p>
+          The set of <dfn data-lt="quantifier">N3 quantifiers</dfn> consists of the universal quantifier and the existential quantifier.
+          In <abbr title="Notation3">N3</abbr>-turtle syntax,
+          we denote the universal quantifier using <a>universal variables</a>
+          and the existential quantifier using <a>blank nodes</a>.
+        </p>
+        <p>
+          The set of <dfn data-lt="universal">universal variables</dfn> is an arbitrary set of symbols which is disjoint to all other <a>N3 triple elements</a>. 
+          In <abbr title="Notation3">N3</abbr>-turtle syntax, universal variables are represented by strings starting with a question mark <code>?</code>.
+        </p>
+        <p>
+          <dfn>Lists</dfn> are ordered sets consisting of zero or more <a>N3 triple elements</a>. 
+          We call the list which has no elements the empty list. In <abbr title="Notation3">N3</abbr>-turtle syntax, 
+          we indicate lists by using round brackets <code>()</code>. 
+          The empty list in <abbr title="Notation3">N3</abbr> is equivalent to the empty list in RDF and can thus also be represented using <a href="https://www.w3.org/TR/rdf11-mt/#rdf-interpretations">rdf:nil</a>.
+        </p>
+        <p>
+          <dfn data-lt="quotes">Quoted graphs</dfn> are <a>N3 formulae</a> which are surrounded by quoting signs. 
+          In <abbr title="Notation3">N3</abbr>-turtle syntax, we denote these quoting signs as curly brackets <code>{}</code>.
+          <div class="ednote">We use both <a>quoted graphs</a>,
+            and <a>cited formulae</a>.
+            The destinction can be confusing,
+            particularly as they use the same syntactic representation.
+            We also define <a>quantified N3 formulae</a> and <a>N3 formulae</a>.
+            We need a section that clarifies the different interpretations,
+            or we need to merge some of these definitions.</div>
+        </p>
+      </section>
+      <section id='formulae'>
+        <h3>Formulae</h3>
+        <p>
+          A <dfn data-lt="quantified formula|quantified formulae|quantified n3 formulae">quantified N3 formula</dfn>
+          consists of pair of a <a>quantification</a> and an
+          <a>N3 formula</a> `f`,
+          where a <dfn>quantification</dfn>
+          consists of a <a>quantifier</a> |Q| and an <a data-cite="RDF11-CONCEPTS#dfn-IRI">IRI</a> |x|. 
+          For a quantified N3 formula <code>Qx <var>f</var></code>, we call |x| the quantified element and say that |x| is quantified in |f|.
+        </p>
+          An <dfn data-lt="n3 formulae">N3 formula</dfn> is either an <a>N3 statement</a>, a <a>quantified N3 formula</a>, 
+          or a sequence of <a>N3 formulae</a>. 
+        </p>
+      </section>
+    </section>
+    <section id='semantics'>
+      <h2>Semantics</h2>
+      <p>On top of the syntax as described above, we now define <abbr title="Notation3">N3</abbr>'s semantics. As an auxiliary construct we first introduce closed formulae and ground terms and
+      then give a definition of simple interpretations. These are interpretations for formulae which do not include negation nor any special built-in functions.
+      </p>
+           <section id='cgraphs'>
+        <h3>Closed graphs and ground formulae</h3>
+        <p>
+        <abbr title="Notation3">N3</abbr> supports implicit quantification;
+        that is, one can state quantified variables without explicitly stating the quantifier.
+        To do that, we use <a>universal variables</a>,
+        which are implicitly universally quantified, and
+        <a data-cite="RDF11-CONCEPTS#dfn-blank-node">blank nodes</a>,
+        which are implicitly existentially quantified. 
+        </p>
+       <p>
+       In this context it is important to note that not only the kind of the quantifier is matters but also its scope, i.e. the exact parts the quantification is valid for, and the exact position of the quantifier. 
+To illustrate that consider the following example:
+       </p>
+      <pre class="example nohighlight" data-transform="updateExample">
+        <!--
+        @prefix: <http://example.org/#> .
+
+        :Fred :doubts {_:x a :Unicorn}.
+        -->
+      </pre>
+
+       <p>Here, the blank node `_:x` is existentially quantified,
+         but without any further specification,
+         the triple could mean either
+         (a) that there exists some |x| of which Fred doubts that it is a unicorn, or 
+         (b) that Fred doubts that unicorns exist.
+         <abbr title="Notation3">N3</abbr> follows option (b).</p>
+      </section>
+      <section id='sinterpret'>
+        <h3>Simple N3 interpretations</h3>
+        <p class="ednote">Bla...</p>
+      </section>
+      <section id='sneg'>
+        <h3>Scoped Negation</h3>
+        <p class="ednote">Bla...</p>
+      </section>
+	</section>
+	
+  <section id='builtins'>
+	<h3>N3 built-ins</h3>
+	<p><abbr title="Notation3">N3</abbr> defines a core set of <dfn data-lt="builtin">built-ins</dfn>: these are predicates 
+	with pre-defined semantics for querying, manipulating and reasoning over <a>N3 documents</a>. 
+	built-ins are grouped into distinct vocabularies depending on the <a>N3 triple elements</a> they operate on (e.g., string, list), 
+	or their particular topic (e.g., time, cryptography, log).
+	built-ins are denoted by a controlled IRI defined in one of the core built-in namespaces:</p>
+		<ul>
+		  <li><a href="../ns/crypto.html">Crypto</a> –
+			<a href="http://www.w3.org/2000/10/swap/crypto#">http://www.w3.org/2000/10/swap/crypto#</a>,</li>
+		  <li><a href="../ns/list.html">List</a> –
+			<a href="http://www.w3.org/2000/10/swap/list#">http://www.w3.org/2000/10/swap/list#</a>,</li>
+		  <li><a href="../ns/log.html">Log</a> –
+			<a href="http://www.w3.org/2000/10/swap/log#">http://www.w3.org/2000/10/swap/log#</a>,</li>
+		  <li><a href="../ns/math.html">Math</a> –
+			<a href="http://www.w3.org/2000/10/swap/math#">http://www.w3.org/2000/10/swap/math#</a>,</li>
+		  <li><a href="../ns/string.html">String</a> –
+			<a href="http://www.w3.org/2000/10/swap/string#">http://www.w3.org/2000/10/swap/string#</a>, and</li>
+		  <li><a href="../ns/time.html">Time</a> –
+			<a href="http://www.w3.org/2000/10/swap/time#">http://www.w3.org/2000/10/swap/time#</a>.</li>
+		</ul>
+	
+	<p>A built-in definition is structured as follows:
+		<ul>
+			<li><b>schema</b>: set of <a>arguments</a> defined in terms of the <a>N3 triple elements</a> in a built-in statement for which they act as placeholders.</li>
+			<li><b>domain</b>: expected <a>domain datatypes</a> for the built-in arguments. Casting may take place if the <a>value datatype</a> does not correspond to the domain datatype.</li>
+			<li><b>inputs and outputs</b>: <a>input arguments</a> and <a>output arguments</a>.</li>
+			<li><b>summary</b>: a human-readable summary of the function of the built-in.</li>
+		</ul>
+		
+		We define these concepts in more detail below.
+	</p>
+	
+	<section id="builtins_args">
+		<h4>Input and output arguments</h4>
+		<p>An N3 <a>built-in</a> operates on its arguments. An <dfn>argument</dfn> is a placeholder that refers to an <a>N3 triple element</a> from the <dfn>built-in statement</dfn>, i.e., the <a>N3 statement</a> where the built-in acts as a predicate.</p>
+		<p>In the simplest case, there are two arguments that respectively refer to the subject and object of the built-in statement. For instance, statements such as `1 math:lessThan 2` are true if the subject is less than the object. Hence, built-in `math:lessThan` has two arguments `$a_1` and `$a_2`, which is written as follows: `$a_1 math:lessThan $a_2`. (In this section, arguments are prefixed with `$a`.)</p>
+		<p>Arguments can be also represent a "deconstruction" of the subject or object in case of lists or cited formulas. For instance, `(1 2 3) math:sum 6` calculates the sum of a list of numbers. Hence, the built-in `math:sum` has arguments `$a_1` .. `$a_n` and `$a_sum`, which is written as follows: `($a_1 .. $a_n) math:sum $a_sum`. </p>			
+		<p>In a built-in statement, if an argument refers to a concrete <a>N3 triple element</a> (i.e., either a concrete literal or a bound variable) within the built-in statement, we call its referent a built-in <dfn>input</dfn>, else, we call its referent a built-in <dfn>output</dfn>.
+		<p>In some cases, an N3 built-in will only support outputs for one argument:
+			e.g., `math:sum` only supports outputs for `$a_sum`.
+			In other cases, an N3 built-in only supports inputs for all arguments: 
+			e.g., `math:lessThan` only supports inputs for `$a_1` and `$a_2`.
+			In rarer cases, an N3 built-in can support outputs for several arguments:
+			e.g., for `35 math:cos ?x`, the `math:cos` of `35` will be calculated; for `?x math:cos 0.57` the inverse operation (`math:acos`) for `0.57` will be calculated.
+		</p>
+		<p>The set of arguments, and whether they are allowed to have inputs or outputs, are defined per N3 built-in. An argument that is allowed to have output referents is called an <dfn>output argument</dfn>; otherwise, it is called an <dfn>input argument</dfn>.</p>
+		<p class="ednote">The choice of allowing an argument as output is typically dictated by the need to avoid an infinite amount of results, intractable calculations, and general constraints that weigh utility vs. implementation difficulty.<br /><br />
+		For instance, it would be perfectly possible to allow a single operand argument in `math:sum` to be an output in case the result argument is an input (e.g., `(1 ?o ?3) math:sum 6`) &mdash; but this complicates the implementation of the built-in while offering only limited utility.</p>
+	</section>
+	
+	<section id="builtin_arg_domains">
+		<h4>Argument domains</h4>
+		<p>An N3 built-in has an expected datatype for its arguments, called the <dfn>domain datatype</dfn>. If the datatype of an argument referent or value, called the <dfn>value datatype</dfn>, does not match the domain datatype, it may be possible to cast the value's datatype to, or substitute it for, the domain datatype.</p>
+		<p>The expected datatypes of arguments, i.e., domain datatypes, are defined per N3 built-in.</p>
+		<p>If the <a>value datatype</a> and <a>domain datatype</a> do not match, and no casting or substitution is possible, the built-in statement will be considered false. (This is in line with the concept of the built-in <a>theory box</a>: a BPG search using the built-in statement will not match any statement in the theory box when literal datatypes do not match.</p>
+		
+    <section>
+		<h5>Numeric datatype promotion and substitution</h5>
+		<p>If the numeric <a>value datatype</a> does not match the <a>domain datatype</a>, it may be possible to promote or substitute the numeric value datatype:</p>
+		
+		<p><b>Numeric type promotion</b>: A numeric value datatype that <a href="https://www.w3.org/TR/xmlschema-2/#dt-derived">is derived from</a> the domain datatype can be promoted to the latter (e.g., `xs:integer` is derived from `xs:decimal`). This is done by casting the original value to the required datatype.</p>
+		<p>If there is no direct derivation relation between the value and domain datatype, the following numeric type promotions can take place:
+			<ul>
+				<li>A value of type `xs:float` (or any type derived from `xs:float`) can be promoted to type `xs:double`. The result is an `xs:double` value that is the same as the original value.</li>
+				<li>A value of type `xs:decimal` (or any type derived from `xs:decimal`) can be promoted to either of the types `xs:float` or `xs:double`.</li>
+			</ul>
+		</p>
+		
+		<p><b>Numeric type substitution</b>: If <i>all values</i> have the same numeric datatype, and this datatype <a href="https://www.w3.org/TR/xmlschema-2/#dt-derived">is derived from</a> the domain datatype (e.g., `xs:integer` is derived from `xs:decimal`), then the values can be used without any casting. For example, if two `xs:integer` values are used for input where `xs:decimal` domains are expected, then the values retain their datatype as `xs:integer`. The substituted numeric datatype (in this case, `xs:integer`) will also apply to the built-in's output, if any.</p>
+
+		<p><b>built-ins operating on any numeric type</b>: some N3 built-ins (e.g., `math:sum`) operate on values of any numeric type (i.e., `xs:numeric`, the union of `xs:double`, `xs:float`, and `xs:decimal`). I.e., their concrete input values may present any combination of numeric types. In that case, the built-in can only be applied if all value datatypes can be promoted into <i>a common numeric datatype</i> in the ordered list `(xs:integer, xs:decimal, xs:float, xs:double)`. If so, at that point, we rely on numeric type substitution. For instance:
+			<ul>
+				<li>For a built-in with `xs:numeric` domain datatypes, given two value datatypes `xs:integer` and `xs:decimal`, the `xs:integer` value will be promoted to `xs:decimal` as the common numeric datatype. At that point, the two `xs:decimal` datatypes can be substituted for `xs:numeric` (numeric type substitution). If the built-in has an output, then the calculated value for this output will also have datatype `xs:decimal`.</li>
+				<li>For a built-in with `xs:numeric` domain datatypes, given two values with datatype `xs:integer`, the `xs:integer` datatype will simply be substituted for `xs:numeric`. If the built-in has an output, then the calculated value for the output will also have datatype `xs:integer`.</li>
+			</ul>
+		</p>
+    </section>
+		
+    <section>
+		<h5>Other kinds of datatype casting</h5>
+
+		<p>If the non-numeric <a>value datatype</a> does not match the <a>domain datatype</a>, it may be possible to cast the value datatype to the domain datatype:</p>
+    </section>
+		
+    <section>
+		<h6>String</h6>
+		<p>A literal will be considered a "string" when it has an `xs:string` datatype, a `rdf:langString` datatype due to the presence of a language tag, or when it lacks a datatype.</p>
+		
+		<p><b>Casting from string</b>: if an input value has an `xs:string` datatype that does not match the domain, it may be possible to cast the string to the domain datatype, as <a href="https://www.w3.org/TR/xpath-functions/#casting-from-strings">defined in XPath</a>. The resulting value representation must be a valid lexical form for the domain datatype.</p>
+		<p><b>Casting to string</b>: if an input value is an IRI, or any kind of literal (incl. type `xs:anyUri` or its derivations), and the domain is `xs:string`, then the value will be cast to a string as <a href="https://www.w3.org/TR/xpath-functions/#casting-to-string">defined in XPath</a> along with additional rules <a href="https://www.w3.org/TR/sparql11-query/#FunctionMapping">defined for SPARQL 1.1</a>.</p>
+    </section>
+		
+    <section>
+		<h6>Other datatypes</h6>
+		
+		<p>Other types of datatype casting may take place as <a href="https://www.w3.org/TR/xpath-functions/#casting">defined in XPath</a>. 
+
+		<p class="ednote">There is a useful chart for casting primitive types to primitive types in <a href="https://www.w3.org/TR/xpath-functions/#casting-from-primitive-to-primitive">XPath</a>, a subset of which is defined for <a href="https://www.w3.org/TR/sparql11-query/#FunctionMapping">SPARQL</a>.</p>
+    </section>
+	</section>
+	
+	<section id="builtin_operations">
+		<h4>built-in operations</h4>
+						
+		<p>Generally, depending on the built-in <a>inputs</a> and <a>outputs</a> in a <a>built-in statement</a>, the following will take place:
+			<ol>
+				<li><dfn>checking</dfn> the truthfulness of the statement, or </li>
+				<li><dfn>calculating</dfn> one or more values for the outputs so as to ensure the truthfulness</li>
+			</ol>
+		</p>
+		<p>If a built-in statement only has inputs, the truthfulness of the statement will be checked. For instance, in the statement `(2 1) math:sum 3`, the built-in `math:sum` will check whether `2 + 1 = 3`.</p>
+		<p>If a built-in statement has both inputs and outputs, one or more values can be calculated for the outputs so as to ensure its truthfulness. For instance, given `(2 1) math:sum ?s`, the N3 system will calculate value `3` for output `?s`.</p>
+		<p>These operations may include casting or substituting values to different domains, as discussed in <a href="#builtin_arg_domains">Argument domains</a>.</p>
+			
+    <section>
+		<h5>built-in theory box</h5>
+		<p>Before elaborating on these operations, we point out that a built-in statement can be more conventiently seen as a <i>constrained</i> basic graph pattern (BPG) search on the N3 built-in’s <dfn>theory box</dfn>, defined to include all truthful built-in statements for the N3 built-in.</p>
+		<p>The two operations mentioned, i.e., <a>checking</a> and <a>calculating</a>, can be defined in terms of this constrained BGP search. This leaves the particular theory box to be defined per N3 built-in. N3 built-ins are currently not defined in this manner, though.</p>
+		
+		<p>For eample, for the `math:sum` built-in, simply put, the theory box includes all built-in statements `($a_1 .. $a_n) math:sum $a_sum`, where all arguments have datatype `xs:numeric`, and where the sum of `$a_1 .. $a_n` equals `$a_sum`. Regarding operation (1), the built-in statement `(2 1) math:sum 3` is found in the built-in's theory box, meaning the statement is true. Regarding operation (2), the built-in statement `(2 1) math:sum ?sum`, matches the built-in statement `(2 1) math:sum 3` in the built-in's theory box. Hence, `3` is calculated as value for output `?sum` that ensures the truthfulness of the built-in statement.</p>
+		
+		<p>This BPG search is <i>constrained</i> in that it will never return infinite numbers of values. For instance, for the `math:sum` built-in, the theory box includes an infinite number of truthful built-in statements matching the built-in statement `(?a 1) math:sum ?s`. In this case, instead of calculating infinite numbers of values, the truthfulness of the statement will simply be acknowledged.</p>
+		
+		<p class="endnote">The BGP search is, technically speaking, further constrained depending on what arguments are allowed as <a>outputs</a>. For example, the built-in statement `(1 ?o) math:sum 2` only matches a single statement in the built-in's theory box, but the `math:sum` built-in only allows the sum to be an output.</p>
+		
+		<p class="ednote">It may be counter-intuitive that a <a>built-in statement</a>, where the variables needed to calculate an <a>output</a> are not all concrete <a>inputs</a> (e.g., `(?a 1) math:sum ?s`), will not cause an N3 rule to fail, since the built-in statement will be considered true.<br /><br />
+		This may have unintended consequences: instead of the rule failing, rule heads will be instantiated that include unbound universal variables (e.g., `?sum`). As a result, N3 systems are expected to generate witnesses in such cases (link..).</p>
+      
+    </section>
+		
+    <section class="algorithm">
+		<h5>Built-in algorithm</h5>
+		<p>In line with the concept of a built-in theory box, we can define an algorithm to perform <a>checking</a> and <a>calculating</a> operations.</p>
+		<p>Depending on the definition of the built-in, with supported <a>output arguments</a> and <a>domain datatypes</a>, and the built-in <a>inputs</a> and <a>outputs</a> found in <a>built-in </a>statement:</p>		
+		<ol>
+			<li>If the <a>value datatypes</a> of inputs do not correspond to <a>domain datatypes</a> of arguments, and no datatype casting is possible, then the built-in statement is false. For instance, 
+				<ul>
+					<li>Given `(2 "a") math:sum 3`, since the value datatype `xs:string` of input `"a"` does not match domain datatype `xs:numeric`, and no casting is possible, the built-in statement is false.</li>
+				</ul>
+			</li>
+			<li>Else:
+				<ol>
+					<li>If only built-in <a>inputs</a> are found in a built-in statement, then the truthfulness of the statement will be checked. For instance,
+						<ul>
+							<li>Given `(2 1) math:sum 3`, since `2 + 1 = 3` is true, the built-in statement is true.</li>
+							<li>Given `(2 1) math:sum 5`, since `2 + 1 = 5` is false, the built-in statement is false.</li>
+						</ul>
+					</li>
+					<li>Else:
+						<ol>
+							<li>If built-in <a>outputs</a> in a built-in statement are not referents of a built-in <a>output argument</a>, then the built-in statement is considered true. For instance, 
+								<ul>
+									<li>Given `(?a 1) math:sum ?s`, since `?a` is not a referent of an output argument, the built-in statement is true.</li>
+									<li>Given `?l math:sum 5`, since `?l` is not a referent of an output argument, the built-in statement is true.</li>
+								</ul>
+							</li>
+							<li>If built-in <a>outputs</a> in a built-in statement are all referents of built-in <a>output arguments</a>, then, if possible, values can be calculated for the outputs so as to ensure the truthfulness of the built-in statement. If this is not possible, then the built-in statement is false. For instance, 
+								<ul>
+									<li>Given `(2 1) math:sum ?s`, the value `3` can be calculated and bound to output `?s` , and the resulting built-in statement is true.</li>
+									<li>Given `(1 "a" 3) list:member ?m`, three values can be calculated and bound to output `?m`, namely `1`, `"a"` and `3`, and the resulting built-in statements are true.</li>
+									<li>Given `("a" "b" "c") list:member (?p "x")`, no values can be calculated for output `?p` since `"x"` does not occur in the input list, and the built-in statement is false.</li>
+								</ul>
+							</li>
+						</ol>
+					</li>
+				</ol>
+			</li>
+		</ol>
+    </section>
+	</section>
+	
+	<section id="builtins_use_cases">
+		<h4>Built-in use cases</h4>
+		<p>Here we look at how the various built-ins can be combined and utilized in example use cases.</p>
+		
+    <section>
+		<h5>Task workflows</h5>
+		
+		<p>Using `log:forAllIn`, one can check whether certain elements adhere to a given condition, and, if so, infer a conclusion. 
+		For instance, to denote a task as completed in case all its subtasks are completed:</p>
+		
+		<pre class="example nohighlight" data-transform="updateExample">
+          <!--
+			:taskA a :CompositeTask ;
+				:subtask :taskA1 ;
+				:subtask :taskA2 .
+			:taskA1 a :Completed .
+			:taskA2 a :Completed .
+			
+			{ ?task a :CompositeTask . 
+			({ ?task :subtask ?subtask } { ?subtask a :Completed }) log:forAllIn _:x . 
+
+			} => { ?task a :Completed } .
+		  -->
+		</pre>
+		<p>In case the implication `{ ?task :subtask ?m } { ?m a :Completed }` holds for all statements for the current context `_:x`, then the <a>built-in statement</a> will be true, and the conclusion `?task a :Completed` will be inferred.</p>
+		
+		<p>Using `log:collectAllIn`, one can collect all elements adhering to certain conditions into a list.
+		For instance, to collect all completed tasks within a given workflow:
+		
+		<pre class="example nohighlight" data-transform="updateExample">
+          <!--
+			:workflowA a :Workflow ;
+				:includes :taskA , :taskB .
+			:taskA a :Completed .
+			:taskB a :Completed .
+			
+			{ ?workflow a :Workflow;
+			  (?task { ?workflow :includes ?task . ?task a :Completed } ?completed) log:collectAllIn _:x .
+			
+			} => { ?workflow :completed ?completed } .
+		  -->
+		  <p>The <a>built-in statement</a> collects all `?task` bindings, i.e., for which the `{ ?workflow :includes ?task . ?task a :Completed }` statements are true, into the `?completed` list for the current context `_:x`, and infers the conclusion.</p>
+		</pre>
+    </section>
+	</section>	
+  </section>
+  
+    <section id='n3grammar'>
+      <h2><abbr title="Extended Backus–Naur Form">EBNF</abbr> Grammar</h2>
+      <p>The <a data-cite="TURTLE#sec-grammar-grammar">Turtle grammar</a> was used as the starting point for the <dfn>N3 grammar</dfn>, which was subsequently adapted and extended with <abbr title="Notation3">N3</abbr> constructs.</p>
+      <p>The <abbr title="Notation3">N3</abbr> Working Group made the following decisions that modify the <a>N3 grammar</a> as originally presented in [[N3]]:
+      <ul>
+        <li>
+          Dropping the <code>@keywords</code> declaration. It is complex and difficult to explain. Also, when using the declaration, <a>N3 documents</a> look wholly different from when it is not being used, since it allows <a>local names</a> in the default namespace to be listed without the "<code>:</code>" symbol.
+        </li>
+        <li>
+          Supporting all verb and boolean keywords (<code>is .. of</code>, <code>has</code>, <code>a</code>, <code>true</code>, <code>false</code>) both with and without "<code>@</code>" prefix. Turtle supports the <code>a</code> keyword, i.e., without an "<code>@</code>", but requires the symbol for the <code>@prefix</code> and <code>@base</code> declarations. The <a data-cite="N3#grammar">original N3 grammar</a> required the "<code>@</code>" prefix for all verb and boolean keywords. Hence, this decision was made for compatibility with Turtle as well as to avoid an unintuitive grammar, i.e., where some keywords have the "<code>@</code>" prefix and some don't.
+        </li>
+        <li>
+          Representing an inverted property using the <code>&lt;-</code> symbol. The <a data-cite="N3#grammar">original N3 grammar</a> allowed the inverting of a property by using the <code>@is .. @of</code> construct. But, this construct can be unintuitive when property names are more verbosely specified (e.g., <code>:hasFather</code>), leading to statements such as <code>?x @is :hasFather @of ?y</code>. The <code>is .. of</code> construct is still supported, but the above statement can now be represented as follows: <code>?x &lt;- :hasFather ?y</code>. 
+        </li>
+      </ul>
+      <section id='whitespace'>
+        <h3>Whitespace</h3>
+        <p>White space (<a href="#grammar-production-WS">WS production</a>) is used to separate terminals. The amount and type of white space (e.g., newline (`%20`) or space (`%0A`)) is only significant within terminals.</p>
+    <p>We note that the <a href="#grammar-production-IRIREF">IRIREF</a> production only allows IRI-encoded white spaces.</p>
+      </section>
+      <section id='comments'>
+        <h3>Comments</h3>
+        <p>Comments are indicated using a "<code>#</code>" symbol outside an N3 terminal (e.g., <a href="#grammar-production-IRIREF">IRIREF</a>, <a href="#grammar-production-STRING">STRING</a>) and will continue until the end of the line (indicated by <code>\r</code>, <code>\n</code> or <code>\f</code>) or end of file, if there is no end of line marker.</p>
+        <p>All recognized comment terminals will be skipped by the grammar (i.e., a resulting parser will not call listener or visitor code when encountering a comment.)</p>
+      </section>
+      <section id='escseq'>
+        <h3>Escape sequences</h3>
+        <p>There are three forms of escapes used in <a>N3 documents</a>:</p>
+        <ul>
+          <li>
+            Escape sequences in string literals. These are characters that are traditionally escaped in strings:
+            <table>
+              <thead>
+                <tr>
+                  <th>Escape sequence</th>
+                  <th>Unicode code point</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>'\t'</td>
+                  <td>U+0009</td>
+                </tr>
+                <tr>
+                  <td>'\b'</td>
+                  <td>U+0008</td>
+                </tr>
+                <tr>
+                  <td>'\n'</td>
+                  <td>U+000A</td>
+                </tr>
+                <tr>
+                  <td>'\r'</td>
+                  <td>U+000D</td>
+                </tr>
+                <tr>
+                  <td>'\f'</td>
+                  <td>U+000C</td>
+                </tr>
+                <tr>
+                  <td>'\&quot;'</td>
+                  <td>U+0022</td>
+                </tr>
+                <tr>
+                  <td>'\''</td>
+                  <td>U+0027</td>
+                </tr>
+                <tr>
+                  <td>'\\'</td>
+                  <td>U+005C</td>
+                </tr>
+              </tbody>
+            </table>
+            (see the <a href="#grammar-production-ECHAR">ECHAR</a> production)          
+          </li>
+          <li>
+            Numeric escape sequences. These represent Unicode code points:
+            <table>
+              <thead>
+                <tr>
+                  <th>Escape sequence</th>
+                  <th>Unicode code point</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>'\u' <a href="#grammar-production-HEX">hex</a> <a href="#grammar-production-HEX">hex</a> <a href="#grammar-production-HEX">hex</a> <a href="#grammar-production-HEX">hex</a></td>
+                  <td>A Unicode character in the range U+0000 to U+FFFF inclusive
+                    corresponding to the value encoded by the four hexadecimal digits interpreted from most significant to least significant digit.
+                  </td>
+                </tr>
+                <tr>
+                  <td>'\U' <a href="#grammar-production-HEX">hex</a> <a href="#grammar-production-HEX">hex</a> <a href="#grammar-production-HEX">hex</a> <a href="#grammar-production-HEX">hex</a> <a href="#grammar-production-HEX">hex</a> <a href="#grammar-production-HEX">hex</a> <a href="#grammar-production-HEX">hex</a> <a href="#grammar-production-HEX">hex</a></td>
+                  <td>A Unicode character in the range U+0000 to U+10FFFF inclusive
+                    corresponding to the value encoded by the eight hexadecimal digits interpreted from most significant to least significant digit.
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+            (see the <a href="#grammar-production-UCHAR">UCHAR</a> production)
+          </li>
+          <li>
+            Escape sequences in <a>local names</a>. These escape the following reserved characters in the local name part of prefixed names: <code>_ ~ . - ! $ & \ ( ) * + , ; = / ? # @ %</code> (see the <a href="#grammar-production-PN_LOCAL_ESC">PN_LOCAL_ESC</a> production)
+          </li>
+        </ul>
+      </section>
+      <section id='irires'>
+        <h3>IRI resolution</h3>
+        <p> Relative IRIs are resolved with <a>base IRIs</a> using the algorithm in [[[RFC3986]]] [[RFC3986]]
+          <a data-cite="RFC3986#section-5.2">Section 5.2 "Relative Resolution"</a>
+          as supplemented by
+          <a data-cite="RFC3987#section-6.5">Section 6.5</a>
+          of [[[RFC3987]]] [[RFC3997]].</p>
+
+        <p>The <abbr title="Notation3">N3</abbr> <code>@base</code>
+          or <code>BASE</code> directive can be used to
+          define the <a>Base IRI</a>,
+          per [[RFC3986]] <a data-cite="RFC3986#section-5.1.1">Section 5.1.1 "Base URI Embedded in Conent"</a>.
+          Each `@base` or `BASE` directive sets a new In-Scope <a>Base IRI</a>,
+          relative to the previous <a>base IRI</a>.</p>
+      </section>
+      <section id='pathres'>
+        <h3>Path resolution</h3>
+        <p><a>Paths</a> are resolved into zero or more <a>N3 triples</a>
+          and a single <a>N3 triple element</a> which is used as the
+          <a href="#grammar-production-expression">expression</a> value
+          of the <a>path</a>.</p>
+        <p>This section describes two logically equivalent algorithms
+          for transforming a <a>path</a> into a set of <a>N3 triples</a>,
+           and providing a resource to use as the
+          effective
+          <a data-cite="RDF11-CONCEPTS#dfn-subject">subject</a>,
+          <a data-cite="RDF11-CONCEPTS#dfn-predicate">predicate</a>, or
+          <a data-cite="RDF11-CONCEPTS#dfn-object">object</a>
+          in place of the original <a>path</a> expression.</p>
+
+          <section class="algorithm" id="pathres-reverse">
+            <h4>Right to Left Algorithm</h4>
+            <p>The first algorithm describes a means
+              of processing a <a href="#grammar-production-path">path</a>
+              starting from the right hand side of the <a>path</a>.
+              This is essentially the algorithm described
+              in the <a data-cite="N3#path">Team Submission</a>.
+              This is useful for an implementation based
+              processing an Abstract Syntax Tree generated
+              by a parser, or where the entire path
+              is treated as a token and language-specific
+              tools are used to process it further.</p>
+
+            <p>Processing is performed by
+              recursively processing the <a>path</a> |p|,
+              in reverse, from the
+              last <dfn>directional indicator</dfn> ("`!`") or ("`^`").
+              The result of resolving |p| into an
+              <a href="#grammar-production-expression">expression</a>
+              and set of emitted <a>N3 triples</a>
+              MUST be equivalent to using the following algorithm:</p>
+
+            <ol>
+              <li>If |p| matches the
+                <a href="#grammar-production-pathItem">pathItem</a> production,
+                then |p| can be reduced no further, return |p|
+                as the result.</li>
+              <li>Otherwise, separate the |p| into two components
+                <var>p<sub>n-1</sub></var> and <var>pred<sub>n</sub></var>
+                on the last occurrence of the
+                <a>directional indicator</a> <var>dir<sub>n</sub></var>.</li>
+              <li>Create <var>obj<sub>n</sub></var>
+                by invoking this algorithm recursively
+                using <var>p<sub>n-1</sub></var> for |p|.</li>
+              <li>Create a novel <a>blank node</a>
+                <var>B<sub>n</sub></var>.</li>
+              <li>If <var>dir<sub>n</sub></var> is "`!`",
+                emit a new <a>N3 triple</a>
+                (<var>obj<sub>n</sub></var>
+                 <var>pred<sub>n</sub></var>
+                 <var>B<sub>n</sub></var>).</li>
+              <li>Otherwise, <var>dir<sub>n</sub></var> is "`^`",
+                emit a new <a>N3 triple</a>
+                (<var>B<sub>n</sub></var>
+                 <var>pred<sub>n</sub></var>
+                 <var>obj<sub>n</sub></var>).</li>
+              <li>Return <var>B<sub>n</sub></var> as the result.</li>
+            </ol>
+
+            <aside class="example"
+                  title="Processing :john!:father right to left">
+              <p>Starting with the <a>path</a> |p| set to `:john!:father`:</p>
+              <ul>
+                <li>Step 1 does not apply, as `:john!:father` is not a
+                  <a href="#grammar-production-pathItem">pathItem</a>.</li>
+                <li>Step 2 separates `:john!:father` into
+                  <var>p<sub>n-1</sub></var> `:john`,
+                  <var>pred<sub>n</sub></var> `:father`, and
+                  <var>dir<sub>n</sub></var> "`!`".</li>
+                <li>Step 3 sets <var>obj<sub>n</sub></var>
+                  by calling the algorithm
+                  recursively using |p| `:john`.
+                  <ul>
+                    <li>Step 1 returns `:john` as it matches a
+                      <a href="#grammar-production-pathItem">pathItem</a>.</li>
+                    <li><var>obj<sub>n</sub></var> is `:john`.</li>
+                  </ul>
+                </li>
+                <li>Step 4 creates <var>B<sub>n</sub></var>.</li>
+                <li>Step 5 matches because <var>dir<sub>n</sub></var> is  "`!`".
+                  The triple (`:john` `:father` <var>B<sub>n</sub></var>) is emitted.</li>
+                <li>Step 7 returns <var>B<sub>n</sub></var>.</li>
+              </ul>
+            </aside>
+
+            <aside class="example"
+                   title="Processing :john^:father!:mother right to left">
+              <p>Starting with the <a>path</a> |p| set to `john^:father!:mother`:</p>
+              <ul>
+                <li>Step 1 does not apply, as `john^:father!:mother` is not a
+                  <a href="#grammar-production-pathItem">pathItem</a>.</li>
+                <li>Step 2 separates `:john^:father!:mother` into
+                  <var>p<sub>n-1</sub></var> `:john^:father`,
+                  <var>pred<sub>n</sub></var> `:mother`, and
+                  <var>dir<sub>n</sub></var> "`!`".</li>
+                <li>Step 3 creates <var>B<sub>n</sub></var>.</li>
+                <li>Step 4 sets <var>obj<sub>n</sub></var> by calling the algorithm
+                  recursively using |p| `:john^:father`.
+                  <ul>
+                    <li>Step 1 does not apply, as `:john^:father` is not a
+                      <a href="#grammar-production-pathItem">pathItem</a>.</li>
+                    <li>Step 2 separates `:john^:father` into
+                      <var>p<sub>n-2</sub></var> `:john`,
+                      <var>pred<sub>n-1</sub></var> `:father`, and
+                      <var>dir<sub>n-1</sub></var> "`^`".</li>
+                    <li>Step 3 creates <var>B<sub>n-1</sub></var>.</li>
+                    <li>Step 4 sets <var>obj<sub>n-1</sub></var>
+                      by calling the algorithm
+                      recursively using |p| `:john`.
+                      <ul>
+                        <li>Step 1 returns `:john` as it matches a
+                          <a href="#grammar-production-pathItem">pathItem</a>.</li>
+                        <li><var>obj<sub>n-1</sub></var> is `:john`.</li>
+                      </ul>
+                    </li>
+                    <li>Step 6 matches because |dir| is  "`^`".
+                      The triple (<var>B<sub>n-1</sub></var> `:father` `:john`) is emitted.</li>
+                    <li>Step 7 returns <var>B<sub>n-1</sub></var>.</li>
+                    <li><var>obj<sub>n</sub></var> is
+                      <var>B<sub>n-1</sub></var>.</li>
+                  </ul>
+                </li>
+               <li>Step 5 matches because |dir| is  "`!`".
+                  The triple
+                  (<var>B<sub>n-1</sub> `:mother` <var>B<sub>n</sub></var>)
+                  is emitted.</li>
+                <li>Step 7 returns <var>B<sub>n</sub></var>.</li>
+              </ul>
+            </aside>
+          </section>
+
+          <section class="algorithm" id="pathres-forward">
+            <h4>Left to Right Algorithm</h4>
+            <p>The second algorithm describes a means
+              of processing a <a href="#grammar-production-path">path</a>
+              starting from the left hand side of a <a>path</a>.
+              This is useful for an implementation based
+              on the parser productions described in the grammar
+              that create events in this order (i.e., event-based).</p>
+
+            <p>Processing is performed by
+              iteratively processing the <a>path</a> <var>p</var>,
+              in the forward direction,
+              from the first <a>directional indicator</a> (`"!"`) or (`"^"`).
+              The result of resolving <var>p</var> into an
+              <a href="#grammar-production-expression">expression</a>
+              and set of emitted <a>N3 triples</a>
+              MUST be equivalent to using the following algorithm:</p>
+
+            <p>Initialize |n| to `0` and
+              <var>B<sub>0</sub></var> to the first
+              <a href="#grammar-production-pathItem">pathItem</a> in |p|.
+              Repeat the following algorithm steps until return.</p>
+
+            <p class="note"><var>B<sub>0</sub></var> starts
+              as the first <a href="#grammar-production-pathItem">pathItem</a> in |p|,
+              but is updated to
+              a novel <a>blank node</a> on subsequent iterations.</p>
+
+            <ol>
+              <li>If |n| equals the number of <a>directional indicators</a> in |p|, 
+                return <var>B<sub>n</sub></var>.</li>
+              <li>Increment |n|,
+                set <var>B<sub>n</sub></var> to a novel <a>blank node</a>, 
+                set <var>dir<sub>n</sub></var> to the next (<var>n<sub>th</sub></var>)
+                <a>directional indicator</a> <var>dir<sub>n</sub></var>
+                (if any), 
+                set <var>pred<sub>n</sub></var> to the next
+                <a href="#grammar-production-pathItem">pathItem</a>
+                (if any).</li>
+              <li>If <var>dir<sub>n</sub></var> is "`!`",
+                emit a new <a>N3 triple</a>
+                (<var>B<sub>n-1</sub></var> <var>pred<sub>n</sub></var> <var>B<sub>n</sub></var>).</li>
+              <li>Otherwise, if <var>dir<sub>n</sub></var> is "`^`",
+                emit a new <a>N3 triple</a>
+                (<var>B<sub>n</sub></var> <var>pred<sub>n</sub></var> <var>B<sub>n-1</sub></var>).</li>
+            </ol>
+
+            <aside class="example"
+                   title="Processing :john!:father left to right">
+              <p>Starting with the <a>path</a> |p| set to `:john!:father`;
+                |n| is `0` and
+                <var>B<sub>0</sub></var> is `:john`:</p>
+              <ul>
+                <li>Step 1 does not apply, as |n| is `0`.</li>
+                <li>Step 2 increments |n| to `1`,
+                  sets <var>B<sub>1</sub></var> to a novel <a>blank node</a>,
+                  <var>dir<sub>1</sub></var> to "`!`", and
+                  <var>pred<sub>1</sub></var> to `:father`.</li>
+                <li>Step 3 emits
+                  (`:john` `:father` <var>B<sub>1</sub></var>),
+                  as <var>dir<sub>1</sub></var> is "`!`"</li>
+                <li>Looping back to step 1, |n| is `1`:
+                  <ul>
+                    <li>Step 1 returns <var>B<sub>1</sub></var>
+                      as |n| is `1`, which is the number of
+                      directional indicators in `:john!:father`.</li>
+                  </ul>
+                </li>
+              </ul>
+            </aside>
+
+            <aside class="example"
+                   title="Processing :john^:father!:mother left to right">
+              <p>Starting with the <a>path</a> |p| set to
+                `:john^:father!:mother`;
+                |n| is `0` and 
+                <var>B<sub>0</sub></var> is `:john`:</p>
+              <ul>
+                <li>Step 1 does not apply,
+                  as |n| is `0`.</li>
+                <li>Step 2 increments |n| to `1`,
+                  sets <var>B<sub>1</sub></var> to a novel <a>blank node</a>,
+                  <var>dir<sub>1</sub></var> to "`^`", and
+                  <var>pred<sub>1</sub></var> to `:father`.</li>
+                <li>Step 4 emits
+                  (<var>B<sub>1</sub></var> `:father` `:john`),
+                  as <var>dir<sub>1</sub></var> is "`^`"</li>
+                <li>Looping back to step 1, |n| is `1`:
+                  <ul>
+                    <li>Step 1 does not apply, as |n| is `1`.</li>
+                    <li>Step 2 increments |n| to `2`,
+                      sets <var>B<sub>2</sub></var> to a novel <a>blank node</a>,
+                      <var>dir<sub>2</sub></var> to "`!`", and
+                      <var>pred<sub>2</sub></var> to `:mother`.</li>
+                    <li>Step 3 emits
+                      (<var>B<sub>1</sub></var> `:mother` <var>B<sub>2</sub></var>),
+                      as <var>dir<sub>2</sub></var> is "`!`"</li>
+                    <li>Looping back to step 1, |n| is `2`:
+                      <ul>
+                        <li>Step 1 returns <var>B<sub>2</sub></var>
+                          as |n| is `2`, which is the number of
+                          directional indicators in `:john^:father!:mother`.</li>
+                      </ul>
+                    </li>
+                  </ul>
+                </li>
+              </ul>
+            </aside>
+          </section>
+      </section>
+      <section id='grammar'>
+        <h3>Grammar</h3>
+        <p class="ednote">Blah...</p>
+        <div data-include="../grammar/n3.html"></div>
+        <p>A textual version of this grammar may be found <a href="../grammar/n3.ebnf">here</a>.</p>
+      </section>
+    </section>
+    <section class=informative>
+      <h2>Relationship to Other Languages</h2>
+      <section id="rel-n3-turtle">
+        <h3>Turtle</h3>
+        <p><abbr title="Notation3">N3</abbr> is a superset of [[[turtle]]], meaning that all valid Turtle documents will be valid in <abbr title="Notation3">N3</abbr> as well. The inverse is not true, i.e., a valid <a>N3 document</a> will not always be valid in Turtle.</p>
+        <p>The current <a>N3 grammar</a> started from the <a data-cite="TURTLE#sec-grammar">Turtle grammar</a> which was adapted and extended to be in line with the <a data-cite="N3#grammar">original N3 grammar</a>. Hence, many of the grammar productions will be much more similar to the Turtle grammar than the initial N3 grammar.</p>
+        <p>Important differences with Turtle are the following:</p>
+        <ul>
+          <li>Literals are allowed at any s/p/o position (i.e., subject, predicate or object) in a statement. See the <a href="#grammar-production-pathItem">pathItem</a> production, which is (eventually) referenced by the "subject", "predicate" and "object" productions.</li>
+         <li><abbr title="Notation3">N3</abbr> includes <a>cited formulae</a> (i.e., between "<code>{</code>" and "<code>}</code>"), which are allowed in any s/p/o position in a statement. See the <a href="#grammar-production-pathItem">pathItem</a> production.</li>
+          <li><dfn data-lt="quickvar">Quick-variables</dfn> (e.g., "<code>?x</code>"), which are allowed in any s/p/o position in a statement. See the <a href="#grammar-production-pathItem">pathItem</a> production.</li>
+          <li>A path syntax, comparable to (but not quite as extensive as) the <a data-cite="sparql11-query#propertypaths">SPARQL 1.1 Property Path</a> syntax. See the <a href="#grammar-production-path">path</a> production.</li>
+          <li>The possibility to invert the predicate within a statement. See the <a href="#grammar-production-predicate">predicate</a> production.</li>
+          <li>An additional set of keywords, including "<code>is .. of</code>", "<code>has</code>", "<code>=</code>", "<code>=></code>", "<code>&lt;=</code>", in addition to Turtle's "<code>a</code>" keyword (among others). All keywords can be optionally preceded by "<code>@</code>", for consistency with the "<code>@prefix</code>" and "<code>@base"</code> keywords.</li>
+        </ul>
+      </section>
+      <section id="rel-n3-sparql">
+        <h3>SPARQL</h3>
+        <p>The <abbr title="SPARQL Protocol and RDF Query Language">SPARQL</abbr> 1.1 Query Language (SPARQL) [[SPARQL11-QUERY]] uses a Turtle-style [[turtle]] syntax for its <a data-cite="sparql11-query#rTriplesBlock">TriplesBlock production</a>. Differences between Turtle and SPARQL are elaborated in the <a data-cite="turtle#sec-diff-sparql">Turtle specification</a>.</p>
+        <p>Below, we indicate some important differences between this production and <abbr title="Notation3">N3</abbr>:</p>
+        <ul>
+          <li>
+            Like <abbr title="Notation3">N3</abbr>, SPARQL permits literals as the subject of RDF triples, but, in contrast to <abbr title="Notation3">N3</abbr>, it does not allow literals as the predicate of RDF triples. Similarly, <abbr title="Notation3">N3</abbr> allows for <a href="#bnodeprplist">blank node property lists</a> and <a>collections</a> in any position, whereas SPARQL only allows them in the subject or object position.
+          </li>
+          <li>
+            Like <abbr title="Notation3">N3</abbr>, SPARQL permits variables in any part of the triple. But, in contrast to <abbr title="Notation3">N3</abbr>, SPARQL allows writing variables as both <code>?name</code> and <code>$name</code>, whereas <abbr title="Notation3">N3</abbr> only allows <code>?name</code>.
+          </li>
+          <li>
+            <abbr title="Notation3">N3</abbr> allows <a href="#iris">prefix and base directives</a> anywhere outside of a triple. In SPARQL, they are only allowed in the <a data-cite="sparql11-query#rPrologue">Prologue</a> (i.e., at the start of the SPARQL query). However, in general, we also recommend listing prolog and base directives at the start of <a>N3 documents</a>.
+          </li>
+          <li>
+            In <abbr title="Notation3">N3</abbr>, most keywords (including <code>@prefix</code> and <code>@base</code> directives) are case sensitive, but most keywords in SPARQL are case-insensitive (aside from <code>a</code>). An exception in <abbr title="Notation3">N3</abbr> are the <code>PREFIX</code> and <code>BASE</code> directives, which are derived from SPARQL and are case insensitive in <abbr title="Notation3">N3</abbr> as well.
+          </li>
+          <li>
+            The <a href="#paths">N3 path syntax</a> resembles the <a data-cite="sparql11-query#propertypaths">SPARQL 1.1 Property Path</a> syntax, but there are important differences: 
+            <ul>
+              <li>
+                It is assumed that the <strong>path starts from a resource (<em>IR</em>) instead of a property (<em>IP</em>)</strong>. Hence, they are meant to be used in the subject and object positions, rather than the predicate position as is the case for SPARQL 1.1 property paths. This has important repercussions on how <a href="#pathres">paths are resolved</a>. Note that paths are unrelated to the inverted notation <code>^</code> for predicates (see the <a href="#grammar-production-predicate">predicate</a> production)
+              </li>
+              <li>
+                Compared to SPARQL, <abbr title="Notation3">N3</abbr> only supports the <em>SequencePath</em> and <em>InversePath</em> expressions, but with syntactic differences: the '<code>!</code>' symbol is used to separate path items, whereas the '<code>^</code>' symbol is used to indicate an inverse predicate.
+              </li>
+            </ul>
+        </ul>
+        <p>For more information, see the <a data-cite="sparql11-query#sparqlGrammar">SPARQL Grammar</a> section of [[[SPARQL11-QUERY]]].</p>
+      </section>
+      <section id="rel-n3-trig">
+        <h3>TriG</h3>
+        <p>[[[TRIG]]] is itself a superset of the Turtle syntax and includes a compact way to write RDF datasets, i.e., sets of named graphs. In particular, TriG allows the specification of so-called graph statements, which are a pair of an <a>IRI</a> or blank node label and a group of triple statements surrounded by "<code>{</code>" and "<code>}</code>".</p>
+        <p>For instance:</p>
+        <pre class="example nohighlight" data-transform="updateExample">
+          <!--
+          # This document contains a default graph and two named graphs.
+          @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+          @prefix dc: <http://purl.org/dc/terms/> .
+          @prefix foaf: <http://xmlns.com/foaf/0.1/> .
+
+          # default graph
+          <http://example.org/bob> dc:publisher "Bob" .
+          <http://example.org/alice> dc:publisher "Alice" .
+          <http://example.org/bob>
+          {
+          _:a foaf:name "Bob" .
+          _:a foaf:mbox <mailto:bob@oldcorp.example.org> .
+          _:a foaf:knows _:b .
+          }
+          <http://example.org/alice>
+          {
+          _:b foaf:name "Alice" .
+          _:b foaf:mbox <mailto:alice@work.example.org> .
+          } 
+          -->
+        </pre>
+        <p><abbr title="Notation3">N3</abbr> is not directly compatible with TriG as it does not support this graph statement notation. Nevertheless, since <abbr title="Notation3">N3</abbr> supports <a>quoted graphs</a> (i.e., <a>cited formulae</a>) as part of regular <a>N3 statements</a>, authors can utilize the N3 Named Graphs extension [<strong>X</strong>] for associating names or identifiers with <a>cited formulae</a>. Although applications could easily introduce their own custom predicates for this purpose, we strongly recommend the use of this extension for interoperability purposes.</p>
+        <p>The N3 Named Graphs extension [<strong>X</strong>] defines a set of <a>built-ins</a> (used as predicates) to associate names or identifiers with <a>cited formulae</a>, which then become "named graphs". Moreover, each predicate has a well-defined semantics on how the named graph should be interpreted: as <a>quoted graphs</a> (the default <abbr title="Notation3">N3</abbr> interpretation), a partitioning of triples within a dataset context, sets of triples with their own isolated contexts, or specifying relations between local and online graphs.</p>
+      </section>
+    </section>
+    <section id='patterns' class=informative>
+      <h3>Design Patterns</h3>
+      <p>In this section, we present common patterns to solve often-occurring problems, for instance regarding data modeling, in <abbr title="Notation3">N3</abbr>.</p>
+      <section id="naryrel">
+        <h4>N-ary Relations</h4>
+        <p>Until now, we only considered binary relations between entities and/or values. But, many types of relations are <em>ternary, quaternary, or, in general, n-ary in nature</em>, i.e., they have an arbitrary number of participants. Typical examples are purchase, employment, membership, .. relations.</p>
+        <p>In other cases, we want to describe <em>properties of relations</em> &mdash; such as the provenance of a piece of information, or the probability of a diagnosis. But, in essence, this is the same problem as representing n-ary relations.</p>
+        <p>There are several ways of representing n-ary relations in RDF &mdash; these are described in [[[swbp-n-aryRelations]]].</p>
+        <p>Below, we illustrate options for representing n-ary relations in <abbr title="Notation3">N3</abbr> in particular.</p>
+        <section id="nary-binary-rel">
+          <h4>Using sets of binary relations</h4>
+          <p>In general, it is possible to convert any n-ary relation into an equivalent set of binary relations. This is a convenient solution, since we already know how to represent binary relations.</p>
+          <p>First, we <em>create a resource</em> that represents the n-ary relation, and then <em>use a set of binary relations</em> to link each participant to this newly minted resource. Each binary relation is hereby given a meaningful name that <em>represents the role of the participant</em> in the n-ary relation.</p>
+          <p>For instance, say we want to describe the <em>Purchase</em> relation between a buyer called "John", a purchased book called "Lenny the Lion", the amount paid for the book, and the seller:</p>
+          <pre id="nary-book-relation"
+               class="example nohighlight"
+               data-transform="updateExample">
+            <!--
+            @prefix ex: <http://example.org/#> .
+            ex:Purchase_1 a ex:Purchase ;
+                ex:hasBuyer ex:John ;
+                ex:hasObject ex:Lenny_The_Lion ;
+                ex:hasAmount 15 ;
+                ex:hasSeller <http://books.example.com> .
+            -->
+
+          </pre>
+          <p class="note">Either you could mint a new <a>IRI</a> for representing the n-ary relation, or simply use a <a href="#bnodes">blank node</a>. E.g., in case other parties may want to refer to the n-ary relation from outside the <abbr title="Notation3">N3</abbr> graph, one could choose to mint a new <a>IRI</a>; else, it will likely be more convenient to use a <a href="#bnodeprplist">blank node property list</a>.</p>
+          <p>In other cases, things are more naturally described as <em>properties of relations</em>, rather than n-ary relations &mdash; for instance, the provenance of a piece of information, the trend of someone's body temperature and when the temperature was taken. Nevertheless, these can be represented in the same way as n-ary relation participants.</p>
+          <p>We start from the same solution above, i.e., introducing a resource to represent the (in this case, binary) relation, and then linking the two participants to this resource. Subsequently, we use a set of binary relations to attach each descriptive property (e.g., diagnosis probability; temperature trend) to the relation resource.</p>
+          <!-- <p>For instance, when describing a diagnosis (e.g., breast cancer) of someone (e.g., Christine), you may want to indicate the probability of the diagnosis, and the date at which the diagnosis was made:</p>
+            <pre id="" class="example nohighlight">
+            @prefix ex: &lt;http://example.org/#&gt; .
+            @base &lt;http://example.org/#&gt; .
+            @prefix xsd: &lt;http://www.w3.org/2001/XMLSchema#&gt; .
+            ex:Christine
+              a       :Person ;
+              :hasDiagnosis _:Diagnosis_Relation_1 .
+            
+            _:Diagnosis_Relation_1
+              :diagnosisProbability :HIGH ;
+              :diagnosisValue :Breast_Tumor_Christine ;
+              :diagnosisDate ""
+            </pre> -->
+          <p>For instance, when describing someone's (e.g., Christine) current temperature, you may want to indicate the absolute value (e.g., 40 degrees), a description of that value (e.g., elevated), the trend compared to the prior value (e.g., rising), and the time the temperature was taken:</p>
+          <pre class="example nohighlight" data-transform="updateExample">
+            <!--
+            @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+            @base <http://example.org/#> .
+
+            :Christine a :Person ;
+                       :hasTemperature _:to1 .
+            _:to1 :temperatureTrend :RISING ;
+                  :temperatureValue 40 ;
+                  :temperatureDescription :ELEVATED ;
+                  :temperatureTime "2020-07-12T09:01:33"^^xsd:dateTime .
+            -->
+          </pre>
+          <p>This is possible since we know that the relation resource (e.g., <code>to1</code>) represents the n-ary relation. Hence, any descriptive properties of the relation, in addition to participants in the relation, can simply be attached to the entity.</p>
+          <p class="note">In this example, we made a statement with one of the participants (<code>:Christine</code>) as subject, and the relation resource (e.g., <code>_:to1</code>) as object. An alternative would have been to add <code>:Christine</code> as just another element of the n-ary relation, e.g., using a property <code>temperatureOf</code>. Our modeling choice here served to indicate that Christine is somehow the <a data-cite="swbp-n-aryRelations#useCase2">"owner" of the relationship</a>.</p>
+          <!-- 
+            (NOTE from a data modeling perspective, there would be a clear problem if the relation entity could have multiple "subjects" &mdash; e.g., in case it is being re-used to represent the same diagnosis for multiple patients. In that case, each of the patients' 
+            diagnosis probabilities would be linked to the same relation entity &mdash; and we lose the link that tells us which probability belongs to which patient. This can be seen as a kind of "fan trap".)
+            -->
+        </section>
+        <section>
+          <h4>Using collections</h4>
+          <p>An even easier solution is to use a <a>collection</a> to keep all the participants of the n-ary relation. For instance: ...
+            A clear advantage of this approach is that it is easier and much less verbose to write down. 
+            However, the roles each participant play in the n-ary relation are no longer explicated. For instance: ..
+            What roles do X, Y and Z play in this relation? One could answer that question by having a tailored schema: ...
+          </p>
+        </section>
+      </section>
+      <section id="compoundliteral">
+        <h4>Compound literal</h4>
+        <p>This solution is inspired by a separate discussion of the RDF community on <em>Language Tagged Strings</em>. The essence of the discussion is to separate the string, as a simple data, from all the various characterizations that may be added to it. This design pattern uses the <code>rdf:CompoundLiteral</code> class, which is in the domain of <code>rdf:language</code> and <code>rdf:direction</code> to be used for describing RDF literal values containing base direction and a possible language tag to be associated with the string value of <code>rdf:value</code> on the same subject.</p>
+        <pre class="example nohighlight" data-transform="updateExample">
+          <!--
+          @prefix foaf: <http://xmlns.com/foaf/0.1/> .
+
+          <http://example.org/#spiderman> foaf:name [
+            rdf:value "الرجل العنكبوت", 
+            rdf:language "ar-eg", 
+            rdf:direction "rtl" 
+          ] .
+          -->
+        </pre>
+      </section>
+      <section id="reification">
+        <h4>Graph quoted inside another graph</h4>
+        <p>Reification in the RDF context means the expression of something in a language using the language so that it becomes treatable by the language. RDF graphs consist of RDF statements. If one wants to look objectively at an RDF graph and reason about it is using RDF tools, then it is useful to have a mechanism for describing RDF statements. <abbr title="Notation3">N3</abbr> extends RDF to allow graphs themselves to be another form of literal node. A graph can be quoted inside another graph, as in the example:</p>
+        <pre class="example nohighlight" data-transform="updateExample">
+          <!--
+          @prefix : <http://example.org/>  .
+
+          _:x :graph { 
+            <http://example.org/#spiderman> <http://xmlns.com/foaf/0.1/name> "Spiderman" . 
+          } .
+          _:x :certainty 0.8 .
+          -->
+        </pre>
+        <p>The above example can also be seen as <a data-cite="rdf11-mt#reification">RDF reification</a>:</p>
+        <pre class="example nohighlight" data-transform="updateExample">
+          <!--
+          @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+          @prefix : <http://example.org/> .
+
+          _:x a rdf:Statement ;
+              rdf:subject <http://example.org/#spiderman> ;
+              rdf:predicate <http://xmlns.com/foaf/0.1/name> ;
+              rdf:object "Spiderman" ;
+              :certainty 0.8 .
+          -->
+        </pre>
+      </section>
+    </section>
+    <section id='in-html' class="appendix informative">
+      <h2>Embedding N3 in HTML documents</h2>
+      <p>HTML [[HTML5]] <code>script</code> element can be used to embed data blocks in documents. <abbr title="Notation3">N3</abbr> can be easily embedded in <code>script</code> with the <code>type</code> attribute set to <code>text/n3</code>.</p>
+      <p>Such content may be escaped as indicated below:</p>
+      <ul>
+        <li><code>&amp;amp;</code>: &amp; (ampersand, U+0026)</li>
+        <li><code>&amp;lt;</code>: &lt; (less-than sign, U+003C)</li>
+        <li><code>&amp;gt;</code>: &gt; (greater-than sign, U+003E)</li>
+        <li><code>&amp;quot;</code>: &quot; (quotation mark, U+0022)</li>
+        <li><code>&amp;apos;</code>: &apos; (apostrophe, U+0027)</li>
+      </ul>
+      <pre class="example nohighlight" data-transform="updateExample">
+        <!--
+        <script type="text/n3">
+          @prefix : &lt;http://www.example.org/#&gt; .
+
+          :green-goblin :enemyOf :spiderman .
+        </script>
+        -->
+      </pre>
+      <p>When embedded in XHTML N3 data blocks must be enclosed in CDATA sections. Those CDATA markers must be in Turtle comments. If the character sequence <code>]]&gt;</code> occurs in the document it must be escaped using strings escapes (<code>\u005d\u0054\u003e</code>). This will also make <abbr title="Notation3">N3</abbr> safe in polyglot documents served as both <code>text/html</code> and <code>application/xhtml+xml</code>. Failing to use CDATA sections or escape <code>]]&gt;</code> may result in a non well-formed XML document.</p>
+      <p class="ednote">Check this, I don't think that CDATA is required for XHTML any longer. See <a data-cite="JSON-LD11#embedding-json-ld-in-html-documents"></a>.</p>
+      <pre class="example nohighlight" data-transform="updateExample">
+        <!--
+        <script type="text/n3">
+          # <![CDATA[
+          @prefix : <http://www.example.org/#> .
+
+          :green-goblin :enemyOf :spiderman .
+          # ]]>
+        </script>
+        -->
+      </pre>
+    </section>
+    <section id='mime' class=appendix>
+      <h2>Internet Media Type, File Extension and Macintosh File Type</h2>
+      <p>This section has been submitted to the Internet Engineering Steering Group (IESG) for review, approval, and registration with IANA.</p>
+      <dl>
+        <dt>Contact:</dt>
+        <dd>NAME</dd>
+        <dt>Type name:</dt>
+        <dd>text</dd>
+        <dt>Subtype name:</dt>
+        <dd>n3</dd>
+        <dt>Optional parameters:</dt>
+        <dd><code>charset</code> — this parameter is required when transferring non-ASCII data. If present, the value of <code>charset</code> is always <code>UTF-8</code>.</dd>
+        <dt>Encoding considerations:</dt>
+        <dd>The syntax of Notation3 is expressed over code points in Unicode [[UNICODE]]. The encoding is always UTF-8 [[UTF-8]]. Unicode code points may also be expressed using an \uXXXX (U+0000 to U+FFFF) or \UXXXXXXXX syntax (for U+10000 onwards) where X is a hexadecimal digit [0-9A-Fa-f]</dd>
+        <dt>Security considerations:</dt>
+        <dd>Notation3 is a general-purpose assertion language; applications may evaluate given data to infer more assertions or to dereference <a>IRIs</a>, invoking the security considerations of the scheme for that <a>IRI</a>. Note in particular, the privacy issues in [[RFC3023]] section 10 for HTTP <a>IRIs</a>. Data obtained from an inaccurate or malicious data source may lead to inaccurate or misleading conclusions, as well as the dereferencing of unintended <a>IRIs</a>. Care must be taken to align the trust in consulted resources with the sensitivity of the intended use of the data; inferences of potential medical treatments would likely require different trust than inferences for trip planning. Notation3 is used to express arbitrary application data; security considerations will vary by domain of use. Security tools and protocols applicable to text (e.g. PGP encryption, MD5 sum validation, password-protected compression) may also be used on Notation3 documents. Security/privacy protocols must be imposed which reflect the sensitivity of the embedded information. Notation3 can express data which is presented to the user, for example, RDF Schema labels. Application rendering strings retrieved from untrusted Notation3 documents must ensure that malignant strings may not be used to mislead the reader. The security considerations in the media type registration for XML ([[RFC3023]] section 10) provide additional guidance around the expression of arbitrary data and markup. Notation3 uses <a>IRIs</a> as term identifiers. Applications interpreting data expressed in Notation3 should address the security issues of Internationalized Resource Identifiers (<a>IRIs</a>) [[RFC3987]] Section 8, as well as Uniform Resource Identifier (URI): Generic Syntax [[RFC3986]] Section 7. Multiple <a>IRIs</a> may have the same appearance. Characters in different scripts may look similar (a Cyrillic "о" may appear similar to a Latin "o"). A character followed by combining characters may have the same visual representation as another character (LATIN SMALL LETTER E followed by COMBINING ACUTE ACCENT has the same visual representation as LATIN SMALL LETTER E WITH ACUTE). Any person or application that is writing or interpreting data in Notation3 must take care to use the <a>IRI</a> that matches the intended semantics, and avoid <a>IRIs</a> that make look similar. Further information about matching of similar characters can be found in Unicode Security Considerations [[UNICODE-SECURITY]] and Internationalized Resource Identifiers (<a>IRIs</a>) [[RFC3987]] Section 8.</dd>
+        <dt>Interoperability considerations:</dt>
+        <dd>Not Applicable</dd>
+        <dt>Published specification:</dt>
+        <dd>This specification.</dd>
+        <dt>Applications which use this media type:</dt>
+        <dd>Any programming environment that requires the exchange of directed graphs. Implementations of Notation3 have been created for JavaScript, Python, Java, and Prolog. It may be used by some web services and clients consuming their data.</dd>
+        <dt>Additional information:</dt>
+        <dt>Magic number(s):</dt>
+        <dd>Notation3 documents may have the strings 'prefix' or 'base' (case independent) near the beginning of the document.</dd>
+        <dt>File extension(s):</dt>
+        <dd>.n3</dd>
+        <dt>Macintosh file type code(s):</dt>
+        <dd>TEXT</dd>
+        <dt>Person &amp; email address to contact for further information:</dt>
+        <dd>NAME &lt;EMAIL&gt;</dd>
+        <dt>Intended usage:</dt>
+        <dd>Common</dd>
+        <dt>Restrictions on usage:</dt>
+        <dd>None</dd>
+        <dt>Author(s):</dt>
+        <dd>Dörthe Arndt, William Van Woensel, Dominik Tomaszuk</dd>
+        <dt>Change controller:</dt>
+        <dd>W3C</dd>
+      </dl>
+    </section>
+    <section id="changes-since-team-submission" class="appendix informative">
+      <h2>Changes since the Team Submission</h2>
+      <p>The following is a summary of changes made since the
+        original Team Submission [[N3]]:</p>
+      <ul>
+        <li>Removed support for `@keywords` customizations.</li>
+        <li>Removed `@a`, `@in`, and `@of` in favor of `a`, `in`, and `of`.</li>
+        <li>Added `&lt;-` to represent an inverted property as a synonym of `is` <a href="#grammar-production-expression">expression</a> `of`.
+        <li>Removed `@true` and `@false` in favor of `true` and `false`.</li>
+        <li>Removed `@has`.</li>
+        <li>Removed support for explicit <a>N3 quantifiers</a>
+          (`@forSome` and `@forAll`).</li>
+        <li>Removed whitespace from the
+          <a href="#grammar-production-IRIREF">IRIREF</a> grammar terminal
+          to be consistent with Turtle.</li>
+      </ul>
+      <p class="ednote">There are more accumulated changes to account for, to be sure.</p>
+    </section>
+    <section id='aknowledgements' class="appendix informative">
+      <h2>Acknowledgements</h2>
+      <p>The editors acknowledge valuable contributions from...</p>
+    </section>
+  </body>
+</html>

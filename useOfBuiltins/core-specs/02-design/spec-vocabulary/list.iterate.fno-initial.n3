@@ -1,0 +1,178 @@
+@prefix dc: <http://purl.org/dc/terms/> .
+@prefix fno: <https://w3id.org/function/ontology#> .
+@prefix list: <https://w3id.org/function/ontology#List> .
+@prefix log: <http://www.w3.org/2000/10/swap/log#> .
+@prefix math: <http://www.w3.org/2000/10/swap/math#> .
+@prefix n3.list: <http://www.builtins/etc#>.  
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix : <urn:example:> .
+
+n3.list:iterate a fno:Function ;
+    fno:name "concatentation" ;
+    dc:description """Iterates over index/value pairs of the subject list. Gets pairs of index and element for every member of the subject.
+    
+    $s+ list:iterate $o[*]
+    For each element of $s, the builtin will unify $o with a list ( $e0 $e1 ) 
+    where 
+        $e0 [xsd:integer]: index in $s
+        $e1 [concrete]: element in $s
+    
+    """ ;
+    
+    fno:subject (
+        [ a rdf:Property ;
+            fno:parameter ( 
+                [ a fno:Parameter ; 
+                    dc:description "";
+                    fno:predicate "$s" ; 
+                    fno:type log:list ; 
+                    fno:mode "+"; 
+                    fno:required "true"^^xsd:boolean ]
+        )]
+    ) ;
+    fno:object ( 
+        [ a rdf:Property ;
+            fno:parameter ( 
+                [ a fno:Output ; 
+                    dc:description "index in $s" ;
+                    fno:predicate "$o.0" ; 
+                    fno:type "xs:integer" ; 
+                    fno:mode "*"; 
+                    fno:required "true"^^xsd:boolean  ] 
+                [ a fno:Output ; 
+                    dc:description "element in $s" ;
+                    fno:predicate "$o.1" ; 
+                    fno:type "concrete" ; 
+                    fno:mode "*"; 
+                    fno:required "true"^^xsd:boolean  ]                 
+        )]
+
+    ) ;
+    fno:validation [ a fno:Test ;  # what vocabularies are there for tests?
+                        fno:testCases (
+                            [ a fno:TestCase ;
+                                dc:description "" ;
+                                fno:expectedResult true ;
+                                fno:data { :test1 rdf:subject ?List ; rdf:object  (1 "Tim") . }
+                            ]
+                            [ a fno:TestCase ;
+                                dc:description "" ;
+                                fno:expectedResult true ;
+                                fno:data { :test2 rdf:subject ("William" "Tim" "Patrick") ; rdf:object  (1 "William") . }
+                            ]                                              
+                            [ a fno:TestCase ;
+                                dc:description "" ;
+                                fno:expectedResult true ;
+                                fno:data { :test3 rdf:subject ("William" "Tim" "Patrick") ; rdf:object  (?V "Tim") . }
+                            ] 
+                            [ a fno:TestCase ;
+                                dc:description "" ;
+                                fno:expectedResult true ;
+                                fno:data { :test4 rdf:subject ("William" "Tim" "Patrick") ; rdf:object  (3 "Patrick") . }
+                            ]                     
+                            [ a fno:TestCase ;
+                                dc:description "" ;
+                                fno:expectedResult true ;
+                                fno:data { :test5 rdf:subject ("William" "Tim" "Patrick") ; rdf:object  ?V . }
+                            ]     
+                            [ a fno:TestCase ;
+                                dc:description "" ;
+                                fno:expectedResult false ;
+                                fno:data { :test5 rdf:subject ("William" "Tim" "Patrick") ; rdf:object  ("a3" "Patrick") . }
+                            ]
+                            [ a fno:TestCase ;
+                                dc:description "" ;
+                                fno:expectedResult false ;
+                                fno:data { :test5 rdf:subject () ; rdf:object  ("a3" "Patrick") .}
+                            ]                                                                                                                                                        
+                        );
+                        fno:expression {
+                                        {
+                                            ?Test a :TestCase ;
+                                                :forBuiltIn list:iterate ;
+                                                rdf:subject ?Subject ;
+                                                rdf:object ?Object .
+                                            ?Subject (:domain list:iterate) true .
+                                            ?Object (:range list:iterate) true .
+                                        }
+                                        =>
+                                        {
+                                            ?Test a log:Valid .
+                                        } .
+                                    };
+    ];
+    fno:constraints (         # better to nest these constraints under the respective subject or objects above???
+        [ a fno:Constraint ;
+            dc:description "Domain can be a variable" ;
+            fno:prefixes ( 
+                    [ a fno:Prefix ; fno:prefix "log" ; fno:iri "http://www.w3.org/2000/10/swap/log#" ]
+                    [ a fno:Prefix ; fno:prefix "list" ; fno:iri "http://www.w3.org/2000/10/swap/list#" ]
+                    [ a fno:Prefix ; fno:prefix "" ; fno:iri "urn:" ]                                                                        
+                        ) ; 
+            fno:expression { { ?Subject (:domain list:iterate) true . } <= { ?Subject log:bound false . } .};
+        ]
+        [ a fno:Constraint ;
+            dc:description "Domain can be a list" ;
+            fno:prefixes ( 
+                    [ a fno:Prefix ; fno:prefix "log" ; fno:iri "http://www.w3.org/2000/10/swap/log#" ]
+                    [ a fno:Prefix ; fno:prefix "list" ; fno:iri "http://www.w3.org/2000/10/swap/list#" ]
+                    [ a fno:Prefix ; fno:prefix "" ; fno:iri "urn:" ]                                                                        
+                        ) ; 
+            fno:expression { { ?Subject (:domain list:iterate) true . } <= { ?Subject log:rawType rdf:List . } . };
+        ]  
+        [ a fno:Constraint ;
+            dc:description "Range can be a variable." ;
+            fno:prefixes ( 
+                    [ a fno:Prefix ; fno:prefix "log" ; fno:iri "http://www.w3.org/2000/10/swap/log#" ]
+                    [ a fno:Prefix ; fno:prefix "list" ; fno:iri "http://www.w3.org/2000/10/swap/list#" ]
+                    [ a fno:Prefix ; fno:prefix "" ; fno:iri "urn:" ]                                                                        
+                        ) ; 
+            fno:expression { { ?Object (:range list:iterate) true . } <= { ?Object log:bound false . }. };
+        ]     
+        [ a fno:Constraint ;
+            dc:description "Range can be a list of length 2 with positive integer as first value, second value can be anything." ;
+            fno:prefixes ( 
+                    [ a fno:Prefix ; fno:prefix "log" ; fno:iri "http://www.w3.org/2000/10/swap/log#" ]
+                    [ a fno:Prefix ; fno:prefix "list" ; fno:iri "http://www.w3.org/2000/10/swap/list#" ]
+                    [ a fno:Prefix ; fno:prefix "math" ; fno:iri "http://www.w3.org/2000/10/swap/math#" ]                    
+                    [ a fno:Prefix ; fno:prefix "" ; fno:iri "urn:" ]                                                                        
+                        ) ; 
+            fno:expression { 
+                            { 
+                                ?Object (:range list:iterate) true . } <= 
+                            {
+                                ?Object log:rawType rdf:List .
+                                ?Object list:length 2 .
+                                ( ?Index ?Value ) log:equalTo ?Object .
+                                ?Index log:rawType log:Literal .
+                                ?Index math:greaterThan 0 .  # How to valuate something is an integer? 
+                            } . 
+                        };
+        ]
+        [ a fno:Constraint ;
+            dc:description "Range can be a list of length 2 with a variable as first value, second value can be anything." ;
+            fno:prefixes ( 
+                    [ a fno:Prefix ; fno:prefix "log" ; fno:iri "http://www.w3.org/2000/10/swap/log#" ]
+                    [ a fno:Prefix ; fno:prefix "list" ; fno:iri "http://www.w3.org/2000/10/swap/list#" ]
+                    [ a fno:Prefix ; fno:prefix "math" ; fno:iri "http://www.w3.org/2000/10/swap/math#" ]                    
+                    [ a fno:Prefix ; fno:prefix "" ; fno:iri "urn:" ]                                                                        
+                        ) ; 
+            fno:expression { 
+                            { 
+                                ?Object (:range list:iterate) true .
+                            }
+                            <=
+                            {
+                                ?Object log:rawType rdf:List .
+                                ?Object list:length 2 .
+                                ( ?Index ?Value ) log:equalTo ?Object .
+                                ?Index log:bound false .
+                            } . 
+                        };
+        ]        
+    ) ;           
+.           
