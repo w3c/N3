@@ -124,16 +124,16 @@ concept of terms:
 
       <p>A <dfn>term</dfn> can be</p>
       <ul>
-        <li>an <a>atomic term</a>,
-        <li>a (possibly empty) list of <a>terms</a>,
-        <li>a <dfn>quoted graph</dfn> $&lt;G&gt;$ where $G$ is a finite <a>graph</a> (see below).
+        <li>an <a>atomic term</a>,</li>
+        <li>a (possibly empty) list of <a>terms</a>,</li>
+        <li>a <dfn>quoted graph</dfn> $&lt;G&gt;$ where $G$ is a finite <a>graph</a> (see below).</li>
       </ul>
 With these terms we can now form triples.
       <p>A <dfn>triple</dfn> is made of</p>
       <ul>
-        <li>a term called the <dfn>subject</dfn> of the triple,
-        <li>a term called the <dfn>predicate</dfn> of the triple,
-        <li>a term called the <dfn>object</dfn> of the triple.
+        <li>a term called the <dfn>subject</dfn> of the triple,</li>
+        <li>a term called the <dfn>predicate</dfn> of the triple,</li>
+        <li>a term called the <dfn>object</dfn> of the triple.</li>
       </ul>
       <div class=issue>
         Maybe we could introduce some blue example box which we would then use for mapping examples?
@@ -153,9 +153,9 @@ syntax adds quantification as an external statement. Each set of triples comes w
 To do so, we define:
       <p>A <dfn>graph</dfn> is a tuple $(U, E, F)$ where</p>
       <ul>
-        <li>$U \subseteq V$ is a (possibly empty) set of <dfn class="lint-ignore" data-lt="universally scoped|universal">universally scoped variables</dfn>,
-        <li>$E \subseteq V$ is a (possibly empty) set of <dfn class="lint-ignore" data-lt="existentially scoped|existential">existentially scoped variables</dfn>,
-        <li>$F$ is a (possibly empty) set of <a>triples</a>.
+        <li>$U \subseteq V$ is a (possibly empty) set of <dfn class="lint-ignore" data-lt="universally scoped|universal">universally scoped variables</dfn>,</li>
+        <li>$E \subseteq V$ is a (possibly empty) set of <dfn class="lint-ignore" data-lt="existentially scoped|existential">existentially scoped variables</dfn>,</li>
+        <li>$F$ is a (possibly empty) set of <a>triples</a>.</li>
       </ul>
       <p>A <a>graph</a> $G=(U, E, F)$ is finite if the sets $U$, $E$ and $F$ are finite.</p>
 As we will see in the semantics section below, the sets $U$ and $E$ act like quantifiers with variables for the graph and its subgraphs.
@@ -166,19 +166,25 @@ The triples on the left-hand-side of our examples should be considered graphs in
 and the right-hand side provides the counterpart in abstract N3 syntax.
 
 <ol>
-  <li> <code>:socrates :knows _:x.</code> becomes $(\{\},\{x\},\{(\text{:socrates}, \text{:knows}, x)\})$
+  <li> <code>:socrates :knows _:x.</code> becomes<br>
+    <small>$(\{\},\{x\},\{(\text{:socrates}, \text{:knows}, x)\})$</small></li>
   <li> <code>{?x a :Human} => {?x a :Mortal}. </code> becomes <br>
      <small>$(\{x\},\{\},\{(<(\{\},\{\},\{(x, \text{rdf:type}, \text{:Human})\})>,
     \text{log:implies}, <(\{\},\{\},\{(x, \text{rdf:type}, \text{:Mortal})\})>)\})$ </small>
-    <li> <code>:socrates :says {_:x a :Mortal}.  </code> becomes
-      <br><small> $(\{\},\{\},\{(\text{:socrates}, \text{:says}, <(\{\},\{x\},\{(x,\text{rdf:type}, \text{:Mortal} )\})>) \})$</small>
+  </li>
+  <li> <code>:socrates :says {_:x a :Mortal}.  </code> becomes
+    <br><small> $(\{\},\{\},\{(\text{:socrates}, \text{:says}, <(\{\},\{x\},\{(x,\text{rdf:type}, \text{:Mortal} )\})>) \})$</small>
+  </li>
   <li> <code>:socrates :says {_:x a :Mortal}. _:y :knows :socrates. </code> becomes
     <br><small> $(\{\},\{y\},\{(\text{:socrates}, \text{:says}, <(\{\},\{x\},\{(x,\text{rdf:type}, \text{:Mortal} )\})>), (y, \text{:knows}, \text{:socrates}) \})$</small>
-    <li> <code>{?x a :Human} => {?x :hasMother _:y}. </code> becomes <br>
-       <small>$(\{x\},\{\},\{(<(\{\},\{\},\{(x, \text{rdf:type}, \text{:Human})\})>,
-      \text{log:implies}, <(\{\},\{y\},\{(x, \text{:hasMother}, y)\})>)\})$ </small>
-      <li> <code>_:y :says {?x a :Mortal}. </code> becomes <br>
-         <small>$(\{x\},\{y\},\{(y, \text{:says}, <(\{\},\{\},\{(x, \text{rdf:type}, \text{:Mortal})\})>)$ </small>
+  </li>
+  <li> <code>{?x a :Human} => {?x :hasMother _:y}. </code> becomes <br>
+      <small>$(\{x\},\{\},\{(<(\{\},\{\},\{(x, \text{rdf:type}, \text{:Human})\})>,
+    \text{log:implies}, <(\{\},\{y\},\{(x, \text{:hasMother}, y)\})>)\})$ </small>
+  </li>
+  <li> <code>_:y :says {?x a :Mortal}. </code> becomes <br>
+      <small>$(\{x\},\{y\},\{(y, \text{:says}, <(\{\},\{\},\{(x, \text{rdf:type}, \text{:Mortal})\})>)$ </small>
+  </li>
 </ol>
 We will re-use these examples in the following sections.
 </p>
@@ -228,7 +234,7 @@ in N3 graphs.
             
           We denote the set of constituents of a graph $G$ as $C(G)$.
 
-          In order to clarify the definition above, consider example 3 from above: <br />
+          In order to clarify the definition above, consider example 3 from above: <br>
           <ul>
             <li>
                 <code>:socrates :says {_:x a :Mortal}.  </code> becomes
