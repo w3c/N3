@@ -70,7 +70,7 @@
       <p>This document defines the model-theoretic semantics of
         Notation3 Logic.
         We define the semantics of N3 on an abstract syntax and provide a mapping from explicit N3 Syntax
-        to abstract syntax.  By doing that we seperate the handling of implicit quantification from the model.
+        to abstract syntax. By doing that we seperate the handling of implicit quantification from the model.
        </p>
     </section>
 
@@ -82,19 +82,19 @@
       </p>
       <section class="informative">
         <h3>Motivation</h3>
-   <p>Notation3 supports implicit quantification. If blank nodes are used in triples, they stand for implicitely existentailly
-   quantified variables. If unversals, i.e. variables starting with a questionmark, are used, they stand for implicetly
+   <p>Notation3 supports implicit quantification. If blank nodes are used in triples, they stand for implicit existentially
+   quantified variables. In case of universals, i.e., variables starting with a question-mark, are used, they stand for implicit
    universally quantified variables. Implicit universal quantification is always global, that is, implicit universal quantification
-   always spans over the full graph. Implicit existential quantification is always local.
-   To simplify the definitions done in this document, we assume all quantification to be explicit and introduce a separate format
-   to express that.
+   always spans over the full graph. Implicit existential quantification is always local, that is, it spans the local graph 
+   (e.g., if implicit existential quantification occurs in a quoted graph, it spans only the quoted graph).
+   To simplify the definitions in this document, we assume all quantification to be explicit 
+   and introduce an abstract syntax to better express that.
  </p>
 
   <p>
    In order to help the reader to make a connection between Notation3 concrete syntax and abstract syntax, we will provide example
-   translations together with the concepts we introduce. We provide a formal defintion of the mapping at the end of this document.
+   translations together with the concepts we introduce. We will provide a formal definition of the mapping at a later point.
 </p>
-
 
       </section>
     <section class="normative">
