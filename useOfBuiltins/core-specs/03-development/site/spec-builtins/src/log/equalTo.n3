@@ -4,23 +4,87 @@
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix vs: <http://www.w3.org/2003/06/sw-vocab-status/ns#> .
 
 log:equalTo a fno:Function ;
+    vs:term_status  "testing" ;
     dcterms:comment """Determines if two RDF resources are the same.
 `true` if and only if `$s` and `$o` are the same RDF node (symbol or literal).
 Not to be confused with owl:sameAs.""" ;
-    fno:example ( [ a fno:Test ;
+    fno:example ( 
+            [ a fno:Test ;
                 dcterms:description """
-This is an example for a built-in function.
+Determine if 1 is equal to 1 and "Cat" is equal to "Cat" and { :A :B :C . :D :E :F } is equal to { :D :E :F . :A :B :C }.
             """ ;
-                rdfs:seeAlso <http://ppr.cs.dal.ca:3002/n3/editor/?formula=%40prefix%20%3A%20%3C%3A%3E%20.%0A%40prefix%20string%3A%20%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F10%2Fswap%2Fstring%23%3E%20.%0A%0A%3ALet%20%3Astring%20%22placeholder%22%20.%0A%0A%7B%20%3ALet%20%3Astring%20%3Fx%20.%20%7D%0A%3D%3E%0A%7B%20%3Aresult%20%3Ais%20%3Fx%20.%20%7D.%20> ;
+                rdfs:seeAlso <> ;
                 fno:expression """
-@prefix : <:> .
-@prefix string: <http://www.w3.org/2000/10/swap/string#> .
-:Let :string "placeholder" .
-{ :Let :string ?x . } => { :result :is ?x . } .
+@prefix : <http://example.org/#>.
+@prefix log: <http://www.w3.org/2000/10/swap/log#> .
+
+{
+    1 log:equalTo 1 .
+    "Cat" log:equalTo "Cat" .
+    { :A :B :C . :D :E :F . } log:equalTo { :D :E :F . :A :B :C . } .
+}
+=>
+{
+    :result :is true .
+} . 
             """ ;
                 fno:result """
-                <:result> <:is> "placeholder". 
-            """ ] ) ;
+:result :is true. 
+            """ 
+            ] 
+
+            [ a fno:Test ;
+                dcterms:description """
+Determine if "Cat" is equal to "Cat"@en .
+            """ ;
+                rdfs:seeAlso <> ;
+                fno:expression """
+@prefix : <http://example.org/#>.
+@prefix log: <http://www.w3.org/2000/10/swap/log#> .
+
+{
+    # This will fail
+    "Cat" log:equalTo "Cat"@en .
+}
+=>
+{
+    :result :is true .
+} . 
+            """ ;
+                fno:result """
+# No result
+            """ 
+            ] 
+
+            [ a fno:Test ;
+                dcterms:description """
+Assign a value to an existential or universal variable.
+            """ ;
+                rdfs:seeAlso <> ;
+                fno:expression """
+@prefix : <http://example.org/#>.
+@prefix log: <http://www.w3.org/2000/10/swap/log#> .
+
+{
+    _:x log:equalTo 42 .
+    ?q  log:equalTo "Cat"@en .
+
+    # This will fail because _:x is already assigned to 42 .
+    # _:x log:equalTo 17 .
+}
+=>
+{
+    :result :is ?q .
+} . 
+            """ ;
+                fno:result """
+:result :is "Cat"@en .
+            """ 
+            ] 
+
+
+    ) ;
     fno:name "equalTo" .
