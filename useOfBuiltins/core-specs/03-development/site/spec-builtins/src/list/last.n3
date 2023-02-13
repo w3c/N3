@@ -58,9 +58,9 @@ Test if the last element of the list (1 2 3 4) is 4.
             fno:mode "+" ;
             fno:predicate "$s" ;
             fno:type rdf:List ;
-            fnon:position fno:subject ;
+            fnon:position fnon:subject ;
         ] [ a fno:Parameter ;
             fno:predicate "$o" ;
             fno:mode "-" ;
-            fnon:position fno:object
+            fnon:position fnon:object
         ] ) .

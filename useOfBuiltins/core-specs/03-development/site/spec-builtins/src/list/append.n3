@@ -80,7 +80,7 @@ Is the list (1 2 3 4) equal to appending (1), (2 3) , (4)?
             fno:mode "+" ;
             fno:predicate "$s" ;
             fno:type rdf:List ;
-            fnon:position fno:subject ;
+            fnon:position fnon:subject ;
             fnon:listElementType ( [
                 fnon:predicate "$s.i" ;
                 fno:mode "?[*]" ;
@@ -89,6 +89,6 @@ Is the list (1 2 3 4) equal to appending (1), (2 3) , (4)?
         ] [ a fno:Parameter ;
             fno:predicate "$o" ;
             fno:mode "?" ;
-            fnon:position fno:object ;
+            fnon:position fnon:object ;
             fno:type rdf:List
         ] ) .

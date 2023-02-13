@@ -34,9 +34,9 @@ What is the first element of ( ("a") { :a :b :c } 42 )?
             fno:mode "+" ;
             fno:predicate "$s" ;
             fno:type rdf:List ;
-            fnon:position fno:subject ;
+            fnon:position fnon:subject ;
         ] [ a fno:Parameter ;
             fno:predicate "$o" ;
             fno:mode "-" ;
-            fnon:position fno:object
+            fnon:position fnon:object
         ] ) .
