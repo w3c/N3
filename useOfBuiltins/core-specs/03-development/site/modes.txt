@@ -1,0 +1,51 @@
+General “notation”: 
+(see https://www.swi-prolog.org/pldoc/man?section=argmode)
+++: input argument (bound, fully grounded)
++: input argument (bound, possibly not fully grounded)
+-: output argument (bounded or not bounded)
+--: output argument (not bounded)
+?: either providing input or accepting output, or both.
+(custom, not prolog)
+-[*]: output argument (-) with possibly multiple solutions.
+?[*]: if accepting output, it may possibly have multiple solutions.
+
+N3:
+log:InputBoundFullyGrounded
+    a log:InputArgument ;
+    dc:description """input argument (bound, fully grounded)""" ;
+    log:bounded true ;
+    log:grounded log:Full ;
+    ov:shortName "++".
+
+log:InputBoundPartialGrounded 
+    a log:InputArgument ;
+    dc:description """input argument (bound, possibly not fully grounded)""" ;
+    log:bounded true ;
+    log:grounded log:Partial ;
+    ov:shortName "+" .
+    
+log:OutputBoundedOrNotBounded 
+    a log:OutputArgument ;
+    dc:description """Output argument (bounded or not bounded)""" ;
+    # skipping log:bounded here, if it is not specified it can be true or false
+    ov:shortName "-" .
+
+log:OutputNotBounded
+    a log:OutputArgument ;
+    dc:description """Output argument (not bounded)"" ;
+    log:bounded false ;
+    ov:shortName "--" .
+
+log:InputAndOrOutput
+    a log:InputArgument , log:OutputArgument ;
+    dc:description """Either providing input or accepting output, or both.""" ;
+    ov:shortName "?" .
+
+# The '[*]' is not an argument flag, more like a side effect of the built-in
+# Built-in have a multiple outputs, not the output arguments themselves
+log:OutputMultipleEffect
+    a log:SideEffect ;
+    dc:description """Indicates an output argument (-) with possibly multiple solutions.(custom, not in Prolog)""" .
+log:NonDeterminismEffect
+    a log:SideEffect ;
+    dc:description """The same input can generate another output depending on the run""" .

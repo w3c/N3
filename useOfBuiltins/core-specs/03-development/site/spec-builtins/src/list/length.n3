@@ -5,12 +5,12 @@
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 @prefix vs: <http://www.w3.org/2003/06/sw-vocab-status/ns#> .
+@prefix fnon: <https://w3id.org/function/ontology/n3#> .
 
 list:length a fno:Function ;
     vs:term_status  "testing" ;
-    dcterms:comment """Calculates the length of a list.
-`true` if and only the subject is a list and `$o` is integer length of that list.
-`$o` can be calculated as a function of the subject.""" ;
+    fnon:tldr "Gets the length of the list." ;
+    dcterms:comment """`true` if and only if `$s` is a list and `$o` is the integer length of that list.""" ;
     fno:example ( 
               [ a fno:Test ;
                 dcterms:description """
@@ -28,17 +28,15 @@ Calculate the length of the list (1 2 3 4).
             """ ] 
     ) ;
     fno:name "length" ;
-    fno:object ( [ a rdf:Property ;
-                fno:parameter ( [ a fno:Output ;
-                            dcterms:description "" ;
-                            fno:mode "*" ;
-                            fno:predicate "$o.0" ;
-                            fno:required true ;
-                            fno:type xsd:integer ] ) ] ) ;
-    fno:subject ( [ a rdf:Property ;
-                fno:parameter ( [ a fno:Parameter ;
-                            dcterms:description "" ;
-                            fno:mode "+" ;
-                            fno:predicate "$s" ;
-                            fno:required true ;
-                            fno:type rdf:List ] ) ] ) .
+    fno:parameter (
+        [ a fno:Parameter ;
+            dcterms:description "" ;
+            fno:mode "+" ;
+            fno:predicate "$s" ;
+            fno:type rdf:List ;
+            fnon:position fno:subject ;
+        ] [ a fno:Parameter ;
+            fno:predicate "$o" ;
+            fno:mode "-" ;
+            fnon:position fno:object
+        ] ) .

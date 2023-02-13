@@ -5,12 +5,12 @@
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 @prefix vs: <http://www.w3.org/2003/06/sw-vocab-status/ns#> .
+@prefix fnon: <https://w3id.org/function/ontology/n3#> .
 
 list:member a fno:Function ;
     vs:term_status  "testing" ;
-    dcterms:comment """Determines if an object is a member of the subject list or binds every member of the subject list to the object.
-`true` if and only `$s` is a list and `o` is in that list.
-`$o` can be calculated from `$s`.""" ;
+    fnon:tldr "Checks whether the list contains the element." ;
+    dcterms:comment """`true` if and only `$s` is a list and `o` is a member of that list.""" ;
     fno:example ( 
             [ a fno:Test ;
                 dcterms:description """
@@ -57,10 +57,15 @@ Is "cat" a member of the list ("dog" "penguin" "cat")?
 
     ) ;
     fno:name "member" ;
-    fno:subject ( [ a rdf:Property ;
-                fno:parameter ( [ a fno:Parameter ;
-                            dcterms:description "" ;
-                            fno:mode "+" ;
-                            fno:predicate "$s" ;
-                            fno:required true ;
-                            fno:type rdf:List ] ) ] ) .
+    fno:parameter (
+        [ a fno:Parameter ;
+            dcterms:description "" ;
+            fno:mode "+" ;
+            fno:predicate "$s" ;
+            fno:type rdf:List ;
+            fnon:position fnon:subject ;
+        ] [ a fno:Parameter ;
+            fno:predicate "$o" ;
+            fno:mode "-[*]" ;
+            fnon:position fnon:object
+        ] ) .

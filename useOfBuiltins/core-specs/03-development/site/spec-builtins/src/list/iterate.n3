@@ -5,16 +5,13 @@
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 @prefix vs: <http://www.w3.org/2003/06/sw-vocab-status/ns#> .
+@prefix fnon: <https://w3id.org/function/ontology/n3#> .
 
 list:iterate a fno:Function ;
     vs:term_status  "testing" ;
-    dcterms:comment """Iterates over index/value pairs of the subject list.
-Gets the matching pair of list index and list value for every member of the subject.
-If the object is a variable, it will create a solution for each member of the subject list.
-If any member of the object list is a variable, it will create a solution for all matching
-members of the subject list.
-If the object is ground and the entry at the specified index matches the specified value, 
-it evaluates to `true`; otherwise, `false`.""" ;
+    fnon:tldr "Iterates over the list, getting index/value pairs for each member." ;
+    dcterms:comment """`true` if and only if `$s` is a list and `$o` is a list with two elements: 
+`$o.1` is a valid index in list `$s` (index starts at 0), and `$o.2` is found at that index in list `$s`.""" ;
     fno:example ( 
             [ a fno:Test ;
                 dcterms:description """
@@ -29,7 +26,7 @@ Iterate over the list ("dog" "penguin" "cat").
             """ ;
                 fno:result """
 :result :is (0 "dog") .
-:result :is (1 "pengiun") .
+:result :is (1 "penguin") .
 :result :is (2 "cat") .
             """ ] 
 
@@ -82,17 +79,26 @@ What is the index of "cat" in the list ("dog" "penguin" "cat")?
 
     ) ;
     fno:name "iterate" ;
-    fno:object ( [ a rdf:Property ;
-                fno:parameter ( [ a fno:Output ;
-                            dcterms:description "" ;
-                            fno:mode "*" ;
-                            fno:predicate "$o.0" ;
-                            fno:required true ;
-                            fno:type rdf:List ] ) ] ) ;
-    fno:subject ( [ a rdf:Property ;
-                fno:parameter ( [ a fno:Parameter ;
-                            dcterms:description "" ;
-                            fno:mode "+" ;
-                            fno:predicate "$s" ;
-                            fno:required true ;
-                            fno:type rdf:List ] ) ] ) .
+    fno:parameter ( 
+        [ a fno:Parameter ;
+            dcterms:description "" ;
+            fno:mode "+" ;
+            fno:predicate "$s" ;
+            fno:type rdf:List ;
+            fnon:position fnon:subject ;
+
+        ] [ a fno:Parameter ;
+            dcterms:description "" ;
+            fno:mode "?[*]" ;
+            fno:predicate "$o" ;
+            fno:type rdf:List ;
+            fnon:position fnon:object ;
+            fnon:listElements ( [
+                fno:predicate "$o.1" ;
+                fno:mode "?[*]" ;
+                fno:type xsd:int
+            ] [
+                fno:predicate "$o.2" ;
+                fno:mode "?[*]"
+            ] )
+        ] ) .

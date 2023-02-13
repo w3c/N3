@@ -5,27 +5,28 @@
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 @prefix vs: <http://www.w3.org/2003/06/sw-vocab-status/ns#> .
+@prefix fnon: <https://w3id.org/function/ontology/n3#> .
 
 list:remove a fno:Function ;
     vs:term_status  "testing" ;
-    vs:moreinfo "The dcterms:comment is wrong. Eye, jen3 nor cwm don't implement list:remove this way. (@phochste)" ;
-    dcterms:comment """Removes the second component of the subject list from the first component of that list.
-`true` if and only if the subject is a list of two lists `$s_1` and `$s_2`, `$s_2` is a subset of `$s_1` and `$o` is a list composed of the members of the `$s_1` with all members of `$s_2` removed, matching left to right.
-`$o` can be calculated as a function of the subject. `""" ;
+    fnon:tldr "" ;
+    vs:moreinfo """The dcterms:comment is wrong. Eye, jen3 nor cwm don't implement list:remove this way. (@phochste)
+Fixed the description and removed the non-functional example (@william-vw)""" ;
+    dcterms:comment """`true` if and only if `$s.0` is a list, and `$o` is a list composed of the members of `$s.0` with member `$s.1` removed, if it was present.""" ;
     fno:example ( 
             [ a fno:Test ;
                 dcterms:description """
-Remove "pengiun" from the list ("dog" "pengiun" "cat" "pengiun").
+Remove "penguin" from the list ("dog" "penguin" "cat" "penguin").
             """ ;
                 rdfs:seeAlso <> ;
                 fno:expression """
 @prefix : <http://example.org/#>.
 @prefix list: <http://www.w3.org/2000/10/swap/list#> .
 
-:let :param ("dog" "pengiun" "cat" "pengiun") .
+:let :param ("dog" "penguin" "cat" "penguin") .
 { 
     :let :param ?param . 
-    ( ?param "pengiun" ) list:remove ?list .
+    ( ?param "penguin" ) list:remove ?list .
 } 
 => 
 { 
@@ -35,43 +36,26 @@ Remove "pengiun" from the list ("dog" "pengiun" "cat" "pengiun").
                 fno:result """
 :result :is ("dog" "cat").
             """ ] 
-
-            [ a fno:Test ;
-                dcterms:description """
-Remove "dog" and "pengiun" from the list ("dog" "pengiun" "cat" "pengiun").
-            """ ;
-                rdfs:seeAlso <> ;
-                fno:expression """
-@prefix : <http://example.org/#>.
-@prefix list: <http://www.w3.org/2000/10/swap/list#> .
-
-:let :param ("dog" "pengiun" "cat" "pengiun") .
-{ 
-    :let :param ?param . 
-    ( ?param ( "pengiun" "dog") ) list:remove ?list .
-} 
-=> 
-{ 
-    :result :is ?list . 
-} .
-            """ ;
-                fno:result """
-:result :is ("dog" "cat").
-            """ ] 
-
     ) ;
     fno:name "remove" ;
-    fno:object ( [ a rdf:Property ;
-                fno:parameter ( [ a fno:Output ;
-                            dcterms:description "" ;
-                            fno:mode "*" ;
-                            fno:predicate "$o.0" ;
-                            fno:required true ;
-                            fno:type rdf:List ] ) ] ) ;
-    fno:subject ( [ a rdf:Property ;
-                fno:parameter ( [ a fno:Parameter ;
-                            dcterms:description "" ;
-                            fno:mode "+" ;
-                            fno:predicate "$s" ;
-                            fno:required true ;
-                            fno:type rdf:List ] ) ] ) .
+    fno:parameter ( 
+        [ a fno:Parameter ;
+            dcterms:description "" ;
+            fno:mode "+" ;
+            fno:predicate "$s" ;
+            fno:type rdf:List ;
+            fnon:position fnon:subject ;
+            fnon:listElements ( [
+                fno:predicate "$s.1" ;
+                fno:mode "+" ;
+                fno:type rdf:List ;
+            ] [
+                fno:predicate "$s.2" ;
+                fno:mode "+"
+            ] )
+
+        ] [ a fno:Parameter ;
+            dcterms:description "" ;
+            fno:mode "-" ;
+            fno:predicate "$o"
+        ] ) .
