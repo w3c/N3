@@ -1,0 +1,24 @@
+@prefix : <urn:example:> .
+@prefix string: <http://www.w3.org/2000/10/swap/string#> .
+@prefix fno: <https://w3id.org/function/ontology#> .
+
+{
+    f
+}
+   {
+        :Let :strings ( "hello" " " "world" ) .
+        :Let :strings ?X .
+
+        # Create concatenation of X
+        #    X a list of stringables
+        #    Y a stringable or a variable
+        ?X string:concatenation ?Y .
+
+        # E.g. this evaluates to true 
+        ?X string:concatenation "hello world" .
+    }
+    => 
+    {   
+        ?X :concatenation ?Y .
+    } . 
+

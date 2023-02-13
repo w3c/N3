@@ -1,7 +1,9 @@
 PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
 PREFIX : <http://example.org/socrates#>
 
-:Socrates a :Human.
+:Socrates a :Greek.
 :Human rdfs:subClassOf :Mortal.
+
+{?A a :Macedonian} => {?A a :Human}.
 
 {?A rdfs:subClassOf ?B. ?S a ?A} => {?S a ?B}.

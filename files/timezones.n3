@@ -1,0 +1,102 @@
+@prefix time: <http://www.w3.org/2006/time#>.
+@prefix tz: <https://www.timeanddate.com/time/zones/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+
+# https://www.isi.edu/~hobbs/damltime/time-zone-documentation.txt
+
+tz:HST a time:TimeZone;
+    tz:name "Hawaii Standard Time";
+    tz:GMToffset "-PT10H"^^xsd:dayTimeDuration;
+    .
+tz:AKST a time:TimeZone;
+    tz:name "Alaska Standard Time";
+    tz:GMToffset "-PT9H"^^xsd:dayTimeDuration;
+    .
+tz:AKDT a time:TimeZone;
+    tz:name "Alaska Daylight Time";
+    tz:GMToffset "-PT8H"^^xsd:dayTimeDuration;
+    .
+tz:PST a time:TimeZone;
+    tz:name "Pacific Standard Time";
+    tz:GMToffset "-PT8H"^^xsd:dayTimeDuration;
+    .
+tz:PDT a time:TimeZone;
+    tz:name "Pacific Daylight Time";
+    tz:GMToffset "-PT7H"^^xsd:dayTimeDuration;
+    .    
+tz:MST a time:TimeZone;
+    tz:name "Mountain Standard Time";
+    tz:GMToffset "-PT7H"^^xsd:dayTimeDuration;
+    .
+tz:MDT a time:TimeZone;
+    tz:name "Mountain Daylight Time";
+    tz:GMToffset "-PT6H"^^xsd:dayTimeDuration;
+    .
+tz:CST a time:TimeZone;
+    tz:name "Central Standard Time";
+    tz:GMToffset "-PT6H"^^xsd:dayTimeDuration;
+    .    
+tz:EST a time:TimeZone;
+    tz:name "Eastern Standard Time";
+    tz:GMToffset "-PT5H"^^xsd:dayTimeDuration;
+    .
+tz:CDT a time:TimeZone;
+    tz:name "Central Daylight Time";
+    tz:GMToffset "-PT5H"^^xsd:dayTimeDuration;
+    .     
+tz:EDT a time:TimeZone;
+    tz:name "Eastern Daylight Time";
+    tz:GMToffset "-PT4H"^^xsd:dayTimeDuration;
+    .
+tz:AST a time:TimeZone;
+    tz:name "Atlantic Standard Time";
+    tz:GMToffset "-PT4H"^^xsd:dayTimeDuration;
+    .
+tz:ADT a time:TimeZone;
+    tz:name "Atlantic Daylight Time";
+    tz:GMToffset "-PT3H"^^xsd:dayTimeDuration;
+    .
+tz:ART a time:TimeZone;
+    tz:name "Argentina Time";
+    tz:GMToffset "-PT3H"^^xsd:dayTimeDuration;
+    .
+tz:GMT a time:TimeZone;
+    tz:name "Greenwich Mean Time";
+    tz:GMToffset "PT0H"^^xsd:dayTimeDuration;
+    .
+tz:UTC a time:TimeZone;
+    tz:name "Coordinated Universal Time";
+    tz:GMToffset "PT0H"^^xsd:dayTimeDuration;
+    .
+tz:ZULU a time:TimeZone;
+    tz:name "Zulu Time";
+    tz:GMToffset "PT0H"^^xsd:dayTimeDuration;
+    .    
+tz:WET a time:TimeZone;
+    tz:name "Western European Time";
+    tz:GMToffset "PT0H"^^xsd:dayTimeDuration;
+    .
+tz:CET a time:TimeZone;
+    tz:name "Central European Time";
+    tz:GMToffset "PT1H"^^xsd:dayTimeDuration;
+    .   
+tz:CEST a time:TimeZone;
+    tz:name "Central European Summer Time";
+    tz:GMToffset "PT2H"^^xsd:dayTimeDuration;
+    .   
+tz:WEST a time:TimeZone;
+    tz:name "Western European Summer Time";
+    tz:GMToffset "PT1H"^^xsd:dayTimeDuration;
+    .
+tz:IST a time:TimeZone;
+    tz:name "India Standard Time";
+    tz:GMToffset "PT2H"^^xsd:dayTimeDuration;
+    .
+tz:EET a time:TimeZone;
+    tz:name "Eastern European Time";
+    tz:GMToffset "PT2H"^^xsd:dayTimeDuration;
+    .
+tz:EEST a time:TimeZone;
+    tz:name "Eastern European Summer Time";
+    tz:GMToffset "PT3H"^^xsd:dayTimeDuration;
+    .

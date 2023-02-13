@@ -1,7 +1,7 @@
 Here, we list projects and implementations related to N3. 
 
 # Reasoners
-* EYE: https://josd.github.io/eye/ (advanced N3 reasoner, used in industrial settings)
+* EYE: https://github.com/eyereasoner/eye (advanced N3 reasoner, used in industrial settings)
 * Cwm: https://www.w3.org/2000/10/swap/doc/cwm.html ("prototype" N3 reasoner developed by TBL)
 * jen3: https://github.com/william-vw/jen3 ([Apache Jena](https://jena.apache.org/) extended with N3 reasoning)
 * Data-Fu: https://aifb.kit.edu/web/Linked_Data-Fu (reasoner and language supporting a subset of N3)
@@ -17,7 +17,11 @@ Here, we list projects and implementations related to N3.
 
 ## Introductory Material
 
-* Notation3 Logic: A Practical Introduction. ([presentation](http://ruleml.org/talks/DoertheArndtWilliamWoensel-Notation3-RuleMLWebinar-2022-2-23.pdf))
+* Notation3 Logic: A Practical Introduction. ([presentation](https://drive.google.com/file/d/18m8m-gqaOdPe1YLg7KdgKrMAesero-pn/view))
+
+## Using N3 rules for multiple semantics of named graphs
+* Towards Supporting Multiple Semantics of Named Graphs Using N3 Rules ([paper](https://github.com/w3c/N3/blob/master/relatedWork/Towards%20Supporting%20Multiple%20Semantics%20of%20Named%20Graphs%20Using%20N3%20Rules.pdf))  
+Presented at the [3rd International Joint Conference on Rules and Reasoning (RuleML+RR 2019)](https://rulemlrr19.inf.unibz.it/) conference.
 
 ## Using N3 rules for vocabulary mapping
 
@@ -34,9 +38,14 @@ Presented at the [4th International Workshop on Semantic Web Meets Health Data M
 
 Github repo: https://github.com/william-vw/ui_gen
 
-## Implementing a Finite State Machine using N3 rules
+## Using N3 rules to implement a Finite State Machine
 
-* Explainable Decision Support using Task Network Models in Notation3: Computerizing Lipid Management Clinical Guidelines as Interactive Task Networks.  
-To be presented at the [20th International Conference on Artificial Intelligence in Medicine (AIME 2022)](https://aime22.aimedicine.info/).
+* Explainable Decision Support using Task Network Models in Notation3: Computerizing Lipid Management Clinical Guidelines as Interactive Task Networks. ([paper](https://link.springer.com/chapter/10.1007/978-3-031-09342-5_1))  
+Presented at the [20th International Conference on Artificial Intelligence in Medicine (AIME 2022)](https://aime22.aimedicine.info/).
 
 Github repo: https://github.com/william-vw/glean
+
+## TPAC 2022
+Presentation material from [TPAC 2022](https://www.w3.org/2022/09/TPAC/):  
+[Semantics slides](https://docs.google.com/presentation/d/1Gj7jJMe0r1Gt3KhaFG0nGb7u6EDim21Ph7TEQTeBU8g/edit#slide=id.p1)  
+[Builtins slides](https://docs.google.com/presentation/d/13qKSBmjSXNUgFTsXa0l7HpXnbM9wxf9q/edit?usp=sharing&ouid=103358970104079015755&rtpof=true&sd=true )
