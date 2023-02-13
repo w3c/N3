@@ -149,6 +149,7 @@ To do so, we define:
       </ul>
       <p>A <a>graph</a> $G=(U, E, F)$ is finite if the sets $U$, $E$ and $F$ are finite.</p>
 As we will see in the semantics section below, the sets $U$ and $E$ act like quantifiers with variables for the graph and its subgraphs.
+We therefore call these sets also <dfn class="lint-ignore" data-lt="quantification set">quantification sets</dfn>.
 
 <p>
 In order to also provide some intuition, we consider a few translations from concrete N3 syntax to abstract syntax. The triples
@@ -184,7 +185,8 @@ the examples below in the following sections.
       <section>
         <h2>Variables</h2>
 For the definitions which follow later in this document, we need to make some statements about the variables occurring
-in N3 graphs.
+in N3 graphs. Here we distinguish between variables occuring directly in a graph an those which are nested. To be able to differentiate,
+we introduce the following concept:
         <ul>
           <li>A term is a <dfn>direct constituent</dfn> of
           <ul>
@@ -226,11 +228,17 @@ in N3 graphs.
               <small>$\text{:socrates}, \text{:says}, <(\{\},\{x\},\{(x,\text{rdf:type}, \text{:Mortal} )\})>, x,\text{rdf:type}, \text{:Mortal}$</small>
 </p>
   In other words: direct constituents are all elements which directly form the graph's triples and all list elements of these.
-  constituents also include all nested components independently of the depth of the nesting (to see the latter, please note that the last)
+  constituents also include all nested components independently of the depth of the nesting (to see the latter, please note that the last
+  part of the definition is recursive, i.e. we take the constituents of the direct constituents).
 
-            <p class=note>Note that the definition makes a difference between <a>graphs</a> and <a>quoted graphs</a>. This difference is crucial for the definitions below: a graph is not the same as a quoted graph.</p>
-
-            <li>The set $FV$ of <dfn data-lt="free">free variables</dfn> in a term is defined as follows:
+            <p class=note>Note that the definition makes a difference between <a>graphs</a> and <a>quoted graphs</a>.
+              A quoted graph is a direct consituent of the graph it occurs in as a triple component, its direct constituents
+              and their direct constituents are not.
+              This difference is crucial for the definitions below: a graph is not the same as a quoted graph.</p>
+<p>
+With that definition, we now introduce free variables.
+</p>
+            <li>The set $FV$ of <dfn data-lt="free">free variables</dfn> in a term or a set of triples is defined as follows:
               <ul>
                 <li>$FV(x) = ∅$ if $x ∈ C ∪ L$,
                 <li>$FV(x) = \{x\}$ if $x ∈ V$,
@@ -246,6 +254,22 @@ in N3 graphs.
                 <li>otherwise we call $v$ <dfn class="lint-ignore" data-lt="scoped variable">scoped</dfn> in $G$;
                 <li>we denote the set of variables which are <a>free</a> in $G$ as $FV(G)$.
               </ul>
+<p>
+Free variables are variables which occur directly or nested in the graph but which are not covered by a <a>quantification set</a>.
+</p>
+<p>
+
+Examples:
+<ol>
+  <li> In <small> $(\{x\},\{y\},\{(x, \text{:knows}, y) \})$</small> all variables are scoped.
+  <li> In <small> $(\{\},\{y\},\{(x, \text{:knows}, y) \})$</small> the variable $x$ is free while $y$ is scoped.
+  <li> In <small> $(\{\},\{\},\{(y, \text{:says}, <(\{\},\{x\},\{(x,\text{rdf:type}, \text{:Mortal} )\})>) \})$</small>, the variable
+    $x$ is scoped while the variable $y$ is free.
+<!--  <li> In <small> $(\{\},\{\},\{(\text{x}, \text{:says}, <(\{\},\{x\},\{(x,\text{rdf:type}, \text{:Mortal} )\})>) \})$</small> the
+    $x$ is a free variable but it also occurs as a scoped variable in the quoted graph. -->
+</ol>
+</p>
+This enables us to introduce the notion of closed graphs and ground terms.
 
             <li>A <a>graph</a> $G=(U,E,F)$ is <dfn data-lt="closed graph">closed</dfn> if all variables $v\in C(G)\cap V$ are scoped in $G$.
 
@@ -263,6 +287,12 @@ in N3 graphs.
 
               <p>A graph $G=(U,E,F)$ is <a>ground</a> if $E=U=\emptyset$ and all <a>triples</a> in $F$ are <a>ground</a>.</p>
         </ul>
+        <p class="note">An abstract N3 graph which is constructed from a graph in the direct N3 syntax cannot contain free variables.
+        Implicit quantification always comes with a scope and explicit quantification is defined on iri's which only become variables
+        based on their use. The notion of free variables is thus only relevant for quoted graphs which can, when treated like a graph,
+        contain free variables.
+        </p>
+
 
         <p>A <a>graph</a> $G=(U,E,F)$ can also contain quantified variables $v\in U\cup E$ which do not occur in any <a>triple</a> of $F$. These variables do not contribute to the interpretation of the graph. In order to simplify our considerations below, we introduce the notion of normalised graphs:</p>
 
