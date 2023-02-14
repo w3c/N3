@@ -72,6 +72,23 @@
         We define the semantics of N3 on an abstract syntax and provide a mapping from explicit N3 Syntax
         to abstract syntax. By doing that we seperate the handling of implicit quantification from the model.
        </p>
+       <p>
+         <abbr title="Notation3">N3</abbr> is an extension of RDF.
+         We use the following concepts from the [[[RDF11-CONCEPTS]]]: <a data-cite="RDF11-CONCEPTS#section-IRIs">IRI</a>,
+         <a data-cite="RDF11-CONCEPTS#section-triples">RDF triple</a>, <a
+           data-cite="RDF11-CONCEPTS#section-rdf-graph">RDF graph</a>, <a
+           data-cite="RDF11-CONCEPTS#section-triples">subject</a>,
+         <a data-cite="RDF11-CONCEPTS#section-triples">predicate</a>, <a
+           data-cite="RDF11-CONCEPTS#section-triples">object</a>,
+          <!--<a data-cite="RDF11-CONCEPTS#dfn-rdf-source">RDF
+           source</a>, -->
+         <a data-cite="RDF11-CONCEPTS#dfn-node">node</a>, <a data-cite="RDF11-CONCEPTS#dfn-blank-node">blank node</a>,
+         and
+     <a data-cite="RDF11-CONCEPTS#dfn-literal">literal</a>.
+      <!--       <a data-cite="RDF11-CONCEPTS#graph-isomorphism">isomorphic</a>,
+         and <a data-cite="RDF11-CONCEPTS#section-generalized-rdf">generalized RDF triples, graphs, and datasets</a>.
+       -->
+       </p>
     </section>
 
 
@@ -636,47 +653,15 @@ This enables us to introduce the notion of closed graphs and ground terms.
     <section>
       <h2>Mapping from concrete to abstract syntax</h2>
       <div class="issue"> Not sure where to go with this section, maybe it should also be part of the syntax?</div>
-    </section>
-  </body>
-</html>
-=======
-<section id='semantics'>
-    <h2>Semantics</h2>
-    <section id='terms'>
-      <h3>Terms and Formulae</h3>
       <p>
-        In order to formally define the semantics of <abbr title="Notation3">N3</abbr>, we first give a more formal
+        In order to formally define the  mapping between <abbr title="Notation3">N3</abbr> concrete turtle syntax and abstract syntax,
+         we first give a more formal
         definition
-        of the basic language concepts introduced in the previous section. Here, we omit constructs like
+        of the former. Here, we omit constructs like
         <a href="#polists">predicate and object lists</a>,
         or <a href="#bnodeprplist">blank node property lists</a> as these can be seen as syntactic sugar.
       </p>
-      <p>
-        All examples shown earlier as well as the examples in the remainder of this document follow <abbr
-          title="Notation3">N3</abbr>-turtle syntax which is also the standard syntax for <abbr
-          title="Notation3">N3</abbr>.
-        It is however possible, to use alternative syntaxes as long as the translation to <abbr
-          title="Notation3">N3</abbr> turtle syntax is clearly defined.
-      </p>
-      <p class="ednote">
-        Maybe we put that statement earlier?
-      </p>
-      <p>
-        <abbr title="Notation3">N3</abbr> is an extension of RDF.
-        We use the following concepts from the [[[RDF11-CONCEPTS]]]: <a data-cite="RDF11-CONCEPTS#section-IRIs">IRI</a>,
-        <a data-cite="RDF11-CONCEPTS#section-triples">RDF triple</a>, <a
-          data-cite="RDF11-CONCEPTS#section-rdf-graph">RDF graph</a>, <a
-          data-cite="RDF11-CONCEPTS#section-triples">subject</a>,
-        <a data-cite="RDF11-CONCEPTS#section-triples">predicate</a>, <a
-          data-cite="RDF11-CONCEPTS#section-triples">object</a>, <a data-cite="RDF11-CONCEPTS#dfn-rdf-source">RDF
-          source</a>,
-        <a data-cite="RDF11-CONCEPTS#dfn-node">node</a>, <a data-cite="RDF11-CONCEPTS#dfn-blank-node">blank node</a>,
-        <a data-cite="RDF11-CONCEPTS#dfn-literal">literal</a>,
-        <a data-cite="RDF11-CONCEPTS#graph-isomorphism">isomorphic</a>,
-        and <a data-cite="RDF11-CONCEPTS#section-generalized-rdf">generalized RDF triples, graphs, and datasets</a>.
-      </p>
-
-
+      <h3>Concrete Terms and Formulae</h3>
       <p>
         We extend these definitions by introducing the following concepts:
       </p>
@@ -727,7 +712,21 @@ This enables us to introduce the notion of closed graphs and ground terms.
       <p>
         An <dfn data-lt="N3 formulae">N3 formula</dfn> is a set of <a>N3 triples</a>.
       </p>
-      <p>Let <code>T</code> be the set of <a>N3 triple elements</a> and <code>dc:T&xrarr;T</code> a function defined
+
+    </section>
+  </body>
+</html>
+<!--=======
+<section id='semantics'>
+    <h2>Semantics</h2>
+    <section id='terms'>
+
+
+
+
+
+-->
+  <!--       <p>Let <code>T</code> be the set of <a>N3 triple elements</a> and <code>dc:T&xrarr;T</code> a function defined
         as
         follows:</p>
       <ul>
@@ -741,7 +740,7 @@ This enables us to introduce the notion of closed graphs and ground terms.
         the <dfn data-lt="dir-comp">direct components</dfn> of <code>t</code>. For each <a>N3 formula</a> the set of
         its direct components is the union of the direct components of the triples it contains. </p>
 
-      <p>Let <code>T</code> be the set of <a>N3 triple elements</a> and <code>F</code> the set of <a>N3 formula</a>.
+   <p>Let <code>T</code> be the set of <a>N3 triple elements</a> and <code>F</code> the set of <a>N3 formula</a>.
         We
         define the function
         <code>nc:T&cup;F&xrarr;T</code> a function defined as follows:
@@ -761,14 +760,14 @@ This enables us to introduce the notion of closed graphs and ground terms.
         <li><code>nc(e)=dc(e<sub>1</sub>)&cup; nc(e<sub>1</sub>)</code>,
           if <code>e={e<sub>1</sub>}</code> is a <a>cited formula</a>,</li>
         <li><code>nc(e)=&empty;</code> else.</li>
-      </ul>
 
       <p>
         For each <a>N3 formula</a> <code>f</code>,
         we call <code>nc(f)</code> the set of <dfn>nested components</dfn>.
       </p>
-
-
+    </ul>
+-->
+<!--
       <p>
         We call an <a>N3 formula</a> <dfn>ground</dfn> if its direct and <a>nested components</a> do not contain
         <a>blank nodes</a> nor <a>universal variables</a>.
@@ -778,11 +777,11 @@ This enables us to introduce the notion of closed graphs and ground terms.
       </p>
       <p class="EDNOTE">ReSpec complains because <a>ground</a> and <a>closed</a> are defined but not used.</p>
     </section>
+-->
 
 
 
-
-    <section id='sinterpret'>
+  <!--  <section id='sinterpret'>
       <h3>Simple N3 interpretations</h3>
 
     </section>
@@ -790,6 +789,7 @@ This enables us to introduce the notion of closed graphs and ground terms.
       <h3>Scoped Negation</h3>
 
     </section>
+  -->
     <!-- <section id='builtins'>
       <h3>N3 Built-ins</h3>
       <p>N3 defines a core set of <dfn>built-ins</dfn> defined
