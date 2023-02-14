@@ -5,12 +5,14 @@
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 @prefix vs: <http://www.w3.org/2003/06/sw-vocab-status/ns#> .
+@prefix fnon: <https://w3id.org/function/ontology/n3#> .
 
 log:conclusion a fno:Function ;
     vs:term_status  "testing" ;
-    dcterms:comment """All possible conclusions which can be drawn from a formula.
-`true` if and only if `$o` is the set of conclusions which can be drawn from `$s`, by successively applying any rules it contains to the data it contains.
-Note: this is equivalent to cwm's "--think" command line function. It does use built-ins, so it may for example indirectly invoke other documents, validate signatures, etc.""" ;
+    fnon:tldr "Gets all possible conclusions from the quoted graph including rule inferences (deductive closure)." ;
+    dcterms:comment """`true` if and only if `$o` is the set of conclusions which can be drawn from `$s` (deductive closure), 
+by applying any rules it contains to the data it contains.""" ;
+    vs:moreinfo "Example below not working in eye (works in jen3) (@william-vw)" ;
     fno:example ( 
             [ a fno:Test ;
                 dcterms:description """
@@ -44,17 +46,16 @@ Draw all conclusions from the formula ":Felix a :Cat . { ?X a :Cat } => { ?X :sa
             """ ] 
     ) ;
     fno:name "conclusion" ;
-    fno:object ( [ a rdf:Property ;
-                fno:parameter ( [ a fno:Output ;
-                            dcterms:description "" ;
-                            fno:mode "*" ;
-                            fno:predicate "$o.0" ;
-                            fno:required true ;
-                            fno:type log:Formula ] ) ] ) ;
-    fno:subject ( [ a rdf:Property ;
-                fno:parameter ( [ a fno:Parameter ;
-                            dcterms:description "" ;
-                            fno:mode "+" ;
-                            fno:predicate "$s" ;
-                            fno:required true ;
-                            fno:type log:Formula ] ) ] ) .
+    fno:parameter ( [
+        a fno:Parameter ;
+        dcterms:description "" ;
+        fno:mode "+" ;
+        fno:predicate "$s" ;
+        fno:type log:Formula
+    ] [
+        a fno:Parameter ;
+        dcterms:description "" ;
+        fno:mode "?" ;
+        fno:predicate "$o" ;
+        fno:type log:Formula
+    ] ) .
