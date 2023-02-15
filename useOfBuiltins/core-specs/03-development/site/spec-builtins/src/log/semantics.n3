@@ -4,8 +4,10 @@
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix vs: <http://www.w3.org/2003/06/sw-vocab-status/ns#> .
 
 log:semantics a fno:Function ;
+    vs:term_status  "testing" ;
     dcterms:comment """The log:semantics of a document is the formula achieved by parsing representation of the document.
 For a document in Notation3, `log:semantics` is the `log:parsedAsN3` of the `log:content` of the document.
 For a document in another RDF syntax, it is parsed according to the appropriate specification to yield an RDF formula (a subclass of N3 `log:Formula`).
@@ -13,20 +15,27 @@ Evaluates to `false` if an unrecognized document format is retrieved.
 Aside: Philosophers will be distracted here into worrying about the meaning of meaning. At least we didn't call this function "meaning"! 
 In as much as N3 is used as an interlingua for interoperability for different systems, this for an N3 based system is the meaning expressed by a document.
 Related: see `log:parsedAsN3` and `log:content`.""" ;
-    fno:example ( [ a fno:Test ;
+    fno:example ( 
+              [ a fno:Test ;
                 dcterms:description """
-This is an example for a built-in function.
+Read the contents of the file <semantics.data> and parse it as Notation3.
+We assume <semantics.data> contains the text:
+
+  @prefix : <http://example.org/#>.
+  :Socrates a :Human .
             """ ;
-                rdfs:seeAlso <http://ppr.cs.dal.ca:3002/n3/editor/?formula=%40prefix%20%3A%20%3C%3A%3E%20.%0A%40prefix%20string%3A%20%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F10%2Fswap%2Fstring%23%3E%20.%0A%0A%3ALet%20%3Astring%20%22placeholder%22%20.%0A%0A%7B%20%3ALet%20%3Astring%20%3Fx%20.%20%7D%0A%3D%3E%0A%7B%20%3Aresult%20%3Ais%20%3Fx%20.%20%7D.%20> ;
+                rdfs:seeAlso <> ;
                 fno:expression """
-@prefix : <:> .
-@prefix string: <http://www.w3.org/2000/10/swap/string#> .
-:Let :string "placeholder" .
-{ :Let :string ?x . } => { :result :is ?x . } .
+@prefix : <http://example.org/#>.
+@prefix log: <http://www.w3.org/2000/10/swap/log#> .
+
+{ <semantics.data> log:semantics ?semantics . } => { :result :is ?semantics } .
             """ ;
                 fno:result """
-                <:result> <:is> "placeholder". 
-            """ ] ) ;
+:result :is { :Socrates a :Human . } .
+            """ 
+            ] 
+    ) ;
     fno:name "semantics" ;
     fno:object ( [ a rdf:Property ;
                 fno:parameter ( [ a fno:Output ;
