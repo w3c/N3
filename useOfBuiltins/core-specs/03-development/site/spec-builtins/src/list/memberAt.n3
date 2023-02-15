@@ -5,25 +5,25 @@
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 @prefix vs: <http://www.w3.org/2003/06/sw-vocab-status/ns#> .
+@prefix fnon: <https://w3id.org/function/ontology/n3#> .
 
 list:memberAt a fno:Function ;
     vs:term_status  "testing" ;
-    vs:moreinfo "The dcterms:comment seems wrong. Jen, eye nor eye support the negative index. Only eye supports the s_2 variable (@phochste)" ;
-    dcterms:comment """Gets the member of a list at a given position (where the position of the first element is 1).
-`true` if and only if `$s_0` has an element at position `$s_1`, and if that element and `$o` can unify.
-Note that if `$s_1` is a variable, this builtin may bind it to more than one value (e.g. `((“A” “B” “A”) ?i) list:memberAt "A"`).
-In case of a negative integer, the index will count backwards from the length of the list.""" ;
+    fnon:tldr "Gets the member of the list at the given index (index starts at 0)." ;
+    vs:moreinfo """The dcterms:comment seems wrong. Jen, eye nor eye support the negative index. Only eye supports the s_2 variable (@phochste).
+Fixed the description (@william-vw).""" ;
+    dcterms:comment """`true` if and only if `$s.0` is a list, `$s.1` is a valid index in list `$s.0`, and `$o` is found at that index in the list.""" ;
     fno:example ( 
             [ a fno:Test ;
                 dcterms:description """
-Get the third member of the list ("dog" "pengiun" "cat").
+Get the third member of the list ("dog" "penguin" "cat").
             """ ;
                 rdfs:seeAlso <> ;
                 fno:expression """
 @prefix : <http://example.org/#>.
 @prefix list: <http://www.w3.org/2000/10/swap/list#> .
 
-:let :param ("dog" "pengiun" "cat").
+:let :param ("dog" "penguin" "cat").
 
 {
     :let :param ?param .
@@ -41,18 +41,18 @@ Get the third member of the list ("dog" "pengiun" "cat").
 
             [ a fno:Test ;
                 dcterms:description """
-Find the index of "cat" in the list ("dog" "cat" "pengiun" "cat").
+Find the index of "cat" in the list ("dog" "cat" "penguin" "cat").
             """ ;
                 rdfs:seeAlso <> ;
                 fno:expression """
 @prefix : <http://example.org/#>.
 @prefix list: <http://www.w3.org/2000/10/swap/list#> .
 
-:let :param ("dog" "cat" "pengiun" "cat").
+:let :param ("dog" "cat" "penguin" "cat").
 
 {
     :let :param ?param .
-    ( ?param ?index ) list:memberAt ?param .
+    ( ?param ?index ) list:memberAt "cat" .
 } 
 => 
 { 
@@ -66,10 +66,25 @@ Find the index of "cat" in the list ("dog" "cat" "pengiun" "cat").
           ] 
     ) ;
     fno:name "memberAt" ;
-    fno:subject ( [ a rdf:Property ;
-                fno:parameter ( [ a fno:Parameter ;
-                            dcterms:description "" ;
-                            fno:mode "+" ;
-                            fno:predicate "$s" ;
-                            fno:required true ;
-                            fno:type rdf:List ] ) ] ) .
+    fno:parameter ( 
+        [ a fno:Parameter ;
+            dcterms:description "" ;
+            fno:mode "+" ;
+            fno:predicate "$s" ;
+            fno:type rdf:List ;
+            fnon:position fnon:subject ;
+            fnon:listElements ( [
+                fno:predicate "$s.1" ;
+                fno:mode "+" ;
+                fno:type rdf:List ;
+            ] [
+                fno:predicate "$s.2" ;
+                fno:mode "?[*]" ;
+                fno:type xsd:int
+            ] )
+
+        ] [ a fno:Parameter ;
+            dcterms:description "" ;
+            fno:mode "?[*]" ;
+            fno:predicate "$o"
+        ] ) .

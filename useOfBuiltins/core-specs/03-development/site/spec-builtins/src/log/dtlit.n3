@@ -5,12 +5,12 @@
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 @prefix vs: <http://www.w3.org/2003/06/sw-vocab-status/ns#> .
+@prefix fnon: <https://w3id.org/function/ontology/n3#> .
 
 log:dtlit a fno:Function ;
     vs:term_status  "testing" ;
-    dcterms:comment """Takes a list of a string and an IRI and creates a datatyped literal.
-The subject is a list composed of a string and an IRI, and the object is a datatyped literal with the value `$s_1` and datatype `$s_2`.
-`true` if and only if the datatyped literal formed of `$s_0` and `$s_1` equals `$o`.""" ;
+    fnon:tldr "Creates a datatyped literal from the string value and datatype IRI found in the list." ;
+    dcterms:comment """`true` if and only if `$o` is a datatyped literal with string value corresponding to `$s.0` and datatype IRI corresponding to `$s.1`.""" ;
     fno:example ( 
             [ a fno:Test ;
                 dcterms:description """
@@ -52,17 +52,25 @@ Parse the datatyped literal "1971-05-05"^^xsd:date into a string and data type I
             """ 
             ] 
     ) ;
-    fno:object ( [ a rdf:Property ;
-                fno:parameter ( [ a fno:Output ;
-                            dcterms:description "" ;
-                            fno:mode "*" ;
-                            fno:predicate "$o.0" ;
-                            fno:required true ;
-                            fno:type rdfs:Literal ] ) ] ) ;
-    fno:subject ( [ a rdf:Property ;
-                fno:parameter ( [ a fno:Parameter ;
-                            dcterms:description "" ;
-                            fno:mode "+" ;
-                            fno:predicate "$s" ;
-                            fno:required true ;
-                            fno:type log:List ] ) ] ) .
+    fno:parameter (
+        [ a fno:Parameter ;
+            dcterms:description "" ;
+            fno:mode "?" ;
+            fno:predicate "$s" ;
+            fno:type rdf:List ;
+            fnon:position fnon:subject ;
+            fnon:listElements ( [
+                fnon:predicate "$s.0" ;
+                fno:mode "?" ;
+                fno:type xsd:string
+            ] [
+                fnon:predicate "$s.1" ;
+                fno:mode "?" ;
+                fno:type log:Uri
+            ] )
+        ] [ a fno:Parameter ;
+            fno:predicate "$o" ;
+            fno:mode "?" ;
+            fnon:position fnon:object ;
+            fno:type log:Literal
+        ] ) .

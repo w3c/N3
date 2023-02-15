@@ -5,12 +5,12 @@
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 @prefix vs: <http://www.w3.org/2003/06/sw-vocab-status/ns#> .
+@prefix fnon: <https://w3id.org/function/ontology/n3#> .
 
 list:last a fno:Function ;
     vs:term_status  "testing" ;
-    dcterms:comment """Extracts the last member of a list. 
-`true` if and only the subject is a list and `$o` is the last member of that list.
-`$o` can be calculated as a function of the subject.""" ;
+    fnon:tldr "Gets the last element of the list." ;
+    dcterms:comment """`true` if and only if `$` is a list and `$o` is the last member of that list.""" ;
     fno:example ( 
             [ a fno:Test ;
                 dcterms:description """
@@ -52,10 +52,15 @@ Test if the last element of the list (1 2 3 4) is 4.
             """ ] 
     ) ;
     fno:name "last" ;
-    fno:subject ( [ a rdf:Property ;
-                fno:parameter ( [ a fno:Parameter ;
-                            dcterms:description "" ;
-                            fno:mode "+" ;
-                            fno:predicate "$s" ;
-                            fno:required true ;
-                            fno:type rdf:List ] ) ] ) .
+    fno:parameter (
+        [ a fno:Parameter ;
+            dcterms:description "" ;
+            fno:mode "+" ;
+            fno:predicate "$s" ;
+            fno:type rdf:List ;
+            fnon:position fnon:subject ;
+        ] [ a fno:Parameter ;
+            fno:predicate "$o" ;
+            fno:mode "-" ;
+            fnon:position fnon:object
+        ] ) .

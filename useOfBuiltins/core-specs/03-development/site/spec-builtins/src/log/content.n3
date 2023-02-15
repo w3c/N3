@@ -5,11 +5,12 @@
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 @prefix vs: <http://www.w3.org/2003/06/sw-vocab-status/ns#> .
+@prefix fnon: <https://w3id.org/function/ontology/n3#> .
 
 log:content a fno:Function ;
     vs:term_status  "testing" ;
-    dcterms:comment """This connects a document and a string that represents it. (Cwm knows how to go get a document in order to evaluate this.)
-Note: the content-type of the information is not given and so must be known or guessed.""" ;
+    fnon:tldr "Dereferences the IRI and retrieve the online resource as a string." ;
+    dcterms:comment """`true` if and only if `$o` is a string that represents the online resource to which `$s` is dereferenced.""" ;
     fno:example ( 
             [ a fno:Test ;
                 dcterms:description """
@@ -34,17 +35,16 @@ Fetch the content of https://www.w3.org/People/Berners-Lee/card.
            ] 
     ) ;
     fno:name "content" ;
-    fno:object ( [ a rdf:Property ;
-                fno:parameter ( [ a fno:Output ;
-                            dcterms:description "" ;
-                            fno:mode "*" ;
-                            fno:predicate "$o.0" ;
-                            fno:required true ;
-                            fno:type log:String ] ) ] ) ;
-    fno:subject ( [ a rdf:Property ;
-                fno:parameter ( [ a fno:Parameter ;
-                            dcterms:description "" ;
-                            fno:mode "+" ;
-                            fno:predicate "$s" ;
-                            fno:required true ;
-                            fno:type log:N3Document ] ) ] ) .
+    fno:parameter ( [
+        a fno:Parameter ;
+        dcterms:description "" ;
+        fno:mode "+" ;
+        fno:predicate "$s" ;
+        fno:type log:Uri
+    ] [
+        a fno:Parameter ;
+        dcterms:description "" ;
+        fno:mode "?" ;
+        fno:predicate "$o" ;
+        fno:type xsd:string
+    ] ) .
