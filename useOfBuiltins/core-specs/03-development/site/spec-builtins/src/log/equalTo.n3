@@ -5,11 +5,13 @@
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 @prefix vs: <http://www.w3.org/2003/06/sw-vocab-status/ns#> .
+@prefix fnon: <https://w3id.org/function/ontology/n3#> .
 
 log:equalTo a fno:Function ;
     vs:term_status  "testing" ;
-    dcterms:comment """Determines if two RDF resources are the same.
-`true` if and only if `$s` and `$o` are the same RDF node (symbol or literal).
+    fnon:tldr """Checks whether two N3 resources are the same. 
+Can also be used to bind a value to a variable (see examples).""" ;
+    dcterms:comment """`true` if and only if `$s` and `$o` are the same N3 resource.
 Not to be confused with owl:sameAs.""" ;
     fno:example ( 
             [ a fno:Test ;
@@ -87,4 +89,14 @@ Assign a value to an existential or universal variable.
 
 
     ) ;
-    fno:name "equalTo" .
+    fno:name "equalTo" ;
+    fno:parameter (
+        [ a fno:Parameter ;
+            fno:predicate "$s" ;
+            fno:mode "?" ;
+            fnon:position fnon:subject ;
+        ] [ a fno:Parameter ;
+            fno:predicate "$o" ;
+            fno:mode "?" ;
+            fnon:position fnon:object ;
+        ] ) .
