@@ -9,7 +9,7 @@
 
 list:member a fno:Function ;
     vs:term_status  "testing" ;
-    fnon:tldr "Checks whether the list contains the element." ;
+    fnon:tldr "Checks whether the subject list contains the object." ;
     dcterms:comment """`true` if and only `$s` is a list and `o` is a member of that list.""" ;
     fno:example ( 
             [ a fno:Test ;

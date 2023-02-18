@@ -9,7 +9,7 @@
 
 log:content a fno:Function ;
     vs:term_status  "testing" ;
-    fnon:tldr "Dereferences the IRI and retrieve the online resource as a string." ;
+    fnon:tldr "Dereferences the subject IRI and retrieves the online resource as the object string." ;
     dcterms:comment """`true` if and only if `$o` is a string that represents the online resource to which `$s` is dereferenced.""" ;
     fno:example ( 
             [ a fno:Test ;

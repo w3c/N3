@@ -4,38 +4,46 @@
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix fnon: <https://w3id.org/function/ontology/n3#> .
 
 log:langlit a fno:Function ;
-    dcterms:comment """Takes a list of two strings and creates a language-tagged literal.
-The subject is a list composed of two strings, and the object is a language-tagged literal with the value `$s_1` and language `$s_2`.
-`true` if and only if the language-tagged literal formed of `$s_1` and `$s_2` equals `$s_3`.
-`$s_2` should be a string in the form of a [BCP47](https://tools.ietf.org/html/bcp47) language tag.
-Example: `{ ("hello" "en") log:langlit ?X } => { ?X a :Answer } .` will produce `"hello"^^en a :Answer .`""" ;
+    fnon:tldr "Creates a language-tagged litera as object, based on the string value and language tag (see [BCP47](https://tools.ietf.org/html/bcp47)) in the subject list." ;
+    dcterms:comment """
+`true` if and only if `$o` is a language-tagged literal with string value corresponding to `$s.0` and language tag corresponding to `$s.1`.
+`$s.1` should be a string in the form of a [BCP47](https://tools.ietf.org/html/bcp47) language tag.""" ;
+    rdfs:seeAlso log:dtlit ;
     fno:example ( [ a fno:Test ;
                 dcterms:description """
-This is an example for a built-in function.
+Create a language-tagged literal from the string "hello" and language tag "en".
             """ ;
-                rdfs:seeAlso <http://ppr.cs.dal.ca:3002/n3/editor/?formula=%40prefix%20%3A%20%3C%3A%3E%20.%0A%40prefix%20string%3A%20%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F10%2Fswap%2Fstring%23%3E%20.%0A%0A%3ALet%20%3Astring%20%22placeholder%22%20.%0A%0A%7B%20%3ALet%20%3Astring%20%3Fx%20.%20%7D%0A%3D%3E%0A%7B%20%3Aresult%20%3Ais%20%3Fx%20.%20%7D.%20> ;
+                rdfs:seeAlso <> ;
                 fno:expression """
-@prefix : <:> .
-@prefix string: <http://www.w3.org/2000/10/swap/string#> .
-:Let :string "placeholder" .
-{ :Let :string ?x . } => { :result :is ?x . } .
+@prefix : <http://example.org/#>.
+@prefix log: <http://www.w3.org/2000/10/swap/log#> .
+{ ("hello" "en") log:langlit ?X } => { ?X a :Result } .
             """ ;
                 fno:result """
-                <:result> <:is> "placeholder". 
+"hello"@en a :Result .
             """ ] ) ;
-    fno:object ( [ a rdf:Property ;
-                fno:parameter ( [ a fno:Output ;
-                            dcterms:description "" ;
-                            fno:mode "*" ;
-                            fno:predicate "$o.0" ;
-                            fno:required true ;
-                            fno:type rdfs:Literal ] ) ] ) ;
-    fno:subject ( [ a rdf:Property ;
-                fno:parameter ( [ a fno:Parameter ;
-                            dcterms:description "" ;
-                            fno:mode "+" ;
-                            fno:predicate "$s" ;
-                            fno:required true ;
-                            fno:type rdf:List ] ) ] ) .
+    fno:parameter (
+        [ a fno:Parameter ;
+            dcterms:description "" ;
+            fno:mode "?" ;
+            fno:predicate "$s" ;
+            fno:type rdf:List ;
+            fnon:position fnon:subject ;
+            fnon:listElements ( [
+                fnon:predicate "$s.0" ;
+                fno:mode "?" ;
+                fno:type xsd:string
+            ] [
+                fnon:predicate "$s.1" ;
+                fno:mode "?" ;
+                fno:type xsd:string
+            ] )
+        ] [ a fno:Parameter ;
+            fno:predicate "$o" ;
+            fno:mode "?" ;
+            fnon:position fnon:object ;
+            fno:type log:Literal
+        ] ) .

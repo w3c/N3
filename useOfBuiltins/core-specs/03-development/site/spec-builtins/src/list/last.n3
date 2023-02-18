@@ -9,7 +9,7 @@
 
 list:last a fno:Function ;
     vs:term_status  "testing" ;
-    fnon:tldr "Gets the last element of the list." ;
+    fnon:tldr "Gets the last element of the subject list as object." ;
     dcterms:comment """`true` if and only if `$` is a list and `$o` is the last member of that list.""" ;
     fno:example ( 
             [ a fno:Test ;

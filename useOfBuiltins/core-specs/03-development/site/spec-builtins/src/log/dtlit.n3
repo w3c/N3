@@ -9,8 +9,9 @@
 
 log:dtlit a fno:Function ;
     vs:term_status  "testing" ;
-    fnon:tldr "Creates a datatyped literal from the string value and datatype IRI found in the list." ;
+    fnon:tldr "Creates a datatyped literal as object, based on the string value and datatype IRI in the subject list." ;
     dcterms:comment """`true` if and only if `$o` is a datatyped literal with string value corresponding to `$s.0` and datatype IRI corresponding to `$s.1`.""" ;
+    rdfs:seeAlso log:langlit ;
     fno:example ( 
             [ a fno:Test ;
                 dcterms:description """

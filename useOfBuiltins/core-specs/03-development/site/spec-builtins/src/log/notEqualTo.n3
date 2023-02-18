@@ -4,10 +4,12 @@
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix fnon: <https://w3id.org/function/ontology/n3#> .
 
 log:notEqualTo a fno:Function ;
-    dcterms:comment """Determines if two RDF resources are not the same.
-`true` if and only if `$s` and `$o` are not the same RDF node (symbol or literal).""" ;
+    fnon:tldr "Checks whether the subject and object N3 resources are _not_ the same." ;
+    dcterms:comment """`true` if and only if `$s log:equalTo $o` is false.""" ;
+    rdfs:seeAlso log:equalTo ;
     fno:example ( [ a fno:Test ;
                 dcterms:description """
 This is an example for a built-in function.
@@ -22,4 +24,14 @@ This is an example for a built-in function.
                 fno:result """
                 <:result> <:is> "placeholder". 
             """ ] ) ;
-    fno:name "notEqualTo" .
+    fno:name "notEqualTo" ;
+    fno:parameter (
+        [ a fno:Parameter ;
+            fno:predicate "$s" ;
+            fno:mode "+" ;
+            fnon:position fnon:subject ;
+        ] [ a fno:Parameter ;
+            fno:predicate "$o" ;
+            fno:mode "+" ;
+            fnon:position fnon:object ;
+        ] ) .

@@ -4,12 +4,11 @@
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix fnon: <https://w3id.org/function/ontology/n3#> .
 
 log:outputString a fno:Function ;
-    dcterms:comment """The subject is a key and the object is a string,
-where the strings are to be output in the order of the keys.
-See cwm --strings in cwm --help.
-""" ;
+    fnon:tldr "The N3 reasoner will print the given object strings in the order of the subject keys (i.e., instead of printing the derivations or deductive closure). This may require a reasoner flag to be set." ;
+    dcterms:comment """The concrete semantics of this builtin (e.g., which N3 resource types are supported) will depend on the N3 reasoner.""" ;
     fno:example ( [ a fno:Test ;
                 dcterms:description """
 This is an example for a built-in function.
@@ -25,10 +24,13 @@ This is an example for a built-in function.
                 <:result> <:is> "placeholder". 
             """ ] ) ;
     fno:name "output string" ;
-    fno:object ( [ a rdf:Property ;
-                fno:parameter ( [ a fno:Output ;
-                            dcterms:description "" ;
-                            fno:mode "*" ;
-                            fno:predicate "$o.0" ;
-                            fno:required true ;
-                            fno:type log:String ] ) ] ) .
+    fno:parameter (
+        [ a fno:Parameter ;
+            fno:predicate "$s" ;
+            fno:mode "+" ;
+            fnon:position fnon:subject ;
+        ] [ a fno:Parameter ;
+            fno:predicate "$o" ;
+            fno:mode "+" ;
+            fnon:position fnon:object ;
+        ] ) .

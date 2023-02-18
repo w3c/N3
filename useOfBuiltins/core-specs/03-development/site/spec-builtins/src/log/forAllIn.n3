@@ -7,7 +7,7 @@
 @prefix fnon: <https://w3id.org/function/ontology/n3#> .
 
 log:forAllIn a fno:Function ;
-    fnon:tldr "For each result of the first clause, checks whether the second clause holds for it as well." ;
+    fnon:tldr "For each result of the first clause, checks whether the second clause holds for it as well. The two clauses are given in the subject list." ;
     dcterms:comment """`true` if and only if, for each solution for which the first clause `$s.0` is true, the second clause `$s.1` is true as well. 
 This is a scoped universal quantification.""" ;
     fno:example ( [ a fno:Test ;

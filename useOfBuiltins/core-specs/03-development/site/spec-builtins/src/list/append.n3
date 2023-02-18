@@ -9,7 +9,7 @@
 
 list:append a fno:Function ;
     vs:term_status  "testing" ;
-    fnon:tldr "Appends multiple lists into a single result list." ;
+    fnon:tldr "Appends the lists from the subject list into a single list as object." ;
     dcterms:comment """`true` if and only if `$s` is a list of lists `$s.i` and the concatenation of all those lists is `$o`.""" ;
     fno:example ( 
             [ a fno:Test ;
