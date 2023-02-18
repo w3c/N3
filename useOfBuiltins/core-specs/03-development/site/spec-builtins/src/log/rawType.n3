@@ -4,15 +4,15 @@
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix fnon: <https://w3id.org/function/ontology/n3#> .
 
 log:rawType a fno:Function ;
-    dcterms:comment """Returns an identifier based on the type of the RDF Resource.
-`true` if the type of `$s` is the same as `$o`, or binds the type to `$o`.
-`$o` is unbound or one of `log:Formula`, `log:Literal`, `log:List`, `log:Set` or `log:Other`.
-Example: `log:semanticsOrError` returns either a formula or a string, and you can check which using `log:rawType`. """ ;
+    fnon:tldr "Gets the type of the N3 resource." ;
+    dcterms:comment """`true` if and only if the N3 resource type of `$s` is `$o`.
+N3 resource types include `log:Formula`, `log:Literal`, `log:List`, `log:Set` or `log:Other`.""" ;
     fno:example ( [ a fno:Test ;
                 dcterms:description """
-This is an example for a built-in function.
+Example: `log:semanticsOrError` returns either a formula or a string, and you can check which using `log:rawType`.
             """ ;
                 rdfs:seeAlso <http://ppr.cs.dal.ca:3002/n3/editor/?formula=%40prefix%20%3A%20%3C%3A%3E%20.%0A%40prefix%20string%3A%20%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F10%2Fswap%2Fstring%23%3E%20.%0A%0A%3ALet%20%3Astring%20%22placeholder%22%20.%0A%0A%7B%20%3ALet%20%3Astring%20%3Fx%20.%20%7D%0A%3D%3E%0A%7B%20%3Aresult%20%3Ais%20%3Fx%20.%20%7D.%20> ;
                 fno:expression """
@@ -25,10 +25,15 @@ This is an example for a built-in function.
                 <:result> <:is> "placeholder". 
             """ ] ) ;
     fno:name "rawType" ;
-    fno:object ( [ a rdf:Property ;
-                fno:parameter ( [ a fno:Output ;
-                            dcterms:description "" ;
-                            fno:mode "*" ;
-                            fno:predicate "$o.0" ;
-                            fno:required true ;
-                            fno:type log:Type ] ) ] ) .
+    fno:parameter (
+        [ a fno:Parameter ;
+            fno:predicate "$s" ;
+            fno:mode "+" ;
+            fnon:position fnon:subject ;
+            
+        ] [ a fno:Parameter ;
+            fno:predicate "$o" ;
+            fno:mode "-" ;
+            fnon:position fnon:object ;
+            fno:type log:Uri
+        ] ) .

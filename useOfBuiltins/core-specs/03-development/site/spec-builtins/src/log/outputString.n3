@@ -33,4 +33,5 @@ This is an example for a built-in function.
             fno:predicate "$o" ;
             fno:mode "+" ;
             fnon:position fnon:object ;
+            fno:type xsd:string
         ] ) .
