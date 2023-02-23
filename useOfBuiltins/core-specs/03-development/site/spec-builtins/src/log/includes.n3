@@ -4,9 +4,11 @@
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix vs: <http://www.w3.org/2003/06/sw-vocab-status/ns#> .
 @prefix fnon: <https://w3id.org/function/ontology/n3#> .
 
 log:includes a fno:Function ;
+    vs:term_status  "testing" ;
     fnon:tldr """Checks whether the subject quoted graph includes the object quoted graph (taking into account variables). 
 Can also be used to bind variables to values within the graph contents (see examples).""" ;
     dcterms:comment """`true` if and only if there exists some substitution which, when applied to `$o`, 
@@ -14,20 +16,28 @@ creates a quoted graph `$o`' such that every statement in `$o`' is also in `$s`;
 whereby every variable, universally or existentially quantified in `$o`', is quantified in the same way in `$s`. 
 Variable substitution is applied recursively to nested compound terms such as quoted graphs ans lists.""" ;
     rdfs:seeAlso log:notIncludes ;
-    fno:example ( [ a fno:Test ;
+    fno:example ( 
+            [ a fno:Test ;
                 dcterms:description """
-This is an example for a built-in function.
+Check whether the formula { :Felix a :Cat } includes { ?X a :Cat }.
             """ ;
-                rdfs:seeAlso <http://ppr.cs.dal.ca:3002/n3/editor/?formula=%40prefix%20%3A%20%3C%3A%3E%20.%0A%40prefix%20string%3A%20%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F10%2Fswap%2Fstring%23%3E%20.%0A%0A%3ALet%20%3Astring%20%22placeholder%22%20.%0A%0A%7B%20%3ALet%20%3Astring%20%3Fx%20.%20%7D%0A%3D%3E%0A%7B%20%3Aresult%20%3Ais%20%3Fx%20.%20%7D.%20> ;
+                rdfs:seeAlso <> ;
                 fno:expression """
-@prefix : <:> .
-@prefix string: <http://www.w3.org/2000/10/swap/string#> .
-:Let :string "placeholder" .
-{ :Let :string ?x . } => { :result :is ?x . } .
+@prefix : <http://example.org/#>.
+@prefix log: <http://www.w3.org/2000/10/swap/log#> .
+
+{ 
+    { :Felix a :Cat } log:includes { ?X a :Cat } .
+} 
+=>
+{
+    :result :is ?X .
+} .
             """ ;
                 fno:result """
-                <:result> <:is> "placeholder". 
-            """ ] ) ;
+:result :is :Felix .
+            """ 
+    ] ) ;
     fno:name "includes" ;
     fno:parameter (
         [ a fno:Parameter ;

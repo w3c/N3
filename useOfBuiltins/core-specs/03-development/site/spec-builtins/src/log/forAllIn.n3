@@ -4,9 +4,11 @@
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix vs: <http://www.w3.org/2003/06/sw-vocab-status/ns#> .
 @prefix fnon: <https://w3id.org/function/ontology/n3#> .
 
 log:forAllIn a fno:Function ;
+    vs:term_status  "testing" ;
     fnon:tldr "For each result of the first clause, checks whether the second clause holds for it as well. The two clauses are given in the subject list." ;
     dcterms:comment """`true` if and only if, for each solution for which the first clause `$s.0` is true, the second clause `$s.1` is true as well. 
 This is a scoped universal quantification.""" ;
