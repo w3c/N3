@@ -9,7 +9,11 @@
 
 log:notEqualTo a fno:Function ;
     vs:term_status  "testing" ;
-    vs:moreinfo "the results when using qvars and existentials are quite unexpected" ;
+    vs:moreinfo "the results are surprising when using unbound variables (phochste)" ;
+    vs:moreinfo "?x log:notEqualTo 'Cat' is semantically not false, it has infinite amount of results (phochste)" ;
+    vs:moreinfo "we make it into false because in N3 there is no way, yet, to express a result with infinite results (phochste)" ;
+    vs:moreinfo "we need to document that unbound variables are automatic false. (phochste)" ;
+    vs:moreinfo "this makes notEqualTo not the exact complement of equalTo. (phochste)" ;
     fnon:tldr "Checks whether the subject and object N3 resources are _not_ the same." ;
     dcterms:comment """`true` if and only if `$s log:equalTo $o` is false.""" ;
     rdfs:seeAlso log:equalTo ;
@@ -72,9 +76,6 @@ Check if an existential or universal variable is not equal to a value.
 {
     _:x log:notEqualTo 42 .
     ?q  log:notEqualTo "Cat"@en .
-
-    # This will work because _:x is not assigned to 42
-    _:x log:equalTo 17 .
 }
 =>
 {
@@ -82,10 +83,9 @@ Check if an existential or universal variable is not equal to a value.
 } . 
             """ ;
                 fno:result """
-# no result ??
+# no result (the variables _:x and ?q are not bounded) 
             """ 
             ] 
-
     ) ;
     fno:name "notEqualTo" ;
     fno:parameter (
