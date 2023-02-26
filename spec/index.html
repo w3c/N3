@@ -137,7 +137,7 @@
       document.respec.ready.then(function () {
 
         for (let div of document.querySelectorAll("div.example")) {
-          
+
           let pre = div.querySelector("pre");
           if (pre.className.indexOf("linkeditor") == -1)
             continue;
@@ -424,12 +424,12 @@ ex:green-goblin foaf:name "Green Goblin" . -->
               <pre id="iri-prp-list-unfolded" class="example nohighlight linkeditor" data-transform="updateExample"><!--
 @prefix : <http://example.org/#> .
 @prefix foaf:<http://xmlns.com/foaf/0.1/>.
-    
-:spiderman 
+
+:spiderman
 :enemyOf :green-goblin ;
   :portrayedBy :tobey-maguire .
-    
-:green-goblin 
+
+:green-goblin
   :portrayedBy :willem-dafoe .
 
 :tobey-maguire a :Actor .
@@ -441,12 +441,12 @@ ex:green-goblin foaf:name "Green Goblin" . -->
               <pre id="iri-prp-list" class="example nohighlight linkeditor" data-transform="updateExample"><!--
 @prefix : <http://example.org/#> .
 @prefix foaf:<http://xmlns.com/foaf/0.1/>.
-    
-:spiderman 
-  :enemyOf 
-    [ id :green-goblin 
+
+:spiderman
+  :enemyOf
+    [ id :green-goblin
       :portrayedBy [ id :willem-dafoe
-        a :Actor 
+        a :Actor
       ]
     ] ;
     :portrayedBy [ id :tobey-maguire
@@ -547,7 +547,7 @@ ex:green-goblin foaf:name "Green Goblin" . -->
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 @prefix : <http://example.org/#> .
 
-:spiderman rdfs:label 
+:spiderman rdfs:label
   '"Bitten" by a radioactive spider.' ,
   "\"Bitten\" by a radioactive spider." ,
   """'Bitten' by "what"?
@@ -726,7 +726,7 @@ _:a ex:town [ ex:name "Springfield" ] . -->
       <p>We often need to describe ordered collections of things, e.g., a book written by several authors,
         listing the students in a course, or the software modules within a package. N3 supports <dfn
           data-lt="n3 collection|n3 list|list">collections</dfn> as first-class citizens
-        to represent ordered collections of resources enclosed by parentheses 
+        to represent ordered collections of resources enclosed by parentheses
         ("<code>(</code> <code>)</code>").
         The contained resources are called <dfn data-lt="collection member">members</dfn>.</p>
       <p>For instance:</p>
@@ -800,7 +800,7 @@ _:a ex:town [ ex:name "Springfield" ] . -->
 @prefix dc: <http://purl.org/dc/terms/> .
 @prefix : <http://example.org/#> .
 
-{ :cervantes dc:wrote :moby_dick } :opinion :lie ;
+{:cervantes dc:wrote :moby_dick} :opinion :lie ;
   :retrievedFrom <http://lies_r_us.com> ;
   :retrievedAt "2020-07-12T09:01:33"^^xsd:dateTime . -->
 </pre>
@@ -816,7 +816,7 @@ _:a ex:town [ ex:name "Springfield" ] . -->
       <pre class="example nohighlight linkeditor" data-transform="updateExample"><!--
 @prefix : <http://example.org/#> .
 
-:LoisLane :believes { :Superman :can :fly } . -->
+:LoisLane :believes {:Superman :can :fly} . -->
 </pre>
       <p>This <a>N3 statement</a> states that Lois Lane believes that Superman can fly.
         Even if it is known that <code>:Superman</code> is the same as <code>:ClarkKent</code>, one cannot infer from
@@ -842,10 +842,9 @@ _:a ex:town [ ex:name "Springfield" ] . -->
 @prefix foaf: <http://xmlns.com/foaf/0.1/> .
 @prefix : <http://example.org/#>.
 
-{ :weather a :Raining
-} => {
-  :weather a :Cloudy
-} . -->
+{:weather a :Raining}
+=>
+{:weather a :Cloudy} .-->
 </pre>
 
       <p>
@@ -868,7 +867,7 @@ _:a ex:town [ ex:name "Springfield" ] . -->
         An <a>N3 rule</a> is actually a N3 statement, where the <a>subject</a> and <a>object</a> constitute <a>quoted
           graphs</a>,
         and the <a>predicate</a> is `log:implies`, with symbol `=&gt;` as syntactic sugar.
-        <!-- For backward chaining rules (see <a href="n3rulechaining">rule chaining</a>), 
+        <!-- For backward chaining rules (see <a href="n3rulechaining">rule chaining</a>),
           the predicate is `log:impliedBy`, with symbol `&lt;=` as syntactic sugar. -->
         <!-- In fact, these predicates themselves are <a>N3 builtins</a>. -->
       </p>
@@ -885,10 +884,9 @@ _:a ex:town [ ex:name "Springfield" ] . -->
 
 :spiderman a :SuperHero .
 
-{ ?x a :SuperHero
-} => {
-  ?x a :Imaginary
-} . -->
+{?x a :SuperHero}
+=>
+{?x a :Imaginary} .-->
 </pre>
 
         <p>
@@ -922,16 +920,16 @@ _:a ex:town [ ex:name "Springfield" ] . -->
         <pre id="chaining_example" class="example nohighlight linkeditor" data-transform="updateExample"><!--
 @prefix foaf: <http://xmlns.com/foaf/0.1/> .
 @prefix : <http://example.org/#>.
-            
+
 :spiderman a :WebSlinger .
 :44th :traffic :heavy .
-            
-{ ?slinger a :WebSlinger } => { ?slinger :locomotion :flying } .
 
-{ ?heli a :Helicopter } => { ?heli :locomotion :flying  } .
+{?slinger a :WebSlinger} => {?slinger :locomotion :flying} .
+{?heli    a :Helicopter} => {?heli    :locomotion :flying} .
 
-{ ?flyer :locomotion :flying . ?street :traffic :heavy } 
-  =>  { ?street :suitable-observer ?flyer } . -->
+{?flyer :locomotion :flying . ?street :traffic :heavy}
+=>
+{?street :suitable-observer ?flyer} . -->
 </pre>
 
         <p>
@@ -969,16 +967,16 @@ _:a ex:town [ ex:name "Springfield" ] . -->
           <pre id="backward_chaining_example" class="example nohighlight linkeditor" data-transform="updateExample"><!--
 @prefix foaf: <http://xmlns.com/foaf/0.1/> .
 @prefix : <http://example.org/#>.
-            
+
 :spiderman a :WebSlinger .
 :44th :traffic :heavy .
 
-{ ?slinger :locomotion :flying } <= { ?slinger a :WebSlinger } .
+{?slinger :locomotion :flying} <= {?slinger a :WebSlinger} .
+{?heli    :locomotion :flying} <= {?heli    a :Helicopter} .
 
-{ ?heli :locomotion :flying } <= { ?heli a :Helicopter } .
-
-{ ?flyer :locomotion :flying . ?street :traffic :heavy } 
-  =>  { ?street :suitable-observer ?flyer } . -->
+{?flyer :locomotion :flying . ?street :traffic :heavy}
+=>
+{?street :suitable-observer ?flyer} . -->
 </pre>
         </p>
 
@@ -1036,9 +1034,9 @@ _:a ex:town [ ex:name "Springfield" ] . -->
 
 :spiderman :heightInCm 180 .
 
-{ ?person :heightInCm ?cm .
-  ( ?cm 100 ) math:quotient ?m .
-} => { ?person :heightInMeter ?m } . -->
+{?person :heightInCm ?cm . (?cm 100) math:quotient ?m}
+=>
+{?person :heightInMeter ?m} . -->
 </pre>
       <p>
         An <a>N3 builtin</a> is used as the <a>predicate</a> in an
@@ -1061,12 +1059,14 @@ _:a ex:town [ ex:name "Springfield" ] . -->
 @prefix : <http://example.org/#>.
 
 :race :finalists ( :flash :superman :spiderman ) .
-          
-{ :race :finalists ?finalists .
+
+{
+  :race :finalists ?finalists .
   ?finalists list:iterate ( ?i ?finalist ) .
   ( ?i ". " ?finalist "<br />" ) string:concatenation ?entry
-
-} => { :race :entries ?entry } . -->
+}
+=>
+{:race :entries ?entry} . -->
 </pre>
 
       <p>
@@ -1116,24 +1116,22 @@ _:a ex:town [ ex:name "Springfield" ] . -->
         For instance, the rule below uses `log:collectAllIn` to collect all of spiderman's defeated villains
         found in the current document:
         <pre id="collectallin_example" class="example nohighlight linkeditor" data-transform="updateExample"><!--
-@prefix log: <http://www.w3.org/2000/10/swap/log#> . 
+@prefix log: <http://www.w3.org/2000/10/swap/log#> .
 @prefix : <http://example.org/#>.
 
 :spiderman a :SuperHero .
-:green-goblin :enemyOf :spiderman ; :defeated true .
+:green-goblin   :enemyOf :spiderman ; :defeated true .
 :doctor-octopus :enemyOf :spiderman ; :defeated true .
-:sandman :enemyOf :spiderman ; :defeated false .
+:sandman        :enemyOf :spiderman ; :defeated false .
 
-{ 
+{
   ?hero a :SuperHero .
   (?enemy
-  {
-    ?enemy :enemyOf ?hero ;
-      :defeated true .
-  }
+  {?enemy :enemyOf ?hero; :defeated true}
   ?enemies) log:collectAllIn _:t .
-
-} => { ?hero :defeatedEnemies ?enemies } . -->
+}
+=>
+{?hero :defeatedEnemies ?enemies} . -->
 </pre>
 
         The `log:collectAllIn` builtin accepts as subject a collection that includes:
@@ -1150,21 +1148,20 @@ _:a ex:town [ ex:name "Springfield" ] . -->
       <p>
         The example below uses `log:forAllIn` to determine whether a super-hero's identity is safe:
         <pre id="forallin_example" class="example nohighlight linkeditor" data-transform="updateExample"><!--
-@prefix log: <http://www.w3.org/2000/10/swap/log#> . 
+@prefix log: <http://www.w3.org/2000/10/swap/log#> .
 @prefix : <http://example.org/#> .
 
 :spiderman a :SuperHero .
-:mary-jane :knowsIdentityOf :spiderman ;
-  :keepsSecrets true .
-:aunt-may :knowsIdentityOf :spiderman ;
-  :keepsSecrets true .
+:mary-jane :knowsIdentityOf :spiderman ; :keepsSecrets true .
+:aunt-may  :knowsIdentityOf :spiderman ; :keepsSecrets true .
 
-  { 
-    ?hero a :SuperHero .
-    ( { ?person :knowsIdentityOf ?hero } { ?person :keepsSecrets true } )               
-      log:forAllIn _:t .
-
-} => { ?hero :secretIdentitySafe true } . -->
+{
+  ?hero a :SuperHero .
+  ({?person :knowsIdentityOf ?hero} {?person :keepsSecrets true})
+    log:forAllIn _:t .
+}
+=>
+{?hero :secretIdentitySafe true} . -->
 </pre>
         The `log:forAllIn` builtin accepts as subject a collection with two clauses of a logical implication.
         If, for all cases where the first clause holds, the second clause holds as well,
@@ -1187,22 +1184,22 @@ _:a ex:town [ ex:name "Springfield" ] . -->
         The rule finds any of spiderman's enemies who have not been defeated, at least,
         as reported by the Daily Bugle:
         <pre id="notincludes_example" class="example nohighlight linkeditor" data-transform="updateExample"><!--
-@prefix log: <http://www.w3.org/2000/10/swap/log#> . 
-@prefix : <http://example.org/#> .    
+@prefix log: <http://www.w3.org/2000/10/swap/log#> .
+@prefix : <http://example.org/#> .
 
-:spiderman :hasEnemy :green-goblin , :doctor-octopus, :sandman .
+:spiderman :hasEnemy :green-goblin, :doctor-octopus, :sandman .
 {
-  :green-goblin :defeatedBy :spiderman .
+  :green-goblin   :defeatedBy :spiderman .
   :doctor-octopus :defeatedBy :spiderman .
+} :reportedBy :daily_bugle .
 
-  } :reportedBy :daily_bugle .
-
-{ 
+{
   :spiderman :hasEnemy ?enemy .
   ?graph :reportedBy :daily_bugle .
-  ?graph log:notIncludes { ?enemy :defeatedBy ?hero } .
-
-} => { ?enemy a :Undefeated } . -->
+  ?graph log:notIncludes {?enemy :defeatedBy ?hero} .
+}
+=>
+{?enemy a :Undefeated} . -->
 </pre>
       <p>
         For each of spiderman's enemies (`?enemy`), the rule checks whether the <a>quoted graph</a> `?graph`,
@@ -1226,37 +1223,35 @@ _:a ex:town [ ex:name "Springfield" ] . -->
         and subsequently extracts its title:
       <pre id="content_example" class="example nohighlight linkeditor" data-transform="updateExample"> -->
       <!--
-            @prefix log: <http://www.w3.org/2000/10/swap/log#> . 
-            @prefix string: <http://www.w3.org/2000/10/swap/string#> . 
+@prefix log: <http://www.w3.org/2000/10/swap/log#> .
+@prefix string: <http://www.w3.org/2000/10/swap/string#> .
 
-            {
-                <http://example.com> log:content ?content .
-                ( ?content "<title>(.*?)</title>") string:scrape ?title .
-            } => {
-                <http://example.com> :title ?title . 
-            } .
-          -->
+{
+  <http://example.com> log:content ?content .
+  (?content "<title>(.*?)</title>") string:scrape ?title .
+} 
+=> 
+{<http://example.com> :title ?title} . -->
       <!-- </pre>
       </p> -->
 
       <p>
-        In the rule below, the `log:semantics` builtin retrieves an online source and subsequently parses it a <a>quoted
+        In the rule below, the `log:semantics` builtin retrieves an online source and subsequently parses it as <a>quoted
           graph</a>:
         <pre id="semantics-example" class="example nohighlight linkeditor" data-transform="updateExample"><!--
-@prefix log: <http://www.w3.org/2000/10/swap/log#> . 
+@prefix log: <http://www.w3.org/2000/10/swap/log#> .
 @prefix : <http://example.com> .
 
-{ 	
+{
   <https://raw.githubusercontent.com/w3c/N3/master/tests/N3Tests/people.n3> log:semantics ?g .
-  ( ?person { ?person a :Person  } ?persons ) 
-      log:collectAllIn ?g .
-                 
-} => { 
+  (?person {?person a :Person} ?persons)
+    log:collectAllIn ?g .
+} => {
   <https://raw.githubusercontent.com/w3c/N3/master/tests/N3Tests/people.n3>
     :people ?persons
 } . -->
 </pre>
-        Subsequently, `log:collectAllIn` is used to collect all persons found within the online source.
+        Subsequently, `log:collectAllIn` is used to collect all persons found within the online source and record them in a new predicate `:people`.
       </p>
 
       <p>
@@ -1264,13 +1259,13 @@ _:a ex:town [ ex:name "Springfield" ] . -->
         i.e., extending the graph with all applicable rule inferences.
         This includes <a>quoted graphs</a> retrieved and parsed from online sources. For example:
         <pre id="concl-example" class="example nohighlight linkeditor" data-transform="updateExample"><!--
-@prefix log: <http://www.w3.org/2000/10/swap/log#> . 
+@prefix log: <http://www.w3.org/2000/10/swap/log#> .
 @prefix : <http://example.com/> .
 
-{  <https://raw.githubusercontent.com/w3c/N3/master/tests/N3Tests/rules.n3> log:semantics ?g .
-   ?g log:conclusion ?closure .
-                
-} => { 
+{
+  <https://raw.githubusercontent.com/w3c/N3/master/tests/N3Tests/rules.n3> log:semantics ?g .
+  ?g log:conclusion ?closure .
+} => {
    <https://raw.githubusercontent.com/w3c/N3/master/tests/N3Tests/rules.n3>
      :inferences ?closure
 } . -->
@@ -1307,9 +1302,9 @@ _:a ex:town [ ex:name "Springfield" ] . -->
       <pre class="example nohighlight linkeditor" data-transform="updateExample"><!--
 @prefix : <http://example.org/#> .
 
-:joe :hasMother _:m . 
-_:m :hasOffice _:o . 
-_:o :hasAddress _:a . 
+:joe :hasMother _:m .
+_:m :hasOffice _:o .
+_:o :hasAddress _:a .
 _:a :hasCity "Metropolis" . -->
 </pre>
 
@@ -1384,8 +1379,7 @@ _:d a :Person. -->
         Representing an inverted property using the <code>&lt;components-</code> symbol. The <a
           data-cite="N3#grammar">original N3 grammar</a> allowed the inverting of a property by using the
         <code>@is .. @of</code> construct. But, this construct can be unintuitive when property names are more
-        verbosely
-        specified (e.g., <code>:hasFather</code>), leading to statements such as
+        verbosely specified (e.g., <code>:hasFather</code>), leading to statements such as
         <code>?x @is :hasFather @of ?y</code>.
         The <code>is .. of</code> construct is still supported, but the above statement can now be represented as
         follows: <code>?x &lt;- :hasFather ?y</code>.
@@ -1882,26 +1876,26 @@ _:d a :Person. -->
         "<code>}</code>".</p>
       <p>For instance:</p>
       <pre class="example nohighlight linkeditor" data-transform="updateExample">
-  <!-- 
-  # This document contains a default graph and two named graphs.
-  @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
-  @prefix dc: <http://purl.org/dc/terms/> .
-  @prefix foaf: <http://xmlns.com/foaf/0.1/> .
-  
-  # default graph
-  <http://example.org/bob> dc:publisher "Bob" .
-  <http://example.org/alice> dc:publisher "Alice" .
-  <http://example.org/bob>
-  {
-    _:a foaf:name "Bob" .
-    _:a foaf:mbox <mailto:bob@oldcorp.example.org> .
-    _:a foaf:knows _:b .
-  }
-  <http://example.org/alice>
-  {
-    _:b foaf:name "Alice" .
-    _:b foaf:mbox <mailto:alice@work.example.org> .
-  }
+  <!--
+# This document contains a default graph and two named graphs.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix dc: <http://purl.org/dc/terms/> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+
+# default graph
+<http://example.org/bob> dc:publisher "Bob" .
+<http://example.org/alice> dc:publisher "Alice" .
+<http://example.org/bob>
+{
+  _:a foaf:name "Bob" .
+  _:a foaf:mbox <mailto:bob@oldcorp.example.org> .
+  _:a foaf:knows _:b .
+}
+<http://example.org/alice>
+{
+  _:b foaf:name "Alice" .
+  _:b foaf:mbox <mailto:alice@work.example.org> .
+}
 -->
 </pre>
       <p>N3 is not directly compatible with TriG as it does not support this graph statement notation. Nevertheless,
@@ -1911,26 +1905,25 @@ _:d a :Person. -->
         this extension allows associating names or identifiers with <a>quoted graphs</a>.
         For instance:
         <pre class="example nohighlight linkeditor" data-transform="updateExample"><!--
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix dc: <http://purl.org/dc/terms/> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix sem: <https://example.org/ns/semantics#> .
 
-  @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
-  @prefix dc: <http://purl.org/dc/terms/> .
-  @prefix foaf: <http://xmlns.com/foaf/0.1/> .
-  @prefix sem: <https://example.org/ns/semantics#> .
-  
-  # default graph
-  <http://example.org/bob> dc:publisher "Bob" .
-  <http://example.org/alice> dc:publisher "Alice" .
-  <http://example.org/bob> sem:quotedGraph
-    {
-      _:a foaf:name "Bob" .
-      _:a foaf:mbox <mailto:bob@oldcorp.example.org> .
-      _:a foaf:knows _:b .
-    } .
-  <http://example.org/alice> sem:quotedGraph 
-    {
-      _:b foaf:name "Alice" .
-      _:b foaf:mbox <mailto:alice@work.example.org> .
-    } . -->
+# default graph
+<http://example.org/bob> dc:publisher "Bob" .
+<http://example.org/alice> dc:publisher "Alice" .
+<http://example.org/bob> sem:quotedGraph
+  {
+    _:a foaf:name "Bob" .
+    _:a foaf:mbox <mailto:bob@oldcorp.example.org> .
+    _:a foaf:knows _:b .
+  } .
+<http://example.org/alice> sem:quotedGraph
+  {
+    _:b foaf:name "Alice" .
+    _:b foaf:mbox <mailto:alice@work.example.org> .
+  } . -->
 </pre>
       </p>
       <p>The <a href="https://github.com/IDLabResearch/N3NamedGraphSemantics">N3 Named Graphs extension</a>
