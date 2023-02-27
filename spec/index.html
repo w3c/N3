@@ -959,9 +959,9 @@ _:a ex:town [ ex:name "Springfield" ] . -->
           can operate in forward chaining, backward chaining, or some hybrid mode.
           An <a>N3 rule</a> can also indicate which mode should be used,
           by using the appropriate predicate.
-          Up until now, we have been utilizing `=&gt;`, which is syntactic sugar for `log:implies` and
+          Up until now, we have used `=&gt;`, which is syntactic sugar for `log:implies` and
           directs the reasoner to operate in forward chaining mode.
-          The `&lt;=` predicate, syntactic sugar for `log:impliedBy`, indicates a backward chaining mode.
+          The `&lt;=` predicate, which is syntactic sugar for `log:impliedBy`, indicates a backward chaining mode.
         </p>
         <p>
           For instance, the following is equivalent to the <a href="#chaining_example">prior example</a>
@@ -1902,7 +1902,7 @@ _:d a :Person. -->
 </pre>
       <p>N3 is not directly compatible with TriG as it does not support this graph statement notation. Nevertheless,
         since N3 supports <a>quoted graphs</a> as part of regular <a>N3 statements</a>,
-        authors can utilize the <a href="https://github.com/IDLabResearch/N3NamedGraphSemantics">N3 Named Graphs
+        authors can use the <a href="https://github.com/IDLabRese arch/N3NamedGraphSemantics">N3 Named Graphs
           extension</a>;
         this extension allows associating names or identifiers with <a>quoted graphs</a>.
         For instance:
