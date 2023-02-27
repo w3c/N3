@@ -347,30 +347,45 @@ This enables us to introduce the notion of closed graphs and ground terms.
           </li>
         </ul>
         <p class="note">An abstract N3 graph which is constructed from a graph in the direct N3 syntax cannot contain free variables.
-        Implicit quantification always comes with a scope and explicit quantification is defined on iri's which only become variables
-        based on their use. The notion of free variables is thus only relevant for quoted graphs which can, when treated like a graph,
-        contain free variables.
+        Implicit quantification always comes with a scope and explicit quantification is defined on IRIs which only become variables
+        based on their use. The notion of free variables is thus only relevant for quoted graphs and the contexts in which we consider their qoted or unquoted meaning.
         </p>
 
-
-        <p>A <a>graph</a> $G=(U,E,F)$ can also contain quantified variables $v\in U\cup E$ which do not occur in any <a>triple</a> of $F$. These variables do not contribute to the interpretation of the graph. In order to simplify our considerations below, we introduce the notion of normalised graphs:</p>
+        <p>An abstract <a>graph</a> $G=(U,E,F)$ can also contain quantified variables $v\in U\cup E$ which do not occur in any <a>triple</a> of $F$. 
+          These variables do not contribute to the interpretation of the graph. In order to simplify our considerations for the following sections, 
+          we introduce the notion of normalised graphs:</p>
 
         <p>For each graph $G=(U,E,F)$, we call $G^N=(U\cap (FV(F)), E\cap(FV(F)), F)$ the <dfn data-lt="normalised|normalised graph">normalisation</dfn> of $G$.</p>
 
-        <p>For two mappings $M$ and $N$ from constituents to constituents, we define their <dfn>combination</dfn> as follows:</p>
+        Examples:
+        <ol>
+          <li>  <small> $(\{x,z\},\{y\},\{(x, \text{:knows}, y) \})^N=(\{x\},\{y\},\{(x, \text{:knows}, y) \})$</small>.
+          <li> <small> $(\{x_1, x_2, x_3\},\{y_1, y_2, y_3\},\{(\text{:socrates}, \text{:knows}, \text{:platon}) \})^N=(\{\},\{\},\{(\text{:socrates}, \text{:knows}, \text{:platon}) \})$</small>.
+          <li>  <small> $(\{x\},\{y\},\{(y, \text{:says}, <(\{\},\{x\},\{(x,\text{rdf:type}, \text{:Mortal} )\})>) \})^N=$
+            $(\{\},\{y\},\{(y, \text{:says}, <(\{\},\{x\},\{(x,\text{rdf:type}, \text{:Mortal} )\})>) \})$</small>.
+        <!--  <li> In <small> $(\{\},\{\},\{(\text{x}, \text{:says}, <(\{\},\{x\},\{(x,\text{rdf:type}, \text{:Mortal} )\})>) \})$</small> the
+            $x$ is a free variable but it also occurs as a scoped variable in the quoted graph. -->
+        </ol>
 
-        <ul>
-          <li>$M\bullet N(v)=N(v)$ if $v\in dom(N)$</li>
-          <li>$M\bullet N(v)=M(v)$ if $v\not\in dom(N)$</li>
-        </ul>
-
-        <p class="issue">
-          This part on mappings comes a bit out of nowhere - could it be moved to the section below?
-        </p>
 
   </section>
         <section>
           <h2>Isomorphisms</h2>
+        We would like to define our semantics in a way which assigns the same meaning for structurally identical graphs which only differ in the naming of the variables 
+        they use. To be able to do so, we first introduce the concept of combined mappings which will be relevant to handle nested graphs with local 
+        scoping.
+
+          <p>For two mappings $M$ and $N$ from constituents to constituents, we define their <dfn>combination</dfn> as follows:</p>
+  
+          <ul>
+            <li>$M\bullet N(v)=N(v)$ if $v\in dom(N)$</li>
+            <li>$M\bullet N(v)=M(v)$ if $v\not\in dom(N)$</li>
+          </ul>
+ 
+      
+
+This defininition enables us to define isomorphisms between abstract N3 graphs:
+
           <p>
           Let $M$ be a bijection between the variables of $V$, we define:
           <ul>
@@ -438,7 +453,8 @@ This enables us to introduce the notion of closed graphs and ground terms.
 !-->
 
           <p class="note">If $G_1$ is isomorphic to $G_2$ then $G_2$ is also isomorphic to $G_1$.</p>
-          <div class="note">
+
+       
             <p>
             Consider the following graphs:
               <ul>
@@ -587,8 +603,13 @@ This enables us to introduce the notion of closed graphs and ground terms.
 
       <p>For the definitions below, we assume that the set of literals $L$ contains the two boolean literals `true` and `false`. The literal `true` stands for the quoted graph $&lt;(\emptyset, \emptyset, \emptyset)&gt;$.</p>
 
-      <p>The set of <dfn class="lint-ignore" data-lt="logical predicate">logical predicates</dfn> $LP$ contains the predicate `log:implies`. <span class="issue">TODO This list needs to be extended whenever we define a "new" logical predicate.</span></p>
+      <p>The set of <dfn class="lint-ignore" data-lt="logical predicate">logical predicates</dfn> $LP$ contains the predicate `log:implies`. 
+        
 
+      </p>
+      <p class="note">This list will be extended whenever we define a "new" logical predicate. The goal here is to cover all (or at least most of) the predicates in the 
+        <a href="../ns/log.html">`log:`</a> namespace.</p>.
+     </p>
       <p>Let $I$ be an <a>interpretation</a> for a <a>graph</a> $G=(U, E, F)$. Then $G$ is true under <dfn>log-interpretation</dfn> (noted $I\models_{log} G$) if for each <a>assignment</a> $A$ for $U$ there exists an assignment $B$ for $E$ such that:</p>
 
       <ul>
