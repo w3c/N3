@@ -521,19 +521,20 @@ ex:green-goblin foaf:name "Green Goblin" . -->
 @prefix foaf: <http://xmlns.com/foaf/0.1/> .
 @prefix : <http://example.org/#> .
 
-:spiderman foaf:name "الرجل العنكبوت"^^i18n:ar-eg_rtl . -->
+:spiderman foaf:name "الرجل العنكبوت"^^i18n:ar-EG_rtl . -->
 </pre>
 
-      <p class="note">If no <a>datatype IRI</a> or language tag is given, the datatype <code>xsd:string</code> will be
-        assumed. In case a language tag is given, the datatype <code>rdf:langString</code> will be assumed. Note that it
-        is not possible to specify both a <a>datatype IRI</a> and a language tag.</p>
+      <p class="note">If no <a>datatype IRI</a> or language tag is given, the datatype <code>xsd:string</code> will be assumed.
+        In case a language tag is given or a <code>i18n</code> "datatype" is used, the datatype <code>rdf:langString</code> is inferred.
+        It is not possible to specify both a <a>datatype IRI</a> and a language tag.</p>
+
+      <p class="note">There are also other ways to describe the language tag and base direction of RDF literals, see <a href="#compoundliteral">Compound literals<a> .
+        Please note that these various ways are still in flux,
+        see the <a href="https://github.com/w3c/rdf-star-wg/blob/main/docs/text-direction.md">"text direction"</a> discussions in the RDF-star working group.</p>
 
       <p class="note">Integers, decimals, doubles, and booleans may also be written as string literals with the
         appropriate <a>datatype IRI</a> (e.g., `"8"^^xsd:int` or "true"^^xsd:boolean).
       </p>
-
-      <p class="note">There are also <a href="#compoundliteral">other mechanisms</a> for describing the language tag and
-        base direction of RDF literals.</p>
 
       <p>In case the the string literal itself contains the string delimiter (e.g., double quotes), or includes
         newlines, other string delimiters can be used, i.e., single quotes or compound delimiters <code>"""</code> or
@@ -719,6 +720,8 @@ _:a ex:town [ ex:name "Springfield" ] . -->
             _:doerthe foaf:knows _:dominik .
             _:dominik foaf:knows [ foaf:firstName &quot;William&quot; ].</pre>
             -->
+        <p><strong>Compound literal</strong>: to represent language-tagged strings,
+          see section <a href="#compoundliteral">Compound literals</a>.</p>
       </section>
     </section>
     <section id='collections' class='informative'>
@@ -2059,14 +2062,14 @@ _:to1 :temperatureTrend :RISING ;
     </section>
     <section id="compoundliteral">
       <h4>Compound literal</h4>
-      <p>This solution is inspired by a separate discussion within the RDF community on <em>Language Tagged
-          Strings</em>.
+      <p>This solution is inspired by a separate discussion within the RDF community on <em>Language Tagged Strings</em>.
         The essence of the discussion is to separate the string, as a simple data, from its various characterizations,
         such as reading direction and language.
         This design pattern uses the <code>rdf:CompoundLiteral</code> class together with the
         <code>rdf:language</code>, <code>rdf:direction</code>, and <code>rdf:value</code> properties
         to respectively describe literal values on the base direction, language, and string value of the subject.
-      </p>
+        Please note that these various ways are still in flux,
+        see the <a href="https://github.com/w3c/rdf-star-wg/blob/main/docs/text-direction.md">"text direction"</a> discussions in the RDF-star working group.</p>
       <pre class="example nohighlight linkeditor" data-transform="updateExample"><!--
 @prefix foaf: <http://xmlns.com/foaf/0.1/> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
