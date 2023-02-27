@@ -449,9 +449,9 @@ ex:green-goblin foaf:name "Green Goblin" . -->
         a :Actor 
       ]
     ] ;
-    :portrayedBy [ id :tobey-maguire
-        a :Actor
-    ] . -->
+  :portrayedBy [ id :tobey-maguire
+      a :Actor
+  ] . -->
 </pre>
             </td>
           </tr>
@@ -1064,7 +1064,7 @@ _:a ex:town [ ex:name "Springfield" ] . -->
           
 { :race :finalists ?finalists .
   ?finalists list:iterate ( ?i ?finalist ) .
-  ( ?i ". " ?finalist "<br />" ) string:concatenation ?entry
+  ( ?i ". " ?finalist ) string:concatenation ?entry
 
 } => { :race :entries ?entry } . -->
 </pre>
@@ -1082,13 +1082,9 @@ _:a ex:town [ ex:name "Springfield" ] . -->
         <br />
 
         For each set of bindings, the `string:concatenation` builtin concatenates the resources in the subject
-        collection,
-        and binds the result to the object variable (`?entry`). This will lead to the following output:<br />
-        <code>
-            1. flash<br />
-            2. superman<br />
-            3. spiderman<br />
-          </code>
+        collection, and binds the result to the object variable (`?entry`).
+        This will lead to the following object values:<br />
+        "`1. :flash`" , "`2. :superman`" , and "`3. :spiderman`"
       </p>
 
       <p class="note">
