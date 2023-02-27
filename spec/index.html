@@ -449,9 +449,9 @@ ex:green-goblin foaf:name "Green Goblin" . -->
         a :Actor 
       ]
     ] ;
-    :portrayedBy [ id :tobey-maguire
-        a :Actor
-    ] . -->
+  :portrayedBy [ id :tobey-maguire
+      a :Actor
+  ] . -->
 </pre>
             </td>
           </tr>
@@ -1064,7 +1064,7 @@ _:a ex:town [ ex:name "Springfield" ] . -->
           
 { :race :finalists ?finalists .
   ?finalists list:iterate ( ?i ?finalist ) .
-  ( ?i ". " ?finalist "<br />" ) string:concatenation ?entry
+  ( ?i ". " ?finalist ) string:concatenation ?entry
 
 } => { :race :entries ?entry } . -->
 </pre>
@@ -1082,13 +1082,9 @@ _:a ex:town [ ex:name "Springfield" ] . -->
         <br />
 
         For each set of bindings, the `string:concatenation` builtin concatenates the resources in the subject
-        collection,
-        and binds the result to the object variable (`?entry`). This will lead to the following output:<br />
-        <code>
-            1. flash<br />
-            2. superman<br />
-            3. spiderman<br />
-          </code>
+        collection, and binds the result to the object variable (`?entry`).
+        This will lead to the following object values:<br />
+        "`1. :flash`" , "`2. :superman`" , and "`3. :spiderman`"
       </p>
 
       <p class="note">
@@ -1906,7 +1902,7 @@ _:d a :Person. -->
 </pre>
       <p>N3 is not directly compatible with TriG as it does not support this graph statement notation. Nevertheless,
         since N3 supports <a>quoted graphs</a> as part of regular <a>N3 statements</a>,
-        authors can utilize the <a href="https://github.com/IDLabRese arch/N3NamedGraphSemantics">N3 Named Graphs
+        authors can utilize the <a href="https://github.com/IDLabResearch/N3NamedGraphSemantics">N3 Named Graphs
           extension</a>;
         this extension allows associating names or identifiers with <a>quoted graphs</a>.
         For instance:
