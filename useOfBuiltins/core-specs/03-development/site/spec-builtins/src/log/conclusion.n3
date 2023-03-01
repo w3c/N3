@@ -43,7 +43,8 @@ Draw all conclusions from the formula ":Felix a :Cat . { ?X a :Cat } => { ?X :sa
     :Felix :says "Meow". 
     { ?S a :Cat . } => { ?S :says "Meow" . } .
 } .
-            """ ] 
+            """ 
+            ] 
     ) ;
     fno:name "conclusion" ;
     fno:parameter ( [

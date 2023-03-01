@@ -4,25 +4,32 @@
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix vs: <http://www.w3.org/2003/06/sw-vocab-status/ns#> .
 @prefix fnon: <https://w3id.org/function/ontology/n3#> .
 
 log:outputString a fno:Function ;
+    vs:term_status  "testing" ;
     fnon:tldr "The N3 reasoner will print the given object strings in the order of the subject keys (i.e., instead of printing the derivations or deductive closure). This may require a reasoner flag to be set." ;
     dcterms:comment """The concrete semantics of this builtin (e.g., which N3 resource types are supported) will depend on the N3 reasoner.""" ;
     fno:example ( [ a fno:Test ;
                 dcterms:description """
-This is an example for a built-in function.
+Print the two string \"This is the first line\n\" , \"This is the second line\n\" to the output.
             """ ;
-                rdfs:seeAlso <http://ppr.cs.dal.ca:3002/n3/editor/?formula=%40prefix%20%3A%20%3C%3A%3E%20.%0A%40prefix%20string%3A%20%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F10%2Fswap%2Fstring%23%3E%20.%0A%0A%3ALet%20%3Astring%20%22placeholder%22%20.%0A%0A%7B%20%3ALet%20%3Astring%20%3Fx%20.%20%7D%0A%3D%3E%0A%7B%20%3Aresult%20%3Ais%20%3Fx%20.%20%7D.%20> ;
+                rdfs:seeAlso <> ;
                 fno:expression """
-@prefix : <:> .
-@prefix string: <http://www.w3.org/2000/10/swap/string#> .
-:Let :string "placeholder" .
-{ :Let :string ?x . } => { :result :is ?x . } .
+@prefix : <http://example.org/#>.
+@prefix log: <http://www.w3.org/2000/10/swap/log#> .
+
+_:2 log:outputString "This is the second line\n" .
+_:1 log:outputString "This is the first line\n" .
             """ ;
                 fno:result """
-                <:result> <:is> "placeholder". 
-            """ ] ) ;
+# If the reasoner support the outputString options
+This is the first line
+This is the second line
+            """ 
+            ] 
+    ) ;
     fno:name "output string" ;
     fno:parameter (
         [ a fno:Parameter ;
