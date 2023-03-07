@@ -4,26 +4,85 @@
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix vs: <http://www.w3.org/2003/06/sw-vocab-status/ns#> .
 @prefix fnon: <https://w3id.org/function/ontology/n3#> .
 
 log:rawType a fno:Function ;
+    vs:term_status  "testing" ;
     fnon:tldr "Gets the type of the N3 resource." ;
     dcterms:comment """`true` if and only if the N3 resource type of `$s` is `$o`.
 N3 resource types include `log:Formula`, `log:Literal`, `log:List`, `log:Set` or `log:Other`.""" ;
-    fno:example ( [ a fno:Test ;
+    fno:example ( 
+            [ a fno:Test ;
                 dcterms:description """
-Example: `log:semanticsOrError` returns either a formula or a string, and you can check which using `log:rawType`.
+Get the type of literal resources.
             """ ;
-                rdfs:seeAlso <http://ppr.cs.dal.ca:3002/n3/editor/?formula=%40prefix%20%3A%20%3C%3A%3E%20.%0A%40prefix%20string%3A%20%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F10%2Fswap%2Fstring%23%3E%20.%0A%0A%3ALet%20%3Astring%20%22placeholder%22%20.%0A%0A%7B%20%3ALet%20%3Astring%20%3Fx%20.%20%7D%0A%3D%3E%0A%7B%20%3Aresult%20%3Ais%20%3Fx%20.%20%7D.%20> ;
+                rdfs:seeAlso <> ;
                 fno:expression """
-@prefix : <:> .
-@prefix string: <http://www.w3.org/2000/10/swap/string#> .
-:Let :string "placeholder" .
-{ :Let :string ?x . } => { :result :is ?x . } .
+@prefix : <http://example.org/#>.
+@prefix log: <http://www.w3.org/2000/10/swap/log#> .
+
+{
+    "Hello" log:rawType ?stringType .
+    42" log:rawType ?integerType .
+    true log:rawType ?trueType .
+    false log:rawType ?falseType .
+}
+=>
+{
+    :result :is ( ?stringType ?integerType ?trueType ?falseType ) .
+} .
             """ ;
                 fno:result """
-                <:result> <:is> "placeholder". 
-            """ ] ) ;
+:result :is ( log:Literal log:Literal log:Literal log:Literal ) .
+            """ 
+            ]  
+
+            [ a fno:Test ;
+                dcterms:description """
+Get the type of resources.
+            """ ;
+                rdfs:seeAlso <> ;
+                fno:expression """
+@prefix : <http://example.org/#>.
+@prefix log: <http://www.w3.org/2000/10/swap/log#> .
+
+{
+    <http://www.w3c.org> log:rawType ?resourceType .
+}
+=>
+{
+    :result :is ?resourceType .
+} .
+            """ ;
+                fno:result """
+:result :is log:Other.
+            """ 
+            ] 
+
+            [ a fno:Test ;
+                dcterms:description """
+Get the type of lists and quoted graphs.
+            """ ;
+                rdfs:seeAlso <> ;
+                fno:expression """
+@prefix : <http://example.org/#>.
+@prefix log: <http://www.w3.org/2000/10/swap/log#> .
+
+{
+    (1 2 3 4) log:rawType ?listType .
+    { :s :p :o } log:rawType ?graphType .
+} 
+=>
+{
+    :result :is ( ?listType ?graphType ) .
+} .
+            """ ;
+                fno:result """
+:result :is ( log:List log:Formula ) .
+            """ 
+            ] 
+    ) ;
     fno:name "rawType" ;
     fno:parameter (
         [ a fno:Parameter ;
