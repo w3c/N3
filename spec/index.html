@@ -279,9 +279,9 @@
           that allows you to directly include a data file here
           -->
       <pre id="basic-triples-example" class="example nohighlight editorl" data-transform="updateExample"><!--
-<http://example.org/#spiderman> <http://example.org/#enemyOf> <http://example.org/#green-goblin> .
-<http://example.org/#spiderman> <http://xmlns.com/foaf/0.1/name> "Spiderman" .
-<http://example.org/#green-goblin> <http://xmlns.com/foaf/0.1/name> "Green Goblin" . -->
+<http://example.org/spiderman> <http://example.org/enemyOf> <http://example.org/green-goblin> .
+<http://example.org/spiderman> <http://xmlns.com/foaf/0.1/name> "Spiderman" .
+<http://example.org/green-goblin> <http://xmlns.com/foaf/0.1/name> "Green Goblin" . -->
 </pre>
 
       For now, we will asssume that a resource is represented either by an <a>IRI</a> or a <a
@@ -294,7 +294,7 @@
         meaning with the order of statements in an N3 document (e.g., assuming that a first listed telephone for
         Spiderman is their landline, and the second one their mobile number).</p>
       <!-- <p class="note">Examples will often be written using newlines and tab spaces for readability. However, generally, only the subjects, predicates and objects need to be separated with a whitespace.</p> -->
-      <!-- <pre class="example nohighlight linkeditor">&lt;http://example.org/#dt&gt; &lt;http://xmlns.com/foaf/0.1/name&gt; &quot;Dominik Tomaszuk&quot; .</pre> -->
+      <!-- <pre class="example nohighlight linkeditor">&lt;http://example.org/dt&gt; &lt;http://xmlns.com/foaf/0.1/name&gt; &quot;Dominik Tomaszuk&quot; .</pre> -->
     </section>
     <section id='polists' class='informative'>
       <h4>Predicate and object lists</h4>
@@ -303,26 +303,26 @@
         To make these <a>N3 statements</a> less cumbersome to write, one can put a semicolon ("<code>;</code>") at the
         end of an <a>N3 statement</a> to describe the same subject in the subsequent statement:</p>
       <pre class="example nohighlight linkeditor" data-transform="updateExample"><!--
-<http://example.org/#spiderman>
-    <http://example.org/#enemyOf> <http://example.org/#green-goblin> ;
+<http://example.org/spiderman>
+    <http://example.org/enemyOf> <http://example.org/green-goblin> ;
     <http://xmlns.com/foaf/0.1/name> "Spiderman" . -->
 </pre>
-      <!-- <pre class="example nohighlight linkeditor">&lt;http://example.org/#dt&gt; &lt;http://xmlns.com/foaf/0.1/firstName&gt; &quot;Dominik&quot; ;
+      <!-- <pre class="example nohighlight linkeditor">&lt;http://example.org/dt&gt; &lt;http://xmlns.com/foaf/0.1/firstName&gt; &quot;Dominik&quot; ;
           &lt;http://xmlns.com/foaf/0.1/lastName&gt; &quot;Tomaszuk&quot; .</pre> -->
       <p>Similarly, a predicate (e.g., name) can often list multiple objects for the same subject (e.g., Spiderman).
         This can be written by listing the object values separated by a '<code>,</code>':</p>
       <pre id="object-lists-example" class="example nohighlight linkeditor" data-transform="updateExample"><!--
-<http://example.org/#spiderman>
+<http://example.org/spiderman>
     <http://xmlns.com/foaf/0.1/name> "Spiderman", "Peter Parker" . -->
 </pre>
-      <!-- <pre class="example nohighlight linkeditor">&lt;http://example.org/#dt&gt; &lt;http://xmlns.com/foaf/0.1/nick&gt; &quot;Domel&quot;, &quot;Misiek&quot;@pl .</pre> -->
+      <!-- <pre class="example nohighlight linkeditor">&lt;http://example.org/dt&gt; &lt;http://xmlns.com/foaf/0.1/nick&gt; &quot;Domel&quot;, &quot;Misiek&quot;@pl .</pre> -->
     </section>
     <section id='iris' class='informative'>
       <h3>IRIs</h3>
       <p>An IRI is used to represent an identifiable entity &mdash; such as a person, place, or thing.
         Until now, we have been writing absolute <dfn data-lt="absolute iri|iri">IRIs</dfn> [[RFC3987]] (e.g.,
-        <code>http://example.org/#Spiderman</code>), which include both the namespace (e.g.,
-        <code>http://example.org/#</code>) and the local name (e.g., <code>Spiderman</code>).
+        <code>http://example.org/Spiderman</code>), which include both the namespace (e.g.,
+        <code>http://example.org/</code>) and the local name (e.g., <code>Spiderman</code>).
       </p>
 
       <p>It is often much easier to write an IRI as a <dfn>prefixed name</dfn> &mdash; e.g., <code>ex:Spiderman</code>,
@@ -393,9 +393,9 @@ ex:green-goblin foaf:name "Green Goblin" . -->
       </div>
 
       <!-- <pre class="example nohighlight linkeditor">@prefix foaf: &lt;http://xmlns.com/foaf/0.1/&gt; .
-          @prefix : &lt;http://example.org/#&gt;
+          @prefix : &lt;http://example.org/&gt;
 
-          &lt;http://example.org/#doerthe&gt; foaf:knows &lt;http://example.org/#dominik&gt; .
+          &lt;http://example.org/doerthe&gt; foaf:knows &lt;http://example.org/dominik&gt; .
           :doerthe foaf:knows :dominik .</pre> -->
 
       <section id='iriprplist' class='informative'>
@@ -422,7 +422,7 @@ ex:green-goblin foaf:name "Green Goblin" . -->
           <tr>
             <td>
               <pre id="iri-prp-list-unfolded" class="example nohighlight linkeditor" data-transform="updateExample"><!--
-@prefix : <http://example.org/#> .
+@prefix : <http://example.org/> .
 @prefix foaf:<http://xmlns.com/foaf/0.1/>.
     
 :spiderman 
@@ -439,7 +439,7 @@ ex:green-goblin foaf:name "Green Goblin" . -->
             </td>
             <td>
               <pre id="iri-prp-list" class="example nohighlight linkeditor" data-transform="updateExample"><!--
-@prefix : <http://example.org/#> .
+@prefix : <http://example.org/> .
 @prefix foaf:<http://xmlns.com/foaf/0.1/>.
     
 :spiderman 
@@ -496,7 +496,7 @@ ex:green-goblin foaf:name "Green Goblin" . -->
 
       <pre class="example nohighlight linkeditor" data-transform="updateExample"><!--
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
-@prefix : <http://example.org/#> .
+@prefix : <http://example.org/> .
 
 :spiderman
   :birthDate "2001-08-10"^^xsd:date . -->
@@ -509,7 +509,7 @@ ex:green-goblin foaf:name "Green Goblin" . -->
         language tag (as defined in [[BCP47]] &mdash; find the registry in [[LNG-TAG]]). For instance:</p>
       <pre class="example nohighlight linkeditor" data-transform="updateExample"><!--
 @prefix foaf: <http://xmlns.com/foaf/0.1/> .
-@prefix : <http://example.org/#> .
+@prefix : <http://example.org/> .
 
 :spiderman foaf:name "Spiderman"@en ,
   "Hombre Araña"@es , "Homme Araignée"@fr . -->
@@ -519,7 +519,7 @@ ex:green-goblin foaf:name "Green Goblin" . -->
       <pre class="example nohighlight linkeditor" data-transform="updateExample"><!--
 @prefix i18n: <https://www.w3.org/ns/i18n#> .
 @prefix foaf: <http://xmlns.com/foaf/0.1/> .
-@prefix : <http://example.org/#> .
+@prefix : <http://example.org/> .
 
 :spiderman foaf:name "الرجل العنكبوت"^^i18n:ar-eg_rtl . -->
 </pre>
@@ -545,7 +545,7 @@ ex:green-goblin foaf:name "Green Goblin" . -->
       <pre id="string-literal-example" class="example nohighlight linkeditor" data-transform="updateExample"><!--
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
-@prefix : <http://example.org/#> .
+@prefix : <http://example.org/> .
 
 :spiderman rdfs:label 
   '"Bitten" by a radioactive spider.' ,
@@ -615,7 +615,7 @@ ex:green-goblin foaf:name "Green Goblin" . -->
           such as the painting it is in, and the type of tree:
         <p>
           <pre id="mona-lisa-bnode-id" class="example nohighlight linkeditor" data-transform="updateExample"><!--
-@prefix ex: <http://example.org/#> .
+@prefix ex: <http://example.org/> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 
 ex:mona_lisa_painting ex:portrays _:someTree .
@@ -647,7 +647,7 @@ _:someTree rdf:type ex:CypressTree . -->
           <tr>
             <td>
               <pre id="address-bnode-prp-list-simplified" class="example nohighlight linkeditor" data-transform="updateExample"><!--
-@prefix ex: <http://example.org/#> .
+@prefix ex: <http://example.org/> .
 ex:john ex:address _:a .
 _:a ex:street "Evergreen Terrace" .
 _:a ex:number 742 .
@@ -658,7 +658,7 @@ _:t ex:name "Springfield" .
             </td>
             <td>
               <pre id="address-bnode-prp-list" class="example nohighlight linkeditor" data-transform="updateExample"><!--
-@prefix ex: <http://example.org/#> .
+@prefix ex: <http://example.org/> .
 
 ex:john ex:address [
   ex:street "Evergreen Terrace" ;
@@ -678,7 +678,7 @@ ex:john ex:address [
           one should use blank node identifiers. For instance:
 
           <pre id="address-multiple-people" class="example nohighlight linkeditor" data-transform="updateExample"><!--
-@prefix ex: <http://example.org/#> .
+@prefix ex: <http://example.org/> .
 
 ex:john ex:address _:a .
 ex:sally ex:address _:a .
@@ -731,7 +731,7 @@ _:a ex:town [ ex:name "Springfield" ] . -->
         The contained resources are called <dfn data-lt="collection member">members</dfn>.</p>
       <p>For instance:</p>
       <pre class="example nohighlight linkeditor" data-transform="updateExample"><!--
-@prefix : <http://example.org/#> .
+@prefix : <http://example.org/> .
 
 :description_logic_handbook a :Book ;
   :author ( :deborah :daniele :peter) . -->
@@ -761,13 +761,13 @@ _:a ex:town [ ex:name "Springfield" ] . -->
 
       <p>In N3, collections may occur as subjects, predicates or objects in a statement. For instance:</p>
       <pre class="example nohighlight linkeditor" data-transform="updateExample"><!--
-@prefix : <http://example.org/#> .
+@prefix : <http://example.org/> .
 
 (:Fred :Wilma :Dino) :approved :resolution123 . -->
 </pre>
       <p>Or even:</p>
       <pre class="example nohighlight linkeditor" data-transform="updateExample"><!--
-@prefix : <http://example.org/#> .
+@prefix : <http://example.org/> .
 
 (:Fred :Wilma :Dino) (:read :liked :approved) (:resolution1 :resolution2 :resolution3) . -->
 </pre>
@@ -798,7 +798,7 @@ _:a ex:town [ ex:name "Springfield" ] . -->
       <pre class="example nohighlight linkeditor" data-transform="updateExample"><!--
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 @prefix dc: <http://purl.org/dc/terms/> .
-@prefix : <http://example.org/#> .
+@prefix : <http://example.org/> .
 
 { :cervantes dc:wrote :moby_dick } :opinion :lie ;
   :retrievedFrom <http://lies_r_us.com> ;
@@ -814,7 +814,7 @@ _:a ex:town [ ex:name "Springfield" ] . -->
       <p>As they represent a <i>quoting</i> of RDF graphs, <a>quoted graphs</a> are not "referentially transparent". For
         instance:</p>
       <pre class="example nohighlight linkeditor" data-transform="updateExample"><!--
-@prefix : <http://example.org/#> .
+@prefix : <http://example.org/> .
 
 :LoisLane :believes { :Superman :can :fly } . -->
 </pre>
@@ -840,7 +840,7 @@ _:a ex:town [ ex:name "Springfield" ] . -->
 
       <pre class="example nohighlight linkeditor" data-transform="updateExample"><!--
 @prefix foaf: <http://xmlns.com/foaf/0.1/> .
-@prefix : <http://example.org/#>.
+@prefix : <http://example.org/>.
 
 { :weather a :Raining
 } => {
@@ -881,7 +881,7 @@ _:a ex:town [ ex:name "Springfield" ] . -->
         </p>
         <pre class="example nohighlight linkeditor" data-transform="updateExample"><!--
 @prefix foaf: <http://xmlns.com/foaf/0.1/> .
-@prefix : <http://example.org/#>.
+@prefix : <http://example.org/>.
 
 :spiderman a :SuperHero .
 
@@ -921,7 +921,7 @@ _:a ex:town [ ex:name "Springfield" ] . -->
 
         <pre id="chaining_example" class="example nohighlight linkeditor" data-transform="updateExample"><!--
 @prefix foaf: <http://xmlns.com/foaf/0.1/> .
-@prefix : <http://example.org/#>.
+@prefix : <http://example.org/>.
             
 :spiderman a :WebSlinger .
 :44th :traffic :heavy .
@@ -968,7 +968,7 @@ _:a ex:town [ ex:name "Springfield" ] . -->
           and combines forward and backward chaining:
           <pre id="backward_chaining_example" class="example nohighlight linkeditor" data-transform="updateExample"><!--
 @prefix foaf: <http://xmlns.com/foaf/0.1/> .
-@prefix : <http://example.org/#>.
+@prefix : <http://example.org/>.
             
 :spiderman a :WebSlinger .
 :44th :traffic :heavy .
@@ -1032,7 +1032,7 @@ _:a ex:town [ ex:name "Springfield" ] . -->
       </p>
       <pre id="builtin_age_example" class="example nohighlight linkeditor" data-transform="updateExample"><!--
 @prefix math: <http://www.w3.org/2000/10/swap/math#> .
-@prefix : <http://example.org/#>.
+@prefix : <http://example.org/>.
 
 :spiderman :heightInCm 180 .
 
@@ -1058,7 +1058,7 @@ _:a ex:town [ ex:name "Springfield" ] . -->
       <pre id="iterate_example" class="example nohighlight linkeditor" data-transform="updateExample"><!--
 @prefix list: <http://www.w3.org/2000/10/swap/list#> .
 @prefix string: <http://www.w3.org/2000/10/swap/string#> .
-@prefix : <http://example.org/#>.
+@prefix : <http://example.org/>.
 
 :race :finalists ( :flash :superman :spiderman ) .
           
@@ -1117,7 +1117,7 @@ _:a ex:town [ ex:name "Springfield" ] . -->
         found in the current document:
         <pre id="collectallin_example" class="example nohighlight linkeditor" data-transform="updateExample"><!--
 @prefix log: <http://www.w3.org/2000/10/swap/log#> . 
-@prefix : <http://example.org/#>.
+@prefix : <http://example.org/>.
 
 :spiderman a :SuperHero .
 :green-goblin :enemyOf :spiderman ; :defeated true .
@@ -1151,7 +1151,7 @@ _:a ex:town [ ex:name "Springfield" ] . -->
         The example below uses `log:forAllIn` to determine whether a super-hero's identity is safe:
         <pre id="forallin_example" class="example nohighlight linkeditor" data-transform="updateExample"><!--
 @prefix log: <http://www.w3.org/2000/10/swap/log#> . 
-@prefix : <http://example.org/#> .
+@prefix : <http://example.org/> .
 
 :spiderman a :SuperHero .
 :mary-jane :knowsIdentityOf :spiderman ;
@@ -1188,7 +1188,7 @@ _:a ex:town [ ex:name "Springfield" ] . -->
         as reported by the Daily Bugle:
         <pre id="notincludes_example" class="example nohighlight linkeditor" data-transform="updateExample"><!--
 @prefix log: <http://www.w3.org/2000/10/swap/log#> . 
-@prefix : <http://example.org/#> .    
+@prefix : <http://example.org/> .    
 
 :spiderman :hasEnemy :green-goblin , :doctor-octopus, :sandman .
 {
@@ -1293,7 +1293,7 @@ _:a ex:town [ ex:name "Springfield" ] . -->
         For example, the following example describes the city of Joe's mother's office's address:</p>
 
       <pre class="example nohighlight linkeditor" data-transform="updateExample"><!--
-@prefix : <http://example.org/#> .
+@prefix : <http://example.org/> .
 
 :joe!:hasMother!:hasOffice!:hasAddress :hasCity "Metropolis" . -->
 </pre>
@@ -1305,7 +1305,7 @@ _:a ex:town [ ex:name "Springfield" ] . -->
         The example above is equivalent to the following (using blank node identifiers for clarity):</p>
 
       <pre class="example nohighlight linkeditor" data-transform="updateExample"><!--
-@prefix : <http://example.org/#> .
+@prefix : <http://example.org/> .
 
 :joe :hasMother _:m . 
 _:m :hasOffice _:o . 
@@ -1322,7 +1322,7 @@ _:a :hasCity "Metropolis" . -->
         and then follows the `hasMother` predicate in reverse (thus pointing to someone who has the same mother):</p>
 
       <pre class="example nohighlight linkeditor" data-transform="updateExample"><!--
-@prefix : <http://example.org/#> .
+@prefix : <http://example.org/> .
 
 :joe!:hasMother^:hasMother a :Person . -->
 </pre>
@@ -1330,7 +1330,7 @@ _:a :hasCity "Metropolis" . -->
       <p>This could equally well be represented by the more verbose:</p>
 
       <pre class="example nohighlight linkeditor" data-transform="updateExample"><!--
-@prefix : <http://example.org/#> .
+@prefix : <http://example.org/> .
 
 :joe :hasMother _:m.
 _:d :hasMother _:m.
@@ -1979,7 +1979,7 @@ _:d a :Person. -->
         <p>For instance, say we want to describe the <em>Purchase</em> relation between a buyer called "John", a
           purchased book called "Lenny the Lion", the amount paid for the book, and the seller:</p>
         <pre id="nary-book-relation" class="example nohighlight linkeditor" data-transform="updateExample"><!--
-@prefix : <http://example.org/#> .
+@prefix : <http://example.org/> .
 
 :Purchase_1 a :Purchase ;
   :hasBuyer :John ;
@@ -2001,8 +2001,8 @@ _:d a :Person. -->
           resource.</p>
         <!-- <p>For instance, when describing a diagnosis (e.g., breast cancer) of someone (e.g., Christine), you may want to indicate the probability of the diagnosis, and the date at which the diagnosis was made:</p>
             <pre id="" class="example nohighlight linkeditor">
-            @prefix ex: &lt;http://example.org/#&gt; .
-            @base &lt;http://example.org/#&gt; .
+            @prefix ex: &lt;http://example.org/&gt; .
+            @base &lt;http://example.org/&gt; .
             @prefix xsd: &lt;http://www.w3.org/2001/XMLSchema#&gt; .
             ex:Christine
               a       :Person ;
@@ -2018,7 +2018,7 @@ _:d a :Person. -->
           prior value (e.g., rising), and the time the temperature was taken:</p>
         <pre class="example nohighlight linkeditor" data-transform="updateExample"><!--
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
-@prefix : <http://example.org/#> .
+@prefix : <http://example.org/> .
 
 :Christine a :Person ;
   :hasTemperature _:to1 .
@@ -2050,7 +2050,7 @@ _:to1 :temperatureTrend :RISING ;
           For instance:
           <pre class="example nohighlight linkeditor" data-transform="updateExample"><!--
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
-@prefix : <http://example.org/#> .
+@prefix : <http://example.org/> .
 
 :avengers :members ( :iron_man :captain_america :spiderman ) . -->
 </pre>
@@ -2075,7 +2075,7 @@ _:to1 :temperatureTrend :RISING ;
 @prefix foaf: <http://xmlns.com/foaf/0.1/> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 
-<http://example.org/#spiderman> foaf:name [
+<http://example.org/spiderman> foaf:name [
   rdf:value "الرجل العنكبوت" ;
   rdf:language "ar-eg" ;
   rdf:direction "rtl"
@@ -2091,7 +2091,7 @@ _:to1 :temperatureTrend :RISING ;
 @prefix : <http://example.org/>  .
 
 _:x :graph {
-  <http://example.org/#spiderman> <http://xmlns.com/foaf/0.1/name> "Peter Parker" .
+  <http://example.org/spiderman> <http://xmlns.com/foaf/0.1/name> "Peter Parker" .
 } .
 _:x :certainty 0.8 . -->
 </pre>
