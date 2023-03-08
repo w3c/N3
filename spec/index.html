@@ -333,7 +333,7 @@
         by concatenating the <a>namespace IRI</a> with the <a>local name</a>.
         The following example is equivalent to the <a href="#basic-triples-example">original example</a>:</p>
       <pre id="prefixed-names-example" class="example nohighlight linkeditor" data-transform="updateExample"><!--
-@prefix ex: <http://www.example.org/#> .
+@prefix ex: <http://example.org/> .
 @prefix foaf: <http://xmlns.com/foaf/0.1/> .
 
 ex:spiderman ex:enemyOf ex:green-goblin ;
@@ -350,7 +350,7 @@ ex:green-goblin foaf:name "Green Goblin" . -->
       <p>To further simplify prefixed names, one can leave the <a>prefix label</a> empty (e.g., for an often-used
         namespace):</p>
       <pre id="empty-prefix-example" class="example nohighlight linkeditor" data-transform="updateExample"><!--
-@prefix : <http://www.example.org/#> .
+@prefix : <http://example.org/> .
 
 :spiderman :enemyOf :green-goblin . -->
 </pre>
@@ -363,9 +363,9 @@ ex:green-goblin foaf:name "Green Goblin" . -->
         For instance, the following is equivalent to the <a href="#empty-prefix-example">prior example</a>:
       </p>
       <pre id="relative-iri-example" class="example nohighlight linkeditor" data-transform="updateExample"><!--
-@base <http://www.example.org/#> .
+@base <http://example.org/> .
 
-<#spiderman> <#enemyOf> <#green-goblin> . -->
+<spiderman> <enemyOf> <green-goblin> . -->
 </pre>
       <p>Specifics of <a>relative IRI reference</a>
         <a data-cite="RFC3986#section-5.2">resolution</a> are described in
@@ -2120,7 +2120,7 @@ _:x :certainty 0.8 . -->
     <pre class="example nohighlight" data-transform="updateExample">
       <!--
       <script type="text/n3">
-        @prefix : &lt;http://www.example.org/#&gt; .
+        @prefix : &lt;http://example.org/&gt; .
         :green-goblin :enemyOf :spiderman .
       </script>
       -->
@@ -2137,7 +2137,7 @@ _:x :certainty 0.8 . -->
         <!--
         <script type="text/n3">
           # <![CDATA[
-          @prefix : <http://www.example.org/#> .
+          @prefix : <http://example.org/> .
           :green-goblin :enemyOf :spiderman .
           # ]]>
         </script>
