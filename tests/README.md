@@ -1,6 +1,6 @@
 # Notation3 Tests
 
-Tests exist for [N3 grammar](N3Tests/manifest.ttl), [N3 reasoning](N3Tests/manifest-reasoner.ttl), [extended N3 grammar](N3Tests/manifest-extended.ttl) and appropriate [Turtle](TurtleTests/manifest.ttl) tests.
+Tests exist for [N3 grammar](N3Tests/manifest-parser.ttl), [N3 reasoning](N3Tests/manifest-reasoner.ttl), [extended N3 grammar](N3Tests/manifest-extended.ttl) and appropriate [Turtle](TurtleTests/manifest.ttl) tests.
 
 # Design
 
