@@ -142,7 +142,7 @@ concept of terms:
       <p>A <dfn>term</dfn> can be</p>
       <ul>
         <li>an <a>atomic term</a>,</li>
-        <li>a (possibly empty) list of <a>terms</a>,</li>
+        <li>a finite (possibly empty) list of <a>terms</a>,</li>
         <li>a <dfn>quoted graph</dfn> $&lt;G&gt;$ where $G$ is a finite <a>graph</a> (see below).</li>
       </ul>
 With these terms we can now form triples.
@@ -348,7 +348,7 @@ This enables us to introduce the notion of closed graphs and ground terms.
         </ul>
         <p class="note">An abstract N3 graph which is constructed from a graph in the direct N3 syntax cannot contain free variables.
         Implicit quantification always comes with a scope and explicit quantification is defined on IRIs which only become variables
-        based on their use. The notion of free variables is thus only relevant for quoted graphs and the contexts in which we consider their qoted or unquoted meaning.
+        based on their use. The notion of free variables is thus only relevant for quoted graphs and the contexts in which we consider their quoted or unquoted meaning.
         </p>
 
         <p>An abstract <a>graph</a> $G=(U,E,F)$ can also contain quantified variables $v\in U\cup E$ which do not occur in any <a>triple</a> of $F$. 
@@ -368,23 +368,31 @@ This enables us to introduce the notion of closed graphs and ground terms.
         </ol>
 
 
-  </section>
-        <section>
-          <h2>Isomorphisms</h2>
-        We would like to define our semantics in a way which assigns the same meaning for structurally identical graphs which only differ in the naming of the variables 
-        they use. To be able to do so, we first introduce the concept of combined mappings which will be relevant to handle nested graphs with local 
-        scoping.
 
-          <p>For two mappings $M$ and $N$ from constituents to constituents, we define their <dfn>combination</dfn> as follows:</p>
-  
-          <ul>
-            <li>$M\bullet N(v)=N(v)$ if $v\in dom(N)$</li>
-            <li>$M\bullet N(v)=M(v)$ if $v\not\in dom(N)$</li>
-          </ul>
- 
+
       
+</section>
+<section>
+  <h2>Isomorphisms</h2>
+We would like to define our semantics in a way which assigns the same meaning for structurally identical graphs which only differ in the naming of the variables 
+they use. To be able to do so, we first introduce the concept of combined mappings which will be relevant to handle nested graphs with local 
+scoping.
 
-This defininition enables us to define isomorphisms between abstract N3 graphs:
+<p>For two mappings $M$ and $N$ from terms to terms, we define their <dfn>combination</dfn> as follows:
+  
+  <ul>
+    <li>$M\bullet N(v)=N(v)$ if $v\in dom(N)$</li>
+    <li>$M\bullet N(v)=M(v)$ if $v\not\in dom(N)$</li>
+  </ul>
+</p>
+  <div class=note>
+  Informally speaking, this definition means that the second mapping "overwrites" the first mapping whenever a constituent is in the domain of both mappings. This is 
+  very similar to the behavior of quantifiers in first order logic where the scope of a quantifier is always the set of quantified variables occurring freely in the 
+  quantified formula. This similarity is no coincidence. In this document combinations will be mainly used to handle nested scoped variables.
+</div>
+
+
+With combinations of mappings we can define isomorphisms between abstract N3 graphs:
 
           <p>
           Let $M$ be a bijection between the variables of $V$, we define:
@@ -481,6 +489,9 @@ This defininition enables us to define isomorphisms between abstract N3 graphs:
 
       <section>
       <h2>Base Semantics</h2>
+With the definitions introduced in the previous sections, we are now able to define the semantics of Notation 3 Logic. We do that in two steps: we first 
+introduce a base semantics which does not take the meaning of special N3 terms into account. In that sense the base semantics is similar to <a href="https://www.w3.org/TR/rdf11-mt/#simple-interpretations">simple interpretations</a>
+for RDF. In a second step, we introduce the N§-interpetation which assigns a special meaning to all predicates in the N3 <a href="../ns/log.html">`log`</a>-namespace.
 
       <p>A <dfn data-lt="interpretation">basic interpretation</dfn> $I$ is defined by:</p>
 
@@ -492,7 +503,7 @@ This defininition enables us to define isomorphisms between abstract N3 graphs:
           such that its restriction to $C$ is a total mapping,
         <li>a mapping $Q_I$ from <a>ground</a> <a>quoted graphs</a> to ground quoted graphs, such that<ul>
 
-            <li>for any quoted graphs $&lt;G&gt;$ if $Q_1(&lt;G&gt;)=&lt;H&gt; \implies H \simeq G$
+            <li>for any quoted graph $&lt;G&gt;$ if $Q_1(&lt;G&gt;)=&lt;H&gt; \implies H \simeq G$
             <li>for two quoted graphs $&lt;G_1&gt;$ and $&lt;G_2&gt;$: $G_1 \simeq G_2\implies Q_I(G_1)=Q_I(G_2)$,
           </ul>
         <li>A subset $EXT_I$ (<dfn class="lint-ignore">extension</dfn>) of $Δ_I^3$.
@@ -508,13 +519,15 @@ This defininition enables us to define isomorphisms between abstract N3 graphs:
         </ul>
       </div>
 
+      The basic interpretation maps quoted graphs to isomorphic quoted graphs. In that sense, quoted graphs are very similar to literals in RDF. As a consequence, 
+      two non-isomorphic graphs cannot have the same meaning, that is:
+      $Q_I($<code>({}, {y}, {(y, :p, :o)})</code>$)= Q_I($<code>({}, {x}, {(x, :p, :o)})</code>$)$ but $Q_I($<code>({}, {y}, {(y, :p, :o)})</code>$)\neq Q_I($<code>({}, {x, y}, {(x, :p, :o),(y, :p, :o) })</code>$)$
 
-      <div class="issue">
-        <p>In our definition the graphs <code>{_:x :p :o. _:y :p :o}</code> and <code>{_:z :p :o.}</code> do not necessarily  have the same meaning. Is that something we want and should fix? (I think that could be fixed, but I would need to investigate here)</p>
 
-        <p>In EYE, both graphs are `log:equalTo`, but do not unify by default: <a href="http://ppr.cs.dal.ca:3002/n3/editor/s/qsjm5gRx">http://ppr.cs.dal.ca:3002/n3/editor/s/qsjm5gRx</a></p>
-
-        <p>Decision: they are not equal, but we define `log:equalTo` as in EYE.</p>
+      However, as we will see below, N3 provides mechanisms to "unquote" graphs and to compare them based on the meaning of the formula they quote.
+<!---
+      <div class="note">
+        <p>With the above definition the graphs <code>{_:x :p :o. _:y :p :o}</code> and <code>{_:z :p :o.}</code> do not have the same meaning. 
       </div>
 
       <div class="note">
@@ -522,6 +535,7 @@ This defininition enables us to define isomorphisms between abstract N3 graphs:
 
         <p>This has been discussed in the Community group and that is also how EYE and CWM consider them: <a href="http://ppr.cs.dal.ca:3002/n3/editor/s/ctJyZSWM">http://ppr.cs.dal.ca:3002/n3/editor/s/ctJyZSWM</a></p>
       </div>
+      -->
 
       <section>
         <h2>Semantic conditions for ground graphs</h2>
