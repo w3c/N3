@@ -31,9 +31,11 @@ Generate a unique Skolem IRI from the list (:abc 77 "xyz") .
         dcterms:description "" ;
         fno:mode "+" ;
         fno:predicate "$s" ;
+        fnon:position fnon:subject
     ] [
         a fno:Parameter ;
         dcterms:description "" ;
         fno:mode "-" ;
         fno:predicate "$o" ;
+        fnon:position fnon:object
     ] ) .

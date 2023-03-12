@@ -86,5 +86,6 @@ Find the index of "cat" in the list ("dog" "cat" "penguin" "cat").
         ] [ a fno:Parameter ;
             dcterms:description "" ;
             fno:mode "?[*]" ;
-            fno:predicate "$o"
+            fno:predicate "$o" ;
+            fnon:position fnon:object
         ] ) .

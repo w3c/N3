@@ -46,11 +46,13 @@ We assume <semantics.data> contains the text:
         dcterms:description "" ;
         fno:mode "+" ;
         fno:predicate "$s" ;
-        fno:type log:Uri
+        fno:type log:Uri ;
+        fnon:position fnon:subject
     ] [
         a fno:Parameter ;
         dcterms:description "" ;
         fno:mode "?" ;
         fno:predicate "$o" ;
-        fno:type log:Formula
+        fno:type log:Formula ;
+        fnon:position fnon:object
     ] ) .

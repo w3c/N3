@@ -58,5 +58,6 @@ Remove "penguin" from the list ("dog" "penguin" "cat" "penguin").
         ] [ a fno:Parameter ;
             dcterms:description "" ;
             fno:mode "-" ;
-            fno:predicate "$o"
+            fno:predicate "$o" ;
+            fnon:position fnon:object
         ] ) .

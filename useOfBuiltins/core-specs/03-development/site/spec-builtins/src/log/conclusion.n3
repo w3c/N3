@@ -52,11 +52,13 @@ Draw all conclusions from the formula ":Felix a :Cat . { ?X a :Cat } => { ?X :sa
         dcterms:description "" ;
         fno:mode "+" ;
         fno:predicate "$s" ;
-        fno:type log:Formula
+        fno:type log:Formula ;
+        fnon:position fnon:subject
     ] [
         a fno:Parameter ;
         dcterms:description "" ;
         fno:mode "?" ;
         fno:predicate "$o" ;
-        fno:type log:Formula
+        fno:type log:Formula ;
+        fnon:position fnon:object
     ] ) .

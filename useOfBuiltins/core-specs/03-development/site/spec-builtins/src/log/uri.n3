@@ -34,11 +34,13 @@ Parse the URI <https://www.w3.org> into a string .
         a fno:Parameter ;
         dcterms:description "a URI" ;
         fno:mode "?" ;
-        fno:predicate "$s"
+        fno:predicate "$s" ;
+        fnon:position fnon:subject
     ] [
         a fno:Parameter ;
         dcterms:description "" ;
         fno:mode "?" ;
         fno:predicate "$o" ;
-        fno:type xsd:string
+        fno:type xsd:string ;
+        fnon:position fnon:object
     ] ) .

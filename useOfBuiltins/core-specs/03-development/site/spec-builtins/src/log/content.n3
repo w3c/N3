@@ -40,11 +40,13 @@ Fetch the content of https://www.w3.org/People/Berners-Lee/card.
         dcterms:description "" ;
         fno:mode "+" ;
         fno:predicate "$s" ;
-        fno:type log:Uri
+        fno:type log:Uri ;
+        fnon:position fnon:subject
     ] [
         a fno:Parameter ;
         dcterms:description "" ;
         fno:mode "?" ;
         fno:predicate "$o" ;
-        fno:type xsd:string
+        fno:type xsd:string ;
+        fnon:position fnon:object
     ] ) .

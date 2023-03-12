@@ -32,10 +32,12 @@ Read the contents a non existing <error.data> and parse it as Notation3 (which o
         dcterms:description "" ;
         fno:mode "+" ;
         fno:predicate "$s" ;
-        fno:type log:Uri
+        fno:type log:Uri ;
+        fnon:position fnon:subject
     ] [
         a fno:Parameter ;
         dcterms:description "either a log:Formula or xsd:string" ;
         fno:mode "?" ;
-        fno:predicate "$o"
+        fno:predicate "$o" ;
+        fnon:position fnon:object
     ] ) .
