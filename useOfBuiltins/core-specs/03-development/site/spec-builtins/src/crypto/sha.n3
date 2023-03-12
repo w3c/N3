@@ -5,15 +5,16 @@
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 @prefix vs: <http://www.w3.org/2003/06/sw-vocab-status/ns#> .
+@prefix fnon: <https://w3id.org/function/ontology/n3#> .
 
 crypto:sha a fno:Function ;
     vs:term_status  "testing" ;
-    dcterms:comment "The object is a SHA-1 hash of the subject." ;
+    fnon:tldr "Gets as object the SHA-1 hash of the subject." ;
+    dcterms:comment "`true` if and only if `$o` is the SHA-1 hash of `$s`." ;
     fno:example (  [ a fno:Test ;
                 dcterms:description """
 Calculate the SHA-1 of the string "hello world".
             """ ;
-                rdfs:seeAlso <http://ppr.cs.dal.ca:3002/n3/editor/?formula=%40prefix%20%3A%20%3C%3A%3E%20.%0A%40prefix%20string%3A%20%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F10%2Fswap%2Fstring%23%3E%20.%0A%0A%3ALet%20%3Astring%20%22placeholder%22%20.%0A%0A%7B%20%3ALet%20%3Astring%20%3Fx%20.%20%7D%0A%3D%3E%0A%7B%20%3Aresult%20%3Ais%20%3Fx%20.%20%7D.%20> ;
                 fno:expression """
 @prefix ex: <http://www.example.org/#> .
 @prefix crypto: <http://www.w3.org/2000/10/swap/crypto#> .
@@ -25,17 +26,14 @@ Calculate the SHA-1 of the string "hello world".
             """ ]
             ) ;
     fno:name "SHA-1 hash" ;
-    fno:object ( [ a rdf:Property ;
-                fno:parameter ( [ a fno:Output ;
-                            dcterms:description "" ;
-                            fno:mode "*" ;
-                            fno:predicate "$o.0" ;
-                            fno:required true ;
-                            fno:type xsd:string ] ) ] ) ;
-    fno:subject ( [ a rdf:Property ;
-                fno:parameter ( [ a fno:Parameter ;
-                            dcterms:description "" ;
-                            fno:mode "+" ;
-                            fno:predicate "$s" ;
-                            fno:required true ;
-                            fno:type rdfs:Literal ] ) ] ) .
+    fno:parameter (
+        [ a fno:Parameter ;
+            dcterms:description "" ;
+            fno:mode "+" ;
+            fno:predicate "$s" ;
+            fnon:position fnon:subject ;
+        ] [ a fno:Parameter ;
+            fno:predicate "$o" ;
+            fno:mode "-" ;
+            fnon:position fnon:object
+        ] ) .
