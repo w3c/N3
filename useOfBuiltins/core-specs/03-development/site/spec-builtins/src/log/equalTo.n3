@@ -10,7 +10,7 @@
 log:equalTo a fno:Function ;
     vs:term_status  "testing" ;
     fnon:tldr """Checks whether the subject and object N3 resources are the same. 
-Can also be used to bind a value to a variable (see examples).""" ;
+Can also be used to bind values to variables (see examples).""" ;
     dcterms:comment """`true` if and only if `$s` and `$o` are the same N3 resource.
 Not to be confused with owl:sameAs.""" ;
     rdfs:seeAlso log:notEqualTo ;
@@ -85,6 +85,56 @@ Assign a value to an existential or universal variable.
             """ ;
                 fno:result """
 :result :is "Cat"@en .
+            """ 
+            ] 
+
+            [ a fno:Test ;
+                dcterms:description """
+Assign values from the object list to universal variables given in the subject list. 
+This can be compared to "destructuring" or "unpacking" in programming languages such as JavaScript or Python.
+In contrast to those languages, however, it works in either direction in N3.
+In general, this works because an effort is made to ensure the truth of builtin statements in N3.
+            """ ;
+                rdfs:seeAlso <> ;
+                fno:expression """
+@prefix : <http://example.org/#>.
+@prefix log: <http://www.w3.org/2000/10/swap/log#> .
+
+{
+    ( ?x ?y ?z ) log:equalTo ( 1 2 3 )
+}
+=>
+{
+    :result :is ?x , ?y , ?z .
+} . 
+            """ ;
+                fno:result """
+:result :is 1 , 2 , 3 # objects can be in any order
+            """ 
+            ] 
+
+            [ a fno:Test ;
+                dcterms:description """
+Assign values from the object list to universal variables given in the subject list. 
+This can be compared to "destructuring" or "unpacking" in programming languages such as JavaScript or Python.
+In contrast to those languages, however, it works in either direction in N3.
+In general, this works because an effort is made to ensure the truthfulness of builtin statements in N3.
+            """ ;
+                rdfs:seeAlso <> ;
+                fno:expression """
+@prefix : <http://example.org/#>.
+@prefix log: <http://www.w3.org/2000/10/swap/log#> .
+
+{
+    ( "War and Peace" "Leo Tolstoy" 1225 ) log:equalTo ( ?title ?author ?numPages ) .
+}
+=>
+{
+    :result :is ?title , ?author , ?numPages .
+} . 
+            """ ;
+                fno:result """
+:result :is "War and Peace" , "Leo Tolstoy" , 1225 # objects can be in any order
             """ 
             ] 
     ) ;

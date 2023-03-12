@@ -5,10 +5,12 @@
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 @prefix vs: <http://www.w3.org/2003/06/sw-vocab-status/ns#> .
+@prefix fnon: <https://w3id.org/function/ontology/n3#> .
 
 log:skolem a fno:Function ;
     vs:term_status  "testing" ;
-    dcterms:comment "Built-in to generate a Skolem IRI object which is a function of the arguments in the subject list" ;
+    fnon:tldr "Gets as object a skolem IRI that is a function of the subject (commonly a list); the same subject will always result in the same skolem IRI." ;
+    dcterms:comment "`true` if and only if `$o` is a skolem IRI that is a function of the subject." ;
     fno:example ( [ a fno:Test ;
                 dcterms:description """
 Generate a unique Skolem IRI from the list (:abc 77 "xyz") .
@@ -24,17 +26,14 @@ Generate a unique Skolem IRI from the list (:abc 77 "xyz") .
 :result :is <http://www.w3.org/2000/10/swap/genid#zmgk3Vt_z_u7FQlk1NmqIw> . 
             """ ] ) ;
     fno:name "skolem" ;
-    fno:object ( [ a rdf:Property ;
-                fno:parameter ( [ a fno:Output ;
-                            dcterms:description "" ;
-                            fno:mode "*" ;
-                            fno:predicate "$o.0" ;
-                            fno:required true ;
-                            fno:type log:String ] ) ] ) ;
-    fno:subject ( [ a rdf:Property ;
-                fno:parameter ( [ a fno:Parameter ;
-                            dcterms:description "" ;
-                            fno:mode "+" ;
-                            fno:predicate "$s" ;
-                            fno:required true ;
-                            fno:type log:List ] ) ] ) .
+    fno:parameter ( [
+        a fno:Parameter ;
+        dcterms:description "" ;
+        fno:mode "+" ;
+        fno:predicate "$s" ;
+    ] [
+        a fno:Parameter ;
+        dcterms:description "" ;
+        fno:mode "-" ;
+        fno:predicate "$o" ;
+    ] ) .

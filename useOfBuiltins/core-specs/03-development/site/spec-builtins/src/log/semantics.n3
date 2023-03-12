@@ -5,10 +5,13 @@
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 @prefix vs: <http://www.w3.org/2003/06/sw-vocab-status/ns#> .
+@prefix fnon: <https://w3id.org/function/ontology/n3#> .
 
 log:semantics a fno:Function ;
     vs:term_status  "testing" ;
-    dcterms:comment """The log:semantics of a document is the formula achieved by parsing representation of the document.
+    fnon:tldr "Gets as object the quoted graph that results from parsing an online (N3) string, found by dereferencing the subject IRI." ;
+    dcterms:comment """`true` if and only if `$o` is a quoted graph that results from parsing the string that results from dereferencing `$s`.""" ;
+    dcterms:comment """The log:semantics of a document is the formula achieved by parsing the representation of the document.
 For a document in Notation3, `log:semantics` is the `log:parsedAsN3` of the `log:content` of the document.
 For a document in another RDF syntax, it is parsed according to the appropriate specification to yield an RDF formula (a subclass of N3 `log:Formula`).
 Evaluates to `false` if an unrecognized document format is retrieved.
@@ -37,17 +40,17 @@ We assume <semantics.data> contains the text:
             ] 
     ) ;
     fno:name "semantics" ;
-    fno:object ( [ a rdf:Property ;
-                fno:parameter ( [ a fno:Output ;
-                            dcterms:description "" ;
-                            fno:mode "*" ;
-                            fno:predicate "$o.0" ;
-                            fno:required true ;
-                            fno:type log:Formula ] ) ] ) ;
-    fno:subject ( [ a rdf:Property ;
-                fno:parameter ( [ a fno:Parameter ;
-                            dcterms:description "" ;
-                            fno:mode "+" ;
-                            fno:predicate "$s" ;
-                            fno:required true ;
-                            fno:type log:N3Document ] ) ] ) .
+    fno:name "content" ;
+    fno:parameter ( [
+        a fno:Parameter ;
+        dcterms:description "" ;
+        fno:mode "+" ;
+        fno:predicate "$s" ;
+        fno:type log:Uri
+    ] [
+        a fno:Parameter ;
+        dcterms:description "" ;
+        fno:mode "?" ;
+        fno:predicate "$o" ;
+        fno:type log:Formula
+    ] ) .

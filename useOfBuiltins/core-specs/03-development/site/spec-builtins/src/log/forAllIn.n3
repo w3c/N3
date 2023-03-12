@@ -9,7 +9,7 @@
 
 log:forAllIn a fno:Function ;
     vs:term_status  "testing" ;
-    fnon:tldr "For each result of the first clause, checks whether the second clause holds for it as well. The two clauses are given in the subject list." ;
+    fnon:tldr "Two clauses are given in the subject list: for each result of the first clause, the builtin checks whether the second clause also holds for the result." ;
     dcterms:comment """`true` if and only if, for each solution for which the first clause `$s.0` is true, the second clause `$s.1` is true as well. 
 This is a scoped universal quantification.""" ;
     fno:example ( [ a fno:Test ;

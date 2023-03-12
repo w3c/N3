@@ -5,11 +5,12 @@
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 @prefix vs: <http://www.w3.org/2003/06/sw-vocab-status/ns#> .
+@prefix fnon: <https://w3id.org/function/ontology/n3#> .
 
 log:semanticsOrError a fno:Function ;
     vs:term_status  "testing" ;
-    dcterms:comment """This connects a document and either the formula it parses to, or an error message explaining what went wrong with trying.
-Related: see `log:semantics`.""" ;
+    fnon:tldr "Either gets as object the quoted graph that results from parsing an online (N3) string, found by dereferencing the subject IRI; or an error message that explains what went wrong." ;
+    dcterms:comment """`true` if and only if (a) `$o` is a quoted graph that results from parsing the string that results from dereferencing `$s`; or (b) an error message explaining what went wrong.""" ;
     fno:example ( [ a fno:Test ;
                 dcterms:description """
 Read the contents a non existing <error.data> and parse it as Notation3 (which of course will fail).
@@ -26,10 +27,15 @@ Read the contents a non existing <error.data> and parse it as Notation3 (which o
     <urlopen error [Errno 2] No such file or directory: '//tmp/error.data'>\"\"\" .
             """ ] ) ;
     fno:name "semantics or error message" ;
-    fno:subject ( [ a rdf:Property ;
-                fno:parameter ( [ a fno:Parameter ;
-                            dcterms:description "" ;
-                            fno:mode "+" ;
-                            fno:predicate "$s" ;
-                            fno:required true ;
-                            fno:type log:N3Document ] ) ] ) .
+    fno:parameter ( [
+        a fno:Parameter ;
+        dcterms:description "" ;
+        fno:mode "+" ;
+        fno:predicate "$s" ;
+        fno:type log:Uri
+    ] [
+        a fno:Parameter ;
+        dcterms:description "either a log:Formula or xsd:string" ;
+        fno:mode "?" ;
+        fno:predicate "$o"
+    ] ) .

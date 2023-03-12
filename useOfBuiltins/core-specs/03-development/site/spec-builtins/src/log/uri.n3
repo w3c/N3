@@ -5,15 +5,14 @@
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 @prefix vs: <http://www.w3.org/2003/06/sw-vocab-status/ns#> .
+@prefix fnon: <https://w3id.org/function/ontology/n3#> .
 
 log:uri a fno:Function ;
     vs:term_status  "testing" ;
+    fnon:tldr "Gets as object the string representation of the subject URI." ;
+    dcterms:comment "`true` if and only if `$o` is the string representation of `$s`." ;
     dcterms:comment """This allows one to look at the actual string of the URI which identifies this.
-(Cwm can get the URI of a resource or get the resource from the URI.)
-This is a level breaker, breaking the rule of not looking inside a
-URI.   Use (eg with  string:match) to replace RDF's old "aboutEach"
-functionality. Use to implement the URI spec and protocol specs, etc.
-""" ;
+This is a level breaker, breaking the rule of not looking inside a URI.""" ;
     fno:example ( 
               [ a fno:Test ;
                 dcterms:description """
@@ -31,10 +30,15 @@ Parse the URI <https://www.w3.org> into a string .
             """ 
             ] 
     ) ;
-    fno:object ( [ a rdf:Property ;
-                fno:parameter ( [ a fno:Output ;
-                            dcterms:description "" ;
-                            fno:mode "*" ;
-                            fno:predicate "$o.0" ;
-                            fno:required true ;
-                            fno:type log:String ] ) ] ) .
+    fno:parameter ( [
+        a fno:Parameter ;
+        dcterms:description "a URI" ;
+        fno:mode "?" ;
+        fno:predicate "$s"
+    ] [
+        a fno:Parameter ;
+        dcterms:description "" ;
+        fno:mode "?" ;
+        fno:predicate "$o" ;
+        fno:type xsd:string
+    ] ) .
