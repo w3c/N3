@@ -19,7 +19,7 @@ Check whether the formula { :Felix a :Cat } does not include { ?X :eats ?Y }.
             """ ;
                 rdfs:seeAlso <> ;
                 fno:expression """
-@prefix : <http://example.org/#>.
+@prefix : <http://example.org/>.
 @prefix log: <http://www.w3.org/2000/10/swap/log#> .
 
 { 
@@ -40,7 +40,7 @@ Check whether the formula { :a :b :c } does not include { :a :b :d }.
             """ ;
                 rdfs:seeAlso <> ;
                 fno:expression """
-@prefix : <http://example.org/#>.
+@prefix : <http://example.org/>.
 @prefix log: <http://www.w3.org/2000/10/swap/log#> .
 
 { 

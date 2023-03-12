@@ -20,7 +20,7 @@ Get the third member of the list ("dog" "penguin" "cat").
             """ ;
                 rdfs:seeAlso <> ;
                 fno:expression """
-@prefix : <http://example.org/#>.
+@prefix : <http://example.org/>.
 @prefix list: <http://www.w3.org/2000/10/swap/list#> .
 
 :let :param ("dog" "penguin" "cat").
@@ -45,7 +45,7 @@ Find the index of "cat" in the list ("dog" "cat" "penguin" "cat").
             """ ;
                 rdfs:seeAlso <> ;
                 fno:expression """
-@prefix : <http://example.org/#>.
+@prefix : <http://example.org/>.
 @prefix list: <http://www.w3.org/2000/10/swap/list#> .
 
 :let :param ("dog" "cat" "penguin" "cat").

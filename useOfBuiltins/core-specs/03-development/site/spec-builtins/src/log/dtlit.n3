@@ -19,7 +19,7 @@ Create a datatyped literal from the string "1971-05-05" and the type xsd:date.
             """ ;
                 rdfs:seeAlso <> ;
                 fno:expression """
-@prefix : <http://example.org/#>.
+@prefix : <http://example.org/>.
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 @prefix log: <http://www.w3.org/2000/10/swap/log#> .
 
@@ -36,7 +36,7 @@ Parse the datatyped literal "1971-05-05"^^xsd:date into a string and data type I
             """ ;
                 rdfs:seeAlso <> ;
                 fno:expression """
-@prefix : <http://example.org/#>.
+@prefix : <http://example.org/>.
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 @prefix log: <http://www.w3.org/2000/10/swap/log#> .
 

@@ -20,7 +20,7 @@ Draw all conclusions from the formula ":Felix a :Cat . { ?X a :Cat } => { ?X :sa
             """ ;
                 rdfs:seeAlso <> ;
                 fno:expression """
-@prefix : <http://example.org/#>.
+@prefix : <http://example.org/>.
 @prefix log: <http://www.w3.org/2000/10/swap/log#> .
 
 :let :param { 

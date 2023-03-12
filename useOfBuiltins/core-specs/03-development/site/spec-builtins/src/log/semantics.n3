@@ -24,12 +24,12 @@ Related: see `log:parsedAsN3` and `log:content`.""" ;
 Read the contents of the file <semantics.data> and parse it as Notation3.
 We assume <semantics.data> contains the text:
 
-  @prefix : <http://example.org/#>.
+  @prefix : <http://example.org/>.
   :Socrates a :Human .
             """ ;
                 rdfs:seeAlso <> ;
                 fno:expression """
-@prefix : <http://example.org/#>.
+@prefix : <http://example.org/>.
 @prefix log: <http://www.w3.org/2000/10/swap/log#> .
 
 { <semantics.data> log:semantics ?semantics . } => { :result :is ?semantics } .

@@ -19,7 +19,7 @@ What is the first element of ( ("a") { :a :b :c } 42 )?
             """ ;
                 rdfs:seeAlso <> ;
                 fno:expression """
-@prefix : <http://example.org/#>.
+@prefix : <http://example.org/>.
 @prefix list: <http://www.w3.org/2000/10/swap/list#> .
 
 { ( ("a") { :a :b :c } 42 ) list:first ?what . } => { :result :is ?what . } .

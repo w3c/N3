@@ -17,7 +17,7 @@ Read the contents a non existing <error.data> and parse it as Notation3 (which o
             """ ;
                 rdfs:seeAlso <> ;
                 fno:expression """
-@prefix : <http://example.org/#>.
+@prefix : <http://example.org/>.
 @prefix log: <http://www.w3.org/2000/10/swap/log#> .
 
 { <error.data> log:semantics ?semantics . } => { :result :is ?semantics } .

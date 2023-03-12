@@ -21,7 +21,7 @@ Remove "penguin" from the list ("dog" "penguin" "cat" "penguin").
             """ ;
                 rdfs:seeAlso <> ;
                 fno:expression """
-@prefix : <http://example.org/#>.
+@prefix : <http://example.org/>.
 @prefix list: <http://www.w3.org/2000/10/swap/list#> .
 
 :let :param ("dog" "penguin" "cat" "penguin") .
