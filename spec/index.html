@@ -492,7 +492,8 @@ ex:green-goblin foaf:name "Green Goblin" . -->
       <p>Other literals, such as strings, but also dates, binary, octal or hex code, XML or JSON code, or other types of
         numbers (e.g., shorts), need to be written as <b>datatyped literals</b>. These are represented as a string, 
         followed by the `^^` symbol and the corresponding <dfn data-cite="XMLSCHEMA11-2#built-in-datatypes">datatype IRI</dfn>.
-        (`xsd:string` is the datatype IRI for strings; this is the default and can be omitted). For instance:</p>
+        (`xsd:string` is the datatype IRI for strings; this is the default and can be omitted, in which case the `^^` MUST 
+        also be omitted; in other words, `"example"^^` is not a valid datatyped literal). For instance:</p>
 
       <pre class="example nohighlight linkeditor" data-transform="updateExample"><!--
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
