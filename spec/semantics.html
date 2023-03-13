@@ -491,7 +491,9 @@ With combinations of mappings we can define isomorphisms between abstract N3 gra
       <h2>Base Semantics</h2>
 With the definitions introduced in the previous sections, we are now able to define the semantics of Notation 3 Logic. We do that in two steps: we first 
 introduce a base semantics which does not take the meaning of special N3 terms into account. In that sense the base semantics is similar to <a href="https://www.w3.org/TR/rdf11-mt/#simple-interpretations">simple interpretations</a>
-for RDF. In a second step, we introduce the N§-interpetation which assigns a special meaning to all predicates in the N3 <a href="../ns/log.html">`log`</a>-namespace.
+for RDF. In a second step, we introduce the N3-interpetation which assigns a special meaning to all predicates in the N3 <a href="../ns/log.html">`log`</a>-namespace.
+
+
 
       <p>A <dfn data-lt="interpretation">basic interpretation</dfn> $I$ is defined by:</p>
 
@@ -519,10 +521,13 @@ for RDF. In a second step, we introduce the N§-interpetation which assigns a sp
         </ul>
       </div>
 
-      The basic interpretation maps quoted graphs to isomorphic quoted graphs. In that sense, quoted graphs are very similar to literals in RDF. As a consequence, 
-      two non-isomorphic graphs cannot have the same meaning, that is:
-      $Q_I($<code>({}, {y}, {(y, :p, :o)})</code>$)= Q_I($<code>({}, {x}, {(x, :p, :o)})</code>$)$ but $Q_I($<code>({}, {y}, {(y, :p, :o)})</code>$)\neq Q_I($<code>({}, {x, y}, {(x, :p, :o),(y, :p, :o) })</code>$)$
-
+      The basic interpretation maps quoted graphs to an isomorphic copy of itself. In that sense, quoted graphs are very similar to literals in RDF. As a consequence, 
+      two non-isomorphic graphs cannot have the same meaning. For the abstract versions of the graphs <code>{_:x :p :o}</code>, <code>{_:y :p :o}</code>
+      and <code>{_:x :p :o. _:y :p :o}</code> we thus get:
+      <ul>
+     <li> $Q_I($<code>({}, {y}, {(y, :p, :o)})</code>$)= Q_I($<code>({}, {x}, {(x, :p, :o)})</code>$)$
+      <li> $Q_I($<code>({}, {y}, {(y, :p, :o)})</code>$)\neq Q_I($<code>({}, {x, y}, {(x, :p, :o),(y, :p, :o) })</code>$)$
+    </ul>
 
       However, as we will see below, N3 provides mechanisms to "unquote" graphs and to compare them based on the meaning of the formula they quote.
 <!---
@@ -537,32 +542,54 @@ for RDF. In a second step, we introduce the N§-interpetation which assigns a sp
       </div>
       -->
 
-      <section>
-        <h2>Semantic conditions for ground graphs</h2>
+     
+        <section><h2>Ground graphs</h2>
+        We extend the previous definition to interpret <a>ground</a>  graphs:
 
-        <p>Given $I$ a <a>basic interpretation</a>, we define $I(x) =$</p>
+        <p>Given $I$ a <a>basic interpretation</a>, we recursively define $I(x) =$</p>
 
         <ul>
           <li>$D_I(x)$ if $x$ is an IRI or a Literal,
-          <li>$(I(x_1), I(x_2),...)$ if $x$ is a list $(x_1, x_2, ...)$ and all $I(x_i)$ are defined,
+          <li>$(I(x_1), I(x_2),..., I(x_n))$ if $x$ is a list $(x_1, x_2, ..., x_n)$ and all $I(x_i)$ are defined,
           <li>$Q_I(x)$ if $x$ is a <a>quoted graph</a>,
           <li>$I(x)=true$ if $x=(s, p ,o)$ is a <a>ground</a> <a>triple</a> and $(I(s), I(p) ,I(o))\in EXT_I$, otherwise $I(x)=false$,
           <li>$I(x)=false$ if $x=F$ is a set of ground triples and $I(t)=false$ for some triple $t\in F$, otherwise $I(x) =true$,
           <li>$I(F)$ if $x=(\emptyset, \emptyset, F)$ is a <a>ground</a> <a>graph</a>
         </ul>
+
+        The definition implies that the empty graph is always true and that the empty list is always mapped to itself. 
+
       </section>
+  
+
+
 
       <section>
-        <h2>Assignment</h2>
+        <h2>Graphs with variables</h2>
+        In order to introduce the interpretation of graphs containing variables, we rely on a few additional definitions. To better understand the need for these, consider the 
+        following example:
+
+        <p>
+        <code>?x :says {?x :is :wise}.</code>
+      </p>
+
+        which freely translates to "<i>everyone says about himself that he is wise</i>."  In abstract syntax, the formula would be expressed as:
+
+        <p>
+         &lt; <code>{x}, {}, {(x, :says,</code> &lt; <code>{}, {},  {(x, :is, :wise)}.</code> &gt;
+        </p>
+This formula is interesting because the universally quantified variable appears once as a <a>direct constituent</a> in the triple and once nested. 
 
         <p>Given a <a>basic interpretation</a> $I$ and a set of variables $V$. We call a mapping $A$ from $V$ to $Δ_I\times T_G$ such that $A(v)=(A_1(v),A_2(v))$ and $I(A_2(v))=A_1(v)$ an <dfn>assignment</dfn> for $V$.</p>
 
         <p>Note that for an interpretation $I$ and two assignments $A$ for a set $V_1$ and $B$ for a set $V_2$ of variables, the <a>combination</a> $A\bullet B$ is an assignment for $V_1\cup V_2$.</p>
-      </section>
+  <!----    </section>
 
       <section>
-        <h2>Total application</h2>
+        <h2></h2>
+      -->
 
+      Total application
         <p>Let $G=(U,E,F)$ be a graph, $M$ be a mapping from $V$ into a set $S$, and $N = M|_{FV(G)}$ the restriction of $M$ to the <a>free variables</a> of $G$.</p>
 
         <p>A <dfn class="lint-ignore">total application</dfn> $M^t(G)$ of $M$ is defined as follows:</p>
@@ -577,8 +604,10 @@ for RDF. In a second step, we introduce the N§-interpetation which assigns a sp
         </ul>
       </section>
 
-      <section>
-        <h2>Interpretation with assignment</h2>
+ <!--    <section>
+        <h2></h2>
+--> 
+Interpretation with assignment
 
         <p>For a <a>closed graph</a> $G=(U,E,F)$, a <a>basic interpretation</a> $I$ and an <a>assignment</a> $A$ on the set of variables $U\cup E$ of $G$.</p>
 
@@ -594,15 +623,15 @@ for RDF. In a second step, we introduce the N§-interpetation which assigns a sp
         <p>For a closed graph $G=(U, E, F)$ and a basic interptetation $I$, we say that the interpretation $I(G)=true$ if for all assignments $A$ for $U$ there exist an assignment $B$ for $E$ such that $I[A\bullet B](F)=true$. We also write that as $I\models G$.</p>
 
         <p class="note">Note that the interpretation of a variable $x$ depends on its position in a graph. In the expression $(x, p, &lt;(∅, ∅, {(x, q, r)})&gt;$, the first  $x$ is interpreted as $A_1(x)$ while the second is interpreted as $A_2(x)$.</p>
-      </section>
+      
 
-      <section>
-        <h2>Assignments and free variables</h2>
+   
+        Assignments and free variables
         <p>Let $G=(U,E,F)$ be a <a>graph</a>. We say that $G$ is true under the <a>interpretation</a> $I$ and the <a>assignment</a> $A$ if $I[A]\models G$. That is, for each assignment $A^1$ for the variables in $U$ there exists an assignment $B^1$ for the variables in $E$ such that $I[A\bullet A^1\bullet B^1](F)=true$.</p>
-      </section>
+  
 
       <section>
-        <h2>Entailment</h2>
+        <h2>Basic entailment</h2>
 
         <p>Let $G$ and $H$ be two graphs, we say that $G$ <dfn data-lt="entailment">entails</dfn> $H$, noted $G ⊨ H$,
         if and only if for every interpretation $I$ such that $I ⊨ G$, $I ⊨ H$.</p>
@@ -610,6 +639,8 @@ for RDF. In a second step, we introduce the N§-interpetation which assigns a sp
         <p class="issue">TODO give examples of basic <a>entailment</a>.</p>
       </section>
     </section>
+  </section>
+
     <section>
       <h2>Log-interpretation</h2>
 
