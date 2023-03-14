@@ -17,7 +17,7 @@ Print the two string \"This is the first line\n\" , \"This is the second line\n\
             """ ;
                 rdfs:seeAlso <> ;
                 fno:expression """
-@prefix : <http://example.org/#>.
+@prefix : <http://example.org/>.
 @prefix log: <http://www.w3.org/2000/10/swap/log#> .
 
 _:2 log:outputString "This is the second line\n" .

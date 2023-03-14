@@ -19,7 +19,7 @@ Does ( "dog" "penguin" "cat" ) contain a "cat"?
             """ ;
                 rdfs:seeAlso <> ;
                 fno:expression """
-@prefix : <http://example.org/#>.
+@prefix : <http://example.org/>.
 @prefix list: <http://www.w3.org/2000/10/swap/list#> .
 
 { "cat" list:in ( "dog" "penguin" "cat" ) . } => { :result :is true . } .
@@ -34,7 +34,7 @@ What are the members of ( "dog" "penguin" "cat" )?
             """ ;
                 rdfs:seeAlso <> ;
                 fno:expression """
-@prefix : <http://example.org/#>.
+@prefix : <http://example.org/>.
 @prefix list: <http://www.w3.org/2000/10/swap/list#> .
 
 { ?what list:in ( "dog" "penguin" "cat" ) . } => { :result :is ?what . } .

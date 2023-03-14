@@ -19,7 +19,7 @@ Get the type of literal resources.
             """ ;
                 rdfs:seeAlso <> ;
                 fno:expression """
-@prefix : <http://example.org/#>.
+@prefix : <http://example.org/>.
 @prefix log: <http://www.w3.org/2000/10/swap/log#> .
 
 {
@@ -44,7 +44,7 @@ Get the type of resources.
             """ ;
                 rdfs:seeAlso <> ;
                 fno:expression """
-@prefix : <http://example.org/#>.
+@prefix : <http://example.org/>.
 @prefix log: <http://www.w3.org/2000/10/swap/log#> .
 
 {
@@ -66,7 +66,7 @@ Get the type of lists and quoted graphs.
             """ ;
                 rdfs:seeAlso <> ;
                 fno:expression """
-@prefix : <http://example.org/#>.
+@prefix : <http://example.org/>.
 @prefix log: <http://www.w3.org/2000/10/swap/log#> .
 
 {

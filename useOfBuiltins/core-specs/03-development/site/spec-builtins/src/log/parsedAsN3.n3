@@ -19,7 +19,7 @@ Parse the string ':Socrates a :Human .' as N3.
             """ ;
                 rdfs:seeAlso <> ;
                 fno:expression """
-@prefix : <http://example.org/#>.
+@prefix : <http://example.org/>.
 @prefix log: <http://www.w3.org/2000/10/swap/log#> .
 
 :Let :param \"\"\"

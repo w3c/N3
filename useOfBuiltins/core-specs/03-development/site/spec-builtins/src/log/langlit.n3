@@ -21,7 +21,7 @@ Create a language-tagged literal from the string "hello" and language tag "en".
             """ ;
                 rdfs:seeAlso <> ;
                 fno:expression """
-@prefix : <http://example.org/#>.
+@prefix : <http://example.org/>.
 @prefix log: <http://www.w3.org/2000/10/swap/log#> .
 { ("hello" "en") log:langlit ?X } => { ?X a :Result } .
             """ ;

@@ -20,7 +20,7 @@ Parse the URI <https://www.w3.org> into a string .
             """ ;
                 rdfs:seeAlso <> ;
                 fno:expression """
-@prefix : <http://example.org/#>.
+@prefix : <http://example.org/>.
 @prefix log: <http://www.w3.org/2000/10/swap/log#> .
 
 { <https://www.w3.org> log:uri ?uri . } => { :result :is ?uri . } .

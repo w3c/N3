@@ -19,7 +19,7 @@ Iterate over the list ("dog" "penguin" "cat").
             """ ;
                 rdfs:seeAlso <> ;
                 fno:expression """
-@prefix : <http://example.org/#>.
+@prefix : <http://example.org/>.
 @prefix list: <http://www.w3.org/2000/10/swap/list#> .
 
 { ("dog" "penguin" "cat") list:iterate (?index ?member) . } => { :result :is (?index ?member) . } .
@@ -36,7 +36,7 @@ Is "cat" the third item in the list ("dog" "penguin" "cat")?
             """ ;
                 rdfs:seeAlso <> ;
                 fno:expression """
-@prefix : <http://example.org/#>.
+@prefix : <http://example.org/>.
 @prefix list: <http://www.w3.org/2000/10/swap/list#> .
 
 :let :param ("dog" "penguin" "cat") .
@@ -59,7 +59,7 @@ What is the index of "cat" in the list ("dog" "penguin" "cat")?
             """ ;
                 rdfs:seeAlso <> ;
                 fno:expression """
-@prefix : <http://example.org/#>.
+@prefix : <http://example.org/>.
 @prefix list: <http://www.w3.org/2000/10/swap/list#> .
 
 :let :param ("dog" "penguin" "cat") .

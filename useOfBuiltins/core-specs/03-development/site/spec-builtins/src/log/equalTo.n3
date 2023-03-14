@@ -21,7 +21,7 @@ Determine if 1 is equal to 1 and "Cat" is equal to "Cat" and { :A :B :C . :D :E 
             """ ;
                 rdfs:seeAlso <> ;
                 fno:expression """
-@prefix : <http://example.org/#>.
+@prefix : <http://example.org/>.
 @prefix log: <http://www.w3.org/2000/10/swap/log#> .
 
 {
@@ -45,7 +45,7 @@ Determine if "Cat" is equal to "Cat"@en .
             """ ;
                 rdfs:seeAlso <> ;
                 fno:expression """
-@prefix : <http://example.org/#>.
+@prefix : <http://example.org/>.
 @prefix log: <http://www.w3.org/2000/10/swap/log#> .
 
 {
@@ -68,7 +68,7 @@ Assign a value to an existential or universal variable.
             """ ;
                 rdfs:seeAlso <> ;
                 fno:expression """
-@prefix : <http://example.org/#>.
+@prefix : <http://example.org/>.
 @prefix log: <http://www.w3.org/2000/10/swap/log#> .
 
 {
@@ -97,7 +97,7 @@ In general, this works because an effort is made to ensure the truth of builtin 
             """ ;
                 rdfs:seeAlso <> ;
                 fno:expression """
-@prefix : <http://example.org/#>.
+@prefix : <http://example.org/>.
 @prefix log: <http://www.w3.org/2000/10/swap/log#> .
 
 {
@@ -122,7 +122,7 @@ In general, this works because an effort is made to ensure the truthfulness of b
             """ ;
                 rdfs:seeAlso <> ;
                 fno:expression """
-@prefix : <http://example.org/#>.
+@prefix : <http://example.org/>.
 @prefix log: <http://www.w3.org/2000/10/swap/log#> .
 
 {

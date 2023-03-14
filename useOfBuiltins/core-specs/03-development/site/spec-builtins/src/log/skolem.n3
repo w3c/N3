@@ -17,7 +17,7 @@ Generate a unique Skolem IRI from the list (:abc 77 "xyz") .
             """ ;
                 rdfs:seeAlso <> ;
                 fno:expression """
-@prefix : <http://example.org/#>.
+@prefix : <http://example.org/>.
 @prefix log: <http://www.w3.org/2000/10/swap/log#> .
 
 { (:abc 77 "xyz") log:skolem ?skolem . } => { :result :is ?skolem } .
