@@ -2,6 +2,8 @@
 
 Tests exist for [N3 grammar](N3Tests/manifest-parser.ttl), [N3 reasoning](N3Tests/manifest-reasoner.ttl), [extended N3 grammar](N3Tests/manifest-extended.ttl) and appropriate [Turtle](TurtleTests/manifest.ttl) tests.
 
+All of these tests suites are referenced from [this manifest](manifest.ttl).
+
 # Design
 
 In general, tests are described as Positive or Negative Syntax tests, Evaluation Test, and Reason tests. Syntax tests simply check that the data can be parsed properly; negative syntax tests should generate an error.
