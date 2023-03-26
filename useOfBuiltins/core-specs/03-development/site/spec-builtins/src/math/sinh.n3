@@ -7,6 +7,7 @@
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
 math:sinh a fno:Function ;
+    vs:term_status  "testing" ;
     dcterms:comment """The subject is an angle expressed in radians.
 The object is calulated as the hyperbolic sine value of the subject.""" ;
     fno:example ( [ a fno:Test ;
