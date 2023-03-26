@@ -3,25 +3,37 @@
 @prefix fno: <https://w3id.org/function/ontology#> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix vs: <http://www.w3.org/2003/06/sw-vocab-status/ns#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
 math:rounded a fno:Function ;
+    vs:term_status  "testing" ;
     dcterms:comment """The object is calulated as the number with no fractional part that is closest to the subject.
 If there are two such numbers, then the one that is closest to positive infinity is returned.
 """ ;
     fno:example ( [ a fno:Test ;
                 dcterms:description """
-This is an example for a built-in function.
+Calculate the rounded version of 3.3.
             """ ;
-                rdfs:seeAlso <http://ppr.cs.dal.ca:3002/n3/editor/?formula=%40prefix%20%3A%20%3C%3A%3E%20.%0A%40prefix%20string%3A%20%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F10%2Fswap%2Fstring%23%3E%20.%0A%0A%3ALet%20%3Astring%20%22placeholder%22%20.%0A%0A%7B%20%3ALet%20%3Astring%20%3Fx%20.%20%7D%0A%3D%3E%0A%7B%20%3Aresult%20%3Ais%20%3Fx%20.%20%7D.%20> ;
+                rdfs:seeAlso <> ;
                 fno:expression """
-@prefix : <:> .
-@prefix string: <http://www.w3.org/2000/10/swap/string#> .
-:Let :string "placeholder" .
-{ :Let :string ?x . } => { :result :is ?x . } .
+@prefix : <http://example.org/>.
+@prefix math: <http://www.w3.org/2000/10/swap/math#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+:Let :param "3.3"^^xsd:double .
+
+{
+    :Let :param ?param .
+    ?param math:rounded ?result .
+}
+=>
+{
+    :result :is ?result .
+} .
             """ ;
                 fno:result """
-                <:result> <:is> "placeholder". 
+:result :is 3. 
             """ ] ) ;
     fno:name "rounded" ;
     fno:object ( [ a rdf:Property ;
