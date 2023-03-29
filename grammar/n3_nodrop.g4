@@ -35,7 +35,7 @@ grammar n3_nodrop;
 
 /*
 @lexer::members {
-	public static final int NEWLINE = 1;
+	public static final int WHITESPACE = 1;
 	public static final int COMMENTS = 2;
 }
 */
@@ -276,19 +276,15 @@ ECHAR
 	;
 	
 WS 
-	: [ \t] -> skip /* #x20=space #x9=character tabulation */
-	;
-	
-NL
-	: [\r\n] -> channel(1) /* #xD=carriage return #xA=new line */
+	: [ \t\r\n] -> channel(1)
 	;
 	
 IPLSTART
-	: '[' (WS|NL)* 'id'
+	: '[' WS* 'id'
 	;
 	
 ANON 
- 	: '[' (WS|NL)* ']'
+ 	: '[' WS* ']'
 	;
 
 QuickVarName
