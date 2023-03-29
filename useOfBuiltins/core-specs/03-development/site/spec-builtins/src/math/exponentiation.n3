@@ -3,15 +3,18 @@
 @prefix fno: <https://w3id.org/function/ontology#> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
 @prefix vs: <http://www.w3.org/2003/06/sw-vocab-status/ns#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix fnon: <https://w3id.org/function/ontology/n3#> .
 
 math:exponentiation a fno:Function ;
     vs:term_status  "testing" ;
-    dcterms:comment """The subject is a pair of numbers. The object
-is calculated by raising the first number of the power of the second.
-""" ;
-    fno:example ( [ a fno:Test ;
+    fnon:tldr """Calculates the object as the result of raising the first number to the power of the second number in the subject list. 
+You can also use this to calculate the logarithm of the object, with as base the first number of the subject list (see examples).""" ;
+    dcterms:comment """`true` if and only if `$o` is the result of raising `$s.1` to the power of `$s.2`""" ;
+    fno:example ( 
+        [ a fno:Test ;
                 dcterms:description """
 Calculate the value of 7 raised to the power of 2 .
             """ ;
@@ -33,19 +36,58 @@ Calculate the value of 7 raised to the power of 2 .
             """ ;
                 fno:result """
 :result :is 49 .
+            """ ] 
+        [ a fno:Test ;
+                dcterms:description """
+Calculate the logarithm of 49 base 2 .
+            """ ;
+                rdfs:seeAlso <> ;
+                fno:expression """
+@prefix : <http://example.org/>.
+@prefix math: <http://www.w3.org/2000/10/swap/math#> .
+
+{
+    (7 ?result) math:exponentiation 49 .
+}
+=>
+{
+    :result :is ?result .
+} .
+            """ ;
+                fno:result """
+:result :is 2.0 .
             """ ] ) ;
     fno:name "exponentiation" ;
-    fno:object ( [ a rdf:Property ;
-                fno:parameter ( [ a fno:Output ;
-                            dcterms:description "" ;
-                            fno:mode "*" ;
-                            fno:predicate "$o.0" ;
-                            fno:required true ;
-                            fno:type math:Value ] ) ] ) ;
-    fno:subject ( [ a rdf:Property ;
-                fno:parameter ( [ a fno:Parameter ;
-                            dcterms:description "" ;
-                            fno:mode "+" ;
-                            fno:predicate "$s" ;
-                            fno:required true ;
-                            fno:type math:TwoMemberedList ] ) ] ) .
+fno:parameter ( 
+        [ a fno:Parameter ;
+            dcterms:description "" ;
+            fno:mode "+" ;
+            fno:predicate "$s" ;
+            fno:type rdf:List ;
+            fnon:position fnon:subject ;
+            fnon:listElements ( [
+                fno:predicate "$s.1" ;
+                fno:mode "+" ;
+                fno:type 
+                    [   rdf:type rdfs:Datatype ;
+                        owl:unionOf ( xsd:decimal xsd:double xsd:float )
+                    ]
+            ] [
+                fno:predicate "$s.2" ;
+                fno:mode "?" ;
+                fno:type 
+                    [   rdf:type rdfs:Datatype ;
+                        owl:unionOf ( xsd:decimal xsd:double xsd:float )
+                    ]
+            ] )
+
+        ] [ a fno:Parameter ;
+            dcterms:description "" ;
+            fno:mode "?" ;
+            fno:predicate "$o" ;
+            fnon:position fnon:object ;
+            fno:type 
+                    [   rdf:type rdfs:Datatype ;
+                        owl:unionOf ( xsd:decimal xsd:double xsd:float )
+                    ]
+        ] ) .

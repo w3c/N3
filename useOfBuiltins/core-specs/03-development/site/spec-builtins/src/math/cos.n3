@@ -3,13 +3,15 @@
 @prefix fno: <https://w3id.org/function/ontology#> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
 @prefix vs: <http://www.w3.org/2003/06/sw-vocab-status/ns#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix fnon: <https://w3id.org/function/ontology/n3#> .
 
 math:cos a fno:Function ;
     vs:term_status  "testing" ;
-    dcterms:comment """The subject is an angle expressed in radians.
-The object is calulated as the cosine value of the subject.""" ;
+    fnon:tldr "Calculates the object as the cosine value of the subject." ;
+    dcterms:comment """`true` if and only if `$o` is the cosine value of `$s`.""" ;
     fno:example ( [ a fno:Test ;
                 dcterms:description """
 Calculate the cosine of the value 0.
@@ -34,17 +36,23 @@ Calculate the cosine of the value 0.
 :result :is 1.0 .
             """ ] ) ;
     fno:name "cos" ;
-    fno:object ( [ a rdf:Property ;
-                fno:parameter ( [ a fno:Output ;
-                            dcterms:description "" ;
-                            fno:mode "*" ;
-                            fno:predicate "$o.0" ;
-                            fno:required true ;
-                            fno:type math:Value ] ) ] ) ;
-    fno:subject ( [ a rdf:Property ;
-                fno:parameter ( [ a fno:Parameter ;
-                            dcterms:description "" ;
-                            fno:mode "+" ;
-                            fno:predicate "$s" ;
-                            fno:required true ;
-                            fno:type math:Value ] ) ] ) .
+    fno:parameter ( [
+        a fno:Parameter ;
+        fno:mode "?" ;
+        fno:predicate "$s" ;
+        dcterms:comment "angle expressed in radians" ;
+        fno:type 
+            [   rdf:type rdfs:Datatype ;
+                owl:unionOf ( xsd:decimal xsd:double xsd:float )
+            ] ;
+        fnon:position fnon:subject
+    ] [
+        a fno:Parameter ;
+        fno:mode "?" ;
+        fno:predicate "$o" ;
+        fno:type
+            [   rdf:type rdfs:Datatype ;
+                owl:unionOf ( xsd:decimal xsd:double xsd:float )
+            ] ;
+        fnon:position fnon:object
+    ] ) .
