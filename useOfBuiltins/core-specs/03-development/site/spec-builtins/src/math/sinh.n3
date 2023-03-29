@@ -12,6 +12,7 @@ math:sinh a fno:Function ;
     vs:term_status  "testing" ;
     fnon:tldr "Calculates the object as the hyperbolic sine value of the subject." ;
     dcterms:comment """`true` if and only if `$o` is the hyperbolic sine value of `$s`.""" ;
+    rdfs:seeAlso math:asin , math:sin ;
     fno:example ( [ a fno:Test ;
                 dcterms:description """
 Calculate the sinh of log(1 + sqrt(2)) (0.88137358701954302).

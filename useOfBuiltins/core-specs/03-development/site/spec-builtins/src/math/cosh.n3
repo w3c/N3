@@ -12,6 +12,7 @@ math:cosh a fno:Function ;
     vs:term_status  "testing" ;
     fnon:tldr "Calculates the object as the hyperbolic cosine value of the subject." ;
     dcterms:comment """`true` if and only if `$o` is the hyperbolic cosine value of `$s`.""" ;
+    rdfs:seeAlso math:cos , math:acos ;
     fno:example ( [ a fno:Test ;
                 dcterms:description """
 Calculate the hyperbolic cosine of the value 0.

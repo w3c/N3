@@ -12,6 +12,7 @@ math:cos a fno:Function ;
     vs:term_status  "testing" ;
     fnon:tldr "Calculates the object as the cosine value of the subject." ;
     dcterms:comment """`true` if and only if `$o` is the cosine value of `$s`.""" ;
+    rdfs:seeAlso math:acos , math:cosh ;
     fno:example ( [ a fno:Test ;
                 dcterms:description """
 Calculate the cosine of the value 0.

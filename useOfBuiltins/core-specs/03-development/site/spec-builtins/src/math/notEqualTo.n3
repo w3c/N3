@@ -6,10 +6,13 @@
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
 @prefix vs: <http://www.w3.org/2003/06/sw-vocab-status/ns#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix fnon: <https://w3id.org/function/ontology/n3#> .
 
 math:notEqualTo a fno:Function ;
     vs:term_status  "testing" ;
-    dcterms:comment "`true` if and only if the subject is a number which is NOT EQUAL to a object." ;
+    fnon:tldr "Checks whether the subject and object are not the same number." ;
+    dcterms:comment """`true` if and only if `$s` is the not same number as `$o`.""" ;
+    rdfs:seeAlso math:equalTo ;
     fno:example ( [ a fno:Test ;
                 dcterms:description """
 Check if the numbers 41 and 42 are not equal .
@@ -34,17 +37,21 @@ Check if the numbers 41 and 42 are not equal .
 :result :is true .
             """ ] ) ;
     fno:name "notEqualTo" ;
-    fno:object ( [ a rdf:Property ;
-                fno:parameter ( [ a fno:Output ;
-                            dcterms:description "" ;
-                            fno:mode "*" ;
-                            fno:predicate "$o.0" ;
-                            fno:required true ;
-                            fno:type math:Value ] ) ] ) ;
-    fno:subject ( [ a rdf:Property ;
-                fno:parameter ( [ a fno:Parameter ;
-                            dcterms:description "" ;
-                            fno:mode "+" ;
-                            fno:predicate "$s" ;
-                            fno:required true ;
-                            fno:type math:Value ] ) ] ) .
+    fno:parameter (
+        [ a fno:Parameter ;
+            fno:predicate "$s" ;
+            fno:mode "+" ;
+            fnon:position fnon:subject ;
+            fno:type 
+                [   rdf:type rdfs:Datatype ;
+                    owl:unionOf ( xsd:decimal xsd:double xsd:float )
+                ]
+        ] [ a fno:Parameter ;
+            fno:predicate "$o" ;
+            fno:mode "+" ;
+            fnon:position fnon:object ;
+            fno:type 
+                [   rdf:type rdfs:Datatype ;
+                    owl:unionOf ( xsd:decimal xsd:double xsd:float )
+                ]
+        ] ) .

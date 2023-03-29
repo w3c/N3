@@ -12,6 +12,7 @@ math:tan a fno:Function ;
     vs:term_status  "testing" ;
     fnon:tldr "Calculates the object as the tangent value of the subject." ;
     dcterms:comment """`true` if and only if `$o` is the tangent value of `$s`.""" ;
+    rdfs:seeAlso math:atan , math:tanh ;
     fno:example ( [ a fno:Test ;
                 dcterms:description """
 Calculate the tanget of the value 0.7853981633974483 .

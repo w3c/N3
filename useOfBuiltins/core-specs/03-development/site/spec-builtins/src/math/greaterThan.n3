@@ -6,10 +6,13 @@
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
 @prefix vs: <http://www.w3.org/2003/06/sw-vocab-status/ns#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix fnon: <https://w3id.org/function/ontology/n3#> .
 
 math:greaterThan a fno:Function ;
     vs:term_status  "testing" ;
-    dcterms:comment "`true` if and only if the subject is a number which is greater than the object." ;
+    fnon:tldr "Checks whether the subject is a number that is greater than the object." ;
+    dcterms:comment """`true` if and only if `$s` is a number that is greater than `$o`.""" ;
+    rdfs:seeAlso math:notGreaterThan ;
     fno:example ( [ a fno:Test ;
                 dcterms:description """
 Check if 42 is greater than 41 .
@@ -34,17 +37,21 @@ Check if 42 is greater than 41 .
 :result :is true .
             """ ] ) ;
     fno:name "greaterThan" ;
-    fno:object ( [ a rdf:Property ;
-                fno:parameter ( [ a fno:Output ;
-                            dcterms:description "" ;
-                            fno:mode "*" ;
-                            fno:predicate "$o.0" ;
-                            fno:required true ;
-                            fno:type math:Value ] ) ] ) ;
-    fno:subject ( [ a rdf:Property ;
-                fno:parameter ( [ a fno:Parameter ;
-                            dcterms:description "" ;
-                            fno:mode "+" ;
-                            fno:predicate "$s" ;
-                            fno:required true ;
-                            fno:type math:Value ] ) ] ) .
+    fno:parameter (
+        [ a fno:Parameter ;
+            fno:predicate "$s" ;
+            fno:mode "+" ;
+            fnon:position fnon:subject ;
+            fno:type 
+                [   rdf:type rdfs:Datatype ;
+                    owl:unionOf ( xsd:decimal xsd:double xsd:float )
+                ]
+        ] [ a fno:Parameter ;
+            fno:predicate "$o" ;
+            fno:mode "+" ;
+            fnon:position fnon:object ;
+            fno:type 
+                [   rdf:type rdfs:Datatype ;
+                    owl:unionOf ( xsd:decimal xsd:double xsd:float )
+                ]
+        ] ) .

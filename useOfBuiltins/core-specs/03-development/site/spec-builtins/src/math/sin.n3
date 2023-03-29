@@ -12,6 +12,7 @@ math:sin a fno:Function ;
     vs:term_status  "testing" ;
     fnon:tldr "Calculates the object as the sine value of the subject." ;
     dcterms:comment """`true` if and only if `$o` is the sine value of `$s`.""" ;
+    rdfs:seeAlso math:asin , math:sinh ;
     fno:example ( [ a fno:Test ;
                 dcterms:description """
 Calculate the sin of pi/2 (1.57079632679) .
