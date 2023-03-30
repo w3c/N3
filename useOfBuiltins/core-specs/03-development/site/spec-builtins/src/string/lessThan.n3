@@ -12,6 +12,7 @@ string:lessThan a fno:Function ;
    dcterms:comment "`true` if and only if `$s` is less than `$o` as per the Unicode code order." ;
    fno:example ( ) ;
    fno:name "lessThan" ;
+   rdfs:seeAlso string:notLessThan ;
    fno:parameter ( [
        a fno:Parameter ;
        fno:predicate "$s" ;

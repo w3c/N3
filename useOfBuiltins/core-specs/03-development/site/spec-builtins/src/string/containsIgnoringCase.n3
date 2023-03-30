@@ -12,6 +12,7 @@ string:containsIgnoringCase a fno:Function ;
    dcterms:comment "`true` if and only if `$s` contains `$o` when ignoring case differences." ;
    fno:example ( ) ;
    fno:name "containsIgnoringCase" ;
+   rdfs:seeAlso string:contains ;
    fno:parameter ( [
        a fno:Parameter ;
        fno:predicate "$s" ;

@@ -12,6 +12,7 @@ string:contains a fno:Function ;
    dcterms:comment "`true` if and only if `$s` contains `$o`." ;
    fno:example ( ) ;
    fno:name "contains" ;
+   rdfs:seeAlso string:containsIgnoringCase ;
    fno:parameter ( [
        a fno:Parameter ;
        fno:predicate "$s" ;

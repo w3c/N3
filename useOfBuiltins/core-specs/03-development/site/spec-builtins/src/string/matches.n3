@@ -13,6 +13,7 @@ The regular expression follows the perl, python style.""" ;
    dcterms:comment """`true` if and only if string `$s` matches the regular expression `$o`""" ;
    fno:example ( ) ;
    fno:name "matches" ;
+   rdfs:seeAlso string:notMatches ;
    fno:parameter ( [
        a fno:Parameter ;
        fno:predicate "$s" ;

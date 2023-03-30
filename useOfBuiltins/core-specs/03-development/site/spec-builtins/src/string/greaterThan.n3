@@ -12,6 +12,7 @@ string:greaterThan a fno:Function ;
    dcterms:comment "`true` if and only if `$s` is greater than `$o` as per the Unicode code order." ;
    fno:example ( ) ;
    fno:name "greaterThan" ;
+   rdfs:seeAlso string:notGreaterThan ;
    fno:parameter ( [
        a fno:Parameter ;
        fno:predicate "$s" ;

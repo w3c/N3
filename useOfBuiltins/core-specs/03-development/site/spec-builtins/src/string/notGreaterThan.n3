@@ -13,6 +13,7 @@ You can use this as an equivalent of a lessThanOrEqual operator.""" ;
    dcterms:comment "`true` if and only if `$s` is not greater than `$o` as per the Unicode code order." ;
    fno:example ( ) ;
    fno:name "notGreaterThan" ;
+   rdfs:seeAlso string:greaterThan ;
    fno:parameter ( [
        a fno:Parameter ;
        fno:predicate "$s" ;
