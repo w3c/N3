@@ -31,7 +31,7 @@ string:scrape a fno:Function ;
    ] [
        a fno:Parameter ;
        fno:predicate "$o" ;
-       fno:mode "?" ;
+       fno:mode "-" ;
        fnon:position fnon:object ;
        fno:type xsd:string 
    ] ) .
