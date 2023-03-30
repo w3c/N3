@@ -15,7 +15,7 @@ math:tan a fno:Function ;
     rdfs:seeAlso math:atan , math:tanh ;
     fno:example ( [ a fno:Test ;
                 dcterms:description """
-Calculate the tanget of the value 0.7853981633974483 .
+Calculate the tangent of the value 0.7853981633974483 .
             """ ;
                 rdfs:seeAlso <> ;
                 fno:expression """
