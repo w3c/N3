@@ -13,7 +13,8 @@ math:product a fno:Function ;
     vs:moreinfo "it is unclear for me why exponentiation can work in reverse, but product can't be used to calculate quotients @phochste" ;
     fnon:tldr "Calculates the object as the product of the numbers given in the subject list." ;
     dcterms:comment """`true` if and only if `$o` is the arithmetic product of all numbers `$s.i`""" ;
-    fno:example ( [ a fno:Test ;
+    fno:example ( 
+            [ a fno:Test ;
                 dcterms:description """
 Calculate the product of 2 and 21.
             """ ;
@@ -35,7 +36,35 @@ Calculate the product of 2 and 21.
             """ ;
                 fno:result """
 :result :is 42
-            """ ] ) ;
+            """ 
+            ] 
+
+            [ a fno:Test ;
+                dcterms:description """
+Calculate the product of 2,4,6, and 8 .
+            """ ;
+                rdfs:seeAlso <> ;
+                fno:expression """
+@prefix : <http://example.org/>.
+@prefix math: <http://www.w3.org/2000/10/swap/math#> .
+
+:Let :param (2 4 6 8) .
+
+{
+    :Let :param ?param .
+    ?param math:product ?result .
+}
+=>
+{
+    :result :is ?result .
+} .
+            """ ;
+                fno:result """
+:result :is 384.
+            """ 
+            ] 
+
+    ) ;
     fno:name "product" ;
     fno:parameter ( 
         [ a fno:Parameter ;
