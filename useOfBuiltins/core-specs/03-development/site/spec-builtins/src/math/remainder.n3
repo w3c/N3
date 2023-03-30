@@ -55,7 +55,7 @@ Calculate the remainder of 10 divided by 3.
 
         ] [ a fno:Parameter ;
             dcterms:description "" ;
-            fno:mode "-" ;
+            fno:mode "?" ;
             fno:predicate "$o" ;
             fnon:position fnon:object ;
             fno:type xsd:integer

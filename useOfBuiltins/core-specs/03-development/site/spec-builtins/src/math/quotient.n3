@@ -65,7 +65,7 @@ Calculate the quotient of 42 and 2.
 
         ] [ a fno:Parameter ;
             dcterms:description "" ;
-            fno:mode "-" ;
+            fno:mode "?" ;
             fno:predicate "$o" ;
             fnon:position fnon:object ;
             fno:type 
