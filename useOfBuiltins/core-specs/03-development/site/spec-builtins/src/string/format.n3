@@ -1,43 +1,34 @@
-@prefix string: <http://www.w3.org/2000/10/swap/string#> .
-@prefix log: <http://www.w3.org/2000/10/swap/log#> .
 @prefix dcterms: <http://purl.org/dc/terms/> .
 @prefix fno: <https://w3id.org/function/ontology#> .
+@prefix fnon: <https://w3id.org/function/ontology/n3#> .
+@prefix log: <http://www.w3.org/2000/10/swap/log#> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix string: <http://www.w3.org/2000/10/swap/string#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
 string:format a fno:Function ;
-    dcterms:comment """The subject is a list, whose first member is a format string,
-and whose remaining members are arguments to the format string.
-The formating string is in the style of python's % operator,
-very similar to C's sprintf().
-The object is calculated from the subject.""" ;
-    fno:example ( [ a fno:Test ;
-                dcterms:description """
-This is an example for a built-in function.
-            """ ;
-                rdfs:seeAlso <http://ppr.cs.dal.ca:3002/n3/editor/?formula=%40prefix%20%3A%20%3C%3A%3E%20.%0A%40prefix%20string%3A%20%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F10%2Fswap%2Fstring%23%3E%20.%0A%0A%3ALet%20%3Astring%20%22placeholder%22%20.%0A%0A%7B%20%3ALet%20%3Astring%20%3Fx%20.%20%7D%0A%3D%3E%0A%7B%20%3Aresult%20%3Ais%20%3Fx%20.%20%7D.%20> ;
-                fno:expression """
-@prefix : <:> .
-@prefix string: <http://www.w3.org/2000/10/swap/string#> .
-:Let :string "placeholder" .
-{ :Let :string ?x . } => { :result :is ?x . } .
-            """ ;
-                fno:result """
-                <:result> <:is> "placeholder". 
-            """ ] ) ;
-    fno:name "is the string formatted function of" ;
-    fno:object ( [ a rdf:Property ;
-                fno:parameter ( [ a fno:Output ;
-                            dcterms:description "" ;
-                            fno:mode "*" ;
-                            fno:predicate "$o.0" ;
-                            fno:required true ;
-                            fno:type log:String ] ) ] ) ;
-    fno:subject ( [ a rdf:Property ;
-                fno:parameter ( [ a fno:Parameter ;
-                            dcterms:description "" ;
-                            fno:mode "+" ;
-                            fno:predicate "$s" ;
-                            fno:required true ;
-                            fno:type log:List ] ) ] ) .
+   fnon:tldr """Calculates the object as the result of replacing the tags in the first string from the subject list with the remaining strings from the subject list.
+See C's sprintf function for details on these tags.""" ;
+   dcterms:comment "`true` if and only if `$o` is the result of replacing the tags found in `$s.1` with the strings `$s.i>1`" ;
+   fno:example ( ) ;
+   fno:name "format" ;
+   fno:parameter ( [
+       a fno:Parameter ;
+       dcterms:description "$s.1 is a format string including tags. $s.i+1 are strings to replace these tags. See C's sprintf function for details." ;
+       fno:mode "+" ;
+       fno:predicate "$s" ;
+       fno:type rdf:List ;
+       fnon:position fnon:subject ;
+       fnon:listElementType [
+           fnon:predicate "$s.i" ;
+           fno:mode "+" ;
+           fno:type xsd:string 
+       ]
+   ] [
+       a fno:Parameter ;
+       fno:predicate "$o" ;
+       fno:mode "?" ;
+       fnon:position fnon:object ;
+       fno:type xsd:string 
+   ] ) .
