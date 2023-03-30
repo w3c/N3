@@ -62,7 +62,7 @@ Calculate the value of 7 minus 2.
 
         ] [ a fno:Parameter ;
             dcterms:description "" ;
-            fno:mode "?" ;
+            fno:mode "-" ;
             fno:predicate "$o" ;
             fnon:position fnon:object ;
             fno:type 

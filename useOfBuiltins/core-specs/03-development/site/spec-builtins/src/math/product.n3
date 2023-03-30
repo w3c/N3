@@ -84,7 +84,7 @@ Calculate the product of 2,4,6, and 8 .
 
         ] [ a fno:Parameter ;
             dcterms:description "" ;
-            fno:mode "?" ;
+            fno:mode "-" ;
             fno:predicate "$o" ;
             fnon:position fnon:object ;
             fno:type 
