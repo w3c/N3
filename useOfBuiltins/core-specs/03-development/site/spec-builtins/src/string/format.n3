@@ -5,15 +5,42 @@
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix string: <http://www.w3.org/2000/10/swap/string#> .
+@prefix vs: <http://www.w3.org/2003/06/sw-vocab-status/ns#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
 string:format a fno:Function ;
-   fnon:tldr """Calculates the object as the result of replacing the tags in the first string from the subject list with the remaining strings from the subject list.
+    vs:term_status  "testing" ;
+    fnon:tldr """Calculates the object as the result of replacing the tags in the first string from the subject list with the remaining strings from the subject list.
 See C's sprintf function for details on these tags.""" ;
-   dcterms:comment "`true` if and only if `$o` is the result of replacing the tags found in `$s.1` with the strings `$s.i>1`" ;
-   fno:example ( ) ;
-   fno:name "format" ;
-   fno:parameter ( [
+    dcterms:comment "`true` if and only if `$o` is the result of replacing the tags found in `$s.1` with the strings `$s.i>1`" ;
+    fno:example ( 
+              [ a fno:Test ;
+                dcterms:description """
+Calculate the result of applying the format "%s://%s/%s" to the strings "https", "w3c.github.io" and "N3/spec" .
+            """ ;
+                rdfs:seeAlso <> ;
+                fno:expression """
+@prefix : <http://example.org/>.
+@prefix string: <http://www.w3.org/2000/10/swap/string#> .
+
+:Let :param ( "%s://%s/%s" "https" "w3c.github.io" "N3/spec" ) .
+
+{
+    :Let :param ?param .
+    ?param string:format ?result .
+}
+=>
+{
+    :result :is ?result .
+} .
+            """ ;
+                fno:result """
+:result :is "https://w3c.github.io/N3/spec/". 
+            """ 
+            ]
+    ) ;
+    fno:name "format" ;
+    fno:parameter ( [
        a fno:Parameter ;
        dcterms:description "$s.1 is a format string including tags. $s.i+1 are strings to replace these tags. See C's sprintf function for details." ;
        fno:mode "+" ;
@@ -25,10 +52,10 @@ See C's sprintf function for details on these tags.""" ;
            fno:mode "+" ;
            fno:type xsd:string 
        ]
-   ] [
+    ] [
        a fno:Parameter ;
        fno:predicate "$o" ;
        fno:mode "-" ;
        fnon:position fnon:object ;
        fno:type xsd:string 
-   ] ) .
+    ] ) .

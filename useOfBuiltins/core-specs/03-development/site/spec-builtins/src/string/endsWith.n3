@@ -5,23 +5,51 @@
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix string: <http://www.w3.org/2000/10/swap/string#> .
+@prefix vs: <http://www.w3.org/2003/06/sw-vocab-status/ns#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
 string:endsWith a fno:Function ;
-   fnon:tldr "Checks whether the subject string ends with the object string." ;
-   dcterms:comment "`true` if and only if `$s` ends with `$o`." ;
-   fno:example ( ) ;
-   fno:name "endsWith" ;
-   fno:parameter ( [
+    vs:term_status  "testing" ;
+    fnon:tldr "Checks whether the subject string ends with the object string." ;
+    dcterms:comment "`true` if and only if `$s` ends with `$o`." ;
+    fno:example ( 
+              [ a fno:Test ;
+                dcterms:description """
+Checks whether the string "hello world!" ends with "orld!".
+            """ ;
+                rdfs:seeAlso <> ;
+                fno:expression """
+@prefix : <http://example.org/>.
+@prefix string: <http://www.w3.org/2000/10/swap/string#> .
+
+:Let :param1 "hello world!" .
+:Let :param2 "orld!".
+{
+    :Let :param1 ?param1 .
+    :Let :param2 ?param2 .
+    ?param1 string:endsWith ?param2 .
+}
+=>
+{
+    :result :is true .
+} .
+            """ ;
+                fno:result """
+:result :is true . 
+            """ 
+            ]
+    ) ;
+    fno:name "endsWith" ;
+    fno:parameter ( [
        a fno:Parameter ;
        fno:predicate "$s" ;
        fno:mode "+" ;
        fnon:position fnon:subject ;
        fno:type xsd:string 
-   ] [
+    ] [
        a fno:Parameter ;
        fno:predicate "$o" ;
        fno:mode "+" ;
        fnon:position fnon:object ;
        fno:type xsd:string 
-   ] ) .
+    ] ) .

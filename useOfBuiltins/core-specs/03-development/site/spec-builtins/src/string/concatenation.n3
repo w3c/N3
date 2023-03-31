@@ -5,14 +5,42 @@
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix string: <http://www.w3.org/2000/10/swap/string#> .
+@prefix vs: <http://www.w3.org/2003/06/sw-vocab-status/ns#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
 string:concatenation a fno:Function ;
-   fnon:tldr "Concatenates the strings from the subject list into a single string as object." ;
-   dcterms:comment """`true` if and only if the string concatenation of `$s.i` equals `$o`.""" ;
-   fno:example ( ) ;
-   fno:name "concatenation" ;
-   fno:parameter ( [
+    vs:term_status  "testing" ;
+    fnon:tldr "Concatenates the strings from the subject list into a single string as object." ;
+    dcterms:comment """`true` if and only if the string concatenation of `$s.i` equals `$o`.""" ;
+    fno:example ( 
+              [ a fno:Test ;
+                dcterms:description """
+Concatenates the string "hello", " " and "world!".
+            """ ;
+                rdfs:seeAlso <> ;
+                fno:expression """
+@prefix : <http://example.org/>.
+@prefix string: <http://www.w3.org/2000/10/swap/string#> .
+
+:Let :param ( "hello" " " "world!" ) .
+
+{
+    :Let :param ?param .
+    ?param string:concatenation ?result .
+}
+=>
+{
+    :result :is ?result .
+} .
+            """ ;
+                fno:result """
+:result :is "hello world!". 
+            """ 
+            ]
+    ) ;
+    fno:name "concatenation" ;
+    fno:parameter ( 
+    [
        a fno:Parameter ;
        dcterms:description "" ;
        fno:mode "+" ;
@@ -24,10 +52,11 @@ string:concatenation a fno:Function ;
            fno:mode "+" ;
            fno:type xsd:string 
        ]
-   ] [
+    ] 
+    [
        a fno:Parameter ;
        fno:predicate "$o" ;
        fno:mode "-" ;
        fnon:position fnon:object ;
        fno:type xsd:string 
-   ] ) .
+    ] ) .

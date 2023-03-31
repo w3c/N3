@@ -5,23 +5,51 @@
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix string: <http://www.w3.org/2000/10/swap/string#> .
+@prefix vs: <http://www.w3.org/2003/06/sw-vocab-status/ns#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
 string:equalIgnoringCase a fno:Function ;
-   fnon:tldr "Checks whether the subject string is the same as the object string, ignoring differences between lowercase and uppercase." ;
-   dcterms:comment "`true` if and only if `$s` is the same string as `$o` when ignoring case differences." ;
-   fno:example ( ) ;
-   fno:name "equalIgnoringCase" ;
-   fno:parameter ( [
+    vs:term_status  "testing" ;
+    fnon:tldr "Checks whether the subject string is the same as the object string, ignoring differences between lowercase and uppercase." ;
+    dcterms:comment "`true` if and only if `$s` is the same string as `$o` when ignoring case differences." ;
+    fno:example ( 
+              [ a fno:Test ;
+                dcterms:description """
+Checks whether the string "hello world!" is equal to "hELLo wORld!" ignoring the case .
+            """ ;
+                rdfs:seeAlso <> ;
+                fno:expression """
+@prefix : <http://example.org/>.
+@prefix string: <http://www.w3.org/2000/10/swap/string#> .
+
+:Let :param1 "hello world!" .
+:Let :param2 "hELLo wORld!" .
+{
+    :Let :param1 ?param1 .
+    :Let :param2 ?param2 .
+    ?param1 string:equalIgnoringCase ?param2 .
+}
+=>
+{
+    :result :is true .
+} .
+            """ ;
+                fno:result """
+:result :is true . 
+            """ 
+            ]
+    ) ;
+    fno:name "equalIgnoringCase" ;
+    fno:parameter ( [
        a fno:Parameter ;
        fno:predicate "$s" ;
        fno:mode "+" ;
        fnon:position fnon:subject ;
        fno:type xsd:string 
-   ] [
+    ] [
        a fno:Parameter ;
        fno:predicate "$o" ;
        fno:mode "+" ;
        fnon:position fnon:object ;
        fno:type xsd:string 
-   ] ) .
+    ] ) .
