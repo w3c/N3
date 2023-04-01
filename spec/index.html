@@ -672,9 +672,10 @@ ex:john ex:address [
           </tr>
         </table>
 
-        <p class="note">See also the <a href="#iriprplist">IRI property list</a> syntax.</p>
+        <p class="note">See also the <a href="#iriprplist">IRI property list</a> syntax.
+        However you cannot use that syntax (the `id` keyword) with blank node identifiers.</p>
 
-        <p>As mentioned, this syntax is useful for cases where a blank node occurs only once as an object.
+        <p>The blank node property lists syntax is useful for cases where a blank node occurs only once as an object.
           In case the blank node occurs several times as an object, such as describing multiple people with the same
           address,
           one should use blank node identifiers. For instance:
