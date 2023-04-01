@@ -5,12 +5,41 @@
 @prefix fno: <https://w3id.org/function/ontology#> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix vs: <http://www.w3.org/2003/06/sw-vocab-status/ns#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
 time:year a fno:Function ;
+    vs:term_status  "testing" ;
     fnon:tldr "Gets as object the integer year component of the subject xsd:dateTime." ;
     dcterms:comment """`true` if and only if `$o` is the integer year component of `$s`.""" ;
-    fno:example ( ) ;
+    fno:example ( 
+              [ a fno:Test , fno:TestSkip ;
+                dcterms:description """
+Return the minute component of the date "2023-04-01T18:06:04Z" .
+            """ ;
+                rdfs:seeAlso <> ;
+                fno:expression """
+@prefix : <http://example.org/>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix time: <http://www.w3.org/2000/10/swap/time#> .
+
+:Let :param "2023-04-01T18:06:04Z"^^xsd:dateTime .
+
+{
+    :Let :param ?param .
+    ?param time:year ?result .
+}
+=>
+{
+    :result :is ?result .
+} .
+            """ ;
+                fno:result """
+@prefix : <http://example.org/>.
+:result :is 2023. 
+            """ 
+            ]
+    ) ;
     fno:name "year" ;
     fno:parameter ( [
        a fno:Parameter ;

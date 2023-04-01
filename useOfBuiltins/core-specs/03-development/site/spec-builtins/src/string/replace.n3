@@ -5,14 +5,46 @@
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix string: <http://www.w3.org/2000/10/swap/string#> .
+@prefix vs: <http://www.w3.org/2003/06/sw-vocab-status/ns#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
 string:replace a fno:Function ;
-   fnon:tldr "Calculates the object as the result of, given the strings in the subject list, replacing all occurrences of the second string in the first string with the third string." ;
-   dcterms:comment """`true` if and only if `$o` is the result of replacing all occurrences of `$s.2` in `$s.1` with `$s.3`""" ;
-   fno:example ( ) ;
-   fno:name "replace" ;
-   fno:parameter ( [
+    vs:term_status  "testing" ;
+    fnon:tldr "Calculates the object as the result of, given the strings in the subject list, replacing all occurrences of the second string in the first string with the third string." ;
+    dcterms:comment """`true` if and only if `$o` is the result of replacing all occurrences of `$s.2` in `$s.1` with `$s.3`""" ;
+    fno:example ( 
+              [ a fno:Test ;
+                dcterms:description """
+Replace all "l"-s in the string "hello world!" with the bracket version "[l]" .
+            """ ;
+                rdfs:seeAlso <> ;
+                fno:expression """
+@prefix : <http://example.org/>.
+@prefix string: <http://www.w3.org/2000/10/swap/string#> .
+
+:Let :data "hello world!" .
+:Let :search "(l)" .
+:Let :replace "[$1]" .
+{
+    :Let :data ?data .
+    :Let :search ?search .
+    :Let :replace ?replace .
+    (?data ?search ?replace) string:replace ?result .
+}
+=>
+{
+    :result :is ?result .
+} .
+            """ ;
+                fno:result """
+@prefix : <http://example.org/>.
+:result :is "he[l][l]o wor[l]d!". 
+            """ 
+            ]
+
+    ) ;
+    fno:name "replace" ;
+    fno:parameter ( [
        a fno:Parameter ;
        fno:mode "+" ;
        fno:predicate "$s" ;
@@ -31,10 +63,10 @@ string:replace a fno:Function ;
            fno:mode "+" ;
            fno:type xsd:string 
        ] ) 
-   ] [
+    ] [
        a fno:Parameter ;
        fno:predicate "$o" ;
        fno:mode "-" ;
        fnon:position fnon:object ;
        fno:type xsd:string 
-   ] ) .
+    ] ) .

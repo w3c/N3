@@ -15,7 +15,7 @@ string:lessThan a fno:Function ;
     fno:example ( 
               [ a fno:Test ;
                 dcterms:description """
-Checks whether the string "Cat" is greater than the string "Penguin" .
+Checks whether the string "Cat" is less than the string "Penguin" .
             """ ;
                 rdfs:seeAlso <> ;
                 fno:expression """

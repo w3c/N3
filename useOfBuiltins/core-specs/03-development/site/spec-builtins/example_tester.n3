@@ -10,6 +10,14 @@
     ?builtin a fno:Function .
     ?builtin fno:example ?examples .
     ?examples :validator ?result .
+}
+=>
+{
+    :examples :results ?result .
+} .
+
+{
+    :examples :results ?result .
     ?result list:unique ?unique_result .
     ?unique_result list:length 1 .
     (?unique_result 0) list:memberAt true .

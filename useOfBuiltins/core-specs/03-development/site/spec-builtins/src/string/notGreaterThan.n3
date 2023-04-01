@@ -5,25 +5,54 @@
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix string: <http://www.w3.org/2000/10/swap/string#> .
+@prefix vs: <http://www.w3.org/2003/06/sw-vocab-status/ns#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
 string:notGreaterThan a fno:Function ;
-   fnon:tldr """Checks whether the subject string is not greater than the object string, according to Unicode code order.
+    vs:term_status  "testing" ;
+    fnon:tldr """Checks whether the subject string is not greater than the object string, according to Unicode code order.
 You can use this as an equivalent of a lessThanOrEqual operator.""" ;
-   dcterms:comment "`true` if and only if `$s` is not greater than `$o` as per the Unicode code order." ;
-   fno:example ( ) ;
-   fno:name "notGreaterThan" ;
-   rdfs:seeAlso string:greaterThan ;
-   fno:parameter ( [
+    dcterms:comment "`true` if and only if `$s` is not greater than `$o` as per the Unicode code order." ;
+    fno:example ( 
+              [ a fno:Test ;
+                dcterms:description """
+Checks whether the string "Cat" is not greater than the string "Penguin" .
+            """ ;
+                rdfs:seeAlso <> ;
+                fno:expression """
+@prefix : <http://example.org/>.
+@prefix string: <http://www.w3.org/2000/10/swap/string#> .
+
+:Let :param1 "Cat" .
+:Let :param2 "Penguin".
+{
+    :Let :param1 ?param1 .
+    :Let :param2 ?param2 .
+    ?param1 string:notGreaterThan ?param2 .
+}
+=>
+{
+    :result :is true .
+} .
+            """ ;
+                fno:result """
+@prefix : <http://example.org/>.
+:result :is true . 
+            """ 
+            ]
+    ) ;
+    fno:name "notGreaterThan" ;
+    rdfs:seeAlso string:greaterThan ;
+    fno:parameter ( [
        a fno:Parameter ;
        fno:predicate "$s" ;
        fno:mode "+" ;
        fnon:position fnon:subject ;
        fno:type xsd:string 
-   ] [
+    ] [
        a fno:Parameter ;
        fno:predicate "$o" ;
        fno:mode "+" ;
        fnon:position fnon:object ;
        fno:type xsd:string 
-   ] ) .
+    ] ) .

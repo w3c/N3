@@ -18,13 +18,32 @@ else
     exit 2
 fi
 
+VALID=0
+
 grep ":examples :valid true." ${TMPFILE} > /dev/null 2>&1 
 
 if [ $? -eq 0 ]; then
+    VALID=1
+else
+    VALID=0
+fi
+
+SKIPPED=0
+
+grep "fno:TestSkip" ${FILE} > /dev/null 2>&1 
+
+if [ $? -eq 0 ]; then
+    SKIPPED=1
+fi
+
+if [ ${SKIPPED} -eq 1 ]; then
+    echo "NA : ${FILE} : example skipped"
+elif [ ${VALID} -eq 1 ]; then
     echo "OK : ${FILE} : example valid"
 else
-    echo "ERROR : ${FILE} : example not valid"
+    echo "ER : ${FILE} : example not valid"
     exit 3
 fi
+
 
 rm $TMPFILE

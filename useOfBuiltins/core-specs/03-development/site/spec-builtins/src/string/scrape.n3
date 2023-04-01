@@ -5,14 +5,43 @@
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix string: <http://www.w3.org/2000/10/swap/string#> .
+@prefix vs: <http://www.w3.org/2003/06/sw-vocab-status/ns#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
 string:scrape a fno:Function ;
-   fnon:tldr "Calculates the object as the first matching group when, given the subject list, matching the second string as regular expression (with exactly 1 group) against the first string." ;
-   dcterms:comment """`true` if and only if `$o` is the first matching group when matching `$s.2` as a regular expression against `$s.1`""" ;
-   fno:example ( ) ;
-   fno:name "scrape" ;
-   fno:parameter ( [
+    vs:term_status  "testing" ;
+    fnon:tldr "Calculates the object as the first matching group when, given the subject list, matching the second string as regular expression (with exactly 1 group) against the first string." ;
+    dcterms:comment """`true` if and only if `$o` is the first matching group when matching `$s.2` as a regular expression against `$s.1`""" ;
+    fno:example (
+              [ a fno:Test ;
+                dcterms:description """
+Extract from the string "https://w3c.github.io/N3/spec/" the last path element using a regular expression .
+            """ ;
+                rdfs:seeAlso <> ;
+                fno:expression """
+@prefix : <http://example.org/>.
+@prefix string: <http://www.w3.org/2000/10/swap/string#> .
+
+:Let :param1 "https://w3c.github.io/N3/spec/" . 
+:Let :param2 ".*/([^/]+/)$" .
+{
+    :Let :param1 ?param1 .
+    :Let :param2 ?param2 .
+    (?param1 ?param2) string:scrape ?result .
+}
+=>
+{
+    :result :is ?result .
+} .
+            """ ;
+                fno:result """
+@prefix : <http://example.org/>.
+:result :is "spec/". 
+            """ 
+            ]
+     ) ;
+    fno:name "scrape" ;
+    fno:parameter ( [
        a fno:Parameter ;
        fno:mode "+" ;
        fno:predicate "$s" ;
@@ -28,10 +57,10 @@ string:scrape a fno:Function ;
            fno:mode "+" ;
            fno:type xsd:string 
        ] ) 
-   ] [
+    ] [
        a fno:Parameter ;
        fno:predicate "$o" ;
        fno:mode "-" ;
        fnon:position fnon:object ;
        fno:type xsd:string 
-   ] ) .
+    ] ) .

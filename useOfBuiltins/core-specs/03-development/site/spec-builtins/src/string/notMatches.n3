@@ -5,26 +5,55 @@
 @prefix fno: <https://w3id.org/function/ontology#> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix vs: <http://www.w3.org/2003/06/sw-vocab-status/ns#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
 string:notMatches a fno:Function ;
+    vs:term_status  "testing" ;
     fnon:tldr """Checks whether the subject string does not match the object regular expression.
 The regular expression follows the perl, python style.""" ;
-   dcterms:comment """`true` if and only if string `$s` does not match the regular expression `$o`""" ;
-   fno:example ( ) ;
-   fno:name "notMatches" ;
-   rdfs:seeAlso string:matches ;
-   fno:parameter ( [
+    dcterms:comment """`true` if and only if string `$s` does not match the regular expression `$o`""" ;
+    fno:example ( 
+              [ a fno:Test ;
+                dcterms:description """
+Checks whether the string "hello world!" no matches the regular expression ".*(l)+o dunia.*".
+            """ ;
+                rdfs:seeAlso <> ;
+                fno:expression """
+@prefix : <http://example.org/>.
+@prefix string: <http://www.w3.org/2000/10/swap/string#> .
+
+:Let :param1 "hello world!" .
+:Let :param2 ".*(l)+o dunia.*".
+{
+    :Let :param1 ?param1 .
+    :Let :param2 ?param2 .
+    ?param1 string:notMatches ?param2 .
+}
+=>
+{
+    :result :is true .
+} .
+            """ ;
+                fno:result """
+@prefix : <http://example.org/>.
+:result :is true . 
+            """ 
+            ]
+    ) ;
+    fno:name "notMatches" ;
+    rdfs:seeAlso string:matches ;
+    fno:parameter ( [
        a fno:Parameter ;
        fno:predicate "$s" ;
        fno:mode "+" ;
        fnon:position fnon:subject ;
        fno:type xsd:string
-   ] [
+    ] [
        a fno:Parameter ;
        dcterms:comment "regular expression in perl, python style" ;
        fno:predicate "$o" ;
        fno:mode "+" ;
        fnon:position fnon:object ;
        fno:type xsd:string 
-   ] ) .
+    ] ) .
