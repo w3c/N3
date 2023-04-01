@@ -35,6 +35,7 @@ Checks whether the string "hello world!" contains the string "llo worl".
 } .
             """ ;
                 fno:result """
+@prefix : <http://example.org/>.
 :result :is true . 
             """ 
             ]

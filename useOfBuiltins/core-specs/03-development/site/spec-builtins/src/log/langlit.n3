@@ -26,6 +26,7 @@ Create a language-tagged literal from the string "hello" and language tag "en".
 { ("hello" "en") log:langlit ?X } => { ?X a :Result } .
             """ ;
                 fno:result """
+@prefix : <http://example.org/>.
 "hello"@en a :Result .
             """ 
     ] ) ;

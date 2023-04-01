@@ -33,6 +33,7 @@ Calculate the degrees of the radians value 1.57079632679.
 } .
             """ ;
                 fno:result """
+@prefix : <http://example.org/>.
 :result :is 89.99999999971946 .
             """ ] ) ;
     fno:name "degrees" ;

@@ -16,12 +16,13 @@ crypto:sha a fno:Function ;
 Calculate the SHA-1 of the string "hello world".
             """ ;
                 fno:expression """
-@prefix ex: <http://www.example.org/#> .
+@prefix : <http://example.org/> .
 @prefix crypto: <http://www.w3.org/2000/10/swap/crypto#> .
 
 { "hello world" crypto:sha ?sha . } => { :result :is ?sha . } .
             """ ;
                 fno:result """
+@prefix : <http://example.org/>.
 :result :is "2aae6c35c94fcfb415dbe95f408b9ce91ee846ed" .
             """ ]
             ) ;

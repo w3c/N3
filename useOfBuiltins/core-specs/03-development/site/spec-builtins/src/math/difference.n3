@@ -34,6 +34,7 @@ Calculate the value of 7 minus 2.
 } .
             """ ;
                 fno:result """
+@prefix : <http://example.org/>.
 :result :is 5.
             """ ] ) ;
     fno:name "difference" ;

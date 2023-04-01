@@ -33,6 +33,7 @@ Calculate the negation of the value 42 .
 } .
             """ ;
                 fno:result """
+@prefix : <http://example.org/>.
 :result :is -42 .
             """ ] ) ;
     fno:name "negation" ;

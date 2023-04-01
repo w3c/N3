@@ -26,6 +26,8 @@ Create a datatyped literal from the string "1971-05-05" and the type xsd:date.
 { ( "1971-05-05" xsd:date ) log:dtlit ?typed } => { :result :is ?typed . } .
             """ ;
                 fno:result """
+@prefix : <http://example.org/>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 :result :is "1971-05-05"^^xsd:date.
             """ 
             ] 
@@ -49,6 +51,8 @@ Parse the datatyped literal "1971-05-05"^^xsd:date into a string and data type I
 } .
             """ ;
                 fno:result """
+@prefix : <http://example.org/>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 :result :is ("1971-05-05" xsd:date).
             """ 
             ] 

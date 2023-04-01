@@ -35,6 +35,7 @@ Determine if 1 is equal to 1 and "Cat" is equal to "Cat" and { :A :B :C . :D :E 
 } . 
             """ ;
                 fno:result """
+@prefix : <http://example.org/>.
 :result :is true. 
             """ 
             ] 
@@ -58,7 +59,8 @@ Determine if "Cat" is equal to "Cat"@en .
 } . 
             """ ;
                 fno:result """
-# No result
+@prefix : <http://example.org/>.
+# no results
             """ 
             ] 
 
@@ -84,6 +86,7 @@ Assign a value to an existential or universal variable.
 } . 
             """ ;
                 fno:result """
+@prefix : <http://example.org/>.
 :result :is "Cat"@en .
             """ 
             ] 
@@ -109,7 +112,8 @@ In general, this works because an effort is made to ensure the truth of builtin 
 } . 
             """ ;
                 fno:result """
-:result :is 1 , 2 , 3 # objects can be in any order
+@prefix : <http://example.org/>.
+:result :is 1 , 2 , 3 . # objects can be in any order
             """ 
             ] 
 
@@ -134,7 +138,8 @@ In general, this works because an effort is made to ensure the truthfulness of b
 } . 
             """ ;
                 fno:result """
-:result :is "War and Peace" , "Leo Tolstoy" , 1225 # objects can be in any order
+@prefix : <http://example.org/>.
+:result :is "War and Peace" , "Leo Tolstoy" , 1225 . # objects can be in any order
             """ 
             ] 
     ) ;

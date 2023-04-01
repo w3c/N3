@@ -35,6 +35,7 @@ Calculate the arc cosine of the value 1.
 } .
             """ ;
                 fno:result """
+@prefix : <http://example.org/>.
 :result :is 0.0 .
             """ ] ) ;
     fno:name "acos" ;

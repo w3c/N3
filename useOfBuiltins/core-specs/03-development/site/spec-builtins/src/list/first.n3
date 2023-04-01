@@ -25,6 +25,7 @@ What is the first element of ( ("a") { :a :b :c } 42 )?
 { ( ("a") { :a :b :c } 42 ) list:first ?what . } => { :result :is ?what . } .
             """ ;
                 fno:result """
+@prefix : <http://example.org/>.
 :result :is ("a"). 
             """ ] 
     ) ;

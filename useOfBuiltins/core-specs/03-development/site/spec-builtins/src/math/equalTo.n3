@@ -34,6 +34,7 @@ Check if the numbers 42 and 42 are equal .
 } .
             """ ;
                 fno:result """
+@prefix : <http://example.org/>.
 :result :is true . 
             """ ] ) ;
     fno:name "equalTo" ;

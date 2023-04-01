@@ -34,6 +34,7 @@ Check if 42 is greater than 41 .
 } .
             """ ;
                 fno:result """
+@prefix : <http://example.org/>.
 :result :is true .
             """ ] ) ;
     fno:name "greaterThan" ;

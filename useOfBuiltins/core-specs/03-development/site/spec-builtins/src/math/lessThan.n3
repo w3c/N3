@@ -34,6 +34,7 @@ Check if 41 is less than 42 .
 } .
             """ ;
                 fno:result """
+@prefix : <http://example.org/>.
 :result :is true .
             """ ] ) ;
     fno:name "lessThan" ;

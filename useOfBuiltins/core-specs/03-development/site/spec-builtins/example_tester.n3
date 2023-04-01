@@ -1,0 +1,86 @@
+# FnO spec tester
+# Patrick Hochstenbach 2023
+@prefix : <http://example.org/>.
+@prefix fno: <https://w3id.org/function/ontology#> .
+@prefix log: <http://www.w3.org/2000/10/swap/log#> .
+@prefix list: <http://www.w3.org/2000/10/swap/list#> .
+@prefix math: <http://www.w3.org/2000/10/swap/math#> .
+
+{
+    ?builtin a fno:Function .
+    ?builtin fno:example ?examples .
+    ?examples :validator ?result .
+    ?result list:unique ?unique_result .
+    ?unique_result list:length 1 .
+    (?unique_result 0) list:memberAt true .
+}
+=>
+{
+    :examples :valid true .
+} .
+
+# Check the validity of each example
+{
+    ?list :validator ?result .
+}
+<=
+{
+    # use an accumulator for this
+    ( ?list () ) :validator_acc ?result .
+} .
+
+# Implementation of the accumulator
+# If the list is empty, then the accumulator is the result
+{
+    ( () ?accumulator ) :validator_acc ?accumulator 
+}
+<= true .
+
+# If the list is not empty validate each part
+{
+    ( ?list ?accumulator ) :validator_acc ?result .
+}
+<=
+{
+    ?list list:length ?l .
+    ?l math:notEqualTo 0 .
+    ?list list:firstRest (?first ?rest) .
+
+    (
+        { ?first a fno:TestSkip . }
+        {
+             ( ?accumulator (true) ) list:append ?new_accumulator .
+        }
+        {
+            ?first :isValid ?answer .
+            ( ?accumulator (?answer) ) list:append ?new_accumulator .
+        }
+    ) log:ifThenElseIn ?SCOPE .
+
+    # recurse to next in list
+    ( ?rest ?new_accumulator ) :validator_acc ?result .
+} .
+    
+# Check if one answer is valid
+{
+    ?example :isValid ?result  .
+}
+<=
+{
+    ?example fno:expression ?expression .
+    ?example fno:result ?answer .
+
+    ?expression log:parsedAsN3 ?expression_parsed .
+    ?answer log:parsedAsN3 ?answer_parsed .
+
+    ?expression_parsed log:conclusion ?conclusion .
+
+    (
+        { ?conclusion log:includes ?answer_parsed . }
+        { ?result log:equalTo true . }
+        { 
+            [] log:trace ( "INVALID" ?conclusion ?answer_parsed ) .
+            ?result log:equalTo false .
+        }
+    ) log:ifThenElseIn ?SCOPE .
+} .

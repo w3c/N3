@@ -35,6 +35,7 @@ Calculate the arc tangent of the value 1.
 } .
             """ ;
                 fno:result """
+@prefix : <http://example.org/>.
 :result :is 0.7853981633974483 .
             """ ] ) ;
     fno:name "atan" ;

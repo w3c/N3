@@ -38,6 +38,7 @@ Draw all conclusions from the formula ":Felix a :Cat . { ?X a :Cat } => { ?X :sa
 } .
             """ ;
                 fno:result """
+@prefix : <http://example.org/>.
 :result :is {
     :Felix a :Cat. 
     :Felix :says "Meow". 

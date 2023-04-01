@@ -35,6 +35,7 @@ Get the third member of the list ("dog" "penguin" "cat").
 } .
             """ ;
                 fno:result """
+@prefix : <http://example.org/>.
 :result :is "cat" .
             """ 
            ] 
@@ -60,6 +61,7 @@ Find the index of "cat" in the list ("dog" "cat" "penguin" "cat").
 } .
             """ ;
                 fno:result """
+@prefix : <http://example.org/>.
 :result :is 1 .
 :result :is 3 .
             """ 

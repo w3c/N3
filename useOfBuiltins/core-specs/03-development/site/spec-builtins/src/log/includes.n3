@@ -35,6 +35,7 @@ Check whether the formula { :Felix a :Cat } includes { ?X a :Cat }.
 } .
             """ ;
                 fno:result """
+@prefix : <http://example.org/>.
 :result :is :Felix .
             """ 
     ] ) ;

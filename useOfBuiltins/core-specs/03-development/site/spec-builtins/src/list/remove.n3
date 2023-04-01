@@ -35,6 +35,7 @@ Remove "penguin" from the list ("dog" "penguin" "cat" "penguin").
 } .
             """ ;
                 fno:result """
+@prefix : <http://example.org/>.
 :result :is ("dog" "cat").
             """ ] 
     ) ;

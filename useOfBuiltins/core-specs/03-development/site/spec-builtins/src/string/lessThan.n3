@@ -35,6 +35,7 @@ Checks whether the string "Cat" is greater than the string "Penguin" .
 } .
             """ ;
                 fno:result """
+@prefix : <http://example.org/>.
 :result :is true . 
             """ 
             ]

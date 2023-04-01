@@ -25,6 +25,7 @@ Determine the members of the list ("dog" "penguin" "cat").
 { ("dog" "penguin" "cat") list:member ?member . } => { :result :is ?member . } .
             """ ;
                 fno:result """
+@prefix : <http://example.org/>.
 :result :is "dog".
 :result :is "penguin".
 :result :is "cat".
@@ -52,6 +53,7 @@ Is "cat" a member of the list ("dog" "penguin" "cat")?
 } .
             """ ;
                 fno:result """
+@prefix : <http://example.org/>.
 :result :is true.
             """ 
           ] 

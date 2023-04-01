@@ -19,7 +19,7 @@ Aside: Philosophers will be distracted here into worrying about the meaning of m
 In as much as N3 is used as an interlingua for interoperability for different systems, this for an N3 based system is the meaning expressed by a document.
 Related: see `log:parsedAsN3` and `log:content`.""" ;
     fno:example ( 
-              [ a fno:Test ;
+              [ a fno:Test , fno:TestSkip ;
                 dcterms:description """
 Read the contents of the file <semantics.data> and parse it as Notation3.
 We assume <semantics.data> contains the text:
@@ -35,6 +35,7 @@ We assume <semantics.data> contains the text:
 { <semantics.data> log:semantics ?semantics . } => { :result :is ?semantics } .
             """ ;
                 fno:result """
+@prefix : <http://example.org/>.
 :result :is { :Socrates a :Human . } .
             """ 
             ] 

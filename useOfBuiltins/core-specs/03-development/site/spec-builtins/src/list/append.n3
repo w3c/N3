@@ -25,6 +25,7 @@ Append (3 4) to the list (1 2).
 { ( (1 2) (3 4) ) list:append ?list . } => { :result :is ?list . } .
             """ ;
                 fno:result """
+@prefix : <http://example.org/>.
 :result :is (1 2 3 4). 
             """ ] 
 
@@ -40,6 +41,7 @@ What do we need to prepend to (3 4) to get (1 2 3 4)?
 { ( ?what (3 4) ) list:append (1 2 3 4) . } => { :result :is ?what . } .
             """ ;
                 fno:result """
+@prefix : <http://example.org/>.
 :result :is (1 2). 
             """ ] 
 
@@ -55,6 +57,7 @@ What do we need to append to (1 2) to get (1 2 3 4)?
 { ( (1 2) ?what ) list:append (1 2 3 4) . } => { :result :is ?what . } .
             """ ;
                 fno:result """
+@prefix : <http://example.org/>.
 :result :is (3 4). 
             """ ] 
 
@@ -70,6 +73,7 @@ Is the list (1 2 3 4) equal to appending (1), (2 3) , (4)?
 { ( (1) (2 3) (4) ) list:append (1 2 3 4) . } => { :result :is true . } .
             """ ;
                 fno:result """
+@prefix : <http://example.org/>.
 :result :is true. 
             """ ] 
 

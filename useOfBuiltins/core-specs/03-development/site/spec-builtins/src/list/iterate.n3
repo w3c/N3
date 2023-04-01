@@ -25,6 +25,7 @@ Iterate over the list ("dog" "penguin" "cat").
 { ("dog" "penguin" "cat") list:iterate (?index ?member) . } => { :result :is (?index ?member) . } .
             """ ;
                 fno:result """
+@prefix : <http://example.org/>.
 :result :is (0 "dog") .
 :result :is (1 "penguin") .
 :result :is (2 "cat") .
@@ -50,6 +51,7 @@ Is "cat" the third item in the list ("dog" "penguin" "cat")?
 } .
             """ ;
                 fno:result """
+@prefix : <http://example.org/>.
 :result :is true .
             """ ] 
 
@@ -73,10 +75,9 @@ What is the index of "cat" in the list ("dog" "penguin" "cat")?
 } .
             """ ;
                 fno:result """
+@prefix : <http://example.org/>.
 :result :is 2 .
             """ ] 
-
-
     ) ;
     fno:name "iterate" ;
     fno:parameter ( 

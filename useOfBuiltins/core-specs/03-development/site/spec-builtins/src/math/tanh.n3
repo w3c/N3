@@ -35,6 +35,8 @@ Calculate the hyperbolic tanget of 0.549306 .
 } .
             """ ;
                 fno:result """
+@prefix : <http://example.org/>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 :result :is "0.49999989174945103"^^xsd:double. 
             """ ] ) ;
     fno:name "tanh" ;

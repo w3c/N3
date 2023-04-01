@@ -11,7 +11,7 @@ log:skolem a fno:Function ;
     vs:term_status  "testing" ;
     fnon:tldr "Gets as object a skolem IRI that is a function of the subject (commonly a list); the same subject will always result in the same skolem IRI." ;
     dcterms:comment "`true` if and only if `$o` is a skolem IRI that is a function of the subject." ;
-    fno:example ( [ a fno:Test ;
+    fno:example ( [ a fno:Test , fno:TestSkip ;
                 dcterms:description """
 Generate a unique Skolem IRI from the list (:abc 77 "xyz") .
             """ ;
@@ -23,6 +23,7 @@ Generate a unique Skolem IRI from the list (:abc 77 "xyz") .
 { (:abc 77 "xyz") log:skolem ?skolem . } => { :result :is ?skolem } .
             """ ;
                 fno:result """
+@prefix : <http://example.org/>.
 :result :is <http://www.w3.org/2000/10/swap/genid#zmgk3Vt_z_u7FQlk1NmqIw> . 
             """ ] ) ;
     fno:name "skolem" ;

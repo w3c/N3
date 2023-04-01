@@ -35,6 +35,8 @@ Calculate the sin of pi/2 (1.57079632679) .
 } .
             """ ;
                 fno:result """
+@prefix : <http://example.org/>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 :result :is "1.0"^^xsd:double . 
             """ ] ) ;
     fno:name "sin" ;

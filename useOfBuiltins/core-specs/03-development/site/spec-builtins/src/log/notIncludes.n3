@@ -31,6 +31,7 @@ Check whether the formula { :Felix a :Cat } does not include { ?X :eats ?Y }.
 } .
             """ ;
                 fno:result """
+@prefix : <http://example.org/>.
 :result :is true.
             """ 
            ] 
@@ -55,10 +56,10 @@ Check whether the formula { :a :b :c } does not include { :a :b :d }.
 } .
             """ ;
                 fno:result """
+@prefix : <http://example.org/>.
 :result :is true.
             """ 
           ] 
-
     ) ;
     fno:name "not includes" ;
     fno:parameter (

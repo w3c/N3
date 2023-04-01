@@ -34,6 +34,7 @@ Check if the numbers 41 and 42 are not equal .
 } .
             """ ;
                 fno:result """
+@prefix : <http://example.org/>.
 :result :is true .
             """ ] ) ;
     fno:name "notEqualTo" ;

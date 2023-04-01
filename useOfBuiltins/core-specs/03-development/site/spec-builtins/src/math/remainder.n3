@@ -33,6 +33,7 @@ Calculate the remainder of 10 divided by 3.
 } .
             """ ;
                 fno:result """
+@prefix : <http://example.org/>.
 :result :is 1.
             """ ] ) ;
     fno:name "remainder" ;

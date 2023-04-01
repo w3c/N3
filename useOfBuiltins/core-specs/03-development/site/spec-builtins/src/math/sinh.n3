@@ -35,6 +35,7 @@ Calculate the sinh of log(1 + sqrt(2)) (0.88137358701954302).
 } .
             """ ;
                 fno:result """
+@prefix : <http://example.org/>.
 :result :is 1.0.
             """ ] ) ;
     fno:name "sinh" ;

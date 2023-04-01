@@ -4,6 +4,7 @@ help:
 	@echo "  make watch    Generate HTML each time the source changes"
 	@echo "  make web      Generate HTML (without docker)"
 	@echo "  make builtins Generate builtins.n3"
+	@echo "  make validate Validate builtin examples"
 
 spec:
 	docker run --rm --platform linux/amd64 -v "`pwd`:/spec" -w /spec netwerkdigitaalerfgoed/bikeshed:1.7.0
@@ -16,3 +17,6 @@ web:
 
 builtins:
 	find src -type f -name '*.n3' | paste -s -d ' ' - | xargs eye --nope --quiet --pass > builtins.n3
+
+validate:
+	find src -type f -name '*.n3' | xargs -n 1 ./example_tester.sh 

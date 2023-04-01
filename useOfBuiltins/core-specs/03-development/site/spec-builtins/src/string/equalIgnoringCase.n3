@@ -35,6 +35,7 @@ Checks whether the string "hello world!" is equal to "hELLo wORld!" ignoring the
 } .
             """ ;
                 fno:result """
+@prefix : <http://example.org/>.
 :result :is true . 
             """ 
             ]

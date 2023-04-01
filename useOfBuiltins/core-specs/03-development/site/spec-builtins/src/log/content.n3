@@ -12,7 +12,7 @@ log:content a fno:Function ;
     fnon:tldr "Dereferences the subject IRI and retrieves the online resource as the object string." ;
     dcterms:comment """`true` if and only if `$o` is a string that represents the online resource to which `$s` is dereferenced.""" ;
     fno:example ( 
-            [ a fno:Test ;
+            [ a fno:Test , fno:TestSkip ;
                 dcterms:description """
 Fetch the content of https://www.w3.org/People/Berners-Lee/card.
             """ ;

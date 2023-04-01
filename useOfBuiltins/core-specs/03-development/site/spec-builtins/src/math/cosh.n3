@@ -34,6 +34,7 @@ Calculate the hyperbolic cosine of the value 0.
 } .
             """ ;
                 fno:result """
+@prefix : <http://example.org/>.
 :result :is 1.0 .
             """ ] ) ;
     fno:name "cosh" ;

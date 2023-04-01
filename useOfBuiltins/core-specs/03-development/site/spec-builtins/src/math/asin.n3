@@ -23,7 +23,7 @@ Calculate the arc sine of the value 1.
 @prefix : <http://example.org/>.
 @prefix math: <http://www.w3.org/2000/10/swap/math#> .
 
-:Let :param 0 .
+:Let :param 1 .
 
 {
     :Let :param ?param .
@@ -35,6 +35,7 @@ Calculate the arc sine of the value 1.
 } .
             """ ;
                 fno:result """
+@prefix : <http://example.org/>.
 :result :is 1.5707963267948966 .
             """ ] ) ;
     fno:name "asin" ;

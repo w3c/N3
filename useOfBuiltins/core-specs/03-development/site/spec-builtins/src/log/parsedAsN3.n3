@@ -37,6 +37,7 @@ Parse the string ':Socrates a :Human .' as N3.
 } .
             """ ;
                 fno:result """
+@prefix : <http://example.org/>.
 :result :is { <urn:example:Socrates> a <urn:example:Human> . } .
             """ 
             ] 

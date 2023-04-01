@@ -33,6 +33,7 @@ Merge the formulas "{ :Felix a :Cat . }" , "{ :Pluto a :Dog . }", "{ :Pingu a :P
 } .
             """ ;
                 fno:result """
+@prefix : <http://example.org/>.
 :result :is { 
     :Felix a :Cat . 
     :Pingu a :Penguin . 

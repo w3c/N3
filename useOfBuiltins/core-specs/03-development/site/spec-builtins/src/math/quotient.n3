@@ -35,6 +35,7 @@ Calculate the quotient of 42 and 2.
 } .
             """ ;
                 fno:result """
+@prefix : <http://example.org/>.
 :result :is 21. 
             """ 
             ] 

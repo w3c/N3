@@ -37,6 +37,7 @@ For each subtask of a composite task, check whether the subtask is completed.
 } . 
             """ ;
                 fno:result """
+@prefix : <http://example.org/>.
 :result :is true. 
             """ 
             ]  ) ;

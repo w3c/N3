@@ -34,6 +34,7 @@ Concatenates the string "hello", " " and "world!".
 } .
             """ ;
                 fno:result """
+@prefix : <http://example.org/>.
 :result :is "hello world!". 
             """ 
             ]

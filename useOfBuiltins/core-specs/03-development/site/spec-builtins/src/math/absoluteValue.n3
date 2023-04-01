@@ -33,6 +33,7 @@ Calculate the absolute value of the value -2.
 } .
             """ ;
                 fno:result """
+@prefix : <http://example.org/>.
 :result :is 2. 
             """ ] ) ;
     fno:name "absoluteValue" ;

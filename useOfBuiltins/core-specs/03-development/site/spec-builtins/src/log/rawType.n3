@@ -24,7 +24,7 @@ Get the type of literal resources.
 
 {
     "Hello" log:rawType ?stringType .
-    42" log:rawType ?integerType .
+    42 log:rawType ?integerType .
     true log:rawType ?trueType .
     false log:rawType ?falseType .
 }
@@ -34,6 +34,8 @@ Get the type of literal resources.
 } .
             """ ;
                 fno:result """
+@prefix : <http://example.org/>.
+@prefix log: <http://www.w3.org/2000/10/swap/log#> .
 :result :is ( log:Literal log:Literal log:Literal log:Literal ) .
             """ 
             ]  
@@ -56,6 +58,8 @@ Get the type of resources.
 } .
             """ ;
                 fno:result """
+@prefix : <http://example.org/>.
+@prefix log: <http://www.w3.org/2000/10/swap/log#> .
 :result :is log:Other.
             """ 
             ] 
@@ -79,7 +83,10 @@ Get the type of lists and quoted graphs.
 } .
             """ ;
                 fno:result """
-:result :is ( log:List log:Formula ) .
+@prefix : <http://example.org/>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix log: <http://www.w3.org/2000/10/swap/log#> .
+:result :is ( rdf:List log:Formula ) .
             """ 
             ] 
     ) ;

@@ -25,6 +25,7 @@ Extract the last element of the list (1 2 3 4).
 { (1 2 3 4) list:last ?last . } => { :result :is ?last . } .
             """ ;
                 fno:result """
+@prefix : <http://example.org/>.
 :result :is 4. 
             """ ] 
 
@@ -49,6 +50,7 @@ Test if the last element of the list (1 2 3 4) is 4.
 } .
             """ ;
                 fno:result """
+@prefix : <http://example.org/>.
 :result :is true. 
             """ ] 
     ) ;

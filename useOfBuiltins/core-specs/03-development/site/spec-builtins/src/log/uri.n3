@@ -26,6 +26,7 @@ Parse the URI <https://www.w3.org> into a string .
 { <https://www.w3.org> log:uri ?uri . } => { :result :is ?uri . } .
             """ ;
                 fno:result """
+@prefix : <http://example.org/>.
 :result :is "https://www.w3.org" .
             """ 
             ] 

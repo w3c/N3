@@ -35,7 +35,8 @@ Calculate the product of 2 and 21.
 } .
             """ ;
                 fno:result """
-:result :is 42
+@prefix : <http://example.org/>.
+:result :is 42.
             """ 
             ] 
 
@@ -60,6 +61,7 @@ Calculate the product of 2,4,6, and 8 .
 } .
             """ ;
                 fno:result """
+@prefix : <http://example.org/>.
 :result :is 384.
             """ 
             ] 
