@@ -13,7 +13,7 @@ log:semanticsOrError a fno:Function ;
     dcterms:comment """`true` if and only if (a) `$o` is a quoted graph that results from parsing the string that results from dereferencing `$s`; or (b) an error message explaining what went wrong.""" ;
     fno:example ( [ a fno:Test , fno:TestSkip ;
                 dcterms:description """
-Read the contents a non existing <error.data> and parse it as Notation3 (which of course will fail).
+Read the contents a non existing `<error.data>` and parse it as Notation3 (which of course will fail).
             """ ;
                 rdfs:seeAlso <> ;
                 fno:expression """
