@@ -23,9 +23,10 @@ Related: see `log:parsedAsN3` and `log:content`.""" ;
                 dcterms:description """
 Read the contents of the file `<semantics.data>` and parse it as Notation3.
 We assume `<semantics.data>` contains the text:
-
+```       
   @prefix : <http://example.org/>.
   :Socrates a :Human .
+```       
             """ ;
                 rdfs:seeAlso <> ;
                 fno:expression """
