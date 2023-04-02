@@ -12,7 +12,7 @@ list:iterate a fno:Function ;
     fnon:tldr "Iterates over each member of the subject list, getting their index/value pairs as the object." ;
     dcterms:comment """`true` if and only if `$s` is a list and `$o` is a list with two elements: 
 `$o.1` is a valid index in list `$s` (index starts at 0), and `$o.2` is found at that index in list `$s`.""" ;
-    fno:example ( 
+    fno:example  (
             [ a fno:Test ;
                 dcterms:description """
 Iterate over the list ("dog" "penguin" "cat").
@@ -29,7 +29,7 @@ Iterate over the list ("dog" "penguin" "cat").
 :result :is (0 "dog") .
 :result :is (1 "penguin") .
 :result :is (2 "cat") .
-            """ ] 
+            """ ]
 
             [ a fno:Test ;
                 dcterms:description """
@@ -54,7 +54,6 @@ Is "cat" the third item in the list ("dog" "penguin" "cat")?
 @prefix : <http://example.org/>.
 :result :is true .
             """ ] 
-
             [ a fno:Test ;
                 dcterms:description """
 What is the index of "cat" in the list ("dog" "penguin" "cat")?
@@ -80,7 +79,7 @@ What is the index of "cat" in the list ("dog" "penguin" "cat")?
             """ ] 
     ) ;
     fno:name "iterate" ;
-    fno:parameter ( 
+    fno:parameter  (
         [ a fno:Parameter ;
             dcterms:description "" ;
             fno:mode "+" ;

@@ -12,23 +12,23 @@ list:first a fno:Function ;
     fnon:tldr "Gets the first element of the subject list as object." ;
     dcterms:comment """`true` if and only if `$` is a list and `$o` is the first member of that list.""" ;
     rdfs:seeAlso list:last ;
-    fno:example ( 
+    fno:example  (
             [ a fno:Test ;
                 dcterms:description """
-What is the first element of ( ("a") { :a :b :c } 42 )?
+What is the first element of ( ('a') { :a :b :c } 42 )?
             """ ;
                 rdfs:seeAlso <> ;
                 fno:expression """
 @prefix : <http://example.org/>.
 @prefix list: <http://www.w3.org/2000/10/swap/list#> .
 
-{ ( ("a") { :a :b :c } 42 ) list:first ?what . } => { :result :is ?what . } .
+{ ( ('a') { :a :b :c } 42 ) list:first ?what . } => { :result :is ?what . } .
             """ ;
                 fno:result """
 @prefix : <http://example.org/>.
-:result :is ("a"). 
+:result :is ('a'). 
             """ ] 
-    ) ;
+     ) ;
     fno:name "first" ;
     fno:parameter (
         [ a fno:Parameter ;

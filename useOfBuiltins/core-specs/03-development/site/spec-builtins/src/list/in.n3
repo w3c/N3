@@ -12,7 +12,7 @@ list:in a fno:Function ;
     fnon:tldr "Checks whether the subject is found in the object list." ;
     dcterms:comment """`true` if and only if `$o` is a list and `$s` is a member of that list.""" ;
     rdfs:seeAlso list:member ;
-    fno:example ( 
+    fno:example (
             [ a fno:Test ;
                 dcterms:description """
 Does ( "dog" "penguin" "cat" ) contain a "cat"?
@@ -45,8 +45,8 @@ What are the members of ( "dog" "penguin" "cat" )?
 :result :is "dog" .
 :result :is "penguin" . 
 :result :is "cat" .
-            """ ] 
-    ) ;
+            """ ] )
+     ;
     fno:name "in" ;
     fno:parameter (
         [ a fno:Parameter ;

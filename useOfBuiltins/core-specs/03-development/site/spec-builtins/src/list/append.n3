@@ -12,7 +12,7 @@ list:append a fno:Function ;
     fnon:tldr "Appends the lists from the subject list into a single list as object." ;
     dcterms:comment """`true` if and only if `$o` is the concatenation of all lists `$s.i`.""" ;
     rdfs:seeAlso list:remove ;
-    fno:example ( 
+    fno:example (
             [ a fno:Test ;
                 dcterms:description """
 Append (3 4) to the list (1 2).
@@ -44,7 +44,6 @@ What do we need to prepend to (3 4) to get (1 2 3 4)?
 @prefix : <http://example.org/>.
 :result :is (1 2). 
             """ ] 
-
             [ a fno:Test ;
                 dcterms:description """
 What do we need to append to (1 2) to get (1 2 3 4)?
@@ -76,8 +75,8 @@ Is the list (1 2 3 4) equal to appending (1), (2 3) , (4)?
 @prefix : <http://example.org/>.
 :result :is true. 
             """ ] 
-
-    ) ;
+    )
+     ;
     fno:name "append" ;
     fno:parameter (
         [ a fno:Parameter ;

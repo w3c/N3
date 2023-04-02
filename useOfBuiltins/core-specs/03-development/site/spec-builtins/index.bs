@@ -6,9 +6,11 @@ Status: LD
 URL: https://w3c.github.io/N3/spec/
 TR: https://w3c.github.io/N3/spec/
 Previous Version: https://w3c.github.io/N3/spec/builtins/0.1/
-Editor: Tim Duval, [UnifyLogic](http://unifylogic.ai), tim.duval@unifylogic.ai
-Editor: William Van Woensel [somewhere in Ottawa], williamvanwoensel@gmail.com 
-Abstract: This document lists the recommended core set of builtin functions an N3 Reasoner needs to support. 
+Editor: William Van Woensel, [University of Ottawa](https://www.uottawa.ca/), williamvanwoensel@gmail.com 
+!Contributors: Tim Duval, [UnifyLogic](http://unifylogic.ai), tim.duval@unifylogic.ai
+!Contributors: Dominik Tomaszuk
+
+Abstract: This document defines the Notation 3 builtins. These are predicates with pre-defined semantics for querying, manipulating and reasoning over N3 documents.
 Markup Shorthands: markdown yes 
 Boilerplate: conformance no, index no
 </pre>
@@ -46,502 +48,1948 @@ table th.last {
 </style>
 
 
-Introduction {#Introduction}
+Status of this Document {#statusofdocument}
 =====================
 
-These are not the builtins you are looking for. Nothing to see here. 
 
-Conformance 
-===========
-
-Conformance requirements are expressed with a combination of descriptive assertions and RFC 2119 terminology. 
-The key words “MUST”, “MUST NOT”, “REQUIRED”, “SHALL”, “SHALL NOT”, “SHOULD”, “SHOULD NOT”, “RECOMMENDED”, “MAY”, 
-and “OPTIONAL” in the normative parts of this document are to be interpreted as described in RFC 2119. However, 
-for readability, these words do not appear in all uppercase letters in this specification.
-
-All of the text of this specification is normative except sections explicitly marked as non-normative, examples, 
-and notes. [[RFC2119]]
-
-Document Conventions
+Builtin namespaces {#builtinnamespaces}
 =====================
 
-Within this document, the following namespace prefix bindings to [[URI]]-s are used: 
+N3</abbr> defines a core set of [builtins](#builtins):
+			Builtins are grouped into distinct vocabularies depending on the N3 triple elements they operate on
+			(e.g., string, list), or their particular topic (e.g., time, cryptography, log).
+			Builtins are denoted by a controlled IRI defined in one of the core builtin namespaces:</p>
+		<ul>
+			<li>[Crypto](http://www.w3.org/2000/10/swap/crypto#) –
+				[http://www.w3.org/2000/10/swap/crypto#](http://www.w3.org/2000/10/swap/crypto#),
+			</li>
+			<li>[List](http://www.w3.org/2000/10/swap/list#) –
+				[http://www.w3.org/2000/10/swap/list#](http://www.w3.org/2000/10/swap/list#),
+			</li>
+			<li>[Log](http://www.w3.org/2000/10/swap/log#) –
+				[http://www.w3.org/2000/10/swap/log#](http://www.w3.org/2000/10/swap/log#),
+			</li>
+			<li>[Math](http://www.w3.org/2000/10/swap/math#) –
+				[http://www.w3.org/2000/10/swap/math#](http://www.w3.org/2000/10/swap/math#),
+			</li>
+			<li>[String](http://www.w3.org/2000/10/swap/string#) –
+				[http://www.w3.org/2000/10/swap/string#](http://www.w3.org/2000/10/swap/string#)
+			</li>
+			<li>[Time](http://www.w3.org/2000/10/swap/time#) –
+				[http://www.w3.org/2000/10/swap/time#](http://www.w3.org/2000/10/swap/time#).
+			</li>
+		</ul>
 
-<table>
-  <thead>
-    <tr>
-      <th>Prefix
-      <th>Namespace
-  <tbody>
-    <tr>
-      <td>dcterms 
-      <td>http://purl.org/dc/terms/
-    <tr>
-      <td>fno 
-      <td>https://w3id.org/function/ontology#
-    <tr>
-      <td>list 
-      <td>http://www.w3.org/2000/10/swap/list#
-    <tr>
-      <td>log 
-      <td>http://www.w3.org/2000/10/swap/log#
-    <tr>
-      <td>math 
-      <td>http://www.w3.org/2000/10/swap/math#
-    <tr>
-      <td>rdf 
-      <td>http://www.w3.org/1999/02/22-rdf-syntax-ns#
-    <tr>
-      <td>rdfs 
-      <td>http://www.w3.org/2000/01/rdf-schema#
-    <tr>
-      <td>string 
-      <td>http://www.w3.org/2000/10/swap/string#
-    <tr>
-      <td>time 
-      <td>http://www.w3.org/2000/10/swap/time#
-    <tr>
-      <td>xsd 
-      <td>http://www.w3.org/2001/XMLSchema#
-</table>
+Builtin arguments {#builtinarguments}
+=====================
+<p>An N3 [builtin](#builtins) operates on its arguments. An [argument]() is a placeholder that refers to an
+			N3 triple element from the [builtin statement](), i.e., the N3 statement where the
+			builtin acts as a predicate.
+		</p>
+		<p>In the simplest case, there are two arguments that respectively refer to the subject and object of the
+			builtin statement. For instance, statements such as `1 math:lessThan 2` have two arguments `$s` and
+			`$o`, which is written as `$s math:lessThan $o`.</p>
+		<p>Arguments can be also represent a "deconstruction" of the subject or object in case of lists. For
+			instance, `(1 2 3) math:sum 6` will have arguments `$s.1` .. `$s.n` and `$o`, which is written as `($s.1
+			.. $s.n) math:sum $o`. 
+</p>
 
-Tutorial for Semantic Web Reasoning With N3 {#OnlineTutorial}
+## Argument modes ## {#argumentmodes}
+<p>For a given builtin, an argument will have a defined >argument mode
+				that stipulates whether it should be bound or not in the builtin statement.
+				This binding requirement determines whether the argument can serve as builtin input, output, or both.
+				Note that these modes are mostly based on [Prolog argument modes](https://www.swi-prolog.org/pldoc/man?section=argmode).
+			</p>
+			<ul>
+				<li>`++`: input argument (bound, fully grounded)</li>
+				<li>`+`: input argument (bound, possibly not fully grounded)</li>
+				<li>`-`: output argument (bounded or not bounded)</li>
+				<li>`--`: output argument (not bounded)</li>
+				<li>`?`: either providing input or accepting output, or both.</li>
+				<li>`[*]`: modifier indicating that an argument can have multiple solutions.</li>
+			</ul>
+
+## Argument domains ## {#arg_domains}
+			<p>An N3 builtin often has an expected datatype for its arguments, called the [domain datatype](). If
+				the datatype of an argument value, called the [value datatype](), does not match the
+				domain datatype, it may be possible to cast the value's datatype to, or substitute it for, the domain
+				datatype.</p>
+			<p>The expected datatypes of arguments, i.e., domain datatypes, are defined per N3 builtin.</p>
+			<p>If the [value datatype]() and [domain datatype]() do not match, and no casting or substitution is
+				possible, the builtin statement will be considered false. (We point out that this is in line with the
+				concept of the [builtin theory box](): a BPG search using the builtin statement will not match any
+				statement in the theory box when literal datatypes do not match.)
+			</p>
+
+			<p>Below, we elaborate on the type casting, promotion or substitution that may be applied to align
+				[domain datatypes]() with [value datatypes]().
+			</p>
+
+### Numeric datatype promotion and substitution ### {#numericdatatypepromotion}
+	<p>If the numeric [value datatype]() does not match the [domain datatype](), it may be possible to
+					promote or substitute the numeric value datatype:</p>
+
+				<p><b>Numeric type promotion</b>: A numeric value datatype that [is derived from](https://www.w3.org/TR/xmlschema-2/#dt-derived) the domain datatype can
+					be promoted to the latter (e.g., `xs:integer` is derived from `xs:decimal`). This is done by casting
+					the original value to the required datatype.</p>
+				<p>If there is no direct derivation relation between the value and domain datatype, the following
+					numeric type promotions can take place:
+				<ul>
+					<li>A value of type `xs:float` (or any type derived from `xs:float`) can be promoted to type
+						`xs:double`. The result is an `xs:double` value that is the same as the original value.</li>
+					<li>A value of type `xs:decimal` (or any type derived from `xs:decimal`) can be promoted to either
+						of the types `xs:float` or `xs:double`.</li>
+				</ul>
+				</p>
+
+				<p><b>Numeric type substitution</b>: if <i>all values</i> have the same numeric datatype, and this
+					datatype [is derived from](https://www.w3.org/TR/xmlschema-2/#dt-derived) the domain
+					datatype (e.g., `xs:integer` is derived from `xs:decimal`), then the values can be used without any
+					casting. For example, if two `xs:integer` values are used for input where `xs:decimal` domains are
+					expected, then the values retain their datatype as `xs:integer`. The substituted numeric datatype
+					(in this case, `xs:integer`) will also apply to the builtin's output, if any.</p>
+
+				<p><b>Builtins operating on any numeric type</b>: some N3 builtins (e.g., `math:sum`) operate on values
+					of any numeric type (i.e., `xs:numeric`, the union of `xs:double`, `xs:float`, and `xs:decimal`).
+					I.e., their concrete input values may present any combination of numeric types. In that case, the
+					builtin can only be applied if all value datatypes can be promoted into <i>a common numeric
+						datatype</i> in the ordered list `(xs:integer, xs:decimal, xs:float, xs:double)`. If so, at that
+					point, we rely on numeric type substitution. For instance:
+				<ul>
+					<li>For a builtin with `xs:numeric` domain datatypes, given two value datatypes `xs:integer` and
+						`xs:decimal`, the `xs:integer` value will be promoted to `xs:decimal` as the common numeric
+						datatype. At that point, the two `xs:decimal` datatypes can be substituted for `xs:numeric`
+						(numeric type substitution). If the builtin has an output, then the calculated value for this
+						output will also have datatype `xs:decimal`.</li>
+					<li>For a builtin with `xs:numeric` domain datatypes, given two values with datatype `xs:integer`,
+						the `xs:integer` datatype will simply be substituted for `xs:numeric`. If the builtin has an
+						output, then the calculated value for the output will also have datatype `xs:integer`.</li>
+				</ul>
+				</p>
+### Other kinds of datatype casting ### {#typesofdatatypecasting}
+				<p>If the non-numeric [value datatype]() does not match the [domain datatype](), it may be
+					possible to cast the value datatype to the domain datatype:</p>
+
+				<p>
+					<b>String</b>: A literal will be considered a "string" when it has an `xs:string` datatype, a
+					`rdf:langString` datatype due to the presence of a language tag, or when it lacks a datatype.
+				</p>
+
+				<ul>
+					<li><i>Casting from string</i>: if an input value has an `xs:string` datatype that does not match
+						the
+						domain, it may be possible to cast the string to the domain datatype, as [defined in XPath](https://www.w3.org/TR/xpath-functions/#casting-from-strings). The
+						resulting value representation must be a valid lexical form for the domain datatype.</li>
+
+					<li><i>Casting to string</i>: if an input value is an IRI, or any kind of literal (incl. type
+						`xs:anyUri`
+						or its derivations), and the domain is `xs:string`, then the value will be cast to a string as
+						[defined in XPath](https://www.w3.org/TR/xpath-functions/#casting-to-string) along
+						with additional rules defined for [SPARQL 1.1](https://www.w3.org/TR/sparql11-query/#FunctionMapping).
+					</li>
+				</ul>
+				<p><b>Other datatypes</b>: other types of datatype casting may take place as [defined in XPath](https://www.w3.org/TR/xpath-functions/#casting).
+				</p>
+ 				<div class="note">
+        <p><b>Editors' Note:</b><br><br>
+        There is a useful chart for casting primitive types to primitive types in [XPath](https://www.w3.org/TR/xpath-functions/#casting-from-primitive-to-primitive), a
+					subset of which is defined for [SPARQL 1.1](https://www.w3.org/TR/sparql11-query/#FunctionMapping).
+        </div>
+        
+Builtin Evaluation {#builtinevaluation}
+=====================
+## Builtin theory box ## {#builtintheorybox}
+			<p>A [builtin statement](#builtins) can be seen as a <i>constrained</i> basic graph pattern
+				(BGP) search on the N3 [builtin theory box]().
+				This builtin theory box is defined to include all truthful builtin statements for the N3 builtin.
+				In case this BGP search matches one or more statements in the theory box,
+				taking into account options for datatype casting, promotion, or substitution
+				(see [Argument domains](#arg_domains))
+				the N3 [builtin statement](#builtins) will be considered true.
+			</p>
+
+			<p>For eample, for the `math:sum` builtin, the [builtin theory box](#builtintheorybox) includes all grounded builtin
+				statements of the form `($s.1 .. $s.n) math:sum $o .`, where argument values have datatype `xs:numeric`
+				and, for each statement, the sum of `$s.1 .. $s.n` equals `$o`.
+				Below, we give several examples of how this theory box is used to evaluate builtin
+				statements.</p>
+			<ul>
+				<li>
+					Using the builtin statement `(1 2 3) math:sum ?x .` as a BGP search on the theory box
+					will return exactly one result where `?x` has value `6`.</li>
+				<li>Using the concrete builtin statement `(1 2 3) math:sum 6 .` as a BGP search on the theory box will
+					similarly match exactly 1 statement.</li>
+			</ul>
+
+			<p>Hence, in both cases, the builtin statement will be considered true,
+				and the set of matching triples from the theory box will be used to instantiate the [builtin statement](#).
+				In the first case, this will lead to a single instance of the builtin statement,
+				where variable `?x` will be bound to value `6`.
+				In the second case, the grounded builtin statement will itself serve as such an instance.</p>
+
+			<div class="note" >
+        <p><b>Editors' Note:</b><br><br>
+				Note that there can be multiple matching triples, thus leading to multiple instances of the builtin
+				statement.
+				Consider the following example for the `list:member` builtin:<br><br>
+				`( 1 2 3 ) list:member ?x .`<br>
+				This will yield the following matching triples from the [builtin theory box](#builtintheorybox):<br>
+				<br>
+				`( 1 2 3 ) list:member 1 .`<br>
+				`( 1 2 3 ) list:member 2 .`<br>
+				`( 1 2 3 ) list:member 3 .`<br>
+			</div>
+
+			<p>The BGP search is <i>constrained</i> in order to avoid infinite numbers of results and
+				intractable calculations; in other cases, constraints weigh utility vs. difficulty
+				of implementation.
+				For example, the <a>builtin statement</a> `(?a 1) math:sum 2` would match an infinite
+				number of grounded builtin statements.
+				In other cases, the BGP search is restricted due to practical considerations.
+				For instance, <a>builtin statement</a> `(1 ?x) math:sum 6` would match only a single grounded
+				builtin statement in the theory box, but this would complicate the implementation of the builtin for
+				only limited utility (as other builtins can be used instead to subtract 1 from 6).
+			</p>
+			<p>These constraints are encoded in terms of <a>argument modes</a> and <a>domain datatypes</a>
+				in the respective builtin definitions.
+				In case these constraints are not met, the <a>builtin statement</a> will evaluate to false.
+			</p>
+
+
+
+Online Tutorial for Semantic Web Reasoning With N3 {#OnlineTutorial}
 =====================
 [Online Tutorial for Semantic Web Reasoning With N3](https://n3.restdesc.org/n3/)
 
-Builtins {#Builtins}
+Builtins {#builtins}
 =====================
-
 ## crypto ## {#crypto}
-### crypto:sha() ### {#sha}
-The object is a SHA-1 hash of the subject.
+### crypto:sha ### {#sha}
+Gets as object the SHA-1 hash of the subject.
 
-[Try in Notation3 Editor &#128640;](http://ppr.cs.dal.ca:3002/n3/editor/?formula=%40prefix%20%3A%20%3C%3A%3E%20.%0A%40prefix%20string%3A%20%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F10%2Fswap%2Fstring%23%3E%20.%0A%0A%3ALet%20%3Astring%20%22placeholder%22%20.%0A%0A%7B%20%3ALet%20%3Astring%20%3Fx%20.%20%7D%0A%3D%3E%0A%7B%20%3Aresult%20%3Ais%20%3Fx%20.%20%7D.%20)
+`true` if and only if `$o` is the SHA-1 hash of `$s`.
+
+#### Schema(s) #### {#sha_schemas} 
+<i>`( $s )+  crypto:sha  $o- `</i>
+
+#### Examples #### {#sha_examples}
+## math ## {#math}
+### math:product ### {#product}
+Calculates the object as the product of the numbers given in the subject list.
+
+`true` if and only if `$o` is the arithmetic product of all numbers `$s.i`
+
+#### Schema(s) #### {#product_schemas} 
+<i>`( $s )+  math:product  $o- `</i>
+
+#### Examples #### {#product_examples}
+### math:notGreaterThan ### {#notGreaterThan}
+Checks whether the subject is a number that is not greater than the object.
+You can use this as an equivalent of a lessThanOrEqual operator.
+
+`true` if and only if `$s` is a number that is not greater than `$o`.
+
+#### Schema(s) #### {#notGreaterThan_schemas} 
+<i>`( $s )+  math:notGreaterThan  $o- `</i>
+
+#### Examples #### {#notGreaterThan_examples}
+[Try in Notation3 Editor &#128640;](file:///Users/timothyduval/Library/Mobile%20Documents/com~apple~CloudDocs/00_unifylogic/50-clients/w3c/N3/useOfBuiltins/core-specs/03-development/site/spec-builtins/src/math/notGreaterThan.n3)
 
 
 <div class=example>
-
-This is an example for a built-in function.
+    <p>
+Check if 41 is not greater than 42 .
             
-```
-@prefix : <:> .
-@prefix string: <http://www.w3.org/2000/10/swap/string#> .
-:Let :string "placeholder" .
-{ :Let :string ?x . } => { :result :is ?x . } .
+    <p><b>Formula:</b>
+    ```
+@prefix : <http://example.org/>.
+@prefix math: <http://www.w3.org/2000/10/swap/math#> .
+
+:Let :param (41 42) .
+
+{
+    :Let :param (?X ?Y) .
+    ?X math:notGreaterThan ?Y .
+}
+=>
+{
+    :result :is true .
+} .
+            ```
+    <p><b>Result:</b>
+    ```
+@prefix : <http://example.org/>.
+:result :is true .
+            ```
+</div>            
+
+### math:absoluteValue ### {#absoluteValue}
+Calculates as object the absolute value of the subject.
+
+`true` if and only if `$o` is the absolute value of `$s`.
+
+#### Schema(s) #### {#absoluteValue_schemas} 
+<i>`( $s )+  math:absoluteValue  $o- `</i>
+
+#### Examples #### {#absoluteValue_examples}
+[Try in Notation3 Editor &#128640;](file:///Users/timothyduval/Library/Mobile%20Documents/com~apple~CloudDocs/00_unifylogic/50-clients/w3c/N3/useOfBuiltins/core-specs/03-development/site/spec-builtins/src/math/absoluteValue.n3)
+
+
+<div class=example>
+    <p>
+Calculate the absolute value of the value -2.
+            
+    <p><b>Formula:</b>
+    ```
+@prefix : <http://example.org/>.
+@prefix math: <http://www.w3.org/2000/10/swap/math#> .
+
+:Let :param -2 .
+
+{
+    :Let :param ?param .
+    ?param math:absoluteValue ?result .
+}
+=>
+{
+    :result :is ?result .
+} .
+            ```
+    <p><b>Result:</b>
+    ```
+@prefix : <http://example.org/>.
+:result :is 2. 
+            ```
+</div>            
+
+### math:greaterThan ### {#greaterThan}
+Checks whether the subject is a number that is greater than the object.
+
+`true` if and only if `$s` is a number that is greater than `$o`.
+
+#### Schema(s) #### {#greaterThan_schemas} 
+<i>`( $s )+  math:greaterThan  $o- `</i>
+
+#### Examples #### {#greaterThan_examples}
+[Try in Notation3 Editor &#128640;](file:///Users/timothyduval/Library/Mobile%20Documents/com~apple~CloudDocs/00_unifylogic/50-clients/w3c/N3/useOfBuiltins/core-specs/03-development/site/spec-builtins/src/math/greaterThan.n3)
+
+
+<div class=example>
+    <p>
+Check if 42 is greater than 41 .
+            
+    <p><b>Formula:</b>
+    ```
+@prefix : <http://example.org/>.
+@prefix math: <http://www.w3.org/2000/10/swap/math#> .
+
+:Let :param (42 41) .
+
+{
+    :Let :param (?X ?Y) .
+    ?X math:greaterThan ?Y .
+}
+=>
+{
+    :result :is true .
+} .
+            ```
+    <p><b>Result:</b>
+    ```
+@prefix : <http://example.org/>.
+:result :is true .
+            ```
+</div>            
+
+### math:notLessThan ### {#notLessThan}
+Checks whether the subject is a number that is not less than the object.
+You can use this as an equivalent of a greaterThanOrEqual operator.
+
+`true` if and only if `$s` is a number that is not less than `$o`.
+
+#### Schema(s) #### {#notLessThan_schemas} 
+<i>`( $s )+  math:notLessThan  $o- `</i>
+
+#### Examples #### {#notLessThan_examples}
+[Try in Notation3 Editor &#128640;](file:///Users/timothyduval/Library/Mobile%20Documents/com~apple~CloudDocs/00_unifylogic/50-clients/w3c/N3/useOfBuiltins/core-specs/03-development/site/spec-builtins/src/math/notLessThan.n3)
+
+
+<div class=example>
+    <p>
+Check if 42 is not less than 41 .
+            
+    <p><b>Formula:</b>
+    ```
+@prefix : <http://example.org/>.
+@prefix math: <http://www.w3.org/2000/10/swap/math#> .
+
+:Let :param (42 41) .
+
+{
+    :Let :param (?X ?Y) .
+    ?X math:notLessThan ?Y .
+}
+=>
+{
+    :result :is true .
+} .
+            ```
+    <p><b>Result:</b>
+    ```
+@prefix : <http://example.org/>.
+:result :is true .
+            ```
+</div>            
+
+### math:sin ### {#sin}
+Calculates the object as the sine value of the subject.
+
+`true` if and only if `$o` is the sine value of `$s`.
+
+#### Schema(s) #### {#sin_schemas} 
+<i>`( $s )+  math:sin  $o- `</i>
+
+#### Examples #### {#sin_examples}
+[Try in Notation3 Editor &#128640;](file:///Users/timothyduval/Library/Mobile%20Documents/com~apple~CloudDocs/00_unifylogic/50-clients/w3c/N3/useOfBuiltins/core-specs/03-development/site/spec-builtins/src/math/sin.n3)
+
+
+<div class=example>
+    <p>
+Calculate the sin of pi/2 (1.57079632679) .
+            
+    <p><b>Formula:</b>
+    ```
+@prefix : <http://example.org/>.
+@prefix math: <http://www.w3.org/2000/10/swap/math#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+:Let :param "1.57079632679"^^xsd:double .
+
+{
+    :Let :param ?param .
+    ?param math:sin ?result .
+}
+=>
+{
+    :result :is ?result .
+} .
+            ```
+    <p><b>Result:</b>
+    ```
+@prefix : <http://example.org/>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+:result :is "1.0"^^xsd:double . 
+            ```
+</div>            
+
+### math:lessThan ### {#lessThan}
+Checks whether the subject is a number that is less than the object.
+
+`true` if and only if `$s` is a number that is less than `$o`.
+
+#### Schema(s) #### {#lessThan_schemas} 
+<i>`( $s )+  math:lessThan  $o- `</i>
+
+#### Examples #### {#lessThan_examples}
+[Try in Notation3 Editor &#128640;](file:///Users/timothyduval/Library/Mobile%20Documents/com~apple~CloudDocs/00_unifylogic/50-clients/w3c/N3/useOfBuiltins/core-specs/03-development/site/spec-builtins/src/math/lessThan.n3)
+
+
+<div class=example>
+    <p>
+Check if 41 is less than 42 .
+            
+    <p><b>Formula:</b>
+    ```
+@prefix : <http://example.org/>.
+@prefix math: <http://www.w3.org/2000/10/swap/math#> .
+
+:Let :param (41 42) .
+
+{
+    :Let :param (?X ?Y) .
+    ?X math:lessThan ?Y .
+}
+=>
+{
+    :result :is true .
+} .
+            ```
+    <p><b>Result:</b>
+    ```
+@prefix : <http://example.org/>.
+:result :is true .
+            ```
+</div>            
+
+### math:rounded ### {#rounded}
+Calculates the object as the integer that is closest to the subject number.
+
+`true` if and only if `$o` is the integer that is closest to `$s`.
+If there are two such numbers, then the one closest to positive infinity is returned.
+
+
+#### Schema(s) #### {#rounded_schemas} 
+<i>`( $s )+  math:rounded  $o- `</i>
+
+#### Examples #### {#rounded_examples}
+[Try in Notation3 Editor &#128640;](file:///Users/timothyduval/Library/Mobile%20Documents/com~apple~CloudDocs/00_unifylogic/50-clients/w3c/N3/useOfBuiltins/core-specs/03-development/site/spec-builtins/src/math/rounded.n3)
+
+
+<div class=example>
+    <p>
+Calculate the rounded version of 3.3.
+            
+    <p><b>Formula:</b>
+    ```
+@prefix : <http://example.org/>.
+@prefix math: <http://www.w3.org/2000/10/swap/math#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+:Let :param "3.3"^^xsd:double .
+
+{
+    :Let :param ?param .
+    ?param math:rounded ?result .
+}
+=>
+{
+    :result :is ?result .
+} .
+            ```
+    <p><b>Result:</b>
+    ```
+@prefix : <http://example.org/>.
+:result :is 3. 
+            ```
+</div>            
+
+### math:atan ### {#atan}
+Calculates the object as the arc tangent value of the subject.
+
+`true` if and only if `$o` is the arc tangent value of `$s`.
+
+#### Schema(s) #### {#atan_schemas} 
+<i>`( $s )+  math:atan  $o- `</i>
+
+#### Examples #### {#atan_examples}
+[Try in Notation3 Editor &#128640;](file:///Users/timothyduval/Library/Mobile%20Documents/com~apple~CloudDocs/00_unifylogic/50-clients/w3c/N3/useOfBuiltins/core-specs/03-development/site/spec-builtins/src/math/atan.n3)
+
+
+<div class=example>
+    <p>
+Calculate the arc tangent of the value 1.
+            
+    <p><b>Formula:</b>
+    ```
+@prefix : <http://example.org/>.
+@prefix math: <http://www.w3.org/2000/10/swap/math#> .
+
+:Let :param 1 .
+
+{
+    :Let :param ?param .
+    ?param math:atan ?result .
+}
+=>
+{
+    :result :is ?result .
+} .
+            ```
+    <p><b>Result:</b>
+    ```
+@prefix : <http://example.org/>.
+:result :is 0.7853981633974483 .
+            ```
+</div>            
+
+### math:acos ### {#acos}
+Calculates the object as the arc cosine value of the subject.
+
+`true` if and only if `$o` is the arc cosine value of `$s`.
+
+#### Schema(s) #### {#acos_schemas} 
+<i>`( $s )+  math:acos  $o- `</i>
+
+#### Examples #### {#acos_examples}
+[Try in Notation3 Editor &#128640;](file:///Users/timothyduval/Library/Mobile%20Documents/com~apple~CloudDocs/00_unifylogic/50-clients/w3c/N3/useOfBuiltins/core-specs/03-development/site/spec-builtins/src/math/acos.n3)
+
+
+<div class=example>
+    <p>
+Calculate the arc cosine of the value 1.
+            
+    <p><b>Formula:</b>
+    ```
+@prefix : <http://example.org/>.
+@prefix math: <http://www.w3.org/2000/10/swap/math#> .
+
+:Let :param 1 .
+
+{
+    :Let :param ?param .
+    ?param math:acos ?result .
+}
+=>
+{
+    :result :is ?result .
+} .
+            ```
+    <p><b>Result:</b>
+    ```
+@prefix : <http://example.org/>.
+:result :is 0.0 .
+            ```
+</div>            
+
+### math:cosh ### {#cosh}
+Calculates the object as the hyperbolic cosine value of the subject.
+
+`true` if and only if `$o` is the hyperbolic cosine value of `$s`.
+
+#### Schema(s) #### {#cosh_schemas} 
+<i>`( $s )+  math:cosh  $o- `</i>
+
+#### Examples #### {#cosh_examples}
+[Try in Notation3 Editor &#128640;](file:///Users/timothyduval/Library/Mobile%20Documents/com~apple~CloudDocs/00_unifylogic/50-clients/w3c/N3/useOfBuiltins/core-specs/03-development/site/spec-builtins/src/math/cosh.n3)
+
+
+<div class=example>
+    <p>
+Calculate the hyperbolic cosine of the value 0.
+            
+    <p><b>Formula:</b>
+    ```
+@prefix : <http://example.org/>.
+@prefix math: <http://www.w3.org/2000/10/swap/math#> .
+
+:Let :param 0 .
+
+{
+    :Let :param ?param .
+    ?param math:cosh ?result .
+}
+=>
+{
+    :result :is ?result .
+} .
+            ```
+    <p><b>Result:</b>
+    ```
+@prefix : <http://example.org/>.
+:result :is 1.0 .
+            ```
+</div>            
+
+### math:negation ### {#negation}
+Calculates the object as the negation of the subject.
+
+`true` if and only if `$o` is the negation of `$s`.
+
+#### Schema(s) #### {#negation_schemas} 
+<i>`( $s )+  math:negation  $o- `</i>
+
+#### Examples #### {#negation_examples}
+[Try in Notation3 Editor &#128640;](file:///Users/timothyduval/Library/Mobile%20Documents/com~apple~CloudDocs/00_unifylogic/50-clients/w3c/N3/useOfBuiltins/core-specs/03-development/site/spec-builtins/src/math/negation.n3)
+
+
+<div class=example>
+    <p>
+Calculate the negation of the value 42 .
+            
+    <p><b>Formula:</b>
+    ```
+@prefix : <http://example.org/>.
+@prefix math: <http://www.w3.org/2000/10/swap/math#> .
+
+:Let :param 42 .
+
+{
+    :Let :param ?param .
+    ?param math:negation ?result .
+}
+=>
+{
+    :result :is ?result .
+} .
+            ```
+    <p><b>Result:</b>
+    ```
+@prefix : <http://example.org/>.
+:result :is -42 .
+            ```
+</div>            
+
+### math:sinh ### {#sinh}
+Calculates the object as the hyperbolic sine value of the subject.
+
+`true` if and only if `$o` is the hyperbolic sine value of `$s`.
+
+#### Schema(s) #### {#sinh_schemas} 
+<i>`( $s )+  math:sinh  $o- `</i>
+
+#### Examples #### {#sinh_examples}
+[Try in Notation3 Editor &#128640;](file:///Users/timothyduval/Library/Mobile%20Documents/com~apple~CloudDocs/00_unifylogic/50-clients/w3c/N3/useOfBuiltins/core-specs/03-development/site/spec-builtins/src/math/sinh.n3)
+
+
+<div class=example>
+    <p>
+Calculate the sinh of log(1 + sqrt(2)) (0.88137358701954302).
+            
+    <p><b>Formula:</b>
+    ```
+@prefix : <http://example.org/>.
+@prefix math: <http://www.w3.org/2000/10/swap/math#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+:Let :param "0.88137358701954302"^^xsd:double.
+
+{
+    :Let :param ?param .
+    ?param math:sinh ?result .
+}
+=>
+{
+    :result :is ?result .
+} .
+            ```
+    <p><b>Result:</b>
+    ```
+@prefix : <http://example.org/>.
+:result :is 1.0.
+            ```
+</div>            
+
+### math:sum ### {#sum}
+Calculates the object as the sum of the numbers given in the subject list.
+
+`true` if and only if `$o` is the arithmetic sum of all numbers `$s.i`
+
+#### Schema(s) #### {#sum_schemas} 
+<i>`( $s )+  math:sum  $o- `</i>
+
+#### Examples #### {#sum_examples}
+[Try in Notation3 Editor &#128640;](file:///Users/timothyduval/Library/Mobile%20Documents/com~apple~CloudDocs/00_unifylogic/50-clients/w3c/N3/useOfBuiltins/core-specs/03-development/site/spec-builtins/src/math/sum.n3)
+
+
+<div class=example>
+    <p>
+Calculate the sum of 1,2,3,4,5,6,7,8,9,10.
+            
+    <p><b>Formula:</b>
+    ```
+@prefix : <http://example.org/>.
+@prefix math: <http://www.w3.org/2000/10/swap/math#> .
+
+:Let :param (1 2 3 4 5 6 7 8 9 10) .
+
+{
+    :Let :param ?param .
+    ?param math:sum ?result .
+}
+=>
+{
+    :result :is ?result .
+} .
+            ```
+    <p><b>Result:</b>
+    ```
+@prefix : <http://example.org/>.
+:result :is 55.
+            ```
+</div>            
+
+### math:difference ### {#difference}
+Calculates the object by subtracting the second number from the first number given in the subject list.
+
+`true` if and only if `$o` is the result of subtracting `$s.2` from `$s.1`.
+
+#### Schema(s) #### {#difference_schemas} 
+<i>`( $s )+  math:difference  $o- `</i>
+
+#### Examples #### {#difference_examples}
+[Try in Notation3 Editor &#128640;](file:///Users/timothyduval/Library/Mobile%20Documents/com~apple~CloudDocs/00_unifylogic/50-clients/w3c/N3/useOfBuiltins/core-specs/03-development/site/spec-builtins/src/math/difference.n3)
+
+
+<div class=example>
+    <p>
+Calculate the value of 7 minus 2.
+            
+    <p><b>Formula:</b>
+    ```
+@prefix : <http://example.org/>.
+@prefix math: <http://www.w3.org/2000/10/swap/math#> .
+
+:Let :param (7 2) .
+
+{
+    :Let :param ?param .
+    ?param math:difference ?result .
+}
+=>
+{
+    :result :is ?result .
+} .
+            ```
+    <p><b>Result:</b>
+    ```
+@prefix : <http://example.org/>.
+:result :is 5.
+            ```
+</div>            
+
+### math:tanh ### {#tanh}
+Calculates the object as the hyperbolic tangent value of the subject.
+
+`true` if and only if `$o` is the hyperbolic tangent value of `$s`.
+
+#### Schema(s) #### {#tanh_schemas} 
+<i>`( $s )+  math:tanh  $o- `</i>
+
+#### Examples #### {#tanh_examples}
+[Try in Notation3 Editor &#128640;](file:///Users/timothyduval/Library/Mobile%20Documents/com~apple~CloudDocs/00_unifylogic/50-clients/w3c/N3/useOfBuiltins/core-specs/03-development/site/spec-builtins/src/math/tanh.n3)
+
+
+<div class=example>
+    <p>
+Calculate the hyperbolic tanget of 0.549306 .
+            
+    <p><b>Formula:</b>
+    ```
+@prefix : <http://example.org/>.
+@prefix math: <http://www.w3.org/2000/10/swap/math#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+:Let :param "0.549306"^^xsd:double .
+
+{
+    :Let :param ?param .
+    ?param math:tanh ?result .
+}
+=>
+{
+    :result :is ?result .
+} .
+            ```
+    <p><b>Result:</b>
+    ```
+@prefix : <http://example.org/>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+:result :is "0.49999989174945103"^^xsd:double. 
+            ```
+</div>            
+
+### math:exponentiation ### {#exponentiation}
+Calculates the object as the result of raising the first number to the power of the second number in the subject list. 
+You can also use this to calculate the logarithm of the object, with as base the first number of the subject list (see examples).
+
+`true` if and only if `$o` is the result of raising `$s.1` to the power of `$s.2`
+
+#### Schema(s) #### {#exponentiation_schemas} 
+<i>`( $s )+  math:exponentiation  $o? `</i>
+
+#### Examples #### {#exponentiation_examples}
+### math:notEqualTo ### {#notEqualTo}
+Checks whether the subject and object are not the same number.
+
+`true` if and only if `$s` is the not same number as `$o`.
+
+#### Schema(s) #### {#notEqualTo_schemas} 
+<i>`( $s )+  math:notEqualTo  $o? `</i>
+
+#### Examples #### {#notEqualTo_examples}
+[Try in Notation3 Editor &#128640;](file:///Users/timothyduval/Library/Mobile%20Documents/com~apple~CloudDocs/00_unifylogic/50-clients/w3c/N3/useOfBuiltins/core-specs/03-development/site/spec-builtins/src/math/notEqualTo.n3)
+
+
+<div class=example>
+    <p>
+Check if the numbers 41 and 42 are not equal .
+            
+    <p><b>Formula:</b>
+    ```
+@prefix : <http://example.org/>.
+@prefix math: <http://www.w3.org/2000/10/swap/math#> .
+
+:Let :param (41 42) .
+
+{
+    :Let :param (?X ?Y) .
+    ?X math:notEqualTo ?Y .
+}
+=>
+{
+    :result :is true .
+} .
+            ```
+    <p><b>Result:</b>
+    ```
+@prefix : <http://example.org/>.
+:result :is true .
+            ```
+</div>            
+
+### math:quotient ### {#quotient}
+Calculates the object by dividing the first number by the second number given in the subject list.
+
+`true` if and only if `$o` is the result of dividing `$s.1` by `$s.2`.
+
+#### Schema(s) #### {#quotient_schemas} 
+<i>`( $s )+  math:quotient  $o- `</i>
+
+#### Examples #### {#quotient_examples}
+[Try in Notation3 Editor &#128640;](file:///Users/timothyduval/Library/Mobile%20Documents/com~apple~CloudDocs/00_unifylogic/50-clients/w3c/N3/useOfBuiltins/core-specs/03-development/site/spec-builtins/src/math/quotient.n3)
+
+
+<div class=example>
+    <p>
+Calculate the quotient of 42 and 2.
+            
+    <p><b>Formula:</b>
+    ```
+@prefix : <http://example.org/>.
+@prefix math: <http://www.w3.org/2000/10/swap/math#> .
+
+:Let :param (42 2) .
+
+{
+    :Let :param ?param .
+    ?param math:quotient ?result .
+}
+=>
+{
+    :result :is ?result .
+} .
+            ```
+    <p><b>Result:</b>
+    ```
+@prefix : <http://example.org/>.
+:result :is 21. 
+            ```
+</div>            
+
+### math:equalTo ### {#equalTo}
+Checks whether the subject and object are the same number.
+
+`true` if and only if `$s` is the same number as `$o`.
+
+#### Schema(s) #### {#equalTo_schemas} 
+<i>`( $s )+  math:equalTo  $o- `</i>
+
+#### Examples #### {#equalTo_examples}
+[Try in Notation3 Editor &#128640;](file:///Users/timothyduval/Library/Mobile%20Documents/com~apple~CloudDocs/00_unifylogic/50-clients/w3c/N3/useOfBuiltins/core-specs/03-development/site/spec-builtins/src/math/equalTo.n3)
+
+
+<div class=example>
+    <p>
+Check if the numbers 42 and 42 are equal .
+            
+    <p><b>Formula:</b>
+    ```
+@prefix : <http://example.org/>.
+@prefix math: <http://www.w3.org/2000/10/swap/math#> .
+
+:Let :param (42 42) .
+
+{
+    :Let :param (?X ?Y) .
+    ?X math:equalTo ?Y .
+}
+=>
+{
+    :result :is true .
+} .
+            ```
+    <p><b>Result:</b>
+    ```
+@prefix : <http://example.org/>.
+:result :is true . 
+            ```
+</div>            
+
+### math:cos ### {#cos}
+Calculates the object as the cosine value of the subject.
+
+`true` if and only if `$o` is the cosine value of `$s`.
+
+#### Schema(s) #### {#cos_schemas} 
+<i>`( $s )+  math:cos  $o- `</i>
+
+#### Examples #### {#cos_examples}
+[Try in Notation3 Editor &#128640;](file:///Users/timothyduval/Library/Mobile%20Documents/com~apple~CloudDocs/00_unifylogic/50-clients/w3c/N3/useOfBuiltins/core-specs/03-development/site/spec-builtins/src/math/cos.n3)
+
+
+<div class=example>
+    <p>
+Calculate the cosine of the value 0.
+            
+    <p><b>Formula:</b>
+    ```
+@prefix : <http://example.org/>.
+@prefix math: <http://www.w3.org/2000/10/swap/math#> .
+
+:Let :param 0 .
+
+{
+    :Let :param ?param .
+    ?param math:cos ?result .
+}
+=>
+{
+    :result :is ?result .
+} .
+            ```
+    <p><b>Result:</b>
+    ```
+@prefix : <http://example.org/>.
+:result :is 1.0 .
+            ```
+</div>            
+
+### math:tan ### {#tan}
+Calculates the object as the tangent value of the subject.
+
+`true` if and only if `$o` is the tangent value of `$s`.
+
+#### Schema(s) #### {#tan_schemas} 
+<i>`( $s )+  math:tan  $o- `</i>
+
+#### Examples #### {#tan_examples}
+[Try in Notation3 Editor &#128640;](file:///Users/timothyduval/Library/Mobile%20Documents/com~apple~CloudDocs/00_unifylogic/50-clients/w3c/N3/useOfBuiltins/core-specs/03-development/site/spec-builtins/src/math/tan.n3)
+
+
+<div class=example>
+    <p>
+Calculate the tangent of the value 0.7853981633974483 .
+            
+    <p><b>Formula:</b>
+    ```
+@prefix : <http://example.org/>.
+@prefix math: <http://www.w3.org/2000/10/swap/math#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+:Let :param "0.7853981633974483"^^xsd:double .
+
+{
+    :Let :param ?param .
+    ?param math:tan ?result .
+}
+=>
+{
+    :result :is ?result .
+} .
+            ```
+    <p><b>Result:</b>
+    ```
+@prefix : <http://example.org/>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+:result :is "0.9999999999999999"^^xsd:double. 
+            ```
+</div>            
+
+### math:remainder ### {#remainder}
+Calculates the object as the remainder of the division of the first integer by the second integer given in the subject list.
+
+`true` if and only if `$o` is the remainder of dividing `$s.1` by `$s.2`.
+
+#### Schema(s) #### {#remainder_schemas} 
+<i>`( $s )+  math:remainder  $o- `</i>
+
+#### Examples #### {#remainder_examples}
+[Try in Notation3 Editor &#128640;](file:///Users/timothyduval/Library/Mobile%20Documents/com~apple~CloudDocs/00_unifylogic/50-clients/w3c/N3/useOfBuiltins/core-specs/03-development/site/spec-builtins/src/math/remainder.n3)
+
+
+<div class=example>
+    <p>
+Calculate the remainder of 10 divided by 3.
+            
+    <p><b>Formula:</b>
+    ```
+@prefix : <http://example.org/>.
+@prefix math: <http://www.w3.org/2000/10/swap/math#> .
+
+:Let :param (10 3) .
+
+{
+    :Let :param ?param .
+    ?param math:remainder ?result .
+}
+=>
+{
+    :result :is ?result .
+} .
+            ```
+    <p><b>Result:</b>
+    ```
+@prefix : <http://example.org/>.
+:result :is 1.
+            ```
+</div>            
+
+### math:degrees ### {#degrees}
+Calculates the object as the value in degrees corresponding to the radians value of the subject.
+
+`true` if and only if `$o` is the value in degrees corresponding to the radians value of `$s`.
+
+#### Schema(s) #### {#degrees_schemas} 
+<i>`( $s )+  math:degrees  $o- `</i>
+
+#### Examples #### {#degrees_examples}
+[Try in Notation3 Editor &#128640;](file:///Users/timothyduval/Library/Mobile%20Documents/com~apple~CloudDocs/00_unifylogic/50-clients/w3c/N3/useOfBuiltins/core-specs/03-development/site/spec-builtins/src/math/degrees.n3)
+
+
+<div class=example>
+    <p>
+Calculate the degrees of the radians value 1.57079632679.
+            
+    <p><b>Formula:</b>
+    ```
+@prefix : <http://example.org/>.
+@prefix math: <http://www.w3.org/2000/10/swap/math#> .
+
+:Let :param 1.57079632679 .
+
+{
+    :Let :param ?param .
+    ?param math:degrees ?result .
+}
+=>
+{
+    :result :is ?result .
+} .
+            ```
+    <p><b>Result:</b>
+    ```
+@prefix : <http://example.org/>.
+:result :is 89.99999999971946 .
+            ```
+</div>            
+
+### math:asin ### {#asin}
+Calculates the object as the arc sine value of the subject.
+
+`true` if and only if `$o` is the arc sine value of `$s`.
+
+#### Schema(s) #### {#asin_schemas} 
+<i>`( $s )+  math:asin  $o- `</i>
+
+#### Examples #### {#asin_examples}
+[Try in Notation3 Editor &#128640;](file:///Users/timothyduval/Library/Mobile%20Documents/com~apple~CloudDocs/00_unifylogic/50-clients/w3c/N3/useOfBuiltins/core-specs/03-development/site/spec-builtins/src/math/asin.n3)
+
+
+<div class=example>
+    <p>
+Calculate the arc sine of the value 1.
+            
+    <p><b>Formula:</b>
+    ```
+@prefix : <http://example.org/>.
+@prefix math: <http://www.w3.org/2000/10/swap/math#> .
+
+:Let :param 1 .
+
+{
+    :Let :param ?param .
+    ?param math:asin ?result .
+}
+=>
+{
+    :result :is ?result .
+} .
+            ```
+    <p><b>Result:</b>
+    ```
+@prefix : <http://example.org/>.
+:result :is 1.5707963267948966 .
+            ```
+</div>            
+
+## time ## {#time}
+### time:minute ### {#minute}
+Gets as object the integer minutes component of the subject xsd:dateTime.
+
+`true` if and only if `$o` is the integer minutes component of `$s`.
+
+#### Schema(s) #### {#minute_schemas} 
+<i>`( $s )+  time:minute  $o- `</i>
+
+#### Examples #### {#minute_examples}
+[Try in Notation3 Editor &#128640;](file:///Users/timothyduval/Library/Mobile%20Documents/com~apple~CloudDocs/00_unifylogic/50-clients/w3c/N3/useOfBuiltins/core-specs/03-development/site/spec-builtins/src/time/minute.n3)
+
+
+<div class=example>
+    <p>
+Return the minute component of the date "2023-04-01T18:06:04Z" .
+            
+    <p><b>Formula:</b>
+    ```
+@prefix : <http://example.org/>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix time: <http://www.w3.org/2000/10/swap/time#> .
+
+:Let :param "2023-04-01T18:06:04Z"^^xsd:dateTime .
+
+{
+    :Let :param ?param .
+    ?param time:minute ?result .
+}
+=>
+{
+    :result :is ?result .
+} .
+            ```
+    <p><b>Result:</b>
+    ```
+@prefix : <http://example.org/>.
+:result :is 6. 
+            ```
+</div>            
+
+### time:day ### {#day}
+Gets as object the integer day component of the subject xsd:dateTime.
+
+`true` if and only if `$o` is the integer day component of `$s`.
+
+#### Schema(s) #### {#day_schemas} 
+<i>`( $s )+  time:day  $o- `</i>
+
+#### Examples #### {#day_examples}
+[Try in Notation3 Editor &#128640;](file:///Users/timothyduval/Library/Mobile%20Documents/com~apple~CloudDocs/00_unifylogic/50-clients/w3c/N3/useOfBuiltins/core-specs/03-development/site/spec-builtins/src/time/day.n3)
+
+
+<div class=example>
+    <p>
+Return the day component of the date "2023-04-01T18:06:04Z" .
+            
+    <p><b>Formula:</b>
+    ```
+@prefix : <http://example.org/>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix time: <http://www.w3.org/2000/10/swap/time#> .
+
+:Let :param "2023-04-01T18:06:04Z"^^xsd:dateTime .
+
+{
+    :Let :param ?param .
+    ?param time:day ?result .
+}
+=>
+{
+    :result :is ?result .
+} .
+            ```
+    <p><b>Result:</b>
+    ```
+@prefix : <http://example.org/>.
+:result :is 1. 
+            ```
+</div>            
+
+### time:month ### {#month}
+Gets as object the integer month component of the subject xsd:dateTime.
+
+`true` if and only if `$o` is the integer month component of `$s`.
+
+#### Schema(s) #### {#month_schemas} 
+<i>`( $s )+  time:month  $o- `</i>
+
+#### Examples #### {#month_examples}
+[Try in Notation3 Editor &#128640;](file:///Users/timothyduval/Library/Mobile%20Documents/com~apple~CloudDocs/00_unifylogic/50-clients/w3c/N3/useOfBuiltins/core-specs/03-development/site/spec-builtins/src/time/month.n3)
+
+
+<div class=example>
+    <p>
+Return the month component of the date "2023-04-01T18:06:04Z" .
+            
+    <p><b>Formula:</b>
+    ```
+@prefix : <http://example.org/>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix time: <http://www.w3.org/2000/10/swap/time#> .
+
+:Let :param "2023-04-01T18:06:04Z"^^xsd:dateTime .
+
+{
+    :Let :param ?param .
+    ?param time:month ?result .
+}
+=>
+{
+    :result :is ?result .
+} .
+            ```
+    <p><b>Result:</b>
+    ```
+@prefix : <http://example.org/>.
+:result :is 4. 
+            ```
+</div>            
+
+### time:timeZone ### {#timeZone}
+Gets as object the trailing timezone offset of the subject xsd:dateTime (e.g., "-05:00").
+
+`true` if and only if `$o` is the timezone offset of `$s`.
+
+#### Schema(s) #### {#timeZone_schemas} 
+<i>`( $s )+  time:timeZone  $o- `</i>
+
+#### Examples #### {#timeZone_examples}
+[Try in Notation3 Editor &#128640;](file:///Users/timothyduval/Library/Mobile%20Documents/com~apple~CloudDocs/00_unifylogic/50-clients/w3c/N3/useOfBuiltins/core-specs/03-development/site/spec-builtins/src/time/timeZone.n3)
+
+
+<div class=example>
+    <p>
+Return the time zone component of the date "2023-04-01T18:06:04Z" .
+            
+    <p><b>Formula:</b>
+    ```
+@prefix : <http://example.org/>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix time: <http://www.w3.org/2000/10/swap/time#> .
+
+:Let :param "2023-04-01T18:06:04Z"^^xsd:dateTime .
+
+{
+    :Let :param ?param .
+    ?param time:minute ?result .
+}
+=>
+{
+    :result :is ?result .
+} .
+            ```
+    <p><b>Result:</b>
+    ```
+@prefix : <http://example.org/>.
+:result :is "Z". 
+            ```
+</div>            
+
+### time:year ### {#year}
+Gets as object the integer year component of the subject xsd:dateTime.
+
+`true` if and only if `$o` is the integer year component of `$s`.
+
+#### Schema(s) #### {#year_schemas} 
+<i>`( $s )+  time:year  $o- `</i>
+
+#### Examples #### {#year_examples}
+[Try in Notation3 Editor &#128640;](file:///Users/timothyduval/Library/Mobile%20Documents/com~apple~CloudDocs/00_unifylogic/50-clients/w3c/N3/useOfBuiltins/core-specs/03-development/site/spec-builtins/src/time/year.n3)
+
+
+<div class=example>
+    <p>
+Return the minute component of the date "2023-04-01T18:06:04Z" .
+            
+    <p><b>Formula:</b>
+    ```
+@prefix : <http://example.org/>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix time: <http://www.w3.org/2000/10/swap/time#> .
+
+:Let :param "2023-04-01T18:06:04Z"^^xsd:dateTime .
+
+{
+    :Let :param ?param .
+    ?param time:year ?result .
+}
+=>
+{
+    :result :is ?result .
+} .
+            ```
+    <p><b>Result:</b>
+    ```
+@prefix : <http://example.org/>.
+:result :is 2023. 
+            ```
+</div>            
+
+### time:second ### {#second}
+Gets as object the integer seconds component of the subject xsd:dateTime.
+
+`true` if and only if `$o` is the integer seconds component of `$s`.
+
+#### Schema(s) #### {#second_schemas} 
+<i>`( $s )+  time:second  $o- `</i>
+
+#### Examples #### {#second_examples}
+[Try in Notation3 Editor &#128640;](file:///Users/timothyduval/Library/Mobile%20Documents/com~apple~CloudDocs/00_unifylogic/50-clients/w3c/N3/useOfBuiltins/core-specs/03-development/site/spec-builtins/src/time/second.n3)
+
+
+<div class=example>
+    <p>
+Return the seconds component of the date "2023-04-01T18:06:04Z" .
+            
+    <p><b>Formula:</b>
+    ```
+@prefix : <http://example.org/>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix time: <http://www.w3.org/2000/10/swap/time#> .
+
+:Let :param "2023-04-01T18:06:04Z"^^xsd:dateTime .
+
+{
+    :Let :param ?param .
+    ?param time:second ?result .
+}
+=>
+{
+    :result :is ?result .
+} .
+            ```
+    <p><b>Result:</b>
+    ```
+@prefix : <http://example.org/>.
+:result :is 4. 
             ```
 </div>            
 
 ## list ## {#list}
-### list:append() ### {#append}
-Concatenates separate lists into a single list. 
-`true` if and only if the subject is a list of lists and the concatenation of all those lists is `$o`.
-`$o` can be calculated as a function of the subject. 
-Example: `( (1 2) (3 4) ) list:append (1 2 3 4).`
+### list:last ### {#last}
+Gets the last element of the subject list as object.
 
-[Try in Notation3 Editor &#128640;](http://ppr.cs.dal.ca:3002/n3/editor/?formula=%40prefix%20%3A%20%3C%3A%3E%20.%0A%40prefix%20string%3A%20%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F10%2Fswap%2Fstring%23%3E%20.%0A%0A%3ALet%20%3Astring%20%22placeholder%22%20.%0A%0A%7B%20%3ALet%20%3Astring%20%3Fx%20.%20%7D%0A%3D%3E%0A%7B%20%3Aresult%20%3Ais%20%3Fx%20.%20%7D.%20)
+`true` if and only if `$` is a list and `$o` is the last member of that list.
+
+#### Schema(s) #### {#last_schemas} 
+<i>`( $s )+  list:last  $o- `</i>
+
+#### Examples #### {#last_examples}
+### list:first ### {#first}
+Gets the first element of the subject list as object.
+
+`true` if and only if `$` is a list and `$o` is the first member of that list.
+
+#### Schema(s) #### {#first_schemas} 
+<i>`( $s )+  list:first  $o- `</i>
+
+#### Examples #### {#first_examples}
+[Try in Notation3 Editor &#128640;](file:///Users/timothyduval/Library/Mobile%20Documents/com~apple~CloudDocs/00_unifylogic/50-clients/w3c/N3/useOfBuiltins/core-specs/03-development/site/spec-builtins/src/list/first.n3)
 
 
 <div class=example>
-
-This is an example for a built-in function.
+    <p>
+What is the first element of ( ('a') { :a :b :c } 42 )?
             
-```
-@prefix : <:> .
-@prefix string: <http://www.w3.org/2000/10/swap/string#> .
-:Let :string "placeholder" .
-{ :Let :string ?x . } => { :result :is ?x . } .
+    <p><b>Formula:</b>
+    ```
+@prefix : <http://example.org/>.
+@prefix list: <http://www.w3.org/2000/10/swap/list#> .
+
+{ ( ('a') { :a :b :c } 42 ) list:first ?what . } => { :result :is ?what . } .
+            ```
+    <p><b>Result:</b>
+    ```
+@prefix : <http://example.org/>.
+:result :is ('a'). 
             ```
 </div>            
 
-### list:first() ### {#first}
-Extracts the first member of a list. 
-`true` if and only the subject is a list and `$o` is the first member of that list.
-`$o` can be calculated as a function of the subject.
+### list:append ### {#append}
+Appends the lists from the subject list into a single list as object.
 
-[Try in Notation3 Editor &#128640;](http://ppr.cs.dal.ca:3002/n3/editor/?formula=%40prefix%20%3A%20%3C%3A%3E%20.%0A%40prefix%20string%3A%20%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F10%2Fswap%2Fstring%23%3E%20.%0A%0A%3ALet%20%3Astring%20%22placeholder%22%20.%0A%0A%7B%20%3ALet%20%3Astring%20%3Fx%20.%20%7D%0A%3D%3E%0A%7B%20%3Aresult%20%3Ais%20%3Fx%20.%20%7D.%20)
+`true` if and only if `$o` is the concatenation of all lists `$s.i`.
+
+#### Schema(s) #### {#append_schemas} 
+<i>`( $s )+  list:append  $o- `</i>
+
+#### Examples #### {#append_examples}
+### list:memberAt ### {#memberAt}
+Gets the member of the subject list at the given subject index as object (index starts at 0).
+
+`true` if and only if `$s.0` is a list, `$s.1` is a valid index in list `$s.0`, and `$o` is found at that index in the list.
+
+#### Schema(s) #### {#memberAt_schemas} 
+<i>`( $s )+  list:memberAt  $o?[*] `</i>
+
+#### Examples #### {#memberAt_examples}
+### list:iterate ### {#iterate}
+Iterates over each member of the subject list, getting their index/value pairs as the object.
+
+`true` if and only if `$s` is a list and `$o` is a list with two elements: 
+`$o.1` is a valid index in list `$s` (index starts at 0), and `$o.2` is found at that index in list `$s`.
+
+#### Schema(s) #### {#iterate_schemas} 
+<i>`( $s )+  list:iterate  $o?[*] `</i>
+
+#### Examples #### {#iterate_examples}
+### list:member ### {#member}
+Checks whether the subject list contains the object.
+
+`true` if and only `$s` is a list and `o` is a member of that list.
+
+#### Schema(s) #### {#member_schemas} 
+<i>`( $s )+  list:member  $o?[*] `</i>
+
+#### Examples #### {#member_examples}
+### list:in ### {#in}
+Checks whether the subject is found in the object list.
+
+`true` if and only if `$o` is a list and `$s` is a member of that list.
+
+#### Schema(s) #### {#in_schemas} 
+<i>`( $s )-[*]  list:in  $o?[*] `</i>
+
+#### Examples #### {#in_examples}
+### list:remove ### {#remove}
+Removes the subject member from the subject list, and returns the resulting list as object.
+
+`true` if and only if `$s.0` is a list, and `$o` is a list composed of the members of `$s.0` with member `$s.1` removed, if it was present.
+
+#### Schema(s) #### {#remove_schemas} 
+<i>`( $s )+  list:remove  $o- `</i>
+
+#### Examples #### {#remove_examples}
+[Try in Notation3 Editor &#128640;](file:///Users/timothyduval/Library/Mobile%20Documents/com~apple~CloudDocs/00_unifylogic/50-clients/w3c/N3/useOfBuiltins/core-specs/03-development/site/spec-builtins/src/list/remove.n3)
 
 
 <div class=example>
-
-This is an example for a built-in function.
+    <p>
+Remove "penguin" from the list ("dog" "penguin" "cat" "penguin").
             
-```
-@prefix : <:> .
-@prefix string: <http://www.w3.org/2000/10/swap/string#> .
-:Let :string "placeholder" .
-{ :Let :string ?x . } => { :result :is ?x . } .
+    <p><b>Formula:</b>
+    ```
+@prefix : <http://example.org/>.
+@prefix list: <http://www.w3.org/2000/10/swap/list#> .
+
+:let :param ("dog" "penguin" "cat" "penguin") .
+{ 
+    :let :param ?param . 
+    ( ?param "penguin" ) list:remove ?list .
+} 
+=> 
+{ 
+    :result :is ?list . 
+} .
+            ```
+    <p><b>Result:</b>
+    ```
+@prefix : <http://example.org/>.
+:result :is ("dog" "cat").
             ```
 </div>            
 
-### list:in() ### {#in}
-Determines if an subject is a member of the object list or binds every member of the object list to the subject.
-`true` if and only `$o` is a list and `$s` is in that list.
-`$s` can be calculated from `$o`.
+### list:length ### {#length}
+Gets the length of the subject list as object.
 
-[Try in Notation3 Editor &#128640;](http://ppr.cs.dal.ca:3002/n3/editor/?formula=%40prefix%20%3A%20%3C%3A%3E%20.%0A%40prefix%20string%3A%20%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F10%2Fswap%2Fstring%23%3E%20.%0A%0A%3ALet%20%3Astring%20%22placeholder%22%20.%0A%0A%7B%20%3ALet%20%3Astring%20%3Fx%20.%20%7D%0A%3D%3E%0A%7B%20%3Aresult%20%3Ais%20%3Fx%20.%20%7D.%20)
+`true` if and only if `$s` is a list and `$o` is the integer length of that list.
+
+#### Schema(s) #### {#length_schemas} 
+<i>`( $s )+  list:length  $o- `</i>
+
+#### Examples #### {#length_examples}
+[Try in Notation3 Editor &#128640;](file:///Users/timothyduval/Library/Mobile%20Documents/com~apple~CloudDocs/00_unifylogic/50-clients/w3c/N3/useOfBuiltins/core-specs/03-development/site/spec-builtins/src/list/length.n3)
 
 
 <div class=example>
-
-This is an example for a built-in function.
+    <p>
+Calculate the length of the list (1 2 3 4).
             
-```
-@prefix : <:> .
-@prefix string: <http://www.w3.org/2000/10/swap/string#> .
-:Let :string "placeholder" .
-{ :Let :string ?x . } => { :result :is ?x . } .
+    <p><b>Formula:</b>
+    ```
+@prefix : <http://example.org/>.
+@prefix list: <http://www.w3.org/2000/10/swap/list#> .
+
+{ (1 2 3 4) list:length ?length . } => { :result :is ?length . } .
             ```
-</div>            
-
-### list:iterate() ### {#iterate}
-Iterates over index/value pairs of the subject list.
-Gets the matching pair of list index and list value for every member of the subject.
-If the object is a variable, it will create a solution for each member of the subject list.
-If any member of the object list is a variable, it will create a solution for all matching
-members of the subject list.
-If the object is ground and the entry at the specified index matches the specified value, 
-it evaluates to `true`; otherwise, `false`.
-Example: `( 1 2 3 ) list:iterate ($i $v).`
-
-[Try in Notation3 Editor &#128640;](http://ppr.cs.dal.ca:3002/n3/editor/?formula=%40prefix%20%3A%20%3C%3A%3E%20.%0A%40prefix%20string%3A%20%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F10%2Fswap%2Fstring%23%3E%20.%0A%0A%3ALet%20%3Astring%20%22placeholder%22%20.%0A%0A%7B%20%3ALet%20%3Astring%20%3Fx%20.%20%7D%0A%3D%3E%0A%7B%20%3Aresult%20%3Ais%20%3Fx%20.%20%7D.%20)
-
-
-<div class=example>
-
-This is an example for a built-in function.
-            
-```
-@prefix : <:> .
-@prefix string: <http://www.w3.org/2000/10/swap/string#> .
-:Let :string "placeholder" .
-{ :Let :string ?x . } => { :result :is ?x . } .
-            ```
-</div>            
-
-### list:last() ### {#last}
-Extracts the first member of a list. 
-`true` if and only the subject is a list and `$o` is the last member of that list.
-`$o` can be calculated as a function of the subject.
-
-[Try in Notation3 Editor &#128640;](http://ppr.cs.dal.ca:3002/n3/editor/?formula=%40prefix%20%3A%20%3C%3A%3E%20.%0A%40prefix%20string%3A%20%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F10%2Fswap%2Fstring%23%3E%20.%0A%0A%3ALet%20%3Astring%20%22placeholder%22%20.%0A%0A%7B%20%3ALet%20%3Astring%20%3Fx%20.%20%7D%0A%3D%3E%0A%7B%20%3Aresult%20%3Ais%20%3Fx%20.%20%7D.%20)
-
-
-<div class=example>
-
-This is an example for a built-in function.
-            
-```
-@prefix : <:> .
-@prefix string: <http://www.w3.org/2000/10/swap/string#> .
-:Let :string "placeholder" .
-{ :Let :string ?x . } => { :result :is ?x . } .
-            ```
-</div>            
-
-### list:length() ### {#length}
-Calculates the length of a list.
-`true` if and only the subject is a list and `$o` is integer length of that list.
-`$o` can be calculated as a function of the subject.
-
-[Try in Notation3 Editor &#128640;](http://ppr.cs.dal.ca:3002/n3/editor/?formula=%40prefix%20%3A%20%3C%3A%3E%20.%0A%40prefix%20string%3A%20%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F10%2Fswap%2Fstring%23%3E%20.%0A%0A%3ALet%20%3Astring%20%22placeholder%22%20.%0A%0A%7B%20%3ALet%20%3Astring%20%3Fx%20.%20%7D%0A%3D%3E%0A%7B%20%3Aresult%20%3Ais%20%3Fx%20.%20%7D.%20)
-
-
-<div class=example>
-
-This is an example for a built-in function.
-            
-```
-@prefix : <:> .
-@prefix string: <http://www.w3.org/2000/10/swap/string#> .
-:Let :string "placeholder" .
-{ :Let :string ?x . } => { :result :is ?x . } .
-            ```
-</div>            
-
-### list:member() ### {#member}
-Determines if an object is a member of the subject list or binds every member of the subject list to the object.
-`true` if and only `$s` is a list and `o` is in that list.
-`$o` can be calculated from `$s`.
-
-[Try in Notation3 Editor &#128640;](http://ppr.cs.dal.ca:3002/n3/editor/?formula=%40prefix%20%3A%20%3C%3A%3E%20.%0A%40prefix%20string%3A%20%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F10%2Fswap%2Fstring%23%3E%20.%0A%0A%3ALet%20%3Astring%20%22placeholder%22%20.%0A%0A%7B%20%3ALet%20%3Astring%20%3Fx%20.%20%7D%0A%3D%3E%0A%7B%20%3Aresult%20%3Ais%20%3Fx%20.%20%7D.%20)
-
-
-<div class=example>
-
-This is an example for a built-in function.
-            
-```
-@prefix : <:> .
-@prefix string: <http://www.w3.org/2000/10/swap/string#> .
-:Let :string "placeholder" .
-{ :Let :string ?x . } => { :result :is ?x . } .
-            ```
-</div>            
-
-### list:memberAt() ### {#memberAt}
-Gets the member of a list at a given position (where the position of the first element is 1).
-`true` if and only if `$s_0` has an element at position `$s_1`, and if that element and `$o` can unify.
-Note that if `$s_1` is a variable, this builtin may bind it to more than one value (e.g. `((“A” “B” “A”) ?i) list:memberAt "A"`).
-In case of a negative integer, the index will count backwards from the length of the list.
-
-[Try in Notation3 Editor &#128640;](http://ppr.cs.dal.ca:3002/n3/editor/?formula=%40prefix%20%3A%20%3C%3A%3E%20.%0A%40prefix%20string%3A%20%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F10%2Fswap%2Fstring%23%3E%20.%0A%0A%3ALet%20%3Astring%20%22placeholder%22%20.%0A%0A%7B%20%3ALet%20%3Astring%20%3Fx%20.%20%7D%0A%3D%3E%0A%7B%20%3Aresult%20%3Ais%20%3Fx%20.%20%7D.%20)
-
-
-<div class=example>
-
-This is an example for a built-in function.
-            
-```
-@prefix : <:> .
-@prefix string: <http://www.w3.org/2000/10/swap/string#> .
-:Let :string "placeholder" .
-{ :Let :string ?x . } => { :result :is ?x . } .
-            ```
-</div>            
-
-### list:remove() ### {#remove}
-Removes the second component of the subject list from the first component of that list.
-`true` if and only if the subject is a list of two lists `$s_1` and `$s_2`, `$s_2` is a subset of `$s_1` and `$o` is a list composed of the members of the `$s_1` with all members of `$s_2` removed, matching left to right.
-`$o` can be calculated as a function of the subject.
-Example: `( (1 2 3 4) (2 3) ) list:remove (1 4).`
-
-[Try in Notation3 Editor &#128640;](http://ppr.cs.dal.ca:3002/n3/editor/?formula=%40prefix%20%3A%20%3C%3A%3E%20.%0A%40prefix%20string%3A%20%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F10%2Fswap%2Fstring%23%3E%20.%0A%0A%3ALet%20%3Astring%20%22placeholder%22%20.%0A%0A%7B%20%3ALet%20%3Astring%20%3Fx%20.%20%7D%0A%3D%3E%0A%7B%20%3Aresult%20%3Ais%20%3Fx%20.%20%7D.%20)
-
-
-<div class=example>
-
-This is an example for a built-in function.
-            
-```
-@prefix : <:> .
-@prefix string: <http://www.w3.org/2000/10/swap/string#> .
-:Let :string "placeholder" .
-{ :Let :string ?x . } => { :result :is ?x . } .
+    <p><b>Result:</b>
+    ```
+@prefix : <http://example.org/>.
+:result :is 4. 
             ```
 </div>            
 
 ## log ## {#log}
-### log:conclusion() ### {#conclusion}
-All possible conclusions which can be drawn from a formula.
-`true` if and only if `$o` is the set of conclusions which can be drawn from `$s`, by successively applying any rules it contains to the data it contains.
-Note: this is equivalent to cwm's "--think" command line function. It does use built-ins, so it may for example indirectly invoke other documents, validate signatures, etc.
+### log:rawType ### {#rawType}
+Gets the type of the N3 resource.
 
-[Try in Notation3 Editor &#128640;](http://ppr.cs.dal.ca:3002/n3/editor/?formula=%40prefix%20%3A%20%3C%3A%3E%20.%0A%40prefix%20string%3A%20%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F10%2Fswap%2Fstring%23%3E%20.%0A%0A%3ALet%20%3Astring%20%22placeholder%22%20.%0A%0A%7B%20%3ALet%20%3Astring%20%3Fx%20.%20%7D%0A%3D%3E%0A%7B%20%3Aresult%20%3Ais%20%3Fx%20.%20%7D.%20)
+`true` if and only if the N3 resource type of `$s` is `$o`.
+N3 resource types include `log:Formula`, `log:Literal`, `log:List`, `log:Set` or `log:Other`.
 
+#### Schema(s) #### {#rawType_schemas} 
+<i>`( $s )+  log:rawType  $o- `</i>
 
-<div class=example>
+#### Examples #### {#rawType_examples}
+### log:conclusion ### {#conclusion}
+Gets all possible conclusions from the subject quoted graph, including rule inferences (deductive closure), as the object quoted graph.
 
-This is an example for a built-in function.
-            
-```
-@prefix : <:> .
-@prefix string: <http://www.w3.org/2000/10/swap/string#> .
-:Let :string "placeholder" .
-{ :Let :string ?x . } => { :result :is ?x . } .
-            ```
-</div>            
+`true` if and only if `$o` is the set of conclusions which can be drawn from `$s` (deductive closure), 
+by applying any rules it contains to the data it contains.
 
-### log:conjunction() ### {#conjunction}
-A function to merge formulae: logical AND.
-`true` if and only if `o`, which can be generated, is a formula containing a copy of each of the formulae `$s_1 .. $s_n`.
+#### Schema(s) #### {#conclusion_schemas} 
+<i>`( $s )+  log:conclusion  $o? `</i>
 
-[Try in Notation3 Editor &#128640;](http://ppr.cs.dal.ca:3002/n3/editor/?formula=%40prefix%20%3A%20%3C%3A%3E%20.%0A%40prefix%20string%3A%20%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F10%2Fswap%2Fstring%23%3E%20.%0A%0A%3ALet%20%3Astring%20%22placeholder%22%20.%0A%0A%7B%20%3ALet%20%3Astring%20%3Fx%20.%20%7D%0A%3D%3E%0A%7B%20%3Aresult%20%3Ais%20%3Fx%20.%20%7D.%20)
+#### Examples #### {#conclusion_examples}
+[Try in Notation3 Editor &#128640;](file:///Users/timothyduval/Library/Mobile%20Documents/com~apple~CloudDocs/00_unifylogic/50-clients/w3c/N3/useOfBuiltins/core-specs/03-development/site/spec-builtins/src/log/conclusion.n3)
 
 
 <div class=example>
-
-This is an example for a built-in function.
+    <p>
+Draw all conclusions from the formula ":Felix a :Cat . { ?X a :Cat } => { ?X :says "Meow" . }".
             
-```
-@prefix : <:> .
-@prefix string: <http://www.w3.org/2000/10/swap/string#> .
-:Let :string "placeholder" .
-{ :Let :string ?x . } => { :result :is ?x . } .
+    <p><b>Formula:</b>
+    ```
+@prefix : <http://example.org/>.
+@prefix log: <http://www.w3.org/2000/10/swap/log#> .
+
+:let :param { 
+    :Felix a :Cat . 
+    { ?X a :Cat . } => { ?X :says "Meow" . } .
+} .
+
+{ 
+    :let :param ?param .
+    ?param log:conclusion ?conclusion .
+} 
+=> 
+{ 
+    :result :is ?conclusion . 
+} .
+            ```
+    <p><b>Result:</b>
+    ```
+@prefix : <http://example.org/>.
+:result :is {
+    :Felix a :Cat. 
+    :Felix :says "Meow". 
+    { ?S a :Cat . } => { ?S :says "Meow" . } .
+} .
             ```
 </div>            
 
-### log:content() ### {#content}
-This connects a document and a string that represents it. (Cwm knows how to go get a document in order to evaluate this.)
-Note: the content-type of the information is not given and so must be known or guessed.
+### log:content ### {#content}
+Dereferences the subject IRI and retrieves the online resource as the object string.
 
-[Try in Notation3 Editor &#128640;](http://ppr.cs.dal.ca:3002/n3/editor/?formula=%40prefix%20%3A%20%3C%3A%3E%20.%0A%40prefix%20string%3A%20%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F10%2Fswap%2Fstring%23%3E%20.%0A%0A%3ALet%20%3Astring%20%22placeholder%22%20.%0A%0A%7B%20%3ALet%20%3Astring%20%3Fx%20.%20%7D%0A%3D%3E%0A%7B%20%3Aresult%20%3Ais%20%3Fx%20.%20%7D.%20)
+`true` if and only if `$o` is a string that represents the online resource to which `$s` is dereferenced.
+
+#### Schema(s) #### {#content_schemas} 
+<i>`( $s )+  log:content  $o? `</i>
+
+#### Examples #### {#content_examples}
+[Try in Notation3 Editor &#128640;](file:///Users/timothyduval/Library/Mobile%20Documents/com~apple~CloudDocs/00_unifylogic/50-clients/w3c/N3/useOfBuiltins/core-specs/03-development/site/spec-builtins/src/log/content.n3)
 
 
 <div class=example>
-
-This is an example for a built-in function.
+    <p>
+Fetch the content of https://www.w3.org/People/Berners-Lee/card.
             
-```
-@prefix : <:> .
-@prefix string: <http://www.w3.org/2000/10/swap/string#> .
-:Let :string "placeholder" .
-{ :Let :string ?x . } => { :result :is ?x . } .
+    <p><b>Formula:</b>
+    ```
+@prefix : <http://example.org/>.
+@prefix log: <http://www.w3.org/2000/10/swap/log#> .
+
+{ 
+    <https://www.w3.org/People/Berners-Lee/card> log:content ?content .
+} 
+=> 
+{ 
+    :result :is ?content . 
+} .
+            ```
+    <p><b>Result:</b>
+    ```
+:result :is "...the content of https://www.w3.org/People/Berners-Lee/card ...". 
             ```
 </div>            
 
-### log:equalTo() ### {#equalTo}
-Determines if two RDF resources are the same.
-`true` if and only if `$s` and `$o` are the same RDF node (symbol or literal).
+### log:forAllIn ### {#forAllIn}
+Two clauses are given in the subject list: for each result of the first clause, the builtin checks whether the second clause also holds for the result.
+
+`true` if and only if, for each solution for which the first clause `$s.0` is true, the second clause `$s.1` is true as well. 
+This is a scoped universal quantification.
+
+#### Schema(s) #### {#forAllIn_schemas} 
+<i>`( $s )+  log:forAllIn  $o? `</i>
+
+#### Examples #### {#forAllIn_examples}
+[Try in Notation3 Editor &#128640;](file:///Users/timothyduval/Library/Mobile%20Documents/com~apple~CloudDocs/00_unifylogic/50-clients/w3c/N3/useOfBuiltins/core-specs/03-development/site/spec-builtins/src/log/forAllIn.n3)
+
+
+<div class=example>
+    <p>
+For each subtask of a composite task, check whether the subtask is completed. 
+            
+    <p><b>Formula:</b>
+    ```
+@prefix : <http://example.org/>.
+@prefix log: <http://www.w3.org/2000/10/swap/log#> .
+
+:c a :CompositeTask ;
+    :subTask :s1 , :s2 , :s3 .
+:s1 :state :Completed .
+:s2 :state :Completed . 
+:s3 :state :Completed .
+
+{
+    ?c a :CompositeTask .
+    ( { ?c :subTask ?s } { ?s :state :Completed } ) log:forAllIn _:t .
+}
+=>
+{
+    :result :is true .
+} . 
+            ```
+    <p><b>Result:</b>
+    ```
+@prefix : <http://example.org/>.
+:result :is true. 
+            ```
+</div>            
+
+### log:parsedAsN3 ### {#parsedAsN3}
+Parses the subject string into an object quoted graph.
+
+`true` if and only if `$s`, when parsed as N3, gives `$o`.
+`$s` should be a syntactically valid string in N3 format.
+
+#### Schema(s) #### {#parsedAsN3_schemas} 
+<i>`( $s )+  log:parsedAsN3  $o? `</i>
+
+#### Examples #### {#parsedAsN3_examples}
+[Try in Notation3 Editor &#128640;](file:///Users/timothyduval/Library/Mobile%20Documents/com~apple~CloudDocs/00_unifylogic/50-clients/w3c/N3/useOfBuiltins/core-specs/03-development/site/spec-builtins/src/log/parsedAsN3.n3)
+
+
+<div class=example>
+    <p>
+Parse the string ':Socrates a :Human .' as N3.
+            
+    <p><b>Formula:</b>
+    ```
+@prefix : <http://example.org/>.
+@prefix log: <http://www.w3.org/2000/10/swap/log#> .
+
+:Let :param """
+@prefix : <urn:example:> .
+:Socrates a :Human .
+""" .
+
+{
+    :Let :param ?X .
+    ?X log:parsedAsN3 ?Y .
+}
+=>
+{
+    :result :is ?Y .
+} .
+            ```
+    <p><b>Result:</b>
+    ```
+@prefix : <http://example.org/>.
+:result :is { <urn:example:Socrates> a <urn:example:Human> . } .
+            ```
+</div>            
+
+### log:conjunction ### {#conjunction}
+Merges the quoted graphs from the subject list into a single quoted graph as object.
+
+`true` if and only if `$o` is a quoted graph that includes the contents of each of the quoted graphs `$s.i`.
+
+#### Schema(s) #### {#conjunction_schemas} 
+<i>`( $s )+  log:conjunction  $o? `</i>
+
+#### Examples #### {#conjunction_examples}
+[Try in Notation3 Editor &#128640;](file:///Users/timothyduval/Library/Mobile%20Documents/com~apple~CloudDocs/00_unifylogic/50-clients/w3c/N3/useOfBuiltins/core-specs/03-development/site/spec-builtins/src/log/conjunction.n3)
+
+
+<div class=example>
+    <p>
+Merge the formulas "{ :Felix a :Cat . }" , "{ :Pluto a :Dog . }", "{ :Pingu a :Penguin . }" .
+            
+    <p><b>Formula:</b>
+    ```
+@prefix : <http://example.org/>.
+@prefix log: <http://www.w3.org/2000/10/swap/log#> .
+
+{ 
+    ( { :Felix a :Cat . }
+      { :Pluto a :Dog . }  
+      { :Pingu a :Penguin . }
+    ) log:conjunction ?merged .
+} 
+=> 
+{ 
+    :result :is ?merged . 
+} .
+            ```
+    <p><b>Result:</b>
+    ```
+@prefix : <http://example.org/>.
+:result :is { 
+    :Felix a :Cat . 
+    :Pingu a :Penguin . 
+    :Pluto a :Dog . 
+} .
+            ```
+</div>            
+
+### log:notIncludes ### {#notIncludes}
+Checks whether the subject quoted graph _does not_ include the object quoted graph (taking into account variables)
+
+`true` if and only if `$s log:includes $o` is `false`.
+
+#### Schema(s) #### {#notIncludes_schemas} 
+<i>`( $s )+  log:notIncludes  $o? `</i>
+
+#### Examples #### {#notIncludes_examples}
+### log:notEqualTo ### {#notEqualTo}
+Checks whether the subject and object N3 resources are _not_ the same.
+
+`true` if and only if `$s log:equalTo $o` is false.
+
+#### Schema(s) #### {#notEqualTo_schemas} 
+<i>`( $s )+  log:notEqualTo  $o? `</i>
+
+#### Examples #### {#notEqualTo_examples}
+### log:skolem ### {#skolem}
+Gets as object a skolem IRI that is a function of the subject (commonly a list); the same subject will always result in the same skolem IRI.
+
+`true` if and only if `$o` is a skolem IRI that is a function of the subject.
+
+#### Schema(s) #### {#skolem_schemas} 
+<i>`( $s )+  log:skolem  $o- `</i>
+
+#### Examples #### {#skolem_examples}
+[Try in Notation3 Editor &#128640;](file:///Users/timothyduval/Library/Mobile%20Documents/com~apple~CloudDocs/00_unifylogic/50-clients/w3c/N3/useOfBuiltins/core-specs/03-development/site/spec-builtins/src/log/skolem.n3)
+
+
+<div class=example>
+    <p>
+Generate a unique Skolem IRI from the list (:abc 77 "xyz") .
+            
+    <p><b>Formula:</b>
+    ```
+@prefix : <http://example.org/>.
+@prefix log: <http://www.w3.org/2000/10/swap/log#> .
+
+{ (:abc 77 "xyz") log:skolem ?skolem . } => { :result :is ?skolem } .
+            ```
+    <p><b>Result:</b>
+    ```
+@prefix : <http://example.org/>.
+:result :is <http://www.w3.org/2000/10/swap/genid#zmgk3Vt_z_u7FQlk1NmqIw> . 
+            ```
+</div>            
+
+### log:includes ### {#includes}
+Checks whether the subject quoted graph includes the object quoted graph (taking into account variables). 
+Can also be used to bind variables to values within the graph contents (see examples).
+
+`true` if and only if there exists some substitution which, when applied to `$o`, 
+creates a quoted graph `$o`' such that every statement in `$o`' is also in `$s`;
+whereby every variable, universally or existentially quantified in `$o`', is quantified in the same way in `$s`. 
+Variable substitution is applied recursively to nested compound terms such as quoted graphs ans lists.
+
+#### Schema(s) #### {#includes_schemas} 
+<i>`( $s )+  log:includes  $o- `</i>
+
+#### Examples #### {#includes_examples}
+[Try in Notation3 Editor &#128640;](file:///Users/timothyduval/Library/Mobile%20Documents/com~apple~CloudDocs/00_unifylogic/50-clients/w3c/N3/useOfBuiltins/core-specs/03-development/site/spec-builtins/src/log/includes.n3)
+
+
+<div class=example>
+    <p>
+Check whether the formula { :Felix a :Cat } includes { ?X a :Cat }.
+            
+    <p><b>Formula:</b>
+    ```
+@prefix : <http://example.org/>.
+@prefix log: <http://www.w3.org/2000/10/swap/log#> .
+
+{ 
+    { :Felix a :Cat } log:includes { ?X a :Cat } .
+} 
+=>
+{
+    :result :is ?X .
+} .
+            ```
+    <p><b>Result:</b>
+    ```
+@prefix : <http://example.org/>.
+:result :is :Felix .
+            ```
+</div>            
+
+### log:equalTo ### {#equalTo}
+Checks whether the subject and object N3 resources are the same. 
+Can also be used to bind values to variables (see examples).
+
+`true` if and only if `$s` and `$o` are the same N3 resource.
 Not to be confused with owl:sameAs.
 
-[Try in Notation3 Editor &#128640;](http://ppr.cs.dal.ca:3002/n3/editor/?formula=%40prefix%20%3A%20%3C%3A%3E%20.%0A%40prefix%20string%3A%20%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F10%2Fswap%2Fstring%23%3E%20.%0A%0A%3ALet%20%3Astring%20%22placeholder%22%20.%0A%0A%7B%20%3ALet%20%3Astring%20%3Fx%20.%20%7D%0A%3D%3E%0A%7B%20%3Aresult%20%3Ais%20%3Fx%20.%20%7D.%20)
+#### Schema(s) #### {#equalTo_schemas} 
+<i>`( $s )+  log:equalTo  $o- `</i>
+
+#### Examples #### {#equalTo_examples}
+### log:outputString ### {#outputString}
+The N3 reasoner will print the object strings in the order of the subject keys, instead of printing the derivations or deductive closure. This may require a reasoner flag to be set.
+
+The concrete semantics of this builtin (e.g., which N3 resource types are supported) will depend on the N3 reasoner.
+
+#### Schema(s) #### {#outputString_schemas} 
+<i>`( $s )+  log:outputString  $o- `</i>
+
+#### Examples #### {#outputString_examples}
+[Try in Notation3 Editor &#128640;](file:///Users/timothyduval/Library/Mobile%20Documents/com~apple~CloudDocs/00_unifylogic/50-clients/w3c/N3/useOfBuiltins/core-specs/03-development/site/spec-builtins/src/log/outputString.n3)
 
 
 <div class=example>
-
-This is an example for a built-in function.
+    <p>
+Print the two string "This is the first line
+" , "This is the second line
+" to the output.
             
-```
-@prefix : <:> .
-@prefix string: <http://www.w3.org/2000/10/swap/string#> .
-:Let :string "placeholder" .
-{ :Let :string ?x . } => { :result :is ?x . } .
+    <p><b>Formula:</b>
+    ```
+@prefix : <http://example.org/>.
+@prefix log: <http://www.w3.org/2000/10/swap/log#> .
+
+_:2 log:outputString "This is the second line
+" .
+_:1 log:outputString "This is the first line
+" .
+            ```
+    <p><b>Result:</b>
+    ```
+# If the reasoner support the outputString options
+This is the first line
+This is the second line
             ```
 </div>            
 
-### log:forAllIn() ### {#forAllIn}
-Built-in for implementing a scoped universal quantification.
+### log:semanticsOrError ### {#semanticsOrError}
+Either gets as object the quoted graph that results from parsing an online (N3) string, found by dereferencing the subject IRI; or an error message that explains what went wrong.
 
-[Try in Notation3 Editor &#128640;](http://ppr.cs.dal.ca:3002/n3/editor/?formula=%40prefix%20%3A%20%3C%3A%3E%20.%0A%40prefix%20string%3A%20%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F10%2Fswap%2Fstring%23%3E%20.%0A%0A%3ALet%20%3Astring%20%22placeholder%22%20.%0A%0A%7B%20%3ALet%20%3Astring%20%3Fx%20.%20%7D%0A%3D%3E%0A%7B%20%3Aresult%20%3Ais%20%3Fx%20.%20%7D.%20)
+`true` if and only if (a) `$o` is a quoted graph that results from parsing the string that results from dereferencing `$s`; or (b) an error message explaining what went wrong.
+
+#### Schema(s) #### {#semanticsOrError_schemas} 
+<i>`( $s )+  log:semanticsOrError  $o? `</i>
+
+#### Examples #### {#semanticsOrError_examples}
+[Try in Notation3 Editor &#128640;](file:///Users/timothyduval/Library/Mobile%20Documents/com~apple~CloudDocs/00_unifylogic/50-clients/w3c/N3/useOfBuiltins/core-specs/03-development/site/spec-builtins/src/log/semanticsOrError.n3)
 
 
 <div class=example>
-
-This is an example for a built-in function.
+    <p>
+Read the contents a non existing `<error.data>` and parse it as Notation3 (which of course will fail).
             
-```
-@prefix : <:> .
-@prefix string: <http://www.w3.org/2000/10/swap/string#> .
-:Let :string "placeholder" .
-{ :Let :string ?x . } => { :result :is ?x . } .
+    <p><b>Formula:</b>
+    ```
+@prefix : <http://example.org/>.
+@prefix log: <http://www.w3.org/2000/10/swap/log#> .
+
+{ <error.data> log:semantics ?semantics . } => { :result :is ?semantics } .
+            ```
+    <p><b>Result:</b>
+    ```
+@prefix : <http://example.org/>.
+:result :is """Unable to access document <file:////tmp/error.data>, because:
+    <urlopen error [Errno 2] No such file or directory: '//tmp/error.data'>""" .
             ```
 </div>            
 
-### log:includes() ### {#includes}
-The subject formula includes the object formula.
-`true` if and only if `s` includes `$o` if there exists some substitution which when applied to `$o` creates a formula B' such that for every statement in B' is also in `$s`, every variable universally (or existentially) quantified in B' is quantified in the same way in `$s`. 
-Variable substitution is applied recursively to nested compound terms such as formulae, lists and sets.
-Note: you can use this to peer inside nested formulae.
+### log:semantics ### {#semantics}
+Gets as object the quoted graph that results from parsing an online (N3) string, found by dereferencing the subject IRI.
 
-[Try in Notation3 Editor &#128640;](http://ppr.cs.dal.ca:3002/n3/editor/?formula=%40prefix%20%3A%20%3C%3A%3E%20.%0A%40prefix%20string%3A%20%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F10%2Fswap%2Fstring%23%3E%20.%0A%0A%3ALet%20%3Astring%20%22placeholder%22%20.%0A%0A%7B%20%3ALet%20%3Astring%20%3Fx%20.%20%7D%0A%3D%3E%0A%7B%20%3Aresult%20%3Ais%20%3Fx%20.%20%7D.%20)
-
-
-<div class=example>
-
-This is an example for a built-in function.
-            
-```
-@prefix : <:> .
-@prefix string: <http://www.w3.org/2000/10/swap/string#> .
-:Let :string "placeholder" .
-{ :Let :string ?x . } => { :result :is ?x . } .
-            ```
-</div>            
-
-### log:notEqualTo() ### {#notEqualTo}
-Determines if two RDF resources are not the same.
-`true` if and only if `$s` and `$o` are not the same RDF node (symbol or literal).
-
-[Try in Notation3 Editor &#128640;](http://ppr.cs.dal.ca:3002/n3/editor/?formula=%40prefix%20%3A%20%3C%3A%3E%20.%0A%40prefix%20string%3A%20%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F10%2Fswap%2Fstring%23%3E%20.%0A%0A%3ALet%20%3Astring%20%22placeholder%22%20.%0A%0A%7B%20%3ALet%20%3Astring%20%3Fx%20.%20%7D%0A%3D%3E%0A%7B%20%3Aresult%20%3Ais%20%3Fx%20.%20%7D.%20)
-
-
-<div class=example>
-
-This is an example for a built-in function.
-            
-```
-@prefix : <:> .
-@prefix string: <http://www.w3.org/2000/10/swap/string#> .
-:Let :string "placeholder" .
-{ :Let :string ?x . } => { :result :is ?x . } .
-            ```
-</div>            
-
-### log:notIncludes() ### {#notIncludes}
-The object formula is NOT a subset of subject.
-`true` if and only if `log:includes` is `false`. The converse of log:includes.
-Related: see `log:includes`.
-
-[Try in Notation3 Editor &#128640;](http://ppr.cs.dal.ca:3002/n3/editor/?formula=%40prefix%20%3A%20%3C%3A%3E%20.%0A%40prefix%20string%3A%20%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F10%2Fswap%2Fstring%23%3E%20.%0A%0A%3ALet%20%3Astring%20%22placeholder%22%20.%0A%0A%7B%20%3ALet%20%3Astring%20%3Fx%20.%20%7D%0A%3D%3E%0A%7B%20%3Aresult%20%3Ais%20%3Fx%20.%20%7D.%20)
-
-
-<div class=example>
-
-This is an example for a built-in function.
-            
-```
-@prefix : <:> .
-@prefix string: <http://www.w3.org/2000/10/swap/string#> .
-:Let :string "placeholder" .
-{ :Let :string ?x . } => { :result :is ?x . } .
-            ```
-</div>            
-
-### log:outputString() ### {#outputString}
-The subject is a key and the object is a string,
-where the strings are to be output in the order of the keys.
-See cwm --strings in cwm --help.
-
-
-[Try in Notation3 Editor &#128640;](http://ppr.cs.dal.ca:3002/n3/editor/?formula=%40prefix%20%3A%20%3C%3A%3E%20.%0A%40prefix%20string%3A%20%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F10%2Fswap%2Fstring%23%3E%20.%0A%0A%3ALet%20%3Astring%20%22placeholder%22%20.%0A%0A%7B%20%3ALet%20%3Astring%20%3Fx%20.%20%7D%0A%3D%3E%0A%7B%20%3Aresult%20%3Ais%20%3Fx%20.%20%7D.%20)
-
-
-<div class=example>
-
-This is an example for a built-in function.
-            
-```
-@prefix : <:> .
-@prefix string: <http://www.w3.org/2000/10/swap/string#> .
-:Let :string "placeholder" .
-{ :Let :string ?x . } => { :result :is ?x . } .
-            ```
-</div>            
-
-### log:parsedAsN3() ### {#parsedAsN3}
-The subject string, parsed as N3, gives this formula.
-`true` if and only if `$s`, parsed as N3, gives `$o`.
-`$s` should be a syntactically valid string in N3 format.
-Related: see `log:n3String`.
-
-[Try in Notation3 Editor &#128640;](http://ppr.cs.dal.ca:3002/n3/editor/?formula=%40prefix%20%3A%20%3C%3A%3E%20.%0A%40prefix%20string%3A%20%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F10%2Fswap%2Fstring%23%3E%20.%0A%0A%3ALet%20%3Astring%20%22placeholder%22%20.%0A%0A%7B%20%3ALet%20%3Astring%20%3Fx%20.%20%7D%0A%3D%3E%0A%7B%20%3Aresult%20%3Ais%20%3Fx%20.%20%7D.%20)
-
-
-<div class=example>
-
-This is an example for a built-in function.
-            
-```
-@prefix : <:> .
-@prefix string: <http://www.w3.org/2000/10/swap/string#> .
-:Let :string "placeholder" .
-{ :Let :string ?x . } => { :result :is ?x . } .
-            ```
-</div>            
-
-### log:rawType() ### {#rawType}
-Returns an identifier based on the type of the RDF Resource.
-`true` if the type of `$s` is the same as `$o`, or binds the type to `$o`.
-`$o` is unbound or one of `log:Formula`, `log:Literal`, `log:List`, `log:Set` or `log:Other`.
-Example: `log:semanticsOrError` returns either a formula or a string, and you can check which using `log:rawType`. 
-
-[Try in Notation3 Editor &#128640;](http://ppr.cs.dal.ca:3002/n3/editor/?formula=%40prefix%20%3A%20%3C%3A%3E%20.%0A%40prefix%20string%3A%20%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F10%2Fswap%2Fstring%23%3E%20.%0A%0A%3ALet%20%3Astring%20%22placeholder%22%20.%0A%0A%7B%20%3ALet%20%3Astring%20%3Fx%20.%20%7D%0A%3D%3E%0A%7B%20%3Aresult%20%3Ais%20%3Fx%20.%20%7D.%20)
-
-
-<div class=example>
-
-This is an example for a built-in function.
-            
-```
-@prefix : <:> .
-@prefix string: <http://www.w3.org/2000/10/swap/string#> .
-:Let :string "placeholder" .
-{ :Let :string ?x . } => { :result :is ?x . } .
-            ```
-</div>            
-
-### log:semantics() ### {#semantics}
-The log:semantics of a document is the formula achieved by parsing representation of the document.
+The log:semantics of a document is the formula achieved by parsing the representation of the document.
 For a document in Notation3, `log:semantics` is the `log:parsedAsN3` of the `log:content` of the document.
 For a document in another RDF syntax, it is parsed according to the appropriate specification to yield an RDF formula (a subclass of N3 `log:Formula`).
 Evaluates to `false` if an unrecognized document format is retrieved.
@@ -549,972 +1997,795 @@ Aside: Philosophers will be distracted here into worrying about the meaning of m
 In as much as N3 is used as an interlingua for interoperability for different systems, this for an N3 based system is the meaning expressed by a document.
 Related: see `log:parsedAsN3` and `log:content`.
 
-[Try in Notation3 Editor &#128640;](http://ppr.cs.dal.ca:3002/n3/editor/?formula=%40prefix%20%3A%20%3C%3A%3E%20.%0A%40prefix%20string%3A%20%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F10%2Fswap%2Fstring%23%3E%20.%0A%0A%3ALet%20%3Astring%20%22placeholder%22%20.%0A%0A%7B%20%3ALet%20%3Astring%20%3Fx%20.%20%7D%0A%3D%3E%0A%7B%20%3Aresult%20%3Ais%20%3Fx%20.%20%7D.%20)
+#### Schema(s) #### {#semantics_schemas} 
+<i>`( $s )+  log:semantics  $o? `</i>
+
+#### Examples #### {#semantics_examples}
+[Try in Notation3 Editor &#128640;](file:///Users/timothyduval/Library/Mobile%20Documents/com~apple~CloudDocs/00_unifylogic/50-clients/w3c/N3/useOfBuiltins/core-specs/03-development/site/spec-builtins/src/log/semantics.n3)
 
 
 <div class=example>
-
-This is an example for a built-in function.
+    <p>
+Read the contents of the file `<semantics.data>` and parse it as Notation3.
+We assume `<semantics.data>` contains the text:
+```       
+  @prefix : <http://example.org/>.
+  :Socrates a :Human .
+```       
             
-```
-@prefix : <:> .
-@prefix string: <http://www.w3.org/2000/10/swap/string#> .
-:Let :string "placeholder" .
-{ :Let :string ?x . } => { :result :is ?x . } .
+    <p><b>Formula:</b>
+    ```
+@prefix : <http://example.org/>.
+@prefix log: <http://www.w3.org/2000/10/swap/log#> .
+
+{ <semantics.data> log:semantics ?semantics . } => { :result :is ?semantics } .
+            ```
+    <p><b>Result:</b>
+    ```
+@prefix : <http://example.org/>.
+:result :is { :Socrates a :Human . } .
             ```
 </div>            
 
-### log:semanticsOrError() ### {#semanticsOrError}
-This connects a document and either the formula it parses to, or an error message explaining what went wrong with trying.
-Related: see `log:semantics`.
+### log:semantics ### {#semantics}
+Gets as object the quoted graph that results from parsing an online (N3) string, found by dereferencing the subject IRI.
 
-[Try in Notation3 Editor &#128640;](http://ppr.cs.dal.ca:3002/n3/editor/?formula=%40prefix%20%3A%20%3C%3A%3E%20.%0A%40prefix%20string%3A%20%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F10%2Fswap%2Fstring%23%3E%20.%0A%0A%3ALet%20%3Astring%20%22placeholder%22%20.%0A%0A%7B%20%3ALet%20%3Astring%20%3Fx%20.%20%7D%0A%3D%3E%0A%7B%20%3Aresult%20%3Ais%20%3Fx%20.%20%7D.%20)
+The log:semantics of a document is the formula achieved by parsing the representation of the document.
+For a document in Notation3, `log:semantics` is the `log:parsedAsN3` of the `log:content` of the document.
+For a document in another RDF syntax, it is parsed according to the appropriate specification to yield an RDF formula (a subclass of N3 `log:Formula`).
+Evaluates to `false` if an unrecognized document format is retrieved.
+Aside: Philosophers will be distracted here into worrying about the meaning of meaning. At least we didn't call this function "meaning"! 
+In as much as N3 is used as an interlingua for interoperability for different systems, this for an N3 based system is the meaning expressed by a document.
+Related: see `log:parsedAsN3` and `log:content`.
+
+#### Schema(s) #### {#semantics_schemas} 
+<i>`( $s )+  log:semantics  $o? `</i>
+
+#### Examples #### {#semantics_examples}
+[Try in Notation3 Editor &#128640;](file:///Users/timothyduval/Library/Mobile%20Documents/com~apple~CloudDocs/00_unifylogic/50-clients/w3c/N3/useOfBuiltins/core-specs/03-development/site/spec-builtins/src/log/semantics.n3)
 
 
 <div class=example>
-
-This is an example for a built-in function.
+    <p>
+Read the contents of the file `<semantics.data>` and parse it as Notation3.
+We assume `<semantics.data>` contains the text:
+```       
+  @prefix : <http://example.org/>.
+  :Socrates a :Human .
+```       
             
-```
-@prefix : <:> .
-@prefix string: <http://www.w3.org/2000/10/swap/string#> .
-:Let :string "placeholder" .
-{ :Let :string ?x . } => { :result :is ?x . } .
+    <p><b>Formula:</b>
+    ```
+@prefix : <http://example.org/>.
+@prefix log: <http://www.w3.org/2000/10/swap/log#> .
+
+{ <semantics.data> log:semantics ?semantics . } => { :result :is ?semantics } .
+            ```
+    <p><b>Result:</b>
+    ```
+@prefix : <http://example.org/>.
+:result :is { :Socrates a :Human . } .
             ```
 </div>            
 
-### log:skolem() ### {#skolem}
-Built-in to generate a Skolem IRI object which is a function of the arguments in the subject list
+### log:semantics ### {#semantics}
+Gets as object the quoted graph that results from parsing an online (N3) string, found by dereferencing the subject IRI.
 
-[Try in Notation3 Editor &#128640;](http://ppr.cs.dal.ca:3002/n3/editor/?formula=%40prefix%20%3A%20%3C%3A%3E%20.%0A%40prefix%20string%3A%20%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F10%2Fswap%2Fstring%23%3E%20.%0A%0A%3ALet%20%3Astring%20%22placeholder%22%20.%0A%0A%7B%20%3ALet%20%3Astring%20%3Fx%20.%20%7D%0A%3D%3E%0A%7B%20%3Aresult%20%3Ais%20%3Fx%20.%20%7D.%20)
+`true` if and only if `$o` is a quoted graph that results from parsing the string that results from dereferencing `$s`.
+
+#### Schema(s) #### {#semantics_schemas} 
+<i>`( $s )+  log:semantics  $o? `</i>
+
+#### Examples #### {#semantics_examples}
+[Try in Notation3 Editor &#128640;](file:///Users/timothyduval/Library/Mobile%20Documents/com~apple~CloudDocs/00_unifylogic/50-clients/w3c/N3/useOfBuiltins/core-specs/03-development/site/spec-builtins/src/log/semantics.n3)
 
 
 <div class=example>
-
-This is an example for a built-in function.
+    <p>
+Read the contents of the file `<semantics.data>` and parse it as Notation3.
+We assume `<semantics.data>` contains the text:
+```       
+  @prefix : <http://example.org/>.
+  :Socrates a :Human .
+```       
             
-```
-@prefix : <:> .
-@prefix string: <http://www.w3.org/2000/10/swap/string#> .
-:Let :string "placeholder" .
-{ :Let :string ?x . } => { :result :is ?x . } .
+    <p><b>Formula:</b>
+    ```
+@prefix : <http://example.org/>.
+@prefix log: <http://www.w3.org/2000/10/swap/log#> .
+
+{ <semantics.data> log:semantics ?semantics . } => { :result :is ?semantics } .
+            ```
+    <p><b>Result:</b>
+    ```
+@prefix : <http://example.org/>.
+:result :is { :Socrates a :Human . } .
             ```
 </div>            
 
-## math ## {#math}
-### math:absoluteValue() ### {#absoluteValue}
-The object is calulated as the absolute value of the subject.
+### log:semantics ### {#semantics}
+Gets as object the quoted graph that results from parsing an online (N3) string, found by dereferencing the subject IRI.
 
-[Try in Notation3 Editor &#128640;](http://ppr.cs.dal.ca:3002/n3/editor/?formula=%40prefix%20%3A%20%3C%3A%3E%20.%0A%40prefix%20string%3A%20%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F10%2Fswap%2Fstring%23%3E%20.%0A%0A%3ALet%20%3Astring%20%22placeholder%22%20.%0A%0A%7B%20%3ALet%20%3Astring%20%3Fx%20.%20%7D%0A%3D%3E%0A%7B%20%3Aresult%20%3Ais%20%3Fx%20.%20%7D.%20)
+`true` if and only if `$o` is a quoted graph that results from parsing the string that results from dereferencing `$s`.
+
+#### Schema(s) #### {#semantics_schemas} 
+<i>`( $s )+  log:semantics  $o? `</i>
+
+#### Examples #### {#semantics_examples}
+[Try in Notation3 Editor &#128640;](file:///Users/timothyduval/Library/Mobile%20Documents/com~apple~CloudDocs/00_unifylogic/50-clients/w3c/N3/useOfBuiltins/core-specs/03-development/site/spec-builtins/src/log/semantics.n3)
 
 
 <div class=example>
-
-This is an example for a built-in function.
+    <p>
+Read the contents of the file `<semantics.data>` and parse it as Notation3.
+We assume `<semantics.data>` contains the text:
+```       
+  @prefix : <http://example.org/>.
+  :Socrates a :Human .
+```       
             
-```
-@prefix : <:> .
-@prefix string: <http://www.w3.org/2000/10/swap/string#> .
-:Let :string "placeholder" .
-{ :Let :string ?x . } => { :result :is ?x . } .
+    <p><b>Formula:</b>
+    ```
+@prefix : <http://example.org/>.
+@prefix log: <http://www.w3.org/2000/10/swap/log#> .
+
+{ <semantics.data> log:semantics ?semantics . } => { :result :is ?semantics } .
             ```
-</div>            
-
-### math:acos() ### {#acos}
-The object is calulated as the arc cosine value of the subject.
-
-[Try in Notation3 Editor &#128640;](http://ppr.cs.dal.ca:3002/n3/editor/?formula=%40prefix%20%3A%20%3C%3A%3E%20.%0A%40prefix%20string%3A%20%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F10%2Fswap%2Fstring%23%3E%20.%0A%0A%3ALet%20%3Astring%20%22placeholder%22%20.%0A%0A%7B%20%3ALet%20%3Astring%20%3Fx%20.%20%7D%0A%3D%3E%0A%7B%20%3Aresult%20%3Ais%20%3Fx%20.%20%7D.%20)
-
-
-<div class=example>
-
-This is an example for a built-in function.
-            
-```
-@prefix : <:> .
-@prefix string: <http://www.w3.org/2000/10/swap/string#> .
-:Let :string "placeholder" .
-{ :Let :string ?x . } => { :result :is ?x . } .
-            ```
-</div>            
-
-### math:asin() ### {#asin}
-The object is calulated as the arc sine value of the subject.
-
-[Try in Notation3 Editor &#128640;](http://ppr.cs.dal.ca:3002/n3/editor/?formula=%40prefix%20%3A%20%3C%3A%3E%20.%0A%40prefix%20string%3A%20%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F10%2Fswap%2Fstring%23%3E%20.%0A%0A%3ALet%20%3Astring%20%22placeholder%22%20.%0A%0A%7B%20%3ALet%20%3Astring%20%3Fx%20.%20%7D%0A%3D%3E%0A%7B%20%3Aresult%20%3Ais%20%3Fx%20.%20%7D.%20)
-
-
-<div class=example>
-
-This is an example for a built-in function.
-            
-```
-@prefix : <:> .
-@prefix string: <http://www.w3.org/2000/10/swap/string#> .
-:Let :string "placeholder" .
-{ :Let :string ?x . } => { :result :is ?x . } .
-            ```
-</div>            
-
-### math:atan() ### {#atan}
-The object is calulated as the arc tangent value of the subject.
-
-[Try in Notation3 Editor &#128640;](http://ppr.cs.dal.ca:3002/n3/editor/?formula=%40prefix%20%3A%20%3C%3A%3E%20.%0A%40prefix%20string%3A%20%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F10%2Fswap%2Fstring%23%3E%20.%0A%0A%3ALet%20%3Astring%20%22placeholder%22%20.%0A%0A%7B%20%3ALet%20%3Astring%20%3Fx%20.%20%7D%0A%3D%3E%0A%7B%20%3Aresult%20%3Ais%20%3Fx%20.%20%7D.%20)
-
-
-<div class=example>
-
-This is an example for a built-in function.
-            
-```
-@prefix : <:> .
-@prefix string: <http://www.w3.org/2000/10/swap/string#> .
-:Let :string "placeholder" .
-{ :Let :string ?x . } => { :result :is ?x . } .
-            ```
-</div>            
-
-### math:cos() ### {#cos}
-The subject is an angle expressed in radians.
-The object is calulated as the cosine value of the subject.
-
-[Try in Notation3 Editor &#128640;](http://ppr.cs.dal.ca:3002/n3/editor/?formula=%40prefix%20%3A%20%3C%3A%3E%20.%0A%40prefix%20string%3A%20%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F10%2Fswap%2Fstring%23%3E%20.%0A%0A%3ALet%20%3Astring%20%22placeholder%22%20.%0A%0A%7B%20%3ALet%20%3Astring%20%3Fx%20.%20%7D%0A%3D%3E%0A%7B%20%3Aresult%20%3Ais%20%3Fx%20.%20%7D.%20)
-
-
-<div class=example>
-
-This is an example for a built-in function.
-            
-```
-@prefix : <:> .
-@prefix string: <http://www.w3.org/2000/10/swap/string#> .
-:Let :string "placeholder" .
-{ :Let :string ?x . } => { :result :is ?x . } .
-            ```
-</div>            
-
-### math:cosh() ### {#cosh}
-The subject is an angle expressed in radians.
-The object is calulated as the #hyperbolic cosine value of the subject.
-
-[Try in Notation3 Editor &#128640;](http://ppr.cs.dal.ca:3002/n3/editor/?formula=%40prefix%20%3A%20%3C%3A%3E%20.%0A%40prefix%20string%3A%20%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F10%2Fswap%2Fstring%23%3E%20.%0A%0A%3ALet%20%3Astring%20%22placeholder%22%20.%0A%0A%7B%20%3ALet%20%3Astring%20%3Fx%20.%20%7D%0A%3D%3E%0A%7B%20%3Aresult%20%3Ais%20%3Fx%20.%20%7D.%20)
-
-
-<div class=example>
-
-This is an example for a built-in function.
-            
-```
-@prefix : <:> .
-@prefix string: <http://www.w3.org/2000/10/swap/string#> .
-:Let :string "placeholder" .
-{ :Let :string ?x . } => { :result :is ?x . } .
-            ```
-</div>            
-
-### math:degrees() ### {#degrees}
-The subject is an angle expressed in radians.
-The object is calulated as the conversion in degrees of the value of the subject.
-
-[Try in Notation3 Editor &#128640;](http://ppr.cs.dal.ca:3002/n3/editor/?formula=%40prefix%20%3A%20%3C%3A%3E%20.%0A%40prefix%20string%3A%20%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F10%2Fswap%2Fstring%23%3E%20.%0A%0A%3ALet%20%3Astring%20%22placeholder%22%20.%0A%0A%7B%20%3ALet%20%3Astring%20%3Fx%20.%20%7D%0A%3D%3E%0A%7B%20%3Aresult%20%3Ais%20%3Fx%20.%20%7D.%20)
-
-
-<div class=example>
-
-This is an example for a built-in function.
-            
-```
-@prefix : <:> .
-@prefix string: <http://www.w3.org/2000/10/swap/string#> .
-:Let :string "placeholder" .
-{ :Let :string ?x . } => { :result :is ?x . } .
-            ```
-</div>            
-
-### math:difference() ### {#difference}
-The subject is a pair of numbers. The object
-is calculated by subtracting the second number of the pair from the first.
-
-
-[Try in Notation3 Editor &#128640;](http://ppr.cs.dal.ca:3002/n3/editor/?formula=%40prefix%20%3A%20%3C%3A%3E%20.%0A%40prefix%20string%3A%20%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F10%2Fswap%2Fstring%23%3E%20.%0A%0A%3ALet%20%3Astring%20%22placeholder%22%20.%0A%0A%7B%20%3ALet%20%3Astring%20%3Fx%20.%20%7D%0A%3D%3E%0A%7B%20%3Aresult%20%3Ais%20%3Fx%20.%20%7D.%20)
-
-
-<div class=example>
-
-This is an example for a built-in function.
-            
-```
-@prefix : <:> .
-@prefix string: <http://www.w3.org/2000/10/swap/string#> .
-:Let :string "placeholder" .
-{ :Let :string ?x . } => { :result :is ?x . } .
-            ```
-</div>            
-
-### math:equalTo() ### {#equalTo}
-Checks equality of numbers.
-   
-`true` if and only if `$s` is equal to `$o`.
-
-[Try in Notation3 Editor &#128640;](http://ppr.cs.dal.ca:3002/n3/editor/?formula=%40prefix%20%3A%20%3C%3A%3E%20.%0A%40prefix%20string%3A%20%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F10%2Fswap%2Fstring%23%3E%20.%0A%0A%3ALet%20%3Astring%20%22placeholder%22%20.%0A%0A%7B%20%3ALet%20%3Astring%20%3Fx%20.%20%7D%0A%3D%3E%0A%7B%20%3Aresult%20%3Ais%20%3Fx%20.%20%7D.%20)
-
-
-<div class=example>
-
-This is an example for a built-in function.
-            
-```
-@prefix : <:> .
-@prefix string: <http://www.w3.org/2000/10/swap/string#> .
-:Let :string "placeholder" .
-{ :Let :string ?x . } => { :result :is ?x . } .
-            ```
-</div>            
-
-### math:exponentiation() ### {#exponentiation}
-The subject is a pair of numbers. The object
-is calculated by raising the first number of the power of the second.
-
-
-[Try in Notation3 Editor &#128640;](http://ppr.cs.dal.ca:3002/n3/editor/?formula=%40prefix%20%3A%20%3C%3A%3E%20.%0A%40prefix%20string%3A%20%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F10%2Fswap%2Fstring%23%3E%20.%0A%0A%3ALet%20%3Astring%20%22placeholder%22%20.%0A%0A%7B%20%3ALet%20%3Astring%20%3Fx%20.%20%7D%0A%3D%3E%0A%7B%20%3Aresult%20%3Ais%20%3Fx%20.%20%7D.%20)
-
-
-<div class=example>
-
-This is an example for a built-in function.
-            
-```
-@prefix : <:> .
-@prefix string: <http://www.w3.org/2000/10/swap/string#> .
-:Let :string "placeholder" .
-{ :Let :string ?x . } => { :result :is ?x . } .
-            ```
-</div>            
-
-### math:greaterThan() ### {#greaterThan}
-`true` if and only if the subject is a number which is greater than the object.
-
-[Try in Notation3 Editor &#128640;](http://ppr.cs.dal.ca:3002/n3/editor/?formula=%40prefix%20%3A%20%3C%3A%3E%20.%0A%40prefix%20string%3A%20%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F10%2Fswap%2Fstring%23%3E%20.%0A%0A%3ALet%20%3Astring%20%22placeholder%22%20.%0A%0A%7B%20%3ALet%20%3Astring%20%3Fx%20.%20%7D%0A%3D%3E%0A%7B%20%3Aresult%20%3Ais%20%3Fx%20.%20%7D.%20)
-
-
-<div class=example>
-
-This is an example for a built-in function.
-            
-```
-@prefix : <:> .
-@prefix string: <http://www.w3.org/2000/10/swap/string#> .
-:Let :string "placeholder" .
-{ :Let :string ?x . } => { :result :is ?x . } .
-            ```
-</div>            
-
-### math:lessThan() ### {#lessThan}
-`true` if and only if the subject is a number which is LESS than a object.
-
-[Try in Notation3 Editor &#128640;](http://ppr.cs.dal.ca:3002/n3/editor/?formula=%40prefix%20%3A%20%3C%3A%3E%20.%0A%40prefix%20string%3A%20%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F10%2Fswap%2Fstring%23%3E%20.%0A%0A%3ALet%20%3Astring%20%22placeholder%22%20.%0A%0A%7B%20%3ALet%20%3Astring%20%3Fx%20.%20%7D%0A%3D%3E%0A%7B%20%3Aresult%20%3Ais%20%3Fx%20.%20%7D.%20)
-
-
-<div class=example>
-
-This is an example for a built-in function.
-            
-```
-@prefix : <:> .
-@prefix string: <http://www.w3.org/2000/10/swap/string#> .
-:Let :string "placeholder" .
-{ :Let :string ?x . } => { :result :is ?x . } .
-            ```
-</div>            
-
-### math:negation() ### {#negation}
-The subject or object is calculated to be the negation of the other.
-
-[Try in Notation3 Editor &#128640;](http://ppr.cs.dal.ca:3002/n3/editor/?formula=%40prefix%20%3A%20%3C%3A%3E%20.%0A%40prefix%20string%3A%20%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F10%2Fswap%2Fstring%23%3E%20.%0A%0A%3ALet%20%3Astring%20%22placeholder%22%20.%0A%0A%7B%20%3ALet%20%3Astring%20%3Fx%20.%20%7D%0A%3D%3E%0A%7B%20%3Aresult%20%3Ais%20%3Fx%20.%20%7D.%20)
-
-
-<div class=example>
-
-This is an example for a built-in function.
-            
-```
-@prefix : <:> .
-@prefix string: <http://www.w3.org/2000/10/swap/string#> .
-:Let :string "placeholder" .
-{ :Let :string ?x . } => { :result :is ?x . } .
-            ```
-</div>            
-
-### math:notEqualTo() ### {#notEqualTo}
-`true` if and only if the subject is a number which is NOT EQUAL to a object.
-
-[Try in Notation3 Editor &#128640;](http://ppr.cs.dal.ca:3002/n3/editor/?formula=%40prefix%20%3A%20%3C%3A%3E%20.%0A%40prefix%20string%3A%20%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F10%2Fswap%2Fstring%23%3E%20.%0A%0A%3ALet%20%3Astring%20%22placeholder%22%20.%0A%0A%7B%20%3ALet%20%3Astring%20%3Fx%20.%20%7D%0A%3D%3E%0A%7B%20%3Aresult%20%3Ais%20%3Fx%20.%20%7D.%20)
-
-
-<div class=example>
-
-This is an example for a built-in function.
-            
-```
-@prefix : <:> .
-@prefix string: <http://www.w3.org/2000/10/swap/string#> .
-:Let :string "placeholder" .
-{ :Let :string ?x . } => { :result :is ?x . } .
-            ```
-</div>            
-
-### math:notGreaterThan() ### {#notGreaterThan}
-`true` if and only if the subject is a number which is NOT greater than the object.
-
-[Try in Notation3 Editor &#128640;](http://ppr.cs.dal.ca:3002/n3/editor/?formula=%40prefix%20%3A%20%3C%3A%3E%20.%0A%40prefix%20string%3A%20%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F10%2Fswap%2Fstring%23%3E%20.%0A%0A%3ALet%20%3Astring%20%22placeholder%22%20.%0A%0A%7B%20%3ALet%20%3Astring%20%3Fx%20.%20%7D%0A%3D%3E%0A%7B%20%3Aresult%20%3Ais%20%3Fx%20.%20%7D.%20)
-
-
-<div class=example>
-
-This is an example for a built-in function.
-            
-```
-@prefix : <:> .
-@prefix string: <http://www.w3.org/2000/10/swap/string#> .
-:Let :string "placeholder" .
-{ :Let :string ?x . } => { :result :is ?x . } .
-            ```
-</div>            
-
-### math:notLessThan() ### {#notLessThan}
-`true` if and only if the subject is a number which is NOT LESS than a object.
-
-[Try in Notation3 Editor &#128640;](http://ppr.cs.dal.ca:3002/n3/editor/?formula=%40prefix%20%3A%20%3C%3A%3E%20.%0A%40prefix%20string%3A%20%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F10%2Fswap%2Fstring%23%3E%20.%0A%0A%3ALet%20%3Astring%20%22placeholder%22%20.%0A%0A%7B%20%3ALet%20%3Astring%20%3Fx%20.%20%7D%0A%3D%3E%0A%7B%20%3Aresult%20%3Ais%20%3Fx%20.%20%7D.%20)
-
-
-<div class=example>
-
-This is an example for a built-in function.
-            
-```
-@prefix : <:> .
-@prefix string: <http://www.w3.org/2000/10/swap/string#> .
-:Let :string "placeholder" .
-{ :Let :string ?x . } => { :result :is ?x . } .
-            ```
-</div>            
-
-### math:product() ### {#product}
-The subject is a list of numbers.
-The object is calculated as the arithmentic product of those numbers.
-
-
-[Try in Notation3 Editor &#128640;](http://ppr.cs.dal.ca:3002/n3/editor/?formula=%40prefix%20%3A%20%3C%3A%3E%20.%0A%40prefix%20string%3A%20%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F10%2Fswap%2Fstring%23%3E%20.%0A%0A%3ALet%20%3Astring%20%22placeholder%22%20.%0A%0A%7B%20%3ALet%20%3Astring%20%3Fx%20.%20%7D%0A%3D%3E%0A%7B%20%3Aresult%20%3Ais%20%3Fx%20.%20%7D.%20)
-
-
-<div class=example>
-
-This is an example for a built-in function.
-            
-```
-@prefix : <:> .
-@prefix string: <http://www.w3.org/2000/10/swap/string#> .
-:Let :string "placeholder" .
-{ :Let :string ?x . } => { :result :is ?x . } .
-            ```
-</div>            
-
-### math:quotient() ### {#quotient}
-The subject is a pair of numbers. The object
-is calculated by dividing the first number of the pair by the second.
-
-
-[Try in Notation3 Editor &#128640;](http://ppr.cs.dal.ca:3002/n3/editor/?formula=%40prefix%20%3A%20%3C%3A%3E%20.%0A%40prefix%20string%3A%20%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F10%2Fswap%2Fstring%23%3E%20.%0A%0A%3ALet%20%3Astring%20%22placeholder%22%20.%0A%0A%7B%20%3ALet%20%3Astring%20%3Fx%20.%20%7D%0A%3D%3E%0A%7B%20%3Aresult%20%3Ais%20%3Fx%20.%20%7D.%20)
-
-
-<div class=example>
-
-This is an example for a built-in function.
-            
-```
-@prefix : <:> .
-@prefix string: <http://www.w3.org/2000/10/swap/string#> .
-:Let :string "placeholder" .
-{ :Let :string ?x . } => { :result :is ?x . } .
-            ```
-</div>            
-
-### math:remainder() ### {#remainder}
-The subject is a pair of integers. The object
-is calculated by dividing the first number of the pair by the second and taking the remainder.
-
-
-[Try in Notation3 Editor &#128640;](http://ppr.cs.dal.ca:3002/n3/editor/?formula=%40prefix%20%3A%20%3C%3A%3E%20.%0A%40prefix%20string%3A%20%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F10%2Fswap%2Fstring%23%3E%20.%0A%0A%3ALet%20%3Astring%20%22placeholder%22%20.%0A%0A%7B%20%3ALet%20%3Astring%20%3Fx%20.%20%7D%0A%3D%3E%0A%7B%20%3Aresult%20%3Ais%20%3Fx%20.%20%7D.%20)
-
-
-<div class=example>
-
-This is an example for a built-in function.
-            
-```
-@prefix : <:> .
-@prefix string: <http://www.w3.org/2000/10/swap/string#> .
-:Let :string "placeholder" .
-{ :Let :string ?x . } => { :result :is ?x . } .
-            ```
-</div>            
-
-### math:rounded() ### {#rounded}
-The object is calulated as the number with no fractional part that is closest to the subject.
-If there are two such numbers, then the one that is closest to positive infinity is returned.
-
-
-[Try in Notation3 Editor &#128640;](http://ppr.cs.dal.ca:3002/n3/editor/?formula=%40prefix%20%3A%20%3C%3A%3E%20.%0A%40prefix%20string%3A%20%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F10%2Fswap%2Fstring%23%3E%20.%0A%0A%3ALet%20%3Astring%20%22placeholder%22%20.%0A%0A%7B%20%3ALet%20%3Astring%20%3Fx%20.%20%7D%0A%3D%3E%0A%7B%20%3Aresult%20%3Ais%20%3Fx%20.%20%7D.%20)
-
-
-<div class=example>
-
-This is an example for a built-in function.
-            
-```
-@prefix : <:> .
-@prefix string: <http://www.w3.org/2000/10/swap/string#> .
-:Let :string "placeholder" .
-{ :Let :string ?x . } => { :result :is ?x . } .
-            ```
-</div>            
-
-### math:sin() ### {#sin}
-The subject is an angle expressed in radians.
-The object is calulated as the sine value of the subject.
-
-[Try in Notation3 Editor &#128640;](http://ppr.cs.dal.ca:3002/n3/editor/?formula=%40prefix%20%3A%20%3C%3A%3E%20.%0A%40prefix%20string%3A%20%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F10%2Fswap%2Fstring%23%3E%20.%0A%0A%3ALet%20%3Astring%20%22placeholder%22%20.%0A%0A%7B%20%3ALet%20%3Astring%20%3Fx%20.%20%7D%0A%3D%3E%0A%7B%20%3Aresult%20%3Ais%20%3Fx%20.%20%7D.%20)
-
-
-<div class=example>
-
-This is an example for a built-in function.
-            
-```
-@prefix : <:> .
-@prefix string: <http://www.w3.org/2000/10/swap/string#> .
-:Let :string "placeholder" .
-{ :Let :string ?x . } => { :result :is ?x . } .
-            ```
-</div>            
-
-### math:sinh() ### {#sinh}
-The subject is an angle expressed in radians.
-The object is calulated as the hyperbolic sine value of the subject.
-
-[Try in Notation3 Editor &#128640;](http://ppr.cs.dal.ca:3002/n3/editor/?formula=%40prefix%20%3A%20%3C%3A%3E%20.%0A%40prefix%20string%3A%20%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F10%2Fswap%2Fstring%23%3E%20.%0A%0A%3ALet%20%3Astring%20%22placeholder%22%20.%0A%0A%7B%20%3ALet%20%3Astring%20%3Fx%20.%20%7D%0A%3D%3E%0A%7B%20%3Aresult%20%3Ais%20%3Fx%20.%20%7D.%20)
-
-
-<div class=example>
-
-This is an example for a built-in function.
-            
-```
-@prefix : <:> .
-@prefix string: <http://www.w3.org/2000/10/swap/string#> .
-:Let :string "placeholder" .
-{ :Let :string ?x . } => { :result :is ?x . } .
-            ```
-</div>            
-
-### math:sum() ### {#sum}
-Performs addition of numbers. 
-`true` if and only if the arithmetic sum of `$s_1, .. $s_n` equals `$o`.
-
-[Try in Notation3 Editor &#128640;](http://ppr.cs.dal.ca:3002/n3/editor/?formula=%40prefix%20%3A%20%3C%3A%3E%20.%0A%40prefix%20string%3A%20%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F10%2Fswap%2Fstring%23%3E%20.%0A%0A%3ALet%20%3Astring%20%22placeholder%22%20.%0A%0A%7B%20%3ALet%20%3Astring%20%3Fx%20.%20%7D%0A%3D%3E%0A%7B%20%3Aresult%20%3Ais%20%3Fx%20.%20%7D.%20)
-
-
-<div class=example>
-
-This is an example for a built-in function.
-            
-```
-@prefix : <:> .
-@prefix string: <http://www.w3.org/2000/10/swap/string#> .
-:Let :string "placeholder" .
-{ :Let :string ?x . } => { :result :is ?x . } .
-            ```
-</div>            
-
-### math:tan() ### {#tan}
-The subject is an angle expressed in radians.
-The object is calulated as the tangent value of the subject.
-
-[Try in Notation3 Editor &#128640;](http://ppr.cs.dal.ca:3002/n3/editor/?formula=%40prefix%20%3A%20%3C%3A%3E%20.%0A%40prefix%20string%3A%20%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F10%2Fswap%2Fstring%23%3E%20.%0A%0A%3ALet%20%3Astring%20%22placeholder%22%20.%0A%0A%7B%20%3ALet%20%3Astring%20%3Fx%20.%20%7D%0A%3D%3E%0A%7B%20%3Aresult%20%3Ais%20%3Fx%20.%20%7D.%20)
-
-
-<div class=example>
-
-This is an example for a built-in function.
-            
-```
-@prefix : <:> .
-@prefix string: <http://www.w3.org/2000/10/swap/string#> .
-:Let :string "placeholder" .
-{ :Let :string ?x . } => { :result :is ?x . } .
-            ```
-</div>            
-
-### math:tanh() ### {#tanh}
-The subject is an angle expressed in radians.
-The object is calulated as the hyperbolic tangent value of the subject.
-
-[Try in Notation3 Editor &#128640;](http://ppr.cs.dal.ca:3002/n3/editor/?formula=%40prefix%20%3A%20%3C%3A%3E%20.%0A%40prefix%20string%3A%20%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F10%2Fswap%2Fstring%23%3E%20.%0A%0A%3ALet%20%3Astring%20%22placeholder%22%20.%0A%0A%7B%20%3ALet%20%3Astring%20%3Fx%20.%20%7D%0A%3D%3E%0A%7B%20%3Aresult%20%3Ais%20%3Fx%20.%20%7D.%20)
-
-
-<div class=example>
-
-This is an example for a built-in function.
-            
-```
-@prefix : <:> .
-@prefix string: <http://www.w3.org/2000/10/swap/string#> .
-:Let :string "placeholder" .
-{ :Let :string ?x . } => { :result :is ?x . } .
+    <p><b>Result:</b>
+    ```
+@prefix : <http://example.org/>.
+:result :is { :Socrates a :Human . } .
             ```
 </div>            
 
 ## string ## {#string}
-### string:concatenation() ### {#concatenation}
-Concatenates the given strings. 
-    
-`true` if and only if the string concatenation of `$s_1, .. $s_n` equals `$o`.
+### string:notGreaterThan ### {#notGreaterThan}
+Checks whether the subject string is not greater than the object string, according to Unicode code order.
+You can use this as an equivalent of a lessThanOrEqual operator.
 
-[Try in Notation3 Editor &#128640;](http://ppr.cs.dal.ca:3002/n3/editor/?formula=%40prefix%20%3A%20%3C%3A%3E%20.%0A%40prefix%20string%3A%20%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F10%2Fswap%2Fstring%23%3E%20.%0A%0A%3ALet%20%3Astring%20%22placeholder%22%20.%0A%0A%7B%20%3ALet%20%3Astring%20%3Fx%20.%20%7D%0A%3D%3E%0A%7B%20%3Aresult%20%3Ais%20%3Fx%20.%20%7D.%20)
+`true` if and only if `$s` is not greater than `$o` as per the Unicode code order.
 
+#### Schema(s) #### {#notGreaterThan_schemas} 
+<i>`( $s )+  string:notGreaterThan  $o? `</i>
 
-<div class=example>
-
-This is an example for a built-in function.
-            
-```
-@prefix : <:> .
-@prefix string: <http://www.w3.org/2000/10/swap/string#> .
-:Let :string "placeholder" .
-{ :Let :string ?x . } => { :result :is ?x . } .
-            ```
-</div>            
-
-### string:contains() ### {#contains}
-True iff the subject string contains the object string.
-
-[Try in Notation3 Editor &#128640;](http://ppr.cs.dal.ca:3002/n3/editor/?formula=%40prefix%20%3A%20%3C%3A%3E%20.%0A%40prefix%20string%3A%20%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F10%2Fswap%2Fstring%23%3E%20.%0A%0A%3ALet%20%3Astring%20%22placeholder%22%20.%0A%0A%7B%20%3ALet%20%3Astring%20%3Fx%20.%20%7D%0A%3D%3E%0A%7B%20%3Aresult%20%3Ais%20%3Fx%20.%20%7D.%20)
+#### Examples #### {#notGreaterThan_examples}
+[Try in Notation3 Editor &#128640;](file:///Users/timothyduval/Library/Mobile%20Documents/com~apple~CloudDocs/00_unifylogic/50-clients/w3c/N3/useOfBuiltins/core-specs/03-development/site/spec-builtins/src/string/notGreaterThan.n3)
 
 
 <div class=example>
-
-This is an example for a built-in function.
+    <p>
+Checks whether the string "Cat" is not greater than the string "Penguin" .
             
-```
-@prefix : <:> .
+    <p><b>Formula:</b>
+    ```
+@prefix : <http://example.org/>.
 @prefix string: <http://www.w3.org/2000/10/swap/string#> .
-:Let :string "placeholder" .
-{ :Let :string ?x . } => { :result :is ?x . } .
+
+:Let :param1 "Cat" .
+:Let :param2 "Penguin".
+{
+    :Let :param1 ?param1 .
+    :Let :param2 ?param2 .
+    ?param1 string:notGreaterThan ?param2 .
+}
+=>
+{
+    :result :is true .
+} .
+            ```
+    <p><b>Result:</b>
+    ```
+@prefix : <http://example.org/>.
+:result :is true . 
             ```
 </div>            
 
-### string:containsIgnoringCase() ### {#containsIgnoringCase}
-True iff the subject string contains the object string,
-with the comparison done ignoring the difference between upper case and
-lower case characters.
+### string:notEqualIgnoringCase ### {#notEqualIgnoringCase}
+Checks whether the subject string is not the same as the object string, ignoring differences between lowercase and uppercase.
 
-[Try in Notation3 Editor &#128640;](http://ppr.cs.dal.ca:3002/n3/editor/?formula=%40prefix%20%3A%20%3C%3A%3E%20.%0A%40prefix%20string%3A%20%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F10%2Fswap%2Fstring%23%3E%20.%0A%0A%3ALet%20%3Astring%20%22placeholder%22%20.%0A%0A%7B%20%3ALet%20%3Astring%20%3Fx%20.%20%7D%0A%3D%3E%0A%7B%20%3Aresult%20%3Ais%20%3Fx%20.%20%7D.%20)
+`true` if and only if `$s` is not the same string as `$o` when ignoring case differences.
+
+#### Schema(s) #### {#notEqualIgnoringCase_schemas} 
+<i>`( $s )+  string:notEqualIgnoringCase  $o? `</i>
+
+#### Examples #### {#notEqualIgnoringCase_examples}
+[Try in Notation3 Editor &#128640;](file:///Users/timothyduval/Library/Mobile%20Documents/com~apple~CloudDocs/00_unifylogic/50-clients/w3c/N3/useOfBuiltins/core-specs/03-development/site/spec-builtins/src/string/notEqualIgnoringCase.n3)
 
 
 <div class=example>
-
-This is an example for a built-in function.
+    <p>
+Checks whether the string "hello world!" is not equal to "hELLo dunia!" ignorning the case .
             
-```
-@prefix : <:> .
+    <p><b>Formula:</b>
+    ```
+@prefix : <http://example.org/>.
 @prefix string: <http://www.w3.org/2000/10/swap/string#> .
-:Let :string "placeholder" .
-{ :Let :string ?x . } => { :result :is ?x . } .
+
+:Let :param1 "hello world!" .
+:Let :param2 "hELLo dunia!" .
+{
+    :Let :param1 ?param1 .
+    :Let :param2 ?param2 .
+    ?param1 string:notEqualIgnoringCase ?param2 .
+}
+=>
+{
+    :result :is true .
+} .
+            ```
+    <p><b>Result:</b>
+    ```
+@prefix : <http://example.org/>.
+:result :is true . 
             ```
 </div>            
 
-### string:endsWith() ### {#endsWith}
-True iff the subject string ends with the object string.
+### string:contains ### {#contains}
+Checks whether the subject string contains the object string.
 
-[Try in Notation3 Editor &#128640;](http://ppr.cs.dal.ca:3002/n3/editor/?formula=%40prefix%20%3A%20%3C%3A%3E%20.%0A%40prefix%20string%3A%20%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F10%2Fswap%2Fstring%23%3E%20.%0A%0A%3ALet%20%3Astring%20%22placeholder%22%20.%0A%0A%7B%20%3ALet%20%3Astring%20%3Fx%20.%20%7D%0A%3D%3E%0A%7B%20%3Aresult%20%3Ais%20%3Fx%20.%20%7D.%20)
+`true` if and only if `$s` contains `$o`.
+
+#### Schema(s) #### {#contains_schemas} 
+<i>`( $s )+  string:contains  $o? `</i>
+
+#### Examples #### {#contains_examples}
+[Try in Notation3 Editor &#128640;](file:///Users/timothyduval/Library/Mobile%20Documents/com~apple~CloudDocs/00_unifylogic/50-clients/w3c/N3/useOfBuiltins/core-specs/03-development/site/spec-builtins/src/string/contains.n3)
 
 
 <div class=example>
-
-This is an example for a built-in function.
+    <p>
+Checks whether the string "hello world!" contains the string "llo worl".
             
-```
-@prefix : <:> .
+    <p><b>Formula:</b>
+    ```
+@prefix : <http://example.org/>.
 @prefix string: <http://www.w3.org/2000/10/swap/string#> .
-:Let :string "placeholder" .
-{ :Let :string ?x . } => { :result :is ?x . } .
+
+:Let :param1 "hello world!" .
+:Let :param2 "llo worl".
+{
+    :Let :param1 ?param1 .
+    :Let :param2 ?param2 .
+    ?param1 string:contains ?param2 .
+}
+=>
+{
+    :result :is true .
+} .
+            ```
+    <p><b>Result:</b>
+    ```
+@prefix : <http://example.org/>.
+:result :is true . 
             ```
 </div>            
 
-### string:equalIgnoringCase() ### {#equalIgnoringCase}
-True iff the subject string is the same as object string
-ignoring differences between upper and lower case.
+### string:greaterThan ### {#greaterThan}
+Checks whether the subject string is greater than the object string, according to Unicode code order.
 
-[Try in Notation3 Editor &#128640;](http://ppr.cs.dal.ca:3002/n3/editor/?formula=%40prefix%20%3A%20%3C%3A%3E%20.%0A%40prefix%20string%3A%20%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F10%2Fswap%2Fstring%23%3E%20.%0A%0A%3ALet%20%3Astring%20%22placeholder%22%20.%0A%0A%7B%20%3ALet%20%3Astring%20%3Fx%20.%20%7D%0A%3D%3E%0A%7B%20%3Aresult%20%3Ais%20%3Fx%20.%20%7D.%20)
+`true` if and only if `$s` is greater than `$o` as per the Unicode code order.
+
+#### Schema(s) #### {#greaterThan_schemas} 
+<i>`( $s )+  string:greaterThan  $o? `</i>
+
+#### Examples #### {#greaterThan_examples}
+[Try in Notation3 Editor &#128640;](file:///Users/timothyduval/Library/Mobile%20Documents/com~apple~CloudDocs/00_unifylogic/50-clients/w3c/N3/useOfBuiltins/core-specs/03-development/site/spec-builtins/src/string/greaterThan.n3)
 
 
 <div class=example>
-
-This is an example for a built-in function.
+    <p>
+Checks whether the string "Pengiun" is greater than the string "Cat" .
             
-```
-@prefix : <:> .
+    <p><b>Formula:</b>
+    ```
+@prefix : <http://example.org/>.
 @prefix string: <http://www.w3.org/2000/10/swap/string#> .
-:Let :string "placeholder" .
-{ :Let :string ?x . } => { :result :is ?x . } .
+
+:Let :param1 "Penguin" .
+:Let :param2 "Cat".
+{
+    :Let :param1 ?param1 .
+    :Let :param2 ?param2 .
+    ?param1 string:greaterThan ?param2 .
+}
+=>
+{
+    :result :is true .
+} .
+            ```
+    <p><b>Result:</b>
+    ```
+@prefix : <http://example.org/>.
+:result :is true . 
             ```
 </div>            
 
-### string:format() ### {#format}
-The subject is a list, whose first member is a format string,
-and whose remaining members are arguments to the format string.
-The formating string is in the style of python's % operator,
-very similar to C's sprintf().
-The object is calculated from the subject.
+### string:containsIgnoringCase ### {#containsIgnoringCase}
+Checks whether the subject string contains the object string, ignoring differences between lowercase and uppercase.
 
-[Try in Notation3 Editor &#128640;](http://ppr.cs.dal.ca:3002/n3/editor/?formula=%40prefix%20%3A%20%3C%3A%3E%20.%0A%40prefix%20string%3A%20%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F10%2Fswap%2Fstring%23%3E%20.%0A%0A%3ALet%20%3Astring%20%22placeholder%22%20.%0A%0A%7B%20%3ALet%20%3Astring%20%3Fx%20.%20%7D%0A%3D%3E%0A%7B%20%3Aresult%20%3Ais%20%3Fx%20.%20%7D.%20)
+`true` if and only if `$s` contains `$o` when ignoring case differences.
+
+#### Schema(s) #### {#containsIgnoringCase_schemas} 
+<i>`( $s )+  string:containsIgnoringCase  $o? `</i>
+
+#### Examples #### {#containsIgnoringCase_examples}
+[Try in Notation3 Editor &#128640;](file:///Users/timothyduval/Library/Mobile%20Documents/com~apple~CloudDocs/00_unifylogic/50-clients/w3c/N3/useOfBuiltins/core-specs/03-development/site/spec-builtins/src/string/containsIgnoringCase.n3)
 
 
 <div class=example>
-
-This is an example for a built-in function.
+    <p>
+Checks whether the string "hello world!" contains the string "lLO woRl".
             
-```
-@prefix : <:> .
+    <p><b>Formula:</b>
+    ```
+@prefix : <http://example.org/>.
 @prefix string: <http://www.w3.org/2000/10/swap/string#> .
-:Let :string "placeholder" .
-{ :Let :string ?x . } => { :result :is ?x . } .
+
+:Let :param1 "hello world!" .
+:Let :param2 "lLO woRl".
+{
+    :Let :param1 ?param1 .
+    :Let :param2 ?param2 .
+    ?param1 string:containsIgnoringCase ?param2 .
+}
+=>
+{
+    :result :is true .
+} .
+            ```
+    <p><b>Result:</b>
+    ```
+@prefix : <http://example.org/>.
+:result :is true . 
             ```
 </div>            
 
-### string:greaterThan() ### {#greaterThan}
-True iff the string is greater than the object
-when ordered according to Unicode(tm) code order.
+### string:notLessThan ### {#notLessThan}
+Checks whether the subject string is not less than the object string, according to Unicode code order.
+You can use this as an equivalent of a greaterThanOrEqual operator.
 
-[Try in Notation3 Editor &#128640;](http://ppr.cs.dal.ca:3002/n3/editor/?formula=%40prefix%20%3A%20%3C%3A%3E%20.%0A%40prefix%20string%3A%20%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F10%2Fswap%2Fstring%23%3E%20.%0A%0A%3ALet%20%3Astring%20%22placeholder%22%20.%0A%0A%7B%20%3ALet%20%3Astring%20%3Fx%20.%20%7D%0A%3D%3E%0A%7B%20%3Aresult%20%3Ais%20%3Fx%20.%20%7D.%20)
+`true` if and only if `$s` is not less than `$o` as per the Unicode code order.
+
+#### Schema(s) #### {#notLessThan_schemas} 
+<i>`( $s )+  string:notLessThan  $o? `</i>
+
+#### Examples #### {#notLessThan_examples}
+[Try in Notation3 Editor &#128640;](file:///Users/timothyduval/Library/Mobile%20Documents/com~apple~CloudDocs/00_unifylogic/50-clients/w3c/N3/useOfBuiltins/core-specs/03-development/site/spec-builtins/src/string/notLessThan.n3)
 
 
 <div class=example>
-
-This is an example for a built-in function.
+    <p>
+Checks whether the string "Penguin" is not less than the string "Cat" .
             
-```
-@prefix : <:> .
+    <p><b>Formula:</b>
+    ```
+@prefix : <http://example.org/>.
 @prefix string: <http://www.w3.org/2000/10/swap/string#> .
-:Let :string "placeholder" .
-{ :Let :string ?x . } => { :result :is ?x . } .
+
+:Let :param1 "Penguin".
+:Let :param2 "Cat" .
+{
+    :Let :param1 ?param1 .
+    :Let :param2 ?param2 .
+    ?param1 string:notLessThan ?param2 .
+}
+=>
+{
+    :result :is true .
+} .
+            ```
+    <p><b>Result:</b>
+    ```
+@prefix : <http://example.org/>.
+:result :is true . 
             ```
 </div>            
 
-### string:lessThan() ### {#lessThan}
-True iff the string is less than the object
-when ordered according to Unicode(tm) code order.
+### string:endsWith ### {#endsWith}
+Checks whether the subject string ends with the object string.
 
-[Try in Notation3 Editor &#128640;](http://ppr.cs.dal.ca:3002/n3/editor/?formula=%40prefix%20%3A%20%3C%3A%3E%20.%0A%40prefix%20string%3A%20%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F10%2Fswap%2Fstring%23%3E%20.%0A%0A%3ALet%20%3Astring%20%22placeholder%22%20.%0A%0A%7B%20%3ALet%20%3Astring%20%3Fx%20.%20%7D%0A%3D%3E%0A%7B%20%3Aresult%20%3Ais%20%3Fx%20.%20%7D.%20)
+`true` if and only if `$s` ends with `$o`.
+
+#### Schema(s) #### {#endsWith_schemas} 
+<i>`( $s )+  string:endsWith  $o? `</i>
+
+#### Examples #### {#endsWith_examples}
+[Try in Notation3 Editor &#128640;](file:///Users/timothyduval/Library/Mobile%20Documents/com~apple~CloudDocs/00_unifylogic/50-clients/w3c/N3/useOfBuiltins/core-specs/03-development/site/spec-builtins/src/string/endsWith.n3)
 
 
 <div class=example>
-
-This is an example for a built-in function.
+    <p>
+Checks whether the string "hello world!" ends with "orld!".
             
-```
-@prefix : <:> .
+    <p><b>Formula:</b>
+    ```
+@prefix : <http://example.org/>.
 @prefix string: <http://www.w3.org/2000/10/swap/string#> .
-:Let :string "placeholder" .
-{ :Let :string ?x . } => { :result :is ?x . } .
+
+:Let :param1 "hello world!" .
+:Let :param2 "orld!".
+{
+    :Let :param1 ?param1 .
+    :Let :param2 ?param2 .
+    ?param1 string:endsWith ?param2 .
+}
+=>
+{
+    :result :is true .
+} .
+            ```
+    <p><b>Result:</b>
+    ```
+@prefix : <http://example.org/>.
+:result :is true . 
             ```
 </div>            
 
-### string:matches() ### {#matches}
-The subject is a string;
-the object is is a regular expression in the perl, python style.
-It is true iff the string matches the regexp.
+### string:scrape ### {#scrape}
+Calculates the object as the first matching group when, given the subject list, matching the second string as regular expression (with exactly 1 group) against the first string.
 
-[Try in Notation3 Editor &#128640;](http://ppr.cs.dal.ca:3002/n3/editor/?formula=%40prefix%20%3A%20%3C%3A%3E%20.%0A%40prefix%20string%3A%20%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F10%2Fswap%2Fstring%23%3E%20.%0A%0A%3ALet%20%3Astring%20%22placeholder%22%20.%0A%0A%7B%20%3ALet%20%3Astring%20%3Fx%20.%20%7D%0A%3D%3E%0A%7B%20%3Aresult%20%3Ais%20%3Fx%20.%20%7D.%20)
+`true` if and only if `$o` is the first matching group when matching `$s.2` as a regular expression against `$s.1`
+
+#### Schema(s) #### {#scrape_schemas} 
+<i>`( $s )+  string:scrape  $o? `</i>
+
+#### Examples #### {#scrape_examples}
+[Try in Notation3 Editor &#128640;](file:///Users/timothyduval/Library/Mobile%20Documents/com~apple~CloudDocs/00_unifylogic/50-clients/w3c/N3/useOfBuiltins/core-specs/03-development/site/spec-builtins/src/string/scrape.n3)
 
 
 <div class=example>
-
-This is an example for a built-in function.
+    <p>
+Extract from the string "https://w3c.github.io/N3/spec/" the last path element using a regular expression .
             
-```
-@prefix : <:> .
+    <p><b>Formula:</b>
+    ```
+@prefix : <http://example.org/>.
 @prefix string: <http://www.w3.org/2000/10/swap/string#> .
-:Let :string "placeholder" .
-{ :Let :string ?x . } => { :result :is ?x . } .
+
+:Let :param1 "https://w3c.github.io/N3/spec/" . 
+:Let :param2 ".*/([^/]+/)$" .
+{
+    :Let :param1 ?param1 .
+    :Let :param2 ?param2 .
+    (?param1 ?param2) string:scrape ?result .
+}
+=>
+{
+    :result :is ?result .
+} .
+            ```
+    <p><b>Result:</b>
+    ```
+@prefix : <http://example.org/>.
+:result :is "spec/". 
             ```
 </div>            
 
-### string:notEqualIgnoringCase() ### {#notEqualIgnoringCase}
-True iff the subject string is the NOT same as object string
-ignoring differences between upper and lower case.
+### string:replace ### {#replace}
+Calculates the object as the result of, given the strings in the subject list, replacing all occurrences of the second string in the first string with the third string.
 
-[Try in Notation3 Editor &#128640;](http://ppr.cs.dal.ca:3002/n3/editor/?formula=%40prefix%20%3A%20%3C%3A%3E%20.%0A%40prefix%20string%3A%20%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F10%2Fswap%2Fstring%23%3E%20.%0A%0A%3ALet%20%3Astring%20%22placeholder%22%20.%0A%0A%7B%20%3ALet%20%3Astring%20%3Fx%20.%20%7D%0A%3D%3E%0A%7B%20%3Aresult%20%3Ais%20%3Fx%20.%20%7D.%20)
+`true` if and only if `$o` is the result of replacing all occurrences of `$s.2` in `$s.1` with `$s.3`
+
+#### Schema(s) #### {#replace_schemas} 
+<i>`( $s )+  string:replace  $o? `</i>
+
+#### Examples #### {#replace_examples}
+[Try in Notation3 Editor &#128640;](file:///Users/timothyduval/Library/Mobile%20Documents/com~apple~CloudDocs/00_unifylogic/50-clients/w3c/N3/useOfBuiltins/core-specs/03-development/site/spec-builtins/src/string/replace.n3)
 
 
 <div class=example>
-
-This is an example for a built-in function.
+    <p>
+Replace all "l"-s in the string "hello world!" with the bracket version "[l]" .
             
-```
-@prefix : <:> .
+    <p><b>Formula:</b>
+    ```
+@prefix : <http://example.org/>.
 @prefix string: <http://www.w3.org/2000/10/swap/string#> .
-:Let :string "placeholder" .
-{ :Let :string ?x . } => { :result :is ?x . } .
+
+:Let :data "hello world!" .
+:Let :search "(l)" .
+:Let :replace "[$1]" .
+{
+    :Let :data ?data .
+    :Let :search ?search .
+    :Let :replace ?replace .
+    (?data ?search ?replace) string:replace ?result .
+}
+=>
+{
+    :result :is ?result .
+} .
+            ```
+    <p><b>Result:</b>
+    ```
+@prefix : <http://example.org/>.
+:result :is "he[l][l]o wor[l]d!". 
             ```
 </div>            
 
-### string:notGreaterThan() ### {#notGreaterThan}
-True iff the string is NOT greater than the object
-when ordered according to Unicode(tm) code order.
+### string:lessThan ### {#lessThan}
+Checks whether the subject string is less than the object string, according to Unicode code order.
 
-[Try in Notation3 Editor &#128640;](http://ppr.cs.dal.ca:3002/n3/editor/?formula=%40prefix%20%3A%20%3C%3A%3E%20.%0A%40prefix%20string%3A%20%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F10%2Fswap%2Fstring%23%3E%20.%0A%0A%3ALet%20%3Astring%20%22placeholder%22%20.%0A%0A%7B%20%3ALet%20%3Astring%20%3Fx%20.%20%7D%0A%3D%3E%0A%7B%20%3Aresult%20%3Ais%20%3Fx%20.%20%7D.%20)
+`true` if and only if `$s` is less than `$o` as per the Unicode code order.
+
+#### Schema(s) #### {#lessThan_schemas} 
+<i>`( $s )+  string:lessThan  $o? `</i>
+
+#### Examples #### {#lessThan_examples}
+[Try in Notation3 Editor &#128640;](file:///Users/timothyduval/Library/Mobile%20Documents/com~apple~CloudDocs/00_unifylogic/50-clients/w3c/N3/useOfBuiltins/core-specs/03-development/site/spec-builtins/src/string/lessThan.n3)
 
 
 <div class=example>
-
-This is an example for a built-in function.
+    <p>
+Checks whether the string "Cat" is less than the string "Penguin" .
             
-```
-@prefix : <:> .
+    <p><b>Formula:</b>
+    ```
+@prefix : <http://example.org/>.
 @prefix string: <http://www.w3.org/2000/10/swap/string#> .
-:Let :string "placeholder" .
-{ :Let :string ?x . } => { :result :is ?x . } .
+
+:Let :param1 "Cat" .
+:Let :param2 "Penguin".
+{
+    :Let :param1 ?param1 .
+    :Let :param2 ?param2 .
+    ?param1 string:lessThan ?param2 .
+}
+=>
+{
+    :result :is true .
+} .
+            ```
+    <p><b>Result:</b>
+    ```
+@prefix : <http://example.org/>.
+:result :is true . 
             ```
 </div>            
 
-### string:notLessThan() ### {#notLessThan}
-True iff the string is NOT less than the object
-when ordered according to Unicode(tm) code order.
+### string:concatenation ### {#concatenation}
+Concatenates the strings from the subject list into a single string as object.
 
-[Try in Notation3 Editor &#128640;](http://ppr.cs.dal.ca:3002/n3/editor/?formula=%40prefix%20%3A%20%3C%3A%3E%20.%0A%40prefix%20string%3A%20%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F10%2Fswap%2Fstring%23%3E%20.%0A%0A%3ALet%20%3Astring%20%22placeholder%22%20.%0A%0A%7B%20%3ALet%20%3Astring%20%3Fx%20.%20%7D%0A%3D%3E%0A%7B%20%3Aresult%20%3Ais%20%3Fx%20.%20%7D.%20)
+`true` if and only if the string concatenation of `$s.i` equals `$o`.
+
+#### Schema(s) #### {#concatenation_schemas} 
+<i>`( $s )+  string:concatenation  $o? `</i>
+
+#### Examples #### {#concatenation_examples}
+[Try in Notation3 Editor &#128640;](file:///Users/timothyduval/Library/Mobile%20Documents/com~apple~CloudDocs/00_unifylogic/50-clients/w3c/N3/useOfBuiltins/core-specs/03-development/site/spec-builtins/src/string/concatenation.n3)
 
 
 <div class=example>
-
-This is an example for a built-in function.
+    <p>
+Concatenates the string "hello", " " and "world!".
             
-```
-@prefix : <:> .
+    <p><b>Formula:</b>
+    ```
+@prefix : <http://example.org/>.
 @prefix string: <http://www.w3.org/2000/10/swap/string#> .
-:Let :string "placeholder" .
-{ :Let :string ?x . } => { :result :is ?x . } .
+
+:Let :param ( "hello" " " "world!" ) .
+
+{
+    :Let :param ?param .
+    ?param string:concatenation ?result .
+}
+=>
+{
+    :result :is ?result .
+} .
+            ```
+    <p><b>Result:</b>
+    ```
+@prefix : <http://example.org/>.
+:result :is "hello world!". 
             ```
 </div>            
 
-### string:notMatches() ### {#notMatches}
-The subject string;
-the object is is a regular expression in the perl, python style.
-It is true iff the string does NOT match the regexp.
+### string:equalIgnoringCase ### {#equalIgnoringCase}
+Checks whether the subject string is the same as the object string, ignoring differences between lowercase and uppercase.
 
-[Try in Notation3 Editor &#128640;](http://ppr.cs.dal.ca:3002/n3/editor/?formula=%40prefix%20%3A%20%3C%3A%3E%20.%0A%40prefix%20string%3A%20%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F10%2Fswap%2Fstring%23%3E%20.%0A%0A%3ALet%20%3Astring%20%22placeholder%22%20.%0A%0A%7B%20%3ALet%20%3Astring%20%3Fx%20.%20%7D%0A%3D%3E%0A%7B%20%3Aresult%20%3Ais%20%3Fx%20.%20%7D.%20)
+`true` if and only if `$s` is the same string as `$o` when ignoring case differences.
+
+#### Schema(s) #### {#equalIgnoringCase_schemas} 
+<i>`( $s )+  string:equalIgnoringCase  $o? `</i>
+
+#### Examples #### {#equalIgnoringCase_examples}
+[Try in Notation3 Editor &#128640;](file:///Users/timothyduval/Library/Mobile%20Documents/com~apple~CloudDocs/00_unifylogic/50-clients/w3c/N3/useOfBuiltins/core-specs/03-development/site/spec-builtins/src/string/equalIgnoringCase.n3)
 
 
 <div class=example>
-
-This is an example for a built-in function.
+    <p>
+Checks whether the string "hello world!" is equal to "hELLo wORld!" ignoring the case .
             
-```
-@prefix : <:> .
+    <p><b>Formula:</b>
+    ```
+@prefix : <http://example.org/>.
 @prefix string: <http://www.w3.org/2000/10/swap/string#> .
-:Let :string "placeholder" .
-{ :Let :string ?x . } => { :result :is ?x . } .
+
+:Let :param1 "hello world!" .
+:Let :param2 "hELLo wORld!" .
+{
+    :Let :param1 ?param1 .
+    :Let :param2 ?param2 .
+    ?param1 string:equalIgnoringCase ?param2 .
+}
+=>
+{
+    :result :is true .
+} .
+            ```
+    <p><b>Result:</b>
+    ```
+@prefix : <http://example.org/>.
+:result :is true . 
             ```
 </div>            
 
-### string:replace() ### {#replace}
-A built-in for replacing characters or sub.
-takes a list of 3 strings; the first is the
-input data, the second the old and the third the new string.
-The object is calculated as the replaced string.
-For example, ("fofof bar", "of", "baz") string:replace "fbazbaz bar".
+### string:startsWith ### {#startsWith}
+Checks whether the subject string starts with the object string.
 
-[Try in Notation3 Editor &#128640;](http://ppr.cs.dal.ca:3002/n3/editor/?formula=%40prefix%20%3A%20%3C%3A%3E%20.%0A%40prefix%20string%3A%20%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F10%2Fswap%2Fstring%23%3E%20.%0A%0A%3ALet%20%3Astring%20%22placeholder%22%20.%0A%0A%7B%20%3ALet%20%3Astring%20%3Fx%20.%20%7D%0A%3D%3E%0A%7B%20%3Aresult%20%3Ais%20%3Fx%20.%20%7D.%20)
+`true` if and only if `$s` starts with `$o`.
+
+#### Schema(s) #### {#startsWith_schemas} 
+<i>`( $s )+  string:startsWith  $o? `</i>
+
+#### Examples #### {#startsWith_examples}
+[Try in Notation3 Editor &#128640;](file:///Users/timothyduval/Library/Mobile%20Documents/com~apple~CloudDocs/00_unifylogic/50-clients/w3c/N3/useOfBuiltins/core-specs/03-development/site/spec-builtins/src/string/startsWith.n3)
 
 
 <div class=example>
-
-This is an example for a built-in function.
+    <p>
+Checks whether the string "hello world!" starts with "hello" .
             
-```
-@prefix : <:> .
+    <p><b>Formula:</b>
+    ```
+@prefix : <http://example.org/>.
 @prefix string: <http://www.w3.org/2000/10/swap/string#> .
-:Let :string "placeholder" .
-{ :Let :string ?x . } => { :result :is ?x . } .
+
+:Let :param1 "hello world!" .
+:Let :param2 "hello".
+{
+    :Let :param1 ?param1 .
+    :Let :param2 ?param2 .
+    ?param1 string:startsWith ?param2 .
+}
+=>
+{
+    :result :is true .
+} .
+            ```
+    <p><b>Result:</b>
+    ```
+@prefix : <http://example.org/>.
+:result :is true . 
             ```
 </div>            
 
-### string:scrape() ### {#scrape}
-The subject is a list of two strings. The second string is
-a regular expression in the perl, python style.
-It must contain one group (a part in parentheses).  If the first string in the list matches
-the regular expression, then the object is calculated as being the
-part of the first string which matches the group.
+### string:matches ### {#matches}
+Checks whether the subject string matches the object regular expression.
+The regular expression follows the perl, python style.
 
-[Try in Notation3 Editor &#128640;](http://ppr.cs.dal.ca:3002/n3/editor/?formula=%40prefix%20%3A%20%3C%3A%3E%20.%0A%40prefix%20string%3A%20%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F10%2Fswap%2Fstring%23%3E%20.%0A%0A%3ALet%20%3Astring%20%22placeholder%22%20.%0A%0A%7B%20%3ALet%20%3Astring%20%3Fx%20.%20%7D%0A%3D%3E%0A%7B%20%3Aresult%20%3Ais%20%3Fx%20.%20%7D.%20)
+`true` if and only if string `$s` matches the regular expression `$o`
+
+#### Schema(s) #### {#matches_schemas} 
+<i>`( $s )+  string:matches  $o? `</i>
+
+#### Examples #### {#matches_examples}
+[Try in Notation3 Editor &#128640;](file:///Users/timothyduval/Library/Mobile%20Documents/com~apple~CloudDocs/00_unifylogic/50-clients/w3c/N3/useOfBuiltins/core-specs/03-development/site/spec-builtins/src/string/matches.n3)
 
 
 <div class=example>
-
-This is an example for a built-in function.
+    <p>
+Checks whether the string "hello world!" matches the regular expression ".*(l)+o wo.*".
             
-```
-@prefix : <:> .
+    <p><b>Formula:</b>
+    ```
+@prefix : <http://example.org/>.
 @prefix string: <http://www.w3.org/2000/10/swap/string#> .
-:Let :string "placeholder" .
-{ :Let :string ?x . } => { :result :is ?x . } .
+
+:Let :param1 "hello world!" .
+:Let :param2 ".*(l)+o wo.*".
+{
+    :Let :param1 ?param1 .
+    :Let :param2 ?param2 .
+    ?param1 string:matches ?param2 .
+}
+=>
+{
+    :result :is true .
+} .
+            ```
+    <p><b>Result:</b>
+    ```
+@prefix : <http://example.org/>.
+:result :is true . 
             ```
 </div>            
 
-### string:startsWith() ### {#startsWith}
-True iff the subject string starts with the object string.
+### string:notMatches ### {#notMatches}
+Checks whether the subject string does not match the object regular expression.
+The regular expression follows the perl, python style.
 
-[Try in Notation3 Editor &#128640;](http://ppr.cs.dal.ca:3002/n3/editor/?formula=%40prefix%20%3A%20%3C%3A%3E%20.%0A%40prefix%20string%3A%20%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F10%2Fswap%2Fstring%23%3E%20.%0A%0A%3ALet%20%3Astring%20%22placeholder%22%20.%0A%0A%7B%20%3ALet%20%3Astring%20%3Fx%20.%20%7D%0A%3D%3E%0A%7B%20%3Aresult%20%3Ais%20%3Fx%20.%20%7D.%20)
+`true` if and only if string `$s` does not match the regular expression `$o`
+
+#### Schema(s) #### {#notMatches_schemas} 
+<i>`( $s )+  string:notMatches  $o? `</i>
+
+#### Examples #### {#notMatches_examples}
+[Try in Notation3 Editor &#128640;](file:///Users/timothyduval/Library/Mobile%20Documents/com~apple~CloudDocs/00_unifylogic/50-clients/w3c/N3/useOfBuiltins/core-specs/03-development/site/spec-builtins/src/string/notMatches.n3)
 
 
 <div class=example>
-
-This is an example for a built-in function.
+    <p>
+Checks whether the string "hello world!" no matches the regular expression ".*(l)+o dunia.*".
             
-```
-@prefix : <:> .
+    <p><b>Formula:</b>
+    ```
+@prefix : <http://example.org/>.
 @prefix string: <http://www.w3.org/2000/10/swap/string#> .
-:Let :string "placeholder" .
-{ :Let :string ?x . } => { :result :is ?x . } .
+
+:Let :param1 "hello world!" .
+:Let :param2 ".*(l)+o dunia.*".
+{
+    :Let :param1 ?param1 .
+    :Let :param2 ?param2 .
+    ?param1 string:notMatches ?param2 .
+}
+=>
+{
+    :result :is true .
+} .
+            ```
+    <p><b>Result:</b>
+    ```
+@prefix : <http://example.org/>.
+:result :is true . 
             ```
 </div>            
 
-## time ## {#time}
-### time:day() ### {#day}
+### string:format ### {#format}
+Calculates the object as the result of replacing the tags in the first string from the subject list with the remaining strings from the subject list.
+See C's sprintf function for details on these tags.
 
-`true` if and only if $s is a `xsd:dateTime` and $o is the integer day component of the dateTime.
-$o can be calculated as a function of $s.
+`true` if and only if `$o` is the result of replacing the tags found in `$s.1` with the strings `$s.i>1`
 
+#### Schema(s) #### {#format_schemas} 
+<i>`( $s )+  string:format  $o? `</i>
 
-[Try in Notation3 Editor &#128640;](http://ppr.cs.dal.ca:3002/n3/editor/?formula=%40prefix%20%3A%20%3C%3A%3E%20.%0A%40prefix%20string%3A%20%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F10%2Fswap%2Fstring%23%3E%20.%0A%0A%3ALet%20%3Astring%20%22placeholder%22%20.%0A%0A%7B%20%3ALet%20%3Astring%20%3Fx%20.%20%7D%0A%3D%3E%0A%7B%20%3Aresult%20%3Ais%20%3Fx%20.%20%7D.%20)
+#### Examples #### {#format_examples}
+[Try in Notation3 Editor &#128640;](file:///Users/timothyduval/Library/Mobile%20Documents/com~apple~CloudDocs/00_unifylogic/50-clients/w3c/N3/useOfBuiltins/core-specs/03-development/site/spec-builtins/src/string/format.n3)
 
 
 <div class=example>
-
-This is an example for a built-in function.
+    <p>
+Calculate the result of applying the format "%s://%s/%s" to the strings "https", "w3c.github.io" and "N3/spec" .
             
-```
-@prefix : <:> .
+    <p><b>Formula:</b>
+    ```
+@prefix : <http://example.org/>.
 @prefix string: <http://www.w3.org/2000/10/swap/string#> .
-:Let :string "placeholder" .
-{ :Let :string ?x . } => { :result :is ?x . } .
+
+:Let :param ( "%s://%s/%s" "https" "w3c.github.io" "N3/spec/" ) .
+
+{
+    :Let :param ?param .
+    ?param string:format ?result .
+}
+=>
+{
+    :result :is ?result .
+} .
             ```
-</div>            
-
-### time:minute() ### {#minute}
-
-`true` if and only if $s is a `xsd:dateTime` and $o is the integer minutes component of the dateTime.
-$o can be calculated as a function of $s.
-
-
-[Try in Notation3 Editor &#128640;](http://ppr.cs.dal.ca:3002/n3/editor/?formula=%40prefix%20%3A%20%3C%3A%3E%20.%0A%40prefix%20string%3A%20%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F10%2Fswap%2Fstring%23%3E%20.%0A%0A%3ALet%20%3Astring%20%22placeholder%22%20.%0A%0A%7B%20%3ALet%20%3Astring%20%3Fx%20.%20%7D%0A%3D%3E%0A%7B%20%3Aresult%20%3Ais%20%3Fx%20.%20%7D.%20)
-
-
-<div class=example>
-
-This is an example for a built-in function.
-            
-```
-@prefix : <:> .
-@prefix string: <http://www.w3.org/2000/10/swap/string#> .
-:Let :string "placeholder" .
-{ :Let :string ?x . } => { :result :is ?x . } .
-            ```
-</div>            
-
-### time:month() ### {#month}
-
-`true` if and only if $s is a `xsd:dateTime` and $o is the integer month component of the dateTime.
-$o can be calculated as a function of $s.
-
-
-[Try in Notation3 Editor &#128640;](http://ppr.cs.dal.ca:3002/n3/editor/?formula=%40prefix%20%3A%20%3C%3A%3E%20.%0A%40prefix%20string%3A%20%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F10%2Fswap%2Fstring%23%3E%20.%0A%0A%3ALet%20%3Astring%20%22placeholder%22%20.%0A%0A%7B%20%3ALet%20%3Astring%20%3Fx%20.%20%7D%0A%3D%3E%0A%7B%20%3Aresult%20%3Ais%20%3Fx%20.%20%7D.%20)
-
-
-<div class=example>
-
-This is an example for a built-in function.
-            
-```
-@prefix : <:> .
-@prefix string: <http://www.w3.org/2000/10/swap/string#> .
-:Let :string "placeholder" .
-{ :Let :string ?x . } => { :result :is ?x . } .
-            ```
-</div>            
-
-### time:second() ### {#second}
-
-`true` if and only if $s is a `xsd:dateTime` and $o is the integer seconds component of the dateTime.
-$o can be calculated as a function of $s.
-
-
-[Try in Notation3 Editor &#128640;](http://ppr.cs.dal.ca:3002/n3/editor/?formula=%40prefix%20%3A%20%3C%3A%3E%20.%0A%40prefix%20string%3A%20%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F10%2Fswap%2Fstring%23%3E%20.%0A%0A%3ALet%20%3Astring%20%22placeholder%22%20.%0A%0A%7B%20%3ALet%20%3Astring%20%3Fx%20.%20%7D%0A%3D%3E%0A%7B%20%3Aresult%20%3Ais%20%3Fx%20.%20%7D.%20)
-
-
-<div class=example>
-
-This is an example for a built-in function.
-            
-```
-@prefix : <:> .
-@prefix string: <http://www.w3.org/2000/10/swap/string#> .
-:Let :string "placeholder" .
-{ :Let :string ?x . } => { :result :is ?x . } .
-            ```
-</div>            
-
-### time:timeZone() ### {#timeZone}
-
-`true` if and only if $s is a `xsd:dateTime` and $o is the trailing timezone offset
-part, e.g.  "-05:00"..
-$o can be calculated as a function of $s.
-
-
-[Try in Notation3 Editor &#128640;](http://ppr.cs.dal.ca:3002/n3/editor/?formula=%40prefix%20%3A%20%3C%3A%3E%20.%0A%40prefix%20string%3A%20%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F10%2Fswap%2Fstring%23%3E%20.%0A%0A%3ALet%20%3Astring%20%22placeholder%22%20.%0A%0A%7B%20%3ALet%20%3Astring%20%3Fx%20.%20%7D%0A%3D%3E%0A%7B%20%3Aresult%20%3Ais%20%3Fx%20.%20%7D.%20)
-
-
-<div class=example>
-
-This is an example for a built-in function.
-            
-```
-@prefix : <:> .
-@prefix string: <http://www.w3.org/2000/10/swap/string#> .
-:Let :string "placeholder" .
-{ :Let :string ?x . } => { :result :is ?x . } .
-            ```
-</div>            
-
-### time:year() ### {#year}
-
-`true` if and only if $s is a `xsd:dateTime` and $o is the integer year component of the dateTime.
-$o can be calculated as a function of $s.
-
-
-[Try in Notation3 Editor &#128640;](http://ppr.cs.dal.ca:3002/n3/editor/?formula=%40prefix%20%3A%20%3C%3A%3E%20.%0A%40prefix%20string%3A%20%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F10%2Fswap%2Fstring%23%3E%20.%0A%0A%3ALet%20%3Astring%20%22placeholder%22%20.%0A%0A%7B%20%3ALet%20%3Astring%20%3Fx%20.%20%7D%0A%3D%3E%0A%7B%20%3Aresult%20%3Ais%20%3Fx%20.%20%7D.%20)
-
-
-<div class=example>
-
-This is an example for a built-in function.
-            
-```
-@prefix : <:> .
-@prefix string: <http://www.w3.org/2000/10/swap/string#> .
-:Let :string "placeholder" .
-{ :Let :string ?x . } => { :result :is ?x . } .
+    <p><b>Result:</b>
+    ```
+@prefix : <http://example.org/>.
+:result :is "https://w3c.github.io/N3/spec/". 
             ```
 </div>            
 
 
+
+
+<h2 class="appendix">Acknowledgements</h2>
+		<p>The editors acknowledge valuable contributions from...</p>
