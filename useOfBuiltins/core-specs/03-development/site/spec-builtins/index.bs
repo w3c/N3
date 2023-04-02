@@ -293,7 +293,7 @@ You can use this as an equivalent of a lessThanOrEqual operator.
 <i>`( $s )+  math:notGreaterThan  $o- `</i>
 
 #### Examples #### {#notGreaterThan_examples}
-[Try in Notation3 Editor &#128640;](file:///Users/timothyduval/Library/Mobile%20Documents/com~apple~CloudDocs/00_unifylogic/50-clients/w3c/N3/useOfBuiltins/core-specs/03-development/site/spec-builtins/src/math/notGreaterThan.n3)
+[Try in Notation3 Editor &#128640;](https://n3-editor.herokuapp.com/n3/editor/?formula=%40prefix+%3A+%3Chttp%3A%2F%2Fexample.org%2F%3E.%0A%40prefix+math%3A+%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F10%2Fswap%2Fmath%23%3E+.%0A%0A%3ALet+%3Aparam+%2841+42%29+.%0A%0A%7B%0A++++%3ALet+%3Aparam+%28%3FX+%3FY%29+.%0A++++%3FX+math%3AnotGreaterThan+%3FY+.%0A%7D%0A%3D%3E%0A%7B%0A++++%3Aresult+%3Ais+true+.%0A%7D+.)
 
 
 <div class=example>
@@ -332,7 +332,7 @@ Calculates as object the absolute value of the subject.
 <i>`( $s )+  math:absoluteValue  $o- `</i>
 
 #### Examples #### {#absoluteValue_examples}
-[Try in Notation3 Editor &#128640;](file:///Users/timothyduval/Library/Mobile%20Documents/com~apple~CloudDocs/00_unifylogic/50-clients/w3c/N3/useOfBuiltins/core-specs/03-development/site/spec-builtins/src/math/absoluteValue.n3)
+[Try in Notation3 Editor &#128640;](https://n3-editor.herokuapp.com/n3/editor/?formula=%40prefix+%3A+%3Chttp%3A%2F%2Fexample.org%2F%3E.%0A%40prefix+math%3A+%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F10%2Fswap%2Fmath%23%3E+.%0A%0A%3ALet+%3Aparam+-2+.%0A%0A%7B%0A++++%3ALet+%3Aparam+%3Fparam+.%0A++++%3Fparam+math%3AabsoluteValue+%3Fresult+.%0A%7D%0A%3D%3E%0A%7B%0A++++%3Aresult+%3Ais+%3Fresult+.%0A%7D+.)
 
 
 <div class=example>
@@ -371,7 +371,7 @@ Checks whether the subject is a number that is greater than the object.
 <i>`( $s )+  math:greaterThan  $o- `</i>
 
 #### Examples #### {#greaterThan_examples}
-[Try in Notation3 Editor &#128640;](file:///Users/timothyduval/Library/Mobile%20Documents/com~apple~CloudDocs/00_unifylogic/50-clients/w3c/N3/useOfBuiltins/core-specs/03-development/site/spec-builtins/src/math/greaterThan.n3)
+[Try in Notation3 Editor &#128640;](https://n3-editor.herokuapp.com/n3/editor/?formula=%40prefix+%3A+%3Chttp%3A%2F%2Fexample.org%2F%3E.%0A%40prefix+math%3A+%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F10%2Fswap%2Fmath%23%3E+.%0A%0A%3ALet+%3Aparam+%2842+41%29+.%0A%0A%7B%0A++++%3ALet+%3Aparam+%28%3FX+%3FY%29+.%0A++++%3FX+math%3AgreaterThan+%3FY+.%0A%7D%0A%3D%3E%0A%7B%0A++++%3Aresult+%3Ais+true+.%0A%7D+.)
 
 
 <div class=example>
@@ -411,7 +411,7 @@ You can use this as an equivalent of a greaterThanOrEqual operator.
 <i>`( $s )+  math:notLessThan  $o- `</i>
 
 #### Examples #### {#notLessThan_examples}
-[Try in Notation3 Editor &#128640;](file:///Users/timothyduval/Library/Mobile%20Documents/com~apple~CloudDocs/00_unifylogic/50-clients/w3c/N3/useOfBuiltins/core-specs/03-development/site/spec-builtins/src/math/notLessThan.n3)
+[Try in Notation3 Editor &#128640;](https://n3-editor.herokuapp.com/n3/editor/?formula=%40prefix+%3A+%3Chttp%3A%2F%2Fexample.org%2F%3E.%0A%40prefix+math%3A+%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F10%2Fswap%2Fmath%23%3E+.%0A%0A%3ALet+%3Aparam+%2842+41%29+.%0A%0A%7B%0A++++%3ALet+%3Aparam+%28%3FX+%3FY%29+.%0A++++%3FX+math%3AnotLessThan+%3FY+.%0A%7D%0A%3D%3E%0A%7B%0A++++%3Aresult+%3Ais+true+.%0A%7D+.)
 
 
 <div class=example>
@@ -450,7 +450,7 @@ Calculates the object as the sine value of the subject.
 <i>`( $s )+  math:sin  $o- `</i>
 
 #### Examples #### {#sin_examples}
-[Try in Notation3 Editor &#128640;](file:///Users/timothyduval/Library/Mobile%20Documents/com~apple~CloudDocs/00_unifylogic/50-clients/w3c/N3/useOfBuiltins/core-specs/03-development/site/spec-builtins/src/math/sin.n3)
+[Try in Notation3 Editor &#128640;](https://n3-editor.herokuapp.com/n3/editor/?formula=%40prefix+%3A+%3Chttp%3A%2F%2Fexample.org%2F%3E.%0A%40prefix+math%3A+%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F10%2Fswap%2Fmath%23%3E+.%0A%40prefix+xsd%3A+%3Chttp%3A%2F%2Fwww.w3.org%2F2001%2FXMLSchema%23%3E+.%0A%0A%3ALet+%3Aparam+%221.57079632679%22%5E%5Exsd%3Adouble+.%0A%0A%7B%0A++++%3ALet+%3Aparam+%3Fparam+.%0A++++%3Fparam+math%3Asin+%3Fresult+.%0A%7D%0A%3D%3E%0A%7B%0A++++%3Aresult+%3Ais+%3Fresult+.%0A%7D+.)
 
 
 <div class=example>
@@ -491,7 +491,7 @@ Checks whether the subject is a number that is less than the object.
 <i>`( $s )+  math:lessThan  $o- `</i>
 
 #### Examples #### {#lessThan_examples}
-[Try in Notation3 Editor &#128640;](file:///Users/timothyduval/Library/Mobile%20Documents/com~apple~CloudDocs/00_unifylogic/50-clients/w3c/N3/useOfBuiltins/core-specs/03-development/site/spec-builtins/src/math/lessThan.n3)
+[Try in Notation3 Editor &#128640;](https://n3-editor.herokuapp.com/n3/editor/?formula=%40prefix+%3A+%3Chttp%3A%2F%2Fexample.org%2F%3E.%0A%40prefix+math%3A+%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F10%2Fswap%2Fmath%23%3E+.%0A%0A%3ALet+%3Aparam+%2841+42%29+.%0A%0A%7B%0A++++%3ALet+%3Aparam+%28%3FX+%3FY%29+.%0A++++%3FX+math%3AlessThan+%3FY+.%0A%7D%0A%3D%3E%0A%7B%0A++++%3Aresult+%3Ais+true+.%0A%7D+.)
 
 
 <div class=example>
@@ -532,7 +532,7 @@ If there are two such numbers, then the one closest to positive infinity is retu
 <i>`( $s )+  math:rounded  $o- `</i>
 
 #### Examples #### {#rounded_examples}
-[Try in Notation3 Editor &#128640;](file:///Users/timothyduval/Library/Mobile%20Documents/com~apple~CloudDocs/00_unifylogic/50-clients/w3c/N3/useOfBuiltins/core-specs/03-development/site/spec-builtins/src/math/rounded.n3)
+[Try in Notation3 Editor &#128640;](https://n3-editor.herokuapp.com/n3/editor/?formula=%40prefix+%3A+%3Chttp%3A%2F%2Fexample.org%2F%3E.%0A%40prefix+math%3A+%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F10%2Fswap%2Fmath%23%3E+.%0A%40prefix+xsd%3A+%3Chttp%3A%2F%2Fwww.w3.org%2F2001%2FXMLSchema%23%3E+.%0A%0A%3ALet+%3Aparam+%223.3%22%5E%5Exsd%3Adouble+.%0A%0A%7B%0A++++%3ALet+%3Aparam+%3Fparam+.%0A++++%3Fparam+math%3Arounded+%3Fresult+.%0A%7D%0A%3D%3E%0A%7B%0A++++%3Aresult+%3Ais+%3Fresult+.%0A%7D+.)
 
 
 <div class=example>
@@ -572,7 +572,7 @@ Calculates the object as the arc tangent value of the subject.
 <i>`( $s )+  math:atan  $o- `</i>
 
 #### Examples #### {#atan_examples}
-[Try in Notation3 Editor &#128640;](file:///Users/timothyduval/Library/Mobile%20Documents/com~apple~CloudDocs/00_unifylogic/50-clients/w3c/N3/useOfBuiltins/core-specs/03-development/site/spec-builtins/src/math/atan.n3)
+[Try in Notation3 Editor &#128640;](https://n3-editor.herokuapp.com/n3/editor/?formula=%40prefix+%3A+%3Chttp%3A%2F%2Fexample.org%2F%3E.%0A%40prefix+math%3A+%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F10%2Fswap%2Fmath%23%3E+.%0A%0A%3ALet+%3Aparam+1+.%0A%0A%7B%0A++++%3ALet+%3Aparam+%3Fparam+.%0A++++%3Fparam+math%3Aatan+%3Fresult+.%0A%7D%0A%3D%3E%0A%7B%0A++++%3Aresult+%3Ais+%3Fresult+.%0A%7D+.)
 
 
 <div class=example>
@@ -611,7 +611,7 @@ Calculates the object as the arc cosine value of the subject.
 <i>`( $s )+  math:acos  $o- `</i>
 
 #### Examples #### {#acos_examples}
-[Try in Notation3 Editor &#128640;](file:///Users/timothyduval/Library/Mobile%20Documents/com~apple~CloudDocs/00_unifylogic/50-clients/w3c/N3/useOfBuiltins/core-specs/03-development/site/spec-builtins/src/math/acos.n3)
+[Try in Notation3 Editor &#128640;](https://n3-editor.herokuapp.com/n3/editor/?formula=%40prefix+%3A+%3Chttp%3A%2F%2Fexample.org%2F%3E.%0A%40prefix+math%3A+%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F10%2Fswap%2Fmath%23%3E+.%0A%0A%3ALet+%3Aparam+1+.%0A%0A%7B%0A++++%3ALet+%3Aparam+%3Fparam+.%0A++++%3Fparam+math%3Aacos+%3Fresult+.%0A%7D%0A%3D%3E%0A%7B%0A++++%3Aresult+%3Ais+%3Fresult+.%0A%7D+.)
 
 
 <div class=example>
@@ -650,7 +650,7 @@ Calculates the object as the hyperbolic cosine value of the subject.
 <i>`( $s )+  math:cosh  $o- `</i>
 
 #### Examples #### {#cosh_examples}
-[Try in Notation3 Editor &#128640;](file:///Users/timothyduval/Library/Mobile%20Documents/com~apple~CloudDocs/00_unifylogic/50-clients/w3c/N3/useOfBuiltins/core-specs/03-development/site/spec-builtins/src/math/cosh.n3)
+[Try in Notation3 Editor &#128640;](https://n3-editor.herokuapp.com/n3/editor/?formula=%40prefix+%3A+%3Chttp%3A%2F%2Fexample.org%2F%3E.%0A%40prefix+math%3A+%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F10%2Fswap%2Fmath%23%3E+.%0A%0A%3ALet+%3Aparam+0+.%0A%0A%7B%0A++++%3ALet+%3Aparam+%3Fparam+.%0A++++%3Fparam+math%3Acosh+%3Fresult+.%0A%7D%0A%3D%3E%0A%7B%0A++++%3Aresult+%3Ais+%3Fresult+.%0A%7D+.)
 
 
 <div class=example>
@@ -689,7 +689,7 @@ Calculates the object as the negation of the subject.
 <i>`( $s )+  math:negation  $o- `</i>
 
 #### Examples #### {#negation_examples}
-[Try in Notation3 Editor &#128640;](file:///Users/timothyduval/Library/Mobile%20Documents/com~apple~CloudDocs/00_unifylogic/50-clients/w3c/N3/useOfBuiltins/core-specs/03-development/site/spec-builtins/src/math/negation.n3)
+[Try in Notation3 Editor &#128640;](https://n3-editor.herokuapp.com/n3/editor/?formula=%40prefix+%3A+%3Chttp%3A%2F%2Fexample.org%2F%3E.%0A%40prefix+math%3A+%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F10%2Fswap%2Fmath%23%3E+.%0A%0A%3ALet+%3Aparam+42+.%0A%0A%7B%0A++++%3ALet+%3Aparam+%3Fparam+.%0A++++%3Fparam+math%3Anegation+%3Fresult+.%0A%7D%0A%3D%3E%0A%7B%0A++++%3Aresult+%3Ais+%3Fresult+.%0A%7D+.)
 
 
 <div class=example>
@@ -728,7 +728,7 @@ Calculates the object as the hyperbolic sine value of the subject.
 <i>`( $s )+  math:sinh  $o- `</i>
 
 #### Examples #### {#sinh_examples}
-[Try in Notation3 Editor &#128640;](file:///Users/timothyduval/Library/Mobile%20Documents/com~apple~CloudDocs/00_unifylogic/50-clients/w3c/N3/useOfBuiltins/core-specs/03-development/site/spec-builtins/src/math/sinh.n3)
+[Try in Notation3 Editor &#128640;](https://n3-editor.herokuapp.com/n3/editor/?formula=%40prefix+%3A+%3Chttp%3A%2F%2Fexample.org%2F%3E.%0A%40prefix+math%3A+%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F10%2Fswap%2Fmath%23%3E+.%0A%40prefix+xsd%3A+%3Chttp%3A%2F%2Fwww.w3.org%2F2001%2FXMLSchema%23%3E+.%0A%0A%3ALet+%3Aparam+%220.88137358701954302%22%5E%5Exsd%3Adouble.%0A%0A%7B%0A++++%3ALet+%3Aparam+%3Fparam+.%0A++++%3Fparam+math%3Asinh+%3Fresult+.%0A%7D%0A%3D%3E%0A%7B%0A++++%3Aresult+%3Ais+%3Fresult+.%0A%7D+.)
 
 
 <div class=example>
@@ -768,7 +768,7 @@ Calculates the object as the sum of the numbers given in the subject list.
 <i>`( $s )+  math:sum  $o- `</i>
 
 #### Examples #### {#sum_examples}
-[Try in Notation3 Editor &#128640;](file:///Users/timothyduval/Library/Mobile%20Documents/com~apple~CloudDocs/00_unifylogic/50-clients/w3c/N3/useOfBuiltins/core-specs/03-development/site/spec-builtins/src/math/sum.n3)
+[Try in Notation3 Editor &#128640;](https://n3-editor.herokuapp.com/n3/editor/?formula=%40prefix+%3A+%3Chttp%3A%2F%2Fexample.org%2F%3E.%0A%40prefix+math%3A+%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F10%2Fswap%2Fmath%23%3E+.%0A%0A%3ALet+%3Aparam+%281+2+3+4+5+6+7+8+9+10%29+.%0A%0A%7B%0A++++%3ALet+%3Aparam+%3Fparam+.%0A++++%3Fparam+math%3Asum+%3Fresult+.%0A%7D%0A%3D%3E%0A%7B%0A++++%3Aresult+%3Ais+%3Fresult+.%0A%7D+.)
 
 
 <div class=example>
@@ -807,7 +807,7 @@ Calculates the object by subtracting the second number from the first number giv
 <i>`( $s )+  math:difference  $o- `</i>
 
 #### Examples #### {#difference_examples}
-[Try in Notation3 Editor &#128640;](file:///Users/timothyduval/Library/Mobile%20Documents/com~apple~CloudDocs/00_unifylogic/50-clients/w3c/N3/useOfBuiltins/core-specs/03-development/site/spec-builtins/src/math/difference.n3)
+[Try in Notation3 Editor &#128640;](https://n3-editor.herokuapp.com/n3/editor/?formula=%40prefix+%3A+%3Chttp%3A%2F%2Fexample.org%2F%3E.%0A%40prefix+math%3A+%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F10%2Fswap%2Fmath%23%3E+.%0A%0A%3ALet+%3Aparam+%287+2%29+.%0A%0A%7B%0A++++%3ALet+%3Aparam+%3Fparam+.%0A++++%3Fparam+math%3Adifference+%3Fresult+.%0A%7D%0A%3D%3E%0A%7B%0A++++%3Aresult+%3Ais+%3Fresult+.%0A%7D+.)
 
 
 <div class=example>
@@ -846,7 +846,7 @@ Calculates the object as the hyperbolic tangent value of the subject.
 <i>`( $s )+  math:tanh  $o- `</i>
 
 #### Examples #### {#tanh_examples}
-[Try in Notation3 Editor &#128640;](file:///Users/timothyduval/Library/Mobile%20Documents/com~apple~CloudDocs/00_unifylogic/50-clients/w3c/N3/useOfBuiltins/core-specs/03-development/site/spec-builtins/src/math/tanh.n3)
+[Try in Notation3 Editor &#128640;](https://n3-editor.herokuapp.com/n3/editor/?formula=%40prefix+%3A+%3Chttp%3A%2F%2Fexample.org%2F%3E.%0A%40prefix+math%3A+%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F10%2Fswap%2Fmath%23%3E+.%0A%40prefix+xsd%3A+%3Chttp%3A%2F%2Fwww.w3.org%2F2001%2FXMLSchema%23%3E+.%0A%0A%3ALet+%3Aparam+%220.549306%22%5E%5Exsd%3Adouble+.%0A%0A%7B%0A++++%3ALet+%3Aparam+%3Fparam+.%0A++++%3Fparam+math%3Atanh+%3Fresult+.%0A%7D%0A%3D%3E%0A%7B%0A++++%3Aresult+%3Ais+%3Fresult+.%0A%7D+.)
 
 
 <div class=example>
@@ -897,7 +897,7 @@ Checks whether the subject and object are not the same number.
 <i>`( $s )+  math:notEqualTo  $o? `</i>
 
 #### Examples #### {#notEqualTo_examples}
-[Try in Notation3 Editor &#128640;](file:///Users/timothyduval/Library/Mobile%20Documents/com~apple~CloudDocs/00_unifylogic/50-clients/w3c/N3/useOfBuiltins/core-specs/03-development/site/spec-builtins/src/math/notEqualTo.n3)
+[Try in Notation3 Editor &#128640;](https://n3-editor.herokuapp.com/n3/editor/?formula=%40prefix+%3A+%3Chttp%3A%2F%2Fexample.org%2F%3E.%0A%40prefix+math%3A+%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F10%2Fswap%2Fmath%23%3E+.%0A%0A%3ALet+%3Aparam+%2841+42%29+.%0A%0A%7B%0A++++%3ALet+%3Aparam+%28%3FX+%3FY%29+.%0A++++%3FX+math%3AnotEqualTo+%3FY+.%0A%7D%0A%3D%3E%0A%7B%0A++++%3Aresult+%3Ais+true+.%0A%7D+.)
 
 
 <div class=example>
@@ -936,7 +936,7 @@ Calculates the object by dividing the first number by the second number given in
 <i>`( $s )+  math:quotient  $o- `</i>
 
 #### Examples #### {#quotient_examples}
-[Try in Notation3 Editor &#128640;](file:///Users/timothyduval/Library/Mobile%20Documents/com~apple~CloudDocs/00_unifylogic/50-clients/w3c/N3/useOfBuiltins/core-specs/03-development/site/spec-builtins/src/math/quotient.n3)
+[Try in Notation3 Editor &#128640;](https://n3-editor.herokuapp.com/n3/editor/?formula=%40prefix+%3A+%3Chttp%3A%2F%2Fexample.org%2F%3E.%0A%40prefix+math%3A+%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F10%2Fswap%2Fmath%23%3E+.%0A%0A%3ALet+%3Aparam+%2842+2%29+.%0A%0A%7B%0A++++%3ALet+%3Aparam+%3Fparam+.%0A++++%3Fparam+math%3Aquotient+%3Fresult+.%0A%7D%0A%3D%3E%0A%7B%0A++++%3Aresult+%3Ais+%3Fresult+.%0A%7D+.)
 
 
 <div class=example>
@@ -975,7 +975,7 @@ Checks whether the subject and object are the same number.
 <i>`( $s )+  math:equalTo  $o- `</i>
 
 #### Examples #### {#equalTo_examples}
-[Try in Notation3 Editor &#128640;](file:///Users/timothyduval/Library/Mobile%20Documents/com~apple~CloudDocs/00_unifylogic/50-clients/w3c/N3/useOfBuiltins/core-specs/03-development/site/spec-builtins/src/math/equalTo.n3)
+[Try in Notation3 Editor &#128640;](https://n3-editor.herokuapp.com/n3/editor/?formula=%40prefix+%3A+%3Chttp%3A%2F%2Fexample.org%2F%3E.%0A%40prefix+math%3A+%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F10%2Fswap%2Fmath%23%3E+.%0A%0A%3ALet+%3Aparam+%2842+42%29+.%0A%0A%7B%0A++++%3ALet+%3Aparam+%28%3FX+%3FY%29+.%0A++++%3FX+math%3AequalTo+%3FY+.%0A%7D%0A%3D%3E%0A%7B%0A++++%3Aresult+%3Ais+true+.%0A%7D+.)
 
 
 <div class=example>
@@ -1014,7 +1014,7 @@ Calculates the object as the cosine value of the subject.
 <i>`( $s )+  math:cos  $o- `</i>
 
 #### Examples #### {#cos_examples}
-[Try in Notation3 Editor &#128640;](file:///Users/timothyduval/Library/Mobile%20Documents/com~apple~CloudDocs/00_unifylogic/50-clients/w3c/N3/useOfBuiltins/core-specs/03-development/site/spec-builtins/src/math/cos.n3)
+[Try in Notation3 Editor &#128640;](https://n3-editor.herokuapp.com/n3/editor/?formula=%40prefix+%3A+%3Chttp%3A%2F%2Fexample.org%2F%3E.%0A%40prefix+math%3A+%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F10%2Fswap%2Fmath%23%3E+.%0A%0A%3ALet+%3Aparam+0+.%0A%0A%7B%0A++++%3ALet+%3Aparam+%3Fparam+.%0A++++%3Fparam+math%3Acos+%3Fresult+.%0A%7D%0A%3D%3E%0A%7B%0A++++%3Aresult+%3Ais+%3Fresult+.%0A%7D+.)
 
 
 <div class=example>
@@ -1053,7 +1053,7 @@ Calculates the object as the tangent value of the subject.
 <i>`( $s )+  math:tan  $o- `</i>
 
 #### Examples #### {#tan_examples}
-[Try in Notation3 Editor &#128640;](file:///Users/timothyduval/Library/Mobile%20Documents/com~apple~CloudDocs/00_unifylogic/50-clients/w3c/N3/useOfBuiltins/core-specs/03-development/site/spec-builtins/src/math/tan.n3)
+[Try in Notation3 Editor &#128640;](https://n3-editor.herokuapp.com/n3/editor/?formula=%40prefix+%3A+%3Chttp%3A%2F%2Fexample.org%2F%3E.%0A%40prefix+math%3A+%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F10%2Fswap%2Fmath%23%3E+.%0A%40prefix+xsd%3A+%3Chttp%3A%2F%2Fwww.w3.org%2F2001%2FXMLSchema%23%3E+.%0A%0A%3ALet+%3Aparam+%220.7853981633974483%22%5E%5Exsd%3Adouble+.%0A%0A%7B%0A++++%3ALet+%3Aparam+%3Fparam+.%0A++++%3Fparam+math%3Atan+%3Fresult+.%0A%7D%0A%3D%3E%0A%7B%0A++++%3Aresult+%3Ais+%3Fresult+.%0A%7D+.)
 
 
 <div class=example>
@@ -1094,7 +1094,7 @@ Calculates the object as the remainder of the division of the first integer by t
 <i>`( $s )+  math:remainder  $o- `</i>
 
 #### Examples #### {#remainder_examples}
-[Try in Notation3 Editor &#128640;](file:///Users/timothyduval/Library/Mobile%20Documents/com~apple~CloudDocs/00_unifylogic/50-clients/w3c/N3/useOfBuiltins/core-specs/03-development/site/spec-builtins/src/math/remainder.n3)
+[Try in Notation3 Editor &#128640;](https://n3-editor.herokuapp.com/n3/editor/?formula=%40prefix+%3A+%3Chttp%3A%2F%2Fexample.org%2F%3E.%0A%40prefix+math%3A+%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F10%2Fswap%2Fmath%23%3E+.%0A%0A%3ALet+%3Aparam+%2810+3%29+.%0A%0A%7B%0A++++%3ALet+%3Aparam+%3Fparam+.%0A++++%3Fparam+math%3Aremainder+%3Fresult+.%0A%7D%0A%3D%3E%0A%7B%0A++++%3Aresult+%3Ais+%3Fresult+.%0A%7D+.)
 
 
 <div class=example>
@@ -1133,7 +1133,7 @@ Calculates the object as the value in degrees corresponding to the radians value
 <i>`( $s )+  math:degrees  $o- `</i>
 
 #### Examples #### {#degrees_examples}
-[Try in Notation3 Editor &#128640;](file:///Users/timothyduval/Library/Mobile%20Documents/com~apple~CloudDocs/00_unifylogic/50-clients/w3c/N3/useOfBuiltins/core-specs/03-development/site/spec-builtins/src/math/degrees.n3)
+[Try in Notation3 Editor &#128640;](https://n3-editor.herokuapp.com/n3/editor/?formula=%40prefix+%3A+%3Chttp%3A%2F%2Fexample.org%2F%3E.%0A%40prefix+math%3A+%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F10%2Fswap%2Fmath%23%3E+.%0A%0A%3ALet+%3Aparam+1.57079632679+.%0A%0A%7B%0A++++%3ALet+%3Aparam+%3Fparam+.%0A++++%3Fparam+math%3Adegrees+%3Fresult+.%0A%7D%0A%3D%3E%0A%7B%0A++++%3Aresult+%3Ais+%3Fresult+.%0A%7D+.)
 
 
 <div class=example>
@@ -1172,7 +1172,7 @@ Calculates the object as the arc sine value of the subject.
 <i>`( $s )+  math:asin  $o- `</i>
 
 #### Examples #### {#asin_examples}
-[Try in Notation3 Editor &#128640;](file:///Users/timothyduval/Library/Mobile%20Documents/com~apple~CloudDocs/00_unifylogic/50-clients/w3c/N3/useOfBuiltins/core-specs/03-development/site/spec-builtins/src/math/asin.n3)
+[Try in Notation3 Editor &#128640;](https://n3-editor.herokuapp.com/n3/editor/?formula=%40prefix+%3A+%3Chttp%3A%2F%2Fexample.org%2F%3E.%0A%40prefix+math%3A+%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F10%2Fswap%2Fmath%23%3E+.%0A%0A%3ALet+%3Aparam+1+.%0A%0A%7B%0A++++%3ALet+%3Aparam+%3Fparam+.%0A++++%3Fparam+math%3Aasin+%3Fresult+.%0A%7D%0A%3D%3E%0A%7B%0A++++%3Aresult+%3Ais+%3Fresult+.%0A%7D+.)
 
 
 <div class=example>
@@ -1212,7 +1212,7 @@ Gets as object the integer minutes component of the subject xsd:dateTime.
 <i>`( $s )+  time:minute  $o- `</i>
 
 #### Examples #### {#minute_examples}
-[Try in Notation3 Editor &#128640;](file:///Users/timothyduval/Library/Mobile%20Documents/com~apple~CloudDocs/00_unifylogic/50-clients/w3c/N3/useOfBuiltins/core-specs/03-development/site/spec-builtins/src/time/minute.n3)
+[Try in Notation3 Editor &#128640;](https://n3-editor.herokuapp.com/n3/editor/?formula=%40prefix+%3A+%3Chttp%3A%2F%2Fexample.org%2F%3E.%0A%40prefix+xsd%3A+%3Chttp%3A%2F%2Fwww.w3.org%2F2001%2FXMLSchema%23%3E.%0A%40prefix+time%3A+%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F10%2Fswap%2Ftime%23%3E+.%0A%0A%3ALet+%3Aparam+%222023-04-01T18%3A06%3A04Z%22%5E%5Exsd%3AdateTime+.%0A%0A%7B%0A++++%3ALet+%3Aparam+%3Fparam+.%0A++++%3Fparam+time%3Aminute+%3Fresult+.%0A%7D%0A%3D%3E%0A%7B%0A++++%3Aresult+%3Ais+%3Fresult+.%0A%7D+.)
 
 
 <div class=example>
@@ -1252,7 +1252,7 @@ Gets as object the integer day component of the subject xsd:dateTime.
 <i>`( $s )+  time:day  $o- `</i>
 
 #### Examples #### {#day_examples}
-[Try in Notation3 Editor &#128640;](file:///Users/timothyduval/Library/Mobile%20Documents/com~apple~CloudDocs/00_unifylogic/50-clients/w3c/N3/useOfBuiltins/core-specs/03-development/site/spec-builtins/src/time/day.n3)
+[Try in Notation3 Editor &#128640;](https://n3-editor.herokuapp.com/n3/editor/?formula=%40prefix+%3A+%3Chttp%3A%2F%2Fexample.org%2F%3E.%0A%40prefix+xsd%3A+%3Chttp%3A%2F%2Fwww.w3.org%2F2001%2FXMLSchema%23%3E.%0A%40prefix+time%3A+%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F10%2Fswap%2Ftime%23%3E+.%0A%0A%3ALet+%3Aparam+%222023-04-01T18%3A06%3A04Z%22%5E%5Exsd%3AdateTime+.%0A%0A%7B%0A++++%3ALet+%3Aparam+%3Fparam+.%0A++++%3Fparam+time%3Aday+%3Fresult+.%0A%7D%0A%3D%3E%0A%7B%0A++++%3Aresult+%3Ais+%3Fresult+.%0A%7D+.)
 
 
 <div class=example>
@@ -1292,7 +1292,7 @@ Gets as object the integer month component of the subject xsd:dateTime.
 <i>`( $s )+  time:month  $o- `</i>
 
 #### Examples #### {#month_examples}
-[Try in Notation3 Editor &#128640;](file:///Users/timothyduval/Library/Mobile%20Documents/com~apple~CloudDocs/00_unifylogic/50-clients/w3c/N3/useOfBuiltins/core-specs/03-development/site/spec-builtins/src/time/month.n3)
+[Try in Notation3 Editor &#128640;](https://n3-editor.herokuapp.com/n3/editor/?formula=%40prefix+%3A+%3Chttp%3A%2F%2Fexample.org%2F%3E.%0A%40prefix+xsd%3A+%3Chttp%3A%2F%2Fwww.w3.org%2F2001%2FXMLSchema%23%3E.%0A%40prefix+time%3A+%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F10%2Fswap%2Ftime%23%3E+.%0A%0A%3ALet+%3Aparam+%222023-04-01T18%3A06%3A04Z%22%5E%5Exsd%3AdateTime+.%0A%0A%7B%0A++++%3ALet+%3Aparam+%3Fparam+.%0A++++%3Fparam+time%3Amonth+%3Fresult+.%0A%7D%0A%3D%3E%0A%7B%0A++++%3Aresult+%3Ais+%3Fresult+.%0A%7D+.)
 
 
 <div class=example>
@@ -1332,7 +1332,7 @@ Gets as object the trailing timezone offset of the subject xsd:dateTime (e.g., "
 <i>`( $s )+  time:timeZone  $o- `</i>
 
 #### Examples #### {#timeZone_examples}
-[Try in Notation3 Editor &#128640;](file:///Users/timothyduval/Library/Mobile%20Documents/com~apple~CloudDocs/00_unifylogic/50-clients/w3c/N3/useOfBuiltins/core-specs/03-development/site/spec-builtins/src/time/timeZone.n3)
+[Try in Notation3 Editor &#128640;](https://n3-editor.herokuapp.com/n3/editor/?formula=%40prefix+%3A+%3Chttp%3A%2F%2Fexample.org%2F%3E.%0A%40prefix+xsd%3A+%3Chttp%3A%2F%2Fwww.w3.org%2F2001%2FXMLSchema%23%3E.%0A%40prefix+time%3A+%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F10%2Fswap%2Ftime%23%3E+.%0A%0A%3ALet+%3Aparam+%222023-04-01T18%3A06%3A04Z%22%5E%5Exsd%3AdateTime+.%0A%0A%7B%0A++++%3ALet+%3Aparam+%3Fparam+.%0A++++%3Fparam+time%3Aminute+%3Fresult+.%0A%7D%0A%3D%3E%0A%7B%0A++++%3Aresult+%3Ais+%3Fresult+.%0A%7D+.)
 
 
 <div class=example>
@@ -1372,7 +1372,7 @@ Gets as object the integer year component of the subject xsd:dateTime.
 <i>`( $s )+  time:year  $o- `</i>
 
 #### Examples #### {#year_examples}
-[Try in Notation3 Editor &#128640;](file:///Users/timothyduval/Library/Mobile%20Documents/com~apple~CloudDocs/00_unifylogic/50-clients/w3c/N3/useOfBuiltins/core-specs/03-development/site/spec-builtins/src/time/year.n3)
+[Try in Notation3 Editor &#128640;](https://n3-editor.herokuapp.com/n3/editor/?formula=%40prefix+%3A+%3Chttp%3A%2F%2Fexample.org%2F%3E.%0A%40prefix+xsd%3A+%3Chttp%3A%2F%2Fwww.w3.org%2F2001%2FXMLSchema%23%3E.%0A%40prefix+time%3A+%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F10%2Fswap%2Ftime%23%3E+.%0A%0A%3ALet+%3Aparam+%222023-04-01T18%3A06%3A04Z%22%5E%5Exsd%3AdateTime+.%0A%0A%7B%0A++++%3ALet+%3Aparam+%3Fparam+.%0A++++%3Fparam+time%3Ayear+%3Fresult+.%0A%7D%0A%3D%3E%0A%7B%0A++++%3Aresult+%3Ais+%3Fresult+.%0A%7D+.)
 
 
 <div class=example>
@@ -1412,7 +1412,7 @@ Gets as object the integer seconds component of the subject xsd:dateTime.
 <i>`( $s )+  time:second  $o- `</i>
 
 #### Examples #### {#second_examples}
-[Try in Notation3 Editor &#128640;](file:///Users/timothyduval/Library/Mobile%20Documents/com~apple~CloudDocs/00_unifylogic/50-clients/w3c/N3/useOfBuiltins/core-specs/03-development/site/spec-builtins/src/time/second.n3)
+[Try in Notation3 Editor &#128640;](https://n3-editor.herokuapp.com/n3/editor/?formula=%40prefix+%3A+%3Chttp%3A%2F%2Fexample.org%2F%3E.%0A%40prefix+xsd%3A+%3Chttp%3A%2F%2Fwww.w3.org%2F2001%2FXMLSchema%23%3E.%0A%40prefix+time%3A+%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F10%2Fswap%2Ftime%23%3E+.%0A%0A%3ALet+%3Aparam+%222023-04-01T18%3A06%3A04Z%22%5E%5Exsd%3AdateTime+.%0A%0A%7B%0A++++%3ALet+%3Aparam+%3Fparam+.%0A++++%3Fparam+time%3Asecond+%3Fresult+.%0A%7D%0A%3D%3E%0A%7B%0A++++%3Aresult+%3Ais+%3Fresult+.%0A%7D+.)
 
 
 <div class=example>
@@ -1462,7 +1462,7 @@ Gets the first element of the subject list as object.
 <i>`( $s )+  list:first  $o- `</i>
 
 #### Examples #### {#first_examples}
-[Try in Notation3 Editor &#128640;](file:///Users/timothyduval/Library/Mobile%20Documents/com~apple~CloudDocs/00_unifylogic/50-clients/w3c/N3/useOfBuiltins/core-specs/03-development/site/spec-builtins/src/list/first.n3)
+[Try in Notation3 Editor &#128640;](https://n3-editor.herokuapp.com/n3/editor/?formula=%40prefix+%3A+%3Chttp%3A%2F%2Fexample.org%2F%3E.%0A%40prefix+list%3A+%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F10%2Fswap%2Flist%23%3E+.%0A%0A%7B+%28+%28%27a%27%29+%7B+%3Aa+%3Ab+%3Ac+%7D+42+%29+list%3Afirst+%3Fwhat+.+%7D+%3D%3E+%7B+%3Aresult+%3Ais+%3Fwhat+.+%7D+.)
 
 
 <div class=example>
@@ -1538,7 +1538,7 @@ Removes the subject member from the subject list, and returns the resulting list
 <i>`( $s )+  list:remove  $o- `</i>
 
 #### Examples #### {#remove_examples}
-[Try in Notation3 Editor &#128640;](file:///Users/timothyduval/Library/Mobile%20Documents/com~apple~CloudDocs/00_unifylogic/50-clients/w3c/N3/useOfBuiltins/core-specs/03-development/site/spec-builtins/src/list/remove.n3)
+[Try in Notation3 Editor &#128640;](https://n3-editor.herokuapp.com/n3/editor/?formula=%40prefix+%3A+%3Chttp%3A%2F%2Fexample.org%2F%3E.%0A%40prefix+list%3A+%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F10%2Fswap%2Flist%23%3E+.%0A%0A%3Alet+%3Aparam+%28%22dog%22+%22penguin%22+%22cat%22+%22penguin%22%29+.%0A%7B+%0A++++%3Alet+%3Aparam+%3Fparam+.+%0A++++%28+%3Fparam+%22penguin%22+%29+list%3Aremove+%3Flist+.%0A%7D+%0A%3D%3E+%0A%7B+%0A++++%3Aresult+%3Ais+%3Flist+.+%0A%7D+.)
 
 
 <div class=example>
@@ -1576,7 +1576,7 @@ Gets the length of the subject list as object.
 <i>`( $s )+  list:length  $o- `</i>
 
 #### Examples #### {#length_examples}
-[Try in Notation3 Editor &#128640;](file:///Users/timothyduval/Library/Mobile%20Documents/com~apple~CloudDocs/00_unifylogic/50-clients/w3c/N3/useOfBuiltins/core-specs/03-development/site/spec-builtins/src/list/length.n3)
+[Try in Notation3 Editor &#128640;](https://n3-editor.herokuapp.com/n3/editor/?formula=%40prefix+%3A+%3Chttp%3A%2F%2Fexample.org%2F%3E.%0A%40prefix+list%3A+%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F10%2Fswap%2Flist%23%3E+.%0A%0A%7B+%281+2+3+4%29+list%3Alength+%3Flength+.+%7D+%3D%3E+%7B+%3Aresult+%3Ais+%3Flength+.+%7D+.)
 
 
 <div class=example>
@@ -1618,7 +1618,7 @@ by applying any rules it contains to the data it contains.
 <i>`( $s )+  log:conclusion  $o? `</i>
 
 #### Examples #### {#conclusion_examples}
-[Try in Notation3 Editor &#128640;](file:///Users/timothyduval/Library/Mobile%20Documents/com~apple~CloudDocs/00_unifylogic/50-clients/w3c/N3/useOfBuiltins/core-specs/03-development/site/spec-builtins/src/log/conclusion.n3)
+[Try in Notation3 Editor &#128640;](https://n3-editor.herokuapp.com/n3/editor/?formula=%40prefix+%3A+%3Chttp%3A%2F%2Fexample.org%2F%3E.%0A%40prefix+log%3A+%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F10%2Fswap%2Flog%23%3E+.%0A%0A%3Alet+%3Aparam+%7B+%0A++++%3AFelix+a+%3ACat+.+%0A++++%7B+%3FX+a+%3ACat+.+%7D+%3D%3E+%7B+%3FX+%3Asays+%22Meow%22+.+%7D+.%0A%7D+.%0A%0A%7B+%0A++++%3Alet+%3Aparam+%3Fparam+.%0A++++%3Fparam+log%3Aconclusion+%3Fconclusion+.%0A%7D+%0A%3D%3E+%0A%7B+%0A++++%3Aresult+%3Ais+%3Fconclusion+.+%0A%7D+.)
 
 
 <div class=example>
@@ -1664,7 +1664,7 @@ Dereferences the subject IRI and retrieves the online resource as the object str
 <i>`( $s )+  log:content  $o? `</i>
 
 #### Examples #### {#content_examples}
-[Try in Notation3 Editor &#128640;](file:///Users/timothyduval/Library/Mobile%20Documents/com~apple~CloudDocs/00_unifylogic/50-clients/w3c/N3/useOfBuiltins/core-specs/03-development/site/spec-builtins/src/log/content.n3)
+[Try in Notation3 Editor &#128640;](https://n3-editor.herokuapp.com/n3/editor/?formula=%40prefix+%3A+%3Chttp%3A%2F%2Fexample.org%2F%3E.%0A%40prefix+log%3A+%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F10%2Fswap%2Flog%23%3E+.%0A%0A%7B+%0A++++%3Chttps%3A%2F%2Fwww.w3.org%2FPeople%2FBerners-Lee%2Fcard%3E+log%3Acontent+%3Fcontent+.%0A%7D+%0A%3D%3E+%0A%7B+%0A++++%3Aresult+%3Ais+%3Fcontent+.+%0A%7D+.)
 
 
 <div class=example>
@@ -1700,7 +1700,7 @@ This is a scoped universal quantification.
 <i>`( $s )+  log:forAllIn  $o? `</i>
 
 #### Examples #### {#forAllIn_examples}
-[Try in Notation3 Editor &#128640;](file:///Users/timothyduval/Library/Mobile%20Documents/com~apple~CloudDocs/00_unifylogic/50-clients/w3c/N3/useOfBuiltins/core-specs/03-development/site/spec-builtins/src/log/forAllIn.n3)
+[Try in Notation3 Editor &#128640;](https://n3-editor.herokuapp.com/n3/editor/?formula=%40prefix+%3A+%3Chttp%3A%2F%2Fexample.org%2F%3E.%0A%40prefix+log%3A+%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F10%2Fswap%2Flog%23%3E+.%0A%0A%3Ac+a+%3ACompositeTask+%3B%0A++++%3AsubTask+%3As1+%2C+%3As2+%2C+%3As3+.%0A%3As1+%3Astate+%3ACompleted+.%0A%3As2+%3Astate+%3ACompleted+.+%0A%3As3+%3Astate+%3ACompleted+.%0A%0A%7B%0A++++%3Fc+a+%3ACompositeTask+.%0A++++%28+%7B+%3Fc+%3AsubTask+%3Fs+%7D+%7B+%3Fs+%3Astate+%3ACompleted+%7D+%29+log%3AforAllIn+_%3At+.%0A%7D%0A%3D%3E%0A%7B%0A++++%3Aresult+%3Ais+true+.%0A%7D+.)
 
 
 <div class=example>
@@ -1744,7 +1744,7 @@ Parses the subject string into an object quoted graph.
 <i>`( $s )+  log:parsedAsN3  $o? `</i>
 
 #### Examples #### {#parsedAsN3_examples}
-[Try in Notation3 Editor &#128640;](file:///Users/timothyduval/Library/Mobile%20Documents/com~apple~CloudDocs/00_unifylogic/50-clients/w3c/N3/useOfBuiltins/core-specs/03-development/site/spec-builtins/src/log/parsedAsN3.n3)
+[Try in Notation3 Editor &#128640;](https://n3-editor.herokuapp.com/n3/editor/?formula=%40prefix+%3A+%3Chttp%3A%2F%2Fexample.org%2F%3E.%0A%40prefix+log%3A+%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F10%2Fswap%2Flog%23%3E+.%0A%0A%3ALet+%3Aparam+%22%22%22%0A%40prefix+%3A+%3Curn%3Aexample%3A%3E+.%0A%3ASocrates+a+%3AHuman+.%0A%22%22%22+.%0A%0A%7B%0A++++%3ALet+%3Aparam+%3FX+.%0A++++%3FX+log%3AparsedAsN3+%3FY+.%0A%7D%0A%3D%3E%0A%7B%0A++++%3Aresult+%3Ais+%3FY+.%0A%7D+.)
 
 
 <div class=example>
@@ -1786,7 +1786,7 @@ Merges the quoted graphs from the subject list into a single quoted graph as obj
 <i>`( $s )+  log:conjunction  $o? `</i>
 
 #### Examples #### {#conjunction_examples}
-[Try in Notation3 Editor &#128640;](file:///Users/timothyduval/Library/Mobile%20Documents/com~apple~CloudDocs/00_unifylogic/50-clients/w3c/N3/useOfBuiltins/core-specs/03-development/site/spec-builtins/src/log/conjunction.n3)
+[Try in Notation3 Editor &#128640;](https://n3-editor.herokuapp.com/n3/editor/?formula=%40prefix+%3A+%3Chttp%3A%2F%2Fexample.org%2F%3E.%0A%40prefix+log%3A+%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F10%2Fswap%2Flog%23%3E+.%0A%0A%7B+%0A++++%28+%7B+%3AFelix+a+%3ACat+.+%7D%0A++++++%7B+%3APluto+a+%3ADog+.+%7D++%0A++++++%7B+%3APingu+a+%3APenguin+.+%7D%0A++++%29+log%3Aconjunction+%3Fmerged+.%0A%7D+%0A%3D%3E+%0A%7B+%0A++++%3Aresult+%3Ais+%3Fmerged+.+%0A%7D+.)
 
 
 <div class=example>
@@ -1847,7 +1847,7 @@ Gets as object a skolem IRI that is a function of the subject (commonly a list);
 <i>`( $s )+  log:skolem  $o- `</i>
 
 #### Examples #### {#skolem_examples}
-[Try in Notation3 Editor &#128640;](file:///Users/timothyduval/Library/Mobile%20Documents/com~apple~CloudDocs/00_unifylogic/50-clients/w3c/N3/useOfBuiltins/core-specs/03-development/site/spec-builtins/src/log/skolem.n3)
+[Try in Notation3 Editor &#128640;](https://n3-editor.herokuapp.com/n3/editor/?formula=%40prefix+%3A+%3Chttp%3A%2F%2Fexample.org%2F%3E.%0A%40prefix+log%3A+%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F10%2Fswap%2Flog%23%3E+.%0A%0A%7B+%28%3Aabc+77+%22xyz%22%29+log%3Askolem+%3Fskolem+.+%7D+%3D%3E+%7B+%3Aresult+%3Ais+%3Fskolem+%7D+.)
 
 
 <div class=example>
@@ -1881,7 +1881,7 @@ Variable substitution is applied recursively to nested compound terms such as qu
 <i>`( $s )+  log:includes  $o- `</i>
 
 #### Examples #### {#includes_examples}
-[Try in Notation3 Editor &#128640;](file:///Users/timothyduval/Library/Mobile%20Documents/com~apple~CloudDocs/00_unifylogic/50-clients/w3c/N3/useOfBuiltins/core-specs/03-development/site/spec-builtins/src/log/includes.n3)
+[Try in Notation3 Editor &#128640;](https://n3-editor.herokuapp.com/n3/editor/?formula=%40prefix+%3A+%3Chttp%3A%2F%2Fexample.org%2F%3E.%0A%40prefix+log%3A+%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F10%2Fswap%2Flog%23%3E+.%0A%0A%7B+%0A++++%7B+%3AFelix+a+%3ACat+%7D+log%3Aincludes+%7B+%3FX+a+%3ACat+%7D+.%0A%7D+%0A%3D%3E%0A%7B%0A++++%3Aresult+%3Ais+%3FX+.%0A%7D+.)
 
 
 <div class=example>
@@ -1928,7 +1928,7 @@ The concrete semantics of this builtin (e.g., which N3 resource types are suppor
 <i>`( $s )+  log:outputString  $o- `</i>
 
 #### Examples #### {#outputString_examples}
-[Try in Notation3 Editor &#128640;](file:///Users/timothyduval/Library/Mobile%20Documents/com~apple~CloudDocs/00_unifylogic/50-clients/w3c/N3/useOfBuiltins/core-specs/03-development/site/spec-builtins/src/log/outputString.n3)
+[Try in Notation3 Editor &#128640;](https://n3-editor.herokuapp.com/n3/editor/?formula=%40prefix+%3A+%3Chttp%3A%2F%2Fexample.org%2F%3E.%0A%40prefix+log%3A+%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F10%2Fswap%2Flog%23%3E+.%0A%0A_%3A2+log%3AoutputString+%22This+is+the+second+line%0A%22+.%0A_%3A1+log%3AoutputString+%22This+is+the+first+line%0A%22+.)
 
 
 <div class=example>
@@ -1964,7 +1964,7 @@ Either gets as object the quoted graph that results from parsing an online (N3) 
 <i>`( $s )+  log:semanticsOrError  $o? `</i>
 
 #### Examples #### {#semanticsOrError_examples}
-[Try in Notation3 Editor &#128640;](file:///Users/timothyduval/Library/Mobile%20Documents/com~apple~CloudDocs/00_unifylogic/50-clients/w3c/N3/useOfBuiltins/core-specs/03-development/site/spec-builtins/src/log/semanticsOrError.n3)
+[Try in Notation3 Editor &#128640;](https://n3-editor.herokuapp.com/n3/editor/?formula=%40prefix+%3A+%3Chttp%3A%2F%2Fexample.org%2F%3E.%0A%40prefix+log%3A+%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F10%2Fswap%2Flog%23%3E+.%0A%0A%7B+%3Cerror.data%3E+log%3Asemantics+%3Fsemantics+.+%7D+%3D%3E+%7B+%3Aresult+%3Ais+%3Fsemantics+%7D+.)
 
 
 <div class=example>
@@ -1989,60 +1989,13 @@ Read the contents a non existing `<error.data>` and parse it as Notation3 (which
 ### log:semantics ### {#semantics}
 Gets as object the quoted graph that results from parsing an online (N3) string, found by dereferencing the subject IRI.
 
-The log:semantics of a document is the formula achieved by parsing the representation of the document.
-For a document in Notation3, `log:semantics` is the `log:parsedAsN3` of the `log:content` of the document.
-For a document in another RDF syntax, it is parsed according to the appropriate specification to yield an RDF formula (a subclass of N3 `log:Formula`).
-Evaluates to `false` if an unrecognized document format is retrieved.
-Aside: Philosophers will be distracted here into worrying about the meaning of meaning. At least we didn't call this function "meaning"! 
-In as much as N3 is used as an interlingua for interoperability for different systems, this for an N3 based system is the meaning expressed by a document.
-Related: see `log:parsedAsN3` and `log:content`.
+`true` if and only if `$o` is a quoted graph that results from parsing the string that results from dereferencing `$s`.
 
 #### Schema(s) #### {#semantics_schemas} 
 <i>`( $s )+  log:semantics  $o? `</i>
 
 #### Examples #### {#semantics_examples}
-[Try in Notation3 Editor &#128640;](file:///Users/timothyduval/Library/Mobile%20Documents/com~apple~CloudDocs/00_unifylogic/50-clients/w3c/N3/useOfBuiltins/core-specs/03-development/site/spec-builtins/src/log/semantics.n3)
-
-
-<div class=example>
-    <p>
-Read the contents of the file `<semantics.data>` and parse it as Notation3.
-We assume `<semantics.data>` contains the text:
-```       
-  @prefix : <http://example.org/>.
-  :Socrates a :Human .
-```       
-            
-    <p><b>Formula:</b>
-    ```
-@prefix : <http://example.org/>.
-@prefix log: <http://www.w3.org/2000/10/swap/log#> .
-
-{ <semantics.data> log:semantics ?semantics . } => { :result :is ?semantics } .
-            ```
-    <p><b>Result:</b>
-    ```
-@prefix : <http://example.org/>.
-:result :is { :Socrates a :Human . } .
-            ```
-</div>            
-
-### log:semantics ### {#semantics}
-Gets as object the quoted graph that results from parsing an online (N3) string, found by dereferencing the subject IRI.
-
-The log:semantics of a document is the formula achieved by parsing the representation of the document.
-For a document in Notation3, `log:semantics` is the `log:parsedAsN3` of the `log:content` of the document.
-For a document in another RDF syntax, it is parsed according to the appropriate specification to yield an RDF formula (a subclass of N3 `log:Formula`).
-Evaluates to `false` if an unrecognized document format is retrieved.
-Aside: Philosophers will be distracted here into worrying about the meaning of meaning. At least we didn't call this function "meaning"! 
-In as much as N3 is used as an interlingua for interoperability for different systems, this for an N3 based system is the meaning expressed by a document.
-Related: see `log:parsedAsN3` and `log:content`.
-
-#### Schema(s) #### {#semantics_schemas} 
-<i>`( $s )+  log:semantics  $o? `</i>
-
-#### Examples #### {#semantics_examples}
-[Try in Notation3 Editor &#128640;](file:///Users/timothyduval/Library/Mobile%20Documents/com~apple~CloudDocs/00_unifylogic/50-clients/w3c/N3/useOfBuiltins/core-specs/03-development/site/spec-builtins/src/log/semantics.n3)
+[Try in Notation3 Editor &#128640;](https://n3-editor.herokuapp.com/n3/editor/?formula=%40prefix+%3A+%3Chttp%3A%2F%2Fexample.org%2F%3E.%0A%40prefix+log%3A+%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F10%2Fswap%2Flog%23%3E+.%0A%0A%7B+%3Csemantics.data%3E+log%3Asemantics+%3Fsemantics+.+%7D+%3D%3E+%7B+%3Aresult+%3Ais+%3Fsemantics+%7D+.)
 
 
 <div class=example>
@@ -2077,7 +2030,7 @@ Gets as object the quoted graph that results from parsing an online (N3) string,
 <i>`( $s )+  log:semantics  $o? `</i>
 
 #### Examples #### {#semantics_examples}
-[Try in Notation3 Editor &#128640;](file:///Users/timothyduval/Library/Mobile%20Documents/com~apple~CloudDocs/00_unifylogic/50-clients/w3c/N3/useOfBuiltins/core-specs/03-development/site/spec-builtins/src/log/semantics.n3)
+[Try in Notation3 Editor &#128640;](https://n3-editor.herokuapp.com/n3/editor/?formula=%40prefix+%3A+%3Chttp%3A%2F%2Fexample.org%2F%3E.%0A%40prefix+log%3A+%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F10%2Fswap%2Flog%23%3E+.%0A%0A%7B+%3Csemantics.data%3E+log%3Asemantics+%3Fsemantics+.+%7D+%3D%3E+%7B+%3Aresult+%3Ais+%3Fsemantics+%7D+.)
 
 
 <div class=example>
@@ -2106,13 +2059,60 @@ We assume `<semantics.data>` contains the text:
 ### log:semantics ### {#semantics}
 Gets as object the quoted graph that results from parsing an online (N3) string, found by dereferencing the subject IRI.
 
-`true` if and only if `$o` is a quoted graph that results from parsing the string that results from dereferencing `$s`.
+The log:semantics of a document is the formula achieved by parsing the representation of the document.
+For a document in Notation3, `log:semantics` is the `log:parsedAsN3` of the `log:content` of the document.
+For a document in another RDF syntax, it is parsed according to the appropriate specification to yield an RDF formula (a subclass of N3 `log:Formula`).
+Evaluates to `false` if an unrecognized document format is retrieved.
+Aside: Philosophers will be distracted here into worrying about the meaning of meaning. At least we didn't call this function "meaning"! 
+In as much as N3 is used as an interlingua for interoperability for different systems, this for an N3 based system is the meaning expressed by a document.
+Related: see `log:parsedAsN3` and `log:content`.
 
 #### Schema(s) #### {#semantics_schemas} 
 <i>`( $s )+  log:semantics  $o? `</i>
 
 #### Examples #### {#semantics_examples}
-[Try in Notation3 Editor &#128640;](file:///Users/timothyduval/Library/Mobile%20Documents/com~apple~CloudDocs/00_unifylogic/50-clients/w3c/N3/useOfBuiltins/core-specs/03-development/site/spec-builtins/src/log/semantics.n3)
+[Try in Notation3 Editor &#128640;](https://n3-editor.herokuapp.com/n3/editor/?formula=%40prefix+%3A+%3Chttp%3A%2F%2Fexample.org%2F%3E.%0A%40prefix+log%3A+%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F10%2Fswap%2Flog%23%3E+.%0A%0A%7B+%3Csemantics.data%3E+log%3Asemantics+%3Fsemantics+.+%7D+%3D%3E+%7B+%3Aresult+%3Ais+%3Fsemantics+%7D+.)
+
+
+<div class=example>
+    <p>
+Read the contents of the file `<semantics.data>` and parse it as Notation3.
+We assume `<semantics.data>` contains the text:
+```       
+  @prefix : <http://example.org/>.
+  :Socrates a :Human .
+```       
+            
+    <p><b>Formula:</b>
+    ```
+@prefix : <http://example.org/>.
+@prefix log: <http://www.w3.org/2000/10/swap/log#> .
+
+{ <semantics.data> log:semantics ?semantics . } => { :result :is ?semantics } .
+            ```
+    <p><b>Result:</b>
+    ```
+@prefix : <http://example.org/>.
+:result :is { :Socrates a :Human . } .
+            ```
+</div>            
+
+### log:semantics ### {#semantics}
+Gets as object the quoted graph that results from parsing an online (N3) string, found by dereferencing the subject IRI.
+
+The log:semantics of a document is the formula achieved by parsing the representation of the document.
+For a document in Notation3, `log:semantics` is the `log:parsedAsN3` of the `log:content` of the document.
+For a document in another RDF syntax, it is parsed according to the appropriate specification to yield an RDF formula (a subclass of N3 `log:Formula`).
+Evaluates to `false` if an unrecognized document format is retrieved.
+Aside: Philosophers will be distracted here into worrying about the meaning of meaning. At least we didn't call this function "meaning"! 
+In as much as N3 is used as an interlingua for interoperability for different systems, this for an N3 based system is the meaning expressed by a document.
+Related: see `log:parsedAsN3` and `log:content`.
+
+#### Schema(s) #### {#semantics_schemas} 
+<i>`( $s )+  log:semantics  $o? `</i>
+
+#### Examples #### {#semantics_examples}
+[Try in Notation3 Editor &#128640;](https://n3-editor.herokuapp.com/n3/editor/?formula=%40prefix+%3A+%3Chttp%3A%2F%2Fexample.org%2F%3E.%0A%40prefix+log%3A+%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F10%2Fswap%2Flog%23%3E+.%0A%0A%7B+%3Csemantics.data%3E+log%3Asemantics+%3Fsemantics+.+%7D+%3D%3E+%7B+%3Aresult+%3Ais+%3Fsemantics+%7D+.)
 
 
 <div class=example>
@@ -2149,7 +2149,7 @@ You can use this as an equivalent of a lessThanOrEqual operator.
 <i>`( $s )+  string:notGreaterThan  $o? `</i>
 
 #### Examples #### {#notGreaterThan_examples}
-[Try in Notation3 Editor &#128640;](file:///Users/timothyduval/Library/Mobile%20Documents/com~apple~CloudDocs/00_unifylogic/50-clients/w3c/N3/useOfBuiltins/core-specs/03-development/site/spec-builtins/src/string/notGreaterThan.n3)
+[Try in Notation3 Editor &#128640;](https://n3-editor.herokuapp.com/n3/editor/?formula=%40prefix+%3A+%3Chttp%3A%2F%2Fexample.org%2F%3E.%0A%40prefix+string%3A+%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F10%2Fswap%2Fstring%23%3E+.%0A%0A%3ALet+%3Aparam1+%22Cat%22+.%0A%3ALet+%3Aparam2+%22Penguin%22.%0A%7B%0A++++%3ALet+%3Aparam1+%3Fparam1+.%0A++++%3ALet+%3Aparam2+%3Fparam2+.%0A++++%3Fparam1+string%3AnotGreaterThan+%3Fparam2+.%0A%7D%0A%3D%3E%0A%7B%0A++++%3Aresult+%3Ais+true+.%0A%7D+.)
 
 
 <div class=example>
@@ -2189,7 +2189,7 @@ Checks whether the subject string is not the same as the object string, ignoring
 <i>`( $s )+  string:notEqualIgnoringCase  $o? `</i>
 
 #### Examples #### {#notEqualIgnoringCase_examples}
-[Try in Notation3 Editor &#128640;](file:///Users/timothyduval/Library/Mobile%20Documents/com~apple~CloudDocs/00_unifylogic/50-clients/w3c/N3/useOfBuiltins/core-specs/03-development/site/spec-builtins/src/string/notEqualIgnoringCase.n3)
+[Try in Notation3 Editor &#128640;](https://n3-editor.herokuapp.com/n3/editor/?formula=%40prefix+%3A+%3Chttp%3A%2F%2Fexample.org%2F%3E.%0A%40prefix+string%3A+%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F10%2Fswap%2Fstring%23%3E+.%0A%0A%3ALet+%3Aparam1+%22hello+world%21%22+.%0A%3ALet+%3Aparam2+%22hELLo+dunia%21%22+.%0A%7B%0A++++%3ALet+%3Aparam1+%3Fparam1+.%0A++++%3ALet+%3Aparam2+%3Fparam2+.%0A++++%3Fparam1+string%3AnotEqualIgnoringCase+%3Fparam2+.%0A%7D%0A%3D%3E%0A%7B%0A++++%3Aresult+%3Ais+true+.%0A%7D+.)
 
 
 <div class=example>
@@ -2229,7 +2229,7 @@ Checks whether the subject string contains the object string.
 <i>`( $s )+  string:contains  $o? `</i>
 
 #### Examples #### {#contains_examples}
-[Try in Notation3 Editor &#128640;](file:///Users/timothyduval/Library/Mobile%20Documents/com~apple~CloudDocs/00_unifylogic/50-clients/w3c/N3/useOfBuiltins/core-specs/03-development/site/spec-builtins/src/string/contains.n3)
+[Try in Notation3 Editor &#128640;](https://n3-editor.herokuapp.com/n3/editor/?formula=%40prefix+%3A+%3Chttp%3A%2F%2Fexample.org%2F%3E.%0A%40prefix+string%3A+%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F10%2Fswap%2Fstring%23%3E+.%0A%0A%3ALet+%3Aparam1+%22hello+world%21%22+.%0A%3ALet+%3Aparam2+%22llo+worl%22.%0A%7B%0A++++%3ALet+%3Aparam1+%3Fparam1+.%0A++++%3ALet+%3Aparam2+%3Fparam2+.%0A++++%3Fparam1+string%3Acontains+%3Fparam2+.%0A%7D%0A%3D%3E%0A%7B%0A++++%3Aresult+%3Ais+true+.%0A%7D+.)
 
 
 <div class=example>
@@ -2269,7 +2269,7 @@ Checks whether the subject string is greater than the object string, according t
 <i>`( $s )+  string:greaterThan  $o? `</i>
 
 #### Examples #### {#greaterThan_examples}
-[Try in Notation3 Editor &#128640;](file:///Users/timothyduval/Library/Mobile%20Documents/com~apple~CloudDocs/00_unifylogic/50-clients/w3c/N3/useOfBuiltins/core-specs/03-development/site/spec-builtins/src/string/greaterThan.n3)
+[Try in Notation3 Editor &#128640;](https://n3-editor.herokuapp.com/n3/editor/?formula=%40prefix+%3A+%3Chttp%3A%2F%2Fexample.org%2F%3E.%0A%40prefix+string%3A+%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F10%2Fswap%2Fstring%23%3E+.%0A%0A%3ALet+%3Aparam1+%22Penguin%22+.%0A%3ALet+%3Aparam2+%22Cat%22.%0A%7B%0A++++%3ALet+%3Aparam1+%3Fparam1+.%0A++++%3ALet+%3Aparam2+%3Fparam2+.%0A++++%3Fparam1+string%3AgreaterThan+%3Fparam2+.%0A%7D%0A%3D%3E%0A%7B%0A++++%3Aresult+%3Ais+true+.%0A%7D+.)
 
 
 <div class=example>
@@ -2309,7 +2309,7 @@ Checks whether the subject string contains the object string, ignoring differenc
 <i>`( $s )+  string:containsIgnoringCase  $o? `</i>
 
 #### Examples #### {#containsIgnoringCase_examples}
-[Try in Notation3 Editor &#128640;](file:///Users/timothyduval/Library/Mobile%20Documents/com~apple~CloudDocs/00_unifylogic/50-clients/w3c/N3/useOfBuiltins/core-specs/03-development/site/spec-builtins/src/string/containsIgnoringCase.n3)
+[Try in Notation3 Editor &#128640;](https://n3-editor.herokuapp.com/n3/editor/?formula=%40prefix+%3A+%3Chttp%3A%2F%2Fexample.org%2F%3E.%0A%40prefix+string%3A+%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F10%2Fswap%2Fstring%23%3E+.%0A%0A%3ALet+%3Aparam1+%22hello+world%21%22+.%0A%3ALet+%3Aparam2+%22lLO+woRl%22.%0A%7B%0A++++%3ALet+%3Aparam1+%3Fparam1+.%0A++++%3ALet+%3Aparam2+%3Fparam2+.%0A++++%3Fparam1+string%3AcontainsIgnoringCase+%3Fparam2+.%0A%7D%0A%3D%3E%0A%7B%0A++++%3Aresult+%3Ais+true+.%0A%7D+.)
 
 
 <div class=example>
@@ -2350,7 +2350,7 @@ You can use this as an equivalent of a greaterThanOrEqual operator.
 <i>`( $s )+  string:notLessThan  $o? `</i>
 
 #### Examples #### {#notLessThan_examples}
-[Try in Notation3 Editor &#128640;](file:///Users/timothyduval/Library/Mobile%20Documents/com~apple~CloudDocs/00_unifylogic/50-clients/w3c/N3/useOfBuiltins/core-specs/03-development/site/spec-builtins/src/string/notLessThan.n3)
+[Try in Notation3 Editor &#128640;](https://n3-editor.herokuapp.com/n3/editor/?formula=%40prefix+%3A+%3Chttp%3A%2F%2Fexample.org%2F%3E.%0A%40prefix+string%3A+%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F10%2Fswap%2Fstring%23%3E+.%0A%0A%3ALet+%3Aparam1+%22Penguin%22.%0A%3ALet+%3Aparam2+%22Cat%22+.%0A%7B%0A++++%3ALet+%3Aparam1+%3Fparam1+.%0A++++%3ALet+%3Aparam2+%3Fparam2+.%0A++++%3Fparam1+string%3AnotLessThan+%3Fparam2+.%0A%7D%0A%3D%3E%0A%7B%0A++++%3Aresult+%3Ais+true+.%0A%7D+.)
 
 
 <div class=example>
@@ -2390,7 +2390,7 @@ Checks whether the subject string ends with the object string.
 <i>`( $s )+  string:endsWith  $o? `</i>
 
 #### Examples #### {#endsWith_examples}
-[Try in Notation3 Editor &#128640;](file:///Users/timothyduval/Library/Mobile%20Documents/com~apple~CloudDocs/00_unifylogic/50-clients/w3c/N3/useOfBuiltins/core-specs/03-development/site/spec-builtins/src/string/endsWith.n3)
+[Try in Notation3 Editor &#128640;](https://n3-editor.herokuapp.com/n3/editor/?formula=%40prefix+%3A+%3Chttp%3A%2F%2Fexample.org%2F%3E.%0A%40prefix+string%3A+%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F10%2Fswap%2Fstring%23%3E+.%0A%0A%3ALet+%3Aparam1+%22hello+world%21%22+.%0A%3ALet+%3Aparam2+%22orld%21%22.%0A%7B%0A++++%3ALet+%3Aparam1+%3Fparam1+.%0A++++%3ALet+%3Aparam2+%3Fparam2+.%0A++++%3Fparam1+string%3AendsWith+%3Fparam2+.%0A%7D%0A%3D%3E%0A%7B%0A++++%3Aresult+%3Ais+true+.%0A%7D+.)
 
 
 <div class=example>
@@ -2430,7 +2430,7 @@ Calculates the object as the first matching group when, given the subject list, 
 <i>`( $s )+  string:scrape  $o? `</i>
 
 #### Examples #### {#scrape_examples}
-[Try in Notation3 Editor &#128640;](file:///Users/timothyduval/Library/Mobile%20Documents/com~apple~CloudDocs/00_unifylogic/50-clients/w3c/N3/useOfBuiltins/core-specs/03-development/site/spec-builtins/src/string/scrape.n3)
+[Try in Notation3 Editor &#128640;](https://n3-editor.herokuapp.com/n3/editor/?formula=%40prefix+%3A+%3Chttp%3A%2F%2Fexample.org%2F%3E.%0A%40prefix+string%3A+%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F10%2Fswap%2Fstring%23%3E+.%0A%0A%3ALet+%3Aparam1+%22https%3A%2F%2Fw3c.github.io%2FN3%2Fspec%2F%22+.+%0A%3ALet+%3Aparam2+%22.%2A%2F%28%5B%5E%2F%5D%2B%2F%29%24%22+.%0A%7B%0A++++%3ALet+%3Aparam1+%3Fparam1+.%0A++++%3ALet+%3Aparam2+%3Fparam2+.%0A++++%28%3Fparam1+%3Fparam2%29+string%3Ascrape+%3Fresult+.%0A%7D%0A%3D%3E%0A%7B%0A++++%3Aresult+%3Ais+%3Fresult+.%0A%7D+.)
 
 
 <div class=example>
@@ -2470,7 +2470,7 @@ Calculates the object as the result of, given the strings in the subject list, r
 <i>`( $s )+  string:replace  $o? `</i>
 
 #### Examples #### {#replace_examples}
-[Try in Notation3 Editor &#128640;](file:///Users/timothyduval/Library/Mobile%20Documents/com~apple~CloudDocs/00_unifylogic/50-clients/w3c/N3/useOfBuiltins/core-specs/03-development/site/spec-builtins/src/string/replace.n3)
+[Try in Notation3 Editor &#128640;](https://n3-editor.herokuapp.com/n3/editor/?formula=%40prefix+%3A+%3Chttp%3A%2F%2Fexample.org%2F%3E.%0A%40prefix+string%3A+%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F10%2Fswap%2Fstring%23%3E+.%0A%0A%3ALet+%3Adata+%22hello+world%21%22+.%0A%3ALet+%3Asearch+%22%28l%29%22+.%0A%3ALet+%3Areplace+%22%5B%241%5D%22+.%0A%7B%0A++++%3ALet+%3Adata+%3Fdata+.%0A++++%3ALet+%3Asearch+%3Fsearch+.%0A++++%3ALet+%3Areplace+%3Freplace+.%0A++++%28%3Fdata+%3Fsearch+%3Freplace%29+string%3Areplace+%3Fresult+.%0A%7D%0A%3D%3E%0A%7B%0A++++%3Aresult+%3Ais+%3Fresult+.%0A%7D+.)
 
 
 <div class=example>
@@ -2512,7 +2512,7 @@ Checks whether the subject string is less than the object string, according to U
 <i>`( $s )+  string:lessThan  $o? `</i>
 
 #### Examples #### {#lessThan_examples}
-[Try in Notation3 Editor &#128640;](file:///Users/timothyduval/Library/Mobile%20Documents/com~apple~CloudDocs/00_unifylogic/50-clients/w3c/N3/useOfBuiltins/core-specs/03-development/site/spec-builtins/src/string/lessThan.n3)
+[Try in Notation3 Editor &#128640;](https://n3-editor.herokuapp.com/n3/editor/?formula=%40prefix+%3A+%3Chttp%3A%2F%2Fexample.org%2F%3E.%0A%40prefix+string%3A+%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F10%2Fswap%2Fstring%23%3E+.%0A%0A%3ALet+%3Aparam1+%22Cat%22+.%0A%3ALet+%3Aparam2+%22Penguin%22.%0A%7B%0A++++%3ALet+%3Aparam1+%3Fparam1+.%0A++++%3ALet+%3Aparam2+%3Fparam2+.%0A++++%3Fparam1+string%3AlessThan+%3Fparam2+.%0A%7D%0A%3D%3E%0A%7B%0A++++%3Aresult+%3Ais+true+.%0A%7D+.)
 
 
 <div class=example>
@@ -2552,7 +2552,7 @@ Concatenates the strings from the subject list into a single string as object.
 <i>`( $s )+  string:concatenation  $o? `</i>
 
 #### Examples #### {#concatenation_examples}
-[Try in Notation3 Editor &#128640;](file:///Users/timothyduval/Library/Mobile%20Documents/com~apple~CloudDocs/00_unifylogic/50-clients/w3c/N3/useOfBuiltins/core-specs/03-development/site/spec-builtins/src/string/concatenation.n3)
+[Try in Notation3 Editor &#128640;](https://n3-editor.herokuapp.com/n3/editor/?formula=%40prefix+%3A+%3Chttp%3A%2F%2Fexample.org%2F%3E.%0A%40prefix+string%3A+%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F10%2Fswap%2Fstring%23%3E+.%0A%0A%3ALet+%3Aparam+%28+%22hello%22+%22+%22+%22world%21%22+%29+.%0A%0A%7B%0A++++%3ALet+%3Aparam+%3Fparam+.%0A++++%3Fparam+string%3Aconcatenation+%3Fresult+.%0A%7D%0A%3D%3E%0A%7B%0A++++%3Aresult+%3Ais+%3Fresult+.%0A%7D+.)
 
 
 <div class=example>
@@ -2591,7 +2591,7 @@ Checks whether the subject string is the same as the object string, ignoring dif
 <i>`( $s )+  string:equalIgnoringCase  $o? `</i>
 
 #### Examples #### {#equalIgnoringCase_examples}
-[Try in Notation3 Editor &#128640;](file:///Users/timothyduval/Library/Mobile%20Documents/com~apple~CloudDocs/00_unifylogic/50-clients/w3c/N3/useOfBuiltins/core-specs/03-development/site/spec-builtins/src/string/equalIgnoringCase.n3)
+[Try in Notation3 Editor &#128640;](https://n3-editor.herokuapp.com/n3/editor/?formula=%40prefix+%3A+%3Chttp%3A%2F%2Fexample.org%2F%3E.%0A%40prefix+string%3A+%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F10%2Fswap%2Fstring%23%3E+.%0A%0A%3ALet+%3Aparam1+%22hello+world%21%22+.%0A%3ALet+%3Aparam2+%22hELLo+wORld%21%22+.%0A%7B%0A++++%3ALet+%3Aparam1+%3Fparam1+.%0A++++%3ALet+%3Aparam2+%3Fparam2+.%0A++++%3Fparam1+string%3AequalIgnoringCase+%3Fparam2+.%0A%7D%0A%3D%3E%0A%7B%0A++++%3Aresult+%3Ais+true+.%0A%7D+.)
 
 
 <div class=example>
@@ -2631,7 +2631,7 @@ Checks whether the subject string starts with the object string.
 <i>`( $s )+  string:startsWith  $o? `</i>
 
 #### Examples #### {#startsWith_examples}
-[Try in Notation3 Editor &#128640;](file:///Users/timothyduval/Library/Mobile%20Documents/com~apple~CloudDocs/00_unifylogic/50-clients/w3c/N3/useOfBuiltins/core-specs/03-development/site/spec-builtins/src/string/startsWith.n3)
+[Try in Notation3 Editor &#128640;](https://n3-editor.herokuapp.com/n3/editor/?formula=%40prefix+%3A+%3Chttp%3A%2F%2Fexample.org%2F%3E.%0A%40prefix+string%3A+%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F10%2Fswap%2Fstring%23%3E+.%0A%0A%3ALet+%3Aparam1+%22hello+world%21%22+.%0A%3ALet+%3Aparam2+%22hello%22.%0A%7B%0A++++%3ALet+%3Aparam1+%3Fparam1+.%0A++++%3ALet+%3Aparam2+%3Fparam2+.%0A++++%3Fparam1+string%3AstartsWith+%3Fparam2+.%0A%7D%0A%3D%3E%0A%7B%0A++++%3Aresult+%3Ais+true+.%0A%7D+.)
 
 
 <div class=example>
@@ -2672,7 +2672,7 @@ The regular expression follows the perl, python style.
 <i>`( $s )+  string:matches  $o? `</i>
 
 #### Examples #### {#matches_examples}
-[Try in Notation3 Editor &#128640;](file:///Users/timothyduval/Library/Mobile%20Documents/com~apple~CloudDocs/00_unifylogic/50-clients/w3c/N3/useOfBuiltins/core-specs/03-development/site/spec-builtins/src/string/matches.n3)
+[Try in Notation3 Editor &#128640;](https://n3-editor.herokuapp.com/n3/editor/?formula=%40prefix+%3A+%3Chttp%3A%2F%2Fexample.org%2F%3E.%0A%40prefix+string%3A+%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F10%2Fswap%2Fstring%23%3E+.%0A%0A%3ALet+%3Aparam1+%22hello+world%21%22+.%0A%3ALet+%3Aparam2+%22.%2A%28l%29%2Bo+wo.%2A%22.%0A%7B%0A++++%3ALet+%3Aparam1+%3Fparam1+.%0A++++%3ALet+%3Aparam2+%3Fparam2+.%0A++++%3Fparam1+string%3Amatches+%3Fparam2+.%0A%7D%0A%3D%3E%0A%7B%0A++++%3Aresult+%3Ais+true+.%0A%7D+.)
 
 
 <div class=example>
@@ -2713,7 +2713,7 @@ The regular expression follows the perl, python style.
 <i>`( $s )+  string:notMatches  $o? `</i>
 
 #### Examples #### {#notMatches_examples}
-[Try in Notation3 Editor &#128640;](file:///Users/timothyduval/Library/Mobile%20Documents/com~apple~CloudDocs/00_unifylogic/50-clients/w3c/N3/useOfBuiltins/core-specs/03-development/site/spec-builtins/src/string/notMatches.n3)
+[Try in Notation3 Editor &#128640;](https://n3-editor.herokuapp.com/n3/editor/?formula=%40prefix+%3A+%3Chttp%3A%2F%2Fexample.org%2F%3E.%0A%40prefix+string%3A+%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F10%2Fswap%2Fstring%23%3E+.%0A%0A%3ALet+%3Aparam1+%22hello+world%21%22+.%0A%3ALet+%3Aparam2+%22.%2A%28l%29%2Bo+dunia.%2A%22.%0A%7B%0A++++%3ALet+%3Aparam1+%3Fparam1+.%0A++++%3ALet+%3Aparam2+%3Fparam2+.%0A++++%3Fparam1+string%3AnotMatches+%3Fparam2+.%0A%7D%0A%3D%3E%0A%7B%0A++++%3Aresult+%3Ais+true+.%0A%7D+.)
 
 
 <div class=example>
@@ -2754,7 +2754,7 @@ See C's sprintf function for details on these tags.
 <i>`( $s )+  string:format  $o? `</i>
 
 #### Examples #### {#format_examples}
-[Try in Notation3 Editor &#128640;](file:///Users/timothyduval/Library/Mobile%20Documents/com~apple~CloudDocs/00_unifylogic/50-clients/w3c/N3/useOfBuiltins/core-specs/03-development/site/spec-builtins/src/string/format.n3)
+[Try in Notation3 Editor &#128640;](https://n3-editor.herokuapp.com/n3/editor/?formula=%40prefix+%3A+%3Chttp%3A%2F%2Fexample.org%2F%3E.%0A%40prefix+string%3A+%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F10%2Fswap%2Fstring%23%3E+.%0A%0A%3ALet+%3Aparam+%28+%22%25s%3A%2F%2F%25s%2F%25s%22+%22https%22+%22w3c.github.io%22+%22N3%2Fspec%2F%22+%29+.%0A%0A%7B%0A++++%3ALet+%3Aparam+%3Fparam+.%0A++++%3Fparam+string%3Aformat+%3Fresult+.%0A%7D%0A%3D%3E%0A%7B%0A++++%3Aresult+%3Ais+%3Fresult+.%0A%7D+.)
 
 
 <div class=example>

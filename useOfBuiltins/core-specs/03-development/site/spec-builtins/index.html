@@ -12,7 +12,7 @@
  *   - .toc for the Table of Contents (<ol class="toc">)
  *     + <span class="secno"> for the section numbers
  *   - #toc for the Table of Contents (<nav id="toc">)
- *   - ul.index for Indices (<a href="#ref">term</a><span>, in §N.M</span>)
+ *   - ul.index for Indices (<a href="#ref">term</a><span>, in § N.M</span>)
  *   - table.index for Index Tables (e.g. for properties or elements)
  *
  * Structural Markup
@@ -26,6 +26,7 @@
  *   - .figure and .caption (HTML4) and figure and figcaption (HTML5)
  *     -> .sidefigure for right-floated figures
  *   - ins/del
+ *     -> ins/del.c### for candidate and proposed changes (amendments)
  *
  * Code
  *   - pre and code
@@ -34,9 +35,12 @@
  *   - .note       for informative notes             (div, p, span, aside, details)
  *   - .example    for informative examples          (div, p, pre, span)
  *   - .issue      for issues                        (div, p, span)
- *   - .assertion  for assertions                    (div, p, span)
  *   - .advisement for loud normative statements     (div, p, strong)
  *   - .annoying-warning for spec obsoletion notices (div, aside, details)
+ *   - .correction for "candidate corrections"       (div, aside, details, section)
+ *   - .addition   for "candidate additions"         (div, aside, details, section)
+ *   - .correction.proposed for "proposed corrections" (div, aside, details, section)
+ *   - .addition.proposed   for "proposed additions"   (div, aside, details, section)
  *
  * Definition Boxes
  *   - pre.def   for WebIDL definitions
@@ -57,6 +61,8 @@
  *   - .head for the header
  *   - .copyright for the copyright
  *
+ * Outdated warning for old specs
+ *
  * Miscellaneous
  *   - .overlarge for things that should be as wide as possible, even if
  *     that overflows the body text area. This can be used on an item or
@@ -64,22 +70,28 @@
  *     Note that this styling basically doesn't help at all when printing,
  *     since A4 paper isn't much wider than the max-width here.
  *     It's better to design things to fit into a narrower measure if possible.
+ *
  *   - js-added ToC jump links (see fixup.js)
  *
  ******************************************************************************/
 
+/* color variables included separately for reliability */
+
 /******************************************************************************/
-/*                                   Body                                     */
+/*                                    Body                                    */
 /******************************************************************************/
+
+	html {
+	}
 
 	body {
 		counter-reset: example figure issue;
 
 		/* Layout */
-		max-width: 50em;               /* limit line length to 50em for readability   */
-		margin: 0 auto;                /* center text within page                     */
+		max-width: 50em;			  /* limit line length to 50em for readability   */
+		margin: 0 auto;				/* center text within page                    */
 		padding: 1.6em 1.5em 2em 50px; /* assume 16px font size for downlevel clients */
-		padding: 1.6em 1.5em 2em calc(26px + 1.5em); /* leave space for status flag     */
+		padding: 1.6em 1.5em 2em calc(26px + 1.5em); /* leave space for status flag    */
 
 		/* Typography */
 		line-height: 1.5;
@@ -90,9 +102,10 @@
 		overflow-wrap: break-word;
 		hyphens: auto;
 
-		/* Colors */
 		color: black;
+		color: var(--text);
 		background: white top left fixed no-repeat;
+		background: var(--bg) top left fixed no-repeat;
 		background-size: 25px auto;
 	}
 
@@ -103,7 +116,7 @@
 
 /** Header ********************************************************************/
 
-	div.head { margin-bottom: 1em }
+	div.head { margin-bottom: 1em; }
 	div.head hr { border-style: solid; }
 
 	div.head h1 {
@@ -124,10 +137,13 @@
 	.head img[src*="logos/W3C"] {
 		display: block;
 		border: solid #1a5e9a;
+		border: solid var(--logo-bg);
 		border-width: .65rem .7rem .6rem;
 		border-radius: .4rem;
 		background: #1a5e9a;
+		background: var(--logo-bg);
 		color: white;
+		color: var(--logo-text);
 		font-weight: bold;
 	}
 
@@ -138,7 +154,9 @@
 
 	.head a:active > img[src*="logos/W3C"] {
 		background: #c00;
+		background: var(--logo-active-bg);
 		border-color: #c00;
+		border-color: var(--logo-active-bg);
 	}
 
 	/* see also additional rules in Link Styling section */
@@ -146,7 +164,7 @@
 /** Copyright *****************************************************************/
 
 	p.copyright,
-	p.copyright small { font-size: small }
+	p.copyright small { font-size: small; }
 
 /** Back to Top / ToC Toggle **************************************************/
 
@@ -158,14 +176,13 @@
 	@media not print {
 		#toc-nav {
 			position: fixed;
-			z-index: 2;
+			z-index: 3;
 			bottom: 0; left: 0;
 			margin: 0;
 			min-width: 1.33em;
 			border-top-right-radius: 2rem;
 			box-shadow: 0 0 2px;
 			font-size: 1.5em;
-			color: black;
 		}
 		#toc-nav > a {
 			display: block;
@@ -175,23 +192,32 @@
 			padding: .1em 0.3em;
 			margin: 0;
 
-			background: white;
 			box-shadow: 0 0 2px;
 			border: none;
 			border-top-right-radius: 1.33em;
+
+			color: #707070;
+			color: var(--tocnav-normal-text);
 			background: white;
+			background: var(--tocnav-normal-bg);
 		}
+		#toc-nav > a:hover,
+		#toc-nav > a:focus {
+			color: black;
+			color: var(--tocnav-hover-text);
+			background: #f8f8f8;
+			background: var(--tocnav-hover-bg);
+		}
+		#toc-nav > a:active {
+			color: #c00;
+			color: var(--tocnav-active-text);
+			background: white;
+			background: var(--tocnav-active-bg);
+		}
+
 		#toc-nav > #toc-jump {
 			padding-bottom: 2em;
 			margin-bottom: -1.9em;
-		}
-
-		#toc-nav > a:hover,
-		#toc-nav > a:focus {
-			background: #f8f8f8;
-		}
-		#toc-nav > a:not(:hover):not(:focus) {
-			color: #707070;
 		}
 
 		/* statusbar gets in the way on keyboard focus; remove once browsers fix */
@@ -205,26 +231,6 @@
 		}
 		#toc-nav > a > span + span {
 			padding-right: 0.2em;
-		}
-
-		#toc-toggle-inline {
-			vertical-align: 0.05em;
-			font-size: 80%;
-			color: gray;
-			color: hsla(203,20%,40%,.7);
-			border-style: none;
-			background: transparent;
-			position: relative;
-		}
-		#toc-toggle-inline:hover:not(:active),
-		#toc-toggle-inline:focus:not(:active) {
-			text-shadow: 1px 1px silver;
-			top: -1px;
-			left: -1px;
-		}
-
-		#toc-nav :active {
-			color: #C00;
 		}
 	}
 
@@ -243,10 +249,14 @@
 			padding: 0 1em;
 			padding-left: 42px;
 			padding-left: calc(1em + 26px);
+			color: black;
+			color: var(--tocsidebar-text);
 			background: inherit;
 			background-color: #f7f8f9;
+			background-color: var(--tocsidebar-bg);
 			z-index: 1;
 			box-shadow: -.1em 0 .25em rgba(0,0,0,.1) inset;
+			box-shadow: -.1em 0 .25em var(--tocsidebar-shadow) inset;
 		}
 		body.toc-sidebar #toc h2 {
 			margin-top: .8rem;
@@ -256,6 +266,7 @@
 			font-weight: bold;
 			color: gray;
 			color: hsla(203,20%,40%,.7);
+			color: var(--tocsidebar-heading-text);
 		}
 		body.toc-sidebar #toc-jump:not(:focus) {
 			width: 0;
@@ -283,10 +294,14 @@
 			padding: 0 1em;
 			padding-left: 42px;
 			padding-left: calc(1em + 26px);
+			color: black;
+			color: var(--tocsidebar-text);
 			background: inherit;
 			background-color: #f7f8f9;
+			background-color: var(--tocsidebar-bg);
 			z-index: 1;
 			box-shadow: -.1em 0 .25em rgba(0,0,0,.1) inset;
+			box-shadow: -.1em 0 .25em var(--tocsidebar-shadow) inset;
 		}
 		body:not(.toc-inline) #toc h2 {
 			margin-top: .8rem;
@@ -296,6 +311,7 @@
 			font-weight: bold;
 			color: gray;
 			color: hsla(203,20%,40%,.7);
+			color: var(--tocsidebar-heading-text);
 		}
 
 		body:not(.toc-inline) {
@@ -327,9 +343,9 @@
 		page-break-after: avoid;
 		page-break-inside: avoid;
 		font: 100% sans-serif;   /* Reset all font styling to clear out UA styles */
-		font-family: inherit;    /* Inherit the font family. */
-		line-height: 1.2;        /* Keep wrapped headings compact */
-		hyphens: manual;         /* Hyphenated headings look weird */
+		font-family: inherit;	/* Inherit the font family. */
+		line-height: 1.2;		/* Keep wrapped headings compact */
+		hyphens: manual;		/* Hyphenated headings look weird */
 	}
 
 	h2, h3, h4, h5, h6 {
@@ -338,7 +354,7 @@
 
 	h1, h2, h3 {
 		color: #005A9C;
-		background: transparent;
+		color: var(--heading-text);
 	}
 
 	h1 { font-size: 170%; }
@@ -352,8 +368,8 @@
 /** Subheadings ***************************************************************/
 
 	h1 + h2,
-	#subtitle {
-		/* #subtitle is a subtitle in an H2 under the H1 */
+	#profile-and-date {
+		/* #profile-and-date is a subtitle in an H2 under the H1 */
 		margin-top: 0;
 	}
 	h2 + h3,
@@ -365,11 +381,13 @@
 
 /** Section divider ***********************************************************/
 
-	:not(.head) > hr {
+	:not(.head) > :not(.head) + hr {
 		font-size: 1.5em;
 		text-align: center;
 		margin: 1em auto;
 		height: auto;
+		color: black;
+		color: var(--hr-text);
 		border: transparent solid 0;
 		background: transparent;
 	}
@@ -411,48 +429,51 @@
 	/* Style for algorithms */
 	ol.algorithm ol:not(.algorithm),
 	.algorithm > ol ol:not(.algorithm) {
-	 border-left: 0.5em solid #DEF;
+	border-left: 0.5em solid #DEF;
+	border-left: 0.5em solid var(--algo-border);
 	}
 
 	/* Put nice boxes around each algorithm. */
 	[data-algorithm]:not(.heading) {
-	  padding: .5em;
-	  border: thin solid #ddd; border-radius: .5em;
-	  margin: .5em calc(-0.5em - 1px);
+	 padding: .5em;
+	 border: thin solid #ddd;
+	 border: thin solid var(--algo-border);
+	 border-radius: .5em;
+	 margin: .5em calc(-0.5em - 1px);
 	}
 	[data-algorithm]:not(.heading) > :first-child {
-	  margin-top: 0;
+	 margin-top: 0;
 	}
 	[data-algorithm]:not(.heading) > :last-child {
-	  margin-bottom: 0;
+	 margin-bottom: 0;
 	}
 
 	/* Style for switch/case <dl>s */
 	dl.switch > dd > ol.only,
 	dl.switch > dd > .only > ol {
-	 margin-left: 0;
+	margin-left: 0;
 	}
 	dl.switch > dd > ol.algorithm,
 	dl.switch > dd > .algorithm > ol {
-	 margin-left: -2em;
+	margin-left: -2em;
 	}
 	dl.switch {
-	 padding-left: 2em;
+	padding-left: 2em;
 	}
 	dl.switch > dt {
-	 text-indent: -1.5em;
-	 margin-top: 1em;
+	text-indent: -1.5em;
+	margin-top: 1em;
 	}
 	dl.switch > dt + dt {
-	 margin-top: 0;
+	margin-top: 0;
 	}
 	dl.switch > dt::before {
-	 content: '\21AA';
-	 padding: 0 0.5em 0 0;
-	 display: inline-block;
-	 width: 1em;
-	 text-align: right;
-	 line-height: 0.5em;
+	content: '\21AA';
+	padding: 0 0.5em 0 0;
+	display: inline-block;
+	width: 1em;
+	text-align: right;
+	line-height: 0.5em;
 	}
 
 /** Terminology Markup ********************************************************/
@@ -470,7 +491,7 @@
 		font-style: normal;
 	}
 	dt dfn code, code.idl {
-		font-size: medium;
+		font-size: inherit;
 	}
 	dfn var {
 		font-style: normal;
@@ -478,8 +499,39 @@
 
 /** Change Marking ************************************************************/
 
-	del { color: red;  text-decoration: line-through; }
-	ins { color: #080; text-decoration: underline;    }
+	del {
+		color: #aa0000;
+		color: var(--del-text);
+		background: transparent;
+		background: var(--del-bg);
+		text-decoration: line-through;
+	}
+	ins {
+		color: #006100;
+		color: var(--ins-text);
+		background: transparent;
+		background: var(--ins-bg);
+		text-decoration: underline;
+	}
+
+	/* for amendments (candidate/proposed changes) */
+
+	.amendment ins, .correction ins, .addition ins,
+	ins[class^=c] {
+		text-decoration-style: dotted;
+	}
+	.amendment del, .correction del, .addition del,
+	del[class^=c] {
+		text-decoration-style: dotted;
+	}
+	.amendment.proposed ins, .correction.proposed ins, .addition.proposed ins,
+	ins[class^=c].proposed {
+		text-decoration-style: double;
+	}
+	.amendment.proposed del, .correction.proposed del, .addition.proposed del,
+	del[class^=c].proposed {
+		text-decoration-style: double;
+	}
 
 /** Miscellaneous improvements to inline formatting ***************************/
 
@@ -497,9 +549,14 @@
 	pre, code, samp {
 		font-family: Menlo, Consolas, "DejaVu Sans Mono", Monaco, monospace;
 		font-size: .9em;
-		page-break-inside: avoid;
 		hyphens: none;
 		text-transform: none;
+		text-align: left;
+		text-align: start;
+		font-variant: normal;
+		orphans: 3;
+		widows: 3;
+		page-break-before: avoid;
 	}
 	pre code,
 	code code {
@@ -514,7 +571,7 @@
 
 /** Inline Code fragments *****************************************************/
 
-  /* Do something nice. */
+	/* Do something nice. */
 
 /******************************************************************************/
 /*                                    Links                                   */
@@ -525,27 +582,28 @@
 	/* We hyperlink a lot, so make it less intrusive */
 	a[href] {
 		color: #034575;
-		text-decoration: none;
-		border-bottom: 1px solid #707070;
-		/* Need a bit of extending for it to look okay */
-		padding: 0 1px 0;
-		margin: 0 -1px 0;
+		color: var(--a-normal-text);
+		text-decoration: underline #707070;
+		text-decoration: underline var(--a-normal-underline);
+		text-decoration-skip-ink: none;
 	}
 	a:visited {
-		border-bottom-color: #BBB;
+		color: #034575;
+		color: var(--a-visited-text);
+		text-decoration-color: #bbb;
+		text-decoration-color: var(--a-visited-underline);
 	}
 
-	/* Use distinguishing colors when user is interacting with the link */
+	/* Indicate interaction with the link */
 	a[href]:focus,
 	a[href]:hover {
-		background: #f8f8f8;
-		background: rgba(75%, 75%, 75%, .25);
-		border-bottom-width: 3px;
-		margin-bottom: -2px;
+		text-decoration-thickness: 2px;
 	}
 	a[href]:active {
-		color: #C00;
-		border-color: #C00;
+		color: #c00;
+		color: var(--a-active-text);
+		text-decoration-color: #c00;
+		text-decoration-color: var(--a-active-underline);
 	}
 
 	/* Backout above styling for W3C logo */
@@ -564,8 +622,13 @@
 		border-style: none;
 	}
 
+	img, svg {
+		/* Intentionally not color-scheme aware. */
+		background: white;
+	}
+
 	/* For autogen numbers, add
-	   .caption::before, figcaption::before { content: "Figure " counter(figure) ". "; }
+	  .caption::before, figcaption::before { content: "Figure " counter(figure) ". "; }
 	*/
 
 	figure, .figure, .sidefigure {
@@ -573,10 +636,11 @@
 		text-align: center;
 		margin: 2.5em 0;
 	}
-	.figure img,    .sidefigure img,    figure img,
+	.figure img,	.sidefigure img,	figure img,
 	.figure object, .sidefigure object, figure object {
 		max-width: 100%;
 		margin: auto;
+		height: auto;
 	}
 	.figure pre, .sidefigure pre, figure pre {
 		text-align: left;
@@ -590,7 +654,7 @@
 		.sidefigure {
 			float: right;
 			width: 50%;
-			margin: 0 0 0.5em 0.5em
+			margin: 0 0 0.5em 0.5em;
 		}
 	}
 	.caption, figcaption, caption {
@@ -605,13 +669,15 @@
 	}
 
 	/* DL list is indented 2em, but figure inside it is not */
-	dd > .figure, dd > figure { margin-left: -2em }
+	dd > .figure, dd > figure { margin-left: -2em; }
 
 /******************************************************************************/
 /*                             Colored Boxes                                  */
 /******************************************************************************/
 
-	.issue, .note, .example, .assertion, .advisement, blockquote {
+	.issue, .note, .example, .assertion, .advisement, blockquote,
+	.amendment, .correction, .addition {
+		margin: 1em auto;
 		padding: .5em;
 		border: .5em;
 		border-left-style: solid;
@@ -622,88 +688,117 @@
 		border-right-style: solid;
 	}
 
-	.issue,
-	.note,
-	.example,
-	.advisement,
-	.assertion,
-	blockquote {
-		margin: 1em auto;
-	}
+	blockquote > :first-child,
 	.note  > p:first-child,
 	.issue > p:first-child,
-	blockquote > :first-child {
+	.amendment > p:first-child,
+	.correction > p:first-child,
+	.addition > p:first-child {
 		margin-top: 0;
 	}
-	blockquote > :last-child {
+	blockquote > :last-child,
+	.note  > p:last-child,
+	.issue > p:last-child,
+	.amendment > p:last-child,
+	.correction > p:last-child,
+	.addition > p:last-child {
 		margin-bottom: 0;
+	}
+
+
+	.issue::before, .issue > .marker,
+	.example::before, .example > .marker,
+	.note::before, .note > .marker,
+	details.note > summary > .marker,
+	.amendment::before, .amendment > .marker,
+	details.amendment > summary > .marker,
+	.addition::before, .addition > .marker,
+	addition.amendment > summary > .marker,
+	.correction::before, .correction > .marker,
+	correction.amendment > summary > .marker
+	{
+		text-transform: uppercase;
+		padding-right: 1em;
+	}
+
+	.example::before, .example > .marker {
+		display: block;
+		padding-right: 0em;
 	}
 
 /** Blockquotes ***************************************************************/
 
 	blockquote {
 		border-color: silver;
+		border-color: var(--blockquote-border);
+		background: transparent;
+		background: var(--blockquote-bg);
+		color: currentcolor;
+		color: var(--blockquote-text);
 	}
 
 /** Open issue ****************************************************************/
 
 	.issue {
-		border-color: #E05252;
-		background: #FBE9E9;
+		border-color: #e05252;
+		border-color: var(--issue-border);
+		background: #fbe9e9;
+		background: var(--issue-bg);
+		color: black;
+		color: var(--issue-text);
 		counter-increment: issue;
 		overflow: auto;
 	}
 	.issue::before, .issue > .marker {
-		text-transform: uppercase;
-		color: #AE1E1E;
-		padding-right: 1em;
-		text-transform: uppercase;
+		color: #831616;
+		color: var(--issueheading-text);
 	}
 	/* Add .issue::before { content: "Issue " counter(issue) " "; } for autogen numbers,
-	   or use class="marker" to mark up the issue number in source. */
+	  or use class="marker" to mark up the issue number in source. */
 
 /** Example *******************************************************************/
 
 	.example {
-		border-color: #E0CB52;
-		background: #FCFAEE;
+		border-color: #e0cb52;
+		border-color: var(--example-border);
+		background: #fcfaee;
+		background: var(--example-bg);
+		color: black;
+		color: var(--example-text);
 		counter-increment: example;
 		overflow: auto;
 		clear: both;
 	}
 	.example::before, .example > .marker {
-		text-transform: uppercase;
-		color: #827017;
-		min-width: 7.5em;
-		display: block;
+		color: #574b0f;
+		color: var(--exampleheading-text);
 	}
 	/* Add .example::before { content: "Example " counter(example) " "; } for autogen numbers,
-	   or use class="marker" to mark up the example number in source. */
+	  or use class="marker" to mark up the example number in source. */
 
 /** Non-normative Note ********************************************************/
 
 	.note {
-		border-color: #52E052;
-		background: #E9FBE9;
+		border-color: #52e052;
+		border-color: var(--note-border);
+		background: #e9fbe9;
+		background: var(--note-bg);
+		color: black;
+		color: var(--note-text);
 		overflow: auto;
 	}
 
 	.note::before, .note > .marker,
-	details.note > summary::before,
-	details.note > summary > .marker {
-		text-transform: uppercase;
-		display: block;
-		color: hsl(120, 70%, 30%);
-	}
-	/* Add .note::before { content: "Note"; } for autogen label,
-	   or use class="marker" to mark up the label in source. */
-
 	details.note > summary {
-		display: block;
 		color: hsl(120, 70%, 30%);
+		color: var(--noteheading-text);
 	}
+	/* Add .note::before { content: "Note "; } for autogen label,
+	  or use class="marker" to mark up the label in source. */
+
 	details.note[open] > summary {
 		border-bottom: 1px silver solid;
+		border-bottom: 1px var(--notesummary-underline) solid;
 	}
 
 /** Assertion Box *************************************************************/
@@ -711,7 +806,11 @@
 
 	.assertion {
 		border-color: #AAA;
+		border-color: var(--assertion-border);
 		background: #EEE;
+		background: var(--assertion-bg);
+		color: black;
+		color: var(--assertion-text);
 	}
 
 /** Advisement Box ************************************************************/
@@ -719,15 +818,52 @@
 
 	.advisement {
 		border-color: orange;
+		border-color: var(--advisement-border);
 		border-style: none solid;
-		background: #FFEECC;
+		background: #fec;
+		background: var(--advisement-bg);
+		color: black;
+		color: var(--advisement-text);
 	}
 	strong.advisement {
 		display: block;
 		text-align: center;
 	}
-	.advisement > .marker {
-		color: #B35F00;
+	.advisement::before, .advisement > .marker {
+		color: #b35f00;
+		color: var(--advisementheading-text);
+	}
+
+/** Amendment Box *************************************************************/
+
+	.amendment, .correction, .addition {
+		border-color: #330099;
+		border-color: var(--amendment-border);
+		background: #F5F0FF;
+		background: var(--amendment-bg);
+		color: black;
+		color: var(--amendment-text);
+	}
+	.amendment.proposed, .correction.proposed, .addition.proposed {
+		border-style: solid;
+		border-block-width: 0.25em;
+	}
+	.amendment::before, .amendment > .marker,
+	details.amendment > summary::before, details.amendment > summary > .marker,
+	.correction::before, .correction > .marker,
+	details.correction > summary::before, details.correction > summary > .marker,
+	.addition::before, .addition > .marker,
+	details.addition > summary::before, details.addition > summary > .marker {
+		color: #220066;
+		color: var(--amendmentheading-text);
+	}
+	.amendment.proposed::before, .amendment.proposed > .marker,
+	details.amendment.proposed > summary::before, details.amendment.proposed > summary > .marker,
+	.correction.proposed::before, .correction.proposed > .marker,
+	details.correction.proposed > summary::before, details.correction.proposed > summary > .marker,
+	.addition.proposed::before, .addition.proposed > .marker,
+	details.addition.proposed > summary::before, details.addition.proposed > summary > .marker {
+		font-weight: bold;
 	}
 
 /** Spec Obsoletion Notice ****************************************************/
@@ -743,13 +879,16 @@
 	.annoying-warning:not(details),
 	details.annoying-warning:not([open]) > summary,
 	details.annoying-warning[open] {
-		background: #fdd;
-		color: red;
-		font-weight: bold;
+		background: hsla(40,100%,50%,0.95);
+		background: var(--warning-bg);
+		color: black;
+		color: var(--warning-text);
 		padding: .75em 1em;
-		border: thick red;
-		border-style: solid;
-		border-radius: 1em;
+		border: red;
+		border: var(--warning-border);
+		border-style: solid none;
+		box-shadow: 0 2px 8px black;
+		text-align: center;
 	}
 	.annoying-warning :last-child {
 		margin-bottom: 0;
@@ -758,9 +897,9 @@
 @media not print {
 	details.annoying-warning[open] {
 		position: fixed;
-		left: 1em;
-		right: 1em;
-		bottom: 1em;
+		left: 0;
+		right: 0;
+		bottom: 2em;
 		z-index: 1000;
 	}
 }
@@ -773,9 +912,13 @@
 
 	.def {
 		padding: .5em 1em;
-		background: #DEF;
+		background: #def;
+		background: var(--def-bg);
 		margin: 1.2em 0;
-		border-left: 0.5em solid #8CCBF2;
+		border-left: 0.5em solid #8ccbf2;
+		border-left: 0.5em solid var(--def-border);
+		color: black;
+		color: var(--def-text);
 	}
 
 /******************************************************************************/
@@ -800,6 +943,7 @@
 		padding: 0.5em;
 		vertical-align: baseline;
 		border-bottom: 1px solid #bbd7e9;
+		border-bottom: 1px solid var(--defrow-border);
 	}
 
 	table.def > tbody > tr:last-child th,
@@ -820,10 +964,10 @@
 	}
 
 	/* A footnote at the bottom of a def table */
-	table.def           td.footnote {
+	table.def td.footnote {
 		padding-top: 0.6em;
 	}
-	table.def           td.footnote::before {
+	table.def td.footnote::before {
 		content: " ";
 		display: block;
 		height: 0.6em;
@@ -833,15 +977,15 @@
 
 /** Data tables (and properly marked-up index tables) *************************/
 	/*
-		 <table class="data"> highlights structural relationships in a table
-		 when correct markup is used (e.g. thead/tbody, th vs. td, scope attribute)
+		<table class="data"> highlights structural relationships in a table
+		when correct markup is used (e.g. thead/tbody, th vs. td, scope attribute)
 
-		 Use class="complex data" for particularly complicated tables --
-		 (This will draw more lines: busier, but clearer.)
+		Use class="complex data" for particularly complicated tables --
+		(This will draw more lines: busier, but clearer.)
 
-		 Use class="long" on table cells with paragraph-like contents
-		 (This will adjust text alignment accordingly.)
-		 Alternately use class="longlastcol" on tables, to have the last column assume "long".
+		Use class="long" on table cells with paragraph-like contents
+		(This will adjust text alignment accordingly.)
+		Alternately use class="longlastcol" on tables, to have the last column assume "long".
 	*/
 
 	table {
@@ -868,6 +1012,7 @@
 		padding: 0.5em 1em;
 		border-width: 1px;
 		border-color: silver;
+		border-color: var(--datacell-border);
 		border-top-style: solid;
 	}
 
@@ -892,6 +1037,7 @@
 	table.index tbody th:first-child  {
 		border-right: 2px solid;
 		border-top: 1px solid silver;
+		border-top: 1px solid var(--datacell-border);
 		padding-right: 1em;
 	}
 
@@ -903,13 +1049,14 @@
 	table.complex.data th,
 	table.complex.data td {
 		border: 1px solid silver;
+		border: 1px solid var(--datacell-border);
 		text-align: center;
 	}
 
 	table.data.longlastcol td:last-child,
 	table.data td.long {
-	 vertical-align: baseline;
-	 text-align: left;
+		vertical-align: baseline;
+		text-align: left;
 	}
 
 	table.data img {
@@ -962,17 +1109,30 @@ Possible extra rowspan handling
 
 	.toc a {
 		/* More spacing; use padding to make it part of the click target. */
-		padding-top: 0.1rem;
+		padding: 0.1rem 1px 0;
 		/* Larger, more consistently-sized click target */
 		display: block;
+		/* Switch to using border-bottom for underlines */
+		text-decoration: none;
+		border-bottom: 1px solid;
 		/* Reverse color scheme */
 		color: black;
-		border-color: #3980B5;
-		border-bottom-width: 3px !important;
-		margin-bottom: 0px !important;
+		color: var(--toclink-text);
+		border-color: #3980b5;
+		border-color: var(--toclink-underline);
 	}
 	.toc a:visited {
+		color: black;
+		color: var(--toclink-visited-text);
 		border-color: #054572;
+		border-color: var(--toclink-visited-underline);
+	}
+	.toc a:focus,
+	.toc a:hover {
+		background: rgba(75%, 75%, 75%, .25);
+		background: var(--a-hover-bg);
+		border-bottom-width: 3px;
+		margin-bottom: -2px;
 	}
 	.toc a:not(:focus):not(:hover) {
 		/* Allow colors to cascade through from link styling */
@@ -984,22 +1144,22 @@ Possible extra rowspan handling
 		/* because generated content isn't search/selectable and markers can't do multilevel yet */
 		margin:  0;
 		padding: 0;
-		line-height: 1.1rem; /* consistent spacing */
+	}
+	.toc {
+		line-height: 1.1em;
 	}
 
 	/* ToC not indented until third level, but font style & margins show hierarchy */
-	.toc > li             { font-weight: bold;   }
-	.toc > li li          { font-weight: normal; }
-	.toc > li li li       { font-size:   95%;    }
-	.toc > li li li li    { font-size:   90%;    }
-	.toc > li li li li .secno { font-size: 85%; }
-	.toc > li li li li li { font-size:   85%;    }
-	.toc > li li li li li .secno { font-size: 100%; }
+	.toc > li			{ font-weight: bold;   }
+	.toc > li li		 { font-weight: normal; }
+	.toc > li li li	  { font-size:   95%;	}
+	.toc > li li li li	{ font-size:   90%;	}
+	.toc > li li li li li { font-size:   85%;	}
 
 	/* @supports not (display:grid) { */
-		.toc > li             { margin: 1.5rem 0;    }
-		.toc > li li          { margin: 0.3rem 0;    }
-		.toc > li li li       { margin-left: 2rem;   }
+		.toc > li			{ margin: 1.5rem 0;	}
+		.toc > li li		 { margin: 0.3rem 0;	}
+		.toc > li li li	  { margin-left: 2rem;   }
 
 		/* Section numbers in a column of their own */
 		.toc .secno {
@@ -1007,26 +1167,37 @@ Possible extra rowspan handling
 			width: 4rem;
 			white-space: nowrap;
 		}
+		.toc > li li li li .secno { font-size: 85%; }
+		.toc > li li li li li .secno { font-size: 100%; }
 
 		.toc li {
 			clear: both;
 		}
 
-		:not(li) > .toc              { margin-left:  5rem; }
-		.toc .secno                  { margin-left: -5rem; }
-		.toc > li li li .secno       { margin-left: -7rem; }
-		.toc > li li li li .secno    { margin-left: -9rem; }
+		:not(li) > .toc			 { margin-left:  5rem; }
+		.toc .secno				 { margin-left: -5rem; }
+		.toc > li li li .secno	  { margin-left: -7rem; }
+		.toc > li li li li .secno	{ margin-left: -9rem; }
 		.toc > li li li li li .secno { margin-left: -11rem; }
 
 		/* Tighten up indentation in narrow ToCs */
 		@media (max-width: 30em) {
-			:not(li) > .toc              { margin-left:  4rem; }
-			.toc .secno                  { margin-left: -4rem; }
-			.toc > li li li              { margin-left:  1rem; }
-			.toc > li li li .secno       { margin-left: -5rem; }
-			.toc > li li li li .secno    { margin-left: -6rem; }
+			:not(li) > .toc			 { margin-left:  4rem; }
+			.toc .secno				 { margin-left: -4rem; }
+			.toc > li li li			 { margin-left:  1rem; }
+			.toc > li li li .secno	  { margin-left: -5rem; }
+			.toc > li li li li .secno	{ margin-left: -6rem; }
 			.toc > li li li li li .secno { margin-left: -7rem; }
 		}
+		/* Loosen it on wide screens */
+		@media screen and (min-width: 78em) {
+			body:not(.toc-inline) :not(li) > .toc			 { margin-left:  4rem; }
+			body:not(.toc-inline) .toc .secno				 { margin-left: -4rem; }
+			body:not(.toc-inline) .toc > li li li			 { margin-left:  1rem; }
+			body:not(.toc-inline) .toc > li li li .secno	  { margin-left: -5rem; }
+			body:not(.toc-inline) .toc > li li li li .secno	{ margin-left: -6rem; }
+			body:not(.toc-inline) .toc > li li li li li .secno { margin-left: -7rem; }
+	}
 	/* } */
 
 	@supports (display:grid) and (display:contents) {
@@ -1055,7 +1226,7 @@ Possible extra rowspan handling
 		}
 		#toc > .toc > li > a > span {
 			/* The spans of the top-level list,
-			   comprising the first items of each top-level section. */
+			  comprising the first items of each top-level section. */
 			margin-top: 1.1rem;
 		}
 		#toc#toc .secno { /* Ugh, need more specificity to override base.css */
@@ -1068,9 +1239,12 @@ Possible extra rowspan handling
 			width: auto;
 			margin-right: 1rem;
 		}
-		#toc .content:hover {
+		#toc .content:hover,
+		#toc .content:focus {
 			background: rgba(75%, 75%, 75%, .25);
+			background: var(--a-hover-bg);
 			border-bottom: 3px solid #054572;
+			border-bottom: 3px solid var(--toclink-underline);
 			margin-bottom: -3px;
 		}
 		#toc li li li .content {
@@ -1085,22 +1259,23 @@ Possible extra rowspan handling
 /** Index *********************************************************************/
 
 	/* Index Lists: Layout */
-	ul.index       { margin-left: 0; columns: 15em; text-indent: 1em hanging; }
-	ul.index li    { margin-left: 0; list-style: none; break-inside: avoid; }
-	ul.index li li { margin-left: 1em }
-	ul.index dl    { margin-top: 0; }
-	ul.index dt    { margin: .2em 0 .2em 20px;}
-	ul.index dd    { margin: .2em 0 .2em 40px;}
+	ul.index	  { margin-left: 0; columns: 15em; text-indent: 1em hanging; }
+	ul.index li	{ margin-left: 0; list-style: none; break-inside: avoid; }
+	ul.index li li { margin-left: 1em; }
+	ul.index dl	{ margin-top: 0; }
+	ul.index dt	{ margin: .2em 0 .2em 20px;}
+	ul.index dd	{ margin: .2em 0 .2em 40px;}
 	/* Index Lists: Typography */
 	ul.index ul,
 	ul.index dl { font-size: smaller; }
 	@media not print {
-		ul.index li span {
+		ul.index li a + span {
 			white-space: nowrap;
 			color: transparent; }
 		ul.index li a:hover + span,
 		ul.index li a:focus + span {
 			color: #707070;
+			color: var(--indexinfo-text);
 		}
 	}
 
@@ -1122,13 +1297,101 @@ Possible extra rowspan handling
 
 	table.index tr:hover td:not([rowspan]),
 	table.index tr:hover th:not([rowspan]) {
+		color: black;
+		color: var(--indextable-hover-text);
 		background: #f7f8f9;
+		background: var(--indextable-hover-bg);
 	}
 
 	/* The link in the first column in the property table (formerly a TD) */
 	table.index th:first-child a {
 		font-weight: bold;
 	}
+
+/** Outdated warning **********************************************************/
+
+.outdated-spec {
+	color: black;
+	color: var(--outdatedspec-text);
+	background-color: rgba(0,0,0,0.5);
+	background-color: var(--outdatedspec-bg);
+}
+
+.outdated-warning {
+	position: fixed;
+	bottom: 50%;
+	left: 0;
+	right: 0;
+	margin: 0 auto;
+	width: 50%;
+	background: maroon;
+	background: var(--outdated-bg);
+	color: white;
+	color: var(--outdated-text);
+	border-radius: 1em;
+	box-shadow: 0 0 1em red;
+	box-shadow: 0 0 1em var(--outdated-shadow);
+	padding: 2em;
+	text-align: center;
+	z-index: 2;
+}
+
+.outdated-warning a {
+	color: currentcolor;
+	background: transparent;
+}
+
+.edited-rec-warning {
+	background: darkorange;
+	background: var(--editedrec-bg);
+	box-shadow: 0 0 1em;
+}
+
+.outdated-warning button {
+	color: var(--outdated-text);
+	border-radius: 1em;
+	box-shadow: 0 0 1em red;
+	box-shadow: 0 0 1em var(--outdated-shadow);
+	padding: 2em;
+	text-align: center;
+	z-index: 2;
+}
+
+.outdated-warning a {
+	color: currentcolor;
+	background: transparent;
+}
+
+.edited-rec-warning {
+	background: darkorange;
+	background: var(--editedrec-bg);
+	box-shadow: 0 0 1em;
+}
+
+.outdated-warning button {
+	position: absolute;
+	top: 0;
+	right:0;
+	margin: 0;
+	border: 0;
+	padding: 0.25em 0.5em;
+	background: transparent;
+	color: white;
+	color: var(--outdated-text);
+	font:1em sans-serif;
+	text-align:center;
+}
+
+.outdated-warning span {
+	display: block;
+}
+
+.outdated-collapsed {
+	bottom: 0;
+	border-radius: 0;
+	width: 100%;
+	padding: 0;
+}
 
 /******************************************************************************/
 /*                                    Print                                   */
@@ -1143,17 +1406,20 @@ Possible extra rowspan handling
 		body {
 			font-family: serif;
 		}
+
+		.outdated-warning {
+			position: absolute;
+			border-style: solid;
+			border-color: red;
+		}
+
+		.outdated-warning input {
+			display: none;
+		}
 	}
 	@page {
 		margin: 1.5cm 1.1cm;
 	}
-
-/******************************************************************************/
-/*                                    Legacy                                  */
-/******************************************************************************/
-
-	/* This rule is inherited from past style sheets. No idea what it's for. */
-	.hide { display: none }
 
 
 
@@ -1168,13 +1434,13 @@ Possible extra rowspan handling
 		margin-right: auto;
 	}
 	.overlarge {
-		/* Magic to create good table positioning:
-		   "content column" is 50ems wide at max; less on smaller screens.
-		   Extra space (after ToC + content) is empty on the right.
+		/* Magic to create good item positioning:
+		  "content column" is 50ems wide at max; less on smaller screens.
+		  Extra space (after ToC + content) is empty on the right.
 
-		   1. When table < content column, centers table in column.
-		   2. When content < table < available, left-aligns.
-		   3. When table > available, fills available + scroll bar.
+		  1. When item < content column, centers item in column.
+		  2. When content < item < available, left-aligns.
+		  3. When item > available, fills available + scroll bar.
 		*/
 		display: grid;
 		grid-template-columns: minmax(0, 50em);
@@ -1209,19 +1475,19 @@ Possible extra rowspan handling
 		.overlarge {
 			overflow-x: auto;
 			/* See Lea Verou's explanation background-attachment:
-			 * http://lea.verou.me/2012/04/background-attachment-local/
-			 *
+			* http://lea.verou.me/2012/04/background-attachment-local/
+			*
 			background: top left  / 4em 100% linear-gradient(to right,  #ffffff, rgba(255, 255, 255, 0)) local,
-			            top right / 4em 100% linear-gradient(to left, #ffffff, rgba(255, 255, 255, 0)) local,
-			            top left  / 1em 100% linear-gradient(to right,  #c3c3c5, rgba(195, 195, 197, 0)) scroll,
-			            top right / 1em 100% linear-gradient(to left, #c3c3c5, rgba(195, 195, 197, 0)) scroll,
-			            white;
+						top right / 4em 100% linear-gradient(to left, #ffffff, rgba(255, 255, 255, 0)) local,
+						top left  / 1em 100% linear-gradient(to right,  #c3c3c5, rgba(195, 195, 197, 0)) scroll,
+						top right / 1em 100% linear-gradient(to left, #c3c3c5, rgba(195, 195, 197, 0)) scroll,
+						white;
 			background-repeat: no-repeat;
 			*/
 		}
 	}
 </style>
-  <meta content="Bikeshed version 5f7b0e20, updated Tue Aug 18 15:46:28 2020 -0700" name="generator">
+  <meta content="Bikeshed version d9bd89757, updated Thu Mar 23 10:06:53 2023 -0700" name="generator">
   <link href="https://w3c.github.io/N3/spec/" rel="canonical">
 <style>
 table {
@@ -1255,9 +1521,8 @@ table th.last {
 }
 </style>
 <style>/* style-autolinks */
-
 .css.css, .property.property, .descriptor.descriptor {
-    color: #005a9c;
+    color: var(--a-normal-text);
     font-size: inherit;
     font-family: inherit;
 }
@@ -1315,9 +1580,119 @@ pre .property::before, pre .property::after {
 
 [data-link-type=biblio] {
     white-space: pre;
-}</style>
-<style>/* style-counters */
+}
+</style>
+<style>/* style-colors */
 
+/* Any --*-text not paired with a --*-bg is assumed to have a transparent bg */
+:root {
+    color-scheme: light dark;
+
+    --text: black;
+    --bg: white;
+
+    --unofficial-watermark: url(https://www.w3.org/StyleSheets/TR/2016/logos/UD-watermark);
+
+    --logo-bg: #1a5e9a;
+    --logo-active-bg: #c00;
+    --logo-text: white;
+
+    --tocnav-normal-text: #707070;
+    --tocnav-normal-bg: var(--bg);
+    --tocnav-hover-text: var(--tocnav-normal-text);
+    --tocnav-hover-bg: #f8f8f8;
+    --tocnav-active-text: #c00;
+    --tocnav-active-bg: var(--tocnav-normal-bg);
+
+    --tocsidebar-text: var(--text);
+    --tocsidebar-bg: #f7f8f9;
+    --tocsidebar-shadow: rgba(0,0,0,.1);
+    --tocsidebar-heading-text: hsla(203,20%,40%,.7);
+
+    --toclink-text: var(--text);
+    --toclink-underline: #3980b5;
+    --toclink-visited-text: var(--toclink-text);
+    --toclink-visited-underline: #054572;
+
+    --heading-text: #005a9c;
+
+    --hr-text: var(--text);
+
+    --algo-border: #def;
+
+    --del-text: red;
+    --del-bg: transparent;
+    --ins-text: #080;
+    --ins-bg: transparent;
+
+    --a-normal-text: #034575;
+    --a-normal-underline: #bbb;
+    --a-visited-text: var(--a-normal-text);
+    --a-visited-underline: #707070;
+    --a-hover-bg: rgba(75%, 75%, 75%, .25);
+    --a-active-text: #c00;
+    --a-active-underline: #c00;
+
+    --blockquote-border: silver;
+    --blockquote-bg: transparent;
+    --blockquote-text: currentcolor;
+
+    --issue-border: #e05252;
+    --issue-bg: #fbe9e9;
+    --issue-text: var(--text);
+    --issueheading-text: #831616;
+
+    --example-border: #e0cb52;
+    --example-bg: #fcfaee;
+    --example-text: var(--text);
+    --exampleheading-text: #574b0f;
+
+    --note-border: #52e052;
+    --note-bg: #e9fbe9;
+    --note-text: var(--text);
+    --noteheading-text: hsl(120, 70%, 30%);
+    --notesummary-underline: silver;
+
+    --assertion-border: #aaa;
+    --assertion-bg: #eee;
+    --assertion-text: black;
+
+    --advisement-border: orange;
+    --advisement-bg: #fec;
+    --advisement-text: var(--text);
+    --advisementheading-text: #b35f00;
+
+    --warning-border: red;
+    --warning-bg: hsla(40,100%,50%,0.95);
+    --warning-text: var(--text);
+
+    --amendment-border: #330099;
+    --amendment-bg: #F5F0FF;
+    --amendment-text: var(--text);
+    --amendmentheading-text: #220066;
+
+    --def-border: #8ccbf2;
+    --def-bg: #def;
+    --def-text: var(--text);
+    --defrow-border: #bbd7e9;
+
+    --datacell-border: silver;
+
+    --indexinfo-text: #707070;
+
+    --indextable-hover-text: black;
+    --indextable-hover-bg: #f7f8f9;
+
+    --outdatedspec-bg: rgba(0, 0, 0, .5);
+    --outdatedspec-text: black;
+    --outdated-bg: maroon;
+    --outdated-text: white;
+    --outdated-shadow: red;
+
+    --editedrec-bg: darkorange;
+}
+</style>
+<style>/* style-counters */
 body {
     counter-reset: example figure issue;
 }
@@ -1344,9 +1719,18 @@ figcaption {
 }
 figcaption:not(.no-marker)::before {
     content: "Figure " counter(figure) " ";
-}</style>
+}
+</style>
+<style>/* style-issues */
+a[href].issue-return {
+    float: right;
+    float: inline-end;
+    color: var(--issueheading-text);
+    font-weight: bold;
+    text-decoration: none;
+}
+</style>
 <style>/* style-md-lists */
-
 /* This is a weird hack for me not yet following the commonmark spec
    regarding paragraph and lists. */
 [data-md] > :first-child {
@@ -1354,9 +1738,15 @@ figcaption:not(.no-marker)::before {
 }
 [data-md] > :last-child {
     margin-bottom: 0;
-}</style>
+}
+</style>
 <style>/* style-selflinks */
 
+:root {
+    --selflink-text: white;
+    --selflink-bg: gray;
+    --selflink-hover-text: black;
+}
 .heading, .issue, .note, .example, li, dt {
     position: relative;
 }
@@ -1377,6 +1767,14 @@ a.self-link:hover {
 .heading > a.self-link {
     font-size: 83%;
 }
+.example > a.self-link,
+.note > a.self-link,
+.issue > a.self-link {
+    /* These blocks are overflow:auto, so positioning outside
+       doesn't work. */
+    left: auto;
+    right: 0;
+}
 li > a.self-link {
     left: calc(-1 * (3.5rem - 26px) - 2em);
 }
@@ -1386,8 +1784,8 @@ dfn > a.self-link {
     opacity: 0;
     width: 1.5em;
     height: 1.5em;
-    background: gray;
-    color: white;
+    background: var(--selflink-bg);
+    color: var(--selflink-text);
     font-style: normal;
     transition: opacity .2s, background-color .2s, color .2s;
 }
@@ -1395,17 +1793,140 @@ dfn:hover > a.self-link {
     opacity: 1;
 }
 dfn > a.self-link:hover {
-    color: black;
+    color: var(--selflink-hover-text);
 }
 
 a.self-link::before            { content: "¶"; }
 .heading > a.self-link::before { content: "§"; }
-dfn > a.self-link::before      { content: "#"; }</style>
+dfn > a.self-link::before      { content: "#"; }
+</style>
+<style>/* style-darkmode */
+
+@media (prefers-color-scheme: dark) {
+    :root {
+        --text: #ddd;
+        --bg: black;
+
+        --unofficial-watermark: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='400'%3E%3Cg fill='%23100808' transform='translate(200 200) rotate(-45) translate(-200 -200)' stroke='%23100808' stroke-width='3'%3E%3Ctext x='50%25' y='220' style='font: bold 70px sans-serif; text-anchor: middle; letter-spacing: 6px;'%3EUNOFFICIAL%3C/text%3E%3Ctext x='50%25' y='305' style='font: bold 70px sans-serif; text-anchor: middle; letter-spacing: 6px;'%3EDRAFT%3C/text%3E%3C/g%3E%3C/svg%3E");
+
+        --logo-bg: #1a5e9a;
+        --logo-active-bg: #c00;
+        --logo-text: white;
+
+        --tocnav-normal-text: #999;
+        --tocnav-normal-bg: var(--bg);
+        --tocnav-hover-text: var(--tocnav-normal-text);
+        --tocnav-hover-bg: #080808;
+        --tocnav-active-text: #f44;
+        --tocnav-active-bg: var(--tocnav-normal-bg);
+
+        --tocsidebar-text: var(--text);
+        --tocsidebar-bg: #080808;
+        --tocsidebar-shadow: rgba(255,255,255,.1);
+        --tocsidebar-heading-text: hsla(203,20%,40%,.7);
+
+        --toclink-text: var(--text);
+        --toclink-underline: #6af;
+        --toclink-visited-text: var(--toclink-text);
+        --toclink-visited-underline: #054572;
+
+        --heading-text: #8af;
+
+        --hr-text: var(--text);
+
+        --algo-border: #456;
+
+        --del-text: #f44;
+        --del-bg: transparent;
+        --ins-text: #4a4;
+        --ins-bg: transparent;
+
+        --a-normal-text: #6af;
+        --a-normal-underline: #555;
+        --a-visited-text: var(--a-normal-text);
+        --a-visited-underline: var(--a-normal-underline);
+        --a-hover-bg: rgba(25%, 25%, 25%, .2);
+        --a-active-text: #f44;
+        --a-active-underline: var(--a-active-text);
+
+        --borderedblock-bg: rgba(255, 255, 255, .05);
+
+        --blockquote-border: silver;
+        --blockquote-bg: var(--borderedblock-bg);
+        --blockquote-text: currentcolor;
+
+        --issue-border: #e05252;
+        --issue-bg: var(--borderedblock-bg);
+        --issue-text: var(--text);
+        --issueheading-text: hsl(0deg, 70%, 70%);
+
+        --example-border: hsl(50deg, 90%, 60%);
+        --example-bg: var(--borderedblock-bg);
+        --example-text: var(--text);
+        --exampleheading-text: hsl(50deg, 70%, 70%);
+
+        --note-border: hsl(120deg, 100%, 35%);
+        --note-bg: var(--borderedblock-bg);
+        --note-text: var(--text);
+        --noteheading-text: hsl(120, 70%, 70%);
+        --notesummary-underline: silver;
+
+        --assertion-border: #444;
+        --assertion-bg: var(--borderedblock-bg);
+        --assertion-text: var(--text);
+
+        --advisement-border: orange;
+        --advisement-bg: #222218;
+        --advisement-text: var(--text);
+        --advisementheading-text: #f84;
+
+        --warning-border: red;
+        --warning-bg: hsla(40,100%,20%,0.95);
+        --warning-text: var(--text);
+
+        --amendment-border: #330099;
+        --amendment-bg: #080010;
+        --amendment-text: var(--text);
+        --amendmentheading-text: #cc00ff;
+
+        --def-border: #8ccbf2;
+        --def-bg: #080818;
+        --def-text: var(--text);
+        --defrow-border: #136;
+
+        --datacell-border: silver;
+
+        --indexinfo-text: #aaa;
+
+        --indextable-hover-text: var(--text);
+        --indextable-hover-bg: #181818;
+
+        --outdatedspec-bg: rgba(255, 255, 255, .5);
+        --outdatedspec-text: black;
+        --outdated-bg: maroon;
+        --outdated-text: white;
+        --outdated-shadow: red;
+
+        --editedrec-bg: darkorange;
+    }
+    /* In case a transparent-bg image doesn't expect to be on a dark bg,
+       which is quite common in practice... */
+    img { background: white; }
+}
+
+@media (prefers-color-scheme: dark) {
+    :root {
+        --selflink-text: black;
+        --selflink-bg: silver;
+        --selflink-hover-text: white;
+    }
+}
+</style>
  <body class="h-entry">
   <div class="head">
    <p data-fill-with="logo"></p>
    <h1 class="p-name no-ref" id="title">N3 Builtin Functions</h1>
-   <h2 class="no-num no-toc no-ref heading settled" id="subtitle"><span class="content">Living Document, <time class="dt-updated" datetime="2023-04-02">2 April 2023</time></span></h2>
+   <h2 class="no-num no-toc no-ref heading settled" id="profile-and-date"><span class="content">Living Document, <time class="dt-updated" datetime="2023-04-02">2 April 2023</time></span></h2>
    <div data-fill-with="spec-metadata">
     <dl>
      <dt>This version:
@@ -1419,11 +1940,10 @@ dfn > a.self-link::before      { content: "#"; }</style>
      <dt>Contributors:
      <dd>Tim Duval, <a href="http://unifylogic.ai">UnifyLogic</a>, tim.duval@unifylogic.ai
      <dd>Dominik Tomaszuk
-     <dd>
     </dl>
    </div>
    <div data-fill-with="warning"></div>
-   <p class="copyright" data-fill-with="copyright"><a href="http://creativecommons.org/publicdomain/zero/1.0/" rel="license"><img alt="CC0" src="https://licensebuttons.net/p/zero/1.0/80x15.png"></a> To the extent possible under law, the editors have waived all copyright
+   <p class="copyright" data-fill-with="copyright"><a href="http://creativecommons.org/publicdomain/zero/1.0/" rel="license"><img alt="CC0" height="15" src="https://licensebuttons.net/p/zero/1.0/80x15.png" width="80"></a> To the extent possible under law, the editors have waived all copyright
 and related or neighboring rights to this work.
 In addition, as of 2 April 2023,
 the editors have made this specification available under the <a href="http://www.openwebfoundation.org/legal/the-owf-1-0-agreements/owfa-1-0" rel="license">Open Web Foundation Agreement Version 1.0</a>,
@@ -1950,8 +2470,8 @@ Parts of this work may be from another specification document.  If so, those par
     <li><a href="http://www.w3.org/2000/10/swap/time#">Time</a> – <a href="http://www.w3.org/2000/10/swap/time#">http://www.w3.org/2000/10/swap/time#</a>. 
    </ul>
    <h2 class="heading settled" data-level="3" id="builtinarguments"><span class="secno">3. </span><span class="content">Builtin arguments</span><a class="self-link" href="#builtinarguments"></a></h2>
-   <p>An N3 <a href="#builtins">builtin</a> operates on its arguments. An [argument]() is a placeholder that refers to an
-			N3 triple element from the [builtin statement](), i.e., the N3 statement where the
+   <p>An N3 <a href="#builtins">builtin</a> operates on its arguments. An <a href>argument</a> is a placeholder that refers to an
+			N3 triple element from the <a href>builtin statement</a>, i.e., the N3 statement where the
 			builtin acts as a predicate. </p>
    <p>In the simplest case, there are two arguments that respectively refer to the subject and object of the
 			builtin statement. For instance, statements such as <code>1 math:lessThan 2</code> have two arguments <code>$s</code> and <code>$o</code>, which is written as <code>$s math:lessThan $o</code>.</p>
@@ -1971,19 +2491,18 @@ Parts of this work may be from another specification document.  If so, those par
     <li><code>[*]</code>: modifier indicating that an argument can have multiple solutions.
    </ul>
    <h3 class="heading settled" data-level="3.2" id="arg_domains"><span class="secno">3.2. </span><span class="content">Argument domains</span><a class="self-link" href="#arg_domains"></a></h3>
-   <p>An N3 builtin often has an expected datatype for its arguments, called the [domain datatype](). If
-				the datatype of an argument value, called the [value datatype](), does not match the
+   <p>An N3 builtin often has an expected datatype for its arguments, called the <a href>domain datatype</a>. If
+				the datatype of an argument value, called the <a href>value datatype</a>, does not match the
 				domain datatype, it may be possible to cast the value’s datatype to, or substitute it for, the domain
 				datatype.</p>
    <p>The expected datatypes of arguments, i.e., domain datatypes, are defined per N3 builtin.</p>
-   <p>If the [value datatype]() and [domain datatype]() do not match, and no casting or substitution is
+   <p>If the <a href>value datatype</a> and <a href>domain datatype</a> do not match, and no casting or substitution is
 				possible, the builtin statement will be considered false. (We point out that this is in line with the
-				concept of the [builtin theory box](): a BPG search using the builtin statement will not match any
+				concept of the <a href>builtin theory box</a>: a BPG search using the builtin statement will not match any
 				statement in the theory box when literal datatypes do not match.) </p>
-   <p>Below, we elaborate on the type casting, promotion or substitution that may be applied to align
-				[domain datatypes]() with [value datatypes](). </p>
+   <p>Below, we elaborate on the type casting, promotion or substitution that may be applied to align <a href>domain datatypes</a> with <a href>value datatypes</a>. </p>
    <h4 class="heading settled" data-level="3.2.1" id="numericdatatypepromotion"><span class="secno">3.2.1. </span><span class="content">Numeric datatype promotion and substitution</span><a class="self-link" href="#numericdatatypepromotion"></a></h4>
-   <p>If the numeric [value datatype]() does not match the [domain datatype](), it may be possible to
+   <p>If the numeric <a href>value datatype</a> does not match the <a href>domain datatype</a>, it may be possible to
 					promote or substitute the numeric value datatype:</p>
    <p><b>Numeric type promotion</b>: A numeric value datatype that <a href="https://www.w3.org/TR/xmlschema-2/#dt-derived">is derived from</a> the domain datatype can
 					be promoted to the latter (e.g., <code>xs:integer</code> is derived from <code>xs:decimal</code>). This is done by casting
@@ -2018,7 +2537,7 @@ Parts of this work may be from another specification document.  If so, those par
    </ul>
    <p></p>
    <h4 class="heading settled" data-level="3.2.2" id="typesofdatatypecasting"><span class="secno">3.2.2. </span><span class="content">Other kinds of datatype casting</span><a class="self-link" href="#typesofdatatypecasting"></a></h4>
-   <p>If the non-numeric [value datatype]() does not match the [domain datatype](), it may be
+   <p>If the non-numeric <a href>value datatype</a> does not match the <a href>domain datatype</a>, it may be
 					possible to cast the value datatype to the domain datatype:</p>
    <p> <b>String</b>: A literal will be considered a "string" when it has an <code>xs:string</code> datatype, a <code>rdf:langString</code> datatype due to the presence of a language tag, or when it lacks a datatype. </p>
    <ul>
@@ -2037,7 +2556,7 @@ Parts of this work may be from another specification document.  If so, those par
    <h2 class="heading settled" data-level="4" id="builtinevaluation"><span class="secno">4. </span><span class="content">Builtin Evaluation</span><a class="self-link" href="#builtinevaluation"></a></h2>
    <h3 class="heading settled" data-level="4.1" id="builtintheorybox"><span class="secno">4.1. </span><span class="content">Builtin theory box</span><a class="self-link" href="#builtintheorybox"></a></h3>
    <p>A <a href="#builtins">builtin statement</a> can be seen as a <i>constrained</i> basic graph pattern
-				(BGP) search on the N3 [builtin theory box]().
+				(BGP) search on the N3 <a href>builtin theory box</a>.
 				This builtin theory box is defined to include all truthful builtin statements for the N3 builtin.
 				In case this BGP search matches one or more statements in the theory box,
 				taking into account options for datatype casting, promotion, or substitution
@@ -2098,7 +2617,7 @@ You can use this as an equivalent of a lessThanOrEqual operator.
    <h5 class="heading settled" data-level="6.2.2.1" id="notGreaterThan_schemas"><span class="secno">6.2.2.1. </span><span class="content">Schema(s)</span><a class="self-link" href="#notGreaterThan_schemas"></a></h5>
     <i><code>( $s )+ math:notGreaterThan $o-</code></i> 
    <h5 class="heading settled" data-level="6.2.2.2" id="notGreaterThan_examples"><span class="secno">6.2.2.2. </span><span class="content">Examples</span><a class="self-link" href="#notGreaterThan_examples"></a></h5>
-    <a href="file:///Users/timothyduval/Library/Mobile%20Documents/com~apple~CloudDocs/00_unifylogic/50-clients/w3c/N3/useOfBuiltins/core-specs/03-development/site/spec-builtins/src/math/notGreaterThan.n3">Try in Notation3 Editor 🚀</a> 
+    <a href="https://n3-editor.herokuapp.com/n3/editor/?formula=%0A%40prefix+%3A+%3Chttp%3A%2F%2Fexample.org%2F%3E.%0A%40prefix+math%3A+%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F10%2Fswap%2Fmath%23%3E+.%0A%0A%3ALet+%3Aparam+%2841+42%29+.%0A%0A%7B%0A++++%3ALet+%3Aparam+%28%3FX+%3FY%29+.%0A++++%3FX+math%3AnotGreaterThan+%3FY+.%0A%7D%0A%3D%3E%0A%7B%0A++++%3Aresult+%3Ais+true+.%0A%7D+.%0A++++++++++++">Try in Notation3 Editor 🚀</a> 
    <div class="example" id="example-226cd3e6">
     <a class="self-link" href="#example-226cd3e6"></a> 
     <p> Check if 41 is not greater than 42 . </p>
@@ -2128,7 +2647,7 @@ You can use this as an equivalent of a lessThanOrEqual operator.
    <h5 class="heading settled" data-level="6.2.3.1" id="absoluteValue_schemas"><span class="secno">6.2.3.1. </span><span class="content">Schema(s)</span><a class="self-link" href="#absoluteValue_schemas"></a></h5>
     <i><code>( $s )+ math:absoluteValue $o-</code></i> 
    <h5 class="heading settled" data-level="6.2.3.2" id="absoluteValue_examples"><span class="secno">6.2.3.2. </span><span class="content">Examples</span><a class="self-link" href="#absoluteValue_examples"></a></h5>
-    <a href="file:///Users/timothyduval/Library/Mobile%20Documents/com~apple~CloudDocs/00_unifylogic/50-clients/w3c/N3/useOfBuiltins/core-specs/03-development/site/spec-builtins/src/math/absoluteValue.n3">Try in Notation3 Editor 🚀</a> 
+    <a href="https://n3-editor.herokuapp.com/n3/editor/?formula=%0A%40prefix+%3A+%3Chttp%3A%2F%2Fexample.org%2F%3E.%0A%40prefix+math%3A+%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F10%2Fswap%2Fmath%23%3E+.%0A%0A%3ALet+%3Aparam+-2+.%0A%0A%7B%0A++++%3ALet+%3Aparam+%3Fparam+.%0A++++%3Fparam+math%3AabsoluteValue+%3Fresult+.%0A%7D%0A%3D%3E%0A%7B%0A++++%3Aresult+%3Ais+%3Fresult+.%0A%7D+.%0A++++++++++++">Try in Notation3 Editor 🚀</a> 
    <div class="example" id="example-69a5c96c">
     <a class="self-link" href="#example-69a5c96c"></a> 
     <p> Calculate the absolute value of the value -2. </p>
@@ -2158,7 +2677,7 @@ You can use this as an equivalent of a lessThanOrEqual operator.
    <h5 class="heading settled" data-level="6.2.4.1" id="greaterThan_schemas"><span class="secno">6.2.4.1. </span><span class="content">Schema(s)</span><a class="self-link" href="#greaterThan_schemas"></a></h5>
     <i><code>( $s )+ math:greaterThan $o-</code></i> 
    <h5 class="heading settled" data-level="6.2.4.2" id="greaterThan_examples"><span class="secno">6.2.4.2. </span><span class="content">Examples</span><a class="self-link" href="#greaterThan_examples"></a></h5>
-    <a href="file:///Users/timothyduval/Library/Mobile%20Documents/com~apple~CloudDocs/00_unifylogic/50-clients/w3c/N3/useOfBuiltins/core-specs/03-development/site/spec-builtins/src/math/greaterThan.n3">Try in Notation3 Editor 🚀</a> 
+    <a href="https://n3-editor.herokuapp.com/n3/editor/?formula=%0A%40prefix+%3A+%3Chttp%3A%2F%2Fexample.org%2F%3E.%0A%40prefix+math%3A+%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F10%2Fswap%2Fmath%23%3E+.%0A%0A%3ALet+%3Aparam+%2842+41%29+.%0A%0A%7B%0A++++%3ALet+%3Aparam+%28%3FX+%3FY%29+.%0A++++%3FX+math%3AgreaterThan+%3FY+.%0A%7D%0A%3D%3E%0A%7B%0A++++%3Aresult+%3Ais+true+.%0A%7D+.%0A++++++++++++">Try in Notation3 Editor 🚀</a> 
    <div class="example" id="example-4cc8f9dc">
     <a class="self-link" href="#example-4cc8f9dc"></a> 
     <p> Check if 42 is greater than 41 . </p>
@@ -2189,7 +2708,7 @@ You can use this as an equivalent of a greaterThanOrEqual operator.
    <h5 class="heading settled" data-level="6.2.5.1" id="notLessThan_schemas"><span class="secno">6.2.5.1. </span><span class="content">Schema(s)</span><a class="self-link" href="#notLessThan_schemas"></a></h5>
     <i><code>( $s )+ math:notLessThan $o-</code></i> 
    <h5 class="heading settled" data-level="6.2.5.2" id="notLessThan_examples"><span class="secno">6.2.5.2. </span><span class="content">Examples</span><a class="self-link" href="#notLessThan_examples"></a></h5>
-    <a href="file:///Users/timothyduval/Library/Mobile%20Documents/com~apple~CloudDocs/00_unifylogic/50-clients/w3c/N3/useOfBuiltins/core-specs/03-development/site/spec-builtins/src/math/notLessThan.n3">Try in Notation3 Editor 🚀</a> 
+    <a href="https://n3-editor.herokuapp.com/n3/editor/?formula=%0A%40prefix+%3A+%3Chttp%3A%2F%2Fexample.org%2F%3E.%0A%40prefix+math%3A+%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F10%2Fswap%2Fmath%23%3E+.%0A%0A%3ALet+%3Aparam+%2842+41%29+.%0A%0A%7B%0A++++%3ALet+%3Aparam+%28%3FX+%3FY%29+.%0A++++%3FX+math%3AnotLessThan+%3FY+.%0A%7D%0A%3D%3E%0A%7B%0A++++%3Aresult+%3Ais+true+.%0A%7D+.%0A++++++++++++">Try in Notation3 Editor 🚀</a> 
    <div class="example" id="example-9fa486d8">
     <a class="self-link" href="#example-9fa486d8"></a> 
     <p> Check if 42 is not less than 41 . </p>
@@ -2219,7 +2738,7 @@ You can use this as an equivalent of a greaterThanOrEqual operator.
    <h5 class="heading settled" data-level="6.2.6.1" id="sin_schemas"><span class="secno">6.2.6.1. </span><span class="content">Schema(s)</span><a class="self-link" href="#sin_schemas"></a></h5>
     <i><code>( $s )+ math:sin $o-</code></i> 
    <h5 class="heading settled" data-level="6.2.6.2" id="sin_examples"><span class="secno">6.2.6.2. </span><span class="content">Examples</span><a class="self-link" href="#sin_examples"></a></h5>
-    <a href="file:///Users/timothyduval/Library/Mobile%20Documents/com~apple~CloudDocs/00_unifylogic/50-clients/w3c/N3/useOfBuiltins/core-specs/03-development/site/spec-builtins/src/math/sin.n3">Try in Notation3 Editor 🚀</a> 
+    <a href="https://n3-editor.herokuapp.com/n3/editor/?formula=%0A%40prefix+%3A+%3Chttp%3A%2F%2Fexample.org%2F%3E.%0A%40prefix+math%3A+%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F10%2Fswap%2Fmath%23%3E+.%0A%40prefix+xsd%3A+%3Chttp%3A%2F%2Fwww.w3.org%2F2001%2FXMLSchema%23%3E+.%0A%0A%3ALet+%3Aparam+%221.57079632679%22%5E%5Exsd%3Adouble+.%0A%0A%7B%0A++++%3ALet+%3Aparam+%3Fparam+.%0A++++%3Fparam+math%3Asin+%3Fresult+.%0A%7D%0A%3D%3E%0A%7B%0A++++%3Aresult+%3Ais+%3Fresult+.%0A%7D+.%0A++++++++++++">Try in Notation3 Editor 🚀</a> 
    <div class="example" id="example-e4f93bfa">
     <a class="self-link" href="#example-e4f93bfa"></a> 
     <p> Calculate the sin of pi/2 (1.57079632679) . </p>
@@ -2251,7 +2770,7 @@ You can use this as an equivalent of a greaterThanOrEqual operator.
    <h5 class="heading settled" data-level="6.2.7.1" id="lessThan_schemas"><span class="secno">6.2.7.1. </span><span class="content">Schema(s)</span><a class="self-link" href="#lessThan_schemas"></a></h5>
     <i><code>( $s )+ math:lessThan $o-</code></i> 
    <h5 class="heading settled" data-level="6.2.7.2" id="lessThan_examples"><span class="secno">6.2.7.2. </span><span class="content">Examples</span><a class="self-link" href="#lessThan_examples"></a></h5>
-    <a href="file:///Users/timothyduval/Library/Mobile%20Documents/com~apple~CloudDocs/00_unifylogic/50-clients/w3c/N3/useOfBuiltins/core-specs/03-development/site/spec-builtins/src/math/lessThan.n3">Try in Notation3 Editor 🚀</a> 
+    <a href="https://n3-editor.herokuapp.com/n3/editor/?formula=%0A%40prefix+%3A+%3Chttp%3A%2F%2Fexample.org%2F%3E.%0A%40prefix+math%3A+%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F10%2Fswap%2Fmath%23%3E+.%0A%0A%3ALet+%3Aparam+%2841+42%29+.%0A%0A%7B%0A++++%3ALet+%3Aparam+%28%3FX+%3FY%29+.%0A++++%3FX+math%3AlessThan+%3FY+.%0A%7D%0A%3D%3E%0A%7B%0A++++%3Aresult+%3Ais+true+.%0A%7D+.%0A++++++++++++">Try in Notation3 Editor 🚀</a> 
    <div class="example" id="example-80c9b051">
     <a class="self-link" href="#example-80c9b051"></a> 
     <p> Check if 41 is less than 42 . </p>
@@ -2282,7 +2801,7 @@ If there are two such numbers, then the one closest to positive infinity is retu
    <h5 class="heading settled" data-level="6.2.8.1" id="rounded_schemas"><span class="secno">6.2.8.1. </span><span class="content">Schema(s)</span><a class="self-link" href="#rounded_schemas"></a></h5>
     <i><code>( $s )+ math:rounded $o-</code></i> 
    <h5 class="heading settled" data-level="6.2.8.2" id="rounded_examples"><span class="secno">6.2.8.2. </span><span class="content">Examples</span><a class="self-link" href="#rounded_examples"></a></h5>
-    <a href="file:///Users/timothyduval/Library/Mobile%20Documents/com~apple~CloudDocs/00_unifylogic/50-clients/w3c/N3/useOfBuiltins/core-specs/03-development/site/spec-builtins/src/math/rounded.n3">Try in Notation3 Editor 🚀</a> 
+    <a href="https://n3-editor.herokuapp.com/n3/editor/?formula=%0A%40prefix+%3A+%3Chttp%3A%2F%2Fexample.org%2F%3E.%0A%40prefix+math%3A+%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F10%2Fswap%2Fmath%23%3E+.%0A%40prefix+xsd%3A+%3Chttp%3A%2F%2Fwww.w3.org%2F2001%2FXMLSchema%23%3E+.%0A%0A%3ALet+%3Aparam+%223.3%22%5E%5Exsd%3Adouble+.%0A%0A%7B%0A++++%3ALet+%3Aparam+%3Fparam+.%0A++++%3Fparam+math%3Arounded+%3Fresult+.%0A%7D%0A%3D%3E%0A%7B%0A++++%3Aresult+%3Ais+%3Fresult+.%0A%7D+.%0A++++++++++++">Try in Notation3 Editor 🚀</a> 
    <div class="example" id="example-23f8f1a9">
     <a class="self-link" href="#example-23f8f1a9"></a> 
     <p> Calculate the rounded version of 3.3. </p>
@@ -2313,7 +2832,7 @@ If there are two such numbers, then the one closest to positive infinity is retu
    <h5 class="heading settled" data-level="6.2.9.1" id="atan_schemas"><span class="secno">6.2.9.1. </span><span class="content">Schema(s)</span><a class="self-link" href="#atan_schemas"></a></h5>
     <i><code>( $s )+ math:atan $o-</code></i> 
    <h5 class="heading settled" data-level="6.2.9.2" id="atan_examples"><span class="secno">6.2.9.2. </span><span class="content">Examples</span><a class="self-link" href="#atan_examples"></a></h5>
-    <a href="file:///Users/timothyduval/Library/Mobile%20Documents/com~apple~CloudDocs/00_unifylogic/50-clients/w3c/N3/useOfBuiltins/core-specs/03-development/site/spec-builtins/src/math/atan.n3">Try in Notation3 Editor 🚀</a> 
+    <a href="https://n3-editor.herokuapp.com/n3/editor/?formula=%0A%40prefix+%3A+%3Chttp%3A%2F%2Fexample.org%2F%3E.%0A%40prefix+math%3A+%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F10%2Fswap%2Fmath%23%3E+.%0A%0A%3ALet+%3Aparam+1+.%0A%0A%7B%0A++++%3ALet+%3Aparam+%3Fparam+.%0A++++%3Fparam+math%3Aatan+%3Fresult+.%0A%7D%0A%3D%3E%0A%7B%0A++++%3Aresult+%3Ais+%3Fresult+.%0A%7D+.%0A++++++++++++">Try in Notation3 Editor 🚀</a> 
    <div class="example" id="example-4e7243c1">
     <a class="self-link" href="#example-4e7243c1"></a> 
     <p> Calculate the arc tangent of the value 1. </p>
@@ -2343,7 +2862,7 @@ If there are two such numbers, then the one closest to positive infinity is retu
    <h5 class="heading settled" data-level="6.2.10.1" id="acos_schemas"><span class="secno">6.2.10.1. </span><span class="content">Schema(s)</span><a class="self-link" href="#acos_schemas"></a></h5>
     <i><code>( $s )+ math:acos $o-</code></i> 
    <h5 class="heading settled" data-level="6.2.10.2" id="acos_examples"><span class="secno">6.2.10.2. </span><span class="content">Examples</span><a class="self-link" href="#acos_examples"></a></h5>
-    <a href="file:///Users/timothyduval/Library/Mobile%20Documents/com~apple~CloudDocs/00_unifylogic/50-clients/w3c/N3/useOfBuiltins/core-specs/03-development/site/spec-builtins/src/math/acos.n3">Try in Notation3 Editor 🚀</a> 
+    <a href="https://n3-editor.herokuapp.com/n3/editor/?formula=%0A%40prefix+%3A+%3Chttp%3A%2F%2Fexample.org%2F%3E.%0A%40prefix+math%3A+%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F10%2Fswap%2Fmath%23%3E+.%0A%0A%3ALet+%3Aparam+1+.%0A%0A%7B%0A++++%3ALet+%3Aparam+%3Fparam+.%0A++++%3Fparam+math%3Aacos+%3Fresult+.%0A%7D%0A%3D%3E%0A%7B%0A++++%3Aresult+%3Ais+%3Fresult+.%0A%7D+.%0A++++++++++++">Try in Notation3 Editor 🚀</a> 
    <div class="example" id="example-fa2e3560">
     <a class="self-link" href="#example-fa2e3560"></a> 
     <p> Calculate the arc cosine of the value 1. </p>
@@ -2373,7 +2892,7 @@ If there are two such numbers, then the one closest to positive infinity is retu
    <h5 class="heading settled" data-level="6.2.11.1" id="cosh_schemas"><span class="secno">6.2.11.1. </span><span class="content">Schema(s)</span><a class="self-link" href="#cosh_schemas"></a></h5>
     <i><code>( $s )+ math:cosh $o-</code></i> 
    <h5 class="heading settled" data-level="6.2.11.2" id="cosh_examples"><span class="secno">6.2.11.2. </span><span class="content">Examples</span><a class="self-link" href="#cosh_examples"></a></h5>
-    <a href="file:///Users/timothyduval/Library/Mobile%20Documents/com~apple~CloudDocs/00_unifylogic/50-clients/w3c/N3/useOfBuiltins/core-specs/03-development/site/spec-builtins/src/math/cosh.n3">Try in Notation3 Editor 🚀</a> 
+    <a href="https://n3-editor.herokuapp.com/n3/editor/?formula=%0A%40prefix+%3A+%3Chttp%3A%2F%2Fexample.org%2F%3E.%0A%40prefix+math%3A+%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F10%2Fswap%2Fmath%23%3E+.%0A%0A%3ALet+%3Aparam+0+.%0A%0A%7B%0A++++%3ALet+%3Aparam+%3Fparam+.%0A++++%3Fparam+math%3Acosh+%3Fresult+.%0A%7D%0A%3D%3E%0A%7B%0A++++%3Aresult+%3Ais+%3Fresult+.%0A%7D+.%0A++++++++++++">Try in Notation3 Editor 🚀</a> 
    <div class="example" id="example-e047b640">
     <a class="self-link" href="#example-e047b640"></a> 
     <p> Calculate the hyperbolic cosine of the value 0. </p>
@@ -2403,7 +2922,7 @@ If there are two such numbers, then the one closest to positive infinity is retu
    <h5 class="heading settled" data-level="6.2.12.1" id="negation_schemas"><span class="secno">6.2.12.1. </span><span class="content">Schema(s)</span><a class="self-link" href="#negation_schemas"></a></h5>
     <i><code>( $s )+ math:negation $o-</code></i> 
    <h5 class="heading settled" data-level="6.2.12.2" id="negation_examples"><span class="secno">6.2.12.2. </span><span class="content">Examples</span><a class="self-link" href="#negation_examples"></a></h5>
-    <a href="file:///Users/timothyduval/Library/Mobile%20Documents/com~apple~CloudDocs/00_unifylogic/50-clients/w3c/N3/useOfBuiltins/core-specs/03-development/site/spec-builtins/src/math/negation.n3">Try in Notation3 Editor 🚀</a> 
+    <a href="https://n3-editor.herokuapp.com/n3/editor/?formula=%0A%40prefix+%3A+%3Chttp%3A%2F%2Fexample.org%2F%3E.%0A%40prefix+math%3A+%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F10%2Fswap%2Fmath%23%3E+.%0A%0A%3ALet+%3Aparam+42+.%0A%0A%7B%0A++++%3ALet+%3Aparam+%3Fparam+.%0A++++%3Fparam+math%3Anegation+%3Fresult+.%0A%7D%0A%3D%3E%0A%7B%0A++++%3Aresult+%3Ais+%3Fresult+.%0A%7D+.%0A++++++++++++">Try in Notation3 Editor 🚀</a> 
    <div class="example" id="example-26b33606">
     <a class="self-link" href="#example-26b33606"></a> 
     <p> Calculate the negation of the value 42 . </p>
@@ -2433,7 +2952,7 @@ If there are two such numbers, then the one closest to positive infinity is retu
    <h5 class="heading settled" data-level="6.2.13.1" id="sinh_schemas"><span class="secno">6.2.13.1. </span><span class="content">Schema(s)</span><a class="self-link" href="#sinh_schemas"></a></h5>
     <i><code>( $s )+ math:sinh $o-</code></i> 
    <h5 class="heading settled" data-level="6.2.13.2" id="sinh_examples"><span class="secno">6.2.13.2. </span><span class="content">Examples</span><a class="self-link" href="#sinh_examples"></a></h5>
-    <a href="file:///Users/timothyduval/Library/Mobile%20Documents/com~apple~CloudDocs/00_unifylogic/50-clients/w3c/N3/useOfBuiltins/core-specs/03-development/site/spec-builtins/src/math/sinh.n3">Try in Notation3 Editor 🚀</a> 
+    <a href="https://n3-editor.herokuapp.com/n3/editor/?formula=%0A%40prefix+%3A+%3Chttp%3A%2F%2Fexample.org%2F%3E.%0A%40prefix+math%3A+%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F10%2Fswap%2Fmath%23%3E+.%0A%40prefix+xsd%3A+%3Chttp%3A%2F%2Fwww.w3.org%2F2001%2FXMLSchema%23%3E+.%0A%0A%3ALet+%3Aparam+%220.88137358701954302%22%5E%5Exsd%3Adouble.%0A%0A%7B%0A++++%3ALet+%3Aparam+%3Fparam+.%0A++++%3Fparam+math%3Asinh+%3Fresult+.%0A%7D%0A%3D%3E%0A%7B%0A++++%3Aresult+%3Ais+%3Fresult+.%0A%7D+.%0A++++++++++++">Try in Notation3 Editor 🚀</a> 
    <div class="example" id="example-af95bb41">
     <a class="self-link" href="#example-af95bb41"></a> 
     <p> Calculate the sinh of log(1 + sqrt(2)) (0.88137358701954302). </p>
@@ -2464,7 +2983,7 @@ If there are two such numbers, then the one closest to positive infinity is retu
    <h5 class="heading settled" data-level="6.2.14.1" id="sum_schemas"><span class="secno">6.2.14.1. </span><span class="content">Schema(s)</span><a class="self-link" href="#sum_schemas"></a></h5>
     <i><code>( $s )+ math:sum $o-</code></i> 
    <h5 class="heading settled" data-level="6.2.14.2" id="sum_examples"><span class="secno">6.2.14.2. </span><span class="content">Examples</span><a class="self-link" href="#sum_examples"></a></h5>
-    <a href="file:///Users/timothyduval/Library/Mobile%20Documents/com~apple~CloudDocs/00_unifylogic/50-clients/w3c/N3/useOfBuiltins/core-specs/03-development/site/spec-builtins/src/math/sum.n3">Try in Notation3 Editor 🚀</a> 
+    <a href="https://n3-editor.herokuapp.com/n3/editor/?formula=%0A%40prefix+%3A+%3Chttp%3A%2F%2Fexample.org%2F%3E.%0A%40prefix+math%3A+%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F10%2Fswap%2Fmath%23%3E+.%0A%0A%3ALet+%3Aparam+%281+2+3+4+5+6+7+8+9+10%29+.%0A%0A%7B%0A++++%3ALet+%3Aparam+%3Fparam+.%0A++++%3Fparam+math%3Asum+%3Fresult+.%0A%7D%0A%3D%3E%0A%7B%0A++++%3Aresult+%3Ais+%3Fresult+.%0A%7D+.%0A++++++++++++">Try in Notation3 Editor 🚀</a> 
    <div class="example" id="example-9c39bf40">
     <a class="self-link" href="#example-9c39bf40"></a> 
     <p> Calculate the sum of 1,2,3,4,5,6,7,8,9,10. </p>
@@ -2494,7 +3013,7 @@ If there are two such numbers, then the one closest to positive infinity is retu
    <h5 class="heading settled" data-level="6.2.15.1" id="difference_schemas"><span class="secno">6.2.15.1. </span><span class="content">Schema(s)</span><a class="self-link" href="#difference_schemas"></a></h5>
     <i><code>( $s )+ math:difference $o-</code></i> 
    <h5 class="heading settled" data-level="6.2.15.2" id="difference_examples"><span class="secno">6.2.15.2. </span><span class="content">Examples</span><a class="self-link" href="#difference_examples"></a></h5>
-    <a href="file:///Users/timothyduval/Library/Mobile%20Documents/com~apple~CloudDocs/00_unifylogic/50-clients/w3c/N3/useOfBuiltins/core-specs/03-development/site/spec-builtins/src/math/difference.n3">Try in Notation3 Editor 🚀</a> 
+    <a href="https://n3-editor.herokuapp.com/n3/editor/?formula=%0A%40prefix+%3A+%3Chttp%3A%2F%2Fexample.org%2F%3E.%0A%40prefix+math%3A+%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F10%2Fswap%2Fmath%23%3E+.%0A%0A%3ALet+%3Aparam+%287+2%29+.%0A%0A%7B%0A++++%3ALet+%3Aparam+%3Fparam+.%0A++++%3Fparam+math%3Adifference+%3Fresult+.%0A%7D%0A%3D%3E%0A%7B%0A++++%3Aresult+%3Ais+%3Fresult+.%0A%7D+.%0A++++++++++++">Try in Notation3 Editor 🚀</a> 
    <div class="example" id="example-237d7d5e">
     <a class="self-link" href="#example-237d7d5e"></a> 
     <p> Calculate the value of 7 minus 2. </p>
@@ -2524,7 +3043,7 @@ If there are two such numbers, then the one closest to positive infinity is retu
    <h5 class="heading settled" data-level="6.2.16.1" id="tanh_schemas"><span class="secno">6.2.16.1. </span><span class="content">Schema(s)</span><a class="self-link" href="#tanh_schemas"></a></h5>
     <i><code>( $s )+ math:tanh $o-</code></i> 
    <h5 class="heading settled" data-level="6.2.16.2" id="tanh_examples"><span class="secno">6.2.16.2. </span><span class="content">Examples</span><a class="self-link" href="#tanh_examples"></a></h5>
-    <a href="file:///Users/timothyduval/Library/Mobile%20Documents/com~apple~CloudDocs/00_unifylogic/50-clients/w3c/N3/useOfBuiltins/core-specs/03-development/site/spec-builtins/src/math/tanh.n3">Try in Notation3 Editor 🚀</a> 
+    <a href="https://n3-editor.herokuapp.com/n3/editor/?formula=%0A%40prefix+%3A+%3Chttp%3A%2F%2Fexample.org%2F%3E.%0A%40prefix+math%3A+%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F10%2Fswap%2Fmath%23%3E+.%0A%40prefix+xsd%3A+%3Chttp%3A%2F%2Fwww.w3.org%2F2001%2FXMLSchema%23%3E+.%0A%0A%3ALet+%3Aparam+%220.549306%22%5E%5Exsd%3Adouble+.%0A%0A%7B%0A++++%3ALet+%3Aparam+%3Fparam+.%0A++++%3Fparam+math%3Atanh+%3Fresult+.%0A%7D%0A%3D%3E%0A%7B%0A++++%3Aresult+%3Ais+%3Fresult+.%0A%7D+.%0A++++++++++++">Try in Notation3 Editor 🚀</a> 
    <div class="example" id="example-8e13629a">
     <a class="self-link" href="#example-8e13629a"></a> 
     <p> Calculate the hyperbolic tanget of 0.549306 . </p>
@@ -2563,7 +3082,7 @@ You can also use this to calculate the logarithm of the object, with as base the
    <h5 class="heading settled" data-level="6.2.18.1" id="notEqualTo_schemas"><span class="secno">6.2.18.1. </span><span class="content">Schema(s)</span><a class="self-link" href="#notEqualTo_schemas"></a></h5>
     <i><code>( $s )+ math:notEqualTo $o?</code></i> 
    <h5 class="heading settled" data-level="6.2.18.2" id="notEqualTo_examples"><span class="secno">6.2.18.2. </span><span class="content">Examples</span><a class="self-link" href="#notEqualTo_examples"></a></h5>
-    <a href="file:///Users/timothyduval/Library/Mobile%20Documents/com~apple~CloudDocs/00_unifylogic/50-clients/w3c/N3/useOfBuiltins/core-specs/03-development/site/spec-builtins/src/math/notEqualTo.n3">Try in Notation3 Editor 🚀</a> 
+    <a href="https://n3-editor.herokuapp.com/n3/editor/?formula=%0A%40prefix+%3A+%3Chttp%3A%2F%2Fexample.org%2F%3E.%0A%40prefix+math%3A+%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F10%2Fswap%2Fmath%23%3E+.%0A%0A%3ALet+%3Aparam+%2841+42%29+.%0A%0A%7B%0A++++%3ALet+%3Aparam+%28%3FX+%3FY%29+.%0A++++%3FX+math%3AnotEqualTo+%3FY+.%0A%7D%0A%3D%3E%0A%7B%0A++++%3Aresult+%3Ais+true+.%0A%7D+.%0A++++++++++++">Try in Notation3 Editor 🚀</a> 
    <div class="example" id="example-f412ccd0">
     <a class="self-link" href="#example-f412ccd0"></a> 
     <p> Check if the numbers 41 and 42 are not equal . </p>
@@ -2593,7 +3112,7 @@ You can also use this to calculate the logarithm of the object, with as base the
    <h5 class="heading settled" data-level="6.2.19.1" id="quotient_schemas"><span class="secno">6.2.19.1. </span><span class="content">Schema(s)</span><a class="self-link" href="#quotient_schemas"></a></h5>
     <i><code>( $s )+ math:quotient $o-</code></i> 
    <h5 class="heading settled" data-level="6.2.19.2" id="quotient_examples"><span class="secno">6.2.19.2. </span><span class="content">Examples</span><a class="self-link" href="#quotient_examples"></a></h5>
-    <a href="file:///Users/timothyduval/Library/Mobile%20Documents/com~apple~CloudDocs/00_unifylogic/50-clients/w3c/N3/useOfBuiltins/core-specs/03-development/site/spec-builtins/src/math/quotient.n3">Try in Notation3 Editor 🚀</a> 
+    <a href="https://n3-editor.herokuapp.com/n3/editor/?formula=%0A%40prefix+%3A+%3Chttp%3A%2F%2Fexample.org%2F%3E.%0A%40prefix+math%3A+%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F10%2Fswap%2Fmath%23%3E+.%0A%0A%3ALet+%3Aparam+%2842+2%29+.%0A%0A%7B%0A++++%3ALet+%3Aparam+%3Fparam+.%0A++++%3Fparam+math%3Aquotient+%3Fresult+.%0A%7D%0A%3D%3E%0A%7B%0A++++%3Aresult+%3Ais+%3Fresult+.%0A%7D+.%0A++++++++++++">Try in Notation3 Editor 🚀</a> 
    <div class="example" id="example-1b149652">
     <a class="self-link" href="#example-1b149652"></a> 
     <p> Calculate the quotient of 42 and 2. </p>
@@ -2623,7 +3142,7 @@ You can also use this to calculate the logarithm of the object, with as base the
    <h5 class="heading settled" data-level="6.2.20.1" id="equalTo_schemas"><span class="secno">6.2.20.1. </span><span class="content">Schema(s)</span><a class="self-link" href="#equalTo_schemas"></a></h5>
     <i><code>( $s )+ math:equalTo $o-</code></i> 
    <h5 class="heading settled" data-level="6.2.20.2" id="equalTo_examples"><span class="secno">6.2.20.2. </span><span class="content">Examples</span><a class="self-link" href="#equalTo_examples"></a></h5>
-    <a href="file:///Users/timothyduval/Library/Mobile%20Documents/com~apple~CloudDocs/00_unifylogic/50-clients/w3c/N3/useOfBuiltins/core-specs/03-development/site/spec-builtins/src/math/equalTo.n3">Try in Notation3 Editor 🚀</a> 
+    <a href="https://n3-editor.herokuapp.com/n3/editor/?formula=%0A%40prefix+%3A+%3Chttp%3A%2F%2Fexample.org%2F%3E.%0A%40prefix+math%3A+%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F10%2Fswap%2Fmath%23%3E+.%0A%0A%3ALet+%3Aparam+%2842+42%29+.%0A%0A%7B%0A++++%3ALet+%3Aparam+%28%3FX+%3FY%29+.%0A++++%3FX+math%3AequalTo+%3FY+.%0A%7D%0A%3D%3E%0A%7B%0A++++%3Aresult+%3Ais+true+.%0A%7D+.%0A++++++++++++">Try in Notation3 Editor 🚀</a> 
    <div class="example" id="example-18a84670">
     <a class="self-link" href="#example-18a84670"></a> 
     <p> Check if the numbers 42 and 42 are equal . </p>
@@ -2653,7 +3172,7 @@ You can also use this to calculate the logarithm of the object, with as base the
    <h5 class="heading settled" data-level="6.2.21.1" id="cos_schemas"><span class="secno">6.2.21.1. </span><span class="content">Schema(s)</span><a class="self-link" href="#cos_schemas"></a></h5>
     <i><code>( $s )+ math:cos $o-</code></i> 
    <h5 class="heading settled" data-level="6.2.21.2" id="cos_examples"><span class="secno">6.2.21.2. </span><span class="content">Examples</span><a class="self-link" href="#cos_examples"></a></h5>
-    <a href="file:///Users/timothyduval/Library/Mobile%20Documents/com~apple~CloudDocs/00_unifylogic/50-clients/w3c/N3/useOfBuiltins/core-specs/03-development/site/spec-builtins/src/math/cos.n3">Try in Notation3 Editor 🚀</a> 
+    <a href="https://n3-editor.herokuapp.com/n3/editor/?formula=%0A%40prefix+%3A+%3Chttp%3A%2F%2Fexample.org%2F%3E.%0A%40prefix+math%3A+%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F10%2Fswap%2Fmath%23%3E+.%0A%0A%3ALet+%3Aparam+0+.%0A%0A%7B%0A++++%3ALet+%3Aparam+%3Fparam+.%0A++++%3Fparam+math%3Acos+%3Fresult+.%0A%7D%0A%3D%3E%0A%7B%0A++++%3Aresult+%3Ais+%3Fresult+.%0A%7D+.%0A++++++++++++">Try in Notation3 Editor 🚀</a> 
    <div class="example" id="example-d3e210b1">
     <a class="self-link" href="#example-d3e210b1"></a> 
     <p> Calculate the cosine of the value 0. </p>
@@ -2683,7 +3202,7 @@ You can also use this to calculate the logarithm of the object, with as base the
    <h5 class="heading settled" data-level="6.2.22.1" id="tan_schemas"><span class="secno">6.2.22.1. </span><span class="content">Schema(s)</span><a class="self-link" href="#tan_schemas"></a></h5>
     <i><code>( $s )+ math:tan $o-</code></i> 
    <h5 class="heading settled" data-level="6.2.22.2" id="tan_examples"><span class="secno">6.2.22.2. </span><span class="content">Examples</span><a class="self-link" href="#tan_examples"></a></h5>
-    <a href="file:///Users/timothyduval/Library/Mobile%20Documents/com~apple~CloudDocs/00_unifylogic/50-clients/w3c/N3/useOfBuiltins/core-specs/03-development/site/spec-builtins/src/math/tan.n3">Try in Notation3 Editor 🚀</a> 
+    <a href="https://n3-editor.herokuapp.com/n3/editor/?formula=%0A%40prefix+%3A+%3Chttp%3A%2F%2Fexample.org%2F%3E.%0A%40prefix+math%3A+%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F10%2Fswap%2Fmath%23%3E+.%0A%40prefix+xsd%3A+%3Chttp%3A%2F%2Fwww.w3.org%2F2001%2FXMLSchema%23%3E+.%0A%0A%3ALet+%3Aparam+%220.7853981633974483%22%5E%5Exsd%3Adouble+.%0A%0A%7B%0A++++%3ALet+%3Aparam+%3Fparam+.%0A++++%3Fparam+math%3Atan+%3Fresult+.%0A%7D%0A%3D%3E%0A%7B%0A++++%3Aresult+%3Ais+%3Fresult+.%0A%7D+.%0A++++++++++++">Try in Notation3 Editor 🚀</a> 
    <div class="example" id="example-552d6595">
     <a class="self-link" href="#example-552d6595"></a> 
     <p> Calculate the tangent of the value 0.7853981633974483 . </p>
@@ -2715,7 +3234,7 @@ You can also use this to calculate the logarithm of the object, with as base the
    <h5 class="heading settled" data-level="6.2.23.1" id="remainder_schemas"><span class="secno">6.2.23.1. </span><span class="content">Schema(s)</span><a class="self-link" href="#remainder_schemas"></a></h5>
     <i><code>( $s )+ math:remainder $o-</code></i> 
    <h5 class="heading settled" data-level="6.2.23.2" id="remainder_examples"><span class="secno">6.2.23.2. </span><span class="content">Examples</span><a class="self-link" href="#remainder_examples"></a></h5>
-    <a href="file:///Users/timothyduval/Library/Mobile%20Documents/com~apple~CloudDocs/00_unifylogic/50-clients/w3c/N3/useOfBuiltins/core-specs/03-development/site/spec-builtins/src/math/remainder.n3">Try in Notation3 Editor 🚀</a> 
+    <a href="https://n3-editor.herokuapp.com/n3/editor/?formula=%0A%40prefix+%3A+%3Chttp%3A%2F%2Fexample.org%2F%3E.%0A%40prefix+math%3A+%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F10%2Fswap%2Fmath%23%3E+.%0A%0A%3ALet+%3Aparam+%2810+3%29+.%0A%0A%7B%0A++++%3ALet+%3Aparam+%3Fparam+.%0A++++%3Fparam+math%3Aremainder+%3Fresult+.%0A%7D%0A%3D%3E%0A%7B%0A++++%3Aresult+%3Ais+%3Fresult+.%0A%7D+.%0A++++++++++++">Try in Notation3 Editor 🚀</a> 
    <div class="example" id="example-6b6aa7a3">
     <a class="self-link" href="#example-6b6aa7a3"></a> 
     <p> Calculate the remainder of 10 divided by 3. </p>
@@ -2745,7 +3264,7 @@ You can also use this to calculate the logarithm of the object, with as base the
    <h5 class="heading settled" data-level="6.2.24.1" id="degrees_schemas"><span class="secno">6.2.24.1. </span><span class="content">Schema(s)</span><a class="self-link" href="#degrees_schemas"></a></h5>
     <i><code>( $s )+ math:degrees $o-</code></i> 
    <h5 class="heading settled" data-level="6.2.24.2" id="degrees_examples"><span class="secno">6.2.24.2. </span><span class="content">Examples</span><a class="self-link" href="#degrees_examples"></a></h5>
-    <a href="file:///Users/timothyduval/Library/Mobile%20Documents/com~apple~CloudDocs/00_unifylogic/50-clients/w3c/N3/useOfBuiltins/core-specs/03-development/site/spec-builtins/src/math/degrees.n3">Try in Notation3 Editor 🚀</a> 
+    <a href="https://n3-editor.herokuapp.com/n3/editor/?formula=%0A%40prefix+%3A+%3Chttp%3A%2F%2Fexample.org%2F%3E.%0A%40prefix+math%3A+%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F10%2Fswap%2Fmath%23%3E+.%0A%0A%3ALet+%3Aparam+1.57079632679+.%0A%0A%7B%0A++++%3ALet+%3Aparam+%3Fparam+.%0A++++%3Fparam+math%3Adegrees+%3Fresult+.%0A%7D%0A%3D%3E%0A%7B%0A++++%3Aresult+%3Ais+%3Fresult+.%0A%7D+.%0A++++++++++++">Try in Notation3 Editor 🚀</a> 
    <div class="example" id="example-0483db2f">
     <a class="self-link" href="#example-0483db2f"></a> 
     <p> Calculate the degrees of the radians value 1.57079632679. </p>
@@ -2775,7 +3294,7 @@ You can also use this to calculate the logarithm of the object, with as base the
    <h5 class="heading settled" data-level="6.2.25.1" id="asin_schemas"><span class="secno">6.2.25.1. </span><span class="content">Schema(s)</span><a class="self-link" href="#asin_schemas"></a></h5>
     <i><code>( $s )+ math:asin $o-</code></i> 
    <h5 class="heading settled" data-level="6.2.25.2" id="asin_examples"><span class="secno">6.2.25.2. </span><span class="content">Examples</span><a class="self-link" href="#asin_examples"></a></h5>
-    <a href="file:///Users/timothyduval/Library/Mobile%20Documents/com~apple~CloudDocs/00_unifylogic/50-clients/w3c/N3/useOfBuiltins/core-specs/03-development/site/spec-builtins/src/math/asin.n3">Try in Notation3 Editor 🚀</a> 
+    <a href="https://n3-editor.herokuapp.com/n3/editor/?formula=%0A%40prefix+%3A+%3Chttp%3A%2F%2Fexample.org%2F%3E.%0A%40prefix+math%3A+%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F10%2Fswap%2Fmath%23%3E+.%0A%0A%3ALet+%3Aparam+1+.%0A%0A%7B%0A++++%3ALet+%3Aparam+%3Fparam+.%0A++++%3Fparam+math%3Aasin+%3Fresult+.%0A%7D%0A%3D%3E%0A%7B%0A++++%3Aresult+%3Ais+%3Fresult+.%0A%7D+.%0A++++++++++++">Try in Notation3 Editor 🚀</a> 
    <div class="example" id="example-fc1c0ba2">
     <a class="self-link" href="#example-fc1c0ba2"></a> 
     <p> Calculate the arc sine of the value 1. </p>
@@ -2806,7 +3325,7 @@ You can also use this to calculate the logarithm of the object, with as base the
    <h5 class="heading settled" data-level="6.3.1.1" id="minute_schemas"><span class="secno">6.3.1.1. </span><span class="content">Schema(s)</span><a class="self-link" href="#minute_schemas"></a></h5>
     <i><code>( $s )+ time:minute $o-</code></i> 
    <h5 class="heading settled" data-level="6.3.1.2" id="minute_examples"><span class="secno">6.3.1.2. </span><span class="content">Examples</span><a class="self-link" href="#minute_examples"></a></h5>
-    <a href="file:///Users/timothyduval/Library/Mobile%20Documents/com~apple~CloudDocs/00_unifylogic/50-clients/w3c/N3/useOfBuiltins/core-specs/03-development/site/spec-builtins/src/time/minute.n3">Try in Notation3 Editor 🚀</a> 
+    <a href="https://n3-editor.herokuapp.com/n3/editor/?formula=%0A%40prefix+%3A+%3Chttp%3A%2F%2Fexample.org%2F%3E.%0A%40prefix+xsd%3A+%3Chttp%3A%2F%2Fwww.w3.org%2F2001%2FXMLSchema%23%3E.%0A%40prefix+time%3A+%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F10%2Fswap%2Ftime%23%3E+.%0A%0A%3ALet+%3Aparam+%222023-04-01T18%3A06%3A04Z%22%5E%5Exsd%3AdateTime+.%0A%0A%7B%0A++++%3ALet+%3Aparam+%3Fparam+.%0A++++%3Fparam+time%3Aminute+%3Fresult+.%0A%7D%0A%3D%3E%0A%7B%0A++++%3Aresult+%3Ais+%3Fresult+.%0A%7D+.%0A++++++++++++">Try in Notation3 Editor 🚀</a> 
    <div class="example" id="example-f81b3e4c">
     <a class="self-link" href="#example-f81b3e4c"></a> 
     <p> Return the minute component of the date "2023-04-01T18:06:04Z" . </p>
@@ -2837,7 +3356,7 @@ You can also use this to calculate the logarithm of the object, with as base the
    <h5 class="heading settled" data-level="6.3.2.1" id="day_schemas"><span class="secno">6.3.2.1. </span><span class="content">Schema(s)</span><a class="self-link" href="#day_schemas"></a></h5>
     <i><code>( $s )+ time:day $o-</code></i> 
    <h5 class="heading settled" data-level="6.3.2.2" id="day_examples"><span class="secno">6.3.2.2. </span><span class="content">Examples</span><a class="self-link" href="#day_examples"></a></h5>
-    <a href="file:///Users/timothyduval/Library/Mobile%20Documents/com~apple~CloudDocs/00_unifylogic/50-clients/w3c/N3/useOfBuiltins/core-specs/03-development/site/spec-builtins/src/time/day.n3">Try in Notation3 Editor 🚀</a> 
+    <a href="https://n3-editor.herokuapp.com/n3/editor/?formula=%0A%40prefix+%3A+%3Chttp%3A%2F%2Fexample.org%2F%3E.%0A%40prefix+xsd%3A+%3Chttp%3A%2F%2Fwww.w3.org%2F2001%2FXMLSchema%23%3E.%0A%40prefix+time%3A+%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F10%2Fswap%2Ftime%23%3E+.%0A%0A%3ALet+%3Aparam+%222023-04-01T18%3A06%3A04Z%22%5E%5Exsd%3AdateTime+.%0A%0A%7B%0A++++%3ALet+%3Aparam+%3Fparam+.%0A++++%3Fparam+time%3Aday+%3Fresult+.%0A%7D%0A%3D%3E%0A%7B%0A++++%3Aresult+%3Ais+%3Fresult+.%0A%7D+.%0A++++++++++++">Try in Notation3 Editor 🚀</a> 
    <div class="example" id="example-6881bc4a">
     <a class="self-link" href="#example-6881bc4a"></a> 
     <p> Return the day component of the date "2023-04-01T18:06:04Z" . </p>
@@ -2868,7 +3387,7 @@ You can also use this to calculate the logarithm of the object, with as base the
    <h5 class="heading settled" data-level="6.3.3.1" id="month_schemas"><span class="secno">6.3.3.1. </span><span class="content">Schema(s)</span><a class="self-link" href="#month_schemas"></a></h5>
     <i><code>( $s )+ time:month $o-</code></i> 
    <h5 class="heading settled" data-level="6.3.3.2" id="month_examples"><span class="secno">6.3.3.2. </span><span class="content">Examples</span><a class="self-link" href="#month_examples"></a></h5>
-    <a href="file:///Users/timothyduval/Library/Mobile%20Documents/com~apple~CloudDocs/00_unifylogic/50-clients/w3c/N3/useOfBuiltins/core-specs/03-development/site/spec-builtins/src/time/month.n3">Try in Notation3 Editor 🚀</a> 
+    <a href="https://n3-editor.herokuapp.com/n3/editor/?formula=%0A%40prefix+%3A+%3Chttp%3A%2F%2Fexample.org%2F%3E.%0A%40prefix+xsd%3A+%3Chttp%3A%2F%2Fwww.w3.org%2F2001%2FXMLSchema%23%3E.%0A%40prefix+time%3A+%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F10%2Fswap%2Ftime%23%3E+.%0A%0A%3ALet+%3Aparam+%222023-04-01T18%3A06%3A04Z%22%5E%5Exsd%3AdateTime+.%0A%0A%7B%0A++++%3ALet+%3Aparam+%3Fparam+.%0A++++%3Fparam+time%3Amonth+%3Fresult+.%0A%7D%0A%3D%3E%0A%7B%0A++++%3Aresult+%3Ais+%3Fresult+.%0A%7D+.%0A++++++++++++">Try in Notation3 Editor 🚀</a> 
    <div class="example" id="example-7ce7bc78">
     <a class="self-link" href="#example-7ce7bc78"></a> 
     <p> Return the month component of the date "2023-04-01T18:06:04Z" . </p>
@@ -2899,7 +3418,7 @@ You can also use this to calculate the logarithm of the object, with as base the
    <h5 class="heading settled" data-level="6.3.4.1" id="timeZone_schemas"><span class="secno">6.3.4.1. </span><span class="content">Schema(s)</span><a class="self-link" href="#timeZone_schemas"></a></h5>
     <i><code>( $s )+ time:timeZone $o-</code></i> 
    <h5 class="heading settled" data-level="6.3.4.2" id="timeZone_examples"><span class="secno">6.3.4.2. </span><span class="content">Examples</span><a class="self-link" href="#timeZone_examples"></a></h5>
-    <a href="file:///Users/timothyduval/Library/Mobile%20Documents/com~apple~CloudDocs/00_unifylogic/50-clients/w3c/N3/useOfBuiltins/core-specs/03-development/site/spec-builtins/src/time/timeZone.n3">Try in Notation3 Editor 🚀</a> 
+    <a href="https://n3-editor.herokuapp.com/n3/editor/?formula=%0A%40prefix+%3A+%3Chttp%3A%2F%2Fexample.org%2F%3E.%0A%40prefix+xsd%3A+%3Chttp%3A%2F%2Fwww.w3.org%2F2001%2FXMLSchema%23%3E.%0A%40prefix+time%3A+%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F10%2Fswap%2Ftime%23%3E+.%0A%0A%3ALet+%3Aparam+%222023-04-01T18%3A06%3A04Z%22%5E%5Exsd%3AdateTime+.%0A%0A%7B%0A++++%3ALet+%3Aparam+%3Fparam+.%0A++++%3Fparam+time%3Aminute+%3Fresult+.%0A%7D%0A%3D%3E%0A%7B%0A++++%3Aresult+%3Ais+%3Fresult+.%0A%7D+.%0A++++++++++++">Try in Notation3 Editor 🚀</a> 
    <div class="example" id="example-74ccb55e">
     <a class="self-link" href="#example-74ccb55e"></a> 
     <p> Return the time zone component of the date "2023-04-01T18:06:04Z" . </p>
@@ -2930,7 +3449,7 @@ You can also use this to calculate the logarithm of the object, with as base the
    <h5 class="heading settled" data-level="6.3.5.1" id="year_schemas"><span class="secno">6.3.5.1. </span><span class="content">Schema(s)</span><a class="self-link" href="#year_schemas"></a></h5>
     <i><code>( $s )+ time:year $o-</code></i> 
    <h5 class="heading settled" data-level="6.3.5.2" id="year_examples"><span class="secno">6.3.5.2. </span><span class="content">Examples</span><a class="self-link" href="#year_examples"></a></h5>
-    <a href="file:///Users/timothyduval/Library/Mobile%20Documents/com~apple~CloudDocs/00_unifylogic/50-clients/w3c/N3/useOfBuiltins/core-specs/03-development/site/spec-builtins/src/time/year.n3">Try in Notation3 Editor 🚀</a> 
+    <a href="https://n3-editor.herokuapp.com/n3/editor/?formula=%0A%40prefix+%3A+%3Chttp%3A%2F%2Fexample.org%2F%3E.%0A%40prefix+xsd%3A+%3Chttp%3A%2F%2Fwww.w3.org%2F2001%2FXMLSchema%23%3E.%0A%40prefix+time%3A+%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F10%2Fswap%2Ftime%23%3E+.%0A%0A%3ALet+%3Aparam+%222023-04-01T18%3A06%3A04Z%22%5E%5Exsd%3AdateTime+.%0A%0A%7B%0A++++%3ALet+%3Aparam+%3Fparam+.%0A++++%3Fparam+time%3Ayear+%3Fresult+.%0A%7D%0A%3D%3E%0A%7B%0A++++%3Aresult+%3Ais+%3Fresult+.%0A%7D+.%0A++++++++++++">Try in Notation3 Editor 🚀</a> 
    <div class="example" id="example-66cf9dcf">
     <a class="self-link" href="#example-66cf9dcf"></a> 
     <p> Return the minute component of the date "2023-04-01T18:06:04Z" . </p>
@@ -2961,7 +3480,7 @@ You can also use this to calculate the logarithm of the object, with as base the
    <h5 class="heading settled" data-level="6.3.6.1" id="second_schemas"><span class="secno">6.3.6.1. </span><span class="content">Schema(s)</span><a class="self-link" href="#second_schemas"></a></h5>
     <i><code>( $s )+ time:second $o-</code></i> 
    <h5 class="heading settled" data-level="6.3.6.2" id="second_examples"><span class="secno">6.3.6.2. </span><span class="content">Examples</span><a class="self-link" href="#second_examples"></a></h5>
-    <a href="file:///Users/timothyduval/Library/Mobile%20Documents/com~apple~CloudDocs/00_unifylogic/50-clients/w3c/N3/useOfBuiltins/core-specs/03-development/site/spec-builtins/src/time/second.n3">Try in Notation3 Editor 🚀</a> 
+    <a href="https://n3-editor.herokuapp.com/n3/editor/?formula=%0A%40prefix+%3A+%3Chttp%3A%2F%2Fexample.org%2F%3E.%0A%40prefix+xsd%3A+%3Chttp%3A%2F%2Fwww.w3.org%2F2001%2FXMLSchema%23%3E.%0A%40prefix+time%3A+%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F10%2Fswap%2Ftime%23%3E+.%0A%0A%3ALet+%3Aparam+%222023-04-01T18%3A06%3A04Z%22%5E%5Exsd%3AdateTime+.%0A%0A%7B%0A++++%3ALet+%3Aparam+%3Fparam+.%0A++++%3Fparam+time%3Asecond+%3Fresult+.%0A%7D%0A%3D%3E%0A%7B%0A++++%3Aresult+%3Ais+%3Fresult+.%0A%7D+.%0A++++++++++++">Try in Notation3 Editor 🚀</a> 
    <div class="example" id="example-70955ed2">
     <a class="self-link" href="#example-70955ed2"></a> 
     <p> Return the seconds component of the date "2023-04-01T18:06:04Z" . </p>
@@ -2999,10 +3518,10 @@ You can also use this to calculate the logarithm of the object, with as base the
    <h5 class="heading settled" data-level="6.4.2.1" id="first_schemas"><span class="secno">6.4.2.1. </span><span class="content">Schema(s)</span><a class="self-link" href="#first_schemas"></a></h5>
     <i><code>( $s )+ list:first $o-</code></i> 
    <h5 class="heading settled" data-level="6.4.2.2" id="first_examples"><span class="secno">6.4.2.2. </span><span class="content">Examples</span><a class="self-link" href="#first_examples"></a></h5>
-    <a href="file:///Users/timothyduval/Library/Mobile%20Documents/com~apple~CloudDocs/00_unifylogic/50-clients/w3c/N3/useOfBuiltins/core-specs/03-development/site/spec-builtins/src/list/first.n3">Try in Notation3 Editor 🚀</a> 
+    <a href="https://n3-editor.herokuapp.com/n3/editor/?formula=%0A%40prefix+%3A+%3Chttp%3A%2F%2Fexample.org%2F%3E.%0A%40prefix+list%3A+%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F10%2Fswap%2Flist%23%3E+.%0A%0A%7B+%28+%28%27a%27%29+%7B+%3Aa+%3Ab+%3Ac+%7D+42+%29+list%3Afirst+%3Fwhat+.+%7D+%3D%3E+%7B+%3Aresult+%3Ais+%3Fwhat+.+%7D+.%0A++++++++++++">Try in Notation3 Editor 🚀</a> 
    <div class="example" id="example-6713e9ca">
     <a class="self-link" href="#example-6713e9ca"></a> 
-    <p> What is the first element of ( (<a class="property" data-link-type="propdesc">a</a>) { :a :b :c } 42 )? </p>
+    <p> What is the first element of ( (<a class="property css" data-link-type="property">a</a>) { :a :b :c } 42 )? </p>
     <p><b>Formula:</b> </p>
 <pre>@prefix : &lt;http://example.org/>.
 @prefix list: &lt;http://www.w3.org/2000/10/swap/list#> .
@@ -3050,7 +3569,7 @@ You can also use this to calculate the logarithm of the object, with as base the
    <h5 class="heading settled" data-level="6.4.8.1" id="remove_schemas"><span class="secno">6.4.8.1. </span><span class="content">Schema(s)</span><a class="self-link" href="#remove_schemas"></a></h5>
     <i><code>( $s )+ list:remove $o-</code></i> 
    <h5 class="heading settled" data-level="6.4.8.2" id="remove_examples"><span class="secno">6.4.8.2. </span><span class="content">Examples</span><a class="self-link" href="#remove_examples"></a></h5>
-    <a href="file:///Users/timothyduval/Library/Mobile%20Documents/com~apple~CloudDocs/00_unifylogic/50-clients/w3c/N3/useOfBuiltins/core-specs/03-development/site/spec-builtins/src/list/remove.n3">Try in Notation3 Editor 🚀</a> 
+    <a href="https://n3-editor.herokuapp.com/n3/editor/?formula=%0A%40prefix+%3A+%3Chttp%3A%2F%2Fexample.org%2F%3E.%0A%40prefix+list%3A+%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F10%2Fswap%2Flist%23%3E+.%0A%0A%3Alet+%3Aparam+%28%22dog%22+%22penguin%22+%22cat%22+%22penguin%22%29+.%0A%7B+%0A++++%3Alet+%3Aparam+%3Fparam+.+%0A++++%28+%3Fparam+%22penguin%22+%29+list%3Aremove+%3Flist+.%0A%7D+%0A%3D%3E+%0A%7B+%0A++++%3Aresult+%3Ais+%3Flist+.+%0A%7D+.%0A++++++++++++">Try in Notation3 Editor 🚀</a> 
    <div class="example" id="example-2a574617">
     <a class="self-link" href="#example-2a574617"></a> 
     <p> Remove "penguin" from the list ("dog" "penguin" "cat" "penguin"). </p>
@@ -3079,7 +3598,7 @@ You can also use this to calculate the logarithm of the object, with as base the
    <h5 class="heading settled" data-level="6.4.9.1" id="length_schemas"><span class="secno">6.4.9.1. </span><span class="content">Schema(s)</span><a class="self-link" href="#length_schemas"></a></h5>
     <i><code>( $s )+ list:length $o-</code></i> 
    <h5 class="heading settled" data-level="6.4.9.2" id="length_examples"><span class="secno">6.4.9.2. </span><span class="content">Examples</span><a class="self-link" href="#length_examples"></a></h5>
-    <a href="file:///Users/timothyduval/Library/Mobile%20Documents/com~apple~CloudDocs/00_unifylogic/50-clients/w3c/N3/useOfBuiltins/core-specs/03-development/site/spec-builtins/src/list/length.n3">Try in Notation3 Editor 🚀</a> 
+    <a href="https://n3-editor.herokuapp.com/n3/editor/?formula=%0A%40prefix+%3A+%3Chttp%3A%2F%2Fexample.org%2F%3E.%0A%40prefix+list%3A+%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F10%2Fswap%2Flist%23%3E+.%0A%0A%7B+%281+2+3+4%29+list%3Alength+%3Flength+.+%7D+%3D%3E+%7B+%3Aresult+%3Ais+%3Flength+.+%7D+.%0A++++++++++++">Try in Notation3 Editor 🚀</a> 
    <div class="example" id="example-145cc357">
     <a class="self-link" href="#example-145cc357"></a> 
     <p> Calculate the length of the list (1 2 3 4). </p>
@@ -3109,7 +3628,7 @@ by applying any rules it contains to the data it contains.</p>
    <h5 class="heading settled" data-level="6.5.2.1" id="conclusion_schemas"><span class="secno">6.5.2.1. </span><span class="content">Schema(s)</span><a class="self-link" href="#conclusion_schemas"></a></h5>
     <i><code>( $s )+ log:conclusion $o?</code></i> 
    <h5 class="heading settled" data-level="6.5.2.2" id="conclusion_examples"><span class="secno">6.5.2.2. </span><span class="content">Examples</span><a class="self-link" href="#conclusion_examples"></a></h5>
-    <a href="file:///Users/timothyduval/Library/Mobile%20Documents/com~apple~CloudDocs/00_unifylogic/50-clients/w3c/N3/useOfBuiltins/core-specs/03-development/site/spec-builtins/src/log/conclusion.n3">Try in Notation3 Editor 🚀</a> 
+    <a href="https://n3-editor.herokuapp.com/n3/editor/?formula=%0A%40prefix+%3A+%3Chttp%3A%2F%2Fexample.org%2F%3E.%0A%40prefix+log%3A+%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F10%2Fswap%2Flog%23%3E+.%0A%0A%3Alet+%3Aparam+%7B+%0A++++%3AFelix+a+%3ACat+.+%0A++++%7B+%3FX+a+%3ACat+.+%7D+%3D%3E+%7B+%3FX+%3Asays+%22Meow%22+.+%7D+.%0A%7D+.%0A%0A%7B+%0A++++%3Alet+%3Aparam+%3Fparam+.%0A++++%3Fparam+log%3Aconclusion+%3Fconclusion+.%0A%7D+%0A%3D%3E+%0A%7B+%0A++++%3Aresult+%3Ais+%3Fconclusion+.+%0A%7D+.%0A++++++++++++">Try in Notation3 Editor 🚀</a> 
    <div class="example" id="example-47cd74ab">
     <a class="self-link" href="#example-47cd74ab"></a> 
     <p> Draw all conclusions from the formula ":Felix a :Cat . { ?X a :Cat } => { ?X :says "Meow" . }". </p>
@@ -3146,7 +3665,7 @@ by applying any rules it contains to the data it contains.</p>
    <h5 class="heading settled" data-level="6.5.3.1" id="content_schemas"><span class="secno">6.5.3.1. </span><span class="content">Schema(s)</span><a class="self-link" href="#content_schemas"></a></h5>
     <i><code>( $s )+ log:content $o?</code></i> 
    <h5 class="heading settled" data-level="6.5.3.2" id="content_examples"><span class="secno">6.5.3.2. </span><span class="content">Examples</span><a class="self-link" href="#content_examples"></a></h5>
-    <a href="file:///Users/timothyduval/Library/Mobile%20Documents/com~apple~CloudDocs/00_unifylogic/50-clients/w3c/N3/useOfBuiltins/core-specs/03-development/site/spec-builtins/src/log/content.n3">Try in Notation3 Editor 🚀</a> 
+    <a href="https://n3-editor.herokuapp.com/n3/editor/?formula=%0A%40prefix+%3A+%3Chttp%3A%2F%2Fexample.org%2F%3E.%0A%40prefix+log%3A+%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F10%2Fswap%2Flog%23%3E+.%0A%0A%7B+%0A++++%3Chttps%3A%2F%2Fwww.w3.org%2FPeople%2FBerners-Lee%2Fcard%3E+log%3Acontent+%3Fcontent+.%0A%7D+%0A%3D%3E+%0A%7B+%0A++++%3Aresult+%3Ais+%3Fcontent+.+%0A%7D+.%0A++++++++++++">Try in Notation3 Editor 🚀</a> 
    <div class="example" id="example-674a3220">
     <a class="self-link" href="#example-674a3220"></a> 
     <p> Fetch the content of https://www.w3.org/People/Berners-Lee/card. </p>
@@ -3173,7 +3692,7 @@ This is a scoped universal quantification.</p>
    <h5 class="heading settled" data-level="6.5.4.1" id="forAllIn_schemas"><span class="secno">6.5.4.1. </span><span class="content">Schema(s)</span><a class="self-link" href="#forAllIn_schemas"></a></h5>
     <i><code>( $s )+ log:forAllIn $o?</code></i> 
    <h5 class="heading settled" data-level="6.5.4.2" id="forAllIn_examples"><span class="secno">6.5.4.2. </span><span class="content">Examples</span><a class="self-link" href="#forAllIn_examples"></a></h5>
-    <a href="file:///Users/timothyduval/Library/Mobile%20Documents/com~apple~CloudDocs/00_unifylogic/50-clients/w3c/N3/useOfBuiltins/core-specs/03-development/site/spec-builtins/src/log/forAllIn.n3">Try in Notation3 Editor 🚀</a> 
+    <a href="https://n3-editor.herokuapp.com/n3/editor/?formula=%0A%40prefix+%3A+%3Chttp%3A%2F%2Fexample.org%2F%3E.%0A%40prefix+log%3A+%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F10%2Fswap%2Flog%23%3E+.%0A%0A%3Ac+a+%3ACompositeTask+%3B%0A++++%3AsubTask+%3As1+%2C+%3As2+%2C+%3As3+.%0A%3As1+%3Astate+%3ACompleted+.%0A%3As2+%3Astate+%3ACompleted+.+%0A%3As3+%3Astate+%3ACompleted+.%0A%0A%7B%0A++++%3Fc+a+%3ACompositeTask+.%0A++++%28+%7B+%3Fc+%3AsubTask+%3Fs+%7D+%7B+%3Fs+%3Astate+%3ACompleted+%7D+%29+log%3AforAllIn+_%3At+.%0A%7D%0A%3D%3E%0A%7B%0A++++%3Aresult+%3Ais+true+.%0A%7D+.+%0A++++++++++++">Try in Notation3 Editor 🚀</a> 
    <div class="example" id="example-fe0ec0cb">
     <a class="self-link" href="#example-fe0ec0cb"></a> 
     <p> For each subtask of a composite task, check whether the subtask is completed. </p>
@@ -3207,7 +3726,7 @@ This is a scoped universal quantification.</p>
    <h5 class="heading settled" data-level="6.5.5.1" id="parsedAsN3_schemas"><span class="secno">6.5.5.1. </span><span class="content">Schema(s)</span><a class="self-link" href="#parsedAsN3_schemas"></a></h5>
     <i><code>( $s )+ log:parsedAsN3 $o?</code></i> 
    <h5 class="heading settled" data-level="6.5.5.2" id="parsedAsN3_examples"><span class="secno">6.5.5.2. </span><span class="content">Examples</span><a class="self-link" href="#parsedAsN3_examples"></a></h5>
-    <a href="file:///Users/timothyduval/Library/Mobile%20Documents/com~apple~CloudDocs/00_unifylogic/50-clients/w3c/N3/useOfBuiltins/core-specs/03-development/site/spec-builtins/src/log/parsedAsN3.n3">Try in Notation3 Editor 🚀</a> 
+    <a href="https://n3-editor.herokuapp.com/n3/editor/?formula=%0A%40prefix+%3A+%3Chttp%3A%2F%2Fexample.org%2F%3E.%0A%40prefix+log%3A+%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F10%2Fswap%2Flog%23%3E+.%0A%0A%3ALet+%3Aparam+%22%22%22%0A%40prefix+%3A+%3Curn%3Aexample%3A%3E+.%0A%3ASocrates+a+%3AHuman+.%0A%22%22%22+.%0A%0A%7B%0A++++%3ALet+%3Aparam+%3FX+.%0A++++%3FX+log%3AparsedAsN3+%3FY+.%0A%7D%0A%3D%3E%0A%7B%0A++++%3Aresult+%3Ais+%3FY+.%0A%7D+.%0A++++++++++++">Try in Notation3 Editor 🚀</a> 
    <div class="example" id="example-38685dd3">
     <a class="self-link" href="#example-38685dd3"></a> 
     <p> Parse the string ':Socrates a :Human .' as N3. </p>
@@ -3240,7 +3759,7 @@ This is a scoped universal quantification.</p>
    <h5 class="heading settled" data-level="6.5.6.1" id="conjunction_schemas"><span class="secno">6.5.6.1. </span><span class="content">Schema(s)</span><a class="self-link" href="#conjunction_schemas"></a></h5>
     <i><code>( $s )+ log:conjunction $o?</code></i> 
    <h5 class="heading settled" data-level="6.5.6.2" id="conjunction_examples"><span class="secno">6.5.6.2. </span><span class="content">Examples</span><a class="self-link" href="#conjunction_examples"></a></h5>
-    <a href="file:///Users/timothyduval/Library/Mobile%20Documents/com~apple~CloudDocs/00_unifylogic/50-clients/w3c/N3/useOfBuiltins/core-specs/03-development/site/spec-builtins/src/log/conjunction.n3">Try in Notation3 Editor 🚀</a> 
+    <a href="https://n3-editor.herokuapp.com/n3/editor/?formula=%0A%40prefix+%3A+%3Chttp%3A%2F%2Fexample.org%2F%3E.%0A%40prefix+log%3A+%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F10%2Fswap%2Flog%23%3E+.%0A%0A%7B+%0A++++%28+%7B+%3AFelix+a+%3ACat+.+%7D%0A++++++%7B+%3APluto+a+%3ADog+.+%7D++%0A++++++%7B+%3APingu+a+%3APenguin+.+%7D%0A++++%29+log%3Aconjunction+%3Fmerged+.%0A%7D+%0A%3D%3E+%0A%7B+%0A++++%3Aresult+%3Ais+%3Fmerged+.+%0A%7D+.%0A++++++++++++">Try in Notation3 Editor 🚀</a> 
    <div class="example" id="example-9ff86bc1">
     <a class="self-link" href="#example-9ff86bc1"></a> 
     <p> Merge the formulas "{ :Felix a :Cat . }" , "{ :Pluto a :Dog . }", "{ :Pingu a :Penguin . }" . </p>
@@ -3286,7 +3805,7 @@ This is a scoped universal quantification.</p>
    <h5 class="heading settled" data-level="6.5.9.1" id="skolem_schemas"><span class="secno">6.5.9.1. </span><span class="content">Schema(s)</span><a class="self-link" href="#skolem_schemas"></a></h5>
     <i><code>( $s )+ log:skolem $o-</code></i> 
    <h5 class="heading settled" data-level="6.5.9.2" id="skolem_examples"><span class="secno">6.5.9.2. </span><span class="content">Examples</span><a class="self-link" href="#skolem_examples"></a></h5>
-    <a href="file:///Users/timothyduval/Library/Mobile%20Documents/com~apple~CloudDocs/00_unifylogic/50-clients/w3c/N3/useOfBuiltins/core-specs/03-development/site/spec-builtins/src/log/skolem.n3">Try in Notation3 Editor 🚀</a> 
+    <a href="https://n3-editor.herokuapp.com/n3/editor/?formula=%0A%40prefix+%3A+%3Chttp%3A%2F%2Fexample.org%2F%3E.%0A%40prefix+log%3A+%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F10%2Fswap%2Flog%23%3E+.%0A%0A%7B+%28%3Aabc+77+%22xyz%22%29+log%3Askolem+%3Fskolem+.+%7D+%3D%3E+%7B+%3Aresult+%3Ais+%3Fskolem+%7D+.%0A++++++++++++">Try in Notation3 Editor 🚀</a> 
    <div class="example" id="example-6f08a3d5">
     <a class="self-link" href="#example-6f08a3d5"></a> 
     <p> Generate a unique Skolem IRI from the list (:abc 77 "xyz") . </p>
@@ -3311,7 +3830,7 @@ Variable substitution is applied recursively to nested compound terms such as qu
    <h5 class="heading settled" data-level="6.5.10.1" id="includes_schemas"><span class="secno">6.5.10.1. </span><span class="content">Schema(s)</span><a class="self-link" href="#includes_schemas"></a></h5>
     <i><code>( $s )+ log:includes $o-</code></i> 
    <h5 class="heading settled" data-level="6.5.10.2" id="includes_examples"><span class="secno">6.5.10.2. </span><span class="content">Examples</span><a class="self-link" href="#includes_examples"></a></h5>
-    <a href="file:///Users/timothyduval/Library/Mobile%20Documents/com~apple~CloudDocs/00_unifylogic/50-clients/w3c/N3/useOfBuiltins/core-specs/03-development/site/spec-builtins/src/log/includes.n3">Try in Notation3 Editor 🚀</a> 
+    <a href="https://n3-editor.herokuapp.com/n3/editor/?formula=%0A%40prefix+%3A+%3Chttp%3A%2F%2Fexample.org%2F%3E.%0A%40prefix+log%3A+%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F10%2Fswap%2Flog%23%3E+.%0A%0A%7B+%0A++++%7B+%3AFelix+a+%3ACat+%7D+log%3Aincludes+%7B+%3FX+a+%3ACat+%7D+.%0A%7D+%0A%3D%3E%0A%7B%0A++++%3Aresult+%3Ais+%3FX+.%0A%7D+.%0A++++++++++++">Try in Notation3 Editor 🚀</a> 
    <div class="example" id="example-6bc451ae">
     <a class="self-link" href="#example-6bc451ae"></a> 
     <p> Check whether the formula { :Felix a :Cat } includes { ?X a :Cat }. </p>
@@ -3346,7 +3865,7 @@ Not to be confused with owl:sameAs.</p>
    <h5 class="heading settled" data-level="6.5.12.1" id="outputString_schemas"><span class="secno">6.5.12.1. </span><span class="content">Schema(s)</span><a class="self-link" href="#outputString_schemas"></a></h5>
     <i><code>( $s )+ log:outputString $o-</code></i> 
    <h5 class="heading settled" data-level="6.5.12.2" id="outputString_examples"><span class="secno">6.5.12.2. </span><span class="content">Examples</span><a class="self-link" href="#outputString_examples"></a></h5>
-    <a href="file:///Users/timothyduval/Library/Mobile%20Documents/com~apple~CloudDocs/00_unifylogic/50-clients/w3c/N3/useOfBuiltins/core-specs/03-development/site/spec-builtins/src/log/outputString.n3">Try in Notation3 Editor 🚀</a> 
+    <a href="https://n3-editor.herokuapp.com/n3/editor/?formula=%0A%40prefix+%3A+%3Chttp%3A%2F%2Fexample.org%2F%3E.%0A%40prefix+log%3A+%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F10%2Fswap%2Flog%23%3E+.%0A%0A_%3A2+log%3AoutputString+%22This+is+the+second+line%0A%22+.%0A_%3A1+log%3AoutputString+%22This+is+the+first+line%0A%22+.%0A++++++++++++">Try in Notation3 Editor 🚀</a> 
    <div class="example" id="example-7824d933">
     <a class="self-link" href="#example-7824d933"></a> 
     <p> Print the two string "This is the first line
@@ -3373,7 +3892,7 @@ This is the second line
    <h5 class="heading settled" data-level="6.5.13.1" id="semanticsOrError_schemas"><span class="secno">6.5.13.1. </span><span class="content">Schema(s)</span><a class="self-link" href="#semanticsOrError_schemas"></a></h5>
     <i><code>( $s )+ log:semanticsOrError $o?</code></i> 
    <h5 class="heading settled" data-level="6.5.13.2" id="semanticsOrError_examples"><span class="secno">6.5.13.2. </span><span class="content">Examples</span><a class="self-link" href="#semanticsOrError_examples"></a></h5>
-    <a href="file:///Users/timothyduval/Library/Mobile%20Documents/com~apple~CloudDocs/00_unifylogic/50-clients/w3c/N3/useOfBuiltins/core-specs/03-development/site/spec-builtins/src/log/semanticsOrError.n3">Try in Notation3 Editor 🚀</a> 
+    <a href="https://n3-editor.herokuapp.com/n3/editor/?formula=%0A%40prefix+%3A+%3Chttp%3A%2F%2Fexample.org%2F%3E.%0A%40prefix+log%3A+%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F10%2Fswap%2Flog%23%3E+.%0A%0A%7B+%3Cerror.data%3E+log%3Asemantics+%3Fsemantics+.+%7D+%3D%3E+%7B+%3Aresult+%3Ais+%3Fsemantics+%7D+.%0A++++++++++++">Try in Notation3 Editor 🚀</a> 
    <div class="example" id="example-7d102a61">
     <a class="self-link" href="#example-7d102a61"></a> 
     <p> Read the contents a non existing <code>&lt;error.data></code> and parse it as Notation3 (which of course will fail). </p>
@@ -3391,23 +3910,17 @@ This is the second line
    </div>
    <h4 class="heading settled" data-level="6.5.14" id="semantics"><span class="secno">6.5.14. </span><span class="content">log:semantics</span><a class="self-link" href="#semantics"></a></h4>
     Gets as object the quoted graph that results from parsing an online (N3) string, found by dereferencing the subject IRI. 
-   <p>The log:semantics of a document is the formula achieved by parsing the representation of the document.
-For a document in Notation3, <code>log:semantics</code> is the <code>log:parsedAsN3</code> of the <code>log:content</code> of the document.
-For a document in another RDF syntax, it is parsed according to the appropriate specification to yield an RDF formula (a subclass of N3 <code>log:Formula</code>).
-Evaluates to <code>false</code> if an unrecognized document format is retrieved.
-Aside: Philosophers will be distracted here into worrying about the meaning of meaning. At least we didn’t call this function "meaning"! 
-In as much as N3 is used as an interlingua for interoperability for different systems, this for an N3 based system is the meaning expressed by a document.
-Related: see <code>log:parsedAsN3</code> and <code>log:content</code>.</p>
+   <p><code>true</code> if and only if <code>$o</code> is a quoted graph that results from parsing the string that results from dereferencing <code>$s</code>.</p>
    <h5 class="heading settled" data-level="6.5.14.1" id="semantics_schemas"><span class="secno">6.5.14.1. </span><span class="content">Schema(s)</span><a class="self-link" href="#semantics_schemas"></a></h5>
     <i><code>( $s )+ log:semantics $o?</code></i> 
    <h5 class="heading settled" data-level="6.5.14.2" id="semantics_examples"><span class="secno">6.5.14.2. </span><span class="content">Examples</span><a class="self-link" href="#semantics_examples"></a></h5>
-    <a href="file:///Users/timothyduval/Library/Mobile%20Documents/com~apple~CloudDocs/00_unifylogic/50-clients/w3c/N3/useOfBuiltins/core-specs/03-development/site/spec-builtins/src/log/semantics.n3">Try in Notation3 Editor 🚀</a> 
+    <a href="https://n3-editor.herokuapp.com/n3/editor/?formula=%0A%40prefix+%3A+%3Chttp%3A%2F%2Fexample.org%2F%3E.%0A%40prefix+log%3A+%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F10%2Fswap%2Flog%23%3E+.%0A%0A%7B+%3Csemantics.data%3E+log%3Asemantics+%3Fsemantics+.+%7D+%3D%3E+%7B+%3Aresult+%3Ais+%3Fsemantics+%7D+.%0A++++++++++++">Try in Notation3 Editor 🚀</a> 
    <div class="example" id="example-b12a9a99">
     <a class="self-link" href="#example-b12a9a99"></a> 
     <p> Read the contents of the file <code>&lt;semantics.data></code> and parse it as Notation3.
 We assume <code>&lt;semantics.data></code> contains the text: </p>
-<pre>  @prefix : &lt;http://example.org/>.
-  :Socrates a :Human .
+<pre>@prefix : &lt;http://example.org/>.
+:Socrates a :Human .
 </pre>
     <p><b>Formula:</b> </p>
 <pre>@prefix : &lt;http://example.org/>.
@@ -3422,23 +3935,17 @@ We assume <code>&lt;semantics.data></code> contains the text: </p>
    </div>
    <h4 class="heading settled" data-level="6.5.15" id="semantics①"><span class="secno">6.5.15. </span><span class="content">log:semantics</span><a class="self-link" href="#semantics①"></a></h4>
     Gets as object the quoted graph that results from parsing an online (N3) string, found by dereferencing the subject IRI. 
-   <p>The log:semantics of a document is the formula achieved by parsing the representation of the document.
-For a document in Notation3, <code>log:semantics</code> is the <code>log:parsedAsN3</code> of the <code>log:content</code> of the document.
-For a document in another RDF syntax, it is parsed according to the appropriate specification to yield an RDF formula (a subclass of N3 <code>log:Formula</code>).
-Evaluates to <code>false</code> if an unrecognized document format is retrieved.
-Aside: Philosophers will be distracted here into worrying about the meaning of meaning. At least we didn’t call this function "meaning"! 
-In as much as N3 is used as an interlingua for interoperability for different systems, this for an N3 based system is the meaning expressed by a document.
-Related: see <code>log:parsedAsN3</code> and <code>log:content</code>.</p>
+   <p><code>true</code> if and only if <code>$o</code> is a quoted graph that results from parsing the string that results from dereferencing <code>$s</code>.</p>
    <h5 class="heading settled" data-level="6.5.15.1" id="semantics_schemas①"><span class="secno">6.5.15.1. </span><span class="content">Schema(s)</span><a class="self-link" href="#semantics_schemas①"></a></h5>
     <i><code>( $s )+ log:semantics $o?</code></i> 
    <h5 class="heading settled" data-level="6.5.15.2" id="semantics_examples①"><span class="secno">6.5.15.2. </span><span class="content">Examples</span><a class="self-link" href="#semantics_examples①"></a></h5>
-    <a href="file:///Users/timothyduval/Library/Mobile%20Documents/com~apple~CloudDocs/00_unifylogic/50-clients/w3c/N3/useOfBuiltins/core-specs/03-development/site/spec-builtins/src/log/semantics.n3">Try in Notation3 Editor 🚀</a> 
+    <a href="https://n3-editor.herokuapp.com/n3/editor/?formula=%0A%40prefix+%3A+%3Chttp%3A%2F%2Fexample.org%2F%3E.%0A%40prefix+log%3A+%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F10%2Fswap%2Flog%23%3E+.%0A%0A%7B+%3Csemantics.data%3E+log%3Asemantics+%3Fsemantics+.+%7D+%3D%3E+%7B+%3Aresult+%3Ais+%3Fsemantics+%7D+.%0A++++++++++++">Try in Notation3 Editor 🚀</a> 
    <div class="example" id="example-b12a9a99①">
     <a class="self-link" href="#example-b12a9a99①"></a> 
     <p> Read the contents of the file <code>&lt;semantics.data></code> and parse it as Notation3.
 We assume <code>&lt;semantics.data></code> contains the text: </p>
-<pre>  @prefix : &lt;http://example.org/>.
-  :Socrates a :Human .
+<pre>@prefix : &lt;http://example.org/>.
+:Socrates a :Human .
 </pre>
     <p><b>Formula:</b> </p>
 <pre>@prefix : &lt;http://example.org/>.
@@ -3453,17 +3960,23 @@ We assume <code>&lt;semantics.data></code> contains the text: </p>
    </div>
    <h4 class="heading settled" data-level="6.5.16" id="semantics②"><span class="secno">6.5.16. </span><span class="content">log:semantics</span><a class="self-link" href="#semantics②"></a></h4>
     Gets as object the quoted graph that results from parsing an online (N3) string, found by dereferencing the subject IRI. 
-   <p><code>true</code> if and only if <code>$o</code> is a quoted graph that results from parsing the string that results from dereferencing <code>$s</code>.</p>
+   <p>The log:semantics of a document is the formula achieved by parsing the representation of the document.
+For a document in Notation3, <code>log:semantics</code> is the <code>log:parsedAsN3</code> of the <code>log:content</code> of the document.
+For a document in another RDF syntax, it is parsed according to the appropriate specification to yield an RDF formula (a subclass of N3 <code>log:Formula</code>).
+Evaluates to <code>false</code> if an unrecognized document format is retrieved.
+Aside: Philosophers will be distracted here into worrying about the meaning of meaning. At least we didn’t call this function "meaning"! 
+In as much as N3 is used as an interlingua for interoperability for different systems, this for an N3 based system is the meaning expressed by a document.
+Related: see <code>log:parsedAsN3</code> and <code>log:content</code>.</p>
    <h5 class="heading settled" data-level="6.5.16.1" id="semantics_schemas②"><span class="secno">6.5.16.1. </span><span class="content">Schema(s)</span><a class="self-link" href="#semantics_schemas②"></a></h5>
     <i><code>( $s )+ log:semantics $o?</code></i> 
    <h5 class="heading settled" data-level="6.5.16.2" id="semantics_examples②"><span class="secno">6.5.16.2. </span><span class="content">Examples</span><a class="self-link" href="#semantics_examples②"></a></h5>
-    <a href="file:///Users/timothyduval/Library/Mobile%20Documents/com~apple~CloudDocs/00_unifylogic/50-clients/w3c/N3/useOfBuiltins/core-specs/03-development/site/spec-builtins/src/log/semantics.n3">Try in Notation3 Editor 🚀</a> 
+    <a href="https://n3-editor.herokuapp.com/n3/editor/?formula=%0A%40prefix+%3A+%3Chttp%3A%2F%2Fexample.org%2F%3E.%0A%40prefix+log%3A+%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F10%2Fswap%2Flog%23%3E+.%0A%0A%7B+%3Csemantics.data%3E+log%3Asemantics+%3Fsemantics+.+%7D+%3D%3E+%7B+%3Aresult+%3Ais+%3Fsemantics+%7D+.%0A++++++++++++">Try in Notation3 Editor 🚀</a> 
    <div class="example" id="example-b12a9a99②">
     <a class="self-link" href="#example-b12a9a99②"></a> 
     <p> Read the contents of the file <code>&lt;semantics.data></code> and parse it as Notation3.
 We assume <code>&lt;semantics.data></code> contains the text: </p>
-<pre>  @prefix : &lt;http://example.org/>.
-  :Socrates a :Human .
+<pre>@prefix : &lt;http://example.org/>.
+:Socrates a :Human .
 </pre>
     <p><b>Formula:</b> </p>
 <pre>@prefix : &lt;http://example.org/>.
@@ -3478,17 +3991,23 @@ We assume <code>&lt;semantics.data></code> contains the text: </p>
    </div>
    <h4 class="heading settled" data-level="6.5.17" id="semantics③"><span class="secno">6.5.17. </span><span class="content">log:semantics</span><a class="self-link" href="#semantics③"></a></h4>
     Gets as object the quoted graph that results from parsing an online (N3) string, found by dereferencing the subject IRI. 
-   <p><code>true</code> if and only if <code>$o</code> is a quoted graph that results from parsing the string that results from dereferencing <code>$s</code>.</p>
+   <p>The log:semantics of a document is the formula achieved by parsing the representation of the document.
+For a document in Notation3, <code>log:semantics</code> is the <code>log:parsedAsN3</code> of the <code>log:content</code> of the document.
+For a document in another RDF syntax, it is parsed according to the appropriate specification to yield an RDF formula (a subclass of N3 <code>log:Formula</code>).
+Evaluates to <code>false</code> if an unrecognized document format is retrieved.
+Aside: Philosophers will be distracted here into worrying about the meaning of meaning. At least we didn’t call this function "meaning"! 
+In as much as N3 is used as an interlingua for interoperability for different systems, this for an N3 based system is the meaning expressed by a document.
+Related: see <code>log:parsedAsN3</code> and <code>log:content</code>.</p>
    <h5 class="heading settled" data-level="6.5.17.1" id="semantics_schemas③"><span class="secno">6.5.17.1. </span><span class="content">Schema(s)</span><a class="self-link" href="#semantics_schemas③"></a></h5>
     <i><code>( $s )+ log:semantics $o?</code></i> 
    <h5 class="heading settled" data-level="6.5.17.2" id="semantics_examples③"><span class="secno">6.5.17.2. </span><span class="content">Examples</span><a class="self-link" href="#semantics_examples③"></a></h5>
-    <a href="file:///Users/timothyduval/Library/Mobile%20Documents/com~apple~CloudDocs/00_unifylogic/50-clients/w3c/N3/useOfBuiltins/core-specs/03-development/site/spec-builtins/src/log/semantics.n3">Try in Notation3 Editor 🚀</a> 
+    <a href="https://n3-editor.herokuapp.com/n3/editor/?formula=%0A%40prefix+%3A+%3Chttp%3A%2F%2Fexample.org%2F%3E.%0A%40prefix+log%3A+%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F10%2Fswap%2Flog%23%3E+.%0A%0A%7B+%3Csemantics.data%3E+log%3Asemantics+%3Fsemantics+.+%7D+%3D%3E+%7B+%3Aresult+%3Ais+%3Fsemantics+%7D+.%0A++++++++++++">Try in Notation3 Editor 🚀</a> 
    <div class="example" id="example-b12a9a99③">
     <a class="self-link" href="#example-b12a9a99③"></a> 
     <p> Read the contents of the file <code>&lt;semantics.data></code> and parse it as Notation3.
 We assume <code>&lt;semantics.data></code> contains the text: </p>
-<pre>  @prefix : &lt;http://example.org/>.
-  :Socrates a :Human .
+<pre>@prefix : &lt;http://example.org/>.
+:Socrates a :Human .
 </pre>
     <p><b>Formula:</b> </p>
 <pre>@prefix : &lt;http://example.org/>.
@@ -3509,7 +4028,7 @@ You can use this as an equivalent of a lessThanOrEqual operator.
    <h5 class="heading settled" data-level="6.6.1.1" id="notGreaterThan_schemas①"><span class="secno">6.6.1.1. </span><span class="content">Schema(s)</span><a class="self-link" href="#notGreaterThan_schemas①"></a></h5>
     <i><code>( $s )+ string:notGreaterThan $o?</code></i> 
    <h5 class="heading settled" data-level="6.6.1.2" id="notGreaterThan_examples①"><span class="secno">6.6.1.2. </span><span class="content">Examples</span><a class="self-link" href="#notGreaterThan_examples①"></a></h5>
-    <a href="file:///Users/timothyduval/Library/Mobile%20Documents/com~apple~CloudDocs/00_unifylogic/50-clients/w3c/N3/useOfBuiltins/core-specs/03-development/site/spec-builtins/src/string/notGreaterThan.n3">Try in Notation3 Editor 🚀</a> 
+    <a href="https://n3-editor.herokuapp.com/n3/editor/?formula=%0A%40prefix+%3A+%3Chttp%3A%2F%2Fexample.org%2F%3E.%0A%40prefix+string%3A+%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F10%2Fswap%2Fstring%23%3E+.%0A%0A%3ALet+%3Aparam1+%22Cat%22+.%0A%3ALet+%3Aparam2+%22Penguin%22.%0A%7B%0A++++%3ALet+%3Aparam1+%3Fparam1+.%0A++++%3ALet+%3Aparam2+%3Fparam2+.%0A++++%3Fparam1+string%3AnotGreaterThan+%3Fparam2+.%0A%7D%0A%3D%3E%0A%7B%0A++++%3Aresult+%3Ais+true+.%0A%7D+.%0A++++++++++++">Try in Notation3 Editor 🚀</a> 
    <div class="example" id="example-793c2084">
     <a class="self-link" href="#example-793c2084"></a> 
     <p> Checks whether the string "Cat" is not greater than the string "Penguin" . </p>
@@ -3540,7 +4059,7 @@ You can use this as an equivalent of a lessThanOrEqual operator.
    <h5 class="heading settled" data-level="6.6.2.1" id="notEqualIgnoringCase_schemas"><span class="secno">6.6.2.1. </span><span class="content">Schema(s)</span><a class="self-link" href="#notEqualIgnoringCase_schemas"></a></h5>
     <i><code>( $s )+ string:notEqualIgnoringCase $o?</code></i> 
    <h5 class="heading settled" data-level="6.6.2.2" id="notEqualIgnoringCase_examples"><span class="secno">6.6.2.2. </span><span class="content">Examples</span><a class="self-link" href="#notEqualIgnoringCase_examples"></a></h5>
-    <a href="file:///Users/timothyduval/Library/Mobile%20Documents/com~apple~CloudDocs/00_unifylogic/50-clients/w3c/N3/useOfBuiltins/core-specs/03-development/site/spec-builtins/src/string/notEqualIgnoringCase.n3">Try in Notation3 Editor 🚀</a> 
+    <a href="https://n3-editor.herokuapp.com/n3/editor/?formula=%0A%40prefix+%3A+%3Chttp%3A%2F%2Fexample.org%2F%3E.%0A%40prefix+string%3A+%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F10%2Fswap%2Fstring%23%3E+.%0A%0A%3ALet+%3Aparam1+%22hello+world%21%22+.%0A%3ALet+%3Aparam2+%22hELLo+dunia%21%22+.%0A%7B%0A++++%3ALet+%3Aparam1+%3Fparam1+.%0A++++%3ALet+%3Aparam2+%3Fparam2+.%0A++++%3Fparam1+string%3AnotEqualIgnoringCase+%3Fparam2+.%0A%7D%0A%3D%3E%0A%7B%0A++++%3Aresult+%3Ais+true+.%0A%7D+.%0A++++++++++++">Try in Notation3 Editor 🚀</a> 
    <div class="example" id="example-31f4833e">
     <a class="self-link" href="#example-31f4833e"></a> 
     <p> Checks whether the string "hello world!" is not equal to "hELLo dunia!" ignorning the case . </p>
@@ -3571,7 +4090,7 @@ You can use this as an equivalent of a lessThanOrEqual operator.
    <h5 class="heading settled" data-level="6.6.3.1" id="contains_schemas"><span class="secno">6.6.3.1. </span><span class="content">Schema(s)</span><a class="self-link" href="#contains_schemas"></a></h5>
     <i><code>( $s )+ string:contains $o?</code></i> 
    <h5 class="heading settled" data-level="6.6.3.2" id="contains_examples"><span class="secno">6.6.3.2. </span><span class="content">Examples</span><a class="self-link" href="#contains_examples"></a></h5>
-    <a href="file:///Users/timothyduval/Library/Mobile%20Documents/com~apple~CloudDocs/00_unifylogic/50-clients/w3c/N3/useOfBuiltins/core-specs/03-development/site/spec-builtins/src/string/contains.n3">Try in Notation3 Editor 🚀</a> 
+    <a href="https://n3-editor.herokuapp.com/n3/editor/?formula=%0A%40prefix+%3A+%3Chttp%3A%2F%2Fexample.org%2F%3E.%0A%40prefix+string%3A+%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F10%2Fswap%2Fstring%23%3E+.%0A%0A%3ALet+%3Aparam1+%22hello+world%21%22+.%0A%3ALet+%3Aparam2+%22llo+worl%22.%0A%7B%0A++++%3ALet+%3Aparam1+%3Fparam1+.%0A++++%3ALet+%3Aparam2+%3Fparam2+.%0A++++%3Fparam1+string%3Acontains+%3Fparam2+.%0A%7D%0A%3D%3E%0A%7B%0A++++%3Aresult+%3Ais+true+.%0A%7D+.%0A++++++++++++">Try in Notation3 Editor 🚀</a> 
    <div class="example" id="example-07a6fcf3">
     <a class="self-link" href="#example-07a6fcf3"></a> 
     <p> Checks whether the string "hello world!" contains the string "llo worl". </p>
@@ -3602,7 +4121,7 @@ You can use this as an equivalent of a lessThanOrEqual operator.
    <h5 class="heading settled" data-level="6.6.4.1" id="greaterThan_schemas①"><span class="secno">6.6.4.1. </span><span class="content">Schema(s)</span><a class="self-link" href="#greaterThan_schemas①"></a></h5>
     <i><code>( $s )+ string:greaterThan $o?</code></i> 
    <h5 class="heading settled" data-level="6.6.4.2" id="greaterThan_examples①"><span class="secno">6.6.4.2. </span><span class="content">Examples</span><a class="self-link" href="#greaterThan_examples①"></a></h5>
-    <a href="file:///Users/timothyduval/Library/Mobile%20Documents/com~apple~CloudDocs/00_unifylogic/50-clients/w3c/N3/useOfBuiltins/core-specs/03-development/site/spec-builtins/src/string/greaterThan.n3">Try in Notation3 Editor 🚀</a> 
+    <a href="https://n3-editor.herokuapp.com/n3/editor/?formula=%0A%40prefix+%3A+%3Chttp%3A%2F%2Fexample.org%2F%3E.%0A%40prefix+string%3A+%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F10%2Fswap%2Fstring%23%3E+.%0A%0A%3ALet+%3Aparam1+%22Penguin%22+.%0A%3ALet+%3Aparam2+%22Cat%22.%0A%7B%0A++++%3ALet+%3Aparam1+%3Fparam1+.%0A++++%3ALet+%3Aparam2+%3Fparam2+.%0A++++%3Fparam1+string%3AgreaterThan+%3Fparam2+.%0A%7D%0A%3D%3E%0A%7B%0A++++%3Aresult+%3Ais+true+.%0A%7D+.%0A++++++++++++">Try in Notation3 Editor 🚀</a> 
    <div class="example" id="example-af2400fa">
     <a class="self-link" href="#example-af2400fa"></a> 
     <p> Checks whether the string "Pengiun" is greater than the string "Cat" . </p>
@@ -3633,7 +4152,7 @@ You can use this as an equivalent of a lessThanOrEqual operator.
    <h5 class="heading settled" data-level="6.6.5.1" id="containsIgnoringCase_schemas"><span class="secno">6.6.5.1. </span><span class="content">Schema(s)</span><a class="self-link" href="#containsIgnoringCase_schemas"></a></h5>
     <i><code>( $s )+ string:containsIgnoringCase $o?</code></i> 
    <h5 class="heading settled" data-level="6.6.5.2" id="containsIgnoringCase_examples"><span class="secno">6.6.5.2. </span><span class="content">Examples</span><a class="self-link" href="#containsIgnoringCase_examples"></a></h5>
-    <a href="file:///Users/timothyduval/Library/Mobile%20Documents/com~apple~CloudDocs/00_unifylogic/50-clients/w3c/N3/useOfBuiltins/core-specs/03-development/site/spec-builtins/src/string/containsIgnoringCase.n3">Try in Notation3 Editor 🚀</a> 
+    <a href="https://n3-editor.herokuapp.com/n3/editor/?formula=%0A%40prefix+%3A+%3Chttp%3A%2F%2Fexample.org%2F%3E.%0A%40prefix+string%3A+%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F10%2Fswap%2Fstring%23%3E+.%0A%0A%3ALet+%3Aparam1+%22hello+world%21%22+.%0A%3ALet+%3Aparam2+%22lLO+woRl%22.%0A%7B%0A++++%3ALet+%3Aparam1+%3Fparam1+.%0A++++%3ALet+%3Aparam2+%3Fparam2+.%0A++++%3Fparam1+string%3AcontainsIgnoringCase+%3Fparam2+.%0A%7D%0A%3D%3E%0A%7B%0A++++%3Aresult+%3Ais+true+.%0A%7D+.%0A++++++++++++">Try in Notation3 Editor 🚀</a> 
    <div class="example" id="example-3dd62a79">
     <a class="self-link" href="#example-3dd62a79"></a> 
     <p> Checks whether the string "hello world!" contains the string "lLO woRl". </p>
@@ -3665,7 +4184,7 @@ You can use this as an equivalent of a greaterThanOrEqual operator.
    <h5 class="heading settled" data-level="6.6.6.1" id="notLessThan_schemas①"><span class="secno">6.6.6.1. </span><span class="content">Schema(s)</span><a class="self-link" href="#notLessThan_schemas①"></a></h5>
     <i><code>( $s )+ string:notLessThan $o?</code></i> 
    <h5 class="heading settled" data-level="6.6.6.2" id="notLessThan_examples①"><span class="secno">6.6.6.2. </span><span class="content">Examples</span><a class="self-link" href="#notLessThan_examples①"></a></h5>
-    <a href="file:///Users/timothyduval/Library/Mobile%20Documents/com~apple~CloudDocs/00_unifylogic/50-clients/w3c/N3/useOfBuiltins/core-specs/03-development/site/spec-builtins/src/string/notLessThan.n3">Try in Notation3 Editor 🚀</a> 
+    <a href="https://n3-editor.herokuapp.com/n3/editor/?formula=%0A%40prefix+%3A+%3Chttp%3A%2F%2Fexample.org%2F%3E.%0A%40prefix+string%3A+%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F10%2Fswap%2Fstring%23%3E+.%0A%0A%3ALet+%3Aparam1+%22Penguin%22.%0A%3ALet+%3Aparam2+%22Cat%22+.%0A%7B%0A++++%3ALet+%3Aparam1+%3Fparam1+.%0A++++%3ALet+%3Aparam2+%3Fparam2+.%0A++++%3Fparam1+string%3AnotLessThan+%3Fparam2+.%0A%7D%0A%3D%3E%0A%7B%0A++++%3Aresult+%3Ais+true+.%0A%7D+.%0A++++++++++++">Try in Notation3 Editor 🚀</a> 
    <div class="example" id="example-12bfba8f">
     <a class="self-link" href="#example-12bfba8f"></a> 
     <p> Checks whether the string "Penguin" is not less than the string "Cat" . </p>
@@ -3696,7 +4215,7 @@ You can use this as an equivalent of a greaterThanOrEqual operator.
    <h5 class="heading settled" data-level="6.6.7.1" id="endsWith_schemas"><span class="secno">6.6.7.1. </span><span class="content">Schema(s)</span><a class="self-link" href="#endsWith_schemas"></a></h5>
     <i><code>( $s )+ string:endsWith $o?</code></i> 
    <h5 class="heading settled" data-level="6.6.7.2" id="endsWith_examples"><span class="secno">6.6.7.2. </span><span class="content">Examples</span><a class="self-link" href="#endsWith_examples"></a></h5>
-    <a href="file:///Users/timothyduval/Library/Mobile%20Documents/com~apple~CloudDocs/00_unifylogic/50-clients/w3c/N3/useOfBuiltins/core-specs/03-development/site/spec-builtins/src/string/endsWith.n3">Try in Notation3 Editor 🚀</a> 
+    <a href="https://n3-editor.herokuapp.com/n3/editor/?formula=%0A%40prefix+%3A+%3Chttp%3A%2F%2Fexample.org%2F%3E.%0A%40prefix+string%3A+%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F10%2Fswap%2Fstring%23%3E+.%0A%0A%3ALet+%3Aparam1+%22hello+world%21%22+.%0A%3ALet+%3Aparam2+%22orld%21%22.%0A%7B%0A++++%3ALet+%3Aparam1+%3Fparam1+.%0A++++%3ALet+%3Aparam2+%3Fparam2+.%0A++++%3Fparam1+string%3AendsWith+%3Fparam2+.%0A%7D%0A%3D%3E%0A%7B%0A++++%3Aresult+%3Ais+true+.%0A%7D+.%0A++++++++++++">Try in Notation3 Editor 🚀</a> 
    <div class="example" id="example-63083764">
     <a class="self-link" href="#example-63083764"></a> 
     <p> Checks whether the string "hello world!" ends with "orld!". </p>
@@ -3727,7 +4246,7 @@ You can use this as an equivalent of a greaterThanOrEqual operator.
    <h5 class="heading settled" data-level="6.6.8.1" id="scrape_schemas"><span class="secno">6.6.8.1. </span><span class="content">Schema(s)</span><a class="self-link" href="#scrape_schemas"></a></h5>
     <i><code>( $s )+ string:scrape $o?</code></i> 
    <h5 class="heading settled" data-level="6.6.8.2" id="scrape_examples"><span class="secno">6.6.8.2. </span><span class="content">Examples</span><a class="self-link" href="#scrape_examples"></a></h5>
-    <a href="file:///Users/timothyduval/Library/Mobile%20Documents/com~apple~CloudDocs/00_unifylogic/50-clients/w3c/N3/useOfBuiltins/core-specs/03-development/site/spec-builtins/src/string/scrape.n3">Try in Notation3 Editor 🚀</a> 
+    <a href="https://n3-editor.herokuapp.com/n3/editor/?formula=%0A%40prefix+%3A+%3Chttp%3A%2F%2Fexample.org%2F%3E.%0A%40prefix+string%3A+%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F10%2Fswap%2Fstring%23%3E+.%0A%0A%3ALet+%3Aparam1+%22https%3A%2F%2Fw3c.github.io%2FN3%2Fspec%2F%22+.+%0A%3ALet+%3Aparam2+%22.%2A%2F%28%5B%5E%2F%5D%2B%2F%29%24%22+.%0A%7B%0A++++%3ALet+%3Aparam1+%3Fparam1+.%0A++++%3ALet+%3Aparam2+%3Fparam2+.%0A++++%28%3Fparam1+%3Fparam2%29+string%3Ascrape+%3Fresult+.%0A%7D%0A%3D%3E%0A%7B%0A++++%3Aresult+%3Ais+%3Fresult+.%0A%7D+.%0A++++++++++++">Try in Notation3 Editor 🚀</a> 
    <div class="example" id="example-90238f8f">
     <a class="self-link" href="#example-90238f8f"></a> 
     <p> Extract from the string "https://w3c.github.io/N3/spec/" the last path element using a regular expression . </p>
@@ -3758,7 +4277,7 @@ You can use this as an equivalent of a greaterThanOrEqual operator.
    <h5 class="heading settled" data-level="6.6.9.1" id="replace_schemas"><span class="secno">6.6.9.1. </span><span class="content">Schema(s)</span><a class="self-link" href="#replace_schemas"></a></h5>
     <i><code>( $s )+ string:replace $o?</code></i> 
    <h5 class="heading settled" data-level="6.6.9.2" id="replace_examples"><span class="secno">6.6.9.2. </span><span class="content">Examples</span><a class="self-link" href="#replace_examples"></a></h5>
-    <a href="file:///Users/timothyduval/Library/Mobile%20Documents/com~apple~CloudDocs/00_unifylogic/50-clients/w3c/N3/useOfBuiltins/core-specs/03-development/site/spec-builtins/src/string/replace.n3">Try in Notation3 Editor 🚀</a> 
+    <a href="https://n3-editor.herokuapp.com/n3/editor/?formula=%0A%40prefix+%3A+%3Chttp%3A%2F%2Fexample.org%2F%3E.%0A%40prefix+string%3A+%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F10%2Fswap%2Fstring%23%3E+.%0A%0A%3ALet+%3Adata+%22hello+world%21%22+.%0A%3ALet+%3Asearch+%22%28l%29%22+.%0A%3ALet+%3Areplace+%22%5B%241%5D%22+.%0A%7B%0A++++%3ALet+%3Adata+%3Fdata+.%0A++++%3ALet+%3Asearch+%3Fsearch+.%0A++++%3ALet+%3Areplace+%3Freplace+.%0A++++%28%3Fdata+%3Fsearch+%3Freplace%29+string%3Areplace+%3Fresult+.%0A%7D%0A%3D%3E%0A%7B%0A++++%3Aresult+%3Ais+%3Fresult+.%0A%7D+.%0A++++++++++++">Try in Notation3 Editor 🚀</a> 
    <div class="example" id="example-a822f6af">
     <a class="self-link" href="#example-a822f6af"></a> 
     <p> Replace all "l"-s in the string "hello world!" with the bracket version "[l]" . </p>
@@ -3791,7 +4310,7 @@ You can use this as an equivalent of a greaterThanOrEqual operator.
    <h5 class="heading settled" data-level="6.6.10.1" id="lessThan_schemas①"><span class="secno">6.6.10.1. </span><span class="content">Schema(s)</span><a class="self-link" href="#lessThan_schemas①"></a></h5>
     <i><code>( $s )+ string:lessThan $o?</code></i> 
    <h5 class="heading settled" data-level="6.6.10.2" id="lessThan_examples①"><span class="secno">6.6.10.2. </span><span class="content">Examples</span><a class="self-link" href="#lessThan_examples①"></a></h5>
-    <a href="file:///Users/timothyduval/Library/Mobile%20Documents/com~apple~CloudDocs/00_unifylogic/50-clients/w3c/N3/useOfBuiltins/core-specs/03-development/site/spec-builtins/src/string/lessThan.n3">Try in Notation3 Editor 🚀</a> 
+    <a href="https://n3-editor.herokuapp.com/n3/editor/?formula=%0A%40prefix+%3A+%3Chttp%3A%2F%2Fexample.org%2F%3E.%0A%40prefix+string%3A+%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F10%2Fswap%2Fstring%23%3E+.%0A%0A%3ALet+%3Aparam1+%22Cat%22+.%0A%3ALet+%3Aparam2+%22Penguin%22.%0A%7B%0A++++%3ALet+%3Aparam1+%3Fparam1+.%0A++++%3ALet+%3Aparam2+%3Fparam2+.%0A++++%3Fparam1+string%3AlessThan+%3Fparam2+.%0A%7D%0A%3D%3E%0A%7B%0A++++%3Aresult+%3Ais+true+.%0A%7D+.%0A++++++++++++">Try in Notation3 Editor 🚀</a> 
    <div class="example" id="example-d0f1439d">
     <a class="self-link" href="#example-d0f1439d"></a> 
     <p> Checks whether the string "Cat" is less than the string "Penguin" . </p>
@@ -3822,7 +4341,7 @@ You can use this as an equivalent of a greaterThanOrEqual operator.
    <h5 class="heading settled" data-level="6.6.11.1" id="concatenation_schemas"><span class="secno">6.6.11.1. </span><span class="content">Schema(s)</span><a class="self-link" href="#concatenation_schemas"></a></h5>
     <i><code>( $s )+ string:concatenation $o?</code></i> 
    <h5 class="heading settled" data-level="6.6.11.2" id="concatenation_examples"><span class="secno">6.6.11.2. </span><span class="content">Examples</span><a class="self-link" href="#concatenation_examples"></a></h5>
-    <a href="file:///Users/timothyduval/Library/Mobile%20Documents/com~apple~CloudDocs/00_unifylogic/50-clients/w3c/N3/useOfBuiltins/core-specs/03-development/site/spec-builtins/src/string/concatenation.n3">Try in Notation3 Editor 🚀</a> 
+    <a href="https://n3-editor.herokuapp.com/n3/editor/?formula=%0A%40prefix+%3A+%3Chttp%3A%2F%2Fexample.org%2F%3E.%0A%40prefix+string%3A+%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F10%2Fswap%2Fstring%23%3E+.%0A%0A%3ALet+%3Aparam+%28+%22hello%22+%22+%22+%22world%21%22+%29+.%0A%0A%7B%0A++++%3ALet+%3Aparam+%3Fparam+.%0A++++%3Fparam+string%3Aconcatenation+%3Fresult+.%0A%7D%0A%3D%3E%0A%7B%0A++++%3Aresult+%3Ais+%3Fresult+.%0A%7D+.%0A++++++++++++">Try in Notation3 Editor 🚀</a> 
    <div class="example" id="example-a530fbd1">
     <a class="self-link" href="#example-a530fbd1"></a> 
     <p> Concatenates the string "hello", " " and "world!". </p>
@@ -3852,7 +4371,7 @@ You can use this as an equivalent of a greaterThanOrEqual operator.
    <h5 class="heading settled" data-level="6.6.12.1" id="equalIgnoringCase_schemas"><span class="secno">6.6.12.1. </span><span class="content">Schema(s)</span><a class="self-link" href="#equalIgnoringCase_schemas"></a></h5>
     <i><code>( $s )+ string:equalIgnoringCase $o?</code></i> 
    <h5 class="heading settled" data-level="6.6.12.2" id="equalIgnoringCase_examples"><span class="secno">6.6.12.2. </span><span class="content">Examples</span><a class="self-link" href="#equalIgnoringCase_examples"></a></h5>
-    <a href="file:///Users/timothyduval/Library/Mobile%20Documents/com~apple~CloudDocs/00_unifylogic/50-clients/w3c/N3/useOfBuiltins/core-specs/03-development/site/spec-builtins/src/string/equalIgnoringCase.n3">Try in Notation3 Editor 🚀</a> 
+    <a href="https://n3-editor.herokuapp.com/n3/editor/?formula=%0A%40prefix+%3A+%3Chttp%3A%2F%2Fexample.org%2F%3E.%0A%40prefix+string%3A+%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F10%2Fswap%2Fstring%23%3E+.%0A%0A%3ALet+%3Aparam1+%22hello+world%21%22+.%0A%3ALet+%3Aparam2+%22hELLo+wORld%21%22+.%0A%7B%0A++++%3ALet+%3Aparam1+%3Fparam1+.%0A++++%3ALet+%3Aparam2+%3Fparam2+.%0A++++%3Fparam1+string%3AequalIgnoringCase+%3Fparam2+.%0A%7D%0A%3D%3E%0A%7B%0A++++%3Aresult+%3Ais+true+.%0A%7D+.%0A++++++++++++">Try in Notation3 Editor 🚀</a> 
    <div class="example" id="example-31fa5e49">
     <a class="self-link" href="#example-31fa5e49"></a> 
     <p> Checks whether the string "hello world!" is equal to "hELLo wORld!" ignoring the case . </p>
@@ -3883,7 +4402,7 @@ You can use this as an equivalent of a greaterThanOrEqual operator.
    <h5 class="heading settled" data-level="6.6.13.1" id="startsWith_schemas"><span class="secno">6.6.13.1. </span><span class="content">Schema(s)</span><a class="self-link" href="#startsWith_schemas"></a></h5>
     <i><code>( $s )+ string:startsWith $o?</code></i> 
    <h5 class="heading settled" data-level="6.6.13.2" id="startsWith_examples"><span class="secno">6.6.13.2. </span><span class="content">Examples</span><a class="self-link" href="#startsWith_examples"></a></h5>
-    <a href="file:///Users/timothyduval/Library/Mobile%20Documents/com~apple~CloudDocs/00_unifylogic/50-clients/w3c/N3/useOfBuiltins/core-specs/03-development/site/spec-builtins/src/string/startsWith.n3">Try in Notation3 Editor 🚀</a> 
+    <a href="https://n3-editor.herokuapp.com/n3/editor/?formula=%0A%40prefix+%3A+%3Chttp%3A%2F%2Fexample.org%2F%3E.%0A%40prefix+string%3A+%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F10%2Fswap%2Fstring%23%3E+.%0A%0A%3ALet+%3Aparam1+%22hello+world%21%22+.%0A%3ALet+%3Aparam2+%22hello%22.%0A%7B%0A++++%3ALet+%3Aparam1+%3Fparam1+.%0A++++%3ALet+%3Aparam2+%3Fparam2+.%0A++++%3Fparam1+string%3AstartsWith+%3Fparam2+.%0A%7D%0A%3D%3E%0A%7B%0A++++%3Aresult+%3Ais+true+.%0A%7D+.%0A++++++++++++">Try in Notation3 Editor 🚀</a> 
    <div class="example" id="example-1aea19fd">
     <a class="self-link" href="#example-1aea19fd"></a> 
     <p> Checks whether the string "hello world!" starts with "hello" . </p>
@@ -3915,7 +4434,7 @@ The regular expression follows the perl, python style.
    <h5 class="heading settled" data-level="6.6.14.1" id="matches_schemas"><span class="secno">6.6.14.1. </span><span class="content">Schema(s)</span><a class="self-link" href="#matches_schemas"></a></h5>
     <i><code>( $s )+ string:matches $o?</code></i> 
    <h5 class="heading settled" data-level="6.6.14.2" id="matches_examples"><span class="secno">6.6.14.2. </span><span class="content">Examples</span><a class="self-link" href="#matches_examples"></a></h5>
-    <a href="file:///Users/timothyduval/Library/Mobile%20Documents/com~apple~CloudDocs/00_unifylogic/50-clients/w3c/N3/useOfBuiltins/core-specs/03-development/site/spec-builtins/src/string/matches.n3">Try in Notation3 Editor 🚀</a> 
+    <a href="https://n3-editor.herokuapp.com/n3/editor/?formula=%0A%40prefix+%3A+%3Chttp%3A%2F%2Fexample.org%2F%3E.%0A%40prefix+string%3A+%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F10%2Fswap%2Fstring%23%3E+.%0A%0A%3ALet+%3Aparam1+%22hello+world%21%22+.%0A%3ALet+%3Aparam2+%22.%2A%28l%29%2Bo+wo.%2A%22.%0A%7B%0A++++%3ALet+%3Aparam1+%3Fparam1+.%0A++++%3ALet+%3Aparam2+%3Fparam2+.%0A++++%3Fparam1+string%3Amatches+%3Fparam2+.%0A%7D%0A%3D%3E%0A%7B%0A++++%3Aresult+%3Ais+true+.%0A%7D+.%0A++++++++++++">Try in Notation3 Editor 🚀</a> 
    <div class="example" id="example-29699ec4">
     <a class="self-link" href="#example-29699ec4"></a> 
     <p> Checks whether the string "hello world!" matches the regular expression ".<em>(l)+o wo.</em>". </p>
@@ -3947,7 +4466,7 @@ The regular expression follows the perl, python style.
    <h5 class="heading settled" data-level="6.6.15.1" id="notMatches_schemas"><span class="secno">6.6.15.1. </span><span class="content">Schema(s)</span><a class="self-link" href="#notMatches_schemas"></a></h5>
     <i><code>( $s )+ string:notMatches $o?</code></i> 
    <h5 class="heading settled" data-level="6.6.15.2" id="notMatches_examples"><span class="secno">6.6.15.2. </span><span class="content">Examples</span><a class="self-link" href="#notMatches_examples"></a></h5>
-    <a href="file:///Users/timothyduval/Library/Mobile%20Documents/com~apple~CloudDocs/00_unifylogic/50-clients/w3c/N3/useOfBuiltins/core-specs/03-development/site/spec-builtins/src/string/notMatches.n3">Try in Notation3 Editor 🚀</a> 
+    <a href="https://n3-editor.herokuapp.com/n3/editor/?formula=%0A%40prefix+%3A+%3Chttp%3A%2F%2Fexample.org%2F%3E.%0A%40prefix+string%3A+%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F10%2Fswap%2Fstring%23%3E+.%0A%0A%3ALet+%3Aparam1+%22hello+world%21%22+.%0A%3ALet+%3Aparam2+%22.%2A%28l%29%2Bo+dunia.%2A%22.%0A%7B%0A++++%3ALet+%3Aparam1+%3Fparam1+.%0A++++%3ALet+%3Aparam2+%3Fparam2+.%0A++++%3Fparam1+string%3AnotMatches+%3Fparam2+.%0A%7D%0A%3D%3E%0A%7B%0A++++%3Aresult+%3Ais+true+.%0A%7D+.%0A++++++++++++">Try in Notation3 Editor 🚀</a> 
    <div class="example" id="example-2cfae82c">
     <a class="self-link" href="#example-2cfae82c"></a> 
     <p> Checks whether the string "hello world!" no matches the regular expression ".<em>(l)+o dunia.</em>". </p>
@@ -3979,7 +4498,7 @@ See C’s sprintf function for details on these tags.
    <h5 class="heading settled" data-level="6.6.16.1" id="format_schemas"><span class="secno">6.6.16.1. </span><span class="content">Schema(s)</span><a class="self-link" href="#format_schemas"></a></h5>
     <i><code>( $s )+ string:format $o?</code></i> 
    <h5 class="heading settled" data-level="6.6.16.2" id="format_examples"><span class="secno">6.6.16.2. </span><span class="content">Examples</span><a class="self-link" href="#format_examples"></a></h5>
-    <a href="file:///Users/timothyduval/Library/Mobile%20Documents/com~apple~CloudDocs/00_unifylogic/50-clients/w3c/N3/useOfBuiltins/core-specs/03-development/site/spec-builtins/src/string/format.n3">Try in Notation3 Editor 🚀</a> 
+    <a href="https://n3-editor.herokuapp.com/n3/editor/?formula=%0A%40prefix+%3A+%3Chttp%3A%2F%2Fexample.org%2F%3E.%0A%40prefix+string%3A+%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F10%2Fswap%2Fstring%23%3E+.%0A%0A%3ALet+%3Aparam+%28+%22%25s%3A%2F%2F%25s%2F%25s%22+%22https%22+%22w3c.github.io%22+%22N3%2Fspec%2F%22+%29+.%0A%0A%7B%0A++++%3ALet+%3Aparam+%3Fparam+.%0A++++%3Fparam+string%3Aformat+%3Fresult+.%0A%7D%0A%3D%3E%0A%7B%0A++++%3Aresult+%3Ais+%3Fresult+.%0A%7D+.%0A++++++++++++">Try in Notation3 Editor 🚀</a> 
    <div class="example" id="example-bc79e16e">
     <a class="self-link" href="#example-bc79e16e"></a> 
     <p> Calculate the result of applying the format "%s://%s/%s" to the strings "https", "w3c.github.io" and "N3/spec" . </p>
