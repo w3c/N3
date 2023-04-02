@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset='utf-8'>
+	<title>Notation3: Builtins</title>
+	<!-- <script async class='remove' src='respec-w3c.js'></script> -->
+	<script src="https://www.w3.org/Tools/respec/respec-w3c" class="remove" defer></script>
+
+	<script class='remove'>
+		var respecConfig = {
+			specStatus: "CG-DRAFT",
+			editors: [ // here edit the editors
+				{
+					name: "William Van Woensel",
+					company: "University of Ottawa",
+					companyURL: "https://www.uottawa.ca/",
+					mailto: "wvanwoen@uottawa.ca"
+				},
+				{
+					name: "Patrick Hochstenbach",
+				},
+				{
+					name: "Tim Duval",
+				},
+				{
+					name: "Dominik Tomaszuk",
+				},
+				{
+					name: "Gregg Kellogg",
+					mailto: "gregg@greggkellogg.net"
+				}
+			],
+			github: {
+				repoURL: "https://github.com/w3c/N3",
+				branch: "master"
+			},
+			shortName: "N3",
+			group: "cg/n3-dev",
+			wgPublicList: "public-n3-dev",
+			edDraftURI: "https://w3c.github.io/N3/spec/",
+			testSuiteURI: "https://w3c.github.io/N3/tests/",
+			localBiblio: {
+				"LNG-TAG": {
+					title: "Language Subtag Registry",
+					href: "http://www.iana.org/assignments/language-subtag-registry/language-subtag-registry",
+					publisher: "IANA"
+				}
+			}
+		};
+	</script>
+	<style>
+		table,
+		th,
+		td {
+			border: 1px solid black;
+			border-collapse: collapse;
+			padding: 5px;
+		}
+
+		table.grammar,
+		table.grammar th,
+		table.grammar td {
+			border: none;
+			padding: 2px;
+			vertical-align: top;
+		}
+
+		table.grammar td:nth-child(2) {
+			text-align: right;
+		}
+
+		.algorithm ol {
+			counter-reset: numsection;
+			list-style-type: none;
+		}
+
+		.algorithm ol>li {
+			margin: 0.5em 0;
+		}
+
+		.algorithm ol>li:before {
+			font-weight: bold;
+			counter-increment: numsection;
+			content: counters(numsection, ".") ") ";
+		}
+	</style>
+	<script>
+		function _esc(s) {
+			return s.replace(/&/g, '&amp;')
+				.replace(/>/g, '&gt;')
+				.replace(/"/g, '&quot;')
+				.replace(/</g, '&lt;');
+		}
+
+		function unComment(doc, content) {
+			// perform transformations to make it render and prettier
+			return content
+				.replace(/\<!--/, '')
+				.replace(/--\>/, '')
+				.replace(/< !\s*-\s*-/g, '<!--')
+				.replace(/-\s*- >/g, '-->')
+				.replace(/-\s*-\s*&gt;/g, '--&gt;');
+		}
+
+		function updateExample(doc, content) {
+			// perform transformations to make it render and prettier
+			return _esc(unComment(doc, content));
+		}
+	</script>
+</head>
+
+<body>
+	<section id='abstract'>
+		<p>
+			This document defines the Notation 3 builtins. These are
+			predicates with pre-defined semantics for querying, manipulating and reasoning over N3 documents.
+		</p>
+	</section>
+	<section id='sotd'>
+	</section>
+	<!--
+      How to edit this HTML?
+      https://dev.w3.org/2008/video/mediaann/ReSpec.js/documentation.html
+      https://github.com/w3c/respec
+      -->
+	<section id='builtins'>
+		<h3>Builtin namespaces</h3>
+		<p><abbr title="Notation3">N3</abbr> defines a core set of <dfn data-lt="builtin">builtins</dfn>:
+			Builtins are grouped into distinct vocabularies depending on the N3 triple elements they operate on
+			(e.g., string, list), or their particular topic (e.g., time, cryptography, log).
+			Builtins are denoted by a controlled IRI defined in one of the core builtin namespaces:</p>
+		<ul>
+			<li><a href="../ns/crypto.html">Crypto</a> –
+				<a href="http://www.w3.org/2000/10/swap/crypto#">http://www.w3.org/2000/10/swap/crypto#</a>,
+			</li>
+			<li><a href="../ns/list.html">List</a> –
+				<a href="http://www.w3.org/2000/10/swap/list#">http://www.w3.org/2000/10/swap/list#</a>,
+			</li>
+			<li><a href="../ns/log.html">Log</a> –
+				<a href="http://www.w3.org/2000/10/swap/log#">http://www.w3.org/2000/10/swap/log#</a>,
+			</li>
+			<li><a href="../ns/math.html">Math</a> –
+				<a href="http://www.w3.org/2000/10/swap/math#">http://www.w3.org/2000/10/swap/math#</a>,
+			</li>
+			<li><a href="../ns/string.html">String</a> –
+				<a href="http://www.w3.org/2000/10/swap/string#">http://www.w3.org/2000/10/swap/string#</a>, and
+			</li>
+			<li><a href="../ns/time.html">Time</a> –
+				<a href="http://www.w3.org/2000/10/swap/time#">http://www.w3.org/2000/10/swap/time#</a>.
+			</li>
+		</ul>
+	</section>
+
+	<!-- <p>A builtin definition is structured as follows:
+		<ul>
+			<li><b>schema</b>: set of <a>arguments</a> defined in terms of the <a>N3 triple elements</a> in a builtin
+				statement for which they act as placeholders.</li>
+			<li><b>domain</b>: expected <a>domain datatypes</a> for the builtin arguments. Casting may take place if the
+				<a>value datatype</a> does not correspond to the domain datatype.
+			</li>
+			<li><b>inputs and outputs</b>: <a>input arguments</a> and <a>output arguments</a>.</li>
+			<li><b>summary</b>: a human-readable summary of the function of the builtin.</li>
+		</ul>
+
+		We define these concepts in more detail below.
+		</p> -->
+
+	<section id="builtins_args">
+		<h4>Builtin arguments</h4>
+		<p>An N3 <a>builtin</a> operates on its arguments. An <dfn>argument</dfn> is a placeholder that refers to an
+			N3 triple element from the <dfn>builtin statement</dfn>, i.e., the N3 statement where the
+			builtin acts as a predicate.
+		</p>
+		<p>In the simplest case, there are two arguments that respectively refer to the subject and object of the
+			builtin statement. For instance, statements such as `1 math:lessThan 2` have two arguments `$s` and
+			`$o`, which is written as `$s math:lessThan $o`.</p>
+		<p>Arguments can be also represent a "deconstruction" of the subject or object in case of lists. For
+			instance, `(1 2 3) math:sum 6` will have arguments `$s.1` .. `$s.n` and `$o`, which is written as `($s.1
+			.. $s.n) math:sum $o`. </p>
+
+		<section id="arg_modes">
+			<h4>Argument modes</h4>
+
+			<p>For a given builtin, an argument will have a defined <dfn>argument mode</dfn>
+				that stipulates whether it should be bound or not in the <a>builtin statement</a>.
+				This binding requirement determines whether the argument can serve as builtin input, output, or both.
+				Note that these modes are mostly based on <a
+					href="https://www.swi-prolog.org/pldoc/man?section=argmode">Prolog argument modes</a>.
+			</p>
+			<ul>
+				<li>`++`: input argument (bound, fully grounded)</li>
+				<li>`+`: input argument (bound, possibly not fully grounded)</li>
+				<li>`-`: output argument (bounded or not bounded)</li>
+				<li>`--`: output argument (not bounded)</li>
+				<li>`?`: either providing input or accepting output, or both.</li>
+				<li>`[*]`: modifier indicating that an argument can have multiple solutions.</li>
+			</ul>
+		</section>
+
+		<!-- <p>Below, you can find some illustrative builtins and their argument modes. ...</p> -->
+
+		<!-- In some cases, an N3 builtin will only support outputs for one argument:
+				e.g., `math:sum` only supports outputs for `$a_sum`.
+				In other cases, an N3 builtin only supports inputs for all arguments:
+				e.g., `math:lessThan` only supports inputs for `$a_1` and `$a_2`.
+				In rarer cases, an N3 builtin can support outputs for several arguments:
+				e.g., for `35 math:cos ?x`, the `math:cos` of `35` will be calculated; for `?x math:cos 0.57` the
+				inverse operation (`math:acos`) for `0.57` will be calculated. -->
+		</p>
+
+		<section id="arg_domains">
+			<h4>Argument domains</h4>
+			<p>An N3 builtin often has an expected datatype for its arguments, called the <dfn>domain datatype</dfn>. If
+				the datatype of an argument value, called the <dfn>value datatype</dfn>, does not match the
+				domain datatype, it may be possible to cast the value's datatype to, or substitute it for, the domain
+				datatype.</p>
+			<p>The expected datatypes of arguments, i.e., domain datatypes, are defined per N3 builtin.</p>
+			<p>If the <a>value datatype</a> and <a>domain datatype</a> do not match, and no casting or substitution is
+				possible, the builtin statement will be considered false. (We point out that this is in line with the
+				concept of the <a>builtin theory box</a>: a BPG search using the builtin statement will not match any
+				statement in the theory box when literal datatypes do not match.)
+			</p>
+
+			<p>Below, we elaborate on the type casting, promotion or substitution that may be applied to align
+				<a>domain datatypes</a> with <a>value datatypes</a>.
+			</p>
+
+			<section>
+				<h5>Numeric datatype promotion and substitution</h5>
+				<p>If the numeric <a>value datatype</a> does not match the <a>domain datatype</a>, it may be possible to
+					promote or substitute the numeric value datatype:</p>
+
+				<p><b>Numeric type promotion</b>: A numeric value datatype that <a
+						href="https://www.w3.org/TR/xmlschema-2/#dt-derived">is derived from</a> the domain datatype can
+					be promoted to the latter (e.g., `xs:integer` is derived from `xs:decimal`). This is done by casting
+					the original value to the required datatype.</p>
+				<p>If there is no direct derivation relation between the value and domain datatype, the following
+					numeric type promotions can take place:
+				<ul>
+					<li>A value of type `xs:float` (or any type derived from `xs:float`) can be promoted to type
+						`xs:double`. The result is an `xs:double` value that is the same as the original value.</li>
+					<li>A value of type `xs:decimal` (or any type derived from `xs:decimal`) can be promoted to either
+						of the types `xs:float` or `xs:double`.</li>
+				</ul>
+				</p>
+
+				<p><b>Numeric type substitution</b>: if <i>all values</i> have the same numeric datatype, and this
+					datatype <a href="https://www.w3.org/TR/xmlschema-2/#dt-derived">is derived from</a> the domain
+					datatype (e.g., `xs:integer` is derived from `xs:decimal`), then the values can be used without any
+					casting. For example, if two `xs:integer` values are used for input where `xs:decimal` domains are
+					expected, then the values retain their datatype as `xs:integer`. The substituted numeric datatype
+					(in this case, `xs:integer`) will also apply to the builtin's output, if any.</p>
+
+				<p><b>Builtins operating on any numeric type</b>: some N3 builtins (e.g., `math:sum`) operate on values
+					of any numeric type (i.e., `xs:numeric`, the union of `xs:double`, `xs:float`, and `xs:decimal`).
+					I.e., their concrete input values may present any combination of numeric types. In that case, the
+					builtin can only be applied if all value datatypes can be promoted into <i>a common numeric
+						datatype</i> in the ordered list `(xs:integer, xs:decimal, xs:float, xs:double)`. If so, at that
+					point, we rely on numeric type substitution. For instance:
+				<ul>
+					<li>For a builtin with `xs:numeric` domain datatypes, given two value datatypes `xs:integer` and
+						`xs:decimal`, the `xs:integer` value will be promoted to `xs:decimal` as the common numeric
+						datatype. At that point, the two `xs:decimal` datatypes can be substituted for `xs:numeric`
+						(numeric type substitution). If the builtin has an output, then the calculated value for this
+						output will also have datatype `xs:decimal`.</li>
+					<li>For a builtin with `xs:numeric` domain datatypes, given two values with datatype `xs:integer`,
+						the `xs:integer` datatype will simply be substituted for `xs:numeric`. If the builtin has an
+						output, then the calculated value for the output will also have datatype `xs:integer`.</li>
+				</ul>
+				</p>
+			</section>
+
+			<section>
+				<h5>Other kinds of datatype casting</h5>
+
+				<p>If the non-numeric <a>value datatype</a> does not match the <a>domain datatype</a>, it may be
+					possible to cast the value datatype to the domain datatype:</p>
+
+				<p>
+					<b>String</b>: A literal will be considered a "string" when it has an `xs:string` datatype, a
+					`rdf:langString` datatype due to the presence of a language tag, or when it lacks a datatype.
+				</p>
+
+				<ul>
+					<li><i>Casting from string</i>: if an input value has an `xs:string` datatype that does not match
+						the
+						domain, it may be possible to cast the string to the domain datatype, as <a
+							href="https://www.w3.org/TR/xpath-functions/#casting-from-strings">defined in XPath</a>. The
+						resulting value representation must be a valid lexical form for the domain datatype.</li>
+
+					<li><i>Casting to string</i>: if an input value is an IRI, or any kind of literal (incl. type
+						`xs:anyUri`
+						or its derivations), and the domain is `xs:string`, then the value will be cast to a string as
+						<a href="https://www.w3.org/TR/xpath-functions/#casting-to-string">defined in XPath</a> along
+						with
+						additional rules <a href="https://www.w3.org/TR/sparql11-query/#FunctionMapping">defined for
+							SPARQL
+							1.1</a>.
+					</li>
+				</ul>
+
+				<p><b>Other datatypes</b>: other types of datatype casting may take place as <a
+						href="https://www.w3.org/TR/xpath-functions/#casting">defined in XPath</a>.
+				</p>
+
+				<p class="ednote">There is a useful chart for casting primitive types to primitive types in <a
+						href="https://www.w3.org/TR/xpath-functions/#casting-from-primitive-to-primitive">XPath</a>, a
+					subset of which is defined for <a
+						href="https://www.w3.org/TR/sparql11-query/#FunctionMapping">SPARQL</a>.</p>
+			</section>
+		</section>
+	</section>
+
+	<!-- <section id="builtin_operations">
+		<h4>Builtin operations</h4>
+
+		<p>Generally, depending on the builtin <a>inputs</a> and <a>outputs</a> in a <a>builtin statement</a>, the
+			following will take place:
+		<ol>
+			<li><dfn>checking</dfn> the truthfulness of the statement, or </li>
+			<li><dfn>calculating</dfn> one or more values for the outputs so as to ensure the truthfulness</li>
+		</ol>
+		</p>
+		<p>If a builtin statement only has inputs, the truthfulness of the statement will be checked. For instance,
+			in the statement `(2 1) math:sum 3`, the builtin `math:sum` will check whether `2 + 1 = 3`.</p>
+		<p>If a builtin statement has both inputs and outputs, one or more values can be calculated for the outputs
+			so as to ensure its truthfulness. For instance, given `(2 1) math:sum ?s`, the N3 system will calculate
+			value `3` for output `?s`.</p>
+		<p>These operations may include casting or substituting values to different domains, as discussed in <a
+				href="#builtin_arg_domains">Argument domains</a>.</p> -->
+
+	<section>
+		<h4>Builtin evaluation</h4>
+
+		<section>
+			<h5>Builtin theory box</h5>
+			<p>A <a>builtin statement</a> can be seen as a <i>constrained</i> basic graph pattern
+				(BGP) search on the N3 <dfn>builtin theory box</dfn>.
+				This builtin theory box is defined to include all truthful builtin statements for the N3 builtin.
+				In case this BGP search matches one or more statements in the theory box,
+				taking into account options for datatype casting, promotion, or substitution
+				(see <a href="#arg_domains">Argument domains</a>)
+				the N3 <a>builtin statement</a> will be considered true.
+			</p>
+			<!-- <p>The two operations mentioned, i.e., <a>checking</a> and <a>calculating</a>, can be defined in terms
+					of this constrained BGP search. This leaves the particular theory box to be defined per N3 builtin.
+					N3 builtins are currently not defined in this manner, though.</p> -->
+
+			<p>For eample, for the `math:sum` builtin, the <a>builtin theory box</a> includes all grounded builtin
+				statements of the form `($s.1 .. $s.n) math:sum $o .`, where argument values have datatype `xs:numeric`
+				and, for each statement, the sum of `$s.1 .. $s.n` equals `$o`.
+				Below, we give several examples of how this theory box is used to evaluate builtin
+				statements.</p>
+			<ul>
+				<li>
+					Using the builtin statement `(1 2 3) math:sum ?x .` as a BGP search on the theory box
+					will return exactly one result where `?x` has value `6`.</li>
+				<li>Using the concrete builtin statement `(1 2 3) math:sum 6 .` as a BGP search on the theory box will
+					similarly match exactly 1 statement.</li>
+			</ul>
+
+			<p>Hence, in both cases, the builtin statement will be considered true,
+				and the set of matching triples from the theory box will be used to instantiate the <a>builtin
+					statement</a>.
+				In the first case, this will lead to a single instance of the builtin statement,
+				where variable `?x` will be bound to value `6`.
+				In the second case, the grounded builtin statement will itself serve as such an instance.</p>
+
+			<p class="ednote">
+				Note that there can be multiple matching triples, thus leading to multiple instances of the builtin
+				statement.
+				Consider the following example for the `list:member` builtin:<br><br>
+				`( 1 2 3 ) list:member ?x .`<br>
+				This will yield the following matching triples from the <a>builtin theory box</a>:<br>
+				<br>
+				`( 1 2 3 ) list:member 1 .`<br>
+				`( 1 2 3 ) list:member 2 .`<br>
+				`( 1 2 3 ) list:member 3 .`<br>
+			</p>
+
+			<p>The BGP search is <i>constrained</i> in order to avoid infinite numbers of results and
+				intractable calculations; in other cases, constraints weigh utility vs. difficulty
+				of implementation.
+				For example, the <a>builtin statement</a> `(?a 1) math:sum 2` would match an infinite
+				number of grounded builtin statements.
+				In other cases, the BGP search is restricted due to practical considerations.
+				For instance, <a>builtin statement</a> `(1 ?x) math:sum 6` would match only a single grounded
+				builtin statement in the theory box, but this would complicate the implementation of the builtin for
+				only limited utility (as other builtins can be used instead to subtract 1 from 6).
+			</p>
+			<p>These constraints are encoded in terms of <a>argument modes</a> and <a>domain datatypes</a>
+				in the respective builtin definitions.
+				In case these constraints are not met, the <a>builtin statement</a> will evaluate to false.
+			</p>
+		</section>
+	</section>
+
+	<section id='aknowledgements' class="appendix informative">
+		<h2>Acknowledgements</h2>
+		<p>The editors acknowledge valuable contributions from...</p>
+	</section>
+</body>
+
+</html>
