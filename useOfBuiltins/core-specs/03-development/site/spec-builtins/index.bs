@@ -6,9 +6,10 @@ Status: LD
 URL: https://w3c.github.io/N3/spec/
 TR: https://w3c.github.io/N3/spec/
 Previous Version: https://w3c.github.io/N3/spec/builtins/0.1/
-Editor: William Van Woensel, [University of Ottawa](https://www.uottawa.ca/), williamvanwoensel@gmail.com 
+Editor: William Van Woensel, [University of Ottawa](https://www.uottawa.ca/), william.van.woensel@gmail.com 
+Editor: Patrick Hochstenbach, [DLab - Ghent University](https://knows.idlab.ugent.be/), Patrick.Hochstenbach@ugent.be
 !Contributors: Tim Duval, [UnifyLogic](http://unifylogic.ai), tim.duval@unifylogic.ai
-!Contributors: Dominik Tomaszuk
+!Contributors: Dominik Tomaszuk, [University of Bialystok](https://uwb.edu.pl/), dominik.tomaszuk@gmail.com
 
 Abstract: This document defines the Notation 3 builtins. These are predicates with pre-defined semantics for querying, manipulating and reasoning over N3 documents.
 Markup Shorthands: markdown yes 

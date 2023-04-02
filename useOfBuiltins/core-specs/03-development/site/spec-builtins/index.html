@@ -1935,11 +1935,12 @@ dfn > a.self-link::before      { content: "#"; }
      <dd><a href="https://w3c.github.io/N3/spec/">https://w3c.github.io/N3/spec/</a>
      <dt>Previous Versions:
      <dd><a href="https://w3c.github.io/N3/spec/builtins/0.1/" rel="prev">https://w3c.github.io/N3/spec/builtins/0.1/</a>
-     <dt class="editor">Editor:
-     <dd class="editor p-author h-card vcard"><a class="p-name fn u-email email" href="mailto:williamvanwoensel@gmail.com">William Van Woensel</a> (<span class="p-org org"><a href="https://www.uottawa.ca/">University of Ottawa</a></span>)
+     <dt class="editor">Editors:
+     <dd class="editor p-author h-card vcard"><a class="p-name fn u-email email" href="mailto:william.van.woensel@gmail.com">William Van Woensel</a> (<span class="p-org org"><a href="https://www.uottawa.ca/">University of Ottawa</a></span>)
+     <dd class="editor p-author h-card vcard"><a class="p-name fn u-email email" href="mailto:Patrick.Hochstenbach@ugent.be">Patrick Hochstenbach</a> (<span class="p-org org"><a href="https://knows.idlab.ugent.be/">DLab - Ghent University</a></span>)
      <dt>Contributors:
      <dd>Tim Duval, <a href="http://unifylogic.ai">UnifyLogic</a>, tim.duval@unifylogic.ai
-     <dd>Dominik Tomaszuk
+     <dd>Dominik Tomaszuk, <a href="https://uwb.edu.pl/">University of Bialystok</a>, dominik.tomaszuk@gmail.com
     </dl>
    </div>
    <div data-fill-with="warning"></div>
@@ -2617,7 +2618,7 @@ You can use this as an equivalent of a lessThanOrEqual operator.
    <h5 class="heading settled" data-level="6.2.2.1" id="notGreaterThan_schemas"><span class="secno">6.2.2.1. </span><span class="content">Schema(s)</span><a class="self-link" href="#notGreaterThan_schemas"></a></h5>
     <i><code>( $s )+ math:notGreaterThan $o-</code></i> 
    <h5 class="heading settled" data-level="6.2.2.2" id="notGreaterThan_examples"><span class="secno">6.2.2.2. </span><span class="content">Examples</span><a class="self-link" href="#notGreaterThan_examples"></a></h5>
-    <a href="https://n3-editor.herokuapp.com/n3/editor/?formula=%0A%40prefix+%3A+%3Chttp%3A%2F%2Fexample.org%2F%3E.%0A%40prefix+math%3A+%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F10%2Fswap%2Fmath%23%3E+.%0A%0A%3ALet+%3Aparam+%2841+42%29+.%0A%0A%7B%0A++++%3ALet+%3Aparam+%28%3FX+%3FY%29+.%0A++++%3FX+math%3AnotGreaterThan+%3FY+.%0A%7D%0A%3D%3E%0A%7B%0A++++%3Aresult+%3Ais+true+.%0A%7D+.%0A++++++++++++">Try in Notation3 Editor 🚀</a> 
+    <a href="https://n3-editor.herokuapp.com/n3/editor/?formula=%40prefix+%3A+%3Chttp%3A%2F%2Fexample.org%2F%3E.%0A%40prefix+math%3A+%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F10%2Fswap%2Fmath%23%3E+.%0A%0A%3ALet+%3Aparam+%2841+42%29+.%0A%0A%7B%0A++++%3ALet+%3Aparam+%28%3FX+%3FY%29+.%0A++++%3FX+math%3AnotGreaterThan+%3FY+.%0A%7D%0A%3D%3E%0A%7B%0A++++%3Aresult+%3Ais+true+.%0A%7D+.">Try in Notation3 Editor 🚀</a> 
    <div class="example" id="example-226cd3e6">
     <a class="self-link" href="#example-226cd3e6"></a> 
     <p> Check if 41 is not greater than 42 . </p>
@@ -2647,7 +2648,7 @@ You can use this as an equivalent of a lessThanOrEqual operator.
    <h5 class="heading settled" data-level="6.2.3.1" id="absoluteValue_schemas"><span class="secno">6.2.3.1. </span><span class="content">Schema(s)</span><a class="self-link" href="#absoluteValue_schemas"></a></h5>
     <i><code>( $s )+ math:absoluteValue $o-</code></i> 
    <h5 class="heading settled" data-level="6.2.3.2" id="absoluteValue_examples"><span class="secno">6.2.3.2. </span><span class="content">Examples</span><a class="self-link" href="#absoluteValue_examples"></a></h5>
-    <a href="https://n3-editor.herokuapp.com/n3/editor/?formula=%0A%40prefix+%3A+%3Chttp%3A%2F%2Fexample.org%2F%3E.%0A%40prefix+math%3A+%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F10%2Fswap%2Fmath%23%3E+.%0A%0A%3ALet+%3Aparam+-2+.%0A%0A%7B%0A++++%3ALet+%3Aparam+%3Fparam+.%0A++++%3Fparam+math%3AabsoluteValue+%3Fresult+.%0A%7D%0A%3D%3E%0A%7B%0A++++%3Aresult+%3Ais+%3Fresult+.%0A%7D+.%0A++++++++++++">Try in Notation3 Editor 🚀</a> 
+    <a href="https://n3-editor.herokuapp.com/n3/editor/?formula=%40prefix+%3A+%3Chttp%3A%2F%2Fexample.org%2F%3E.%0A%40prefix+math%3A+%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F10%2Fswap%2Fmath%23%3E+.%0A%0A%3ALet+%3Aparam+-2+.%0A%0A%7B%0A++++%3ALet+%3Aparam+%3Fparam+.%0A++++%3Fparam+math%3AabsoluteValue+%3Fresult+.%0A%7D%0A%3D%3E%0A%7B%0A++++%3Aresult+%3Ais+%3Fresult+.%0A%7D+.">Try in Notation3 Editor 🚀</a> 
    <div class="example" id="example-69a5c96c">
     <a class="self-link" href="#example-69a5c96c"></a> 
     <p> Calculate the absolute value of the value -2. </p>
@@ -2677,7 +2678,7 @@ You can use this as an equivalent of a lessThanOrEqual operator.
    <h5 class="heading settled" data-level="6.2.4.1" id="greaterThan_schemas"><span class="secno">6.2.4.1. </span><span class="content">Schema(s)</span><a class="self-link" href="#greaterThan_schemas"></a></h5>
     <i><code>( $s )+ math:greaterThan $o-</code></i> 
    <h5 class="heading settled" data-level="6.2.4.2" id="greaterThan_examples"><span class="secno">6.2.4.2. </span><span class="content">Examples</span><a class="self-link" href="#greaterThan_examples"></a></h5>
-    <a href="https://n3-editor.herokuapp.com/n3/editor/?formula=%0A%40prefix+%3A+%3Chttp%3A%2F%2Fexample.org%2F%3E.%0A%40prefix+math%3A+%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F10%2Fswap%2Fmath%23%3E+.%0A%0A%3ALet+%3Aparam+%2842+41%29+.%0A%0A%7B%0A++++%3ALet+%3Aparam+%28%3FX+%3FY%29+.%0A++++%3FX+math%3AgreaterThan+%3FY+.%0A%7D%0A%3D%3E%0A%7B%0A++++%3Aresult+%3Ais+true+.%0A%7D+.%0A++++++++++++">Try in Notation3 Editor 🚀</a> 
+    <a href="https://n3-editor.herokuapp.com/n3/editor/?formula=%40prefix+%3A+%3Chttp%3A%2F%2Fexample.org%2F%3E.%0A%40prefix+math%3A+%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F10%2Fswap%2Fmath%23%3E+.%0A%0A%3ALet+%3Aparam+%2842+41%29+.%0A%0A%7B%0A++++%3ALet+%3Aparam+%28%3FX+%3FY%29+.%0A++++%3FX+math%3AgreaterThan+%3FY+.%0A%7D%0A%3D%3E%0A%7B%0A++++%3Aresult+%3Ais+true+.%0A%7D+.">Try in Notation3 Editor 🚀</a> 
    <div class="example" id="example-4cc8f9dc">
     <a class="self-link" href="#example-4cc8f9dc"></a> 
     <p> Check if 42 is greater than 41 . </p>
@@ -2708,7 +2709,7 @@ You can use this as an equivalent of a greaterThanOrEqual operator.
    <h5 class="heading settled" data-level="6.2.5.1" id="notLessThan_schemas"><span class="secno">6.2.5.1. </span><span class="content">Schema(s)</span><a class="self-link" href="#notLessThan_schemas"></a></h5>
     <i><code>( $s )+ math:notLessThan $o-</code></i> 
    <h5 class="heading settled" data-level="6.2.5.2" id="notLessThan_examples"><span class="secno">6.2.5.2. </span><span class="content">Examples</span><a class="self-link" href="#notLessThan_examples"></a></h5>
-    <a href="https://n3-editor.herokuapp.com/n3/editor/?formula=%0A%40prefix+%3A+%3Chttp%3A%2F%2Fexample.org%2F%3E.%0A%40prefix+math%3A+%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F10%2Fswap%2Fmath%23%3E+.%0A%0A%3ALet+%3Aparam+%2842+41%29+.%0A%0A%7B%0A++++%3ALet+%3Aparam+%28%3FX+%3FY%29+.%0A++++%3FX+math%3AnotLessThan+%3FY+.%0A%7D%0A%3D%3E%0A%7B%0A++++%3Aresult+%3Ais+true+.%0A%7D+.%0A++++++++++++">Try in Notation3 Editor 🚀</a> 
+    <a href="https://n3-editor.herokuapp.com/n3/editor/?formula=%40prefix+%3A+%3Chttp%3A%2F%2Fexample.org%2F%3E.%0A%40prefix+math%3A+%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F10%2Fswap%2Fmath%23%3E+.%0A%0A%3ALet+%3Aparam+%2842+41%29+.%0A%0A%7B%0A++++%3ALet+%3Aparam+%28%3FX+%3FY%29+.%0A++++%3FX+math%3AnotLessThan+%3FY+.%0A%7D%0A%3D%3E%0A%7B%0A++++%3Aresult+%3Ais+true+.%0A%7D+.">Try in Notation3 Editor 🚀</a> 
    <div class="example" id="example-9fa486d8">
     <a class="self-link" href="#example-9fa486d8"></a> 
     <p> Check if 42 is not less than 41 . </p>
@@ -2738,7 +2739,7 @@ You can use this as an equivalent of a greaterThanOrEqual operator.
    <h5 class="heading settled" data-level="6.2.6.1" id="sin_schemas"><span class="secno">6.2.6.1. </span><span class="content">Schema(s)</span><a class="self-link" href="#sin_schemas"></a></h5>
     <i><code>( $s )+ math:sin $o-</code></i> 
    <h5 class="heading settled" data-level="6.2.6.2" id="sin_examples"><span class="secno">6.2.6.2. </span><span class="content">Examples</span><a class="self-link" href="#sin_examples"></a></h5>
-    <a href="https://n3-editor.herokuapp.com/n3/editor/?formula=%0A%40prefix+%3A+%3Chttp%3A%2F%2Fexample.org%2F%3E.%0A%40prefix+math%3A+%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F10%2Fswap%2Fmath%23%3E+.%0A%40prefix+xsd%3A+%3Chttp%3A%2F%2Fwww.w3.org%2F2001%2FXMLSchema%23%3E+.%0A%0A%3ALet+%3Aparam+%221.57079632679%22%5E%5Exsd%3Adouble+.%0A%0A%7B%0A++++%3ALet+%3Aparam+%3Fparam+.%0A++++%3Fparam+math%3Asin+%3Fresult+.%0A%7D%0A%3D%3E%0A%7B%0A++++%3Aresult+%3Ais+%3Fresult+.%0A%7D+.%0A++++++++++++">Try in Notation3 Editor 🚀</a> 
+    <a href="https://n3-editor.herokuapp.com/n3/editor/?formula=%40prefix+%3A+%3Chttp%3A%2F%2Fexample.org%2F%3E.%0A%40prefix+math%3A+%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F10%2Fswap%2Fmath%23%3E+.%0A%40prefix+xsd%3A+%3Chttp%3A%2F%2Fwww.w3.org%2F2001%2FXMLSchema%23%3E+.%0A%0A%3ALet+%3Aparam+%221.57079632679%22%5E%5Exsd%3Adouble+.%0A%0A%7B%0A++++%3ALet+%3Aparam+%3Fparam+.%0A++++%3Fparam+math%3Asin+%3Fresult+.%0A%7D%0A%3D%3E%0A%7B%0A++++%3Aresult+%3Ais+%3Fresult+.%0A%7D+.">Try in Notation3 Editor 🚀</a> 
    <div class="example" id="example-e4f93bfa">
     <a class="self-link" href="#example-e4f93bfa"></a> 
     <p> Calculate the sin of pi/2 (1.57079632679) . </p>
@@ -2770,7 +2771,7 @@ You can use this as an equivalent of a greaterThanOrEqual operator.
    <h5 class="heading settled" data-level="6.2.7.1" id="lessThan_schemas"><span class="secno">6.2.7.1. </span><span class="content">Schema(s)</span><a class="self-link" href="#lessThan_schemas"></a></h5>
     <i><code>( $s )+ math:lessThan $o-</code></i> 
    <h5 class="heading settled" data-level="6.2.7.2" id="lessThan_examples"><span class="secno">6.2.7.2. </span><span class="content">Examples</span><a class="self-link" href="#lessThan_examples"></a></h5>
-    <a href="https://n3-editor.herokuapp.com/n3/editor/?formula=%0A%40prefix+%3A+%3Chttp%3A%2F%2Fexample.org%2F%3E.%0A%40prefix+math%3A+%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F10%2Fswap%2Fmath%23%3E+.%0A%0A%3ALet+%3Aparam+%2841+42%29+.%0A%0A%7B%0A++++%3ALet+%3Aparam+%28%3FX+%3FY%29+.%0A++++%3FX+math%3AlessThan+%3FY+.%0A%7D%0A%3D%3E%0A%7B%0A++++%3Aresult+%3Ais+true+.%0A%7D+.%0A++++++++++++">Try in Notation3 Editor 🚀</a> 
+    <a href="https://n3-editor.herokuapp.com/n3/editor/?formula=%40prefix+%3A+%3Chttp%3A%2F%2Fexample.org%2F%3E.%0A%40prefix+math%3A+%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F10%2Fswap%2Fmath%23%3E+.%0A%0A%3ALet+%3Aparam+%2841+42%29+.%0A%0A%7B%0A++++%3ALet+%3Aparam+%28%3FX+%3FY%29+.%0A++++%3FX+math%3AlessThan+%3FY+.%0A%7D%0A%3D%3E%0A%7B%0A++++%3Aresult+%3Ais+true+.%0A%7D+.">Try in Notation3 Editor 🚀</a> 
    <div class="example" id="example-80c9b051">
     <a class="self-link" href="#example-80c9b051"></a> 
     <p> Check if 41 is less than 42 . </p>
@@ -2801,7 +2802,7 @@ If there are two such numbers, then the one closest to positive infinity is retu
    <h5 class="heading settled" data-level="6.2.8.1" id="rounded_schemas"><span class="secno">6.2.8.1. </span><span class="content">Schema(s)</span><a class="self-link" href="#rounded_schemas"></a></h5>
     <i><code>( $s )+ math:rounded $o-</code></i> 
    <h5 class="heading settled" data-level="6.2.8.2" id="rounded_examples"><span class="secno">6.2.8.2. </span><span class="content">Examples</span><a class="self-link" href="#rounded_examples"></a></h5>
-    <a href="https://n3-editor.herokuapp.com/n3/editor/?formula=%0A%40prefix+%3A+%3Chttp%3A%2F%2Fexample.org%2F%3E.%0A%40prefix+math%3A+%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F10%2Fswap%2Fmath%23%3E+.%0A%40prefix+xsd%3A+%3Chttp%3A%2F%2Fwww.w3.org%2F2001%2FXMLSchema%23%3E+.%0A%0A%3ALet+%3Aparam+%223.3%22%5E%5Exsd%3Adouble+.%0A%0A%7B%0A++++%3ALet+%3Aparam+%3Fparam+.%0A++++%3Fparam+math%3Arounded+%3Fresult+.%0A%7D%0A%3D%3E%0A%7B%0A++++%3Aresult+%3Ais+%3Fresult+.%0A%7D+.%0A++++++++++++">Try in Notation3 Editor 🚀</a> 
+    <a href="https://n3-editor.herokuapp.com/n3/editor/?formula=%40prefix+%3A+%3Chttp%3A%2F%2Fexample.org%2F%3E.%0A%40prefix+math%3A+%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F10%2Fswap%2Fmath%23%3E+.%0A%40prefix+xsd%3A+%3Chttp%3A%2F%2Fwww.w3.org%2F2001%2FXMLSchema%23%3E+.%0A%0A%3ALet+%3Aparam+%223.3%22%5E%5Exsd%3Adouble+.%0A%0A%7B%0A++++%3ALet+%3Aparam+%3Fparam+.%0A++++%3Fparam+math%3Arounded+%3Fresult+.%0A%7D%0A%3D%3E%0A%7B%0A++++%3Aresult+%3Ais+%3Fresult+.%0A%7D+.">Try in Notation3 Editor 🚀</a> 
    <div class="example" id="example-23f8f1a9">
     <a class="self-link" href="#example-23f8f1a9"></a> 
     <p> Calculate the rounded version of 3.3. </p>
@@ -2832,7 +2833,7 @@ If there are two such numbers, then the one closest to positive infinity is retu
    <h5 class="heading settled" data-level="6.2.9.1" id="atan_schemas"><span class="secno">6.2.9.1. </span><span class="content">Schema(s)</span><a class="self-link" href="#atan_schemas"></a></h5>
     <i><code>( $s )+ math:atan $o-</code></i> 
    <h5 class="heading settled" data-level="6.2.9.2" id="atan_examples"><span class="secno">6.2.9.2. </span><span class="content">Examples</span><a class="self-link" href="#atan_examples"></a></h5>
-    <a href="https://n3-editor.herokuapp.com/n3/editor/?formula=%0A%40prefix+%3A+%3Chttp%3A%2F%2Fexample.org%2F%3E.%0A%40prefix+math%3A+%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F10%2Fswap%2Fmath%23%3E+.%0A%0A%3ALet+%3Aparam+1+.%0A%0A%7B%0A++++%3ALet+%3Aparam+%3Fparam+.%0A++++%3Fparam+math%3Aatan+%3Fresult+.%0A%7D%0A%3D%3E%0A%7B%0A++++%3Aresult+%3Ais+%3Fresult+.%0A%7D+.%0A++++++++++++">Try in Notation3 Editor 🚀</a> 
+    <a href="https://n3-editor.herokuapp.com/n3/editor/?formula=%40prefix+%3A+%3Chttp%3A%2F%2Fexample.org%2F%3E.%0A%40prefix+math%3A+%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F10%2Fswap%2Fmath%23%3E+.%0A%0A%3ALet+%3Aparam+1+.%0A%0A%7B%0A++++%3ALet+%3Aparam+%3Fparam+.%0A++++%3Fparam+math%3Aatan+%3Fresult+.%0A%7D%0A%3D%3E%0A%7B%0A++++%3Aresult+%3Ais+%3Fresult+.%0A%7D+.">Try in Notation3 Editor 🚀</a> 
    <div class="example" id="example-4e7243c1">
     <a class="self-link" href="#example-4e7243c1"></a> 
     <p> Calculate the arc tangent of the value 1. </p>
@@ -2862,7 +2863,7 @@ If there are two such numbers, then the one closest to positive infinity is retu
    <h5 class="heading settled" data-level="6.2.10.1" id="acos_schemas"><span class="secno">6.2.10.1. </span><span class="content">Schema(s)</span><a class="self-link" href="#acos_schemas"></a></h5>
     <i><code>( $s )+ math:acos $o-</code></i> 
    <h5 class="heading settled" data-level="6.2.10.2" id="acos_examples"><span class="secno">6.2.10.2. </span><span class="content">Examples</span><a class="self-link" href="#acos_examples"></a></h5>
-    <a href="https://n3-editor.herokuapp.com/n3/editor/?formula=%0A%40prefix+%3A+%3Chttp%3A%2F%2Fexample.org%2F%3E.%0A%40prefix+math%3A+%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F10%2Fswap%2Fmath%23%3E+.%0A%0A%3ALet+%3Aparam+1+.%0A%0A%7B%0A++++%3ALet+%3Aparam+%3Fparam+.%0A++++%3Fparam+math%3Aacos+%3Fresult+.%0A%7D%0A%3D%3E%0A%7B%0A++++%3Aresult+%3Ais+%3Fresult+.%0A%7D+.%0A++++++++++++">Try in Notation3 Editor 🚀</a> 
+    <a href="https://n3-editor.herokuapp.com/n3/editor/?formula=%40prefix+%3A+%3Chttp%3A%2F%2Fexample.org%2F%3E.%0A%40prefix+math%3A+%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F10%2Fswap%2Fmath%23%3E+.%0A%0A%3ALet+%3Aparam+1+.%0A%0A%7B%0A++++%3ALet+%3Aparam+%3Fparam+.%0A++++%3Fparam+math%3Aacos+%3Fresult+.%0A%7D%0A%3D%3E%0A%7B%0A++++%3Aresult+%3Ais+%3Fresult+.%0A%7D+.">Try in Notation3 Editor 🚀</a> 
    <div class="example" id="example-fa2e3560">
     <a class="self-link" href="#example-fa2e3560"></a> 
     <p> Calculate the arc cosine of the value 1. </p>
@@ -2892,7 +2893,7 @@ If there are two such numbers, then the one closest to positive infinity is retu
    <h5 class="heading settled" data-level="6.2.11.1" id="cosh_schemas"><span class="secno">6.2.11.1. </span><span class="content">Schema(s)</span><a class="self-link" href="#cosh_schemas"></a></h5>
     <i><code>( $s )+ math:cosh $o-</code></i> 
    <h5 class="heading settled" data-level="6.2.11.2" id="cosh_examples"><span class="secno">6.2.11.2. </span><span class="content">Examples</span><a class="self-link" href="#cosh_examples"></a></h5>
-    <a href="https://n3-editor.herokuapp.com/n3/editor/?formula=%0A%40prefix+%3A+%3Chttp%3A%2F%2Fexample.org%2F%3E.%0A%40prefix+math%3A+%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F10%2Fswap%2Fmath%23%3E+.%0A%0A%3ALet+%3Aparam+0+.%0A%0A%7B%0A++++%3ALet+%3Aparam+%3Fparam+.%0A++++%3Fparam+math%3Acosh+%3Fresult+.%0A%7D%0A%3D%3E%0A%7B%0A++++%3Aresult+%3Ais+%3Fresult+.%0A%7D+.%0A++++++++++++">Try in Notation3 Editor 🚀</a> 
+    <a href="https://n3-editor.herokuapp.com/n3/editor/?formula=%40prefix+%3A+%3Chttp%3A%2F%2Fexample.org%2F%3E.%0A%40prefix+math%3A+%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F10%2Fswap%2Fmath%23%3E+.%0A%0A%3ALet+%3Aparam+0+.%0A%0A%7B%0A++++%3ALet+%3Aparam+%3Fparam+.%0A++++%3Fparam+math%3Acosh+%3Fresult+.%0A%7D%0A%3D%3E%0A%7B%0A++++%3Aresult+%3Ais+%3Fresult+.%0A%7D+.">Try in Notation3 Editor 🚀</a> 
    <div class="example" id="example-e047b640">
     <a class="self-link" href="#example-e047b640"></a> 
     <p> Calculate the hyperbolic cosine of the value 0. </p>
@@ -2922,7 +2923,7 @@ If there are two such numbers, then the one closest to positive infinity is retu
    <h5 class="heading settled" data-level="6.2.12.1" id="negation_schemas"><span class="secno">6.2.12.1. </span><span class="content">Schema(s)</span><a class="self-link" href="#negation_schemas"></a></h5>
     <i><code>( $s )+ math:negation $o-</code></i> 
    <h5 class="heading settled" data-level="6.2.12.2" id="negation_examples"><span class="secno">6.2.12.2. </span><span class="content">Examples</span><a class="self-link" href="#negation_examples"></a></h5>
-    <a href="https://n3-editor.herokuapp.com/n3/editor/?formula=%0A%40prefix+%3A+%3Chttp%3A%2F%2Fexample.org%2F%3E.%0A%40prefix+math%3A+%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F10%2Fswap%2Fmath%23%3E+.%0A%0A%3ALet+%3Aparam+42+.%0A%0A%7B%0A++++%3ALet+%3Aparam+%3Fparam+.%0A++++%3Fparam+math%3Anegation+%3Fresult+.%0A%7D%0A%3D%3E%0A%7B%0A++++%3Aresult+%3Ais+%3Fresult+.%0A%7D+.%0A++++++++++++">Try in Notation3 Editor 🚀</a> 
+    <a href="https://n3-editor.herokuapp.com/n3/editor/?formula=%40prefix+%3A+%3Chttp%3A%2F%2Fexample.org%2F%3E.%0A%40prefix+math%3A+%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F10%2Fswap%2Fmath%23%3E+.%0A%0A%3ALet+%3Aparam+42+.%0A%0A%7B%0A++++%3ALet+%3Aparam+%3Fparam+.%0A++++%3Fparam+math%3Anegation+%3Fresult+.%0A%7D%0A%3D%3E%0A%7B%0A++++%3Aresult+%3Ais+%3Fresult+.%0A%7D+.">Try in Notation3 Editor 🚀</a> 
    <div class="example" id="example-26b33606">
     <a class="self-link" href="#example-26b33606"></a> 
     <p> Calculate the negation of the value 42 . </p>
@@ -2952,7 +2953,7 @@ If there are two such numbers, then the one closest to positive infinity is retu
    <h5 class="heading settled" data-level="6.2.13.1" id="sinh_schemas"><span class="secno">6.2.13.1. </span><span class="content">Schema(s)</span><a class="self-link" href="#sinh_schemas"></a></h5>
     <i><code>( $s )+ math:sinh $o-</code></i> 
    <h5 class="heading settled" data-level="6.2.13.2" id="sinh_examples"><span class="secno">6.2.13.2. </span><span class="content">Examples</span><a class="self-link" href="#sinh_examples"></a></h5>
-    <a href="https://n3-editor.herokuapp.com/n3/editor/?formula=%0A%40prefix+%3A+%3Chttp%3A%2F%2Fexample.org%2F%3E.%0A%40prefix+math%3A+%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F10%2Fswap%2Fmath%23%3E+.%0A%40prefix+xsd%3A+%3Chttp%3A%2F%2Fwww.w3.org%2F2001%2FXMLSchema%23%3E+.%0A%0A%3ALet+%3Aparam+%220.88137358701954302%22%5E%5Exsd%3Adouble.%0A%0A%7B%0A++++%3ALet+%3Aparam+%3Fparam+.%0A++++%3Fparam+math%3Asinh+%3Fresult+.%0A%7D%0A%3D%3E%0A%7B%0A++++%3Aresult+%3Ais+%3Fresult+.%0A%7D+.%0A++++++++++++">Try in Notation3 Editor 🚀</a> 
+    <a href="https://n3-editor.herokuapp.com/n3/editor/?formula=%40prefix+%3A+%3Chttp%3A%2F%2Fexample.org%2F%3E.%0A%40prefix+math%3A+%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F10%2Fswap%2Fmath%23%3E+.%0A%40prefix+xsd%3A+%3Chttp%3A%2F%2Fwww.w3.org%2F2001%2FXMLSchema%23%3E+.%0A%0A%3ALet+%3Aparam+%220.88137358701954302%22%5E%5Exsd%3Adouble.%0A%0A%7B%0A++++%3ALet+%3Aparam+%3Fparam+.%0A++++%3Fparam+math%3Asinh+%3Fresult+.%0A%7D%0A%3D%3E%0A%7B%0A++++%3Aresult+%3Ais+%3Fresult+.%0A%7D+.">Try in Notation3 Editor 🚀</a> 
    <div class="example" id="example-af95bb41">
     <a class="self-link" href="#example-af95bb41"></a> 
     <p> Calculate the sinh of log(1 + sqrt(2)) (0.88137358701954302). </p>
@@ -2983,7 +2984,7 @@ If there are two such numbers, then the one closest to positive infinity is retu
    <h5 class="heading settled" data-level="6.2.14.1" id="sum_schemas"><span class="secno">6.2.14.1. </span><span class="content">Schema(s)</span><a class="self-link" href="#sum_schemas"></a></h5>
     <i><code>( $s )+ math:sum $o-</code></i> 
    <h5 class="heading settled" data-level="6.2.14.2" id="sum_examples"><span class="secno">6.2.14.2. </span><span class="content">Examples</span><a class="self-link" href="#sum_examples"></a></h5>
-    <a href="https://n3-editor.herokuapp.com/n3/editor/?formula=%0A%40prefix+%3A+%3Chttp%3A%2F%2Fexample.org%2F%3E.%0A%40prefix+math%3A+%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F10%2Fswap%2Fmath%23%3E+.%0A%0A%3ALet+%3Aparam+%281+2+3+4+5+6+7+8+9+10%29+.%0A%0A%7B%0A++++%3ALet+%3Aparam+%3Fparam+.%0A++++%3Fparam+math%3Asum+%3Fresult+.%0A%7D%0A%3D%3E%0A%7B%0A++++%3Aresult+%3Ais+%3Fresult+.%0A%7D+.%0A++++++++++++">Try in Notation3 Editor 🚀</a> 
+    <a href="https://n3-editor.herokuapp.com/n3/editor/?formula=%40prefix+%3A+%3Chttp%3A%2F%2Fexample.org%2F%3E.%0A%40prefix+math%3A+%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F10%2Fswap%2Fmath%23%3E+.%0A%0A%3ALet+%3Aparam+%281+2+3+4+5+6+7+8+9+10%29+.%0A%0A%7B%0A++++%3ALet+%3Aparam+%3Fparam+.%0A++++%3Fparam+math%3Asum+%3Fresult+.%0A%7D%0A%3D%3E%0A%7B%0A++++%3Aresult+%3Ais+%3Fresult+.%0A%7D+.">Try in Notation3 Editor 🚀</a> 
    <div class="example" id="example-9c39bf40">
     <a class="self-link" href="#example-9c39bf40"></a> 
     <p> Calculate the sum of 1,2,3,4,5,6,7,8,9,10. </p>
@@ -3013,7 +3014,7 @@ If there are two such numbers, then the one closest to positive infinity is retu
    <h5 class="heading settled" data-level="6.2.15.1" id="difference_schemas"><span class="secno">6.2.15.1. </span><span class="content">Schema(s)</span><a class="self-link" href="#difference_schemas"></a></h5>
     <i><code>( $s )+ math:difference $o-</code></i> 
    <h5 class="heading settled" data-level="6.2.15.2" id="difference_examples"><span class="secno">6.2.15.2. </span><span class="content">Examples</span><a class="self-link" href="#difference_examples"></a></h5>
-    <a href="https://n3-editor.herokuapp.com/n3/editor/?formula=%0A%40prefix+%3A+%3Chttp%3A%2F%2Fexample.org%2F%3E.%0A%40prefix+math%3A+%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F10%2Fswap%2Fmath%23%3E+.%0A%0A%3ALet+%3Aparam+%287+2%29+.%0A%0A%7B%0A++++%3ALet+%3Aparam+%3Fparam+.%0A++++%3Fparam+math%3Adifference+%3Fresult+.%0A%7D%0A%3D%3E%0A%7B%0A++++%3Aresult+%3Ais+%3Fresult+.%0A%7D+.%0A++++++++++++">Try in Notation3 Editor 🚀</a> 
+    <a href="https://n3-editor.herokuapp.com/n3/editor/?formula=%40prefix+%3A+%3Chttp%3A%2F%2Fexample.org%2F%3E.%0A%40prefix+math%3A+%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F10%2Fswap%2Fmath%23%3E+.%0A%0A%3ALet+%3Aparam+%287+2%29+.%0A%0A%7B%0A++++%3ALet+%3Aparam+%3Fparam+.%0A++++%3Fparam+math%3Adifference+%3Fresult+.%0A%7D%0A%3D%3E%0A%7B%0A++++%3Aresult+%3Ais+%3Fresult+.%0A%7D+.">Try in Notation3 Editor 🚀</a> 
    <div class="example" id="example-237d7d5e">
     <a class="self-link" href="#example-237d7d5e"></a> 
     <p> Calculate the value of 7 minus 2. </p>
@@ -3043,7 +3044,7 @@ If there are two such numbers, then the one closest to positive infinity is retu
    <h5 class="heading settled" data-level="6.2.16.1" id="tanh_schemas"><span class="secno">6.2.16.1. </span><span class="content">Schema(s)</span><a class="self-link" href="#tanh_schemas"></a></h5>
     <i><code>( $s )+ math:tanh $o-</code></i> 
    <h5 class="heading settled" data-level="6.2.16.2" id="tanh_examples"><span class="secno">6.2.16.2. </span><span class="content">Examples</span><a class="self-link" href="#tanh_examples"></a></h5>
-    <a href="https://n3-editor.herokuapp.com/n3/editor/?formula=%0A%40prefix+%3A+%3Chttp%3A%2F%2Fexample.org%2F%3E.%0A%40prefix+math%3A+%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F10%2Fswap%2Fmath%23%3E+.%0A%40prefix+xsd%3A+%3Chttp%3A%2F%2Fwww.w3.org%2F2001%2FXMLSchema%23%3E+.%0A%0A%3ALet+%3Aparam+%220.549306%22%5E%5Exsd%3Adouble+.%0A%0A%7B%0A++++%3ALet+%3Aparam+%3Fparam+.%0A++++%3Fparam+math%3Atanh+%3Fresult+.%0A%7D%0A%3D%3E%0A%7B%0A++++%3Aresult+%3Ais+%3Fresult+.%0A%7D+.%0A++++++++++++">Try in Notation3 Editor 🚀</a> 
+    <a href="https://n3-editor.herokuapp.com/n3/editor/?formula=%40prefix+%3A+%3Chttp%3A%2F%2Fexample.org%2F%3E.%0A%40prefix+math%3A+%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F10%2Fswap%2Fmath%23%3E+.%0A%40prefix+xsd%3A+%3Chttp%3A%2F%2Fwww.w3.org%2F2001%2FXMLSchema%23%3E+.%0A%0A%3ALet+%3Aparam+%220.549306%22%5E%5Exsd%3Adouble+.%0A%0A%7B%0A++++%3ALet+%3Aparam+%3Fparam+.%0A++++%3Fparam+math%3Atanh+%3Fresult+.%0A%7D%0A%3D%3E%0A%7B%0A++++%3Aresult+%3Ais+%3Fresult+.%0A%7D+.">Try in Notation3 Editor 🚀</a> 
    <div class="example" id="example-8e13629a">
     <a class="self-link" href="#example-8e13629a"></a> 
     <p> Calculate the hyperbolic tanget of 0.549306 . </p>
@@ -3082,7 +3083,7 @@ You can also use this to calculate the logarithm of the object, with as base the
    <h5 class="heading settled" data-level="6.2.18.1" id="notEqualTo_schemas"><span class="secno">6.2.18.1. </span><span class="content">Schema(s)</span><a class="self-link" href="#notEqualTo_schemas"></a></h5>
     <i><code>( $s )+ math:notEqualTo $o?</code></i> 
    <h5 class="heading settled" data-level="6.2.18.2" id="notEqualTo_examples"><span class="secno">6.2.18.2. </span><span class="content">Examples</span><a class="self-link" href="#notEqualTo_examples"></a></h5>
-    <a href="https://n3-editor.herokuapp.com/n3/editor/?formula=%0A%40prefix+%3A+%3Chttp%3A%2F%2Fexample.org%2F%3E.%0A%40prefix+math%3A+%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F10%2Fswap%2Fmath%23%3E+.%0A%0A%3ALet+%3Aparam+%2841+42%29+.%0A%0A%7B%0A++++%3ALet+%3Aparam+%28%3FX+%3FY%29+.%0A++++%3FX+math%3AnotEqualTo+%3FY+.%0A%7D%0A%3D%3E%0A%7B%0A++++%3Aresult+%3Ais+true+.%0A%7D+.%0A++++++++++++">Try in Notation3 Editor 🚀</a> 
+    <a href="https://n3-editor.herokuapp.com/n3/editor/?formula=%40prefix+%3A+%3Chttp%3A%2F%2Fexample.org%2F%3E.%0A%40prefix+math%3A+%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F10%2Fswap%2Fmath%23%3E+.%0A%0A%3ALet+%3Aparam+%2841+42%29+.%0A%0A%7B%0A++++%3ALet+%3Aparam+%28%3FX+%3FY%29+.%0A++++%3FX+math%3AnotEqualTo+%3FY+.%0A%7D%0A%3D%3E%0A%7B%0A++++%3Aresult+%3Ais+true+.%0A%7D+.">Try in Notation3 Editor 🚀</a> 
    <div class="example" id="example-f412ccd0">
     <a class="self-link" href="#example-f412ccd0"></a> 
     <p> Check if the numbers 41 and 42 are not equal . </p>
@@ -3112,7 +3113,7 @@ You can also use this to calculate the logarithm of the object, with as base the
    <h5 class="heading settled" data-level="6.2.19.1" id="quotient_schemas"><span class="secno">6.2.19.1. </span><span class="content">Schema(s)</span><a class="self-link" href="#quotient_schemas"></a></h5>
     <i><code>( $s )+ math:quotient $o-</code></i> 
    <h5 class="heading settled" data-level="6.2.19.2" id="quotient_examples"><span class="secno">6.2.19.2. </span><span class="content">Examples</span><a class="self-link" href="#quotient_examples"></a></h5>
-    <a href="https://n3-editor.herokuapp.com/n3/editor/?formula=%0A%40prefix+%3A+%3Chttp%3A%2F%2Fexample.org%2F%3E.%0A%40prefix+math%3A+%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F10%2Fswap%2Fmath%23%3E+.%0A%0A%3ALet+%3Aparam+%2842+2%29+.%0A%0A%7B%0A++++%3ALet+%3Aparam+%3Fparam+.%0A++++%3Fparam+math%3Aquotient+%3Fresult+.%0A%7D%0A%3D%3E%0A%7B%0A++++%3Aresult+%3Ais+%3Fresult+.%0A%7D+.%0A++++++++++++">Try in Notation3 Editor 🚀</a> 
+    <a href="https://n3-editor.herokuapp.com/n3/editor/?formula=%40prefix+%3A+%3Chttp%3A%2F%2Fexample.org%2F%3E.%0A%40prefix+math%3A+%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F10%2Fswap%2Fmath%23%3E+.%0A%0A%3ALet+%3Aparam+%2842+2%29+.%0A%0A%7B%0A++++%3ALet+%3Aparam+%3Fparam+.%0A++++%3Fparam+math%3Aquotient+%3Fresult+.%0A%7D%0A%3D%3E%0A%7B%0A++++%3Aresult+%3Ais+%3Fresult+.%0A%7D+.">Try in Notation3 Editor 🚀</a> 
    <div class="example" id="example-1b149652">
     <a class="self-link" href="#example-1b149652"></a> 
     <p> Calculate the quotient of 42 and 2. </p>
@@ -3142,7 +3143,7 @@ You can also use this to calculate the logarithm of the object, with as base the
    <h5 class="heading settled" data-level="6.2.20.1" id="equalTo_schemas"><span class="secno">6.2.20.1. </span><span class="content">Schema(s)</span><a class="self-link" href="#equalTo_schemas"></a></h5>
     <i><code>( $s )+ math:equalTo $o-</code></i> 
    <h5 class="heading settled" data-level="6.2.20.2" id="equalTo_examples"><span class="secno">6.2.20.2. </span><span class="content">Examples</span><a class="self-link" href="#equalTo_examples"></a></h5>
-    <a href="https://n3-editor.herokuapp.com/n3/editor/?formula=%0A%40prefix+%3A+%3Chttp%3A%2F%2Fexample.org%2F%3E.%0A%40prefix+math%3A+%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F10%2Fswap%2Fmath%23%3E+.%0A%0A%3ALet+%3Aparam+%2842+42%29+.%0A%0A%7B%0A++++%3ALet+%3Aparam+%28%3FX+%3FY%29+.%0A++++%3FX+math%3AequalTo+%3FY+.%0A%7D%0A%3D%3E%0A%7B%0A++++%3Aresult+%3Ais+true+.%0A%7D+.%0A++++++++++++">Try in Notation3 Editor 🚀</a> 
+    <a href="https://n3-editor.herokuapp.com/n3/editor/?formula=%40prefix+%3A+%3Chttp%3A%2F%2Fexample.org%2F%3E.%0A%40prefix+math%3A+%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F10%2Fswap%2Fmath%23%3E+.%0A%0A%3ALet+%3Aparam+%2842+42%29+.%0A%0A%7B%0A++++%3ALet+%3Aparam+%28%3FX+%3FY%29+.%0A++++%3FX+math%3AequalTo+%3FY+.%0A%7D%0A%3D%3E%0A%7B%0A++++%3Aresult+%3Ais+true+.%0A%7D+.">Try in Notation3 Editor 🚀</a> 
    <div class="example" id="example-18a84670">
     <a class="self-link" href="#example-18a84670"></a> 
     <p> Check if the numbers 42 and 42 are equal . </p>
@@ -3172,7 +3173,7 @@ You can also use this to calculate the logarithm of the object, with as base the
    <h5 class="heading settled" data-level="6.2.21.1" id="cos_schemas"><span class="secno">6.2.21.1. </span><span class="content">Schema(s)</span><a class="self-link" href="#cos_schemas"></a></h5>
     <i><code>( $s )+ math:cos $o-</code></i> 
    <h5 class="heading settled" data-level="6.2.21.2" id="cos_examples"><span class="secno">6.2.21.2. </span><span class="content">Examples</span><a class="self-link" href="#cos_examples"></a></h5>
-    <a href="https://n3-editor.herokuapp.com/n3/editor/?formula=%0A%40prefix+%3A+%3Chttp%3A%2F%2Fexample.org%2F%3E.%0A%40prefix+math%3A+%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F10%2Fswap%2Fmath%23%3E+.%0A%0A%3ALet+%3Aparam+0+.%0A%0A%7B%0A++++%3ALet+%3Aparam+%3Fparam+.%0A++++%3Fparam+math%3Acos+%3Fresult+.%0A%7D%0A%3D%3E%0A%7B%0A++++%3Aresult+%3Ais+%3Fresult+.%0A%7D+.%0A++++++++++++">Try in Notation3 Editor 🚀</a> 
+    <a href="https://n3-editor.herokuapp.com/n3/editor/?formula=%40prefix+%3A+%3Chttp%3A%2F%2Fexample.org%2F%3E.%0A%40prefix+math%3A+%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F10%2Fswap%2Fmath%23%3E+.%0A%0A%3ALet+%3Aparam+0+.%0A%0A%7B%0A++++%3ALet+%3Aparam+%3Fparam+.%0A++++%3Fparam+math%3Acos+%3Fresult+.%0A%7D%0A%3D%3E%0A%7B%0A++++%3Aresult+%3Ais+%3Fresult+.%0A%7D+.">Try in Notation3 Editor 🚀</a> 
    <div class="example" id="example-d3e210b1">
     <a class="self-link" href="#example-d3e210b1"></a> 
     <p> Calculate the cosine of the value 0. </p>
@@ -3202,7 +3203,7 @@ You can also use this to calculate the logarithm of the object, with as base the
    <h5 class="heading settled" data-level="6.2.22.1" id="tan_schemas"><span class="secno">6.2.22.1. </span><span class="content">Schema(s)</span><a class="self-link" href="#tan_schemas"></a></h5>
     <i><code>( $s )+ math:tan $o-</code></i> 
    <h5 class="heading settled" data-level="6.2.22.2" id="tan_examples"><span class="secno">6.2.22.2. </span><span class="content">Examples</span><a class="self-link" href="#tan_examples"></a></h5>
-    <a href="https://n3-editor.herokuapp.com/n3/editor/?formula=%0A%40prefix+%3A+%3Chttp%3A%2F%2Fexample.org%2F%3E.%0A%40prefix+math%3A+%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F10%2Fswap%2Fmath%23%3E+.%0A%40prefix+xsd%3A+%3Chttp%3A%2F%2Fwww.w3.org%2F2001%2FXMLSchema%23%3E+.%0A%0A%3ALet+%3Aparam+%220.7853981633974483%22%5E%5Exsd%3Adouble+.%0A%0A%7B%0A++++%3ALet+%3Aparam+%3Fparam+.%0A++++%3Fparam+math%3Atan+%3Fresult+.%0A%7D%0A%3D%3E%0A%7B%0A++++%3Aresult+%3Ais+%3Fresult+.%0A%7D+.%0A++++++++++++">Try in Notation3 Editor 🚀</a> 
+    <a href="https://n3-editor.herokuapp.com/n3/editor/?formula=%40prefix+%3A+%3Chttp%3A%2F%2Fexample.org%2F%3E.%0A%40prefix+math%3A+%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F10%2Fswap%2Fmath%23%3E+.%0A%40prefix+xsd%3A+%3Chttp%3A%2F%2Fwww.w3.org%2F2001%2FXMLSchema%23%3E+.%0A%0A%3ALet+%3Aparam+%220.7853981633974483%22%5E%5Exsd%3Adouble+.%0A%0A%7B%0A++++%3ALet+%3Aparam+%3Fparam+.%0A++++%3Fparam+math%3Atan+%3Fresult+.%0A%7D%0A%3D%3E%0A%7B%0A++++%3Aresult+%3Ais+%3Fresult+.%0A%7D+.">Try in Notation3 Editor 🚀</a> 
    <div class="example" id="example-552d6595">
     <a class="self-link" href="#example-552d6595"></a> 
     <p> Calculate the tangent of the value 0.7853981633974483 . </p>
@@ -3234,7 +3235,7 @@ You can also use this to calculate the logarithm of the object, with as base the
    <h5 class="heading settled" data-level="6.2.23.1" id="remainder_schemas"><span class="secno">6.2.23.1. </span><span class="content">Schema(s)</span><a class="self-link" href="#remainder_schemas"></a></h5>
     <i><code>( $s )+ math:remainder $o-</code></i> 
    <h5 class="heading settled" data-level="6.2.23.2" id="remainder_examples"><span class="secno">6.2.23.2. </span><span class="content">Examples</span><a class="self-link" href="#remainder_examples"></a></h5>
-    <a href="https://n3-editor.herokuapp.com/n3/editor/?formula=%0A%40prefix+%3A+%3Chttp%3A%2F%2Fexample.org%2F%3E.%0A%40prefix+math%3A+%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F10%2Fswap%2Fmath%23%3E+.%0A%0A%3ALet+%3Aparam+%2810+3%29+.%0A%0A%7B%0A++++%3ALet+%3Aparam+%3Fparam+.%0A++++%3Fparam+math%3Aremainder+%3Fresult+.%0A%7D%0A%3D%3E%0A%7B%0A++++%3Aresult+%3Ais+%3Fresult+.%0A%7D+.%0A++++++++++++">Try in Notation3 Editor 🚀</a> 
+    <a href="https://n3-editor.herokuapp.com/n3/editor/?formula=%40prefix+%3A+%3Chttp%3A%2F%2Fexample.org%2F%3E.%0A%40prefix+math%3A+%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F10%2Fswap%2Fmath%23%3E+.%0A%0A%3ALet+%3Aparam+%2810+3%29+.%0A%0A%7B%0A++++%3ALet+%3Aparam+%3Fparam+.%0A++++%3Fparam+math%3Aremainder+%3Fresult+.%0A%7D%0A%3D%3E%0A%7B%0A++++%3Aresult+%3Ais+%3Fresult+.%0A%7D+.">Try in Notation3 Editor 🚀</a> 
    <div class="example" id="example-6b6aa7a3">
     <a class="self-link" href="#example-6b6aa7a3"></a> 
     <p> Calculate the remainder of 10 divided by 3. </p>
@@ -3264,7 +3265,7 @@ You can also use this to calculate the logarithm of the object, with as base the
    <h5 class="heading settled" data-level="6.2.24.1" id="degrees_schemas"><span class="secno">6.2.24.1. </span><span class="content">Schema(s)</span><a class="self-link" href="#degrees_schemas"></a></h5>
     <i><code>( $s )+ math:degrees $o-</code></i> 
    <h5 class="heading settled" data-level="6.2.24.2" id="degrees_examples"><span class="secno">6.2.24.2. </span><span class="content">Examples</span><a class="self-link" href="#degrees_examples"></a></h5>
-    <a href="https://n3-editor.herokuapp.com/n3/editor/?formula=%0A%40prefix+%3A+%3Chttp%3A%2F%2Fexample.org%2F%3E.%0A%40prefix+math%3A+%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F10%2Fswap%2Fmath%23%3E+.%0A%0A%3ALet+%3Aparam+1.57079632679+.%0A%0A%7B%0A++++%3ALet+%3Aparam+%3Fparam+.%0A++++%3Fparam+math%3Adegrees+%3Fresult+.%0A%7D%0A%3D%3E%0A%7B%0A++++%3Aresult+%3Ais+%3Fresult+.%0A%7D+.%0A++++++++++++">Try in Notation3 Editor 🚀</a> 
+    <a href="https://n3-editor.herokuapp.com/n3/editor/?formula=%40prefix+%3A+%3Chttp%3A%2F%2Fexample.org%2F%3E.%0A%40prefix+math%3A+%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F10%2Fswap%2Fmath%23%3E+.%0A%0A%3ALet+%3Aparam+1.57079632679+.%0A%0A%7B%0A++++%3ALet+%3Aparam+%3Fparam+.%0A++++%3Fparam+math%3Adegrees+%3Fresult+.%0A%7D%0A%3D%3E%0A%7B%0A++++%3Aresult+%3Ais+%3Fresult+.%0A%7D+.">Try in Notation3 Editor 🚀</a> 
    <div class="example" id="example-0483db2f">
     <a class="self-link" href="#example-0483db2f"></a> 
     <p> Calculate the degrees of the radians value 1.57079632679. </p>
@@ -3294,7 +3295,7 @@ You can also use this to calculate the logarithm of the object, with as base the
    <h5 class="heading settled" data-level="6.2.25.1" id="asin_schemas"><span class="secno">6.2.25.1. </span><span class="content">Schema(s)</span><a class="self-link" href="#asin_schemas"></a></h5>
     <i><code>( $s )+ math:asin $o-</code></i> 
    <h5 class="heading settled" data-level="6.2.25.2" id="asin_examples"><span class="secno">6.2.25.2. </span><span class="content">Examples</span><a class="self-link" href="#asin_examples"></a></h5>
-    <a href="https://n3-editor.herokuapp.com/n3/editor/?formula=%0A%40prefix+%3A+%3Chttp%3A%2F%2Fexample.org%2F%3E.%0A%40prefix+math%3A+%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F10%2Fswap%2Fmath%23%3E+.%0A%0A%3ALet+%3Aparam+1+.%0A%0A%7B%0A++++%3ALet+%3Aparam+%3Fparam+.%0A++++%3Fparam+math%3Aasin+%3Fresult+.%0A%7D%0A%3D%3E%0A%7B%0A++++%3Aresult+%3Ais+%3Fresult+.%0A%7D+.%0A++++++++++++">Try in Notation3 Editor 🚀</a> 
+    <a href="https://n3-editor.herokuapp.com/n3/editor/?formula=%40prefix+%3A+%3Chttp%3A%2F%2Fexample.org%2F%3E.%0A%40prefix+math%3A+%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F10%2Fswap%2Fmath%23%3E+.%0A%0A%3ALet+%3Aparam+1+.%0A%0A%7B%0A++++%3ALet+%3Aparam+%3Fparam+.%0A++++%3Fparam+math%3Aasin+%3Fresult+.%0A%7D%0A%3D%3E%0A%7B%0A++++%3Aresult+%3Ais+%3Fresult+.%0A%7D+.">Try in Notation3 Editor 🚀</a> 
    <div class="example" id="example-fc1c0ba2">
     <a class="self-link" href="#example-fc1c0ba2"></a> 
     <p> Calculate the arc sine of the value 1. </p>
@@ -3325,7 +3326,7 @@ You can also use this to calculate the logarithm of the object, with as base the
    <h5 class="heading settled" data-level="6.3.1.1" id="minute_schemas"><span class="secno">6.3.1.1. </span><span class="content">Schema(s)</span><a class="self-link" href="#minute_schemas"></a></h5>
     <i><code>( $s )+ time:minute $o-</code></i> 
    <h5 class="heading settled" data-level="6.3.1.2" id="minute_examples"><span class="secno">6.3.1.2. </span><span class="content">Examples</span><a class="self-link" href="#minute_examples"></a></h5>
-    <a href="https://n3-editor.herokuapp.com/n3/editor/?formula=%0A%40prefix+%3A+%3Chttp%3A%2F%2Fexample.org%2F%3E.%0A%40prefix+xsd%3A+%3Chttp%3A%2F%2Fwww.w3.org%2F2001%2FXMLSchema%23%3E.%0A%40prefix+time%3A+%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F10%2Fswap%2Ftime%23%3E+.%0A%0A%3ALet+%3Aparam+%222023-04-01T18%3A06%3A04Z%22%5E%5Exsd%3AdateTime+.%0A%0A%7B%0A++++%3ALet+%3Aparam+%3Fparam+.%0A++++%3Fparam+time%3Aminute+%3Fresult+.%0A%7D%0A%3D%3E%0A%7B%0A++++%3Aresult+%3Ais+%3Fresult+.%0A%7D+.%0A++++++++++++">Try in Notation3 Editor 🚀</a> 
+    <a href="https://n3-editor.herokuapp.com/n3/editor/?formula=%40prefix+%3A+%3Chttp%3A%2F%2Fexample.org%2F%3E.%0A%40prefix+xsd%3A+%3Chttp%3A%2F%2Fwww.w3.org%2F2001%2FXMLSchema%23%3E.%0A%40prefix+time%3A+%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F10%2Fswap%2Ftime%23%3E+.%0A%0A%3ALet+%3Aparam+%222023-04-01T18%3A06%3A04Z%22%5E%5Exsd%3AdateTime+.%0A%0A%7B%0A++++%3ALet+%3Aparam+%3Fparam+.%0A++++%3Fparam+time%3Aminute+%3Fresult+.%0A%7D%0A%3D%3E%0A%7B%0A++++%3Aresult+%3Ais+%3Fresult+.%0A%7D+.">Try in Notation3 Editor 🚀</a> 
    <div class="example" id="example-f81b3e4c">
     <a class="self-link" href="#example-f81b3e4c"></a> 
     <p> Return the minute component of the date "2023-04-01T18:06:04Z" . </p>
@@ -3356,7 +3357,7 @@ You can also use this to calculate the logarithm of the object, with as base the
    <h5 class="heading settled" data-level="6.3.2.1" id="day_schemas"><span class="secno">6.3.2.1. </span><span class="content">Schema(s)</span><a class="self-link" href="#day_schemas"></a></h5>
     <i><code>( $s )+ time:day $o-</code></i> 
    <h5 class="heading settled" data-level="6.3.2.2" id="day_examples"><span class="secno">6.3.2.2. </span><span class="content">Examples</span><a class="self-link" href="#day_examples"></a></h5>
-    <a href="https://n3-editor.herokuapp.com/n3/editor/?formula=%0A%40prefix+%3A+%3Chttp%3A%2F%2Fexample.org%2F%3E.%0A%40prefix+xsd%3A+%3Chttp%3A%2F%2Fwww.w3.org%2F2001%2FXMLSchema%23%3E.%0A%40prefix+time%3A+%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F10%2Fswap%2Ftime%23%3E+.%0A%0A%3ALet+%3Aparam+%222023-04-01T18%3A06%3A04Z%22%5E%5Exsd%3AdateTime+.%0A%0A%7B%0A++++%3ALet+%3Aparam+%3Fparam+.%0A++++%3Fparam+time%3Aday+%3Fresult+.%0A%7D%0A%3D%3E%0A%7B%0A++++%3Aresult+%3Ais+%3Fresult+.%0A%7D+.%0A++++++++++++">Try in Notation3 Editor 🚀</a> 
+    <a href="https://n3-editor.herokuapp.com/n3/editor/?formula=%40prefix+%3A+%3Chttp%3A%2F%2Fexample.org%2F%3E.%0A%40prefix+xsd%3A+%3Chttp%3A%2F%2Fwww.w3.org%2F2001%2FXMLSchema%23%3E.%0A%40prefix+time%3A+%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F10%2Fswap%2Ftime%23%3E+.%0A%0A%3ALet+%3Aparam+%222023-04-01T18%3A06%3A04Z%22%5E%5Exsd%3AdateTime+.%0A%0A%7B%0A++++%3ALet+%3Aparam+%3Fparam+.%0A++++%3Fparam+time%3Aday+%3Fresult+.%0A%7D%0A%3D%3E%0A%7B%0A++++%3Aresult+%3Ais+%3Fresult+.%0A%7D+.">Try in Notation3 Editor 🚀</a> 
    <div class="example" id="example-6881bc4a">
     <a class="self-link" href="#example-6881bc4a"></a> 
     <p> Return the day component of the date "2023-04-01T18:06:04Z" . </p>
@@ -3387,7 +3388,7 @@ You can also use this to calculate the logarithm of the object, with as base the
    <h5 class="heading settled" data-level="6.3.3.1" id="month_schemas"><span class="secno">6.3.3.1. </span><span class="content">Schema(s)</span><a class="self-link" href="#month_schemas"></a></h5>
     <i><code>( $s )+ time:month $o-</code></i> 
    <h5 class="heading settled" data-level="6.3.3.2" id="month_examples"><span class="secno">6.3.3.2. </span><span class="content">Examples</span><a class="self-link" href="#month_examples"></a></h5>
-    <a href="https://n3-editor.herokuapp.com/n3/editor/?formula=%0A%40prefix+%3A+%3Chttp%3A%2F%2Fexample.org%2F%3E.%0A%40prefix+xsd%3A+%3Chttp%3A%2F%2Fwww.w3.org%2F2001%2FXMLSchema%23%3E.%0A%40prefix+time%3A+%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F10%2Fswap%2Ftime%23%3E+.%0A%0A%3ALet+%3Aparam+%222023-04-01T18%3A06%3A04Z%22%5E%5Exsd%3AdateTime+.%0A%0A%7B%0A++++%3ALet+%3Aparam+%3Fparam+.%0A++++%3Fparam+time%3Amonth+%3Fresult+.%0A%7D%0A%3D%3E%0A%7B%0A++++%3Aresult+%3Ais+%3Fresult+.%0A%7D+.%0A++++++++++++">Try in Notation3 Editor 🚀</a> 
+    <a href="https://n3-editor.herokuapp.com/n3/editor/?formula=%40prefix+%3A+%3Chttp%3A%2F%2Fexample.org%2F%3E.%0A%40prefix+xsd%3A+%3Chttp%3A%2F%2Fwww.w3.org%2F2001%2FXMLSchema%23%3E.%0A%40prefix+time%3A+%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F10%2Fswap%2Ftime%23%3E+.%0A%0A%3ALet+%3Aparam+%222023-04-01T18%3A06%3A04Z%22%5E%5Exsd%3AdateTime+.%0A%0A%7B%0A++++%3ALet+%3Aparam+%3Fparam+.%0A++++%3Fparam+time%3Amonth+%3Fresult+.%0A%7D%0A%3D%3E%0A%7B%0A++++%3Aresult+%3Ais+%3Fresult+.%0A%7D+.">Try in Notation3 Editor 🚀</a> 
    <div class="example" id="example-7ce7bc78">
     <a class="self-link" href="#example-7ce7bc78"></a> 
     <p> Return the month component of the date "2023-04-01T18:06:04Z" . </p>
@@ -3418,7 +3419,7 @@ You can also use this to calculate the logarithm of the object, with as base the
    <h5 class="heading settled" data-level="6.3.4.1" id="timeZone_schemas"><span class="secno">6.3.4.1. </span><span class="content">Schema(s)</span><a class="self-link" href="#timeZone_schemas"></a></h5>
     <i><code>( $s )+ time:timeZone $o-</code></i> 
    <h5 class="heading settled" data-level="6.3.4.2" id="timeZone_examples"><span class="secno">6.3.4.2. </span><span class="content">Examples</span><a class="self-link" href="#timeZone_examples"></a></h5>
-    <a href="https://n3-editor.herokuapp.com/n3/editor/?formula=%0A%40prefix+%3A+%3Chttp%3A%2F%2Fexample.org%2F%3E.%0A%40prefix+xsd%3A+%3Chttp%3A%2F%2Fwww.w3.org%2F2001%2FXMLSchema%23%3E.%0A%40prefix+time%3A+%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F10%2Fswap%2Ftime%23%3E+.%0A%0A%3ALet+%3Aparam+%222023-04-01T18%3A06%3A04Z%22%5E%5Exsd%3AdateTime+.%0A%0A%7B%0A++++%3ALet+%3Aparam+%3Fparam+.%0A++++%3Fparam+time%3Aminute+%3Fresult+.%0A%7D%0A%3D%3E%0A%7B%0A++++%3Aresult+%3Ais+%3Fresult+.%0A%7D+.%0A++++++++++++">Try in Notation3 Editor 🚀</a> 
+    <a href="https://n3-editor.herokuapp.com/n3/editor/?formula=%40prefix+%3A+%3Chttp%3A%2F%2Fexample.org%2F%3E.%0A%40prefix+xsd%3A+%3Chttp%3A%2F%2Fwww.w3.org%2F2001%2FXMLSchema%23%3E.%0A%40prefix+time%3A+%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F10%2Fswap%2Ftime%23%3E+.%0A%0A%3ALet+%3Aparam+%222023-04-01T18%3A06%3A04Z%22%5E%5Exsd%3AdateTime+.%0A%0A%7B%0A++++%3ALet+%3Aparam+%3Fparam+.%0A++++%3Fparam+time%3Aminute+%3Fresult+.%0A%7D%0A%3D%3E%0A%7B%0A++++%3Aresult+%3Ais+%3Fresult+.%0A%7D+.">Try in Notation3 Editor 🚀</a> 
    <div class="example" id="example-74ccb55e">
     <a class="self-link" href="#example-74ccb55e"></a> 
     <p> Return the time zone component of the date "2023-04-01T18:06:04Z" . </p>
@@ -3449,7 +3450,7 @@ You can also use this to calculate the logarithm of the object, with as base the
    <h5 class="heading settled" data-level="6.3.5.1" id="year_schemas"><span class="secno">6.3.5.1. </span><span class="content">Schema(s)</span><a class="self-link" href="#year_schemas"></a></h5>
     <i><code>( $s )+ time:year $o-</code></i> 
    <h5 class="heading settled" data-level="6.3.5.2" id="year_examples"><span class="secno">6.3.5.2. </span><span class="content">Examples</span><a class="self-link" href="#year_examples"></a></h5>
-    <a href="https://n3-editor.herokuapp.com/n3/editor/?formula=%0A%40prefix+%3A+%3Chttp%3A%2F%2Fexample.org%2F%3E.%0A%40prefix+xsd%3A+%3Chttp%3A%2F%2Fwww.w3.org%2F2001%2FXMLSchema%23%3E.%0A%40prefix+time%3A+%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F10%2Fswap%2Ftime%23%3E+.%0A%0A%3ALet+%3Aparam+%222023-04-01T18%3A06%3A04Z%22%5E%5Exsd%3AdateTime+.%0A%0A%7B%0A++++%3ALet+%3Aparam+%3Fparam+.%0A++++%3Fparam+time%3Ayear+%3Fresult+.%0A%7D%0A%3D%3E%0A%7B%0A++++%3Aresult+%3Ais+%3Fresult+.%0A%7D+.%0A++++++++++++">Try in Notation3 Editor 🚀</a> 
+    <a href="https://n3-editor.herokuapp.com/n3/editor/?formula=%40prefix+%3A+%3Chttp%3A%2F%2Fexample.org%2F%3E.%0A%40prefix+xsd%3A+%3Chttp%3A%2F%2Fwww.w3.org%2F2001%2FXMLSchema%23%3E.%0A%40prefix+time%3A+%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F10%2Fswap%2Ftime%23%3E+.%0A%0A%3ALet+%3Aparam+%222023-04-01T18%3A06%3A04Z%22%5E%5Exsd%3AdateTime+.%0A%0A%7B%0A++++%3ALet+%3Aparam+%3Fparam+.%0A++++%3Fparam+time%3Ayear+%3Fresult+.%0A%7D%0A%3D%3E%0A%7B%0A++++%3Aresult+%3Ais+%3Fresult+.%0A%7D+.">Try in Notation3 Editor 🚀</a> 
    <div class="example" id="example-66cf9dcf">
     <a class="self-link" href="#example-66cf9dcf"></a> 
     <p> Return the minute component of the date "2023-04-01T18:06:04Z" . </p>
@@ -3480,7 +3481,7 @@ You can also use this to calculate the logarithm of the object, with as base the
    <h5 class="heading settled" data-level="6.3.6.1" id="second_schemas"><span class="secno">6.3.6.1. </span><span class="content">Schema(s)</span><a class="self-link" href="#second_schemas"></a></h5>
     <i><code>( $s )+ time:second $o-</code></i> 
    <h5 class="heading settled" data-level="6.3.6.2" id="second_examples"><span class="secno">6.3.6.2. </span><span class="content">Examples</span><a class="self-link" href="#second_examples"></a></h5>
-    <a href="https://n3-editor.herokuapp.com/n3/editor/?formula=%0A%40prefix+%3A+%3Chttp%3A%2F%2Fexample.org%2F%3E.%0A%40prefix+xsd%3A+%3Chttp%3A%2F%2Fwww.w3.org%2F2001%2FXMLSchema%23%3E.%0A%40prefix+time%3A+%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F10%2Fswap%2Ftime%23%3E+.%0A%0A%3ALet+%3Aparam+%222023-04-01T18%3A06%3A04Z%22%5E%5Exsd%3AdateTime+.%0A%0A%7B%0A++++%3ALet+%3Aparam+%3Fparam+.%0A++++%3Fparam+time%3Asecond+%3Fresult+.%0A%7D%0A%3D%3E%0A%7B%0A++++%3Aresult+%3Ais+%3Fresult+.%0A%7D+.%0A++++++++++++">Try in Notation3 Editor 🚀</a> 
+    <a href="https://n3-editor.herokuapp.com/n3/editor/?formula=%40prefix+%3A+%3Chttp%3A%2F%2Fexample.org%2F%3E.%0A%40prefix+xsd%3A+%3Chttp%3A%2F%2Fwww.w3.org%2F2001%2FXMLSchema%23%3E.%0A%40prefix+time%3A+%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F10%2Fswap%2Ftime%23%3E+.%0A%0A%3ALet+%3Aparam+%222023-04-01T18%3A06%3A04Z%22%5E%5Exsd%3AdateTime+.%0A%0A%7B%0A++++%3ALet+%3Aparam+%3Fparam+.%0A++++%3Fparam+time%3Asecond+%3Fresult+.%0A%7D%0A%3D%3E%0A%7B%0A++++%3Aresult+%3Ais+%3Fresult+.%0A%7D+.">Try in Notation3 Editor 🚀</a> 
    <div class="example" id="example-70955ed2">
     <a class="self-link" href="#example-70955ed2"></a> 
     <p> Return the seconds component of the date "2023-04-01T18:06:04Z" . </p>
@@ -3518,7 +3519,7 @@ You can also use this to calculate the logarithm of the object, with as base the
    <h5 class="heading settled" data-level="6.4.2.1" id="first_schemas"><span class="secno">6.4.2.1. </span><span class="content">Schema(s)</span><a class="self-link" href="#first_schemas"></a></h5>
     <i><code>( $s )+ list:first $o-</code></i> 
    <h5 class="heading settled" data-level="6.4.2.2" id="first_examples"><span class="secno">6.4.2.2. </span><span class="content">Examples</span><a class="self-link" href="#first_examples"></a></h5>
-    <a href="https://n3-editor.herokuapp.com/n3/editor/?formula=%0A%40prefix+%3A+%3Chttp%3A%2F%2Fexample.org%2F%3E.%0A%40prefix+list%3A+%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F10%2Fswap%2Flist%23%3E+.%0A%0A%7B+%28+%28%27a%27%29+%7B+%3Aa+%3Ab+%3Ac+%7D+42+%29+list%3Afirst+%3Fwhat+.+%7D+%3D%3E+%7B+%3Aresult+%3Ais+%3Fwhat+.+%7D+.%0A++++++++++++">Try in Notation3 Editor 🚀</a> 
+    <a href="https://n3-editor.herokuapp.com/n3/editor/?formula=%40prefix+%3A+%3Chttp%3A%2F%2Fexample.org%2F%3E.%0A%40prefix+list%3A+%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F10%2Fswap%2Flist%23%3E+.%0A%0A%7B+%28+%28%27a%27%29+%7B+%3Aa+%3Ab+%3Ac+%7D+42+%29+list%3Afirst+%3Fwhat+.+%7D+%3D%3E+%7B+%3Aresult+%3Ais+%3Fwhat+.+%7D+.">Try in Notation3 Editor 🚀</a> 
    <div class="example" id="example-6713e9ca">
     <a class="self-link" href="#example-6713e9ca"></a> 
     <p> What is the first element of ( (<a class="property css" data-link-type="property">a</a>) { :a :b :c } 42 )? </p>
@@ -3569,7 +3570,7 @@ You can also use this to calculate the logarithm of the object, with as base the
    <h5 class="heading settled" data-level="6.4.8.1" id="remove_schemas"><span class="secno">6.4.8.1. </span><span class="content">Schema(s)</span><a class="self-link" href="#remove_schemas"></a></h5>
     <i><code>( $s )+ list:remove $o-</code></i> 
    <h5 class="heading settled" data-level="6.4.8.2" id="remove_examples"><span class="secno">6.4.8.2. </span><span class="content">Examples</span><a class="self-link" href="#remove_examples"></a></h5>
-    <a href="https://n3-editor.herokuapp.com/n3/editor/?formula=%0A%40prefix+%3A+%3Chttp%3A%2F%2Fexample.org%2F%3E.%0A%40prefix+list%3A+%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F10%2Fswap%2Flist%23%3E+.%0A%0A%3Alet+%3Aparam+%28%22dog%22+%22penguin%22+%22cat%22+%22penguin%22%29+.%0A%7B+%0A++++%3Alet+%3Aparam+%3Fparam+.+%0A++++%28+%3Fparam+%22penguin%22+%29+list%3Aremove+%3Flist+.%0A%7D+%0A%3D%3E+%0A%7B+%0A++++%3Aresult+%3Ais+%3Flist+.+%0A%7D+.%0A++++++++++++">Try in Notation3 Editor 🚀</a> 
+    <a href="https://n3-editor.herokuapp.com/n3/editor/?formula=%40prefix+%3A+%3Chttp%3A%2F%2Fexample.org%2F%3E.%0A%40prefix+list%3A+%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F10%2Fswap%2Flist%23%3E+.%0A%0A%3Alet+%3Aparam+%28%22dog%22+%22penguin%22+%22cat%22+%22penguin%22%29+.%0A%7B+%0A++++%3Alet+%3Aparam+%3Fparam+.+%0A++++%28+%3Fparam+%22penguin%22+%29+list%3Aremove+%3Flist+.%0A%7D+%0A%3D%3E+%0A%7B+%0A++++%3Aresult+%3Ais+%3Flist+.+%0A%7D+.">Try in Notation3 Editor 🚀</a> 
    <div class="example" id="example-2a574617">
     <a class="self-link" href="#example-2a574617"></a> 
     <p> Remove "penguin" from the list ("dog" "penguin" "cat" "penguin"). </p>
@@ -3598,7 +3599,7 @@ You can also use this to calculate the logarithm of the object, with as base the
    <h5 class="heading settled" data-level="6.4.9.1" id="length_schemas"><span class="secno">6.4.9.1. </span><span class="content">Schema(s)</span><a class="self-link" href="#length_schemas"></a></h5>
     <i><code>( $s )+ list:length $o-</code></i> 
    <h5 class="heading settled" data-level="6.4.9.2" id="length_examples"><span class="secno">6.4.9.2. </span><span class="content">Examples</span><a class="self-link" href="#length_examples"></a></h5>
-    <a href="https://n3-editor.herokuapp.com/n3/editor/?formula=%0A%40prefix+%3A+%3Chttp%3A%2F%2Fexample.org%2F%3E.%0A%40prefix+list%3A+%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F10%2Fswap%2Flist%23%3E+.%0A%0A%7B+%281+2+3+4%29+list%3Alength+%3Flength+.+%7D+%3D%3E+%7B+%3Aresult+%3Ais+%3Flength+.+%7D+.%0A++++++++++++">Try in Notation3 Editor 🚀</a> 
+    <a href="https://n3-editor.herokuapp.com/n3/editor/?formula=%40prefix+%3A+%3Chttp%3A%2F%2Fexample.org%2F%3E.%0A%40prefix+list%3A+%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F10%2Fswap%2Flist%23%3E+.%0A%0A%7B+%281+2+3+4%29+list%3Alength+%3Flength+.+%7D+%3D%3E+%7B+%3Aresult+%3Ais+%3Flength+.+%7D+.">Try in Notation3 Editor 🚀</a> 
    <div class="example" id="example-145cc357">
     <a class="self-link" href="#example-145cc357"></a> 
     <p> Calculate the length of the list (1 2 3 4). </p>
@@ -3628,7 +3629,7 @@ by applying any rules it contains to the data it contains.</p>
    <h5 class="heading settled" data-level="6.5.2.1" id="conclusion_schemas"><span class="secno">6.5.2.1. </span><span class="content">Schema(s)</span><a class="self-link" href="#conclusion_schemas"></a></h5>
     <i><code>( $s )+ log:conclusion $o?</code></i> 
    <h5 class="heading settled" data-level="6.5.2.2" id="conclusion_examples"><span class="secno">6.5.2.2. </span><span class="content">Examples</span><a class="self-link" href="#conclusion_examples"></a></h5>
-    <a href="https://n3-editor.herokuapp.com/n3/editor/?formula=%0A%40prefix+%3A+%3Chttp%3A%2F%2Fexample.org%2F%3E.%0A%40prefix+log%3A+%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F10%2Fswap%2Flog%23%3E+.%0A%0A%3Alet+%3Aparam+%7B+%0A++++%3AFelix+a+%3ACat+.+%0A++++%7B+%3FX+a+%3ACat+.+%7D+%3D%3E+%7B+%3FX+%3Asays+%22Meow%22+.+%7D+.%0A%7D+.%0A%0A%7B+%0A++++%3Alet+%3Aparam+%3Fparam+.%0A++++%3Fparam+log%3Aconclusion+%3Fconclusion+.%0A%7D+%0A%3D%3E+%0A%7B+%0A++++%3Aresult+%3Ais+%3Fconclusion+.+%0A%7D+.%0A++++++++++++">Try in Notation3 Editor 🚀</a> 
+    <a href="https://n3-editor.herokuapp.com/n3/editor/?formula=%40prefix+%3A+%3Chttp%3A%2F%2Fexample.org%2F%3E.%0A%40prefix+log%3A+%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F10%2Fswap%2Flog%23%3E+.%0A%0A%3Alet+%3Aparam+%7B+%0A++++%3AFelix+a+%3ACat+.+%0A++++%7B+%3FX+a+%3ACat+.+%7D+%3D%3E+%7B+%3FX+%3Asays+%22Meow%22+.+%7D+.%0A%7D+.%0A%0A%7B+%0A++++%3Alet+%3Aparam+%3Fparam+.%0A++++%3Fparam+log%3Aconclusion+%3Fconclusion+.%0A%7D+%0A%3D%3E+%0A%7B+%0A++++%3Aresult+%3Ais+%3Fconclusion+.+%0A%7D+.">Try in Notation3 Editor 🚀</a> 
    <div class="example" id="example-47cd74ab">
     <a class="self-link" href="#example-47cd74ab"></a> 
     <p> Draw all conclusions from the formula ":Felix a :Cat . { ?X a :Cat } => { ?X :says "Meow" . }". </p>
@@ -3665,7 +3666,7 @@ by applying any rules it contains to the data it contains.</p>
    <h5 class="heading settled" data-level="6.5.3.1" id="content_schemas"><span class="secno">6.5.3.1. </span><span class="content">Schema(s)</span><a class="self-link" href="#content_schemas"></a></h5>
     <i><code>( $s )+ log:content $o?</code></i> 
    <h5 class="heading settled" data-level="6.5.3.2" id="content_examples"><span class="secno">6.5.3.2. </span><span class="content">Examples</span><a class="self-link" href="#content_examples"></a></h5>
-    <a href="https://n3-editor.herokuapp.com/n3/editor/?formula=%0A%40prefix+%3A+%3Chttp%3A%2F%2Fexample.org%2F%3E.%0A%40prefix+log%3A+%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F10%2Fswap%2Flog%23%3E+.%0A%0A%7B+%0A++++%3Chttps%3A%2F%2Fwww.w3.org%2FPeople%2FBerners-Lee%2Fcard%3E+log%3Acontent+%3Fcontent+.%0A%7D+%0A%3D%3E+%0A%7B+%0A++++%3Aresult+%3Ais+%3Fcontent+.+%0A%7D+.%0A++++++++++++">Try in Notation3 Editor 🚀</a> 
+    <a href="https://n3-editor.herokuapp.com/n3/editor/?formula=%40prefix+%3A+%3Chttp%3A%2F%2Fexample.org%2F%3E.%0A%40prefix+log%3A+%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F10%2Fswap%2Flog%23%3E+.%0A%0A%7B+%0A++++%3Chttps%3A%2F%2Fwww.w3.org%2FPeople%2FBerners-Lee%2Fcard%3E+log%3Acontent+%3Fcontent+.%0A%7D+%0A%3D%3E+%0A%7B+%0A++++%3Aresult+%3Ais+%3Fcontent+.+%0A%7D+.">Try in Notation3 Editor 🚀</a> 
    <div class="example" id="example-674a3220">
     <a class="self-link" href="#example-674a3220"></a> 
     <p> Fetch the content of https://www.w3.org/People/Berners-Lee/card. </p>
@@ -3692,7 +3693,7 @@ This is a scoped universal quantification.</p>
    <h5 class="heading settled" data-level="6.5.4.1" id="forAllIn_schemas"><span class="secno">6.5.4.1. </span><span class="content">Schema(s)</span><a class="self-link" href="#forAllIn_schemas"></a></h5>
     <i><code>( $s )+ log:forAllIn $o?</code></i> 
    <h5 class="heading settled" data-level="6.5.4.2" id="forAllIn_examples"><span class="secno">6.5.4.2. </span><span class="content">Examples</span><a class="self-link" href="#forAllIn_examples"></a></h5>
-    <a href="https://n3-editor.herokuapp.com/n3/editor/?formula=%0A%40prefix+%3A+%3Chttp%3A%2F%2Fexample.org%2F%3E.%0A%40prefix+log%3A+%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F10%2Fswap%2Flog%23%3E+.%0A%0A%3Ac+a+%3ACompositeTask+%3B%0A++++%3AsubTask+%3As1+%2C+%3As2+%2C+%3As3+.%0A%3As1+%3Astate+%3ACompleted+.%0A%3As2+%3Astate+%3ACompleted+.+%0A%3As3+%3Astate+%3ACompleted+.%0A%0A%7B%0A++++%3Fc+a+%3ACompositeTask+.%0A++++%28+%7B+%3Fc+%3AsubTask+%3Fs+%7D+%7B+%3Fs+%3Astate+%3ACompleted+%7D+%29+log%3AforAllIn+_%3At+.%0A%7D%0A%3D%3E%0A%7B%0A++++%3Aresult+%3Ais+true+.%0A%7D+.+%0A++++++++++++">Try in Notation3 Editor 🚀</a> 
+    <a href="https://n3-editor.herokuapp.com/n3/editor/?formula=%40prefix+%3A+%3Chttp%3A%2F%2Fexample.org%2F%3E.%0A%40prefix+log%3A+%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F10%2Fswap%2Flog%23%3E+.%0A%0A%3Ac+a+%3ACompositeTask+%3B%0A++++%3AsubTask+%3As1+%2C+%3As2+%2C+%3As3+.%0A%3As1+%3Astate+%3ACompleted+.%0A%3As2+%3Astate+%3ACompleted+.+%0A%3As3+%3Astate+%3ACompleted+.%0A%0A%7B%0A++++%3Fc+a+%3ACompositeTask+.%0A++++%28+%7B+%3Fc+%3AsubTask+%3Fs+%7D+%7B+%3Fs+%3Astate+%3ACompleted+%7D+%29+log%3AforAllIn+_%3At+.%0A%7D%0A%3D%3E%0A%7B%0A++++%3Aresult+%3Ais+true+.%0A%7D+.">Try in Notation3 Editor 🚀</a> 
    <div class="example" id="example-fe0ec0cb">
     <a class="self-link" href="#example-fe0ec0cb"></a> 
     <p> For each subtask of a composite task, check whether the subtask is completed. </p>
@@ -3726,7 +3727,7 @@ This is a scoped universal quantification.</p>
    <h5 class="heading settled" data-level="6.5.5.1" id="parsedAsN3_schemas"><span class="secno">6.5.5.1. </span><span class="content">Schema(s)</span><a class="self-link" href="#parsedAsN3_schemas"></a></h5>
     <i><code>( $s )+ log:parsedAsN3 $o?</code></i> 
    <h5 class="heading settled" data-level="6.5.5.2" id="parsedAsN3_examples"><span class="secno">6.5.5.2. </span><span class="content">Examples</span><a class="self-link" href="#parsedAsN3_examples"></a></h5>
-    <a href="https://n3-editor.herokuapp.com/n3/editor/?formula=%0A%40prefix+%3A+%3Chttp%3A%2F%2Fexample.org%2F%3E.%0A%40prefix+log%3A+%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F10%2Fswap%2Flog%23%3E+.%0A%0A%3ALet+%3Aparam+%22%22%22%0A%40prefix+%3A+%3Curn%3Aexample%3A%3E+.%0A%3ASocrates+a+%3AHuman+.%0A%22%22%22+.%0A%0A%7B%0A++++%3ALet+%3Aparam+%3FX+.%0A++++%3FX+log%3AparsedAsN3+%3FY+.%0A%7D%0A%3D%3E%0A%7B%0A++++%3Aresult+%3Ais+%3FY+.%0A%7D+.%0A++++++++++++">Try in Notation3 Editor 🚀</a> 
+    <a href="https://n3-editor.herokuapp.com/n3/editor/?formula=%40prefix+%3A+%3Chttp%3A%2F%2Fexample.org%2F%3E.%0A%40prefix+log%3A+%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F10%2Fswap%2Flog%23%3E+.%0A%0A%3ALet+%3Aparam+%22%22%22%0A%40prefix+%3A+%3Curn%3Aexample%3A%3E+.%0A%3ASocrates+a+%3AHuman+.%0A%22%22%22+.%0A%0A%7B%0A++++%3ALet+%3Aparam+%3FX+.%0A++++%3FX+log%3AparsedAsN3+%3FY+.%0A%7D%0A%3D%3E%0A%7B%0A++++%3Aresult+%3Ais+%3FY+.%0A%7D+.">Try in Notation3 Editor 🚀</a> 
    <div class="example" id="example-38685dd3">
     <a class="self-link" href="#example-38685dd3"></a> 
     <p> Parse the string ':Socrates a :Human .' as N3. </p>
@@ -3759,7 +3760,7 @@ This is a scoped universal quantification.</p>
    <h5 class="heading settled" data-level="6.5.6.1" id="conjunction_schemas"><span class="secno">6.5.6.1. </span><span class="content">Schema(s)</span><a class="self-link" href="#conjunction_schemas"></a></h5>
     <i><code>( $s )+ log:conjunction $o?</code></i> 
    <h5 class="heading settled" data-level="6.5.6.2" id="conjunction_examples"><span class="secno">6.5.6.2. </span><span class="content">Examples</span><a class="self-link" href="#conjunction_examples"></a></h5>
-    <a href="https://n3-editor.herokuapp.com/n3/editor/?formula=%0A%40prefix+%3A+%3Chttp%3A%2F%2Fexample.org%2F%3E.%0A%40prefix+log%3A+%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F10%2Fswap%2Flog%23%3E+.%0A%0A%7B+%0A++++%28+%7B+%3AFelix+a+%3ACat+.+%7D%0A++++++%7B+%3APluto+a+%3ADog+.+%7D++%0A++++++%7B+%3APingu+a+%3APenguin+.+%7D%0A++++%29+log%3Aconjunction+%3Fmerged+.%0A%7D+%0A%3D%3E+%0A%7B+%0A++++%3Aresult+%3Ais+%3Fmerged+.+%0A%7D+.%0A++++++++++++">Try in Notation3 Editor 🚀</a> 
+    <a href="https://n3-editor.herokuapp.com/n3/editor/?formula=%40prefix+%3A+%3Chttp%3A%2F%2Fexample.org%2F%3E.%0A%40prefix+log%3A+%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F10%2Fswap%2Flog%23%3E+.%0A%0A%7B+%0A++++%28+%7B+%3AFelix+a+%3ACat+.+%7D%0A++++++%7B+%3APluto+a+%3ADog+.+%7D++%0A++++++%7B+%3APingu+a+%3APenguin+.+%7D%0A++++%29+log%3Aconjunction+%3Fmerged+.%0A%7D+%0A%3D%3E+%0A%7B+%0A++++%3Aresult+%3Ais+%3Fmerged+.+%0A%7D+.">Try in Notation3 Editor 🚀</a> 
    <div class="example" id="example-9ff86bc1">
     <a class="self-link" href="#example-9ff86bc1"></a> 
     <p> Merge the formulas "{ :Felix a :Cat . }" , "{ :Pluto a :Dog . }", "{ :Pingu a :Penguin . }" . </p>
@@ -3805,7 +3806,7 @@ This is a scoped universal quantification.</p>
    <h5 class="heading settled" data-level="6.5.9.1" id="skolem_schemas"><span class="secno">6.5.9.1. </span><span class="content">Schema(s)</span><a class="self-link" href="#skolem_schemas"></a></h5>
     <i><code>( $s )+ log:skolem $o-</code></i> 
    <h5 class="heading settled" data-level="6.5.9.2" id="skolem_examples"><span class="secno">6.5.9.2. </span><span class="content">Examples</span><a class="self-link" href="#skolem_examples"></a></h5>
-    <a href="https://n3-editor.herokuapp.com/n3/editor/?formula=%0A%40prefix+%3A+%3Chttp%3A%2F%2Fexample.org%2F%3E.%0A%40prefix+log%3A+%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F10%2Fswap%2Flog%23%3E+.%0A%0A%7B+%28%3Aabc+77+%22xyz%22%29+log%3Askolem+%3Fskolem+.+%7D+%3D%3E+%7B+%3Aresult+%3Ais+%3Fskolem+%7D+.%0A++++++++++++">Try in Notation3 Editor 🚀</a> 
+    <a href="https://n3-editor.herokuapp.com/n3/editor/?formula=%40prefix+%3A+%3Chttp%3A%2F%2Fexample.org%2F%3E.%0A%40prefix+log%3A+%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F10%2Fswap%2Flog%23%3E+.%0A%0A%7B+%28%3Aabc+77+%22xyz%22%29+log%3Askolem+%3Fskolem+.+%7D+%3D%3E+%7B+%3Aresult+%3Ais+%3Fskolem+%7D+.">Try in Notation3 Editor 🚀</a> 
    <div class="example" id="example-6f08a3d5">
     <a class="self-link" href="#example-6f08a3d5"></a> 
     <p> Generate a unique Skolem IRI from the list (:abc 77 "xyz") . </p>
@@ -3830,7 +3831,7 @@ Variable substitution is applied recursively to nested compound terms such as qu
    <h5 class="heading settled" data-level="6.5.10.1" id="includes_schemas"><span class="secno">6.5.10.1. </span><span class="content">Schema(s)</span><a class="self-link" href="#includes_schemas"></a></h5>
     <i><code>( $s )+ log:includes $o-</code></i> 
    <h5 class="heading settled" data-level="6.5.10.2" id="includes_examples"><span class="secno">6.5.10.2. </span><span class="content">Examples</span><a class="self-link" href="#includes_examples"></a></h5>
-    <a href="https://n3-editor.herokuapp.com/n3/editor/?formula=%0A%40prefix+%3A+%3Chttp%3A%2F%2Fexample.org%2F%3E.%0A%40prefix+log%3A+%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F10%2Fswap%2Flog%23%3E+.%0A%0A%7B+%0A++++%7B+%3AFelix+a+%3ACat+%7D+log%3Aincludes+%7B+%3FX+a+%3ACat+%7D+.%0A%7D+%0A%3D%3E%0A%7B%0A++++%3Aresult+%3Ais+%3FX+.%0A%7D+.%0A++++++++++++">Try in Notation3 Editor 🚀</a> 
+    <a href="https://n3-editor.herokuapp.com/n3/editor/?formula=%40prefix+%3A+%3Chttp%3A%2F%2Fexample.org%2F%3E.%0A%40prefix+log%3A+%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F10%2Fswap%2Flog%23%3E+.%0A%0A%7B+%0A++++%7B+%3AFelix+a+%3ACat+%7D+log%3Aincludes+%7B+%3FX+a+%3ACat+%7D+.%0A%7D+%0A%3D%3E%0A%7B%0A++++%3Aresult+%3Ais+%3FX+.%0A%7D+.">Try in Notation3 Editor 🚀</a> 
    <div class="example" id="example-6bc451ae">
     <a class="self-link" href="#example-6bc451ae"></a> 
     <p> Check whether the formula { :Felix a :Cat } includes { ?X a :Cat }. </p>
@@ -3865,7 +3866,7 @@ Not to be confused with owl:sameAs.</p>
    <h5 class="heading settled" data-level="6.5.12.1" id="outputString_schemas"><span class="secno">6.5.12.1. </span><span class="content">Schema(s)</span><a class="self-link" href="#outputString_schemas"></a></h5>
     <i><code>( $s )+ log:outputString $o-</code></i> 
    <h5 class="heading settled" data-level="6.5.12.2" id="outputString_examples"><span class="secno">6.5.12.2. </span><span class="content">Examples</span><a class="self-link" href="#outputString_examples"></a></h5>
-    <a href="https://n3-editor.herokuapp.com/n3/editor/?formula=%0A%40prefix+%3A+%3Chttp%3A%2F%2Fexample.org%2F%3E.%0A%40prefix+log%3A+%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F10%2Fswap%2Flog%23%3E+.%0A%0A_%3A2+log%3AoutputString+%22This+is+the+second+line%0A%22+.%0A_%3A1+log%3AoutputString+%22This+is+the+first+line%0A%22+.%0A++++++++++++">Try in Notation3 Editor 🚀</a> 
+    <a href="https://n3-editor.herokuapp.com/n3/editor/?formula=%40prefix+%3A+%3Chttp%3A%2F%2Fexample.org%2F%3E.%0A%40prefix+log%3A+%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F10%2Fswap%2Flog%23%3E+.%0A%0A_%3A2+log%3AoutputString+%22This+is+the+second+line%0A%22+.%0A_%3A1+log%3AoutputString+%22This+is+the+first+line%0A%22+.">Try in Notation3 Editor 🚀</a> 
    <div class="example" id="example-7824d933">
     <a class="self-link" href="#example-7824d933"></a> 
     <p> Print the two string "This is the first line
@@ -3892,7 +3893,7 @@ This is the second line
    <h5 class="heading settled" data-level="6.5.13.1" id="semanticsOrError_schemas"><span class="secno">6.5.13.1. </span><span class="content">Schema(s)</span><a class="self-link" href="#semanticsOrError_schemas"></a></h5>
     <i><code>( $s )+ log:semanticsOrError $o?</code></i> 
    <h5 class="heading settled" data-level="6.5.13.2" id="semanticsOrError_examples"><span class="secno">6.5.13.2. </span><span class="content">Examples</span><a class="self-link" href="#semanticsOrError_examples"></a></h5>
-    <a href="https://n3-editor.herokuapp.com/n3/editor/?formula=%0A%40prefix+%3A+%3Chttp%3A%2F%2Fexample.org%2F%3E.%0A%40prefix+log%3A+%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F10%2Fswap%2Flog%23%3E+.%0A%0A%7B+%3Cerror.data%3E+log%3Asemantics+%3Fsemantics+.+%7D+%3D%3E+%7B+%3Aresult+%3Ais+%3Fsemantics+%7D+.%0A++++++++++++">Try in Notation3 Editor 🚀</a> 
+    <a href="https://n3-editor.herokuapp.com/n3/editor/?formula=%40prefix+%3A+%3Chttp%3A%2F%2Fexample.org%2F%3E.%0A%40prefix+log%3A+%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F10%2Fswap%2Flog%23%3E+.%0A%0A%7B+%3Cerror.data%3E+log%3Asemantics+%3Fsemantics+.+%7D+%3D%3E+%7B+%3Aresult+%3Ais+%3Fsemantics+%7D+.">Try in Notation3 Editor 🚀</a> 
    <div class="example" id="example-7d102a61">
     <a class="self-link" href="#example-7d102a61"></a> 
     <p> Read the contents a non existing <code>&lt;error.data></code> and parse it as Notation3 (which of course will fail). </p>
@@ -3914,7 +3915,7 @@ This is the second line
    <h5 class="heading settled" data-level="6.5.14.1" id="semantics_schemas"><span class="secno">6.5.14.1. </span><span class="content">Schema(s)</span><a class="self-link" href="#semantics_schemas"></a></h5>
     <i><code>( $s )+ log:semantics $o?</code></i> 
    <h5 class="heading settled" data-level="6.5.14.2" id="semantics_examples"><span class="secno">6.5.14.2. </span><span class="content">Examples</span><a class="self-link" href="#semantics_examples"></a></h5>
-    <a href="https://n3-editor.herokuapp.com/n3/editor/?formula=%0A%40prefix+%3A+%3Chttp%3A%2F%2Fexample.org%2F%3E.%0A%40prefix+log%3A+%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F10%2Fswap%2Flog%23%3E+.%0A%0A%7B+%3Csemantics.data%3E+log%3Asemantics+%3Fsemantics+.+%7D+%3D%3E+%7B+%3Aresult+%3Ais+%3Fsemantics+%7D+.%0A++++++++++++">Try in Notation3 Editor 🚀</a> 
+    <a href="https://n3-editor.herokuapp.com/n3/editor/?formula=%40prefix+%3A+%3Chttp%3A%2F%2Fexample.org%2F%3E.%0A%40prefix+log%3A+%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F10%2Fswap%2Flog%23%3E+.%0A%0A%7B+%3Csemantics.data%3E+log%3Asemantics+%3Fsemantics+.+%7D+%3D%3E+%7B+%3Aresult+%3Ais+%3Fsemantics+%7D+.">Try in Notation3 Editor 🚀</a> 
    <div class="example" id="example-b12a9a99">
     <a class="self-link" href="#example-b12a9a99"></a> 
     <p> Read the contents of the file <code>&lt;semantics.data></code> and parse it as Notation3.
@@ -3939,7 +3940,7 @@ We assume <code>&lt;semantics.data></code> contains the text: </p>
    <h5 class="heading settled" data-level="6.5.15.1" id="semantics_schemas①"><span class="secno">6.5.15.1. </span><span class="content">Schema(s)</span><a class="self-link" href="#semantics_schemas①"></a></h5>
     <i><code>( $s )+ log:semantics $o?</code></i> 
    <h5 class="heading settled" data-level="6.5.15.2" id="semantics_examples①"><span class="secno">6.5.15.2. </span><span class="content">Examples</span><a class="self-link" href="#semantics_examples①"></a></h5>
-    <a href="https://n3-editor.herokuapp.com/n3/editor/?formula=%0A%40prefix+%3A+%3Chttp%3A%2F%2Fexample.org%2F%3E.%0A%40prefix+log%3A+%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F10%2Fswap%2Flog%23%3E+.%0A%0A%7B+%3Csemantics.data%3E+log%3Asemantics+%3Fsemantics+.+%7D+%3D%3E+%7B+%3Aresult+%3Ais+%3Fsemantics+%7D+.%0A++++++++++++">Try in Notation3 Editor 🚀</a> 
+    <a href="https://n3-editor.herokuapp.com/n3/editor/?formula=%40prefix+%3A+%3Chttp%3A%2F%2Fexample.org%2F%3E.%0A%40prefix+log%3A+%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F10%2Fswap%2Flog%23%3E+.%0A%0A%7B+%3Csemantics.data%3E+log%3Asemantics+%3Fsemantics+.+%7D+%3D%3E+%7B+%3Aresult+%3Ais+%3Fsemantics+%7D+.">Try in Notation3 Editor 🚀</a> 
    <div class="example" id="example-b12a9a99①">
     <a class="self-link" href="#example-b12a9a99①"></a> 
     <p> Read the contents of the file <code>&lt;semantics.data></code> and parse it as Notation3.
@@ -3970,7 +3971,7 @@ Related: see <code>log:parsedAsN3</code> and <code>log:content</code>.</p>
    <h5 class="heading settled" data-level="6.5.16.1" id="semantics_schemas②"><span class="secno">6.5.16.1. </span><span class="content">Schema(s)</span><a class="self-link" href="#semantics_schemas②"></a></h5>
     <i><code>( $s )+ log:semantics $o?</code></i> 
    <h5 class="heading settled" data-level="6.5.16.2" id="semantics_examples②"><span class="secno">6.5.16.2. </span><span class="content">Examples</span><a class="self-link" href="#semantics_examples②"></a></h5>
-    <a href="https://n3-editor.herokuapp.com/n3/editor/?formula=%0A%40prefix+%3A+%3Chttp%3A%2F%2Fexample.org%2F%3E.%0A%40prefix+log%3A+%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F10%2Fswap%2Flog%23%3E+.%0A%0A%7B+%3Csemantics.data%3E+log%3Asemantics+%3Fsemantics+.+%7D+%3D%3E+%7B+%3Aresult+%3Ais+%3Fsemantics+%7D+.%0A++++++++++++">Try in Notation3 Editor 🚀</a> 
+    <a href="https://n3-editor.herokuapp.com/n3/editor/?formula=%40prefix+%3A+%3Chttp%3A%2F%2Fexample.org%2F%3E.%0A%40prefix+log%3A+%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F10%2Fswap%2Flog%23%3E+.%0A%0A%7B+%3Csemantics.data%3E+log%3Asemantics+%3Fsemantics+.+%7D+%3D%3E+%7B+%3Aresult+%3Ais+%3Fsemantics+%7D+.">Try in Notation3 Editor 🚀</a> 
    <div class="example" id="example-b12a9a99②">
     <a class="self-link" href="#example-b12a9a99②"></a> 
     <p> Read the contents of the file <code>&lt;semantics.data></code> and parse it as Notation3.
@@ -4001,7 +4002,7 @@ Related: see <code>log:parsedAsN3</code> and <code>log:content</code>.</p>
    <h5 class="heading settled" data-level="6.5.17.1" id="semantics_schemas③"><span class="secno">6.5.17.1. </span><span class="content">Schema(s)</span><a class="self-link" href="#semantics_schemas③"></a></h5>
     <i><code>( $s )+ log:semantics $o?</code></i> 
    <h5 class="heading settled" data-level="6.5.17.2" id="semantics_examples③"><span class="secno">6.5.17.2. </span><span class="content">Examples</span><a class="self-link" href="#semantics_examples③"></a></h5>
-    <a href="https://n3-editor.herokuapp.com/n3/editor/?formula=%0A%40prefix+%3A+%3Chttp%3A%2F%2Fexample.org%2F%3E.%0A%40prefix+log%3A+%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F10%2Fswap%2Flog%23%3E+.%0A%0A%7B+%3Csemantics.data%3E+log%3Asemantics+%3Fsemantics+.+%7D+%3D%3E+%7B+%3Aresult+%3Ais+%3Fsemantics+%7D+.%0A++++++++++++">Try in Notation3 Editor 🚀</a> 
+    <a href="https://n3-editor.herokuapp.com/n3/editor/?formula=%40prefix+%3A+%3Chttp%3A%2F%2Fexample.org%2F%3E.%0A%40prefix+log%3A+%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F10%2Fswap%2Flog%23%3E+.%0A%0A%7B+%3Csemantics.data%3E+log%3Asemantics+%3Fsemantics+.+%7D+%3D%3E+%7B+%3Aresult+%3Ais+%3Fsemantics+%7D+.">Try in Notation3 Editor 🚀</a> 
    <div class="example" id="example-b12a9a99③">
     <a class="self-link" href="#example-b12a9a99③"></a> 
     <p> Read the contents of the file <code>&lt;semantics.data></code> and parse it as Notation3.
@@ -4028,7 +4029,7 @@ You can use this as an equivalent of a lessThanOrEqual operator.
    <h5 class="heading settled" data-level="6.6.1.1" id="notGreaterThan_schemas①"><span class="secno">6.6.1.1. </span><span class="content">Schema(s)</span><a class="self-link" href="#notGreaterThan_schemas①"></a></h5>
     <i><code>( $s )+ string:notGreaterThan $o?</code></i> 
    <h5 class="heading settled" data-level="6.6.1.2" id="notGreaterThan_examples①"><span class="secno">6.6.1.2. </span><span class="content">Examples</span><a class="self-link" href="#notGreaterThan_examples①"></a></h5>
-    <a href="https://n3-editor.herokuapp.com/n3/editor/?formula=%0A%40prefix+%3A+%3Chttp%3A%2F%2Fexample.org%2F%3E.%0A%40prefix+string%3A+%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F10%2Fswap%2Fstring%23%3E+.%0A%0A%3ALet+%3Aparam1+%22Cat%22+.%0A%3ALet+%3Aparam2+%22Penguin%22.%0A%7B%0A++++%3ALet+%3Aparam1+%3Fparam1+.%0A++++%3ALet+%3Aparam2+%3Fparam2+.%0A++++%3Fparam1+string%3AnotGreaterThan+%3Fparam2+.%0A%7D%0A%3D%3E%0A%7B%0A++++%3Aresult+%3Ais+true+.%0A%7D+.%0A++++++++++++">Try in Notation3 Editor 🚀</a> 
+    <a href="https://n3-editor.herokuapp.com/n3/editor/?formula=%40prefix+%3A+%3Chttp%3A%2F%2Fexample.org%2F%3E.%0A%40prefix+string%3A+%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F10%2Fswap%2Fstring%23%3E+.%0A%0A%3ALet+%3Aparam1+%22Cat%22+.%0A%3ALet+%3Aparam2+%22Penguin%22.%0A%7B%0A++++%3ALet+%3Aparam1+%3Fparam1+.%0A++++%3ALet+%3Aparam2+%3Fparam2+.%0A++++%3Fparam1+string%3AnotGreaterThan+%3Fparam2+.%0A%7D%0A%3D%3E%0A%7B%0A++++%3Aresult+%3Ais+true+.%0A%7D+.">Try in Notation3 Editor 🚀</a> 
    <div class="example" id="example-793c2084">
     <a class="self-link" href="#example-793c2084"></a> 
     <p> Checks whether the string "Cat" is not greater than the string "Penguin" . </p>
@@ -4059,7 +4060,7 @@ You can use this as an equivalent of a lessThanOrEqual operator.
    <h5 class="heading settled" data-level="6.6.2.1" id="notEqualIgnoringCase_schemas"><span class="secno">6.6.2.1. </span><span class="content">Schema(s)</span><a class="self-link" href="#notEqualIgnoringCase_schemas"></a></h5>
     <i><code>( $s )+ string:notEqualIgnoringCase $o?</code></i> 
    <h5 class="heading settled" data-level="6.6.2.2" id="notEqualIgnoringCase_examples"><span class="secno">6.6.2.2. </span><span class="content">Examples</span><a class="self-link" href="#notEqualIgnoringCase_examples"></a></h5>
-    <a href="https://n3-editor.herokuapp.com/n3/editor/?formula=%0A%40prefix+%3A+%3Chttp%3A%2F%2Fexample.org%2F%3E.%0A%40prefix+string%3A+%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F10%2Fswap%2Fstring%23%3E+.%0A%0A%3ALet+%3Aparam1+%22hello+world%21%22+.%0A%3ALet+%3Aparam2+%22hELLo+dunia%21%22+.%0A%7B%0A++++%3ALet+%3Aparam1+%3Fparam1+.%0A++++%3ALet+%3Aparam2+%3Fparam2+.%0A++++%3Fparam1+string%3AnotEqualIgnoringCase+%3Fparam2+.%0A%7D%0A%3D%3E%0A%7B%0A++++%3Aresult+%3Ais+true+.%0A%7D+.%0A++++++++++++">Try in Notation3 Editor 🚀</a> 
+    <a href="https://n3-editor.herokuapp.com/n3/editor/?formula=%40prefix+%3A+%3Chttp%3A%2F%2Fexample.org%2F%3E.%0A%40prefix+string%3A+%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F10%2Fswap%2Fstring%23%3E+.%0A%0A%3ALet+%3Aparam1+%22hello+world%21%22+.%0A%3ALet+%3Aparam2+%22hELLo+dunia%21%22+.%0A%7B%0A++++%3ALet+%3Aparam1+%3Fparam1+.%0A++++%3ALet+%3Aparam2+%3Fparam2+.%0A++++%3Fparam1+string%3AnotEqualIgnoringCase+%3Fparam2+.%0A%7D%0A%3D%3E%0A%7B%0A++++%3Aresult+%3Ais+true+.%0A%7D+.">Try in Notation3 Editor 🚀</a> 
    <div class="example" id="example-31f4833e">
     <a class="self-link" href="#example-31f4833e"></a> 
     <p> Checks whether the string "hello world!" is not equal to "hELLo dunia!" ignorning the case . </p>
@@ -4090,7 +4091,7 @@ You can use this as an equivalent of a lessThanOrEqual operator.
    <h5 class="heading settled" data-level="6.6.3.1" id="contains_schemas"><span class="secno">6.6.3.1. </span><span class="content">Schema(s)</span><a class="self-link" href="#contains_schemas"></a></h5>
     <i><code>( $s )+ string:contains $o?</code></i> 
    <h5 class="heading settled" data-level="6.6.3.2" id="contains_examples"><span class="secno">6.6.3.2. </span><span class="content">Examples</span><a class="self-link" href="#contains_examples"></a></h5>
-    <a href="https://n3-editor.herokuapp.com/n3/editor/?formula=%0A%40prefix+%3A+%3Chttp%3A%2F%2Fexample.org%2F%3E.%0A%40prefix+string%3A+%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F10%2Fswap%2Fstring%23%3E+.%0A%0A%3ALet+%3Aparam1+%22hello+world%21%22+.%0A%3ALet+%3Aparam2+%22llo+worl%22.%0A%7B%0A++++%3ALet+%3Aparam1+%3Fparam1+.%0A++++%3ALet+%3Aparam2+%3Fparam2+.%0A++++%3Fparam1+string%3Acontains+%3Fparam2+.%0A%7D%0A%3D%3E%0A%7B%0A++++%3Aresult+%3Ais+true+.%0A%7D+.%0A++++++++++++">Try in Notation3 Editor 🚀</a> 
+    <a href="https://n3-editor.herokuapp.com/n3/editor/?formula=%40prefix+%3A+%3Chttp%3A%2F%2Fexample.org%2F%3E.%0A%40prefix+string%3A+%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F10%2Fswap%2Fstring%23%3E+.%0A%0A%3ALet+%3Aparam1+%22hello+world%21%22+.%0A%3ALet+%3Aparam2+%22llo+worl%22.%0A%7B%0A++++%3ALet+%3Aparam1+%3Fparam1+.%0A++++%3ALet+%3Aparam2+%3Fparam2+.%0A++++%3Fparam1+string%3Acontains+%3Fparam2+.%0A%7D%0A%3D%3E%0A%7B%0A++++%3Aresult+%3Ais+true+.%0A%7D+.">Try in Notation3 Editor 🚀</a> 
    <div class="example" id="example-07a6fcf3">
     <a class="self-link" href="#example-07a6fcf3"></a> 
     <p> Checks whether the string "hello world!" contains the string "llo worl". </p>
@@ -4121,7 +4122,7 @@ You can use this as an equivalent of a lessThanOrEqual operator.
    <h5 class="heading settled" data-level="6.6.4.1" id="greaterThan_schemas①"><span class="secno">6.6.4.1. </span><span class="content">Schema(s)</span><a class="self-link" href="#greaterThan_schemas①"></a></h5>
     <i><code>( $s )+ string:greaterThan $o?</code></i> 
    <h5 class="heading settled" data-level="6.6.4.2" id="greaterThan_examples①"><span class="secno">6.6.4.2. </span><span class="content">Examples</span><a class="self-link" href="#greaterThan_examples①"></a></h5>
-    <a href="https://n3-editor.herokuapp.com/n3/editor/?formula=%0A%40prefix+%3A+%3Chttp%3A%2F%2Fexample.org%2F%3E.%0A%40prefix+string%3A+%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F10%2Fswap%2Fstring%23%3E+.%0A%0A%3ALet+%3Aparam1+%22Penguin%22+.%0A%3ALet+%3Aparam2+%22Cat%22.%0A%7B%0A++++%3ALet+%3Aparam1+%3Fparam1+.%0A++++%3ALet+%3Aparam2+%3Fparam2+.%0A++++%3Fparam1+string%3AgreaterThan+%3Fparam2+.%0A%7D%0A%3D%3E%0A%7B%0A++++%3Aresult+%3Ais+true+.%0A%7D+.%0A++++++++++++">Try in Notation3 Editor 🚀</a> 
+    <a href="https://n3-editor.herokuapp.com/n3/editor/?formula=%40prefix+%3A+%3Chttp%3A%2F%2Fexample.org%2F%3E.%0A%40prefix+string%3A+%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F10%2Fswap%2Fstring%23%3E+.%0A%0A%3ALet+%3Aparam1+%22Penguin%22+.%0A%3ALet+%3Aparam2+%22Cat%22.%0A%7B%0A++++%3ALet+%3Aparam1+%3Fparam1+.%0A++++%3ALet+%3Aparam2+%3Fparam2+.%0A++++%3Fparam1+string%3AgreaterThan+%3Fparam2+.%0A%7D%0A%3D%3E%0A%7B%0A++++%3Aresult+%3Ais+true+.%0A%7D+.">Try in Notation3 Editor 🚀</a> 
    <div class="example" id="example-af2400fa">
     <a class="self-link" href="#example-af2400fa"></a> 
     <p> Checks whether the string "Pengiun" is greater than the string "Cat" . </p>
@@ -4152,7 +4153,7 @@ You can use this as an equivalent of a lessThanOrEqual operator.
    <h5 class="heading settled" data-level="6.6.5.1" id="containsIgnoringCase_schemas"><span class="secno">6.6.5.1. </span><span class="content">Schema(s)</span><a class="self-link" href="#containsIgnoringCase_schemas"></a></h5>
     <i><code>( $s )+ string:containsIgnoringCase $o?</code></i> 
    <h5 class="heading settled" data-level="6.6.5.2" id="containsIgnoringCase_examples"><span class="secno">6.6.5.2. </span><span class="content">Examples</span><a class="self-link" href="#containsIgnoringCase_examples"></a></h5>
-    <a href="https://n3-editor.herokuapp.com/n3/editor/?formula=%0A%40prefix+%3A+%3Chttp%3A%2F%2Fexample.org%2F%3E.%0A%40prefix+string%3A+%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F10%2Fswap%2Fstring%23%3E+.%0A%0A%3ALet+%3Aparam1+%22hello+world%21%22+.%0A%3ALet+%3Aparam2+%22lLO+woRl%22.%0A%7B%0A++++%3ALet+%3Aparam1+%3Fparam1+.%0A++++%3ALet+%3Aparam2+%3Fparam2+.%0A++++%3Fparam1+string%3AcontainsIgnoringCase+%3Fparam2+.%0A%7D%0A%3D%3E%0A%7B%0A++++%3Aresult+%3Ais+true+.%0A%7D+.%0A++++++++++++">Try in Notation3 Editor 🚀</a> 
+    <a href="https://n3-editor.herokuapp.com/n3/editor/?formula=%40prefix+%3A+%3Chttp%3A%2F%2Fexample.org%2F%3E.%0A%40prefix+string%3A+%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F10%2Fswap%2Fstring%23%3E+.%0A%0A%3ALet+%3Aparam1+%22hello+world%21%22+.%0A%3ALet+%3Aparam2+%22lLO+woRl%22.%0A%7B%0A++++%3ALet+%3Aparam1+%3Fparam1+.%0A++++%3ALet+%3Aparam2+%3Fparam2+.%0A++++%3Fparam1+string%3AcontainsIgnoringCase+%3Fparam2+.%0A%7D%0A%3D%3E%0A%7B%0A++++%3Aresult+%3Ais+true+.%0A%7D+.">Try in Notation3 Editor 🚀</a> 
    <div class="example" id="example-3dd62a79">
     <a class="self-link" href="#example-3dd62a79"></a> 
     <p> Checks whether the string "hello world!" contains the string "lLO woRl". </p>
@@ -4184,7 +4185,7 @@ You can use this as an equivalent of a greaterThanOrEqual operator.
    <h5 class="heading settled" data-level="6.6.6.1" id="notLessThan_schemas①"><span class="secno">6.6.6.1. </span><span class="content">Schema(s)</span><a class="self-link" href="#notLessThan_schemas①"></a></h5>
     <i><code>( $s )+ string:notLessThan $o?</code></i> 
    <h5 class="heading settled" data-level="6.6.6.2" id="notLessThan_examples①"><span class="secno">6.6.6.2. </span><span class="content">Examples</span><a class="self-link" href="#notLessThan_examples①"></a></h5>
-    <a href="https://n3-editor.herokuapp.com/n3/editor/?formula=%0A%40prefix+%3A+%3Chttp%3A%2F%2Fexample.org%2F%3E.%0A%40prefix+string%3A+%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F10%2Fswap%2Fstring%23%3E+.%0A%0A%3ALet+%3Aparam1+%22Penguin%22.%0A%3ALet+%3Aparam2+%22Cat%22+.%0A%7B%0A++++%3ALet+%3Aparam1+%3Fparam1+.%0A++++%3ALet+%3Aparam2+%3Fparam2+.%0A++++%3Fparam1+string%3AnotLessThan+%3Fparam2+.%0A%7D%0A%3D%3E%0A%7B%0A++++%3Aresult+%3Ais+true+.%0A%7D+.%0A++++++++++++">Try in Notation3 Editor 🚀</a> 
+    <a href="https://n3-editor.herokuapp.com/n3/editor/?formula=%40prefix+%3A+%3Chttp%3A%2F%2Fexample.org%2F%3E.%0A%40prefix+string%3A+%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F10%2Fswap%2Fstring%23%3E+.%0A%0A%3ALet+%3Aparam1+%22Penguin%22.%0A%3ALet+%3Aparam2+%22Cat%22+.%0A%7B%0A++++%3ALet+%3Aparam1+%3Fparam1+.%0A++++%3ALet+%3Aparam2+%3Fparam2+.%0A++++%3Fparam1+string%3AnotLessThan+%3Fparam2+.%0A%7D%0A%3D%3E%0A%7B%0A++++%3Aresult+%3Ais+true+.%0A%7D+.">Try in Notation3 Editor 🚀</a> 
    <div class="example" id="example-12bfba8f">
     <a class="self-link" href="#example-12bfba8f"></a> 
     <p> Checks whether the string "Penguin" is not less than the string "Cat" . </p>
@@ -4215,7 +4216,7 @@ You can use this as an equivalent of a greaterThanOrEqual operator.
    <h5 class="heading settled" data-level="6.6.7.1" id="endsWith_schemas"><span class="secno">6.6.7.1. </span><span class="content">Schema(s)</span><a class="self-link" href="#endsWith_schemas"></a></h5>
     <i><code>( $s )+ string:endsWith $o?</code></i> 
    <h5 class="heading settled" data-level="6.6.7.2" id="endsWith_examples"><span class="secno">6.6.7.2. </span><span class="content">Examples</span><a class="self-link" href="#endsWith_examples"></a></h5>
-    <a href="https://n3-editor.herokuapp.com/n3/editor/?formula=%0A%40prefix+%3A+%3Chttp%3A%2F%2Fexample.org%2F%3E.%0A%40prefix+string%3A+%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F10%2Fswap%2Fstring%23%3E+.%0A%0A%3ALet+%3Aparam1+%22hello+world%21%22+.%0A%3ALet+%3Aparam2+%22orld%21%22.%0A%7B%0A++++%3ALet+%3Aparam1+%3Fparam1+.%0A++++%3ALet+%3Aparam2+%3Fparam2+.%0A++++%3Fparam1+string%3AendsWith+%3Fparam2+.%0A%7D%0A%3D%3E%0A%7B%0A++++%3Aresult+%3Ais+true+.%0A%7D+.%0A++++++++++++">Try in Notation3 Editor 🚀</a> 
+    <a href="https://n3-editor.herokuapp.com/n3/editor/?formula=%40prefix+%3A+%3Chttp%3A%2F%2Fexample.org%2F%3E.%0A%40prefix+string%3A+%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F10%2Fswap%2Fstring%23%3E+.%0A%0A%3ALet+%3Aparam1+%22hello+world%21%22+.%0A%3ALet+%3Aparam2+%22orld%21%22.%0A%7B%0A++++%3ALet+%3Aparam1+%3Fparam1+.%0A++++%3ALet+%3Aparam2+%3Fparam2+.%0A++++%3Fparam1+string%3AendsWith+%3Fparam2+.%0A%7D%0A%3D%3E%0A%7B%0A++++%3Aresult+%3Ais+true+.%0A%7D+.">Try in Notation3 Editor 🚀</a> 
    <div class="example" id="example-63083764">
     <a class="self-link" href="#example-63083764"></a> 
     <p> Checks whether the string "hello world!" ends with "orld!". </p>
@@ -4246,7 +4247,7 @@ You can use this as an equivalent of a greaterThanOrEqual operator.
    <h5 class="heading settled" data-level="6.6.8.1" id="scrape_schemas"><span class="secno">6.6.8.1. </span><span class="content">Schema(s)</span><a class="self-link" href="#scrape_schemas"></a></h5>
     <i><code>( $s )+ string:scrape $o?</code></i> 
    <h5 class="heading settled" data-level="6.6.8.2" id="scrape_examples"><span class="secno">6.6.8.2. </span><span class="content">Examples</span><a class="self-link" href="#scrape_examples"></a></h5>
-    <a href="https://n3-editor.herokuapp.com/n3/editor/?formula=%0A%40prefix+%3A+%3Chttp%3A%2F%2Fexample.org%2F%3E.%0A%40prefix+string%3A+%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F10%2Fswap%2Fstring%23%3E+.%0A%0A%3ALet+%3Aparam1+%22https%3A%2F%2Fw3c.github.io%2FN3%2Fspec%2F%22+.+%0A%3ALet+%3Aparam2+%22.%2A%2F%28%5B%5E%2F%5D%2B%2F%29%24%22+.%0A%7B%0A++++%3ALet+%3Aparam1+%3Fparam1+.%0A++++%3ALet+%3Aparam2+%3Fparam2+.%0A++++%28%3Fparam1+%3Fparam2%29+string%3Ascrape+%3Fresult+.%0A%7D%0A%3D%3E%0A%7B%0A++++%3Aresult+%3Ais+%3Fresult+.%0A%7D+.%0A++++++++++++">Try in Notation3 Editor 🚀</a> 
+    <a href="https://n3-editor.herokuapp.com/n3/editor/?formula=%40prefix+%3A+%3Chttp%3A%2F%2Fexample.org%2F%3E.%0A%40prefix+string%3A+%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F10%2Fswap%2Fstring%23%3E+.%0A%0A%3ALet+%3Aparam1+%22https%3A%2F%2Fw3c.github.io%2FN3%2Fspec%2F%22+.+%0A%3ALet+%3Aparam2+%22.%2A%2F%28%5B%5E%2F%5D%2B%2F%29%24%22+.%0A%7B%0A++++%3ALet+%3Aparam1+%3Fparam1+.%0A++++%3ALet+%3Aparam2+%3Fparam2+.%0A++++%28%3Fparam1+%3Fparam2%29+string%3Ascrape+%3Fresult+.%0A%7D%0A%3D%3E%0A%7B%0A++++%3Aresult+%3Ais+%3Fresult+.%0A%7D+.">Try in Notation3 Editor 🚀</a> 
    <div class="example" id="example-90238f8f">
     <a class="self-link" href="#example-90238f8f"></a> 
     <p> Extract from the string "https://w3c.github.io/N3/spec/" the last path element using a regular expression . </p>
@@ -4277,7 +4278,7 @@ You can use this as an equivalent of a greaterThanOrEqual operator.
    <h5 class="heading settled" data-level="6.6.9.1" id="replace_schemas"><span class="secno">6.6.9.1. </span><span class="content">Schema(s)</span><a class="self-link" href="#replace_schemas"></a></h5>
     <i><code>( $s )+ string:replace $o?</code></i> 
    <h5 class="heading settled" data-level="6.6.9.2" id="replace_examples"><span class="secno">6.6.9.2. </span><span class="content">Examples</span><a class="self-link" href="#replace_examples"></a></h5>
-    <a href="https://n3-editor.herokuapp.com/n3/editor/?formula=%0A%40prefix+%3A+%3Chttp%3A%2F%2Fexample.org%2F%3E.%0A%40prefix+string%3A+%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F10%2Fswap%2Fstring%23%3E+.%0A%0A%3ALet+%3Adata+%22hello+world%21%22+.%0A%3ALet+%3Asearch+%22%28l%29%22+.%0A%3ALet+%3Areplace+%22%5B%241%5D%22+.%0A%7B%0A++++%3ALet+%3Adata+%3Fdata+.%0A++++%3ALet+%3Asearch+%3Fsearch+.%0A++++%3ALet+%3Areplace+%3Freplace+.%0A++++%28%3Fdata+%3Fsearch+%3Freplace%29+string%3Areplace+%3Fresult+.%0A%7D%0A%3D%3E%0A%7B%0A++++%3Aresult+%3Ais+%3Fresult+.%0A%7D+.%0A++++++++++++">Try in Notation3 Editor 🚀</a> 
+    <a href="https://n3-editor.herokuapp.com/n3/editor/?formula=%40prefix+%3A+%3Chttp%3A%2F%2Fexample.org%2F%3E.%0A%40prefix+string%3A+%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F10%2Fswap%2Fstring%23%3E+.%0A%0A%3ALet+%3Adata+%22hello+world%21%22+.%0A%3ALet+%3Asearch+%22%28l%29%22+.%0A%3ALet+%3Areplace+%22%5B%241%5D%22+.%0A%7B%0A++++%3ALet+%3Adata+%3Fdata+.%0A++++%3ALet+%3Asearch+%3Fsearch+.%0A++++%3ALet+%3Areplace+%3Freplace+.%0A++++%28%3Fdata+%3Fsearch+%3Freplace%29+string%3Areplace+%3Fresult+.%0A%7D%0A%3D%3E%0A%7B%0A++++%3Aresult+%3Ais+%3Fresult+.%0A%7D+.">Try in Notation3 Editor 🚀</a> 
    <div class="example" id="example-a822f6af">
     <a class="self-link" href="#example-a822f6af"></a> 
     <p> Replace all "l"-s in the string "hello world!" with the bracket version "[l]" . </p>
@@ -4310,7 +4311,7 @@ You can use this as an equivalent of a greaterThanOrEqual operator.
    <h5 class="heading settled" data-level="6.6.10.1" id="lessThan_schemas①"><span class="secno">6.6.10.1. </span><span class="content">Schema(s)</span><a class="self-link" href="#lessThan_schemas①"></a></h5>
     <i><code>( $s )+ string:lessThan $o?</code></i> 
    <h5 class="heading settled" data-level="6.6.10.2" id="lessThan_examples①"><span class="secno">6.6.10.2. </span><span class="content">Examples</span><a class="self-link" href="#lessThan_examples①"></a></h5>
-    <a href="https://n3-editor.herokuapp.com/n3/editor/?formula=%0A%40prefix+%3A+%3Chttp%3A%2F%2Fexample.org%2F%3E.%0A%40prefix+string%3A+%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F10%2Fswap%2Fstring%23%3E+.%0A%0A%3ALet+%3Aparam1+%22Cat%22+.%0A%3ALet+%3Aparam2+%22Penguin%22.%0A%7B%0A++++%3ALet+%3Aparam1+%3Fparam1+.%0A++++%3ALet+%3Aparam2+%3Fparam2+.%0A++++%3Fparam1+string%3AlessThan+%3Fparam2+.%0A%7D%0A%3D%3E%0A%7B%0A++++%3Aresult+%3Ais+true+.%0A%7D+.%0A++++++++++++">Try in Notation3 Editor 🚀</a> 
+    <a href="https://n3-editor.herokuapp.com/n3/editor/?formula=%40prefix+%3A+%3Chttp%3A%2F%2Fexample.org%2F%3E.%0A%40prefix+string%3A+%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F10%2Fswap%2Fstring%23%3E+.%0A%0A%3ALet+%3Aparam1+%22Cat%22+.%0A%3ALet+%3Aparam2+%22Penguin%22.%0A%7B%0A++++%3ALet+%3Aparam1+%3Fparam1+.%0A++++%3ALet+%3Aparam2+%3Fparam2+.%0A++++%3Fparam1+string%3AlessThan+%3Fparam2+.%0A%7D%0A%3D%3E%0A%7B%0A++++%3Aresult+%3Ais+true+.%0A%7D+.">Try in Notation3 Editor 🚀</a> 
    <div class="example" id="example-d0f1439d">
     <a class="self-link" href="#example-d0f1439d"></a> 
     <p> Checks whether the string "Cat" is less than the string "Penguin" . </p>
@@ -4341,7 +4342,7 @@ You can use this as an equivalent of a greaterThanOrEqual operator.
    <h5 class="heading settled" data-level="6.6.11.1" id="concatenation_schemas"><span class="secno">6.6.11.1. </span><span class="content">Schema(s)</span><a class="self-link" href="#concatenation_schemas"></a></h5>
     <i><code>( $s )+ string:concatenation $o?</code></i> 
    <h5 class="heading settled" data-level="6.6.11.2" id="concatenation_examples"><span class="secno">6.6.11.2. </span><span class="content">Examples</span><a class="self-link" href="#concatenation_examples"></a></h5>
-    <a href="https://n3-editor.herokuapp.com/n3/editor/?formula=%0A%40prefix+%3A+%3Chttp%3A%2F%2Fexample.org%2F%3E.%0A%40prefix+string%3A+%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F10%2Fswap%2Fstring%23%3E+.%0A%0A%3ALet+%3Aparam+%28+%22hello%22+%22+%22+%22world%21%22+%29+.%0A%0A%7B%0A++++%3ALet+%3Aparam+%3Fparam+.%0A++++%3Fparam+string%3Aconcatenation+%3Fresult+.%0A%7D%0A%3D%3E%0A%7B%0A++++%3Aresult+%3Ais+%3Fresult+.%0A%7D+.%0A++++++++++++">Try in Notation3 Editor 🚀</a> 
+    <a href="https://n3-editor.herokuapp.com/n3/editor/?formula=%40prefix+%3A+%3Chttp%3A%2F%2Fexample.org%2F%3E.%0A%40prefix+string%3A+%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F10%2Fswap%2Fstring%23%3E+.%0A%0A%3ALet+%3Aparam+%28+%22hello%22+%22+%22+%22world%21%22+%29+.%0A%0A%7B%0A++++%3ALet+%3Aparam+%3Fparam+.%0A++++%3Fparam+string%3Aconcatenation+%3Fresult+.%0A%7D%0A%3D%3E%0A%7B%0A++++%3Aresult+%3Ais+%3Fresult+.%0A%7D+.">Try in Notation3 Editor 🚀</a> 
    <div class="example" id="example-a530fbd1">
     <a class="self-link" href="#example-a530fbd1"></a> 
     <p> Concatenates the string "hello", " " and "world!". </p>
@@ -4371,7 +4372,7 @@ You can use this as an equivalent of a greaterThanOrEqual operator.
    <h5 class="heading settled" data-level="6.6.12.1" id="equalIgnoringCase_schemas"><span class="secno">6.6.12.1. </span><span class="content">Schema(s)</span><a class="self-link" href="#equalIgnoringCase_schemas"></a></h5>
     <i><code>( $s )+ string:equalIgnoringCase $o?</code></i> 
    <h5 class="heading settled" data-level="6.6.12.2" id="equalIgnoringCase_examples"><span class="secno">6.6.12.2. </span><span class="content">Examples</span><a class="self-link" href="#equalIgnoringCase_examples"></a></h5>
-    <a href="https://n3-editor.herokuapp.com/n3/editor/?formula=%0A%40prefix+%3A+%3Chttp%3A%2F%2Fexample.org%2F%3E.%0A%40prefix+string%3A+%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F10%2Fswap%2Fstring%23%3E+.%0A%0A%3ALet+%3Aparam1+%22hello+world%21%22+.%0A%3ALet+%3Aparam2+%22hELLo+wORld%21%22+.%0A%7B%0A++++%3ALet+%3Aparam1+%3Fparam1+.%0A++++%3ALet+%3Aparam2+%3Fparam2+.%0A++++%3Fparam1+string%3AequalIgnoringCase+%3Fparam2+.%0A%7D%0A%3D%3E%0A%7B%0A++++%3Aresult+%3Ais+true+.%0A%7D+.%0A++++++++++++">Try in Notation3 Editor 🚀</a> 
+    <a href="https://n3-editor.herokuapp.com/n3/editor/?formula=%40prefix+%3A+%3Chttp%3A%2F%2Fexample.org%2F%3E.%0A%40prefix+string%3A+%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F10%2Fswap%2Fstring%23%3E+.%0A%0A%3ALet+%3Aparam1+%22hello+world%21%22+.%0A%3ALet+%3Aparam2+%22hELLo+wORld%21%22+.%0A%7B%0A++++%3ALet+%3Aparam1+%3Fparam1+.%0A++++%3ALet+%3Aparam2+%3Fparam2+.%0A++++%3Fparam1+string%3AequalIgnoringCase+%3Fparam2+.%0A%7D%0A%3D%3E%0A%7B%0A++++%3Aresult+%3Ais+true+.%0A%7D+.">Try in Notation3 Editor 🚀</a> 
    <div class="example" id="example-31fa5e49">
     <a class="self-link" href="#example-31fa5e49"></a> 
     <p> Checks whether the string "hello world!" is equal to "hELLo wORld!" ignoring the case . </p>
@@ -4402,7 +4403,7 @@ You can use this as an equivalent of a greaterThanOrEqual operator.
    <h5 class="heading settled" data-level="6.6.13.1" id="startsWith_schemas"><span class="secno">6.6.13.1. </span><span class="content">Schema(s)</span><a class="self-link" href="#startsWith_schemas"></a></h5>
     <i><code>( $s )+ string:startsWith $o?</code></i> 
    <h5 class="heading settled" data-level="6.6.13.2" id="startsWith_examples"><span class="secno">6.6.13.2. </span><span class="content">Examples</span><a class="self-link" href="#startsWith_examples"></a></h5>
-    <a href="https://n3-editor.herokuapp.com/n3/editor/?formula=%0A%40prefix+%3A+%3Chttp%3A%2F%2Fexample.org%2F%3E.%0A%40prefix+string%3A+%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F10%2Fswap%2Fstring%23%3E+.%0A%0A%3ALet+%3Aparam1+%22hello+world%21%22+.%0A%3ALet+%3Aparam2+%22hello%22.%0A%7B%0A++++%3ALet+%3Aparam1+%3Fparam1+.%0A++++%3ALet+%3Aparam2+%3Fparam2+.%0A++++%3Fparam1+string%3AstartsWith+%3Fparam2+.%0A%7D%0A%3D%3E%0A%7B%0A++++%3Aresult+%3Ais+true+.%0A%7D+.%0A++++++++++++">Try in Notation3 Editor 🚀</a> 
+    <a href="https://n3-editor.herokuapp.com/n3/editor/?formula=%40prefix+%3A+%3Chttp%3A%2F%2Fexample.org%2F%3E.%0A%40prefix+string%3A+%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F10%2Fswap%2Fstring%23%3E+.%0A%0A%3ALet+%3Aparam1+%22hello+world%21%22+.%0A%3ALet+%3Aparam2+%22hello%22.%0A%7B%0A++++%3ALet+%3Aparam1+%3Fparam1+.%0A++++%3ALet+%3Aparam2+%3Fparam2+.%0A++++%3Fparam1+string%3AstartsWith+%3Fparam2+.%0A%7D%0A%3D%3E%0A%7B%0A++++%3Aresult+%3Ais+true+.%0A%7D+.">Try in Notation3 Editor 🚀</a> 
    <div class="example" id="example-1aea19fd">
     <a class="self-link" href="#example-1aea19fd"></a> 
     <p> Checks whether the string "hello world!" starts with "hello" . </p>
@@ -4434,7 +4435,7 @@ The regular expression follows the perl, python style.
    <h5 class="heading settled" data-level="6.6.14.1" id="matches_schemas"><span class="secno">6.6.14.1. </span><span class="content">Schema(s)</span><a class="self-link" href="#matches_schemas"></a></h5>
     <i><code>( $s )+ string:matches $o?</code></i> 
    <h5 class="heading settled" data-level="6.6.14.2" id="matches_examples"><span class="secno">6.6.14.2. </span><span class="content">Examples</span><a class="self-link" href="#matches_examples"></a></h5>
-    <a href="https://n3-editor.herokuapp.com/n3/editor/?formula=%0A%40prefix+%3A+%3Chttp%3A%2F%2Fexample.org%2F%3E.%0A%40prefix+string%3A+%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F10%2Fswap%2Fstring%23%3E+.%0A%0A%3ALet+%3Aparam1+%22hello+world%21%22+.%0A%3ALet+%3Aparam2+%22.%2A%28l%29%2Bo+wo.%2A%22.%0A%7B%0A++++%3ALet+%3Aparam1+%3Fparam1+.%0A++++%3ALet+%3Aparam2+%3Fparam2+.%0A++++%3Fparam1+string%3Amatches+%3Fparam2+.%0A%7D%0A%3D%3E%0A%7B%0A++++%3Aresult+%3Ais+true+.%0A%7D+.%0A++++++++++++">Try in Notation3 Editor 🚀</a> 
+    <a href="https://n3-editor.herokuapp.com/n3/editor/?formula=%40prefix+%3A+%3Chttp%3A%2F%2Fexample.org%2F%3E.%0A%40prefix+string%3A+%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F10%2Fswap%2Fstring%23%3E+.%0A%0A%3ALet+%3Aparam1+%22hello+world%21%22+.%0A%3ALet+%3Aparam2+%22.%2A%28l%29%2Bo+wo.%2A%22.%0A%7B%0A++++%3ALet+%3Aparam1+%3Fparam1+.%0A++++%3ALet+%3Aparam2+%3Fparam2+.%0A++++%3Fparam1+string%3Amatches+%3Fparam2+.%0A%7D%0A%3D%3E%0A%7B%0A++++%3Aresult+%3Ais+true+.%0A%7D+.">Try in Notation3 Editor 🚀</a> 
    <div class="example" id="example-29699ec4">
     <a class="self-link" href="#example-29699ec4"></a> 
     <p> Checks whether the string "hello world!" matches the regular expression ".<em>(l)+o wo.</em>". </p>
@@ -4466,7 +4467,7 @@ The regular expression follows the perl, python style.
    <h5 class="heading settled" data-level="6.6.15.1" id="notMatches_schemas"><span class="secno">6.6.15.1. </span><span class="content">Schema(s)</span><a class="self-link" href="#notMatches_schemas"></a></h5>
     <i><code>( $s )+ string:notMatches $o?</code></i> 
    <h5 class="heading settled" data-level="6.6.15.2" id="notMatches_examples"><span class="secno">6.6.15.2. </span><span class="content">Examples</span><a class="self-link" href="#notMatches_examples"></a></h5>
-    <a href="https://n3-editor.herokuapp.com/n3/editor/?formula=%0A%40prefix+%3A+%3Chttp%3A%2F%2Fexample.org%2F%3E.%0A%40prefix+string%3A+%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F10%2Fswap%2Fstring%23%3E+.%0A%0A%3ALet+%3Aparam1+%22hello+world%21%22+.%0A%3ALet+%3Aparam2+%22.%2A%28l%29%2Bo+dunia.%2A%22.%0A%7B%0A++++%3ALet+%3Aparam1+%3Fparam1+.%0A++++%3ALet+%3Aparam2+%3Fparam2+.%0A++++%3Fparam1+string%3AnotMatches+%3Fparam2+.%0A%7D%0A%3D%3E%0A%7B%0A++++%3Aresult+%3Ais+true+.%0A%7D+.%0A++++++++++++">Try in Notation3 Editor 🚀</a> 
+    <a href="https://n3-editor.herokuapp.com/n3/editor/?formula=%40prefix+%3A+%3Chttp%3A%2F%2Fexample.org%2F%3E.%0A%40prefix+string%3A+%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F10%2Fswap%2Fstring%23%3E+.%0A%0A%3ALet+%3Aparam1+%22hello+world%21%22+.%0A%3ALet+%3Aparam2+%22.%2A%28l%29%2Bo+dunia.%2A%22.%0A%7B%0A++++%3ALet+%3Aparam1+%3Fparam1+.%0A++++%3ALet+%3Aparam2+%3Fparam2+.%0A++++%3Fparam1+string%3AnotMatches+%3Fparam2+.%0A%7D%0A%3D%3E%0A%7B%0A++++%3Aresult+%3Ais+true+.%0A%7D+.">Try in Notation3 Editor 🚀</a> 
    <div class="example" id="example-2cfae82c">
     <a class="self-link" href="#example-2cfae82c"></a> 
     <p> Checks whether the string "hello world!" no matches the regular expression ".<em>(l)+o dunia.</em>". </p>
@@ -4498,7 +4499,7 @@ See C’s sprintf function for details on these tags.
    <h5 class="heading settled" data-level="6.6.16.1" id="format_schemas"><span class="secno">6.6.16.1. </span><span class="content">Schema(s)</span><a class="self-link" href="#format_schemas"></a></h5>
     <i><code>( $s )+ string:format $o?</code></i> 
    <h5 class="heading settled" data-level="6.6.16.2" id="format_examples"><span class="secno">6.6.16.2. </span><span class="content">Examples</span><a class="self-link" href="#format_examples"></a></h5>
-    <a href="https://n3-editor.herokuapp.com/n3/editor/?formula=%0A%40prefix+%3A+%3Chttp%3A%2F%2Fexample.org%2F%3E.%0A%40prefix+string%3A+%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F10%2Fswap%2Fstring%23%3E+.%0A%0A%3ALet+%3Aparam+%28+%22%25s%3A%2F%2F%25s%2F%25s%22+%22https%22+%22w3c.github.io%22+%22N3%2Fspec%2F%22+%29+.%0A%0A%7B%0A++++%3ALet+%3Aparam+%3Fparam+.%0A++++%3Fparam+string%3Aformat+%3Fresult+.%0A%7D%0A%3D%3E%0A%7B%0A++++%3Aresult+%3Ais+%3Fresult+.%0A%7D+.%0A++++++++++++">Try in Notation3 Editor 🚀</a> 
+    <a href="https://n3-editor.herokuapp.com/n3/editor/?formula=%40prefix+%3A+%3Chttp%3A%2F%2Fexample.org%2F%3E.%0A%40prefix+string%3A+%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F10%2Fswap%2Fstring%23%3E+.%0A%0A%3ALet+%3Aparam+%28+%22%25s%3A%2F%2F%25s%2F%25s%22+%22https%22+%22w3c.github.io%22+%22N3%2Fspec%2F%22+%29+.%0A%0A%7B%0A++++%3ALet+%3Aparam+%3Fparam+.%0A++++%3Fparam+string%3Aformat+%3Fresult+.%0A%7D%0A%3D%3E%0A%7B%0A++++%3Aresult+%3Ais+%3Fresult+.%0A%7D+.">Try in Notation3 Editor 🚀</a> 
    <div class="example" id="example-bc79e16e">
     <a class="self-link" href="#example-bc79e16e"></a> 
     <p> Calculate the result of applying the format "%s://%s/%s" to the strings "https", "w3c.github.io" and "N3/spec" . </p>
