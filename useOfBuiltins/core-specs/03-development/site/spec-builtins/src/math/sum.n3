@@ -12,7 +12,7 @@ math:sum a fno:Function ;
     vs:term_status  "testing" ;
     vs:moreinfo "it is unclear for me why sum can't know the answer to (1 ?what) math:sum 2 @phochste" ;
     fnon:tldr "Calculates the object as the sum of the numbers given in the subject list." ;
-    dcterms:comment """`true` if and only if `$o` is the arithmetic sum of all numbers `$s.i`""" ;
+    dcterms:description """`true` if and only if `$o` is the arithmetic sum of all numbers `$s.i`""" ;
     fno:example ( [ a fno:Test ;
                 dcterms:description """
 Calculate the sum of 1,2,3,4,5,6,7,8,9,10.

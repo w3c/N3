@@ -10,7 +10,7 @@
 log:notIncludes a fno:Function ;
     vs:term_status  "testing" ;
     fnon:tldr "Checks whether the subject quoted graph _does not_ include the object quoted graph (taking into account variables)" ;
-    dcterms:comment """`true` if and only if `$s log:includes $o` is `false`.""" ;
+    dcterms:description """`true` if and only if `$s log:includes $o` is `false`.""" ;
     rdfs:seeAlso log:includes ;
     fno:example ( 
               [ a fno:Test ;

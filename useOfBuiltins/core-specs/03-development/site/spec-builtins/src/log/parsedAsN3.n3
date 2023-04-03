@@ -10,7 +10,7 @@
 log:parsedAsN3 a fno:Function ;
     vs:term_status  "testing" ;
     fnon:tldr "Parses the subject string into an object quoted graph." ;
-    dcterms:comment """`true` if and only if `$s`, when parsed as N3, gives `$o`.
+    dcterms:description """`true` if and only if `$s`, when parsed as N3, gives `$o`.
 `$s` should be a syntactically valid string in N3 format.""" ;
     fno:example ( 
               [ a fno:Test ;

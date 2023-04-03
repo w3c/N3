@@ -11,7 +11,7 @@
 time:minute a fno:Function ;
     vs:term_status  "testing" ;
     fnon:tldr "Gets as object the integer minutes component of the subject xsd:dateTime." ;
-    dcterms:comment """`true` if and only if `$o` is the integer minutes component of `$s`.""" ;
+    dcterms:description """`true` if and only if `$o` is the integer minutes component of `$s`.""" ;
     fno:example ( 
               [ a fno:Test , fno:TestSkip ;
                 dcterms:description """

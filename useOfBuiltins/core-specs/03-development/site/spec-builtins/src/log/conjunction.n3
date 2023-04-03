@@ -10,7 +10,7 @@
 log:conjunction a fno:Function ;
     vs:term_status  "testing" ;
     fnon:tldr "Merges the quoted graphs from the subject list into a single quoted graph as object." ;
-    dcterms:comment """`true` if and only if `$o` is a quoted graph that includes the contents of each of the quoted graphs `$s.i`.""" ;
+    dcterms:description """`true` if and only if `$o` is a quoted graph that includes the contents of each of the quoted graphs `$s.i`.""" ;
     fno:example ( 
             [ a fno:Test ;
                 dcterms:description """

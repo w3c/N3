@@ -12,7 +12,7 @@ math:difference a fno:Function ;
     vs:term_status  "testing" ;
     vs:moreinfo "it is unclear for me why difference can't know the answer to (3 ?what) math:difference 1 @phochste" ;
     fnon:tldr "Calculates the object by subtracting the second number from the first number given in the subject list." ;
-    dcterms:comment """`true` if and only if `$o` is the result of subtracting `$s.2` from `$s.1`.""" ;
+    dcterms:description """`true` if and only if `$o` is the result of subtracting `$s.2` from `$s.1`.""" ;
     fno:example ( [ a fno:Test ;
                 dcterms:description """
 Calculate the value of 7 minus 2.

@@ -11,7 +11,7 @@
 math:negation a fno:Function ;
     vs:term_status  "testing" ;
     fnon:tldr "Calculates the object as the negation of the subject." ;
-    dcterms:comment "`true` if and only if `$o` is the negation of `$s`." ;
+    dcterms:description "`true` if and only if `$o` is the negation of `$s`." ;
     fno:example ( [ a fno:Test ;
                 dcterms:description """
 Calculate the negation of the value 42 .

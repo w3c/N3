@@ -10,7 +10,7 @@
 list:in a fno:Function ;
     vs:term_status  "testing" ;
     fnon:tldr "Checks whether the subject is found in the object list." ;
-    dcterms:comment """`true` if and only if `$o` is a list and `$s` is a member of that list.""" ;
+    dcterms:description """`true` if and only if `$o` is a list and `$s` is a member of that list.""" ;
     rdfs:seeAlso list:member ;
     fno:example (
             [ a fno:Test ;

@@ -11,7 +11,7 @@ log:equalTo a fno:Function ;
     vs:term_status  "testing" ;
     fnon:tldr """Checks whether the subject and object N3 resources are the same. 
 Can also be used to bind values to variables (see examples).""" ;
-    dcterms:comment """`true` if and only if `$s` and `$o` are the same N3 resource.
+    dcterms:description """`true` if and only if `$s` and `$o` are the same N3 resource.
 Not to be confused with owl:sameAs.""" ;
     rdfs:seeAlso log:notEqualTo ;
     fno:example ( 

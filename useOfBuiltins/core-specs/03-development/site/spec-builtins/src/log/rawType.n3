@@ -10,7 +10,7 @@
 log:rawType a fno:Function ;
     vs:term_status  "testing" ;
     fnon:tldr "Gets the type of the N3 resource." ;
-    dcterms:comment """`true` if and only if the N3 resource type of `$s` is `$o`.
+    dcterms:description """`true` if and only if the N3 resource type of `$s` is `$o`.
 N3 resource types include `log:Formula`, `log:Literal`, `log:List`, `log:Set` or `log:Other`.""" ;
     fno:example ( 
             [ a fno:Test ;

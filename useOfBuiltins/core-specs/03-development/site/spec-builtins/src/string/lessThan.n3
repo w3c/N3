@@ -11,7 +11,7 @@
 string:lessThan a fno:Function ;
     vs:term_status  "testing" ;
     fnon:tldr "Checks whether the subject string is less than the object string, according to Unicode code order." ;
-    dcterms:comment "`true` if and only if `$s` is less than `$o` as per the Unicode code order." ;
+    dcterms:description "`true` if and only if `$s` is less than `$o` as per the Unicode code order." ;
     fno:example ( 
               [ a fno:Test ;
                 dcterms:description """

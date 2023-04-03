@@ -11,7 +11,7 @@
 math:notEqualTo a fno:Function ;
     vs:term_status  "testing" ;
     fnon:tldr "Checks whether the subject and object are not the same number." ;
-    dcterms:comment """`true` if and only if `$s` is the not same number as `$o`.""" ;
+    dcterms:description """`true` if and only if `$s` is the not same number as `$o`.""" ;
     rdfs:seeAlso math:equalTo ;
     fno:example ( [ a fno:Test ;
                 dcterms:description """

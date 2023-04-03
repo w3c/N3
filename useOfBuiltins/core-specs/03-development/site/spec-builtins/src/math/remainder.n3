@@ -11,7 +11,7 @@
 math:remainder a fno:Function ;
     vs:term_status  "testing" ;
     fnon:tldr "Calculates the object as the remainder of the division of the first integer by the second integer given in the subject list." ;
-    dcterms:comment """`true` if and only if `$o` is the remainder of dividing `$s.1` by `$s.2`.""" ;
+    dcterms:description """`true` if and only if `$o` is the remainder of dividing `$s.1` by `$s.2`.""" ;
     fno:example ( [ a fno:Test ;
                 dcterms:description """
 Calculate the remainder of 10 divided by 3.

@@ -12,7 +12,7 @@ math:asin a fno:Function ;
     fnon:tldr "Calculates the object as the arc sine value of the subject." ;
     vs:moreinfo "is asin not just syntactic sugar for cos, eye, jen3 and cwm can use sin in both directions @phochste" ;
     vs:term_status  "testing" ;
-    dcterms:comment "`true` if and only if `$o` is the arc sine value of `$s`." ;
+    dcterms:description "`true` if and only if `$o` is the arc sine value of `$s`." ;
     rdfs:seeAlso math:sin , math:sinh ;
     fno:example ( [ a fno:Test ;
                 dcterms:description """

@@ -12,7 +12,7 @@ math:product a fno:Function ;
     vs:term_status  "testing" ;
     vs:moreinfo "it is unclear for me why exponentiation can work in reverse, but product can't be used to calculate quotients @phochste" ;
     fnon:tldr "Calculates the object as the product of the numbers given in the subject list." ;
-    dcterms:comment """`true` if and only if `$o` is the arithmetic product of all numbers `$s.i`""" ;
+    dcterms:description """`true` if and only if `$o` is the arithmetic product of all numbers `$s.i`""" ;
     fno:example ( 
             [ a fno:Test ;
                 dcterms:description """

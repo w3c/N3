@@ -1,9 +1,4 @@
-#!/usr/bin/env python
-# coding: utf-8
-
-# In[598]:
-
-
+# %%
 import string
 import pandas as pd
 import sparql_dataframe
@@ -12,12 +7,10 @@ import rdflib
 import rdflib.plugins.sparql as sparql
 import urllib
 
-
+# %% [markdown]
 # ### organize prefixes
 
-# In[599]:
-
-
+# %%
 dic_prefixes = {
     "http://purl.org/dc/terms/": 'dcterms' ,
     "https://w3id.org/function/ontology#": 'fno' ,
@@ -34,10 +27,7 @@ dic_prefixes = {
     "http://www.w3.org/2001/XMLSchema#": "xsd" ,
 }
 
-
-# In[600]:
-
-
+# %%
 from glob import glob
 from os.path import join
 
@@ -52,44 +42,30 @@ except:
     print('Error parsing file: ' + file)
     raise
 
-# # test single file
-# g += Graph().parse(open("src/crypto/sha.n3"), format='n3')
+# test single file
+# g += Graph().parse(open("src/string/matches.n3"), format='n3')
 
-
-# In[601]:
-
-
+# %%
 [g.bind(v, k) for k, v in dic_prefixes.items()]
 
-
-# In[602]:
-
-
+# %%
 sparql_prefixes = ' '.join(['prefix ' + v + ': <' + k + '>\n' for k, v in dic_prefixes.items()])
 
-
-# In[603]:
-
-
+# %%
 query = """
     select distinct (concat(strbefore(str(?s), '#'), '#') as ?namespace) 
     where { ?s a fno:Function . ?s ?p ?o . }
 """
 prefixes = [dic_prefixes[str(row.namespace)] for row in g.query(query)]
 
-
+# %% [markdown]
 # ### processing
 
-# In[604]:
-
-
+# %%
 editor_uri = "https://n3-editor.herokuapp.com/n3/editor/?formula="
 md_string = ""
 
-
-# In[605]:
-
-
+# %%
 q_unionEls = sparql.prepareQuery(sparql_prefixes + """
     select ?element
     where {
@@ -112,13 +88,13 @@ def qname(r):
 
 def printDatatype(r, g):
     if type(r) == rdflib.term.URIRef:
-        return f"`{qname(r)}`"
+        return f"<span class='schema_param_datatype'>{qname(r)}</span>"
     else:
         # assume unionOf
         strs = []
         r_unionEls = g.query(q_unionEls, initBindings={'type': r})
         for el in r_unionEls:
-            strs.append(f"`{qname(el.element)}`")
+            strs.append(f"<span class='schema_param_datatype'>{qname(el.element)}</span>")
         str = " | ".join(strs)
         return f"({str})"
 
@@ -126,17 +102,14 @@ def createNote(r, g):
     note = f"`{r.predicate}`: "
     if r.type or r.description:
         if r.type:
-            note += f"{printDatatype(r.type, g)}\n"
+            note += f"{printDatatype(r.type, g)} "
         if r.description:
-            note += f"({r.description})"
+            note += f"<span class='schema_param_descr'>({r.description})</span>"
         return note.strip()
     else:
         return ""
 
-
-# In[606]:
-
-
+# %%
 for p in prefixes:
     # print(f"processing {p}")
 
@@ -147,7 +120,7 @@ for p in prefixes:
             ?s a fno:Function ;
                 fno:name ?name ;
                 fnon:tldr ?tldr ;
-                dcterms:comment ?comment ;
+                dcterms:description ?comment ;
             .
             filter(strstarts(str(?s), "$NAMESPACE"))            
         }
@@ -234,7 +207,7 @@ for p in prefixes:
 
                     # print(notes_list)
                     if len(notes_list) > 0:
-                        notes_str = ", ".join(notes_list)
+                        notes_str = "\n".join(notes_list)
                         note = notes_str
                 
                 # if none are found, use "standard" representation
@@ -293,24 +266,16 @@ for p in prefixes:
         md_string += "\n"
             
 
-
-# In[607]:
-
-
+# %%
 template = open('index_TEMPLATE.bs').read()
 with open('index.bs', 'w+') as f:
     string = template.replace('{{__CONTENT__}}', md_string)
     f.write(string)
 
-
-# In[608]:
-
-
+# %%
 # print(md_string)
 
-
-# In[ ]:
-
+# %%
 
 
 

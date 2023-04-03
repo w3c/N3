@@ -11,7 +11,7 @@
 math:cos a fno:Function ;
     vs:term_status  "testing" ;
     fnon:tldr "Calculates the object as the cosine value of the subject." ;
-    dcterms:comment """`true` if and only if `$o` is the cosine value of `$s`.""" ;
+    dcterms:description """`true` if and only if `$o` is the cosine value of `$s`.""" ;
     rdfs:seeAlso math:acos , math:cosh ;
     fno:example ( [ a fno:Test ;
                 dcterms:description """
@@ -42,7 +42,7 @@ Calculate the cosine of the value 0.
         a fno:Parameter ;
         fno:mode "?" ;
         fno:predicate "$s" ;
-        dcterms:comment "angle expressed in radians" ;
+        dcterms:description "angle expressed in radians" ;
         fno:type 
             [   rdf:type rdfs:Datatype ;
                 owl:unionOf ( xsd:decimal xsd:double xsd:float )

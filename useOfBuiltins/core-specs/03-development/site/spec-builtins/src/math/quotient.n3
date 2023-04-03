@@ -12,7 +12,7 @@ math:quotient a fno:Function ;
     vs:term_status  "testing" ;
     vs:moreinfo "it is unclear for me why exponentiation can work in reverse, but quotient can't be used to calculate products @phochste" ;
     fnon:tldr "Calculates the object by dividing the first number by the second number given in the subject list." ;
-    dcterms:comment """`true` if and only if `$o` is the result of dividing `$s.1` by `$s.2`.""" ;
+    dcterms:description """`true` if and only if `$o` is the result of dividing `$s.1` by `$s.2`.""" ;
     fno:example ( 
             [ a fno:Test ;
                 dcterms:description """

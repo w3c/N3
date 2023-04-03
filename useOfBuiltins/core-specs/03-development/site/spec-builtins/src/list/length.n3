@@ -10,7 +10,7 @@
 list:length a fno:Function ;
     vs:term_status  "testing" ;
     fnon:tldr "Gets the length of the subject list as object." ;
-    dcterms:comment """`true` if and only if `$s` is a list and `$o` is the integer length of that list.""" ;
+    dcterms:description """`true` if and only if `$s` is a list and `$o` is the integer length of that list.""" ;
     fno:example ( 
               [ a fno:Test ;
                 dcterms:description """

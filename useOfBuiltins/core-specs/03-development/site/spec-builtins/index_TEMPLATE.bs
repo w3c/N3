@@ -48,10 +48,16 @@ table th.last {
 }
 .schema_where {
 	margin-top: -15px;
-	font-size: 0.9em;
 }
 .schema_datatypes {
 	margin-left: 25px;
+}
+.schema_param_descr {
+	font-size: 0.9em
+}
+.schema_param_datatype {
+	font-size: 0.95em;
+	font-style: italic;
 }
 </style>
 
@@ -263,11 +269,6 @@ Builtin Evaluation {#builtinevaluation}
 				In case these constraints are not met, the <a>builtin statement</a> will evaluate to false.
 			</p>
 
-
-
-Online Tutorial for Semantic Web Reasoning With N3 {#OnlineTutorial}
-=====================
-[Online Tutorial for Semantic Web Reasoning With N3](https://n3.restdesc.org/n3/)
 
 Builtins {#builtins}
 =====================

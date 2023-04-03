@@ -11,7 +11,7 @@
 string:equalIgnoringCase a fno:Function ;
     vs:term_status  "testing" ;
     fnon:tldr "Checks whether the subject string is the same as the object string, ignoring differences between lowercase and uppercase." ;
-    dcterms:comment "`true` if and only if `$s` is the same string as `$o` when ignoring case differences." ;
+    dcterms:description "`true` if and only if `$s` is the same string as `$o` when ignoring case differences." ;
     fno:example ( 
               [ a fno:Test ;
                 dcterms:description """

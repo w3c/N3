@@ -10,7 +10,7 @@
 log:langlit a fno:Function ;
     vs:term_status  "testing" ;
     fnon:tldr "Creates a language-tagged literal as object, based on the string value and language tag (see [BCP47](https://tools.ietf.org/html/bcp47)) in the subject list." ;
-    dcterms:comment """
+    dcterms:description """
 `true` if and only if `$o` is a language-tagged literal with string value corresponding to `$s.1` and language tag corresponding to `$s.2`.
 `$s.2` should be a string in the form of a [BCP47](https://tools.ietf.org/html/bcp47) language tag.""" ;
     rdfs:seeAlso log:dtlit ;

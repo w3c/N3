@@ -12,7 +12,7 @@ math:acos a fno:Function ;
     fnon:tldr "Calculates the object as the arc cosine value of the subject." ;
     vs:moreinfo "is acos not just syntactic sugar for cos, eye, jen3 and cwm can use cos in both directions @phochste" ;
     vs:term_status  "testing" ;
-    dcterms:comment "`true` if and only if `$o` is the arc cosine value of `$s`." ;
+    dcterms:description "`true` if and only if `$o` is the arc cosine value of `$s`." ;
     rdfs:seeAlso math:cos , math:cosh ;
     fno:example ( [ a fno:Test ;
                 dcterms:description """

@@ -12,7 +12,7 @@ math:notGreaterThan a fno:Function ;
     vs:term_status  "testing" ;
     fnon:tldr """Checks whether the subject is a number that is not greater than the object.
 You can use this as an equivalent of a lessThanOrEqual operator.""" ;
-    dcterms:comment """`true` if and only if `$s` is a number that is not greater than `$o`.""" ;
+    dcterms:description """`true` if and only if `$s` is a number that is not greater than `$o`.""" ;
     rdfs:seeAlso math:greaterThan ;
     fno:example ( [ a fno:Test ;
                 dcterms:description """

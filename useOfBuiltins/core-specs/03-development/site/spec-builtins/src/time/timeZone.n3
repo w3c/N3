@@ -11,7 +11,7 @@
 time:timeZone a fno:Function ;
     vs:term_status  "testing" ;
     fnon:tldr """Gets as object the trailing timezone offset of the subject xsd:dateTime (e.g., "-05:00").""" ;
-    dcterms:comment """`true` if and only if `$o` is the timezone offset of `$s`.""" ;
+    dcterms:description """`true` if and only if `$o` is the timezone offset of `$s`.""" ;
     fno:example ( 
               [ a fno:Test , fno:TestSkip ;
                 dcterms:description """

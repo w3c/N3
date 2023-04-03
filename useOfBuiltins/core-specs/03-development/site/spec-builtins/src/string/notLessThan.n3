@@ -12,7 +12,7 @@ string:notLessThan a fno:Function ;
     vs:term_status  "testing" ;
     fnon:tldr """Checks whether the subject string is not less than the object string, according to Unicode code order.
 You can use this as an equivalent of a greaterThanOrEqual operator.""" ;
-    dcterms:comment "`true` if and only if `$s` is not less than `$o` as per the Unicode code order." ;
+    dcterms:description "`true` if and only if `$s` is not less than `$o` as per the Unicode code order." ;
     fno:example ( 
               [ a fno:Test ;
                 dcterms:description """

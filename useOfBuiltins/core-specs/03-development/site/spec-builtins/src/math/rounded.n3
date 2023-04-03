@@ -11,7 +11,7 @@
 math:rounded a fno:Function ;
     vs:term_status  "testing" ;
     fnon:tldr "Calculates the object as the integer that is closest to the subject number." ;
-    dcterms:comment """`true` if and only if `$o` is the integer that is closest to `$s`.
+    dcterms:description """`true` if and only if `$o` is the integer that is closest to `$s`.
 If there are two such numbers, then the one closest to positive infinity is returned.
 """ ;
     fno:example ( [ a fno:Test ;

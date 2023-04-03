@@ -10,7 +10,7 @@
 list:iterate a fno:Function ;
     vs:term_status  "testing" ;
     fnon:tldr "Iterates over each member of the subject list, getting their index/value pairs as the object." ;
-    dcterms:comment """`true` if and only if `$s` is a list and `$o` is a list with two elements: 
+    dcterms:description """`true` if and only if `$s` is a list and `$o` is a list with two elements: 
 `$o.1` is a valid index in list `$s` (index starts at 0), and `$o.2` is found at that index in list `$s`.""" ;
     fno:example  (
             [ a fno:Test ;

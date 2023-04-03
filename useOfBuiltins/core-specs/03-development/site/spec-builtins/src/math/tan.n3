@@ -11,7 +11,7 @@
 math:tan a fno:Function ;
     vs:term_status  "testing" ;
     fnon:tldr "Calculates the object as the tangent value of the subject." ;
-    dcterms:comment """`true` if and only if `$o` is the tangent value of `$s`.""" ;
+    dcterms:description """`true` if and only if `$o` is the tangent value of `$s`.""" ;
     rdfs:seeAlso math:atan , math:tanh ;
     fno:example ( [ a fno:Test ;
                 dcterms:description """
@@ -44,7 +44,7 @@ Calculate the tangent of the value 0.7853981633974483 .
         a fno:Parameter ;
         fno:mode "?" ;
         fno:predicate "$s" ;
-        dcterms:comment "angle expressed in radians" ;
+        dcterms:description "angle expressed in radians" ;
         fno:type 
             [   rdf:type rdfs:Datatype ;
                 owl:unionOf ( xsd:decimal xsd:double xsd:float )

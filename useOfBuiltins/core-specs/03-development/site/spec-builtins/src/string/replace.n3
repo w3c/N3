@@ -11,7 +11,7 @@
 string:replace a fno:Function ;
     vs:term_status  "testing" ;
     fnon:tldr "Calculates the object as the result of, given the strings in the subject list, replacing all occurrences of the second string in the first string with the third string." ;
-    dcterms:comment """`true` if and only if `$o` is the result of replacing all occurrences of `$s.2` in `$s.1` with `$s.3`""" ;
+    dcterms:description """`true` if and only if `$o` is the result of replacing all occurrences of `$s.2` in `$s.1` with `$s.3`""" ;
     fno:example ( 
               [ a fno:Test ;
                 dcterms:description """

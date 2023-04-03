@@ -10,7 +10,7 @@
 log:outputString a fno:Function ;
     vs:term_status  "testing" ;
     fnon:tldr "The N3 reasoner will print the object strings in the order of the subject keys, instead of printing the derivations or deductive closure. This may require a reasoner flag to be set." ;
-    dcterms:comment """The concrete semantics of this builtin (e.g., which N3 resource types are supported) will depend on the N3 reasoner.""" ;
+    dcterms:description """The concrete semantics of this builtin (e.g., which N3 resource types are supported) will depend on the N3 reasoner.""" ;
     fno:example ( [ a fno:Test , fno:TestSkip ;
                 dcterms:description """
 Print the two string \"This is the first line\n\" , \"This is the second line\n\" to the output.

@@ -15,7 +15,7 @@ log:notEqualTo a fno:Function ;
     vs:moreinfo "we need to document that unbound variables are automatic false. (phochste)" ;
     vs:moreinfo "this makes notEqualTo not the exact complement of equalTo. (phochste)" ;
     fnon:tldr "Checks whether the subject and object N3 resources are _not_ the same." ;
-    dcterms:comment """`true` if and only if `$s log:equalTo $o` is false.""" ;
+    dcterms:description """`true` if and only if `$s log:equalTo $o` is false.""" ;
     rdfs:seeAlso log:equalTo ;
     fno:example ( 
             [ a fno:Test ;

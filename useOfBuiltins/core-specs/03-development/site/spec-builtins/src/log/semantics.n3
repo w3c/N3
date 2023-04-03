@@ -10,7 +10,7 @@
 log:semantics a fno:Function ;
     vs:term_status  "testing" ;
     fnon:tldr "Gets as object the quoted graph that results from parsing an online (N3) string, found by dereferencing the subject IRI." ;
-    dcterms:comment """`true` if and only if `$o` is a quoted graph that results from parsing the string that results from dereferencing `$s`.""" ;
+    dcterms:description """`true` if and only if `$o` is a quoted graph that results from parsing the string that results from dereferencing `$s`.""" ;
     fnon:details """The log:semantics of a document is the formula achieved by parsing the representation of the document.
 For a document in Notation3, `log:semantics` is the `log:parsedAsN3` of the `log:content` of the document.
 For a document in another RDF syntax, it is parsed according to the appropriate specification to yield an RDF formula (a subclass of N3 `log:Formula`).

@@ -11,7 +11,7 @@
 string:scrape a fno:Function ;
     vs:term_status  "testing" ;
     fnon:tldr "Calculates the object as the first matching group when, given the subject list, matching the second string as regular expression (with exactly 1 group) against the first string." ;
-    dcterms:comment """`true` if and only if `$o` is the first matching group when matching `$s.2` as a regular expression against `$s.1`""" ;
+    dcterms:description """`true` if and only if `$o` is the first matching group when matching `$s.2` as a regular expression against `$s.1`""" ;
     fno:example (
               [ a fno:Test ;
                 dcterms:description """
@@ -52,7 +52,7 @@ Extract from the string "https://w3c.github.io/N3/spec/" the last path element u
            fno:mode "+" ;
            fno:type xsd:string 
        ] [
-           dcterms:comment "regular expression with 1 group" ;
+           dcterms:description "regular expression with 1 group" ;
            fno:predicate "$s.2" ;
            fno:mode "+" ;
            fno:type xsd:string 

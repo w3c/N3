@@ -11,7 +11,7 @@
 string:endsWith a fno:Function ;
     vs:term_status  "testing" ;
     fnon:tldr "Checks whether the subject string ends with the object string." ;
-    dcterms:comment "`true` if and only if `$s` ends with `$o`." ;
+    dcterms:description "`true` if and only if `$s` ends with `$o`." ;
     fno:example ( 
               [ a fno:Test ;
                 dcterms:description """

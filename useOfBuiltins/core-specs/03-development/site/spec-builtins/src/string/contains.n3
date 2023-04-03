@@ -11,7 +11,7 @@
 string:contains a fno:Function ;
     vs:term_status  "testing" ;
     fnon:tldr "Checks whether the subject string contains the object string." ;
-    dcterms:comment "`true` if and only if `$s` contains `$o`." ;
+    dcterms:description "`true` if and only if `$s` contains `$o`." ;
     fno:example ( 
               [ a fno:Test ;
                 dcterms:description """

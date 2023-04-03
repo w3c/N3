@@ -11,7 +11,7 @@
 math:absoluteValue a fno:Function ;
     vs:term_status  "testing" ;
     fnon:tldr "Calculates as object the absolute value of the subject." ;
-    dcterms:comment "`true` if and only if `$o` is the absolute value of `$s`." ;
+    dcterms:description "`true` if and only if `$o` is the absolute value of `$s`." ;
     fno:example ( [ a fno:Test ;
                 dcterms:description """
 Calculate the absolute value of the value -2.

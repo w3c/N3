@@ -12,7 +12,7 @@ math:exponentiation a fno:Function ;
     vs:term_status  "testing" ;
     fnon:tldr """Calculates the object as the result of raising the first number to the power of the second number in the subject list. 
 You can also use this to calculate the logarithm of the object, with as base the first number of the subject list (see examples).""" ;
-    dcterms:comment """`true` if and only if `$o` is the result of raising `$s.1` to the power of `$s.2`""" ;
+    dcterms:description """`true` if and only if `$o` is the result of raising `$s.1` to the power of `$s.2`""" ;
     fno:example ( 
         [ a fno:Test ;
                 dcterms:description """

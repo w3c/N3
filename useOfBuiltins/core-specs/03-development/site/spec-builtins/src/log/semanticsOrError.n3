@@ -10,7 +10,7 @@
 log:semanticsOrError a fno:Function ;
     vs:term_status  "testing" ;
     fnon:tldr "Either gets as object the quoted graph that results from parsing an online (N3) string, found by dereferencing the subject IRI; or an error message that explains what went wrong." ;
-    dcterms:comment """`true` if and only if (a) `$o` is a quoted graph that results from parsing the string that results from dereferencing `$s`; or (b) an error message explaining what went wrong.""" ;
+    dcterms:description """`true` if and only if (a) `$o` is a quoted graph that results from parsing the string that results from dereferencing `$s`; or (b) an error message explaining what went wrong.""" ;
     fno:example ( [ a fno:Test , fno:TestSkip ;
                 dcterms:description """
 Read the contents a non existing `<error.data>` and parse it as Notation3 (which of course will fail).

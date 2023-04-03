@@ -12,7 +12,7 @@ string:matches a fno:Function ;
     vs:term_status  "testing" ;
     fnon:tldr """Checks whether the subject string matches the object regular expression.
 The regular expression follows the perl, python style.""" ;
-    dcterms:comment """`true` if and only if string `$s` matches the regular expression `$o`""" ;
+    dcterms:description """`true` if and only if string `$s` matches the regular expression `$o`""" ;
     fno:example ( 
               [ a fno:Test ;
                 dcterms:description """
@@ -51,7 +51,7 @@ Checks whether the string "hello world!" matches the regular expression ".*(l)+o
        fno:type xsd:string
     ] [
        a fno:Parameter ;
-       dcterms:comment "regular expression in perl, python style" ;
+       dcterms:description "regular expression in perl, python style" ;
        fno:predicate "$o" ;
        fno:mode "+" ;
        fnon:position fnon:object ;

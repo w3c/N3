@@ -10,7 +10,7 @@
 log:conclusion a fno:Function ;
     vs:term_status  "testing" ;
     fnon:tldr "Gets all possible conclusions from the subject quoted graph, including rule inferences (deductive closure), as the object quoted graph." ;
-    dcterms:comment """`true` if and only if `$o` is the set of conclusions which can be drawn from `$s` (deductive closure), 
+    dcterms:description """`true` if and only if `$o` is the set of conclusions which can be drawn from `$s` (deductive closure), 
 by applying any rules it contains to the data it contains.""" ;
     vs:moreinfo "Example below not working in eye (works in jen3) (@william-vw)" ;
     fno:example ( 

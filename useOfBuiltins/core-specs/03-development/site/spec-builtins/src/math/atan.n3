@@ -12,7 +12,7 @@ math:atan a fno:Function ;
     vs:term_status  "testing" ;
     vs:moreinfo "is atan not just syntactic sugar for tan, eye, jen3 and cwm can use sin in both directions @phochste" ;
     fnon:tldr "Calculates the object as the arc tangent value of the subject." ;
-    dcterms:comment "`true` if and only if `$o` is the arc tangent value of `$s`." ;
+    dcterms:description "`true` if and only if `$o` is the arc tangent value of `$s`." ;
     rdfs:seeAlso math:tan , math:tanh ;
     fno:example ( [ a fno:Test ;
                 dcterms:description """

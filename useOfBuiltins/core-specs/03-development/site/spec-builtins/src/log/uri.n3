@@ -10,7 +10,7 @@
 log:uri a fno:Function ;
     vs:term_status  "testing" ;
     fnon:tldr "Gets as object the string representation of the subject URI." ;
-    dcterms:comment "`true` if and only if `$o` is the string representation of `$s`." ;
+    dcterms:description "`true` if and only if `$o` is the string representation of `$s`." ;
     fnon:details """This allows one to look at the actual string of the URI which identifies this.
 This is a level breaker, breaking the rule of not looking inside a URI.""" ;
     fno:example ( 

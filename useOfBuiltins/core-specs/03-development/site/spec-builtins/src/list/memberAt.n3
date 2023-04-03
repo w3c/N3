@@ -10,9 +10,9 @@
 list:memberAt a fno:Function ;
     vs:term_status  "testing" ;
     fnon:tldr "Gets the member of the subject list at the given subject index as object (index starts at 0)." ;
-    vs:moreinfo """The dcterms:comment seems wrong. Jen, eye nor eye support the negative index. Only eye supports the s_2 variable (@phochste).
+    vs:moreinfo """The dcterms:description seems wrong. Jen, eye nor eye support the negative index. Only eye supports the s_2 variable (@phochste).
 Fixed the description (@william-vw).""" ;
-    dcterms:comment """`true` if and only if `$s.1` is a list, `$s.2` is a valid index in list `$s.1`, and `$o` is found at that index in the list.""" ;
+    dcterms:description """`true` if and only if `$s.1` is a list, `$s.2` is a valid index in list `$s.1`, and `$o` is found at that index in the list.""" ;
     fno:example ( 
             [ a fno:Test ;
                 dcterms:description """

@@ -11,7 +11,7 @@
 string:concatenation a fno:Function ;
     vs:term_status  "testing" ;
     fnon:tldr "Concatenates the strings from the subject list into a single string as object." ;
-    dcterms:comment """`true` if and only if the string concatenation of `$s.i` equals `$o`.""" ;
+    dcterms:description """`true` if and only if the string concatenation of `$s.i` equals `$o`.""" ;
     fno:example ( 
               [ a fno:Test ;
                 dcterms:description """

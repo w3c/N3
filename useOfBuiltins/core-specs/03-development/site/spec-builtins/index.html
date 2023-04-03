@@ -1521,10 +1521,16 @@ table th.last {
 }
 .schema_where {
 	margin-top: -15px;
-	font-size: 0.9em;
 }
 .schema_datatypes {
 	margin-left: 25px;
+}
+.schema_param_descr {
+	font-size: 0.9em
+}
+.schema_param_datatype {
+	font-size: 0.95em;
+	font-style: italic;
 }
 </style>
 <style>/* style-autolinks */
@@ -1985,110 +1991,109 @@ Parts of this work may be from another specification document.  If so, those par
      <ol class="toc">
       <li><a href="#builtintheorybox"><span class="secno">4.1</span> <span class="content">Builtin theory box</span></a>
      </ol>
-    <li><a href="#OnlineTutorial"><span class="secno">5</span> <span class="content">Online Tutorial for Semantic Web Reasoning With N3</span></a>
     <li>
-     <a href="#builtins"><span class="secno">6</span> <span class="content">Builtins</span></a>
+     <a href="#builtins"><span class="secno">5</span> <span class="content">Builtins</span></a>
      <ol class="toc">
       <li>
-       <a href="#crypto"><span class="secno">6.1</span> <span class="content">crypto</span></a>
+       <a href="#crypto"><span class="secno">5.1</span> <span class="content">crypto</span></a>
        <ol class="toc">
-        <li><a href="#sha"><span class="secno">6.1.1</span> <span class="content">crypto:sha</span></a>
+        <li><a href="#sha"><span class="secno">5.1.1</span> <span class="content">crypto:sha</span></a>
        </ol>
       <li>
-       <a href="#math"><span class="secno">6.2</span> <span class="content">math</span></a>
+       <a href="#math"><span class="secno">5.2</span> <span class="content">math</span></a>
        <ol class="toc">
-        <li><a href="#product"><span class="secno">6.2.1</span> <span class="content">math:product</span></a>
-        <li><a href="#notGreaterThan"><span class="secno">6.2.2</span> <span class="content">math:notGreaterThan</span></a>
-        <li><a href="#absoluteValue"><span class="secno">6.2.3</span> <span class="content">math:absoluteValue</span></a>
-        <li><a href="#greaterThan"><span class="secno">6.2.4</span> <span class="content">math:greaterThan</span></a>
-        <li><a href="#notLessThan"><span class="secno">6.2.5</span> <span class="content">math:notLessThan</span></a>
-        <li><a href="#sin"><span class="secno">6.2.6</span> <span class="content">math:sin</span></a>
-        <li><a href="#lessThan"><span class="secno">6.2.7</span> <span class="content">math:lessThan</span></a>
-        <li><a href="#rounded"><span class="secno">6.2.8</span> <span class="content">math:rounded</span></a>
-        <li><a href="#atan"><span class="secno">6.2.9</span> <span class="content">math:atan</span></a>
-        <li><a href="#acos"><span class="secno">6.2.10</span> <span class="content">math:acos</span></a>
-        <li><a href="#cosh"><span class="secno">6.2.11</span> <span class="content">math:cosh</span></a>
-        <li><a href="#negation"><span class="secno">6.2.12</span> <span class="content">math:negation</span></a>
-        <li><a href="#sinh"><span class="secno">6.2.13</span> <span class="content">math:sinh</span></a>
-        <li><a href="#sum"><span class="secno">6.2.14</span> <span class="content">math:sum</span></a>
-        <li><a href="#difference"><span class="secno">6.2.15</span> <span class="content">math:difference</span></a>
-        <li><a href="#tanh"><span class="secno">6.2.16</span> <span class="content">math:tanh</span></a>
-        <li><a href="#exponentiation"><span class="secno">6.2.17</span> <span class="content">math:exponentiation</span></a>
-        <li><a href="#notEqualTo"><span class="secno">6.2.18</span> <span class="content">math:notEqualTo</span></a>
-        <li><a href="#quotient"><span class="secno">6.2.19</span> <span class="content">math:quotient</span></a>
-        <li><a href="#equalTo"><span class="secno">6.2.20</span> <span class="content">math:equalTo</span></a>
-        <li><a href="#cos"><span class="secno">6.2.21</span> <span class="content">math:cos</span></a>
-        <li><a href="#tan"><span class="secno">6.2.22</span> <span class="content">math:tan</span></a>
-        <li><a href="#remainder"><span class="secno">6.2.23</span> <span class="content">math:remainder</span></a>
-        <li><a href="#degrees"><span class="secno">6.2.24</span> <span class="content">math:degrees</span></a>
-        <li><a href="#asin"><span class="secno">6.2.25</span> <span class="content">math:asin</span></a>
+        <li><a href="#product"><span class="secno">5.2.1</span> <span class="content">math:product</span></a>
+        <li><a href="#notGreaterThan"><span class="secno">5.2.2</span> <span class="content">math:notGreaterThan</span></a>
+        <li><a href="#absoluteValue"><span class="secno">5.2.3</span> <span class="content">math:absoluteValue</span></a>
+        <li><a href="#greaterThan"><span class="secno">5.2.4</span> <span class="content">math:greaterThan</span></a>
+        <li><a href="#notLessThan"><span class="secno">5.2.5</span> <span class="content">math:notLessThan</span></a>
+        <li><a href="#sin"><span class="secno">5.2.6</span> <span class="content">math:sin</span></a>
+        <li><a href="#lessThan"><span class="secno">5.2.7</span> <span class="content">math:lessThan</span></a>
+        <li><a href="#rounded"><span class="secno">5.2.8</span> <span class="content">math:rounded</span></a>
+        <li><a href="#atan"><span class="secno">5.2.9</span> <span class="content">math:atan</span></a>
+        <li><a href="#acos"><span class="secno">5.2.10</span> <span class="content">math:acos</span></a>
+        <li><a href="#cosh"><span class="secno">5.2.11</span> <span class="content">math:cosh</span></a>
+        <li><a href="#negation"><span class="secno">5.2.12</span> <span class="content">math:negation</span></a>
+        <li><a href="#sinh"><span class="secno">5.2.13</span> <span class="content">math:sinh</span></a>
+        <li><a href="#sum"><span class="secno">5.2.14</span> <span class="content">math:sum</span></a>
+        <li><a href="#difference"><span class="secno">5.2.15</span> <span class="content">math:difference</span></a>
+        <li><a href="#tanh"><span class="secno">5.2.16</span> <span class="content">math:tanh</span></a>
+        <li><a href="#exponentiation"><span class="secno">5.2.17</span> <span class="content">math:exponentiation</span></a>
+        <li><a href="#notEqualTo"><span class="secno">5.2.18</span> <span class="content">math:notEqualTo</span></a>
+        <li><a href="#quotient"><span class="secno">5.2.19</span> <span class="content">math:quotient</span></a>
+        <li><a href="#equalTo"><span class="secno">5.2.20</span> <span class="content">math:equalTo</span></a>
+        <li><a href="#cos"><span class="secno">5.2.21</span> <span class="content">math:cos</span></a>
+        <li><a href="#tan"><span class="secno">5.2.22</span> <span class="content">math:tan</span></a>
+        <li><a href="#remainder"><span class="secno">5.2.23</span> <span class="content">math:remainder</span></a>
+        <li><a href="#degrees"><span class="secno">5.2.24</span> <span class="content">math:degrees</span></a>
+        <li><a href="#asin"><span class="secno">5.2.25</span> <span class="content">math:asin</span></a>
        </ol>
       <li>
-       <a href="#time"><span class="secno">6.3</span> <span class="content">time</span></a>
+       <a href="#time"><span class="secno">5.3</span> <span class="content">time</span></a>
        <ol class="toc">
-        <li><a href="#minute"><span class="secno">6.3.1</span> <span class="content">time:minute</span></a>
-        <li><a href="#day"><span class="secno">6.3.2</span> <span class="content">time:day</span></a>
-        <li><a href="#month"><span class="secno">6.3.3</span> <span class="content">time:month</span></a>
-        <li><a href="#timeZone"><span class="secno">6.3.4</span> <span class="content">time:timeZone</span></a>
-        <li><a href="#year"><span class="secno">6.3.5</span> <span class="content">time:year</span></a>
-        <li><a href="#second"><span class="secno">6.3.6</span> <span class="content">time:second</span></a>
+        <li><a href="#minute"><span class="secno">5.3.1</span> <span class="content">time:minute</span></a>
+        <li><a href="#day"><span class="secno">5.3.2</span> <span class="content">time:day</span></a>
+        <li><a href="#month"><span class="secno">5.3.3</span> <span class="content">time:month</span></a>
+        <li><a href="#timeZone"><span class="secno">5.3.4</span> <span class="content">time:timeZone</span></a>
+        <li><a href="#year"><span class="secno">5.3.5</span> <span class="content">time:year</span></a>
+        <li><a href="#second"><span class="secno">5.3.6</span> <span class="content">time:second</span></a>
        </ol>
       <li>
-       <a href="#list"><span class="secno">6.4</span> <span class="content">list</span></a>
+       <a href="#list"><span class="secno">5.4</span> <span class="content">list</span></a>
        <ol class="toc">
-        <li><a href="#last"><span class="secno">6.4.1</span> <span class="content">list:last</span></a>
-        <li><a href="#first"><span class="secno">6.4.2</span> <span class="content">list:first</span></a>
-        <li><a href="#append"><span class="secno">6.4.3</span> <span class="content">list:append</span></a>
-        <li><a href="#memberAt"><span class="secno">6.4.4</span> <span class="content">list:memberAt</span></a>
-        <li><a href="#iterate"><span class="secno">6.4.5</span> <span class="content">list:iterate</span></a>
-        <li><a href="#member"><span class="secno">6.4.6</span> <span class="content">list:member</span></a>
-        <li><a href="#in"><span class="secno">6.4.7</span> <span class="content">list:in</span></a>
-        <li><a href="#remove"><span class="secno">6.4.8</span> <span class="content">list:remove</span></a>
-        <li><a href="#length"><span class="secno">6.4.9</span> <span class="content">list:length</span></a>
+        <li><a href="#last"><span class="secno">5.4.1</span> <span class="content">list:last</span></a>
+        <li><a href="#first"><span class="secno">5.4.2</span> <span class="content">list:first</span></a>
+        <li><a href="#append"><span class="secno">5.4.3</span> <span class="content">list:append</span></a>
+        <li><a href="#memberAt"><span class="secno">5.4.4</span> <span class="content">list:memberAt</span></a>
+        <li><a href="#iterate"><span class="secno">5.4.5</span> <span class="content">list:iterate</span></a>
+        <li><a href="#member"><span class="secno">5.4.6</span> <span class="content">list:member</span></a>
+        <li><a href="#in"><span class="secno">5.4.7</span> <span class="content">list:in</span></a>
+        <li><a href="#remove"><span class="secno">5.4.8</span> <span class="content">list:remove</span></a>
+        <li><a href="#length"><span class="secno">5.4.9</span> <span class="content">list:length</span></a>
        </ol>
       <li>
-       <a href="#log"><span class="secno">6.5</span> <span class="content">log</span></a>
+       <a href="#log"><span class="secno">5.5</span> <span class="content">log</span></a>
        <ol class="toc">
-        <li><a href="#uri"><span class="secno">6.5.1</span> <span class="content">log:uri</span></a>
-        <li><a href="#rawType"><span class="secno">6.5.2</span> <span class="content">log:rawType</span></a>
-        <li><a href="#conclusion"><span class="secno">6.5.3</span> <span class="content">log:conclusion</span></a>
-        <li><a href="#content"><span class="secno">6.5.4</span> <span class="content">log:content</span></a>
-        <li><a href="#langlit"><span class="secno">6.5.5</span> <span class="content">log:langlit</span></a>
-        <li><a href="#forAllIn"><span class="secno">6.5.6</span> <span class="content">log:forAllIn</span></a>
-        <li><a href="#parsedAsN3"><span class="secno">6.5.7</span> <span class="content">log:parsedAsN3</span></a>
-        <li><a href="#conjunction"><span class="secno">6.5.8</span> <span class="content">log:conjunction</span></a>
-        <li><a href="#notIncludes"><span class="secno">6.5.9</span> <span class="content">log:notIncludes</span></a>
-        <li><a href="#notEqualTo①"><span class="secno">6.5.10</span> <span class="content">log:notEqualTo</span></a>
-        <li><a href="#skolem"><span class="secno">6.5.11</span> <span class="content">log:skolem</span></a>
-        <li><a href="#dtlit"><span class="secno">6.5.12</span> <span class="content">log:dtlit</span></a>
-        <li><a href="#includes"><span class="secno">6.5.13</span> <span class="content">log:includes</span></a>
-        <li><a href="#equalTo①"><span class="secno">6.5.14</span> <span class="content">log:equalTo</span></a>
-        <li><a href="#outputString"><span class="secno">6.5.15</span> <span class="content">log:outputString</span></a>
-        <li><a href="#semanticsOrError"><span class="secno">6.5.16</span> <span class="content">log:semanticsOrError</span></a>
-        <li><a href="#semantics"><span class="secno">6.5.17</span> <span class="content">log:semantics</span></a>
+        <li><a href="#uri"><span class="secno">5.5.1</span> <span class="content">log:uri</span></a>
+        <li><a href="#rawType"><span class="secno">5.5.2</span> <span class="content">log:rawType</span></a>
+        <li><a href="#conclusion"><span class="secno">5.5.3</span> <span class="content">log:conclusion</span></a>
+        <li><a href="#content"><span class="secno">5.5.4</span> <span class="content">log:content</span></a>
+        <li><a href="#langlit"><span class="secno">5.5.5</span> <span class="content">log:langlit</span></a>
+        <li><a href="#forAllIn"><span class="secno">5.5.6</span> <span class="content">log:forAllIn</span></a>
+        <li><a href="#parsedAsN3"><span class="secno">5.5.7</span> <span class="content">log:parsedAsN3</span></a>
+        <li><a href="#conjunction"><span class="secno">5.5.8</span> <span class="content">log:conjunction</span></a>
+        <li><a href="#notIncludes"><span class="secno">5.5.9</span> <span class="content">log:notIncludes</span></a>
+        <li><a href="#notEqualTo①"><span class="secno">5.5.10</span> <span class="content">log:notEqualTo</span></a>
+        <li><a href="#skolem"><span class="secno">5.5.11</span> <span class="content">log:skolem</span></a>
+        <li><a href="#dtlit"><span class="secno">5.5.12</span> <span class="content">log:dtlit</span></a>
+        <li><a href="#includes"><span class="secno">5.5.13</span> <span class="content">log:includes</span></a>
+        <li><a href="#equalTo①"><span class="secno">5.5.14</span> <span class="content">log:equalTo</span></a>
+        <li><a href="#outputString"><span class="secno">5.5.15</span> <span class="content">log:outputString</span></a>
+        <li><a href="#semanticsOrError"><span class="secno">5.5.16</span> <span class="content">log:semanticsOrError</span></a>
+        <li><a href="#semantics"><span class="secno">5.5.17</span> <span class="content">log:semantics</span></a>
        </ol>
       <li>
-       <a href="#string"><span class="secno">6.6</span> <span class="content">string</span></a>
+       <a href="#string"><span class="secno">5.6</span> <span class="content">string</span></a>
        <ol class="toc">
-        <li><a href="#notGreaterThan①"><span class="secno">6.6.1</span> <span class="content">string:notGreaterThan</span></a>
-        <li><a href="#notEqualIgnoringCase"><span class="secno">6.6.2</span> <span class="content">string:notEqualIgnoringCase</span></a>
-        <li><a href="#contains"><span class="secno">6.6.3</span> <span class="content">string:contains</span></a>
-        <li><a href="#greaterThan①"><span class="secno">6.6.4</span> <span class="content">string:greaterThan</span></a>
-        <li><a href="#containsIgnoringCase"><span class="secno">6.6.5</span> <span class="content">string:containsIgnoringCase</span></a>
-        <li><a href="#notLessThan①"><span class="secno">6.6.6</span> <span class="content">string:notLessThan</span></a>
-        <li><a href="#endsWith"><span class="secno">6.6.7</span> <span class="content">string:endsWith</span></a>
-        <li><a href="#scrape"><span class="secno">6.6.8</span> <span class="content">string:scrape</span></a>
-        <li><a href="#replace"><span class="secno">6.6.9</span> <span class="content">string:replace</span></a>
-        <li><a href="#lessThan①"><span class="secno">6.6.10</span> <span class="content">string:lessThan</span></a>
-        <li><a href="#concatenation"><span class="secno">6.6.11</span> <span class="content">string:concatenation</span></a>
-        <li><a href="#equalIgnoringCase"><span class="secno">6.6.12</span> <span class="content">string:equalIgnoringCase</span></a>
-        <li><a href="#startsWith"><span class="secno">6.6.13</span> <span class="content">string:startsWith</span></a>
-        <li><a href="#matches"><span class="secno">6.6.14</span> <span class="content">string:matches</span></a>
-        <li><a href="#notMatches"><span class="secno">6.6.15</span> <span class="content">string:notMatches</span></a>
-        <li><a href="#format"><span class="secno">6.6.16</span> <span class="content">string:format</span></a>
+        <li><a href="#notGreaterThan①"><span class="secno">5.6.1</span> <span class="content">string:notGreaterThan</span></a>
+        <li><a href="#notEqualIgnoringCase"><span class="secno">5.6.2</span> <span class="content">string:notEqualIgnoringCase</span></a>
+        <li><a href="#contains"><span class="secno">5.6.3</span> <span class="content">string:contains</span></a>
+        <li><a href="#greaterThan①"><span class="secno">5.6.4</span> <span class="content">string:greaterThan</span></a>
+        <li><a href="#containsIgnoringCase"><span class="secno">5.6.5</span> <span class="content">string:containsIgnoringCase</span></a>
+        <li><a href="#notLessThan①"><span class="secno">5.6.6</span> <span class="content">string:notLessThan</span></a>
+        <li><a href="#endsWith"><span class="secno">5.6.7</span> <span class="content">string:endsWith</span></a>
+        <li><a href="#scrape"><span class="secno">5.6.8</span> <span class="content">string:scrape</span></a>
+        <li><a href="#replace"><span class="secno">5.6.9</span> <span class="content">string:replace</span></a>
+        <li><a href="#lessThan①"><span class="secno">5.6.10</span> <span class="content">string:lessThan</span></a>
+        <li><a href="#concatenation"><span class="secno">5.6.11</span> <span class="content">string:concatenation</span></a>
+        <li><a href="#equalIgnoringCase"><span class="secno">5.6.12</span> <span class="content">string:equalIgnoringCase</span></a>
+        <li><a href="#startsWith"><span class="secno">5.6.13</span> <span class="content">string:startsWith</span></a>
+        <li><a href="#matches"><span class="secno">5.6.14</span> <span class="content">string:matches</span></a>
+        <li><a href="#notMatches"><span class="secno">5.6.15</span> <span class="content">string:notMatches</span></a>
+        <li><a href="#format"><span class="secno">5.6.16</span> <span class="content">string:format</span></a>
        </ol>
      </ol>
-    <li><a href="#acknowledgements"><span class="secno">7</span> <span class="content">Acknowledgements</span></a>
+    <li><a href="#acknowledgements"><span class="secno">6</span> <span class="content">Acknowledgements</span></a>
    </ol>
   </nav>
   <main>
@@ -2231,49 +2236,23 @@ Parts of this work may be from another specification document.  If so, those par
 				only limited utility (as other builtins can be used instead to subtract 1 from 6). </p>
    <p>These constraints are encoded in terms of <a data-link-type="dfn">argument modes</a> and <a data-link-type="dfn">domain datatypes</a> in the respective builtin definitions.
 				In case these constraints are not met, the <a data-link-type="dfn">builtin statement</a> will evaluate to false. </p>
-   <h2 class="heading settled" data-level="5" id="OnlineTutorial"><span class="secno">5. </span><span class="content">Online Tutorial for Semantic Web Reasoning With N3</span><a class="self-link" href="#OnlineTutorial"></a></h2>
-    <a href="https://n3.restdesc.org/n3/">Online Tutorial for Semantic Web Reasoning With N3</a> 
-   <h2 class="heading settled" data-level="6" id="builtins"><span class="secno">6. </span><span class="content">Builtins</span><a class="self-link" href="#builtins"></a></h2>
-   <h3 class="heading settled" data-level="6.1" id="crypto"><span class="secno">6.1. </span><span class="content">crypto</span><a class="self-link" href="#crypto"></a></h3>
-   <h4 class="heading settled" data-level="6.1.1" id="sha"><span class="secno">6.1.1. </span><span class="content">crypto:sha</span><a class="self-link" href="#sha"></a></h4>
+   <h2 class="heading settled" data-level="5" id="builtins"><span class="secno">5. </span><span class="content">Builtins</span><a class="self-link" href="#builtins"></a></h2>
+   <h3 class="heading settled" data-level="5.1" id="crypto"><span class="secno">5.1. </span><span class="content">crypto</span><a class="self-link" href="#crypto"></a></h3>
+   <h4 class="heading settled" data-level="5.1.1" id="sha"><span class="secno">5.1.1. </span><span class="content">crypto:sha</span><a class="self-link" href="#sha"></a></h4>
     Gets as object the SHA-1 hash of the subject. 
    <p><code>true</code> if and only if <code>$o</code> is the SHA-1 hash of <code>$s</code>.</p>
    <p><strong>Schema</strong><br><code>$s+ crypto:sha $o-</code></p>
-   <h3 class="heading settled" data-level="6.2" id="math"><span class="secno">6.2. </span><span class="content">math</span><a class="self-link" href="#math"></a></h3>
-   <h4 class="heading settled" data-level="6.2.1" id="product"><span class="secno">6.2.1. </span><span class="content">math:product</span><a class="self-link" href="#product"></a></h4>
+   <h3 class="heading settled" data-level="5.2" id="math"><span class="secno">5.2. </span><span class="content">math</span><a class="self-link" href="#math"></a></h3>
+   <h4 class="heading settled" data-level="5.2.1" id="product"><span class="secno">5.2.1. </span><span class="content">math:product</span><a class="self-link" href="#product"></a></h4>
     Calculates the object as the product of the numbers given in the subject list. 
    <p><code>true</code> if and only if <code>$o</code> is the arithmetic product of all numbers <code>$s.i</code></p>
    <p><strong>Schema</strong><br><code>( $s.i+ )+ math:product $o-</code></p>
    <div class="schema_where">
     where:
-    <div class="schema_datatypes"><code>$s.i</code>: (<code>xsd:decimal</code> | <code>xsd:double</code> | <code>xsd:float</code>)<br><code>$o</code>: (<code>xsd:decimal</code> | <code>xsd:double</code> | <code>xsd:float</code>)</div>
+    <div class="schema_datatypes"><code>$s.i</code>: (<span class="schema_param_datatype">xsd:decimal</span> | <span class="schema_param_datatype">xsd:double</span> | <span class="schema_param_datatype">xsd:float</span>)<br><code>$o</code>: (<span class="schema_param_datatype">xsd:decimal</span> | <span class="schema_param_datatype">xsd:double</span> | <span class="schema_param_datatype">xsd:float</span>)</div>
    </div>
-   <br><strong>Examples</strong><br><a href="https://n3-editor.herokuapp.com/n3/editor/?formula=%40prefix+%3A+%3Chttp%3A%2F%2Fexample.org%2F%3E.%0A%40prefix+math%3A+%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F10%2Fswap%2Fmath%23%3E+.%0A%0A%3ALet+%3Aparam+%282+21%29+.%0A%0A%7B%0A++++%3ALet+%3Aparam+%3Fparam+.%0A++++%3Fparam+math%3Aproduct+%3Fresult+.%0A%7D%0A%3D%3E%0A%7B%0A++++%3Aresult+%3Ais+%3Fresult+.%0A%7D+." target="_blank">Try in Notation3 Editor 🚀</a>
+   <br><strong>Examples</strong><br><a href="https://n3-editor.herokuapp.com/n3/editor/?formula=%40prefix+%3A+%3Chttp%3A%2F%2Fexample.org%2F%3E.%0A%40prefix+math%3A+%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F10%2Fswap%2Fmath%23%3E+.%0A%0A%3ALet+%3Aparam+%282+4+6+8%29+.%0A%0A%7B%0A++++%3ALet+%3Aparam+%3Fparam+.%0A++++%3Fparam+math%3Aproduct+%3Fresult+.%0A%7D%0A%3D%3E%0A%7B%0A++++%3Aresult+%3Ais+%3Fresult+.%0A%7D+." target="_blank">Try in Notation3 Editor 🚀</a>
    <p></p>
-   <div class="example" id="example-719e5cf5">
-    <a class="self-link" href="#example-719e5cf5"></a> 
-    <p> Calculate the product of 2 and 21. </p>
-    <p><b>Formula:</b> </p>
-<pre>@prefix : &lt;http://example.org/>.
-@prefix math: &lt;http://www.w3.org/2000/10/swap/math#> .
-
-:Let :param (2 21) .
-
-{
-    :Let :param ?param .
-    ?param math:product ?result .
-}
-=>
-{
-    :result :is ?result .
-} .
-</pre>
-    <p><b>Result:</b> </p>
-<pre>@prefix : &lt;http://example.org/>.
-:result :is 42.
-</pre>
-   </div>
-   <p><a href="https://n3-editor.herokuapp.com/n3/editor/?formula=%40prefix+%3A+%3Chttp%3A%2F%2Fexample.org%2F%3E.%0A%40prefix+math%3A+%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F10%2Fswap%2Fmath%23%3E+.%0A%0A%3ALet+%3Aparam+%282+4+6+8%29+.%0A%0A%7B%0A++++%3ALet+%3Aparam+%3Fparam+.%0A++++%3Fparam+math%3Aproduct+%3Fresult+.%0A%7D%0A%3D%3E%0A%7B%0A++++%3Aresult+%3Ais+%3Fresult+.%0A%7D+." target="_blank">Try in Notation3 Editor 🚀</a></p>
    <div class="example" id="example-95ba860f">
     <a class="self-link" href="#example-95ba860f"></a> 
     <p> Calculate the product of 2,4,6, and 8 . </p>
@@ -2297,14 +2276,38 @@ Parts of this work may be from another specification document.  If so, those par
 :result :is 384.
 </pre>
    </div>
-   <h4 class="heading settled" data-level="6.2.2" id="notGreaterThan"><span class="secno">6.2.2. </span><span class="content">math:notGreaterThan</span><a class="self-link" href="#notGreaterThan"></a></h4>
+   <p><a href="https://n3-editor.herokuapp.com/n3/editor/?formula=%40prefix+%3A+%3Chttp%3A%2F%2Fexample.org%2F%3E.%0A%40prefix+math%3A+%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F10%2Fswap%2Fmath%23%3E+.%0A%0A%3ALet+%3Aparam+%282+21%29+.%0A%0A%7B%0A++++%3ALet+%3Aparam+%3Fparam+.%0A++++%3Fparam+math%3Aproduct+%3Fresult+.%0A%7D%0A%3D%3E%0A%7B%0A++++%3Aresult+%3Ais+%3Fresult+.%0A%7D+." target="_blank">Try in Notation3 Editor 🚀</a></p>
+   <div class="example" id="example-719e5cf5">
+    <a class="self-link" href="#example-719e5cf5"></a> 
+    <p> Calculate the product of 2 and 21. </p>
+    <p><b>Formula:</b> </p>
+<pre>@prefix : &lt;http://example.org/>.
+@prefix math: &lt;http://www.w3.org/2000/10/swap/math#> .
+
+:Let :param (2 21) .
+
+{
+    :Let :param ?param .
+    ?param math:product ?result .
+}
+=>
+{
+    :result :is ?result .
+} .
+</pre>
+    <p><b>Result:</b> </p>
+<pre>@prefix : &lt;http://example.org/>.
+:result :is 42.
+</pre>
+   </div>
+   <h4 class="heading settled" data-level="5.2.2" id="notGreaterThan"><span class="secno">5.2.2. </span><span class="content">math:notGreaterThan</span><a class="self-link" href="#notGreaterThan"></a></h4>
     Checks whether the subject is a number that is not greater than the object.
 You can use this as an equivalent of a lessThanOrEqual operator. 
    <p><code>true</code> if and only if <code>$s</code> is a number that is not greater than <code>$o</code>.</p>
    <p><strong>Schema</strong><br><code>$s+ math:notGreaterThan $o+</code></p>
    <div class="schema_where">
     where:
-    <div class="schema_datatypes"><code>$s</code>: (<code>xsd:decimal</code> | <code>xsd:double</code> | <code>xsd:float</code>)<br><code>$o</code>: (<code>xsd:decimal</code> | <code>xsd:double</code> | <code>xsd:float</code>)</div>
+    <div class="schema_datatypes"><code>$s</code>: (<span class="schema_param_datatype">xsd:decimal</span> | <span class="schema_param_datatype">xsd:double</span> | <span class="schema_param_datatype">xsd:float</span>)<br><code>$o</code>: (<span class="schema_param_datatype">xsd:decimal</span> | <span class="schema_param_datatype">xsd:double</span> | <span class="schema_param_datatype">xsd:float</span>)</div>
    </div>
    <br><strong>Examples</strong><br><a href="https://n3-editor.herokuapp.com/n3/editor/?formula=%40prefix+%3A+%3Chttp%3A%2F%2Fexample.org%2F%3E.%0A%40prefix+math%3A+%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F10%2Fswap%2Fmath%23%3E+.%0A%0A%3ALet+%3Aparam+%2841+42%29+.%0A%0A%7B%0A++++%3ALet+%3Aparam+%28%3FX+%3FY%29+.%0A++++%3FX+math%3AnotGreaterThan+%3FY+.%0A%7D%0A%3D%3E%0A%7B%0A++++%3Aresult+%3Ais+true+.%0A%7D+." target="_blank">Try in Notation3 Editor 🚀</a>
    <p></p>
@@ -2331,13 +2334,13 @@ You can use this as an equivalent of a lessThanOrEqual operator.
 :result :is true .
 </pre>
    </div>
-   <h4 class="heading settled" data-level="6.2.3" id="absoluteValue"><span class="secno">6.2.3. </span><span class="content">math:absoluteValue</span><a class="self-link" href="#absoluteValue"></a></h4>
+   <h4 class="heading settled" data-level="5.2.3" id="absoluteValue"><span class="secno">5.2.3. </span><span class="content">math:absoluteValue</span><a class="self-link" href="#absoluteValue"></a></h4>
     Calculates as object the absolute value of the subject. 
    <p><code>true</code> if and only if <code>$o</code> is the absolute value of <code>$s</code>.</p>
    <p><strong>Schema</strong><br><code>$s+ math:absoluteValue $o-</code></p>
    <div class="schema_where">
     where:
-    <div class="schema_datatypes"><code>$s</code>: (<code>xsd:decimal</code> | <code>xsd:double</code> | <code>xsd:float</code>)<br><code>$o</code>: (<code>xsd:decimal</code> | <code>xsd:double</code> | <code>xsd:float</code>)</div>
+    <div class="schema_datatypes"><code>$s</code>: (<span class="schema_param_datatype">xsd:decimal</span> | <span class="schema_param_datatype">xsd:double</span> | <span class="schema_param_datatype">xsd:float</span>)<br><code>$o</code>: (<span class="schema_param_datatype">xsd:decimal</span> | <span class="schema_param_datatype">xsd:double</span> | <span class="schema_param_datatype">xsd:float</span>)</div>
    </div>
    <br><strong>Examples</strong><br><a href="https://n3-editor.herokuapp.com/n3/editor/?formula=%40prefix+%3A+%3Chttp%3A%2F%2Fexample.org%2F%3E.%0A%40prefix+math%3A+%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F10%2Fswap%2Fmath%23%3E+.%0A%0A%3ALet+%3Aparam+-2+.%0A%0A%7B%0A++++%3ALet+%3Aparam+%3Fparam+.%0A++++%3Fparam+math%3AabsoluteValue+%3Fresult+.%0A%7D%0A%3D%3E%0A%7B%0A++++%3Aresult+%3Ais+%3Fresult+.%0A%7D+." target="_blank">Try in Notation3 Editor 🚀</a>
    <p></p>
@@ -2364,13 +2367,13 @@ You can use this as an equivalent of a lessThanOrEqual operator.
 :result :is 2. 
 </pre>
    </div>
-   <h4 class="heading settled" data-level="6.2.4" id="greaterThan"><span class="secno">6.2.4. </span><span class="content">math:greaterThan</span><a class="self-link" href="#greaterThan"></a></h4>
+   <h4 class="heading settled" data-level="5.2.4" id="greaterThan"><span class="secno">5.2.4. </span><span class="content">math:greaterThan</span><a class="self-link" href="#greaterThan"></a></h4>
     Checks whether the subject is a number that is greater than the object. 
    <p><code>true</code> if and only if <code>$s</code> is a number that is greater than <code>$o</code>.</p>
    <p><strong>Schema</strong><br><code>$s+ math:greaterThan $o+</code></p>
    <div class="schema_where">
     where:
-    <div class="schema_datatypes"><code>$s</code>: (<code>xsd:decimal</code> | <code>xsd:double</code> | <code>xsd:float</code>)<br><code>$o</code>: (<code>xsd:decimal</code> | <code>xsd:double</code> | <code>xsd:float</code>)</div>
+    <div class="schema_datatypes"><code>$s</code>: (<span class="schema_param_datatype">xsd:decimal</span> | <span class="schema_param_datatype">xsd:double</span> | <span class="schema_param_datatype">xsd:float</span>)<br><code>$o</code>: (<span class="schema_param_datatype">xsd:decimal</span> | <span class="schema_param_datatype">xsd:double</span> | <span class="schema_param_datatype">xsd:float</span>)</div>
    </div>
    <br><strong>Examples</strong><br><a href="https://n3-editor.herokuapp.com/n3/editor/?formula=%40prefix+%3A+%3Chttp%3A%2F%2Fexample.org%2F%3E.%0A%40prefix+math%3A+%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F10%2Fswap%2Fmath%23%3E+.%0A%0A%3ALet+%3Aparam+%2842+41%29+.%0A%0A%7B%0A++++%3ALet+%3Aparam+%28%3FX+%3FY%29+.%0A++++%3FX+math%3AgreaterThan+%3FY+.%0A%7D%0A%3D%3E%0A%7B%0A++++%3Aresult+%3Ais+true+.%0A%7D+." target="_blank">Try in Notation3 Editor 🚀</a>
    <p></p>
@@ -2397,14 +2400,14 @@ You can use this as an equivalent of a lessThanOrEqual operator.
 :result :is true .
 </pre>
    </div>
-   <h4 class="heading settled" data-level="6.2.5" id="notLessThan"><span class="secno">6.2.5. </span><span class="content">math:notLessThan</span><a class="self-link" href="#notLessThan"></a></h4>
+   <h4 class="heading settled" data-level="5.2.5" id="notLessThan"><span class="secno">5.2.5. </span><span class="content">math:notLessThan</span><a class="self-link" href="#notLessThan"></a></h4>
     Checks whether the subject is a number that is not less than the object.
 You can use this as an equivalent of a greaterThanOrEqual operator. 
    <p><code>true</code> if and only if <code>$s</code> is a number that is not less than <code>$o</code>.</p>
    <p><strong>Schema</strong><br><code>$s+ math:notLessThan $o+</code></p>
    <div class="schema_where">
     where:
-    <div class="schema_datatypes"><code>$s</code>: (<code>xsd:decimal</code> | <code>xsd:double</code> | <code>xsd:float</code>)<br><code>$o</code>: (<code>xsd:decimal</code> | <code>xsd:double</code> | <code>xsd:float</code>)</div>
+    <div class="schema_datatypes"><code>$s</code>: (<span class="schema_param_datatype">xsd:decimal</span> | <span class="schema_param_datatype">xsd:double</span> | <span class="schema_param_datatype">xsd:float</span>)<br><code>$o</code>: (<span class="schema_param_datatype">xsd:decimal</span> | <span class="schema_param_datatype">xsd:double</span> | <span class="schema_param_datatype">xsd:float</span>)</div>
    </div>
    <br><strong>Examples</strong><br><a href="https://n3-editor.herokuapp.com/n3/editor/?formula=%40prefix+%3A+%3Chttp%3A%2F%2Fexample.org%2F%3E.%0A%40prefix+math%3A+%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F10%2Fswap%2Fmath%23%3E+.%0A%0A%3ALet+%3Aparam+%2842+41%29+.%0A%0A%7B%0A++++%3ALet+%3Aparam+%28%3FX+%3FY%29+.%0A++++%3FX+math%3AnotLessThan+%3FY+.%0A%7D%0A%3D%3E%0A%7B%0A++++%3Aresult+%3Ais+true+.%0A%7D+." target="_blank">Try in Notation3 Editor 🚀</a>
    <p></p>
@@ -2431,13 +2434,13 @@ You can use this as an equivalent of a greaterThanOrEqual operator.
 :result :is true .
 </pre>
    </div>
-   <h4 class="heading settled" data-level="6.2.6" id="sin"><span class="secno">6.2.6. </span><span class="content">math:sin</span><a class="self-link" href="#sin"></a></h4>
+   <h4 class="heading settled" data-level="5.2.6" id="sin"><span class="secno">5.2.6. </span><span class="content">math:sin</span><a class="self-link" href="#sin"></a></h4>
     Calculates the object as the sine value of the subject. 
    <p><code>true</code> if and only if <code>$o</code> is the sine value of <code>$s</code>.</p>
    <p><strong>Schema</strong><br><code>$s? math:sin $o?</code></p>
    <div class="schema_where">
     where:
-    <div class="schema_datatypes"><code>$s</code>: (<code>xsd:decimal</code> | <code>xsd:double</code> | <code>xsd:float</code>)<br><code>$o</code>: (<code>xsd:decimal</code> | <code>xsd:double</code> | <code>xsd:float</code>)</div>
+    <div class="schema_datatypes"><code>$s</code>: (<span class="schema_param_datatype">xsd:decimal</span> | <span class="schema_param_datatype">xsd:double</span> | <span class="schema_param_datatype">xsd:float</span>) <span class="schema_param_descr">(angle expressed in radians)</span><br><code>$o</code>: (<span class="schema_param_datatype">xsd:decimal</span> | <span class="schema_param_datatype">xsd:double</span> | <span class="schema_param_datatype">xsd:float</span>)</div>
    </div>
    <br><strong>Examples</strong><br><a href="https://n3-editor.herokuapp.com/n3/editor/?formula=%40prefix+%3A+%3Chttp%3A%2F%2Fexample.org%2F%3E.%0A%40prefix+math%3A+%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F10%2Fswap%2Fmath%23%3E+.%0A%40prefix+xsd%3A+%3Chttp%3A%2F%2Fwww.w3.org%2F2001%2FXMLSchema%23%3E+.%0A%0A%3ALet+%3Aparam+%221.57079632679%22%5E%5Exsd%3Adouble+.%0A%0A%7B%0A++++%3ALet+%3Aparam+%3Fparam+.%0A++++%3Fparam+math%3Asin+%3Fresult+.%0A%7D%0A%3D%3E%0A%7B%0A++++%3Aresult+%3Ais+%3Fresult+.%0A%7D+." target="_blank">Try in Notation3 Editor 🚀</a>
    <p></p>
@@ -2466,13 +2469,13 @@ You can use this as an equivalent of a greaterThanOrEqual operator.
 :result :is "1.0"^^xsd:double . 
 </pre>
    </div>
-   <h4 class="heading settled" data-level="6.2.7" id="lessThan"><span class="secno">6.2.7. </span><span class="content">math:lessThan</span><a class="self-link" href="#lessThan"></a></h4>
+   <h4 class="heading settled" data-level="5.2.7" id="lessThan"><span class="secno">5.2.7. </span><span class="content">math:lessThan</span><a class="self-link" href="#lessThan"></a></h4>
     Checks whether the subject is a number that is less than the object. 
    <p><code>true</code> if and only if <code>$s</code> is a number that is less than <code>$o</code>.</p>
    <p><strong>Schema</strong><br><code>$s+ math:lessThan $o+</code></p>
    <div class="schema_where">
     where:
-    <div class="schema_datatypes"><code>$s</code>: (<code>xsd:decimal</code> | <code>xsd:double</code> | <code>xsd:float</code>)<br><code>$o</code>: (<code>xsd:decimal</code> | <code>xsd:double</code> | <code>xsd:float</code>)</div>
+    <div class="schema_datatypes"><code>$s</code>: (<span class="schema_param_datatype">xsd:decimal</span> | <span class="schema_param_datatype">xsd:double</span> | <span class="schema_param_datatype">xsd:float</span>)<br><code>$o</code>: (<span class="schema_param_datatype">xsd:decimal</span> | <span class="schema_param_datatype">xsd:double</span> | <span class="schema_param_datatype">xsd:float</span>)</div>
    </div>
    <br><strong>Examples</strong><br><a href="https://n3-editor.herokuapp.com/n3/editor/?formula=%40prefix+%3A+%3Chttp%3A%2F%2Fexample.org%2F%3E.%0A%40prefix+math%3A+%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F10%2Fswap%2Fmath%23%3E+.%0A%0A%3ALet+%3Aparam+%2841+42%29+.%0A%0A%7B%0A++++%3ALet+%3Aparam+%28%3FX+%3FY%29+.%0A++++%3FX+math%3AlessThan+%3FY+.%0A%7D%0A%3D%3E%0A%7B%0A++++%3Aresult+%3Ais+true+.%0A%7D+." target="_blank">Try in Notation3 Editor 🚀</a>
    <p></p>
@@ -2499,14 +2502,14 @@ You can use this as an equivalent of a greaterThanOrEqual operator.
 :result :is true .
 </pre>
    </div>
-   <h4 class="heading settled" data-level="6.2.8" id="rounded"><span class="secno">6.2.8. </span><span class="content">math:rounded</span><a class="self-link" href="#rounded"></a></h4>
+   <h4 class="heading settled" data-level="5.2.8" id="rounded"><span class="secno">5.2.8. </span><span class="content">math:rounded</span><a class="self-link" href="#rounded"></a></h4>
     Calculates the object as the integer that is closest to the subject number. 
    <p><code>true</code> if and only if <code>$o</code> is the integer that is closest to <code>$s</code>.
 If there are two such numbers, then the one closest to positive infinity is returned.</p>
    <p><strong>Schema</strong><br><code>$s+ math:rounded $o-</code></p>
    <div class="schema_where">
     where:
-    <div class="schema_datatypes"><code>$s</code>: (<code>xsd:decimal</code> | <code>xsd:double</code> | <code>xsd:float</code>)<br><code>$o</code>: <code>xsd:integer</code></div>
+    <div class="schema_datatypes"><code>$s</code>: (<span class="schema_param_datatype">xsd:decimal</span> | <span class="schema_param_datatype">xsd:double</span> | <span class="schema_param_datatype">xsd:float</span>)<br><code>$o</code>: <span class="schema_param_datatype">xsd:integer</span></div>
    </div>
    <br><strong>Examples</strong><br><a href="https://n3-editor.herokuapp.com/n3/editor/?formula=%40prefix+%3A+%3Chttp%3A%2F%2Fexample.org%2F%3E.%0A%40prefix+math%3A+%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F10%2Fswap%2Fmath%23%3E+.%0A%40prefix+xsd%3A+%3Chttp%3A%2F%2Fwww.w3.org%2F2001%2FXMLSchema%23%3E+.%0A%0A%3ALet+%3Aparam+%223.3%22%5E%5Exsd%3Adouble+.%0A%0A%7B%0A++++%3ALet+%3Aparam+%3Fparam+.%0A++++%3Fparam+math%3Arounded+%3Fresult+.%0A%7D%0A%3D%3E%0A%7B%0A++++%3Aresult+%3Ais+%3Fresult+.%0A%7D+." target="_blank">Try in Notation3 Editor 🚀</a>
    <p></p>
@@ -2534,13 +2537,13 @@ If there are two such numbers, then the one closest to positive infinity is retu
 :result :is 3. 
 </pre>
    </div>
-   <h4 class="heading settled" data-level="6.2.9" id="atan"><span class="secno">6.2.9. </span><span class="content">math:atan</span><a class="self-link" href="#atan"></a></h4>
+   <h4 class="heading settled" data-level="5.2.9" id="atan"><span class="secno">5.2.9. </span><span class="content">math:atan</span><a class="self-link" href="#atan"></a></h4>
     Calculates the object as the arc tangent value of the subject. 
    <p><code>true</code> if and only if <code>$o</code> is the arc tangent value of <code>$s</code>.</p>
    <p><strong>Schema</strong><br><code>$s? math:atan $o?</code></p>
    <div class="schema_where">
     where:
-    <div class="schema_datatypes"><code>$s</code>: (<code>xsd:decimal</code> | <code>xsd:double</code> | <code>xsd:float</code>)<br><code>$o</code>: (<code>xsd:decimal</code> | <code>xsd:double</code> | <code>xsd:float</code>)</div>
+    <div class="schema_datatypes"><code>$s</code>: (<span class="schema_param_datatype">xsd:decimal</span> | <span class="schema_param_datatype">xsd:double</span> | <span class="schema_param_datatype">xsd:float</span>)<br><code>$o</code>: (<span class="schema_param_datatype">xsd:decimal</span> | <span class="schema_param_datatype">xsd:double</span> | <span class="schema_param_datatype">xsd:float</span>)</div>
    </div>
    <br><strong>Examples</strong><br><a href="https://n3-editor.herokuapp.com/n3/editor/?formula=%40prefix+%3A+%3Chttp%3A%2F%2Fexample.org%2F%3E.%0A%40prefix+math%3A+%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F10%2Fswap%2Fmath%23%3E+.%0A%0A%3ALet+%3Aparam+1+.%0A%0A%7B%0A++++%3ALet+%3Aparam+%3Fparam+.%0A++++%3Fparam+math%3Aatan+%3Fresult+.%0A%7D%0A%3D%3E%0A%7B%0A++++%3Aresult+%3Ais+%3Fresult+.%0A%7D+." target="_blank">Try in Notation3 Editor 🚀</a>
    <p></p>
@@ -2567,13 +2570,13 @@ If there are two such numbers, then the one closest to positive infinity is retu
 :result :is 0.7853981633974483 .
 </pre>
    </div>
-   <h4 class="heading settled" data-level="6.2.10" id="acos"><span class="secno">6.2.10. </span><span class="content">math:acos</span><a class="self-link" href="#acos"></a></h4>
+   <h4 class="heading settled" data-level="5.2.10" id="acos"><span class="secno">5.2.10. </span><span class="content">math:acos</span><a class="self-link" href="#acos"></a></h4>
     Calculates the object as the arc cosine value of the subject. 
    <p><code>true</code> if and only if <code>$o</code> is the arc cosine value of <code>$s</code>.</p>
    <p><strong>Schema</strong><br><code>$s? math:acos $o?</code></p>
    <div class="schema_where">
     where:
-    <div class="schema_datatypes"><code>$s</code>: (<code>xsd:decimal</code> | <code>xsd:double</code> | <code>xsd:float</code>)<br><code>$o</code>: (<code>xsd:decimal</code> | <code>xsd:double</code> | <code>xsd:float</code>)</div>
+    <div class="schema_datatypes"><code>$s</code>: (<span class="schema_param_datatype">xsd:decimal</span> | <span class="schema_param_datatype">xsd:double</span> | <span class="schema_param_datatype">xsd:float</span>)<br><code>$o</code>: (<span class="schema_param_datatype">xsd:decimal</span> | <span class="schema_param_datatype">xsd:double</span> | <span class="schema_param_datatype">xsd:float</span>)</div>
    </div>
    <br><strong>Examples</strong><br><a href="https://n3-editor.herokuapp.com/n3/editor/?formula=%40prefix+%3A+%3Chttp%3A%2F%2Fexample.org%2F%3E.%0A%40prefix+math%3A+%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F10%2Fswap%2Fmath%23%3E+.%0A%0A%3ALet+%3Aparam+1+.%0A%0A%7B%0A++++%3ALet+%3Aparam+%3Fparam+.%0A++++%3Fparam+math%3Aacos+%3Fresult+.%0A%7D%0A%3D%3E%0A%7B%0A++++%3Aresult+%3Ais+%3Fresult+.%0A%7D+." target="_blank">Try in Notation3 Editor 🚀</a>
    <p></p>
@@ -2600,13 +2603,13 @@ If there are two such numbers, then the one closest to positive infinity is retu
 :result :is 0.0 .
 </pre>
    </div>
-   <h4 class="heading settled" data-level="6.2.11" id="cosh"><span class="secno">6.2.11. </span><span class="content">math:cosh</span><a class="self-link" href="#cosh"></a></h4>
+   <h4 class="heading settled" data-level="5.2.11" id="cosh"><span class="secno">5.2.11. </span><span class="content">math:cosh</span><a class="self-link" href="#cosh"></a></h4>
     Calculates the object as the hyperbolic cosine value of the subject. 
    <p><code>true</code> if and only if <code>$o</code> is the hyperbolic cosine value of <code>$s</code>.</p>
    <p><strong>Schema</strong><br><code>$s? math:cosh $o?</code></p>
    <div class="schema_where">
     where:
-    <div class="schema_datatypes"><code>$s</code>: (<code>xsd:decimal</code> | <code>xsd:double</code> | <code>xsd:float</code>)<br><code>$o</code>: (<code>xsd:decimal</code> | <code>xsd:double</code> | <code>xsd:float</code>)</div>
+    <div class="schema_datatypes"><code>$s</code>: (<span class="schema_param_datatype">xsd:decimal</span> | <span class="schema_param_datatype">xsd:double</span> | <span class="schema_param_datatype">xsd:float</span>) <span class="schema_param_descr">(angle expressed in radians)</span><br><code>$o</code>: (<span class="schema_param_datatype">xsd:decimal</span> | <span class="schema_param_datatype">xsd:double</span> | <span class="schema_param_datatype">xsd:float</span>)</div>
    </div>
    <br><strong>Examples</strong><br><a href="https://n3-editor.herokuapp.com/n3/editor/?formula=%40prefix+%3A+%3Chttp%3A%2F%2Fexample.org%2F%3E.%0A%40prefix+math%3A+%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F10%2Fswap%2Fmath%23%3E+.%0A%0A%3ALet+%3Aparam+0+.%0A%0A%7B%0A++++%3ALet+%3Aparam+%3Fparam+.%0A++++%3Fparam+math%3Acosh+%3Fresult+.%0A%7D%0A%3D%3E%0A%7B%0A++++%3Aresult+%3Ais+%3Fresult+.%0A%7D+." target="_blank">Try in Notation3 Editor 🚀</a>
    <p></p>
@@ -2633,13 +2636,13 @@ If there are two such numbers, then the one closest to positive infinity is retu
 :result :is 1.0 .
 </pre>
    </div>
-   <h4 class="heading settled" data-level="6.2.12" id="negation"><span class="secno">6.2.12. </span><span class="content">math:negation</span><a class="self-link" href="#negation"></a></h4>
+   <h4 class="heading settled" data-level="5.2.12" id="negation"><span class="secno">5.2.12. </span><span class="content">math:negation</span><a class="self-link" href="#negation"></a></h4>
     Calculates the object as the negation of the subject. 
    <p><code>true</code> if and only if <code>$o</code> is the negation of <code>$s</code>.</p>
    <p><strong>Schema</strong><br><code>$s? math:negation $o?</code></p>
    <div class="schema_where">
     where:
-    <div class="schema_datatypes"><code>$s</code>: (<code>xsd:decimal</code> | <code>xsd:double</code> | <code>xsd:float</code>)<br><code>$o</code>: (<code>xsd:decimal</code> | <code>xsd:double</code> | <code>xsd:float</code>)</div>
+    <div class="schema_datatypes"><code>$s</code>: (<span class="schema_param_datatype">xsd:decimal</span> | <span class="schema_param_datatype">xsd:double</span> | <span class="schema_param_datatype">xsd:float</span>)<br><code>$o</code>: (<span class="schema_param_datatype">xsd:decimal</span> | <span class="schema_param_datatype">xsd:double</span> | <span class="schema_param_datatype">xsd:float</span>)</div>
    </div>
    <br><strong>Examples</strong><br><a href="https://n3-editor.herokuapp.com/n3/editor/?formula=%40prefix+%3A+%3Chttp%3A%2F%2Fexample.org%2F%3E.%0A%40prefix+math%3A+%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F10%2Fswap%2Fmath%23%3E+.%0A%0A%3ALet+%3Aparam+42+.%0A%0A%7B%0A++++%3ALet+%3Aparam+%3Fparam+.%0A++++%3Fparam+math%3Anegation+%3Fresult+.%0A%7D%0A%3D%3E%0A%7B%0A++++%3Aresult+%3Ais+%3Fresult+.%0A%7D+." target="_blank">Try in Notation3 Editor 🚀</a>
    <p></p>
@@ -2666,13 +2669,13 @@ If there are two such numbers, then the one closest to positive infinity is retu
 :result :is -42 .
 </pre>
    </div>
-   <h4 class="heading settled" data-level="6.2.13" id="sinh"><span class="secno">6.2.13. </span><span class="content">math:sinh</span><a class="self-link" href="#sinh"></a></h4>
+   <h4 class="heading settled" data-level="5.2.13" id="sinh"><span class="secno">5.2.13. </span><span class="content">math:sinh</span><a class="self-link" href="#sinh"></a></h4>
     Calculates the object as the hyperbolic sine value of the subject. 
    <p><code>true</code> if and only if <code>$o</code> is the hyperbolic sine value of <code>$s</code>.</p>
    <p><strong>Schema</strong><br><code>$s? math:sinh $o?</code></p>
    <div class="schema_where">
     where:
-    <div class="schema_datatypes"><code>$s</code>: (<code>xsd:decimal</code> | <code>xsd:double</code> | <code>xsd:float</code>)<br><code>$o</code>: (<code>xsd:decimal</code> | <code>xsd:double</code> | <code>xsd:float</code>)</div>
+    <div class="schema_datatypes"><code>$s</code>: (<span class="schema_param_datatype">xsd:decimal</span> | <span class="schema_param_datatype">xsd:double</span> | <span class="schema_param_datatype">xsd:float</span>) <span class="schema_param_descr">(angle expressed in radians)</span><br><code>$o</code>: (<span class="schema_param_datatype">xsd:decimal</span> | <span class="schema_param_datatype">xsd:double</span> | <span class="schema_param_datatype">xsd:float</span>)</div>
    </div>
    <br><strong>Examples</strong><br><a href="https://n3-editor.herokuapp.com/n3/editor/?formula=%40prefix+%3A+%3Chttp%3A%2F%2Fexample.org%2F%3E.%0A%40prefix+math%3A+%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F10%2Fswap%2Fmath%23%3E+.%0A%40prefix+xsd%3A+%3Chttp%3A%2F%2Fwww.w3.org%2F2001%2FXMLSchema%23%3E+.%0A%0A%3ALet+%3Aparam+%220.88137358701954302%22%5E%5Exsd%3Adouble.%0A%0A%7B%0A++++%3ALet+%3Aparam+%3Fparam+.%0A++++%3Fparam+math%3Asinh+%3Fresult+.%0A%7D%0A%3D%3E%0A%7B%0A++++%3Aresult+%3Ais+%3Fresult+.%0A%7D+." target="_blank">Try in Notation3 Editor 🚀</a>
    <p></p>
@@ -2700,13 +2703,13 @@ If there are two such numbers, then the one closest to positive infinity is retu
 :result :is 1.0.
 </pre>
    </div>
-   <h4 class="heading settled" data-level="6.2.14" id="sum"><span class="secno">6.2.14. </span><span class="content">math:sum</span><a class="self-link" href="#sum"></a></h4>
+   <h4 class="heading settled" data-level="5.2.14" id="sum"><span class="secno">5.2.14. </span><span class="content">math:sum</span><a class="self-link" href="#sum"></a></h4>
     Calculates the object as the sum of the numbers given in the subject list. 
    <p><code>true</code> if and only if <code>$o</code> is the arithmetic sum of all numbers <code>$s.i</code></p>
    <p><strong>Schema</strong><br><code>( $s.i+ )+ math:sum $o-</code></p>
    <div class="schema_where">
     where:
-    <div class="schema_datatypes"><code>$s.i</code>: (<code>xsd:decimal</code> | <code>xsd:double</code> | <code>xsd:float</code>)<br><code>$o</code>: (<code>xsd:decimal</code> | <code>xsd:double</code> | <code>xsd:float</code>)</div>
+    <div class="schema_datatypes"><code>$s.i</code>: (<span class="schema_param_datatype">xsd:decimal</span> | <span class="schema_param_datatype">xsd:double</span> | <span class="schema_param_datatype">xsd:float</span>)<br><code>$o</code>: (<span class="schema_param_datatype">xsd:decimal</span> | <span class="schema_param_datatype">xsd:double</span> | <span class="schema_param_datatype">xsd:float</span>)</div>
    </div>
    <br><strong>Examples</strong><br><a href="https://n3-editor.herokuapp.com/n3/editor/?formula=%40prefix+%3A+%3Chttp%3A%2F%2Fexample.org%2F%3E.%0A%40prefix+math%3A+%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F10%2Fswap%2Fmath%23%3E+.%0A%0A%3ALet+%3Aparam+%281+2+3+4+5+6+7+8+9+10%29+.%0A%0A%7B%0A++++%3ALet+%3Aparam+%3Fparam+.%0A++++%3Fparam+math%3Asum+%3Fresult+.%0A%7D%0A%3D%3E%0A%7B%0A++++%3Aresult+%3Ais+%3Fresult+.%0A%7D+." target="_blank">Try in Notation3 Editor 🚀</a>
    <p></p>
@@ -2733,13 +2736,13 @@ If there are two such numbers, then the one closest to positive infinity is retu
 :result :is 55.
 </pre>
    </div>
-   <h4 class="heading settled" data-level="6.2.15" id="difference"><span class="secno">6.2.15. </span><span class="content">math:difference</span><a class="self-link" href="#difference"></a></h4>
+   <h4 class="heading settled" data-level="5.2.15" id="difference"><span class="secno">5.2.15. </span><span class="content">math:difference</span><a class="self-link" href="#difference"></a></h4>
     Calculates the object by subtracting the second number from the first number given in the subject list. 
    <p><code>true</code> if and only if <code>$o</code> is the result of subtracting <code>$s.2</code> from <code>$s.1</code>.</p>
    <p><strong>Schema</strong><br><code>( $s.1+ $s.2+ )+ math:difference $o-</code></p>
    <div class="schema_where">
     where:
-    <div class="schema_datatypes"><code>$s.1</code>: (<code>xsd:decimal</code> | <code>xsd:double</code> | <code>xsd:float</code>), <code>$s.2</code>: (<code>xsd:decimal</code> | <code>xsd:double</code> | <code>xsd:float</code>)<br><code>$o</code>: (<code>xsd:decimal</code> | <code>xsd:double</code> | <code>xsd:float</code>)</div>
+    <div class="schema_datatypes"><code>$s.1</code>: (<span class="schema_param_datatype">xsd:decimal</span> | <span class="schema_param_datatype">xsd:double</span> | <span class="schema_param_datatype">xsd:float</span>)<br><code>$s.2</code>: (<span class="schema_param_datatype">xsd:decimal</span> | <span class="schema_param_datatype">xsd:double</span> | <span class="schema_param_datatype">xsd:float</span>)<br><code>$o</code>: (<span class="schema_param_datatype">xsd:decimal</span> | <span class="schema_param_datatype">xsd:double</span> | <span class="schema_param_datatype">xsd:float</span>)</div>
    </div>
    <br><strong>Examples</strong><br><a href="https://n3-editor.herokuapp.com/n3/editor/?formula=%40prefix+%3A+%3Chttp%3A%2F%2Fexample.org%2F%3E.%0A%40prefix+math%3A+%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F10%2Fswap%2Fmath%23%3E+.%0A%0A%3ALet+%3Aparam+%287+2%29+.%0A%0A%7B%0A++++%3ALet+%3Aparam+%3Fparam+.%0A++++%3Fparam+math%3Adifference+%3Fresult+.%0A%7D%0A%3D%3E%0A%7B%0A++++%3Aresult+%3Ais+%3Fresult+.%0A%7D+." target="_blank">Try in Notation3 Editor 🚀</a>
    <p></p>
@@ -2766,13 +2769,13 @@ If there are two such numbers, then the one closest to positive infinity is retu
 :result :is 5.
 </pre>
    </div>
-   <h4 class="heading settled" data-level="6.2.16" id="tanh"><span class="secno">6.2.16. </span><span class="content">math:tanh</span><a class="self-link" href="#tanh"></a></h4>
+   <h4 class="heading settled" data-level="5.2.16" id="tanh"><span class="secno">5.2.16. </span><span class="content">math:tanh</span><a class="self-link" href="#tanh"></a></h4>
     Calculates the object as the hyperbolic tangent value of the subject. 
    <p><code>true</code> if and only if <code>$o</code> is the hyperbolic tangent value of <code>$s</code>.</p>
    <p><strong>Schema</strong><br><code>$s? math:tanh $o?</code></p>
    <div class="schema_where">
     where:
-    <div class="schema_datatypes"><code>$s</code>: (<code>xsd:decimal</code> | <code>xsd:double</code> | <code>xsd:float</code>)<br><code>$o</code>: (<code>xsd:decimal</code> | <code>xsd:double</code> | <code>xsd:float</code>)</div>
+    <div class="schema_datatypes"><code>$s</code>: (<span class="schema_param_datatype">xsd:decimal</span> | <span class="schema_param_datatype">xsd:double</span> | <span class="schema_param_datatype">xsd:float</span>) <span class="schema_param_descr">(angle expressed in radians)</span><br><code>$o</code>: (<span class="schema_param_datatype">xsd:decimal</span> | <span class="schema_param_datatype">xsd:double</span> | <span class="schema_param_datatype">xsd:float</span>)</div>
    </div>
    <br><strong>Examples</strong><br><a href="https://n3-editor.herokuapp.com/n3/editor/?formula=%40prefix+%3A+%3Chttp%3A%2F%2Fexample.org%2F%3E.%0A%40prefix+math%3A+%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F10%2Fswap%2Fmath%23%3E+.%0A%40prefix+xsd%3A+%3Chttp%3A%2F%2Fwww.w3.org%2F2001%2FXMLSchema%23%3E+.%0A%0A%3ALet+%3Aparam+%220.549306%22%5E%5Exsd%3Adouble+.%0A%0A%7B%0A++++%3ALet+%3Aparam+%3Fparam+.%0A++++%3Fparam+math%3Atanh+%3Fresult+.%0A%7D%0A%3D%3E%0A%7B%0A++++%3Aresult+%3Ais+%3Fresult+.%0A%7D+." target="_blank">Try in Notation3 Editor 🚀</a>
    <p></p>
@@ -2801,14 +2804,14 @@ If there are two such numbers, then the one closest to positive infinity is retu
 :result :is "0.49999989174945103"^^xsd:double. 
 </pre>
    </div>
-   <h4 class="heading settled" data-level="6.2.17" id="exponentiation"><span class="secno">6.2.17. </span><span class="content">math:exponentiation</span><a class="self-link" href="#exponentiation"></a></h4>
+   <h4 class="heading settled" data-level="5.2.17" id="exponentiation"><span class="secno">5.2.17. </span><span class="content">math:exponentiation</span><a class="self-link" href="#exponentiation"></a></h4>
     Calculates the object as the result of raising the first number to the power of the second number in the subject list. 
 You can also use this to calculate the logarithm of the object, with as base the first number of the subject list (see examples). 
    <p><code>true</code> if and only if <code>$o</code> is the result of raising <code>$s.1</code> to the power of <code>$s.2</code></p>
    <p><strong>Schema</strong><br><code>( $s.1+ $s.2? )+ math:exponentiation $o?</code></p>
    <div class="schema_where">
     where:
-    <div class="schema_datatypes"><code>$s.1</code>: (<code>xsd:decimal</code> | <code>xsd:double</code> | <code>xsd:float</code>), <code>$s.2</code>: (<code>xsd:decimal</code> | <code>xsd:double</code> | <code>xsd:float</code>)<br><code>$o</code>: (<code>xsd:decimal</code> | <code>xsd:double</code> | <code>xsd:float</code>)</div>
+    <div class="schema_datatypes"><code>$s.1</code>: (<span class="schema_param_datatype">xsd:decimal</span> | <span class="schema_param_datatype">xsd:double</span> | <span class="schema_param_datatype">xsd:float</span>)<br><code>$s.2</code>: (<span class="schema_param_datatype">xsd:decimal</span> | <span class="schema_param_datatype">xsd:double</span> | <span class="schema_param_datatype">xsd:float</span>)<br><code>$o</code>: (<span class="schema_param_datatype">xsd:decimal</span> | <span class="schema_param_datatype">xsd:double</span> | <span class="schema_param_datatype">xsd:float</span>)</div>
    </div>
    <br><strong>Examples</strong><br><a href="https://n3-editor.herokuapp.com/n3/editor/?formula=%40prefix+%3A+%3Chttp%3A%2F%2Fexample.org%2F%3E.%0A%40prefix+math%3A+%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F10%2Fswap%2Fmath%23%3E+.%0A%0A%7B%0A++++%287+%3Fresult%29+math%3Aexponentiation+49+.%0A%7D%0A%3D%3E%0A%7B%0A++++%3Aresult+%3Ais+%3Fresult+.%0A%7D+." target="_blank">Try in Notation3 Editor 🚀</a>
    <p></p>
@@ -2856,13 +2859,13 @@ You can also use this to calculate the logarithm of the object, with as base the
 :result :is 49 .
 </pre>
    </div>
-   <h4 class="heading settled" data-level="6.2.18" id="notEqualTo"><span class="secno">6.2.18. </span><span class="content">math:notEqualTo</span><a class="self-link" href="#notEqualTo"></a></h4>
+   <h4 class="heading settled" data-level="5.2.18" id="notEqualTo"><span class="secno">5.2.18. </span><span class="content">math:notEqualTo</span><a class="self-link" href="#notEqualTo"></a></h4>
     Checks whether the subject and object are not the same number. 
    <p><code>true</code> if and only if <code>$s</code> is the not same number as <code>$o</code>.</p>
    <p><strong>Schema</strong><br><code>$s+ math:notEqualTo $o+</code></p>
    <div class="schema_where">
     where:
-    <div class="schema_datatypes"><code>$s</code>: (<code>xsd:decimal</code> | <code>xsd:double</code> | <code>xsd:float</code>)<br><code>$o</code>: (<code>xsd:decimal</code> | <code>xsd:double</code> | <code>xsd:float</code>)</div>
+    <div class="schema_datatypes"><code>$s</code>: (<span class="schema_param_datatype">xsd:decimal</span> | <span class="schema_param_datatype">xsd:double</span> | <span class="schema_param_datatype">xsd:float</span>)<br><code>$o</code>: (<span class="schema_param_datatype">xsd:decimal</span> | <span class="schema_param_datatype">xsd:double</span> | <span class="schema_param_datatype">xsd:float</span>)</div>
    </div>
    <br><strong>Examples</strong><br><a href="https://n3-editor.herokuapp.com/n3/editor/?formula=%40prefix+%3A+%3Chttp%3A%2F%2Fexample.org%2F%3E.%0A%40prefix+math%3A+%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F10%2Fswap%2Fmath%23%3E+.%0A%0A%3ALet+%3Aparam+%2841+42%29+.%0A%0A%7B%0A++++%3ALet+%3Aparam+%28%3FX+%3FY%29+.%0A++++%3FX+math%3AnotEqualTo+%3FY+.%0A%7D%0A%3D%3E%0A%7B%0A++++%3Aresult+%3Ais+true+.%0A%7D+." target="_blank">Try in Notation3 Editor 🚀</a>
    <p></p>
@@ -2889,13 +2892,13 @@ You can also use this to calculate the logarithm of the object, with as base the
 :result :is true .
 </pre>
    </div>
-   <h4 class="heading settled" data-level="6.2.19" id="quotient"><span class="secno">6.2.19. </span><span class="content">math:quotient</span><a class="self-link" href="#quotient"></a></h4>
+   <h4 class="heading settled" data-level="5.2.19" id="quotient"><span class="secno">5.2.19. </span><span class="content">math:quotient</span><a class="self-link" href="#quotient"></a></h4>
     Calculates the object by dividing the first number by the second number given in the subject list. 
    <p><code>true</code> if and only if <code>$o</code> is the result of dividing <code>$s.1</code> by <code>$s.2</code>.</p>
    <p><strong>Schema</strong><br><code>( $s.1+ $s.2+ )+ math:quotient $o-</code></p>
    <div class="schema_where">
     where:
-    <div class="schema_datatypes"><code>$s.1</code>: (<code>xsd:decimal</code> | <code>xsd:double</code> | <code>xsd:float</code>), <code>$s.2</code>: (<code>xsd:decimal</code> | <code>xsd:double</code> | <code>xsd:float</code>)<br><code>$o</code>: (<code>xsd:decimal</code> | <code>xsd:double</code> | <code>xsd:float</code>)</div>
+    <div class="schema_datatypes"><code>$s.1</code>: (<span class="schema_param_datatype">xsd:decimal</span> | <span class="schema_param_datatype">xsd:double</span> | <span class="schema_param_datatype">xsd:float</span>)<br><code>$s.2</code>: (<span class="schema_param_datatype">xsd:decimal</span> | <span class="schema_param_datatype">xsd:double</span> | <span class="schema_param_datatype">xsd:float</span>)<br><code>$o</code>: (<span class="schema_param_datatype">xsd:decimal</span> | <span class="schema_param_datatype">xsd:double</span> | <span class="schema_param_datatype">xsd:float</span>)</div>
    </div>
    <br><strong>Examples</strong><br><a href="https://n3-editor.herokuapp.com/n3/editor/?formula=%40prefix+%3A+%3Chttp%3A%2F%2Fexample.org%2F%3E.%0A%40prefix+math%3A+%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F10%2Fswap%2Fmath%23%3E+.%0A%0A%3ALet+%3Aparam+%2842+2%29+.%0A%0A%7B%0A++++%3ALet+%3Aparam+%3Fparam+.%0A++++%3Fparam+math%3Aquotient+%3Fresult+.%0A%7D%0A%3D%3E%0A%7B%0A++++%3Aresult+%3Ais+%3Fresult+.%0A%7D+." target="_blank">Try in Notation3 Editor 🚀</a>
    <p></p>
@@ -2922,13 +2925,13 @@ You can also use this to calculate the logarithm of the object, with as base the
 :result :is 21. 
 </pre>
    </div>
-   <h4 class="heading settled" data-level="6.2.20" id="equalTo"><span class="secno">6.2.20. </span><span class="content">math:equalTo</span><a class="self-link" href="#equalTo"></a></h4>
+   <h4 class="heading settled" data-level="5.2.20" id="equalTo"><span class="secno">5.2.20. </span><span class="content">math:equalTo</span><a class="self-link" href="#equalTo"></a></h4>
     Checks whether the subject and object are the same number. 
    <p><code>true</code> if and only if <code>$s</code> is the same number as <code>$o</code>.</p>
    <p><strong>Schema</strong><br><code>$s? math:equalTo $o?</code></p>
    <div class="schema_where">
     where:
-    <div class="schema_datatypes"><code>$s</code>: (<code>xsd:decimal</code> | <code>xsd:double</code> | <code>xsd:float</code>)<br><code>$o</code>: (<code>xsd:decimal</code> | <code>xsd:double</code> | <code>xsd:float</code>)</div>
+    <div class="schema_datatypes"><code>$s</code>: (<span class="schema_param_datatype">xsd:decimal</span> | <span class="schema_param_datatype">xsd:double</span> | <span class="schema_param_datatype">xsd:float</span>)<br><code>$o</code>: (<span class="schema_param_datatype">xsd:decimal</span> | <span class="schema_param_datatype">xsd:double</span> | <span class="schema_param_datatype">xsd:float</span>)</div>
    </div>
    <br><strong>Examples</strong><br><a href="https://n3-editor.herokuapp.com/n3/editor/?formula=%40prefix+%3A+%3Chttp%3A%2F%2Fexample.org%2F%3E.%0A%40prefix+math%3A+%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F10%2Fswap%2Fmath%23%3E+.%0A%0A%3ALet+%3Aparam+%2842+42%29+.%0A%0A%7B%0A++++%3ALet+%3Aparam+%28%3FX+%3FY%29+.%0A++++%3FX+math%3AequalTo+%3FY+.%0A%7D%0A%3D%3E%0A%7B%0A++++%3Aresult+%3Ais+true+.%0A%7D+." target="_blank">Try in Notation3 Editor 🚀</a>
    <p></p>
@@ -2955,13 +2958,13 @@ You can also use this to calculate the logarithm of the object, with as base the
 :result :is true . 
 </pre>
    </div>
-   <h4 class="heading settled" data-level="6.2.21" id="cos"><span class="secno">6.2.21. </span><span class="content">math:cos</span><a class="self-link" href="#cos"></a></h4>
+   <h4 class="heading settled" data-level="5.2.21" id="cos"><span class="secno">5.2.21. </span><span class="content">math:cos</span><a class="self-link" href="#cos"></a></h4>
     Calculates the object as the cosine value of the subject. 
    <p><code>true</code> if and only if <code>$o</code> is the cosine value of <code>$s</code>.</p>
    <p><strong>Schema</strong><br><code>$s? math:cos $o?</code></p>
    <div class="schema_where">
     where:
-    <div class="schema_datatypes"><code>$s</code>: (<code>xsd:decimal</code> | <code>xsd:double</code> | <code>xsd:float</code>)<br><code>$o</code>: (<code>xsd:decimal</code> | <code>xsd:double</code> | <code>xsd:float</code>)</div>
+    <div class="schema_datatypes"><code>$s</code>: (<span class="schema_param_datatype">xsd:decimal</span> | <span class="schema_param_datatype">xsd:double</span> | <span class="schema_param_datatype">xsd:float</span>) <span class="schema_param_descr">(angle expressed in radians)</span><br><code>$o</code>: (<span class="schema_param_datatype">xsd:decimal</span> | <span class="schema_param_datatype">xsd:double</span> | <span class="schema_param_datatype">xsd:float</span>)</div>
    </div>
    <br><strong>Examples</strong><br><a href="https://n3-editor.herokuapp.com/n3/editor/?formula=%40prefix+%3A+%3Chttp%3A%2F%2Fexample.org%2F%3E.%0A%40prefix+math%3A+%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F10%2Fswap%2Fmath%23%3E+.%0A%0A%3ALet+%3Aparam+0+.%0A%0A%7B%0A++++%3ALet+%3Aparam+%3Fparam+.%0A++++%3Fparam+math%3Acos+%3Fresult+.%0A%7D%0A%3D%3E%0A%7B%0A++++%3Aresult+%3Ais+%3Fresult+.%0A%7D+." target="_blank">Try in Notation3 Editor 🚀</a>
    <p></p>
@@ -2988,13 +2991,13 @@ You can also use this to calculate the logarithm of the object, with as base the
 :result :is 1.0 .
 </pre>
    </div>
-   <h4 class="heading settled" data-level="6.2.22" id="tan"><span class="secno">6.2.22. </span><span class="content">math:tan</span><a class="self-link" href="#tan"></a></h4>
+   <h4 class="heading settled" data-level="5.2.22" id="tan"><span class="secno">5.2.22. </span><span class="content">math:tan</span><a class="self-link" href="#tan"></a></h4>
     Calculates the object as the tangent value of the subject. 
    <p><code>true</code> if and only if <code>$o</code> is the tangent value of <code>$s</code>.</p>
    <p><strong>Schema</strong><br><code>$s? math:tan $o?</code></p>
    <div class="schema_where">
     where:
-    <div class="schema_datatypes"><code>$s</code>: (<code>xsd:decimal</code> | <code>xsd:double</code> | <code>xsd:float</code>)<br><code>$o</code>: (<code>xsd:decimal</code> | <code>xsd:double</code> | <code>xsd:float</code>)</div>
+    <div class="schema_datatypes"><code>$s</code>: (<span class="schema_param_datatype">xsd:decimal</span> | <span class="schema_param_datatype">xsd:double</span> | <span class="schema_param_datatype">xsd:float</span>) <span class="schema_param_descr">(angle expressed in radians)</span><br><code>$o</code>: (<span class="schema_param_datatype">xsd:decimal</span> | <span class="schema_param_datatype">xsd:double</span> | <span class="schema_param_datatype">xsd:float</span>)</div>
    </div>
    <br><strong>Examples</strong><br><a href="https://n3-editor.herokuapp.com/n3/editor/?formula=%40prefix+%3A+%3Chttp%3A%2F%2Fexample.org%2F%3E.%0A%40prefix+math%3A+%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F10%2Fswap%2Fmath%23%3E+.%0A%40prefix+xsd%3A+%3Chttp%3A%2F%2Fwww.w3.org%2F2001%2FXMLSchema%23%3E+.%0A%0A%3ALet+%3Aparam+%220.7853981633974483%22%5E%5Exsd%3Adouble+.%0A%0A%7B%0A++++%3ALet+%3Aparam+%3Fparam+.%0A++++%3Fparam+math%3Atan+%3Fresult+.%0A%7D%0A%3D%3E%0A%7B%0A++++%3Aresult+%3Ais+%3Fresult+.%0A%7D+." target="_blank">Try in Notation3 Editor 🚀</a>
    <p></p>
@@ -3023,13 +3026,13 @@ You can also use this to calculate the logarithm of the object, with as base the
 :result :is "0.9999999999999999"^^xsd:double. 
 </pre>
    </div>
-   <h4 class="heading settled" data-level="6.2.23" id="remainder"><span class="secno">6.2.23. </span><span class="content">math:remainder</span><a class="self-link" href="#remainder"></a></h4>
+   <h4 class="heading settled" data-level="5.2.23" id="remainder"><span class="secno">5.2.23. </span><span class="content">math:remainder</span><a class="self-link" href="#remainder"></a></h4>
     Calculates the object as the remainder of the division of the first integer by the second integer given in the subject list. 
    <p><code>true</code> if and only if <code>$o</code> is the remainder of dividing <code>$s.1</code> by <code>$s.2</code>.</p>
    <p><strong>Schema</strong><br><code>( $s.1+ $s.2+ )+ math:remainder $o-</code></p>
    <div class="schema_where">
     where:
-    <div class="schema_datatypes"><code>$s.1</code>: <code>xsd:integer</code>, <code>$s.2</code>: <code>xsd:integer</code><br><code>$o</code>: <code>xsd:integer</code></div>
+    <div class="schema_datatypes"><code>$s.1</code>: <span class="schema_param_datatype">xsd:integer</span><br><code>$s.2</code>: <span class="schema_param_datatype">xsd:integer</span><br><code>$o</code>: <span class="schema_param_datatype">xsd:integer</span></div>
    </div>
    <br><strong>Examples</strong><br><a href="https://n3-editor.herokuapp.com/n3/editor/?formula=%40prefix+%3A+%3Chttp%3A%2F%2Fexample.org%2F%3E.%0A%40prefix+math%3A+%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F10%2Fswap%2Fmath%23%3E+.%0A%0A%3ALet+%3Aparam+%2810+3%29+.%0A%0A%7B%0A++++%3ALet+%3Aparam+%3Fparam+.%0A++++%3Fparam+math%3Aremainder+%3Fresult+.%0A%7D%0A%3D%3E%0A%7B%0A++++%3Aresult+%3Ais+%3Fresult+.%0A%7D+." target="_blank">Try in Notation3 Editor 🚀</a>
    <p></p>
@@ -3056,13 +3059,13 @@ You can also use this to calculate the logarithm of the object, with as base the
 :result :is 1.
 </pre>
    </div>
-   <h4 class="heading settled" data-level="6.2.24" id="degrees"><span class="secno">6.2.24. </span><span class="content">math:degrees</span><a class="self-link" href="#degrees"></a></h4>
+   <h4 class="heading settled" data-level="5.2.24" id="degrees"><span class="secno">5.2.24. </span><span class="content">math:degrees</span><a class="self-link" href="#degrees"></a></h4>
     Calculates the object as the value in degrees corresponding to the radians value of the subject. 
    <p><code>true</code> if and only if <code>$o</code> is the value in degrees corresponding to the radians value of <code>$s</code>.</p>
    <p><strong>Schema</strong><br><code>$s? math:degrees $o?</code></p>
    <div class="schema_where">
     where:
-    <div class="schema_datatypes"><code>$s</code>: (<code>xsd:decimal</code> | <code>xsd:double</code> | <code>xsd:float</code>)<br><code>$o</code>: (<code>xsd:decimal</code> | <code>xsd:double</code> | <code>xsd:float</code>)</div>
+    <div class="schema_datatypes"><code>$s</code>: (<span class="schema_param_datatype">xsd:decimal</span> | <span class="schema_param_datatype">xsd:double</span> | <span class="schema_param_datatype">xsd:float</span>) <span class="schema_param_descr">(angle expressed in radians)</span><br><code>$o</code>: (<span class="schema_param_datatype">xsd:decimal</span> | <span class="schema_param_datatype">xsd:double</span> | <span class="schema_param_datatype">xsd:float</span>) <span class="schema_param_descr">(angle expressed in degrees)</span></div>
    </div>
    <br><strong>Examples</strong><br><a href="https://n3-editor.herokuapp.com/n3/editor/?formula=%40prefix+%3A+%3Chttp%3A%2F%2Fexample.org%2F%3E.%0A%40prefix+math%3A+%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F10%2Fswap%2Fmath%23%3E+.%0A%0A%3ALet+%3Aparam+1.57079632679+.%0A%0A%7B%0A++++%3ALet+%3Aparam+%3Fparam+.%0A++++%3Fparam+math%3Adegrees+%3Fresult+.%0A%7D%0A%3D%3E%0A%7B%0A++++%3Aresult+%3Ais+%3Fresult+.%0A%7D+." target="_blank">Try in Notation3 Editor 🚀</a>
    <p></p>
@@ -3089,13 +3092,13 @@ You can also use this to calculate the logarithm of the object, with as base the
 :result :is 89.99999999971946 .
 </pre>
    </div>
-   <h4 class="heading settled" data-level="6.2.25" id="asin"><span class="secno">6.2.25. </span><span class="content">math:asin</span><a class="self-link" href="#asin"></a></h4>
+   <h4 class="heading settled" data-level="5.2.25" id="asin"><span class="secno">5.2.25. </span><span class="content">math:asin</span><a class="self-link" href="#asin"></a></h4>
     Calculates the object as the arc sine value of the subject. 
    <p><code>true</code> if and only if <code>$o</code> is the arc sine value of <code>$s</code>.</p>
    <p><strong>Schema</strong><br><code>$s? math:asin $o?</code></p>
    <div class="schema_where">
     where:
-    <div class="schema_datatypes"><code>$s</code>: (<code>xsd:decimal</code> | <code>xsd:double</code> | <code>xsd:float</code>)<br><code>$o</code>: (<code>xsd:decimal</code> | <code>xsd:double</code> | <code>xsd:float</code>)</div>
+    <div class="schema_datatypes"><code>$s</code>: (<span class="schema_param_datatype">xsd:decimal</span> | <span class="schema_param_datatype">xsd:double</span> | <span class="schema_param_datatype">xsd:float</span>)<br><code>$o</code>: (<span class="schema_param_datatype">xsd:decimal</span> | <span class="schema_param_datatype">xsd:double</span> | <span class="schema_param_datatype">xsd:float</span>)</div>
    </div>
    <br><strong>Examples</strong><br><a href="https://n3-editor.herokuapp.com/n3/editor/?formula=%40prefix+%3A+%3Chttp%3A%2F%2Fexample.org%2F%3E.%0A%40prefix+math%3A+%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F10%2Fswap%2Fmath%23%3E+.%0A%0A%3ALet+%3Aparam+1+.%0A%0A%7B%0A++++%3ALet+%3Aparam+%3Fparam+.%0A++++%3Fparam+math%3Aasin+%3Fresult+.%0A%7D%0A%3D%3E%0A%7B%0A++++%3Aresult+%3Ais+%3Fresult+.%0A%7D+." target="_blank">Try in Notation3 Editor 🚀</a>
    <p></p>
@@ -3122,14 +3125,14 @@ You can also use this to calculate the logarithm of the object, with as base the
 :result :is 1.5707963267948966 .
 </pre>
    </div>
-   <h3 class="heading settled" data-level="6.3" id="time"><span class="secno">6.3. </span><span class="content">time</span><a class="self-link" href="#time"></a></h3>
-   <h4 class="heading settled" data-level="6.3.1" id="minute"><span class="secno">6.3.1. </span><span class="content">time:minute</span><a class="self-link" href="#minute"></a></h4>
+   <h3 class="heading settled" data-level="5.3" id="time"><span class="secno">5.3. </span><span class="content">time</span><a class="self-link" href="#time"></a></h3>
+   <h4 class="heading settled" data-level="5.3.1" id="minute"><span class="secno">5.3.1. </span><span class="content">time:minute</span><a class="self-link" href="#minute"></a></h4>
     Gets as object the integer minutes component of the subject xsd:dateTime. 
    <p><code>true</code> if and only if <code>$o</code> is the integer minutes component of <code>$s</code>.</p>
    <p><strong>Schema</strong><br><code>$s+ time:minute $o-</code></p>
    <div class="schema_where">
     where:
-    <div class="schema_datatypes"><code>$s</code>: <code>xsd:dateTime</code><br><code>$o</code>: <code>xsd:integer</code></div>
+    <div class="schema_datatypes"><code>$s</code>: <span class="schema_param_datatype">xsd:dateTime</span><br><code>$o</code>: <span class="schema_param_datatype">xsd:integer</span></div>
    </div>
    <br><strong>Examples</strong><br><a href="https://n3-editor.herokuapp.com/n3/editor/?formula=%40prefix+%3A+%3Chttp%3A%2F%2Fexample.org%2F%3E.%0A%40prefix+xsd%3A+%3Chttp%3A%2F%2Fwww.w3.org%2F2001%2FXMLSchema%23%3E.%0A%40prefix+time%3A+%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F10%2Fswap%2Ftime%23%3E+.%0A%0A%3ALet+%3Aparam+%222023-04-01T18%3A06%3A04Z%22%5E%5Exsd%3AdateTime+.%0A%0A%7B%0A++++%3ALet+%3Aparam+%3Fparam+.%0A++++%3Fparam+time%3Aminute+%3Fresult+.%0A%7D%0A%3D%3E%0A%7B%0A++++%3Aresult+%3Ais+%3Fresult+.%0A%7D+." target="_blank">Try in Notation3 Editor 🚀</a>
    <p></p>
@@ -3157,13 +3160,13 @@ You can also use this to calculate the logarithm of the object, with as base the
 :result :is 6. 
 </pre>
    </div>
-   <h4 class="heading settled" data-level="6.3.2" id="day"><span class="secno">6.3.2. </span><span class="content">time:day</span><a class="self-link" href="#day"></a></h4>
+   <h4 class="heading settled" data-level="5.3.2" id="day"><span class="secno">5.3.2. </span><span class="content">time:day</span><a class="self-link" href="#day"></a></h4>
     Gets as object the integer day component of the subject xsd:dateTime. 
    <p><code>true</code> if and only if <code>$o</code> is the integer day component of <code>$s</code>.</p>
    <p><strong>Schema</strong><br><code>$s+ time:day $o-</code></p>
    <div class="schema_where">
     where:
-    <div class="schema_datatypes"><code>$s</code>: <code>xsd:dateTime</code><br><code>$o</code>: <code>xsd:integer</code></div>
+    <div class="schema_datatypes"><code>$s</code>: <span class="schema_param_datatype">xsd:dateTime</span><br><code>$o</code>: <span class="schema_param_datatype">xsd:integer</span></div>
    </div>
    <br><strong>Examples</strong><br><a href="https://n3-editor.herokuapp.com/n3/editor/?formula=%40prefix+%3A+%3Chttp%3A%2F%2Fexample.org%2F%3E.%0A%40prefix+xsd%3A+%3Chttp%3A%2F%2Fwww.w3.org%2F2001%2FXMLSchema%23%3E.%0A%40prefix+time%3A+%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F10%2Fswap%2Ftime%23%3E+.%0A%0A%3ALet+%3Aparam+%222023-04-01T18%3A06%3A04Z%22%5E%5Exsd%3AdateTime+.%0A%0A%7B%0A++++%3ALet+%3Aparam+%3Fparam+.%0A++++%3Fparam+time%3Aday+%3Fresult+.%0A%7D%0A%3D%3E%0A%7B%0A++++%3Aresult+%3Ais+%3Fresult+.%0A%7D+." target="_blank">Try in Notation3 Editor 🚀</a>
    <p></p>
@@ -3191,13 +3194,13 @@ You can also use this to calculate the logarithm of the object, with as base the
 :result :is 1. 
 </pre>
    </div>
-   <h4 class="heading settled" data-level="6.3.3" id="month"><span class="secno">6.3.3. </span><span class="content">time:month</span><a class="self-link" href="#month"></a></h4>
+   <h4 class="heading settled" data-level="5.3.3" id="month"><span class="secno">5.3.3. </span><span class="content">time:month</span><a class="self-link" href="#month"></a></h4>
     Gets as object the integer month component of the subject xsd:dateTime. 
    <p><code>true</code> if and only if <code>$o</code> is the integer month component of <code>$s</code>.</p>
    <p><strong>Schema</strong><br><code>$s+ time:month $o-</code></p>
    <div class="schema_where">
     where:
-    <div class="schema_datatypes"><code>$s</code>: <code>xsd:dateTime</code><br><code>$o</code>: <code>xsd:integer</code></div>
+    <div class="schema_datatypes"><code>$s</code>: <span class="schema_param_datatype">xsd:dateTime</span><br><code>$o</code>: <span class="schema_param_datatype">xsd:integer</span></div>
    </div>
    <br><strong>Examples</strong><br><a href="https://n3-editor.herokuapp.com/n3/editor/?formula=%40prefix+%3A+%3Chttp%3A%2F%2Fexample.org%2F%3E.%0A%40prefix+xsd%3A+%3Chttp%3A%2F%2Fwww.w3.org%2F2001%2FXMLSchema%23%3E.%0A%40prefix+time%3A+%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F10%2Fswap%2Ftime%23%3E+.%0A%0A%3ALet+%3Aparam+%222023-04-01T18%3A06%3A04Z%22%5E%5Exsd%3AdateTime+.%0A%0A%7B%0A++++%3ALet+%3Aparam+%3Fparam+.%0A++++%3Fparam+time%3Amonth+%3Fresult+.%0A%7D%0A%3D%3E%0A%7B%0A++++%3Aresult+%3Ais+%3Fresult+.%0A%7D+." target="_blank">Try in Notation3 Editor 🚀</a>
    <p></p>
@@ -3225,13 +3228,13 @@ You can also use this to calculate the logarithm of the object, with as base the
 :result :is 4. 
 </pre>
    </div>
-   <h4 class="heading settled" data-level="6.3.4" id="timeZone"><span class="secno">6.3.4. </span><span class="content">time:timeZone</span><a class="self-link" href="#timeZone"></a></h4>
+   <h4 class="heading settled" data-level="5.3.4" id="timeZone"><span class="secno">5.3.4. </span><span class="content">time:timeZone</span><a class="self-link" href="#timeZone"></a></h4>
     Gets as object the trailing timezone offset of the subject xsd:dateTime (e.g., "-05:00"). 
    <p><code>true</code> if and only if <code>$o</code> is the timezone offset of <code>$s</code>.</p>
    <p><strong>Schema</strong><br><code>$s+ time:timeZone $o-</code></p>
    <div class="schema_where">
     where:
-    <div class="schema_datatypes"><code>$s</code>: <code>xsd:dateTime</code><br><code>$o</code>: <code>xsd:string</code></div>
+    <div class="schema_datatypes"><code>$s</code>: <span class="schema_param_datatype">xsd:dateTime</span><br><code>$o</code>: <span class="schema_param_datatype">xsd:string</span></div>
    </div>
    <br><strong>Examples</strong><br><a href="https://n3-editor.herokuapp.com/n3/editor/?formula=%40prefix+%3A+%3Chttp%3A%2F%2Fexample.org%2F%3E.%0A%40prefix+xsd%3A+%3Chttp%3A%2F%2Fwww.w3.org%2F2001%2FXMLSchema%23%3E.%0A%40prefix+time%3A+%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F10%2Fswap%2Ftime%23%3E+.%0A%0A%3ALet+%3Aparam+%222023-04-01T18%3A06%3A04Z%22%5E%5Exsd%3AdateTime+.%0A%0A%7B%0A++++%3ALet+%3Aparam+%3Fparam+.%0A++++%3Fparam+time%3Aminute+%3Fresult+.%0A%7D%0A%3D%3E%0A%7B%0A++++%3Aresult+%3Ais+%3Fresult+.%0A%7D+." target="_blank">Try in Notation3 Editor 🚀</a>
    <p></p>
@@ -3259,13 +3262,13 @@ You can also use this to calculate the logarithm of the object, with as base the
 :result :is "Z". 
 </pre>
    </div>
-   <h4 class="heading settled" data-level="6.3.5" id="year"><span class="secno">6.3.5. </span><span class="content">time:year</span><a class="self-link" href="#year"></a></h4>
+   <h4 class="heading settled" data-level="5.3.5" id="year"><span class="secno">5.3.5. </span><span class="content">time:year</span><a class="self-link" href="#year"></a></h4>
     Gets as object the integer year component of the subject xsd:dateTime. 
    <p><code>true</code> if and only if <code>$o</code> is the integer year component of <code>$s</code>.</p>
    <p><strong>Schema</strong><br><code>$s+ time:year $o-</code></p>
    <div class="schema_where">
     where:
-    <div class="schema_datatypes"><code>$s</code>: <code>xsd:dateTime</code><br><code>$o</code>: <code>xsd:integer</code></div>
+    <div class="schema_datatypes"><code>$s</code>: <span class="schema_param_datatype">xsd:dateTime</span><br><code>$o</code>: <span class="schema_param_datatype">xsd:integer</span></div>
    </div>
    <br><strong>Examples</strong><br><a href="https://n3-editor.herokuapp.com/n3/editor/?formula=%40prefix+%3A+%3Chttp%3A%2F%2Fexample.org%2F%3E.%0A%40prefix+xsd%3A+%3Chttp%3A%2F%2Fwww.w3.org%2F2001%2FXMLSchema%23%3E.%0A%40prefix+time%3A+%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F10%2Fswap%2Ftime%23%3E+.%0A%0A%3ALet+%3Aparam+%222023-04-01T18%3A06%3A04Z%22%5E%5Exsd%3AdateTime+.%0A%0A%7B%0A++++%3ALet+%3Aparam+%3Fparam+.%0A++++%3Fparam+time%3Ayear+%3Fresult+.%0A%7D%0A%3D%3E%0A%7B%0A++++%3Aresult+%3Ais+%3Fresult+.%0A%7D+." target="_blank">Try in Notation3 Editor 🚀</a>
    <p></p>
@@ -3293,13 +3296,13 @@ You can also use this to calculate the logarithm of the object, with as base the
 :result :is 2023. 
 </pre>
    </div>
-   <h4 class="heading settled" data-level="6.3.6" id="second"><span class="secno">6.3.6. </span><span class="content">time:second</span><a class="self-link" href="#second"></a></h4>
+   <h4 class="heading settled" data-level="5.3.6" id="second"><span class="secno">5.3.6. </span><span class="content">time:second</span><a class="self-link" href="#second"></a></h4>
     Gets as object the integer seconds component of the subject xsd:dateTime. 
    <p><code>true</code> if and only if <code>$o</code> is the integer seconds component of <code>$s</code>.</p>
    <p><strong>Schema</strong><br><code>$s+ time:second $o-</code></p>
    <div class="schema_where">
     where:
-    <div class="schema_datatypes"><code>$s</code>: <code>xsd:dateTime</code><br><code>$o</code>: <code>xsd:integer</code></div>
+    <div class="schema_datatypes"><code>$s</code>: <span class="schema_param_datatype">xsd:dateTime</span><br><code>$o</code>: <span class="schema_param_datatype">xsd:integer</span></div>
    </div>
    <br><strong>Examples</strong><br><a href="https://n3-editor.herokuapp.com/n3/editor/?formula=%40prefix+%3A+%3Chttp%3A%2F%2Fexample.org%2F%3E.%0A%40prefix+xsd%3A+%3Chttp%3A%2F%2Fwww.w3.org%2F2001%2FXMLSchema%23%3E.%0A%40prefix+time%3A+%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F10%2Fswap%2Ftime%23%3E+.%0A%0A%3ALet+%3Aparam+%222023-04-01T18%3A06%3A04Z%22%5E%5Exsd%3AdateTime+.%0A%0A%7B%0A++++%3ALet+%3Aparam+%3Fparam+.%0A++++%3Fparam+time%3Asecond+%3Fresult+.%0A%7D%0A%3D%3E%0A%7B%0A++++%3Aresult+%3Ais+%3Fresult+.%0A%7D+." target="_blank">Try in Notation3 Editor 🚀</a>
    <p></p>
@@ -3327,14 +3330,14 @@ You can also use this to calculate the logarithm of the object, with as base the
 :result :is 4. 
 </pre>
    </div>
-   <h3 class="heading settled" data-level="6.4" id="list"><span class="secno">6.4. </span><span class="content">list</span><a class="self-link" href="#list"></a></h3>
-   <h4 class="heading settled" data-level="6.4.1" id="last"><span class="secno">6.4.1. </span><span class="content">list:last</span><a class="self-link" href="#last"></a></h4>
+   <h3 class="heading settled" data-level="5.4" id="list"><span class="secno">5.4. </span><span class="content">list</span><a class="self-link" href="#list"></a></h3>
+   <h4 class="heading settled" data-level="5.4.1" id="last"><span class="secno">5.4.1. </span><span class="content">list:last</span><a class="self-link" href="#last"></a></h4>
     Gets the last element of the subject list as object. 
    <p><code>true</code> if and only if <code>$</code> is a list and <code>$o</code> is the last member of that list.</p>
    <p><strong>Schema</strong><br><code>$s+ list:last $o-</code></p>
    <div class="schema_where">
     where:
-    <div class="schema_datatypes"><code>$s</code>: <code>rdf:List</code></div>
+    <div class="schema_datatypes"><code>$s</code>: <span class="schema_param_datatype">rdf:List</span></div>
    </div>
    <br><strong>Examples</strong><br><a href="https://n3-editor.herokuapp.com/n3/editor/?formula=%40prefix+%3A+%3Chttp%3A%2F%2Fexample.org%2F%3E.%0A%40prefix+list%3A+%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F10%2Fswap%2Flist%23%3E+.%0A%0A%7B+%281+2+3+4%29+list%3Alast+%3Flast+.+%7D+%3D%3E+%7B+%3Aresult+%3Ais+%3Flast+.+%7D+." target="_blank">Try in Notation3 Editor 🚀</a>
    <p></p>
@@ -3376,13 +3379,13 @@ You can also use this to calculate the logarithm of the object, with as base the
 :result :is true. 
 </pre>
    </div>
-   <h4 class="heading settled" data-level="6.4.2" id="first"><span class="secno">6.4.2. </span><span class="content">list:first</span><a class="self-link" href="#first"></a></h4>
+   <h4 class="heading settled" data-level="5.4.2" id="first"><span class="secno">5.4.2. </span><span class="content">list:first</span><a class="self-link" href="#first"></a></h4>
     Gets the first element of the subject list as object. 
    <p><code>true</code> if and only if <code>$</code> is a list and <code>$o</code> is the first member of that list.</p>
    <p><strong>Schema</strong><br><code>$s+ list:first $o-</code></p>
    <div class="schema_where">
     where:
-    <div class="schema_datatypes"><code>$s</code>: <code>rdf:List</code></div>
+    <div class="schema_datatypes"><code>$s</code>: <span class="schema_param_datatype">rdf:List</span></div>
    </div>
    <br><strong>Examples</strong><br><a href="https://n3-editor.herokuapp.com/n3/editor/?formula=%40prefix+%3A+%3Chttp%3A%2F%2Fexample.org%2F%3E.%0A%40prefix+list%3A+%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F10%2Fswap%2Flist%23%3E+.%0A%0A%7B+%28+%28%27a%27%29+%7B+%3Aa+%3Ab+%3Ac+%7D+42+%29+list%3Afirst+%3Fwhat+.+%7D+%3D%3E+%7B+%3Aresult+%3Ais+%3Fwhat+.+%7D+." target="_blank">Try in Notation3 Editor 🚀</a>
    <p></p>
@@ -3400,31 +3403,16 @@ You can also use this to calculate the logarithm of the object, with as base the
 :result :is ('a'). 
 </pre>
    </div>
-   <h4 class="heading settled" data-level="6.4.3" id="append"><span class="secno">6.4.3. </span><span class="content">list:append</span><a class="self-link" href="#append"></a></h4>
+   <h4 class="heading settled" data-level="5.4.3" id="append"><span class="secno">5.4.3. </span><span class="content">list:append</span><a class="self-link" href="#append"></a></h4>
     Appends the lists from the subject list into a single list as object. 
    <p><code>true</code> if and only if <code>$o</code> is the concatenation of all lists <code>$s.i</code>.</p>
    <p><strong>Schema</strong><br><code>( $s.i?[*] )+ list:append $o?</code></p>
    <div class="schema_where">
     where:
-    <div class="schema_datatypes"><code>$s.i</code>: <code>rdf:List</code><br><code>$o</code>: <code>rdf:List</code></div>
+    <div class="schema_datatypes"><code>$s.i</code>: <span class="schema_param_datatype">rdf:List</span><br><code>$o</code>: <span class="schema_param_datatype">rdf:List</span></div>
    </div>
-   <br><strong>Examples</strong><br><a href="https://n3-editor.herokuapp.com/n3/editor/?formula=%40prefix+%3A+%3Chttp%3A%2F%2Fexample.org%2F%3E.%0A%40prefix+list%3A+%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F10%2Fswap%2Flist%23%3E+.%0A%0A%7B+%28+%281+2%29+%3Fwhat+%29+list%3Aappend+%281+2+3+4%29+.+%7D+%3D%3E+%7B+%3Aresult+%3Ais+%3Fwhat+.+%7D+." target="_blank">Try in Notation3 Editor 🚀</a>
+   <br><strong>Examples</strong><br><a href="https://n3-editor.herokuapp.com/n3/editor/?formula=%40prefix+%3A+%3Chttp%3A%2F%2Fexample.org%2F%3E.%0A%40prefix+list%3A+%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F10%2Fswap%2Flist%23%3E+.%0A%0A%7B+%28+%281%29+%282+3%29+%284%29+%29+list%3Aappend+%281+2+3+4%29+.+%7D+%3D%3E+%7B+%3Aresult+%3Ais+true+.+%7D+." target="_blank">Try in Notation3 Editor 🚀</a>
    <p></p>
-   <div class="example" id="example-f7b90e05">
-    <a class="self-link" href="#example-f7b90e05"></a> 
-    <p> What do we need to append to (1 2) to get (1 2 3 4)? </p>
-    <p><b>Formula:</b> </p>
-<pre>@prefix : &lt;http://example.org/>.
-@prefix list: &lt;http://www.w3.org/2000/10/swap/list#> .
-
-{ ( (1 2) ?what ) list:append (1 2 3 4) . } => { :result :is ?what . } .
-</pre>
-    <p><b>Result:</b> </p>
-<pre>@prefix : &lt;http://example.org/>.
-:result :is (3 4). 
-</pre>
-   </div>
-   <p><a href="https://n3-editor.herokuapp.com/n3/editor/?formula=%40prefix+%3A+%3Chttp%3A%2F%2Fexample.org%2F%3E.%0A%40prefix+list%3A+%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F10%2Fswap%2Flist%23%3E+.%0A%0A%7B+%28+%281%29+%282+3%29+%284%29+%29+list%3Aappend+%281+2+3+4%29+.+%7D+%3D%3E+%7B+%3Aresult+%3Ais+true+.+%7D+." target="_blank">Try in Notation3 Editor 🚀</a></p>
    <div class="example" id="example-eb436c47">
     <a class="self-link" href="#example-eb436c47"></a> 
     <p> Is the list (1 2 3 4) equal to appending (1), (2 3) , (4)? </p>
@@ -3437,21 +3425,6 @@ You can also use this to calculate the logarithm of the object, with as base the
     <p><b>Result:</b> </p>
 <pre>@prefix : &lt;http://example.org/>.
 :result :is true. 
-</pre>
-   </div>
-   <p><a href="https://n3-editor.herokuapp.com/n3/editor/?formula=%40prefix+%3A+%3Chttp%3A%2F%2Fexample.org%2F%3E.%0A%40prefix+list%3A+%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F10%2Fswap%2Flist%23%3E+.%0A%0A%7B+%28+%3Fwhat+%283+4%29+%29+list%3Aappend+%281+2+3+4%29+.+%7D+%3D%3E+%7B+%3Aresult+%3Ais+%3Fwhat+.+%7D+." target="_blank">Try in Notation3 Editor 🚀</a></p>
-   <div class="example" id="example-c63298f6">
-    <a class="self-link" href="#example-c63298f6"></a> 
-    <p> What do we need to prepend to (3 4) to get (1 2 3 4)? </p>
-    <p><b>Formula:</b> </p>
-<pre>@prefix : &lt;http://example.org/>.
-@prefix list: &lt;http://www.w3.org/2000/10/swap/list#> .
-
-{ ( ?what (3 4) ) list:append (1 2 3 4) . } => { :result :is ?what . } .
-</pre>
-    <p><b>Result:</b> </p>
-<pre>@prefix : &lt;http://example.org/>.
-:result :is (1 2). 
 </pre>
    </div>
    <p><a href="https://n3-editor.herokuapp.com/n3/editor/?formula=%40prefix+%3A+%3Chttp%3A%2F%2Fexample.org%2F%3E.%0A%40prefix+list%3A+%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F10%2Fswap%2Flist%23%3E+.%0A%0A%7B+%28+%281+2%29+%283+4%29+%29+list%3Aappend+%3Flist+.+%7D+%3D%3E+%7B+%3Aresult+%3Ais+%3Flist+.+%7D+." target="_blank">Try in Notation3 Editor 🚀</a></p>
@@ -3469,16 +3442,70 @@ You can also use this to calculate the logarithm of the object, with as base the
 :result :is (1 2 3 4). 
 </pre>
    </div>
-   <h4 class="heading settled" data-level="6.4.4" id="memberAt"><span class="secno">6.4.4. </span><span class="content">list:memberAt</span><a class="self-link" href="#memberAt"></a></h4>
+   <p><a href="https://n3-editor.herokuapp.com/n3/editor/?formula=%40prefix+%3A+%3Chttp%3A%2F%2Fexample.org%2F%3E.%0A%40prefix+list%3A+%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F10%2Fswap%2Flist%23%3E+.%0A%0A%7B+%28+%281+2%29+%3Fwhat+%29+list%3Aappend+%281+2+3+4%29+.+%7D+%3D%3E+%7B+%3Aresult+%3Ais+%3Fwhat+.+%7D+." target="_blank">Try in Notation3 Editor 🚀</a></p>
+   <div class="example" id="example-f7b90e05">
+    <a class="self-link" href="#example-f7b90e05"></a> 
+    <p> What do we need to append to (1 2) to get (1 2 3 4)? </p>
+    <p><b>Formula:</b> </p>
+<pre>@prefix : &lt;http://example.org/>.
+@prefix list: &lt;http://www.w3.org/2000/10/swap/list#> .
+
+{ ( (1 2) ?what ) list:append (1 2 3 4) . } => { :result :is ?what . } .
+</pre>
+    <p><b>Result:</b> </p>
+<pre>@prefix : &lt;http://example.org/>.
+:result :is (3 4). 
+</pre>
+   </div>
+   <p><a href="https://n3-editor.herokuapp.com/n3/editor/?formula=%40prefix+%3A+%3Chttp%3A%2F%2Fexample.org%2F%3E.%0A%40prefix+list%3A+%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F10%2Fswap%2Flist%23%3E+.%0A%0A%7B+%28+%3Fwhat+%283+4%29+%29+list%3Aappend+%281+2+3+4%29+.+%7D+%3D%3E+%7B+%3Aresult+%3Ais+%3Fwhat+.+%7D+." target="_blank">Try in Notation3 Editor 🚀</a></p>
+   <div class="example" id="example-c63298f6">
+    <a class="self-link" href="#example-c63298f6"></a> 
+    <p> What do we need to prepend to (3 4) to get (1 2 3 4)? </p>
+    <p><b>Formula:</b> </p>
+<pre>@prefix : &lt;http://example.org/>.
+@prefix list: &lt;http://www.w3.org/2000/10/swap/list#> .
+
+{ ( ?what (3 4) ) list:append (1 2 3 4) . } => { :result :is ?what . } .
+</pre>
+    <p><b>Result:</b> </p>
+<pre>@prefix : &lt;http://example.org/>.
+:result :is (1 2). 
+</pre>
+   </div>
+   <h4 class="heading settled" data-level="5.4.4" id="memberAt"><span class="secno">5.4.4. </span><span class="content">list:memberAt</span><a class="self-link" href="#memberAt"></a></h4>
     Gets the member of the subject list at the given subject index as object (index starts at 0). 
    <p><code>true</code> if and only if <code>$s.1</code> is a list, <code>$s.2</code> is a valid index in list <code>$s.1</code>, and <code>$o</code> is found at that index in the list.</p>
    <p><strong>Schema</strong><br><code>( $s.1+ $s.2?[*] )+ list:memberAt $o?[*]</code></p>
    <div class="schema_where">
     where:
-    <div class="schema_datatypes"><code>$s.1</code>: <code>rdf:List</code>, <code>$s.2</code>: <code>xsd:integer</code></div>
+    <div class="schema_datatypes"><code>$s.1</code>: <span class="schema_param_datatype">rdf:List</span><br><code>$s.2</code>: <span class="schema_param_datatype">xsd:integer</span></div>
    </div>
-   <br><strong>Examples</strong><br><a href="https://n3-editor.herokuapp.com/n3/editor/?formula=%40prefix+%3A+%3Chttp%3A%2F%2Fexample.org%2F%3E.%0A%40prefix+list%3A+%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F10%2Fswap%2Flist%23%3E+.%0A%0A%3Alet+%3Aparam+%28%22dog%22+%22cat%22+%22penguin%22+%22cat%22%29.%0A%0A%7B%0A++++%3Alet+%3Aparam+%3Fparam+.%0A++++%28+%3Fparam+%3Findex+%29+list%3AmemberAt+%22cat%22+.%0A%7D+%0A%3D%3E+%0A%7B+%0A++++%3Aresult+%3Ais+%3Findex+.+%0A%7D+." target="_blank">Try in Notation3 Editor 🚀</a>
+   <br><strong>Examples</strong><br><a href="https://n3-editor.herokuapp.com/n3/editor/?formula=%40prefix+%3A+%3Chttp%3A%2F%2Fexample.org%2F%3E.%0A%40prefix+list%3A+%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F10%2Fswap%2Flist%23%3E+.%0A%0A%3Alet+%3Aparam+%28%22dog%22+%22penguin%22+%22cat%22%29.%0A%0A%7B%0A++++%3Alet+%3Aparam+%3Fparam+.%0A++++%28+%3Fparam+2+%29+list%3AmemberAt+%3Fthird+.%0A%7D+%0A%3D%3E+%0A%7B+%0A++++%3Aresult+%3Ais+%3Fthird+.+%0A%7D+." target="_blank">Try in Notation3 Editor 🚀</a>
    <p></p>
+   <div class="example" id="example-c42c9633">
+    <a class="self-link" href="#example-c42c9633"></a> 
+    <p> Get the third member of the list ("dog" "penguin" "cat"). </p>
+    <p><b>Formula:</b> </p>
+<pre>@prefix : &lt;http://example.org/>.
+@prefix list: &lt;http://www.w3.org/2000/10/swap/list#> .
+
+:let :param ("dog" "penguin" "cat").
+
+{
+    :let :param ?param .
+    ( ?param 2 ) list:memberAt ?third .
+} 
+=> 
+{ 
+    :result :is ?third . 
+} .
+</pre>
+    <p><b>Result:</b> </p>
+<pre>@prefix : &lt;http://example.org/>.
+:result :is "cat" .
+</pre>
+   </div>
+   <p><a href="https://n3-editor.herokuapp.com/n3/editor/?formula=%40prefix+%3A+%3Chttp%3A%2F%2Fexample.org%2F%3E.%0A%40prefix+list%3A+%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F10%2Fswap%2Flist%23%3E+.%0A%0A%3Alet+%3Aparam+%28%22dog%22+%22cat%22+%22penguin%22+%22cat%22%29.%0A%0A%7B%0A++++%3Alet+%3Aparam+%3Fparam+.%0A++++%28+%3Fparam+%3Findex+%29+list%3AmemberAt+%22cat%22+.%0A%7D+%0A%3D%3E+%0A%7B+%0A++++%3Aresult+%3Ais+%3Findex+.+%0A%7D+." target="_blank">Try in Notation3 Editor 🚀</a></p>
    <div class="example" id="example-76ae0b95">
     <a class="self-link" href="#example-76ae0b95"></a> 
     <p> Find the index of "cat" in the list ("dog" "cat" "penguin" "cat"). </p>
@@ -3503,37 +3530,13 @@ You can also use this to calculate the logarithm of the object, with as base the
 :result :is 3 .
 </pre>
    </div>
-   <p><a href="https://n3-editor.herokuapp.com/n3/editor/?formula=%40prefix+%3A+%3Chttp%3A%2F%2Fexample.org%2F%3E.%0A%40prefix+list%3A+%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F10%2Fswap%2Flist%23%3E+.%0A%0A%3Alet+%3Aparam+%28%22dog%22+%22penguin%22+%22cat%22%29.%0A%0A%7B%0A++++%3Alet+%3Aparam+%3Fparam+.%0A++++%28+%3Fparam+2+%29+list%3AmemberAt+%3Fthird+.%0A%7D+%0A%3D%3E+%0A%7B+%0A++++%3Aresult+%3Ais+%3Fthird+.+%0A%7D+." target="_blank">Try in Notation3 Editor 🚀</a></p>
-   <div class="example" id="example-c42c9633">
-    <a class="self-link" href="#example-c42c9633"></a> 
-    <p> Get the third member of the list ("dog" "penguin" "cat"). </p>
-    <p><b>Formula:</b> </p>
-<pre>@prefix : &lt;http://example.org/>.
-@prefix list: &lt;http://www.w3.org/2000/10/swap/list#> .
-
-:let :param ("dog" "penguin" "cat").
-
-{
-    :let :param ?param .
-    ( ?param 2 ) list:memberAt ?third .
-} 
-=> 
-{ 
-    :result :is ?third . 
-} .
-</pre>
-    <p><b>Result:</b> </p>
-<pre>@prefix : &lt;http://example.org/>.
-:result :is "cat" .
-</pre>
-   </div>
-   <h4 class="heading settled" data-level="6.4.5" id="iterate"><span class="secno">6.4.5. </span><span class="content">list:iterate</span><a class="self-link" href="#iterate"></a></h4>
+   <h4 class="heading settled" data-level="5.4.5" id="iterate"><span class="secno">5.4.5. </span><span class="content">list:iterate</span><a class="self-link" href="#iterate"></a></h4>
     Iterates over each member of the subject list, getting their index/value pairs as the object. 
    <p><code>true</code> if and only if <code>$s</code> is a list and <code>$o</code> is a list with two elements: <code>$o.1</code> is a valid index in list <code>$s</code> (index starts at 0), and <code>$o.2</code> is found at that index in list <code>$s</code>.</p>
    <p><strong>Schema</strong><br><code>$s+ list:iterate ( $o.1?[*] $o.2?[*] )?[*]</code></p>
    <div class="schema_where">
     where:
-    <div class="schema_datatypes"><code>$s</code>: <code>rdf:List</code><br><code>$o.1</code>: <code>xsd:integer</code></div>
+    <div class="schema_datatypes"><code>$s</code>: <span class="schema_param_datatype">rdf:List</span><br><code>$o.1</code>: <span class="schema_param_datatype">xsd:integer</span></div>
    </div>
    <br><strong>Examples</strong><br><a href="https://n3-editor.herokuapp.com/n3/editor/?formula=%40prefix+%3A+%3Chttp%3A%2F%2Fexample.org%2F%3E.%0A%40prefix+list%3A+%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F10%2Fswap%2Flist%23%3E+.%0A%0A%3Alet+%3Aparam+%28%22dog%22+%22penguin%22+%22cat%22%29+.%0A%7B%0A++++%3Alet+%3Aparam+%3Fparam+.+%0A++++%3Fparam+list%3Aiterate+%282+%22cat%22%29+.++%0A%7D%0A%3D%3E+%0A%7B+%0A++++%3Aresult+%3Ais+true+.+%0A%7D+." target="_blank">Try in Notation3 Editor 🚀</a>
    <p></p>
@@ -3559,6 +3562,23 @@ You can also use this to calculate the logarithm of the object, with as base the
 :result :is true .
 </pre>
    </div>
+   <p><a href="https://n3-editor.herokuapp.com/n3/editor/?formula=%40prefix+%3A+%3Chttp%3A%2F%2Fexample.org%2F%3E.%0A%40prefix+list%3A+%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F10%2Fswap%2Flist%23%3E+.%0A%0A%7B+%28%22dog%22+%22penguin%22+%22cat%22%29+list%3Aiterate+%28%3Findex+%3Fmember%29+.+%7D+%3D%3E+%7B+%3Aresult+%3Ais+%28%3Findex+%3Fmember%29+.+%7D+." target="_blank">Try in Notation3 Editor 🚀</a></p>
+   <div class="example" id="example-981bcfc3">
+    <a class="self-link" href="#example-981bcfc3"></a> 
+    <p> Iterate over the list ("dog" "penguin" "cat"). </p>
+    <p><b>Formula:</b> </p>
+<pre>@prefix : &lt;http://example.org/>.
+@prefix list: &lt;http://www.w3.org/2000/10/swap/list#> .
+
+{ ("dog" "penguin" "cat") list:iterate (?index ?member) . } => { :result :is (?index ?member) . } .
+</pre>
+    <p><b>Result:</b> </p>
+<pre>@prefix : &lt;http://example.org/>.
+:result :is (0 "dog") .
+:result :is (1 "penguin") .
+:result :is (2 "cat") .
+</pre>
+   </div>
    <p><a href="https://n3-editor.herokuapp.com/n3/editor/?formula=%40prefix+%3A+%3Chttp%3A%2F%2Fexample.org%2F%3E.%0A%40prefix+list%3A+%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F10%2Fswap%2Flist%23%3E+.%0A%0A%3Alet+%3Aparam+%28%22dog%22+%22penguin%22+%22cat%22%29+.%0A%7B%0A++++%3Alet+%3Aparam+%3Fparam+.+%0A++++%3Fparam+list%3Aiterate+%28%3Findex+%22cat%22%29+.++%0A%7D%0A%3D%3E+%0A%7B+%0A++++%3Aresult+%3Ais+%3Findex+.+%0A%7D+." target="_blank">Try in Notation3 Editor 🚀</a></p>
    <div class="example" id="example-98e66a9f">
     <a class="self-link" href="#example-98e66a9f"></a> 
@@ -3582,33 +3602,33 @@ You can also use this to calculate the logarithm of the object, with as base the
 :result :is 2 .
 </pre>
    </div>
-   <p><a href="https://n3-editor.herokuapp.com/n3/editor/?formula=%40prefix+%3A+%3Chttp%3A%2F%2Fexample.org%2F%3E.%0A%40prefix+list%3A+%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F10%2Fswap%2Flist%23%3E+.%0A%0A%7B+%28%22dog%22+%22penguin%22+%22cat%22%29+list%3Aiterate+%28%3Findex+%3Fmember%29+.+%7D+%3D%3E+%7B+%3Aresult+%3Ais+%28%3Findex+%3Fmember%29+.+%7D+." target="_blank">Try in Notation3 Editor 🚀</a></p>
-   <div class="example" id="example-981bcfc3">
-    <a class="self-link" href="#example-981bcfc3"></a> 
-    <p> Iterate over the list ("dog" "penguin" "cat"). </p>
-    <p><b>Formula:</b> </p>
-<pre>@prefix : &lt;http://example.org/>.
-@prefix list: &lt;http://www.w3.org/2000/10/swap/list#> .
-
-{ ("dog" "penguin" "cat") list:iterate (?index ?member) . } => { :result :is (?index ?member) . } .
-</pre>
-    <p><b>Result:</b> </p>
-<pre>@prefix : &lt;http://example.org/>.
-:result :is (0 "dog") .
-:result :is (1 "penguin") .
-:result :is (2 "cat") .
-</pre>
-   </div>
-   <h4 class="heading settled" data-level="6.4.6" id="member"><span class="secno">6.4.6. </span><span class="content">list:member</span><a class="self-link" href="#member"></a></h4>
+   <h4 class="heading settled" data-level="5.4.6" id="member"><span class="secno">5.4.6. </span><span class="content">list:member</span><a class="self-link" href="#member"></a></h4>
     Checks whether the subject list contains the object. 
    <p><code>true</code> if and only <code>$s</code> is a list and <code>o</code> is a member of that list.</p>
    <p><strong>Schema</strong><br><code>$s+ list:member $o-[*]</code></p>
    <div class="schema_where">
     where:
-    <div class="schema_datatypes"><code>$s</code>: <code>rdf:List</code></div>
+    <div class="schema_datatypes"><code>$s</code>: <span class="schema_param_datatype">rdf:List</span></div>
    </div>
-   <br><strong>Examples</strong><br><a href="https://n3-editor.herokuapp.com/n3/editor/?formula=%40prefix+%3A+%3Chttp%3A%2F%2Fexample.org%2F%3E.%0A%40prefix+list%3A+%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F10%2Fswap%2Flist%23%3E+.%0A%0A%3Alet+%3Aparam+%28%22dog%22+%22penguin%22+%22cat%22%29+.%0A%0A%7B+%0A++++%3Alet+%3Aparam+%3Fparam+.%0A++++%3Fparam+list%3Amember+%22cat%22+.+%0A%7D+%0A%3D%3E+%0A%7B+%0A++++%3Aresult+%3Ais+true+.+%0A%7D+." target="_blank">Try in Notation3 Editor 🚀</a>
+   <br><strong>Examples</strong><br><a href="https://n3-editor.herokuapp.com/n3/editor/?formula=%40prefix+%3A+%3Chttp%3A%2F%2Fexample.org%2F%3E.%0A%40prefix+list%3A+%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F10%2Fswap%2Flist%23%3E+.%0A%0A%7B+%28%22dog%22+%22penguin%22+%22cat%22%29+list%3Amember+%3Fmember+.+%7D+%3D%3E+%7B+%3Aresult+%3Ais+%3Fmember+.+%7D+." target="_blank">Try in Notation3 Editor 🚀</a>
    <p></p>
+   <div class="example" id="example-bf32ebbe">
+    <a class="self-link" href="#example-bf32ebbe"></a> 
+    <p> Determine the members of the list ("dog" "penguin" "cat"). </p>
+    <p><b>Formula:</b> </p>
+<pre>@prefix : &lt;http://example.org/>.
+@prefix list: &lt;http://www.w3.org/2000/10/swap/list#> .
+
+{ ("dog" "penguin" "cat") list:member ?member . } => { :result :is ?member . } .
+</pre>
+    <p><b>Result:</b> </p>
+<pre>@prefix : &lt;http://example.org/>.
+:result :is "dog".
+:result :is "penguin".
+:result :is "cat".
+</pre>
+   </div>
+   <p><a href="https://n3-editor.herokuapp.com/n3/editor/?formula=%40prefix+%3A+%3Chttp%3A%2F%2Fexample.org%2F%3E.%0A%40prefix+list%3A+%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F10%2Fswap%2Flist%23%3E+.%0A%0A%3Alet+%3Aparam+%28%22dog%22+%22penguin%22+%22cat%22%29+.%0A%0A%7B+%0A++++%3Alet+%3Aparam+%3Fparam+.%0A++++%3Fparam+list%3Amember+%22cat%22+.+%0A%7D+%0A%3D%3E+%0A%7B+%0A++++%3Aresult+%3Ais+true+.+%0A%7D+." target="_blank">Try in Notation3 Editor 🚀</a></p>
    <div class="example" id="example-83d2a4f5">
     <a class="self-link" href="#example-83d2a4f5"></a> 
     <p> Is "cat" a member of the list ("dog" "penguin" "cat")? </p>
@@ -3632,30 +3652,13 @@ You can also use this to calculate the logarithm of the object, with as base the
 :result :is true.
 </pre>
    </div>
-   <p><a href="https://n3-editor.herokuapp.com/n3/editor/?formula=%40prefix+%3A+%3Chttp%3A%2F%2Fexample.org%2F%3E.%0A%40prefix+list%3A+%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F10%2Fswap%2Flist%23%3E+.%0A%0A%7B+%28%22dog%22+%22penguin%22+%22cat%22%29+list%3Amember+%3Fmember+.+%7D+%3D%3E+%7B+%3Aresult+%3Ais+%3Fmember+.+%7D+." target="_blank">Try in Notation3 Editor 🚀</a></p>
-   <div class="example" id="example-bf32ebbe">
-    <a class="self-link" href="#example-bf32ebbe"></a> 
-    <p> Determine the members of the list ("dog" "penguin" "cat"). </p>
-    <p><b>Formula:</b> </p>
-<pre>@prefix : &lt;http://example.org/>.
-@prefix list: &lt;http://www.w3.org/2000/10/swap/list#> .
-
-{ ("dog" "penguin" "cat") list:member ?member . } => { :result :is ?member . } .
-</pre>
-    <p><b>Result:</b> </p>
-<pre>@prefix : &lt;http://example.org/>.
-:result :is "dog".
-:result :is "penguin".
-:result :is "cat".
-</pre>
-   </div>
-   <h4 class="heading settled" data-level="6.4.7" id="in"><span class="secno">6.4.7. </span><span class="content">list:in</span><a class="self-link" href="#in"></a></h4>
+   <h4 class="heading settled" data-level="5.4.7" id="in"><span class="secno">5.4.7. </span><span class="content">list:in</span><a class="self-link" href="#in"></a></h4>
     Checks whether the subject is found in the object list. 
    <p><code>true</code> if and only if <code>$o</code> is a list and <code>$s</code> is a member of that list.</p>
    <p><strong>Schema</strong><br><code>$s-[*] list:in $o+</code></p>
    <div class="schema_where">
     where:
-    <div class="schema_datatypes"><code>$o</code>: <code>rdf:List</code></div>
+    <div class="schema_datatypes"><code>$o</code>: <span class="schema_param_datatype">rdf:List</span></div>
    </div>
    <br><strong>Examples</strong><br><a href="https://n3-editor.herokuapp.com/n3/editor/?formula=%40prefix+%3A+%3Chttp%3A%2F%2Fexample.org%2F%3E.%0A%40prefix+list%3A+%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F10%2Fswap%2Flist%23%3E+.%0A%0A%7B+%3Fwhat+list%3Ain+%28+%22dog%22+%22penguin%22+%22cat%22+%29+.+%7D+%3D%3E+%7B+%3Aresult+%3Ais+%3Fwhat+.+%7D+." target="_blank">Try in Notation3 Editor 🚀</a>
    <p></p>
@@ -3690,13 +3693,13 @@ You can also use this to calculate the logarithm of the object, with as base the
 :result :is true. 
 </pre>
    </div>
-   <h4 class="heading settled" data-level="6.4.8" id="remove"><span class="secno">6.4.8. </span><span class="content">list:remove</span><a class="self-link" href="#remove"></a></h4>
+   <h4 class="heading settled" data-level="5.4.8" id="remove"><span class="secno">5.4.8. </span><span class="content">list:remove</span><a class="self-link" href="#remove"></a></h4>
     Removes the subject member from the subject list, and returns the resulting list as object. 
    <p><code>true</code> if and only if <code>$s.1</code> is a list, and <code>$o</code> is a list composed of the members of <code>$s.1</code> with member <code>$s.2</code> removed (if it was present; else, <code>$o</code> will be the same list).</p>
    <p><strong>Schema</strong><br><code>( $s.1+ $s.2+ )+ list:remove $o-</code></p>
    <div class="schema_where">
     where:
-    <div class="schema_datatypes"><code>$s.1</code>: <code>rdf:List</code></div>
+    <div class="schema_datatypes"><code>$s.1</code>: <span class="schema_param_datatype">rdf:List</span></div>
    </div>
    <br><strong>Examples</strong><br><a href="https://n3-editor.herokuapp.com/n3/editor/?formula=%40prefix+%3A+%3Chttp%3A%2F%2Fexample.org%2F%3E.%0A%40prefix+list%3A+%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F10%2Fswap%2Flist%23%3E+.%0A%0A%3Alet+%3Aparam+%28%22dog%22+%22penguin%22+%22cat%22+%22penguin%22%29+.%0A%7B+%0A++++%3Alet+%3Aparam+%3Fparam+.+%0A++++%28+%3Fparam+%22penguin%22+%29+list%3Aremove+%3Flist+.%0A%7D+%0A%3D%3E+%0A%7B+%0A++++%3Aresult+%3Ais+%3Flist+.+%0A%7D+." target="_blank">Try in Notation3 Editor 🚀</a>
    <p></p>
@@ -3722,13 +3725,13 @@ You can also use this to calculate the logarithm of the object, with as base the
 :result :is ("dog" "cat").
 </pre>
    </div>
-   <h4 class="heading settled" data-level="6.4.9" id="length"><span class="secno">6.4.9. </span><span class="content">list:length</span><a class="self-link" href="#length"></a></h4>
+   <h4 class="heading settled" data-level="5.4.9" id="length"><span class="secno">5.4.9. </span><span class="content">list:length</span><a class="self-link" href="#length"></a></h4>
     Gets the length of the subject list as object. 
    <p><code>true</code> if and only if <code>$s</code> is a list and <code>$o</code> is the integer length of that list.</p>
    <p><strong>Schema</strong><br><code>$s+ list:length $o-</code></p>
    <div class="schema_where">
     where:
-    <div class="schema_datatypes"><code>$s</code>: <code>rdf:List</code></div>
+    <div class="schema_datatypes"><code>$s</code>: <span class="schema_param_datatype">rdf:List</span></div>
    </div>
    <br><strong>Examples</strong><br><a href="https://n3-editor.herokuapp.com/n3/editor/?formula=%40prefix+%3A+%3Chttp%3A%2F%2Fexample.org%2F%3E.%0A%40prefix+list%3A+%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F10%2Fswap%2Flist%23%3E+.%0A%0A%7B+%281+2+3+4%29+list%3Alength+%3Flength+.+%7D+%3D%3E+%7B+%3Aresult+%3Ais+%3Flength+.+%7D+." target="_blank">Try in Notation3 Editor 🚀</a>
    <p></p>
@@ -3746,14 +3749,14 @@ You can also use this to calculate the logarithm of the object, with as base the
 :result :is 4. 
 </pre>
    </div>
-   <h3 class="heading settled" data-level="6.5" id="log"><span class="secno">6.5. </span><span class="content">log</span><a class="self-link" href="#log"></a></h3>
-   <h4 class="heading settled" data-level="6.5.1" id="uri"><span class="secno">6.5.1. </span><span class="content">log:uri</span><a class="self-link" href="#uri"></a></h4>
+   <h3 class="heading settled" data-level="5.5" id="log"><span class="secno">5.5. </span><span class="content">log</span><a class="self-link" href="#log"></a></h3>
+   <h4 class="heading settled" data-level="5.5.1" id="uri"><span class="secno">5.5.1. </span><span class="content">log:uri</span><a class="self-link" href="#uri"></a></h4>
     Gets as object the string representation of the subject URI. 
    <p><code>true</code> if and only if <code>$o</code> is the string representation of <code>$s</code>.</p>
    <p><strong>Schema</strong><br><code>$s? log:uri $o?</code></p>
    <div class="schema_where">
     where:
-    <div class="schema_datatypes"><code>$s</code>: (a URI)<br><code>$o</code>: <code>xsd:string</code></div>
+    <div class="schema_datatypes"><code>$s</code>: <span class="schema_param_descr">(a URI)</span><br><code>$o</code>: <span class="schema_param_datatype">xsd:string</span></div>
    </div>
    <br><strong>Examples</strong><br><a href="https://n3-editor.herokuapp.com/n3/editor/?formula=%40prefix+%3A+%3Chttp%3A%2F%2Fexample.org%2F%3E.%0A%40prefix+log%3A+%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F10%2Fswap%2Flog%23%3E+.%0A%0A%7B+%3Chttps%3A%2F%2Fwww.w3.org%3E+log%3Auri+%3Furi+.+%7D+%3D%3E+%7B+%3Aresult+%3Ais+%3Furi+.+%7D+." target="_blank">Try in Notation3 Editor 🚀</a>
    <p></p>
@@ -3774,17 +3777,41 @@ You can also use this to calculate the logarithm of the object, with as base the
 :result :is "https://www.w3.org" .
 </pre>
    </div>
-   <h4 class="heading settled" data-level="6.5.2" id="rawType"><span class="secno">6.5.2. </span><span class="content">log:rawType</span><a class="self-link" href="#rawType"></a></h4>
+   <h4 class="heading settled" data-level="5.5.2" id="rawType"><span class="secno">5.5.2. </span><span class="content">log:rawType</span><a class="self-link" href="#rawType"></a></h4>
     Gets the type of the N3 resource. 
    <p><code>true</code> if and only if the N3 resource type of <code>$s</code> is <code>$o</code>.
 N3 resource types include <code>log:Formula</code>, <code>log:Literal</code>, <code>log:List</code>, <code>log:Set</code> or <code>log:Other</code>.</p>
    <p><strong>Schema</strong><br><code>$s+ log:rawType $o-</code></p>
    <div class="schema_where">
     where:
-    <div class="schema_datatypes"><code>$o</code>: <code>log:Uri</code></div>
+    <div class="schema_datatypes"><code>$o</code>: <span class="schema_param_datatype">log:Uri</span></div>
    </div>
-   <br><strong>Examples</strong><br><a href="https://n3-editor.herokuapp.com/n3/editor/?formula=%40prefix+%3A+%3Chttp%3A%2F%2Fexample.org%2F%3E.%0A%40prefix+log%3A+%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F10%2Fswap%2Flog%23%3E+.%0A%0A%7B%0A++++%3Chttp%3A%2F%2Fwww.w3c.org%3E+log%3ArawType+%3FresourceType+.%0A%7D%0A%3D%3E%0A%7B%0A++++%3Aresult+%3Ais+%3FresourceType+.%0A%7D+." target="_blank">Try in Notation3 Editor 🚀</a>
+   <br><strong>Examples</strong><br><a href="https://n3-editor.herokuapp.com/n3/editor/?formula=%40prefix+%3A+%3Chttp%3A%2F%2Fexample.org%2F%3E.%0A%40prefix+log%3A+%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F10%2Fswap%2Flog%23%3E+.%0A%0A%7B%0A++++%281+2+3+4%29+log%3ArawType+%3FlistType+.%0A++++%7B+%3As+%3Ap+%3Ao+%7D+log%3ArawType+%3FgraphType+.%0A%7D+%0A%3D%3E%0A%7B%0A++++%3Aresult+%3Ais+%28+%3FlistType+%3FgraphType+%29+.%0A%7D+." target="_blank">Try in Notation3 Editor 🚀</a>
    <p></p>
+   <div class="example" id="example-61fa2a9e">
+    <a class="self-link" href="#example-61fa2a9e"></a> 
+    <p> Get the type of lists and quoted graphs. </p>
+    <p><b>Formula:</b> </p>
+<pre>@prefix : &lt;http://example.org/>.
+@prefix log: &lt;http://www.w3.org/2000/10/swap/log#> .
+
+{
+    (1 2 3 4) log:rawType ?listType .
+    { :s :p :o } log:rawType ?graphType .
+} 
+=>
+{
+    :result :is ( ?listType ?graphType ) .
+} .
+</pre>
+    <p><b>Result:</b> </p>
+<pre>@prefix : &lt;http://example.org/>.
+@prefix rdf: &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix log: &lt;http://www.w3.org/2000/10/swap/log#> .
+:result :is ( rdf:List log:Formula ) .
+</pre>
+   </div>
+   <p><a href="https://n3-editor.herokuapp.com/n3/editor/?formula=%40prefix+%3A+%3Chttp%3A%2F%2Fexample.org%2F%3E.%0A%40prefix+log%3A+%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F10%2Fswap%2Flog%23%3E+.%0A%0A%7B%0A++++%3Chttp%3A%2F%2Fwww.w3c.org%3E+log%3ArawType+%3FresourceType+.%0A%7D%0A%3D%3E%0A%7B%0A++++%3Aresult+%3Ais+%3FresourceType+.%0A%7D+." target="_blank">Try in Notation3 Editor 🚀</a></p>
    <div class="example" id="example-8ee0d674">
     <a class="self-link" href="#example-8ee0d674"></a> 
     <p> Get the type of resources. </p>
@@ -3831,38 +3858,14 @@ N3 resource types include <code>log:Formula</code>, <code>log:Literal</code>, <c
 :result :is ( log:Literal log:Literal log:Literal log:Literal ) .
 </pre>
    </div>
-   <p><a href="https://n3-editor.herokuapp.com/n3/editor/?formula=%40prefix+%3A+%3Chttp%3A%2F%2Fexample.org%2F%3E.%0A%40prefix+log%3A+%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F10%2Fswap%2Flog%23%3E+.%0A%0A%7B%0A++++%281+2+3+4%29+log%3ArawType+%3FlistType+.%0A++++%7B+%3As+%3Ap+%3Ao+%7D+log%3ArawType+%3FgraphType+.%0A%7D+%0A%3D%3E%0A%7B%0A++++%3Aresult+%3Ais+%28+%3FlistType+%3FgraphType+%29+.%0A%7D+." target="_blank">Try in Notation3 Editor 🚀</a></p>
-   <div class="example" id="example-61fa2a9e">
-    <a class="self-link" href="#example-61fa2a9e"></a> 
-    <p> Get the type of lists and quoted graphs. </p>
-    <p><b>Formula:</b> </p>
-<pre>@prefix : &lt;http://example.org/>.
-@prefix log: &lt;http://www.w3.org/2000/10/swap/log#> .
-
-{
-    (1 2 3 4) log:rawType ?listType .
-    { :s :p :o } log:rawType ?graphType .
-} 
-=>
-{
-    :result :is ( ?listType ?graphType ) .
-} .
-</pre>
-    <p><b>Result:</b> </p>
-<pre>@prefix : &lt;http://example.org/>.
-@prefix rdf: &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
-@prefix log: &lt;http://www.w3.org/2000/10/swap/log#> .
-:result :is ( rdf:List log:Formula ) .
-</pre>
-   </div>
-   <h4 class="heading settled" data-level="6.5.3" id="conclusion"><span class="secno">6.5.3. </span><span class="content">log:conclusion</span><a class="self-link" href="#conclusion"></a></h4>
+   <h4 class="heading settled" data-level="5.5.3" id="conclusion"><span class="secno">5.5.3. </span><span class="content">log:conclusion</span><a class="self-link" href="#conclusion"></a></h4>
     Gets all possible conclusions from the subject quoted graph, including rule inferences (deductive closure), as the object quoted graph. 
    <p><code>true</code> if and only if <code>$o</code> is the set of conclusions which can be drawn from <code>$s</code> (deductive closure),
 by applying any rules it contains to the data it contains.</p>
    <p><strong>Schema</strong><br><code>$s+ log:conclusion $o?</code></p>
    <div class="schema_where">
     where:
-    <div class="schema_datatypes"><code>$s</code>: <code>log:Formula</code><br><code>$o</code>: <code>log:Formula</code></div>
+    <div class="schema_datatypes"><code>$s</code>: <span class="schema_param_datatype">log:Formula</span><br><code>$o</code>: <span class="schema_param_datatype">log:Formula</span></div>
    </div>
    <br><strong>Examples</strong><br><a href="https://n3-editor.herokuapp.com/n3/editor/?formula=%40prefix+%3A+%3Chttp%3A%2F%2Fexample.org%2F%3E.%0A%40prefix+log%3A+%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F10%2Fswap%2Flog%23%3E+.%0A%0A%3Alet+%3Aparam+%7B+%0A++++%3AFelix+a+%3ACat+.+%0A++++%7B+%3FX+a+%3ACat+.+%7D+%3D%3E+%7B+%3FX+%3Asays+%22Meow%22+.+%7D+.%0A%7D+.%0A%0A%7B+%0A++++%3Alet+%3Aparam+%3Fparam+.%0A++++%3Fparam+log%3Aconclusion+%3Fconclusion+.%0A%7D+%0A%3D%3E+%0A%7B+%0A++++%3Aresult+%3Ais+%3Fconclusion+.+%0A%7D+." target="_blank">Try in Notation3 Editor 🚀</a>
    <p></p>
@@ -3896,13 +3899,13 @@ by applying any rules it contains to the data it contains.</p>
 } .
 </pre>
    </div>
-   <h4 class="heading settled" data-level="6.5.4" id="content"><span class="secno">6.5.4. </span><span class="content">log:content</span><a class="self-link" href="#content"></a></h4>
+   <h4 class="heading settled" data-level="5.5.4" id="content"><span class="secno">5.5.4. </span><span class="content">log:content</span><a class="self-link" href="#content"></a></h4>
     Dereferences the subject IRI and retrieves the online resource as the object string. 
    <p><code>true</code> if and only if <code>$o</code> is a string that represents the online resource to which <code>$s</code> is dereferenced.</p>
    <p><strong>Schema</strong><br><code>$s+ log:content $o?</code></p>
    <div class="schema_where">
     where:
-    <div class="schema_datatypes"><code>$s</code>: <code>log:Uri</code><br><code>$o</code>: <code>xsd:string</code></div>
+    <div class="schema_datatypes"><code>$s</code>: <span class="schema_param_datatype">log:Uri</span><br><code>$o</code>: <span class="schema_param_datatype">xsd:string</span></div>
    </div>
    <br><strong>Examples</strong><br><a href="https://n3-editor.herokuapp.com/n3/editor/?formula=%40prefix+%3A+%3Chttp%3A%2F%2Fexample.org%2F%3E.%0A%40prefix+log%3A+%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F10%2Fswap%2Flog%23%3E+.%0A%0A%7B+%0A++++%3Chttps%3A%2F%2Fwww.w3.org%2FPeople%2FBerners-Lee%2Fcard%3E+log%3Acontent+%3Fcontent+.%0A%7D+%0A%3D%3E+%0A%7B+%0A++++%3Aresult+%3Ais+%3Fcontent+.+%0A%7D+." target="_blank">Try in Notation3 Editor 🚀</a>
    <p></p>
@@ -3925,13 +3928,13 @@ by applying any rules it contains to the data it contains.</p>
 <pre>:result :is "...the content of https://www.w3.org/People/Berners-Lee/card ...". 
 </pre>
    </div>
-   <h4 class="heading settled" data-level="6.5.5" id="langlit"><span class="secno">6.5.5. </span><span class="content">log:langlit</span><a class="self-link" href="#langlit"></a></h4>
+   <h4 class="heading settled" data-level="5.5.5" id="langlit"><span class="secno">5.5.5. </span><span class="content">log:langlit</span><a class="self-link" href="#langlit"></a></h4>
     Creates a language-tagged literal as object, based on the string value and language tag (see <a href="https://tools.ietf.org/html/bcp47">BCP47</a>) in the subject list. 
    <p><code>true</code> if and only if <code>$o</code> is a language-tagged literal with string value corresponding to <code>$s.1</code> and language tag corresponding to <code>$s.2</code>. <code>$s.2</code> should be a string in the form of a <a href="https://tools.ietf.org/html/bcp47">BCP47</a> language tag.</p>
    <p><strong>Schema</strong><br><code>( $s.1? $s.2? )? log:langlit $o?</code></p>
    <div class="schema_where">
     where:
-    <div class="schema_datatypes"><code>$s.1</code>: <code>xsd:string</code>, <code>$s.2</code>: <code>xsd:string</code><br><code>$o</code>: <code>log:Literal</code></div>
+    <div class="schema_datatypes"><code>$s.1</code>: <span class="schema_param_datatype">xsd:string</span><br><code>$s.2</code>: <span class="schema_param_datatype">xsd:string</span><br><code>$o</code>: <span class="schema_param_datatype">log:Literal</span></div>
    </div>
    <br><strong>Examples</strong><br><a href="https://n3-editor.herokuapp.com/n3/editor/?formula=%40prefix+%3A+%3Chttp%3A%2F%2Fexample.org%2F%3E.%0A%40prefix+log%3A+%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F10%2Fswap%2Flog%23%3E+.%0A%7B+%28%22hello%22+%22en%22%29+log%3Alanglit+%3FX+%7D+%3D%3E+%7B+%3FX+a+%3AResult+%7D+." target="_blank">Try in Notation3 Editor 🚀</a>
    <p></p>
@@ -3948,14 +3951,14 @@ by applying any rules it contains to the data it contains.</p>
 "hello"@en a :Result .
 </pre>
    </div>
-   <h4 class="heading settled" data-level="6.5.6" id="forAllIn"><span class="secno">6.5.6. </span><span class="content">log:forAllIn</span><a class="self-link" href="#forAllIn"></a></h4>
+   <h4 class="heading settled" data-level="5.5.6" id="forAllIn"><span class="secno">5.5.6. </span><span class="content">log:forAllIn</span><a class="self-link" href="#forAllIn"></a></h4>
     Two clauses are given in the subject list: for each result of the first clause, the builtin checks whether the second clause also holds for the result. 
    <p><code>true</code> if and only if, for each solution for which the first clause <code>$s.1</code> is true, the second clause <code>$s.2</code> is true as well.
 This is a scoped universal quantification.</p>
    <p><strong>Schema</strong><br><code>( $s.1+ $s.2+ )+ log:forAllIn $o?</code></p>
    <div class="schema_where">
     where:
-    <div class="schema_datatypes"><code>$s.1</code>: <code>log:Formula</code>, <code>$s.2</code>: <code>log:Formula</code><br><code>$o</code>: (Scope of the universal quantification. Leave as a variable to use current N3 document as scope.)</div>
+    <div class="schema_datatypes"><code>$s.1</code>: <span class="schema_param_datatype">log:Formula</span><br><code>$s.2</code>: <span class="schema_param_datatype">log:Formula</span><br><code>$o</code>: <span class="schema_param_descr">(Scope of the universal quantification. Leave as a variable to use current N3 document as scope.)</span></div>
    </div>
    <br><strong>Examples</strong><br><a href="https://n3-editor.herokuapp.com/n3/editor/?formula=%40prefix+%3A+%3Chttp%3A%2F%2Fexample.org%2F%3E.%0A%40prefix+log%3A+%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F10%2Fswap%2Flog%23%3E+.%0A%0A%3Ac+a+%3ACompositeTask+%3B%0A++++%3AsubTask+%3As1+%2C+%3As2+%2C+%3As3+.%0A%3As1+%3Astate+%3ACompleted+.%0A%3As2+%3Astate+%3ACompleted+.+%0A%3As3+%3Astate+%3ACompleted+.%0A%0A%7B%0A++++%3Fc+a+%3ACompositeTask+.%0A++++%28+%7B+%3Fc+%3AsubTask+%3Fs+%7D+%7B+%3Fs+%3Astate+%3ACompleted+%7D+%29+log%3AforAllIn+_%3At+.%0A%7D%0A%3D%3E%0A%7B%0A++++%3Aresult+%3Ais+true+.%0A%7D+." target="_blank">Try in Notation3 Editor 🚀</a>
    <p></p>
@@ -3986,13 +3989,13 @@ This is a scoped universal quantification.</p>
 :result :is true. 
 </pre>
    </div>
-   <h4 class="heading settled" data-level="6.5.7" id="parsedAsN3"><span class="secno">6.5.7. </span><span class="content">log:parsedAsN3</span><a class="self-link" href="#parsedAsN3"></a></h4>
+   <h4 class="heading settled" data-level="5.5.7" id="parsedAsN3"><span class="secno">5.5.7. </span><span class="content">log:parsedAsN3</span><a class="self-link" href="#parsedAsN3"></a></h4>
     Parses the subject string into an object quoted graph. 
    <p><code>true</code> if and only if <code>$s</code>, when parsed as N3, gives <code>$o</code>. <code>$s</code> should be a syntactically valid string in N3 format.</p>
    <p><strong>Schema</strong><br><code>$s+ log:parsedAsN3 $o-</code></p>
    <div class="schema_where">
     where:
-    <div class="schema_datatypes"><code>$s</code>: <code>xsd:string</code><br>(should be a syntactically valid string in N3 format)<br><code>$o</code>: <code>log:Formula</code></div>
+    <div class="schema_datatypes"><code>$s</code>: <span class="schema_param_datatype">xsd:string</span> <span class="schema_param_descr">(should be a syntactically valid string in N3 format)</span><br><code>$o</code>: <span class="schema_param_datatype">log:Formula</span></div>
    </div>
    <br><strong>Examples</strong><br><a href="https://n3-editor.herokuapp.com/n3/editor/?formula=%40prefix+%3A+%3Chttp%3A%2F%2Fexample.org%2F%3E.%0A%40prefix+log%3A+%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F10%2Fswap%2Flog%23%3E+.%0A%0A%3ALet+%3Aparam+%22%22%22%0A%40prefix+%3A+%3Curn%3Aexample%3A%3E+.%0A%3ASocrates+a+%3AHuman+.%0A%22%22%22+.%0A%0A%7B%0A++++%3ALet+%3Aparam+%3FX+.%0A++++%3FX+log%3AparsedAsN3+%3FY+.%0A%7D%0A%3D%3E%0A%7B%0A++++%3Aresult+%3Ais+%3FY+.%0A%7D+." target="_blank">Try in Notation3 Editor 🚀</a>
    <p></p>
@@ -4022,13 +4025,13 @@ This is a scoped universal quantification.</p>
 :result :is { &lt;urn:example:Socrates> a &lt;urn:example:Human> . } .
 </pre>
    </div>
-   <h4 class="heading settled" data-level="6.5.8" id="conjunction"><span class="secno">6.5.8. </span><span class="content">log:conjunction</span><a class="self-link" href="#conjunction"></a></h4>
+   <h4 class="heading settled" data-level="5.5.8" id="conjunction"><span class="secno">5.5.8. </span><span class="content">log:conjunction</span><a class="self-link" href="#conjunction"></a></h4>
     Merges the quoted graphs from the subject list into a single quoted graph as object. 
    <p><code>true</code> if and only if <code>$o</code> is a quoted graph that includes the contents of each of the quoted graphs <code>$s.i</code>.</p>
    <p><strong>Schema</strong><br><code>( $s.i+ )+ log:conjunction $o?</code></p>
    <div class="schema_where">
     where:
-    <div class="schema_datatypes"><code>$s.i</code>: <code>log:Formula</code><br><code>$o</code>: <code>log:Formula</code></div>
+    <div class="schema_datatypes"><code>$s.i</code>: <span class="schema_param_datatype">log:Formula</span><br><code>$o</code>: <span class="schema_param_datatype">log:Formula</span></div>
    </div>
    <br><strong>Examples</strong><br><a href="https://n3-editor.herokuapp.com/n3/editor/?formula=%40prefix+%3A+%3Chttp%3A%2F%2Fexample.org%2F%3E.%0A%40prefix+log%3A+%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F10%2Fswap%2Flog%23%3E+.%0A%0A%7B+%0A++++%28+%7B+%3AFelix+a+%3ACat+.+%7D%0A++++++%7B+%3APluto+a+%3ADog+.+%7D++%0A++++++%7B+%3APingu+a+%3APenguin+.+%7D%0A++++%29+log%3Aconjunction+%3Fmerged+.%0A%7D+%0A%3D%3E+%0A%7B+%0A++++%3Aresult+%3Ais+%3Fmerged+.+%0A%7D+." target="_blank">Try in Notation3 Editor 🚀</a>
    <p></p>
@@ -4059,13 +4062,13 @@ This is a scoped universal quantification.</p>
 } .
 </pre>
    </div>
-   <h4 class="heading settled" data-level="6.5.9" id="notIncludes"><span class="secno">6.5.9. </span><span class="content">log:notIncludes</span><a class="self-link" href="#notIncludes"></a></h4>
+   <h4 class="heading settled" data-level="5.5.9" id="notIncludes"><span class="secno">5.5.9. </span><span class="content">log:notIncludes</span><a class="self-link" href="#notIncludes"></a></h4>
     Checks whether the subject quoted graph _does not_ include the object quoted graph (taking into account variables) 
    <p><code>true</code> if and only if <code>$s log:includes $o</code> is <code>false</code>.</p>
    <p><strong>Schema</strong><br><code>$s+ log:notIncludes $o+</code></p>
    <div class="schema_where">
     where:
-    <div class="schema_datatypes"><code>$s</code>: <code>log:Formula</code><br><code>$o</code>: <code>log:Formula</code></div>
+    <div class="schema_datatypes"><code>$s</code>: <span class="schema_param_datatype">log:Formula</span><br><code>$o</code>: <span class="schema_param_datatype">log:Formula</span></div>
    </div>
    <br><strong>Examples</strong><br><a href="https://n3-editor.herokuapp.com/n3/editor/?formula=%40prefix+%3A+%3Chttp%3A%2F%2Fexample.org%2F%3E.%0A%40prefix+log%3A+%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F10%2Fswap%2Flog%23%3E+.%0A%0A%7B+%0A++++%23+Dynamic+evaluation+of+%3FX+and+%3FY%0A++++%3FX+log%3AnotIncludes+%3FY+.%0A++++%3FX+log%3AequalTo+%7B+%3Aa+%3Ab+%3Ac+%7D.%0A++++%3FY+log%3AequalTo+%7B+%3Aa+%3Ab+%3Ad+%7D.%0A%7D+%0A%3D%3E++++++++++++++%0A%7B%0A++++%3Aresult+%3Ais+true+.%0A%7D+." target="_blank">Try in Notation3 Editor 🚀</a>
    <p></p>
@@ -4113,7 +4116,7 @@ This is a scoped universal quantification.</p>
 :result :is true.
 </pre>
    </div>
-   <h4 class="heading settled" data-level="6.5.10" id="notEqualTo①"><span class="secno">6.5.10. </span><span class="content">log:notEqualTo</span><a class="self-link" href="#notEqualTo①"></a></h4>
+   <h4 class="heading settled" data-level="5.5.10" id="notEqualTo①"><span class="secno">5.5.10. </span><span class="content">log:notEqualTo</span><a class="self-link" href="#notEqualTo①"></a></h4>
     Checks whether the subject and object N3 resources are _not_ the same. 
    <p><code>true</code> if and only if <code>$s log:equalTo $o</code> is false.</p>
    <p><strong>Schema</strong><br><code>$s+ log:notEqualTo $o+</code><strong>Examples</strong><br><a href="https://n3-editor.herokuapp.com/n3/editor/?formula=%40prefix+%3A+%3Chttp%3A%2F%2Fexample.org%2F%3E.%0A%40prefix+log%3A+%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F10%2Fswap%2Flog%23%3E+.%0A%0A%7B%0A++++%22Cat%22+log%3AnotEqualTo+%22Cat%22%40en+.%0A%7D%0A%3D%3E%0A%7B%0A++++%3Aresult+%3Ais+true+.%0A%7D+." target="_blank">Try in Notation3 Editor 🚀</a></p>
@@ -4126,6 +4129,29 @@ This is a scoped universal quantification.</p>
 
 {
     "Cat" log:notEqualTo "Cat"@en .
+}
+=>
+{
+    :result :is true .
+} . 
+</pre>
+    <p><b>Result:</b> </p>
+<pre>@prefix : &lt;http://example.org/>.
+:result :is true .
+</pre>
+   </div>
+   <p><a href="https://n3-editor.herokuapp.com/n3/editor/?formula=%40prefix+%3A+%3Chttp%3A%2F%2Fexample.org%2F%3E.%0A%40prefix+log%3A+%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F10%2Fswap%2Flog%23%3E+.%0A%0A%7B%0A++++1+log%3AnotEqualTo+2+.%0A++++%22Cat%22+log%3AnotEqualTo+%22CAT%22+.%0A++++%7B+%3AA+%3AB+%3AC+.+%7D+log%3AnotEqualTo+%7B+%3AC+%3AB+%3AA+.+%7D+.%0A%7D%0A%3D%3E%0A%7B%0A++++%3Aresult+%3Ais+true+.%0A%7D+." target="_blank">Try in Notation3 Editor 🚀</a></p>
+   <div class="example" id="example-1ba2a5f7">
+    <a class="self-link" href="#example-1ba2a5f7"></a> 
+    <p> Determine if 1 is not equal to 2 and "Cat" is not equal to "CAT" and { :A :B :C . } is not equal to { :C :B :A }. </p>
+    <p><b>Formula:</b> </p>
+<pre>@prefix : &lt;http://example.org/>.
+@prefix log: &lt;http://www.w3.org/2000/10/swap/log#> .
+
+{
+    1 log:notEqualTo 2 .
+    "Cat" log:notEqualTo "CAT" .
+    { :A :B :C . } log:notEqualTo { :C :B :A . } .
 }
 =>
 {
@@ -4159,30 +4185,7 @@ This is a scoped universal quantification.</p>
 # no result (the variables _:x and ?q are not bounded) 
 </pre>
    </div>
-   <p><a href="https://n3-editor.herokuapp.com/n3/editor/?formula=%40prefix+%3A+%3Chttp%3A%2F%2Fexample.org%2F%3E.%0A%40prefix+log%3A+%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F10%2Fswap%2Flog%23%3E+.%0A%0A%7B%0A++++1+log%3AnotEqualTo+2+.%0A++++%22Cat%22+log%3AnotEqualTo+%22CAT%22+.%0A++++%7B+%3AA+%3AB+%3AC+.+%7D+log%3AnotEqualTo+%7B+%3AC+%3AB+%3AA+.+%7D+.%0A%7D%0A%3D%3E%0A%7B%0A++++%3Aresult+%3Ais+true+.%0A%7D+." target="_blank">Try in Notation3 Editor 🚀</a></p>
-   <div class="example" id="example-1ba2a5f7">
-    <a class="self-link" href="#example-1ba2a5f7"></a> 
-    <p> Determine if 1 is not equal to 2 and "Cat" is not equal to "CAT" and { :A :B :C . } is not equal to { :C :B :A }. </p>
-    <p><b>Formula:</b> </p>
-<pre>@prefix : &lt;http://example.org/>.
-@prefix log: &lt;http://www.w3.org/2000/10/swap/log#> .
-
-{
-    1 log:notEqualTo 2 .
-    "Cat" log:notEqualTo "CAT" .
-    { :A :B :C . } log:notEqualTo { :C :B :A . } .
-}
-=>
-{
-    :result :is true .
-} . 
-</pre>
-    <p><b>Result:</b> </p>
-<pre>@prefix : &lt;http://example.org/>.
-:result :is true .
-</pre>
-   </div>
-   <h4 class="heading settled" data-level="6.5.11" id="skolem"><span class="secno">6.5.11. </span><span class="content">log:skolem</span><a class="self-link" href="#skolem"></a></h4>
+   <h4 class="heading settled" data-level="5.5.11" id="skolem"><span class="secno">5.5.11. </span><span class="content">log:skolem</span><a class="self-link" href="#skolem"></a></h4>
     Gets as object a skolem IRI that is a function of the subject (commonly a list); the same subject will always result in the same skolem IRI. 
    <p><code>true</code> if and only if <code>$o</code> is a skolem IRI that is a function of the subject.</p>
    <p><strong>Schema</strong><br><code>$s+ log:skolem $o-</code><strong>Examples</strong><br><a href="https://n3-editor.herokuapp.com/n3/editor/?formula=%40prefix+%3A+%3Chttp%3A%2F%2Fexample.org%2F%3E.%0A%40prefix+log%3A+%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F10%2Fswap%2Flog%23%3E+.%0A%0A%7B+%28%3Aabc+77+%22xyz%22%29+log%3Askolem+%3Fskolem+.+%7D+%3D%3E+%7B+%3Aresult+%3Ais+%3Fskolem+%7D+." target="_blank">Try in Notation3 Editor 🚀</a></p>
@@ -4200,13 +4203,13 @@ This is a scoped universal quantification.</p>
 :result :is &lt;http://www.w3.org/2000/10/swap/genid#zmgk3Vt_z_u7FQlk1NmqIw> . 
 </pre>
    </div>
-   <h4 class="heading settled" data-level="6.5.12" id="dtlit"><span class="secno">6.5.12. </span><span class="content">log:dtlit</span><a class="self-link" href="#dtlit"></a></h4>
+   <h4 class="heading settled" data-level="5.5.12" id="dtlit"><span class="secno">5.5.12. </span><span class="content">log:dtlit</span><a class="self-link" href="#dtlit"></a></h4>
     Creates a datatyped literal as object, based on the string value and datatype IRI in the subject list. 
    <p><code>true</code> if and only if <code>$o</code> is a datatyped literal with string value corresponding to <code>$s.1</code> and datatype IRI corresponding to <code>$s.2</code>.</p>
    <p><strong>Schema</strong><br><code>( $s.1? $s.2? )? log:dtlit $o?</code></p>
    <div class="schema_where">
     where:
-    <div class="schema_datatypes"><code>$s.1</code>: <code>xsd:string</code>, <code>$s.2</code>: <code>log:Uri</code><br><code>$o</code>: <code>log:Literal</code></div>
+    <div class="schema_datatypes"><code>$s.1</code>: <span class="schema_param_datatype">xsd:string</span><br><code>$s.2</code>: <span class="schema_param_datatype">log:Uri</span><br><code>$o</code>: <span class="schema_param_datatype">log:Literal</span></div>
    </div>
    <br><strong>Examples</strong><br><a href="https://n3-editor.herokuapp.com/n3/editor/?formula=%40prefix+%3A+%3Chttp%3A%2F%2Fexample.org%2F%3E.%0A%40prefix+xsd%3A+%3Chttp%3A%2F%2Fwww.w3.org%2F2001%2FXMLSchema%23%3E+.%0A%40prefix+log%3A+%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F10%2Fswap%2Flog%23%3E+.%0A%0A%7B+%0A++++%28+%3Fstring+%3Ftype+%29+log%3Adtlit+%221971-05-05%22%5E%5Exsd%3Adate+.%0A%7D+%0A%3D%3E+%0A%7B+%0A++++%3Aresult+%3Ais+%28+%3Fstring+%3Ftype+%29+.+%0A%7D+." target="_blank">Try in Notation3 Editor 🚀</a>
    <p></p>
@@ -4249,7 +4252,7 @@ This is a scoped universal quantification.</p>
 :result :is "1971-05-05"^^xsd:date.
 </pre>
    </div>
-   <h4 class="heading settled" data-level="6.5.13" id="includes"><span class="secno">6.5.13. </span><span class="content">log:includes</span><a class="self-link" href="#includes"></a></h4>
+   <h4 class="heading settled" data-level="5.5.13" id="includes"><span class="secno">5.5.13. </span><span class="content">log:includes</span><a class="self-link" href="#includes"></a></h4>
     Checks whether the subject quoted graph includes the object quoted graph (taking into account variables). 
 Can also be used to bind variables to values within the graph contents (see examples). 
    <p><code>true</code> if and only if there exists some substitution which, when applied to <code>$o</code>,
@@ -4259,7 +4262,7 @@ Variable substitution is applied recursively to nested compound terms such as qu
    <p><strong>Schema</strong><br><code>$s+ log:includes $o+</code></p>
    <div class="schema_where">
     where:
-    <div class="schema_datatypes"><code>$s</code>: <code>log:Formula</code><br><code>$o</code>: <code>log:Formula</code></div>
+    <div class="schema_datatypes"><code>$s</code>: <span class="schema_param_datatype">log:Formula</span><br><code>$o</code>: <span class="schema_param_datatype">log:Formula</span></div>
    </div>
    <br><strong>Examples</strong><br><a href="https://n3-editor.herokuapp.com/n3/editor/?formula=%40prefix+%3A+%3Chttp%3A%2F%2Fexample.org%2F%3E.%0A%40prefix+log%3A+%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F10%2Fswap%2Flog%23%3E+.%0A%0A%7B+%0A++++%7B+%3AFelix+a+%3ACat+%7D+log%3Aincludes+%7B+%3FX+a+%3ACat+%7D+.%0A%7D+%0A%3D%3E%0A%7B%0A++++%3Aresult+%3Ais+%3FX+.%0A%7D+." target="_blank">Try in Notation3 Editor 🚀</a>
    <p></p>
@@ -4283,60 +4286,12 @@ Variable substitution is applied recursively to nested compound terms such as qu
 :result :is :Felix .
 </pre>
    </div>
-   <h4 class="heading settled" data-level="6.5.14" id="equalTo①"><span class="secno">6.5.14. </span><span class="content">log:equalTo</span><a class="self-link" href="#equalTo①"></a></h4>
+   <h4 class="heading settled" data-level="5.5.14" id="equalTo①"><span class="secno">5.5.14. </span><span class="content">log:equalTo</span><a class="self-link" href="#equalTo①"></a></h4>
     Checks whether the subject and object N3 resources are the same. 
 Can also be used to bind values to variables (see examples). 
    <p><code>true</code> if and only if <code>$s</code> and <code>$o</code> are the same N3 resource.
 Not to be confused with owl:sameAs.</p>
-   <p><strong>Schema</strong><br><code>$s? log:equalTo $o?</code><strong>Examples</strong><br><a href="https://n3-editor.herokuapp.com/n3/editor/?formula=%40prefix+%3A+%3Chttp%3A%2F%2Fexample.org%2F%3E.%0A%40prefix+log%3A+%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F10%2Fswap%2Flog%23%3E+.%0A%0A%7B%0A++++%28+%3Fx+%3Fy+%3Fz+%29+log%3AequalTo+%28+1+2+3+%29%0A%7D%0A%3D%3E%0A%7B%0A++++%3Aresult+%3Ais+%3Fx+%2C+%3Fy+%2C+%3Fz+.%0A%7D+." target="_blank">Try in Notation3 Editor 🚀</a></p>
-   <div class="example" id="example-e330cc77">
-    <a class="self-link" href="#example-e330cc77"></a> 
-    <p> Assign values from the object list to universal variables given in the subject list. 
-This can be compared to "destructuring" or "unpacking" in programming languages such as JavaScript or Python.
-In contrast to those languages, however, it works in either direction in N3.
-In general, this works because an effort is made to ensure the truth of builtin statements in N3. </p>
-    <p><b>Formula:</b> </p>
-<pre>@prefix : &lt;http://example.org/>.
-@prefix log: &lt;http://www.w3.org/2000/10/swap/log#> .
-
-{
-    ( ?x ?y ?z ) log:equalTo ( 1 2 3 )
-}
-=>
-{
-    :result :is ?x , ?y , ?z .
-} . 
-</pre>
-    <p><b>Result:</b> </p>
-<pre>@prefix : &lt;http://example.org/>.
-:result :is 1 , 2 , 3 . # objects can be in any order
-</pre>
-   </div>
-   <p><a href="https://n3-editor.herokuapp.com/n3/editor/?formula=%40prefix+%3A+%3Chttp%3A%2F%2Fexample.org%2F%3E.%0A%40prefix+log%3A+%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F10%2Fswap%2Flog%23%3E+.%0A%0A%7B%0A++++%28+%22War+and+Peace%22+%22Leo+Tolstoy%22+1225+%29+log%3AequalTo+%28+%3Ftitle+%3Fauthor+%3FnumPages+%29+.%0A%7D%0A%3D%3E%0A%7B%0A++++%3Aresult+%3Ais+%3Ftitle+%2C+%3Fauthor+%2C+%3FnumPages+.%0A%7D+." target="_blank">Try in Notation3 Editor 🚀</a></p>
-   <div class="example" id="example-48b785b2">
-    <a class="self-link" href="#example-48b785b2"></a> 
-    <p> Assign values from the object list to universal variables given in the subject list. 
-This can be compared to "destructuring" or "unpacking" in programming languages such as JavaScript or Python.
-In contrast to those languages, however, it works in either direction in N3.
-In general, this works because an effort is made to ensure the truthfulness of builtin statements in N3. </p>
-    <p><b>Formula:</b> </p>
-<pre>@prefix : &lt;http://example.org/>.
-@prefix log: &lt;http://www.w3.org/2000/10/swap/log#> .
-
-{
-    ( "War and Peace" "Leo Tolstoy" 1225 ) log:equalTo ( ?title ?author ?numPages ) .
-}
-=>
-{
-    :result :is ?title , ?author , ?numPages .
-} . 
-</pre>
-    <p><b>Result:</b> </p>
-<pre>@prefix : &lt;http://example.org/>.
-:result :is "War and Peace" , "Leo Tolstoy" , 1225 . # objects can be in any order
-</pre>
-   </div>
-   <p><a href="https://n3-editor.herokuapp.com/n3/editor/?formula=%40prefix+%3A+%3Chttp%3A%2F%2Fexample.org%2F%3E.%0A%40prefix+log%3A+%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F10%2Fswap%2Flog%23%3E+.%0A%0A%7B%0A++++%23+This+will+fail%0A++++%22Cat%22+log%3AequalTo+%22Cat%22%40en+.%0A%7D%0A%3D%3E%0A%7B%0A++++%3Aresult+%3Ais+true+.%0A%7D+." target="_blank">Try in Notation3 Editor 🚀</a></p>
+   <p><strong>Schema</strong><br><code>$s? log:equalTo $o?</code><strong>Examples</strong><br><a href="https://n3-editor.herokuapp.com/n3/editor/?formula=%40prefix+%3A+%3Chttp%3A%2F%2Fexample.org%2F%3E.%0A%40prefix+log%3A+%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F10%2Fswap%2Flog%23%3E+.%0A%0A%7B%0A++++%23+This+will+fail%0A++++%22Cat%22+log%3AequalTo+%22Cat%22%40en+.%0A%7D%0A%3D%3E%0A%7B%0A++++%3Aresult+%3Ais+true+.%0A%7D+." target="_blank">Try in Notation3 Editor 🚀</a></p>
    <div class="example" id="example-f9068547">
     <a class="self-link" href="#example-f9068547"></a> 
     <p> Determine if "Cat" is equal to "Cat"@en . </p>
@@ -4358,27 +4313,28 @@ In general, this works because an effort is made to ensure the truthfulness of b
 # no results
 </pre>
    </div>
-   <p><a href="https://n3-editor.herokuapp.com/n3/editor/?formula=%40prefix+%3A+%3Chttp%3A%2F%2Fexample.org%2F%3E.%0A%40prefix+log%3A+%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F10%2Fswap%2Flog%23%3E+.%0A%0A%7B%0A++++1+log%3AequalTo+1+.%0A++++%22Cat%22+log%3AequalTo+%22Cat%22+.%0A++++%7B+%3AA+%3AB+%3AC+.+%3AD+%3AE+%3AF+.+%7D+log%3AequalTo+%7B+%3AD+%3AE+%3AF+.+%3AA+%3AB+%3AC+.+%7D+.%0A%7D%0A%3D%3E%0A%7B%0A++++%3Aresult+%3Ais+true+.%0A%7D+." target="_blank">Try in Notation3 Editor 🚀</a></p>
-   <div class="example" id="example-634de13c">
-    <a class="self-link" href="#example-634de13c"></a> 
-    <p> Determine if 1 is equal to 1 and "Cat" is equal to "Cat" and { :A :B :C . :D :E :F } is equal to { :D :E :F . :A :B :C }. </p>
+   <p><a href="https://n3-editor.herokuapp.com/n3/editor/?formula=%40prefix+%3A+%3Chttp%3A%2F%2Fexample.org%2F%3E.%0A%40prefix+log%3A+%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F10%2Fswap%2Flog%23%3E+.%0A%0A%7B%0A++++%28+%3Fx+%3Fy+%3Fz+%29+log%3AequalTo+%28+1+2+3+%29%0A%7D%0A%3D%3E%0A%7B%0A++++%3Aresult+%3Ais+%3Fx+%2C+%3Fy+%2C+%3Fz+.%0A%7D+." target="_blank">Try in Notation3 Editor 🚀</a></p>
+   <div class="example" id="example-e330cc77">
+    <a class="self-link" href="#example-e330cc77"></a> 
+    <p> Assign values from the object list to universal variables given in the subject list. 
+This can be compared to "destructuring" or "unpacking" in programming languages such as JavaScript or Python.
+In contrast to those languages, however, it works in either direction in N3.
+In general, this works because an effort is made to ensure the truth of builtin statements in N3. </p>
     <p><b>Formula:</b> </p>
 <pre>@prefix : &lt;http://example.org/>.
 @prefix log: &lt;http://www.w3.org/2000/10/swap/log#> .
 
 {
-    1 log:equalTo 1 .
-    "Cat" log:equalTo "Cat" .
-    { :A :B :C . :D :E :F . } log:equalTo { :D :E :F . :A :B :C . } .
+    ( ?x ?y ?z ) log:equalTo ( 1 2 3 )
 }
 =>
 {
-    :result :is true .
+    :result :is ?x , ?y , ?z .
 } . 
 </pre>
     <p><b>Result:</b> </p>
 <pre>@prefix : &lt;http://example.org/>.
-:result :is true. 
+:result :is 1 , 2 , 3 . # objects can be in any order
 </pre>
    </div>
    <p><a href="https://n3-editor.herokuapp.com/n3/editor/?formula=%40prefix+%3A+%3Chttp%3A%2F%2Fexample.org%2F%3E.%0A%40prefix+log%3A+%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F10%2Fswap%2Flog%23%3E+.%0A%0A%7B%0A++++_%3Ax+log%3AequalTo+42+.%0A++++%3Fq++log%3AequalTo+%22Cat%22%40en+.%0A%0A++++%23+This+will+fail+because+_%3Ax+is+already+assigned+to+42+.%0A++++%23+_%3Ax+log%3AequalTo+17+.%0A%7D%0A%3D%3E%0A%7B%0A++++%3Aresult+%3Ais+%3Fq+.%0A%7D+." target="_blank">Try in Notation3 Editor 🚀</a></p>
@@ -4406,13 +4362,60 @@ In general, this works because an effort is made to ensure the truthfulness of b
 :result :is "Cat"@en .
 </pre>
    </div>
-   <h4 class="heading settled" data-level="6.5.15" id="outputString"><span class="secno">6.5.15. </span><span class="content">log:outputString</span><a class="self-link" href="#outputString"></a></h4>
+   <p><a href="https://n3-editor.herokuapp.com/n3/editor/?formula=%40prefix+%3A+%3Chttp%3A%2F%2Fexample.org%2F%3E.%0A%40prefix+log%3A+%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F10%2Fswap%2Flog%23%3E+.%0A%0A%7B%0A++++1+log%3AequalTo+1+.%0A++++%22Cat%22+log%3AequalTo+%22Cat%22+.%0A++++%7B+%3AA+%3AB+%3AC+.+%3AD+%3AE+%3AF+.+%7D+log%3AequalTo+%7B+%3AD+%3AE+%3AF+.+%3AA+%3AB+%3AC+.+%7D+.%0A%7D%0A%3D%3E%0A%7B%0A++++%3Aresult+%3Ais+true+.%0A%7D+." target="_blank">Try in Notation3 Editor 🚀</a></p>
+   <div class="example" id="example-634de13c">
+    <a class="self-link" href="#example-634de13c"></a> 
+    <p> Determine if 1 is equal to 1 and "Cat" is equal to "Cat" and { :A :B :C . :D :E :F } is equal to { :D :E :F . :A :B :C }. </p>
+    <p><b>Formula:</b> </p>
+<pre>@prefix : &lt;http://example.org/>.
+@prefix log: &lt;http://www.w3.org/2000/10/swap/log#> .
+
+{
+    1 log:equalTo 1 .
+    "Cat" log:equalTo "Cat" .
+    { :A :B :C . :D :E :F . } log:equalTo { :D :E :F . :A :B :C . } .
+}
+=>
+{
+    :result :is true .
+} . 
+</pre>
+    <p><b>Result:</b> </p>
+<pre>@prefix : &lt;http://example.org/>.
+:result :is true. 
+</pre>
+   </div>
+   <p><a href="https://n3-editor.herokuapp.com/n3/editor/?formula=%40prefix+%3A+%3Chttp%3A%2F%2Fexample.org%2F%3E.%0A%40prefix+log%3A+%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F10%2Fswap%2Flog%23%3E+.%0A%0A%7B%0A++++%28+%22War+and+Peace%22+%22Leo+Tolstoy%22+1225+%29+log%3AequalTo+%28+%3Ftitle+%3Fauthor+%3FnumPages+%29+.%0A%7D%0A%3D%3E%0A%7B%0A++++%3Aresult+%3Ais+%3Ftitle+%2C+%3Fauthor+%2C+%3FnumPages+.%0A%7D+." target="_blank">Try in Notation3 Editor 🚀</a></p>
+   <div class="example" id="example-48b785b2">
+    <a class="self-link" href="#example-48b785b2"></a> 
+    <p> Assign values from the object list to universal variables given in the subject list. 
+This can be compared to "destructuring" or "unpacking" in programming languages such as JavaScript or Python.
+In contrast to those languages, however, it works in either direction in N3.
+In general, this works because an effort is made to ensure the truthfulness of builtin statements in N3. </p>
+    <p><b>Formula:</b> </p>
+<pre>@prefix : &lt;http://example.org/>.
+@prefix log: &lt;http://www.w3.org/2000/10/swap/log#> .
+
+{
+    ( "War and Peace" "Leo Tolstoy" 1225 ) log:equalTo ( ?title ?author ?numPages ) .
+}
+=>
+{
+    :result :is ?title , ?author , ?numPages .
+} . 
+</pre>
+    <p><b>Result:</b> </p>
+<pre>@prefix : &lt;http://example.org/>.
+:result :is "War and Peace" , "Leo Tolstoy" , 1225 . # objects can be in any order
+</pre>
+   </div>
+   <h4 class="heading settled" data-level="5.5.15" id="outputString"><span class="secno">5.5.15. </span><span class="content">log:outputString</span><a class="self-link" href="#outputString"></a></h4>
     The N3 reasoner will print the object strings in the order of the subject keys, instead of printing the derivations or deductive closure. This may require a reasoner flag to be set. 
    <p>The concrete semantics of this builtin (e.g., which N3 resource types are supported) will depend on the N3 reasoner.</p>
    <p><strong>Schema</strong><br><code>$s+ log:outputString $o+</code></p>
    <div class="schema_where">
     where:
-    <div class="schema_datatypes"><code>$o</code>: <code>xsd:string</code></div>
+    <div class="schema_datatypes"><code>$o</code>: <span class="schema_param_datatype">xsd:string</span></div>
    </div>
    <br><strong>Examples</strong><br><a href="https://n3-editor.herokuapp.com/n3/editor/?formula=%40prefix+%3A+%3Chttp%3A%2F%2Fexample.org%2F%3E.%0A%40prefix+log%3A+%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F10%2Fswap%2Flog%23%3E+.%0A%0A_%3A2+log%3AoutputString+%22This+is+the+second+line%0A%22+.%0A_%3A1+log%3AoutputString+%22This+is+the+first+line%0A%22+." target="_blank">Try in Notation3 Editor 🚀</a>
    <p></p>
@@ -4436,13 +4439,13 @@ This is the first line
 This is the second line
 </pre>
    </div>
-   <h4 class="heading settled" data-level="6.5.16" id="semanticsOrError"><span class="secno">6.5.16. </span><span class="content">log:semanticsOrError</span><a class="self-link" href="#semanticsOrError"></a></h4>
+   <h4 class="heading settled" data-level="5.5.16" id="semanticsOrError"><span class="secno">5.5.16. </span><span class="content">log:semanticsOrError</span><a class="self-link" href="#semanticsOrError"></a></h4>
     Either gets as object the quoted graph that results from parsing an online (N3) string, found by dereferencing the subject IRI; or an error message that explains what went wrong. 
    <p><code>true</code> if and only if (a) <code>$o</code> is a quoted graph that results from parsing the string that results from dereferencing <code>$s</code>; or (b) an error message explaining what went wrong.</p>
    <p><strong>Schema</strong><br><code>$s+ log:semanticsOrError $o?</code></p>
    <div class="schema_where">
     where:
-    <div class="schema_datatypes"><code>$s</code>: <code>log:Uri</code><br><code>$o</code>: (either a log:Formula or xsd:string)</div>
+    <div class="schema_datatypes"><code>$s</code>: <span class="schema_param_datatype">log:Uri</span><br><code>$o</code>: <span class="schema_param_descr">(either a log:Formula or xsd:string)</span></div>
    </div>
    <br><strong>Examples</strong><br><a href="https://n3-editor.herokuapp.com/n3/editor/?formula=%40prefix+%3A+%3Chttp%3A%2F%2Fexample.org%2F%3E.%0A%40prefix+log%3A+%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F10%2Fswap%2Flog%23%3E+.%0A%0A%7B+%3Cerror.data%3E+log%3Asemantics+%3Fsemantics+.+%7D+%3D%3E+%7B+%3Aresult+%3Ais+%3Fsemantics+%7D+." target="_blank">Try in Notation3 Editor 🚀</a>
    <p></p>
@@ -4461,13 +4464,13 @@ This is the second line
     &lt;urlopen error [Errno 2] No such file or directory: '//tmp/error.data'>""" .
 </pre>
    </div>
-   <h4 class="heading settled" data-level="6.5.17" id="semantics"><span class="secno">6.5.17. </span><span class="content">log:semantics</span><a class="self-link" href="#semantics"></a></h4>
+   <h4 class="heading settled" data-level="5.5.17" id="semantics"><span class="secno">5.5.17. </span><span class="content">log:semantics</span><a class="self-link" href="#semantics"></a></h4>
     Gets as object the quoted graph that results from parsing an online (N3) string, found by dereferencing the subject IRI. 
    <p><code>true</code> if and only if <code>$o</code> is a quoted graph that results from parsing the string that results from dereferencing <code>$s</code>.</p>
    <p><strong>Schema</strong><br><code>$s+ log:semantics $o?</code></p>
    <div class="schema_where">
     where:
-    <div class="schema_datatypes"><code>$s</code>: <code>log:Uri</code><br><code>$o</code>: <code>log:Formula</code></div>
+    <div class="schema_datatypes"><code>$s</code>: <span class="schema_param_datatype">log:Uri</span><br><code>$o</code>: <span class="schema_param_datatype">log:Formula</span></div>
    </div>
    <br><strong>Examples</strong><br><a href="https://n3-editor.herokuapp.com/n3/editor/?formula=%40prefix+%3A+%3Chttp%3A%2F%2Fexample.org%2F%3E.%0A%40prefix+log%3A+%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F10%2Fswap%2Flog%23%3E+.%0A%0A%7B+%3Csemantics.data%3E+log%3Asemantics+%3Fsemantics+.+%7D+%3D%3E+%7B+%3Aresult+%3Ais+%3Fsemantics+%7D+." target="_blank">Try in Notation3 Editor 🚀</a>
    <p></p>
@@ -4489,15 +4492,15 @@ We assume <code>&lt;semantics.data></code> contains the text: </p>
 :result :is { :Socrates a :Human . } .
 </pre>
    </div>
-   <h3 class="heading settled" data-level="6.6" id="string"><span class="secno">6.6. </span><span class="content">string</span><a class="self-link" href="#string"></a></h3>
-   <h4 class="heading settled" data-level="6.6.1" id="notGreaterThan①"><span class="secno">6.6.1. </span><span class="content">string:notGreaterThan</span><a class="self-link" href="#notGreaterThan①"></a></h4>
+   <h3 class="heading settled" data-level="5.6" id="string"><span class="secno">5.6. </span><span class="content">string</span><a class="self-link" href="#string"></a></h3>
+   <h4 class="heading settled" data-level="5.6.1" id="notGreaterThan①"><span class="secno">5.6.1. </span><span class="content">string:notGreaterThan</span><a class="self-link" href="#notGreaterThan①"></a></h4>
     Checks whether the subject string is not greater than the object string, according to Unicode code order.
 You can use this as an equivalent of a lessThanOrEqual operator. 
    <p><code>true</code> if and only if <code>$s</code> is not greater than <code>$o</code> as per the Unicode code order.</p>
    <p><strong>Schema</strong><br><code>$s+ string:notGreaterThan $o+</code></p>
    <div class="schema_where">
     where:
-    <div class="schema_datatypes"><code>$s</code>: <code>xsd:string</code><br><code>$o</code>: <code>xsd:string</code></div>
+    <div class="schema_datatypes"><code>$s</code>: <span class="schema_param_datatype">xsd:string</span><br><code>$o</code>: <span class="schema_param_datatype">xsd:string</span></div>
    </div>
    <br><strong>Examples</strong><br><a href="https://n3-editor.herokuapp.com/n3/editor/?formula=%40prefix+%3A+%3Chttp%3A%2F%2Fexample.org%2F%3E.%0A%40prefix+string%3A+%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F10%2Fswap%2Fstring%23%3E+.%0A%0A%3ALet+%3Aparam1+%22Cat%22+.%0A%3ALet+%3Aparam2+%22Penguin%22.%0A%7B%0A++++%3ALet+%3Aparam1+%3Fparam1+.%0A++++%3ALet+%3Aparam2+%3Fparam2+.%0A++++%3Fparam1+string%3AnotGreaterThan+%3Fparam2+.%0A%7D%0A%3D%3E%0A%7B%0A++++%3Aresult+%3Ais+true+.%0A%7D+." target="_blank">Try in Notation3 Editor 🚀</a>
    <p></p>
@@ -4525,13 +4528,13 @@ You can use this as an equivalent of a lessThanOrEqual operator.
 :result :is true . 
 </pre>
    </div>
-   <h4 class="heading settled" data-level="6.6.2" id="notEqualIgnoringCase"><span class="secno">6.6.2. </span><span class="content">string:notEqualIgnoringCase</span><a class="self-link" href="#notEqualIgnoringCase"></a></h4>
+   <h4 class="heading settled" data-level="5.6.2" id="notEqualIgnoringCase"><span class="secno">5.6.2. </span><span class="content">string:notEqualIgnoringCase</span><a class="self-link" href="#notEqualIgnoringCase"></a></h4>
     Checks whether the subject string is not the same as the object string, ignoring differences between lowercase and uppercase. 
    <p><code>true</code> if and only if <code>$s</code> is not the same string as <code>$o</code> when ignoring case differences.</p>
    <p><strong>Schema</strong><br><code>$s+ string:notEqualIgnoringCase $o+</code></p>
    <div class="schema_where">
     where:
-    <div class="schema_datatypes"><code>$s</code>: <code>xsd:string</code><br><code>$o</code>: <code>xsd:string</code></div>
+    <div class="schema_datatypes"><code>$s</code>: <span class="schema_param_datatype">xsd:string</span><br><code>$o</code>: <span class="schema_param_datatype">xsd:string</span></div>
    </div>
    <br><strong>Examples</strong><br><a href="https://n3-editor.herokuapp.com/n3/editor/?formula=%40prefix+%3A+%3Chttp%3A%2F%2Fexample.org%2F%3E.%0A%40prefix+string%3A+%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F10%2Fswap%2Fstring%23%3E+.%0A%0A%3ALet+%3Aparam1+%22hello+world%21%22+.%0A%3ALet+%3Aparam2+%22hELLo+dunia%21%22+.%0A%7B%0A++++%3ALet+%3Aparam1+%3Fparam1+.%0A++++%3ALet+%3Aparam2+%3Fparam2+.%0A++++%3Fparam1+string%3AnotEqualIgnoringCase+%3Fparam2+.%0A%7D%0A%3D%3E%0A%7B%0A++++%3Aresult+%3Ais+true+.%0A%7D+." target="_blank">Try in Notation3 Editor 🚀</a>
    <p></p>
@@ -4559,13 +4562,13 @@ You can use this as an equivalent of a lessThanOrEqual operator.
 :result :is true . 
 </pre>
    </div>
-   <h4 class="heading settled" data-level="6.6.3" id="contains"><span class="secno">6.6.3. </span><span class="content">string:contains</span><a class="self-link" href="#contains"></a></h4>
+   <h4 class="heading settled" data-level="5.6.3" id="contains"><span class="secno">5.6.3. </span><span class="content">string:contains</span><a class="self-link" href="#contains"></a></h4>
     Checks whether the subject string contains the object string. 
    <p><code>true</code> if and only if <code>$s</code> contains <code>$o</code>.</p>
    <p><strong>Schema</strong><br><code>$s+ string:contains $o+</code></p>
    <div class="schema_where">
     where:
-    <div class="schema_datatypes"><code>$s</code>: <code>xsd:string</code><br><code>$o</code>: <code>xsd:string</code></div>
+    <div class="schema_datatypes"><code>$s</code>: <span class="schema_param_datatype">xsd:string</span><br><code>$o</code>: <span class="schema_param_datatype">xsd:string</span></div>
    </div>
    <br><strong>Examples</strong><br><a href="https://n3-editor.herokuapp.com/n3/editor/?formula=%40prefix+%3A+%3Chttp%3A%2F%2Fexample.org%2F%3E.%0A%40prefix+string%3A+%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F10%2Fswap%2Fstring%23%3E+.%0A%0A%3ALet+%3Aparam1+%22hello+world%21%22+.%0A%3ALet+%3Aparam2+%22llo+worl%22.%0A%7B%0A++++%3ALet+%3Aparam1+%3Fparam1+.%0A++++%3ALet+%3Aparam2+%3Fparam2+.%0A++++%3Fparam1+string%3Acontains+%3Fparam2+.%0A%7D%0A%3D%3E%0A%7B%0A++++%3Aresult+%3Ais+true+.%0A%7D+." target="_blank">Try in Notation3 Editor 🚀</a>
    <p></p>
@@ -4593,13 +4596,13 @@ You can use this as an equivalent of a lessThanOrEqual operator.
 :result :is true . 
 </pre>
    </div>
-   <h4 class="heading settled" data-level="6.6.4" id="greaterThan①"><span class="secno">6.6.4. </span><span class="content">string:greaterThan</span><a class="self-link" href="#greaterThan①"></a></h4>
+   <h4 class="heading settled" data-level="5.6.4" id="greaterThan①"><span class="secno">5.6.4. </span><span class="content">string:greaterThan</span><a class="self-link" href="#greaterThan①"></a></h4>
     Checks whether the subject string is greater than the object string, according to Unicode code order. 
    <p><code>true</code> if and only if <code>$s</code> is greater than <code>$o</code> as per the Unicode code order.</p>
    <p><strong>Schema</strong><br><code>$s+ string:greaterThan $o+</code></p>
    <div class="schema_where">
     where:
-    <div class="schema_datatypes"><code>$s</code>: <code>xsd:string</code><br><code>$o</code>: <code>xsd:string</code></div>
+    <div class="schema_datatypes"><code>$s</code>: <span class="schema_param_datatype">xsd:string</span><br><code>$o</code>: <span class="schema_param_datatype">xsd:string</span></div>
    </div>
    <br><strong>Examples</strong><br><a href="https://n3-editor.herokuapp.com/n3/editor/?formula=%40prefix+%3A+%3Chttp%3A%2F%2Fexample.org%2F%3E.%0A%40prefix+string%3A+%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F10%2Fswap%2Fstring%23%3E+.%0A%0A%3ALet+%3Aparam1+%22Penguin%22+.%0A%3ALet+%3Aparam2+%22Cat%22.%0A%7B%0A++++%3ALet+%3Aparam1+%3Fparam1+.%0A++++%3ALet+%3Aparam2+%3Fparam2+.%0A++++%3Fparam1+string%3AgreaterThan+%3Fparam2+.%0A%7D%0A%3D%3E%0A%7B%0A++++%3Aresult+%3Ais+true+.%0A%7D+." target="_blank">Try in Notation3 Editor 🚀</a>
    <p></p>
@@ -4627,13 +4630,13 @@ You can use this as an equivalent of a lessThanOrEqual operator.
 :result :is true . 
 </pre>
    </div>
-   <h4 class="heading settled" data-level="6.6.5" id="containsIgnoringCase"><span class="secno">6.6.5. </span><span class="content">string:containsIgnoringCase</span><a class="self-link" href="#containsIgnoringCase"></a></h4>
+   <h4 class="heading settled" data-level="5.6.5" id="containsIgnoringCase"><span class="secno">5.6.5. </span><span class="content">string:containsIgnoringCase</span><a class="self-link" href="#containsIgnoringCase"></a></h4>
     Checks whether the subject string contains the object string, ignoring differences between lowercase and uppercase. 
    <p><code>true</code> if and only if <code>$s</code> contains <code>$o</code> when ignoring case differences.</p>
    <p><strong>Schema</strong><br><code>$s+ string:containsIgnoringCase $o+</code></p>
    <div class="schema_where">
     where:
-    <div class="schema_datatypes"><code>$s</code>: <code>xsd:string</code><br><code>$o</code>: <code>xsd:string</code></div>
+    <div class="schema_datatypes"><code>$s</code>: <span class="schema_param_datatype">xsd:string</span><br><code>$o</code>: <span class="schema_param_datatype">xsd:string</span></div>
    </div>
    <br><strong>Examples</strong><br><a href="https://n3-editor.herokuapp.com/n3/editor/?formula=%40prefix+%3A+%3Chttp%3A%2F%2Fexample.org%2F%3E.%0A%40prefix+string%3A+%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F10%2Fswap%2Fstring%23%3E+.%0A%0A%3ALet+%3Aparam1+%22hello+world%21%22+.%0A%3ALet+%3Aparam2+%22lLO+woRl%22.%0A%7B%0A++++%3ALet+%3Aparam1+%3Fparam1+.%0A++++%3ALet+%3Aparam2+%3Fparam2+.%0A++++%3Fparam1+string%3AcontainsIgnoringCase+%3Fparam2+.%0A%7D%0A%3D%3E%0A%7B%0A++++%3Aresult+%3Ais+true+.%0A%7D+." target="_blank">Try in Notation3 Editor 🚀</a>
    <p></p>
@@ -4661,14 +4664,14 @@ You can use this as an equivalent of a lessThanOrEqual operator.
 :result :is true . 
 </pre>
    </div>
-   <h4 class="heading settled" data-level="6.6.6" id="notLessThan①"><span class="secno">6.6.6. </span><span class="content">string:notLessThan</span><a class="self-link" href="#notLessThan①"></a></h4>
+   <h4 class="heading settled" data-level="5.6.6" id="notLessThan①"><span class="secno">5.6.6. </span><span class="content">string:notLessThan</span><a class="self-link" href="#notLessThan①"></a></h4>
     Checks whether the subject string is not less than the object string, according to Unicode code order.
 You can use this as an equivalent of a greaterThanOrEqual operator. 
    <p><code>true</code> if and only if <code>$s</code> is not less than <code>$o</code> as per the Unicode code order.</p>
    <p><strong>Schema</strong><br><code>$s+ string:notLessThan $o+</code></p>
    <div class="schema_where">
     where:
-    <div class="schema_datatypes"><code>$s</code>: <code>xsd:string</code><br><code>$o</code>: <code>xsd:string</code></div>
+    <div class="schema_datatypes"><code>$s</code>: <span class="schema_param_datatype">xsd:string</span><br><code>$o</code>: <span class="schema_param_datatype">xsd:string</span></div>
    </div>
    <br><strong>Examples</strong><br><a href="https://n3-editor.herokuapp.com/n3/editor/?formula=%40prefix+%3A+%3Chttp%3A%2F%2Fexample.org%2F%3E.%0A%40prefix+string%3A+%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F10%2Fswap%2Fstring%23%3E+.%0A%0A%3ALet+%3Aparam1+%22Penguin%22.%0A%3ALet+%3Aparam2+%22Cat%22+.%0A%7B%0A++++%3ALet+%3Aparam1+%3Fparam1+.%0A++++%3ALet+%3Aparam2+%3Fparam2+.%0A++++%3Fparam1+string%3AnotLessThan+%3Fparam2+.%0A%7D%0A%3D%3E%0A%7B%0A++++%3Aresult+%3Ais+true+.%0A%7D+." target="_blank">Try in Notation3 Editor 🚀</a>
    <p></p>
@@ -4696,13 +4699,13 @@ You can use this as an equivalent of a greaterThanOrEqual operator.
 :result :is true . 
 </pre>
    </div>
-   <h4 class="heading settled" data-level="6.6.7" id="endsWith"><span class="secno">6.6.7. </span><span class="content">string:endsWith</span><a class="self-link" href="#endsWith"></a></h4>
+   <h4 class="heading settled" data-level="5.6.7" id="endsWith"><span class="secno">5.6.7. </span><span class="content">string:endsWith</span><a class="self-link" href="#endsWith"></a></h4>
     Checks whether the subject string ends with the object string. 
    <p><code>true</code> if and only if <code>$s</code> ends with <code>$o</code>.</p>
    <p><strong>Schema</strong><br><code>$s+ string:endsWith $o+</code></p>
    <div class="schema_where">
     where:
-    <div class="schema_datatypes"><code>$s</code>: <code>xsd:string</code><br><code>$o</code>: <code>xsd:string</code></div>
+    <div class="schema_datatypes"><code>$s</code>: <span class="schema_param_datatype">xsd:string</span><br><code>$o</code>: <span class="schema_param_datatype">xsd:string</span></div>
    </div>
    <br><strong>Examples</strong><br><a href="https://n3-editor.herokuapp.com/n3/editor/?formula=%40prefix+%3A+%3Chttp%3A%2F%2Fexample.org%2F%3E.%0A%40prefix+string%3A+%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F10%2Fswap%2Fstring%23%3E+.%0A%0A%3ALet+%3Aparam1+%22hello+world%21%22+.%0A%3ALet+%3Aparam2+%22orld%21%22.%0A%7B%0A++++%3ALet+%3Aparam1+%3Fparam1+.%0A++++%3ALet+%3Aparam2+%3Fparam2+.%0A++++%3Fparam1+string%3AendsWith+%3Fparam2+.%0A%7D%0A%3D%3E%0A%7B%0A++++%3Aresult+%3Ais+true+.%0A%7D+." target="_blank">Try in Notation3 Editor 🚀</a>
    <p></p>
@@ -4730,13 +4733,13 @@ You can use this as an equivalent of a greaterThanOrEqual operator.
 :result :is true . 
 </pre>
    </div>
-   <h4 class="heading settled" data-level="6.6.8" id="scrape"><span class="secno">6.6.8. </span><span class="content">string:scrape</span><a class="self-link" href="#scrape"></a></h4>
+   <h4 class="heading settled" data-level="5.6.8" id="scrape"><span class="secno">5.6.8. </span><span class="content">string:scrape</span><a class="self-link" href="#scrape"></a></h4>
     Calculates the object as the first matching group when, given the subject list, matching the second string as regular expression (with exactly 1 group) against the first string. 
    <p><code>true</code> if and only if <code>$o</code> is the first matching group when matching <code>$s.2</code> as a regular expression against <code>$s.1</code></p>
    <p><strong>Schema</strong><br><code>( $s.1+ $s.2+ )+ string:scrape $o-</code></p>
    <div class="schema_where">
     where:
-    <div class="schema_datatypes"><code>$s.1</code>: <code>xsd:string</code>, <code>$s.2</code>: <code>xsd:string</code><br><code>$o</code>: <code>xsd:string</code></div>
+    <div class="schema_datatypes"><code>$s.1</code>: <span class="schema_param_datatype">xsd:string</span><br><code>$s.2</code>: <span class="schema_param_datatype">xsd:string</span> <span class="schema_param_descr">(regular expression with 1 group)</span><br><code>$o</code>: <span class="schema_param_datatype">xsd:string</span></div>
    </div>
    <br><strong>Examples</strong><br><a href="https://n3-editor.herokuapp.com/n3/editor/?formula=%40prefix+%3A+%3Chttp%3A%2F%2Fexample.org%2F%3E.%0A%40prefix+string%3A+%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F10%2Fswap%2Fstring%23%3E+.%0A%0A%3ALet+%3Aparam1+%22https%3A%2F%2Fw3c.github.io%2FN3%2Fspec%2F%22+.+%0A%3ALet+%3Aparam2+%22.%2A%2F%28%5B%5E%2F%5D%2B%2F%29%24%22+.%0A%7B%0A++++%3ALet+%3Aparam1+%3Fparam1+.%0A++++%3ALet+%3Aparam2+%3Fparam2+.%0A++++%28%3Fparam1+%3Fparam2%29+string%3Ascrape+%3Fresult+.%0A%7D%0A%3D%3E%0A%7B%0A++++%3Aresult+%3Ais+%3Fresult+.%0A%7D+." target="_blank">Try in Notation3 Editor 🚀</a>
    <p></p>
@@ -4764,13 +4767,13 @@ You can use this as an equivalent of a greaterThanOrEqual operator.
 :result :is "spec/". 
 </pre>
    </div>
-   <h4 class="heading settled" data-level="6.6.9" id="replace"><span class="secno">6.6.9. </span><span class="content">string:replace</span><a class="self-link" href="#replace"></a></h4>
+   <h4 class="heading settled" data-level="5.6.9" id="replace"><span class="secno">5.6.9. </span><span class="content">string:replace</span><a class="self-link" href="#replace"></a></h4>
     Calculates the object as the result of, given the strings in the subject list, replacing all occurrences of the second string in the first string with the third string. 
    <p><code>true</code> if and only if <code>$o</code> is the result of replacing all occurrences of <code>$s.2</code> in <code>$s.1</code> with <code>$s.3</code></p>
    <p><strong>Schema</strong><br><code>( $s.1+ $s.2+ $s.3+ )+ string:replace $o-</code></p>
    <div class="schema_where">
     where:
-    <div class="schema_datatypes"><code>$s.1</code>: <code>xsd:string</code>, <code>$s.2</code>: <code>xsd:string</code>, <code>$s.3</code>: <code>xsd:string</code><br><code>$o</code>: <code>xsd:string</code></div>
+    <div class="schema_datatypes"><code>$s.1</code>: <span class="schema_param_datatype">xsd:string</span><br><code>$s.2</code>: <span class="schema_param_datatype">xsd:string</span><br><code>$s.3</code>: <span class="schema_param_datatype">xsd:string</span><br><code>$o</code>: <span class="schema_param_datatype">xsd:string</span></div>
    </div>
    <br><strong>Examples</strong><br><a href="https://n3-editor.herokuapp.com/n3/editor/?formula=%40prefix+%3A+%3Chttp%3A%2F%2Fexample.org%2F%3E.%0A%40prefix+string%3A+%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F10%2Fswap%2Fstring%23%3E+.%0A%0A%3ALet+%3Adata+%22hello+world%21%22+.%0A%3ALet+%3Asearch+%22%28l%29%22+.%0A%3ALet+%3Areplace+%22%5B%241%5D%22+.%0A%7B%0A++++%3ALet+%3Adata+%3Fdata+.%0A++++%3ALet+%3Asearch+%3Fsearch+.%0A++++%3ALet+%3Areplace+%3Freplace+.%0A++++%28%3Fdata+%3Fsearch+%3Freplace%29+string%3Areplace+%3Fresult+.%0A%7D%0A%3D%3E%0A%7B%0A++++%3Aresult+%3Ais+%3Fresult+.%0A%7D+." target="_blank">Try in Notation3 Editor 🚀</a>
    <p></p>
@@ -4800,13 +4803,13 @@ You can use this as an equivalent of a greaterThanOrEqual operator.
 :result :is "he[l][l]o wor[l]d!". 
 </pre>
    </div>
-   <h4 class="heading settled" data-level="6.6.10" id="lessThan①"><span class="secno">6.6.10. </span><span class="content">string:lessThan</span><a class="self-link" href="#lessThan①"></a></h4>
+   <h4 class="heading settled" data-level="5.6.10" id="lessThan①"><span class="secno">5.6.10. </span><span class="content">string:lessThan</span><a class="self-link" href="#lessThan①"></a></h4>
     Checks whether the subject string is less than the object string, according to Unicode code order. 
    <p><code>true</code> if and only if <code>$s</code> is less than <code>$o</code> as per the Unicode code order.</p>
    <p><strong>Schema</strong><br><code>$s+ string:lessThan $o+</code></p>
    <div class="schema_where">
     where:
-    <div class="schema_datatypes"><code>$s</code>: <code>xsd:string</code><br><code>$o</code>: <code>xsd:string</code></div>
+    <div class="schema_datatypes"><code>$s</code>: <span class="schema_param_datatype">xsd:string</span><br><code>$o</code>: <span class="schema_param_datatype">xsd:string</span></div>
    </div>
    <br><strong>Examples</strong><br><a href="https://n3-editor.herokuapp.com/n3/editor/?formula=%40prefix+%3A+%3Chttp%3A%2F%2Fexample.org%2F%3E.%0A%40prefix+string%3A+%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F10%2Fswap%2Fstring%23%3E+.%0A%0A%3ALet+%3Aparam1+%22Cat%22+.%0A%3ALet+%3Aparam2+%22Penguin%22.%0A%7B%0A++++%3ALet+%3Aparam1+%3Fparam1+.%0A++++%3ALet+%3Aparam2+%3Fparam2+.%0A++++%3Fparam1+string%3AlessThan+%3Fparam2+.%0A%7D%0A%3D%3E%0A%7B%0A++++%3Aresult+%3Ais+true+.%0A%7D+." target="_blank">Try in Notation3 Editor 🚀</a>
    <p></p>
@@ -4834,13 +4837,13 @@ You can use this as an equivalent of a greaterThanOrEqual operator.
 :result :is true . 
 </pre>
    </div>
-   <h4 class="heading settled" data-level="6.6.11" id="concatenation"><span class="secno">6.6.11. </span><span class="content">string:concatenation</span><a class="self-link" href="#concatenation"></a></h4>
+   <h4 class="heading settled" data-level="5.6.11" id="concatenation"><span class="secno">5.6.11. </span><span class="content">string:concatenation</span><a class="self-link" href="#concatenation"></a></h4>
     Concatenates the strings from the subject list into a single string as object. 
    <p><code>true</code> if and only if the string concatenation of <code>$s.i</code> equals <code>$o</code>.</p>
    <p><strong>Schema</strong><br><code>( $s.i+ )+ string:concatenation $o-</code></p>
    <div class="schema_where">
     where:
-    <div class="schema_datatypes"><code>$s.i</code>: <code>xsd:string</code><br><code>$o</code>: <code>xsd:string</code></div>
+    <div class="schema_datatypes"><code>$s.i</code>: <span class="schema_param_datatype">xsd:string</span><br><code>$o</code>: <span class="schema_param_datatype">xsd:string</span></div>
    </div>
    <br><strong>Examples</strong><br><a href="https://n3-editor.herokuapp.com/n3/editor/?formula=%40prefix+%3A+%3Chttp%3A%2F%2Fexample.org%2F%3E.%0A%40prefix+string%3A+%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F10%2Fswap%2Fstring%23%3E+.%0A%0A%3ALet+%3Aparam+%28+%22hello%22+%22+%22+%22world%21%22+%29+.%0A%0A%7B%0A++++%3ALet+%3Aparam+%3Fparam+.%0A++++%3Fparam+string%3Aconcatenation+%3Fresult+.%0A%7D%0A%3D%3E%0A%7B%0A++++%3Aresult+%3Ais+%3Fresult+.%0A%7D+." target="_blank">Try in Notation3 Editor 🚀</a>
    <p></p>
@@ -4867,13 +4870,13 @@ You can use this as an equivalent of a greaterThanOrEqual operator.
 :result :is "hello world!". 
 </pre>
    </div>
-   <h4 class="heading settled" data-level="6.6.12" id="equalIgnoringCase"><span class="secno">6.6.12. </span><span class="content">string:equalIgnoringCase</span><a class="self-link" href="#equalIgnoringCase"></a></h4>
+   <h4 class="heading settled" data-level="5.6.12" id="equalIgnoringCase"><span class="secno">5.6.12. </span><span class="content">string:equalIgnoringCase</span><a class="self-link" href="#equalIgnoringCase"></a></h4>
     Checks whether the subject string is the same as the object string, ignoring differences between lowercase and uppercase. 
    <p><code>true</code> if and only if <code>$s</code> is the same string as <code>$o</code> when ignoring case differences.</p>
    <p><strong>Schema</strong><br><code>$s+ string:equalIgnoringCase $o+</code></p>
    <div class="schema_where">
     where:
-    <div class="schema_datatypes"><code>$s</code>: <code>xsd:string</code><br><code>$o</code>: <code>xsd:string</code></div>
+    <div class="schema_datatypes"><code>$s</code>: <span class="schema_param_datatype">xsd:string</span><br><code>$o</code>: <span class="schema_param_datatype">xsd:string</span></div>
    </div>
    <br><strong>Examples</strong><br><a href="https://n3-editor.herokuapp.com/n3/editor/?formula=%40prefix+%3A+%3Chttp%3A%2F%2Fexample.org%2F%3E.%0A%40prefix+string%3A+%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F10%2Fswap%2Fstring%23%3E+.%0A%0A%3ALet+%3Aparam1+%22hello+world%21%22+.%0A%3ALet+%3Aparam2+%22hELLo+wORld%21%22+.%0A%7B%0A++++%3ALet+%3Aparam1+%3Fparam1+.%0A++++%3ALet+%3Aparam2+%3Fparam2+.%0A++++%3Fparam1+string%3AequalIgnoringCase+%3Fparam2+.%0A%7D%0A%3D%3E%0A%7B%0A++++%3Aresult+%3Ais+true+.%0A%7D+." target="_blank">Try in Notation3 Editor 🚀</a>
    <p></p>
@@ -4901,13 +4904,13 @@ You can use this as an equivalent of a greaterThanOrEqual operator.
 :result :is true . 
 </pre>
    </div>
-   <h4 class="heading settled" data-level="6.6.13" id="startsWith"><span class="secno">6.6.13. </span><span class="content">string:startsWith</span><a class="self-link" href="#startsWith"></a></h4>
+   <h4 class="heading settled" data-level="5.6.13" id="startsWith"><span class="secno">5.6.13. </span><span class="content">string:startsWith</span><a class="self-link" href="#startsWith"></a></h4>
     Checks whether the subject string starts with the object string. 
    <p><code>true</code> if and only if <code>$s</code> starts with <code>$o</code>.</p>
    <p><strong>Schema</strong><br><code>$s+ string:startsWith $o+</code></p>
    <div class="schema_where">
     where:
-    <div class="schema_datatypes"><code>$s</code>: <code>xsd:string</code><br><code>$o</code>: <code>xsd:string</code></div>
+    <div class="schema_datatypes"><code>$s</code>: <span class="schema_param_datatype">xsd:string</span><br><code>$o</code>: <span class="schema_param_datatype">xsd:string</span></div>
    </div>
    <br><strong>Examples</strong><br><a href="https://n3-editor.herokuapp.com/n3/editor/?formula=%40prefix+%3A+%3Chttp%3A%2F%2Fexample.org%2F%3E.%0A%40prefix+string%3A+%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F10%2Fswap%2Fstring%23%3E+.%0A%0A%3ALet+%3Aparam1+%22hello+world%21%22+.%0A%3ALet+%3Aparam2+%22hello%22.%0A%7B%0A++++%3ALet+%3Aparam1+%3Fparam1+.%0A++++%3ALet+%3Aparam2+%3Fparam2+.%0A++++%3Fparam1+string%3AstartsWith+%3Fparam2+.%0A%7D%0A%3D%3E%0A%7B%0A++++%3Aresult+%3Ais+true+.%0A%7D+." target="_blank">Try in Notation3 Editor 🚀</a>
    <p></p>
@@ -4935,14 +4938,14 @@ You can use this as an equivalent of a greaterThanOrEqual operator.
 :result :is true . 
 </pre>
    </div>
-   <h4 class="heading settled" data-level="6.6.14" id="matches"><span class="secno">6.6.14. </span><span class="content">string:matches</span><a class="self-link" href="#matches"></a></h4>
+   <h4 class="heading settled" data-level="5.6.14" id="matches"><span class="secno">5.6.14. </span><span class="content">string:matches</span><a class="self-link" href="#matches"></a></h4>
     Checks whether the subject string matches the object regular expression.
 The regular expression follows the perl, python style. 
    <p><code>true</code> if and only if string <code>$s</code> matches the regular expression <code>$o</code></p>
    <p><strong>Schema</strong><br><code>$s+ string:matches $o+</code></p>
    <div class="schema_where">
     where:
-    <div class="schema_datatypes"><code>$s</code>: <code>xsd:string</code><br><code>$o</code>: <code>xsd:string</code></div>
+    <div class="schema_datatypes"><code>$s</code>: <span class="schema_param_datatype">xsd:string</span><br><code>$o</code>: <span class="schema_param_datatype">xsd:string</span> <span class="schema_param_descr">(regular expression in perl, python style)</span></div>
    </div>
    <br><strong>Examples</strong><br><a href="https://n3-editor.herokuapp.com/n3/editor/?formula=%40prefix+%3A+%3Chttp%3A%2F%2Fexample.org%2F%3E.%0A%40prefix+string%3A+%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F10%2Fswap%2Fstring%23%3E+.%0A%0A%3ALet+%3Aparam1+%22hello+world%21%22+.%0A%3ALet+%3Aparam2+%22.%2A%28l%29%2Bo+wo.%2A%22.%0A%7B%0A++++%3ALet+%3Aparam1+%3Fparam1+.%0A++++%3ALet+%3Aparam2+%3Fparam2+.%0A++++%3Fparam1+string%3Amatches+%3Fparam2+.%0A%7D%0A%3D%3E%0A%7B%0A++++%3Aresult+%3Ais+true+.%0A%7D+." target="_blank">Try in Notation3 Editor 🚀</a>
    <p></p>
@@ -4970,14 +4973,14 @@ The regular expression follows the perl, python style.
 :result :is true . 
 </pre>
    </div>
-   <h4 class="heading settled" data-level="6.6.15" id="notMatches"><span class="secno">6.6.15. </span><span class="content">string:notMatches</span><a class="self-link" href="#notMatches"></a></h4>
+   <h4 class="heading settled" data-level="5.6.15" id="notMatches"><span class="secno">5.6.15. </span><span class="content">string:notMatches</span><a class="self-link" href="#notMatches"></a></h4>
     Checks whether the subject string does not match the object regular expression.
 The regular expression follows the perl, python style. 
    <p><code>true</code> if and only if string <code>$s</code> does not match the regular expression <code>$o</code></p>
    <p><strong>Schema</strong><br><code>$s+ string:notMatches $o+</code></p>
    <div class="schema_where">
     where:
-    <div class="schema_datatypes"><code>$s</code>: <code>xsd:string</code><br><code>$o</code>: <code>xsd:string</code></div>
+    <div class="schema_datatypes"><code>$s</code>: <span class="schema_param_datatype">xsd:string</span><br><code>$o</code>: <span class="schema_param_datatype">xsd:string</span> <span class="schema_param_descr">(regular expression in perl, python style)</span></div>
    </div>
    <br><strong>Examples</strong><br><a href="https://n3-editor.herokuapp.com/n3/editor/?formula=%40prefix+%3A+%3Chttp%3A%2F%2Fexample.org%2F%3E.%0A%40prefix+string%3A+%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F10%2Fswap%2Fstring%23%3E+.%0A%0A%3ALet+%3Aparam1+%22hello+world%21%22+.%0A%3ALet+%3Aparam2+%22.%2A%28l%29%2Bo+dunia.%2A%22.%0A%7B%0A++++%3ALet+%3Aparam1+%3Fparam1+.%0A++++%3ALet+%3Aparam2+%3Fparam2+.%0A++++%3Fparam1+string%3AnotMatches+%3Fparam2+.%0A%7D%0A%3D%3E%0A%7B%0A++++%3Aresult+%3Ais+true+.%0A%7D+." target="_blank">Try in Notation3 Editor 🚀</a>
    <p></p>
@@ -5005,14 +5008,14 @@ The regular expression follows the perl, python style.
 :result :is true . 
 </pre>
    </div>
-   <h4 class="heading settled" data-level="6.6.16" id="format"><span class="secno">6.6.16. </span><span class="content">string:format</span><a class="self-link" href="#format"></a></h4>
+   <h4 class="heading settled" data-level="5.6.16" id="format"><span class="secno">5.6.16. </span><span class="content">string:format</span><a class="self-link" href="#format"></a></h4>
     Calculates the object as the result of replacing the tags in the first string from the subject list with the remaining strings from the subject list.
 See C’s sprintf function for details on these tags. 
    <p><code>true</code> if and only if <code>$o</code> is the result of replacing the tags found in <code>$s.(i=1)</code> with the strings <code>$s.(i>1)</code></p>
    <p><strong>Schema</strong><br><code>( $s.i+ )+ string:format $o-</code></p>
    <div class="schema_where">
     where:
-    <div class="schema_datatypes"><code>$s.i</code>: <code>xsd:string</code><br><code>$o</code>: <code>xsd:string</code></div>
+    <div class="schema_datatypes"><code>$s.i</code>: <span class="schema_param_datatype">xsd:string</span> <span class="schema_param_descr">(<code>$s.(i=1)</code> is a format string including tags. <code>$s.(i>1)</code> are strings to replace these tags. See C’s sprintf function for details.)</span><br><code>$o</code>: <span class="schema_param_datatype">xsd:string</span></div>
    </div>
    <br><strong>Examples</strong><br><a href="https://n3-editor.herokuapp.com/n3/editor/?formula=%40prefix+%3A+%3Chttp%3A%2F%2Fexample.org%2F%3E.%0A%40prefix+string%3A+%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F10%2Fswap%2Fstring%23%3E+.%0A%0A%3ALet+%3Aparam+%28+%22%25s%3A%2F%2F%25s%2F%25s%22+%22https%22+%22w3c.github.io%22+%22N3%2Fspec%2F%22+%29+.%0A%0A%7B%0A++++%3ALet+%3Aparam+%3Fparam+.%0A++++%3Fparam+string%3Aformat+%3Fresult+.%0A%7D%0A%3D%3E%0A%7B%0A++++%3Aresult+%3Ais+%3Fresult+.%0A%7D+." target="_blank">Try in Notation3 Editor 🚀</a>
    <p></p>
@@ -5039,7 +5042,7 @@ See C’s sprintf function for details on these tags.
 :result :is "https://w3c.github.io/N3/spec/". 
 </pre>
    </div>
-   <h2 class="appendix heading settled" data-level="7" id="acknowledgements"><span class="secno">7. </span><span class="content">Acknowledgements</span><a class="self-link" href="#acknowledgements"></a></h2>
+   <h2 class="appendix heading settled" data-level="6" id="acknowledgements"><span class="secno">6. </span><span class="content">Acknowledgements</span><a class="self-link" href="#acknowledgements"></a></h2>
    <p>The editors acknowledge valuable contributions from...</p>
   </main>
 <script>

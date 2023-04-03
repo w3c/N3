@@ -12,7 +12,7 @@ string:format a fno:Function ;
     vs:term_status  "testing" ;
     fnon:tldr """Calculates the object as the result of replacing the tags in the first string from the subject list with the remaining strings from the subject list.
 See C's sprintf function for details on these tags.""" ;
-    dcterms:comment "`true` if and only if `$o` is the result of replacing the tags found in `$s.(i=1)` with the strings `$s.(i>1)`" ;
+    dcterms:description "`true` if and only if `$o` is the result of replacing the tags found in `$s.(i=1)` with the strings `$s.(i>1)`" ;
     fno:example ( 
               [ a fno:Test ;
                 dcterms:description """
@@ -43,13 +43,13 @@ Calculate the result of applying the format "%s://%s/%s" to the strings "https",
     fno:name "format" ;
     fno:parameter ( [
        a fno:Parameter ;
-       dcterms:description "$s.(i=1) is a format string including tags. $s.(i>1) are strings to replace these tags. See C's sprintf function for details." ;
        fno:mode "+" ;
        fno:predicate "$s" ;
        fno:type rdf:List ;
        fnon:position fnon:subject ;
        fnon:listElementType [
            fno:predicate "$s.i" ;
+           dcterms:description "`$s.(i=1)` is a format string including tags. `$s.(i>1)` are strings to replace these tags. See C's sprintf function for details." ;
            fno:mode "+" ;
            fno:type xsd:string 
        ]

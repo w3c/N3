@@ -10,7 +10,7 @@
 log:skolem a fno:Function ;
     vs:term_status  "testing" ;
     fnon:tldr "Gets as object a skolem IRI that is a function of the subject (commonly a list); the same subject will always result in the same skolem IRI." ;
-    dcterms:comment "`true` if and only if `$o` is a skolem IRI that is a function of the subject." ;
+    dcterms:description "`true` if and only if `$o` is a skolem IRI that is a function of the subject." ;
     fno:example ( [ a fno:Test , fno:TestSkip ;
                 dcterms:description """
 Generate a unique Skolem IRI from the list (:abc 77 "xyz") .
