@@ -479,9 +479,7 @@ With combinations of mappings we can define isomorphisms between abstract N3 gra
               Then $G_1$ is isomorphic to $G_2$ but not to $G_3$.
             </p>
           </div>
-          <p class="issue">
-            Todo: provide a proof that two isomorphic graphs do have the same meaning. (but that is for below, after the semantics)
-          </p>
+
 
         </section>
     </section>
@@ -576,20 +574,45 @@ for RDF. In a second step, we introduce the N3-interpetation which assigns a spe
         which freely translates to "<i>everyone says about himself that he is wise</i>."  In abstract syntax, the formula would be expressed as:
 
         <p>
-         &lt; <code>{x}, {}, {(x, :says,</code> &lt; <code>{}, {},  {(x, :is, :wise)}.</code> &gt;
+        <code><{x}, {}, {(x, :says,</code> &lt; <code>{}, {},  {(x, :is, :wise)}.>}> </code>
         </p>
-This formula is interesting because the universally quantified variable appears once as a <a>direct constituent</a> in the triple and once nested. 
+This formula is interesting because the universally quantified variable appears once as a <a>direct constituent</a> in the triple and once nested. The semantics for ground graphs 
+maps direct constituents to not further specified domain elements while ground nested graphs are mapped to an isomorphic version of themselves. If we replace 
+the variable $x$ by, for example <code>:bob</code>, we get 
+<p>
+  &lt;  <code>{}, {}, {(:bob, :says,</code> &lt; <code>{}, {},  {(:bob, :is, :wise)}.</code>&gt;<code>)} </code>&gt;
+ </p>
+With  the  interpretation:
+<p>
+  <ul style="list-style-type: none">
+<li>$I($<code><{}, {}, {(:bob, :says,</code> &lt; <code>{}, {},  {(:bob, :is, :wise)}.>)}></code>$)$</li>
+<li>$=I($<code>(:bob, :says,</code> &lt; <code>{}, {},  {(:bob, :is, :wise)}.>)</code>$)$</li>
+</ul>
+This interpretation is true if $(D_I($<code>:bob</code>$), D_I($<code>:says</code>$),Q_I($&lt; <code>{}, {},  {(:bob, :is, :wise)}.></code>$)\in EXT_I$. 
+</p>
 
-        <p>Given a <a>basic interpretation</a> $I$ and a set of variables $V$. We call a mapping $A$ from $V$ to $Δ_I\times T_G$ such that $A(v)=(A_1(v),A_2(v))$ and $I(A_2(v))=A_1(v)$ an <dfn>assignment</dfn> for $V$.</p>
+<p>
+  Note that the mapping $D_I$ maps the URI <code>:bob</code> directly to a resource of $Δ_I$, 
+  while $Q_I$ operates on the quoted graph which contains the URI <code>:bob</code>.
+  If we now replace <code>:bob</code> by a variable which is quantified outside of the quoted graph as it was the case in our original example, the first 
+  occurence of the variable directly stands for a resource while the meaning of the graph containing the second 
+  one depends on the syntactical representation of that resource. 
+  We therefore need to extend  <a href=="https://www.w3.org/TR/rdf11-mt/#blank-nodes">RDF's the classical semantic condition for blank nodes</a> and use an so-called 
+  assignment which maps variables to a resource and one of its possible term representations  instead of a simple mapping from variables to resources:
+</p>
+<p>Given a <a>basic interpretation</a> $I$ and a set of variables $V$. We call a mapping $A$ from $V$ to $Δ_I\times T_G$ such that $A(v)=(A_1(v),A_2(v))$ and $I(A_2(v))=A_1(v)$ an <dfn>assignment</dfn> for $V$.</p>
 
-        <p>Note that for an interpretation $I$ and two assignments $A$ for a set $V_1$ and $B$ for a set $V_2$ of variables, the <a>combination</a> $A\bullet B$ is an assignment for $V_1\cup V_2$.</p>
+<p>Note that given an interpretation $I$ and two assignments $A$ for a set $V_1$ and $B$ for a set $V_2$ of variables, 
+  the <a>combination</a> $A\bullet B$ is again an assignment for $V_1\cup V_2$.</p>
   <!----    </section>
 
       <section>
         <h2></h2>
       -->
-
-      Total application
+We can consider both values $A_1$ and $A_2$ of an assignment $A(v)=(A_1(v), A_2(v))$ as seperate mappings. 
+The mapping $A_2$ assigns variables to terms and will be used to dertermine the meaning of quoted graphs. 
+We extend this kind of function to be applied on graphs:
+   
         <p>Let $G=(U,E,F)$ be a graph, $M$ be a mapping from $V$ into a set $S$, and $N = M|_{FV(G)}$ the restriction of $M$ to the <a>free variables</a> of $G$.</p>
 
         <p>A <dfn class="lint-ignore">total application</dfn> $M^t(G)$ of $M$ is defined as follows:</p>
@@ -598,16 +621,28 @@ This formula is interesting because the universally quantified variable appears 
 
         <ul>
           <li>If $x\in FV(G)$ then $N^t(x)=N(x)$
-          <li>If $x=(x_1, x_2... x_n)$ is a list, then $N^t(x)=(N^t(x_1), N^t(x_2)... N^t(x_n))$
+          <li>If $x=(x_1 x_2 \ldots x_n)$ is a list, then $N^t(x)=(N^t(x_1) N^t(x_2) \ldots N^t(x_n))$
           <li>If $x=&lt;H&gt;$ is a quoted graph then $N^t(x) = &lt;N^t(H)&gt;$.
           <li>$N^t(x)=x$ else.
         </ul>
-      </section>
+    
 
  <!--    <section>
         <h2></h2>
 --> 
-Interpretation with assignment
+The total application replaces all free variables occurring directly or nested in a graph by the function value. 
+ As an example we consider the rule from the beginning of this document, Let $M:\{x,y\}\rightarrow S$ be a mapping such that $M(x)=tom$ and $M(y)=mary$, then we get:
+
+ <p>
+    $M^t($<small>$(\{\},\{\},\{(<(\{\},\{\},\{(x, \text{rdf:type}, \text{:Human})\})>,
+      \text{log:implies}, <(\{\},\{y\},\{(x, \text{:hasMother}, y)\})>)\})$ </small>$)$
+      <br>$=$<small>$(\{\},\{\},\{(<(\{\},\{\},\{(tom, \text{rdf:type}, \text{:Human})\})>,
+        \text{log:implies}, <(\{\},\{y\},\{(tom, \text{:hasMother}, y)\})>)\})$ </small>
+      </p>
+In this example, we replace x by its value because it occurs freely in the graph while y does not get replaced since it is quantified in the nested graph.
+
+<p>
+The definition of total applications enables us to define <dfn class="lint-ignore">interpretations with assignment</dfn>:
 
         <p>For a <a>closed graph</a> $G=(U,E,F)$, a <a>basic interpretation</a> $I$ and an <a>assignment</a> $A$ on the set of variables $U\cup E$ of $G$.</p>
 
@@ -615,28 +650,34 @@ Interpretation with assignment
 
         <ul>
           <li> $A_1(x)$ if $x ∈ dom(A)$ and $x$ is a <a>direct constituent</a> of $G$,
-          <li> $(I[A](l_1),\cdots,I[A](l_n))$ if $x=(l_1,\cdots l_n)$ is a list,
+          <li> $(I[A](l_1) \ldots I[A](l_n))$ if $x=(l_1 \ldots l_n)$ is a list,
           <li> $Q_I(&lt;A_2^t(H)&gt;)$ if $x=&lt;H&gt;$ is a quoted graph,
           <li> $I(x)$ otherwise.
         </ul>
 
         <p>For a closed graph $G=(U, E, F)$ and a basic interptetation $I$, we say that the interpretation $I(G)=true$ if for all assignments $A$ for $U$ there exist an assignment $B$ for $E$ such that $I[A\bullet B](F)=true$. We also write that as $I\models G$.</p>
-
-        <p class="note">Note that the interpretation of a variable $x$ depends on its position in a graph. In the expression $(x, p, &lt;(∅, ∅, {(x, q, r)})&gt;$, the first  $x$ is interpreted as $A_1(x)$ while the second is interpreted as $A_2(x)$.</p>
+      </p>
+        <p class="note">Note that the interpretation of a variable $x$ depends on its position in a graph. In the expression $(x, p, &lt;(∅, ∅, {(x, q, r)})&gt;$, 
+          the first  $x$ is interpreted as $A_1(x)$ while the second is interpreted as $A_2(x)$. The connection between these two values is established by the condition that 
+        $I(A_2(v))=A_1(v)$.</p>
       
 
    
-        Assignments and free variables
+       For <dfn class="lint-ignore">assignments and free variables</dfn> we define:
         <p>Let $G=(U,E,F)$ be a <a>graph</a>. We say that $G$ is true under the <a>interpretation</a> $I$ and the <a>assignment</a> $A$ if $I[A]\models G$. That is, for each assignment $A^1$ for the variables in $U$ there exists an assignment $B^1$ for the variables in $E$ such that $I[A\bullet A^1\bullet B^1](F)=true$.</p>
   
-
+      <p>
+        This last definition handles all variables occurring freely in a graph as universally quantified.
+      </p>
+      </section>
       <section>
         <h2>Basic entailment</h2>
-
+The previous definition allows us to introduce the nothion of  basic entailmant:
+      
         <p>Let $G$ and $H$ be two graphs, we say that $G$ <dfn data-lt="entailment">entails</dfn> $H$, noted $G ⊨ H$,
         if and only if for every interpretation $I$ such that $I ⊨ G$, $I ⊨ H$.</p>
 
-        <p class="issue">TODO give examples of basic <a>entailment</a>.</p>
+        <p class="issue">TODO give examples of basic <a>entailment</a> and prove that isomorphic graphs have the same meaning.</p>
       </section>
     </section>
   </section>
