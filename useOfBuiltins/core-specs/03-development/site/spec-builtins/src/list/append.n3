@@ -86,7 +86,7 @@ Is the list (1 2 3 4) equal to appending (1), (2 3) , (4)?
             fno:type rdf:List ;
             fnon:position fnon:subject ;
             fnon:listElementType [
-                fnon:predicate "$s.i" ;
+                fno:predicate "$s.i" ;
                 fno:mode "?[*]" ;
                 fno:type rdf:List
             ]

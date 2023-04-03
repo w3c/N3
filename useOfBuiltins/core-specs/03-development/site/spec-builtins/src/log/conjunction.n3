@@ -51,7 +51,7 @@ Merge the formulas "{ :Felix a :Cat . }" , "{ :Pluto a :Dog . }", "{ :Pingu a :P
             fno:type rdf:List ;
             fnon:position fnon:subject ;
             fnon:listElementType [
-                fnon:predicate "$s.i" ;
+                fno:predicate "$s.i" ;
                 fno:mode "+" ;
                 fno:type log:Formula
             ]

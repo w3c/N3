@@ -11,8 +11,8 @@ log:langlit a fno:Function ;
     vs:term_status  "testing" ;
     fnon:tldr "Creates a language-tagged literal as object, based on the string value and language tag (see [BCP47](https://tools.ietf.org/html/bcp47)) in the subject list." ;
     dcterms:comment """
-`true` if and only if `$o` is a language-tagged literal with string value corresponding to `$s.0` and language tag corresponding to `$s.1`.
-`$s.1` should be a string in the form of a [BCP47](https://tools.ietf.org/html/bcp47) language tag.""" ;
+`true` if and only if `$o` is a language-tagged literal with string value corresponding to `$s.1` and language tag corresponding to `$s.2`.
+`$s.2` should be a string in the form of a [BCP47](https://tools.ietf.org/html/bcp47) language tag.""" ;
     rdfs:seeAlso log:dtlit ;
     fno:example ( 
             [ a fno:Test ;
@@ -30,6 +30,7 @@ Create a language-tagged literal from the string "hello" and language tag "en".
 "hello"@en a :Result .
             """ 
     ] ) ;
+    fno:name "langlit" ;
     fno:parameter (
         [ a fno:Parameter ;
             dcterms:description "" ;
@@ -38,11 +39,11 @@ Create a language-tagged literal from the string "hello" and language tag "en".
             fno:type rdf:List ;
             fnon:position fnon:subject ;
             fnon:listElements ( [
-                fnon:predicate "$s.0" ;
+                fno:predicate "$s.1" ;
                 fno:mode "?" ;
                 fno:type xsd:string
             ] [
-                fnon:predicate "$s.1" ;
+                fno:predicate "$s.2" ;
                 fno:mode "?" ;
                 fno:type xsd:string
             ] )

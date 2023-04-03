@@ -102,12 +102,12 @@ Builtin arguments {#builtinarguments}
 				Note that these modes are mostly based on [Prolog argument modes](https://www.swi-prolog.org/pldoc/man?section=argmode).
 			</p>
 			<ul>
-				<li>`++`: input argument (bound, fully grounded)</li>
-				<li>`+`: input argument (bound, possibly not fully grounded)</li>
-				<li>`-`: output argument (bounded or not bounded)</li>
-				<li>`--`: output argument (not bounded)</li>
-				<li>`?`: either providing input or accepting output, or both.</li>
-				<li>`[*]`: modifier indicating that an argument can have multiple solutions.</li>
+				<li><dfn lt="mod_pp">`++`</dfn>: input argument (bound, fully grounded)</li>
+				<li><dfn lt="="mod_p">`+`</dfn>: input argument (bound, possibly not fully grounded)</li>
+				<li><dfn lt="="mod_m">`-`</dfn>: output argument (bounded or not bounded)</li>
+				<li><dfn lt="="mod_mm">`--`</dfn>: output argument (not bounded)</li>
+				<li><dfn lt="="mod_qm">`?`</dfn>: either providing input or accepting output, or both.</li>
+				<li><dfn lt="="mod_a">`[*]`</dfn>: modifier indicating that an argument can have multiple solutions.</li>
 			</ul>
 
 ## Argument domains ## {#arg_domains}

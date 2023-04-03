@@ -30,7 +30,7 @@ This is the second line
             """ 
             ] 
     ) ;
-    fno:name "output string" ;
+    fno:name "outputString" ;
     fno:parameter (
         [ a fno:Parameter ;
             fno:predicate "$s" ;

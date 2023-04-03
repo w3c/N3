@@ -42,7 +42,7 @@ Parse the string ':Socrates a :Human .' as N3.
             """ 
             ] 
     ) ;
-    fno:name "parses to N3" ;
+    fno:name "parsedAsN3" ;
     rdfs:seeAlso log:semantics ;
     fno:parameter (
         [ a fno:Parameter ;

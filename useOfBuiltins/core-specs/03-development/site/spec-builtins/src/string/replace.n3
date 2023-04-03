@@ -51,15 +51,15 @@ Replace all "l"-s in the string "hello world!" with the bracket version "[l]" .
        fno:type rdf:List ;
        fnon:position fnon:subject ;
        fnon:listElements ( [
-           fnon:predicate "$s.1" ;
+           fno:predicate "$s.1" ;
            fno:mode "+" ;
            fno:type xsd:string 
        ] [
-           fnon:predicate "$s.2" ;
+           fno:predicate "$s.2" ;
            fno:mode "+" ;
            fno:type xsd:string 
        ] [
-           fnon:predicate "$s.3" ;
+           fno:predicate "$s.3" ;
            fno:mode "+" ;
            fno:type xsd:string 
        ] ) 

@@ -12,7 +12,7 @@ list:remove a fno:Function ;
     fnon:tldr "Removes the subject member from the subject list, and returns the resulting list as object." ;
     vs:moreinfo """The dcterms:comment is wrong. Eye, jen3 nor cwm don't implement list:remove this way. (@phochste)
 Fixed the description and removed the non-functional example (@william-vw)""" ;
-    dcterms:comment """`true` if and only if `$s.0` is a list, and `$o` is a list composed of the members of `$s.0` with member `$s.1` removed, if it was present.""" ;
+    dcterms:comment """`true` if and only if `$s.1` is a list, and `$o` is a list composed of the members of `$s.1` with member `$s.2` removed (if it was present; else, `$o` will be the same list).""" ;
     rdfs:seeAlso list:append ;
     fno:example ( 
             [ a fno:Test ;

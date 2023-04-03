@@ -61,7 +61,7 @@ Check whether the formula { :a :b :c } does not include { :a :b :d }.
             """ 
           ] 
     ) ;
-    fno:name "not includes" ;
+    fno:name "notIncludes" ;
     fno:parameter (
         [ a fno:Parameter ;
             fno:predicate "$s" ;

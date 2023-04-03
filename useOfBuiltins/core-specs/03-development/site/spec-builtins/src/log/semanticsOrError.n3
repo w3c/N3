@@ -27,7 +27,7 @@ Read the contents a non existing `<error.data>` and parse it as Notation3 (which
 :result :is \"\"\"Unable to access document <file:////tmp/error.data>, because:
     <urlopen error [Errno 2] No such file or directory: '//tmp/error.data'>\"\"\" .
             """ ] ) ;
-    fno:name "semantics or error message" ;
+    fno:name "semanticsOrError" ;
     fno:parameter ( [
         a fno:Parameter ;
         dcterms:description "" ;

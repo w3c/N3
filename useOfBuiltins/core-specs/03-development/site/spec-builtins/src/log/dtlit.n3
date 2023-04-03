@@ -10,7 +10,7 @@
 log:dtlit a fno:Function ;
     vs:term_status  "testing" ;
     fnon:tldr "Creates a datatyped literal as object, based on the string value and datatype IRI in the subject list." ;
-    dcterms:comment """`true` if and only if `$o` is a datatyped literal with string value corresponding to `$s.0` and datatype IRI corresponding to `$s.1`.""" ;
+    dcterms:comment """`true` if and only if `$o` is a datatyped literal with string value corresponding to `$s.1` and datatype IRI corresponding to `$s.2`.""" ;
     rdfs:seeAlso log:langlit ;
     fno:example ( 
             [ a fno:Test ;
@@ -57,6 +57,7 @@ Parse the datatyped literal "1971-05-05"^^xsd:date into a string and data type I
             """ 
             ] 
     ) ;
+    fno:name "dtlit" ;
     fno:parameter (
         [ a fno:Parameter ;
             dcterms:description "" ;
@@ -65,11 +66,11 @@ Parse the datatyped literal "1971-05-05"^^xsd:date into a string and data type I
             fno:type rdf:List ;
             fnon:position fnon:subject ;
             fnon:listElements ( [
-                fnon:predicate "$s.0" ;
+                fno:predicate "$s.1" ;
                 fno:mode "?" ;
                 fno:type xsd:string
             ] [
-                fnon:predicate "$s.1" ;
+                fno:predicate "$s.2" ;
                 fno:mode "?" ;
                 fno:type log:Uri
             ] )

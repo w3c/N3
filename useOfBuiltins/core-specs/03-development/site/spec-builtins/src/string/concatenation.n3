@@ -49,7 +49,7 @@ Concatenates the string "hello", " " and "world!".
        fno:type rdf:List ;
        fnon:position fnon:subject ;
        fnon:listElementType [
-           fnon:predicate "$s.i" ;
+           fno:predicate "$s.i" ;
            fno:mode "+" ;
            fno:type xsd:string 
        ]

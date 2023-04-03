@@ -48,12 +48,12 @@ Extract from the string "https://w3c.github.io/N3/spec/" the last path element u
        fno:type rdf:List ;
        fnon:position fnon:subject ;
        fnon:listElements ( [
-           fnon:predicate "$s.1" ;
+           fno:predicate "$s.1" ;
            fno:mode "+" ;
            fno:type xsd:string 
        ] [
            dcterms:comment "regular expression with 1 group" ;
-           fnon:predicate "$s.2" ;
+           fno:predicate "$s.2" ;
            fno:mode "+" ;
            fno:type xsd:string 
        ] ) 
