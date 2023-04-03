@@ -19,7 +19,7 @@ These tools are required for testing and development of the documentation:
 
 Note: when editing the `create-markdown.ipynb` Jupyter notebook, be sure to convert it to a Python file afterwards:
 ```
-jupyter nbconvert --to script 'create-markdown.ipynb' --output 'create-markdown.py' 
+jupyter nbconvert --to script 'create-markdown.ipynb' --output 'create-markdown' 
 ```
 
 # Makefile

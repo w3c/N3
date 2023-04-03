@@ -46,6 +46,13 @@ table tbody > tr > th {
 table th.last {
   border-right: none;
 }
+.schema_where {
+	margin-top: -15px;
+	font-size: 0.9em;
+}
+.schema_datatypes {
+	margin-left: 25px;
+}
 </style>
 
 

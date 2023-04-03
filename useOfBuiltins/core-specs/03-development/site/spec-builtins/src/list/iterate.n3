@@ -96,7 +96,7 @@ What is the index of "cat" in the list ("dog" "penguin" "cat")?
             fnon:listElements ( [
                 fno:predicate "$o.1" ;
                 fno:mode "?[*]" ;
-                fno:type xsd:int
+                fno:type xsd:integer
             ] [
                 fno:predicate "$o.2" ;
                 fno:mode "?[*]"

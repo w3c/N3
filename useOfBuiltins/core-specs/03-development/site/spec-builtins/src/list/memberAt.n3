@@ -82,7 +82,7 @@ Find the index of "cat" in the list ("dog" "cat" "penguin" "cat").
             ] [
                 fno:predicate "$s.2" ;
                 fno:mode "?[*]" ;
-                fno:type xsd:int
+                fno:type xsd:integer
             ] )
 
         ] [ a fno:Parameter ;
