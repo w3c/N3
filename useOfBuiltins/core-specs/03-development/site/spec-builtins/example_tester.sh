@@ -41,7 +41,7 @@ if [ ${SKIPPED} -eq 1 ]; then
 elif [ ${VALID} -eq 1 ]; then
     echo "OK : ${FILE} : example valid"
 else
-    echo "ER : ${FILE} : example not valid"
+    echo "** ERROR : ${FILE} : example not valid **"
     exit 3
 fi
 
