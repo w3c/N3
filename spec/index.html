@@ -675,10 +675,10 @@ ex:john ex:address [
         <p class="note">See also the <a href="#iriprplist">IRI property list</a> syntax.
         However, note that you cannot use that syntax (`id` keyword) with blank node identifiers.</p>
 
-        <p>The blank node property lists syntax is useful for cases where a blank node occurs only once as an object.
-          In case the blank node occurs several times as an object, such as describing multiple people with the same
+        <p>The "blank node property list" syntax is especially useful in cases where a blank node occurs only once as an object.
+          When the blank node occurs several times as an object, such as when describing multiple people with the same
           address,
-          one should use blank node identifiers. For instance:
+          it is better to use blank node identifiers. For instance:
 
           <pre id="address-multiple-people" class="example nohighlight linkeditor" data-transform="updateExample"><!--
 @prefix ex: <http://example.org/> .
