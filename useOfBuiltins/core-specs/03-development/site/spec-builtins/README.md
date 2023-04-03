@@ -17,6 +17,11 @@ These tools are required for testing and development of the documentation:
   - urlib3
 - [EYE](https://github.com/eyereasoner/eye)
 
+Note: when editing the `create-markdown.ipynb` Jupyter notebook, be sure to convert it to a Python file afterwards:
+```
+jupyter nbconvert --to script 'create-markdown.ipynb' --output 'create-markdown.py' 
+```
+
 # Makefile
 
 ### builtins.n3
