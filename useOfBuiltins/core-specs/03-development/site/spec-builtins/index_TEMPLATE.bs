@@ -7,7 +7,7 @@ URL: https://w3c.github.io/N3/spec/
 TR: https://w3c.github.io/N3/spec/
 Previous Version: https://w3c.github.io/N3/spec/builtins/0.1/
 Editor: William Van Woensel, [University of Ottawa](https://www.uottawa.ca/), william.van.woensel@gmail.com 
-Editor: Patrick Hochstenbach, [DLab - Ghent University](https://knows.idlab.ugent.be/), Patrick.Hochstenbach@ugent.be
+Editor: Patrick Hochstenbach, [IDLab - Ghent University](https://knows.idlab.ugent.be/), Patrick.Hochstenbach@ugent.be
 !Contributors: Tim Duval, [UnifyLogic](http://unifylogic.ai), tim.duval@unifylogic.ai
 !Contributors: Dominik Tomaszuk, [University of Bialystok](https://uwb.edu.pl/), dominik.tomaszuk@gmail.com
 
