@@ -248,12 +248,13 @@ we introduce the following concept:
               <li>a <a>direct constituent</a> of $G_1$, or</li>
               <li>a <a>constituent</a> of graph $G_2$, where the <a>quoted graph</a> $&lt;G_2&gt;$ is a <a>direct constituent</a> of $G_1$.</li>
             </ul>
+            We denote the set of constituents of a graph $G$ as $C(G)$.
           </li>
         </ul>
 
-          We denote the set of constituents of a graph $G$ as $C(G)$.
+          
 
-          In order to clarify the definition above, consider example 3 from above: <br>
+          In order to clarify the definition above, we go back to an earlier example (point 3): <br>
           <ul>
             <li>
                 <code>:socrates :says {_:x a :Mortal}.  </code> &ndash; abstract syntax:
@@ -269,22 +270,7 @@ we introduce the following concept:
               </li>
           </ul>
 
-  <p>In other words: direct constituents are all elements which directly form the graph's triples, and any list elements found there.
-  Constituents also include all triple elements found in nested quoted graphs
-  nested components independently of the depth of the nesting (to see the latter, please note that the last)</p>
 
-            <p class=note>Note that these definitions make a difference between <a>graphs</a> and <a>quoted graphs</a>.
-              In particular, a quoted graph is defined as $&lt;G&gt;$ where $G$ is a finite graph.
-              This difference is crucial for the definitions below: a graph is not the same as a quoted graph.
-            </p>
-
-            <p>
-              <br>The constituents are:
-              <small>$\text{:socrates}, \text{:says}, <(\{\},\{x\},\{(x,\text{rdf:type}, \text{:Mortal} )\})>, x,\text{rdf:type}, \text{:Mortal}$</small>
-</p>
-  In other words: direct constituents are all elements which directly form the graph's triples and all list elements of these.
-  constituents also include all nested components independently of the depth of the nesting (to see the latter, please note that the last
-  part of the definition is recursive, i.e. we take the constituents of the direct constituents).
 
             <p class=note>Note that the definition makes a difference between <a>graphs</a> and <a>quoted graphs</a>.
               A quoted graph is a direct consituent of the graph it occurs in as a triple component, its direct constituents
