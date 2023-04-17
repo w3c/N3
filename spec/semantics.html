@@ -166,7 +166,7 @@ In contrast to RDF, N3 allows all kinds of terms in all positions of a triple. T
 Even lists or quoted graphs can appear in predicate position of a triple.
 </div>
 In order to add quantification to the concept of an unordered set of triples (an RDF graph), the concept of a graph in N3 abstract
-syntax adds adds information on quantification. In other words, each set of triples comes with information about variables quantified in the graph.
+syntax adds quantification as an external statement. Each set of triples comes with information about variables quantified in the graph.
 To do so, we define:
       <p>A <dfn>graph</dfn> is a tuple $(U, E, F)$ where</p>
       <ul>
@@ -179,7 +179,7 @@ As we will see in the semantics section below, the sets $U$ and $E$ act like qua
 We therefore call these sets also <dfn class="lint-ignore" data-lt="quantification set">quantification sets</dfn>.
 
 <p>
-To provide some intuition on the correspondence between concrete N3 syntax and abstract N3 syntax, we provide some examples below.
+To some intuition on the correspondence between concrete N3 syntax and abstract N3 syntax, we provide some examples below.
 The triples on the left-hand-side of our examples should be considered graphs in the concrete N3 syntax,
 and the right-hand side provides the counterpart in abstract N3 syntax.
 
@@ -217,7 +217,7 @@ We will re-use these examples in the following sections.
             </section>
       <section>
         <h2>Variables</h2>
-For the definitions which follow later in this document, we need to provide some definitions about the variables occurring
+For the definitions which follow later in this document, we need to make some statements about the variables occurring
 in N3 graphs. Here we distinguish between variables occuring directly in a graph an those which are nested. To be able to differentiate,
 we introduce the following concept:
         <ul>
@@ -273,11 +273,11 @@ we introduce the following concept:
 
 
             <p class=note>Note that the definition makes a difference between <a>graphs</a> and <a>quoted graphs</a>.
-              A quoted graph is a direct consituent of the graph it occurs in as a triple component; however, its direct constituents,
-              and their direct constituents, are not.
+              A quoted graph is a direct consituent of the graph it occurs in as a triple component, its direct constituents
+              and their direct constituents are not.
               This difference is crucial for the definitions below: a graph is not the same as a quoted graph.</p>
 <p>
-With that definition, we now introduce free variables. Free variables are variables which occur directly or nested in the graph but which are not covered by a <a>quantification set</a>.
+With that definition, we now introduce free variables.
 </p>
             <li>The set $FV$ of <dfn data-lt="free">free variables</dfn> in a term or a set of triples is defined as follows:
 
@@ -296,6 +296,10 @@ With that definition, we now introduce free variables. Free variables are variab
                 <li>otherwise we call $v$ <dfn class="lint-ignore" data-lt="scoped variable">scoped</dfn> in $G$;</li>
                 <li>we denote the set of variables which are <a>free</a> in $G$ as $FV(G)$.</li>
               </ul>
+
+<p>
+Free variables are variables which occur directly or nested in the graph but which are not covered by a <a>quantification set</a>.
+</p>
 <p>
 
 Examples:
@@ -485,10 +489,10 @@ for RDF. In a second step, we introduce the N3-interpetation which assigns a spe
           such that its restriction to $C$ is a total mapping,
         <li>a mapping $Q_I$ from <a>ground</a> <a>quoted graphs</a> to ground quoted graphs, such that<ul>
 
-            <li>for any quoted graph $&lt;G&gt;$ if $Q_I(&lt;G&gt;)=&lt;H&gt; \implies H \simeq G$
+            <li>for any quoted graph $&lt;G&gt;$ if $Q_1(&lt;G&gt;)=&lt;H&gt; \implies H \simeq G$
             <li>for two quoted graphs $&lt;G_1&gt;$ and $&lt;G_2&gt;$: $G_1 \simeq G_2\implies Q_I(G_1)=Q_I(G_2)$,
           </ul>
-        <li>A subset $EXT_I$ (<dfn class="lint-ignore">extension</dfn>) of $Δ_I^3$, i.e., $Δ_I \times Δ_I \times Δ_I$ as the set of all triples.</li>
+        <li>A subset $EXT_I$ (<dfn class="lint-ignore">extension</dfn>) of $Δ_I^3$.
       </ul>
 
       <div class="note">
@@ -582,12 +586,7 @@ This interpretation is true if $(D_I($<code>:bob</code>$), D_I($<code>:says</cod
   We therefore need to extend  <a href=="https://www.w3.org/TR/rdf11-mt/#blank-nodes">RDF's the classical semantic condition for blank nodes</a> and use an so-called 
   assignment which maps variables to a resource and one of its possible term representations  instead of a simple mapping from variables to resources:
 </p>
-<p>
-  Given a <a>basic interpretation</a> $I$ and a set of variables $V$. 
-  We call a mapping $A$ from $V$ to $Δ_I\times T_G$ such that $A(v)=(A_1(v),A_2(v))$ and $I(A_2(v))=A_1(v)$ an <dfn>assignment</dfn> for $V$.
-  The mapping $A_1$ maps terms to the domain of discourse $Δ_I$. 
-  The mapping $A_2$ maps variables to terms, and will be used to determine the meaning of quoted graphs.
-</p>
+<p>Given a <a>basic interpretation</a> $I$ and a set of variables $V$. We call a mapping $A$ from $V$ to $Δ_I\times T_G$ such that $A(v)=(A_1(v),A_2(v))$ and $I(A_2(v))=A_1(v)$ an <dfn>assignment</dfn> for $V$.</p>
 
 <p>Note that given an interpretation $I$ and two assignments $A$ for a set $V_1$ and $B$ for a set $V_2$ of variables, 
   the <a>combination</a> $A\bullet B$ is again an assignment for $V_1\cup V_2$.</p>
@@ -596,7 +595,8 @@ This interpretation is true if $(D_I($<code>:bob</code>$), D_I($<code>:says</cod
       <section>
         <h2></h2>
       -->
-We can consider both values $A_1$ and $A_2$ of an assignment $A(v)=(A_1(v), A_2(v))$ as seperate mappings.  
+We can consider both values $A_1$ and $A_2$ of an assignment $A(v)=(A_1(v), A_2(v))$ as seperate mappings. 
+The mapping $A_2$ assigns variables to terms and will be used to dertermine the meaning of quoted graphs. 
 We extend this kind of function to be applied on graphs:
    
         <p>Let $G=(U,E,F)$ be a graph, $M$ be a mapping from $V$ into a set $S$, and $N = M|_{FV(G)}$ the restriction of $M$ to the <a>free variables</a> of $G$.</p>
