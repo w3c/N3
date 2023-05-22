@@ -137,7 +137,7 @@
       document.respec.ready.then(function () {
 
         for (let div of document.querySelectorAll("div.example")) {
-          
+
           let pre = div.querySelector("pre");
           if (pre.className.indexOf("linkeditor") == -1)
             continue;
@@ -214,7 +214,7 @@
       </li>
       <li>
         <strong>N3 supports quoting and describing graphs of statements.</strong>
-        A <a>quoted graph</a> includes a conjunction of quoted statements. It allows expressing where particular
+        A <a>graph term</a> includes a conjunction of quoted statements. It allows expressing where particular
         statements came from, at what time they were stated and by whom (i.e., provenance), and any other description in
         general.
       </li>
@@ -226,7 +226,7 @@
       </li>
       <li>
         <strong>N3 supports a scoped version of negation-as-failure.</strong>
-        It can be useful to check whether a <em>specific online source, local quoted graph, or even the N3 document
+        It can be useful to check whether a <em>specific online source, local graph term, or even the N3 document
           itself</em>,
         at a given point in time, does or does not support a set of facts.
         This is referred to as <em>scoped negation as failure,</em> and is supported by N3's
@@ -257,7 +257,7 @@
         <a data-cite="RDF11-CONCEPTS#dfn-object"><dfn>object</dfn></a> resource.
         An <a data-cite="RDF11-CONCEPTS#resources-and-statements"><dfn data-lt="resource|N3 resource">N3
             resource</dfn></a> can be an RDF <a href="#iris">IRI</a>, <a href="#literals">literal</a> or <a
-          href="#bnodes">blank node</a>; or an N3 <a>quoted graph</a>, <a>collection</a>,
+          href="#bnodes">blank node</a>; or an N3 <a>graph term</a>, <a>collection</a>,
         <a href="#n3rules">logical implication</a>, <a>variable</a> or <a>N3 builtin</a>.
         We introduce these types of resources and statements below.
       </p>
@@ -490,9 +490,11 @@ ex:green-goblin foaf:name "Green Goblin" . -->
       <p>For details on numerical syntaxes (e.g., decimals, doubles), we refer to the <a data-cite="TURTLE#abbrev">RDF
           1.1: Turtle (Section 2.5.2)</a> specification.</p>
       <p>Other literals, such as strings, but also dates, binary, octal or hex code, XML or JSON code, or other types of
-        numbers (e.g., shorts), need to be written as <b>datatyped literals</b>. These are represented as a string, 
-        followed by the `^^` symbol and the corresponding <dfn data-cite="XMLSCHEMA11-2#built-in-datatypes">datatype IRI</dfn>.
-        (`xsd:string` is the datatype IRI for strings; this is the default and can be omitted, in which case the `^^` MUST 
+        numbers (e.g., shorts), need to be written as <b>datatyped literals</b>. These are represented as a string,
+        followed by the `^^` symbol and the corresponding <dfn data-cite="XMLSCHEMA11-2#built-in-datatypes">datatype
+          IRI</dfn>.
+        (`xsd:string` is the datatype IRI for strings; this is the default and can be omitted, in which case the `^^`
+        MUST
         also be omitted; in other words, `"example"^^` is not a valid datatyped literal). For instance:</p>
 
       <pre class="example nohighlight linkeditor" data-transform="updateExample"><!--
@@ -525,13 +527,17 @@ ex:green-goblin foaf:name "Green Goblin" . -->
 :spiderman foaf:name "الرجل العنكبوت"^^i18n:ar-EG_rtl . -->
 </pre>
 
-      <p class="note">If no <a>datatype IRI</a> or language tag is given, the datatype <code>xsd:string</code> will be assumed.
-        In case a language tag is given or a <code>i18n</code> "datatype" is used, the datatype <code>rdf:langString</code> is inferred.
+      <p class="note">If no <a>datatype IRI</a> or language tag is given, the datatype <code>xsd:string</code> will be
+        assumed.
+        In case a language tag is given or a <code>i18n</code> "datatype" is used, the datatype
+        <code>rdf:langString</code> is inferred.
         It is not possible to specify both a <a>datatype IRI</a> and a language tag.</p>
 
-      <p class="note">There are also other ways to describe the language tag and base direction of RDF literals, see <a href="#compoundliteral">Compound literals<a>.
-        Please note that these various ways are still in flux,
-        see the <a href="https://github.com/w3c/rdf-star-wg/blob/main/docs/text-direction.md">"text direction"</a> discussions in the RDF-star working group.</p>
+      <p class="note">There are also other ways to describe the language tag and base direction of RDF literals, see <a
+          href="#compoundliteral">Compound literals<a>.
+            Please note that these various ways are still in flux,
+            see the <a href="https://github.com/w3c/rdf-star-wg/blob/main/docs/text-direction.md">"text direction"</a>
+            discussions in the RDF-star working group.</p>
 
       <p class="note">Integers, decimals, doubles, and booleans may also be written as string literals with the
         appropriate <a>datatype IRI</a> (e.g., `"8"^^xsd:integer` or `"true"^^xsd:boolean`).
@@ -616,7 +622,7 @@ ex:green-goblin foaf:name "Green Goblin" . -->
           describe it &mdash;
           such as the painting it is in, and the type of tree:
         <p>
-          <pre id="mona-lisa-bnode-id" class="example nohighlight linkeditor" data-transform="updateExample"><!--
+        <pre id="mona-lisa-bnode-id" class="example nohighlight linkeditor" data-transform="updateExample"><!--
 @prefix ex: <http://example.org/> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 
@@ -648,7 +654,8 @@ _:someTree rdf:type ex:CypressTree . -->
           </tr>
           <tr>
             <td style="max-width:40vw">
-              <pre id="address-bnode-prp-list-simplified" class="example nohighlight linkeditor" data-transform="updateExample"><!--
+              <pre id="address-bnode-prp-list-simplified" class="example nohighlight linkeditor"
+                data-transform="updateExample"><!--
 @prefix ex: <http://example.org/> .
 ex:john ex:address _:a .
 _:a ex:street "Evergreen Terrace" .
@@ -673,14 +680,15 @@ ex:john ex:address [
         </table>
 
         <p class="note">See also the <a href="#iriprplist">IRI property list</a> syntax.
-        However, note that you cannot use that syntax (`id` keyword) with blank node identifiers.</p>
+          However, note that you cannot use that syntax (`id` keyword) with blank node identifiers.</p>
 
-        <p>The "blank node property list" syntax is especially useful in cases where a blank node occurs only once as an object.
+        <p>The "blank node property list" syntax is especially useful in cases where a blank node occurs only once as an
+          object.
           When the blank node occurs several times as an object, such as when describing multiple people with the same
           address,
           it is better to use blank node identifiers. For instance:
 
-          <pre id="address-multiple-people" class="example nohighlight linkeditor" data-transform="updateExample"><!--
+        <pre id="address-multiple-people" class="example nohighlight linkeditor" data-transform="updateExample"><!--
 @prefix ex: <http://example.org/> .
 
 ex:john ex:address _:a .
@@ -731,7 +739,7 @@ _:a ex:town [ ex:name "Springfield" ] . -->
       <p>We often need to describe ordered collections of things, e.g., a book written by several authors,
         listing the students in a course, or the software modules within a package. N3 supports <dfn
           data-lt="n3 collection|n3 list|list">collections</dfn> as first-class citizens
-        to represent ordered collections of resources enclosed by parentheses 
+        to represent ordered collections of resources enclosed by parentheses
         ("<code>(</code> <code>)</code>").
         The contained resources are called <dfn data-lt="collection member">members</dfn>.</p>
       <p>For instance:</p>
@@ -792,12 +800,12 @@ _:a ex:town [ ex:name "Springfield" ] . -->
             ).</pre>
               -->
     </section>
-    <section id='quotedgraphs' class='informative'>
-      <h3>Quoted Graphs</h3>
+    <section id='graphterms' class='informative'>
+      <h3>Graph Terms</h3>
       <p>
         It is often useful to attach metadata to groups of triples &mdash;
         to give the provenance, context, or version of the information, our opinion on the matter, and so on.
-        We can use <dfn>quoted graphs</dfn> to quote RDF graphs, and then describe the <a>quoted graph</a> using <a>N3
+        We can use <dfn>graph terms</dfn> to quote RDF graphs, and then describe the <a>graph term</a> using <a>N3
           statements</a>. For instance:
       </p>
       <pre class="example nohighlight linkeditor" data-transform="updateExample"><!--
@@ -810,13 +818,13 @@ _:a ex:town [ ex:name "Springfield" ] . -->
   :retrievedAt "2020-07-12T09:01:33"^^xsd:dateTime . -->
 </pre>
       <p>
-        Essentially, a <a>quoted graph</a> represents an occurrence of an RDF graph &mdash; i.e., a <em>quoting</em> or
-        <em>citing</em> of the graph. Importantly, a <a>quoted graph</a> does not assert the contents of the RDF
-        graph as being true (e.g., <code>:cervantes dc:wrote :moby_dick</code>). In fact, the <a>quoted graph</a> is <a
+        Essentially, a <a>graph term</a> represents an occurrence of an RDF graph &mdash; i.e., a <em>quoting</em> or
+        <em>citing</em> of the graph. Importantly, a <a>graph term</a> does not assert the contents of the RDF
+        graph as being true (e.g., <code>:cervantes dc:wrote :moby_dick</code>). In fact, the <a>graph term</a> is <a
           href="#semantics">interpreted as a resource on its own</a>.
       </p>
-      <p>As with <a>collections</a>, <a>quoted graphs</a> can be used in any position in an <a>N3 statement</a>.</p>
-      <p>As they represent a <i>quoting</i> of RDF graphs, <a>quoted graphs</a> are not "referentially transparent". For
+      <p>As with <a>collections</a>, <a>graph terms</a> can be used in any position in an <a>N3 statement</a>.</p>
+      <p>As they represent a <i>quoting</i> of RDF graphs, <a>graph terms</a> are not "referentially transparent". For
         instance:</p>
       <pre class="example nohighlight linkeditor" data-transform="updateExample"><!--
 @prefix : <http://example.org/> .
@@ -870,8 +878,8 @@ _:a ex:town [ ex:name "Springfield" ] . -->
       </p>
 
       <p class="note">
-        An <a>N3 rule</a> is actually a N3 statement, where the <a>subject</a> and <a>object</a> constitute <a>quoted
-          graphs</a>,
+        An <a>N3 rule</a> is actually a N3 statement, where the <a>subject</a> and <a>object</a> constitute <a>graph
+          terms</a>,
         and the <a>predicate</a> is `log:implies`, with symbol `=&gt;` as syntactic sugar.
         <!-- For backward chaining rules (see <a href="n3rulechaining">rule chaining</a>), 
           the predicate is `log:impliedBy`, with symbol `&lt;=` as syntactic sugar. -->
@@ -971,7 +979,7 @@ _:a ex:town [ ex:name "Springfield" ] . -->
         <p>
           For instance, the following is equivalent to the <a href="#chaining_example">prior example</a>
           and combines forward and backward chaining:
-          <pre id="backward_chaining_example" class="example nohighlight linkeditor" data-transform="updateExample"><!--
+        <pre id="backward_chaining_example" class="example nohighlight linkeditor" data-transform="updateExample"><!--
 @prefix foaf: <http://xmlns.com/foaf/0.1/> .
 @prefix : <http://example.org/>.
             
@@ -1016,17 +1024,23 @@ _:a ex:town [ ex:name "Springfield" ] . -->
       <p>Built-ins are denoted by a controlled IRI defined in one of the core namespaces:</p>
       <ul>
         <li><a href="../ns/crypto.html">Crypto</a> –
-          <a href="http://www.w3.org/2000/10/swap/crypto#">http://www.w3.org/2000/10/swap/crypto#</a>,</li>
+          <a href="http://www.w3.org/2000/10/swap/crypto#">http://www.w3.org/2000/10/swap/crypto#</a>,
+        </li>
         <li><a href="../ns/list.html">List</a> –
-          <a href="http://www.w3.org/2000/10/swap/list#">http://www.w3.org/2000/10/swap/list#</a>,</li>
+          <a href="http://www.w3.org/2000/10/swap/list#">http://www.w3.org/2000/10/swap/list#</a>,
+        </li>
         <li><a href="../ns/log.html">Log</a> –
-          <a href="http://www.w3.org/2000/10/swap/log#">http://www.w3.org/2000/10/swap/log#</a>,</li>
+          <a href="http://www.w3.org/2000/10/swap/log#">http://www.w3.org/2000/10/swap/log#</a>,
+        </li>
         <li><a href="../ns/math.html">Math</a> –
-          <a href="http://www.w3.org/2000/10/swap/math#">http://www.w3.org/2000/10/swap/math#</a>,</li>
+          <a href="http://www.w3.org/2000/10/swap/math#">http://www.w3.org/2000/10/swap/math#</a>,
+        </li>
         <li><a href="../ns/string.html">String</a> –
-          <a href="http://www.w3.org/2000/10/swap/string#">http://www.w3.org/2000/10/swap/string#</a>, and</li>
+          <a href="http://www.w3.org/2000/10/swap/string#">http://www.w3.org/2000/10/swap/string#</a>, and
+        </li>
         <li><a href="../ns/time.html">Time</a> –
-          <a href="http://www.w3.org/2000/10/swap/time#">http://www.w3.org/2000/10/swap/time#</a>.</li>
+          <a href="http://www.w3.org/2000/10/swap/time#">http://www.w3.org/2000/10/swap/time#</a>.
+        </li>
       </ul>
 
       <h5>Simple Builtins</h5>
@@ -1110,13 +1124,13 @@ _:a ex:town [ ex:name "Springfield" ] . -->
       <h5>Scoped Negation as Failure (SNAF)</h5>
 
       <p>
-        <a>N3 builtins</a> can also operate on a local <a>quoted graph</a> or even an entire <a>N3 document</a>.
+        <a>N3 builtins</a> can also operate on a local <a>graph term</a> or even an entire <a>N3 document</a>.
         The `log:collectAllIn`, `log:forAllIn`, and `log:notIncludes` builtins are logical operators that
         support a negation-as-failure scoped on the <a>builtin statement</a> object:
-        the object can be a quoted graph or a <a>blank node</a>, in which case the current document is the scope.
+        the object can be a graph term or a <a>blank node</a>, in which case the current document is the scope.
         For instance, the rule below uses `log:collectAllIn` to collect all of spiderman's defeated villains
         found in the current document:
-        <pre id="collectallin_example" class="example nohighlight linkeditor" data-transform="updateExample"><!--
+      <pre id="collectallin_example" class="example nohighlight linkeditor" data-transform="updateExample"><!--
 @prefix log: <http://www.w3.org/2000/10/swap/log#> . 
 @prefix : <http://example.org/>.
 
@@ -1137,7 +1151,7 @@ _:a ex:town [ ex:name "Springfield" ] . -->
 } => { ?hero :defeatedEnemies ?enemies } . -->
 </pre>
 
-        The `log:collectAllIn` builtin accepts as subject a collection that includes:
+      The `log:collectAllIn` builtin accepts as subject a collection that includes:
       <ul>
         <li>a variable of which the values will be collected (`?enemy`),</li>
         <li>a <i>where</i> clause with triple patterns that constrain this variable, and</li>
@@ -1150,7 +1164,7 @@ _:a ex:town [ ex:name "Springfield" ] . -->
       </p>
       <p>
         The example below uses `log:forAllIn` to determine whether a super-hero's identity is safe:
-        <pre id="forallin_example" class="example nohighlight linkeditor" data-transform="updateExample"><!--
+      <pre id="forallin_example" class="example nohighlight linkeditor" data-transform="updateExample"><!--
 @prefix log: <http://www.w3.org/2000/10/swap/log#> . 
 @prefix : <http://example.org/> .
 
@@ -1167,27 +1181,27 @@ _:a ex:town [ ex:name "Springfield" ] . -->
 
 } => { ?hero :secretIdentitySafe true } . -->
 </pre>
-        The `log:forAllIn` builtin accepts as subject a collection with two clauses of a logical implication.
-        If, for all cases where the first clause holds, the second clause holds as well,
-        then the logical implication is true.
-        In this example, the implication is true when, for each person who knows the identity of spiderman,
-        this person can keep a secret.
-        In this case the rule will fire, as both `mary-jane-watson` and `aunt-may` can keep secrets.
+      The `log:forAllIn` builtin accepts as subject a collection with two clauses of a logical implication.
+      If, for all cases where the first clause holds, the second clause holds as well,
+      then the logical implication is true.
+      In this example, the implication is true when, for each person who knows the identity of spiderman,
+      this person can keep a secret.
+      In this case the rule will fire, as both `mary-jane-watson` and `aunt-may` can keep secrets.
       </p>
 
       <p class="note">
         In the two examples above, the <a>blank node</a> object `_:t` indicates the current <a>N3 document</a>
-        as scope. Alternatively, a <a>quoted graph</a> can be used as the scope as well.
+        as scope. Alternatively, a <a>graph term</a> can be used as the scope as well.
         This is illustrated in the `log:notIncludes` example below.
       </p>
 
       <p>
         The `log:notIncludes` builtin checks whether the given scope <i>does not include</i> a given clause.
-        The example below uses a <a>quoted graph</a> as scope, instead of the current <a>N3 document</a>,
+        The example below uses a <a>graph term</a> as scope, instead of the current <a>N3 document</a>,
         as was the case for the prior two examples.
         The rule finds any of spiderman's enemies who have not been defeated, at least,
         as reported by the Daily Bugle:
-        <pre id="notincludes_example" class="example nohighlight linkeditor" data-transform="updateExample"><!--
+      <pre id="notincludes_example" class="example nohighlight linkeditor" data-transform="updateExample"><!--
 @prefix log: <http://www.w3.org/2000/10/swap/log#> . 
 @prefix : <http://example.org/> .    
 
@@ -1206,7 +1220,7 @@ _:a ex:town [ ex:name "Springfield" ] . -->
 } => { ?enemy a :Undefeated } . -->
 </pre>
       <p>
-        For each of spiderman's enemies (`?enemy`), the rule checks whether the <a>quoted graph</a> `?graph`,
+        For each of spiderman's enemies (`?enemy`), the rule checks whether the <a>graph term</a> `?graph`,
         as reported by the `:daily_bugle`, does not include any statement where the enemy has been defeated.
         If so, we infer that this enemy is undefeated, in this case, `:sandman`.
       </p>
@@ -1241,9 +1255,9 @@ _:a ex:town [ ex:name "Springfield" ] . -->
       </p> -->
 
       <p>
-        In the rule below, the `log:semantics` builtin retrieves an online source and subsequently parses it a <a>quoted
-          graph</a>:
-        <pre id="semantics-example" class="example nohighlight linkeditor" data-transform="updateExample"><!--
+        In the rule below, the `log:semantics` builtin retrieves an online source and subsequently parses it a <a>graph
+          term</a>:
+      <pre id="semantics-example" class="example nohighlight linkeditor" data-transform="updateExample"><!--
 @prefix log: <http://www.w3.org/2000/10/swap/log#> . 
 @prefix : <http://example.com> .
 
@@ -1257,14 +1271,14 @@ _:a ex:town [ ex:name "Springfield" ] . -->
     :people ?persons
 } . -->
 </pre>
-        Subsequently, `log:collectAllIn` is used to collect all persons found within the online source.
+      Subsequently, `log:collectAllIn` is used to collect all persons found within the online source.
       </p>
 
       <p>
-        The `log:conclusion` builtin allows generating the closure of a given <a>quoted graph</a>,
+        The `log:conclusion` builtin allows generating the closure of a given <a>graph term</a>,
         i.e., extending the graph with all applicable rule inferences.
-        This includes <a>quoted graphs</a> retrieved and parsed from online sources. For example:
-        <pre id="concl-example" class="example nohighlight linkeditor" data-transform="updateExample"><!--
+        This includes <a>graph terms</a> retrieved and parsed from online sources. For example:
+      <pre id="concl-example" class="example nohighlight linkeditor" data-transform="updateExample"><!--
 @prefix log: <http://www.w3.org/2000/10/swap/log#> . 
 @prefix : <http://example.com/> .
 
@@ -1276,8 +1290,8 @@ _:a ex:town [ ex:name "Springfield" ] . -->
      :inferences ?closure
 } . -->
 </pre>
-        Instead of simply printing the inferences, one could, e.g., use the `log:forAllIn` builtin to
-        check whether all persons listed in the online source are indeed inferred to be animals as well.
+      Instead of simply printing the inferences, one could, e.g., use the `log:forAllIn` builtin to
+      check whether all persons listed in the online source are indeed inferred to be animals as well.
       </p>
     </section>
 
@@ -1803,7 +1817,7 @@ _:d a :Person. -->
         <li>Literals are allowed at any s/p/o position (i.e., subject, predicate or object) in a statement. See the <a
             href="#grammar-production-pathItem">pathItem</a> production, which is (eventually) referenced by the
           "subject", "predicate" and "object" productions.</li>
-        <li>N3 includes <a>quoted graphs</a> (i.e., between "<code>{</code>" and "<code>}</code>"), which are allowed
+        <li>N3 includes <a>graph terms</a> (i.e., between "<code>{</code>" and "<code>}</code>"), which are allowed
           in any s/p/o position in a statement. See the <a href="#grammar-production-pathItem">pathItem</a>
           production.
         </li>
@@ -1906,12 +1920,12 @@ _:d a :Person. -->
 -->
 </pre>
       <p>N3 is not directly compatible with TriG as it does not support this graph statement notation. Nevertheless,
-        since N3 supports <a>quoted graphs</a> as part of regular <a>N3 statements</a>,
+        since N3 supports <a>graph terms</a> as part of regular <a>N3 statements</a>,
         authors can use the <a href="https://github.com/IDLabRese arch/N3NamedGraphSemantics">N3 Named Graphs
           extension</a>;
-        this extension allows associating names or identifiers with <a>quoted graphs</a>.
+        this extension allows associating names or identifiers with <a>graph terms</a>.
         For instance:
-        <pre class="example nohighlight linkeditor" data-transform="updateExample"><!--
+      <pre class="example nohighlight linkeditor" data-transform="updateExample"><!--
 
   @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
   @prefix dc: <http://purl.org/dc/terms/> .
@@ -1936,8 +1950,8 @@ _:d a :Person. -->
       </p>
       <p>The <a href="https://github.com/IDLabResearch/N3NamedGraphSemantics">N3 Named Graphs extension</a>
         defines a set of <a>builtins</a> (used as predicates) to
-        associate names or identifiers with <a>quoted graphs</a>, which then become "named graphs". Moreover, each
-        predicate has a well-defined semantics on how the named graph should be interpreted: as <a>quoted graphs</a>
+        associate names or identifiers with <a>graph terms</a>, which then become "named graphs". Moreover, each
+        predicate has a well-defined semantics on how the named graph should be interpreted: as <a>graph terms</a>
         (the default N3 interpretation), a partitioning of triples within a dataset context, sets of triples with
         their
         own isolated contexts, or specifying relations between local and online graphs.</p>
@@ -2049,29 +2063,32 @@ _:to1 :temperatureTrend :RISING ;
         <h4>Using collections</h4>
         <p>An alternative solution is to use a <a>collection</a> to keep all the participants of the n-ary relation.
           For instance:
-          <pre class="example nohighlight linkeditor" data-transform="updateExample"><!--
+        <pre class="example nohighlight linkeditor" data-transform="updateExample"><!--
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 @prefix : <http://example.org/> .
 
 :avengers :members ( :iron_man :captain_america :spiderman ) . -->
 </pre>
-          A clear advantage of this approach is that it is easier and much less verbose to write down.
-          However, the roles each participant play in the n-ary relation are no longer explicated.
-          This is not a problem when the participants do not have different roles, as in the example above &mdash;
-          they all play the same role of group member.
+        A clear advantage of this approach is that it is easier and much less verbose to write down.
+        However, the roles each participant play in the n-ary relation are no longer explicated.
+        This is not a problem when the participants do not have different roles, as in the example above &mdash;
+        they all play the same role of group member.
         </p>
       </section>
     </section>
     <section id="compoundliteral">
       <h4>Compound literal</h4>
-      <p>This solution is inspired by a separate discussion within the RDF community on <em>Language Tagged Strings</em>.
+      <p>This solution is inspired by a separate discussion within the RDF community on <em>Language Tagged
+          Strings</em>.
         The essence of the discussion is to separate the string, as a simple data, from its various characterizations,
         such as reading direction and language.
         This design pattern uses the <code>rdf:CompoundLiteral</code> class together with the
         <code>rdf:language</code>, <code>rdf:direction</code>, and <code>rdf:value</code> properties
         to respectively describe literal values on the base direction, language, and string value of the subject.
         Please note that these various ways are still in flux,
-        see the <a href="https://github.com/w3c/rdf-star-wg/blob/main/docs/text-direction.md">"text direction"</a> discussions in the RDF-star working group.</p>
+        see the <a href="https://github.com/w3c/rdf-star-wg/blob/main/docs/text-direction.md">"text direction"</a>
+        discussions in the RDF-star working group.
+      </p>
       <pre class="example nohighlight linkeditor" data-transform="updateExample"><!--
 @prefix foaf: <http://xmlns.com/foaf/0.1/> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
@@ -2084,8 +2101,8 @@ _:to1 :temperatureTrend :RISING ;
 </pre>
     </section>
     <section id="reification">
-      <h4>Quoted graphs</h4>
-      <p><a>Quoted graphs</a> allow attaching metadata to groups of triples,
+      <h4>Graph Terms</h4>
+      <p><a>Graph terms</a> allow attaching metadata to groups of triples,
         such as the provenance, context, version, opinion, probability, etc.
         See the example below:</p>
       <pre class="example nohighlight linkeditor" data-transform="updateExample"><!--
@@ -2096,10 +2113,10 @@ _:x :graph {
 } .
 _:x :certainty 0.8 . -->
 </pre>
-      <p>Importantly, as discussed in the <a>quoted graphs</a> section,
-        a quoted graph does not assert the contents of the RDF graph as being true.
+      <p>Importantly, as discussed in the <a>graph terms</a> section,
+        a graph term does not assert the contents of the RDF graph as being true.
         This allows expressing examples such as above,
-        where the statement within the quoted graph should not be asserted.</p>
+        where the statement within the graph term should not be asserted.</p>
     </section>
   </section>
   <section id='semantics'>
@@ -2132,7 +2149,7 @@ _:x :certainty 0.8 . -->
       <code>text/html</code> and <code>application/xhtml+xml</code>. Failing to use CDATA sections or escape
       <code>]]&gt;</code> may result in a non well-formed XML document.
     </p>
-    
+
     <pre class="example nohighlight" data-transform="updateExample">
         <!--
         <script type="text/n3">
