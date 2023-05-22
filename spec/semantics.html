@@ -456,8 +456,8 @@ With combinations of mappings we can define isomorphisms between abstract N3 gra
                 <li>$G_1$: {<code>_:x :knows :p. :p :says {_:x a :genius}.</code>} &ndash; abstract syntax:<br>
                   <code>({}, {x}, {(x, knows, p), (p, says <{}, {x} {(x, a, genius)}>)})</code>
                 </li>
-                <li> $G_2:$ {<code>_:y :knows :p. :p :says {_:z a :genius}.</code>} &ndash; abstract syntax:<br>
-                  <code>({}, {y}, {(y, knows, p), (p, says <{}, {z} {(z, a, genius)}>)})</code>
+                <li> $G_2:$ {<code>_:y :knows :p. :p :says {_:x a :genius}.</code>} &ndash; abstract syntax:<br>
+                  <code>({}, {y}, {(y, knows, p), (p, says <{}, {x} {(x, a, genius)}>)})</code>
                 </li>
                 <li> $G_3:$ {<code>_:y :knows :p. :p :says {_:x a _:z}.</code>} &ndash; abstract syntax:<br>
                   <code>({}, {y}, {(y, knows, p), (p, says <{}, {x, z} {(x, a, z)}>)})</code>
@@ -536,8 +536,8 @@ for RDF. In a second step, we introduce the N3-interpetation which assigns a spe
       two non-isomorphic graphs cannot have the same meaning. For the abstract versions of the graphs <code>{_:x :p :o}</code>, <code>{_:y :p :o}</code>
       and <code>{_:x :p :o. _:y :p :o}</code> we thus get:
       <ul>
-     <li> $Q_I($&lt;<code>({}, {y}, {(y, :p, :o)})</code>&gt;$)= Q_I($&lt;<code>({}, {x}, {(x, :p, :o)})</code>&gt;$)$
-      <li> $Q_I($&lt;<code>({}, {y}, {(y, :p, :o)})</code>&gt;$)\neq Q_I($&lt;<code>({}, {x, y}, {(x, :p, :o),(y, :p, :o) })</code>&gt;$)$
+     <li> $Q_I($<code>({}, {y}, {(y, :p, :o)})</code>$)= Q_I($<code>({}, {x}, {(x, :p, :o)})</code>$)$
+      <li> $Q_I($<code>({}, {y}, {(y, :p, :o)})</code>$)\neq Q_I($<code>({}, {x, y}, {(x, :p, :o),(y, :p, :o) })</code>$)$
     </ul>
 
       However, as we will see below, N3 provides mechanisms to "unquote" graphs and to compare them based on the meaning of the formula they quote.
