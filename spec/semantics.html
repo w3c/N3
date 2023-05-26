@@ -492,7 +492,7 @@ With combinations of mappings we can define isomorphisms between abstract N3 gra
       <section>
       <h2>Base Semantics</h2>
 With the definitions introduced in the previous sections, we are now able to define the semantics of Notation 3 Logic. We do that in two steps: we first 
-introduce a base semantics which does not take the meaning of special N3 terms into account. In that sense the base semantics is similar to <a href="https://www.w3.org/TR/rdf11-mt/#simple-interpretations">simple interpretations</a>
+introduce a <dfn>base semantics</dfn> which does not take the meaning of special N3 terms into account. In that sense the base semantics is similar to <a href="https://www.w3.org/TR/rdf11-mt/#simple-interpretations">simple interpretations</a>
 for RDF. In a second step, we introduce the N3-interpetation which assigns a special meaning to all predicates in the N3 <a href="../ns/log.html">`log`</a>-namespace.
 
 
@@ -689,57 +689,166 @@ The definition of total applications enables us to define <dfn class="lint-ignor
       </section>
       <section>
         <h2>Basic entailment</h2>
-The previous definition allows us to introduce the nothion of  basic entailmant:
+The previous definition allows us to introduce the notion of  basic entailmant:
       
-        <p>Let $G$ and $H$ be two graphs, we say that $G$ <dfn data-lt="entailment">entails</dfn> $H$, noted $G ⊨ H$,
-        if and only if for every interpretation $I$ such that $I ⊨ G$, $I ⊨ H$.</p>
+        <p>Let $G$ and $H$ be two graphs, we say that $G$ <dfn data-lt="entailment">b-entails</dfn> $H$, noted $G ⊨ H$,
+        if and only if  every interpretation $I$ that satisfies $G$ ($I ⊨ G$) also satisfies $H$ ($I ⊨ H$).</p>
 
-        <p class="issue">TODO give examples of basic <a>entailment</a> and prove that isomorphic graphs have the same meaning.</p>
+
+ In order to illustrate the properties of basic <a>entailment</a>, we give a few examples:
+ <br>
+ <br>Entailment:
+ <ul>
+  <li> 
+    <small>$(\{\},\{\},\{(\text{:socrates}, \text{:knows}, \text{:platon})\})$</small> 
+    <br> (in N3-turtle syntax: <code>:socrates :knows :platon.</code>)
+  <br> b-entails
+  <br>  <small>$(\{\},\{x\},\{(\text{:socrates}, \text{:knows}, x)\})$</small>
+  <br> (in N3-turtle syntax: <code>:socrates :knows _:x.</code>)
+  </li>
+  <li> 
+    <small>$(\{x\},\{\},\{(x, \text{:knows}, \text{:platon})\})$</small> 
+    <br> (in N3-turtle syntax: <code>?x :knows :platon.</code>)
+  <br> b-entails
+  <br>  <small>$(\{\},\{\},\{(\text{:socrates}, \text{:knows}, \text{:platon})\})$</small> 
+  <br>(in N3-turtle syntax: <code>:socrates :knows :platon.</code>)
+  </li>
+  <li>  
+     <small>$(\{x\},\{\},\{(<(\{\},\{\},\{(x, \text{rdf:type}, \text{:Human})\})>,
+    \text{log:implies}, <(\{\},\{\},\{(x, \text{rdf:type}, \text{:Mortal})\})>)\})$ </small>
+    <br>(in N3-turtle syntax: <code>{?x a :Human} => {?x a :Mortal}. </code>)
+    <br> b-entails
+    <br>
+    <small>$(\{\},\{\},\{(<(\{\},\{\},\{(\text{:socrates}, \text{rdf:type}, \text{:Human})\})>, \newline \qquad \text{log:implies}, <(\{\},\{\},\{(\text{:socrates}, \text{rdf:type}, \text{:Mortal})\})>)\})$ </small>
+      <br> (in N3-turtle syntax: <code>{:socrates a :Human} => {:socrates a :Mortal}. </code>)
+  </li>
+  <li> 
+    <small> $(\{\},\{\},\{(\text{:socrates}, \text{:says}, <(\{\},\{\},\{(\text{:socrates},\text{rdf:type}, \text{:Mortal} )\})>) \})$</small>
+    <br>(in N3-turtle syntax)<code>:socrates :says {:socrates a :Mortal}.  </code>)
+    <br>  b-entails
+    <br> <small> $(\{\},\{x\},\{(x, \text{:says}, <(\{\},\{\},\{(x,\text{rdf:type}, \text{:Mortal} )\})>) \})$</small>
+    <br>(in N3-turtle syntax <code>@forSome :x. :x :says { :x a :Mortal}.  </code>)
+  </li>
+ </ul> 
+ 
+ Non-entailment:
+ <ul>
+  <li>  
+    <small>$(\{\},\{\},\{(\text{:socrates}, \text{rdf:type} \text{:Human}),(<(\{\},\{\},\{ (\text{:socrates}, \text{rdf:type}, \text{:Human})\})>, \newline \qquad \text{log:implies}, <(\{\},\{\},\{(\text{:socrates}, \text{rdf:type}, \text{:Mortal})\})>)\})$ </small>
+      <br> (in N3-turtle syntax: <code>:socrates a :Human. {:socrates a :Human} => {:socrates a :Mortal}. </code>)
+      <br> does <b>not</b> b-entail 
+      <br>    <small>$(\{\},\{\},\{(\text{:socrates}, \text{rdf:type}, \text{:Mortal})\})>)\})$ </small>
+      <br> (in N3-turtle syntax: <code>:socrates a :Mortal. </code>)
+  </li>
+  <li> 
+    <small> $(\{\},\{\},\{(\text{:socrates}, \text{:says}, <(\{\},\{\},\{(\text{:socrates},\text{rdf:type}, \text{:Mortal} )\})>) \})$</small>
+    <br>(in N3-turtle syntax)<code>:socrates :says {:socrates a :Mortal}.  </code>)
+    <br> does <b>not</b> b-entail 
+    <br> <small> $(\{\},\{\},\{(\text{:socrates}, \text{:says}, <(\{\},\{x\},\{(x,\text{rdf:type}, \text{:Mortal} )\})>) \})$</small>
+    <br>(in N3-turtle syntax <code>:socrates :says {_:x a :Mortal}.  </code>)
+    <br> and it does also <b>not</b> b-entail 
+    <br> <small> $(\{\},\{x\},\{(x, \text{:says}, <(\{\},\{x\},\{(x,\text{rdf:type}, \text{:Mortal} )\})>) \})$</small>
+    <br>(in N3-turtle syntax <code>_:x :says {_:x a :Mortal}.  </code>)
+  </li>
+ </ul>
+
+ As these last examples of non-entailment show, basic interpretations only cover N3-constants and variables. The 
+ meaning of special predicates like for example the implication (written as <code>log:implies</code> or as a short-cut <code>=></code>)
+ is covered through an addition: log-interpretations which we introduce in the following section.
+
+     <!--  <p class="issue">TODO give examples of basic <a>entailment</a> and prove that isomorphic graphs have the same meaning.</p>
+      --> 
       </section>
     </section>
   </section>
 
     <section>
-      <h2>Log-interpretation</h2>
+      <h2>Log Semantics</h2>
 
-      <p>This section defines a semantic extension enforcing the specific semantics of (some of) the builtins in the <a href="../ns/log.html">`log:`</a> namespace.</p>
+      <p>This section defines an extension of <a>base semantics</a> providing the specific meaning of (some of) 
+        the builtins in the N3-logic namespace, short <a href="../ns/log.html">`log:`</a> namespace.</p>
 
-      <p>For the definitions below, we assume that the set of literals $L$ contains the two boolean literals `true` and `false`. The literal `true` stands for the quoted graph $&lt;(\emptyset, \emptyset, \emptyset)&gt;$.</p>
+      <p>For the definitions below, we assume that the set of literals $L$ contains the two boolean literals `true` and `false`. 
+        The literal `true` stands for the quoted graph $&lt;(\emptyset, \emptyset, \emptyset)&gt;$.</p>
 
-      <p>The set of <dfn class="lint-ignore" data-lt="logical predicate">logical predicates</dfn> $LP$ contains the predicate `log:implies`. 
-        
-
+      <p>The set of <dfn class="lint-ignore" data-lt="logical predicate">logical predicates</dfn> 
+        $LP$ contains the predicate `log:implies`. 
       </p>
-      <p class="note">This list will be extended whenever we define a "new" logical predicate. The goal here is to cover all (or at least most of) the predicates in the 
-        <a href="../ns/log.html">`log:`</a> namespace.</p>.
+      <p class="note">The list of predicates in LP is planned to be extended 
+        by more predicates. The goal here is to cover all (or at least most of) the predicates in the 
+        <a href="../ns/log.html">`log:`</a> namespace. For the other namespaces we plan to provide similar definitions.</p>
      </p>
-      <p>Let $I$ be an <a>interpretation</a> for a <a>graph</a> $G=(U, E, F)$. Then $G$ is true under <dfn>log-interpretation</dfn> (noted $I\models_{log} G$) if for each <a>assignment</a> $A$ for $U$ there exists an assignment $B$ for $E$ such that:</p>
+     <p>
+      Below, we give specify how log interpretations extand <a>basic interpretations</a>:
+     </p>
+      <p>Let $I$ be a basic <a>interpretation</a> for a <a>graph</a> $G=(U, E, F)$. Then $G$ is true under <dfn>log-interpretation</dfn> (noted $I\models_{log} G$) if for each <a>assignment</a> $A$ for $U$ there exists an assignment $B$ for $E$ such that:</p>
 
       <ul>
         <li> $I[A\bullet B](F)=true$, and
         <li> for all triples $(s,p,o)\in F$ with $p\in LP$, $I[A\bullet B]\models_{log}(s,p,o)$.
       </ul>
 
-      <p>We define the meaning of $I[A\bullet B]\models_{log}(s,p,o)$ depending on the concrete $p\in LP$, in the rest of this section.</p>
+      <p>
+        We define the meaning of $I[A\bullet B]\models_{log}(s,p,o)$ 
+        depending on the concrete $p\in LP$ below.</p>
 
-      <p>We call a graph $G=(U, E, F)$ <dfn>log-free</dfn>, if $p\not\in LP$ for all triples $(s,p,o)\in F$. Note that all <a>log-free</a> graphs which are true under simple <a>interpretation</a> are also true under <a>log-interpretation</a>.</p>
+      <p>
+        Note that if there are no logical predicates used in a graph, 
+        then the log-interpretation coincides with the basic interpretation.
+        We call a graph $G=(U, E, F)$ <dfn>log-free</dfn>, if $p\not\in LP$ for all triples $(s,p,o)\in F$. 
+        All <a>log-free</a> graphs which are true under the basic <a>interpretation</a> are thus 
+        also true under <a>log-interpretation</a>.</p>
+
+        We define the meaning of the different predicates in $LP$ one by one:
 
       <section>
         <h2>Constraints for `log:implies`</h2>
-
+ The aim of the predicate <code>log:implies</code> is to provide a form of logical implication. 
+ This interpretation acts on the ground terms which are true under basic interpretations. 
           <!-- We call a triple   $t = < G_1 >\texttt{log:implies} < G_2 >$ where  $< G_1=(U_1, E_1, F_1) >$ and $< G_2 = (U_2, E_2, F_2) >$ are quoted graphs an **implication**.
           -->
 
-          <p>If $t = (s, \texttt{log:implies}, o )$ is a triple, then $I[A\bullet B]\models_{log} t$ if</p>
+          <p>If $t = (s, \texttt{log:implies}, o )$ is a triple, then $I[A\bullet B]\models_{log} t$ if
 
           <ul>
             <li>$I[A\bullet B](s)=&lt; G_1&gt;$ and $I[A\bullet B](o)=&lt;G_2&gt;$ are <a>quoted graphs</a> and $I[A\bullet B]\models_{log} G_2$ holds if $I[A\bullet B]\models_{log} G_1$, or
             <li>$I[A\bullet B](s)=&lt;G_1&gt;$ is a quoted graph and $I[A\bullet B](o)=I(\texttt{false})$ and $I[A\bullet B]\not\models_{log} G_1$, or
             <li>$I[A\bullet B](s)$ is not a quoted graph or $I[A\bullet B](o)$ is neither a quoted graph nor $I(\texttt{false})$.
           </ul>
+        </p>
 
+        <p>
+        The first bullet of the above definition clarifies 
+        how implications with graph terms $&lt; G_1&gt;$ and $&lt;G_2&gt;$ in subject and object position are interpreted.
+        Note that under the simple interpretation these graph terms 
+        are <a>ground</a>, that is, $I[A\bullet B](G_1)$ and $I[A\bullet B](G_2)$
+        are <a>closed</a> graphs. To determine the meaning of the implications these closed graphs are further interpreted 
+        using $I[A\bullet B]$ as an interpretation. 
+        The log-interpretation thus interprets the basic interpretation of a graph term.
+        </p>
+        <p>
+          The second bullet covers implications with  
+          is the boolean literal <code>false</code> in the consequence. 
+          In log-semantics this literal is understood as truth constant "false" (or $\bot$).
+          Note that the interpretation process here consists of two steps: we first consider the basic interpretation
+          of the implication triple which needs to be true and then we test whether 
+          - using the same interpretation as a log interpretation - the premise is false. 
+          That is, even if a closed graph $G_1$ is false under and interpetation $I$
+          ($I\not\models_{log} G_1$), we cannot conclude that 
+          $I\models_{log} (\{\}, \{\}, \{ (&lt; G_1&gt;, \texttt{log:implies}, \texttt{false})\}).$
+        </p>
+<p>
+        The last bullet ensures that the truth value of triples having <code>log:implies</code>
+        in predicate position but no graph term or truth value in subject or object position like 
+        for example <code>:socrates log:implies :platon.</code> is only determined by the basic interpretation of the triple. That is,
+        <code>log:implies</code> only has a special meaning when used with graph terms and/or truth values.
+  </p>
+
+
+<!--
           <div class="issue">With the above definition, the rule `?x log:implies ?y.` cannot have a model. Since we can replace the consequence by true and by false. So, we can basically derive anything. Alternatively, we could ask for $s=&lt;G_1&gt;$ and $I[A\bullet B](o)=&lt;G_2&gt;$, then we only allow an "open" consequence.</div>
-
+-->
+<!--
           <div class="note">With the above,
             <pre><code>
 :s :p :o.
@@ -750,7 +859,7 @@ The previous definition allows us to introduce the nothion of  basic entailmant:
           </div>
 
           <div class="issue">Think carefully about `_:x log:implies ?y.` and `{:simon :says ?x} log:implies ?x.`. What do we do here? Is that even a problem? Currently that is supported by our semantics.</div>
-
+-->
           <div class="note">PA's tricky question: consider
             <pre><code>
 @forAll :X.
@@ -772,9 +881,17 @@ The previous definition allows us to introduce the nothion of  basic entailmant:
           </div>
 
       </section>
+      <section> <h2>Log entailment</h2>
+        <section> <h3>Unquoting</h3>
 
+        </section>
+        <section> <h3>(Non-) Entailment of implications</h3>
+        
+        </section>
+
+      </section>
     </section>
-    <section>
+<!--    <section>
       <h2>Mapping from concrete to abstract syntax</h2>
       <div class="issue"> Not sure where to go with this section, maybe it should also be part of the syntax?</div>
       <p>
@@ -789,10 +906,11 @@ The previous definition allows us to introduce the nothion of  basic entailmant:
       <p>
         We extend these definitions by introducing the following concepts:
       </p>
-      <!--  <p>
+       <p>
           The set of <dfn>N3 symbols</dfn> consists of the set of <a>N3 triple elements</a> and the
           <a>universal variables</a> which are defined below.
         </p> -->
+        <!-- 
       <p>
         The set of <dfn data-lt="triple element|n3 triple element">N3 triple elements</dfn> consists of the disjoint
         sets of
@@ -840,6 +958,7 @@ The previous definition allows us to introduce the nothion of  basic entailmant:
     </section>
   </body>
 </html>
+-->
 <!--=======
 <section id='semantics'>
     <h2>Semantics</h2>
@@ -942,4 +1061,5 @@ The previous definition allows us to introduce the nothion of  basic entailmant:
         </li>
       </ul>
     </section> -->
+  
   </section>
