@@ -540,7 +540,7 @@ for RDF. In a second step, we introduce the N3-interpetation which assigns a spe
       <li> $Q_I($<code>({}, {y}, {(y, :p, :o)})</code>$)\neq Q_I($<code>({}, {x, y}, {(x, :p, :o),(y, :p, :o) })</code>$)$
     </ul>
 
-      However, as we will see below, N3 provides mechanisms to "unquote" graphs and to compare them based on the meaning of the formula they quote.
+      However, as we will see below, N3 provides mechanisms to <a>unquote</a> graphs and to compare them based on the meaning of the formula they quote.
     </p>
 <!---
       <div class="note">
@@ -691,7 +691,7 @@ The definition of total applications enables us to define <dfn class="lint-ignor
         <h2>Basic entailment</h2>
 The previous definition allows us to introduce the notion of  basic entailmant:
       
-        <p>Let $G$ and $H$ be two graphs, we say that $G$ <dfn data-lt="entailment">b-entails</dfn> $H$, noted $G ⊨ H$,
+        <p>Let $G$ and $H$ be two graphs, we say that $G$ <dfn data-lt="entailment|b-entailment">b-entails</dfn> $H$, noted $G ⊨ H$,
         if and only if  every interpretation $I$ that satisfies $G$ ($I ⊨ G$) also satisfies $H$ ($I ⊨ H$).</p>
 
 
@@ -742,15 +742,27 @@ The previous definition allows us to introduce the notion of  basic entailmant:
   </li>
   <li> 
     <small> $(\{\},\{\},\{(\text{:socrates}, \text{:says}, <(\{\},\{\},\{(\text{:socrates},\text{rdf:type}, \text{:Mortal} )\})>) \})$</small>
-    <br>(in N3-turtle syntax)<code>:socrates :says {:socrates a :Mortal}.  </code>)
+    <br>(in N3-turtle syntax <code>:socrates :says {:socrates a :Mortal}.  </code>)
     <br> does <b>not</b> b-entail 
     <br> <small> $(\{\},\{\},\{(\text{:socrates}, \text{:says}, <(\{\},\{x\},\{(x,\text{rdf:type}, \text{:Mortal} )\})>) \})$</small>
     <br>(in N3-turtle syntax <code>:socrates :says {_:x a :Mortal}.  </code>)
     <br> and it does also <b>not</b> b-entail 
     <br> <small> $(\{\},\{x\},\{(x, \text{:says}, <(\{\},\{x\},\{(x,\text{rdf:type}, \text{:Mortal} )\})>) \})$</small>
-    <br>(in N3-turtle syntax <code>_:x :says {_:x a :Mortal}.  </code>)
+    <br>(in N3-turtle syntax: <code>_:x :says {_:x a :Mortal}.  </code>)
   </li>
  </ul>
+ <div class="note">The concrete N3 turtle syntax as presented in above follows the  last consensus the community group agreed on. 
+  Some implementations apply a different interpretation of the scope of blank nodes occurring in non-logical graph term, that is in graph terms which are not used 
+  in connection with <a>logical predicates</a>.  
+  More concrete, that means that the N3-turtle triple 
+  <div style="text-indent:20px;"><code>:socrates :says {_:x a :Mortal}.  </code> </div> 
+  is interpreted 
+  as 
+  <div style="text-indent:20px;"><small> $(\{\},\{x\},\{(\text{:socrates}, \text{:says}, <(\{\},\{\},\{(x,\text{rdf:type}, \text{:Mortal} )\})>) \})$</small></div> 
+   and <b>not</b> as
+   <div style="text-indent:20px;"> <small> $(\{\},\{\},\{(\text{:socrates}, \text{:says}, <(\{\},\{x\},\{(x,\text{rdf:type}, \text{:Mortal} )\})>) \})$</small>. </div> 
+   A solution for that problem is currently discussed. The difference, however, does not influence the formal semantics of the <i>abstract</i> syntax.
+ </div>
 
  As these last examples of non-entailment show, basic interpretations only cover N3-constants and variables. The 
  meaning of special predicates like for example the implication (written as <code>log:implies</code> or as a short-cut <code>=></code>)
@@ -781,13 +793,15 @@ The previous definition allows us to introduce the notion of  basic entailmant:
      <p>
       Below, we give specify how log interpretations extand <a>basic interpretations</a>:
      </p>
-      <p>Let $I$ be a basic <a>interpretation</a> for a <a>graph</a> $G=(U, E, F)$. Then $G$ is true under <dfn>log-interpretation</dfn> (noted $I\models_{log} G$) if for each <a>assignment</a> $A$ for $U$ there exists an assignment $B$ for $E$ such that:</p>
+      <p>Let $I$ be a basic <a>interpretation</a> for a <a>graph</a> $G=(U, E, F)$. Then $G$ is true under <dfn>log-interpretation</dfn> or 
+        $I$ <dfn>log satisfies</dfn> $G$ ($I\models_{log} G$) 
+        if for each <a>assignment</a> $A$ for $U$ there exists an assignment $B$ for $E$ such that:</p>
 
       <ul>
         <li> $I[A\bullet B](F)=true$, and
         <li> for all triples $(s,p,o)\in F$ with $p\in LP$, $I[A\bullet B]\models_{log}(s,p,o)$.
       </ul>
-
+   
       <p>
         We define the meaning of $I[A\bullet B]\models_{log}(s,p,o)$ 
         depending on the concrete $p\in LP$ below.</p>
@@ -799,8 +813,7 @@ The previous definition allows us to introduce the notion of  basic entailmant:
         All <a>log-free</a> graphs which are true under the basic <a>interpretation</a> are thus 
         also true under <a>log-interpretation</a>.</p>
 
-        We define the meaning of the different predicates in $LP$ one by one:
-
+        
       <section>
         <h2>Constraints for `log:implies`</h2>
  The aim of the predicate <code>log:implies</code> is to provide a form of logical implication. 
@@ -859,7 +872,7 @@ The previous definition allows us to introduce the notion of  basic entailmant:
           </div>
 
           <div class="issue">Think carefully about `_:x log:implies ?y.` and `{:simon :says ?x} log:implies ?x.`. What do we do here? Is that even a problem? Currently that is supported by our semantics.</div>
--->
+
           <div class="note">PA's tricky question: consider
             <pre><code>
 @forAll :X.
@@ -879,14 +892,131 @@ The previous definition allows us to introduce the notion of  basic entailmant:
             However, implementing them correctly looks challenging... (it is not as simple as looking for 'instances' of the rule's body).</p>
             <p>EYE passes all tests. CWM Only passes none. <a href="http://ppr.cs.dal.ca:3002/n3/editor/s/wgG6GZrN">http://ppr.cs.dal.ca:3002/n3/editor/s/wgG6GZrN</a></p>
           </div>
+          -->
 
       </section>
       <section> <h2>Log entailment</h2>
-        <section> <h3>Unquoting</h3>
+        The previous definitions allow us to introduce the notion of  log entailmant:
+      
+        <p>Let $G$ and $H$ be two graphs, we say that $G$ <dfn data-lt="log-entailment|log entailment">log-entails</dfn> $H$, written as $G ⊨_{log} H$,
+        if and only if  every interpretation $I$ that <a>log satisfies</a> $G$ ($I ⊨_{log} G$) also <a>log satisfies</a> $H$ ($I ⊨_{log} H$).</p> 
 
-        </section>
-        <section> <h3>(Non-) Entailment of implications</h3>
+        To illustrate the definition we discuss some examples of entaiment and non-entialment in the sections below.
+
+     
+
         
+
+
+        <section> <h3>(Non-) Entailment of implications</h3>
+          For the log predicate <code>log:implies</code> we observe the following examples of <a>log entailment</a>:
+          <ul>
+            <li>  
+              <small>$(\{\},\{\},\{(\text{:socrates}, \text{rdf:type} \text{:Human}),(<(\{\},\{\},\{ (\text{:socrates}, \text{rdf:type}, \text{:Human})\})>, \newline \qquad \text{log:implies}, <(\{\},\{\},\{(\text{:socrates}, \text{rdf:type}, \text{:Mortal})\})>)\})$ </small>
+                <br> (in N3-turtle syntax: <code>:socrates a :Human. {:socrates a :Human} => {:socrates a :Mortal}. </code>)
+                <br> log-entails 
+                <br>    <small>$(\{\},\{\},\{(\text{:socrates}, \text{rdf:type}, \text{:Mortal})\})>)\})$ </small>
+                <br> (in N3-turtle syntax: <code>:socrates a :Mortal. </code>)
+            </li>
+            <li>  
+               <small>$(\{x\},\{\},\{(<(\{\},\{\},\{(x, \text{rdf:type}, \text{:Human})\})>,
+              \text{log:implies}, <(\{\},\{\},\{(x, \text{rdf:type}, \text{:Mortal})\})>)\})$ </small>
+              <br>(in N3-turtle syntax: <code>{?x a :Human} => {?x a :Mortal}. </code>)
+              <br> log-entails
+              <br>    <small>$(\{\},\{\},\{(\text{:socrates}, \text{rdf:type}, \text{:Mortal})\})>)\})$ </small>
+              <br> (in N3-turtle syntax: <code>:socrates a :Mortal. </code>)
+            </li>
+            <li>  
+              <small>$(\{\},\{\},\{(<(\{\},\{x\},\{(x, \text{rdf:type}, \text{:Human})\})>,
+             \text{log:implies}, <(\{\},\{x\},\{(x, \text{rdf:type}, \text{:Mortal})\})>)\})$ </small>
+             <br>(in N3-turtle syntax: <code>{_:x a :Human} => {_:x a :Mortal}. </code>)
+             <br> log-entails
+             <br>    <small>$(\{\},\{x\},\{(x, \text{rdf:type}, \text{:Mortal})\})>)\})$ </small>
+             <br> (in N3-turtle syntax: <code>_:x a :Mortal. </code>)
+           </li>
+            <li> 
+              <small> $(\{x\},\{\},\{$
+                <div style="text-indent:20px;"> $(\text{:socrates}, \text{:says}, <(\{\},\{\},\{(\text{:socrates},\text{rdf:type}, \text{:Mortal} )\})>),$</div>
+                <div style="text-indent:20px;"> $(<(\{\},\{\},\{(x, \text{:says}, <(\{\},\{\},\{(x,\text{rdf:type}, \text{:Mortal})\})>)>,$</div>
+                  <div style="text-indent:40px;"> $\texttt{log:implies}, <(\{\},\{\},\{(x,\text{rdf:type}, \text{:WisePerson} )\})>)$
+                    <div style="text-indent:20px;"> $\})$</div></small>
+              (in N3-turtle syntax
+              <br><code>:socrates :says {:socrates a :Mortal}. {?x :says {?x a :Mortal}}=>{?x a :WisePerson} </code>)
+              <br>  log-entails
+              <br> <small> $(\{\},\{\},\{(\text{:socrates}, \text{rdf:type}, \text{:WisePerson}  \})$</small>
+              <br>(in N3-turtle syntax <code>:socrates a :WisePerson.  </code>)
+            </li>
+           </ul> 
+
+           Examples for non-entailment:
+<ul>
+  <li>  
+    <small>$(\{\},\{\},\{(\text{:socrates} , \text{rdf:type}, \text{:Human}), (\text{:socrates}, \text{rdf:type}, \text{:Mortal})\})$ </small>
+   <br>(in N3-turtle syntax: <code>:socrates a :Human. :socrates a :Mortal. </code>)
+   <br>does <b>not</b> log-entail 
+   <br>
+   <small>$(\{\},\{\},\{(<(\{\},\{\},\{(\text{:socrates}, \text{rdf:type}, \text{:Human})\})>, \newline \qquad \text{log:implies}, <(\{\},\{\},\{(\text{:socrates}, \text{rdf:type}, \text{:Mortal})\})>)\})$ </small>
+     <br> (in N3-turtle syntax: <code>{:socrates a :Human} => {:socrates a :Mortal}. </code>)
+ </li>
+ <li> 
+  <small> $(\{\},\{\},\{$
+    <div style="text-indent:20px;"> $(\text{:socrates}, \text{:says}, <(\{\},\{\},\{(\text{:socrates},\text{rdf:type}, \text{:Mortal} )\})>),$</div>
+    <div style="text-indent:20px;"> $(<(\{\},\{\},\{(\text{:socrates}, \text{:says}, <(\{\},\{x\},\{(x,\text{rdf:type}, \text{:Mortal})\})>)>,$</div>
+      <div style="text-indent:40px;"> $\texttt{log:implies}, <(\{\},\{\},\{(\text{:socrates},\text{rdf:type}, \text{:WisePerson} )\})>)$
+        <div style="text-indent:20px;"> $\})$</div></small>
+  (in N3-turtle syntax:
+  <code>:socrates :says {:socrates a :Mortal}.</code><br><code> {:socrates :says {_:x a :Mortal}}=>{:socrates a :WisePerson} </code>)
+  <br>does <b>not</b> log-entail 
+  <br> <small> $(\{\},\{\},\{(\text{:socrates}, \text{rdf:type}, \text{:WisePerson}  \})$</small>
+  <br>(in N3-turtle syntax: <code>:socrates a :WisePerson.  </code>)
+</li>
+<li> 
+  <small> $(\{y\},\{\},\{$
+    <div style="text-indent:20px;"> $(\text{:socrates}, \text{:says}, <(\{\},\{x\},\{(x,\text{rdf:type}, \text{:Mortal} )\})>),$</div>
+    <div style="text-indent:20px;"> $(<(\{\},\{\},\{(\text{:socrates}, \text{:says}, <(\{\},\{\},\{(y,\text{rdf:type}, \text{:Mortal})\})>)>,$</div>
+      <div style="text-indent:40px;"> $\texttt{log:implies}, <(\{\},\{\},\{(\text{:socrates},\text{rdf:type}, \text{:WisePerson} )\})>)$
+        <div style="text-indent:20px;"> $\})$</div></small>
+  (in N3-turtle syntax:
+  <code>:socrates :says {_:x a :Mortal}.</code><br><code> {:socrates :says {?y a :Mortal}}=>{:socrates a :WisePerson} </code>)
+  <br>does <b>not</b> log-entail 
+  <br> <small> $(\{\},\{\},\{(\text{:socrates}, \text{rdf:type}, \text{:WisePerson}  \})$</small>
+  <br>(in N3-turtle syntax: <code>:socrates a :WisePerson.  </code>)
+</li>
+</ul>
+<p class="note">As above, these examples follow the last agreement on the interpretation of N3 turtle syntax which might be implemented differently in some reasoners. 
+  The difference does not effect the meaning of abstract formulas. The working group is currently working on a solution for this problem.
+</p>
+</p>
+</section>
+        <section> <h3>Unquoting</h3>
+         <p> A special form of entailment enabled by our semantics is the so-called <dfn data-lt="unquote">unquoting</dfn>. By that, we mean the 
+          entailment which enables us to make an triple term true. In order to illustrate the idea, we give an example. </p>
+          
+        <p>Let's assume that simon says that birds can fly. In abstract N3, we can express that as:</p>
+
+          <div style="text-indent:20px;">  $(\{\},\{\},\{(\text{:simon}, \text{:says}, <(\{\},\{\},\{(\text{:birds},\text{:can}, \text{:fly} )\})>) \})$</div>
+            <div style="text-indent:30px;">(in N3-turtle syntax <code>:simon :says {:birds :can :fly}.  </code>) </div>
+      <p>In N3 we can write a rule stating that everything Simon says is true. We do that as follows:</p>
+
+      <div style="text-indent:20px;">$(\{x\},\{\},\{(<(\{\},\{\},\{(\text{:simon}, \text{:says}, x), \text{log:implies}, x\})$</div>
+      <div style="text-indent:30px;">(in N3-turtle syntax: <code>{:simon :says ?x}=>?x </code>)</div>
+      
+      <p>
+      From this last rule we can derive via <a>b-entailment</a>: </p>
+      <div style="text-indent:20px;">$(\{\},\{\},\{(<(\{\},\{\},\{(\text{:simon}, \text{:says}, <(\{\},\{\},\{(\text{:birds},\text{:can}, \text{:fly} )\})>),$</div>
+        <div style="text-indent:70px;">$\text{log:implies}, <(\{\},\{\},\{(\text{:birds},\text{:can}, \text{:fly} )\})>\})$</div>
+      <div style="text-indent:30px;">(in N3-turtle syntax: <code>{:simon :says {:birds :can :fly}}=>{:bird :can :fly}. </code>)</div>
+     
+      <p>Via <a>log-entailment</a> we get:</p>
+      <div style="text-indent:20px;">$(\{\},\{\},\{(\text{:birds},\text{:can}, \text{:fly} )\})$</div>
+    <div style="text-indent:30px;">(in N3-turtle syntax: <code>:birds :can :fly. </code>)</div>        
+
+    <p>
+      The example above showed us the basic idea of unquoting. The feature is supported by N3 semantics using the two step-interpretation. The b-interpretation 
+      treats the universally quantified variable in premise and conclusion of the rule as terms. 
+      We can replace the variable by graph terms if these (or graphs isomorphic to these) form part of $\Delta_I$ (which needs to be the case if $I$ is an interpretation of  
+      the first triple of this example). The log-interpretation now interprets these terms which allows us to come to our conclusion.
+    </p>
         </section>
 
       </section>
