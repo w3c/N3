@@ -498,8 +498,8 @@ With combinations of mappings we can define isomorphisms between abstract N3 gra
                 <li>$G_1$: {<code>_:x :knows :p. :p :says {_:x a :genius}.</code>} &ndash; abstract syntax:<br>
                   <code>({}, {x}, {(x, knows, p), (p, says <{}, {x} {(x, a, genius)}>)})</code>
                 </li>
-                <li> $G_2:$ {<code>_:y :knows :p. :p :says {_:x a :genius}.</code>} &ndash; abstract syntax:<br>
-                  <code>({}, {y}, {(y, knows, p), (p, says <{}, {x} {(x, a, genius)}>)})</code>
+                <li> $G_2:$ {<code>_:y :knows :p. :p :says {_:z a :genius}.</code>} &ndash; abstract syntax:<br>
+                  <code>({}, {y}, {(y, knows, p), (p, says <{}, {z} {(z, a, genius)}>)})</code>
                 </li>
                 <li> $G_3:$ {<code>_:y :knows :p. :p :says {_:x a _:z}.</code>} &ndash; abstract syntax:<br>
                   <code>({}, {y}, {(y, knows, p), (p, says <{}, {x, z} {(x, a, z)}>)})</code>
