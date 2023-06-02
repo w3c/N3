@@ -317,10 +317,9 @@ we introduce the following concept:
               A graph term is a <i>direct constituent</i> of the graph ("containing graph") it occurs in as a triple component. However, the direct constituents of the graph term's graph, and their direct constituents (and so on), are not direct constituents of the containing graph. Instead, they are <i>constituents</i> of the containing graph.
               This difference is crucial for the definitions below: a graph is not the same as a graph term.</p>
 <p>
-With that definition, we now introduce free variables.  
-Free variables are variables which occur directly or nested in the graph but which are not covered by a <a>quantification set</a>.
+With that definition, we now introduce <dfn data-lt="free">free variables</dfn>: these are variables which occur directly or nested in the graph but which are not covered by a <a>quantification set</a>.
 </p>
-            The set $FV$ of <dfn data-lt="free">free variables</dfn> in a term or a set of triples is defined as follows:
+            The set of free variables ($FV$) of a term or a set of triples is defined as follows:
 
               <ul>
                 <li>$FV(x) = ∅$ if $x ∈ R ∪ L$,</li>
@@ -331,16 +330,12 @@ Free variables are variables which occur directly or nested in the graph but whi
                 <li>$FV(x) = FV(F)\setminus(U ∪ E)$ if $x=<(U,E,F)>$ is a <a>graph term</a>,</li>
               </ul>
 
-              For a <a>graph</a> $G=(U,E,F)$ and a variable $v\in V\cap C(G)$:
+              The set $FV$ for a <a>graph</a> $G=(U,E,F)$ and a variable $v\in V\cap C(G)$:
               <ul>
                 <li>We say that $v$  is <a>free</a> in $G$ iff $v\not\in U\cup E$ and there exists $x\in DC(G)$ such that $v\in FV(x)$;</li>
                 <li>Otherwise we call $v$ <dfn class="lint-ignore" data-lt="scoped variable">scoped</dfn> in $G$;</li>
                 <li>We denote the set of variables which are <a>free</a> in $G$ as $FV(G)$.</li>
               </ul>
-
-<p>
-Free variables are variables which occur directly or nested in the graph but which are not covered by a <a>quantification set</a>.
-</p>
 <p>
 
 Examples:
@@ -375,8 +370,8 @@ This enables us to introduce the notion of closed graphs and ground terms.
         </ul>
       </ul>
         <p class="note">
-          An abstract N3 graph which is constructed from a graph in the direct N3 syntax cannot contain free variables. 
-          However, considering a specific graph term  in an N3 document, all variables that are scoped outside that graph term will appear to be free in that graph term.
+          An abstract N3 graph which is constructed from a graph in the direct N3 syntax cannot contain <a>free variables</a>. 
+          However, considering a specific <a>graph term</a>  in an N3 document, all variables that are scoped outside that <a>graph term</a> will appear to be free in that graph term.
         </p>
 
         <p>An abstract <a>graph</a> $G=(U,E,F)$ can also contain quantified variables $v\in U\cup E$ which do not occur in any <a>triple</a> of $F$. 
