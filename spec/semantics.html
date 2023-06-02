@@ -397,8 +397,7 @@ This enables us to introduce the notion of closed graphs and ground terms.
 </section>
 <section>
   <h2>Isomorphisms</h2>
-We would like to define our semantics in a way which assigns the same meaning for structurally identical graphs which only differ in the naming of the variables 
-they use. To be able to do so, we first introduce the concept of combined mappings which will be relevant to handle nested graphs with local 
+We would like to define our semantics in a way which assigns the <i>same meaning for structurally identical graphs</i>, i.e.,  which only differ in the naming of the variables they use. To be able to do so, we first introduce the concept of combined mappings which will be relevant to handle nested graphs with local 
 scoping.
 
 <p>For two mappings $M$ and $N$ from terms to terms, we define their <dfn>combination</dfn> as follows:
@@ -409,7 +408,7 @@ scoping.
   </ul>
 </p>
   <div class=note>
-  Informally speaking, this definition means that the second mapping "overrides" the first mapping whenever a constituent is in the domain of both mappings. This is 
+  Informally speaking, this definition means that the second <i>N</i> mapping "overrides" the first <i>M</i> mapping whenever a constituent is in the domain of both mappings. This is 
   very similar to the behavior of quantifiers in first order logic where the scope of a quantifier is always the set of quantified variables occurring freely in the 
   quantified formula. This similarity is no coincidence. In this document combinations will be mainly used to handle nested scoped variables.
 </div>
@@ -540,14 +539,14 @@ for RDF. In a second step, we introduce the N3-interpetation which assigns a spe
 
 
         <li>a set $Δ_I$ (<dfn class="lint-ignore">domain</dfn>),
-        <li>a mapping $D_I$ (<dfn class="lint-ignore">denotation</dfn>)  from $C ∪ L$ to $Δ_I$,
-          such that its restriction to $C$ is a total mapping,
-        <li>a mapping $Q_I$ from <a>ground</a> <a>graph terms</a> to ground graph terms, such that<ul>
+        <li>a mapping $D_I$ (<dfn class="lint-ignore">denotation</dfn>)  from $R ∪ L$ to $Δ_I$,
+          such that its restriction to $R$ is a total mapping,
+        <li>a mapping $Q_I$ from <a>ground</a> <a>graph terms</a> to <a>ground</a> <a>graph terms</a>, such that<ul>
 
             <li>for any graph term  $&lt;G&gt;$ if $Q_I(&lt;G&gt;)=&lt;H&gt; \implies H \simeq G$  <br>(in other words, the image of $&lt;G&gt;$  through $Q_I$ 
-              must be isomorphic to $&lt;G&gt;$)
+              must be <a>isomorphic</a> to $&lt;G&gt;$)
             <li>for two graph terms $&lt;G_1&gt;$ and $&lt;G_2&gt;$: $G_1 \simeq G_2\implies Q_I(G_1)=Q_I(G_2)$ 
-              <br>(in other words, two isomorphic graph terms must have the same image through $Q_I$),
+              <br>(in other words, two <a>isomorphic</a> graph terms must have the same image through $Q_I$),
           </ul>
         <li>A subset $EXT_I$ (<dfn class="lint-ignore">extension</dfn>) of $Δ_I^3$.</li>
       </ul>
@@ -562,13 +561,13 @@ for RDF. In a second step, we introduce the N3-interpetation which assigns a spe
         </ul>
       </div>
 
-      <p>Note that the images of $Q_I$ are syntactic elements (graph terms), but the can (and most likely will) also be elements of the domain $Δ_I$. 
-      Note however that not all interpretations are required to have graph terms in their domain, because $Q_I$ is allowed to be the empty mapping. 
-      Such interpretations could still <a>satisfy</a> a graph that has no graph term constituent.
+      <p>Note that the images of $Q_I$ are syntactic elements (<a>graph terms</a>), but they can (and most likely will) also be elements of the domain $Δ_I$. 
+      Note however that not all interpretations are required to have <a>graph terms</a> in their domain, because $Q_I$ is allowed to be the empty mapping. 
+      Such interpretations could still <a>satisfy</a> a graph that has no <a>graph term</a> constituent.
     </p>
      
     <p>
-      The basic interpretation maps graph terms to an isomorphic copies of themselves. 
+      The basic interpretation maps <a>graph terms</a> to an <a>isomorphic</a> copy of themselves. 
       As a consequence, 
       two non-isomorphic graph terms cannot have the same meaning. For the abstract versions of the graph terms <code>{_:x :p :o}</code>, <code>{_:y :p :o}</code>
       and <code>{_:x :p :o. _:y :p :o}</code> we thus get:
