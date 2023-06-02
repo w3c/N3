@@ -634,8 +634,8 @@ for RDF. In a second step, we introduce the N3-interpetation which assigns a spe
         <p>
         <code>({x}, {}, {(x, :says,</code> &lt; <code>{}, {},  {(x, :is, :wise)}>}) </code>
         </p>
-This formula is interesting because the universally quantified variable appears once as a <a>direct constituent</a> in the triple and once nested. The semantics for ground graphs 
-maps direct constituents to not further specified domain elements while ground nested graphs are mapped to an isomorphic version of themselves. If we replace 
+This formula is interesting because the universally quantified variable appears once as a <a>direct constituent</a> in the triple and once as only a <a>constituent</a>. The <a href="#ground-graphs">semantics for ground graphs</a> 
+maps direct constituents to not further specified domain elements, while ground graph terms are mapped to an isomorphic version of themselves. If we replace 
 the variable $x$ by, for example <code>:bob</code>, we get 
 <p>
    <code>({}, {}, {(:bob, :says,</code> &lt; <code>{}, {},  {(:bob, :is, :wise)}.</code>&gt;<code>)})</code>
@@ -655,7 +655,7 @@ This interpretation is true if $(D_I($<code>:bob</code>$), D_I($<code>:says</cod
   If we now replace <code>:bob</code> by a variable which is quantified outside of the graph term as it was the case in our original example, the first 
   occurence of the variable directly stands for a resource while the meaning of the graph containing the second 
   one depends on the syntactical representation of that resource. 
-  We therefore need to extend  <a href="https://www.w3.org/TR/rdf11-mt/#blank-nodes">RDF's the classical semantic condition for blank nodes</a> and use an so-called 
+  We therefore need to extend  <a href="https://www.w3.org/TR/rdf11-mt/#blank-nodes">RDF's classical semantic condition for blank nodes</a> and use a so-called 
   assignment which maps variables to pairs of resources and term representations instead of a simply mapping from variables to resources:
 </p>
 <p>Given a <a>basic interpretation</a> $I$ and a set of variables $V_1$. 
