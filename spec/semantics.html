@@ -63,7 +63,7 @@
       <p>This document defines the model-theoretic semantis of Notation 3 Logic based on its abstract syntax.</p>
     </section>
     <section id="sotd">
-     
+      This is an initial version of the Notation3 specification.
     </section>
     <section class="informative">
       <h2>Introduction</h2>
@@ -98,14 +98,14 @@
         Should this be a normative section, or a reference to a normative section in the "main" spec?
       </p>
       --> 
-      In this section we define N3's abstact syntax. Implicit quantification is expressed explicitely and all literals are represented 
+      In this section we define N3's abstract syntax. Implicit quantification is expressed explicitly and all literals are represented 
       <section class="informative">
         <h3>Motivation</h3>
    <p>Notation3 supports implicit quantification. If blank nodes are used in triples, they stand for implicit existentially
    quantified variables. In case universals (i.e., variables starting with a question mark in the concrete syntax) are used, they stand for implicit
    universally quantified variables. Implicit universal quantification is always global, that is, implicit universal quantification
    always spans over the full graph. Implicit existential quantification is always local, that is, it spans the local graph
-   (e.g., if implicit existential quantification occurs in a graphs term, it spans only that graph term).
+   (e.g., if implicit existential quantification occurs in a graph term, it spans only that graph term).
    To simplify the definitions in this document, we assume all quantification to be explicit
    and introduce an abstract syntax to better express that.
  </p>
@@ -120,11 +120,11 @@
         <h3>Terms, Triples and Graphs</h3>
 
 As in the concrete syntax, abstract graphs consist of triples of terms. N3 covers all terms present in
-RDF, that is, <a href="https://www.w3.org/TR/rdf11-concepts/#section-Graph-Literal">Literals</a>,
+RDF, that is, <a href="https://www.w3.org/TR/rdf11-concepts/#section-Graph-Literal">literals</a>,
 <a href="https://www.w3.org/TR/rdf11-concepts/#section-IRIs">IRIs</a> and
 <a href="https://www.w3.org/TR/rdf11-concepts/#section-blank-nodes">blank nodes</a>.
 Additionally, we can have universals in N3. As the abstract syntax supports direct
-quantification, we represent blank nodes and universals as variables and add their intended quantification seperately.
+quantification, we represent blank nodes and universals as variables and add their intended quantification separately  (see N3 <a>graph</a>).
 We thus come to the following concept of atomic terms.
       <p>The set of <dfn>atomic terms</dfn> consists of</p>
       <ul>
@@ -187,9 +187,9 @@ becomes $(x, \text{:p}, \text{"literal"})$.</p> -->
 
 <div class=note>
 In contrast to RDF, N3 allows all kinds of terms in all positions of a triple. The triple <code>:s _:x :o.</code> is valid in N3.
-Even lists or graph terms can appear in predicate position of a triple.
+Even lists or graph terms can appear in the predicate position of a triple.
 </div>
-In abstract N3, the concept of an unordered set of triples (an <a data-cite="RDF11-CONCEPTS#section-rdf-graph">RDF graph</a>) is extended by explicit information about quantification. 
+In the abstract N3 syntax, the concept of an unordered set of triples (an <a data-cite="RDF11-CONCEPTS#section-rdf-graph">RDF graph</a>) is extended by explicit information about quantification. 
 In other words, we specify for each N3 graph which variables are universally and which are existentially quantified on that graph.
 To do so, we define:
       <p>A <dfn>graph</dfn> is a tuple $(U, E, F)$ where</p>
@@ -240,8 +240,8 @@ We will re-use these examples in the following sections.
       </div>
 
       <div class="issue">The translation of nested blank nodes as explained here and for example applied in <a href="#example3"> Example 3</a> follows
-         the  last consensus the community group agreed on. 
-        Some implementations apply a different interpretation of the scope of blank nodes occurring in non-logical graph term, that is in graph terms which are not used 
+         the latest consensus of the community group. 
+        Some implementations apply a different interpretation of the scope of blank nodes occurring in non-logical graph terms, that is, graph terms which are not used 
         in connection with <a>logical predicates</a>.  
         More concrete, that means that the N3-turtle triple 
         <div style="text-indent:20px;"><code>:socrates :says {_:x a :Mortal}.  </code> </div> 
@@ -250,7 +250,7 @@ We will re-use these examples in the following sections.
         <div style="text-indent:20px;"><small> $(\{\},\{x\},\{(\text{:socrates}, \text{:says}, <(\{\},\{\},\{(x,\text{rdf:type}, \text{:Mortal} )\})>) \})$</small></div> 
          and <b>not</b> as
          <div style="text-indent:20px;"> <small> $(\{\},\{\},\{(\text{:socrates}, \text{:says}, <(\{\},\{x\},\{(x,\text{rdf:type}, \text{:Mortal} )\})>) \})$</small>. </div> 
-         A solution for that problem is currently discussed. The difference, however, does not influence the formal semantics of the <i>abstract</i> syntax.
+         A solution for that problem is currently being discussed. The difference, however, does not influence the formal semantics of the <i>abstract</i> syntax.
        </div>
             </section>
       <section>
