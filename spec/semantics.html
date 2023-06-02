@@ -250,14 +250,14 @@ We will re-use these examples in the following sections.
         <div style="text-indent:20px;"><small> $(\{\},\{x\},\{(\text{:socrates}, \text{:says}, <(\{\},\{\},\{(x,\text{rdf:type}, \text{:Mortal} )\})>) \})$</small></div> 
          and <b>not</b> as
          <div style="text-indent:20px;"> <small> $(\{\},\{\},\{(\text{:socrates}, \text{:says}, <(\{\},\{x\},\{(x,\text{rdf:type}, \text{:Mortal} )\})>) \})$</small>. </div> 
-         A solution for that problem is currently being discussed. The difference, however, does not influence the formal semantics of the <i>abstract</i> syntax.
+         A solution for that problem is currently being discussed. The difference, however, does not influence the formal semantics of the <i>abstract</i> syntax, as quantification is always explicit there.
        </div>
             </section>
       <section>
         <h2>Variables</h2>
 
-As N3 supports graph terms and thereby also allows for nesting of variables and quantification, we need to introduce
-a distinction between variables occuring directly in a graph and variables which are nested. In order to do so,
+As N3 supports graph terms and thereby also allows for nesting of variables and their quantification, we need to introduce
+a distinction between variables occurring directly in a graph and variables which are nested. In order to do so,
 we introduce the following concept:
         <ul>
           <li>A term is a <dfn>direct constituent</dfn> of
