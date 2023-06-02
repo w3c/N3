@@ -371,7 +371,13 @@ This enables us to introduce the notion of closed graphs and ground terms.
       </ul>
         <p class="note">
           An abstract N3 graph which is constructed from a graph in the direct N3 syntax cannot contain <a>free variables</a>. 
-          However, considering a specific <a>graph term</a>  in an N3 document, all variables that are scoped outside that <a>graph term</a> will appear to be free in that graph term.
+          However, when considering a specific <a>graph term</a> <i>in isolation</i>, 
+          all variables that are scoped outside that <a>graph term</a> will appear to be free in that graph term.
+          <br>
+          For instance, given<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;`({x},{},{(x, :knows, :bob) })`<br>
+          When considering the <a>graph term</a> in isolation, 
+          variable `x` will be a free variable (as it was quantified was in the containing N3 graph).
         </p>
 
         <p>An abstract <a>graph</a> $G=(U,E,F)$ can also contain quantified variables $v\in U\cup E$ which do not occur in any <a>triple</a> of $F$. 
@@ -492,8 +498,8 @@ With combinations of mappings we can define isomorphisms between abstract N3 gra
                 <li>$G_1$: {<code>_:x :knows :p. :p :says {_:x a :genius}.</code>} &ndash; abstract syntax:<br>
                   <code>({}, {x}, {(x, knows, p), (p, says <{}, {x} {(x, a, genius)}>)})</code>
                 </li>
-                <li> $G_2:$ {<code>_:y :knows :p. :p :says {_:x a :genius}.</code>} &ndash; abstract syntax:<br>
-                  <code>({}, {y}, {(y, knows, p), (p, says <{}, {x} {(x, a, genius)}>)})</code>
+                <li> $G_2:$ {<code>_:y :knows :p. :p :says {_:z a :genius}.</code>} &ndash; abstract syntax:<br>
+                  <code>({}, {y}, {(y, knows, p), (p, says <{}, {z} {(z, a, genius)}>)})</code>
                 </li>
                 <li> $G_3:$ {<code>_:y :knows :p. :p :says {_:x a _:z}.</code>} &ndash; abstract syntax:<br>
                   <code>({}, {y}, {(y, knows, p), (p, says <{}, {x, z} {(x, a, z)}>)})</code>
