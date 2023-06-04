@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <title>Notation 3 Semantics</title>
+    <title>Notation3 Semantics</title>
     <script
       src="https://www.w3.org/Tools/respec/respec-w3c"
       class="remove"
@@ -60,7 +60,7 @@
   </head>
   <body>
     <section id="abstract">
-      <p>This document defines the model-theoretic semantis of Notation 3 Logic based on its abstract syntax.</p>
+      <p>This document defines the model-theoretic semantics of Notation3 Logic based on its abstract syntax.</p>
     </section>
     <section id="sotd">
       This is an initial version of the Notation3 specification.
@@ -69,8 +69,8 @@
       <h2>Introduction</h2>
       <p>This document defines the model-theoretic semantics of
         Notation3 Logic.
-        We define the semantics of N3 on an abstract syntax. We will provide the mapping from explicit N3 Syntax
-        to abstract syntax in an extra document. By doing so we seperate the handling of implicit quantification from the model.
+        We define the semantics of Notation3 (N3) on an abstract syntax. We will provide the mapping from explicit N3 Syntax
+        to abstract syntax in an extra document. By doing so we separate the handling of implicit quantification from the model.
        </p>
        <p>
          <abbr title="Notation3">N3</abbr> is an extension of RDF.
@@ -98,7 +98,7 @@
         Should this be a normative section, or a reference to a normative section in the "main" spec?
       </p>
       --> 
-      In this section we define N3's abstract syntax. Implicit quantification is expressed explicitly and all literals are represented 
+      In this section we define N3's abstract syntax. Implicit quantification is expressed explicitly and all literals are represented. 
       <section class="informative">
         <h3>Motivation</h3>
    <p>Notation3 supports implicit quantification. If blank nodes are used in triples, they stand for implicit existentially
@@ -112,7 +112,7 @@
 
   <p>
    In order to help the reader to make a connection between Notation3 concrete syntax and abstract syntax, we will provide example
-   translations together with the concepts we introduce. We will provide a formal definition of the mapping in a seperate document.
+   translations together with the concepts we introduce. We will provide a formal definition of the mapping in a separate document.
 </p>
 
       </section>
@@ -126,7 +126,7 @@ RDF, that is, <a href="https://www.w3.org/TR/rdf11-concepts/#section-Graph-Liter
 Additionally, we can have universals in N3. As the abstract syntax supports direct
 quantification, we represent blank nodes and universals as variables and add their intended quantification separately  (see N3 <a>graph</a>).
 We thus come to the following concept of atomic terms.
-      <p>The set of <dfn>atomic terms</dfn> consists of</p>
+      <p>The set of <dfn>atomic terms</dfn> consists of:</p>
       <ul>
         <li>the set $R$ of IRIs,
         <li>the set $L$ of Literals,
@@ -207,23 +207,28 @@ To provide some intuition on the correspondence between concrete N3 syntax and a
 We always provide a graph in concrete N3 syntax followed by its counterpart in abstract N3 syntax.
 
 <ol>
-  <li> <code>:socrates :knows _:x.</code> becomes<br>
+  <li> <code>:socrates :knows _:x.</code> 
+    <br>becomes<br>
     <small>$(\{\},\{x\},\{(\text{:socrates}, \text{:knows}, x)\})$</small></li>
-  <li> <code>{?x a :Human} => {?x a :Mortal}. </code> becomes <br>
+  <li> <code>{?x a :Human} => {?x a :Mortal}.</code> <br>becomes <br>
      <small>$(\{x\},\{\},\{(<(\{\},\{\},\{(x, \text{rdf:type}, \text{:Human})\})>,
     \text{log:implies}, <(\{\},\{\},\{(x, \text{rdf:type}, \text{:Mortal})\})>)\})$ </small>
   </li>
-  <li id="example3"> <code>:socrates :says {_:x a :Mortal}.  </code> becomes
-    <br><small> $(\{\},\{\},\{(\text{:socrates}, \text{:says}, <(\{\},\{x\},\{(x,\text{rdf:type}, \text{:Mortal} )\})>) \})$</small>
+  <li id="example3"> <code>:socrates :says {_:x a :Mortal}.</code> 
+    <br>becomes<br>
+    <small> $(\{\},\{\},\{(\text{:socrates}, \text{:says}, <(\{\},\{x\},\{(x,\text{rdf:type}, \text{:Mortal} )\})>) \})$</small>
   </li>
-  <li> <code>:socrates :says {_:x a :Mortal}. _:y :knows :socrates. </code> becomes
-    <br><small> $(\{\},\{y\},\{(\text{:socrates}, \text{:says}, <(\{\},\{x\},\{(x,\text{rdf:type}, \text{:Mortal} )\})>), (y, \text{:knows}, \text{:socrates}) \})$</small>
+  <li> <code>:socrates :says {_:x a :Mortal}. _:y :knows :socrates.</code>
+    <br>becomes<br>
+    <small> $(\{\},\{y\},\{(\text{:socrates}, \text{:says}, <(\{\},\{x\},\{(x,\text{rdf:type}, \text{:Mortal} )\})>), (y, \text{:knows}, \text{:socrates}) \})$</small>
   </li>
-  <li id="example"> <code>{?x a :Human} => {?x :hasMother _:y}. </code> becomes <br>
+  <li id="example"> <code>{?x a :Human} => {?x :hasMother _:y}.</code> 
+      <br>becomes<br>
       <small>$(\{x\},\{\},\{(<(\{\},\{\},\{(x, \text{rdf:type}, \text{:Human})\})>,
     \text{log:implies}, <(\{\},\{y\},\{(x, \text{:hasMother}, y)\})>)\})$ </small>
   </li>
-  <li> <code>_:y :says {?x a :Mortal}. </code> becomes <br>
+  <li> <code>_:y :says {?x a :Mortal}.</code> 
+      <br>becomes<br>
       <small>$(\{x\},\{y\},\{(y, \text{:says}, <(\{\},\{\},\{(x, \text{rdf:type}, \text{:Mortal})\})>)$ </small>
   </li>
 </ol>
@@ -235,7 +240,7 @@ We will re-use these examples in the following sections.
 -->
 
       <div class=note>
-        In this context, an RDF graph is a graph which does not contain graph terms nor lists and for which $U=\emptyset.$
+        In this context, an RDF graph is a graph that does not contain graph terms nor lists and for which $U=\emptyset.$
         The blank nodes occurring in the graph would be labeled and stored in $E$.
       </div>
 
@@ -298,8 +303,9 @@ we introduce the following concept:
           In order to clarify the definition above, we go back to an earlier example (point 3): <br>
           <ul>
             <li>
-                <code>:socrates :says {_:x a :Mortal}.  </code> &ndash; abstract syntax:
-                <br><small> $(\{\},\{\},\{(\text{:socrates}, \text{:says}, <(\{\},\{x\},\{(x,\text{rdf:type}, \text{:Mortal} )\})>) \})$</small>
+                <code>:socrates :says {_:x a :Mortal}.</code>
+                <br>becomes<br>
+                <small> $(\{\},\{\},\{(\text{:socrates}, \text{:says}, <(\{\},\{x\},\{(x,\text{rdf:type}, \text{:Mortal} )\})>) \})$</small>
                 <ul>
                   <li><i>Direct constituents</i>:
                     <small>$\text{:socrates}, \text{:says},  <(\{\},\{x\},\{(x,\text{rdf:type}, \text{:Mortal} )\})>$</small>.
@@ -327,7 +333,7 @@ With that definition, we now introduce <dfn data-lt="free">free variables</dfn>:
                 <li>$FV(x) = FV(x_1) ∪ … ∪ FV(x_n)$ if $x=(x_1 … x_n)$ is a list,</li>
                 <li>$FV(x) = FV(s) ∪ FV(p) ∪ FV(o)$ if $x=(s,p,o)$ is a <a>triple</a>,</li>
                 <li>$FV(x) = ⋃_{t ∈ x} FV(t)$ if $x$ is a set of <a>triples</a>,</li>
-                <li>$FV(x) = FV(F)\setminus(U ∪ E)$ if $x=<(U,E,F)>$ is a <a>graph term</a>,</li>
+                <li>$FV(x) = FV(F)\setminus(U ∪ E)$ if $x=<(U,E,F)>$ is a <a>graph term</a>.</li>
               </ul>
 
               The set $FV$ for a <a>graph</a> $G=(U,E,F)$ and a variable $v\in V\cap C(G)$:
@@ -350,58 +356,53 @@ Examples:
 </p>
 This enables us to introduce the notion of closed graphs and ground terms.
 <ul>
-            <li>A <a>graph</a> $G=(U,E,F)$ is <dfn data-lt="closed graph">closed</dfn> if all variables $v\in C(G)\cap V$ are scoped in $G$.
+   <li>A <a>graph</a> $G=(U,E,F)$ is <dfn data-lt="closed graph">closed</dfn> if all variables $v\in C(G)\cap V$ are scoped in $G$.</li>
+   <li>A term is <dfn data-lt="ground term">ground</dfn> if it is either
+    <ul>
+      <li>an IRI,</li>
+      <li>a Literal,</li>
+      <li>a list of <a>ground</a> terms or the empty list,</li>
+      <li>a <a>graph term</a> $&lt;G&gt;$ if $G$ is <a>closed</a>.</li>
+    </ul>
+   </li>
+</ul>
 
+<p>We denote the set of <a>ground terms</a> as $T_G$.
 
-            <li>A term is <dfn data-lt="ground term">ground</dfn> if it is either
-              <ul>
-                <li>an IRI,
-                <li>a Literal,
-                <li>a list of <a>ground</a> terms or the empty list,
-                <li>a <a>graph term</a> $&lt;G&gt;$ if $G$ is <a>closed</a>.
-              </ul>
+<p>A <a>triple</a> is <a>ground</a> if all of its <a>direct constituents</a> are <a>ground</a>.</p>
 
-              <p>We denote the set of <a>ground terms</a> as $T_G$.
+<p>A graph $G=(U,E,F)$ is <a>ground</a> if $E=U=\emptyset$ and all <a>triples</a> in $F$ are <a>ground</a>.</p>
 
-              <p>A <a>triple</a> is <a>ground</a> if all of its <a>direct constituents</a> are <a>ground</a>.</p>
+<p class="note">
+  An abstract N3 graph which is constructed from a graph in the direct N3 syntax cannot contain <a>free variables</a>. 
+  However, when considering a specific <a>graph term</a> <i>in isolation</i>, 
+  all variables that are scoped outside that <a>graph term</a> will appear to be free in that graph term.
+  <br>
+  For instance, given:<br>
+  &nbsp;&nbsp;&nbsp;&nbsp;`({x}, {}, {( :y, :says, <({},{},{(x, :knows, :bob)})>)})`<br>
+  When considering the <a>graph term</a>'s graph in isolation:<br>
+  &nbsp;&nbsp;&nbsp;&nbsp;`({},{},{(x, :knows, :bob)})`
+  <br>
+  Variable `x` will be a free variable (as it was quantified was in the containing N3 graph).
+</p>
 
-              <p>A graph $G=(U,E,F)$ is <a>ground</a> if $E=U=\emptyset$ and all <a>triples</a> in $F$ are <a>ground</a>.</p>
-          </li>
-        </ul>
-      </ul>
-        <p class="note">
-          An abstract N3 graph which is constructed from a graph in the direct N3 syntax cannot contain <a>free variables</a>. 
-          However, when considering a specific <a>graph term</a> <i>in isolation</i>, 
-          all variables that are scoped outside that <a>graph term</a> will appear to be free in that graph term.
-          <br>
-          For instance, given:<br>
-          &nbsp;&nbsp;&nbsp;&nbsp;`({x}, {}, {( :y, :says, <({},{},{(x, :knows, :bob)})>)})`<br>
-          When considering the <a>graph term</a>'s graph in isolation:<br>
-          &nbsp;&nbsp;&nbsp;&nbsp;`({},{},{(x, :knows, :bob)})`
-          <br>
-          Variable `x` will be a free variable (as it was quantified was in the containing N3 graph).
-        </p>
+<p>An abstract <a>graph</a> $G=(U,E,F)$ can also contain quantified variables $v\in U\cup E$ which do not occur in any <a>triple</a> of $F$. 
+   These variables do not contribute to the interpretation of the graph. In order to simplify our considerations for the following sections, 
+   we introduce the notion of normalised graphs:</p>
 
-        <p>An abstract <a>graph</a> $G=(U,E,F)$ can also contain quantified variables $v\in U\cup E$ which do not occur in any <a>triple</a> of $F$. 
-          These variables do not contribute to the interpretation of the graph. In order to simplify our considerations for the following sections, 
-          we introduce the notion of normalised graphs:</p>
+<p>For each graph $G=(U,E,F)$, we call $G^N=(U\cap (FV(F)), E\cap(FV(F)), F)$ the <dfn data-lt="normalised|normalised graph">normalisation</dfn> of $G$.</p>
 
-        <p>For each graph $G=(U,E,F)$, we call $G^N=(U\cap (FV(F)), E\cap(FV(F)), F)$ the <dfn data-lt="normalised|normalised graph">normalisation</dfn> of $G$.</p>
-
-        Examples:
-        <ol>
-          <li>  <small> $(\{x,z\},\{y\},\{(x, \text{:knows}, y) \})^N=(\{x\},\{y\},\{(x, \text{:knows}, y) \})$</small>.
-          <li> <small> $(\{x_1, x_2, x_3\},\{y_1, y_2, y_3\},\{(\text{:socrates}, \text{:knows}, \text{:platon}) \})^N=(\{\},\{\},\{(\text{:socrates}, \text{:knows}, \text{:platon}) \})$</small>.
-          <li>  <small> $(\{x\},\{y\},\{(y, \text{:says}, <(\{\},\{x\},\{(x,\text{rdf:type}, \text{:Mortal} )\})>) \})^N=$
-            $(\{\},\{y\},\{(y, \text{:says}, <(\{\},\{x\},\{(x,\text{rdf:type}, \text{:Mortal} )\})>) \})$</small>.
+Examples:
+<ol>
+  <li> <small> $(\{x,z\},\{y\},\{(x, \text{:knows}, y) \})^N=(\{x\},\{y\},\{(x, \text{:knows}, y) \})$</small>.
+  <li> <small> $(\{x_1, x_2, x_3\},\{y_1, y_2, y_3\},\{(\text{:socrates}, \text{:knows}, \text{:platon}) \})^N=(\{\},\{\},\{(\text{:socrates}, \text{:knows}, \text{:platon}) \})$</small>.
+  <li> <small> $(\{x\},\{y\},\{(y, \text{:says}, <(\{\},\{x\},\{(x,\text{rdf:type}, \text{:Mortal} )\})>) \})^N=$
+         <br>
+               $(\{\},\{y\},\{(y, \text{:says}, <(\{\},\{x\},\{(x,\text{rdf:type}, \text{:Mortal} )\})>) \})$</small>.
         <!--  <li> In <small> $(\{\},\{\},\{(\text{x}, \text{:says}, <(\{\},\{x\},\{(x,\text{rdf:type}, \text{:Mortal} )\})>) \})$</small> the
             $x$ is a free variable but it also occurs as a scoped variable in the quoted graph. -->
-        </ol>
+</ol>
 
-
-
-
-      
 </section>
 <section>
   <h2>Isomorphisms</h2>
@@ -497,13 +498,16 @@ With combinations of mappings we can define isomorphisms between abstract N3 gra
             <p>
             Consider the following graphs:
               <ul>
-                <li>$G_1$: {<code>_:x :knows :p. :p :says {_:x a :genius}.</code>} &ndash; abstract syntax:<br>
+                <li>$G_1$: {<code>_:x :knows :p. :p :says {_:x a :genius}.</code>} 
+                  <br>abstract syntax:<br>
                   <code>({}, {x}, {(x, knows, p), (p, says <{}, {x} {(x, a, genius)}>)})</code>
                 </li>
-                <li> $G_2:$ {<code>_:y :knows :p. :p :says {_:z a :genius}.</code>} &ndash; abstract syntax:<br>
+                <li> $G_2:$ {<code>_:y :knows :p. :p :says {_:z a :genius}.</code>} 
+                  <br>abstract syntax:<br>
                   <code>({}, {y}, {(y, knows, p), (p, says <{}, {z} {(z, a, genius)}>)})</code>
                 </li>
-                <li> $G_3:$ {<code>_:y :knows :p. :p :says {_:x a _:z}.</code>} &ndash; abstract syntax:<br>
+                <li> $G_3:$ {<code>_:y :knows :p. :p :says {_:x a _:z}.</code>} 
+                  <br>abstract syntax:<br>
                   <code>({}, {y}, {(y, knows, p), (p, says <{}, {x, z} {(x, a, z)}>)})</code>
                 </li>
               </ul>
@@ -535,7 +539,7 @@ With combinations of mappings we can define isomorphisms between abstract N3 gra
 
       <section>
       <h2>Base Semantics</h2>
-With the definitions introduced in the previous sections, we are now able to define the semantics of Notation 3 Logic. We do that in two steps: we first 
+With the definitions introduced in the previous sections, we are now able to define the semantics of Notation3 Logic. We do that in two steps: we first 
 introduce a <dfn>base semantics</dfn> which does not take the meaning of special N3 terms into account. In that sense the base semantics is similar to <a href="https://www.w3.org/TR/rdf11-mt/#simple-interpretations">simple interpretations</a>
 for RDF. In a second step, we introduce the N3-interpetation which assigns a special meaning to all predicates in the N3 <a href="../ns/log.html">`log`</a>-namespace.
 
@@ -554,7 +558,7 @@ for RDF. In a second step, we introduce the N3-interpetation which assigns a spe
             <li>for any graph term  $&lt;G&gt;$ if $Q_I(&lt;G&gt;)=&lt;H&gt; \implies H \simeq G$  <br>(in other words, the image of $&lt;G&gt;$  through $Q_I$ 
               must be <a>isomorphic</a> to $&lt;G&gt;$)
             <li>for two graph terms $&lt;G_1&gt;$ and $&lt;G_2&gt;$: $G_1 \simeq G_2\implies Q_I(G_1)=Q_I(G_2)$ 
-              <br>(in other words, two <a>isomorphic</a> graph terms must have the same image through $Q_I$),
+              <br>(in other words, two <a>isomorphic</a> graph terms must have the same image through $Q_I$).
           </ul>
         <li>A subset $EXT_I$ (<dfn class="lint-ignore">extension</dfn>) of $Δ_I^3$.</li>
       </ul>
@@ -632,11 +636,11 @@ for RDF. In a second step, we introduce the N3-interpetation which assigns a spe
         which freely translates to "<i>everyone says about himself that he is wise</i>."  In abstract syntax, the formula would be expressed as:
 
         <p>
-        <code>({x}, {}, {(x, :says,</code> &lt; <code>{}, {},  {(x, :is, :wise)}>}) </code>
+        <code>({x}, {}, {(x, :says,</code> &lt; <code>{}, {},  {(x, :is, :wise)}>})</code>.
         </p>
 This formula is interesting because the universally quantified variable appears once as a <a>direct constituent</a> in the triple and once as only a <a>constituent</a>. The <a href="#ground-graphs">semantics for ground graphs</a> 
 maps direct constituents to not further specified domain elements, while ground graph terms are mapped to an isomorphic version of themselves. If we replace 
-the variable $x$ by, for example <code>:bob</code>, we get 
+the variable $x$ by, for example <code>:bob</code>, we get:
 <p>
    <code>({}, {}, {(:bob, :says,</code> &lt; <code>{}, {},  {(:bob, :is, :wise)}.</code>&gt;<code>)})</code>
  </p>
@@ -669,7 +673,7 @@ This interpretation is true if $(D_I($<code>:bob</code>$), D_I($<code>:says</cod
       <section>
         <h2></h2>
       -->
-We can consider both values $A_1$ and $A_2$ of an assignment $A(v)=(A_1(v), A_2(v))$ as seperate mappings. 
+We can consider both values $A_1$ and $A_2$ of an assignment $A(v)=(A_1(v), A_2(v))$ as separate mappings. 
 The mapping $A_2$ assigns variables to terms and will be used to dertermine the meaning of graph terms. 
 We extend this kind of function to be applied on graphs:
    
@@ -681,8 +685,8 @@ We extend this kind of function to be applied on graphs:
         <p>$M^t(G) = (U, E, \{ (M^t(s), M^t(p), M^t(o)) | \; (s, p, o) \in F \})$ such that:</p>
 
         <ul>
-          <li>If $x\in FV(G)$ then $M^t(x)=M(x)$
-          <li>If $x=(x_1\ x_2\ \ldots \ x_n)$ is a list, then $M^t(x)=(M^t(x_1)\ M^t(x_2)\ \ldots \ M^t(x_n))$
+          <li>If $x\in FV(G)$ then $M^t(x)=M(x)$.
+          <li>If $x=(x_1\ x_2\ \ldots \ x_n)$ is a list, then $M^t(x)=(M^t(x_1)\ M^t(x_2)\ \ldots \ M^t(x_n))$.
           <li>If $x=&lt;H&gt;$ is a graph term then $M^t(x) = &lt;M^t(H)&gt;$.
           <li>$M^t(x)=x$ else.
         </ul>
@@ -735,7 +739,7 @@ The definition of total applications enables us to define <dfn class="lint-ignor
       </section>
       <section>
         <h2>Basic entailment</h2>
-The previous definition allows us to introduce the notion of  basic entailmant:
+The previous definition allows us to introduce the notion of basic entailment:
       
         <p>Let $G$ and $H$ be two graphs, we say that $G$ <dfn data-lt="entailment|b-entailment|basic entailment">b-entails</dfn> $H$, noted $G ⊨ H$,
         if and only if  every interpretation $I$ that satisfies $G$ ($I ⊨ G$) also satisfies $H$ ($I ⊨ H$).</p>
@@ -826,7 +830,7 @@ The previous definition allows us to introduce the notion of  basic entailmant:
         <a href="../ns/log.html">`log:`</a> namespace. For the other namespaces we plan to provide similar definitions.</p>
      </p>
      <p>
-      Below, we give specify how log interpretations extand <a>basic interpretations</a>:
+      Below, we give specify how log interpretations extend <a>basic interpretations</a>:
      </p>
       <p>Let $I$ be a basic <a>interpretation</a> for a <a>graph</a> $G=(U, E, F)$. Then $G$ is true under <dfn>log-interpretation</dfn> or 
         $I$ <dfn>log satisfies</dfn> $G$ ($I\models_{log} G$) 
@@ -856,7 +860,7 @@ The previous definition allows us to introduce the notion of  basic entailmant:
           <!-- We call a triple   $t = < G_1 >\texttt{log:implies} < G_2 >$ where  $< G_1=(U_1, E_1, F_1) >$ and $< G_2 = (U_2, E_2, F_2) >$ are quoted graphs an **implication**.
           -->
 
-          <p>If $t = (s, \texttt{log:implies}, o )$ is a triple, then $I[A\bullet B]\models_{log} t$ if
+          <p>If $t = (s, \texttt{log:implies}, o )$ is a triple, then $I[A\bullet B]\models_{log} t$ if:
 
           <ul>
             <li>$I[A\bullet B](s)=&lt; G_1&gt;$ and $I[A\bullet B](o)=&lt;G_2&gt;$ are <a>graph terms</a> and $I[A\bullet B]\models_{log} G_2$ holds if $I[A\bullet B]\models_{log} G_1$, or
@@ -931,7 +935,7 @@ The previous definition allows us to introduce the notion of  basic entailmant:
 
       </section>
       <section> <h2>Log entailment</h2>
-        The previous definitions allow us to introduce the notion of  log entailmant:
+        The previous definitions allow us to introduce the notion of log entailment:
       
         <p>Let $G$ and $H$ be two graphs, we say that $G$ <dfn data-lt="log-entailment|log entailment">log-entails</dfn> $H$, written as $G ⊨_{log} H$,
         if and only if  every interpretation $I$ that <a>log satisfies</a> $G$ ($I ⊨_{log} G$) also <a>log satisfies</a> $H$ ($I ⊨_{log} H$).</p> 
