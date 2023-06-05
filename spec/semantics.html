@@ -592,8 +592,11 @@ for RDF. In a second step, we introduce the N3-interpetation which assigns a spe
      
     <p>
       The basic interpretation maps <a>graph terms</a> to an <a>isomorphic</a> copy of themselves. 
-      As a consequence, 
-      two non-isomorphic graph terms cannot have the same meaning. For the abstract versions of the graph terms <code>{_:x :p :o}</code>, <code>{_:y :p :o}</code>
+      As a consequence, two isomorphic graph terms will have the same meaning, as they will be mapped to the same isomorphic copy.
+      This is the same way that two terms $\in R \cup L$ have the same meaning, if they are mapped to the same domain resource $\Delta_I$.
+    </p>
+    <p>
+      As a consequence, two non-isomorphic graph terms cannot have the same meaning. For the abstract versions of the graph terms <code>{_:x :p :o}</code>, <code>{_:y :p :o}</code>
       and <code>{_:x :p :o. _:y :p :o}</code> we thus get:
       <ul>
      <li> $Q_I($<code><({}, {y}, {(y, :p, :o)})></code>$)= Q_I($<code><{}, {x}, {(x, :p, :o)}></code>$)$
