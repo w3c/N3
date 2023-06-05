@@ -465,7 +465,7 @@ With combinations of mappings we can define isomorphisms between abstract N3 gra
             </li>
           </ul>
 
-  We call a graph $G_1$ <dfn class="lint-ignore">isomorphic</dfn> to a graph $G_2$, written as $G_1\simeq G_2$, if
+  We call a graph $G_1$ <dfn class="lint-ignore" data-lt="isomorphism">isomorphic</dfn> to a graph $G_2$, written as $G_1\simeq G_2$, if
   there exists some $M$ such that $G_1$ is isomorphic to $G_2$ under $M$.
 </p>
 
@@ -626,7 +626,7 @@ for RDF. In a second step, we introduce the N3-interpetation which assigns a spe
         <ul>
           <li>$D_I(x)$ if $x$ is an IRI or a Literal,
           <li>$(I(x_1), I(x_2),..., I(x_n))$ if $x$ is a list $(x_1, x_2, ..., x_n)$ and all $I(x_i)$ are defined,
-          <li>$Q_I(x)$ if $x$ is a ground <a>graph term</a>,
+          <li>$Q_I(x)$ if $x$ is a <a>ground</a> <a>graph term</a>,
           <li>$I(x)=\textit{true}$ if $x=(s, p ,o)$ is a <a>ground</a> <a>triple</a> and $(I(s), I(p) ,I(o))\in EXT_I$, otherwise $I(x)=\textit{false}$,
           <li>$I(x)=\textit{false}$ if $x=F$ is a set of ground triples and $I(t)=\textit{false}$ for some triple $t\in F$, otherwise $I(x) =\textit{true}$,
           <li>$I(F)$ if $x=(\emptyset, \emptyset, F)$ is a <a>ground</a> <a>graph</a>
@@ -669,29 +669,30 @@ This interpretation is true if $(D_I($<code>:bob</code>$), D_I($<code>:says</cod
 </p>
 
 <p>
-  Note that the mapping $D_I$ maps the URI <code>:bob</code> directly to a resource of $Δ_I$, 
-  while $Q_I$ operates on the graph term which contains the URI <code>:bob</code>.
-  If we now replace <code>:bob</code> by a variable which is quantified outside of the graph term as it was the case in our original example, the first 
-  occurence of the variable directly stands for a resource while the meaning of the graph containing the second 
-  one depends on the syntactical representation of that resource. 
+  We note that the mapping $D_I$ maps the URI <code>:bob</code> directly to a resource of $Δ_I$. 
+  However, $Q_I$ operates on the syntactic representation of <a>graph terms</a>: it maps graph terms to an isomorphic copy,
+  with <a href="#isomorphisms">isomorphism</a> being defined on a syntactic level.
+
+  If we now revert back to our original example with variables, the first variable occurrence should thus be mapped to $Δ_I$, 
+  but its second occurrence to its syntactic term representation $T_G$.
+</p>
+<p>
   We therefore need to extend  <a href="https://www.w3.org/TR/rdf11-mt/#blank-nodes">RDF's classical semantic condition for blank nodes</a> and use a so-called 
-  assignment which maps variables to pairs of resources and term representations instead of a simply mapping from variables to resources:
+  assignment, which, instead of simply mapping variables to resources, maps variables to pairs of resources and term representations:
 </p>
 <p>Given a <a>basic interpretation</a> $I$ and a set of variables $V_1$. 
   We call a mapping $A$ from $V_1$ to $Δ_I\times T_G$ such that $A(v)=(A_1(v),A_2(v))$ and $I(A_2(v))=A_1(v)$ an <dfn>assignment</dfn> for $V_1$.
-</p>
-
-<p>Note that given an interpretation $I$ and two assignments $A$ for a set $V_1$ and $B$ for a set $V_2$ of variables, 
+  The mapping $A_2$ assigns variables to terms and will be used to determine the meaning of graph terms. 
+  We can consider both values $A_1$ and $A_2$ of an assignment $A(v)=(A_1(v), A_2(v))$ as separate mappings. 
+  Note that given an interpretation $I$ and two assignments $A$ for a set $V_1$, and $B$ for a set $V_2$ of variables, 
   the <a>combination</a> $A\bullet B$ is again an assignment for $V_1\cup V_2$.</p>
   <!----    </section>
 
       <section>
         <h2></h2>
       -->
-We can consider both values $A_1$ and $A_2$ of an assignment $A(v)=(A_1(v), A_2(v))$ as separate mappings. 
-The mapping $A_2$ assigns variables to terms and will be used to dertermine the meaning of graph terms. 
-We extend this kind of function to be applied on graphs:
-   
+
+        We extend this kind of function to be applied on graphs:
         <p>Let $G=(U,E,F)$ be a graph and $M$ be a mapping from $V$ into a set $S$.
           <!--and $N = M|_{FV(G)}$ the restriction of $M$ to the <a>free variables</a> of $G$.--></p>
 
