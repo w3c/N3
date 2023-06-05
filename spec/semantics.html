@@ -99,10 +99,10 @@
       </p>
       --> 
       In this section we define N3's abstract syntax. As N3's concrete concrete turtle-based syntax has proven 
-      to leave room for ambiguity - expecially implicit quantification
-      has been interpreted contradictively by different reasoners in the past - we deciced to introduce an abstract syntax in which aspects like quantification 
-      are stated explictely. If the semantics of implicit quantification will need to be changed by the working group for any reason, this change will thus not affect the 
-      semantics which is based on the abstract syntax but only the mapping from concrete to abstract syntax. 
+      to leave room for ambiguity - especially implicit quantification
+      has been interpreted contradictively by different reasoners in the past - we decided to introduce an abstract syntax in which aspects like quantification 
+      are stated explicitly. If the semantics of implicit quantification will need to be changed by the working group for any reason, this change will thus not affect the 
+      semantics, which is based on the abstract syntax, but only the mapping from concrete to abstract syntax. 
 
       <section class="informative">
         <h3>Motivation</h3>
@@ -207,14 +207,17 @@ To do so, we define:
 As we will see in the semantics section below, the sets $U$ and $E$ act like quantifiers with variables for the graph and its subgraphs.
 We therefore call these sets also <dfn class="lint-ignore" data-lt="quantification set">quantification sets</dfn>.
 
-<p >
+<p>
 To provide some intuition on the correspondence between concrete N3 syntax and abstract N3 syntax, we provide some examples below.
- In order to improve readability, we will omit the inner 
-graph brackets for all graph terms here and in the remainder of the document, that is, we will for example write 
-<div style="text-indent:20px;">$<\{\},\{x\},\{(x,\text{rdf:type}, \text{:Mortal} )\}>$</div>
-<div>instead of</div>
-<div style="text-indent:20px;">$<(\{\},\{x\},\{(x,\text{rdf:type}, \text{:Mortal} )\})>$.</div>
 We always write a graph in concrete N3 syntax followed by its counterpart in abstract N3 syntax.
+</p>
+<div class=note>
+  In order to improve readability, we will omit the inner 
+  graph brackets for all graph terms here and in the remainder of the document. That is, we will for example write 
+  <div style="text-indent:20px;"><small>$<\{\},\{x\},\{(x,\text{rdf:type}, \text{:Mortal} )\}>$</small></div>
+  <div>instead of</div>
+  <div style="text-indent:20px;"><small>$<(\{\},\{x\},\{(x,\text{rdf:type}, \text{:Mortal} )\})>$.</small></div>
+</div>
 <ol>
   <li> <code>:socrates :knows _:x.</code> 
     <br>becomes<br>
