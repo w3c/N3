@@ -98,7 +98,12 @@
         Should this be a normative section, or a reference to a normative section in the "main" spec?
       </p>
       --> 
-      In this section we define N3's abstract syntax. Implicit quantification is expressed explicitly and all literals are represented. 
+      In this section we define N3's abstract syntax. As N3's concrete concrete turtle-based syntax has proven 
+      to leave room for ambiguity - expecially implicit quantification
+      has been interpreted contradictively by different reasoners in the past - we deciced to introduce an abstract syntax in which aspects like quantification 
+      are stated explictely. If the semantics of implicit quantification will need to be changed by the working group for any reason, this change will thus not affect the 
+      semantics which is based on the abstract syntax but only the mapping from concrete to abstract syntax. 
+
       <section class="informative">
         <h3>Motivation</h3>
    <p>Notation3 supports implicit quantification. If blank nodes are used in triples, they stand for implicit existentially
@@ -204,32 +209,36 @@ We therefore call these sets also <dfn class="lint-ignore" data-lt="quantificati
 
 <p >
 To provide some intuition on the correspondence between concrete N3 syntax and abstract N3 syntax, we provide some examples below.
-We always provide a graph in concrete N3 syntax followed by its counterpart in abstract N3 syntax.
-
+ In order to improve readability, we will omit the inner 
+graph brackets for all graph terms here and in the remainder of the document, that is, we will for example write 
+<div style="text-indent:20px;">$<\{\},\{x\},\{(x,\text{rdf:type}, \text{:Mortal} )\}>$</div>
+<div>instead of</div>
+<div style="text-indent:20px;">$<(\{\},\{x\},\{(x,\text{rdf:type}, \text{:Mortal} )\})>$.</div>
+We always write a graph in concrete N3 syntax followed by its counterpart in abstract N3 syntax.
 <ol>
   <li> <code>:socrates :knows _:x.</code> 
     <br>becomes<br>
     <small>$(\{\},\{x\},\{(\text{:socrates}, \text{:knows}, x)\})$</small></li>
   <li> <code>{?x a :Human} => {?x a :Mortal}.</code> <br>becomes <br>
-     <small>$(\{x\},\{\},\{(<(\{\},\{\},\{(x, \text{rdf:type}, \text{:Human})\})>,
-    \text{log:implies}, <(\{\},\{\},\{(x, \text{rdf:type}, \text{:Mortal})\})>)\})$ </small>
+     <small>$(\{x\},\{\},\{(<\{\},\{\},\{(x, \text{rdf:type}, \text{:Human})\}>,
+    \text{log:implies}, <\{\},\{\},\{(x, \text{rdf:type}, \text{:Mortal})\})>\})$ </small>
   </li>
   <li id="example3"> <code>:socrates :says {_:x a :Mortal}.</code> 
     <br>becomes<br>
-    <small> $(\{\},\{\},\{(\text{:socrates}, \text{:says}, <(\{\},\{x\},\{(x,\text{rdf:type}, \text{:Mortal} )\})>) \})$</small>
+    <small> $(\{\},\{\},\{(\text{:socrates}, \text{:says}, <\{\},\{x\},\{(x,\text{rdf:type}, \text{:Mortal} )\}>) \})$</small>
   </li>
   <li> <code>:socrates :says {_:x a :Mortal}. _:y :knows :socrates.</code>
     <br>becomes<br>
-    <small> $(\{\},\{y\},\{(\text{:socrates}, \text{:says}, <(\{\},\{x\},\{(x,\text{rdf:type}, \text{:Mortal} )\})>), (y, \text{:knows}, \text{:socrates}) \})$</small>
+    <small> $(\{\},\{y\},\{(\text{:socrates}, \text{:says}, <\{\},\{x\},\{(x,\text{rdf:type}, \text{:Mortal} )\}>), (y, \text{:knows}, \text{:socrates}) \})$</small>
   </li>
   <li id="example"> <code>{?x a :Human} => {?x :hasMother _:y}.</code> 
       <br>becomes<br>
-      <small>$(\{x\},\{\},\{(<(\{\},\{\},\{(x, \text{rdf:type}, \text{:Human})\})>,
-    \text{log:implies}, <(\{\},\{y\},\{(x, \text{:hasMother}, y)\})>)\})$ </small>
+      <small>$(\{x\},\{\},\{(<\{\},\{\},\{(x, \text{rdf:type}, \text{:Human})\}>,
+    \text{log:implies}, <\{\},\{y\},\{(x, \text{:hasMother}, y)\}>)\})$ </small>
   </li>
   <li> <code>_:y :says {?x a :Mortal}.</code> 
       <br>becomes<br>
-      <small>$(\{x\},\{y\},\{(y, \text{:says}, <(\{\},\{\},\{(x, \text{rdf:type}, \text{:Mortal})\})>)$ </small>
+      <small>$(\{x\},\{y\},\{(y, \text{:says}, <\{\},\{\},\{(x, \text{rdf:type}, \text{:Mortal})\}>)$ </small>
   </li>
 </ol>
 We will re-use these examples in the following sections.
@@ -252,9 +261,9 @@ We will re-use these examples in the following sections.
         <div style="text-indent:20px;"><code>:socrates :says {_:x a :Mortal}.  </code> </div> 
         is interpreted 
         as 
-        <div style="text-indent:20px;"><small> $(\{\},\{x\},\{(\text{:socrates}, \text{:says}, <(\{\},\{\},\{(x,\text{rdf:type}, \text{:Mortal} )\})>) \})$</small></div> 
+        <div style="text-indent:20px;"><small> $(\{\},\{x\},\{(\text{:socrates}, \text{:says}, <\{\},\{\},\{(x,\text{rdf:type}, \text{:Mortal} )\}>) \})$</small></div> 
          and <b>not</b> as
-         <div style="text-indent:20px;"> <small> $(\{\},\{\},\{(\text{:socrates}, \text{:says}, <(\{\},\{x\},\{(x,\text{rdf:type}, \text{:Mortal} )\})>) \})$</small>. </div> 
+         <div style="text-indent:20px;"> <small> $(\{\},\{\},\{(\text{:socrates}, \text{:says}, <\{\},\{x\},\{(x,\text{rdf:type}, \text{:Mortal} )\}>) \})$</small>. </div> 
          A solution for that problem is currently being discussed. The difference, however, does not influence the formal semantics of the <i>abstract</i> syntax, as quantification is always explicit there.
        </div>
             </section>
@@ -305,13 +314,13 @@ we introduce the following concept:
             <li>
                 <code>:socrates :says {_:x a :Mortal}.</code>
                 <br>becomes<br>
-                <small> $(\{\},\{\},\{(\text{:socrates}, \text{:says}, <(\{\},\{x\},\{(x,\text{rdf:type}, \text{:Mortal} )\})>) \})$</small>
+                <small> $(\{\},\{\},\{(\text{:socrates}, \text{:says}, <\{\},\{x\},\{(x,\text{rdf:type}, \text{:Mortal} )\}>) \})$</small>
                 <ul>
                   <li><i>Direct constituents</i>:
-                    <small>$\text{:socrates}, \text{:says},  <(\{\},\{x\},\{(x,\text{rdf:type}, \text{:Mortal} )\})>$</small>.
+                    <small>$\text{:socrates}, \text{:says},  <\{\},\{x\},\{(x,\text{rdf:type}, \text{:Mortal} )\}>$</small>.
                   </li>
                   <li><i>Constituents</i>:
-                    <small>$\text{:socrates}, \text{:says}, <(\{\},\{x\},\{(x,\text{rdf:type}, \text{:Mortal} )\})>, x,\text{rdf:type}, \text{:Mortal}$</small>
+                    <small>$\text{:socrates}, \text{:says}, <\{\},\{x\},\{(x,\text{rdf:type}, \text{:Mortal} )\}>, x,\text{rdf:type}, \text{:Mortal}$</small>
                   </li>
                 </ul>
               </li>
@@ -333,7 +342,7 @@ With that definition, we now introduce <dfn data-lt="free">free variables</dfn>:
                 <li>$FV(x) = FV(x_1) ∪ … ∪ FV(x_n)$ if $x=(x_1 … x_n)$ is a list,</li>
                 <li>$FV(x) = FV(s) ∪ FV(p) ∪ FV(o)$ if $x=(s,p,o)$ is a <a>triple</a>,</li>
                 <li>$FV(x) = ⋃_{t ∈ x} FV(t)$ if $x$ is a set of <a>triples</a>,</li>
-                <li>$FV(x) = FV(F)\setminus(U ∪ E)$ if $x=<(U,E,F)>$ is a <a>graph term</a>.</li>
+                <li>$FV(x) = FV(F)\setminus(U ∪ E)$ if $x=<U,E,F>$ is a <a>graph term</a>.</li>
               </ul>
 
               The set $FV$ for a <a>graph</a> $G=(U,E,F)$ and a variable $v\in V\cap C(G)$:
@@ -348,7 +357,7 @@ Examples:
 <ol>
   <li> In <small> $(\{x\},\{y\},\{(x, \text{:knows}, y) \})$</small> all variables are scoped.
   <li> In <small> $(\{\},\{y\},\{(x, \text{:knows}, y) \})$</small> the variable $x$ is free while $y$ is scoped.
-  <li> In <small> $(\{\},\{\},\{(y, \text{:says}, <(\{\},\{x\},\{(x,\text{rdf:type}, \text{:Mortal} )\})>) \})$</small>, the variable
+  <li> In <small> $(\{\},\{\},\{(y, \text{:says}, <\{\},\{x\},\{(x,\text{rdf:type}, \text{:Mortal} )\}>) \})$</small>, the variable
     $x$ is scoped while the variable $y$ is free.
 <!--  <li> In <small> $(\{\},\{\},\{(\text{x}, \text{:says}, <(\{\},\{x\},\{(x,\text{rdf:type}, \text{:Mortal} )\})>) \})$</small> the
     $x$ is a free variable but it also occurs as a scoped variable in the quoted graph. -->
@@ -376,14 +385,14 @@ This enables us to introduce the notion of closed graphs and ground terms.
 <p class="note">
   An abstract N3 graph which is constructed from a graph in the direct N3 syntax cannot contain <a>free variables</a>. 
   However, when considering a specific <a>graph term</a> <i>in isolation</i>, 
-  all variables that are scoped outside that <a>graph term</a> will appear to be free in that graph term.
+  all variables that are quantified outside that <a>graph term</a> will appear to be free in that graph term.
   <br>
   For instance, given:<br>
-  &nbsp;&nbsp;&nbsp;&nbsp;`({x}, {}, {( :y, :says, <({},{},{(x, :knows, :bob)})>)})`<br>
+  &nbsp;&nbsp;&nbsp;&nbsp;`({x}, {}, {( :y, :says, <{},{},{(x, :knows, :bob)}>)})`<br>
   When considering the <a>graph term</a>'s graph in isolation:<br>
   &nbsp;&nbsp;&nbsp;&nbsp;`({},{},{(x, :knows, :bob)})`
   <br>
-  Variable `x` will be a free variable (as it was quantified was in the containing N3 graph).
+  Variable `x` will be a free variable (as it was quantified in the containing N3 graph).
 </p>
 
 <p>An abstract <a>graph</a> $G=(U,E,F)$ can also contain quantified variables $v\in U\cup E$ which do not occur in any <a>triple</a> of $F$. 
@@ -396,9 +405,9 @@ Examples:
 <ol>
   <li> <small> $(\{x,z\},\{y\},\{(x, \text{:knows}, y) \})^N=(\{x\},\{y\},\{(x, \text{:knows}, y) \})$</small>.
   <li> <small> $(\{x_1, x_2, x_3\},\{y_1, y_2, y_3\},\{(\text{:socrates}, \text{:knows}, \text{:platon}) \})^N=(\{\},\{\},\{(\text{:socrates}, \text{:knows}, \text{:platon}) \})$</small>.
-  <li> <small> $(\{x\},\{y\},\{(y, \text{:says}, <(\{\},\{x\},\{(x,\text{rdf:type}, \text{:Mortal} )\})>) \})^N=$
+  <li> <small> $(\{x\},\{y\},\{(y, \text{:says}, <\{\},\{x\},\{(x,\text{rdf:type}, \text{:Mortal} )\}>) \})^N=$
          <br>
-               $(\{\},\{y\},\{(y, \text{:says}, <(\{\},\{x\},\{(x,\text{rdf:type}, \text{:Mortal} )\})>) \})$</small>.
+               $(\{\},\{y\},\{(y, \text{:says}, <\{\},\{x\},\{(x,\text{rdf:type}, \text{:Mortal} )\}>) \})$</small>.
         <!--  <li> In <small> $(\{\},\{\},\{(\text{x}, \text{:says}, <(\{\},\{x\},\{(x,\text{rdf:type}, \text{:Mortal} )\})>) \})$</small> the
             $x$ is a free variable but it also occurs as a scoped variable in the quoted graph. -->
 </ol>
@@ -584,8 +593,8 @@ for RDF. In a second step, we introduce the N3-interpetation which assigns a spe
       two non-isomorphic graph terms cannot have the same meaning. For the abstract versions of the graph terms <code>{_:x :p :o}</code>, <code>{_:y :p :o}</code>
       and <code>{_:x :p :o. _:y :p :o}</code> we thus get:
       <ul>
-     <li> $Q_I($<code><({}, {y}, {(y, :p, :o)})></code>$)= Q_I($<code><({}, {x}, {(x, :p, :o)})></code>$)$
-      <li> $Q_I($<code><({}, {y}, {(y, :p, :o)})></code>$)\neq Q_I($<code><({}, {x, y}, {(x, :p, :o),(y, :p, :o) })></code>$)$
+     <li> $Q_I($<code><({}, {y}, {(y, :p, :o)})></code>$)= Q_I($<code><{}, {x}, {(x, :p, :o)}></code>$)$
+      <li> $Q_I($<code><({}, {y}, {(y, :p, :o)})></code>$)\neq Q_I($<code><{}, {x, y}, {(x, :p, :o),(y, :p, :o) }></code>$)$
     </ul>
 
       However, as we will see below, N3 provides mechanisms to <a>unquote</a>  graph terms (that is, to transform them into graphs) and to compare them based on the meaning of the formula they quote.
@@ -699,10 +708,10 @@ The total application replaces all free variables occurring directly or nested i
  As an example we consider the <a href="#example">rule 5 from the beginning of this document</a>, Let $M:\{x,y\}\rightarrow S$ be a mapping such that $M(x)=tom$ and $M(y)=mary$, then we get:
 
  <p>
-    $M^t($<small>$(\{\},\{\},\{(<(\{\},\{\},\{(x, \text{rdf:type}, \text{:Human})\})>,
-      \text{log:implies}, <(\{\},\{y\},\{(x, \text{:hasMother}, y)\})>)\})$ </small>$)$
-      <br>$=$<small>$(\{\},\{\},\{(<(\{\},\{\},\{(tom, \text{rdf:type}, \text{:Human})\})>,
-        \text{log:implies}, <(\{\},\{y\},\{(tom, \text{:hasMother}, y)\})>)\})$ </small>
+    $M^t($<small>$(\{\},\{\},\{(<\{\},\{\},\{(x, \text{rdf:type}, \text{:Human})\}>,
+      \text{log:implies}, <\{\},\{y\},\{(x, \text{:hasMother}, y)\}>)\})$ </small>$)$
+      <br>$=$<small>$(\{\},\{\},\{(<\{\},\{\},\{(tom, \text{rdf:type}, \text{:Human})\}>,
+        \text{log:implies}, <\{\},\{y\},\{(tom, \text{:hasMother}, y)\}>)\})$ </small>
       </p>
 In this example, we replace x by its value because it occurs freely in the graph while y does not get replaced since it is quantified in the nested graph.
 
@@ -764,19 +773,20 @@ The previous definition allows us to introduce the notion of basic entailment:
   <br>(in N3-turtle syntax: <code>:socrates :knows :platon.</code>)
   </li>
   <li>  
-     <small>$(\{x\},\{\},\{(<(\{\},\{\},\{(x, \text{rdf:type}, \text{:Human})\})>,
-    \text{log:implies}, <(\{\},\{\},\{(x, \text{rdf:type}, \text{:Mortal})\})>)\})$ </small>
+     <small>$(\{x\},\{\},\{(<\{\},\{\},\{(x, \text{rdf:type}, \text{:Human})\}>,
+    \text{log:implies}, <\{\},\{\},\{(x, \text{rdf:type}, \text{:Mortal})\}>)\})$ </small>
     <br>(in N3-turtle syntax: <code>{?x a :Human} => {?x a :Mortal}. </code>)
     <br> b-entails
     <br>
-    <small>$(\{\},\{\},\{(<(\{\},\{\},\{(\text{:socrates}, \text{rdf:type}, \text{:Human})\})>, \newline \qquad \text{log:implies}, <(\{\},\{\},\{(\text{:socrates}, \text{rdf:type}, \text{:Mortal})\})>)\})$ </small>
+    <small>$(\{\},\{\},\{(<\{\},\{\},\{(\text{:socrates}, \text{rdf:type}, \text{:Human})\}>, \newline \qquad \text{log:implies}, 
+      <\{\},\{\},\{(\text{:socrates}, \text{rdf:type}, \text{:Mortal})\}>)\})$ </small>
       <br> (in N3-turtle syntax: <code>{:socrates a :Human} => {:socrates a :Mortal}. </code>)
   </li>
   <li> 
-    <small> $(\{\},\{\},\{(\text{:socrates}, \text{:says}, <(\{\},\{\},\{(\text{:socrates},\text{rdf:type}, \text{:Mortal} )\})>) \})$</small>
+    <small> $(\{\},\{\},\{(\text{:socrates}, \text{:says}, <\{\},\{\},\{(\text{:socrates},\text{rdf:type}, \text{:Mortal} )\}>) \})$</small>
     <br>(in N3-turtle syntax)<code>:socrates :says {:socrates a :Mortal}.  </code>)
     <br>  b-entails
-    <br> <small> $(\{\},\{x\},\{(x, \text{:says}, <(\{\},\{\},\{(x,\text{rdf:type}, \text{:Mortal} )\})>) \})$</small>
+    <br> <small> $(\{\},\{x\},\{(x, \text{:says}, <\{\},\{\},\{(x,\text{rdf:type}, \text{:Mortal} )\}>) \})$</small>
     <br>(in N3-turtle syntax <code>@forSome :x. :x :says { :x a :Mortal}.  </code>)
   </li>
  </ul> 
@@ -784,20 +794,21 @@ The previous definition allows us to introduce the notion of basic entailment:
  Non-entailment:
  <ul>
   <li>  
-    <small>$(\{\},\{\},\{(\text{:socrates}, \text{rdf:type} \text{:Human}),(<(\{\},\{\},\{ (\text{:socrates}, \text{rdf:type}, \text{:Human})\})>, \newline \qquad \text{log:implies}, <(\{\},\{\},\{(\text{:socrates}, \text{rdf:type}, \text{:Mortal})\})>)\})$ </small>
+    <small>$(\{\},\{\},\{(\text{:socrates}, \text{rdf:type} \text{:Human}),(<\{\},\{\},\{ (\text{:socrates}, \text{rdf:type}, \text{:Human})\}>, \newline \qquad \text{log:implies},
+       <\{\},\{\},\{(\text{:socrates}, \text{rdf:type}, \text{:Mortal})\}>)\})$ </small>
       <br> (in N3-turtle syntax: <code>:socrates a :Human. {:socrates a :Human} => {:socrates a :Mortal}. </code>)
       <br> does <b>not</b> b-entail 
       <br>    <small>$(\{\},\{\},\{(\text{:socrates}, \text{rdf:type}, \text{:Mortal})\})>)\})$ </small>
       <br> (in N3-turtle syntax: <code>:socrates a :Mortal. </code>)
   </li>
   <li> 
-    <small> $(\{\},\{\},\{(\text{:socrates}, \text{:says}, <(\{\},\{\},\{(\text{:socrates},\text{rdf:type}, \text{:Mortal} )\})>) \})$</small>
+    <small> $(\{\},\{\},\{(\text{:socrates}, \text{:says}, <\{\},\{\},\{(\text{:socrates},\text{rdf:type}, \text{:Mortal} )\}>) \})$</small>
     <br>(in N3-turtle syntax <code>:socrates :says {:socrates a :Mortal}.  </code>)
     <br> does <b>not</b> b-entail 
-    <br> <small> $(\{\},\{\},\{(\text{:socrates}, \text{:says}, <(\{\},\{x\},\{(x,\text{rdf:type}, \text{:Mortal} )\})>) \})$</small>
+    <br> <small> $(\{\},\{\},\{(\text{:socrates}, \text{:says}, <\{\},\{x\},\{(x,\text{rdf:type}, \text{:Mortal} )\}>) \})$</small>
     <br>(in N3-turtle syntax <code>:socrates :says {_:x a :Mortal}.  </code>)
     <br> and it does also <b>not</b> b-entail 
-    <br> <small> $(\{\},\{x\},\{(x, \text{:says}, <(\{\},\{x\},\{(x,\text{rdf:type}, \text{:Mortal} )\})>) \})$</small>
+    <br> <small> $(\{\},\{x\},\{(x, \text{:says}, <\{\},\{x\},\{(x,\text{rdf:type}, \text{:Mortal} )\}>) \})$</small>
     <br>(in N3-turtle syntax: <code>_:x :says {_:x a :Mortal}.  </code>)
   </li>
  </ul>
@@ -958,16 +969,16 @@ The previous definition allows us to introduce the notion of basic entailment:
                 <br> (in N3-turtle syntax: <code>:socrates a :Mortal. </code>)
             </li>
             <li>  
-               <small>$(\{x\},\{\},\{(<(\{\},\{\},\{(x, \text{rdf:type}, \text{:Human})\})>,
-              \text{log:implies}, <(\{\},\{\},\{(x, \text{rdf:type}, \text{:Mortal})\})>)\})$ </small>
+               <small>$(\{x\},\{\},\{(<\{\},\{\},\{(x, \text{rdf:type}, \text{:Human})\}>,
+              \text{log:implies}, <\{\},\{\},\{(x, \text{rdf:type}, \text{:Mortal})\}>)\})$ </small>
               <br>(in N3-turtle syntax: <code>{?x a :Human} => {?x a :Mortal}. </code>)
               <br> log-entails
               <br>    <small>$(\{\},\{\},\{(\text{:socrates}, \text{rdf:type}, \text{:Mortal})\})>)\})$ </small>
               <br> (in N3-turtle syntax: <code>:socrates a :Mortal. </code>)
             </li>
             <li>  
-              <small>$(\{\},\{\},\{(<(\{\},\{x\},\{(x, \text{rdf:type}, \text{:Human})\})>,
-             \text{log:implies}, <(\{\},\{x\},\{(x, \text{rdf:type}, \text{:Mortal})\})>)\})$ </small>
+              <small>$(\{\},\{\},\{(<\{\},\{x\},\{(x, \text{rdf:type}, \text{:Human})\}>,
+             \text{log:implies}, <\{\},\{x\},\{(x, \text{rdf:type}, \text{:Mortal})\}>)\})$ </small>
              <br>(in N3-turtle syntax: <code>{_:x a :Human} => {_:x a :Mortal}. </code>)
              <br> log-entails
              <br>    <small>$(\{\},\{x\},\{(x, \text{rdf:type}, \text{:Mortal})\})>)\})$ </small>
@@ -975,9 +986,9 @@ The previous definition allows us to introduce the notion of basic entailment:
            </li>
             <li> 
               <small> $(\{x\},\{\},\{$
-                <div style="text-indent:20px;"> $(\text{:socrates}, \text{:says}, <(\{\},\{\},\{(\text{:socrates},\text{rdf:type}, \text{:Mortal} )\})>),$</div>
-                <div style="text-indent:20px;"> $(<(\{\},\{\},\{(x, \text{:says}, <(\{\},\{\},\{(x,\text{rdf:type}, \text{:Mortal})\})>)>,$</div>
-                  <div style="text-indent:40px;"> $\texttt{log:implies}, <(\{\},\{\},\{(x,\text{rdf:type}, \text{:WisePerson} )\})>)$
+                <div style="text-indent:20px;"> $(\text{:socrates}, \text{:says}, <\{\},\{\},\{(\text{:socrates},\text{rdf:type}, \text{:Mortal} )\}>),$</div>
+                <div style="text-indent:20px;"> $(<\{\},\{\},\{(x, \text{:says}, <\{\},\{\},\{(x,\text{rdf:type}, \text{:Mortal})\}>)\}>,$</div>
+                  <div style="text-indent:40px;"> $\texttt{log:implies}, <\{\},\{\},\{(x,\text{rdf:type}, \text{:WisePerson} )\}>)$
                     <div style="text-indent:20px;"> $\})$</div></small>
               (in N3-turtle syntax
               <br><code>:socrates :says {:socrates a :Mortal}. {?x :says {?x a :Mortal}}=>{?x a :WisePerson} </code>)
@@ -994,14 +1005,14 @@ The previous definition allows us to introduce the notion of basic entailment:
    <br>(in N3-turtle syntax: <code>:socrates a :Human. :socrates a :Mortal. </code>)
    <br>does <b>not</b> log-entail 
    <br>
-   <small>$(\{\},\{\},\{(<(\{\},\{\},\{(\text{:socrates}, \text{rdf:type}, \text{:Human})\})>, \newline \qquad \text{log:implies}, <(\{\},\{\},\{(\text{:socrates}, \text{rdf:type}, \text{:Mortal})\})>)\})$ </small>
+   <small>$(\{\},\{\},\{(<\{\},\{\},\{(\text{:socrates}, \text{rdf:type}, \text{:Human})\}>, \newline \qquad \text{log:implies}, <\{\},\{\},\{(\text{:socrates}, \text{rdf:type}, \text{:Mortal})\}>)\})$ </small>
      <br> (in N3-turtle syntax: <code>{:socrates a :Human} => {:socrates a :Mortal}. </code>)
  </li>
  <li> 
   <small> $(\{\},\{\},\{$
-    <div style="text-indent:20px;"> $(\text{:socrates}, \text{:says}, <(\{\},\{\},\{(\text{:socrates},\text{rdf:type}, \text{:Mortal} )\})>),$</div>
-    <div style="text-indent:20px;"> $(<(\{\},\{\},\{(\text{:socrates}, \text{:says}, <(\{\},\{x\},\{(x,\text{rdf:type}, \text{:Mortal})\})>)>,$</div>
-      <div style="text-indent:40px;"> $\texttt{log:implies}, <(\{\},\{\},\{(\text{:socrates},\text{rdf:type}, \text{:WisePerson} )\})>)$
+    <div style="text-indent:20px;"> $(\text{:socrates}, \text{:says}, <\{\},\{\},\{(\text{:socrates},\text{rdf:type}, \text{:Mortal} )\}>),$</div>
+    <div style="text-indent:20px;"> $(<\{\},\{\},\{(\text{:socrates}, \text{:says}, <\{\},\{x\},\{(x,\text{rdf:type}, \text{:Mortal})\}>)\}>,$</div>
+      <div style="text-indent:40px;"> $\texttt{log:implies}, <\{\},\{\},\{(\text{:socrates},\text{rdf:type}, \text{:WisePerson} )\}>)$
         <div style="text-indent:20px;"> $\})$</div></small>
   (in N3-turtle syntax:
   <code>:socrates :says {:socrates a :Mortal}.</code><br><code> {:socrates :says {_:x a :Mortal}}=>{:socrates a :WisePerson} </code>)
@@ -1011,9 +1022,9 @@ The previous definition allows us to introduce the notion of basic entailment:
 </li>
 <li> 
   <small> $(\{y\},\{\},\{$
-    <div style="text-indent:20px;"> $(\text{:socrates}, \text{:says}, <(\{\},\{x\},\{(x,\text{rdf:type}, \text{:Mortal} )\})>),$</div>
-    <div style="text-indent:20px;"> $(<(\{\},\{\},\{(\text{:socrates}, \text{:says}, <(\{\},\{\},\{(y,\text{rdf:type}, \text{:Mortal})\})>)>,$</div>
-      <div style="text-indent:40px;"> $\texttt{log:implies}, <(\{\},\{\},\{(\text{:socrates},\text{rdf:type}, \text{:WisePerson} )\})>)$
+    <div style="text-indent:20px;"> $(\text{:socrates}, \text{:says}, <\{\},\{x\},\{(x,\text{rdf:type}, \text{:Mortal} )\}>),$</div>
+    <div style="text-indent:20px;"> $(<\{\},\{\},\{(\text{:socrates}, \text{:says}, <\{\},\{\},\{(y,\text{rdf:type}, \text{:Mortal})\}>)\}>,$</div>
+      <div style="text-indent:40px;"> $\texttt{log:implies}, <\{\},\{\},\{(\text{:socrates},\text{rdf:type}, \text{:WisePerson} )\}>)$
         <div style="text-indent:20px;"> $\})$</div></small>
   (in N3-turtle syntax:
   <code>:socrates :says {_:x a :Mortal}.</code><br><code> {:socrates :says {?y a :Mortal}}=>{:socrates a :WisePerson} </code>)
@@ -1029,21 +1040,21 @@ The previous definition allows us to introduce the notion of basic entailment:
 </section>
         <section> <h3>Unquoting</h3>
          <p> A special form of entailment enabled by our semantics is the so-called <dfn data-lt="unquote">unquoting</dfn>. By that, we mean the 
-          entailment which enables us to make an triple term true. In order to illustrate the idea, we give an example. </p>
+          entailment which enables us to make the graph conatined in an graph term true. In order to illustrate the idea, we give an example. </p>
           
         <p>Let's assume that simon says that birds can fly. In abstract N3, we can express that as:</p>
 
-          <div style="text-indent:20px;">  $(\{\},\{\},\{(\text{:simon}, \text{:says}, <(\{\},\{\},\{(\text{:birds},\text{:can}, \text{:fly} )\})>) \})$</div>
+          <div style="text-indent:20px;">  $(\{\},\{\},\{(\text{:simon}, \text{:says}, <\{\},\{\},\{(\text{:birds},\text{:can}, \text{:fly} )\}>) \})$</div>
             <div style="text-indent:30px;">(in N3-turtle syntax <code>:simon :says {:birds :can :fly}.  </code>) </div>
       <p>In N3 we can write a rule stating that everything Simon says is true. We do that as follows:</p>
 
-      <div style="text-indent:20px;">$(\{x\},\{\},\{(<(\{\},\{\},\{(\text{:simon}, \text{:says}, x), \text{log:implies}, x\})$</div>
+      <div style="text-indent:20px;">$(\{x\},\{\},\{(<\{\},\{\},\{(\text{:simon}, \text{:says}, x)\}>, \text{log:implies}, x\})$</div>
       <div style="text-indent:30px;">(in N3-turtle syntax: <code>{:simon :says ?x}=>?x </code>)</div>
       
       <p>
       From this last rule we can derive via <a>b-entailment</a>: </p>
-      <div style="text-indent:20px;">$(\{\},\{\},\{(<(\{\},\{\},\{(\text{:simon}, \text{:says}, <(\{\},\{\},\{(\text{:birds},\text{:can}, \text{:fly} )\})>),$</div>
-        <div style="text-indent:70px;">$\text{log:implies}, <(\{\},\{\},\{(\text{:birds},\text{:can}, \text{:fly} )\})>\})$</div>
+      <div style="text-indent:20px;">$(\{\},\{\},\{(<\{\},\{\},\{(\text{:simon}, \text{:says}, <\{\},\{\},\{(\text{:birds},\text{:can}, \text{:fly} )\}>)\}>,$</div>
+        <div style="text-indent:70px;">$\text{log:implies}, <\{\},\{\},\{(\text{:birds},\text{:can}, \text{:fly} )\}>\})$</div>
       <div style="text-indent:30px;">(in N3-turtle syntax: <code>{:simon :says {:birds :can :fly}}=>{:bird :can :fly}. </code>)</div>
      
       <p>Via <a>log-entailment</a> we get:</p>
