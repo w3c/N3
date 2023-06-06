@@ -653,36 +653,36 @@ for RDF. In a second step, we introduce the N3-interpetation which assigns a spe
         <p>
         <code>({x}, {}, {(x, :says,</code> &lt; <code>{}, {},  {(x, :is, :wise)}>})</code>.
         </p>
-This formula is interesting because the universally quantified variable appears once as a <a>direct constituent</a> in the triple and once as only a <a>constituent</a>. The <a href="#ground-graphs">semantics for ground graphs</a> 
-maps direct constituents to not further specified domain elements, while ground graph terms are mapped to an isomorphic version of themselves. If we replace 
-the variable $x$ by, for example <code>:bob</code>, we get:
+This formula is interesting because the universally quantified variable appears once as a <a>direct constituent</a> in the triple and once as only a <a>constituent</a>. 
+If we replace the variable $x$ by, for example <code>:bob</code>, we get:
 <p>
-   <code>({}, {}, {(:bob, :says,</code> &lt; <code>{}, {},  {(:bob, :is, :wise)}.</code>&gt;<code>)})</code>
+   <code>({}, {}, {(:bob, :says,</code> &lt; <code>{}, {},  {(:bob, :is, :wise)}</code>&gt;<code>)})</code>
  </p>
-With  the  interpretation:
-<p>
+<p>The <a href="#ground-graphs">semantics for ground graphs</a> 
+  maps direct constituents to domain elements, while <a>ground</a> <a>graph terms</a> are mapped to an isomorphic version of themselves. 
+The interpretation of the above example $I($<code>({}, {}, {(:bob, :says,</code> &lt; <code>{}, {},  {(:bob, :is, :wise)}>)})</code>$)$
+<!--<p>
   <ul style="list-style-type: none">
 <li>$I($<code>({}, {}, {(:bob, :says,</code> &lt; <code>{}, {},  {(:bob, :is, :wise)}.>)})</code>$)$</li>
 <li>$=I($<code>(:bob, :says,</code> &lt; <code>{}, {},  {(:bob, :is, :wise)}.>)</code>$)$</li>
-</ul>
-This interpretation is true if $(D_I($<code>:bob</code>$), D_I($<code>:says</code>$),Q_I($&lt; <code>{}, {},  {(:bob, :is, :wise)}.></code>$)\in EXT_I$. 
+</ul>-->
+will be true if $(D_I($<code>:bob</code>$), D_I($<code>:says</code>$), Q_I($&lt; <code>{}, {},  {(:bob, :is, :wise)}></code>$)\in EXT_I$. 
 </p>
 
 <p>
-  We note that the mapping $D_I$ maps the URI <code>:bob</code> directly to a resource of $Δ_I$. 
-  However, $Q_I$ operates on the syntactic representation of <a>graph terms</a>: it maps graph terms to an isomorphic copy,
-  with <a href="#isomorphisms">isomorphism</a> being defined on a syntactic level.
-
-  If we now revert back to our original example with variables, the first variable occurrence should thus be mapped to $Δ_I$, 
-  but its second occurrence to its syntactic term representation $T_G$.
+  If we revert back to our original example with variables, $Q_I$ will similarly have to map the <a>graph term</a> <code>&lt;{}, {},  {(x, :is, :wise)&gt;}</code>
+  to an isomorphic copy. However, the <a>graph term</a> is no longer <a>ground</a>, since its graph is no longer <a>closed</a>
+  (`x` is quantified outside of the graph). In our <a>basic interpretation</a>, the mapping $Q_I$ is only defined for <a>ground</a> <a>graph terms</a>.
+  We thus need to first ground these kinds of <i>leaked variables</i>, 
+  i.e., variables that become free when considering the graph term in isolation (as is required when determining isomorphisms).
 </p>
 <p>
-  We therefore need to extend  <a href="https://www.w3.org/TR/rdf11-mt/#blank-nodes">RDF's classical semantic condition for blank nodes</a> and use a so-called 
+  We need to extend  <a href="https://www.w3.org/TR/rdf11-mt/#blank-nodes">RDF's classical semantic condition for blank nodes</a> and use a so-called 
   assignment, which, instead of simply mapping variables to resources, maps variables to pairs of resources and term representations:
 </p>
 <p>Given a <a>basic interpretation</a> $I$ and a set of variables $V_1$. 
   We call a mapping $A$ from $V_1$ to $Δ_I\times T_G$ such that $A(v)=(A_1(v),A_2(v))$ and $I(A_2(v))=A_1(v)$ an <dfn>assignment</dfn> for $V_1$.
-  The mapping $A_2$ assigns variables to terms and will be used to determine the meaning of graph terms. 
+  The mapping $A_2$ assigns variables to terms, and will be used to <i>ground free variables within graph terms</i>. 
   We can consider both values $A_1$ and $A_2$ of an assignment $A(v)=(A_1(v), A_2(v))$ as separate mappings. 
   Note that given an interpretation $I$ and two assignments $A$ for a set $V_1$, and $B$ for a set $V_2$ of variables, 
   the <a>combination</a> $A\bullet B$ is again an assignment for $V_1\cup V_2$.</p>
@@ -692,11 +692,11 @@ This interpretation is true if $(D_I($<code>:bob</code>$), D_I($<code>:says</cod
         <h2></h2>
       -->
 
-        We extend this kind of function to be applied on graphs:
-        <p>Let $G=(U,E,F)$ be a graph and $M$ be a mapping from $V$ into a set $S$.
-          <!--and $N = M|_{FV(G)}$ the restriction of $M$ to the <a>free variables</a> of $G$.--></p>
+      In order to apply such mappings on graphs, we introduce the notion of a total application.
+        <p>Let $G=(U,E,F)$ be a graph and $M$ be a type of mapping (such as $A_1$ or $A_2$) from a set of variables $V$ into a set $S$. 
+          <!--and $N = M|_{FV(G)}$ the restriction of $M$ to the <a>free variables</a> of $G$.-->
 
-        <p>A <dfn class="lint-ignore">total application</dfn> $M^t(G)$ of $M$ is defined as follows:</p>
+        A <dfn class="lint-ignore">total application</dfn> $M^t(G)$ of $M$ is defined as follows:</p>
 
         <p>$M^t(G) = (U, E, \{ (M^t(s), M^t(p), M^t(o)) | \; (s, p, o) \in F \})$ such that:</p>
 
@@ -711,40 +711,49 @@ This interpretation is true if $(D_I($<code>:bob</code>$), D_I($<code>:says</cod
  <!--    <section>
         <h2></h2>
 --> 
-The total application replaces all free variables occurring directly or nested in a graph by the function value. 
- As an example we consider the <a href="#example">rule 5 from the beginning of this document</a>, Let $M:\{x,y\}\rightarrow S$ be a mapping such that $M(x)=tom$ and $M(y)=mary$, then we get:
+The total application replaces all free variables occurring directly or nested in a graph by the value of function $M$. 
+As an example, consider the example below, and let $M:\{x,y\}\rightarrow S$ be a mapping such that $M(x)=tom$ and $M(y)=mary$, then we get:
 
  <p>
-    $M^t($<small>$(\{\},\{\},\{(<\{\},\{\},\{(x, \text{rdf:type}, \text{:Human})\}>,
-      \text{log:implies}, <\{\},\{y\},\{(x, \text{:hasMother}, y)\}>)\})$ </small>$)$
-      <br>$=$<small>$(\{\},\{\},\{(<\{\},\{\},\{(tom, \text{rdf:type}, \text{:Human})\}>,
-        \text{log:implies}, <\{\},\{y\},\{(tom, \text{:hasMother}, y)\}>)\})$ </small>
-      </p>
-In this example, we replace x by its value because it occurs freely in the graph while y does not get replaced since it is quantified in the nested graph.
+    $M^t($<small>$<\{\},\{y\},\{(x, \text{:hasMother}, y)\}>$</small>$)$
+    $=$<small>$<\{\},\{y\},\{(tom, \text{:hasMother}, y)\}>)$ </small>
+</p>
+Variable `x` is replaced by $M(x)$ as it is a <a>free variable</a>, while `y` does not get replaced since it is <a>scoped</a> (i.e., quantified in the nested graph).
+This results in a <a>ground</a> <a>graph term</a>, which can be mapped by $Q_I$.
 
 <p>
 The definition of total applications enables us to define <dfn class="lint-ignore">interpretations with assignment</dfn>:
 
-        <p>For a <a>closed graph</a> $G=(U,E,F)$, a <a>basic interpretation</a> $I$ and an <a>assignment</a> $A$ on the set of variables $U\cup E$ of $G$.</p>
-
-        <p>We define $I[A](x)$ as</p>
+<p>For a <a>closed graph</a> $G=(U,E,F)$, a <a>basic interpretation</a> $I$ and an <a>assignment</a> $A$ on the set of variables $U\cup E$,
+we define $I[A](x)$ as:</p>
 
         <ul>
           <li> $A_1(x)$ if $x ∈ dom(A)$ and $x$ is a <a>direct constituent</a> of $G$,
           <li> $(I[A](l_1) \ldots I[A](l_n))$ if $x=(l_1 \ldots l_n)$ is a <a>list</a>,
-          <li> $Q_I(A_2^t(x))$ if $x$ is a <a>graph term</a>,
+          <li> $Q_I(A_2^t(x))$ if $x$ is a <a>graph term</a>, where $A_2^t$ represents the <a>total application</a> of $A_2$,
           <li> $I(x)$ otherwise.
         </ul>
 
-        <p>For a closed graph $G=(U, E, F)$ and a basic interptetation $I$, we say $I(G)=\textit{true}$ or  interpretation $I$ <dfn data-lt="satisfy|satisfies">satifies</dfn> $G$,  if for all assignments $A$ for $U$ there exist an assignment $B$ for $E$ such 
+        <p>For a closed graph $G=(U, E, F)$ and a basic interpretation $I$, we say $I(G)=\textit{true}$ or interpretation $I$ <dfn data-lt="satisfy|satisfies">satifies</dfn> $G$,
+          if for all assignments $A$ for $U$ there exist an assignment $B$ for $E$ such 
           that $I[A\bullet B](F)=\textit{true}$. We also write that as $I\models G$.</p>
       </p>
         <p class="note">Note that the interpretation of a variable $x$ depends on its position in a graph. 
           In the expression $(∅, ∅,\{(x, p, &lt;(∅, ∅, \{(x, q, r)\})&gt;\})$, 
           the first  $x$ is interpreted as $A_1(x)$ while the second is interpreted as $A_2(x)$. The connection between these two values is established by the condition that 
         $I(A_2(v))=A_1(v)$.</p>
-      
-
+        <p>
+          For instance, given our prior example:
+        </p>
+        <p>
+          $I($<code>{}, {}, {(x :says &lt; {}, {}, {( x :is :wise )} &gt;)})</code>
+        </p>
+        <p>
+        Will be true if for all assignments $A(v)=(A1​(v),A2​(v))$, the following is true:
+        </p>
+        <p>
+        $I($<code>{}, {}, {(</code>$A_1(x)$ <code>:says &lt;{ {}, {}, { </code>$A_2(x)$ <code>:is :wise } }&gt;)})</code>
+        </p>
    
        For <dfn class="lint-ignore">assignments and free variables</dfn> we define:
         <p>Let $G=(U,E,F)$ be a <a>graph</a>. We say that $G$ is true under the <a>interpretation</a> $I$ and the <a>assignment</a> $A$ if $I[A]\models G$. That is, for each assignment $A^1$ for the variables in $U$ there exists an assignment $B^1$ for the variables in $E$ such that $I[A\bullet A^1\bullet B^1](F)=true$.</p>
