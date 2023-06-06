@@ -754,13 +754,10 @@ we define $I[A](x)$ as:</p>
         <p>
         $I($<code>{}, {}, {(</code>$A_1(x)$ <code>:says &lt;{ {}, {}, { </code>$A_2(x)$ <code>:is :wise } }&gt;)})</code>
         </p>
-   
-       For <dfn class="lint-ignore">assignments and free variables</dfn> we define:
+        
+      To also cover any variables occurring freely in the overall graph as universally quantified, we define:
         <p>Let $G=(U,E,F)$ be a <a>graph</a>. We say that $G$ is true under the <a>interpretation</a> $I$ and the <a>assignment</a> $A$ if $I[A]\models G$. That is, for each assignment $A^1$ for the variables in $U$ there exists an assignment $B^1$ for the variables in $E$ such that $I[A\bullet A^1\bullet B^1](F)=true$.</p>
-  
-      <p>
-        This last definition handles all variables occurring freely in a graph as universally quantified.
-      </p>
+
       </section>
       <section>
         <h2>Basic entailment</h2>
