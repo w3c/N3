@@ -670,8 +670,13 @@ will be true if $(D_I($<code>:bob</code>$), D_I($<code>:says</code>$), Q_I($&lt;
 </p>
 
 <p>
-  If we revert back to our original example with variables, $Q_I$ will similarly have to map the <a>graph term</a> <code>&lt;{}, {},  {(x, :is, :wise)&gt;}</code>
-  to an isomorphic copy. However, the <a>graph term</a> is no longer <a>ground</a>, since its graph is no longer <a>closed</a>
+  If we revert back to our original example with variables, 
+  a regular <i>valuation function</i> will simply replace both occurrences of variable `x` with a domain element $\delta_i$ from $\Delta_I$.
+  In that case, $Q_I$ will have to map the <a>graph term</a> <code>&lt;{}, {},  {(</code>$\delta_i$<code>, :is, :wise)&gt;}</code>
+  to an isomorphic copy. However, <a href="isomorphisms">isomorphism</a> is only defined for concrete N3 <a>terms</a>, and not domain elements.
+  <!-- unless those domain elements are also language terms ... -->
+  If <i>not</i> applying the valuation function to the graph term, $Q_I$ will have to map the <a>graph term</a> <code>&lt;{}, {},  {(x, :is, :wise)&gt;}</code>,
+  which is however no longer <a>ground</a> as its graph is no longer <a>closed</a>
   (`x` is quantified outside of the graph). In our <a>basic interpretation</a>, the mapping $Q_I$ is only defined for <a>ground</a> <a>graph terms</a>.
   We thus need to first ground these kinds of <i>leaked variables</i>, 
   i.e., variables that become free when considering the graph term in isolation (as is required when determining isomorphisms).
@@ -764,8 +769,7 @@ we define $I[A](x)$ as:</p>
 The previous definition allows us to introduce the notion of basic entailment:
       
         <p>Let $G$ and $H$ be two graphs, we say that $G$ <dfn data-lt="entailment|b-entailment|basic entailment">b-entails</dfn> $H$, noted $G ⊨ H$,
-        if and only if  every interpretation $I$ that satisfies $G$ ($I ⊨ G$) also satisfies $H$ ($I ⊨ H$).</p>
-
+        if and only if  every interpretation $I$ that satisfies $G$ $(I ⊨ G)$ also satisfies $H$ $(I ⊨ H)$.</p>
 
         In order to illustrate the properties of <a>basic entailment</a>, we give a few examples:
  <br>
