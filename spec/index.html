@@ -3,7 +3,7 @@
 
 <head>
   <meta charset='utf-8'>
-  <title>Notation3</title>
+  <title>Notation3 Language</title>
   <!-- <script async class='remove' src='respec-w3c.js'></script> -->
   <script src="https://www.w3.org/Tools/respec/respec-w3c" class="remove" defer></script>
 
@@ -15,7 +15,7 @@
           name: "William Van Woensel",
           company: "University of Ottawa",
           companyURL: "https://www.uottawa.ca/",
-          mailto: "wvanwoen@uottawa.ca"
+          mailto: "william.van.woensel@gmail.com"
         },
         {
           name: "Dörthe Arndt",
@@ -24,12 +24,12 @@
           mailto: "doerthe.arndt@tu-dresden.de"
         },
         {
-          "name": "Pierre-Antoine Champin",
-          "url": "http://champin.net/",
-          "company": "ERCIM",
-          "companyURL": "https://www.ercim.eu/",
-          "orcid": "0000-0001-7046-4474",
-          "w3cid": 42931,
+          name: "Pierre-Antoine Champin",
+          url: "http://champin.net/",
+          company: "ERCIM",
+          companyURL: "https://www.ercim.eu/",
+          orcid: "0000-0001-7046-4474",
+          w3cid: 42931,
         },
         {
           name: "Dominik Tomaszuk",
@@ -45,21 +45,21 @@
       ],
       authors: [
         {
-          name: "Jos De Roo"
+          name: "Jos De Roo ()"
         },
         {
-          name: "Patrick Hochstenbach"
+          name: "Patrick Hochstenbach ()"
         }
       ],
       otherLinks: [
         {
           key: "Acknowledgements:",
           data: [ 
-            { value: "Hans Cools", href: "http://example.org" },
-            { value: "Tim Duval", href: "http://example.org" },
-            { value: "Jindrich Kolman", href: "http://example.org" },
-            { value: "Andy Seaborne", href: "http://example.org" },
-            { value: "Henry Story", href: "http://example.org" },
+            { value: "Hans Cools (In Memoriam)", href: "http://example.org" },
+            { value: "Tim Duval (UnifyLogic, Corp.)", href: "UnifyLogic.ai" },
+            { value: "Jindrich Kolman ()", href: "http://example.org" },
+            { value: "Andy Seaborne (Apache Software Foundation)", href: "http://example.org" },
+            { value: "Henry Story ()", href: "http://example.org" },
           ]
         }
       ],
@@ -196,7 +196,26 @@
       language which is a superset of <abbr title="Resource Description Framework">RDF</abbr>.
     </p>
   </section>
-  <section id='sotd'>
+  <section id="sotd" class="override">
+    <h2>Status of this document</h2>
+    This document is one of 3 documents produced by the <a href="https://www.w3.org/community/n3-dev/">W3C N3 Community Group</a>:
+    <ol>
+      <li><a href="https://w3c.github.io/N3/spec/">Notation3 Language</a> (this document)</li>
+      <li><a href="https://w3c-cg.github.io/n3Builtins/">Notation3 Builtin Functions</a></li>
+      <li><a href="https://w3c.github.io/N3/spec/semantics.html">Notation3 Semantics</a></li>
+    </ol>
+    <p>This specification was published by the
+      <a href="https://www.w3.org/groups/cg/n3-dev">Notation 3 (<abbr title="Notation3">N3</abbr>) Community Group</a>. It is not a W3C Standard nor is it on the W3C Standards Track.
+      Please note that under the
+      <a href="https://www.w3.org/community/about/agreements/cla/">W3C Community Contributor License Agreement (CLA)</a>
+      there is a limited opt-out and other conditions apply.
+      Learn more about
+      <a href="https://www.w3.org/community/">W3C Community and Business Groups</a>.
+    </p>
+    <p>
+      <a href="https://github.com/w3c/N3/issues/">GitHub Issues</a> are preferred for discussion of this specification. Alternatively, you can send comments to our mailing list.
+      Please send them to <a href="mailto:public-n3-dev@w3.org">public-n3-dev@w3.org</a> (<a href="mailto:public-n3-dev-request@w3.org?subject=subscribe">subscribe</a>, <a href="https://lists.w3.org/Archives/Public/public-n3-dev/">archives</a>).
+    </p>
   </section>
   <!--
       How to edit this HTML?
@@ -2283,10 +2302,6 @@ _:x :certainty 0.8 . -->
       </li>
     </ul>
     <p class="ednote">There are more accumulated changes to account for, to be sure.</p>
-  </section>
-  <section id='aknowledgements' class="appendix informative">
-    <h2>Acknowledgements</h2>
-    <p>The editors acknowledge valuable contributions from...</p>
   </section>
 </body>
 
