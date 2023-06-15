@@ -591,12 +591,7 @@ for RDF. In a second step, we introduce the N3-interpetation which assigns a spe
     </p>
      
     <p>
-      The basic interpretation maps <a>graph terms</a> to an <a>isomorphic</a> copy of themselves. 
-      As a consequence, two isomorphic graph terms will have the same meaning, as they will be mapped to the same isomorphic copy.
-      This is the same way that two terms $\in R \cup L$ have the same meaning, if they are mapped to the same domain resource $\Delta_I$.
-    </p>
-    <p>
-      As a consequence, two non-isomorphic graph terms cannot have the same meaning. For the abstract versions of the graph terms <code>{_:x :p :o}</code>, <code>{_:y :p :o}</code>
+      The basic interpretation maps graph terms to an isomorphic copy of themselves. As a consequence, two non-isomorphic graph terms cannot have the same meaning. For the abstract versions of the graph terms <code>{_:x :p :o}</code>, <code>{_:y :p :o}</code>
       and <code>{_:x :p :o. _:y :p :o}</code> we thus get:
       <ul>
      <li> $Q_I($<code><({}, {y}, {(y, :p, :o)})></code>$)= Q_I($<code><{}, {x}, {(x, :p, :o)}></code>$)$
@@ -659,7 +654,7 @@ If we replace the variable $x$ by, for example <code>:bob</code>, we get:
    <code>({}, {}, {(:bob, :says,</code> &lt; <code>{}, {},  {(:bob, :is, :wise)}</code>&gt;<code>)})</code>
  </p>
 <p>The <a href="#ground-graphs">semantics for ground graphs</a> 
-  maps direct constituents to domain elements, while <a>ground</a> <a>graph terms</a> are mapped to an isomorphic version of themselves. 
+  maps URIs to not further specified domain elements, while ground graph terms are mapped to an isomorphic version of themselves. 
 The interpretation of the above example $I($<code>({}, {}, {(:bob, :says,</code> &lt; <code>{}, {},  {(:bob, :is, :wise)}>)})</code>$)$
 <!--<p>
   <ul style="list-style-type: none">
@@ -673,7 +668,7 @@ will be true if $(D_I($<code>:bob</code>$), D_I($<code>:says</code>$), Q_I($&lt;
   If we revert back to our original example with variables, 
   a regular <i>valuation function</i> will simply replace both occurrences of variable `x` with a domain element $\delta_i$ from $\Delta_I$.
   In that case, $Q_I$ will have to map the <a>graph term</a> <code>&lt;{}, {},  {(</code>$\delta_i$<code>, :is, :wise)&gt;}</code>
-  to an isomorphic copy. However, <a href="isomorphisms">isomorphism</a> is only defined for concrete N3 <a>terms</a>, and not domain elements.
+  to an isomorphic copy. However, the <a href="isomorphisms">isomorphism</a> is only defined for concrete N3 <a>terms</a>, and not domain elements.
   <!-- unless those domain elements are also language terms ... -->
   If <i>not</i> applying the valuation function to the graph term, $Q_I$ will have to map the <a>graph term</a> <code>&lt;{}, {},  {(x, :is, :wise)&gt;}</code>,
   which is however no longer <a>ground</a> as its graph is no longer <a>closed</a>
@@ -687,8 +682,8 @@ will be true if $(D_I($<code>:bob</code>$), D_I($<code>:says</code>$), Q_I($&lt;
 </p>
 <p>Given a <a>basic interpretation</a> $I$ and a set of variables $V_1$. 
   We call a mapping $A$ from $V_1$ to $Δ_I\times T_G$ such that $A(v)=(A_1(v),A_2(v))$ and $I(A_2(v))=A_1(v)$ an <dfn>assignment</dfn> for $V_1$.
-  The mapping $A_2$ assigns variables to terms, and will be used to <i>ground free variables within graph terms</i>. 
   We can consider both values $A_1$ and $A_2$ of an assignment $A(v)=(A_1(v), A_2(v))$ as separate mappings. 
+  The mapping $A_2$ assigns variables to terms, and will be used to <i>ground free variables within graph terms</i>. 
   Note that given an interpretation $I$ and two assignments $A$ for a set $V_1$, and $B$ for a set $V_2$ of variables, 
   the <a>combination</a> $A\bullet B$ is again an assignment for $V_1\cup V_2$.</p>
   <!----    </section>
@@ -697,8 +692,8 @@ will be true if $(D_I($<code>:bob</code>$), D_I($<code>:says</code>$), Q_I($&lt;
         <h2></h2>
       -->
 
-      In order to apply such mappings on graphs, we introduce the notion of a total application.
-        <p>Let $G=(U,E,F)$ be a graph and $M$ be a type of mapping (such as $A_1$ or $A_2$) from a set of variables $V$ into a set $S$. 
+      In order to apply mapping $A_2$ on graphs, we introduce the notion of total application.
+        <p>Let $G=(U,E,F)$ be a graph and $M$ be a mapping from a set of variables $V$ into a set $S$. 
           <!--and $N = M|_{FV(G)}$ the restriction of $M$ to the <a>free variables</a> of $G$.-->
 
         A <dfn class="lint-ignore">total application</dfn> $M^t(G)$ of $M$ is defined as follows:</p>
@@ -740,29 +735,31 @@ we define $I[A](x)$ as:</p>
         </ul>
 
         <p>For a closed graph $G=(U, E, F)$ and a basic interpretation $I$, we say $I(G)=\textit{true}$ or interpretation $I$ <dfn data-lt="satisfy|satisfies">satifies</dfn> $G$,
-          if for all assignments $A$ for $U$ (universal variables) there exist an assignment $B$ for $E$ (existential variable) such 
+          if for all assignments $A$ for $U$ (universal variables) there exist an assignment $B$ for $E$ (existential variables) such 
           that $I[A\bullet B](F)=\textit{true}$. We also write that as $I\models G$.</p>
       </p>
         <p class="note">Note that the interpretation of a variable $x$ depends on its position in a graph. 
-          In the expression $(∅, ∅,\{(x, p, &lt;(∅, ∅, \{(x, q, r)\})&gt;\})$, 
+          In the expression $(∅, ∅,\{(x, p, &lt;∅, ∅, \{(x, q, r)\}&gt;)\})$, 
           the first  $x$ is interpreted as $A_1(x)$ while the second is interpreted as $A_2(x)$. The connection between these two values is established by the condition that 
         $I(A_2(v))=A_1(v)$.</p>
         <p>
-          For instance, given our prior example:
+          For instance:
         </p>
         <p>
-          $I($<code>{}, {}, {(x :says &lt; {}, {}, {( x :is :wise )} &gt;)})</code>
+          $I($<code>{x}, {}, {(x, :says, &lt; {}, {}, {( x, :is, :wise )} &gt;)})</code>
         </p>
         <p>
-        Will be true if for all assignments $A(v)=(A1​(v),A2​(v))$, the following is true:
+        Will be true if for all assignments $A:\{x\}\rightarrow Δ_I\times T_G$, the following is true:
         </p>
         <p>
-        $I($<code>{}, {}, {(</code>$A_1(x)$ <code>:says &lt;{ {}, {}, { </code>$A_2(x)$ <code>:is :wise } }&gt;)})</code>
+        $I($<code>{(</code>$A_1(x)$, <code>:says, &lt; {}, {}, { (</code>$A_2(x)$, <code>:is, :wise) } &gt;)</code>
         </p>
         
-      To also cover any variables occurring freely in the overall graph as universally quantified, we define:
+        For <dfn class="lint-ignore">assignments and free variables</dfn> we define:
         <p>Let $G=(U,E,F)$ be a <a>graph</a>. We say that $G$ is true under the <a>interpretation</a> $I$ and the <a>assignment</a> $A$ if $I[A]\models G$. That is, for each assignment $A^1$ for the variables in $U$ there exists an assignment $B^1$ for the variables in $E$ such that $I[A\bullet A^1\bullet B^1](F)=true$.</p>
-
+        <p>
+          This last definition handles all variables occurring freely in a graph as universally quantified.
+        </p>
       </section>
       <section>
         <h2>Basic entailment</h2>
