@@ -407,6 +407,7 @@ This enables us to introduce the notion of closed graphs and ground terms.
 Examples:
 <ol>
   <li> <small> $(\{x,z\},\{y\},\{(x, \text{:knows}, y) \})^N=(\{x\},\{y\},\{(x, \text{:knows}, y) \})$</small>.
+  <!-- You use the name "platon" often but I'm unsure who this is / what it means :-) -->
   <li> <small> $(\{x_1, x_2, x_3\},\{y_1, y_2, y_3\},\{(\text{:socrates}, \text{:knows}, \text{:platon}) \})^N=(\{\},\{\},\{(\text{:socrates}, \text{:knows}, \text{:platon}) \})$</small>.
   <li> <small> $(\{x\},\{y\},\{(y, \text{:says}, <\{\},\{x\},\{(x,\text{rdf:type}, \text{:Mortal} )\}>) \})^N=$
          <br>
@@ -973,12 +974,7 @@ The previous definition allows us to introduce the notion of basic entailment:~
         <p>Let $G$ and $H$ be two graphs, we say that $G$ <dfn data-lt="log-entailment|log entailment">log-entails</dfn> $H$, written as $G ⊨_{log} H$,
         if and only if  every interpretation $I$ that <a>log satisfies</a> $G$ ($I ⊨_{log} G$) also <a>log satisfies</a> $H$ ($I ⊨_{log} H$).</p> 
 
-        To illustrate the definition we discuss some examples of entaiment and non-entialment in the sections below.
-
-     
-
-        
-
+        To illustrate the definition we discuss some examples of entaiment and non-entailment in the sections below.
 
         <section> <h3>(Non-) Entailment of implications</h3>
           For the log predicate <code>log:implies</code> we observe the following examples of <a>log entailment</a>:
@@ -1062,12 +1058,12 @@ The previous definition allows us to introduce the notion of basic entailment:~
 </section>
         <section> <h3>Unquoting</h3>
          <p> A special form of entailment enabled by our semantics is the so-called <dfn data-lt="unquote">unquoting</dfn>. By that, we mean the 
-          entailment which enables us to make the graph conatined in an graph term true. In order to illustrate the idea, we give an example. </p>
+          entailment which enables us to make the graph contained in a graph term true. In order to illustrate the idea, we give an example. </p>
           
         <p>Let's assume that simon says that birds can fly. In abstract N3, we can express that as:</p>
 
           <div style="text-indent:20px;">  $(\{\},\{\},\{(\text{:simon}, \text{:says}, <\{\},\{\},\{(\text{:birds},\text{:can}, \text{:fly} )\}>) \})$</div>
-            <div style="text-indent:30px;">(in N3-turtle syntax <code>:simon :says {:birds :can :fly}.  </code>) </div>
+            <div style="text-indent :30px;">(in N3-turtle syntax <code>:simon :says {:birds :can :fly}.  </code>) </div>
       <p>In N3 we can write a rule stating that everything Simon says is true. We do that as follows:</p>
 
       <div style="text-indent:20px;">$(\{x\},\{\},\{(<\{\},\{\},\{(\text{:simon}, \text{:says}, x)\}>, \text{log:implies}, x\})$</div>
