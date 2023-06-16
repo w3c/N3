@@ -590,6 +590,8 @@ for RDF. In a second step, we introduce the N3-interpetation which assigns a spe
       Such interpretations could still <a>satisfy</a> a graph that has no <a>graph term</a> constituent.
     </p>
      
+    <!-- So was the following  incorrect? I.e., "As a consequence, two isomorphic graph terms will have the same meaning, as they will be mapped to the same isomorphic copy." 
+    (not complaining, just wondering) -->
     <p>
       The basic interpretation maps graph terms to an isomorphic copy of themselves. As a consequence, two non-isomorphic graph terms cannot have the same meaning. For the abstract versions of the graph terms <code>{_:x :p :o}</code>, <code>{_:y :p :o}</code>
       and <code>{_:x :p :o. _:y :p :o}</code> we thus get:
@@ -670,10 +672,10 @@ will be true if $(D_I($<code>:bob</code>$), D_I($<code>:says</code>$), Q_I($&lt;
   In that case, $Q_I$ will have to map the <a>graph term</a> <code>&lt;{}, {},  {(</code>$\delta_i$<code>, :is, :wise)&gt;}</code>
   to an isomorphic copy. However, the <a href="isomorphisms">isomorphism</a> is only defined for concrete N3 <a>terms</a>, and not domain elements.
   <!-- unless those domain elements are also language terms ... -->
-  If <i>not</i> applying the valuation function to the graph term, $Q_I$ will have to map the <a>graph term</a> <code>&lt;{}, {},  {(x, :is, :wise)&gt;}</code>,
+  If <i>not</i> applying the valuation function to the graph term, $Q_I$ will have to map the original <a>graph term</a> <code>&lt;{}, {},  {(x, :is, :wise)&gt;}</code>,
   which is however no longer <a>ground</a> as its graph is no longer <a>closed</a>
-  (`x` is quantified outside of the graph). In our <a>basic interpretation</a>, the mapping $Q_I$ is only defined for <a>ground</a> <a>graph terms</a>.
-  We thus need to first ground these kinds of <i>leaked variables</i>, 
+  (`x` is quantified <i>outside of the graph</i>). In our <a>basic interpretation</a>, the mapping $Q_I$ is only defined for <a>ground</a> <a>graph terms</a>.
+  Hence, in the latter case, we first need to ground these kinds of <i>leaked variables</i>, 
   i.e., variables that become free when considering the graph term in isolation (as is required when determining isomorphisms).
 </p>
 <p>
@@ -693,6 +695,10 @@ will be true if $(D_I($<code>:bob</code>$), D_I($<code>:says</code>$), Q_I($&lt;
       -->
 
       In order to apply mapping $A_2$ on graphs, we introduce the notion of total application.
+      <!--  Are you ok with adding the following:
+            "$M$ be a mapping (such as $A_2$)""
+          (It took me a while to realize that the M mapping did not refer to a concrete mapping, but is rather a sort of parameter!)
+      -->
         <p>Let $G=(U,E,F)$ be a graph and $M$ be a mapping from a set of variables $V$ into a set $S$. 
           <!--and $N = M|_{FV(G)}$ the restriction of $M$ to the <a>free variables</a> of $G$.-->
 
@@ -755,6 +761,8 @@ we define $I[A](x)$ as:</p>
         $I($<code>{(</code>$A_1(x)$, <code>:says, &lt; {}, {}, { (</code>$A_2(x)$, <code>:is, :wise) } &gt;)</code>
         </p>
         
+        <!-- Sorry - I misunderstood this before - but why are you turning "assignments and free variables" into a definition?
+       -->
         For <dfn class="lint-ignore">assignments and free variables</dfn> we define:
         <p>Let $G=(U,E,F)$ be a <a>graph</a>. We say that $G$ is true under the <a>interpretation</a> $I$ and the <a>assignment</a> $A$ if $I[A]\models G$. That is, for each assignment $A^1$ for the variables in $U$ there exists an assignment $B^1$ for the variables in $E$ such that $I[A\bullet A^1\bullet B^1](F)=true$.</p>
         <p>
@@ -763,7 +771,7 @@ we define $I[A](x)$ as:</p>
       </section>
       <section>
         <h2>Basic entailment</h2>
-The previous definition allows us to introduce the notion of basic entailment:
+The previous definition allows us to introduce the notion of basic entailment:~
       
         <p>Let $G$ and $H$ be two graphs, we say that $G$ <dfn data-lt="entailment|b-entailment|basic entailment">b-entails</dfn> $H$, noted $G ⊨ H$,
         if and only if  every interpretation $I$ that satisfies $G$ $(I ⊨ G)$ also satisfies $H$ $(I ⊨ H)$.</p>
