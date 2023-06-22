@@ -662,7 +662,24 @@ for RDF. In a second step, we introduce the N3-interpetation which assigns a spe
         </ul>
 
         The definition implies that the empty graph is always true and that the empty list is always mapped to itself. 
+        <div class="note">
+          Note that the interpretation function $Q_I(x)$ maps ground graphs into the domain of discourse without interpreting their content seperately. 
+          This choice was made to guarentee <a href="https://en.wikipedia.org/wiki/Opaque_context">referential opacity</a> 
+          (see also <a href="https://www.w3.org/2021/12/rdf-star.html#ref-opacity">referential in RDF-star</a> ). 
+          To illustrate this idea consider the <a href="https://iep.utm.edu/referential-opacity/">superman example</a> expressed in N3:
+          <br>
+          <div style="text-indent:20px;margin-top:0.2cm"><code>:superman owl:sameAs :clarkKent. </code></div> 
+            <div style="text-indent:20px;margin-bottom:0.2cm"><code>:loisLane :belives {:superman :can :fly}.</code> </div>  
+                  
+            </code>
+            Even if we assume that our logic is extended by an interpretation for <code>owl:sameAs</code> which assures that the function $D_I$ maps the IRIs 
+            <code>:superman</code> and <code>:clarkKent</code> to the same resource, it should still not yield the following conclusion: 
 
+            <div style="text-indent:20px;margin-top:0.2cm"> <code>
+              :loisLane :belives {:clarkKent :can :fly}.
+        </code></div>
+      </div>
+        
       </section>
   
 
@@ -750,7 +767,7 @@ As an example, consider the example below, and let $M:\{x,y\}\rightarrow S$ be a
 
  <p>
     $M^t($<small>$<\{\},\{y\},\{(x, \text{:hasMother}, y)\}>$</small>$)$
-    $=$<small>$<\{\},\{y\},\{(tom, \text{:hasMother}, y)\}>)$ </small>
+    $=$<small>$<\{\},\{y\},\{(tom, \text{:hasMother}, y)\}>$ </small>
 </p>
 Variable `x` is replaced by $M(x)$ as it is a <a>free variable</a>, while `y` does not get replaced since it is <a>scoped</a> (i.e., quantified in the nested graph).
 This results in a <a>ground</a> <a>graph term</a>, which can be mapped by $Q_I$.
