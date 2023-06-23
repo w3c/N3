@@ -376,7 +376,7 @@ With that definition, we now introduce <dfn data-lt="free">free variables</dfn>:
             The set of free variables ($FV$) of a term or a set of triples is defined as follows:
 
               <ul>
-                <li>$FV(x) = ∅$ if $x ∈ R ∪ L$,</li>
+                <li>$FV(x) = \emptyset$ if $x ∈ R ∪ L$,</li>
                 <li>$FV(x) = \{x\}$ if $x ∈ V$,</li>
                 <li>$FV(x) = FV(x_1) ∪ … ∪ FV(x_n)$ if $x=(x_1 … x_n)$ is a list,</li>
                 <li>$FV(x) = FV(s) ∪ FV(p) ∪ FV(o)$ if $x=(s,p,o)$ is a <a>triple</a>,</li>
@@ -792,7 +792,7 @@ we define $I[A](x)$ as:</p>
           that $I[A\bullet B](F)=\textit{true}$. We also write that as $I\models G$.</p>
       </p>
         <p class="note">Note that the interpretation of a variable $x$ depends on its position in a graph. 
-          In the expression $(∅, ∅,\{(x, p, &lt;∅, ∅, \{(x, q, r)\}&gt;)\})$, 
+          In the expression $(\emptyset, \emptyset,\{(x, p, &lt;\emptyset, \emptyset, \{(x, q, r)\}&gt;)\})$, 
           the first  $x$ is interpreted as $A_1(x)$ while the second is interpreted as $A_2(x)$. The connection between these two values is established by the condition that 
         $I(A_2(v))=A_1(v)$.</p>
         <p>
