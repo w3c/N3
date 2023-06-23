@@ -436,12 +436,12 @@ This enables us to introduce the notion of closed graphs and ground terms.
    These variables do not contribute to the interpretation of the graph. In order to simplify our considerations for the following sections, 
    we introduce the notion of normalised graphs:</p>
 
-<p>For each graph $G=(U,E,F)$, we call $G^N=(U\cap (FV(F)), E\cap(FV(F)), F)$ the <dfn data-lt="normalised|normalised graph">normalisation</dfn> of $G$.</p>
+<p>For each graph $G=(U,E,F)$, we call $G^N=(U\cap (FV(F)), E\cap(FV(F)), F)$ the <dfn data-lt="normalised|normalised graph", class="lint-ignore">normalisation</dfn> of $G$.</p>
 
 Examples:
 <ol>
   <li> <small> $(\{x,z\},\{y\},\{(x, \text{:knows}, y) \})^N=(\{x\},\{y\},\{(x, \text{:knows}, y) \})$</small>.
-  <li> <small> $(\{x_1, x_2, x_3\},\{y_1, y_2, y_3\},\{(\text{:socrates}, \text{:knows}, \text{:platon}) \})^N=(\{\},\{\},\{(\text{:socrates}, \text{:knows}, \text{:platon}) \})$</small>.
+  <li> <small> $(\{x_1, x_2, x_3\},\{y_1, y_2, y_3\},\{(\text{:socrates}, \text{:knows}, \text{:plato}) \})^N=(\{\},\{\},\{(\text{:socrates}, \text{:knows}, \text{:plato}) \})$</small>.
   <li> <small> $(\{x\},\{y\},\{(y, \text{:says}, <\{\},\{x\},\{(x,\text{rdf:type}, \text{:Mortal} )\}>) \})^N=$
          <br>
                $(\{\},\{y\},\{(y, \text{:says}, <\{\},\{x\},\{(x,\text{rdf:type}, \text{:Mortal} )\}>) \})$</small>.
@@ -666,7 +666,7 @@ for RDF. In a second step, we introduce the N3-interpetation which assigns a spe
           Note that the interpretation function $Q_I(x)$ maps ground graphs into the domain of discourse without interpreting their content seperately. 
           This choice was made to guarentee <a href="https://en.wikipedia.org/wiki/Opaque_context">referential opacity</a> 
           (see also <a href="https://www.w3.org/2021/12/rdf-star.html#ref-opacity">referential in RDF-star</a> ). 
-          To illustrate this idea consider the <a href="https://iep.utm.edu/referential-opacity/">superman example</a> expressed in N3:
+          To illustrate this idea, consider the <a href="https://iep.utm.edu/referential-opacity/">superman example</a> expressed in N3:
           <br>
           <div style="text-indent:20px;margin-top:0.2cm"><code>:superman owl:sameAs :clarkKent. </code></div> 
             <div style="text-indent:20px;margin-bottom:0.2cm"><code>:loisLane :belives {:superman :can :fly}.</code> </div>  
@@ -718,14 +718,15 @@ will be true if $(D_I($<code>:bob</code>$), D_I($<code>:says</code>$), Q_I($&lt;
 <p>
   If we revert back to our original example with variables, 
   a regular <i>valuation function</i> will simply replace both occurrences of variable `x` with a domain element $\delta_i$ from $\Delta_I$.
-  In that case, $Q_I$ will have to map the <a>graph term</a> <code>&lt;{}, {},  {(</code>$\delta_i$<code>, :is, :wise)&gt;}</code>
-  to an isomorphic copy. However, the <a href="isomorphisms">isomorphism</a> is only defined for concrete N3 <a>terms</a>, and not domain elements.
-  <!-- unless those domain elements are also language terms ... -->
+  In that case, the function $Q_I$ cannot be applied since it is only defined for <a>ground</a> <a>graph terms</a>.
+  <!-- will have to map the <a>graph term</a> <code>&lt;{}, {},  {(</code>$\delta_i$<code>, :is, :wise)&gt;}</code>
+  to an isomorphic copy.  However, the <a href="isomorphisms">isomorphism</a> is only defined for concrete N3 <a>terms</a>, and not domain elements.
+  unless those domain elements are also language terms ... 
   If <i>not</i> applying the valuation function to the graph term, $Q_I$ will have to map the <a>graph term</a> <code>&lt;{}, {},  {(x, :is, :wise)&gt;}</code>,
   which is however no longer <a>ground</a> as its graph is no longer <a>closed</a>
   (`x` is quantified outside of the graph). In our <a>basic interpretation</a>, the mapping $Q_I$ is only defined for <a>ground</a> <a>graph terms</a>.
   We thus need to first ground these kinds of <i>leaked variables</i>, 
-  i.e., variables that become free when considering the graph term in isolation (as is required when determining isomorphisms).
+  i.e., variables that become free when considering the graph term in isolation (as is required when determining isomorphisms). -->
 </p>
 <p>
   We need to extend  <a href="https://www.w3.org/TR/rdf11-mt/#blank-nodes">RDF's classical semantic condition for blank nodes</a> and use a so-called 
@@ -744,7 +745,7 @@ will be true if $(D_I($<code>:bob</code>$), D_I($<code>:says</code>$), Q_I($&lt;
       -->
 
       In order to apply mapping $A_2$ on graphs, we introduce the notion of total application.
-        <p>Let $G=(U,E,F)$ be a graph and $M$ be a mapping from a set of variables $V$ into a set $S$. 
+        <p>Let $G=(U,E,F)$ be a graph and let $M$ be a mapping from a set of variables $V$ into a set $S$. 
           <!--and $N = M|_{FV(G)}$ the restriction of $M$ to the <a>free variables</a> of $G$.-->
 
         A <dfn class="lint-ignore">total application</dfn> $M^t(G)$ of $M$ is defined as follows:</p>
@@ -824,18 +825,18 @@ The previous definition allows us to introduce the notion of basic entailment:
  <br>Entailment:
  <ul>
   <li> 
-    <small>$(\{\},\{\},\{(\text{:socrates}, \text{:knows}, \text{:platon})\})$</small> 
-    <br> (in N3-turtle syntax: <code>:socrates :knows :platon.</code>)
+    <small>$(\{\},\{\},\{(\text{:socrates}, \text{:knows}, \text{:plato})\})$</small> 
+    <br> (in N3-turtle syntax: <code>:socrates :knows :plato.</code>)
   <br> b-entails
   <br>  <small>$(\{\},\{x\},\{(\text{:socrates}, \text{:knows}, x)\})$</small>
   <br> (in N3-turtle syntax: <code>:socrates :knows _:x.</code>)
   </li>
   <li> 
-    <small>$(\{x\},\{\},\{(x, \text{:knows}, \text{:platon})\})$</small> 
-    <br> (in N3-turtle syntax: <code>?x :knows :platon.</code>)
+    <small>$(\{x\},\{\},\{(x, \text{:knows}, \text{:plato})\})$</small> 
+    <br> (in N3-turtle syntax: <code>?x :knows :plato.</code>)
   <br> b-entails
-  <br>  <small>$(\{\},\{\},\{(\text{:socrates}, \text{:knows}, \text{:platon})\})$</small> 
-  <br>(in N3-turtle syntax: <code>:socrates :knows :platon.</code>)
+  <br>  <small>$(\{\},\{\},\{(\text{:socrates}, \text{:knows}, \text{:plato})\})$</small> 
+  <br>(in N3-turtle syntax: <code>:socrates :knows :plato.</code>)
   </li>
   <li>  
      <small>$(\{x\},\{\},\{(<\{\},\{\},\{(x, \text{rdf:type}, \text{:Human})\}>,
@@ -968,7 +969,7 @@ The previous definition allows us to introduce the notion of basic entailment:
 <p>
         The last bullet ensures that the truth value of triples having <code>log:implies</code>
         in predicate position but no graph term or truth value in subject or object position like 
-        for example <code>:socrates log:implies :platon.</code> is only determined by the basic interpretation of the triple. That is,
+        for example <code>:socrates log:implies :plato.</code> is only determined by the basic interpretation of the triple. That is,
         <code>log:implies</code> only has a special meaning when used with graph terms and/or truth values.
   </p>
 
@@ -1016,7 +1017,7 @@ The previous definition allows us to introduce the notion of basic entailment:
         <p>Let $G$ and $H$ be two graphs, we say that $G$ <dfn data-lt="log-entailment|log entailment">log-entails</dfn> $H$, written as $G ⊨_{log} H$,
         if and only if  every interpretation $I$ that <a>log satisfies</a> $G$ ($I ⊨_{log} G$) also <a>log satisfies</a> $H$ ($I ⊨_{log} H$).</p> 
 
-        To illustrate the definition we discuss some examples of entaiment and non-entialment in the sections below.
+        To illustrate the definition, we discuss some examples of entaiment and non-entialment in the sections below.
 
      
 
@@ -1105,7 +1106,7 @@ The previous definition allows us to introduce the notion of basic entailment:
 </section>
         <section> <h3>Unquoting</h3>
          <p> A special form of entailment enabled by our semantics is the so-called <dfn data-lt="unquote">unquoting</dfn>. By that, we mean the 
-          entailment which enables us to make the graph conatined in an graph term true. In order to illustrate the idea, we give an example. </p>
+          entailment which enables us to make the graph contained in a graph term true. To illustrate the idea, we give an example. </p>
           
         <p>Let's assume that simon says that birds can fly. In abstract N3, we can express that as:</p>
 
