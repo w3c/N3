@@ -59,6 +59,7 @@
         onload="renderMathInElement(document.body);"></script>
     <script>
     document.addEventListener("DOMContentLoaded", function() {
+        let katexOutput = new URL(window.location).searchParams.get('katexOutput') || 'htmlAndMathml';
         renderMathInElement(document.body, {
           // customised options
           // • auto-render specific keys, e.g.:
@@ -69,7 +70,8 @@
               {left: '\\[', right: '\\]', display: true}
           ],
           // • rendering keys, e.g.:
-          throwOnError : true
+          throwOnError : true,
+          output: katexOutput,
         });
     });
     </script>
