@@ -79,6 +79,9 @@
       div.small {
         font-size: small;
       }
+      code {
+        color: #ff4500;
+      }
     </style>
   </head>
   <body>
@@ -140,15 +143,15 @@
       </p>
       --> 
       In this section we define N3's abstract syntax. As N3's concrete concrete turtle-based syntax has proven 
-      to leave room for ambiguity - especially implicit quantification
-      has been interpreted contradictively by different reasoners in the past - we decided to introduce an abstract syntax in which aspects like quantification 
-      are stated explicitly. If the semantics of implicit quantification will need to be changed by the working group for any reason, this change will thus not affect the 
+      to leave room for ambiguity &ndash; especially implicit quantification
+      has been interpreted contradictively by different reasoners in the past &ndash;  we decided to introduce an abstract syntax in which aspects like quantification 
+      are stated explicitly. If the semantics of implicit quantification needs to be changed by the working group for any reason, this change will thus not affect the 
       semantics, which is based on the abstract syntax, but only the mapping from concrete to abstract syntax. 
 
       <section class="informative">
         <h3>Motivation</h3>
-   <p>Notation3 supports implicit quantification. If blank nodes are used in triples, they stand for implicit existentially
-   quantified variables. In case universals (i.e., variables starting with a question mark in the concrete syntax) are used, they stand for implicit
+   <p>Notation3 supports implicit quantification. If blank nodes are used in triples, they stand for implicitly existentially
+   quantified variables. In case universals (i.e., variables starting with a question mark in the concrete syntax) are used, they stand for implicitly
    universally quantified variables. Implicit universal quantification is always global, that is, implicit universal quantification
    always spans over the full graph. Implicit existential quantification is always local, that is, it spans the local graph
    (e.g., if implicit existential quantification occurs in a graph term, it spans only that graph term).
@@ -254,7 +257,7 @@ We always write a graph in concrete N3 syntax followed by its counterpart in abs
 </p>
 <div class=note>
   In order to improve readability, we will omit the inner 
-  graph brackets for all graph terms here and in the remainder of the document. That is, we will for example write 
+  graph round brackets for all graph terms here and in the remainder of the document. That is, we will for example write 
   <div style="text-indent:20px;"><small>$&lt;\{\},\{x\},\{(x,\text{rdf:type}, \text{:Mortal} )\}&gt;$</small></div>
   <div>instead of</div>
   <div style="text-indent:20px;"><small>$&lt;(\{\},\{x\},\{(x,\text{rdf:type}, \text{:Mortal} )\})&gt;$.</small></div>
@@ -304,7 +307,7 @@ We will re-use these examples in the following sections.
         in connection with <a>logical predicates</a>.  
         More concrete, that means that the N3-turtle triple 
         <div style="text-indent:20px;"><code>:socrates :says {_:x a :Mortal}.  </code> </div> 
-        is interpreted 
+        is interpreted by some implementations
         as 
         <div style="text-indent:20px;"><small> $(\{\},\{x\},\{(\text{:socrates}, \text{:says}, &lt;\{\},\{\},\{(x,\text{rdf:type}, \text{:Mortal} )\}&gt;) \})$</small></div> 
          and <b>not</b> as
