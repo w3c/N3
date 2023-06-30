@@ -605,7 +605,7 @@ With combinations of mappings we can define isomorphisms between abstract N3 gra
       <h2>Base Semantics</h2>
 With the definitions introduced in the previous sections, we are now able to define the semantics of Notation3 Logic. We do that in two steps: we first 
 introduce a <dfn>base semantics</dfn> which does not take the meaning of special N3 terms into account. In that sense the base semantics is similar to <a href="https://www.w3.org/TR/rdf11-mt/#simple-interpretations">simple interpretations</a>
-for RDF. In a second step, we introduce the N3-interpetation which assigns a special meaning to all predicates in the N3 <a href="../ns/log.html">`log`</a>-namespace.
+for RDF. In the next section, we will introduce the <a>log-interpetation</a> which assigns a special meaning to all predicates in the N3 <a href="../ns/log.html">`log`</a>-namespace.
 
 
 
@@ -646,8 +646,8 @@ for RDF. In a second step, we introduce the N3-interpetation which assigns a spe
       The basic interpretation maps graph terms to an isomorphic copy of themselves. As a consequence, two non-isomorphic graph terms cannot have the same meaning. For the abstract versions of the graph terms <code>{_:x :p :o}</code>, <code>{_:y :p :o}</code>
       and <code>{_:x :p :o. _:y :p :o}</code> we thus get:</p>
     <ul>
-     <li> $Q_I($<code>&lt;{}, {y}, {(y, :p, :o)}&gt;</code>$)= Q_I($<code>&lt;{}, {x}, {(x, :p, :o)}&gt;</code>$)$
-      <li> $Q_I($<code>&lt;{}, {y}, {(y, :p, :o)}&gt;</code>$)\neq Q_I($<code>&lt;{}, {x, y}, {(x, :p, :o),(y, :p, :o) }&gt;</code>$)$
+     <li> $Q_I(&lt;\{\}, \{y\}, \{(y, \text{:p}, \text{:o})\}&gt;)= Q_I(&lt;\{\}, \{x\}, \{(x, :p, :o)\}&gt;)$
+      <li> $Q_I(&lt;\{\}, \{y\}, \{(y, \text{:p}, \text{:o})\}&gt;) \neq Q_I(&lt;\{\}, \{x, y\}, \{(x, \text{:p}, \text{:o}), (y, \text{:p}, \text{:o})\}&gt;)$
     </ul>
 
     <p>
@@ -717,33 +717,33 @@ for RDF. In a second step, we introduce the N3-interpetation which assigns a spe
         which freely translates to <q>everyone says about themself that they are wise</q>.  In abstract syntax, the formula would be expressed as:
 
         <p>
-        $(\{x\}, \{\}, \{(x, \text{:says}, &lt;\{\}, \{\},  \{(x, \text{:is}, \text{:wise})\}&gt;)\})$.
+        $G = (\{x\}, \{\}, \{(x, \text{:says}, &lt;\{\}, \{\},  \{(x, \text{:is}, \text{:wise})\}&gt;)\})$.
         </p>
 This formula is interesting because the universally quantified variable appears once as a <a>direct constituent</a> in the triple and once as only a <a>constituent</a>. 
 If we replace the variable $x$ by, for example <code>:bob</code>, we get:
 <p>
-   <code>({}, {}, {(:bob, :says,</code> &lt; <code>{}, {},  {(:bob, :is, :wise)}</code>&gt;<code>)})</code>
+  $G_{bob} = (\{\}, \{\}, \{(\text{:bob}, \text{:says}, &lt;\{\}, \{\},  \{(\text{:bob}, \text{:is}, \text{:wise})\}&gt;)\})$
  </p>
 <p>The <a href="#ground-graphs">semantics for ground graphs</a> 
-  maps URIs to not further specified domain elements, while ground graph terms are mapped to an isomorphic version of themselves. 
-The interpretation of the above example $I($<code>({}, {}, {(:bob, :says,</code> &lt; <code>{}, {},  {(:bob, :is, :wise)}&gt;)})</code>$)$
+  maps IRIs to not further specified domain elements, while ground graph terms are mapped to an isomorphic version of themselves. 
+The interpretation of the above example $I(G_{bob})$
 <!--<p>
   <ul style="list-style-type: none">
 <li>$I($<code>({}, {}, {(:bob, :says,</code> &lt; <code>{}, {},  {(:bob, :is, :wise)}.>)})</code>$)$</li>
 <li>$=I($<code>(:bob, :says,</code> &lt; <code>{}, {},  {(:bob, :is, :wise)}.>)</code>$)$</li>
 </ul>-->
-will be true if $(D_I($<code>:bob</code>$), D_I($<code>:says</code>$), Q_I($&lt; <code>{}, {},  {(:bob, :is, :wise)}&gt;</code>$)\in EXT_I$. 
+will be true if $(D_I(\text{:bob}), D_I(\text{:says}), Q_I(&lt;\{\}, \{\},  \{(\text{:bob}, \text{:is}, \text{:wise})\}&gt;)\in EXT_I$. 
 </p>
 
 <p>
   If we revert back to our original example with variables, 
-  a regular <em>valuation function</em> will simply replace both occurrences of variable `x` with a domain element $\delta_i$ from $\Delta_I$.
-  In that case, $Q_I$ will have to map the <a>graph term</a> <code>&lt;{}, {},  {(</code>$\delta_i$<code>, :is, :wise)}&gt;</code>
+  a regular <em>valuation function</em> will simply replace both occurrences of variable $x$ with a domain element $\delta_i$ from $\Delta_I$.
+  In that case, $Q_I$ will have to map the <a>graph term</a> $&lt;\{\}, \{\},  \{(\delta_i, \text{:is}, \text{:wise})\}&gt;$
   to an isomorphic copy. However, the <a href="isomorphisms">isomorphism</a> is only defined for concrete N3 <a>terms</a>, and not domain elements.
   <!-- unless those domain elements are also language terms ... -->
-  If <em>not</em> applying the valuation function to the graph term, $Q_I$ will have to map the <a>graph term</a> <code>&lt;{}, {},  {(x, :is, :wise)}&gt;</code>,
+  If <em>not</em> applying the valuation function to the graph term, $Q_I$ will have to map the <a>graph term</a> $&lt;\{\}, \{\},  \{(x, \text{:is}, \text{:wise})\}&gt;$,
   which is however no longer <a>ground</a> as its graph is no longer <a>closed</a>
-  (`x` is quantified outside of the graph). In our <a>basic interpretation</a>, the mapping $Q_I$ is only defined for <a>ground</a> <a>graph terms</a>.
+  ($x$ is quantified outside of the graph). In our <a>basic interpretation</a>, the mapping $Q_I$ is only defined for <a>ground</a> <a>graph terms</a>.
   We thus need to first ground these kinds of <em>leaked variables</em>, 
   i.e., variables that become free when considering the graph term in isolation (as is required when determining isomorphisms).
 </p>
@@ -789,7 +789,7 @@ As an example, consider the example below, and let $M:\{x,y\}\rightarrow S$ be a
     $M^t($<span class="asex">$&lt;\{\},\{y\},\{(x, \text{:hasMother}, y)\}&gt;$</span>$)$
     $=$<span class="asex">$&lt;\{\},\{y\},\{(tom, \text{:hasMother}, y)\}&gt;$ </span>
 </p>
-Variable `x` is replaced by $M(x)$ as it is a <a>free variable</a>, while `y` does not get replaced since it is <a>scoped</a> (i.e., quantified in the nested graph).
+Variable $x$ is replaced by $M(x)$ as it is a <a>free variable</a>, while $y$ does not get replaced since it is <a>scoped</a> (i.e., quantified in the nested graph).
 This results in a <a>ground</a> <a>graph term</a>, which can be mapped by $Q_I$.
 
 <p>
@@ -816,13 +816,13 @@ we define $I[A](x)$ as:</p>
           For instance:
         </p>
         <p>
-          $I($<code>{x}, {}, {(x, :says, &lt; {}, {}, {( x, :is, :wise )} &gt;)})</code>
+          $I(\{x\}, \{\}, \{(x, \text{:says}, &lt; \{\}, \{\}, \{( x, \text{:is}, \text{:wise} )\} &gt;)\})$
         </p>
         <p>
         Will be true if for all assignments $A:\{x\}\rightarrow Δ_I\times T_G$, the following is true:
         </p>
         <p>
-        $I($<code>{(</code>$A_1(x)$, <code>:says, &lt; {}, {}, { (</code>$A_2(x)$, <code>:is, :wise) } &gt;)</code>
+        $I(\{(A_1(x), \text{:says}, &lt; \{\}, \{\}, \{ (A_2(x), \text{:is}, \text{:wise}) \} &gt;)$
         </p>
         
         For <dfn class="lint-ignore">assignments and free variables</dfn> we define:
