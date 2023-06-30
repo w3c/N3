@@ -157,7 +157,7 @@
       In this section we define N3's abstract syntax. As N3's concrete concrete turtle-based syntax has proven 
       to leave room for ambiguity &ndash; especially implicit quantification
       has been interpreted contradictively by different reasoners in the past &ndash;  we decided to introduce an abstract syntax in which aspects like quantification 
-      are stated explicitly. If the semantics of implicit quantification needs to be changed by the working group for any reason, this change will thus not affect the 
+      are stated explicitly. If the semantics of implicit quantification needs to be changed by the community group for any reason, this change will thus not affect the 
       semantics, which is based on the abstract syntax, but only the mapping from concrete to abstract syntax. 
 
       <section class="informative">
@@ -685,18 +685,18 @@ for RDF. In the next section, we will introduce the <a>log-interpetation</a> whi
           <p>
           Note that the interpretation function $Q_I(x)$ maps ground graphs into the domain of discourse without interpreting their content seperately. 
           This choice was made to guarentee <a href="https://en.wikipedia.org/wiki/Opaque_context">referential opacity</a> 
-          (see also <a href="https://www.w3.org/2021/12/rdf-star.html#ref-opacity">referential in RDF-star</a> ). 
+          (see also <a href="https://www.w3.org/2021/12/rdf-star.html#ref-opacity">referential opacity in RDF-star</a> ). 
           To illustrate this idea consider the <a href="https://iep.utm.edu/referential-opacity/">superman example</a> expressed in N3:
           </p>
           <div class="codeblock"><code>:superman owl:sameAs :clarkKent.
-            :loisLane :belives {:superman :can :fly}.
+            :loisLane :believes {:superman :can :fly}.
           </code></div>
             <p>
             Even if we assume that our logic is extended by an interpretation for <code>owl:sameAs</code> which assures that the function $D_I$ maps the IRIs 
             <code>:superman</code> and <code>:clarkKent</code> to the same resource, it should still not yield the following conclusion: 
             </p>
 
-            <div class="codeblock"><code>:loisLane :belives {:clarkKent :can :fly}.
+            <div class="codeblock"><code>:loisLane :believes {:clarkKent :can :fly}.
         </code></div>
       </div>
         
@@ -737,7 +737,7 @@ will be true if $(D_I(\text{:bob}), D_I(\text{:says}), Q_I(&lt;\{\}, \{\},  \{(\
 
 <p>
   If we revert back to our original example with variables, 
-  a regular <em>valuation function</em> will simply replace both occurrences of variable $x$ with a domain element $\delta_i$ from $\Delta_I$.
+  a regular <em>valuation function</em> (such as the <a href="https://www.w3.org/TR/rdf11-mt/#blank-nodes">mapping A used for blank nodes</a> in [[RDF11-MT]]) will simply replace both occurrences of variable $x$ with a domain element $\delta_i$ from $\Delta_I$.
   In that case, $Q_I$ will have to map the <a>graph term</a> $&lt;\{\}, \{\},  \{(\delta_i, \text{:is}, \text{:wise})\}&gt;$
   to an isomorphic copy. However, the <a href="isomorphisms">isomorphism</a> is only defined for concrete N3 <a>terms</a>, and not domain elements.
   <!-- unless those domain elements are also language terms ... -->
@@ -752,7 +752,8 @@ will be true if $(D_I(\text{:bob}), D_I(\text{:says}), Q_I(&lt;\{\}, \{\},  \{(\
   assignment, which, instead of simply mapping variables to resources, maps variables to pairs of resources and term representations:
 </p>
 <p>Given a <a>basic interpretation</a> $I$ and a set of variables $V_1$. 
-  We call a mapping $A$ from $V_1$ to $Δ_I\times T_G$ such that $A(v)=(A_1(v),A_2(v))$ and $I(A_2(v))=A_1(v)$ an <dfn>assignment</dfn> for $V_1$.
+  We call a mapping $A$ from $V_1$ to $Δ_I\times T_G$ such that $A(v)=(A_1(v),A_2(v))$ and $I(A_2(v))=A_1(v)$ an <dfn>assignment</dfn> for $V_1$.</p>
+<p>
   We can consider both values $A_1$ and $A_2$ of an assignment $A(v)=(A_1(v), A_2(v))$ as separate mappings. 
   The mapping $A_2$ assigns variables to terms, and will be used to <em>ground free variables within graph terms</em>. 
   Note that given an interpretation $I$ and two assignments $A$ for a set $V_1$, and $B$ for a set $V_2$ of variables, 
@@ -800,7 +801,7 @@ we define $I[A](x)$ as:</p>
 
         <ul>
           <li> $A_1(x)$ if $x ∈ dom(A)$ and $x$ is a <a>direct constituent</a> of $G$,
-          <li> $(I[A](l_1) \ldots I[A](l_n))$ if $x=(l_1 \ldots l_n)$ is a <a>list</a>,
+          <li> $(I[A](x_1) \ldots I[A](x_n))$ if $x=(x_1 \ldots x_n)$ is a <a>list</a>,
           <li> $Q_I(A_2^t(x))$ if $x$ is a <a>graph term</a>, where $A_2^t$ represents the <a>total application</a> of $A_2$,
           <li> $I(x)$ otherwise.
         </ul>
@@ -809,7 +810,7 @@ we define $I[A](x)$ as:</p>
           if for all assignments $A$ for $U$ (universal variables) there exist an assignment $B$ for $E$ (existential variables) such 
           that $I[A\bullet B](F)=\textit{true}$. We also write that as $I\models G$.</p>
         <p class="note">Note that the interpretation of a variable $x$ depends on its position in a graph. 
-          In the expression $(\emptyset, \emptyset,\{(x, p, &lt;\emptyset, \emptyset, \{(x, q, r)\}&gt;)\})$, 
+          In the expression $(\emptyset, \emptyset,\{(x, \text{:p}, &lt;\emptyset, \emptyset, \{(x, \text{:q}, \text{:r})\}&gt;)\})$, 
           the first  $x$ is interpreted as $A_1(x)$ while the second is interpreted as $A_2(x)$. The connection between these two values is established by the condition that 
         $I(A_2(v))=A_1(v)$.</p>
         <p>
@@ -819,7 +820,7 @@ we define $I[A](x)$ as:</p>
           $I(\{x\}, \{\}, \{(x, \text{:says}, &lt; \{\}, \{\}, \{( x, \text{:is}, \text{:wise} )\} &gt;)\})$
         </p>
         <p>
-        Will be true if for all assignments $A:\{x\}\rightarrow Δ_I\times T_G$, the following is true:
+        will be true if for all assignments $A:\{x\}\rightarrow Δ_I\times T_G$, the following is true:
         </p>
         <p>
         $I(\{(A_1(x), \text{:says}, &lt; \{\}, \{\}, \{ (A_2(x), \text{:is}, \text{:wise}) \} &gt;)$
@@ -985,13 +986,13 @@ The previous definition allows us to introduce the notion of basic entailment:
         </p>
         <p>
           The second bullet covers implications with  
-          is the boolean literal <code>false</code> in the consequence. 
+          the boolean literal <code>false</code> in the consequence. 
           In log-semantics this literal is understood as truth constant "false" (or $\bot$).
           Note that the interpretation process here consists of two steps: we first consider the basic interpretation
           of the implication triple which needs to be true and then we test whether 
           - using the same interpretation as a log interpretation - the premise is false. 
-          That is, even if a closed graph $G_1$ is false under and interpetation $I$
-          ($I\not\models_{log} G_1$), we cannot conclude that 
+          However, the mere fact that a closed graph $G_1$ is false under an interpetation $I$
+          ($I\not\models_{log} G_1$), does not allow us to conclude that 
           $I\models_{log} (\{\}, \{\}, \{ (&lt; G_1&gt;, \text{log:implies}, \text{false})\})$.
         </p>
 <p>
@@ -1085,7 +1086,7 @@ The previous definition allows us to introduce the notion of basic entailment:
              <br>    <span class="asex">$(\{\},\{x\},\{(x, \text{rdf:type}, \text{:Mortal})\})$ </span>
              <br> &ndash; in N3-turtle syntax: <code>_:x a :Mortal. </code>
            </li>
-            <li>s
+            <li>
               <div class="asex">$
                 (\{x\},\{\},\{ \\
         \qquad      (\text{:socrates}, \text{:says}, &lt;\{\},\{\},\{(\text{:socrates},\text{rdf:type}, \text{:Mortal} )\}&gt;), \\
@@ -1146,7 +1147,7 @@ The previous definition allows us to introduce the notion of basic entailment:
 </li>
 </ul>
 <p class="note">As above, these examples follow the last agreement on the interpretation of N3 turtle syntax which might be implemented differently in some reasoners. 
-  The difference does not effect the meaning of abstract formulas. The working group is currently working on a solution for this problem.
+  The difference does not effect the meaning of abstract formulas. The community group is currently working on a solution for this problem.
 </p>
 </section>
         <section> <h3>Unquoting</h3>
