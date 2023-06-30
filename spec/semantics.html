@@ -21,12 +21,28 @@
             "w3cid": 111308,
           },{
             "name": "Pierre-Antoine Champin",
-            "url": "http://champin.net/",
-            "company": "W3C",
-            "companyURL": "https://www.w3.org/",
+            "url": "https://champin.net/",
+            "company": "W3C / Inria",
+            "companyURL": "https://www.inria.fr/",
             "orcid": "0000-0001-7046-4474",
-            "w3cid": 42931,
+            "w3cid": 129656,
+          }
+        ],
+        authors: [
+          {
+            name: "Patrick Hochstenbach",
+            url: "",
+            company: "IDLab - Ghent University",
+            companyURL: "https://knows.idlab.ugent.be/",
+            orcid: "",
+            w3cid: "",
           },
+          {
+            name: "William Van Woensel",
+            company: "University of Ottawa",
+            companyURL: "https://www.uottawa.ca/",
+            mailto: "william.van.woensel@gmail.com"
+          }
         ],
         github: "w3c/N3",
         shortName: "n3-semantics",
@@ -62,8 +78,26 @@
     <section id="abstract">
       <p>This document defines the model-theoretic semantics of Notation3 Logic based on its abstract syntax.</p>
     </section>
-    <section id="sotd">
-      This is an initial version of the Notation3 specification.
+    <section id="sotd" class="override">
+      <h2>Status of this document</h2>
+      This document is one of 3 documents produced by the <a href="https://www.w3.org/community/n3-dev/">W3C N3 Community Group</a>:
+      <ol>
+        <li><a href="https://w3c.github.io/N3/spec/">Notation3 Language</a></li>
+        <li><a href="https://w3c-cg.github.io/n3Builtins/">Notation3 Builtin Functions</a></li>
+        <li><a href="https://w3c.github.io/N3/spec/semantics.html">Notation3 Semantics</a> (this document)</li>
+      </ol>
+      <p>This specification was published by the
+        <a href="https://www.w3.org/groups/cg/n3-dev">Notation 3 (<abbr title="Notation3">N3</abbr>) Community Group</a>. It is not a W3C Standard nor is it on the W3C Standards Track.
+        Please note that under the
+        <a href="https://www.w3.org/community/about/agreements/cla/">W3C Community Contributor License Agreement (CLA)</a>
+        there is a limited opt-out and other conditions apply.
+        Learn more about
+        <a href="https://www.w3.org/community/">W3C Community and Business Groups</a>.
+      </p>
+      <p>
+        <a href="https://github.com/w3c/N3/issues/">GitHub Issues</a> are preferred for discussion of this specification. Alternatively, you can send comments to our mailing list.
+        Please send them to <a href="mailto:public-n3-dev@w3.org">public-n3-dev@w3.org</a> (<a href="mailto:public-n3-dev-request@w3.org?subject=subscribe">subscribe</a>, <a href="https://lists.w3.org/Archives/Public/public-n3-dev/">archives</a>).
+      </p>
     </section>
     <section class="informative">
       <h2>Introduction</h2>
@@ -402,13 +436,12 @@ This enables us to introduce the notion of closed graphs and ground terms.
    These variables do not contribute to the interpretation of the graph. In order to simplify our considerations for the following sections, 
    we introduce the notion of normalised graphs:</p>
 
-<p>For each graph $G=(U,E,F)$, we call $G^N=(U\cap (FV(F)), E\cap(FV(F)), F)$ the <dfn data-lt="normalised|normalised graph">normalisation</dfn> of $G$.</p>
+<p>For each graph $G=(U,E,F)$, we call $G^N=(U\cap (FV(F)), E\cap(FV(F)), F)$ the <dfn data-lt="normalised|normalised graph", class="lint-ignore">normalisation</dfn> of $G$.</p>
 
 Examples:
 <ol>
   <li> <small> $(\{x,z\},\{y\},\{(x, \text{:knows}, y) \})^N=(\{x\},\{y\},\{(x, \text{:knows}, y) \})$</small>.
-  <!-- You use the name "platon" often but I'm unsure who this is / what it means :-) -->
-  <li> <small> $(\{x_1, x_2, x_3\},\{y_1, y_2, y_3\},\{(\text{:socrates}, \text{:knows}, \text{:platon}) \})^N=(\{\},\{\},\{(\text{:socrates}, \text{:knows}, \text{:platon}) \})$</small>.
+  <li> <small> $(\{x_1, x_2, x_3\},\{y_1, y_2, y_3\},\{(\text{:socrates}, \text{:knows}, \text{:plato}) \})^N=(\{\},\{\},\{(\text{:socrates}, \text{:knows}, \text{:plato}) \})$</small>.
   <li> <small> $(\{x\},\{y\},\{(y, \text{:says}, <\{\},\{x\},\{(x,\text{rdf:type}, \text{:Mortal} )\}>) \})^N=$
          <br>
                $(\{\},\{y\},\{(y, \text{:says}, <\{\},\{x\},\{(x,\text{rdf:type}, \text{:Mortal} )\}>) \})$</small>.
@@ -631,7 +664,24 @@ for RDF. In a second step, we introduce the N3-interpetation which assigns a spe
         </ul>
 
         The definition implies that the empty graph is always true and that the empty list is always mapped to itself. 
+        <div class="note">
+          Note that the interpretation function $Q_I(x)$ maps ground graphs into the domain of discourse without interpreting their content seperately. 
+          This choice was made to guarentee <a href="https://en.wikipedia.org/wiki/Opaque_context">referential opacity</a> 
+          (see also <a href="https://www.w3.org/2021/12/rdf-star.html#ref-opacity">referential in RDF-star</a> ). 
+          To illustrate this idea, consider the <a href="https://iep.utm.edu/referential-opacity/">superman example</a> expressed in N3:
+          <br>
+          <div style="text-indent:20px;margin-top:0.2cm"><code>:superman owl:sameAs :clarkKent. </code></div> 
+            <div style="text-indent:20px;margin-bottom:0.2cm"><code>:loisLane :belives {:superman :can :fly}.</code> </div>  
+                  
+            </code>
+            Even if we assume that our logic is extended by an interpretation for <code>owl:sameAs</code> which assures that the function $D_I$ maps the IRIs 
+            <code>:superman</code> and <code>:clarkKent</code> to the same resource, it should still not yield the following conclusion: 
 
+            <div style="text-indent:20px;margin-top:0.2cm"> <code>
+              :loisLane :belives {:clarkKent :can :fly}.
+        </code></div>
+      </div>
+        
       </section>
   
 
@@ -670,14 +720,15 @@ will be true if $(D_I($<code>:bob</code>$), D_I($<code>:says</code>$), Q_I($&lt;
 <p>
   If we revert back to our original example with variables, 
   a regular <i>valuation function</i> will simply replace both occurrences of variable `x` with a domain element $\delta_i$ from $\Delta_I$.
-  In that case, $Q_I$ will have to map the <a>graph term</a> <code>&lt;{}, {},  {(</code>$\delta_i$<code>, :is, :wise)&gt;}</code>
-  to an isomorphic copy. However, the <a href="isomorphisms">isomorphism</a> is only defined for concrete N3 <a>terms</a>, and not domain elements.
-  <!-- unless those domain elements are also language terms ... -->
-  If <i>not</i> applying the valuation function to the graph term, $Q_I$ will have to map the original <a>graph term</a> <code>&lt;{}, {},  {(x, :is, :wise)&gt;}</code>,
+  In that case, the function $Q_I$ cannot be applied since it is only defined for <a>ground</a> <a>graph terms</a>.
+  <!-- will have to map the <a>graph term</a> <code>&lt;{}, {},  {(</code>$\delta_i$<code>, :is, :wise)&gt;}</code>
+  to an isomorphic copy.  However, the <a href="isomorphisms">isomorphism</a> is only defined for concrete N3 <a>terms</a>, and not domain elements.
+  unless those domain elements are also language terms ... 
+  If <i>not</i> applying the valuation function to the graph term, $Q_I$ will have to map the <a>graph term</a> <code>&lt;{}, {},  {(x, :is, :wise)&gt;}</code>,
   which is however no longer <a>ground</a> as its graph is no longer <a>closed</a>
-  (`x` is quantified <i>outside of the graph</i>). In our <a>basic interpretation</a>, the mapping $Q_I$ is only defined for <a>ground</a> <a>graph terms</a>.
-  Hence, in the latter case, we first need to ground these kinds of <i>leaked variables</i>, 
-  i.e., variables that become free when considering the graph term in isolation (as is required when determining isomorphism).
+  (`x` is quantified outside of the graph). In our <a>basic interpretation</a>, the mapping $Q_I$ is only defined for <a>ground</a> <a>graph terms</a>.
+  We thus need to first ground these kinds of <i>leaked variables</i>, 
+  i.e., variables that become free when considering the graph term in isolation (as is required when determining isomorphisms). -->
 </p>
 <p>
   We need to extend  <a href="https://www.w3.org/TR/rdf11-mt/#blank-nodes">RDF's classical semantic condition for blank nodes</a> and use a so-called 
@@ -696,11 +747,7 @@ will be true if $(D_I($<code>:bob</code>$), D_I($<code>:says</code>$), Q_I($&lt;
       -->
 
       In order to apply mapping $A_2$ on graphs, we introduce the notion of total application.
-      <!--  Are you ok with adding the following:
-            "$M$ be a mapping (such as $A_2$)""
-          (It took me a while to realize that the M mapping did not refer to a concrete mapping, but is rather a sort of parameter!)
-      -->
-        <p>Let $G=(U,E,F)$ be a graph and $M$ be a mapping from a set of variables $V$ into a set $S$. 
+        <p>Let $G=(U,E,F)$ be a graph and let $M$ be a mapping from a set of variables $V$ into a set $S$. 
           <!--and $N = M|_{FV(G)}$ the restriction of $M$ to the <a>free variables</a> of $G$.-->
 
         A <dfn class="lint-ignore">total application</dfn> $M^t(G)$ of $M$ is defined as follows:</p>
@@ -723,7 +770,7 @@ As an example, consider the example below, and let $M:\{x,y\}\rightarrow S$ be a
 
  <p>
     $M^t($<small>$<\{\},\{y\},\{(x, \text{:hasMother}, y)\}>$</small>$)$
-    $=$<small>$<\{\},\{y\},\{(tom, \text{:hasMother}, y)\}>)$ </small>
+    $=$<small>$<\{\},\{y\},\{(tom, \text{:hasMother}, y)\}>$ </small>
 </p>
 Variable `x` is replaced by $M(x)$ as it is a <a>free variable</a>, while `y` does not get replaced since it is <a>scoped</a> (i.e., quantified in the nested graph).
 This results in a <a>ground</a> <a>graph term</a>, which can be mapped by $Q_I$.
@@ -782,18 +829,18 @@ The previous definition allows us to introduce the notion of basic entailment:
  <br>Entailment:
  <ul>
   <li> 
-    <small>$(\{\},\{\},\{(\text{:socrates}, \text{:knows}, \text{:platon})\})$</small> 
-    <br> (in N3-turtle syntax: <code>:socrates :knows :platon.</code>)
+    <small>$(\{\},\{\},\{(\text{:socrates}, \text{:knows}, \text{:plato})\})$</small> 
+    <br> (in N3-turtle syntax: <code>:socrates :knows :plato.</code>)
   <br> b-entails
   <br>  <small>$(\{\},\{x\},\{(\text{:socrates}, \text{:knows}, x)\})$</small>
   <br> (in N3-turtle syntax: <code>:socrates :knows _:x.</code>)
   </li>
   <li> 
-    <small>$(\{x\},\{\},\{(x, \text{:knows}, \text{:platon})\})$</small> 
-    <br> (in N3-turtle syntax: <code>?x :knows :platon.</code>)
+    <small>$(\{x\},\{\},\{(x, \text{:knows}, \text{:plato})\})$</small> 
+    <br> (in N3-turtle syntax: <code>?x :knows :plato.</code>)
   <br> b-entails
-  <br>  <small>$(\{\},\{\},\{(\text{:socrates}, \text{:knows}, \text{:platon})\})$</small> 
-  <br>(in N3-turtle syntax: <code>:socrates :knows :platon.</code>)
+  <br>  <small>$(\{\},\{\},\{(\text{:socrates}, \text{:knows}, \text{:plato})\})$</small> 
+  <br>(in N3-turtle syntax: <code>:socrates :knows :plato.</code>)
   </li>
   <li>  
      <small>$(\{x\},\{\},\{(<\{\},\{\},\{(x, \text{rdf:type}, \text{:Human})\}>,
@@ -926,7 +973,7 @@ The previous definition allows us to introduce the notion of basic entailment:
 <p>
         The last bullet ensures that the truth value of triples having <code>log:implies</code>
         in predicate position but no graph term or truth value in subject or object position like 
-        for example <code>:socrates log:implies :platon.</code> is only determined by the basic interpretation of the triple. That is,
+        for example <code>:socrates log:implies :plato.</code> is only determined by the basic interpretation of the triple. That is,
         <code>log:implies</code> only has a special meaning when used with graph terms and/or truth values.
   </p>
 

@@ -3,7 +3,7 @@
 
 <head>
   <meta charset='utf-8'>
-  <title>Notation3</title>
+  <title>Notation3 Language</title>
   <!-- <script async class='remove' src='respec-w3c.js'></script> -->
   <script src="https://www.w3.org/Tools/respec/respec-w3c" class="remove" defer></script>
 
@@ -15,23 +15,66 @@
           name: "William Van Woensel",
           company: "University of Ottawa",
           companyURL: "https://www.uottawa.ca/",
-          mailto: "wvanwoen@uottawa.ca"
+          mailto: "william.van.woensel@gmail.com"
         },
         {
           name: "Dörthe Arndt",
           company: "TU Dresden",
           companyURL: "https://tu-dresden.de",
-          mailto: "doerthe.arndt@tu-dresden.de"
+          mailto: "doerthe.arndt@tu-dresden.de",
+          w3cid: 111308
+        },
+        {
+          name: "Pierre-Antoine Champin",
+          url: "https://champin.net/",
+          company: "W3C / Inria",
+          companyURL: "https://www.inria.fr/",
+          orcid: "0000-0001-7046-4474",
+          w3cid: 129656,
         },
         {
           name: "Dominik Tomaszuk",
           company: "University of Bialystok",
-          companyURL: "https://uwb.edu.pl",
-          mailto: "d.tomaszuk@uwb.edu.pl"
+          companyURL: "https://uwb.edu.pl/",
+          mailto: "d.tomaszuk@uwb.edu.pl",
+          orcid: "0000-0003-1806-067X",
+          w3cid: 44239
         },
         {
           name: "Gregg Kellogg",
-          mailto: "gregg@greggkellogg.net"
+          mailto: "gregg@greggkellogg.net",
+          company: "no affiliation",
+          w3cid: 44770
+        }
+      ],
+      authors: [
+        {
+          name: "Jos De Roo",
+          url: "",
+          company: "Imec vzw",
+          companyURL: "https://www.imec-int.com/en",
+          orcid: "",
+          w3cid: "",
+        },
+        {
+          name: "Patrick Hochstenbach",
+          url: "",
+          company: "IDLab - Ghent University",
+          companyURL: "https://knows.idlab.ugent.be/",
+          orcid: "",
+          w3cid: "",
+        }
+      ],
+      otherLinks: [
+        {
+          key: "Acknowledgements:",
+          data: [ 
+            { value: "Hans Cools (In Memoriam)" },
+            { value: "Tim Duval (UnifyLogic, Corp.)", href: "http://UnifyLogic.ai" },
+            { value: "Jindrich Kolman (no affiliation)" },
+            { value: "Andy Seaborne (Apache Software Foundation)" },
+            { value: "Henry Story (Apache Software Foundation)" },
+          ]
         }
       ],
       github: {
@@ -167,9 +210,25 @@
       language which is a superset of <abbr title="Resource Description Framework">RDF</abbr>.
     </p>
   </section>
-  <section id='sotd'>
+  <section id="sotd" class="override">
+    <h2>Status of this document</h2>
+    This document is one of 3 documents produced by the <a href="https://www.w3.org/community/n3-dev/">W3C N3 Community Group</a>:
+    <ol>
+      <li><a href="https://w3c.github.io/N3/spec/">Notation3 Language</a> (this document)</li>
+      <li><a href="https://w3c-cg.github.io/n3Builtins/">Notation3 Builtin Functions</a></li>
+      <li><a href="https://w3c.github.io/N3/spec/semantics.html">Notation3 Semantics</a></li>
+    </ol>
+    <p>This specification was published by the
+      <a href="https://www.w3.org/groups/cg/n3-dev">Notation 3 (<abbr title="Notation3">N3</abbr>) Community Group</a>. It is not a W3C Standard nor is it on the W3C Standards Track.
+      Please note that under the
+      <a href="https://www.w3.org/community/about/agreements/cla/">W3C Community Contributor License Agreement (CLA)</a>
+      there is a limited opt-out and other conditions apply.
+      Learn more about
+      <a href="https://www.w3.org/community/">W3C Community and Business Groups</a>.
+    </p>
     <p>
-      This is an initial version of the Notation3 specification.
+      <a href="https://github.com/w3c/N3/issues/">GitHub Issues</a> are preferred for discussion of this specification. Alternatively, you can send comments to our mailing list.
+      Please send them to <a href="mailto:public-n3-dev@w3.org">public-n3-dev@w3.org</a> (<a href="mailto:public-n3-dev-request@w3.org?subject=subscribe">subscribe</a>, <a href="https://lists.w3.org/Archives/Public/public-n3-dev/">archives</a>).
     </p>
   </section>
   <!--
@@ -874,7 +933,7 @@ _:a ex:town [ ex:name "Springfield" ] . -->
       <p>
         Hence, when the <a>premise</a> holds, then we can safely infer the <a>conclusion</a>.
         This is also referred to as <dfn data-lt="fire|firing">firing</dfn> the rule.
-        For the example above, if we state `:weather a :Raining`, then we can safely infer `:weater a :Cloudy`.
+        For the example above, if we state `:weather a :Raining`, then we can safely infer `:weather a :Cloudy`.
       </p>
 
       <p class="note">
@@ -1396,7 +1455,7 @@ _:d a :Person. -->
         and some don't.
       </li>
       <li>
-        Representing an inverted property using the <code>&lt;components-</code> symbol. The <a
+        Representing an inverted property using the <code>&lt;-</code> symbol. The <a
           data-cite="N3#grammar">original N3 grammar</a> allowed the inverting of a property by using the
         <code>@is .. @of</code> construct. But, this construct can be unintuitive when property names are more
         verbosely
@@ -2253,10 +2312,6 @@ _:x :certainty 0.8 . -->
       </li>
     </ul>
     <p class="ednote">There are more accumulated changes to account for, to be sure.</p>
-  </section>
-  <section id='aknowledgements' class="appendix informative">
-    <h2>Acknowledgements</h2>
-    <p>The editors acknowledge valuable contributions from...</p>
   </section>
 </body>
 
