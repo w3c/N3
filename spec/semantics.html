@@ -624,6 +624,8 @@ for RDF. In a second step, we introduce the N3-interpetation which assigns a spe
       Such interpretations could still <a>satisfy</a> a graph that has no <a>graph term</a> constituent.
     </p>
      
+    <!-- So was the following  incorrect? I.e., "As a consequence, two isomorphic graph terms will have the same meaning, as they will be mapped to the same isomorphic copy." 
+    (not complaining, just wondering) -->
     <p>
       The basic interpretation maps graph terms to an isomorphic copy of themselves. As a consequence, two non-isomorphic graph terms cannot have the same meaning. For the abstract versions of the graph terms <code>{_:x :p :o}</code>, <code>{_:y :p :o}</code>
       and <code>{_:x :p :o. _:y :p :o}</code> we thus get:
@@ -807,6 +809,8 @@ we define $I[A](x)$ as:</p>
         $I($<code>{(</code>$A_1(x)$, <code>:says, &lt; {}, {}, { (</code>$A_2(x)$, <code>:is, :wise) } &gt;)</code>
         </p>
         
+        <!-- Sorry - I misunderstood this before - but why are you turning "assignments and free variables" into a definition?
+       -->
         For <dfn class="lint-ignore">assignments and free variables</dfn> we define:
         <p>Let $G=(U,E,F)$ be a <a>graph</a>. We say that $G$ is true under the <a>interpretation</a> $I$ and the <a>assignment</a> $A$ if $I[A]\models G$. That is, for each assignment $A^1$ for the variables in $U$ there exists an assignment $B^1$ for the variables in $E$ such that $I[A\bullet A^1\bullet B^1](F)=true$.</p>
         <p>
@@ -1017,12 +1021,7 @@ The previous definition allows us to introduce the notion of basic entailment:
         <p>Let $G$ and $H$ be two graphs, we say that $G$ <dfn data-lt="log-entailment|log entailment">log-entails</dfn> $H$, written as $G ⊨_{log} H$,
         if and only if  every interpretation $I$ that <a>log satisfies</a> $G$ ($I ⊨_{log} G$) also <a>log satisfies</a> $H$ ($I ⊨_{log} H$).</p> 
 
-        To illustrate the definition, we discuss some examples of entaiment and non-entialment in the sections below.
-
-     
-
-        
-
+        To illustrate the definition, we discuss some examples of entailment and non-entailment in the sections below.
 
         <section> <h3>(Non-) Entailment of implications</h3>
           For the log predicate <code>log:implies</code> we observe the following examples of <a>log entailment</a>:
@@ -1111,7 +1110,7 @@ The previous definition allows us to introduce the notion of basic entailment:
         <p>Let's assume that simon says that birds can fly. In abstract N3, we can express that as:</p>
 
           <div style="text-indent:20px;">  $(\{\},\{\},\{(\text{:simon}, \text{:says}, <\{\},\{\},\{(\text{:birds},\text{:can}, \text{:fly} )\}>) \})$</div>
-            <div style="text-indent:30px;">(in N3-turtle syntax <code>:simon :says {:birds :can :fly}.  </code>) </div>
+            <div style="text-indent :30px;">(in N3-turtle syntax <code>:simon :says {:birds :can :fly}.  </code>) </div>
       <p>In N3 we can write a rule stating that everything Simon says is true. We do that as follows:</p>
 
       <div style="text-indent:20px;">$(\{x\},\{\},\{(<\{\},\{\},\{(\text{:simon}, \text{:says}, x)\}>, \text{log:implies}, x\})$</div>
