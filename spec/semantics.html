@@ -484,9 +484,10 @@ scoping.
   </ul>
 
 <div class=note>
-  Informally speaking, this definition means that the second $N$ mapping "overrides" the first $M$ mapping whenever a term is in the domain of $N$. This is 
-  very similar to the behavior of quantifiers in first order logic where the scope of a quantifier is always the set of quantified variables occurring freely in the 
-  quantified formula. This similarity is no coincidence. In this document combinations will be mainly used to handle nested scoped variables.
+  Informally speaking, this definition means that the second $N$ mapping "overrides" the first $M$ mapping whenever a term is in the domain of $N$.
+  <p>
+  In this document, combinations will mainly be used to handle nested scoped variables.
+  It is therefore no coincidence that this "overriding" behavior is very similar to how quantifiers behave in first order logic: when the same variable is quantified at different levels, the left-most quantifier is overridden by the right-most one.
 </div>
 
 <p>
