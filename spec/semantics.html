@@ -472,7 +472,7 @@ Examples:
 </section>
 <section>
   <h2>Isomorphisms</h2>
-We would like to define our semantics in a way which assigns the <em>same meaning for structurally identical graphs</em>, i.e.,  which only differ in the naming of the variables they use. To be able to do so, we first introduce the concept of combined mappings which will be relevant to handle nested graphs with local 
+We would like to define our semantics in a way which assigns the <em>same meaning for structurally identical graphs</em>, i.e., graph which only differ in the naming of the variables they use. To be able to do so, we first introduce the concept of combined mappings which will be relevant to handle nested graphs with local 
 scoping.
 
 <p>For two mappings $M$ and $N$ from terms to terms, we define their <dfn>combination</dfn> as follows:
@@ -484,7 +484,7 @@ scoping.
   </ul>
 
 <div class=note>
-  Informally speaking, this definition means that the second $N$ mapping "overrides" the first $M$ mapping whenever a constituent is in the domain of both mappings. This is 
+  Informally speaking, this definition means that the second $N$ mapping "overrides" the first $M$ mapping whenever a term is in the domain of $N$. This is 
   very similar to the behavior of quantifiers in first order logic where the scope of a quantifier is always the set of quantified variables occurring freely in the 
   quantified formula. This similarity is no coincidence. In this document combinations will be mainly used to handle nested scoped variables.
 </div>
