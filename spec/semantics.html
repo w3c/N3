@@ -567,17 +567,14 @@ With combinations of mappings we can define isomorphisms between abstract N3 gra
             <p>
             Consider the following graphs:</p>
               <ul>
-                <li>$G_1$: {<code>_:x :knows :p. :p :says {_:x a :genius}.</code>} 
-                  <br>abstract syntax:<br>
-                  <code>({}, {x}, {(x, knows, p), (p, says &lt;{}, {x} {(x, a, genius)}&gt;)})</code>
+                <li>$G_1 = (\{\}, \{x\}, \{(x, \text{:knows}, \text{:p}), (\text{:p}, \text{;says} &lt;\{\}, \{x\} \{(x, \text{rdf:type}, \text{:Genius})\}&gt;)\})$<br>
+                  &ndash; in N3-turtle syntax: <code>_:x :knows :p. :p :says {_:x a :Genius}.</code> 
                 </li>
-                <li> $G_2:$ {<code>_:y :knows :p. :p :says {_:z a :genius}.</code>} 
-                  <br>abstract syntax:<br>
-                  <code>({}, {y}, {(y, knows, p), (p, says &lt;{}, {z} {(z, a, genius)}&gt;)})</code>
+                <li> $G_2: = (\{\}, \{y\}, \{(y, \text{:knows}, \text{:p}), (\text{:p}, \text{:says} &lt;\{\}, \{z\} \{(z, \text{rdf:type}, \text{:Genius})\}&gt;)\})$<br>
+                  &ndash; in N3-turtle syntax: {<code>_:y :knows :p. :p :says {_:z a :Genius}.</code>} 
                 </li>
-                <li> $G_3:$ {<code>_:y :knows :p. :p :says {_:x a _:z}.</code>} 
-                  <br>abstract syntax:<br>
-                  <code>({}, {y}, {(y, knows, p), (p, says &lt;{}, {x, z} {(x, a, z)}&gt;)})</code>
+                <li> $G_3: = (\{\}, \{y\}, \{(y, \text{:knows}, \text{:p}), (\text{:p}, \text{:says} &lt;\{\}, \{x, z\} \{(x, \text{rdf:type}, z)\}&gt;)\})$<br>
+                  &ndash; in N3-turtle syntax: {<code>_:y :knows :p. :p :says {_:x a _:z}.</code>} 
                 </li>
               </ul>
               <p>
