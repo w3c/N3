@@ -461,7 +461,7 @@ With that definition, we now introduce <dfn data-lt="free">free variables</dfn>:
 Examples:
 <ol>
   <li> <span class="asex"> $(\{x,z\},\{y\},\{(x, \text{:knows}, y) \})^N=(\{x\},\{y\},\{(x, \text{:knows}, y) \})$</span>.
-  <li> <span class="asex"> $(\{x_1, x_2, x_3\},\{y_1, y_2, y_3\},\{(\text{:socrates}, \text{:knows}, \text{:platon}) \})^N=(\{\},\{\},\{(\text{:socrates}, \text{:knows}, \text{:platon}) \})$</span>.
+  <li> <span class="asex"> $(\{x_1, x_2, x_3\},\{y_1, y_2, y_3\},\{(\text{:socrates}, \text{:knows}, \text{:plato}) \})^N=(\{\},\{\},\{(\text{:socrates}, \text{:knows}, \text{:plato}) \})$</span>.
   <li> <span class="asex"> $(\{x\},\{y\},\{(y, \text{:says}, &lt;\{\},\{x\},\{(x,\text{rdf:type}, \text{:Mortal} )\}&gt;) \})^N=$
          <br>
                $(\{\},\{y\},\{(y, \text{:says}, &lt;\{\},\{x\},\{(x,\text{rdf:type}, \text{:Mortal} )\}&gt;) \})$</span>.
@@ -853,18 +853,18 @@ The previous definition allows us to introduce the notion of basic entailment:
  <br>Entailment:
  <ul>
   <li> 
-    <span class="asex">$(\{\},\{\},\{(\text{:socrates}, \text{:knows}, \text{:platon})\})$</span> 
-    <br> &ndash; in N3-turtle syntax: <code>:socrates :knows :platon.</code>
+    <span class="asex">$(\{\},\{\},\{(\text{:socrates}, \text{:knows}, \text{:plato})\})$</span> 
+    <br> &ndash; in N3-turtle syntax: <code>:socrates :knows :plato.</code>
   <br> b-entails
   <br>  <span class="asex">$(\{\},\{x\},\{(\text{:socrates}, \text{:knows}, x)\})$</span>
   <br> &ndash; in N3-turtle syntax: <code>:socrates :knows _:x.</code>
   </li>
   <li> 
-    <span class="asex">$(\{x\},\{\},\{(x, \text{:knows}, \text{:platon})\})$</span> 
-    <br> &ndash; in N3-turtle syntax: <code>?x :knows :platon.</code>
+    <span class="asex">$(\{x\},\{\},\{(x, \text{:knows}, \text{:plato})\})$</span> 
+    <br> &ndash; in N3-turtle syntax: <code>?x :knows :plato.</code>
   <br> b-entails
-  <br>  <span class="asex">$(\{\},\{\},\{(\text{:socrates}, \text{:knows}, \text{:platon})\})$</span> 
-  <br>&ndash; in N3-turtle syntax: <code>:socrates :knows :platon.</code>
+  <br>  <span class="asex">$(\{\},\{\},\{(\text{:socrates}, \text{:knows}, \text{:plato})\})$</span> 
+  <br>&ndash; in N3-turtle syntax: <code>:socrates :knows :plato.</code>
   </li>
   <li>  
      <span class="asex">$(\{x\},\{\},\{(&lt;\{\},\{\},\{(x, \text{rdf:type}, \text{:Human})\}&gt;,
