@@ -688,7 +688,7 @@ for RDF. In the next section, we will introduce the <a>log-interpetation</a> whi
         The definition implies that the empty graph is always true and that the empty list is always mapped to itself. 
         <div class="note">
           <p>
-          Note that the interpretation function $Q_I(x)$ maps ground graphs into the domain of discourse without interpreting their content seperately. 
+          Note that the interpretation function $Q_I(x)$ maps ground graphs into the domain of discourse without interpreting their content separately. 
           This choice was made to guarentee <a href="https://en.wikipedia.org/wiki/Opaque_context">referential opacity</a> 
           (see also <a href="https://www.w3.org/2021/12/rdf-star.html#ref-opacity">referential opacity in RDF-star</a> ). 
           To illustrate this idea consider the <a href="https://iep.utm.edu/referential-opacity/">superman example</a> expressed in N3:
@@ -719,7 +719,7 @@ for RDF. In the next section, we will introduce the <a>log-interpetation</a> whi
         <code>?x :says {?x :is :wise}.</code>
       </p>
 
-        which freely translates to <q>everyone says about themself that they are wise</q>.  In abstract syntax, the formula would be expressed as:
+        which freely translates to <q>everyone says about themselves that they are wise</q>.  In abstract syntax, the formula would be expressed as:
 
         <p>
         $G = (\{x\}, \{\}, \{(x, \text{:says}, &lt;\{\}, \{\},  \{(x, \text{:is}, \text{:wise})\}&gt;)\})$.
