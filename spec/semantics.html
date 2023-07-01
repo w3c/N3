@@ -456,7 +456,7 @@ With that definition, we now introduce <dfn data-lt="free">free variables</dfn>:
    These variables do not contribute to the interpretation of the graph. In order to simplify our considerations for the following sections, 
    we introduce the notion of normalised graphs:</p>
 
-<p>For each graph $G=(U,E,F)$, we call $G^N=(U\cap (FV(F)), E\cap(FV(F)), F)$ the <dfn data-lt="normalised|normalised graph">normalisation</dfn> of $G$.</p>
+<p>For each graph $G=(U,E,F)$, we call $G^N=(U\cap (FV(F)), E\cap(FV(F)), F)$ the <dfn data-lt="normalised|normalised graph", class="lint-ignore">normalisation</dfn> of $G$.</p>
 
 Examples:
 <ol>
@@ -645,6 +645,8 @@ for RDF. In the next section, we will introduce the <a>log-interpetation</a> whi
       Such interpretations could still <a>satisfy</a> a graph that has no <a>graph term</a> constituent.
     </p>
      
+    <!-- So was the following  incorrect? I.e., "As a consequence, two isomorphic graph terms will have the same meaning, as they will be mapped to the same isomorphic copy." 
+    (not complaining, just wondering) -->
     <p>
       The basic interpretation maps graph terms to an isomorphic copy of themselves. As a consequence, two non-isomorphic graph terms cannot have the same meaning. For the abstract versions of the graph terms <code>{_:x :p :o}</code>, <code>{_:y :p :o}</code>
       and <code>{_:x :p :o. _:y :p :o}</code>, we thus get:</p>
@@ -770,7 +772,7 @@ will be true if $(D_I(\text{:bob}), D_I(\text{:says}), Q_I(&lt;\{\}, \{\},  \{(\
       -->
 
       In order to apply mapping $A_2$ on graphs, we introduce the notion of total application.
-        <p>Let $G=(U,E,F)$ be a graph and $M$ be a mapping from a set of variables $V$ into a set $S$. 
+        <p>Let $G=(U,E,F)$ be a graph and let $M$ be a mapping from a set of variables $V$ into a set $S$. 
           <!--and $N = M|_{FV(G)}$ the restriction of $M$ to the <a>free variables</a> of $G$.-->
 
         A <dfn class="lint-ignore">total application</dfn> $M^t(G)$ of $M$ is defined as follows:</p>
@@ -831,6 +833,8 @@ we define $I[A](x)$ as:</p>
         $I(\{(A_1(x), \text{:says}, &lt; \{\}, \{\}, \{ (A_2(x), \text{:is}, \text{:wise}) \} &gt;)$
         </p>
         
+        <!-- Sorry - I misunderstood this before - but why are you turning "assignments and free variables" into a definition?
+       -->
         For <dfn class="lint-ignore">assignments and free variables</dfn> we define:
         <p>Let $G=(U,E,F)$ be a <a>graph</a>. We say that $G$ is true under the <a>interpretation</a> $I$ and the <a>assignment</a> $A$ if $I[A]\models G$. That is, for each assignment $A^1$ for the variables in $U$ there exists an assignment $B^1$ for the variables in $E$ such that $I[A\bullet A^1\bullet B^1](F)=true$.</p>
         <p>
@@ -1003,7 +1007,7 @@ The previous definition allows us to introduce the notion of basic entailment:
 <p>
         The last bullet ensures that the truth value of triples having <code>log:implies</code>
         in predicate position but no graph term or truth value in subject or object position like 
-        for example <code>:socrates log:implies :platon.</code> is only determined by the basic interpretation of the triple. That is,
+        for example <code>:socrates log:implies :plato.</code> is only determined by the basic interpretation of the triple. That is,
         <code>log:implies</code> only has a special meaning when used with graph terms and/or truth values.
   </p>
 
@@ -1051,12 +1055,7 @@ The previous definition allows us to introduce the notion of basic entailment:
         <p>Let $G$ and $H$ be two graphs, we say that $G$ <dfn data-lt="log-entailment|log entailment">log-entails</dfn> $H$, written as $G ⊨_{log} H$,
         if and only if  every interpretation $I$ that <a>log satisfies</a> $G$ ($I ⊨_{log} G$) also <a>log satisfies</a> $H$ ($I ⊨_{log} H$).</p> 
 
-        To illustrate the definition we discuss some examples of entaiment and non-entialment in the sections below.
-
-     
-
-        
-
+        To illustrate the definition, we discuss some examples of entailment and non-entailment in the sections below.
 
         <section> <h3>(Non-) Entailment of implications</h3>
           For the log predicate <code>log:implies</code> we observe the following examples of <a>log entailment</a>:
@@ -1157,13 +1156,12 @@ The previous definition allows us to introduce the notion of basic entailment:
 </section>
         <section> <h3>Unquoting</h3>
          <p> A special form of entailment enabled by our semantics is the so-called <dfn data-lt="unquote">unquoting</dfn>. By that, we mean the 
-          entailment which enables us to make the graph conatined in an graph term true. In order to illustrate the idea, we give an example. </p>
+          entailment which enables us to make the graph contained in a graph term true. To illustrate the idea, we give an example. </p>
           
         <p>Let's assume that simon says that birds can fly. In abstract N3, we can express that as:</p>
 
           <div class="asex">$(\{\},\{\},\{(\text{:simon}, \text{:says}, &lt;\{\},\{\},\{(\text{:birds},\text{:can}, \text{:fly} )\}&gt;) \})$</div>
           <div>&ndash; in N3-turtle syntax: <code>simon :says {:birds :can :fly}.</code></div>
-
       <p>In N3 we can write a rule stating that everything Simon says is true. We do that as follows:</p>
 
       <div class="asex">$(\{x\},\{\},\{(&lt;\{\},\{\},\{(\text{:simon}, \text{:says}, x)\}&gt;, \text{log:implies}, x\})$</div>
