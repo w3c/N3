@@ -1,0 +1,2068 @@
+@prefix crypto: <http://www.w3.org/2000/10/swap/crypto#>.
+@prefix dcterms: <http://purl.org/dc/terms/>.
+@prefix fno: <https://w3id.org/function/ontology#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix vs: <http://www.w3.org/2003/06/sw-vocab-status/ns#>.
+@prefix fnon: <https://w3id.org/function/ontology/n3#>.
+@prefix math: <http://www.w3.org/2000/10/swap/math#>.
+@prefix owl: <http://www.w3.org/2002/07/owl#>.
+@prefix time: <http://www.w3.org/2000/10/swap/time#>.
+@prefix log: <http://www.w3.org/2000/10/swap/log#>.
+@prefix list: <http://www.w3.org/2000/10/swap/list#>.
+@prefix string: <http://www.w3.org/2000/10/swap/string#>.
+
+crypto:sha a fno:Function.
+_:bn_1 a fno:Test.
+_:bn_2 a fno:Parameter.
+_:bn_3 a fno:Parameter.
+math:product a fno:Function.
+_:bn_4 a fno:Test.
+_:bn_5 a fno:Test.
+_:bn_6 a fno:Parameter.
+_:bn_8 a rdfs:Datatype.
+_:bn_9 a fno:Parameter.
+_:bn_10 a rdfs:Datatype.
+math:notGreaterThan a fno:Function.
+_:bn_11 a fno:Test.
+_:bn_12 a fno:Parameter.
+_:bn_13 a rdfs:Datatype.
+_:bn_14 a fno:Parameter.
+_:bn_15 a rdfs:Datatype.
+math:absoluteValue a fno:Function.
+_:bn_16 a fno:Test.
+_:bn_17 a fno:Parameter.
+_:bn_18 a rdfs:Datatype.
+_:bn_19 a fno:Parameter.
+_:bn_20 a rdfs:Datatype.
+math:greaterThan a fno:Function.
+_:bn_21 a fno:Test.
+_:bn_22 a fno:Parameter.
+_:bn_23 a rdfs:Datatype.
+_:bn_24 a fno:Parameter.
+_:bn_25 a rdfs:Datatype.
+math:notLessThan a fno:Function.
+_:bn_26 a fno:Test.
+_:bn_27 a fno:Parameter.
+_:bn_28 a rdfs:Datatype.
+_:bn_29 a fno:Parameter.
+_:bn_30 a rdfs:Datatype.
+math:sin a fno:Function.
+_:bn_31 a fno:Test.
+_:bn_32 a fno:Parameter.
+_:bn_33 a rdfs:Datatype.
+_:bn_34 a fno:Parameter.
+_:bn_35 a rdfs:Datatype.
+math:lessThan a fno:Function.
+_:bn_36 a fno:Test.
+_:bn_37 a fno:Parameter.
+_:bn_38 a rdfs:Datatype.
+_:bn_39 a fno:Parameter.
+_:bn_40 a rdfs:Datatype.
+math:rounded a fno:Function.
+_:bn_41 a fno:Test.
+_:bn_42 a fno:Parameter.
+_:bn_43 a rdfs:Datatype.
+_:bn_44 a fno:Parameter.
+math:atan a fno:Function.
+_:bn_45 a fno:Test.
+_:bn_46 a fno:Parameter.
+_:bn_47 a rdfs:Datatype.
+_:bn_48 a fno:Parameter.
+_:bn_49 a rdfs:Datatype.
+math:acos a fno:Function.
+_:bn_50 a fno:Test.
+_:bn_51 a fno:Parameter.
+_:bn_52 a rdfs:Datatype.
+_:bn_53 a fno:Parameter.
+_:bn_54 a rdfs:Datatype.
+math:cosh a fno:Function.
+_:bn_55 a fno:Test.
+_:bn_56 a fno:Parameter.
+_:bn_57 a rdfs:Datatype.
+_:bn_58 a fno:Parameter.
+_:bn_59 a rdfs:Datatype.
+math:negation a fno:Function.
+_:bn_60 a fno:Test.
+_:bn_61 a fno:Parameter.
+_:bn_62 a rdfs:Datatype.
+_:bn_63 a fno:Parameter.
+_:bn_64 a rdfs:Datatype.
+math:sinh a fno:Function.
+_:bn_65 a fno:Test.
+_:bn_66 a fno:Parameter.
+_:bn_67 a rdfs:Datatype.
+_:bn_68 a fno:Parameter.
+_:bn_69 a rdfs:Datatype.
+math:sum a fno:Function.
+_:bn_70 a fno:Test.
+_:bn_71 a fno:Parameter.
+_:bn_73 a rdfs:Datatype.
+_:bn_74 a fno:Parameter.
+_:bn_75 a rdfs:Datatype.
+math:difference a fno:Function.
+_:bn_76 a fno:Test.
+_:bn_77 a fno:Parameter.
+_:bn_79 a rdfs:Datatype.
+_:bn_81 a rdfs:Datatype.
+_:bn_82 a fno:Parameter.
+_:bn_83 a rdfs:Datatype.
+math:tanh a fno:Function.
+_:bn_84 a fno:Test.
+_:bn_85 a fno:Parameter.
+_:bn_86 a rdfs:Datatype.
+_:bn_87 a fno:Parameter.
+_:bn_88 a rdfs:Datatype.
+math:exponentiation a fno:Function.
+_:bn_89 a fno:Test.
+_:bn_90 a fno:Test.
+_:bn_91 a fno:Parameter.
+_:bn_93 a rdfs:Datatype.
+_:bn_95 a rdfs:Datatype.
+_:bn_96 a fno:Parameter.
+_:bn_97 a rdfs:Datatype.
+math:notEqualTo a fno:Function.
+_:bn_98 a fno:Test.
+_:bn_99 a fno:Parameter.
+_:bn_100 a rdfs:Datatype.
+_:bn_101 a fno:Parameter.
+_:bn_102 a rdfs:Datatype.
+math:quotient a fno:Function.
+_:bn_103 a fno:Test.
+_:bn_104 a fno:Parameter.
+_:bn_106 a rdfs:Datatype.
+_:bn_108 a rdfs:Datatype.
+_:bn_109 a fno:Parameter.
+_:bn_110 a rdfs:Datatype.
+math:equalTo a fno:Function.
+_:bn_111 a fno:Test.
+_:bn_112 a fno:Parameter.
+_:bn_113 a rdfs:Datatype.
+_:bn_114 a fno:Parameter.
+_:bn_115 a rdfs:Datatype.
+math:cos a fno:Function.
+_:bn_116 a fno:Test.
+_:bn_117 a fno:Parameter.
+_:bn_118 a rdfs:Datatype.
+_:bn_119 a fno:Parameter.
+_:bn_120 a rdfs:Datatype.
+math:tan a fno:Function.
+_:bn_121 a fno:Test.
+_:bn_122 a fno:Parameter.
+_:bn_123 a rdfs:Datatype.
+_:bn_124 a fno:Parameter.
+_:bn_125 a rdfs:Datatype.
+math:remainder a fno:Function.
+_:bn_126 a fno:Test.
+_:bn_127 a fno:Parameter.
+_:bn_130 a fno:Parameter.
+math:degrees a fno:Function.
+_:bn_131 a fno:Test.
+_:bn_132 a fno:Parameter.
+_:bn_133 a rdfs:Datatype.
+_:bn_134 a fno:Parameter.
+_:bn_135 a rdfs:Datatype.
+math:asin a fno:Function.
+_:bn_136 a fno:Test.
+_:bn_137 a fno:Parameter.
+_:bn_138 a rdfs:Datatype.
+_:bn_139 a fno:Parameter.
+_:bn_140 a rdfs:Datatype.
+time:minute a fno:Function.
+_:bn_141 a fno:Test.
+_:bn_141 a fno:TestSkip.
+_:bn_142 a fno:Parameter.
+_:bn_143 a fno:Parameter.
+time:day a fno:Function.
+_:bn_144 a fno:Test.
+_:bn_144 a fno:TestSkip.
+_:bn_145 a fno:Parameter.
+_:bn_146 a fno:Parameter.
+time:month a fno:Function.
+_:bn_147 a fno:Test.
+_:bn_147 a fno:TestSkip.
+_:bn_148 a fno:Parameter.
+_:bn_149 a fno:Parameter.
+time:timeZone a fno:Function.
+_:bn_150 a fno:Test.
+_:bn_150 a fno:TestSkip.
+_:bn_151 a fno:Parameter.
+_:bn_152 a fno:Parameter.
+time:year a fno:Function.
+_:bn_153 a fno:Test.
+_:bn_153 a fno:TestSkip.
+_:bn_154 a fno:Parameter.
+_:bn_155 a fno:Parameter.
+time:second a fno:Function.
+_:bn_156 a fno:Test.
+_:bn_156 a fno:TestSkip.
+_:bn_157 a fno:Parameter.
+_:bn_158 a fno:Parameter.
+list:last a fno:Function.
+_:bn_159 a fno:Test.
+_:bn_160 a fno:Test.
+_:bn_161 a fno:Parameter.
+_:bn_162 a fno:Parameter.
+list:first a fno:Function.
+_:bn_163 a fno:Test.
+_:bn_164 a fno:Parameter.
+_:bn_165 a fno:Parameter.
+list:append a fno:Function.
+_:bn_166 a fno:Test.
+_:bn_167 a fno:Test.
+_:bn_168 a fno:Test.
+_:bn_169 a fno:Test.
+_:bn_170 a fno:Parameter.
+_:bn_172 a fno:Parameter.
+list:memberAt a fno:Function.
+_:bn_173 a fno:Test.
+_:bn_174 a fno:Test.
+_:bn_175 a fno:Parameter.
+_:bn_178 a fno:Parameter.
+list:iterate a fno:Function.
+_:bn_179 a fno:Test.
+_:bn_180 a fno:Test.
+_:bn_181 a fno:Test.
+_:bn_182 a fno:Parameter.
+_:bn_183 a fno:Parameter.
+list:member a fno:Function.
+_:bn_186 a fno:Test.
+_:bn_187 a fno:Test.
+_:bn_188 a fno:Parameter.
+_:bn_189 a fno:Parameter.
+list:in a fno:Function.
+_:bn_190 a fno:Test.
+_:bn_191 a fno:Test.
+_:bn_192 a fno:Parameter.
+_:bn_193 a fno:Parameter.
+list:remove a fno:Function.
+_:bn_194 a fno:Test.
+_:bn_195 a fno:Parameter.
+_:bn_198 a fno:Parameter.
+list:length a fno:Function.
+_:bn_199 a fno:Test.
+_:bn_200 a fno:Parameter.
+_:bn_201 a fno:Parameter.
+log:uri a fno:Function.
+_:bn_202 a fno:Test.
+_:bn_203 a fno:Parameter.
+_:bn_204 a fno:Parameter.
+log:rawType a fno:Function.
+_:bn_205 a fno:Test.
+_:bn_206 a fno:Test.
+_:bn_207 a fno:Test.
+_:bn_208 a fno:Parameter.
+_:bn_209 a fno:Parameter.
+log:conclusion a fno:Function.
+_:bn_210 a fno:Test.
+_:bn_211 a fno:Parameter.
+_:bn_212 a fno:Parameter.
+log:content a fno:Function.
+_:bn_213 a fno:Test.
+_:bn_213 a fno:TestSkip.
+_:bn_214 a fno:Parameter.
+_:bn_215 a fno:Parameter.
+log:langlit a fno:Function.
+_:bn_216 a fno:Test.
+_:bn_217 a fno:Parameter.
+_:bn_220 a fno:Parameter.
+log:forAllIn a fno:Function.
+_:bn_221 a fno:Test.
+_:bn_222 a fno:Parameter.
+_:bn_225 a fno:Parameter.
+log:parsedAsN3 a fno:Function.
+_:bn_226 a fno:Test.
+_:bn_227 a fno:Parameter.
+_:bn_228 a fno:Parameter.
+log:conjunction a fno:Function.
+_:bn_229 a fno:Test.
+_:bn_230 a fno:Parameter.
+_:bn_232 a fno:Parameter.
+log:notIncludes a fno:Function.
+_:bn_233 a fno:Test.
+_:bn_234 a fno:Test.
+_:bn_235 a fno:Parameter.
+_:bn_236 a fno:Parameter.
+log:notEqualTo a fno:Function.
+_:bn_237 a fno:Test.
+_:bn_238 a fno:Test.
+_:bn_239 a fno:Test.
+_:bn_240 a fno:Parameter.
+_:bn_241 a fno:Parameter.
+log:skolem a fno:Function.
+_:bn_242 a fno:Test.
+_:bn_242 a fno:TestSkip.
+_:bn_243 a fno:Parameter.
+_:bn_244 a fno:Parameter.
+log:dtlit a fno:Function.
+_:bn_245 a fno:Test.
+_:bn_246 a fno:Test.
+_:bn_247 a fno:Parameter.
+_:bn_250 a fno:Parameter.
+log:includes a fno:Function.
+_:bn_251 a fno:Test.
+_:bn_252 a fno:Parameter.
+_:bn_253 a fno:Parameter.
+log:equalTo a fno:Function.
+_:bn_254 a fno:Test.
+_:bn_255 a fno:Test.
+_:bn_256 a fno:Test.
+_:bn_257 a fno:Test.
+_:bn_258 a fno:Test.
+_:bn_259 a fno:Parameter.
+_:bn_260 a fno:Parameter.
+log:outputString a fno:Function.
+_:bn_261 a fno:Test.
+_:bn_261 a fno:TestSkip.
+_:bn_262 a fno:Parameter.
+_:bn_263 a fno:Parameter.
+log:semanticsOrError a fno:Function.
+_:bn_264 a fno:Test.
+_:bn_264 a fno:TestSkip.
+_:bn_265 a fno:Parameter.
+_:bn_266 a fno:Parameter.
+log:semantics a fno:Function.
+_:bn_267 a fno:Test.
+_:bn_267 a fno:TestSkip.
+_:bn_268 a fno:Parameter.
+_:bn_269 a fno:Parameter.
+string:notGreaterThan a fno:Function.
+_:bn_270 a fno:Test.
+_:bn_271 a fno:Parameter.
+_:bn_272 a fno:Parameter.
+string:notEqualIgnoringCase a fno:Function.
+_:bn_273 a fno:Test.
+_:bn_274 a fno:Parameter.
+_:bn_275 a fno:Parameter.
+string:contains a fno:Function.
+_:bn_276 a fno:Test.
+_:bn_277 a fno:Parameter.
+_:bn_278 a fno:Parameter.
+string:greaterThan a fno:Function.
+_:bn_279 a fno:Test.
+_:bn_280 a fno:Parameter.
+_:bn_281 a fno:Parameter.
+string:containsIgnoringCase a fno:Function.
+_:bn_282 a fno:Test.
+_:bn_283 a fno:Parameter.
+_:bn_284 a fno:Parameter.
+string:notLessThan a fno:Function.
+_:bn_285 a fno:Test.
+_:bn_286 a fno:Parameter.
+_:bn_287 a fno:Parameter.
+string:endsWith a fno:Function.
+_:bn_288 a fno:Test.
+_:bn_289 a fno:Parameter.
+_:bn_290 a fno:Parameter.
+string:scrape a fno:Function.
+_:bn_291 a fno:Test.
+_:bn_292 a fno:Parameter.
+_:bn_295 a fno:Parameter.
+string:replace a fno:Function.
+_:bn_296 a fno:Test.
+_:bn_297 a fno:Parameter.
+_:bn_301 a fno:Parameter.
+string:lessThan a fno:Function.
+_:bn_302 a fno:Test.
+_:bn_303 a fno:Parameter.
+_:bn_304 a fno:Parameter.
+string:concatenation a fno:Function.
+_:bn_305 a fno:Test.
+_:bn_306 a fno:Parameter.
+_:bn_308 a fno:Parameter.
+string:equalIgnoringCase a fno:Function.
+_:bn_309 a fno:Test.
+_:bn_310 a fno:Parameter.
+_:bn_311 a fno:Parameter.
+string:startsWith a fno:Function.
+_:bn_312 a fno:Test.
+_:bn_313 a fno:Parameter.
+_:bn_314 a fno:Parameter.
+string:matches a fno:Function.
+_:bn_315 a fno:Test.
+_:bn_316 a fno:Parameter.
+_:bn_317 a fno:Parameter.
+string:notMatches a fno:Function.
+_:bn_318 a fno:Test.
+_:bn_319 a fno:Parameter.
+_:bn_320 a fno:Parameter.
+string:format a fno:Function.
+_:bn_321 a fno:Test.
+_:bn_322 a fno:Parameter.
+_:bn_324 a fno:Parameter.
+crypto:sha vs:term_status "testing".
+math:product vs:term_status "testing".
+math:notGreaterThan vs:term_status "testing".
+math:absoluteValue vs:term_status "testing".
+math:greaterThan vs:term_status "testing".
+math:notLessThan vs:term_status "testing".
+math:sin vs:term_status "testing".
+math:lessThan vs:term_status "testing".
+math:rounded vs:term_status "testing".
+math:atan vs:term_status "testing".
+math:acos vs:term_status "testing".
+math:cosh vs:term_status "testing".
+math:negation vs:term_status "testing".
+math:sinh vs:term_status "testing".
+math:sum vs:term_status "testing".
+math:difference vs:term_status "testing".
+math:tanh vs:term_status "testing".
+math:exponentiation vs:term_status "testing".
+math:notEqualTo vs:term_status "testing".
+math:quotient vs:term_status "testing".
+math:equalTo vs:term_status "testing".
+math:cos vs:term_status "testing".
+math:tan vs:term_status "testing".
+math:remainder vs:term_status "testing".
+math:degrees vs:term_status "testing".
+math:asin vs:term_status "testing".
+time:minute vs:term_status "testing".
+time:day vs:term_status "testing".
+time:month vs:term_status "testing".
+time:timeZone vs:term_status "testing".
+time:year vs:term_status "testing".
+time:second vs:term_status "testing".
+list:last vs:term_status "testing".
+list:first vs:term_status "testing".
+list:append vs:term_status "testing".
+list:memberAt vs:term_status "testing".
+list:iterate vs:term_status "testing".
+list:member vs:term_status "testing".
+list:in vs:term_status "testing".
+list:remove vs:term_status "testing".
+list:length vs:term_status "testing".
+log:uri vs:term_status "testing".
+log:rawType vs:term_status "testing".
+log:conclusion vs:term_status "testing".
+log:content vs:term_status "testing".
+log:langlit vs:term_status "testing".
+log:forAllIn vs:term_status "testing".
+log:parsedAsN3 vs:term_status "testing".
+log:conjunction vs:term_status "testing".
+log:notIncludes vs:term_status "testing".
+log:notEqualTo vs:term_status "testing".
+log:skolem vs:term_status "testing".
+log:dtlit vs:term_status "testing".
+log:includes vs:term_status "testing".
+log:equalTo vs:term_status "testing".
+log:outputString vs:term_status "testing".
+log:semanticsOrError vs:term_status "testing".
+log:semantics vs:term_status "testing".
+string:notGreaterThan vs:term_status "testing".
+string:notEqualIgnoringCase vs:term_status "testing".
+string:contains vs:term_status "testing".
+string:greaterThan vs:term_status "testing".
+string:containsIgnoringCase vs:term_status "testing".
+string:notLessThan vs:term_status "testing".
+string:endsWith vs:term_status "testing".
+string:scrape vs:term_status "testing".
+string:replace vs:term_status "testing".
+string:lessThan vs:term_status "testing".
+string:concatenation vs:term_status "testing".
+string:equalIgnoringCase vs:term_status "testing".
+string:startsWith vs:term_status "testing".
+string:matches vs:term_status "testing".
+string:notMatches vs:term_status "testing".
+string:format vs:term_status "testing".
+crypto:sha fnon:tldr "Gets as object the SHA-1 hash of the subject.".
+math:product fnon:tldr "Calculates the object as the product of the numbers given in the subject list.".
+math:notGreaterThan fnon:tldr "Checks whether the subject is a number that is not greater than the object.\nYou can use this as an equivalent of a lessThanOrEqual operator.".
+math:absoluteValue fnon:tldr "Calculates as object the absolute value of the subject.".
+math:greaterThan fnon:tldr "Checks whether the subject is a number that is greater than the object.".
+math:notLessThan fnon:tldr "Checks whether the subject is a number that is not less than the object.\nYou can use this as an equivalent of a greaterThanOrEqual operator.".
+math:sin fnon:tldr "Calculates the object as the sine value of the subject.".
+math:lessThan fnon:tldr "Checks whether the subject is a number that is less than the object.".
+math:rounded fnon:tldr "Calculates the object as the integer that is closest to the subject number.".
+math:atan fnon:tldr "Calculates the object as the arc tangent value of the subject.".
+math:acos fnon:tldr "Calculates the object as the arc cosine value of the subject.".
+math:cosh fnon:tldr "Calculates the object as the hyperbolic cosine value of the subject.".
+math:negation fnon:tldr "Calculates the object as the negation of the subject.".
+math:sinh fnon:tldr "Calculates the object as the hyperbolic sine value of the subject.".
+math:sum fnon:tldr "Calculates the object as the sum of the numbers given in the subject list.".
+math:difference fnon:tldr "Calculates the object by subtracting the second number from the first number given in the subject list.".
+math:tanh fnon:tldr "Calculates the object as the hyperbolic tangent value of the subject.".
+math:exponentiation fnon:tldr "Calculates the object as the result of raising the first number to the power of the second number in the subject list. \nYou can also use this to calculate the logarithm of the object, with as base the first number of the subject list (see examples).".
+math:notEqualTo fnon:tldr "Checks whether the subject and object are not the same number.".
+math:quotient fnon:tldr "Calculates the object by dividing the first number by the second number given in the subject list.".
+math:equalTo fnon:tldr "Checks whether the subject and object are the same number.".
+math:cos fnon:tldr "Calculates the object as the cosine value of the subject.".
+math:tan fnon:tldr "Calculates the object as the tangent value of the subject.".
+math:remainder fnon:tldr "Calculates the object as the remainder of the division of the first integer by the second integer given in the subject list.".
+math:degrees fnon:tldr "Calculates the object as the value in degrees corresponding to the radians value of the subject.".
+math:asin fnon:tldr "Calculates the object as the arc sine value of the subject.".
+time:minute fnon:tldr "Gets as object the integer minutes component of the subject xsd:dateTime.".
+time:day fnon:tldr "Gets as object the integer day component of the subject xsd:dateTime.".
+time:month fnon:tldr "Gets as object the integer month component of the subject xsd:dateTime.".
+time:timeZone fnon:tldr "Gets as object the trailing timezone offset of the subject xsd:dateTime (e.g., \"-05:00\").".
+time:year fnon:tldr "Gets as object the integer year component of the subject xsd:dateTime.".
+time:second fnon:tldr "Gets as object the integer seconds component of the subject xsd:dateTime.".
+list:last fnon:tldr "Gets the last element of the subject list as object.".
+list:first fnon:tldr "Gets the first element of the subject list as object.".
+list:append fnon:tldr "Appends the lists from the subject list into a single list as object.".
+list:memberAt fnon:tldr "Gets the member of the subject list at the given subject index as object (index starts at 0).".
+list:iterate fnon:tldr "Iterates over each member of the subject list, getting their index/value pairs as the object.".
+list:member fnon:tldr "Checks whether the subject list contains the object.".
+list:in fnon:tldr "Checks whether the subject is found in the object list.".
+list:remove fnon:tldr "Removes the subject member from the subject list, and returns the resulting list as object.".
+list:length fnon:tldr "Gets the length of the subject list as object.".
+log:uri fnon:tldr "Gets as object the string representation of the subject URI.".
+log:rawType fnon:tldr "Gets the type of the N3 resource.".
+log:conclusion fnon:tldr "Gets all possible conclusions from the subject quoted graph, including rule inferences (deductive closure), as the object quoted graph.".
+log:content fnon:tldr "Dereferences the subject IRI and retrieves the online resource as the object string.".
+log:langlit fnon:tldr "Creates a language-tagged literal as object, based on the string value and language tag (see [BCP47](https://tools.ietf.org/html/bcp47)) in the subject list.".
+log:forAllIn fnon:tldr "Two clauses are given in the subject list: for each result of the first clause, the builtin checks whether the second clause also holds for the result.".
+log:parsedAsN3 fnon:tldr "Parses the subject string into an object quoted graph.".
+log:conjunction fnon:tldr "Merges the quoted graphs from the subject list into a single quoted graph as object.".
+log:notIncludes fnon:tldr "Checks whether the subject quoted graph _does not_ include the object quoted graph (taking into account variables)".
+log:notEqualTo fnon:tldr "Checks whether the subject and object N3 resources are _not_ the same.".
+log:skolem fnon:tldr "Gets as object a skolem IRI that is a function of the subject (commonly a list); the same subject will always result in the same skolem IRI.".
+log:dtlit fnon:tldr "Creates a datatyped literal as object, based on the string value and datatype IRI in the subject list.".
+log:includes fnon:tldr "Checks whether the subject quoted graph includes the object quoted graph (taking into account variables). \nCan also be used to bind variables to values within the graph contents (see examples).".
+log:equalTo fnon:tldr "Checks whether the subject and object N3 resources are the same. \nCan also be used to bind values to variables (see examples).".
+log:outputString fnon:tldr "The N3 reasoner will print the object strings in the order of the subject keys, instead of printing the derivations or deductive closure. This may require a reasoner flag to be set.".
+log:semanticsOrError fnon:tldr "Either gets as object the quoted graph that results from parsing an online (N3) string, found by dereferencing the subject IRI; or an error message that explains what went wrong.".
+log:semantics fnon:tldr "Gets as object the quoted graph that results from parsing an online (N3) string, found by dereferencing the subject IRI.".
+string:notGreaterThan fnon:tldr "Checks whether the subject string is not greater than the object string, according to Unicode code order.\nYou can use this as an equivalent of a lessThanOrEqual operator.".
+string:notEqualIgnoringCase fnon:tldr "Checks whether the subject string is not the same as the object string, ignoring differences between lowercase and uppercase.".
+string:contains fnon:tldr "Checks whether the subject string contains the object string.".
+string:greaterThan fnon:tldr "Checks whether the subject string is greater than the object string, according to Unicode code order.".
+string:containsIgnoringCase fnon:tldr "Checks whether the subject string contains the object string, ignoring differences between lowercase and uppercase.".
+string:notLessThan fnon:tldr "Checks whether the subject string is not less than the object string, according to Unicode code order.\nYou can use this as an equivalent of a greaterThanOrEqual operator.".
+string:endsWith fnon:tldr "Checks whether the subject string ends with the object string.".
+string:scrape fnon:tldr "Calculates the object as the first matching group when, given the subject list, matching the second string as regular expression (with exactly 1 group) against the first string.".
+string:replace fnon:tldr "Calculates the object as the result of, given the strings in the subject list, replacing all occurrences of the second string in the first string with the third string.".
+string:lessThan fnon:tldr "Checks whether the subject string is less than the object string, according to Unicode code order.".
+string:concatenation fnon:tldr "Concatenates the strings from the subject list into a single string as object.".
+string:equalIgnoringCase fnon:tldr "Checks whether the subject string is the same as the object string, ignoring differences between lowercase and uppercase.".
+string:startsWith fnon:tldr "Checks whether the subject string starts with the object string.".
+string:matches fnon:tldr "Checks whether the subject string matches the object regular expression.\nThe regular expression follows the perl, python style.".
+string:notMatches fnon:tldr "Checks whether the subject string does not match the object regular expression.\nThe regular expression follows the perl, python style.".
+string:format fnon:tldr "Calculates the object as the result of replacing the tags in the first string from the subject list with the remaining strings from the subject list.\nSee C's sprintf function for details on these tags.".
+crypto:sha dcterms:comment "`true` if and only if `$o` is the SHA-1 hash of `$s`.".
+math:product dcterms:comment "`true` if and only if `$o` is the arithmetic product of all numbers `$s.i`".
+math:notGreaterThan dcterms:comment "`true` if and only if `$s` is a number that is not greater than `$o`.".
+math:absoluteValue dcterms:comment "`true` if and only if `$o` is the absolute value of `$s`.".
+math:greaterThan dcterms:comment "`true` if and only if `$s` is a number that is greater than `$o`.".
+math:notLessThan dcterms:comment "`true` if and only if `$s` is a number that is not less than `$o`.".
+math:sin dcterms:comment "`true` if and only if `$o` is the sine value of `$s`.".
+_:bn_32 dcterms:comment "angle expressed in radians".
+math:lessThan dcterms:comment "`true` if and only if `$s` is a number that is less than `$o`.".
+math:rounded dcterms:comment "`true` if and only if `$o` is the integer that is closest to `$s`.\nIf there are two such numbers, then the one closest to positive infinity is returned.\n".
+math:atan dcterms:comment "`true` if and only if `$o` is the arc tangent value of `$s`.".
+math:acos dcterms:comment "`true` if and only if `$o` is the arc cosine value of `$s`.".
+math:cosh dcterms:comment "`true` if and only if `$o` is the hyperbolic cosine value of `$s`.".
+_:bn_56 dcterms:comment "angle expressed in radians".
+math:negation dcterms:comment "`true` if and only if `$o` is the negation of `$s`.".
+math:sinh dcterms:comment "`true` if and only if `$o` is the hyperbolic sine value of `$s`.".
+_:bn_66 dcterms:comment "angle expressed in radians".
+math:sum dcterms:comment "`true` if and only if `$o` is the arithmetic sum of all numbers `$s.i`".
+math:difference dcterms:comment "`true` if and only if `$o` is the result of subtracting `$s.2` from `$s.1`.".
+math:tanh dcterms:comment "`true` if and only if `$o` is the hyperbolic tangent value of `$s`.".
+_:bn_85 dcterms:comment "angle expressed in radians".
+math:exponentiation dcterms:comment "`true` if and only if `$o` is the result of raising `$s.1` to the power of `$s.2`".
+math:notEqualTo dcterms:comment "`true` if and only if `$s` is the not same number as `$o`.".
+math:quotient dcterms:comment "`true` if and only if `$o` is the result of dividing `$s.1` by `$s.2`.".
+math:equalTo dcterms:comment "`true` if and only if `$s` is the same number as `$o`.".
+math:cos dcterms:comment "`true` if and only if `$o` is the cosine value of `$s`.".
+_:bn_117 dcterms:comment "angle expressed in radians".
+math:tan dcterms:comment "`true` if and only if `$o` is the tangent value of `$s`.".
+_:bn_122 dcterms:comment "angle expressed in radians".
+math:remainder dcterms:comment "`true` if and only if `$o` is the remainder of dividing `$s.1` by `$s.2`.".
+math:degrees dcterms:comment "`true` if and only if `$o` is the value in degrees corresponding to the radians value of `$s`.".
+_:bn_132 dcterms:comment "angle expressed in radians".
+_:bn_134 dcterms:comment "angle expressed in degrees".
+math:asin dcterms:comment "`true` if and only if `$o` is the arc sine value of `$s`.".
+time:minute dcterms:comment "`true` if and only if `$o` is the integer minutes component of `$s`.".
+time:day dcterms:comment "`true` if and only if `$o` is the integer day component of `$s`.".
+time:month dcterms:comment "`true` if and only if `$o` is the integer month component of `$s`.".
+time:timeZone dcterms:comment "`true` if and only if `$o` is the timezone offset of `$s`.".
+time:year dcterms:comment "`true` if and only if `$o` is the integer year component of `$s`.".
+time:second dcterms:comment "`true` if and only if `$o` is the integer seconds component of `$s`.".
+list:last dcterms:comment "`true` if and only if `$` is a list and `$o` is the last member of that list.".
+list:first dcterms:comment "`true` if and only if `$` is a list and `$o` is the first member of that list.".
+list:append dcterms:comment "`true` if and only if `$o` is the concatenation of all lists `$s.i`.".
+list:memberAt dcterms:comment "`true` if and only if `$s.1` is a list, `$s.2` is a valid index in list `$s.1`, and `$o` is found at that index in the list.".
+list:iterate dcterms:comment "`true` if and only if `$s` is a list and `$o` is a list with two elements: \n`$o.1` is a valid index in list `$s` (index starts at 0), and `$o.2` is found at that index in list `$s`.".
+list:member dcterms:comment "`true` if and only `$s` is a list and `o` is a member of that list.".
+list:in dcterms:comment "`true` if and only if `$o` is a list and `$s` is a member of that list.".
+list:remove dcterms:comment "`true` if and only if `$s.1` is a list, and `$o` is a list composed of the members of `$s.1` with member `$s.2` removed (if it was present; else, `$o` will be the same list).".
+list:length dcterms:comment "`true` if and only if `$s` is a list and `$o` is the integer length of that list.".
+log:uri dcterms:comment "`true` if and only if `$o` is the string representation of `$s`.".
+log:rawType dcterms:comment "`true` if and only if the N3 resource type of `$s` is `$o`.\nN3 resource types include `log:Formula`, `log:Literal`, `log:List`, `log:Set` or `log:Other`.".
+log:conclusion dcterms:comment "`true` if and only if `$o` is the set of conclusions which can be drawn from `$s` (deductive closure), \nby applying any rules it contains to the data it contains.".
+log:content dcterms:comment "`true` if and only if `$o` is a string that represents the online resource to which `$s` is dereferenced.".
+log:langlit dcterms:comment "\n`true` if and only if `$o` is a language-tagged literal with string value corresponding to `$s.1` and language tag corresponding to `$s.2`.\n`$s.2` should be a string in the form of a [BCP47](https://tools.ietf.org/html/bcp47) language tag.".
+log:forAllIn dcterms:comment "`true` if and only if, for each solution for which the first clause `$s.1` is true, the second clause `$s.2` is true as well. \nThis is a scoped universal quantification.".
+log:parsedAsN3 dcterms:comment "`true` if and only if `$s`, when parsed as N3, gives `$o`.\n`$s` should be a syntactically valid string in N3 format.".
+log:conjunction dcterms:comment "`true` if and only if `$o` is a quoted graph that includes the contents of each of the quoted graphs `$s.i`.".
+log:notIncludes dcterms:comment "`true` if and only if `$s log:includes $o` is `false`.".
+log:notEqualTo dcterms:comment "`true` if and only if `$s log:equalTo $o` is false.".
+log:skolem dcterms:comment "`true` if and only if `$o` is a skolem IRI that is a function of the subject.".
+log:dtlit dcterms:comment "`true` if and only if `$o` is a datatyped literal with string value corresponding to `$s.1` and datatype IRI corresponding to `$s.2`.".
+log:includes dcterms:comment "`true` if and only if there exists some substitution which, when applied to `$o`, \ncreates a quoted graph `$o`' such that every statement in `$o`' is also in `$s`;\nwhereby every variable, universally or existentially quantified in `$o`', is quantified in the same way in `$s`. \nVariable substitution is applied recursively to nested compound terms such as quoted graphs ans lists.".
+log:equalTo dcterms:comment "`true` if and only if `$s` and `$o` are the same N3 resource.\nNot to be confused with owl:sameAs.".
+log:outputString dcterms:comment "The concrete semantics of this builtin (e.g., which N3 resource types are supported) will depend on the N3 reasoner.".
+log:semanticsOrError dcterms:comment "`true` if and only if (a) `$o` is a quoted graph that results from parsing the string that results from dereferencing `$s`; or (b) an error message explaining what went wrong.".
+log:semantics dcterms:comment "`true` if and only if `$o` is a quoted graph that results from parsing the string that results from dereferencing `$s`.".
+string:notGreaterThan dcterms:comment "`true` if and only if `$s` is not greater than `$o` as per the Unicode code order.".
+string:notEqualIgnoringCase dcterms:comment "`true` if and only if `$s` is not the same string as `$o` when ignoring case differences.".
+string:contains dcterms:comment "`true` if and only if `$s` contains `$o`.".
+string:greaterThan dcterms:comment "`true` if and only if `$s` is greater than `$o` as per the Unicode code order.".
+string:containsIgnoringCase dcterms:comment "`true` if and only if `$s` contains `$o` when ignoring case differences.".
+string:notLessThan dcterms:comment "`true` if and only if `$s` is not less than `$o` as per the Unicode code order.".
+string:endsWith dcterms:comment "`true` if and only if `$s` ends with `$o`.".
+string:scrape dcterms:comment "`true` if and only if `$o` is the first matching group when matching `$s.2` as a regular expression against `$s.1`".
+_:bn_294 dcterms:comment "regular expression with 1 group".
+string:replace dcterms:comment "`true` if and only if `$o` is the result of replacing all occurrences of `$s.2` in `$s.1` with `$s.3`".
+string:lessThan dcterms:comment "`true` if and only if `$s` is less than `$o` as per the Unicode code order.".
+string:concatenation dcterms:comment "`true` if and only if the string concatenation of `$s.i` equals `$o`.".
+string:equalIgnoringCase dcterms:comment "`true` if and only if `$s` is the same string as `$o` when ignoring case differences.".
+string:startsWith dcterms:comment "`true` if and only if `$s` starts with `$o`.".
+string:matches dcterms:comment "`true` if and only if string `$s` matches the regular expression `$o`".
+_:bn_317 dcterms:comment "regular expression in perl, python style".
+string:notMatches dcterms:comment "`true` if and only if string `$s` does not match the regular expression `$o`".
+_:bn_320 dcterms:comment "regular expression in perl, python style".
+string:format dcterms:comment "`true` if and only if `$o` is the result of replacing the tags found in `$s.(i=1)` with the strings `$s.(i>1)`".
+crypto:sha fno:example (_:bn_1).
+math:product fno:example (_:bn_4 _:bn_5).
+math:notGreaterThan fno:example (_:bn_11).
+math:absoluteValue fno:example (_:bn_16).
+math:greaterThan fno:example (_:bn_21).
+math:notLessThan fno:example (_:bn_26).
+math:sin fno:example (_:bn_31).
+math:lessThan fno:example (_:bn_36).
+math:rounded fno:example (_:bn_41).
+math:atan fno:example (_:bn_45).
+math:acos fno:example (_:bn_50).
+math:cosh fno:example (_:bn_55).
+math:negation fno:example (_:bn_60).
+math:sinh fno:example (_:bn_65).
+math:sum fno:example (_:bn_70).
+math:difference fno:example (_:bn_76).
+math:tanh fno:example (_:bn_84).
+math:exponentiation fno:example (_:bn_89 _:bn_90).
+math:notEqualTo fno:example (_:bn_98).
+math:quotient fno:example (_:bn_103).
+math:equalTo fno:example (_:bn_111).
+math:cos fno:example (_:bn_116).
+math:tan fno:example (_:bn_121).
+math:remainder fno:example (_:bn_126).
+math:degrees fno:example (_:bn_131).
+math:asin fno:example (_:bn_136).
+time:minute fno:example (_:bn_141).
+time:day fno:example (_:bn_144).
+time:month fno:example (_:bn_147).
+time:timeZone fno:example (_:bn_150).
+time:year fno:example (_:bn_153).
+time:second fno:example (_:bn_156).
+list:last fno:example (_:bn_159 _:bn_160).
+list:first fno:example (_:bn_163).
+list:append fno:example (_:bn_166 _:bn_167 _:bn_168 _:bn_169).
+list:memberAt fno:example (_:bn_173 _:bn_174).
+list:iterate fno:example (_:bn_179 _:bn_180 _:bn_181).
+list:member fno:example (_:bn_186 _:bn_187).
+list:in fno:example (_:bn_190 _:bn_191).
+list:remove fno:example (_:bn_194).
+list:length fno:example (_:bn_199).
+log:uri fno:example (_:bn_202).
+log:rawType fno:example (_:bn_205 _:bn_206 _:bn_207).
+log:conclusion fno:example (_:bn_210).
+log:content fno:example (_:bn_213).
+log:langlit fno:example (_:bn_216).
+log:forAllIn fno:example (_:bn_221).
+log:parsedAsN3 fno:example (_:bn_226).
+log:conjunction fno:example (_:bn_229).
+log:notIncludes fno:example (_:bn_233 _:bn_234).
+log:notEqualTo fno:example (_:bn_237 _:bn_238 _:bn_239).
+log:skolem fno:example (_:bn_242).
+log:dtlit fno:example (_:bn_245 _:bn_246).
+log:includes fno:example (_:bn_251).
+log:equalTo fno:example (_:bn_254 _:bn_255 _:bn_256 _:bn_257 _:bn_258).
+log:outputString fno:example (_:bn_261).
+log:semanticsOrError fno:example (_:bn_264).
+log:semantics fno:example (_:bn_267).
+string:notGreaterThan fno:example (_:bn_270).
+string:notEqualIgnoringCase fno:example (_:bn_273).
+string:contains fno:example (_:bn_276).
+string:greaterThan fno:example (_:bn_279).
+string:containsIgnoringCase fno:example (_:bn_282).
+string:notLessThan fno:example (_:bn_285).
+string:endsWith fno:example (_:bn_288).
+string:scrape fno:example (_:bn_291).
+string:replace fno:example (_:bn_296).
+string:lessThan fno:example (_:bn_302).
+string:concatenation fno:example (_:bn_305).
+string:equalIgnoringCase fno:example (_:bn_309).
+string:startsWith fno:example (_:bn_312).
+string:matches fno:example (_:bn_315).
+string:notMatches fno:example (_:bn_318).
+string:format fno:example (_:bn_321).
+_:bn_1 dcterms:description "\nCalculate the SHA-1 of the string \"hello world\".\n            ".
+_:bn_2 dcterms:description "".
+_:bn_3 dcterms:description "".
+_:bn_4 dcterms:description "\nCalculate the product of 2 and 21.\n            ".
+_:bn_5 dcterms:description "\nCalculate the product of 2,4,6, and 8 .\n            ".
+_:bn_6 dcterms:description "".
+_:bn_9 dcterms:description "".
+_:bn_11 dcterms:description "\nCheck if 41 is not greater than 42 .\n            ".
+_:bn_16 dcterms:description "\nCalculate the absolute value of the value -2.\n            ".
+_:bn_21 dcterms:description "\nCheck if 42 is greater than 41 .\n            ".
+_:bn_26 dcterms:description "\nCheck if 42 is not less than 41 .\n            ".
+_:bn_31 dcterms:description "\nCalculate the sin of pi/2 (1.57079632679) .\n            ".
+_:bn_36 dcterms:description "\nCheck if 41 is less than 42 .\n            ".
+_:bn_41 dcterms:description "\nCalculate the rounded version of 3.3.\n            ".
+_:bn_45 dcterms:description "\nCalculate the arc tangent of the value 1.\n            ".
+_:bn_50 dcterms:description "\nCalculate the arc cosine of the value 1.\n            ".
+_:bn_55 dcterms:description "\nCalculate the hyperbolic cosine of the value 0.\n            ".
+_:bn_60 dcterms:description "\nCalculate the negation of the value 42 .\n            ".
+_:bn_65 dcterms:description "\nCalculate the sinh of log(1 + sqrt(2)) (0.88137358701954302).\n            ".
+_:bn_70 dcterms:description "\nCalculate the sum of 1,2,3,4,5,6,7,8,9,10.\n            ".
+_:bn_71 dcterms:description "".
+_:bn_74 dcterms:description "".
+_:bn_76 dcterms:description "\nCalculate the value of 7 minus 2.\n            ".
+_:bn_77 dcterms:description "".
+_:bn_82 dcterms:description "".
+_:bn_84 dcterms:description "\nCalculate the hyperbolic tanget of 0.549306 .\n            ".
+_:bn_89 dcterms:description "\nCalculate the value of 7 raised to the power of 2 .\n            ".
+_:bn_90 dcterms:description "\nCalculate the logarithm of 49 base 2 .\n            ".
+_:bn_91 dcterms:description "".
+_:bn_96 dcterms:description "".
+_:bn_98 dcterms:description "\nCheck if the numbers 41 and 42 are not equal .\n            ".
+_:bn_103 dcterms:description "\nCalculate the quotient of 42 and 2.\n            ".
+_:bn_104 dcterms:description "".
+_:bn_109 dcterms:description "".
+_:bn_111 dcterms:description "\nCheck if the numbers 42 and 42 are equal .\n            ".
+_:bn_116 dcterms:description "\nCalculate the cosine of the value 0.\n            ".
+_:bn_121 dcterms:description "\nCalculate the tangent of the value 0.7853981633974483 .\n            ".
+_:bn_126 dcterms:description "\nCalculate the remainder of 10 divided by 3.\n            ".
+_:bn_127 dcterms:description "".
+_:bn_130 dcterms:description "".
+_:bn_131 dcterms:description "\nCalculate the degrees of the radians value 1.57079632679.\n            ".
+_:bn_136 dcterms:description "\nCalculate the arc sine of the value 1.\n            ".
+_:bn_141 dcterms:description "\nReturn the minute component of the date \"2023-04-01T18:06:04Z\" .\n            ".
+_:bn_144 dcterms:description "\nReturn the day component of the date \"2023-04-01T18:06:04Z\" .\n            ".
+_:bn_147 dcterms:description "\nReturn the month component of the date \"2023-04-01T18:06:04Z\" .\n            ".
+_:bn_150 dcterms:description "\nReturn the time zone component of the date \"2023-04-01T18:06:04Z\" .\n            ".
+_:bn_153 dcterms:description "\nReturn the minute component of the date \"2023-04-01T18:06:04Z\" .\n            ".
+_:bn_156 dcterms:description "\nReturn the seconds component of the date \"2023-04-01T18:06:04Z\" .\n            ".
+_:bn_159 dcterms:description "\nExtract the last element of the list (1 2 3 4).\n            ".
+_:bn_160 dcterms:description "\nTest if the last element of the list (1 2 3 4) is 4.\n            ".
+_:bn_161 dcterms:description "".
+_:bn_163 dcterms:description "\nWhat is the first element of ( ('a') { :a :b :c } 42 )?\n            ".
+_:bn_164 dcterms:description "".
+_:bn_166 dcterms:description "\nAppend (3 4) to the list (1 2).\n            ".
+_:bn_167 dcterms:description "\nWhat do we need to prepend to (3 4) to get (1 2 3 4)?\n            ".
+_:bn_168 dcterms:description "\nWhat do we need to append to (1 2) to get (1 2 3 4)?\n            ".
+_:bn_169 dcterms:description "\nIs the list (1 2 3 4) equal to appending (1), (2 3) , (4)?\n            ".
+_:bn_170 dcterms:description "".
+_:bn_173 dcterms:description "\nGet the third member of the list (\"dog\" \"penguin\" \"cat\").\n            ".
+_:bn_174 dcterms:description "\nFind the index of \"cat\" in the list (\"dog\" \"cat\" \"penguin\" \"cat\").\n            ".
+_:bn_175 dcterms:description "".
+_:bn_178 dcterms:description "".
+_:bn_179 dcterms:description "\nIterate over the list (\"dog\" \"penguin\" \"cat\").\n            ".
+_:bn_180 dcterms:description "\nIs \"cat\" the third item in the list (\"dog\" \"penguin\" \"cat\")?\n            ".
+_:bn_181 dcterms:description "\nWhat is the index of \"cat\" in the list (\"dog\" \"penguin\" \"cat\")?\n            ".
+_:bn_182 dcterms:description "".
+_:bn_183 dcterms:description "".
+_:bn_186 dcterms:description "\nDetermine the members of the list (\"dog\" \"penguin\" \"cat\").\n            ".
+_:bn_187 dcterms:description "\nIs \"cat\" a member of the list (\"dog\" \"penguin\" \"cat\")?\n            ".
+_:bn_188 dcterms:description "".
+_:bn_190 dcterms:description "\nDoes ( \"dog\" \"penguin\" \"cat\" ) contain a \"cat\"?\n            ".
+_:bn_191 dcterms:description "\nWhat are the members of ( \"dog\" \"penguin\" \"cat\" )?\n            ".
+_:bn_192 dcterms:description "".
+_:bn_194 dcterms:description "\nRemove \"penguin\" from the list (\"dog\" \"penguin\" \"cat\" \"penguin\").\n            ".
+_:bn_195 dcterms:description "".
+_:bn_198 dcterms:description "".
+_:bn_199 dcterms:description "\nCalculate the length of the list (1 2 3 4).\n            ".
+_:bn_200 dcterms:description "".
+_:bn_202 dcterms:description "\nParse the URI <https://www.w3.org> into a string .\n            ".
+_:bn_203 dcterms:description "a URI".
+_:bn_204 dcterms:description "".
+_:bn_205 dcterms:description "\nGet the type of literal resources.\n            ".
+_:bn_206 dcterms:description "\nGet the type of resources.\n            ".
+_:bn_207 dcterms:description "\nGet the type of lists and quoted graphs.\n            ".
+_:bn_210 dcterms:description "\nDraw all conclusions from the formula \":Felix a :Cat . { ?X a :Cat } => { ?X :says \"Meow\" . }\".\n            ".
+_:bn_211 dcterms:description "".
+_:bn_212 dcterms:description "".
+_:bn_213 dcterms:description "\nFetch the content of https://www.w3.org/People/Berners-Lee/card.\n            ".
+_:bn_214 dcterms:description "".
+_:bn_215 dcterms:description "".
+_:bn_216 dcterms:description "\nCreate a language-tagged literal from the string \"hello\" and language tag \"en\".\n            ".
+_:bn_217 dcterms:description "".
+_:bn_221 dcterms:description "\nFor each subtask of a composite task, check whether the subtask is completed. \n            ".
+_:bn_222 dcterms:description "".
+_:bn_225 dcterms:description "Scope of the universal quantification. Leave as a variable to use current N3 document as scope.".
+_:bn_226 dcterms:description "\nParse the string ':Socrates a :Human .' as N3.\n            ".
+_:bn_227 dcterms:description "should be a syntactically valid string in N3 format".
+_:bn_229 dcterms:description "\nMerge the formulas \"{ :Felix a :Cat . }\" , \"{ :Pluto a :Dog . }\", \"{ :Pingu a :Penguin . }\" .\n            ".
+_:bn_230 dcterms:description "".
+_:bn_233 dcterms:description "\nCheck whether the formula { :Felix a :Cat } does not include { ?X :eats ?Y }.\n            ".
+_:bn_234 dcterms:description "\nCheck whether the formula { :a :b :c } does not include { :a :b :d }.\n            ".
+_:bn_237 dcterms:description "\nDetermine if 1 is not equal to 2 and \"Cat\" is not equal to \"CAT\" and { :A :B :C . } is not equal to { :C :B :A }.\n            ".
+_:bn_238 dcterms:description "\nDetermine if \"Cat\" is not equal to \"Cat\"@en .\n            ".
+_:bn_239 dcterms:description "\nCheck if an existential or universal variable is not equal to a value.\n            ".
+_:bn_242 dcterms:description "\nGenerate a unique Skolem IRI from the list (:abc 77 \"xyz\") .\n            ".
+_:bn_243 dcterms:description "".
+_:bn_244 dcterms:description "".
+_:bn_245 dcterms:description "\nCreate a datatyped literal from the string \"1971-05-05\" and the type xsd:date.\n            ".
+_:bn_246 dcterms:description "\nParse the datatyped literal \"1971-05-05\"^^xsd:date into a string and data type IRI.\n            ".
+_:bn_247 dcterms:description "".
+_:bn_251 dcterms:description "\nCheck whether the formula { :Felix a :Cat } includes { ?X a :Cat }.\n            ".
+_:bn_254 dcterms:description "\nDetermine if 1 is equal to 1 and \"Cat\" is equal to \"Cat\" and { :A :B :C . :D :E :F } is equal to { :D :E :F . :A :B :C }.\n            ".
+_:bn_255 dcterms:description "\nDetermine if \"Cat\" is equal to \"Cat\"@en .\n            ".
+_:bn_256 dcterms:description "\nAssign a value to an existential or universal variable.\n            ".
+_:bn_257 dcterms:description "\nAssign values from the object list to universal variables given in the subject list. \nThis can be compared to \"destructuring\" or \"unpacking\" in programming languages such as JavaScript or Python.\nIn contrast to those languages, however, it works in either direction in N3.\nIn general, this works because an effort is made to ensure the truth of builtin statements in N3.\n            ".
+_:bn_258 dcterms:description "\nAssign values from the object list to universal variables given in the subject list. \nThis can be compared to \"destructuring\" or \"unpacking\" in programming languages such as JavaScript or Python.\nIn contrast to those languages, however, it works in either direction in N3.\nIn general, this works because an effort is made to ensure the truthfulness of builtin statements in N3.\n            ".
+_:bn_261 dcterms:description "\nPrint the two string \"This is the first line\n\" , \"This is the second line\n\" to the output.\n            ".
+_:bn_264 dcterms:description "\nRead the contents a non existing `<error.data>` and parse it as Notation3 (which of course will fail).\n            ".
+_:bn_265 dcterms:description "".
+_:bn_266 dcterms:description "either a log:Formula or xsd:string".
+_:bn_267 dcterms:description "\nRead the contents of the file `<semantics.data>` and parse it as Notation3.\nWe assume `<semantics.data>` contains the text:\n```       \n  @prefix : <http://example.org/>.\n  :Socrates a :Human .\n```       \n            ".
+_:bn_268 dcterms:description "".
+_:bn_269 dcterms:description "".
+_:bn_270 dcterms:description "\nChecks whether the string \"Cat\" is not greater than the string \"Penguin\" .\n            ".
+_:bn_273 dcterms:description "\nChecks whether the string \"hello world!\" is not equal to \"hELLo dunia!\" ignorning the case .\n            ".
+_:bn_276 dcterms:description "\nChecks whether the string \"hello world!\" contains the string \"llo worl\".\n            ".
+_:bn_279 dcterms:description "\nChecks whether the string \"Pengiun\" is greater than the string \"Cat\" .\n            ".
+_:bn_282 dcterms:description "\nChecks whether the string \"hello world!\" contains the string \"lLO woRl\".\n            ".
+_:bn_285 dcterms:description "\nChecks whether the string \"Penguin\" is not less than the string \"Cat\" .\n            ".
+_:bn_288 dcterms:description "\nChecks whether the string \"hello world!\" ends with \"orld!\".\n            ".
+_:bn_291 dcterms:description "\nExtract from the string \"https://w3c.github.io/N3/spec/\" the last path element using a regular expression .\n            ".
+_:bn_296 dcterms:description "\nReplace all \"l\"-s in the string \"hello world!\" with the bracket version \"[l]\" .\n            ".
+_:bn_302 dcterms:description "\nChecks whether the string \"Cat\" is less than the string \"Penguin\" .\n            ".
+_:bn_305 dcterms:description "\nConcatenates the string \"hello\", \" \" and \"world!\".\n            ".
+_:bn_306 dcterms:description "".
+_:bn_309 dcterms:description "\nChecks whether the string \"hello world!\" is equal to \"hELLo wORld!\" ignoring the case .\n            ".
+_:bn_312 dcterms:description "\nChecks whether the string \"hello world!\" starts with \"hello\" .\n            ".
+_:bn_315 dcterms:description "\nChecks whether the string \"hello world!\" matches the regular expression \".*(l)+o wo.*\".\n            ".
+_:bn_318 dcterms:description "\nChecks whether the string \"hello world!\" no matches the regular expression \".*(l)+o dunia.*\".\n            ".
+_:bn_321 dcterms:description "\nCalculate the result of applying the format \"%s://%s/%s\" to the strings \"https\", \"w3c.github.io\" and \"N3/spec\" .\n            ".
+_:bn_322 dcterms:description "$s.(i=1) is a format string including tags. $s.(i>1) are strings to replace these tags. See C's sprintf function for details.".
+_:bn_1 fno:expression "\n@prefix : <http://example.org/> .\n@prefix crypto: <http://www.w3.org/2000/10/swap/crypto#> .\n\n{ \"hello world\" crypto:sha ?sha . } => { :result :is ?sha . } .\n            ".
+_:bn_4 fno:expression "\n@prefix : <http://example.org/>.\n@prefix math: <http://www.w3.org/2000/10/swap/math#> .\n\n:Let :param (2 21) .\n\n{\n    :Let :param ?param .\n    ?param math:product ?result .\n}\n=>\n{\n    :result :is ?result .\n} .\n            ".
+_:bn_5 fno:expression "\n@prefix : <http://example.org/>.\n@prefix math: <http://www.w3.org/2000/10/swap/math#> .\n\n:Let :param (2 4 6 8) .\n\n{\n    :Let :param ?param .\n    ?param math:product ?result .\n}\n=>\n{\n    :result :is ?result .\n} .\n            ".
+_:bn_11 fno:expression "\n@prefix : <http://example.org/>.\n@prefix math: <http://www.w3.org/2000/10/swap/math#> .\n\n:Let :param (41 42) .\n\n{\n    :Let :param (?X ?Y) .\n    ?X math:notGreaterThan ?Y .\n}\n=>\n{\n    :result :is true .\n} .\n            ".
+_:bn_16 fno:expression "\n@prefix : <http://example.org/>.\n@prefix math: <http://www.w3.org/2000/10/swap/math#> .\n\n:Let :param -2 .\n\n{\n    :Let :param ?param .\n    ?param math:absoluteValue ?result .\n}\n=>\n{\n    :result :is ?result .\n} .\n            ".
+_:bn_21 fno:expression "\n@prefix : <http://example.org/>.\n@prefix math: <http://www.w3.org/2000/10/swap/math#> .\n\n:Let :param (42 41) .\n\n{\n    :Let :param (?X ?Y) .\n    ?X math:greaterThan ?Y .\n}\n=>\n{\n    :result :is true .\n} .\n            ".
+_:bn_26 fno:expression "\n@prefix : <http://example.org/>.\n@prefix math: <http://www.w3.org/2000/10/swap/math#> .\n\n:Let :param (42 41) .\n\n{\n    :Let :param (?X ?Y) .\n    ?X math:notLessThan ?Y .\n}\n=>\n{\n    :result :is true .\n} .\n            ".
+_:bn_31 fno:expression "\n@prefix : <http://example.org/>.\n@prefix math: <http://www.w3.org/2000/10/swap/math#> .\n@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .\n\n:Let :param \"1.57079632679\"^^xsd:double .\n\n{\n    :Let :param ?param .\n    ?param math:sin ?result .\n}\n=>\n{\n    :result :is ?result .\n} .\n            ".
+_:bn_36 fno:expression "\n@prefix : <http://example.org/>.\n@prefix math: <http://www.w3.org/2000/10/swap/math#> .\n\n:Let :param (41 42) .\n\n{\n    :Let :param (?X ?Y) .\n    ?X math:lessThan ?Y .\n}\n=>\n{\n    :result :is true .\n} .\n            ".
+_:bn_41 fno:expression "\n@prefix : <http://example.org/>.\n@prefix math: <http://www.w3.org/2000/10/swap/math#> .\n@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .\n\n:Let :param \"3.3\"^^xsd:double .\n\n{\n    :Let :param ?param .\n    ?param math:rounded ?result .\n}\n=>\n{\n    :result :is ?result .\n} .\n            ".
+_:bn_45 fno:expression "\n@prefix : <http://example.org/>.\n@prefix math: <http://www.w3.org/2000/10/swap/math#> .\n\n:Let :param 1 .\n\n{\n    :Let :param ?param .\n    ?param math:atan ?result .\n}\n=>\n{\n    :result :is ?result .\n} .\n            ".
+_:bn_50 fno:expression "\n@prefix : <http://example.org/>.\n@prefix math: <http://www.w3.org/2000/10/swap/math#> .\n\n:Let :param 1 .\n\n{\n    :Let :param ?param .\n    ?param math:acos ?result .\n}\n=>\n{\n    :result :is ?result .\n} .\n            ".
+_:bn_55 fno:expression "\n@prefix : <http://example.org/>.\n@prefix math: <http://www.w3.org/2000/10/swap/math#> .\n\n:Let :param 0 .\n\n{\n    :Let :param ?param .\n    ?param math:cosh ?result .\n}\n=>\n{\n    :result :is ?result .\n} .\n            ".
+_:bn_60 fno:expression "\n@prefix : <http://example.org/>.\n@prefix math: <http://www.w3.org/2000/10/swap/math#> .\n\n:Let :param 42 .\n\n{\n    :Let :param ?param .\n    ?param math:negation ?result .\n}\n=>\n{\n    :result :is ?result .\n} .\n            ".
+_:bn_65 fno:expression "\n@prefix : <http://example.org/>.\n@prefix math: <http://www.w3.org/2000/10/swap/math#> .\n@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .\n\n:Let :param \"0.88137358701954302\"^^xsd:double.\n\n{\n    :Let :param ?param .\n    ?param math:sinh ?result .\n}\n=>\n{\n    :result :is ?result .\n} .\n            ".
+_:bn_70 fno:expression "\n@prefix : <http://example.org/>.\n@prefix math: <http://www.w3.org/2000/10/swap/math#> .\n\n:Let :param (1 2 3 4 5 6 7 8 9 10) .\n\n{\n    :Let :param ?param .\n    ?param math:sum ?result .\n}\n=>\n{\n    :result :is ?result .\n} .\n            ".
+_:bn_76 fno:expression "\n@prefix : <http://example.org/>.\n@prefix math: <http://www.w3.org/2000/10/swap/math#> .\n\n:Let :param (7 2) .\n\n{\n    :Let :param ?param .\n    ?param math:difference ?result .\n}\n=>\n{\n    :result :is ?result .\n} .\n            ".
+_:bn_84 fno:expression "\n@prefix : <http://example.org/>.\n@prefix math: <http://www.w3.org/2000/10/swap/math#> .\n@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .\n\n:Let :param \"0.549306\"^^xsd:double .\n\n{\n    :Let :param ?param .\n    ?param math:tanh ?result .\n}\n=>\n{\n    :result :is ?result .\n} .\n            ".
+_:bn_89 fno:expression "\n@prefix : <http://example.org/>.\n@prefix math: <http://www.w3.org/2000/10/swap/math#> .\n\n:Let :param (7 2) .\n\n{\n    :Let :param ?param .\n    ?param math:exponentiation ?result .\n}\n=>\n{\n    :result :is ?result .\n} .\n            ".
+_:bn_90 fno:expression "\n@prefix : <http://example.org/>.\n@prefix math: <http://www.w3.org/2000/10/swap/math#> .\n\n{\n    (7 ?result) math:exponentiation 49 .\n}\n=>\n{\n    :result :is ?result .\n} .\n            ".
+_:bn_98 fno:expression "\n@prefix : <http://example.org/>.\n@prefix math: <http://www.w3.org/2000/10/swap/math#> .\n\n:Let :param (41 42) .\n\n{\n    :Let :param (?X ?Y) .\n    ?X math:notEqualTo ?Y .\n}\n=>\n{\n    :result :is true .\n} .\n            ".
+_:bn_103 fno:expression "\n@prefix : <http://example.org/>.\n@prefix math: <http://www.w3.org/2000/10/swap/math#> .\n\n:Let :param (42 2) .\n\n{\n    :Let :param ?param .\n    ?param math:quotient ?result .\n}\n=>\n{\n    :result :is ?result .\n} .\n            ".
+_:bn_111 fno:expression "\n@prefix : <http://example.org/>.\n@prefix math: <http://www.w3.org/2000/10/swap/math#> .\n\n:Let :param (42 42) .\n\n{\n    :Let :param (?X ?Y) .\n    ?X math:equalTo ?Y .\n}\n=>\n{\n    :result :is true .\n} .\n            ".
+_:bn_116 fno:expression "\n@prefix : <http://example.org/>.\n@prefix math: <http://www.w3.org/2000/10/swap/math#> .\n\n:Let :param 0 .\n\n{\n    :Let :param ?param .\n    ?param math:cos ?result .\n}\n=>\n{\n    :result :is ?result .\n} .\n            ".
+_:bn_121 fno:expression "\n@prefix : <http://example.org/>.\n@prefix math: <http://www.w3.org/2000/10/swap/math#> .\n@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .\n\n:Let :param \"0.7853981633974483\"^^xsd:double .\n\n{\n    :Let :param ?param .\n    ?param math:tan ?result .\n}\n=>\n{\n    :result :is ?result .\n} .\n            ".
+_:bn_126 fno:expression "\n@prefix : <http://example.org/>.\n@prefix math: <http://www.w3.org/2000/10/swap/math#> .\n\n:Let :param (10 3) .\n\n{\n    :Let :param ?param .\n    ?param math:remainder ?result .\n}\n=>\n{\n    :result :is ?result .\n} .\n            ".
+_:bn_131 fno:expression "\n@prefix : <http://example.org/>.\n@prefix math: <http://www.w3.org/2000/10/swap/math#> .\n\n:Let :param 1.57079632679 .\n\n{\n    :Let :param ?param .\n    ?param math:degrees ?result .\n}\n=>\n{\n    :result :is ?result .\n} .\n            ".
+_:bn_136 fno:expression "\n@prefix : <http://example.org/>.\n@prefix math: <http://www.w3.org/2000/10/swap/math#> .\n\n:Let :param 1 .\n\n{\n    :Let :param ?param .\n    ?param math:asin ?result .\n}\n=>\n{\n    :result :is ?result .\n} .\n            ".
+_:bn_141 fno:expression "\n@prefix : <http://example.org/>.\n@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.\n@prefix time: <http://www.w3.org/2000/10/swap/time#> .\n\n:Let :param \"2023-04-01T18:06:04Z\"^^xsd:dateTime .\n\n{\n    :Let :param ?param .\n    ?param time:minute ?result .\n}\n=>\n{\n    :result :is ?result .\n} .\n            ".
+_:bn_144 fno:expression "\n@prefix : <http://example.org/>.\n@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.\n@prefix time: <http://www.w3.org/2000/10/swap/time#> .\n\n:Let :param \"2023-04-01T18:06:04Z\"^^xsd:dateTime .\n\n{\n    :Let :param ?param .\n    ?param time:day ?result .\n}\n=>\n{\n    :result :is ?result .\n} .\n            ".
+_:bn_147 fno:expression "\n@prefix : <http://example.org/>.\n@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.\n@prefix time: <http://www.w3.org/2000/10/swap/time#> .\n\n:Let :param \"2023-04-01T18:06:04Z\"^^xsd:dateTime .\n\n{\n    :Let :param ?param .\n    ?param time:month ?result .\n}\n=>\n{\n    :result :is ?result .\n} .\n            ".
+_:bn_150 fno:expression "\n@prefix : <http://example.org/>.\n@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.\n@prefix time: <http://www.w3.org/2000/10/swap/time#> .\n\n:Let :param \"2023-04-01T18:06:04Z\"^^xsd:dateTime .\n\n{\n    :Let :param ?param .\n    ?param time:minute ?result .\n}\n=>\n{\n    :result :is ?result .\n} .\n            ".
+_:bn_153 fno:expression "\n@prefix : <http://example.org/>.\n@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.\n@prefix time: <http://www.w3.org/2000/10/swap/time#> .\n\n:Let :param \"2023-04-01T18:06:04Z\"^^xsd:dateTime .\n\n{\n    :Let :param ?param .\n    ?param time:year ?result .\n}\n=>\n{\n    :result :is ?result .\n} .\n            ".
+_:bn_156 fno:expression "\n@prefix : <http://example.org/>.\n@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.\n@prefix time: <http://www.w3.org/2000/10/swap/time#> .\n\n:Let :param \"2023-04-01T18:06:04Z\"^^xsd:dateTime .\n\n{\n    :Let :param ?param .\n    ?param time:second ?result .\n}\n=>\n{\n    :result :is ?result .\n} .\n            ".
+_:bn_159 fno:expression "\n@prefix : <http://example.org/>.\n@prefix list: <http://www.w3.org/2000/10/swap/list#> .\n\n{ (1 2 3 4) list:last ?last . } => { :result :is ?last . } .\n            ".
+_:bn_160 fno:expression "\n@prefix : <http://example.org/>.\n@prefix list: <http://www.w3.org/2000/10/swap/list#> .\n\n:let :param (1 2 3 4).\n\n{ \n    :let :param ?param .\n    ?param list:last 4 . \n} \n=> \n{ \n    :result :is true . \n} .\n            ".
+_:bn_163 fno:expression "\n@prefix : <http://example.org/>.\n@prefix list: <http://www.w3.org/2000/10/swap/list#> .\n\n{ ( ('a') { :a :b :c } 42 ) list:first ?what . } => { :result :is ?what . } .\n            ".
+_:bn_166 fno:expression "\n@prefix : <http://example.org/>.\n@prefix list: <http://www.w3.org/2000/10/swap/list#> .\n\n{ ( (1 2) (3 4) ) list:append ?list . } => { :result :is ?list . } .\n            ".
+_:bn_167 fno:expression "\n@prefix : <http://example.org/>.\n@prefix list: <http://www.w3.org/2000/10/swap/list#> .\n\n{ ( ?what (3 4) ) list:append (1 2 3 4) . } => { :result :is ?what . } .\n            ".
+_:bn_168 fno:expression "\n@prefix : <http://example.org/>.\n@prefix list: <http://www.w3.org/2000/10/swap/list#> .\n\n{ ( (1 2) ?what ) list:append (1 2 3 4) . } => { :result :is ?what . } .\n            ".
+_:bn_169 fno:expression "\n@prefix : <http://example.org/>.\n@prefix list: <http://www.w3.org/2000/10/swap/list#> .\n\n{ ( (1) (2 3) (4) ) list:append (1 2 3 4) . } => { :result :is true . } .\n            ".
+_:bn_173 fno:expression "\n@prefix : <http://example.org/>.\n@prefix list: <http://www.w3.org/2000/10/swap/list#> .\n\n:let :param (\"dog\" \"penguin\" \"cat\").\n\n{\n    :let :param ?param .\n    ( ?param 2 ) list:memberAt ?third .\n} \n=> \n{ \n    :result :is ?third . \n} .\n            ".
+_:bn_174 fno:expression "\n@prefix : <http://example.org/>.\n@prefix list: <http://www.w3.org/2000/10/swap/list#> .\n\n:let :param (\"dog\" \"cat\" \"penguin\" \"cat\").\n\n{\n    :let :param ?param .\n    ( ?param ?index ) list:memberAt \"cat\" .\n} \n=> \n{ \n    :result :is ?index . \n} .\n            ".
+_:bn_179 fno:expression "\n@prefix : <http://example.org/>.\n@prefix list: <http://www.w3.org/2000/10/swap/list#> .\n\n{ (\"dog\" \"penguin\" \"cat\") list:iterate (?index ?member) . } => { :result :is (?index ?member) . } .\n            ".
+_:bn_180 fno:expression "\n@prefix : <http://example.org/>.\n@prefix list: <http://www.w3.org/2000/10/swap/list#> .\n\n:let :param (\"dog\" \"penguin\" \"cat\") .\n{\n    :let :param ?param . \n    ?param list:iterate (2 \"cat\") .  \n}\n=> \n{ \n    :result :is true . \n} .\n            ".
+_:bn_181 fno:expression "\n@prefix : <http://example.org/>.\n@prefix list: <http://www.w3.org/2000/10/swap/list#> .\n\n:let :param (\"dog\" \"penguin\" \"cat\") .\n{\n    :let :param ?param . \n    ?param list:iterate (?index \"cat\") .  \n}\n=> \n{ \n    :result :is ?index . \n} .\n            ".
+_:bn_186 fno:expression "\n@prefix : <http://example.org/>.\n@prefix list: <http://www.w3.org/2000/10/swap/list#> .\n\n{ (\"dog\" \"penguin\" \"cat\") list:member ?member . } => { :result :is ?member . } .\n            ".
+_:bn_187 fno:expression "\n@prefix : <http://example.org/>.\n@prefix list: <http://www.w3.org/2000/10/swap/list#> .\n\n:let :param (\"dog\" \"penguin\" \"cat\") .\n\n{ \n    :let :param ?param .\n    ?param list:member \"cat\" . \n} \n=> \n{ \n    :result :is true . \n} .\n            ".
+_:bn_190 fno:expression "\n@prefix : <http://example.org/>.\n@prefix list: <http://www.w3.org/2000/10/swap/list#> .\n\n{ \"cat\" list:in ( \"dog\" \"penguin\" \"cat\" ) . } => { :result :is true . } .\n            ".
+_:bn_191 fno:expression "\n@prefix : <http://example.org/>.\n@prefix list: <http://www.w3.org/2000/10/swap/list#> .\n\n{ ?what list:in ( \"dog\" \"penguin\" \"cat\" ) . } => { :result :is ?what . } .\n            ".
+_:bn_194 fno:expression "\n@prefix : <http://example.org/>.\n@prefix list: <http://www.w3.org/2000/10/swap/list#> .\n\n:let :param (\"dog\" \"penguin\" \"cat\" \"penguin\") .\n{ \n    :let :param ?param . \n    ( ?param \"penguin\" ) list:remove ?list .\n} \n=> \n{ \n    :result :is ?list . \n} .\n            ".
+_:bn_199 fno:expression "\n@prefix : <http://example.org/>.\n@prefix list: <http://www.w3.org/2000/10/swap/list#> .\n\n{ (1 2 3 4) list:length ?length . } => { :result :is ?length . } .\n            ".
+_:bn_202 fno:expression "\n@prefix : <http://example.org/>.\n@prefix log: <http://www.w3.org/2000/10/swap/log#> .\n\n{ <https://www.w3.org> log:uri ?uri . } => { :result :is ?uri . } .\n            ".
+_:bn_205 fno:expression "\n@prefix : <http://example.org/>.\n@prefix log: <http://www.w3.org/2000/10/swap/log#> .\n\n{\n    \"Hello\" log:rawType ?stringType .\n    42 log:rawType ?integerType .\n    true log:rawType ?trueType .\n    false log:rawType ?falseType .\n}\n=>\n{\n    :result :is ( ?stringType ?integerType ?trueType ?falseType ) .\n} .\n            ".
+_:bn_206 fno:expression "\n@prefix : <http://example.org/>.\n@prefix log: <http://www.w3.org/2000/10/swap/log#> .\n\n{\n    <http://www.w3c.org> log:rawType ?resourceType .\n}\n=>\n{\n    :result :is ?resourceType .\n} .\n            ".
+_:bn_207 fno:expression "\n@prefix : <http://example.org/>.\n@prefix log: <http://www.w3.org/2000/10/swap/log#> .\n\n{\n    (1 2 3 4) log:rawType ?listType .\n    { :s :p :o } log:rawType ?graphType .\n} \n=>\n{\n    :result :is ( ?listType ?graphType ) .\n} .\n            ".
+_:bn_210 fno:expression "\n@prefix : <http://example.org/>.\n@prefix log: <http://www.w3.org/2000/10/swap/log#> .\n\n:let :param { \n    :Felix a :Cat . \n    { ?X a :Cat . } => { ?X :says \"Meow\" . } .\n} .\n\n{ \n    :let :param ?param .\n    ?param log:conclusion ?conclusion .\n} \n=> \n{ \n    :result :is ?conclusion . \n} .\n            ".
+_:bn_213 fno:expression "\n@prefix : <http://example.org/>.\n@prefix log: <http://www.w3.org/2000/10/swap/log#> .\n\n{ \n    <https://www.w3.org/People/Berners-Lee/card> log:content ?content .\n} \n=> \n{ \n    :result :is ?content . \n} .\n            ".
+_:bn_216 fno:expression "\n@prefix : <http://example.org/>.\n@prefix log: <http://www.w3.org/2000/10/swap/log#> .\n{ (\"hello\" \"en\") log:langlit ?X } => { ?X a :Result } .\n            ".
+_:bn_221 fno:expression "\n@prefix : <http://example.org/>.\n@prefix log: <http://www.w3.org/2000/10/swap/log#> .\n\n:c a :CompositeTask ;\n    :subTask :s1 , :s2 , :s3 .\n:s1 :state :Completed .\n:s2 :state :Completed . \n:s3 :state :Completed .\n\n{\n    ?c a :CompositeTask .\n    ( { ?c :subTask ?s } { ?s :state :Completed } ) log:forAllIn _:t .\n}\n=>\n{\n    :result :is true .\n} . \n            ".
+_:bn_226 fno:expression "\n@prefix : <http://example.org/>.\n@prefix log: <http://www.w3.org/2000/10/swap/log#> .\n\n:Let :param \"\"\"\n@prefix : <urn:example:> .\n:Socrates a :Human .\n\"\"\" .\n\n{\n    :Let :param ?X .\n    ?X log:parsedAsN3 ?Y .\n}\n=>\n{\n    :result :is ?Y .\n} .\n            ".
+_:bn_229 fno:expression "\n@prefix : <http://example.org/>.\n@prefix log: <http://www.w3.org/2000/10/swap/log#> .\n\n{ \n    ( { :Felix a :Cat . }\n      { :Pluto a :Dog . }  \n      { :Pingu a :Penguin . }\n    ) log:conjunction ?merged .\n} \n=> \n{ \n    :result :is ?merged . \n} .\n            ".
+_:bn_233 fno:expression "\n@prefix : <http://example.org/>.\n@prefix log: <http://www.w3.org/2000/10/swap/log#> .\n\n{ \n    { :Felix a :Cat } log:notIncludes { ?X :eats ?Y } .\n} \n=>\n{\n    :result :is true .\n} .\n            ".
+_:bn_234 fno:expression "\n@prefix : <http://example.org/>.\n@prefix log: <http://www.w3.org/2000/10/swap/log#> .\n\n{ \n    # Dynamic evaluation of ?X and ?Y\n    ?X log:notIncludes ?Y .\n    ?X log:equalTo { :a :b :c }.\n    ?Y log:equalTo { :a :b :d }.\n} \n=>              \n{\n    :result :is true .\n} .\n            ".
+_:bn_237 fno:expression "\n@prefix : <http://example.org/>.\n@prefix log: <http://www.w3.org/2000/10/swap/log#> .\n\n{\n    1 log:notEqualTo 2 .\n    \"Cat\" log:notEqualTo \"CAT\" .\n    { :A :B :C . } log:notEqualTo { :C :B :A . } .\n}\n=>\n{\n    :result :is true .\n} . \n            ".
+_:bn_238 fno:expression "\n@prefix : <http://example.org/>.\n@prefix log: <http://www.w3.org/2000/10/swap/log#> .\n\n{\n    \"Cat\" log:notEqualTo \"Cat\"@en .\n}\n=>\n{\n    :result :is true .\n} . \n            ".
+_:bn_239 fno:expression "\n@prefix : <http://example.org/>.\n@prefix log: <http://www.w3.org/2000/10/swap/log#> .\n\n{\n    _:x log:notEqualTo 42 .\n    ?q  log:notEqualTo \"Cat\"@en .\n}\n=>\n{\n    :result :is true .\n} . \n            ".
+_:bn_242 fno:expression "\n@prefix : <http://example.org/>.\n@prefix log: <http://www.w3.org/2000/10/swap/log#> .\n\n{ (:abc 77 \"xyz\") log:skolem ?skolem . } => { :result :is ?skolem } .\n            ".
+_:bn_245 fno:expression "\n@prefix : <http://example.org/>.\n@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .\n@prefix log: <http://www.w3.org/2000/10/swap/log#> .\n\n{ ( \"1971-05-05\" xsd:date ) log:dtlit ?typed } => { :result :is ?typed . } .\n            ".
+_:bn_246 fno:expression "\n@prefix : <http://example.org/>.\n@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .\n@prefix log: <http://www.w3.org/2000/10/swap/log#> .\n\n{ \n    ( ?string ?type ) log:dtlit \"1971-05-05\"^^xsd:date .\n} \n=> \n{ \n    :result :is ( ?string ?type ) . \n} .\n            ".
+_:bn_251 fno:expression "\n@prefix : <http://example.org/>.\n@prefix log: <http://www.w3.org/2000/10/swap/log#> .\n\n{ \n    { :Felix a :Cat } log:includes { ?X a :Cat } .\n} \n=>\n{\n    :result :is ?X .\n} .\n            ".
+_:bn_254 fno:expression "\n@prefix : <http://example.org/>.\n@prefix log: <http://www.w3.org/2000/10/swap/log#> .\n\n{\n    1 log:equalTo 1 .\n    \"Cat\" log:equalTo \"Cat\" .\n    { :A :B :C . :D :E :F . } log:equalTo { :D :E :F . :A :B :C . } .\n}\n=>\n{\n    :result :is true .\n} . \n            ".
+_:bn_255 fno:expression "\n@prefix : <http://example.org/>.\n@prefix log: <http://www.w3.org/2000/10/swap/log#> .\n\n{\n    # This will fail\n    \"Cat\" log:equalTo \"Cat\"@en .\n}\n=>\n{\n    :result :is true .\n} . \n            ".
+_:bn_256 fno:expression "\n@prefix : <http://example.org/>.\n@prefix log: <http://www.w3.org/2000/10/swap/log#> .\n\n{\n    _:x log:equalTo 42 .\n    ?q  log:equalTo \"Cat\"@en .\n\n    # This will fail because _:x is already assigned to 42 .\n    # _:x log:equalTo 17 .\n}\n=>\n{\n    :result :is ?q .\n} . \n            ".
+_:bn_257 fno:expression "\n@prefix : <http://example.org/>.\n@prefix log: <http://www.w3.org/2000/10/swap/log#> .\n\n{\n    ( ?x ?y ?z ) log:equalTo ( 1 2 3 )\n}\n=>\n{\n    :result :is ?x , ?y , ?z .\n} . \n            ".
+_:bn_258 fno:expression "\n@prefix : <http://example.org/>.\n@prefix log: <http://www.w3.org/2000/10/swap/log#> .\n\n{\n    ( \"War and Peace\" \"Leo Tolstoy\" 1225 ) log:equalTo ( ?title ?author ?numPages ) .\n}\n=>\n{\n    :result :is ?title , ?author , ?numPages .\n} . \n            ".
+_:bn_261 fno:expression "\n@prefix : <http://example.org/>.\n@prefix log: <http://www.w3.org/2000/10/swap/log#> .\n\n_:2 log:outputString \"This is the second line\n\" .\n_:1 log:outputString \"This is the first line\n\" .\n            ".
+_:bn_264 fno:expression "\n@prefix : <http://example.org/>.\n@prefix log: <http://www.w3.org/2000/10/swap/log#> .\n\n{ <error.data> log:semantics ?semantics . } => { :result :is ?semantics } .\n            ".
+_:bn_267 fno:expression "\n@prefix : <http://example.org/>.\n@prefix log: <http://www.w3.org/2000/10/swap/log#> .\n\n{ <semantics.data> log:semantics ?semantics . } => { :result :is ?semantics } .\n            ".
+_:bn_270 fno:expression "\n@prefix : <http://example.org/>.\n@prefix string: <http://www.w3.org/2000/10/swap/string#> .\n\n:Let :param1 \"Cat\" .\n:Let :param2 \"Penguin\".\n{\n    :Let :param1 ?param1 .\n    :Let :param2 ?param2 .\n    ?param1 string:notGreaterThan ?param2 .\n}\n=>\n{\n    :result :is true .\n} .\n            ".
+_:bn_273 fno:expression "\n@prefix : <http://example.org/>.\n@prefix string: <http://www.w3.org/2000/10/swap/string#> .\n\n:Let :param1 \"hello world!\" .\n:Let :param2 \"hELLo dunia!\" .\n{\n    :Let :param1 ?param1 .\n    :Let :param2 ?param2 .\n    ?param1 string:notEqualIgnoringCase ?param2 .\n}\n=>\n{\n    :result :is true .\n} .\n            ".
+_:bn_276 fno:expression "\n@prefix : <http://example.org/>.\n@prefix string: <http://www.w3.org/2000/10/swap/string#> .\n\n:Let :param1 \"hello world!\" .\n:Let :param2 \"llo worl\".\n{\n    :Let :param1 ?param1 .\n    :Let :param2 ?param2 .\n    ?param1 string:contains ?param2 .\n}\n=>\n{\n    :result :is true .\n} .\n            ".
+_:bn_279 fno:expression "\n@prefix : <http://example.org/>.\n@prefix string: <http://www.w3.org/2000/10/swap/string#> .\n\n:Let :param1 \"Penguin\" .\n:Let :param2 \"Cat\".\n{\n    :Let :param1 ?param1 .\n    :Let :param2 ?param2 .\n    ?param1 string:greaterThan ?param2 .\n}\n=>\n{\n    :result :is true .\n} .\n            ".
+_:bn_282 fno:expression "\n@prefix : <http://example.org/>.\n@prefix string: <http://www.w3.org/2000/10/swap/string#> .\n\n:Let :param1 \"hello world!\" .\n:Let :param2 \"lLO woRl\".\n{\n    :Let :param1 ?param1 .\n    :Let :param2 ?param2 .\n    ?param1 string:containsIgnoringCase ?param2 .\n}\n=>\n{\n    :result :is true .\n} .\n            ".
+_:bn_285 fno:expression "\n@prefix : <http://example.org/>.\n@prefix string: <http://www.w3.org/2000/10/swap/string#> .\n\n:Let :param1 \"Penguin\".\n:Let :param2 \"Cat\" .\n{\n    :Let :param1 ?param1 .\n    :Let :param2 ?param2 .\n    ?param1 string:notLessThan ?param2 .\n}\n=>\n{\n    :result :is true .\n} .\n            ".
+_:bn_288 fno:expression "\n@prefix : <http://example.org/>.\n@prefix string: <http://www.w3.org/2000/10/swap/string#> .\n\n:Let :param1 \"hello world!\" .\n:Let :param2 \"orld!\".\n{\n    :Let :param1 ?param1 .\n    :Let :param2 ?param2 .\n    ?param1 string:endsWith ?param2 .\n}\n=>\n{\n    :result :is true .\n} .\n            ".
+_:bn_291 fno:expression "\n@prefix : <http://example.org/>.\n@prefix string: <http://www.w3.org/2000/10/swap/string#> .\n\n:Let :param1 \"https://w3c.github.io/N3/spec/\" . \n:Let :param2 \".*/([^/]+/)$\" .\n{\n    :Let :param1 ?param1 .\n    :Let :param2 ?param2 .\n    (?param1 ?param2) string:scrape ?result .\n}\n=>\n{\n    :result :is ?result .\n} .\n            ".
+_:bn_296 fno:expression "\n@prefix : <http://example.org/>.\n@prefix string: <http://www.w3.org/2000/10/swap/string#> .\n\n:Let :data \"hello world!\" .\n:Let :search \"(l)\" .\n:Let :replace \"[$1]\" .\n{\n    :Let :data ?data .\n    :Let :search ?search .\n    :Let :replace ?replace .\n    (?data ?search ?replace) string:replace ?result .\n}\n=>\n{\n    :result :is ?result .\n} .\n            ".
+_:bn_302 fno:expression "\n@prefix : <http://example.org/>.\n@prefix string: <http://www.w3.org/2000/10/swap/string#> .\n\n:Let :param1 \"Cat\" .\n:Let :param2 \"Penguin\".\n{\n    :Let :param1 ?param1 .\n    :Let :param2 ?param2 .\n    ?param1 string:lessThan ?param2 .\n}\n=>\n{\n    :result :is true .\n} .\n            ".
+_:bn_305 fno:expression "\n@prefix : <http://example.org/>.\n@prefix string: <http://www.w3.org/2000/10/swap/string#> .\n\n:Let :param ( \"hello\" \" \" \"world!\" ) .\n\n{\n    :Let :param ?param .\n    ?param string:concatenation ?result .\n}\n=>\n{\n    :result :is ?result .\n} .\n            ".
+_:bn_309 fno:expression "\n@prefix : <http://example.org/>.\n@prefix string: <http://www.w3.org/2000/10/swap/string#> .\n\n:Let :param1 \"hello world!\" .\n:Let :param2 \"hELLo wORld!\" .\n{\n    :Let :param1 ?param1 .\n    :Let :param2 ?param2 .\n    ?param1 string:equalIgnoringCase ?param2 .\n}\n=>\n{\n    :result :is true .\n} .\n            ".
+_:bn_312 fno:expression "\n@prefix : <http://example.org/>.\n@prefix string: <http://www.w3.org/2000/10/swap/string#> .\n\n:Let :param1 \"hello world!\" .\n:Let :param2 \"hello\".\n{\n    :Let :param1 ?param1 .\n    :Let :param2 ?param2 .\n    ?param1 string:startsWith ?param2 .\n}\n=>\n{\n    :result :is true .\n} .\n            ".
+_:bn_315 fno:expression "\n@prefix : <http://example.org/>.\n@prefix string: <http://www.w3.org/2000/10/swap/string#> .\n\n:Let :param1 \"hello world!\" .\n:Let :param2 \".*(l)+o wo.*\".\n{\n    :Let :param1 ?param1 .\n    :Let :param2 ?param2 .\n    ?param1 string:matches ?param2 .\n}\n=>\n{\n    :result :is true .\n} .\n            ".
+_:bn_318 fno:expression "\n@prefix : <http://example.org/>.\n@prefix string: <http://www.w3.org/2000/10/swap/string#> .\n\n:Let :param1 \"hello world!\" .\n:Let :param2 \".*(l)+o dunia.*\".\n{\n    :Let :param1 ?param1 .\n    :Let :param2 ?param2 .\n    ?param1 string:notMatches ?param2 .\n}\n=>\n{\n    :result :is true .\n} .\n            ".
+_:bn_321 fno:expression "\n@prefix : <http://example.org/>.\n@prefix string: <http://www.w3.org/2000/10/swap/string#> .\n\n:Let :param ( \"%s://%s/%s\" \"https\" \"w3c.github.io\" \"N3/spec/\" ) .\n\n{\n    :Let :param ?param .\n    ?param string:format ?result .\n}\n=>\n{\n    :result :is ?result .\n} .\n            ".
+_:bn_1 fno:result "\n@prefix : <http://example.org/>.\n:result :is \"2aae6c35c94fcfb415dbe95f408b9ce91ee846ed\" .\n            ".
+_:bn_4 fno:result "\n@prefix : <http://example.org/>.\n:result :is 42.\n            ".
+_:bn_5 fno:result "\n@prefix : <http://example.org/>.\n:result :is 384.\n            ".
+_:bn_11 fno:result "\n@prefix : <http://example.org/>.\n:result :is true .\n            ".
+_:bn_16 fno:result "\n@prefix : <http://example.org/>.\n:result :is 2. \n            ".
+_:bn_21 fno:result "\n@prefix : <http://example.org/>.\n:result :is true .\n            ".
+_:bn_26 fno:result "\n@prefix : <http://example.org/>.\n:result :is true .\n            ".
+_:bn_31 fno:result "\n@prefix : <http://example.org/>.\n@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .\n:result :is \"1.0\"^^xsd:double . \n            ".
+_:bn_36 fno:result "\n@prefix : <http://example.org/>.\n:result :is true .\n            ".
+_:bn_41 fno:result "\n@prefix : <http://example.org/>.\n:result :is 3. \n            ".
+_:bn_45 fno:result "\n@prefix : <http://example.org/>.\n:result :is 0.7853981633974483 .\n            ".
+_:bn_50 fno:result "\n@prefix : <http://example.org/>.\n:result :is 0.0 .\n            ".
+_:bn_55 fno:result "\n@prefix : <http://example.org/>.\n:result :is 1.0 .\n            ".
+_:bn_60 fno:result "\n@prefix : <http://example.org/>.\n:result :is -42 .\n            ".
+_:bn_65 fno:result "\n@prefix : <http://example.org/>.\n:result :is 1.0.\n            ".
+_:bn_70 fno:result "\n@prefix : <http://example.org/>.\n:result :is 55.\n            ".
+_:bn_76 fno:result "\n@prefix : <http://example.org/>.\n:result :is 5.\n            ".
+_:bn_84 fno:result "\n@prefix : <http://example.org/>.\n@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .\n:result :is \"0.49999989174945103\"^^xsd:double. \n            ".
+_:bn_89 fno:result "\n@prefix : <http://example.org/>.\n:result :is 49 .\n            ".
+_:bn_90 fno:result "\n@prefix : <http://example.org/>.\n:result :is 2.0 .\n            ".
+_:bn_98 fno:result "\n@prefix : <http://example.org/>.\n:result :is true .\n            ".
+_:bn_103 fno:result "\n@prefix : <http://example.org/>.\n:result :is 21. \n            ".
+_:bn_111 fno:result "\n@prefix : <http://example.org/>.\n:result :is true . \n            ".
+_:bn_116 fno:result "\n@prefix : <http://example.org/>.\n:result :is 1.0 .\n            ".
+_:bn_121 fno:result "\n@prefix : <http://example.org/>.\n@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .\n:result :is \"0.9999999999999999\"^^xsd:double. \n            ".
+_:bn_126 fno:result "\n@prefix : <http://example.org/>.\n:result :is 1.\n            ".
+_:bn_131 fno:result "\n@prefix : <http://example.org/>.\n:result :is 89.99999999971946 .\n            ".
+_:bn_136 fno:result "\n@prefix : <http://example.org/>.\n:result :is 1.5707963267948966 .\n            ".
+_:bn_141 fno:result "\n@prefix : <http://example.org/>.\n:result :is 6. \n            ".
+_:bn_144 fno:result "\n@prefix : <http://example.org/>.\n:result :is 1. \n            ".
+_:bn_147 fno:result "\n@prefix : <http://example.org/>.\n:result :is 4. \n            ".
+_:bn_150 fno:result "\n@prefix : <http://example.org/>.\n:result :is \"Z\". \n            ".
+_:bn_153 fno:result "\n@prefix : <http://example.org/>.\n:result :is 2023. \n            ".
+_:bn_156 fno:result "\n@prefix : <http://example.org/>.\n:result :is 4. \n            ".
+_:bn_159 fno:result "\n@prefix : <http://example.org/>.\n:result :is 4. \n            ".
+_:bn_160 fno:result "\n@prefix : <http://example.org/>.\n:result :is true. \n            ".
+_:bn_163 fno:result "\n@prefix : <http://example.org/>.\n:result :is ('a'). \n            ".
+_:bn_166 fno:result "\n@prefix : <http://example.org/>.\n:result :is (1 2 3 4). \n            ".
+_:bn_167 fno:result "\n@prefix : <http://example.org/>.\n:result :is (1 2). \n            ".
+_:bn_168 fno:result "\n@prefix : <http://example.org/>.\n:result :is (3 4). \n            ".
+_:bn_169 fno:result "\n@prefix : <http://example.org/>.\n:result :is true. \n            ".
+_:bn_173 fno:result "\n@prefix : <http://example.org/>.\n:result :is \"cat\" .\n            ".
+_:bn_174 fno:result "\n@prefix : <http://example.org/>.\n:result :is 1 .\n:result :is 3 .\n            ".
+_:bn_179 fno:result "\n@prefix : <http://example.org/>.\n:result :is (0 \"dog\") .\n:result :is (1 \"penguin\") .\n:result :is (2 \"cat\") .\n            ".
+_:bn_180 fno:result "\n@prefix : <http://example.org/>.\n:result :is true .\n            ".
+_:bn_181 fno:result "\n@prefix : <http://example.org/>.\n:result :is 2 .\n            ".
+_:bn_186 fno:result "\n@prefix : <http://example.org/>.\n:result :is \"dog\".\n:result :is \"penguin\".\n:result :is \"cat\".\n            ".
+_:bn_187 fno:result "\n@prefix : <http://example.org/>.\n:result :is true.\n            ".
+_:bn_190 fno:result "\n@prefix : <http://example.org/>.\n:result :is true. \n            ".
+_:bn_191 fno:result "\n@prefix : <http://example.org/>.\n:result :is \"dog\" .\n:result :is \"penguin\" . \n:result :is \"cat\" .\n            ".
+_:bn_194 fno:result "\n@prefix : <http://example.org/>.\n:result :is (\"dog\" \"cat\").\n            ".
+_:bn_199 fno:result "\n@prefix : <http://example.org/>.\n:result :is 4. \n            ".
+_:bn_202 fno:result "\n@prefix : <http://example.org/>.\n:result :is \"https://www.w3.org\" .\n            ".
+_:bn_205 fno:result "\n@prefix : <http://example.org/>.\n@prefix log: <http://www.w3.org/2000/10/swap/log#> .\n:result :is ( log:Literal log:Literal log:Literal log:Literal ) .\n            ".
+_:bn_206 fno:result "\n@prefix : <http://example.org/>.\n@prefix log: <http://www.w3.org/2000/10/swap/log#> .\n:result :is log:Other.\n            ".
+_:bn_207 fno:result "\n@prefix : <http://example.org/>.\n@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.\n@prefix log: <http://www.w3.org/2000/10/swap/log#> .\n:result :is ( rdf:List log:Formula ) .\n            ".
+_:bn_210 fno:result "\n@prefix : <http://example.org/>.\n:result :is {\n    :Felix a :Cat. \n    :Felix :says \"Meow\". \n    { ?S a :Cat . } => { ?S :says \"Meow\" . } .\n} .\n            ".
+_:bn_213 fno:result "\n:result :is \"...the content of https://www.w3.org/People/Berners-Lee/card ...\". \n            ".
+_:bn_216 fno:result "\n@prefix : <http://example.org/>.\n\"hello\"@en a :Result .\n            ".
+_:bn_221 fno:result "\n@prefix : <http://example.org/>.\n:result :is true. \n            ".
+_:bn_226 fno:result "\n@prefix : <http://example.org/>.\n:result :is { <urn:example:Socrates> a <urn:example:Human> . } .\n            ".
+_:bn_229 fno:result "\n@prefix : <http://example.org/>.\n:result :is { \n    :Felix a :Cat . \n    :Pingu a :Penguin . \n    :Pluto a :Dog . \n} .\n            ".
+_:bn_233 fno:result "\n@prefix : <http://example.org/>.\n:result :is true.\n            ".
+_:bn_234 fno:result "\n@prefix : <http://example.org/>.\n:result :is true.\n            ".
+_:bn_237 fno:result "\n@prefix : <http://example.org/>.\n:result :is true .\n            ".
+_:bn_238 fno:result "\n@prefix : <http://example.org/>.\n:result :is true .\n            ".
+_:bn_239 fno:result "\n@prefix : <http://example.org/>.\n# no result (the variables _:x and ?q are not bounded) \n            ".
+_:bn_242 fno:result "\n@prefix : <http://example.org/>.\n:result :is <http://www.w3.org/2000/10/swap/genid#zmgk3Vt_z_u7FQlk1NmqIw> . \n            ".
+_:bn_245 fno:result "\n@prefix : <http://example.org/>.\n@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .\n:result :is \"1971-05-05\"^^xsd:date.\n            ".
+_:bn_246 fno:result "\n@prefix : <http://example.org/>.\n@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .\n:result :is (\"1971-05-05\" xsd:date).\n            ".
+_:bn_251 fno:result "\n@prefix : <http://example.org/>.\n:result :is :Felix .\n            ".
+_:bn_254 fno:result "\n@prefix : <http://example.org/>.\n:result :is true. \n            ".
+_:bn_255 fno:result "\n@prefix : <http://example.org/>.\n# no results\n            ".
+_:bn_256 fno:result "\n@prefix : <http://example.org/>.\n:result :is \"Cat\"@en .\n            ".
+_:bn_257 fno:result "\n@prefix : <http://example.org/>.\n:result :is 1 , 2 , 3 . # objects can be in any order\n            ".
+_:bn_258 fno:result "\n@prefix : <http://example.org/>.\n:result :is \"War and Peace\" , \"Leo Tolstoy\" , 1225 . # objects can be in any order\n            ".
+_:bn_261 fno:result "\n# If the reasoner support the outputString options\nThis is the first line\nThis is the second line\n            ".
+_:bn_264 fno:result "\n@prefix : <http://example.org/>.\n:result :is \"\"\"Unable to access document <file:////tmp/error.data>, because:\n    <urlopen error [Errno 2] No such file or directory: '//tmp/error.data'>\"\"\" .\n            ".
+_:bn_267 fno:result "\n@prefix : <http://example.org/>.\n:result :is { :Socrates a :Human . } .\n            ".
+_:bn_270 fno:result "\n@prefix : <http://example.org/>.\n:result :is true . \n            ".
+_:bn_273 fno:result "\n@prefix : <http://example.org/>.\n:result :is true . \n            ".
+_:bn_276 fno:result "\n@prefix : <http://example.org/>.\n:result :is true . \n            ".
+_:bn_279 fno:result "\n@prefix : <http://example.org/>.\n:result :is true . \n            ".
+_:bn_282 fno:result "\n@prefix : <http://example.org/>.\n:result :is true . \n            ".
+_:bn_285 fno:result "\n@prefix : <http://example.org/>.\n:result :is true . \n            ".
+_:bn_288 fno:result "\n@prefix : <http://example.org/>.\n:result :is true . \n            ".
+_:bn_291 fno:result "\n@prefix : <http://example.org/>.\n:result :is \"spec/\". \n            ".
+_:bn_296 fno:result "\n@prefix : <http://example.org/>.\n:result :is \"he[l][l]o wor[l]d!\". \n            ".
+_:bn_302 fno:result "\n@prefix : <http://example.org/>.\n:result :is true . \n            ".
+_:bn_305 fno:result "\n@prefix : <http://example.org/>.\n:result :is \"hello world!\". \n            ".
+_:bn_309 fno:result "\n@prefix : <http://example.org/>.\n:result :is true . \n            ".
+_:bn_312 fno:result "\n@prefix : <http://example.org/>.\n:result :is true . \n            ".
+_:bn_315 fno:result "\n@prefix : <http://example.org/>.\n:result :is true . \n            ".
+_:bn_318 fno:result "\n@prefix : <http://example.org/>.\n:result :is true . \n            ".
+_:bn_321 fno:result "\n@prefix : <http://example.org/>.\n:result :is \"https://w3c.github.io/N3/spec/\". \n            ".
+crypto:sha fno:name "SHA-1 hash".
+math:product fno:name "product".
+math:notGreaterThan fno:name "notGreaterThan".
+math:absoluteValue fno:name "absoluteValue".
+math:greaterThan fno:name "greaterThan".
+math:notLessThan fno:name "notlessThan".
+math:sin fno:name "sin".
+math:lessThan fno:name "lessThan".
+math:rounded fno:name "rounded".
+math:atan fno:name "atan".
+math:acos fno:name "acos".
+math:cosh fno:name "cosh".
+math:negation fno:name "negation".
+math:sinh fno:name "sinh".
+math:sum fno:name "sum".
+math:difference fno:name "difference".
+math:tanh fno:name "tanh".
+math:exponentiation fno:name "exponentiation".
+math:notEqualTo fno:name "notEqualTo".
+math:quotient fno:name "quotient".
+math:equalTo fno:name "equalTo".
+math:cos fno:name "cos".
+math:tan fno:name "tan".
+math:remainder fno:name "remainder".
+math:degrees fno:name "degrees".
+math:asin fno:name "asin".
+time:minute fno:name "minute".
+time:day fno:name "day".
+time:month fno:name "month".
+time:timeZone fno:name "timeZone".
+time:year fno:name "year".
+time:second fno:name "second".
+list:last fno:name "last".
+list:first fno:name "first".
+list:append fno:name "append".
+list:memberAt fno:name "memberAt".
+list:iterate fno:name "iterate".
+list:member fno:name "member".
+list:in fno:name "in".
+list:remove fno:name "remove".
+list:length fno:name "length".
+log:uri fno:name "uri".
+log:rawType fno:name "rawType".
+log:conclusion fno:name "conclusion".
+log:content fno:name "content".
+log:langlit fno:name "langlit".
+log:forAllIn fno:name "forAllIn".
+log:parsedAsN3 fno:name "parsedAsN3".
+log:conjunction fno:name "conjunction".
+log:notIncludes fno:name "notIncludes".
+log:notEqualTo fno:name "notEqualTo".
+log:skolem fno:name "skolem".
+log:dtlit fno:name "dtlit".
+log:includes fno:name "includes".
+log:equalTo fno:name "equalTo".
+log:outputString fno:name "outputString".
+log:semanticsOrError fno:name "semanticsOrError".
+log:semantics fno:name "semantics".
+string:notGreaterThan fno:name "notGreaterThan".
+string:notEqualIgnoringCase fno:name "notEqualIgnoringCase".
+string:contains fno:name "contains".
+string:greaterThan fno:name "greaterThan".
+string:containsIgnoringCase fno:name "containsIgnoringCase".
+string:notLessThan fno:name "notLessThan".
+string:endsWith fno:name "endsWith".
+string:scrape fno:name "scrape".
+string:replace fno:name "replace".
+string:lessThan fno:name "lessThan".
+string:concatenation fno:name "concatenation".
+string:equalIgnoringCase fno:name "equalIgnoringCase".
+string:startsWith fno:name "startsWith".
+string:matches fno:name "matches".
+string:notMatches fno:name "notMatches".
+string:format fno:name "format".
+crypto:sha fno:parameter (_:bn_2 _:bn_3).
+math:product fno:parameter (_:bn_6 _:bn_9).
+math:notGreaterThan fno:parameter (_:bn_12 _:bn_14).
+math:absoluteValue fno:parameter (_:bn_17 _:bn_19).
+math:greaterThan fno:parameter (_:bn_22 _:bn_24).
+math:notLessThan fno:parameter (_:bn_27 _:bn_29).
+math:sin fno:parameter (_:bn_32 _:bn_34).
+math:lessThan fno:parameter (_:bn_37 _:bn_39).
+math:rounded fno:parameter (_:bn_42 _:bn_44).
+math:atan fno:parameter (_:bn_46 _:bn_48).
+math:acos fno:parameter (_:bn_51 _:bn_53).
+math:cosh fno:parameter (_:bn_56 _:bn_58).
+math:negation fno:parameter (_:bn_61 _:bn_63).
+math:sinh fno:parameter (_:bn_66 _:bn_68).
+math:sum fno:parameter (_:bn_71 _:bn_74).
+math:difference fno:parameter (_:bn_77 _:bn_82).
+math:tanh fno:parameter (_:bn_85 _:bn_87).
+math:exponentiation fno:parameter (_:bn_91 _:bn_96).
+math:notEqualTo fno:parameter (_:bn_99 _:bn_101).
+math:quotient fno:parameter (_:bn_104 _:bn_109).
+math:equalTo fno:parameter (_:bn_112 _:bn_114).
+math:cos fno:parameter (_:bn_117 _:bn_119).
+math:tan fno:parameter (_:bn_122 _:bn_124).
+math:remainder fno:parameter (_:bn_127 _:bn_130).
+math:degrees fno:parameter (_:bn_132 _:bn_134).
+math:asin fno:parameter (_:bn_137 _:bn_139).
+time:minute fno:parameter (_:bn_142 _:bn_143).
+time:day fno:parameter (_:bn_145 _:bn_146).
+time:month fno:parameter (_:bn_148 _:bn_149).
+time:timeZone fno:parameter (_:bn_151 _:bn_152).
+time:year fno:parameter (_:bn_154 _:bn_155).
+time:second fno:parameter (_:bn_157 _:bn_158).
+list:last fno:parameter (_:bn_161 _:bn_162).
+list:first fno:parameter (_:bn_164 _:bn_165).
+list:append fno:parameter (_:bn_170 _:bn_172).
+list:memberAt fno:parameter (_:bn_175 _:bn_178).
+list:iterate fno:parameter (_:bn_182 _:bn_183).
+list:member fno:parameter (_:bn_188 _:bn_189).
+list:in fno:parameter (_:bn_192 _:bn_193).
+list:remove fno:parameter (_:bn_195 _:bn_198).
+list:length fno:parameter (_:bn_200 _:bn_201).
+log:uri fno:parameter (_:bn_203 _:bn_204).
+log:rawType fno:parameter (_:bn_208 _:bn_209).
+log:conclusion fno:parameter (_:bn_211 _:bn_212).
+log:content fno:parameter (_:bn_214 _:bn_215).
+log:langlit fno:parameter (_:bn_217 _:bn_220).
+log:forAllIn fno:parameter (_:bn_222 _:bn_225).
+log:parsedAsN3 fno:parameter (_:bn_227 _:bn_228).
+log:conjunction fno:parameter (_:bn_230 _:bn_232).
+log:notIncludes fno:parameter (_:bn_235 _:bn_236).
+log:notEqualTo fno:parameter (_:bn_240 _:bn_241).
+log:skolem fno:parameter (_:bn_243 _:bn_244).
+log:dtlit fno:parameter (_:bn_247 _:bn_250).
+log:includes fno:parameter (_:bn_252 _:bn_253).
+log:equalTo fno:parameter (_:bn_259 _:bn_260).
+log:outputString fno:parameter (_:bn_262 _:bn_263).
+log:semanticsOrError fno:parameter (_:bn_265 _:bn_266).
+log:semantics fno:parameter (_:bn_268 _:bn_269).
+string:notGreaterThan fno:parameter (_:bn_271 _:bn_272).
+string:notEqualIgnoringCase fno:parameter (_:bn_274 _:bn_275).
+string:contains fno:parameter (_:bn_277 _:bn_278).
+string:greaterThan fno:parameter (_:bn_280 _:bn_281).
+string:containsIgnoringCase fno:parameter (_:bn_283 _:bn_284).
+string:notLessThan fno:parameter (_:bn_286 _:bn_287).
+string:endsWith fno:parameter (_:bn_289 _:bn_290).
+string:scrape fno:parameter (_:bn_292 _:bn_295).
+string:replace fno:parameter (_:bn_297 _:bn_301).
+string:lessThan fno:parameter (_:bn_303 _:bn_304).
+string:concatenation fno:parameter (_:bn_306 _:bn_308).
+string:equalIgnoringCase fno:parameter (_:bn_310 _:bn_311).
+string:startsWith fno:parameter (_:bn_313 _:bn_314).
+string:matches fno:parameter (_:bn_316 _:bn_317).
+string:notMatches fno:parameter (_:bn_319 _:bn_320).
+string:format fno:parameter (_:bn_322 _:bn_324).
+_:bn_2 fno:mode "+".
+_:bn_3 fno:mode "-".
+_:bn_6 fno:mode "+".
+_:bn_7 fno:mode "+".
+_:bn_9 fno:mode "-".
+_:bn_12 fno:mode "+".
+_:bn_14 fno:mode "+".
+_:bn_17 fno:mode "+".
+_:bn_19 fno:mode "-".
+_:bn_22 fno:mode "+".
+_:bn_24 fno:mode "+".
+_:bn_27 fno:mode "+".
+_:bn_29 fno:mode "+".
+_:bn_32 fno:mode "?".
+_:bn_34 fno:mode "?".
+_:bn_37 fno:mode "+".
+_:bn_39 fno:mode "+".
+_:bn_42 fno:mode "+".
+_:bn_44 fno:mode "-".
+_:bn_46 fno:mode "?".
+_:bn_48 fno:mode "?".
+_:bn_51 fno:mode "?".
+_:bn_53 fno:mode "?".
+_:bn_56 fno:mode "?".
+_:bn_58 fno:mode "?".
+_:bn_61 fno:mode "?".
+_:bn_63 fno:mode "?".
+_:bn_66 fno:mode "?".
+_:bn_68 fno:mode "?".
+_:bn_71 fno:mode "+".
+_:bn_72 fno:mode "+".
+_:bn_74 fno:mode "-".
+_:bn_77 fno:mode "+".
+_:bn_78 fno:mode "+".
+_:bn_80 fno:mode "+".
+_:bn_82 fno:mode "-".
+_:bn_85 fno:mode "?".
+_:bn_87 fno:mode "?".
+_:bn_91 fno:mode "+".
+_:bn_92 fno:mode "+".
+_:bn_94 fno:mode "?".
+_:bn_96 fno:mode "?".
+_:bn_99 fno:mode "+".
+_:bn_101 fno:mode "+".
+_:bn_104 fno:mode "+".
+_:bn_105 fno:mode "+".
+_:bn_107 fno:mode "+".
+_:bn_109 fno:mode "-".
+_:bn_112 fno:mode "?".
+_:bn_114 fno:mode "?".
+_:bn_117 fno:mode "?".
+_:bn_119 fno:mode "?".
+_:bn_122 fno:mode "?".
+_:bn_124 fno:mode "?".
+_:bn_127 fno:mode "+".
+_:bn_128 fno:mode "+".
+_:bn_129 fno:mode "+".
+_:bn_130 fno:mode "-".
+_:bn_132 fno:mode "?".
+_:bn_134 fno:mode "?".
+_:bn_137 fno:mode "?".
+_:bn_139 fno:mode "?".
+_:bn_142 fno:mode "+".
+_:bn_143 fno:mode "-".
+_:bn_145 fno:mode "+".
+_:bn_146 fno:mode "-".
+_:bn_148 fno:mode "+".
+_:bn_149 fno:mode "-".
+_:bn_151 fno:mode "+".
+_:bn_152 fno:mode "-".
+_:bn_154 fno:mode "+".
+_:bn_155 fno:mode "-".
+_:bn_157 fno:mode "+".
+_:bn_158 fno:mode "-".
+_:bn_161 fno:mode "+".
+_:bn_162 fno:mode "-".
+_:bn_164 fno:mode "+".
+_:bn_165 fno:mode "-".
+_:bn_170 fno:mode "+".
+_:bn_171 fno:mode "?[*]".
+_:bn_172 fno:mode "?".
+_:bn_175 fno:mode "+".
+_:bn_176 fno:mode "+".
+_:bn_177 fno:mode "?[*]".
+_:bn_178 fno:mode "?[*]".
+_:bn_182 fno:mode "+".
+_:bn_183 fno:mode "?[*]".
+_:bn_184 fno:mode "?[*]".
+_:bn_185 fno:mode "?[*]".
+_:bn_188 fno:mode "+".
+_:bn_189 fno:mode "-[*]".
+_:bn_192 fno:mode "-[*]".
+_:bn_193 fno:mode "+".
+_:bn_195 fno:mode "+".
+_:bn_196 fno:mode "+".
+_:bn_197 fno:mode "+".
+_:bn_198 fno:mode "-".
+_:bn_200 fno:mode "+".
+_:bn_201 fno:mode "-".
+_:bn_203 fno:mode "?".
+_:bn_204 fno:mode "?".
+_:bn_208 fno:mode "+".
+_:bn_209 fno:mode "-".
+_:bn_211 fno:mode "+".
+_:bn_212 fno:mode "?".
+_:bn_214 fno:mode "+".
+_:bn_215 fno:mode "?".
+_:bn_217 fno:mode "?".
+_:bn_218 fno:mode "?".
+_:bn_219 fno:mode "?".
+_:bn_220 fno:mode "?".
+_:bn_222 fno:mode "+".
+_:bn_223 fno:mode "+".
+_:bn_224 fno:mode "+".
+_:bn_225 fno:mode "?".
+_:bn_227 fno:mode "+".
+_:bn_228 fno:mode "-".
+_:bn_230 fno:mode "+".
+_:bn_231 fno:mode "+".
+_:bn_232 fno:mode "?".
+_:bn_235 fno:mode "+".
+_:bn_236 fno:mode "+".
+_:bn_240 fno:mode "+".
+_:bn_241 fno:mode "+".
+_:bn_243 fno:mode "+".
+_:bn_244 fno:mode "-".
+_:bn_247 fno:mode "?".
+_:bn_248 fno:mode "?".
+_:bn_249 fno:mode "?".
+_:bn_250 fno:mode "?".
+_:bn_252 fno:mode "+".
+_:bn_253 fno:mode "+".
+_:bn_259 fno:mode "?".
+_:bn_260 fno:mode "?".
+_:bn_262 fno:mode "+".
+_:bn_263 fno:mode "+".
+_:bn_265 fno:mode "+".
+_:bn_266 fno:mode "?".
+_:bn_268 fno:mode "+".
+_:bn_269 fno:mode "?".
+_:bn_271 fno:mode "+".
+_:bn_272 fno:mode "+".
+_:bn_274 fno:mode "+".
+_:bn_275 fno:mode "+".
+_:bn_277 fno:mode "+".
+_:bn_278 fno:mode "+".
+_:bn_280 fno:mode "+".
+_:bn_281 fno:mode "+".
+_:bn_283 fno:mode "+".
+_:bn_284 fno:mode "+".
+_:bn_286 fno:mode "+".
+_:bn_287 fno:mode "+".
+_:bn_289 fno:mode "+".
+_:bn_290 fno:mode "+".
+_:bn_292 fno:mode "+".
+_:bn_293 fno:mode "+".
+_:bn_294 fno:mode "+".
+_:bn_295 fno:mode "-".
+_:bn_297 fno:mode "+".
+_:bn_298 fno:mode "+".
+_:bn_299 fno:mode "+".
+_:bn_300 fno:mode "+".
+_:bn_301 fno:mode "-".
+_:bn_303 fno:mode "+".
+_:bn_304 fno:mode "+".
+_:bn_306 fno:mode "+".
+_:bn_307 fno:mode "+".
+_:bn_308 fno:mode "-".
+_:bn_310 fno:mode "+".
+_:bn_311 fno:mode "+".
+_:bn_313 fno:mode "+".
+_:bn_314 fno:mode "+".
+_:bn_316 fno:mode "+".
+_:bn_317 fno:mode "+".
+_:bn_319 fno:mode "+".
+_:bn_320 fno:mode "+".
+_:bn_322 fno:mode "+".
+_:bn_323 fno:mode "+".
+_:bn_324 fno:mode "-".
+_:bn_2 fno:predicate "$s".
+_:bn_3 fno:predicate "$o".
+_:bn_6 fno:predicate "$s".
+_:bn_7 fno:predicate "$s.i".
+_:bn_9 fno:predicate "$o".
+_:bn_12 fno:predicate "$s".
+_:bn_14 fno:predicate "$o".
+_:bn_17 fno:predicate "$s".
+_:bn_19 fno:predicate "$o".
+_:bn_22 fno:predicate "$s".
+_:bn_24 fno:predicate "$o".
+_:bn_27 fno:predicate "$s".
+_:bn_29 fno:predicate "$o".
+_:bn_32 fno:predicate "$s".
+_:bn_34 fno:predicate "$o".
+_:bn_37 fno:predicate "$s".
+_:bn_39 fno:predicate "$o".
+_:bn_42 fno:predicate "$s".
+_:bn_44 fno:predicate "$o".
+_:bn_46 fno:predicate "$s".
+_:bn_48 fno:predicate "$o".
+_:bn_51 fno:predicate "$s".
+_:bn_53 fno:predicate "$o".
+_:bn_56 fno:predicate "$s".
+_:bn_58 fno:predicate "$o".
+_:bn_61 fno:predicate "$s".
+_:bn_63 fno:predicate "$o".
+_:bn_66 fno:predicate "$s".
+_:bn_68 fno:predicate "$o".
+_:bn_71 fno:predicate "$s".
+_:bn_72 fno:predicate "$s.i".
+_:bn_74 fno:predicate "$o".
+_:bn_77 fno:predicate "$s".
+_:bn_78 fno:predicate "$s.1".
+_:bn_80 fno:predicate "$s.2".
+_:bn_82 fno:predicate "$o".
+_:bn_85 fno:predicate "$s".
+_:bn_87 fno:predicate "$o".
+_:bn_91 fno:predicate "$s".
+_:bn_92 fno:predicate "$s.1".
+_:bn_94 fno:predicate "$s.2".
+_:bn_96 fno:predicate "$o".
+_:bn_99 fno:predicate "$s".
+_:bn_101 fno:predicate "$o".
+_:bn_104 fno:predicate "$s".
+_:bn_105 fno:predicate "$s.1".
+_:bn_107 fno:predicate "$s.2".
+_:bn_109 fno:predicate "$o".
+_:bn_112 fno:predicate "$s".
+_:bn_114 fno:predicate "$o".
+_:bn_117 fno:predicate "$s".
+_:bn_119 fno:predicate "$o".
+_:bn_122 fno:predicate "$s".
+_:bn_124 fno:predicate "$o".
+_:bn_127 fno:predicate "$s".
+_:bn_128 fno:predicate "$s.1".
+_:bn_129 fno:predicate "$s.2".
+_:bn_130 fno:predicate "$o".
+_:bn_132 fno:predicate "$s".
+_:bn_134 fno:predicate "$o".
+_:bn_137 fno:predicate "$s".
+_:bn_139 fno:predicate "$o".
+_:bn_142 fno:predicate "$s".
+_:bn_143 fno:predicate "$o".
+_:bn_145 fno:predicate "$s".
+_:bn_146 fno:predicate "$o".
+_:bn_148 fno:predicate "$s".
+_:bn_149 fno:predicate "$o".
+_:bn_151 fno:predicate "$s".
+_:bn_152 fno:predicate "$o".
+_:bn_154 fno:predicate "$s".
+_:bn_155 fno:predicate "$o".
+_:bn_157 fno:predicate "$s".
+_:bn_158 fno:predicate "$o".
+_:bn_161 fno:predicate "$s".
+_:bn_162 fno:predicate "$o".
+_:bn_164 fno:predicate "$s".
+_:bn_165 fno:predicate "$o".
+_:bn_170 fno:predicate "$s".
+_:bn_171 fno:predicate "$s.i".
+_:bn_172 fno:predicate "$o".
+_:bn_175 fno:predicate "$s".
+_:bn_176 fno:predicate "$s.1".
+_:bn_177 fno:predicate "$s.2".
+_:bn_178 fno:predicate "$o".
+_:bn_182 fno:predicate "$s".
+_:bn_183 fno:predicate "$o".
+_:bn_184 fno:predicate "$o.1".
+_:bn_185 fno:predicate "$o.2".
+_:bn_188 fno:predicate "$s".
+_:bn_189 fno:predicate "$o".
+_:bn_192 fno:predicate "$s".
+_:bn_193 fno:predicate "$o".
+_:bn_195 fno:predicate "$s".
+_:bn_196 fno:predicate "$s.1".
+_:bn_197 fno:predicate "$s.2".
+_:bn_198 fno:predicate "$o".
+_:bn_200 fno:predicate "$s".
+_:bn_201 fno:predicate "$o".
+_:bn_203 fno:predicate "$s".
+_:bn_204 fno:predicate "$o".
+_:bn_208 fno:predicate "$s".
+_:bn_209 fno:predicate "$o".
+_:bn_211 fno:predicate "$s".
+_:bn_212 fno:predicate "$o".
+_:bn_214 fno:predicate "$s".
+_:bn_215 fno:predicate "$o".
+_:bn_217 fno:predicate "$s".
+_:bn_218 fno:predicate "$s.1".
+_:bn_219 fno:predicate "$s.2".
+_:bn_220 fno:predicate "$o".
+_:bn_222 fno:predicate "$s".
+_:bn_223 fno:predicate "$s.1".
+_:bn_224 fno:predicate "$s.2".
+_:bn_225 fno:predicate "$o".
+_:bn_227 fno:predicate "$s".
+_:bn_228 fno:predicate "$o".
+_:bn_230 fno:predicate "$s".
+_:bn_231 fno:predicate "$s.i".
+_:bn_232 fno:predicate "$o".
+_:bn_235 fno:predicate "$s".
+_:bn_236 fno:predicate "$o".
+_:bn_240 fno:predicate "$s".
+_:bn_241 fno:predicate "$o".
+_:bn_243 fno:predicate "$s".
+_:bn_244 fno:predicate "$o".
+_:bn_247 fno:predicate "$s".
+_:bn_248 fno:predicate "$s.1".
+_:bn_249 fno:predicate "$s.2".
+_:bn_250 fno:predicate "$o".
+_:bn_252 fno:predicate "$s".
+_:bn_253 fno:predicate "$o".
+_:bn_259 fno:predicate "$s".
+_:bn_260 fno:predicate "$o".
+_:bn_262 fno:predicate "$s".
+_:bn_263 fno:predicate "$o".
+_:bn_265 fno:predicate "$s".
+_:bn_266 fno:predicate "$o".
+_:bn_268 fno:predicate "$s".
+_:bn_269 fno:predicate "$o".
+_:bn_271 fno:predicate "$s".
+_:bn_272 fno:predicate "$o".
+_:bn_274 fno:predicate "$s".
+_:bn_275 fno:predicate "$o".
+_:bn_277 fno:predicate "$s".
+_:bn_278 fno:predicate "$o".
+_:bn_280 fno:predicate "$s".
+_:bn_281 fno:predicate "$o".
+_:bn_283 fno:predicate "$s".
+_:bn_284 fno:predicate "$o".
+_:bn_286 fno:predicate "$s".
+_:bn_287 fno:predicate "$o".
+_:bn_289 fno:predicate "$s".
+_:bn_290 fno:predicate "$o".
+_:bn_292 fno:predicate "$s".
+_:bn_293 fno:predicate "$s.1".
+_:bn_294 fno:predicate "$s.2".
+_:bn_295 fno:predicate "$o".
+_:bn_297 fno:predicate "$s".
+_:bn_298 fno:predicate "$s.1".
+_:bn_299 fno:predicate "$s.2".
+_:bn_300 fno:predicate "$s.3".
+_:bn_301 fno:predicate "$o".
+_:bn_303 fno:predicate "$s".
+_:bn_304 fno:predicate "$o".
+_:bn_306 fno:predicate "$s".
+_:bn_307 fno:predicate "$s.i".
+_:bn_308 fno:predicate "$o".
+_:bn_310 fno:predicate "$s".
+_:bn_311 fno:predicate "$o".
+_:bn_313 fno:predicate "$s".
+_:bn_314 fno:predicate "$o".
+_:bn_316 fno:predicate "$s".
+_:bn_317 fno:predicate "$o".
+_:bn_319 fno:predicate "$s".
+_:bn_320 fno:predicate "$o".
+_:bn_322 fno:predicate "$s".
+_:bn_323 fno:predicate "$s.i".
+_:bn_324 fno:predicate "$o".
+_:bn_2 fnon:position fnon:subject.
+_:bn_3 fnon:position fnon:object.
+_:bn_6 fnon:position fnon:subject.
+_:bn_9 fnon:position fnon:object.
+_:bn_12 fnon:position fnon:subject.
+_:bn_14 fnon:position fnon:object.
+_:bn_17 fnon:position fnon:subject.
+_:bn_19 fnon:position fnon:object.
+_:bn_22 fnon:position fnon:subject.
+_:bn_24 fnon:position fnon:object.
+_:bn_27 fnon:position fnon:subject.
+_:bn_29 fnon:position fnon:object.
+_:bn_32 fnon:position fnon:subject.
+_:bn_34 fnon:position fnon:object.
+_:bn_37 fnon:position fnon:subject.
+_:bn_39 fnon:position fnon:object.
+_:bn_42 fnon:position fnon:subject.
+_:bn_44 fnon:position fnon:object.
+_:bn_46 fnon:position fnon:subject.
+_:bn_48 fnon:position fnon:object.
+_:bn_51 fnon:position fnon:subject.
+_:bn_53 fnon:position fnon:object.
+_:bn_56 fnon:position fnon:subject.
+_:bn_58 fnon:position fnon:object.
+_:bn_61 fnon:position fnon:subject.
+_:bn_63 fnon:position fnon:object.
+_:bn_66 fnon:position fnon:subject.
+_:bn_68 fnon:position fnon:object.
+_:bn_71 fnon:position fnon:subject.
+_:bn_74 fnon:position fnon:object.
+_:bn_77 fnon:position fnon:subject.
+_:bn_82 fnon:position fnon:object.
+_:bn_85 fnon:position fnon:subject.
+_:bn_87 fnon:position fnon:object.
+_:bn_91 fnon:position fnon:subject.
+_:bn_96 fnon:position fnon:object.
+_:bn_99 fnon:position fnon:subject.
+_:bn_101 fnon:position fnon:object.
+_:bn_104 fnon:position fnon:subject.
+_:bn_109 fnon:position fnon:object.
+_:bn_112 fnon:position fnon:subject.
+_:bn_114 fnon:position fnon:object.
+_:bn_117 fnon:position fnon:subject.
+_:bn_119 fnon:position fnon:object.
+_:bn_122 fnon:position fnon:subject.
+_:bn_124 fnon:position fnon:object.
+_:bn_127 fnon:position fnon:subject.
+_:bn_130 fnon:position fnon:object.
+_:bn_132 fnon:position fnon:subject.
+_:bn_134 fnon:position fnon:object.
+_:bn_137 fnon:position fnon:subject.
+_:bn_139 fnon:position fnon:object.
+_:bn_142 fnon:position fnon:subject.
+_:bn_143 fnon:position fnon:object.
+_:bn_145 fnon:position fnon:subject.
+_:bn_146 fnon:position fnon:object.
+_:bn_148 fnon:position fnon:subject.
+_:bn_149 fnon:position fnon:object.
+_:bn_151 fnon:position fnon:subject.
+_:bn_152 fnon:position fnon:object.
+_:bn_154 fnon:position fnon:subject.
+_:bn_155 fnon:position fnon:object.
+_:bn_157 fnon:position fnon:subject.
+_:bn_158 fnon:position fnon:object.
+_:bn_161 fnon:position fnon:subject.
+_:bn_162 fnon:position fnon:object.
+_:bn_164 fnon:position fnon:subject.
+_:bn_165 fnon:position fnon:object.
+_:bn_170 fnon:position fnon:subject.
+_:bn_172 fnon:position fnon:object.
+_:bn_175 fnon:position fnon:subject.
+_:bn_178 fnon:position fnon:object.
+_:bn_182 fnon:position fnon:subject.
+_:bn_183 fnon:position fnon:object.
+_:bn_188 fnon:position fnon:subject.
+_:bn_189 fnon:position fnon:object.
+_:bn_192 fnon:position fnon:subject.
+_:bn_193 fnon:position fnon:object.
+_:bn_195 fnon:position fnon:subject.
+_:bn_198 fnon:position fnon:object.
+_:bn_200 fnon:position fnon:subject.
+_:bn_201 fnon:position fnon:object.
+_:bn_203 fnon:position fnon:subject.
+_:bn_204 fnon:position fnon:object.
+_:bn_208 fnon:position fnon:subject.
+_:bn_209 fnon:position fnon:object.
+_:bn_211 fnon:position fnon:subject.
+_:bn_212 fnon:position fnon:object.
+_:bn_214 fnon:position fnon:subject.
+_:bn_215 fnon:position fnon:object.
+_:bn_217 fnon:position fnon:subject.
+_:bn_220 fnon:position fnon:object.
+_:bn_222 fnon:position fnon:subject.
+_:bn_225 fnon:position fnon:object.
+_:bn_227 fnon:position fnon:subject.
+_:bn_228 fnon:position fnon:object.
+_:bn_230 fnon:position fnon:subject.
+_:bn_232 fnon:position fnon:object.
+_:bn_235 fnon:position fnon:subject.
+_:bn_236 fnon:position fnon:object.
+_:bn_240 fnon:position fnon:subject.
+_:bn_241 fnon:position fnon:object.
+_:bn_243 fnon:position fnon:subject.
+_:bn_244 fnon:position fnon:object.
+_:bn_247 fnon:position fnon:subject.
+_:bn_250 fnon:position fnon:object.
+_:bn_252 fnon:position fnon:subject.
+_:bn_253 fnon:position fnon:object.
+_:bn_259 fnon:position fnon:subject.
+_:bn_260 fnon:position fnon:object.
+_:bn_262 fnon:position fnon:subject.
+_:bn_263 fnon:position fnon:object.
+_:bn_265 fnon:position fnon:subject.
+_:bn_266 fnon:position fnon:object.
+_:bn_268 fnon:position fnon:subject.
+_:bn_269 fnon:position fnon:object.
+_:bn_271 fnon:position fnon:subject.
+_:bn_272 fnon:position fnon:object.
+_:bn_274 fnon:position fnon:subject.
+_:bn_275 fnon:position fnon:object.
+_:bn_277 fnon:position fnon:subject.
+_:bn_278 fnon:position fnon:object.
+_:bn_280 fnon:position fnon:subject.
+_:bn_281 fnon:position fnon:object.
+_:bn_283 fnon:position fnon:subject.
+_:bn_284 fnon:position fnon:object.
+_:bn_286 fnon:position fnon:subject.
+_:bn_287 fnon:position fnon:object.
+_:bn_289 fnon:position fnon:subject.
+_:bn_290 fnon:position fnon:object.
+_:bn_292 fnon:position fnon:subject.
+_:bn_295 fnon:position fnon:object.
+_:bn_297 fnon:position fnon:subject.
+_:bn_301 fnon:position fnon:object.
+_:bn_303 fnon:position fnon:subject.
+_:bn_304 fnon:position fnon:object.
+_:bn_306 fnon:position fnon:subject.
+_:bn_308 fnon:position fnon:object.
+_:bn_310 fnon:position fnon:subject.
+_:bn_311 fnon:position fnon:object.
+_:bn_313 fnon:position fnon:subject.
+_:bn_314 fnon:position fnon:object.
+_:bn_316 fnon:position fnon:subject.
+_:bn_317 fnon:position fnon:object.
+_:bn_319 fnon:position fnon:subject.
+_:bn_320 fnon:position fnon:object.
+_:bn_322 fnon:position fnon:subject.
+_:bn_324 fnon:position fnon:object.
+math:product vs:moreinfo "it is unclear for me why exponentiation can work in reverse, but product can't be used to calculate quotients @phochste".
+math:atan vs:moreinfo "is atan not just syntactic sugar for tan, eye, jen3 and cwm can use sin in both directions @phochste".
+math:acos vs:moreinfo "is acos not just syntactic sugar for cos, eye, jen3 and cwm can use cos in both directions @phochste".
+math:sum vs:moreinfo "it is unclear for me why sum can't know the answer to (1 ?what) math:sum 2 @phochste".
+math:difference vs:moreinfo "it is unclear for me why difference can't know the answer to (3 ?what) math:difference 1 @phochste".
+math:quotient vs:moreinfo "it is unclear for me why exponentiation can work in reverse, but quotient can't be used to calculate products @phochste".
+math:asin vs:moreinfo "is asin not just syntactic sugar for cos, eye, jen3 and cwm can use sin in both directions @phochste".
+list:memberAt vs:moreinfo "The dcterms:comment seems wrong. Jen, eye nor eye support the negative index. Only eye supports the s_2 variable (@phochste).\nFixed the description (@william-vw).".
+list:remove vs:moreinfo "The dcterms:comment is wrong. Eye, jen3 nor cwm don't implement list:remove this way. (@phochste)\nFixed the description and removed the non-functional example (@william-vw)".
+log:conclusion vs:moreinfo "Example below not working in eye (works in jen3) (@william-vw)".
+log:notEqualTo vs:moreinfo "the results are surprising when using unbound variables (phochste)".
+log:notEqualTo vs:moreinfo "?x log:notEqualTo 'Cat' is semantically not false, it has infinite amount of results (phochste)".
+log:notEqualTo vs:moreinfo "we make it into false because in N3 there is no way, yet, to express a result with infinite results (phochste)".
+log:notEqualTo vs:moreinfo "we need to document that unbound variables are automatic false. (phochste)".
+log:notEqualTo vs:moreinfo "this makes notEqualTo not the exact complement of equalTo. (phochste)".
+_:bn_4 rdfs:seeAlso <file:///Users/wvw/git/n3/N3/useOfBuiltins/core-specs/03-development/site/spec-builtins/src/math/product.n3>.
+_:bn_5 rdfs:seeAlso <file:///Users/wvw/git/n3/N3/useOfBuiltins/core-specs/03-development/site/spec-builtins/src/math/product.n3>.
+math:notGreaterThan rdfs:seeAlso math:greaterThan.
+_:bn_11 rdfs:seeAlso <file:///Users/wvw/git/n3/N3/useOfBuiltins/core-specs/03-development/site/spec-builtins/src/math/notGreaterThan.n3>.
+_:bn_16 rdfs:seeAlso <file:///Users/wvw/git/n3/N3/useOfBuiltins/core-specs/03-development/site/spec-builtins/src/math/absoluteValue.n3>.
+math:greaterThan rdfs:seeAlso math:notGreaterThan.
+_:bn_21 rdfs:seeAlso <file:///Users/wvw/git/n3/N3/useOfBuiltins/core-specs/03-development/site/spec-builtins/src/math/greaterThan.n3>.
+math:notLessThan rdfs:seeAlso math:lessThan.
+_:bn_26 rdfs:seeAlso <file:///Users/wvw/git/n3/N3/useOfBuiltins/core-specs/03-development/site/spec-builtins/src/math/notLessThan.n3>.
+math:sin rdfs:seeAlso math:asin.
+math:sin rdfs:seeAlso math:sinh.
+_:bn_31 rdfs:seeAlso <file:///Users/wvw/git/n3/N3/useOfBuiltins/core-specs/03-development/site/spec-builtins/src/math/sin.n3>.
+math:lessThan rdfs:seeAlso math:notLessThan.
+_:bn_36 rdfs:seeAlso <file:///Users/wvw/git/n3/N3/useOfBuiltins/core-specs/03-development/site/spec-builtins/src/math/lessThan.n3>.
+_:bn_41 rdfs:seeAlso <file:///Users/wvw/git/n3/N3/useOfBuiltins/core-specs/03-development/site/spec-builtins/src/math/rounded.n3>.
+math:atan rdfs:seeAlso math:tan.
+math:atan rdfs:seeAlso math:tanh.
+_:bn_45 rdfs:seeAlso <file:///Users/wvw/git/n3/N3/useOfBuiltins/core-specs/03-development/site/spec-builtins/src/math/atan.n3>.
+math:acos rdfs:seeAlso math:cos.
+math:acos rdfs:seeAlso math:cosh.
+_:bn_50 rdfs:seeAlso <file:///Users/wvw/git/n3/N3/useOfBuiltins/core-specs/03-development/site/spec-builtins/src/math/acos.n3>.
+math:cosh rdfs:seeAlso math:cos.
+math:cosh rdfs:seeAlso math:acos.
+_:bn_55 rdfs:seeAlso <file:///Users/wvw/git/n3/N3/useOfBuiltins/core-specs/03-development/site/spec-builtins/src/math/cosh.n3>.
+_:bn_60 rdfs:seeAlso <file:///Users/wvw/git/n3/N3/useOfBuiltins/core-specs/03-development/site/spec-builtins/src/math/negation.n3>.
+math:sinh rdfs:seeAlso math:asin.
+math:sinh rdfs:seeAlso math:sin.
+_:bn_65 rdfs:seeAlso <file:///Users/wvw/git/n3/N3/useOfBuiltins/core-specs/03-development/site/spec-builtins/src/math/sinh.n3>.
+_:bn_70 rdfs:seeAlso <file:///Users/wvw/git/n3/N3/useOfBuiltins/core-specs/03-development/site/spec-builtins/src/math/sum.n3>.
+_:bn_76 rdfs:seeAlso <file:///Users/wvw/git/n3/N3/useOfBuiltins/core-specs/03-development/site/spec-builtins/src/math/difference.n3>.
+math:tanh rdfs:seeAlso math:tan.
+math:tanh rdfs:seeAlso math:atan.
+_:bn_84 rdfs:seeAlso <file:///Users/wvw/git/n3/N3/useOfBuiltins/core-specs/03-development/site/spec-builtins/src/math/tanh.n3>.
+_:bn_89 rdfs:seeAlso <file:///Users/wvw/git/n3/N3/useOfBuiltins/core-specs/03-development/site/spec-builtins/src/math/exponentiation.n3>.
+_:bn_90 rdfs:seeAlso <file:///Users/wvw/git/n3/N3/useOfBuiltins/core-specs/03-development/site/spec-builtins/src/math/exponentiation.n3>.
+math:notEqualTo rdfs:seeAlso math:equalTo.
+_:bn_98 rdfs:seeAlso <file:///Users/wvw/git/n3/N3/useOfBuiltins/core-specs/03-development/site/spec-builtins/src/math/notEqualTo.n3>.
+_:bn_103 rdfs:seeAlso <file:///Users/wvw/git/n3/N3/useOfBuiltins/core-specs/03-development/site/spec-builtins/src/math/quotient.n3>.
+math:equalTo rdfs:seeAlso math:notEqualTo.
+_:bn_111 rdfs:seeAlso <file:///Users/wvw/git/n3/N3/useOfBuiltins/core-specs/03-development/site/spec-builtins/src/math/equalTo.n3>.
+math:cos rdfs:seeAlso math:acos.
+math:cos rdfs:seeAlso math:cosh.
+_:bn_116 rdfs:seeAlso <file:///Users/wvw/git/n3/N3/useOfBuiltins/core-specs/03-development/site/spec-builtins/src/math/cos.n3>.
+math:tan rdfs:seeAlso math:atan.
+math:tan rdfs:seeAlso math:tanh.
+_:bn_121 rdfs:seeAlso <file:///Users/wvw/git/n3/N3/useOfBuiltins/core-specs/03-development/site/spec-builtins/src/math/tan.n3>.
+_:bn_126 rdfs:seeAlso <file:///Users/wvw/git/n3/N3/useOfBuiltins/core-specs/03-development/site/spec-builtins/src/math/remainder.n3>.
+_:bn_131 rdfs:seeAlso <file:///Users/wvw/git/n3/N3/useOfBuiltins/core-specs/03-development/site/spec-builtins/src/math/degrees.n3>.
+math:asin rdfs:seeAlso math:sin.
+math:asin rdfs:seeAlso math:sinh.
+_:bn_136 rdfs:seeAlso <file:///Users/wvw/git/n3/N3/useOfBuiltins/core-specs/03-development/site/spec-builtins/src/math/asin.n3>.
+_:bn_141 rdfs:seeAlso <file:///Users/wvw/git/n3/N3/useOfBuiltins/core-specs/03-development/site/spec-builtins/src/time/minute.n3>.
+_:bn_144 rdfs:seeAlso <file:///Users/wvw/git/n3/N3/useOfBuiltins/core-specs/03-development/site/spec-builtins/src/time/day.n3>.
+_:bn_147 rdfs:seeAlso <file:///Users/wvw/git/n3/N3/useOfBuiltins/core-specs/03-development/site/spec-builtins/src/time/month.n3>.
+_:bn_150 rdfs:seeAlso <file:///Users/wvw/git/n3/N3/useOfBuiltins/core-specs/03-development/site/spec-builtins/src/time/timeZone.n3>.
+_:bn_153 rdfs:seeAlso <file:///Users/wvw/git/n3/N3/useOfBuiltins/core-specs/03-development/site/spec-builtins/src/time/year.n3>.
+_:bn_156 rdfs:seeAlso <file:///Users/wvw/git/n3/N3/useOfBuiltins/core-specs/03-development/site/spec-builtins/src/time/second.n3>.
+list:last rdfs:seeAlso list:first.
+_:bn_159 rdfs:seeAlso <file:///Users/wvw/git/n3/N3/useOfBuiltins/core-specs/03-development/site/spec-builtins/src/list/last.n3>.
+_:bn_160 rdfs:seeAlso <file:///Users/wvw/git/n3/N3/useOfBuiltins/core-specs/03-development/site/spec-builtins/src/list/last.n3>.
+list:first rdfs:seeAlso list:last.
+_:bn_163 rdfs:seeAlso <file:///Users/wvw/git/n3/N3/useOfBuiltins/core-specs/03-development/site/spec-builtins/src/list/first.n3>.
+list:append rdfs:seeAlso list:remove.
+_:bn_166 rdfs:seeAlso <file:///Users/wvw/git/n3/N3/useOfBuiltins/core-specs/03-development/site/spec-builtins/src/list/append.n3>.
+_:bn_167 rdfs:seeAlso <file:///Users/wvw/git/n3/N3/useOfBuiltins/core-specs/03-development/site/spec-builtins/src/list/append.n3>.
+_:bn_168 rdfs:seeAlso <file:///Users/wvw/git/n3/N3/useOfBuiltins/core-specs/03-development/site/spec-builtins/src/list/append.n3>.
+_:bn_169 rdfs:seeAlso <file:///Users/wvw/git/n3/N3/useOfBuiltins/core-specs/03-development/site/spec-builtins/src/list/append.n3>.
+_:bn_173 rdfs:seeAlso <file:///Users/wvw/git/n3/N3/useOfBuiltins/core-specs/03-development/site/spec-builtins/src/list/memberAt.n3>.
+_:bn_174 rdfs:seeAlso <file:///Users/wvw/git/n3/N3/useOfBuiltins/core-specs/03-development/site/spec-builtins/src/list/memberAt.n3>.
+_:bn_179 rdfs:seeAlso <file:///Users/wvw/git/n3/N3/useOfBuiltins/core-specs/03-development/site/spec-builtins/src/list/iterate.n3>.
+_:bn_180 rdfs:seeAlso <file:///Users/wvw/git/n3/N3/useOfBuiltins/core-specs/03-development/site/spec-builtins/src/list/iterate.n3>.
+_:bn_181 rdfs:seeAlso <file:///Users/wvw/git/n3/N3/useOfBuiltins/core-specs/03-development/site/spec-builtins/src/list/iterate.n3>.
+list:member rdfs:seeAlso list:in.
+list:member rdfs:seeAlso list:memberAt.
+_:bn_186 rdfs:seeAlso <file:///Users/wvw/git/n3/N3/useOfBuiltins/core-specs/03-development/site/spec-builtins/src/list/member.n3>.
+_:bn_187 rdfs:seeAlso <file:///Users/wvw/git/n3/N3/useOfBuiltins/core-specs/03-development/site/spec-builtins/src/list/member.n3>.
+list:in rdfs:seeAlso list:member.
+_:bn_190 rdfs:seeAlso <file:///Users/wvw/git/n3/N3/useOfBuiltins/core-specs/03-development/site/spec-builtins/src/list/in.n3>.
+_:bn_191 rdfs:seeAlso <file:///Users/wvw/git/n3/N3/useOfBuiltins/core-specs/03-development/site/spec-builtins/src/list/in.n3>.
+list:remove rdfs:seeAlso list:append.
+_:bn_194 rdfs:seeAlso <file:///Users/wvw/git/n3/N3/useOfBuiltins/core-specs/03-development/site/spec-builtins/src/list/remove.n3>.
+_:bn_199 rdfs:seeAlso <file:///Users/wvw/git/n3/N3/useOfBuiltins/core-specs/03-development/site/spec-builtins/src/list/length.n3>.
+_:bn_202 rdfs:seeAlso <file:///Users/wvw/git/n3/N3/useOfBuiltins/core-specs/03-development/site/spec-builtins/src/log/uri.n3>.
+_:bn_205 rdfs:seeAlso <file:///Users/wvw/git/n3/N3/useOfBuiltins/core-specs/03-development/site/spec-builtins/src/log/rawType.n3>.
+_:bn_206 rdfs:seeAlso <file:///Users/wvw/git/n3/N3/useOfBuiltins/core-specs/03-development/site/spec-builtins/src/log/rawType.n3>.
+_:bn_207 rdfs:seeAlso <file:///Users/wvw/git/n3/N3/useOfBuiltins/core-specs/03-development/site/spec-builtins/src/log/rawType.n3>.
+_:bn_210 rdfs:seeAlso <file:///Users/wvw/git/n3/N3/useOfBuiltins/core-specs/03-development/site/spec-builtins/src/log/conclusion.n3>.
+_:bn_213 rdfs:seeAlso <file:///Users/wvw/git/n3/N3/useOfBuiltins/core-specs/03-development/site/spec-builtins/src/log/content.n3>.
+log:langlit rdfs:seeAlso log:dtlit.
+_:bn_216 rdfs:seeAlso <file:///Users/wvw/git/n3/N3/useOfBuiltins/core-specs/03-development/site/spec-builtins/src/log/langlit.n3>.
+_:bn_221 rdfs:seeAlso <file:///Users/wvw/git/n3/N3/useOfBuiltins/core-specs/03-development/site/spec-builtins/src/log/forAllIn.n3>.
+_:bn_226 rdfs:seeAlso <file:///Users/wvw/git/n3/N3/useOfBuiltins/core-specs/03-development/site/spec-builtins/src/log/parsedAsN3.n3>.
+log:parsedAsN3 rdfs:seeAlso log:semantics.
+_:bn_229 rdfs:seeAlso <file:///Users/wvw/git/n3/N3/useOfBuiltins/core-specs/03-development/site/spec-builtins/src/log/conjunction.n3>.
+log:notIncludes rdfs:seeAlso log:includes.
+_:bn_233 rdfs:seeAlso <file:///Users/wvw/git/n3/N3/useOfBuiltins/core-specs/03-development/site/spec-builtins/src/log/notIncludes.n3>.
+_:bn_234 rdfs:seeAlso <file:///Users/wvw/git/n3/N3/useOfBuiltins/core-specs/03-development/site/spec-builtins/src/log/notIncludes.n3>.
+log:notEqualTo rdfs:seeAlso log:equalTo.
+_:bn_237 rdfs:seeAlso <file:///Users/wvw/git/n3/N3/useOfBuiltins/core-specs/03-development/site/spec-builtins/src/log/notEqualTo.n3>.
+_:bn_238 rdfs:seeAlso <file:///Users/wvw/git/n3/N3/useOfBuiltins/core-specs/03-development/site/spec-builtins/src/log/notEqualTo.n3>.
+_:bn_239 rdfs:seeAlso <file:///Users/wvw/git/n3/N3/useOfBuiltins/core-specs/03-development/site/spec-builtins/src/log/notEqualTo.n3>.
+_:bn_242 rdfs:seeAlso <file:///Users/wvw/git/n3/N3/useOfBuiltins/core-specs/03-development/site/spec-builtins/src/log/skolem.n3>.
+log:dtlit rdfs:seeAlso log:langlit.
+_:bn_245 rdfs:seeAlso <file:///Users/wvw/git/n3/N3/useOfBuiltins/core-specs/03-development/site/spec-builtins/src/log/dtlit.n3>.
+_:bn_246 rdfs:seeAlso <file:///Users/wvw/git/n3/N3/useOfBuiltins/core-specs/03-development/site/spec-builtins/src/log/dtlit.n3>.
+log:includes rdfs:seeAlso log:notIncludes.
+_:bn_251 rdfs:seeAlso <file:///Users/wvw/git/n3/N3/useOfBuiltins/core-specs/03-development/site/spec-builtins/src/log/includes.n3>.
+log:equalTo rdfs:seeAlso log:notEqualTo.
+_:bn_254 rdfs:seeAlso <file:///Users/wvw/git/n3/N3/useOfBuiltins/core-specs/03-development/site/spec-builtins/src/log/equalTo.n3>.
+_:bn_255 rdfs:seeAlso <file:///Users/wvw/git/n3/N3/useOfBuiltins/core-specs/03-development/site/spec-builtins/src/log/equalTo.n3>.
+_:bn_256 rdfs:seeAlso <file:///Users/wvw/git/n3/N3/useOfBuiltins/core-specs/03-development/site/spec-builtins/src/log/equalTo.n3>.
+_:bn_257 rdfs:seeAlso <file:///Users/wvw/git/n3/N3/useOfBuiltins/core-specs/03-development/site/spec-builtins/src/log/equalTo.n3>.
+_:bn_258 rdfs:seeAlso <file:///Users/wvw/git/n3/N3/useOfBuiltins/core-specs/03-development/site/spec-builtins/src/log/equalTo.n3>.
+_:bn_261 rdfs:seeAlso <file:///Users/wvw/git/n3/N3/useOfBuiltins/core-specs/03-development/site/spec-builtins/src/log/outputString.n3>.
+_:bn_264 rdfs:seeAlso <file:///Users/wvw/git/n3/N3/useOfBuiltins/core-specs/03-development/site/spec-builtins/src/log/semanticsOrError.n3>.
+_:bn_267 rdfs:seeAlso <file:///Users/wvw/git/n3/N3/useOfBuiltins/core-specs/03-development/site/spec-builtins/src/log/semantics.n3>.
+_:bn_270 rdfs:seeAlso <file:///Users/wvw/git/n3/N3/useOfBuiltins/core-specs/03-development/site/spec-builtins/src/string/notGreaterThan.n3>.
+string:notGreaterThan rdfs:seeAlso string:greaterThan.
+_:bn_273 rdfs:seeAlso <file:///Users/wvw/git/n3/N3/useOfBuiltins/core-specs/03-development/site/spec-builtins/src/string/notEqualIgnoringCase.n3>.
+_:bn_276 rdfs:seeAlso <file:///Users/wvw/git/n3/N3/useOfBuiltins/core-specs/03-development/site/spec-builtins/src/string/contains.n3>.
+string:contains rdfs:seeAlso string:containsIgnoringCase.
+_:bn_279 rdfs:seeAlso <file:///Users/wvw/git/n3/N3/useOfBuiltins/core-specs/03-development/site/spec-builtins/src/string/greaterThan.n3>.
+string:greaterThan rdfs:seeAlso string:notGreaterThan.
+_:bn_282 rdfs:seeAlso <file:///Users/wvw/git/n3/N3/useOfBuiltins/core-specs/03-development/site/spec-builtins/src/string/containsIgnoringCase.n3>.
+string:containsIgnoringCase rdfs:seeAlso string:contains.
+_:bn_285 rdfs:seeAlso <file:///Users/wvw/git/n3/N3/useOfBuiltins/core-specs/03-development/site/spec-builtins/src/string/notLessThan.n3>.
+string:notLessThan rdfs:seeAlso string:lessThan.
+_:bn_288 rdfs:seeAlso <file:///Users/wvw/git/n3/N3/useOfBuiltins/core-specs/03-development/site/spec-builtins/src/string/endsWith.n3>.
+_:bn_291 rdfs:seeAlso <file:///Users/wvw/git/n3/N3/useOfBuiltins/core-specs/03-development/site/spec-builtins/src/string/scrape.n3>.
+_:bn_296 rdfs:seeAlso <file:///Users/wvw/git/n3/N3/useOfBuiltins/core-specs/03-development/site/spec-builtins/src/string/replace.n3>.
+_:bn_302 rdfs:seeAlso <file:///Users/wvw/git/n3/N3/useOfBuiltins/core-specs/03-development/site/spec-builtins/src/string/lessThan.n3>.
+string:lessThan rdfs:seeAlso string:notLessThan.
+_:bn_305 rdfs:seeAlso <file:///Users/wvw/git/n3/N3/useOfBuiltins/core-specs/03-development/site/spec-builtins/src/string/concatenation.n3>.
+_:bn_309 rdfs:seeAlso <file:///Users/wvw/git/n3/N3/useOfBuiltins/core-specs/03-development/site/spec-builtins/src/string/equalIgnoringCase.n3>.
+_:bn_312 rdfs:seeAlso <file:///Users/wvw/git/n3/N3/useOfBuiltins/core-specs/03-development/site/spec-builtins/src/string/startsWith.n3>.
+_:bn_315 rdfs:seeAlso <file:///Users/wvw/git/n3/N3/useOfBuiltins/core-specs/03-development/site/spec-builtins/src/string/matches.n3>.
+string:matches rdfs:seeAlso string:notMatches.
+_:bn_318 rdfs:seeAlso <file:///Users/wvw/git/n3/N3/useOfBuiltins/core-specs/03-development/site/spec-builtins/src/string/notMatches.n3>.
+string:notMatches rdfs:seeAlso string:matches.
+_:bn_321 rdfs:seeAlso <file:///Users/wvw/git/n3/N3/useOfBuiltins/core-specs/03-development/site/spec-builtins/src/string/format.n3>.
+_:bn_6 fno:type rdf:List.
+_:bn_7 fno:type _:bn_8.
+_:bn_9 fno:type _:bn_10.
+_:bn_12 fno:type _:bn_13.
+_:bn_14 fno:type _:bn_15.
+_:bn_17 fno:type _:bn_18.
+_:bn_19 fno:type _:bn_20.
+_:bn_22 fno:type _:bn_23.
+_:bn_24 fno:type _:bn_25.
+_:bn_27 fno:type _:bn_28.
+_:bn_29 fno:type _:bn_30.
+_:bn_32 fno:type _:bn_33.
+_:bn_34 fno:type _:bn_35.
+_:bn_37 fno:type _:bn_38.
+_:bn_39 fno:type _:bn_40.
+_:bn_42 fno:type _:bn_43.
+_:bn_44 fno:type xsd:integer.
+_:bn_46 fno:type _:bn_47.
+_:bn_48 fno:type _:bn_49.
+_:bn_51 fno:type _:bn_52.
+_:bn_53 fno:type _:bn_54.
+_:bn_56 fno:type _:bn_57.
+_:bn_58 fno:type _:bn_59.
+_:bn_61 fno:type _:bn_62.
+_:bn_63 fno:type _:bn_64.
+_:bn_66 fno:type _:bn_67.
+_:bn_68 fno:type _:bn_69.
+_:bn_71 fno:type rdf:List.
+_:bn_72 fno:type _:bn_73.
+_:bn_74 fno:type _:bn_75.
+_:bn_77 fno:type rdf:List.
+_:bn_78 fno:type _:bn_79.
+_:bn_80 fno:type _:bn_81.
+_:bn_82 fno:type _:bn_83.
+_:bn_85 fno:type _:bn_86.
+_:bn_87 fno:type _:bn_88.
+_:bn_91 fno:type rdf:List.
+_:bn_92 fno:type _:bn_93.
+_:bn_94 fno:type _:bn_95.
+_:bn_96 fno:type _:bn_97.
+_:bn_99 fno:type _:bn_100.
+_:bn_101 fno:type _:bn_102.
+_:bn_104 fno:type rdf:List.
+_:bn_105 fno:type _:bn_106.
+_:bn_107 fno:type _:bn_108.
+_:bn_109 fno:type _:bn_110.
+_:bn_112 fno:type _:bn_113.
+_:bn_114 fno:type _:bn_115.
+_:bn_117 fno:type _:bn_118.
+_:bn_119 fno:type _:bn_120.
+_:bn_122 fno:type _:bn_123.
+_:bn_124 fno:type _:bn_125.
+_:bn_127 fno:type rdf:List.
+_:bn_128 fno:type xsd:integer.
+_:bn_129 fno:type xsd:integer.
+_:bn_130 fno:type xsd:integer.
+_:bn_132 fno:type _:bn_133.
+_:bn_134 fno:type _:bn_135.
+_:bn_137 fno:type _:bn_138.
+_:bn_139 fno:type _:bn_140.
+_:bn_142 fno:type xsd:dateTime.
+_:bn_143 fno:type xsd:integer.
+_:bn_145 fno:type xsd:dateTime.
+_:bn_146 fno:type xsd:integer.
+_:bn_148 fno:type xsd:dateTime.
+_:bn_149 fno:type xsd:integer.
+_:bn_151 fno:type xsd:dateTime.
+_:bn_152 fno:type xsd:string.
+_:bn_154 fno:type xsd:dateTime.
+_:bn_155 fno:type xsd:integer.
+_:bn_157 fno:type xsd:dateTime.
+_:bn_158 fno:type xsd:integer.
+_:bn_161 fno:type rdf:List.
+_:bn_164 fno:type rdf:List.
+_:bn_170 fno:type rdf:List.
+_:bn_171 fno:type rdf:List.
+_:bn_172 fno:type rdf:List.
+_:bn_175 fno:type rdf:List.
+_:bn_176 fno:type rdf:List.
+_:bn_177 fno:type xsd:integer.
+_:bn_182 fno:type rdf:List.
+_:bn_183 fno:type rdf:List.
+_:bn_184 fno:type xsd:integer.
+_:bn_188 fno:type rdf:List.
+_:bn_193 fno:type rdf:List.
+_:bn_195 fno:type rdf:List.
+_:bn_196 fno:type rdf:List.
+_:bn_200 fno:type rdf:List.
+_:bn_204 fno:type xsd:string.
+_:bn_209 fno:type log:Uri.
+_:bn_211 fno:type log:Formula.
+_:bn_212 fno:type log:Formula.
+_:bn_214 fno:type log:Uri.
+_:bn_215 fno:type xsd:string.
+_:bn_217 fno:type rdf:List.
+_:bn_218 fno:type xsd:string.
+_:bn_219 fno:type xsd:string.
+_:bn_220 fno:type log:Literal.
+_:bn_222 fno:type rdf:List.
+_:bn_223 fno:type log:Formula.
+_:bn_224 fno:type log:Formula.
+_:bn_227 fno:type xsd:string.
+_:bn_228 fno:type log:Formula.
+_:bn_230 fno:type rdf:List.
+_:bn_231 fno:type log:Formula.
+_:bn_232 fno:type log:Formula.
+_:bn_235 fno:type log:Formula.
+_:bn_236 fno:type log:Formula.
+_:bn_247 fno:type rdf:List.
+_:bn_248 fno:type xsd:string.
+_:bn_249 fno:type log:Uri.
+_:bn_250 fno:type log:Literal.
+_:bn_252 fno:type log:Formula.
+_:bn_253 fno:type log:Formula.
+_:bn_263 fno:type xsd:string.
+_:bn_265 fno:type log:Uri.
+_:bn_268 fno:type log:Uri.
+_:bn_269 fno:type log:Formula.
+_:bn_271 fno:type xsd:string.
+_:bn_272 fno:type xsd:string.
+_:bn_274 fno:type xsd:string.
+_:bn_275 fno:type xsd:string.
+_:bn_277 fno:type xsd:string.
+_:bn_278 fno:type xsd:string.
+_:bn_280 fno:type xsd:string.
+_:bn_281 fno:type xsd:string.
+_:bn_283 fno:type xsd:string.
+_:bn_284 fno:type xsd:string.
+_:bn_286 fno:type xsd:string.
+_:bn_287 fno:type xsd:string.
+_:bn_289 fno:type xsd:string.
+_:bn_290 fno:type xsd:string.
+_:bn_292 fno:type rdf:List.
+_:bn_293 fno:type xsd:string.
+_:bn_294 fno:type xsd:string.
+_:bn_295 fno:type xsd:string.
+_:bn_297 fno:type rdf:List.
+_:bn_298 fno:type xsd:string.
+_:bn_299 fno:type xsd:string.
+_:bn_300 fno:type xsd:string.
+_:bn_301 fno:type xsd:string.
+_:bn_303 fno:type xsd:string.
+_:bn_304 fno:type xsd:string.
+_:bn_306 fno:type rdf:List.
+_:bn_307 fno:type xsd:string.
+_:bn_308 fno:type xsd:string.
+_:bn_310 fno:type xsd:string.
+_:bn_311 fno:type xsd:string.
+_:bn_313 fno:type xsd:string.
+_:bn_314 fno:type xsd:string.
+_:bn_316 fno:type xsd:string.
+_:bn_317 fno:type xsd:string.
+_:bn_319 fno:type xsd:string.
+_:bn_320 fno:type xsd:string.
+_:bn_322 fno:type rdf:List.
+_:bn_323 fno:type xsd:string.
+_:bn_324 fno:type xsd:string.
+_:bn_6 fnon:listElementType _:bn_7.
+_:bn_71 fnon:listElementType _:bn_72.
+_:bn_170 fnon:listElementType _:bn_171.
+_:bn_230 fnon:listElementType _:bn_231.
+_:bn_306 fnon:listElementType _:bn_307.
+_:bn_322 fnon:listElementType _:bn_323.
+_:bn_8 owl:unionOf (xsd:decimal xsd:double xsd:float).
+_:bn_10 owl:unionOf (xsd:decimal xsd:double xsd:float).
+_:bn_13 owl:unionOf (xsd:decimal xsd:double xsd:float).
+_:bn_15 owl:unionOf (xsd:decimal xsd:double xsd:float).
+_:bn_18 owl:unionOf (xsd:decimal xsd:double xsd:float).
+_:bn_20 owl:unionOf (xsd:decimal xsd:double xsd:float).
+_:bn_23 owl:unionOf (xsd:decimal xsd:double xsd:float).
+_:bn_25 owl:unionOf (xsd:decimal xsd:double xsd:float).
+_:bn_28 owl:unionOf (xsd:decimal xsd:double xsd:float).
+_:bn_30 owl:unionOf (xsd:decimal xsd:double xsd:float).
+_:bn_33 owl:unionOf (xsd:decimal xsd:double xsd:float).
+_:bn_35 owl:unionOf (xsd:decimal xsd:double xsd:float).
+_:bn_38 owl:unionOf (xsd:decimal xsd:double xsd:float).
+_:bn_40 owl:unionOf (xsd:decimal xsd:double xsd:float).
+_:bn_43 owl:unionOf (xsd:decimal xsd:double xsd:float).
+_:bn_47 owl:unionOf (xsd:decimal xsd:double xsd:float).
+_:bn_49 owl:unionOf (xsd:decimal xsd:double xsd:float).
+_:bn_52 owl:unionOf (xsd:decimal xsd:double xsd:float).
+_:bn_54 owl:unionOf (xsd:decimal xsd:double xsd:float).
+_:bn_57 owl:unionOf (xsd:decimal xsd:double xsd:float).
+_:bn_59 owl:unionOf (xsd:decimal xsd:double xsd:float).
+_:bn_62 owl:unionOf (xsd:decimal xsd:double xsd:float).
+_:bn_64 owl:unionOf (xsd:decimal xsd:double xsd:float).
+_:bn_67 owl:unionOf (xsd:decimal xsd:double xsd:float).
+_:bn_69 owl:unionOf (xsd:decimal xsd:double xsd:float).
+_:bn_73 owl:unionOf (xsd:decimal xsd:double xsd:float).
+_:bn_75 owl:unionOf (xsd:decimal xsd:double xsd:float).
+_:bn_79 owl:unionOf (xsd:decimal xsd:double xsd:float).
+_:bn_81 owl:unionOf (xsd:decimal xsd:double xsd:float).
+_:bn_83 owl:unionOf (xsd:decimal xsd:double xsd:float).
+_:bn_86 owl:unionOf (xsd:decimal xsd:double xsd:float).
+_:bn_88 owl:unionOf (xsd:decimal xsd:double xsd:float).
+_:bn_93 owl:unionOf (xsd:decimal xsd:double xsd:float).
+_:bn_95 owl:unionOf (xsd:decimal xsd:double xsd:float).
+_:bn_97 owl:unionOf (xsd:decimal xsd:double xsd:float).
+_:bn_100 owl:unionOf (xsd:decimal xsd:double xsd:float).
+_:bn_102 owl:unionOf (xsd:decimal xsd:double xsd:float).
+_:bn_106 owl:unionOf (xsd:decimal xsd:double xsd:float).
+_:bn_108 owl:unionOf (xsd:decimal xsd:double xsd:float).
+_:bn_110 owl:unionOf (xsd:decimal xsd:double xsd:float).
+_:bn_113 owl:unionOf (xsd:decimal xsd:double xsd:float).
+_:bn_115 owl:unionOf (xsd:decimal xsd:double xsd:float).
+_:bn_118 owl:unionOf (xsd:decimal xsd:double xsd:float).
+_:bn_120 owl:unionOf (xsd:decimal xsd:double xsd:float).
+_:bn_123 owl:unionOf (xsd:decimal xsd:double xsd:float).
+_:bn_125 owl:unionOf (xsd:decimal xsd:double xsd:float).
+_:bn_133 owl:unionOf (xsd:decimal xsd:double xsd:float).
+_:bn_135 owl:unionOf (xsd:decimal xsd:double xsd:float).
+_:bn_138 owl:unionOf (xsd:decimal xsd:double xsd:float).
+_:bn_140 owl:unionOf (xsd:decimal xsd:double xsd:float).
+_:bn_77 fnon:listElements (_:bn_78 _:bn_80).
+_:bn_91 fnon:listElements (_:bn_92 _:bn_94).
+_:bn_104 fnon:listElements (_:bn_105 _:bn_107).
+_:bn_127 fnon:listElements (_:bn_128 _:bn_129).
+_:bn_175 fnon:listElements (_:bn_176 _:bn_177).
+_:bn_183 fnon:listElements (_:bn_184 _:bn_185).
+_:bn_195 fnon:listElements (_:bn_196 _:bn_197).
+_:bn_217 fnon:listElements (_:bn_218 _:bn_219).
+_:bn_222 fnon:listElements (_:bn_223 _:bn_224).
+_:bn_247 fnon:listElements (_:bn_248 _:bn_249).
+_:bn_292 fnon:listElements (_:bn_293 _:bn_294).
+_:bn_297 fnon:listElements (_:bn_298 _:bn_299 _:bn_300).
+log:uri fnon:details "This allows one to look at the actual string of the URI which identifies this.\nThis is a level breaker, breaking the rule of not looking inside a URI.".
+log:semantics fnon:details "The log:semantics of a document is the formula achieved by parsing the representation of the document.\nFor a document in Notation3, `log:semantics` is the `log:parsedAsN3` of the `log:content` of the document.\nFor a document in another RDF syntax, it is parsed according to the appropriate specification to yield an RDF formula (a subclass of N3 `log:Formula`).\nEvaluates to `false` if an unrecognized document format is retrieved.\nAside: Philosophers will be distracted here into worrying about the meaning of meaning. At least we didn't call this function \"meaning\"! \nIn as much as N3 is used as an interlingua for interoperability for different systems, this for an N3 based system is the meaning expressed by a document.\nRelated: see `log:parsedAsN3` and `log:content`.".
+
