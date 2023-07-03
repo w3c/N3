@@ -156,7 +156,7 @@
         Should this be a normative section, or a reference to a normative section in the "main" spec?
       </p>
       --> 
-      In this section we define N3's abstract syntax. As N3's concrete concrete turtle-based syntax has proven 
+      In this section we define N3's abstract syntax. As N3's concrete concrete syntax has proven 
       to leave room for ambiguity &mdash; especially implicit quantification
       has been interpreted in contradicting ways by different reasoners in the past &mdash;  we decided to introduce an abstract syntax in which aspects like quantification 
       are stated explicitly. If the semantics of implicit quantification needs to be changed by the community group for any reason, this change will thus not affect the 
@@ -458,7 +458,7 @@ With that definition, we now introduce <dfn data-lt="free">free variables</dfn>:
    These variables do not contribute to the interpretation of the graph. In order to simplify our considerations for the following sections, 
    we introduce the notion of normalised graphs:</p>
 
-<p>For each graph $G=(U,E,F)$, we call $G^N=(U\cap (FV(F)), E\cap(FV(F)), F)$ the <dfn data-lt="normalised|normalised graph", class="lint-ignore">normalisation</dfn> of $G$.</p>
+<p>For each graph $G=(U,E,F)$, we call $G^N=(U\cap (FV(F)), E\cap(FV(F)), F)$ the <dfn data-lt="normalised|normalised graph" class="lint-ignore">normalisation</dfn> of $G$.</p>
 
 Examples:
 <ol>
@@ -880,8 +880,7 @@ The previous definition allows us to introduce the notion of basic entailment:
 \qquad      \text{log:implies}, \\
 \qquad      &lt;\{\},\{\},\{(\text{:socrates}, \text{rdf:type}, \text{:Mortal}\}&gt; \\
         ))\})$ </span>
-      <div class=codeblock><code># in N3 concrete syntax:
-        {:socrates a :Human} => {:socrates a :Mortal}. </code></div>
+    <br>&ndash; in concrete syntax: <code>{:socrates a :Human} => {:socrates a :Mortal}. </code>
   </li>
   <li> 
     <span class="asex"> $(\{\},\{\},\{(\text{:socrates}, \text{:says}, &lt;\{\},\{\},\{(\text{:socrates},\text{rdf:type}, \text{:Mortal} )\}&gt;) \})$</span>
@@ -1087,9 +1086,9 @@ The previous definition allows us to introduce the notion of basic entailment:
               <br> &ndash; in concrete syntax: <code>:socrates a :Mortal. </code>
             </li>
             <li>  
-              <span class="asex">$(\{\},\{\},\{(&lt;\{\},\{x\},\{ \\
+              <span class="asex">$(\{\},\{\},\{( \\
                 \qquad (\text{:socrates}, \text{rdf:type}, \text{:Human}), \\ 
-                \qquad (x, \text{rdf:type}, \text{:Human})\}&gt;,
+                \qquad &lt;\{\},\{x\},\{(x, \text{rdf:type}, \text{:Human})\}&gt;,
              \text{log:implies}, &lt;\{\},\{x\},\{(x, \text{rdf:type}, \text{:Mortal})\}&gt;)\\ \})$ </span>
              <br>&ndash; in concrete syntax: <code>:socrates a :Human. {_:x a :Human} => {_:x a :Mortal}. </code>
              <br> log-entails
@@ -1156,7 +1155,7 @@ The previous definition allows us to introduce the notion of basic entailment:
   <br>&ndash; in concrete syntax: <code>:socrates a :WisePerson.  </code>
 </li>
 </ul>
-<p class="note">As above, these examples follow the last agreement on the interpretation of N3 turtle syntax which might be implemented differently in some reasoners. 
+<p class="note">As above, these examples follow the last agreement on the interpretation of N3 concrete syntax which might be implemented differently in some reasoners. 
   The difference does not effect the meaning of abstract formulas. The community group is currently working on a solution for this problem.
 </p>
 </section>
