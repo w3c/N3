@@ -1084,9 +1084,9 @@ The previous definition allows us to introduce the notion of basic entailment:
               <br> &ndash; in concrete syntax: <code>:socrates a :Mortal. </code>
             </li>
             <li>  
-              <span class="asex">$(\{\},\{\},\{(&lt;\{\},\{x\},\{ \\
+              <span class="asex">$(\{\},\{\},\{( \\
                 \qquad (\text{:socrates}, \text{rdf:type}, \text{:Human}), \\ 
-                \qquad (x, \text{rdf:type}, \text{:Human})\}&gt;,
+                \qquad &lt;\{\},\{x\},\{(x, \text{rdf:type}, \text{:Human})\}&gt;,
              \text{log:implies}, &lt;\{\},\{x\},\{(x, \text{rdf:type}, \text{:Mortal})\}&gt;)\\ \})$ </span>
              <br>&ndash; in concrete syntax: <code>:socrates a :Human. {_:x a :Human} => {_:x a :Mortal}. </code>
              <br> log-entails
