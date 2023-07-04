@@ -565,6 +565,7 @@ Please send them to <a href="mailto:public-n3-dev@w3.org">public-n3-dev@w3.org</
        <ol class="toc">
         <li><a href="#numericdatatypepromotion"><span class="secno">2.2.1</span> <span class="content">Numeric datatype promotion and substitution</span></a>
         <li><a href="#typesofdatatypecasting"><span class="secno">2.2.2</span> <span class="content">Other kinds of datatype casting</span></a>
+        <li><a href="#scope"><span class="secno">2.2.3</span> <span class="content">Scopes</span></a>
        </ol>
      </ol>
     <li>
@@ -777,6 +778,10 @@ Please send them to <a href="mailto:public-n3-dev@w3.org">public-n3-dev@w3.org</
     <p><b>Editors' Note:</b><br><br> There is a useful chart for casting primitive types to primitive types in <a href="https://www.w3.org/TR/xpath-functions/#casting-from-primitive-to-primitive">XPath</a>, a
           subset of which is defined for <a href="https://www.w3.org/TR/sparql11-query/#FunctionMapping">SPARQL 1.1</a>. </p>
    </div>
+   <h4 class="heading settled" data-level="2.2.3" id="scope"><span class="secno">2.2.3. </span><span class="content">Scopes</span><a class="self-link" href="#scope"></a></h4>
+    <p> Some N3 builtins have a scope as an argument (e.g., <a href="#log:collectAllIn">log:collectAllIn</a>). A scope is either a concrete N3 graph which can be stated, 
+    or a scope variable, which then refers to the deductive closure of the whole N3 graph included in the reasoning run, with the exception
+    of the concrete application of the rule the built-in occurs in. </p>
    <h2 class="heading settled" data-level="3" id="builtinevaluation"><span class="secno">3. </span><span class="content">Builtin Evaluation</span><a class="self-link" href="#builtinevaluation"></a></h2>
    <h3 class="heading settled" data-level="3.1" id="builtintheorybox"><span class="secno">3.1. </span><span class="content">Builtin theory box</span><a class="self-link" href="#builtintheorybox"></a></h3>
    <p>A <dfn class="dfn-paneled" data-dfn-type="dfn" data-noexport id="builtin-statement">builtin statement</dfn> can be seen as a <i>constrained</i> basic graph pattern
