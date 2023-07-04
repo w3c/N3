@@ -1418,7 +1418,7 @@ _:d :hasMother _:m.
 _:d a :Person. -->
 </pre>
 
-      <p class="note">In SPARQL, a property path is used in the
+    <p class="note">In SPARQL, a property path is used in the
         <a data-cite="RDF11-CONCEPTS#dfn-predicate">predicate</a> position to describe a string of relationships between
         a <a data-cite="RDF11-CONCEPTS#dfn-subject">subject</a> and an <a
           data-cite="RDF11-CONCEPTS#dfn-object">object</a> resource.
@@ -1427,11 +1427,31 @@ _:d a :Person. -->
         <a data-cite="RDF11-CONCEPTS#dfn-object">object</a> position.
         Using a <a>resource path</a> in the predicate position, although technically allowed, is often a mistake.
         For instance, the following N3 <a>resource path</a>: <br />
-        &nbsp;&nbsp;&nbsp;&nbsp;`:joe :hasAddress!:hasCity "Metropolis" .`<br />
+        &nbsp;&nbsp;&nbsp;&nbsp;`:joe :hasAddress!:hasCity "Metropolis" .`<br /><br />
         Would lead to the following expansion:<br />
         &nbsp;&nbsp;&nbsp;&nbsp;`:joe _:bn_1 "Metropolis" .`<br />
-        &nbsp;&nbsp;&nbsp;&nbsp;`:hasAddress :hasCity _:bn_1 .`<br />
+        &nbsp;&nbsp;&nbsp;&nbsp;`:hasAddress :hasCity _:bn_1 .`<br /><br />
         Which is likely not the intention of the author.
+      </p>
+
+    <p>
+      Finally, the <code>&lt;-</code> syntax inverts a single property in an <a>N3 statement</a>, 
+      resulting in an <dfn>inverted property</dfn>.
+      For example, the following represents `:joe :hasMother :mary`:
+    </p>
+    <pre class="example nohighlight linkeditor" data-transform="updateExample"><!--
+@prefix : <http://example.org/> .
+
+:mary <-:hasMother :joe. -->
+</pre>
+
+      <p class="note">
+        The original N3 syntax supported keywords `has` and `is ... of`.
+        These are still supported by the current N3 syntax for backward compatibility.
+        The `is ... of` syntax is equivalent to <code>&lt;-</code>. 
+        We refer to the section on the EBNF grammar on why the new syntax was introduced. 
+        The `has` keyword was (likely) originally introduced for cases such as `joe has mother mary`, 
+        i.e., to clarify the meaning of certain property names.
       </p>
 
     </section>
@@ -1462,7 +1482,7 @@ _:d a :Person. -->
         and some don't.
       </li>
       <li>
-        Representing an inverted property using the <code>&lt;-</code> symbol. The <a
+        Representing an <a>inverted property</a> using the <code>&lt;-</code> symbol. The <a
           data-cite="N3#grammar">original N3 grammar</a> allowed the inverting of a property by using the
         <code>@is .. @of</code> construct. But, this construct can be unintuitive when property names are more
         verbosely
