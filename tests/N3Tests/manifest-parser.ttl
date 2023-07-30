@@ -1023,6 +1023,46 @@
         mf:action      <cwm_syntax/djb1.n3> ;
         mf:name        "djb1" .
 
+:empty_graph_eval
+        a              test:TestN3Eval ;
+        mf:action      <graph/empty_graph.n3> ;
+        mf:result      <graph/empty_graph.nt> ;
+        mf:name        "Empty Graph Eval";
+        rdfs:comment   "Empty Graph should be parsed as the the literal true";
+        rdft:approval  rdft:Approved .
+
+:empty_graph_implies_eval
+        a              test:TestN3Eval ;
+        mf:action      <graph/empty_graph_implies.n3> ;
+        mf:result      <graph/empty_graph_implies.nt> ;
+        mf:name        "Empty Graph Implies Eval";
+        rdfs:comment   "Empty Graph should be parsed as the the literal true when in global scope and when in a premise";
+        rdft:approval  rdft:Approved .
+
+:isImpliedBy
+        a              test:TestN3Eval ;
+        mf:action      <isImpliedBy/isImpliedBy.n3> ;
+        mf:result      <isImpliedBy/isImpliedBy.nt> ;
+        mf:name        "isImpliedBy Eval";
+        rdfs:comment   "<= should be parsed as log:isImpliedBy";
+        rdft:approval  rdft:Approved .
+
+:isImpliedBy_graphs
+        a              test:TestN3Eval ;
+        mf:action      <isImpliedBy/isImpliedBy_graphs.n3> ;
+        mf:result      <isImpliedBy/isImpliedBy_graphs.nt> ;
+        mf:name        "isImpliedBy Eval";
+        rdfs:comment   "<= should be parsed as log:isImpliedBy in a complex use case";
+        rdft:approval  rdft:Approved .
+
+:isImpliedBy_bcRule
+        a              test:TestN3Eval ;
+        mf:action      <isImpliedBy/isImpliedBy_bcRule.n3> ;
+        mf:result      <isImpliedBy/isImpliedBy_bcRule.nt> ;
+        mf:name        "isImpliedBy Eval";
+        rdfs:comment   "<= should be parsed as log:isImpliedBy in a bcRule";
+        rdft:approval  rdft:Approved .
+
 :cwm_syntax_djb1a.n3
         a              test:TestN3Eval ;
         mf:action      <cwm_syntax/djb1a.n3> ;

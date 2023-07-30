@@ -1,0 +1,4 @@
+<http://example.com/a> <http://example.com/b> <http://example.com/c> _:b0 .
+<http://example.com/d> <http://example.com/e> <http://example.com/f> _:b1 .
+
+_:b0 <http://www.w3.org/2000/10/swap/log#isImpliedBy> _:b1 .

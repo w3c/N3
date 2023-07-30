@@ -1,0 +1,6 @@
+?a <http://example.org/b1> <http://example.org/c1> _:b0 .
+?a <http://example.org/b> <http://example.org/c> _:b1 .
+_:b0 <http://www.w3.org/2000/10/swap/log#isImpliedBy> _:b1 _:b2 .
+<http://example.org/s> <http://example.org/p> _:b2 .
+<http://example.org/s> <http://example.org/p> ?O _:b3 .
+_:b3 <http://www.w3.org/2000/10/swap/log#implies> ?O .
