@@ -1,3 +1,5 @@
+<!DOCTYPE html>
+<html lang="en">
 
 <head>
   <meta charset='utf-8'>
@@ -82,7 +84,8 @@
       shortName: "N3",
       group: "cg/n3-dev",
       wgPublicList: "public-n3-dev",
-      edDraftURI: "https://w3c.github.io/N3/spec/",
+      edDraftURI: null,
+      latestVersion: "https://w3c.github.io/N3/reports/20230703",
       testSuiteURI: "https://w3c.github.io/N3/tests/",
       localBiblio: {
         "LNG-TAG": {
@@ -212,9 +215,9 @@
     <h2>Status of this document</h2>
     This document is one of 3 documents produced by the <a href="https://www.w3.org/community/n3-dev/">W3C N3 Community Group</a>:
     <ol>
-      <li><a href="https://w3c.github.io/N3/spec/">Notation3 Language</a> (this document)</li>
-      <li><a href="https://w3c-cg.github.io/n3Builtins/">Notation3 Builtin Functions</a></li>
-      <li><a href="https://w3c.github.io/N3/spec/semantics.html">Notation3 Semantics</a></li>
+      <li><a href="https://w3c.github.io/N3/reports/20230703">Notation3 Language</a> (this document)</li>
+      <li><a href="https://w3c.github.io/N3/reports/20230703/builtins.html">Notation3 Builtin Functions</a></li>
+      <li><a href="https://w3c.github.io/N3/reports/20230703/semantics.html">Notation3 Semantics</a></li>
     </ol>
     <p>This specification was published by the
       <a href="https://www.w3.org/groups/cg/n3-dev">Notation 3 (<abbr title="Notation3">N3</abbr>) Community Group</a>. It is not a W3C Standard nor is it on the W3C Standards Track.
@@ -823,7 +826,7 @@ _:a ex:town [ ex:name "Springfield" ] . -->
         as we no longer know who can be considered the "first" author.
       </p>
 
-      <p class="note">To an extent, an N3 collection <a href="#semantics">is equivalent to</a> the more verbose <a
+      <p class="note">To an extent, an N3 collection <a href="semantics.html#terms-triples-and-graphs">is equivalent to</a> the more verbose <a
           data-cite="rdf11-mt#rdf-collections">RDF Collection vocabulary</a>.
         We refer to the <a href="https://www.w3.org/TeamSubmission/n3/#lists">original N3 submission</a>
         for the additional axioms needed for this equivalency.
@@ -878,7 +881,7 @@ _:a ex:town [ ex:name "Springfield" ] . -->
         Essentially, a <a>graph term</a> represents an occurrence of an RDF graph &mdash; i.e., a <em>quoting</em> or
         <em>citing</em> of the graph. Importantly, a <a>graph term</a> does not assert the contents of the RDF
         graph as being true (e.g., <code>:cervantes dc:wrote :moby_dick</code>). In fact, the <a>graph term</a> is <a
-          href="#semantics">interpreted as a resource on its own</a>.
+          href="semantics.html#ground-graphs">interpreted as a resource on its own</a>.
       </p>
       <p>As with <a>collections</a>, <a>graph terms</a> can be used in any position in an <a>N3 statement</a>.</p>
       <p>As they represent a <i>quoting</i> of RDF graphs, <a>graph terms</a> are not "referentially transparent". For
@@ -1077,28 +1080,34 @@ _:a ex:town [ ex:name "Springfield" ] . -->
         Builtins include mathematic, string, time and cryptography operators,
         operations on collections and graphs, and logical operations in general.</p>
 
-      <h5>Lists of built-ins</h5>
+        <p>
+          The N3 builtins are described in detail in the 
+          <a href="https://w3c.github.io/N3/reports/20230703/builtins.html">Notation3 Builtin Functions</a> document.
+          Below, you can find an informal categorization of the N3 builtins.
+        </p>
+
+      <!-- <h5>Lists of built-ins</h5>
       <p>Built-ins are denoted by a controlled IRI defined in one of the core namespaces:</p>
       <ul>
-        <li><a href="../ns/crypto.html">Crypto</a> –
+        <li><a href="../../ns/crypto.html">Crypto</a> –
           <a href="http://www.w3.org/2000/10/swap/crypto#">http://www.w3.org/2000/10/swap/crypto#</a>,
         </li>
-        <li><a href="../ns/list.html">List</a> –
+        <li><a href="../../ns/list.html">List</a> –
           <a href="http://www.w3.org/2000/10/swap/list#">http://www.w3.org/2000/10/swap/list#</a>,
         </li>
-        <li><a href="../ns/log.html">Log</a> –
+        <li><a href="../../ns/log.html">Log</a> –
           <a href="http://www.w3.org/2000/10/swap/log#">http://www.w3.org/2000/10/swap/log#</a>,
         </li>
-        <li><a href="../ns/math.html">Math</a> –
+        <li><a href="../../ns/math.html">Math</a> –
           <a href="http://www.w3.org/2000/10/swap/math#">http://www.w3.org/2000/10/swap/math#</a>,
         </li>
-        <li><a href="../ns/string.html">String</a> –
+        <li><a href="../../ns/string.html">String</a> –
           <a href="http://www.w3.org/2000/10/swap/string#">http://www.w3.org/2000/10/swap/string#</a>, and
         </li>
-        <li><a href="../ns/time.html">Time</a> –
+        <li><a href="../../ns/time.html">Time</a> –
           <a href="http://www.w3.org/2000/10/swap/time#">http://www.w3.org/2000/10/swap/time#</a>.
         </li>
-      </ul>
+      </ul> -->
 
       <h5>Simple Builtins</h5>
 
@@ -1409,7 +1418,7 @@ _:d :hasMother _:m.
 _:d a :Person. -->
 </pre>
 
-      <p class="note">In SPARQL, a property path is used in the
+    <p class="note">In SPARQL, a property path is used in the
         <a data-cite="RDF11-CONCEPTS#dfn-predicate">predicate</a> position to describe a string of relationships between
         a <a data-cite="RDF11-CONCEPTS#dfn-subject">subject</a> and an <a
           data-cite="RDF11-CONCEPTS#dfn-object">object</a> resource.
@@ -1418,11 +1427,31 @@ _:d a :Person. -->
         <a data-cite="RDF11-CONCEPTS#dfn-object">object</a> position.
         Using a <a>resource path</a> in the predicate position, although technically allowed, is often a mistake.
         For instance, the following N3 <a>resource path</a>: <br />
-        &nbsp;&nbsp;&nbsp;&nbsp;`:joe :hasAddress!:hasCity "Metropolis" .`<br />
+        &nbsp;&nbsp;&nbsp;&nbsp;`:joe :hasAddress!:hasCity "Metropolis" .`<br /><br />
         Would lead to the following expansion:<br />
         &nbsp;&nbsp;&nbsp;&nbsp;`:joe _:bn_1 "Metropolis" .`<br />
-        &nbsp;&nbsp;&nbsp;&nbsp;`:hasAddress :hasCity _:bn_1 .`<br />
+        &nbsp;&nbsp;&nbsp;&nbsp;`:hasAddress :hasCity _:bn_1 .`<br /><br />
         Which is likely not the intention of the author.
+      </p>
+
+    <p>
+      Finally, the <code>&lt;-</code> syntax inverts a single property in an <a>N3 statement</a>, 
+      resulting in an <dfn>inverted property</dfn>.
+      For example, the following represents `:joe :hasMother :mary`:
+    </p>
+    <pre class="example nohighlight linkeditor" data-transform="updateExample"><!--
+@prefix : <http://example.org/> .
+
+:mary <-:hasMother :joe. -->
+</pre>
+
+      <p class="note">
+        The original N3 syntax supported keywords `has` and `is ... of`.
+        These are still supported by the current N3 syntax for backward compatibility.
+        The `is ... of` syntax is equivalent to <code>&lt;-</code>. 
+        We refer to the section on the EBNF grammar on why the new syntax was introduced. 
+        The `has` keyword was (likely) originally introduced for cases such as `joe has mother mary`, 
+        i.e., to clarify the meaning of certain property names.
       </p>
 
     </section>
@@ -1453,7 +1482,7 @@ _:d a :Person. -->
         and some don't.
       </li>
       <li>
-        Representing an inverted property using the <code>&lt;-</code> symbol. The <a
+        Representing an <a>inverted property</a> using the <code>&lt;-</code> symbol. The <a
           data-cite="N3#grammar">original N3 grammar</a> allowed the inverting of a property by using the
         <code>@is .. @of</code> construct. But, this construct can be unintuitive when property names are more
         verbosely
@@ -1856,8 +1885,8 @@ _:d a :Person. -->
     </section>
     <section id='grammar'>
       <h3>Grammar</h3>
-      <div data-include="../grammar/n3.html"></div>
-      <p>A textual version of this grammar may be found <a href="n3.ebnf">here</a>.</p>
+      <div data-include="../../grammar/n3.html"></div>
+      <p>A textual version of this grammar may be found <a href="../../grammar/n3.ebnf">here</a>.</p>
     </section>
   </section>
   <section class=informative>
@@ -2175,10 +2204,6 @@ _:x :certainty 0.8 . -->
         This allows expressing examples such as above,
         where the statement within the graph term should not be asserted.</p>
     </section>
-  </section>
-  <section id='semantics'>
-    <h2>Semantics</h2>
-    <p>The formal semantics of N3 is a work in progress.</p>
   </section>
   <section id='in-html' class="appendix informative">
     <h2>Embedding N3 in HTML documents</h2>
