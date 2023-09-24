@@ -3481,7 +3481,7 @@ We assume <code>&lt;semantics.data></code> contains the text: </p>
    </div>
    <br> <strong>Examples</strong><br>
    <div class="ex_container" style="margin-top: 5px">
-     <a href="https://n3-editor.herokuapp.com/n3/editor/?formula=%40prefix+%3A+%3Chttp%3A%2F%2Fexample.org%2F%3E.%0A%40prefix+log%3A+%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F10%2Fswap%2Flog%23%3E+.%0A%0A%7B+%3Cerror.data%3E+log%3Asemantics+%3Fsemantics+.+%7D+%3D%3E+%7B+%3Aresult+%3Ais+%3Fsemantics+%7D+." target="_blank">try in editor 🚀</a>
+     <a href="https://n3-editor.herokuapp.com/n3/editor/?formula=%40prefix+%3A+%3Chttp%3A%2F%2Fexample.org%2F%3E.%0A%40prefix+log%3A+%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F10%2Fswap%2Flog%23%3E+.%0A%0A%7B+%3Cerror.data%3E+log%3AsemanticsOrError+%3Fsemantics+%7D+%3D%3E+%7B+%3Aresult+%3Ais+%3Fsemantics+%7D+." target="_blank">try in editor 🚀</a>
     <div class="example" id="example-7d102a61">
      <a class="self-link" href="#example-7d102a61"></a>
      <p></p>
@@ -3490,12 +3490,12 @@ We assume <code>&lt;semantics.data></code> contains the text: </p>
 <pre>@prefix : &lt;http://example.org/>.
 @prefix log: &lt;http://www.w3.org/2000/10/swap/log#> .
 
-{ &lt;error.data> log:semantics ?semantics . } => { :result :is ?semantics } .
+{ &lt;error.data> log:semanticsOrError ?semantics } => { :result :is ?semantics } .
 </pre>
      <p><b>Result:</b> </p>
 <pre>@prefix : &lt;http://example.org/>.
-:result :is """Unable to access document &lt;file:////tmp/error.data>, because:
-    &lt;urlopen error [Errno 2] No such file or directory: '//tmp/error.data'>""" .
+
+:result :is "error(existence_error(source_sink,/error.data),context(system:open/4,No such file or directory))" .
 </pre>
     </div>
    </div>
