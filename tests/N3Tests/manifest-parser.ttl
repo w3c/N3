@@ -1034,7 +1034,7 @@
 :empty_graph_implies_eval
         a              test:TestN3Eval ;
         mf:action      <graph/empty_graph_implies.n3> ;
-        mf:result      <graph/empty_graph_implies.nq> ;
+        mf:result      <graph/empty_graph_implies_result.n3> ;
         mf:name        "Empty Graph Implies Eval";
         rdfs:comment   "Empty Graph should be parsed as the the literal true when in global scope and when in a premise";
         rdft:approval  rdft:Approved .
@@ -1050,7 +1050,7 @@
 :isImpliedBy_graphs
         a              test:TestN3Eval ;
         mf:action      <isImpliedBy/isImpliedBy_graphs.n3> ;
-        mf:result      <isImpliedBy/isImpliedBy_graphs.nq> ;
+        mf:result      <isImpliedBy/isImpliedBy_graphs_result.n3> ;
         mf:name        "isImpliedBy Eval";
         rdfs:comment   "<= should be parsed as log:isImpliedBy in a complex use case";
         rdft:approval  rdft:Approved .
@@ -1058,7 +1058,7 @@
 :isImpliedBy_bcRule
         a              test:TestN3Eval ;
         mf:action      <isImpliedBy/isImpliedBy_bcRule.n3> ;
-        mf:result      <isImpliedBy/isImpliedBy_bcRule.nq> ;
+        mf:result      <isImpliedBy/isImpliedBy_bcRule_result.n3> ;
         mf:name        "isImpliedBy Eval";
         rdfs:comment   "<= should be parsed as log:isImpliedBy in a bcRule";
         rdft:approval  rdft:Approved .

@@ -1,0 +1,5 @@
+{
+  <http://example.com/a> <http://example.com/b> <http://example.com/c>
+} <http://www.w3.org/2000/10/swap/log#isImpliedBy> {
+  <http://example.com/d> <http://example.com/e> <http://example.com/f>
+} .

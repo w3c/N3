@@ -1,0 +1,9 @@
+{ <http://example.org/s> <http://example.org/p> ?O } <http://www.w3.org/2000/10/swap/log#implies> ?O .
+
+<http://example.org/s> <http://example.org/p> {
+  {
+    ?a <http://example.org/b1> <http://example.org/c1> .
+  } <http://www.w3.org/2000/10/swap/log#isImpliedBy> {
+    ?a <http://example.org/b> <http://example.org/c> .
+  } .
+} .
