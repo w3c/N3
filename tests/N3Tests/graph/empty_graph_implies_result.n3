@@ -1,0 +1,3 @@
+{
+  "true"^^<http://www.w3.org/2001/XMLSchema#boolean> <http://www.w3.org/2000/10/swap/log#implies> "true"^^<http://www.w3.org/2001/XMLSchema#boolean> 
+} <http://www.w3.org/2000/10/swap/log#implies> "true"^^<http://www.w3.org/2001/XMLSchema#boolean> .
