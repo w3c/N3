@@ -1052,7 +1052,7 @@
         mf:action      <isImpliedBy/isImpliedBy_graphs.n3> ;
         mf:result      <isImpliedBy/isImpliedBy_graphs_result.n3> ;
         mf:name        "isImpliedBy Eval";
-        rdfs:comment   "<= should be parsed as log:isImpliedBy with graph as premise and object";
+        rdfs:comment   "<= should be parsed as log:isImpliedBy with N3 graphs as subject and object";
         rdft:approval  rdft:Approved .
 
 :isImpliedBy_bcRule
