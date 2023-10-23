@@ -1,0 +1,1370 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Notation3 Semantics</title>
+    <script
+      src="https://www.w3.org/Tools/respec/respec-w3c"
+      class="remove"
+      defer
+    ></script>
+    <script class="remove">
+      // All config options at https://respec.org/docs/
+      var respecConfig = {
+        specStatus: "CG-DRAFT",
+        editors: [
+          {
+            "name": "Dörthe Arndt",
+            "url": "https://iccl.inf.tu-dresden.de/web/D%C3%B6rthe_Arndt/en",
+            "company": "TU Dresden",
+            "companyURL": "https://tu-dresden.de/",
+            "w3cid": 111308,
+          },{
+            "name": "Pierre-Antoine Champin",
+            "url": "https://champin.net/",
+            "company": "W3C / Inria",
+            "companyURL": "https://www.inria.fr/",
+            "orcid": "0000-0001-7046-4474",
+            "w3cid": 129656,
+          }
+        ],
+        authors: [
+          {
+            name: "Patrick Hochstenbach",
+            url: "",
+            company: "IDLab - Ghent University",
+            companyURL: "https://knows.idlab.ugent.be/",
+            orcid: "",
+            w3cid: "",
+          },
+          {
+            name: "William Van Woensel",
+            company: "University of Ottawa",
+            companyURL: "https://www.uottawa.ca/",
+            mailto: "william.van.woensel@gmail.com"
+          }
+        ],
+        github: "w3c/N3",
+        shortName: "n3-semantics",
+        xref: "web-platform",
+	      group: "n3-dev",
+        format: "markdown",
+        edDraftURI: null,
+        latestVersion: "https://w3c.github.io/N3/reports/20230703/semantics.html"
+      };
+    </script>
+    <!-- Katex -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/katex.min.css" integrity="sha384-Xi8rHCmBmhbuyyhbI88391ZKP2dmfnOl4rT9ZfRI7mLTdk1wblIUnrIq35nqwEvC" crossorigin="anonymous">
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/katex.min.js" integrity="sha384-X/XCfMm41VSsqRNQgDerQczD69XqmjOOOwYQvr/uuC+j4OPoNhVgjdGFwhvN02Ja" crossorigin="anonymous"></script>
+    <!-- To automatically render math in text elements, include the auto-render extension: -->
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/contrib/auto-render.min.js" integrity="sha384-+XBljXPPiv+OzfbB3cVmLHf4hdUFHlWNZN5spNQ7rmHTXpd7WvJum6fIACpNNfIR" crossorigin="anonymous"
+        onload="renderMathInElement(document.body);"></script>
+    <script>
+    document.addEventListener("DOMContentLoaded", function() {
+        let katexOutput = new URL(window.location).searchParams.get('katexOutput') || 'htmlAndMathml';
+        renderMathInElement(document.body, {
+          // customised options
+          // • auto-render specific keys, e.g.:
+          delimiters: [
+              {left: '$$', right: '$$', display: true},
+              {left: '$', right: '$', display: false},
+              {left: '\\(', right: '\\)', display: false},
+              {left: '\\[', right: '\\]', display: true}
+          ],
+          // • rendering keys, e.g.:
+          throwOnError : true,
+          output: katexOutput,
+        });
+    });
+    </script>
+    <style>
+      /* abstract syntax examples are made smaller (because they can be quite long) */
+      .asex {
+        font-size: small;
+      }
+      code {
+        color: #3b3bc3;
+      }
+      q {
+        font-style: italic;
+      }
+      .codeblock {
+        white-space: pre-line;
+        margin-left: 1em;
+      }
+
+      .asex + .codeblock {
+        margin-top: 1ex;
+      }
+    </style>
+  </head>
+  <body>
+    <section id="abstract">
+      <p>This document defines the model-theoretic semantics of Notation3 Logic based on its abstract syntax.</p>
+    </section>
+    <section id="sotd" class="override">
+      <h2>Status of this document</h2>
+      This document is one of 3 documents produced by the <a href="https://www.w3.org/community/n3-dev/">W3C N3 Community Group</a>:
+      <ol>
+        <li><a href="https://w3c.github.io/N3/reports/20230703">Notation3 Language</a></li>
+        <li><a href="https://w3c.github.io/N3/reports/20230703/builtins.html">Notation3 Builtin Functions</a></li>
+        <li><a href="https://w3c.github.io/N3/reports/20230703/semantics.html">Notation3 Semantics</a> (this document)</li>
+      </ol>
+      <p>This specification was published by the
+        <a href="https://www.w3.org/groups/cg/n3-dev">Notation 3 (<abbr title="Notation3">N3</abbr>) Community Group</a>. It is not a W3C Standard nor is it on the W3C Standards Track.
+        Please note that under the
+        <a href="https://www.w3.org/community/about/agreements/cla/">W3C Community Contributor License Agreement (CLA)</a>
+        there is a limited opt-out and other conditions apply.
+        Learn more about
+        <a href="https://www.w3.org/community/">W3C Community and Business Groups</a>.
+      </p>
+      <p>
+        <a href="https://github.com/w3c/N3/issues/">GitHub Issues</a> are preferred for discussion of this specification. Alternatively, you can send comments to our mailing list.
+        Please send them to <a href="mailto:public-n3-dev@w3.org">public-n3-dev@w3.org</a> (<a href="mailto:public-n3-dev-request@w3.org?subject=subscribe">subscribe</a>, <a href="https://lists.w3.org/Archives/Public/public-n3-dev/">archives</a>).
+      </p>
+    </section>
+    <section class="informative">
+      <h2>Introduction</h2>
+      <p>This document defines the model-theoretic semantics of
+        Notation3 Logic.
+        We define the semantics of Notation3 (N3) on an abstract syntax. We will provide the mapping from explicit N3 Syntax
+        to abstract syntax in an extra document. By doing so we separate the handling of implicit quantification from the model.
+       </p>
+       <p>
+         <abbr title="Notation3">N3</abbr> is an extension of RDF.
+         We use the following concepts from the [[[RDF11-CONCEPTS]]]: <a data-cite="RDF11-CONCEPTS#section-IRIs">IRI</a>,
+         <a data-cite="RDF11-CONCEPTS#section-triples">RDF triple</a>, <a
+           data-cite="RDF11-CONCEPTS#section-rdf-graph">RDF graph</a>, <a
+           data-cite="RDF11-CONCEPTS#section-triples">subject</a>,
+         <a data-cite="RDF11-CONCEPTS#section-triples">predicate</a>, <a
+           data-cite="RDF11-CONCEPTS#section-triples">object</a>,
+          <!--<a data-cite="RDF11-CONCEPTS#dfn-rdf-source">RDF
+           source</a>, -->
+         <a data-cite="RDF11-CONCEPTS#dfn-node">node</a>, <a data-cite="RDF11-CONCEPTS#dfn-blank-node">blank node</a>,
+         and
+     <a data-cite="RDF11-CONCEPTS#dfn-literal">literal</a>.
+      <!--       <a data-cite="RDF11-CONCEPTS#graph-isomorphism">isomorphic</a>,
+         and <a data-cite="RDF11-CONCEPTS#section-generalized-rdf">generalized RDF triples, graphs, and datasets</a>.
+       -->
+       </p>
+    </section>
+
+
+    <section>
+      <h2>Abstract syntax</h2>
+   <!--  <p class=issue>
+        Should this be a normative section, or a reference to a normative section in the "main" spec?
+      </p>
+      --> 
+      In this section we define N3's abstract syntax. As N3's concrete concrete syntax has proven 
+      to leave room for ambiguity &mdash; especially implicit quantification
+      has been interpreted in contradicting ways by different reasoners in the past &mdash;  we decided to introduce an abstract syntax in which aspects like quantification 
+      are stated explicitly. If the semantics of implicit quantification needs to be changed by the community group for any reason, this change will thus not affect the 
+      semantics, which is based on the abstract syntax, but only the mapping from concrete to abstract syntax. 
+
+      <section class="informative">
+        <h3>Motivation</h3>
+   <p>Notation3 supports implicit quantification. When blank nodes are used in triples, they implicitly stand for existentially
+   quantified variables. When universals (i.e., variables starting with a question mark in the concrete syntax) are used, they implicitly stand for
+   universally quantified variables. Implicit universal quantification is always global; that is, implicit universal quantification
+   always spans over the full graph. Implicit existential quantification is always local; that is, it spans the local graph
+   (i.e., if implicit existential quantification occurs in a graph term, it spans only that graph term).
+   To simplify the definitions in this document, we assume all quantification to be explicit
+   and introduce an abstract syntax to better express that.
+ </p>
+
+  <p>
+   In order to help the reader to make a connection between Notation3 concrete syntax and abstract syntax, we will provide example
+   translations together with the concepts we introduce. We will provide a formal definition of the mapping in a separate document.
+</p>
+
+      </section>
+    <section class="normative">
+        <h3>Terms, Triples and Graphs</h3>
+
+As in the concrete syntax, abstract graphs consist of triples of terms. N3 covers all terms present in
+RDF, that is, <a href="https://www.w3.org/TR/rdf11-concepts/#section-Graph-Literal">literals</a>,
+<a href="https://www.w3.org/TR/rdf11-concepts/#section-IRIs">IRIs</a> and
+<a href="https://www.w3.org/TR/rdf11-concepts/#section-blank-nodes">blank nodes</a>.
+Additionally, we can have universals in N3. As the abstract syntax supports direct
+quantification, we represent blank nodes and universals as variables and add their intended quantification separately  (see N3 <a>graph</a>).
+We thus come to the following concept of atomic terms.
+      <p>The set of <dfn>atomic terms</dfn> consists of:</p>
+      <ul>
+        <li>the set $R$ of IRIs,
+        <li>the set $L$ of Literals,
+        <li>the set $V$ of Variables.
+      </ul>
+
+N3 additionally supports the use of graphs as direct triple elements and treats lists as first-class-citizens. We therefore have an extended
+concept of terms:
+
+<!--
+<p class=issue>
+  Should we use the term lists or collections?
+  The <a href="https://www.w3.org/TeamSubmission/n3/#lists">team submission</a> uses lists,
+  but we use collections elsewhere..
+</p>
+-->
+
+
+
+
+      <p>A <dfn>term</dfn> can be</p>
+      <ul>
+        <li>an <a>atomic term</a>,</li>
+        <li>a finite (possibly empty) list of <a>terms</a>,</li>
+        <li>a <dfn>graph term</dfn> $&lt;G&gt;$ where $G$ is a finite <a>graph</a> (see below).</li>
+      </ul>
+      <p class="note">
+        In this specification we follow the original terminology of Notation3 Logic used in the <a href="https://www.w3.org/TeamSubmission/n3/#lists">team submission</a>
+          where a sequence of terms is called a list.  
+          An N3 list is very similar to an <a href="https://www.w3.org/TR/rdf12-schema/#ch_collectionvocab">RDF-collection</a> 
+          with the difference that N3 treats lists as
+        special terms in the language and not only as syntactic sugar. 
+         In this and its related documents created by the N3 group, we will sometimes also use the term N3 collection or just collection for N3 lists. These terms should 
+         be understood as synonyms.
+       </p>
+Terms form triples:
+      <p>A <dfn>triple</dfn> is made of</p>
+      <ul>
+        <li>a term called the <dfn>subject</dfn> of the triple,</li>
+        <li>a term called the <dfn>predicate</dfn> of the triple,</li>
+        <li>a term called the <dfn>object</dfn> of the triple.</li>
+      </ul>
+<!--     
+      <div class=issue>
+        Maybe we could introduce some blue example box which we would then use for mapping examples?
+      </div>
+      --> 
+
+<!-- <p>In the abstract syntax, all quantification is explicit and blank nodes and universals are expressed as variables. Ignoring
+quantification, the triple
+   <code>_:x :p "text".</code>
+becomes $(x, \text{:p}, \text{"literal"})$.</p> -->
+
+<div class=note>
+In contrast to RDF, N3 allows all kinds of terms in all positions of a triple. The triple <code>:s _:x :o.</code> is valid in N3.
+Even lists or graph terms can appear in the predicate position of a triple.
+</div>
+In the abstract N3 syntax, the concept of an unordered set of triples (an <a data-cite="RDF11-CONCEPTS#section-rdf-graph">RDF graph</a>) is extended by explicit information about quantification. 
+In other words, we specify for each N3 graph which variables are universally and which are existentially quantified on that graph.
+To do so, we define:
+      <p>A <dfn>graph</dfn> is a tuple $(U, E, F)$ where</p>
+      <ul>
+        <li>$U \subseteq V$ is a (possibly empty) set of <dfn class="lint-ignore" data-lt="universally scoped|universal">universally scoped variables</dfn>,</li>
+        <li>$E \subseteq V$ is a (possibly empty) set of <dfn class="lint-ignore" data-lt="existentially scoped|existential">existentially scoped variables</dfn>,</li>
+        <li>$F$ is a (possibly empty) set of <a>triples</a>.</li>
+      </ul>
+      <p>A <a>graph</a> $G=(U, E, F)$ is finite if the sets $U$, $E$ and $F$ are finite.</p>
+As we will see in the semantics section below, the sets $U$ and $E$ act like quantifiers with variables for the graph and its subgraphs.
+We therefore call these sets also <dfn class="lint-ignore" data-lt="quantification set">quantification sets</dfn>.
+
+<p>
+To provide some intuition on the correspondence between concrete N3 syntax and abstract N3 syntax, we provide some examples below.
+We always write a graph in concrete N3 syntax followed by its counterpart in abstract N3 syntax.
+</p>
+<div class=note>
+  In order to improve readability, we will omit the inner 
+  graph parentheses ("<code>()</code>") for all graph terms here and in the remainder of the document. That is, for example, we will write<br/>
+  <span class="asex">$\qquad &lt;\{\},\{x\},\{(x,\text{rdf:type}, \text{:Mortal} )\}&gt;$</span><br/>
+  instead of<br/>
+  <span class="asex">$\qquad &lt;(\{\},\{x\},\{(x,\text{rdf:type}, \text{:Mortal} )\})&gt;$.</span><br/>
+</div>
+<ol>
+  <li> <code>:socrates :knows _:x.</code>
+    <br>becomes<br>
+    <span class="asex">$(\{\},\{x\},\{(\text{:socrates}, \text{:knows}, x)\})$</span></li>
+  <li> <code>{?x a :Human} => {?x a :Mortal}.</code> <br>becomes <br>
+     <span class="asex">$(\{x\},\{\},\{(&lt;\{\},\{\},\{(x, \text{rdf:type}, \text{:Human})\}&gt;,
+    \text{log:implies}, &lt;\{\},\{\},\{(x, \text{rdf:type}, \text{:Mortal})\}&gt;\})$ </span>
+  </li>
+  <li id="example3"> <code>:socrates :says {_:x a :Mortal}.</code> 
+    <br>becomes<br>
+    <span class="asex"> $(\{\},\{\},\{(\text{:socrates}, \text{:says}, &lt;\{\},\{x\},\{(x,\text{rdf:type}, \text{:Mortal} )\}&gt;) \})$</span>
+  </li>
+  <li> <code>:socrates :says {_:x a :Mortal}. _:y :knows :socrates.</code>
+    <br>becomes<br>
+    <span class="asex"> $(\{\},\{y\},\{(\text{:socrates}, \text{:says}, &lt;\{\},\{x\},\{(x,\text{rdf:type}, \text{:Mortal} )\}&gt;), (y, \text{:knows}, \text{:socrates}) \})$</span>
+  </li>
+  <li id="example"> <code>{?x a :Human} => {?x :hasMother _:y}.</code> 
+      <br>becomes<br>
+      <span class="asex">$(\{x\},\{\},\{(&lt;\{\},\{\},\{(x, \text{rdf:type}, \text{:Human})\}&gt;,
+    \text{log:implies}, &lt;\{\},\{y\},\{(x, \text{:hasMother}, y)\}&gt;)\})$ </span>
+  </li>
+  <li> <code>_:y :says {?x a :Mortal}.</code> 
+      <br>becomes<br>
+      <span class="asex">$(\{x\},\{y\},\{(y, \text{:says}, &lt;\{\},\{\},\{(x, \text{rdf:type}, \text{:Mortal})\}&gt;)$ </span>
+  </li>
+</ol>
+<p>
+We will re-use these examples in the following sections.
+</p>
+<!--       <div class=issue>
+        Question: RDF does not expect finite graphs. Do we need all graphs to be finite (we should at least expect all cited graphs to be finite, otherwise we cannot quantify over them).
+      </div>
+-->
+
+      <div class=note>
+        In this context, an RDF graph is a graph that does not contain graph terms nor lists, does not have literals as subjects or predicates, does not have variables as predicates, and for which $U=\emptyset$.
+        The blank nodes occurring in the graph would be labeled and stored in $E$.
+      </div>
+
+      <div class="issue">The translation of nested blank nodes as explained here and for example applied in <a href="#example3"> Example 3</a> follows
+         the latest consensus of the community group. 
+        Some implementations apply a different interpretation of the scope of blank nodes occurring in non-logical graph terms, that is, graph terms which are not used 
+        in connection with <a>logical predicates</a>.  
+        More concretely, that means that the concrete triple<br/> 
+        <code>    :socrates :says {_:x a :Mortal}.  </code><br/>
+        is interpreted by some implementations
+        as<br/> 
+        <span class="asex">$\qquad (\{\},\{x\},\{(\text{:socrates}, \text{:says}, &lt;\{\},\{\},\{(x,\text{rdf:type}, \text{:Mortal} )\}&gt;) \})$</span><br/>
+         and <strong>not</strong> as<br/>
+         <span class="asex"> $(\{\},\{\},\{(\text{:socrates}, \text{:says}, &lt;\{\},\{x\},\{(x,\text{rdf:type}, \text{:Mortal} )\}&gt;) \})$</span>.<br/>
+         A solution for that problem is currently being discussed. The difference, however, does not influence the formal semantics of the <em>abstract</em> syntax, as quantification is always explicit there.
+       </div>
+            </section>
+      <section>
+        <h2>Variables</h2>
+
+As N3 supports graph terms and thereby also allows for nesting of variables and their quantification, we need to introduce
+a distinction between variables occurring directly in a graph and variables which are nested. In order to do so,
+we introduce the following concept:
+        <ul>
+          <li>A term is a <dfn>direct constituent</dfn> of
+            <ul>
+              <li>a list $l$ if it is
+                <ul>
+                  <li>an element of $l$, or</li>
+                  <li>a <a>direct constituent</a> of a list-element of $l$;</li>
+                </ul>
+              </li>
+              <li>a <a>triple</a> $t$ if it is
+                <ul>
+                  <li>the <a>subject</a>, <a>predicate</a> or <a>object</a> of $t$, or</li>
+                  <li>a <a>direct constituent</a> of the <a>subject</a>, <a>predicate</a> or <a>object</a> of $t$;</li>
+                </ul>
+              </li>
+              <li>a <a>graph</a> $G=(U, E, F)$ if it is
+                <ul>
+                  <li>a <a>direct constituent</a> of a <a>triple</a> $t ∈ F$.</li>
+                </ul>
+              </li>
+            </ul>
+            We denote the set of direct constituents of a graph $G$ as $DC(G)$.
+        Variables, IRIs, literals and graph terms do not have direct constituents.
+
+          </li>
+          <li>A term is a <dfn>constituent</dfn> of a <a>graph</a> $G_1$ if it is either
+            <ul>
+              <li>a <a>direct constituent</a> of $G_1$, or</li>
+              <li>a <a>constituent</a> of graph $G_2$, where the <a>graph term</a> $&lt;G_2&gt;$ is a <a>direct constituent</a> of $G_1$.</li>
+            </ul>
+            We denote the set of constituents of a graph $G$ as $C(G)$.
+          </li>
+        </ul>
+
+          
+
+          In order to clarify the definition above, we go back to an earlier example (point 3): <br>
+          <ul>
+            <li>
+                <code>:socrates :says {_:x a :Mortal}.</code>
+                <br>becomes<br>
+                <span class="asex"> $(\{\},\{\},\{(\text{:socrates}, \text{:says}, &lt;\{\},\{x\},\{(x,\text{rdf:type}, \text{:Mortal} )\}&gt;) \})$</span>
+                <ul>
+                  <li><em>Direct constituents</em>:
+                    <span class="asex">$\text{:socrates}, \text{:says},  &lt;\{\},\{x\},\{(x,\text{rdf:type}, \text{:Mortal} )\}&gt;$</span>.
+                  </li>
+                  <li><em>Constituents</em>:
+                    all direct constituents (see above), <span class="asex">$x,\text{rdf:type}, \text{:Mortal}$</span>
+                  </li>
+                </ul>
+              </li>
+          </ul>
+
+
+
+            <p class=note>Note that the definition makes a difference between <a>graphs</a> and <a>graph terms</a>.
+              A graph term is a <a>direct constituent</a> of the graph ("containing graph") in which it occurs as a triple component. However, the direct constituents of the graph term's graph, and their direct constituents (and so on), are not direct constituents of the containing graph. Rather, they are <a>constituents</a> of the containing graph.
+              This difference is crucial for the definitions below: a graph is not the same as a graph term.</p>
+<p>
+With that definition, we now introduce <dfn data-lt="free">free variables</dfn>: these are variables which occur directly or nested in the graph but which are not covered by a <a>quantification set</a>.
+</p>
+            The set of free variables ($FV$) of a term or a set of triples is defined as follows:
+
+              <ul>
+                <li>$FV(x) = \emptyset$ if $x ∈ R ∪ L$,</li>
+                <li>$FV(x) = \{x\}$ if $x ∈ V$,</li>
+                <li>$FV(x) = FV(x_1) ∪ … ∪ FV(x_n)$ if $x=(x_1 … x_n)$ is a list,</li>
+                <li>$FV(x) = FV(s) ∪ FV(p) ∪ FV(o)$ if $x=(s,p,o)$ is a <a>triple</a>,</li>
+                <li>$FV(x) = ⋃_{t ∈ x} FV(t)$ if $x$ is a set of <a>triples</a>,</li>
+                <li>$FV(x) = FV(F)\setminus(U ∪ E)$ if $x=&lt;U,E,F&gt;$ is a <a>graph term</a>.</li>
+              </ul>
+
+              The set $FV$ for a <a>graph</a> $G=(U,E,F)$ and a variable $v\in V\cap C(G)$:
+              <ul>
+                <li>We say that $v$  is <a>free</a> in $G$ iff $v\not\in U\cup E$ and there exists $x\in DC(G)$ such that $v\in FV(x)$;</li>
+                <li>Otherwise we call $v$ <dfn class="lint-ignore" data-lt="scoped variable">scoped</dfn> in $G$;</li>
+                <li>We denote the set of variables which are <a>free</a> in $G$ as $FV(G)$.</li>
+              </ul>
+<p>
+
+<p>Examples:</p>
+<ol>
+  <li> In <span class="asex"> $(\{x\},\{y\},\{(x, \text{:knows}, y) \})$</span> all variables are scoped.
+  <li> In <span class="asex"> $(\{\},\{y\},\{(x, \text{:knows}, y) \})$</span> the variable $x$ is free while $y$ is scoped.
+  <li> In <span class="asex"> $(\{\},\{\},\{(y, \text{:says}, &lt;\{\},\{x\},\{(x,\text{rdf:type}, \text{:Mortal} )\}&gt;) \})$</span>, the variable
+    $x$ is scoped while the variable $y$ is free.
+<!--  <li> In <span class="asex"> $(\{\},\{\},\{(\text{x}, \text{:says}, &lt;\{\},\{x\},\{(x,\text{rdf:type}, \text{:Mortal} )\}&gt;) \})$</span> the
+    $x$ is a free variable but it also occurs as a scoped variable in the quoted graph. -->
+</ol>
+<p>This enables us to introduce the notion of closed graphs and ground terms.</p>
+<ul>
+   <li>A <a>graph</a> $G=(U,E,F)$ is <dfn data-lt="closed graph">closed</dfn> if all variables $v\in C(G)\cap V$ are scoped in $G$.</li>
+   <li>A term is <dfn data-lt="ground term">ground</dfn> if it is either
+    <ul>
+      <li>an IRI,</li>
+      <li>a Literal,</li>
+      <li>a list of <a>ground</a> terms or the empty list,</li>
+      <li>a <a>graph term</a> $&lt;G&gt;$ if $G$ is <a>closed</a>.</li>
+    </ul>
+   </li>
+</ul>
+
+<p>We denote the set of <a>ground terms</a> as $T_G$.
+
+<p>A <a>triple</a> is <a>ground</a> if all of its <a>direct constituents</a> are <a>ground</a>.</p>
+
+<p>A graph $G=(U,E,F)$ is <a>ground</a> if $E=U=\emptyset$ and all <a>triples</a> in $F$ are <a>ground</a>.</p>
+
+<p class="note">
+  An abstract N3 graph which is constructed from a graph in the direct N3 syntax cannot contain <a>free variables</a>. 
+  However, when considering a specific <a>graph term</a> <em>in isolation</em>, 
+  all variables that are quantified outside that <a>graph term</a> will appear to be free in that graph term.
+  <br>
+  For instance, the following N3 concrete syntax:<br>
+  &nbsp;&nbsp;&nbsp;&nbsp;`_:y :says { ?x :knows :bob }.`<br>
+  corresponds to <br>
+  $\qquad (\{x\}, \{y\}, \{( \text{:y}, \text{:says}, &lt;\{\},\{\},\{(x, \text{:knows}, \text{:bob})\}&gt;)\})$
+  <br>
+  When considering the <a>graph term</a>'s graph in isolation:<br>
+  &nbsp;&nbsp;&nbsp;&nbsp;`({},{},{(x, :knows, :bob)})`
+  <br>
+  the variable $x$ will be a free variable (as it was quantified in the containing N3 graph).
+</p>
+
+<p>An abstract <a>graph</a> $G=(U,E,F)$ can also contain quantified variables $v\in U\cup E$ which do not occur in any <a>triple</a> of $F$. 
+   These variables do not contribute to the interpretation of the graph. In order to simplify our considerations for the following sections, 
+   we introduce the notion of normalised graphs:</p>
+
+<p>For each graph $G=(U,E,F)$, we call $G^N=(U\cap (FV(F)), E\cap(FV(F)), F)$ the <dfn data-lt="normalised|normalised graph" class="lint-ignore">normalisation</dfn> of $G$.</p>
+
+Examples:
+<ol>
+  <li> <span class="asex"> $(\{x,z\},\{y\},\{(x, \text{:knows}, y) \})^N=(\{x\},\{y\},\{(x, \text{:knows}, y) \})$</span>.
+  <li> <span class="asex"> $(\{x_1, x_2, x_3\},\{y_1, y_2, y_3\},\{(\text{:socrates}, \text{:knows}, \text{:plato}) \})^N=(\{\},\{\},\{(\text{:socrates}, \text{:knows}, \text{:plato}) \})$</span>.
+  <li> <span class="asex"> $(\{x\},\{y\},\{(y, \text{:says}, &lt;\{\},\{x\},\{(x,\text{rdf:type}, \text{:Mortal} )\}&gt;) \})^N=$
+         <br>
+               $(\{\},\{y\},\{(y, \text{:says}, &lt;\{\},\{x\},\{(x,\text{rdf:type}, \text{:Mortal} )\}&gt;) \})$</span>.
+        <!--  <li> In <span class="asex"> $(\{\},\{\},\{(\text{x}, \text{:says}, &lt;\{\},\{x\},\{(x,\text{rdf:type}, \text{:Mortal} )\}&gt;) \})$</span> the
+            $x$ is a free variable but it also occurs as a scoped variable in the quoted graph. -->
+</ol>
+
+</section>
+<section>
+  <h2>Isomorphisms</h2>
+We would like to define our semantics in a way which assigns the <em>same
+meaning for structurally identical graphs</em>, i.e., graphs which only
+differ in the naming of the variables they use. To enable this, we first
+introduce the concept of combined mappings which will be relevant to
+handling nested graphs with local scoping.
+
+<p>For two mappings $M$ and $N$ from terms to terms, we define their <dfn>combination</dfn> as follows:
+</p>
+  
+  <ul>
+    <li>$M\bullet N(v)=N(v)$ if $v\in dom(N)$</li>
+    <li>$M\bullet N(v)=M(v)$ if $v\not\in dom(N)$</li>
+  </ul>
+
+<div class=note>
+  Informally speaking, this definition means that the second $N$ mapping "overrides" the first $M$ mapping whenever a term is in the domain of $N$.
+  <p>
+  In this document, combinations will mainly be used to handle nested scoped variables.
+  It is therefore no coincidence that this "overriding" behavior is very similar to how quantifiers behave in first order logic: when the same variable is quantified at different levels, the left-most quantifier is overridden by the right-most one.
+</div>
+
+<p>
+With combinations of mappings we can define isomorphisms between abstract N3 graphs:</p>
+
+          <p>
+          Let $M$ be a bijection between the variables of $V$, we define:</p>
+          <ul>
+            <li> a graph $G_1$ is isomorphic to $G_2$ under $M$ iff, $G_1^N =(U_1,E_1,F_1)$ and
+              $G_2^N=(U_2,E_2,F_2)$ and
+              <ul>
+                <li> $M(U_1) := \{M(u)|u\in U_1\}= U_2$ and $M(E_1):= \{M(e)|e\in E_1\}= E_2$</li>
+                <li> $F_1$ is isomorphic to $F_2$ under $M$</li>
+              </ul>
+            </li>
+            <li> a set of triples $F_1$ is isomorphic under $M$ to a set of triples $F_2$ if there is a bijection $N$ from $F_1$ to $F_2$ such that,
+              for each triple $t_1=(s_1, p_1, o_1)\in F_1$,  
+               $N((s_1, p_1, o_1))=(s_2, p_2, o_2)\in F_2$ and $s_1$, $p_1$ and $o_1$ are isomorphic
+              under $M$ to $s_2$, $p_2$ and $o_2$ respectively</li>
+            <li>a variable $v$ is isomorphic under $M$ to $M(v)$,</li>
+            <li> an IRI or Literal is isomorphic to itself,</li>
+            <li> a list $l_1=(l_{1,1} \ldots l_{1,n})$ is isomorphic under $M$ to a list
+              $l_2=(l_{2,1} \ldots l_{2,m})$ if $m=n$ and for each $0\leq i\leq n$, the element $l_{1,i}$ of $l_1$ is
+              isomorphic under $M$ to the corresponding element $l_{2,i}$ of $l_2$,
+            </li>
+            <li> a graph term $&lt; G_1 &gt;$ is isomorphic under $M$ to
+              $&lt; G_2 &gt;$
+              if for $G_1^{N} =(U_1,E_1,F_1)$ and $G_2^{N}=(U_2,E_2,F_2)$
+              there is a bijection $P$ between $U_1 \cup E_1$ and $U_2 \cup E_2$
+              such that $G_1$ is isomorphic to $G_2$ under $M\bullet P$.
+            </li>
+          </ul>
+
+<p>
+  We call a graph $G_1$ <dfn class="lint-ignore" data-lt="isomorphism">isomorphic</dfn> to a graph $G_2$, written as $G_1\simeq G_2$, if
+  there exists some $M$ such that $G_1$ is isomorphic to $G_2$ under $M$.
+</p>
+
+<!--
+          <p>Two <a>graphs</a> $G_1$ and $G_2$ are <dfn class="lint-ignore">isomorphic</dfn> (that is, they have an identical form)
+            if there is a bijection $M$, called <dfn class="lint-ignore">isomorphism</dfn>, between the atomic constituents of the <a>normalisations</a> $G_1^N=(U_1, E_1, F_1)$
+            and $G_2^N=(U_2, E_2, F_2)$ of the two graphs and a bijection $N$ from $F_1$ to $F_2$ such that </p>
+            <ul>
+              <li>$M$ maps variables to variables
+              <li>$M(lit)=lit$ for all literals $lit$ which are <a>constituents</a> of $G_1$,
+              <li>$M(iri)=iri$ for all IRIs $iri$ which are <a>constituents</a> of $G_1$,
+              <li> $\{M(x)|x\in E_1\}=E_2$,
+              <li> $\{M(x)|x\in U_1\}=U_2$,
+           <li>$N((l_1,\ldots, l_n) )= (N(l_1),\ldots, N(l_n) )$ for all lists $(l_1,\ldots, l_n)$ which are <a>constituents</a> of $G_1$,
+
+            <li>for each triple $t=( x_1, x_2, x_3 )$ in $F_1$, $N(t)=( y_1, y_2, y_3 )$ is such that
+              for all $i \in [1, 2, 3]$<ul>
+              <li>if $x_i$ is a <a>quoted graph</a>, then $y_i$ is also a quoted graph, and<ul>
+                <li>$x_i = &lt;G_1'&gt;$ with $G_1^{\prime N}= (U_1', E_1', F_1')$,
+                <li>$y_i = &lt;G_2'&gt;$ with $G_2^{\prime N}= (U_2', E_2', F_2')$,
+                <li>there is a bijection $P$ between $U_1'\cup E_1'$ and $U_2'\cup E_2'$ such that<br>
+                   $M\bullet P$ is an isomorphism from $G_1'$ to $G_2'$.
+              </ul>
+              <li> if $x_i=(l_1, \ldots, l_n)$ is a list, then $y_i=(k_1, \ldots, k_n)$ is also a list and for all $j\in[1,\ldots, n]$
+                <ul>
+                  <li> if $l_j$ is a a <a>quoted graph</a>, then $k_j$ is also a quoted graph, and<ul>
+                    <li>$l_j= &lt;G_{1,j}&gt;$ with $G_{1,j}^{N}= (U_{1,j}, E_{1,j}, F_{1,j})$,
+                    <li>$k_j = &lt;G_{2,j}&gt;$ with $G_{2,j}^{N}= (U_{2,j}, E_{2,j}, F_{2,j})$,
+                    <li>there is a bijection $P$ between $U_{1,j}\cup E_{1,j}$ and $U_{2,j}\cup E_{2,j}$ such that<br>
+                       $M\bullet P$ is an isomorphism from $G_{1,j}$ to $G_{2,j}$.
+                  </ul>
+                  <li> otherwise $k_j=M(l_j)$
+                </ul>
+              <li>otherwise $y_i = M(x_i)$,
+            </ul>
+          </ul>
+!-->
+
+          <p class="note">If $G_1$ is isomorphic to $G_2$ then $G_2$ is also isomorphic to $G_1$.</p>
+
+       
+            <p>
+            Consider the following graphs:</p>
+              <ul>
+                <li>$G_1 = (\{\}, \{x\}, \{(x, \text{:knows}, \text{:p}), (\text{:p}, \text{;says} &lt;\{\}, \{x\} \{(x, \text{rdf:type}, \text{:Genius})\}&gt;)\})$<br>
+                  &ndash; in concrete syntax: <code>_:x :knows :p. :p :says {_:x a :Genius}.</code> 
+                </li>
+                <li> $G_2: = (\{\}, \{y\}, \{(y, \text{:knows}, \text{:p}), (\text{:p}, \text{:says} &lt;\{\}, \{z\} \{(z, \text{rdf:type}, \text{:Genius})\}&gt;)\})$<br>
+                  &ndash; in concrete syntax: {<code>_:y :knows :p. :p :says {_:z a :Genius}.</code>} 
+                </li>
+                <li> $G_3: = (\{\}, \{y\}, \{(y, \text{:knows}, \text{:p}), (\text{:p}, \text{:says} &lt;\{\}, \{x, z\} \{(x, \text{rdf:type}, z)\}&gt;)\})$<br>
+                  &ndash; in concrete syntax: {<code>_:y :knows :p. :p :says {_:x a _:z}.</code>} 
+                </li>
+              </ul>
+              <p>
+              Then $G_1$ is isomorphic to $G_2$:</p>
+              <ul>
+               <li>define $M = {x\mapsto y}$, 
+              </li>
+              <li>
+                and for the inner graph term,
+                $P = {x\mapsto z}$. 
+              </li>
+            </ul>
+            <p>
+                $x$ as the subject of the first triple is replaced with 
+                $M(x)=y$, while $x$ as the subject of the unique triple in the graph term is replaced with 
+                $M\bullet P(x) = z$ (P overrides M).
+              
+              </p>
+              <p>
+             On the other hand, G1 is not isomorphic to G3.
+            </p>
+
+        </section>
+    </section>
+
+
+      <section>
+      <h2>Base Semantics</h2>
+With the definitions introduced in the previous sections, we are now able to define the semantics of Notation3 Logic. We do that in two steps: we first 
+introduce a <dfn>base semantics</dfn> which does not take the meaning of special N3 terms into account. In that sense the base semantics is similar to <a href="https://www.w3.org/TR/rdf11-mt/#simple-interpretations">simple interpretations</a>
+for RDF. In the next section, we will introduce the <a>log-interpretation</a> which assigns a special meaning to all predicates in the N3 <a href="../ns/log.html">`log`</a>-namespace.
+
+
+
+      <p>A <dfn data-lt="interpretation">basic interpretation</dfn> $I$ is defined by:</p>
+
+      <ul>
+
+
+        <li>a set $Δ_I$ (<dfn class="lint-ignore">domain</dfn>),
+        <li>a mapping $D_I$ (<dfn class="lint-ignore">denotation</dfn>)  from $R ∪ L$ to $Δ_I$,
+          such that its restriction to $R$ is a total mapping,
+        <li>a mapping $Q_I$ from <a>ground</a> <a>graph terms</a> to <a>ground</a> <a>graph terms</a>, such that<ul>
+
+            <li>for any graph term  $&lt;G&gt;$ if $Q_I(&lt;G&gt;)=&lt;H&gt; \implies H \simeq G$  <br>(in other words, the image of $&lt;G&gt;$  through $Q_I$ 
+              must be <a>isomorphic</a> to $&lt;G&gt;$)
+            <li>for two graph terms $&lt;G_1&gt;$ and $&lt;G_2&gt;$: $G_1 \simeq G_2\implies Q_I(G_1)=Q_I(G_2)$ 
+              <br>(in other words, two <a>isomorphic</a> graph terms must have the same image through $Q_I$).
+          </ul>
+        <li>A subset $EXT_I$ (<dfn class="lint-ignore">extension</dfn>) of $Δ_I^3$.</li>
+      </ul>
+
+      <div class="note">
+        <p>This definition is generally "compatible" with RDF simple interpretations, with the following superficial changes:</p>
+        <ul>
+          <li>IR becomes $Δ_I$,
+          <li>IP is assumed, without loss of generality, to be a subset of $Δ_I$,
+          <li>IS and IL have been merged in $D_I$,
+          <li>IEXT can be derived from $EXT_I$; formally: $IEXT(p) = \{(s,o)|(s,p,o) ∈ EXT_I\}$; conversely: $EXT_I = ⋃_{p∈IP} \{(s,p,o)| (s,o) ∈ IEXT(p\}$.
+        </ul>
+      </div>
+
+      <p>Note that the images of $Q_I$ are syntactic elements (<a>graph terms</a>), but they can (and most likely will) also be elements of the domain $Δ_I$. 
+      Note however that not all interpretations are required to have <a>graph terms</a> in their domain, because $Q_I$ is allowed to be the empty mapping. 
+      Such interpretations could still <a>satisfy</a> a graph that has no <a>graph term</a> constituent.
+    </p>
+     
+    <!-- So was the following  incorrect? I.e., "As a consequence, two isomorphic graph terms will have the same meaning, as they will be mapped to the same isomorphic copy." 
+    (not complaining, just wondering) -->
+    <p>
+      The basic interpretation maps graph terms to an isomorphic copy of themselves. As a consequence, two non-isomorphic graph terms cannot have the same meaning. For the abstract versions of the graph terms <code>{_:x :p :o}</code>, <code>{_:y :p :o}</code>
+      and <code>{_:x :p :o. _:y :p :o}</code>, we thus get:</p>
+    <ul>
+     <li> $Q_I(&lt;\{\}, \{y\}, \{(y, \text{:p}, \text{:o})\}&gt;)= Q_I(&lt;\{\}, \{x\}, \{(x, :p, :o)\}&gt;)$
+      <li> $Q_I(&lt;\{\}, \{y\}, \{(y, \text{:p}, \text{:o})\}&gt;) \neq Q_I(&lt;\{\}, \{x, y\}, \{(x, \text{:p}, \text{:o}), (y, \text{:p}, \text{:o})\}&gt;)$
+    </ul>
+
+    <p>
+      However, as we will see below, N3 provides mechanisms to <a>unquote</a>
+      graph terms (that is, to transform them into graphs), and to compare them
+      based on the meaning of the formulae they quote.
+    </p>
+<!---
+      <div class="note">
+        <p>With the above definition the graphs <code>{_:x :p :o. _:y :p :o}</code> and <code>{_:z :p :o.}</code> do not have the same meaning. 
+      </div>
+
+      <div class="note">
+        <p>Note that <code>{:s :p :o}</code> and <code>{@forSome :A. :s :p :o.}</code> are isomorphic.</p>
+
+        <p>This has been discussed in the Community group and that is also how EYE and CWM consider them: <a href="http://ppr.cs.dal.ca:3002/n3/editor/s/ctJyZSWM">http://ppr.cs.dal.ca:3002/n3/editor/s/ctJyZSWM</a></p>
+      </div>
+      -->
+
+     
+        <section><h2>Ground graphs</h2>
+        We extend the previous definition to interpret <a>ground</a>  graphs:
+
+        <p>Given $I$ a <a>basic interpretation</a>, we recursively define $I(x) =$</p>
+
+        <ul>
+          <li>$D_I(x)$ if $x$ is an IRI or a Literal,
+          <li>$(I(x_1), I(x_2),..., I(x_n))$ if $x$ is a list $(x_1, x_2, ..., x_n)$ and all $I(x_i)$ are defined,
+          <li>$Q_I(x)$ if $x$ is a <a>ground</a> <a>graph term</a>,
+          <li>$I(x)=\textit{true}$ if $x=(s, p ,o)$ is a <a>ground</a> <a>triple</a> and $(I(s), I(p) ,I(o))\in EXT_I$, otherwise $I(x)=\textit{false}$,
+          <li>$I(x)=\textit{false}$ if $x=F$ is a set of ground triples and $I(t)=\textit{false}$ for some triple $t\in F$, otherwise $I(x) =\textit{true}$,
+          <li>$I(F)$ if $x=(\emptyset, \emptyset, F)$ is a <a>ground</a> <a>graph</a>
+        </ul>
+
+        The definition implies that the empty graph is always true and that the empty list is always mapped to itself. 
+        <div class="note">
+          <p>
+          Note that the interpretation function $Q_I(x)$ maps ground graphs into the domain of discourse without interpreting their content separately. 
+          This choice was made to guarentee <a href="https://en.wikipedia.org/wiki/Opaque_context">referential opacity</a> 
+          (see also <a href="https://www.w3.org/2021/12/rdf-star.html#ref-opacity">referential opacity in RDF-star</a> ). 
+          To illustrate this idea consider the <a href="https://iep.utm.edu/referential-opacity/">superman example</a> expressed in N3:
+          </p>
+          <div class="codeblock"><code>:superman owl:sameAs :clarkKent.
+            :loisLane :believes {:superman :can :fly}.
+          </code></div>
+            <p>
+            Even if we assume that our logic is extended by an interpretation for <code>owl:sameAs</code> which assures that the function $D_I$ maps the IRIs 
+            <code>:superman</code> and <code>:clarkKent</code> to the same resource, it should still not yield the following conclusion: 
+            </p>
+
+            <div class="codeblock"><code>:loisLane :believes {:clarkKent :can :fly}.
+        </code></div>
+      </div>
+        
+      </section>
+  
+
+
+
+      <section>
+        <h2>Graphs with variables</h2>
+        In order to introduce the interpretation of graphs containing variables, we rely on a few additional definitions. To better understand the need for these, consider the 
+        following example:<br/>
+
+        <p>
+        <code>?x :says {?x :is :wise}.</code>
+      </p>
+
+        which freely translates to <q>everyone says about themselves that they are wise</q>.  In abstract syntax, the formula would be expressed as:
+
+        <p>
+        $G = (\{x\}, \{\}, \{(x, \text{:says}, &lt;\{\}, \{\},  \{(x, \text{:is}, \text{:wise})\}&gt;)\})$.
+        </p>
+This formula is interesting because the universally quantified variable appears once as a <a>direct constituent</a> in the triple and once as only a <a>constituent</a>. 
+If we replace the variable $x$ by, for example <code>:bob</code>, we get:
+<p>
+  $G_{bob} = (\{\}, \{\}, \{(\text{:bob}, \text{:says}, &lt;\{\}, \{\},  \{(\text{:bob}, \text{:is}, \text{:wise})\}&gt;)\})$
+ </p>
+<p>The <a href="#ground-graphs">semantics for ground graphs</a> 
+  maps IRIs to not further specified domain elements, while ground graph terms are mapped to an isomorphic version of themselves. 
+The interpretation of the above example $I(G_{bob})$
+<!--<p>
+  <ul style="list-style-type: none">
+<li>$I($<code>({}, {}, {(:bob, :says,</code> &lt; <code>{}, {},  {(:bob, :is, :wise)}.>)})</code>$)$</li>
+<li>$=I($<code>(:bob, :says,</code> &lt; <code>{}, {},  {(:bob, :is, :wise)}.>)</code>$)$</li>
+</ul>-->
+will be true if $(D_I(\text{:bob}), D_I(\text{:says}), Q_I(&lt;\{\}, \{\},  \{(\text{:bob}, \text{:is}, \text{:wise})\}&gt;)\in EXT_I$. 
+</p>
+
+<p>
+  If we revert back to our original example with variables, 
+  a regular <em>valuation function</em> (such as the <a href="https://www.w3.org/TR/rdf11-mt/#blank-nodes">mapping A used for blank nodes</a> in [[RDF11-MT]]) will simply replace both occurrences of variable $x$ with a domain element $\delta_i$ from $\Delta_I$.
+  In that case, $Q_I$ will have to map the <a>graph term</a> $&lt;\{\}, \{\},  \{(\delta_i, \text{:is}, \text{:wise})\}&gt;$
+  to an isomorphic copy. However, the <a href="isomorphisms">isomorphism</a> is only defined for concrete N3 <a>terms</a>, and not domain elements.
+  <!-- unless those domain elements are also language terms ... -->
+  If <em>not</em> applying the valuation function to the graph term, $Q_I$ will have to map the <a>graph term</a> $&lt;\{\}, \{\},  \{(x, \text{:is}, \text{:wise})\}&gt;$,
+  which is however no longer <a>ground</a> as its graph is no longer <a>closed</a>
+  ($x$ is quantified outside of the graph). In our <a>basic interpretation</a>, the mapping $Q_I$ is only defined for <a>ground</a> <a>graph terms</a>.
+  We thus need to first ground these kinds of <em>leaked variables</em>, 
+  i.e., variables that become free when considering the graph term in isolation (as is required when determining isomorphisms).
+</p>
+<p>
+  We need to extend  <a href="https://www.w3.org/TR/rdf11-mt/#blank-nodes">RDF's classical semantic condition for blank nodes</a> and use a so-called 
+  assignment, which, instead of simply mapping variables to resources, maps variables to pairs of resources and term representations:
+</p>
+<p>Given a <a>basic interpretation</a> $I$ and a set of variables $V_1$. 
+  We call a mapping $A$ from $V_1$ to $Δ_I\times T_G$ such that $A(v)=(A_1(v),A_2(v))$ and $I(A_2(v))=A_1(v)$ an <dfn>assignment</dfn> for $V_1$.</p>
+<p>
+  We can consider both values $A_1$ and $A_2$ of an assignment $A(v)=(A_1(v), A_2(v))$ as separate mappings. 
+  The mapping $A_2$ assigns variables to terms, and will be used to <em>ground free variables within graph terms</em>. 
+  Note that given an interpretation $I$ and two assignments $A$ for a set $V_1$, and $B$ for a set $V_2$ of variables, 
+  the <a>combination</a> $A\bullet B$ is again an assignment for $V_1\cup V_2$.</p>
+  <!----    </section>
+
+      <section>
+        <h2></h2>
+      -->
+
+      In order to apply mapping $A_2$ on graphs, we introduce the notion of total application.
+        <p>Let $G=(U,E,F)$ be a graph and let $M$ be a mapping from a set of variables $V$ into a set $S$. 
+          <!--and $N = M|_{FV(G)}$ the restriction of $M$ to the <a>free variables</a> of $G$.-->
+
+        A <dfn class="lint-ignore">total application</dfn> $M^t(G)$ of $M$ is defined as follows:</p>
+
+        <p>$M^t(G) = (U, E, \{ (M^t(s), M^t(p), M^t(o)) | \; (s, p, o) \in F \})$ such that:</p>
+
+        <ul>
+          <li>If $x\in FV(G)$ then $M^t(x)=M(x)$.
+          <li>If $x=(x_1\ x_2\ \ldots \ x_n)$ is a list, then $M^t(x)=(M^t(x_1)\ M^t(x_2)\ \ldots \ M^t(x_n))$.
+          <li>If $x=&lt;H&gt;$ is a graph term then $M^t(x) = &lt;M^t(H)&gt;$.
+          <li>$M^t(x)=x$ else.
+        </ul>
+    
+
+ <!--    <section>
+        <h2></h2>
+--> 
+The total application replaces all free variables occurring directly or nested in a graph by the value of function $M$. 
+As an example, consider the example below, and let $M:\{x,y\}\rightarrow S$ be a mapping such that $M(x)=tom$ and $M(y)=mary$, then we get:
+
+ <p>
+    $M^t($<span class="asex">$&lt;\{\},\{y\},\{(x, \text{:hasMother}, y)\}&gt;$</span>$)$
+    $=$<span class="asex">$&lt;\{\},\{y\},\{(tom, \text{:hasMother}, y)\}&gt;$ </span>
+</p>
+Variable $x$ is replaced by $M(x)$ as it is a <a>free variable</a>, while $y$ does not get replaced since it is <a>scoped</a> (i.e., quantified in the nested graph).
+This results in a <a>ground</a> <a>graph term</a>, which can be mapped by $Q_I$.
+
+<p>
+The definition of total applications enables us to define <dfn class="lint-ignore">interpretations with assignment</dfn>:
+
+<p>For a <a>closed graph</a> $G=(U,E,F)$, a <a>basic interpretation</a> $I$ and an <a>assignment</a> $A$ on the set of variables $U\cup E$,
+we define $I[A](x)$ as:</p>
+
+        <ul>
+          <li> $A_1(x)$ if $x ∈ dom(A)$ and $x$ is a <a>direct constituent</a> of $G$,
+          <li> $(I[A](x_1) \ldots I[A](x_n))$ if $x=(x_1 \ldots x_n)$ is a <a>list</a>,
+          <li> $Q_I(A_2^t(x))$ if $x$ is a <a>graph term</a>, where $A_2^t$ represents the <a>total application</a> of $A_2$,
+          <li> $I(x)$ otherwise.
+        </ul>
+
+        <p>For a closed graph $G=(U, E, F)$ and a basic interpretation $I$, we say $I(G)=\textit{true}$ or interpretation $I$ <dfn data-lt="satisfy|satisfies">satifies</dfn> $G$,
+          if for all assignments $A$ for $U$ (universal variables) there exist an assignment $B$ for $E$ (existential variables) such 
+          that $I[A\bullet B](F)=\textit{true}$. We also write that as $I\models G$.</p>
+        <p class="note">Note that the interpretation of a variable $x$ depends on its position in a graph. 
+          In the expression $(\emptyset, \emptyset,\{(x, \text{:p}, &lt;\emptyset, \emptyset, \{(x, \text{:q}, \text{:r})\}&gt;)\})$, 
+          the first  $x$ is interpreted as $A_1(x)$ while the second is interpreted as $A_2(x)$. The connection between these two values is established by the condition that 
+        $I(A_2(v))=A_1(v)$.</p>
+        <p>
+          For instance:
+        </p>
+        <p>
+          $I(\{x\}, \{\}, \{(x, \text{:says}, &lt; \{\}, \{\}, \{( x, \text{:is}, \text{:wise} )\} &gt;)\})$
+        </p>
+        <p>
+        will be true if for all assignments $A:\{x\}\rightarrow Δ_I\times T_G$, the following is true:
+        </p>
+        <p>
+        $I(\{(A_1(x), \text{:says}, &lt; \{\}, \{\}, \{ (A_2(x), \text{:is}, \text{:wise}) \} &gt;)$
+        </p>
+        
+        <!-- Sorry - I misunderstood this before - but why are you turning "assignments and free variables" into a definition?
+       -->
+        For <dfn class="lint-ignore">assignments and free variables</dfn> we define:
+        <p>Let $G=(U,E,F)$ be a <a>graph</a>. We say that $G$ is true under the <a>interpretation</a> $I$ and the <a>assignment</a> $A$ if $I[A]\models G$. That is, for each assignment $A^1$ for the variables in $U$ there exists an assignment $B^1$ for the variables in $E$ such that $I[A\bullet A^1\bullet B^1](F)=true$.</p>
+        <p>
+          This last definition handles all variables occurring freely in a graph as universally quantified.
+        </p>
+      </section>
+      <section>
+        <h2>Basic entailment</h2>
+The previous definition allows us to introduce the notion of basic entailment:
+      
+        <p>Let $G$ and $H$ be two graphs, we say that $G$ <dfn data-lt="entailment|b-entailment|basic entailment">b-entails</dfn> $H$, noted $G ⊨ H$,
+        if and only if  every interpretation $I$ that satisfies $G$ $(I ⊨ G)$ also satisfies $H$ $(I ⊨ H)$.</p>
+
+        In order to illustrate the properties of <a>basic entailment</a>, we give a few examples:
+ <br>
+ <br>Entailment:
+ <ul>
+  <li> 
+    <span class="asex">$(\{\},\{\},\{(\text{:socrates}, \text{:knows}, \text{:plato})\})$</span> 
+    <br> &ndash; in concrete syntax: <code>:socrates :knows :plato.</code>
+  <br> b-entails
+  <br>  <span class="asex">$(\{\},\{x\},\{(\text{:socrates}, \text{:knows}, x)\})$</span>
+  <br> &ndash; in concrete syntax: <code>:socrates :knows _:x.</code>
+  </li>
+  <li> 
+    <span class="asex">$(\{x\},\{\},\{(x, \text{:knows}, \text{:plato})\})$</span> 
+    <br> &ndash; in concrete syntax: <code>?x :knows :plato.</code>
+  <br> b-entails
+  <br>  <span class="asex">$(\{\},\{\},\{(\text{:socrates}, \text{:knows}, \text{:plato})\})$</span> 
+  <br>&ndash; in concrete syntax: <code>:socrates :knows :plato.</code>
+  </li>
+  <li>  
+     <span class="asex">$(\{x\},\{\},\{(&lt;\{\},\{\},\{(x, \text{rdf:type}, \text{:Human})\}&gt;,
+    \text{log:implies}, &lt;\{\},\{\},\{(x, \text{rdf:type}, \text{:Mortal})\}&gt;)\})$ </span>
+    <br>&ndash; in concrete syntax: <code>{?x a :Human} => {?x a :Mortal}. </code>
+    <br> b-entails
+    <br>
+    <span class="asex">$
+        (\{\},\{\},\{(&lt;\{\},\{\},\{( \\
+\qquad      \text{:socrates}, \text{rdf:type}, \text{:Human})\}&gt;, \\
+\qquad      \text{log:implies}, \\
+\qquad      &lt;\{\},\{\},\{(\text{:socrates}, \text{rdf:type}, \text{:Mortal}\}&gt; \\
+        ))\})$ </span>
+    <br>&ndash; in concrete syntax: <code>{:socrates a :Human} => {:socrates a :Mortal}. </code>
+  </li>
+  <li> 
+    <span class="asex"> $(\{\},\{\},\{(\text{:socrates}, \text{:says}, &lt;\{\},\{\},\{(\text{:socrates},\text{rdf:type}, \text{:Mortal} )\}&gt;) \})$</span>
+    <br>&ndash; in concrete syntax:<code>:socrates :says {:socrates a :Mortal}.  </code>
+    <br>  b-entails
+    <br> <span class="asex"> $(\{\},\{x\},\{(x, \text{:says}, &lt;\{\},\{\},\{(x,\text{rdf:type}, \text{:Mortal} )\}&gt;) \})$</span>
+    <br>&ndash; in concrete syntax: <code>@forSome :x. :x :says { :x a :Mortal}.  </code>
+  </li>
+ </ul> 
+ 
+ Non-entailment:
+ <ul>
+  <li>  
+    <span class="asex">$
+            \{\},\{\},\{ \\
+\qquad          (\text{:socrates}, \text{rdf:type} \text{:Human}), \\
+\qquad          (&lt;\{\},\{\},\{ (\text{:socrates}, \text{rdf:type}, \text{:Human})\}&gt;, \\
+\qquad\ \         \text{log:implies}, \\
+\qquad\ \         &lt;\{\},\{\},\{(\text{:socrates}, \text{rdf:type}, \text{:Mortal})\}&gt;) \\
+            \})$ </span>
+      <br> &ndash; in concrete syntax: <code>:socrates a :Human. {:socrates a :Human} => {:socrates a :Mortal}. </code>
+      <br> does <strong>not</strong> b-entail 
+      <br>    <span class="asex">$(\{\},\{\},\{(\text{:socrates}, \text{rdf:type}, \text{:Mortal})\})$ </span>
+      <br> &ndash; in concrete syntax: <code>:socrates a :Mortal. </code>
+  </li>
+  <li> 
+    <span class="asex"> $(\{\},\{\},\{(\text{:socrates}, \text{:says}, &lt;\{\},\{\},\{(\text{:socrates},\text{rdf:type}, \text{:Mortal} )\}&gt;) \})$</span>
+    <br>&ndash; in concrete syntax: <code>:socrates :says {:socrates a :Mortal}.  </code>
+    <br> does <strong>not</strong> b-entail 
+    <br> <span class="asex"> $(\{\},\{\},\{(\text{:socrates}, \text{:says}, &lt;\{\},\{x\},\{(x,\text{rdf:type}, \text{:Mortal} )\}&gt;) \})$</span>
+    <br>&ndash; in concrete syntax: <code>:socrates :says {_:x a :Mortal}.  </code>
+    <br> and it does also <strong>not</strong> b-entail 
+    <br> <span class="asex"> $(\{\},\{x\},\{(x, \text{:says}, &lt;\{\},\{x\},\{(x,\text{rdf:type}, \text{:Mortal} )\}&gt;) \})$</span>
+    <br>&ndash; in concrete syntax: <code>_:x :says {_:x a :Mortal}.  </code>
+  </li>
+ </ul>
+
+
+ As these last examples of non-entailment show, basic interpretations only cover N3-constants and variables. The 
+ meaning of special predicates like for example the implication (written as <code>log:implies</code> or as a short-cut <code>=></code>)
+ is covered through an addition: log-interpretations which we introduce in the following section.
+
+     <!--  <p class="issue">TODO give examples of basic <a>entailment</a> and prove that isomorphic graphs have the same meaning.</p>
+      --> 
+    </section>
+  </section>
+
+    <section>
+      <h2>Log Semantics</h2>
+
+      <p>This section defines an extension of <a>base semantics</a> providing the specific meaning of (some of) 
+        the builtins in the N3-logic namespace, short <a href="../ns/log.html">`log:`</a> namespace.</p>
+
+      <p>For the definitions below, we assume that the set of literals $L$ contains the two boolean literals `true` and `false`. 
+        The literal `true` stands for the graph term $&lt;\emptyset, \emptyset, \emptyset&gt;$.</p>
+
+      <p>The set of <dfn class="lint-ignore" data-lt="logical predicate">logical predicates</dfn> 
+        $LP$ contains the predicate `log:implies`. 
+      </p>
+      <p class="note">The list of predicates in LP is planned to be extended 
+        by more predicates. The goal here is to cover all (or at least most of) the predicates in the 
+        <a href="../ns/log.html">`log:`</a> namespace. For the other namespaces we plan to provide similar definitions.
+     </p>
+     <p>
+      Below, we give specify how log interpretations extend <a>basic interpretations</a>:
+     </p>
+      <p>Let $I$ be a basic <a>interpretation</a> for a <a>graph</a> $G=(U, E, F)$. Then $G$ is true under <dfn>log-interpretation</dfn> or 
+        $I$ <dfn>log satisfies</dfn> $G$ ($I\models_{log} G$) 
+        if for each <a>assignment</a> $A$ for $U$ there exists an assignment $B$ for $E$ such that:</p>
+
+      <ul>
+        <li> $I[A\bullet B](F)=true$, and
+        <li> for all triples $(s,p,o)\in F$ with $p\in LP$, $I[A\bullet B]\models_{log}(s,p,o)$.
+      </ul>
+   
+      <p>
+        We define the meaning of $I[A\bullet B]\models_{log}(s,p,o)$ 
+        depending on the concrete $p\in LP$ below.</p>
+
+      <p>
+        Note that if there are no logical predicates used in a graph, 
+        then the log-interpretation coincides with the basic interpretation.
+        We call a graph $G=(U, E, F)$ <dfn>log-free</dfn>, if $p\not\in LP$ for all triples $(s,p,o)\in F$. 
+        All <a>log-free</a> graphs which are true under the basic <a>interpretation</a> are thus 
+        also true under <a>log-interpretation</a>.</p>
+
+        
+      <section>
+        <h2>Constraints for `log:implies`</h2>
+        <p>
+ The aim of the predicate <code>log:implies</code> is to provide a form of logical implication. 
+ This interpretation acts on the ground terms which are true under basic interpretations.
+        </p>
+          <!-- We call a triple   $t = < G_1 >\text{log:implies} < G_2 >$ where  $< G_1=(U_1, E_1, F_1) >$ and $< G_2 = (U_2, E_2, F_2) >$ are quoted graphs an **implication**.
+          -->
+
+          <p>If $t = (s, \text{log:implies}, o )$ is a triple, then $I[A\bullet B]\models_{log} t$ if:</p>
+
+          <ul>
+            <li>$I[A\bullet B](s)=&lt; G_1&gt;$ and $I[A\bullet B](o)=&lt;G_2&gt;$ are <a>graph terms</a> and $I[A\bullet B]\models_{log} G_2$ holds if $I[A\bullet B]\models_{log} G_1$, or
+            <li>$I[A\bullet B](s)=&lt;G_1&gt;$ is a graph term and $I[A\bullet B](o)=I(\text{false})$ and $I[A\bullet B]\not\models_{log} G_1$, or
+            <li>$I[A\bullet B](s)$ is not a graph term or $I[A\bullet B](o)$ is neither a graph term nor $I(\text{false})$.
+          </ul>
+
+        <p>
+        The first bullet of the above definition clarifies 
+        how implications with graph terms $&lt; G_1&gt;$ and $&lt;G_2&gt;$ in subject and object position are interpreted.
+        Note that under the simple interpretation these graph terms 
+        are <a>ground</a>, that is, $I[A\bullet B](G_1)$ and $I[A\bullet B](G_2)$
+        are <a>closed</a> graphs. To determine the meaning of the implications these closed graphs are further interpreted 
+        using $I[A\bullet B]$ as an interpretation. 
+        The log-interpretation thus interprets the basic interpretation of a graph term.
+        </p>
+        <p>
+          The second bullet covers implications with  
+          the boolean literal <code>false</code> in the consequence. 
+          In log-semantics this literal is understood as truth constant "false" (or $\bot$).
+          Note that the interpretation process here consists of two steps: we first consider the basic interpretation
+          of the implication triple which needs to be true and then we test whether 
+          - using the same interpretation as a log interpretation - the premise is false. 
+          However, the mere fact that a closed graph $G_1$ is false under an interpretation $I$
+          ($I\not\models_{log} G_1$), does not allow us to conclude that 
+          $I\models_{log} (\{\}, \{\}, \{ (&lt; G_1&gt;, \text{log:implies}, \text{false})\})$.
+        </p>
+<p>
+        The last bullet ensures that the truth value of triples having <code>log:implies</code>
+        in predicate position but no graph term or truth value in subject or object position like 
+        for example <code>:socrates log:implies :plato.</code> is only determined by the basic interpretation of the triple. That is,
+        <code>log:implies</code> only has a special meaning when used with graph terms and/or truth values.
+  </p>
+
+
+<!--
+          <div class="issue">With the above definition, the rule `?x log:implies ?y.` cannot have a model. Since we can replace the consequence by true and by false. So, we can basically derive anything. Alternatively, we could ask for $s=&lt;G_1&gt;$ and $I[A\bullet B](o)=&lt;G_2&gt;$, then we only allow an "open" consequence.</div>
+-->
+<!--
+          <div class="note">With the above,
+            <pre><code>
+:s :p :o.
+?x log:implies {:a :b :c}.
+            </code></pre>
+           yields `:a :b :c.` This is even implemented in EYE, however, if we replace `:s :p :o.`by a rule like `{:c :d :e}=>{:f :g :h}.` The derivation does not work in EYE.
+           <a href="http://ppr.cs.dal.ca:3002/n3/editor/s/LfkrfMxO">http://ppr.cs.dal.ca:3002/n3/editor/s/LfkrfMxO</a>
+          </div>
+
+          <div class="issue">Think carefully about `_:x log:implies ?y.` and `{:simon :says ?x} log:implies ?x.`. What do we do here? Is that even a problem? Currently that is supported by our semantics.</div>
+
+          <div class="note">PA's tricky question: consider
+            <pre><code>
+@forAll :X.
+:alice a :Student.
+{ :X a :Student } => { :X a :Person }.
+
+{ { :alice a :Student } => { :alice a :Person } } => { :test :pass 1 }.
+{ @forAll :Z. { :Z a :Student } => { :Z a :Person } } => { :test :pass 2 }.
+
+:X a :Student.
+
+{ :bob a :Student } => { :test :pass 3 }.
+{ @forAll :Z. :Z a :Student } => { :test :pass 4 }.
+{ @forAll :Z. :Z a :Person } => { :test :pass 5 }.
+            </code></pre>
+            <p>It seems to me that all tests should pass (according to the semantics).
+            However, implementing them correctly looks challenging... (it is not as simple as looking for 'instances' of the rule's body).</p>
+            <p>EYE passes all tests. CWM Only passes none. <a href="http://ppr.cs.dal.ca:3002/n3/editor/s/wgG6GZrN">http://ppr.cs.dal.ca:3002/n3/editor/s/wgG6GZrN</a></p>
+          </div>
+          -->
+
+      </section>
+      <section> <h2>Log entailment</h2>
+        The previous definitions allow us to introduce the notion of log entailment:
+      
+        <p>Let $G$ and $H$ be two graphs, we say that $G$ <dfn data-lt="log-entailment|log entailment">log-entails</dfn> $H$, written as $G ⊨_{log} H$,
+        if and only if  every interpretation $I$ that <a>log satisfies</a> $G$ ($I ⊨_{log} G$) also <a>log satisfies</a> $H$ ($I ⊨_{log} H$).</p> 
+
+        To illustrate the definition, we discuss some examples of entailment and non-entailment in the sections below.
+
+        <section> <h3>(Non-) Entailment of implications</h3>
+          For the log predicate <code>log:implies</code> we observe the following examples of <a>log entailment</a>:
+          <ul>
+            <li>  
+              <span class="asex">$
+                (\{\},\{\},\{ \\
+\qquad              (\text{:socrates}, \text{rdf:type}, \text{:Human}), \\
+\qquad              (&lt;\{\},\{\},\{ (\text{:socrates}, \text{rdf:type}, \text{:Human})\}&gt;, \\
+\qquad\ \             \text{log:implies}, \\
+\qquad\ \             &lt;\{\},\{\},\{(\text{:socrates}, \text{rdf:type}, \text{:Mortal})\}&gt;) \\
+                \})$ </span>
+                <br> &ndash; in concrete syntax: <code>:socrates a :Human. <br/>
+                  {:socrates a :Human} => {:socrates a :Mortal}. </code>
+                <br> log-entails 
+                <br>    <span class="asex">$(\{\},\{\},\{(\text{:socrates}, \text{rdf:type}, \text{:Mortal})\})$ </span>
+                <br> &ndash; in concrete syntax: <code>:socrates a :Mortal. </code>
+            </li>
+            <li>  
+               <span class="asex">$(\{x\},\{\},\{ \\
+                \qquad  (\text{:socrates}, \text{rdf:type}, \text{:Human}), \\ 
+                \qquad (&lt;\{\},\{\},\{(x, \text{rdf:type}, \text{:Human})\}&gt;,
+              \text{log:implies}, &lt;\{\},\{\},\{(x, \text{rdf:type}, \text{:Mortal})\}&gt;) \\ \})$ </span>
+              <br>&ndash; in concrete syntax: <code>:socrates a :Human. {?x a :Human} => {?x a :Mortal}. </code>
+              <br> log-entails
+              <br>    <span class="asex">$(\{\},\{\},\{(\text{:socrates}, \text{rdf:type}, \text{:Mortal})\})$ </span>
+              <br> &ndash; in concrete syntax: <code>:socrates a :Mortal. </code>
+            </li>
+            <li>  
+              <span class="asex">$(\{\},\{\},\{( \\
+                \qquad (\text{:socrates}, \text{rdf:type}, \text{:Human}), \\ 
+                \qquad &lt;\{\},\{x\},\{(x, \text{rdf:type}, \text{:Human})\}&gt;,
+             \text{log:implies}, &lt;\{\},\{x\},\{(x, \text{rdf:type}, \text{:Mortal})\}&gt;)\\ \})$ </span>
+             <br>&ndash; in concrete syntax: <code>:socrates a :Human. {_:x a :Human} => {_:x a :Mortal}. </code>
+             <br> log-entails
+             <br>    <span class="asex">$(\{\},\{x\},\{(x, \text{rdf:type}, \text{:Mortal})\})$ </span>
+             <br> &ndash; in concrete syntax: <code>_:x a :Mortal. </code>
+           </li>
+            <li>
+              <div class="asex">$
+                (\{x\},\{\},\{ \\
+        \qquad      (\text{:socrates}, \text{:says}, &lt;\{\},\{\},\{(\text{:socrates},\text{rdf:type}, \text{:Mortal} )\}&gt;), \\
+        \qquad      (&lt;\{\},\{\},\{(x, \text{:says}, &lt;\{\},\{\},\{(x,\text{rdf:type}, \text{:Mortal})\}&gt;)\}&gt;, \\
+        \qquad\ \       \text{log:implies}, \\
+        \qquad\ \       &lt;\{\},\{\},\{(x,\text{rdf:type}, \text{:WisePerson})\}&gt;) \\
+                \})$</div>
+              &ndash; in concrete syntax: <code>:socrates :says {:socrates a :Mortal}. <br/>
+                {?x :says {?x a :Mortal}}=>{?x a :WisePerson} </code>
+              <br>  log-entails
+              <br> <span class="asex"> $(\{\},\{\},\{(\text{:socrates}, \text{rdf:type}, \text{:WisePerson}  \})$</span>
+              <br>&ndash; in concrete syntax: <code>:socrates a :WisePerson.  </code>
+            </li>
+           </ul> 
+
+           Examples for non-entailment:
+<ul>
+  <li>  
+    <span class="asex">$(\{\},\{\},\{(\text{:socrates} , \text{rdf:type}, \text{:Human}), (\text{:socrates}, \text{rdf:type}, \text{:Mortal})\})$ </span>
+   <br>&ndash; in concrete syntax: <code>:socrates a :Human. :socrates a :Mortal. </code>
+   <br>does <strong>not</strong> log-entail 
+   <br>
+   <span class="asex">$
+         (\{\},\{\},\{( \\
+\qquad       &lt;\{\},\{\},\{(\text{:socrates}, \text{rdf:type}, \text{:Human})\}&gt;, \\
+\qquad       \text{log:implies}, \\
+\qquad       &lt;\{\},\{\},\{(\text{:socrates}, \text{rdf:type}, \text{:Mortal})\}&gt; \\
+         )\})$</span>
+     <br> &ndash; in concrete syntax: <code>{:socrates a :Human} => {:socrates a :Mortal}. </code>
+ </li>
+ <li> 
+  <div class="asex"> $
+           (\{\},\{\},\{\\
+\qquad       (\text{:socrates}, \text{:says}, &lt;\{\},\{\},\{(\text{:socrates},\text{rdf:type}, \text{:Mortal} )\}&gt;), \\
+\qquad       (&lt;\{\},\{\},\{(\text{:socrates}, \text{:says}, &lt;\{\},\{x\},\{(x,\text{rdf:type}, \text{:Mortal})\}&gt;)\}&gt;, \\
+\qquad\ \       \text{log:implies}, \\
+\qquad\ \       &lt;\{\},\{\},\{(\text{:socrates},\text{rdf:type}, \text{:WisePerson} )\}&gt;) \\
+           \})$</div>
+  &ndash; in concrete syntax:
+  <code>:socrates :says {:socrates a :Mortal}.</code><br><code> {:socrates :says {_:x a :Mortal}}=>{:socrates a :WisePerson} </code>
+  <br>does <strong>not</strong> log-entail 
+  <br> <span class="asex"> $(\{\},\{\},\{(\text{:socrates}, \text{rdf:type}, \text{:WisePerson}  \})$</span>
+  <br>&ndash; in concrete syntax: <code>:socrates a :WisePerson.  </code>
+</li>
+<li> 
+  <div class="asex"> $
+             (\{y\},\{\},\{ \\
+\qquad           (\text{:socrates}, \text{:says}, &lt;\{\},\{x\},\{(x,\text{rdf:type}, \text{:Mortal} )\}&gt;), \\
+\qquad           (&lt;\{\},\{\},\{(\text{:socrates}, \text{:says}, &lt;\{\},\{\},\{(y,\text{rdf:type}, \text{:Mortal})\}&gt;)\}&gt;, \\
+\qquad\ \          \text{log:implies}, \\
+\qquad\ \          &lt;\{\},\{\},\{(\text{:socrates},\text{rdf:type}, \text{:WisePerson} )\}&gt;) \\
+             \})$</div>
+  &ndash; in concrete syntax:
+  <code>:socrates :says {_:x a :Mortal}.</code><br><code> {:socrates :says {?y a :Mortal}}=>{:socrates a :WisePerson} </code>
+  <br>does <strong>not</strong> log-entail 
+  <br> <span class="asex"> $(\{\},\{\},\{(\text{:socrates}, \text{rdf:type}, \text{:WisePerson}  \})$</span>
+  <br>&ndash; in concrete syntax: <code>:socrates a :WisePerson.  </code>
+</li>
+</ul>
+<p class="note">As above, these examples follow the last agreement on the interpretation of N3 concrete syntax which might be implemented differently in some reasoners. 
+  The difference does not effect the meaning of abstract formulas. The community group is currently working on a solution for this problem.
+</p>
+</section>
+        <section> <h3>Unquoting</h3>
+         <p> A special form of entailment enabled by our semantics is the so-called <dfn data-lt="unquote">unquoting</dfn>. By that, we mean the 
+          entailment which enables us to make the graph contained in a graph term true. To illustrate the idea, we give an example. </p>
+          
+        <p>Let's assume that simon says that birds can fly. In abstract N3, we can express that as:</p>
+
+          <div class="asex">$(\{\},\{\},\{(\text{:simon}, \text{:says}, &lt;\{\},\{\},\{(\text{:birds},\text{:can}, \text{:fly} )\}&gt;) \})$</div>
+          <div>&ndash; in concrete syntax: <code>simon :says {:birds :can :fly}.</code></div>
+      <p>In N3 we can write a rule stating that everything Simon says is true. We do that as follows:</p>
+
+      <div class="asex">$(\{x\},\{\},\{(&lt;\{\},\{\},\{(\text{:simon}, \text{:says}, x)\}&gt;, \text{log:implies}, x\})$</div>
+      <div>&ndash; in concrete syntax: <code>{:simon :says ?x}=>?x </code></div>
+
+      <p>
+      From this last rule we can derive via <a>b-entailment</a>: </p>
+      <div class="asex">$
+          (\{\},\{\},\{(&lt;\{\},\{\},\{( \\
+\qquad        \text{:simon}, \text{:says}, &lt;\{\},\{\},\{(\text{:birds},\text{:can}, \text{:fly} )\}&gt;)\}&gt;, \\
+\qquad        \text{log:implies}, \\
+\qquad        &lt;\{\},\{\},\{(\text{:birds},\text{:can}, \text{:fly} )\}&gt; \\
+          )\})
+        $</div>
+        <div>&ndash; in concrete syntax: <code>{:simon :says {:birds :can :fly}}=>{:bird :can :fly}. </code></div>
+     
+      <p>Via <a>log-entailment</a> we get:</p>
+      <div class="asex">$(\{\},\{\},\{(\text{:birds},\text{:can}, \text{:fly} )\})$</div>
+      <div>&ndash; in concrete syntax: <code>:birds :can :fly. </code></div>        
+
+    <p>
+      The example above showed us the basic idea of unquoting. The feature is supported by N3 semantics using the two step-interpretation. The b-interpretation 
+      treats the universally quantified variable in premise and conclusion of the rule as terms. 
+      We can replace the variable by graph terms if these (or graphs isomorphic to these) form part of $\Delta_I$ (which needs to be the case if $I$ is an interpretation of  
+      the first triple of this example). The log-interpretation now interprets these terms which allows us to come to our conclusion.
+    </p>
+        </section>
+
+      </section>
+    </section>
+<!--    <section>
+      <h2>Mapping from concrete to abstract syntax</h2>
+      <div class="issue"> Not sure where to go with this section, maybe it should also be part of the syntax?</div>
+      <p>
+        In order to formally define the  mapping between <abbr title="Notation3">N3</abbr> concrete turtle syntax and abstract syntax,
+         we first give a more formal
+        definition
+        of the former. Here, we omit constructs like
+        <a href="#polists">predicate and object lists</a>,
+        or <a href="#bnodeprplist">blank node property lists</a> as these can be seen as syntactic sugar.
+      </p>
+      <h3>Concrete Terms and Formulae</h3>
+      <p>
+        We extend these definitions by introducing the following concepts:
+      </p>
+       <p>
+          The set of <dfn>N3 symbols</dfn> consists of the set of <a>N3 triple elements</a> and the
+          <a>universal variables</a> which are defined below.
+        </p> -->
+        <!-- 
+      <p>
+        The set of <dfn data-lt="triple element|n3 triple element">N3 triple elements</dfn> consists of the disjoint
+        sets of
+        <a data-cite="RDF11-CONCEPTS#dfn-iri">IRIs</a>,
+        <a data-cite="RDF11-CONCEPTS#dfn-blank-node">blank nodes</a>,
+        <a data-cite="RDF11-CONCEPTS#dfn-literal">literals</a>,
+        <a href="#dfn-universals">universal variables</a>,
+        <a>lists</a>,
+        and <a>quoted graphs</a>.
+        The set of <a data-cite="RDF11-CONCEPTS#dfn-iri">IRIs</a> conatians the implication sign denoted by the
+        <a>builtin</a> <code>log:implies</code>.
+        This symbol indicates logical implication and MAY in concrete syntax also be represented using the symbols
+        <code>=&gt;</code>.
+        The set of <a data-cite="RDF11-CONCEPTS#dfn-literal">literals</a> contains the two boolean literals
+        <code>false</code> and <code>true</code>.
+        The latter can also be written as <code>{}</code> in N3 turtle syntax.
+      </p>
+      <p>
+        The set of <dfn data-lt="universals">universal variables</dfn> is an arbitrary set of symbols which is
+        disjoint
+        to all other <a>N3 triple elements</a>.
+        In concrete syntax, universal variables are represented by strings starting with a question mark
+        <code>?</code>.
+      </p>
+      <p>
+        <dfn>Lists</dfn> are ordered sets consisting of zero or more <a>N3 triple elements</a>.
+        We call the list which has no elements the empty list. In concrete syntax,
+        we indicate lists by using round brackets <code>()</code>.
+        The empty list in <abbr title="Notation3">N3</abbr> is equivalent to the empty list in RDF and can
+        thus also be represented using <a href="https://www.w3.org/TR/rdf11-mt/#rdf-interpretations">rdf:nil</a>.
+      </p>
+      <p>
+        <dfn data-lt="quoted graphs|cited formula">Quoted graphs</dfn> (sometimes also called cited formulae) are
+        <a>N3 formulae</a> which are surrounded by quoting signs.
+        In concrete syntax, we denote these quoting signs as curly brackets <code>{}</code>.
+      </p>
+      <p>
+        An <dfn>N3 triple</dfn> consists of the three components subject, predicate and object, each being an <a>N3
+          triple element</a>.
+      </p>
+      <p>
+        An <dfn data-lt="N3 formulae">N3 formula</dfn> is a set of <a>N3 triples</a>.
+      </p>
+
+    </section>
+  </body>
+</html>
+-->
+<!--=======
+<section id='semantics'>
+    <h2>Semantics</h2>
+    <section id='terms'>
+
+
+
+
+
+-->
+  <!--       <p>Let <code>T</code> be the set of <a>N3 triple elements</a> and <code>dc:T&xrarr;T</code> a function defined
+        as
+        follows:</p>
+      <ul>
+        <li><code>dc(c)=dc(c<sub>1</sub>)&cup;...&cup;dc(c<sub>n</sub>)</code>, if
+          <code>c=(c<sub>1</sub>... c<sub>n</sub>)</code> is a list,
+        </li>
+        <li><code>dc(c)={c} </code>else.</li>
+      </ul>
+
+      <p>For each <a>N3 triple</a> <code>t= s p o</code> we call the set <code>dc(t)=dc(s)&cup;dc(p)&cup;dc(o)</code>
+        the <dfn data-lt="dir-comp">direct components</dfn> of <code>t</code>. For each <a>N3 formula</a> the set of
+        its direct components is the union of the direct components of the triples it contains. </p>
+
+   <p>Let <code>T</code> be the set of <a>N3 triple elements</a> and <code>F</code> the set of <a>N3 formula</a>.
+        We
+        define the function
+        <code>nc:T&cup;F&xrarr;T</code> a function defined as follows:
+      </p>
+      <ul>
+        <li><code>nc(e)=nc(e<sub>1</sub>)&cup;...&cup;nc(e<sub>n</sub>)</code>,
+          if <code>e=e<sub>1</sub>... e<sub>n</sub></code> is an <a>N3 formula</a> and
+          <code>e<sub>1</sub>)&cup;...&cup;nc(e<sub>n</sub></code> are <a>N3 triples</a>,
+        </li>
+        <li><code>nc(e)=nc(e<sub>1</sub>)&cup;nc(e<sub>2</sub>)&cup;nc(e<sub>3</sub>)</code>,
+          if <code>e=e<sub>1</sub> c<sub>2</sub> e<sub>3</sub></code>
+          is an <a>N3 triple</a>
+          and <code>e<sub>1</sub>, c<sub>2</sub>, e<sub>3</sub></code>
+          are <a>N3 triple elements</a>,</li>
+        <li><code>nc(e)=nc(e<sub>1</sub>)&cup;...&cup;nc(e<sub>n</sub>)</code>,
+          if <code>e=(e<sub>1</sub>... e<sub>n</sub>)</code> is a list,</li>
+        <li><code>nc(e)=dc(e<sub>1</sub>)&cup; nc(e<sub>1</sub>)</code>,
+          if <code>e={e<sub>1</sub>}</code> is a <a>cited formula</a>,</li>
+        <li><code>nc(e)=&empty;</code> else.</li>
+
+      <p>
+        For each <a>N3 formula</a> <code>f</code>,
+        we call <code>nc(f)</code> the set of <dfn>nested components</dfn>.
+      </p>
+    </ul>
+-->
+<!--
+      <p>
+        We call an <a>N3 formula</a> <dfn>ground</dfn> if its direct and <a>nested components</a> do not contain
+        <a>blank nodes</a> nor <a>universal variables</a>.
+      </p>
+      <p> We call an <a>N3 formula</a> <dfn>closed</dfn> if its direct and <a>nested components</a> do not contain
+        <a>universal variables</a> and its <a>direct components</a> do not contain <a>blank nodes</a>.
+      </p>
+      <p class="EDNOTE">ReSpec complains because <a>ground</a> and <a>closed</a> are defined but not used.</p>
+    </section>
+-->
+
+
+
+  <!--  <section id='sinterpret'>
+      <h3>Simple N3 interpretations</h3>
+
+    </section>
+    <section id='sneg'>
+      <h3>Scoped Negation</h3>
+
+    </section>
+  -->
+    <!-- <section id='builtins'>
+      <h3>N3 Built-ins</h3>
+      <p>N3 defines a core set of <dfn>built-ins</dfn> defined
+        in a set of vocabularies with defined semantics
+        for querying and manipulating <a>N3 documents</a>.
+        Built-ins are denoted by a controlled IRI defined in
+        one of the core namespaces:</p>
+      <ul>
+        <li><a href="crypto.html">Crypto</a> –
+          <a href="http://www.w3.org/2000/10/swap/crypto#">http://www.w3.org/2000/10/swap/crypto#</a>,
+        </li>
+        <li><a href="list.html">List</a> –
+          <a href="http://www.w3.org/2000/10/swap/list#">http://www.w3.org/2000/10/swap/list#</a>,
+        </li>
+        <li><a href="log.html">Log</a> –
+          <a href="http://www.w3.org/2000/10/swap/log#">http://www.w3.org/2000/10/swap/log#</a>,
+        </li>
+        <li><a href="math.html">Math</a> –
+          <a href="http://www.w3.org/2000/10/swap/math#">http://www.w3.org/2000/10/swap/math#</a>,
+        </li>
+        <li><a href="string.html">String</a> –
+          <a href="http://www.w3.org/2000/10/swap/string#">http://www.w3.org/2000/10/swap/string#</a>, and
+        </li>
+        <li><a href="time.html">Time</a> –
+          <a href="http://www.w3.org/2000/10/swap/time#">http://www.w3.org/2000/10/swap/time#</a>.
+        </li>
+      </ul>
+    </section> -->
+  
