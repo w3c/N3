@@ -1853,6 +1853,36 @@ _:d a :Person. -->
         </aside>
       </section>
     </section>
+    <section id='shorthands'>
+      Similar to Turtle, N3 provides a special shorthand syntax for commonly used URIs. 
+      This may only be used in the predicate position. From the original Team Submission [[N3]]:
+      <table>
+        <tr>
+        <th>Shorthand</th>
+        <th>URI</th>
+        </tr>
+        <tr>
+        <td><code>a</code></td>
+        <td>
+        <code>&lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#type&gt;</code></td>
+        </tr>
+        <tr>
+        <td><code>=</code></td>
+        <td><code>&lt;http://www.w3.org/2002/07/owl#sameAs&gt;</code></td>
+        </tr>
+        <tr>
+        <td><code>=&gt;</code></td>
+        <td>
+        <code>&lt;http://www.w3.org/2000/10/swap/log#implies&gt;</code></td>
+        </tr>
+        <tr>
+        <td><code>&lt;=</code></td>
+        <td>
+        <code>&lt;http://www.w3.org/2000/10/swap/log#implies&gt;</code> but in
+          the inverse direction</td>
+        </tr>
+      </table>
+    </section>
     <section id='grammar'>
       <h3>Grammar</h3>
       <div data-include="../grammar/n3.html"></div>
