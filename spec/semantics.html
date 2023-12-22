@@ -622,12 +622,12 @@ for RDF. In the next section, we will introduce the <a>log-interpretation</a> wh
         <li>a set $Δ_I$ (<dfn class="lint-ignore">domain</dfn>),
         <li>a mapping $D_I$ (<dfn class="lint-ignore">denotation</dfn>)  from $R ∪ L$ to $Δ_I$,
           such that its restriction to $R$ is a total mapping,
-        <li>a mapping $Q_I$ from <a>ground</a> <a>graph terms</a> to <a>ground</a> <a>graph terms</a>, such that<ul>
+        <li>a mapping $\Gamma_I$ from <a>ground</a> <a>graph terms</a> to <a>ground</a> <a>graph terms</a>, such that<ul>
 
-            <li>for any graph term  $&lt;G&gt;$ if $Q_I(&lt;G&gt;)=&lt;H&gt; \implies H \simeq G$  <br>(in other words, the image of $&lt;G&gt;$  through $Q_I$ 
+            <li>for any graph term  $&lt;G&gt;$ if $\Gamma_I(&lt;G&gt;)=&lt;H&gt; \implies H \simeq G$  <br>(in other words, the image of $&lt;G&gt;$  through $\Gamma_I$
               must be <a>isomorphic</a> to $&lt;G&gt;$)
-            <li>for two graph terms $&lt;G_1&gt;$ and $&lt;G_2&gt;$: $G_1 \simeq G_2\implies Q_I(G_1)=Q_I(G_2)$ 
-              <br>(in other words, two <a>isomorphic</a> graph terms must have the same image through $Q_I$).
+            <li>for two graph terms $&lt;G_1&gt;$ and $&lt;G_2&gt;$: $G_1 \simeq G_2\implies \Gamma_I(G_1)=\Gamma_I(G_2)$
+              <br>(in other words, two <a>isomorphic</a> graph terms must have the same image through $\Gamma_I$).
           </ul>
         <li>A subset $EXT_I$ (<dfn class="lint-ignore">extension</dfn>) of $Δ_I^3$.</li>
       </ul>
@@ -642,8 +642,8 @@ for RDF. In the next section, we will introduce the <a>log-interpretation</a> wh
         </ul>
       </div>
 
-      <p>Note that the images of $Q_I$ are syntactic elements (<a>graph terms</a>), but they can (and most likely will) also be elements of the domain $Δ_I$. 
-      Note however that not all interpretations are required to have <a>graph terms</a> in their domain, because $Q_I$ is allowed to be the empty mapping. 
+      <p>Note that the images of $\Gamma_I$ are syntactic elements (<a>graph terms</a>), but they can (and most likely will) also be elements of the domain $Δ_I$.
+      Note however that not all interpretations are required to have <a>graph terms</a> in their domain, because $\Gamma_I$ is allowed to be the empty mapping.
       Such interpretations could still <a>satisfy</a> a graph that has no <a>graph term</a> constituent.
     </p>
      
@@ -653,8 +653,8 @@ for RDF. In the next section, we will introduce the <a>log-interpretation</a> wh
       The basic interpretation maps graph terms to an isomorphic copy of themselves. As a consequence, two non-isomorphic graph terms cannot have the same meaning. For the abstract versions of the graph terms <code>{_:x :p :o}</code>, <code>{_:y :p :o}</code>
       and <code>{_:x :p :o. _:y :p :o}</code>, we thus get:</p>
     <ul>
-     <li> $Q_I(&lt;\{\}, \{y\}, \{(y, \text{:p}, \text{:o})\}&gt;)= Q_I(&lt;\{\}, \{x\}, \{(x, :p, :o)\}&gt;)$
-      <li> $Q_I(&lt;\{\}, \{y\}, \{(y, \text{:p}, \text{:o})\}&gt;) \neq Q_I(&lt;\{\}, \{x, y\}, \{(x, \text{:p}, \text{:o}), (y, \text{:p}, \text{:o})\}&gt;)$
+     <li> $\Gamma_I(&lt;\{\}, \{y\}, \{(y, \text{:p}, \text{:o})\}&gt;)= \Gamma_I(&lt;\{\}, \{x\}, \{(x, :p, :o)\}&gt;)$
+      <li> $\Gamma_I(&lt;\{\}, \{y\}, \{(y, \text{:p}, \text{:o})\}&gt;) \neq \Gamma_I(&lt;\{\}, \{x, y\}, \{(x, \text{:p}, \text{:o}), (y, \text{:p}, \text{:o})\}&gt;)$
     </ul>
 
     <p>
@@ -683,7 +683,7 @@ for RDF. In the next section, we will introduce the <a>log-interpretation</a> wh
         <ul>
           <li>$D_I(x)$ if $x$ is an IRI or a Literal,
           <li>$(I(x_1), I(x_2),..., I(x_n))$ if $x$ is a list $(x_1, x_2, ..., x_n)$ and all $I(x_i)$ are defined,
-          <li>$Q_I(x)$ if $x$ is a <a>ground</a> <a>graph term</a>,
+          <li>$\Gamma_I(x)$ if $x$ is a <a>ground</a> <a>graph term</a>,
           <li>$I(x)=\textit{true}$ if $x=(s, p ,o)$ is a <a>ground</a> <a>triple</a> and $(I(s), I(p) ,I(o))\in EXT_I$, otherwise $I(x)=\textit{false}$,
           <li>$I(x)=\textit{false}$ if $x=F$ is a set of ground triples and $I(t)=\textit{false}$ for some triple $t\in F$, otherwise $I(x) =\textit{true}$,
           <li>$I(F)$ if $x=(\emptyset, \emptyset, F)$ is a <a>ground</a> <a>graph</a>
@@ -692,7 +692,7 @@ for RDF. In the next section, we will introduce the <a>log-interpretation</a> wh
         The definition implies that the empty graph is always true and that the empty list is always mapped to itself. 
         <div class="note">
           <p>
-          Note that the interpretation function $Q_I(x)$ maps ground graphs into the domain of discourse without interpreting their content separately. 
+          Note that the interpretation function $\Gamma_I(x)$ maps ground graphs into the domain of discourse without interpreting their content separately.
           This choice was made to guarentee <a href="https://en.wikipedia.org/wiki/Opaque_context">referential opacity</a> 
           (see also <a href="https://www.w3.org/2021/12/rdf-star.html#ref-opacity">referential opacity in RDF-star</a> ). 
           To illustrate this idea consider the <a href="https://iep.utm.edu/referential-opacity/">superman example</a> expressed in N3:
@@ -741,18 +741,18 @@ The interpretation of the above example $I(G_{bob})$
 <li>$I($<code>({}, {}, {(:bob, :says,</code> &lt; <code>{}, {},  {(:bob, :is, :wise)}.>)})</code>$)$</li>
 <li>$=I($<code>(:bob, :says,</code> &lt; <code>{}, {},  {(:bob, :is, :wise)}.>)</code>$)$</li>
 </ul>-->
-will be true if $(D_I(\text{:bob}), D_I(\text{:says}), Q_I(&lt;\{\}, \{\},  \{(\text{:bob}, \text{:is}, \text{:wise})\}&gt;)\in EXT_I$. 
+will be true if $(D_I(\text{:bob}), D_I(\text{:says}), \Gamma_I(&lt;\{\}, \{\},  \{(\text{:bob}, \text{:is}, \text{:wise})\}&gt;)\in EXT_I$.
 </p>
 
 <p>
   If we revert back to our original example with variables, 
   a regular <em>valuation function</em> (such as the <a href="https://www.w3.org/TR/rdf11-mt/#blank-nodes">mapping A used for blank nodes</a> in [[RDF11-MT]]) will simply replace both occurrences of variable $x$ with a domain element $\delta_i$ from $\Delta_I$.
-  In that case, $Q_I$ will have to map the <a>graph term</a> $&lt;\{\}, \{\},  \{(\delta_i, \text{:is}, \text{:wise})\}&gt;$
+  In that case, $\Gamma_I$ will have to map the <a>graph term</a> $&lt;\{\}, \{\},  \{(\delta_i, \text{:is}, \text{:wise})\}&gt;$
   to an isomorphic copy. However, the <a href="isomorphisms">isomorphism</a> is only defined for concrete N3 <a>terms</a>, and not domain elements.
   <!-- unless those domain elements are also language terms ... -->
-  If <em>not</em> applying the valuation function to the graph term, $Q_I$ will have to map the <a>graph term</a> $&lt;\{\}, \{\},  \{(x, \text{:is}, \text{:wise})\}&gt;$,
+  If <em>not</em> applying the valuation function to the graph term, $\Gamma_I$ will have to map the <a>graph term</a> $&lt;\{\}, \{\},  \{(x, \text{:is}, \text{:wise})\}&gt;$,
   which is however no longer <a>ground</a> as its graph is no longer <a>closed</a>
-  ($x$ is quantified outside of the graph). In our <a>basic interpretation</a>, the mapping $Q_I$ is only defined for <a>ground</a> <a>graph terms</a>.
+  ($x$ is quantified outside of the graph). In our <a>basic interpretation</a>, the mapping $\Gamma_I$ is only defined for <a>ground</a> <a>graph terms</a>.
   We thus need to first ground these kinds of <em>leaked variables</em>, 
   i.e., variables that become free when considering the graph term in isolation (as is required when determining isomorphisms).
 </p>
@@ -800,7 +800,7 @@ As an example, consider the example below, and let $M:\{x,y\}\rightarrow S$ be a
     $=$<span class="asex">$&lt;\{\},\{y\},\{(tom, \text{:hasMother}, y)\}&gt;$ </span>
 </p>
 Variable $x$ is replaced by $M(x)$ as it is a <a>free variable</a>, while $y$ does not get replaced since it is <a>scoped</a> (i.e., quantified in the nested graph).
-This results in a <a>ground</a> <a>graph term</a>, which can be mapped by $Q_I$.
+This results in a <a>ground</a> <a>graph term</a>, which can be mapped by $\Gamma_I$.
 
 <p>
 The definition of total applications enables us to define <dfn class="lint-ignore">interpretations with assignment</dfn>:
@@ -811,7 +811,7 @@ we define $I[A](x)$ as:</p>
         <ul>
           <li> $A_1(x)$ if $x ∈ dom(A)$ and $x$ is a <a>direct constituent</a> of $G$,
           <li> $(I[A](x_1) \ldots I[A](x_n))$ if $x=(x_1 \ldots x_n)$ is a <a>list</a>,
-          <li> $Q_I(A_2^t(x))$ if $x$ is a <a>graph term</a>, where $A_2^t$ represents the <a>total application</a> of $A_2$,
+          <li> $\Gamma_I(A_2^t(x))$ if $x$ is a <a>graph term</a>, where $A_2^t$ represents the <a>total application</a> of $A_2$,
           <li> $I(x)$ otherwise.
         </ul>
 
