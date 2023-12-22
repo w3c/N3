@@ -495,10 +495,11 @@ handling nested graphs with local scoping.
 </div>
 
 <p>
-With combinations of mappings we can define isomorphisms between abstract N3 graphs:</p>
+With combinations of mappings we can define <dfn data-lt="isomorphism|isomorphic">isomorphisms</dfn> between abstract N3 graphs:</p>
 
           <p>
-          Let $M$ be a bijection between the variables of $V$, we define:</p>
+          Let $M$ be a bijection between two sets of variables (subsets of $V$),
+          we define:</p>
           <ul>
             <li> a graph $G_1$ is isomorphic to $G_2$ under $M$ iff, $G_1^N =(U_1,E_1,F_1)$ and
               $G_2^N=(U_2,E_2,F_2)$ and
@@ -521,12 +522,12 @@ With combinations of mappings we can define isomorphisms between abstract N3 gra
               $&lt; G_2 &gt;$
               if for $G_1^{N} =(U_1,E_1,F_1)$ and $G_2^{N}=(U_2,E_2,F_2)$
               there is a bijection $P$ between $U_1 \cup E_1$ and $U_2 \cup E_2$
-              such that $G_1$ is isomorphic to $G_2$ under $M\bullet P$.
+              such that $G_1$ is isomorphic to $G_2$ under $M|_{FV(G_1)}\bullet P$.
             </li>
           </ul>
 
 <p>
-  We call a graph $G_1$ <dfn class="lint-ignore" data-lt="isomorphism">isomorphic</dfn> to a graph $G_2$, written as $G_1\simeq G_2$, if
+  We call a graph $G_1$ <a>isomorphic</a> to a graph $G_2$, written as $G_1\simeq G_2$, if
   there exists some $M$ such that $G_1$ is isomorphic to $G_2$ under $M$.
 </p>
 
@@ -565,7 +566,7 @@ With combinations of mappings we can define isomorphisms between abstract N3 gra
           </ul>
 !-->
 
-          <p class="note">If $G_1$ is isomorphic to $G_2$ then $G_2$ is also isomorphic to $G_1$.</p>
+          <p class="note">In appendix <a href="#proof_isomorphism"></a>, we prove that the <a>isomorphism</a> relation is reflexive ($G_1 \simeq G_1$), symmetric ($G_1 \simeq G_2 \leftrightarrow G_2 \simeq G_1$) and transitive ($G_1 \simeq G_2 \wedge G_2 \simeq G_3 \rightarrow G_1 \simeq G_3$).</p>
 
        
             <p>
@@ -1194,6 +1195,78 @@ The previous definition allows us to introduce the notion of basic entailment:
     </p>
         </section>
 
+      </section>
+    </section>
+    <section class="appendix">
+      <h2>Proofs</h2>
+
+      <section id="proof_isomorphism">
+        <h2><a>Isomorphism</a> is an equivalence relation</h2>
+
+        <p>In this section, we prove that the <a>isomorphism</a> relation between N3 <a>graphs</a> is reflexive, symmetric and transitive. In all the following, $G_1$, $G_2$ and $G_3$ denote graphs. Given a set $S$, $Id_S$ is the identity mapping on $S$.</p>
+
+        <section><h3>Reflexivity</h3>
+
+        <p>Trivially, any graph $G$ containing no graph term is isomorphic to itself under $Id_{FV(G_1)}$.
+        Any graph term $&lt; H &gt;$ containing no graph term is therefore isomorphic to itself under $Id_{FV(H1)}$, chosing also the identity mapping for $P$.
+        By induction, we conclude that any graph $G$ (containing graph terms or not) is isomorphic to itself under $Id_{FV(G_1)}$, and therefore $G \simeq G$.
+        </section>
+
+        <section><h3>Symmetry</h3>
+
+        <p>Let us first prove by induction that if $G_1$ is isomorphic to $G_2$ under a bijection $M$,
+        then $G_2$ is isomorphic to $G_1$ under $M^{-1}$.
+        Let $G_1^N = (U_1, E_1, F_1)$ and $G_2^N = (U_2, E_2, F_2)$.
+        There must be a bijection $N$ from $F_1$ to $F_2$
+        that satifies the definition of <a>isomorphism</a> under $M$.
+
+        <p>If we assume that neither $G_1$ nor $G_2$ contain graph terms,
+        then trivially $G_2$ is isomorphic to $G_1$ under $M^{-1}$
+        by chosing $N^{-1}$ to map from $F_2$ to $F_1$.
+
+        <p>If $G_1$ contains graph terms,
+        then $N$ must map every graph term $&lt; H_1 &gt;$ occurring in $G_1$
+        to a graph term $&lt; H_2 &gt;$ occurring in $G_2$,
+        and for each such pair there must exist a bijection $P$
+        such that $H_1$ is isomorphic to $H_2$ under $M|_{FV(H_1)} \bullet P$.
+        Per our induction hypothesis, $H_2$ is isomorphic to $H_1$ under
+        $(M|_{FV(H_1)} \bullet P)^{-1} = M^{-1}|_{FV(H_1)} \bullet P^{-1}$,
+        and therefore $G_2$ is isomorphic to $G_1$ under $M^{-1}$.
+
+        <p>From the above, it follows that if $G_1 \simeq G_2$, then $G_2 \simeq G_1$.
+
+        </section>
+        <section><h3>Transitivity</h3>
+
+        <p>Let us first prove by induction that if $G_1$ is isomorphic to $G_2$ under $M_1$,
+        and $G_2$ is isomorphic to $G_3$ under $M_2$,
+        then $G_1$ is isomorphic to $G_3$ under $M_2 \circ M_1$.
+        Let $G_i^N = (U_i, E_i, F_i)$ for $i \in \{1, 2, 3\}$.
+        There must be a bijection $N_1$ from $F_1$ to $F_2$
+        and a bijection $N_2$ from $F_2$ to $F_3$
+        that satisfy the definition of
+        <a>isomorphism</a> under $M_1$ and $M_2$ respectively.
+
+        <p>If we assume that neither $G_1$, $G_2$ nor $G_3$ contain graph terms,
+        then trivially $G_1$ is isomorphic to $G_3$ under $M_2 \circ M_1$
+        by chosing $N_2 \circ N_1$ to map from $F_1$ to $F_3$.
+
+        <p>If $G_1$ contains graph terms,
+        then $N_1$ must map every graph term $&lt; H_1 &gt;$ occurring in $G_1$
+        to a graph term $&lt; H_2 &gt;$ occurring in $G_2$,
+        and for each such pair there must exist a bijection $P_1$
+        such that $H_1$ is isomorphic to $H_2$ under $M_1|_{FV(H_1)} \bullet P_1$.
+        Similarly $N_2$ must map every graph term $&lt; H_2 &gt;$ occurring in $G_2$
+        to a graph term $&lt; H_3 &gt;$ occurring in $G_3$,
+        and for each such pair there must exist a bijection $P_2$
+        such that $H_2$ is isomorphic to $H_3$ under $M_2|_{FV(H_2)} \bullet P_2$.
+        Per our induction hypothesis, $H_1$ is isomorphic to $H_3$ under
+        $(M_2|_{FV(H_2)} \bullet P_2)\circ(M_1|_{FV(H_1)} \bullet P_1) = (M_2 \circ M_1)|_{FV(H_1)} \bullet (P_2 \circ P_1)$,
+        and therefore $G_1$ is isomorphic to $G_3$ under $M_2 \circ M_1$.
+
+        <p>From the above, it follows that if $G_1 \simeq G_2$ and $G_2 \simeq G3$,
+        then $G_1 \simeq G_3$.
+        </section>
       </section>
     </section>
 <!--    <section>
