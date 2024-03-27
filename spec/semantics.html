@@ -306,7 +306,7 @@ We will re-use these examples in the following sections.
 -->
 
       <div class=note>
-        In this context, an RDF graph is a graph that does not contain graph terms nor lists, does not have literals as subjects or predicates, does not have variables as predicates, for which $U=\emptyset$,
+        In this context, an RDF graph is a graph that does not contain graph terms nor lists; does not have literals as subjects nor predicates; does not have variables as predicates; for which $U=\emptyset$,
         and $E$ is the set of blank nodes occurring in the graph.
       </div>
 
@@ -387,7 +387,7 @@ we introduce the following concept:
 
             <p class=note>Note that the definition makes a difference between <a>graphs</a> and <a>graph terms</a>.
               A graph term is a <a>direct constituent</a> of the graph ("containing graph") in which it occurs as a triple component. However, the direct constituents of the graph term's graph, and their direct constituents (and so on), are not direct constituents of the containing graph. Rather, they are <a>constituents</a> of the containing graph.
-              This difference between graph and graph term is crucial for the definitions below.</p>
+              This difference between <i>graph</i> and <i>graph term</i> is crucial for the definitions below.</p>
 <p>
 With that definition, we now introduce <dfn data-lt="free">free variables</dfn>: these are variables which occur directly or nested in the graph but which are not covered by a <a>quantification set</a>.
 </p>
@@ -433,7 +433,7 @@ With that definition, we now introduce <dfn data-lt="free">free variables</dfn>:
 
 <p>We denote the set of <a>ground terms</a> as $T_G$.
 
-<p>A <a>triple</a> is <a>ground</a> if its subject, predicate and object are all <a>ground</a>.</p>
+<p>A <a>triple</a> is <a>ground</a> if its subject, predicate, and object are all <a>ground</a>.</p>
 
 <p>A graph $G=(U,E,F)$ is <a>ground</a> if $E=U=\emptyset$ and all <a>triples</a> in $F$ are <a>ground</a>.</p>
 
