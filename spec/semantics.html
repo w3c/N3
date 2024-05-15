@@ -276,7 +276,7 @@ We always write a graph in concrete N3 syntax followed by its counterpart in abs
     <br>becomes<br>
     <span class="asex">$(\{\},\{x\},\{(\text{:socrates}, \text{:knows}, x)\})$</span></li>
   <li> <code>{?x a :Human} => {?x a :Mortal}.</code> <br>becomes <br>
-     <span class="asex">$(\{x\},\{\},\{(&lt;\{\},\{\},\{(x, \text{rdf:type}, \text{:Human})\}&gt;,
+     <span class="asex">$(\{x\},\{\},\{&lt;\{\},\{\},\{(x, \text{rdf:type}, \text{:Human})\}&gt;,
     \text{log:implies}, &lt;\{\},\{\},\{(x, \text{rdf:type}, \text{:Mortal})\}&gt;\})$ </span>
   </li>
   <li id="example3"> <code>:socrates :says {_:x a :Mortal}.</code> 
