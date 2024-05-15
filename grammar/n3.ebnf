@@ -1,5 +1,5 @@
-# EBNF Notation3 Grammar based pm Antlr4.
-# From https://github.com/w3c/N3/blob/master/grammar/n3.g4
+/* EBNF Notation3 Grammar based pm Antlr4.
+ From https://github.com/w3c/N3/blob/master/grammar/n3.g4 */
 
 [1]  n3Doc                              ::= (n3Statement '.' | sparqlDirective)*
 
@@ -73,15 +73,15 @@
 [27] iri                                ::= IRIREF | prefixedName
 
 [28] prefixedName                       ::= PNAME_LN | PNAME_NS
-                                            # PNAME_NS will be matched for ':' (i.e., "empty") prefixedNames
-                                            # hence this cannot be a lexer rule; for s/p/o of only ':', PNAME_NS will be returned
-                                            # instead of PrefixedName token
+                                            /* PNAME_NS will be matched for ':' (i.e., "empty") prefixedNames
+                                               hence this cannot be a lexer rule; for s/p/o of only ':', PNAME_NS will be returned
+                                               instead of PrefixedName token */
 
 [29] blankNode                          ::=  BLANK_NODE_LABEL | ANON
 
 [30] quickVar                           ::= QUICK_VAR_NAME
-                                            # only made this a parser rule for consistency
-                                            # (all other path-items are also parser rules)
+                                            /* only made this a parser rule for consistency
+                                              (all other path-items are also parser rules) */
 
 @terminals
 
@@ -135,5 +135,5 @@
                                         | '/' | '?' | '#' | '@' | '%' )
 [39] COMMENT   ::= ('#' - '#x') [^#xA#xC#xD]*
 
-# Ignore all whitespace and comments between non-terminals
+/* Ignore all whitespace and comments between non-terminals */
 @pass           ( WS | COMMENT )*
