@@ -306,8 +306,8 @@ We will re-use these examples in the following sections.
 -->
 
       <div class=note>
-        In this context, an RDF graph is a graph that does not contain graph terms nor lists, does not have literals as subjects or predicates, does not have variables as predicates, and for which $U=\emptyset$.
-        The blank nodes occurring in the graph would be labeled and stored in $E$.
+        In this context, an RDF graph is a graph that does not contain graph terms nor lists; does not have literals as subjects nor predicates; does not have variables as predicates; for which $U=\emptyset$;
+        and $E$ is the set of blank nodes occurring in the graph.
       </div>
 
       <div class="issue">The translation of nested blank nodes as explained here and for example applied in <a href="#example3"> Example 3</a> follows
@@ -320,7 +320,7 @@ We will re-use these examples in the following sections.
         as<br/> 
         <span class="asex">$\qquad (\{\},\{x\},\{(\text{:socrates}, \text{:says}, &lt;\{\},\{\},\{(x,\text{rdf:type}, \text{:Mortal} )\}&gt;) \})$</span><br/>
          and <strong>not</strong> as<br/>
-         <span class="asex"> $(\{\},\{\},\{(\text{:socrates}, \text{:says}, &lt;\{\},\{x\},\{(x,\text{rdf:type}, \text{:Mortal} )\}&gt;) \})$</span>.<br/>
+         <span class="asex">$\qquad (\{\},\{\},\{(\text{:socrates}, \text{:says}, &lt;\{\},\{x\},\{(x,\text{rdf:type}, \text{:Mortal} )\}&gt;) \})$</span>.<br/>
          A solution for that problem is currently being discussed. The difference, however, does not influence the formal semantics of the <em>abstract</em> syntax, as quantification is always explicit there.
        </div>
             </section>
@@ -387,11 +387,11 @@ we introduce the following concept:
 
             <p class=note>Note that the definition makes a difference between <a>graphs</a> and <a>graph terms</a>.
               A graph term is a <a>direct constituent</a> of the graph ("containing graph") in which it occurs as a triple component. However, the direct constituents of the graph term's graph, and their direct constituents (and so on), are not direct constituents of the containing graph. Rather, they are <a>constituents</a> of the containing graph.
-              This difference is crucial for the definitions below: a graph is not the same as a graph term.</p>
+              This difference between <i>graph</i> and <i>graph term</i> is crucial for the definitions below.</p>
 <p>
 With that definition, we now introduce <dfn data-lt="free">free variables</dfn>: these are variables which occur directly or nested in the graph but which are not covered by a <a>quantification set</a>.
 </p>
-            The set of free variables ($FV$) of a term or a set of triples is defined as follows:
+            <p>The set of free variables ($FV$) of a <a>term</a> or a set of <a>triples</a> is defined as follows:
 
               <ul>
                 <li>$FV(x) = \emptyset$ if $x ∈ R ∪ L$,</li>
@@ -402,13 +402,12 @@ With that definition, we now introduce <dfn data-lt="free">free variables</dfn>:
                 <li>$FV(x) = FV(F)\setminus(U ∪ E)$ if $x=&lt;U,E,F&gt;$ is a <a>graph term</a>.</li>
               </ul>
 
-              The set $FV$ for a <a>graph</a> $G=(U,E,F)$ and a variable $v\in V\cap C(G)$:
+              <p>Consider a <a>graph</a> $G=(U,E,F)$ and a variable $v\in V\cap C(G)$:
               <ul>
                 <li>We say that $v$  is <a>free</a> in $G$ iff $v\not\in U\cup E$ and there exists $x\in DC(G)$ such that $v\in FV(x)$;</li>
                 <li>Otherwise we call $v$ <dfn class="lint-ignore" data-lt="scoped variable">scoped</dfn> in $G$;</li>
-                <li>We denote the set of variables which are <a>free</a> in $G$ as $FV(G)$.</li>
               </ul>
-<p>
+              <p>We denote the set of variables which are free in $G$ as $FV(G)$.
 
 <p>Examples:</p>
 <ol>
@@ -421,8 +420,8 @@ With that definition, we now introduce <dfn data-lt="free">free variables</dfn>:
 </ol>
 <p>This enables us to introduce the notion of closed graphs and ground terms.</p>
 <ul>
-   <li>A <a>graph</a> $G=(U,E,F)$ is <dfn data-lt="closed graph">closed</dfn> if all variables $v\in C(G)\cap V$ are scoped in $G$.</li>
-   <li>A term is <dfn data-lt="ground term">ground</dfn> if it is either
+   <li>A <a>graph</a> $G=(U,E,F)$ is <dfn data-lt="closed graph">closed</dfn> if all variables $v\in V \cap C(G)$ are scoped in $G$.</li>
+   <li>A <a>term</a> is <dfn data-lt="ground term">ground</dfn> if it is either
     <ul>
       <li>an IRI,</li>
       <li>a Literal,</li>
@@ -434,7 +433,7 @@ With that definition, we now introduce <dfn data-lt="free">free variables</dfn>:
 
 <p>We denote the set of <a>ground terms</a> as $T_G$.
 
-<p>A <a>triple</a> is <a>ground</a> if all of its <a>direct constituents</a> are <a>ground</a>.</p>
+<p>A <a>triple</a> is <a>ground</a> if its subject, predicate, and object are all <a>ground</a>.</p>
 
 <p>A graph $G=(U,E,F)$ is <a>ground</a> if $E=U=\emptyset$ and all <a>triples</a> in $F$ are <a>ground</a>.</p>
 
@@ -454,7 +453,7 @@ With that definition, we now introduce <dfn data-lt="free">free variables</dfn>:
   the variable $x$ will be a free variable (as it was quantified in the containing N3 graph).
 </p>
 
-<p>An abstract <a>graph</a> $G=(U,E,F)$ can also contain quantified variables $v\in U\cup E$ which do not occur in any <a>triple</a> of $F$. 
+<p>An abstract <a>graph</a> $G=(U,E,F)$ can also contain quantified variables $v\in U\cup E$ which do not occur <a>free</a> in any <a>triple</a> of $F$. 
    These variables do not contribute to the interpretation of the graph. In order to simplify our considerations for the following sections, 
    we introduce the notion of normalised graphs:</p>
 
@@ -496,10 +495,11 @@ handling nested graphs with local scoping.
 </div>
 
 <p>
-With combinations of mappings we can define isomorphisms between abstract N3 graphs:</p>
+With combinations of mappings we can define <dfn data-lt="isomorphism|isomorphic">isomorphisms</dfn> between abstract N3 graphs:</p>
 
           <p>
-          Let $M$ be a bijection between the variables of $V$, we define:</p>
+          Let $M$ be a bijection between two sets of variables (subsets of $V$),
+          we define:</p>
           <ul>
             <li> a graph $G_1$ is isomorphic to $G_2$ under $M$ iff, $G_1^N =(U_1,E_1,F_1)$ and
               $G_2^N=(U_2,E_2,F_2)$ and
@@ -522,12 +522,12 @@ With combinations of mappings we can define isomorphisms between abstract N3 gra
               $&lt; G_2 &gt;$
               if for $G_1^{N} =(U_1,E_1,F_1)$ and $G_2^{N}=(U_2,E_2,F_2)$
               there is a bijection $P$ between $U_1 \cup E_1$ and $U_2 \cup E_2$
-              such that $G_1$ is isomorphic to $G_2$ under $M\bullet P$.
+              such that $G_1$ is isomorphic to $G_2$ under $M|_{FV(G_1)}\bullet P$.
             </li>
           </ul>
 
 <p>
-  We call a graph $G_1$ <dfn class="lint-ignore" data-lt="isomorphism">isomorphic</dfn> to a graph $G_2$, written as $G_1\simeq G_2$, if
+  We call a graph $G_1$ <a>isomorphic</a> to a graph $G_2$, written as $G_1\simeq G_2$, if
   there exists some $M$ such that $G_1$ is isomorphic to $G_2$ under $M$.
 </p>
 
@@ -566,7 +566,7 @@ With combinations of mappings we can define isomorphisms between abstract N3 gra
           </ul>
 !-->
 
-          <p class="note">If $G_1$ is isomorphic to $G_2$ then $G_2$ is also isomorphic to $G_1$.</p>
+          <p class="note">In appendix <a href="#proof_isomorphism"></a>, we prove that the <a>isomorphism</a> relation is reflexive ($G_1 \simeq G_1$), symmetric ($G_1 \simeq G_2 \leftrightarrow G_2 \simeq G_1$) and transitive ($G_1 \simeq G_2 \wedge G_2 \simeq G_3 \rightarrow G_1 \simeq G_3$).</p>
 
        
             <p>
@@ -622,12 +622,12 @@ for RDF. In the next section, we will introduce the <a>log-interpretation</a> wh
         <li>a set $Δ_I$ (<dfn class="lint-ignore">domain</dfn>),
         <li>a mapping $D_I$ (<dfn class="lint-ignore">denotation</dfn>)  from $R ∪ L$ to $Δ_I$,
           such that its restriction to $R$ is a total mapping,
-        <li>a mapping $Q_I$ from <a>ground</a> <a>graph terms</a> to <a>ground</a> <a>graph terms</a>, such that<ul>
+        <li>a mapping $\Gamma_I$ from <a>ground</a> <a>graph terms</a> to <a>ground</a> <a>graph terms</a>, such that<ul>
 
-            <li>for any graph term  $&lt;G&gt;$ if $Q_I(&lt;G&gt;)=&lt;H&gt; \implies H \simeq G$  <br>(in other words, the image of $&lt;G&gt;$  through $Q_I$ 
+            <li>for any graph term  $&lt;G&gt;$ if $\Gamma_I(&lt;G&gt;)=&lt;H&gt; \implies H \simeq G$  <br>(in other words, the image of $&lt;G&gt;$  through $\Gamma_I$
               must be <a>isomorphic</a> to $&lt;G&gt;$)
-            <li>for two graph terms $&lt;G_1&gt;$ and $&lt;G_2&gt;$: $G_1 \simeq G_2\implies Q_I(G_1)=Q_I(G_2)$ 
-              <br>(in other words, two <a>isomorphic</a> graph terms must have the same image through $Q_I$).
+            <li>for two graph terms $&lt;G_1&gt;$ and $&lt;G_2&gt;$: $G_1 \simeq G_2\implies \Gamma_I(G_1)=\Gamma_I(G_2)$
+              <br>(in other words, two <a>isomorphic</a> graph terms must have the same image through $\Gamma_I$).
           </ul>
         <li>A subset $EXT_I$ (<dfn class="lint-ignore">extension</dfn>) of $Δ_I^3$.</li>
       </ul>
@@ -642,8 +642,8 @@ for RDF. In the next section, we will introduce the <a>log-interpretation</a> wh
         </ul>
       </div>
 
-      <p>Note that the images of $Q_I$ are syntactic elements (<a>graph terms</a>), but they can (and most likely will) also be elements of the domain $Δ_I$. 
-      Note however that not all interpretations are required to have <a>graph terms</a> in their domain, because $Q_I$ is allowed to be the empty mapping. 
+      <p>Note that the images of $\Gamma_I$ are syntactic elements (<a>graph terms</a>), but they can (and most likely will) also be elements of the domain $Δ_I$.
+      Note however that not all interpretations are required to have <a>graph terms</a> in their domain, because $\Gamma_I$ is allowed to be the empty mapping.
       Such interpretations could still <a>satisfy</a> a graph that has no <a>graph term</a> constituent.
     </p>
      
@@ -653,8 +653,8 @@ for RDF. In the next section, we will introduce the <a>log-interpretation</a> wh
       The basic interpretation maps graph terms to an isomorphic copy of themselves. As a consequence, two non-isomorphic graph terms cannot have the same meaning. For the abstract versions of the graph terms <code>{_:x :p :o}</code>, <code>{_:y :p :o}</code>
       and <code>{_:x :p :o. _:y :p :o}</code>, we thus get:</p>
     <ul>
-     <li> $Q_I(&lt;\{\}, \{y\}, \{(y, \text{:p}, \text{:o})\}&gt;)= Q_I(&lt;\{\}, \{x\}, \{(x, :p, :o)\}&gt;)$
-      <li> $Q_I(&lt;\{\}, \{y\}, \{(y, \text{:p}, \text{:o})\}&gt;) \neq Q_I(&lt;\{\}, \{x, y\}, \{(x, \text{:p}, \text{:o}), (y, \text{:p}, \text{:o})\}&gt;)$
+     <li> $\Gamma_I(&lt;\{\}, \{y\}, \{(y, \text{:p}, \text{:o})\}&gt;)= \Gamma_I(&lt;\{\}, \{x\}, \{(x, :p, :o)\}&gt;)$
+      <li> $\Gamma_I(&lt;\{\}, \{y\}, \{(y, \text{:p}, \text{:o})\}&gt;) \neq \Gamma_I(&lt;\{\}, \{x, y\}, \{(x, \text{:p}, \text{:o}), (y, \text{:p}, \text{:o})\}&gt;)$
     </ul>
 
     <p>
@@ -683,7 +683,7 @@ for RDF. In the next section, we will introduce the <a>log-interpretation</a> wh
         <ul>
           <li>$D_I(x)$ if $x$ is an IRI or a Literal,
           <li>$(I(x_1), I(x_2),..., I(x_n))$ if $x$ is a list $(x_1, x_2, ..., x_n)$ and all $I(x_i)$ are defined,
-          <li>$Q_I(x)$ if $x$ is a <a>ground</a> <a>graph term</a>,
+          <li>$\Gamma_I(x)$ if $x$ is a <a>ground</a> <a>graph term</a>,
           <li>$I(x)=\textit{true}$ if $x=(s, p ,o)$ is a <a>ground</a> <a>triple</a> and $(I(s), I(p) ,I(o))\in EXT_I$, otherwise $I(x)=\textit{false}$,
           <li>$I(x)=\textit{false}$ if $x=F$ is a set of ground triples and $I(t)=\textit{false}$ for some triple $t\in F$, otherwise $I(x) =\textit{true}$,
           <li>$I(F)$ if $x=(\emptyset, \emptyset, F)$ is a <a>ground</a> <a>graph</a>
@@ -692,7 +692,7 @@ for RDF. In the next section, we will introduce the <a>log-interpretation</a> wh
         The definition implies that the empty graph is always true and that the empty list is always mapped to itself. 
         <div class="note">
           <p>
-          Note that the interpretation function $Q_I(x)$ maps ground graphs into the domain of discourse without interpreting their content separately. 
+          Note that the interpretation function $\Gamma_I(x)$ maps ground graphs into the domain of discourse without interpreting their content separately.
           This choice was made to guarentee <a href="https://en.wikipedia.org/wiki/Opaque_context">referential opacity</a> 
           (see also <a href="https://www.w3.org/2021/12/rdf-star.html#ref-opacity">referential opacity in RDF-star</a> ). 
           To illustrate this idea consider the <a href="https://iep.utm.edu/referential-opacity/">superman example</a> expressed in N3:
@@ -741,18 +741,18 @@ The interpretation of the above example $I(G_{bob})$
 <li>$I($<code>({}, {}, {(:bob, :says,</code> &lt; <code>{}, {},  {(:bob, :is, :wise)}.>)})</code>$)$</li>
 <li>$=I($<code>(:bob, :says,</code> &lt; <code>{}, {},  {(:bob, :is, :wise)}.>)</code>$)$</li>
 </ul>-->
-will be true if $(D_I(\text{:bob}), D_I(\text{:says}), Q_I(&lt;\{\}, \{\},  \{(\text{:bob}, \text{:is}, \text{:wise})\}&gt;)\in EXT_I$. 
+will be true if $(D_I(\text{:bob}), D_I(\text{:says}), \Gamma_I(&lt;\{\}, \{\},  \{(\text{:bob}, \text{:is}, \text{:wise})\}&gt;)\in EXT_I$.
 </p>
 
 <p>
   If we revert back to our original example with variables, 
   a regular <em>valuation function</em> (such as the <a href="https://www.w3.org/TR/rdf11-mt/#blank-nodes">mapping A used for blank nodes</a> in [[RDF11-MT]]) will simply replace both occurrences of variable $x$ with a domain element $\delta_i$ from $\Delta_I$.
-  In that case, $Q_I$ will have to map the <a>graph term</a> $&lt;\{\}, \{\},  \{(\delta_i, \text{:is}, \text{:wise})\}&gt;$
+  In that case, $\Gamma_I$ will have to map the <a>graph term</a> $&lt;\{\}, \{\},  \{(\delta_i, \text{:is}, \text{:wise})\}&gt;$
   to an isomorphic copy. However, the <a href="isomorphisms">isomorphism</a> is only defined for concrete N3 <a>terms</a>, and not domain elements.
   <!-- unless those domain elements are also language terms ... -->
-  If <em>not</em> applying the valuation function to the graph term, $Q_I$ will have to map the <a>graph term</a> $&lt;\{\}, \{\},  \{(x, \text{:is}, \text{:wise})\}&gt;$,
+  If <em>not</em> applying the valuation function to the graph term, $\Gamma_I$ will have to map the <a>graph term</a> $&lt;\{\}, \{\},  \{(x, \text{:is}, \text{:wise})\}&gt;$,
   which is however no longer <a>ground</a> as its graph is no longer <a>closed</a>
-  ($x$ is quantified outside of the graph). In our <a>basic interpretation</a>, the mapping $Q_I$ is only defined for <a>ground</a> <a>graph terms</a>.
+  ($x$ is quantified outside of the graph). In our <a>basic interpretation</a>, the mapping $\Gamma_I$ is only defined for <a>ground</a> <a>graph terms</a>.
   We thus need to first ground these kinds of <em>leaked variables</em>, 
   i.e., variables that become free when considering the graph term in isolation (as is required when determining isomorphisms).
 </p>
@@ -767,7 +767,7 @@ will be true if $(D_I(\text{:bob}), D_I(\text{:says}), Q_I(&lt;\{\}, \{\},  \{(\
   The mapping $A_2$ assigns variables to terms, and will be used to <em>ground free variables within graph terms</em>. 
   Note that given an interpretation $I$ and two assignments $A$ for a set $V_1$, and $B$ for a set $V_2$ of variables, 
   the <a>combination</a> $A\bullet B$ is again an assignment for $V_1\cup V_2$.</p>
-  <!----    </section>
+  <!--    </section>
 
       <section>
         <h2></h2>
@@ -800,7 +800,7 @@ As an example, consider the example below, and let $M:\{x,y\}\rightarrow S$ be a
     $=$<span class="asex">$&lt;\{\},\{y\},\{(tom, \text{:hasMother}, y)\}&gt;$ </span>
 </p>
 Variable $x$ is replaced by $M(x)$ as it is a <a>free variable</a>, while $y$ does not get replaced since it is <a>scoped</a> (i.e., quantified in the nested graph).
-This results in a <a>ground</a> <a>graph term</a>, which can be mapped by $Q_I$.
+This results in a <a>ground</a> <a>graph term</a>, which can be mapped by $\Gamma_I$.
 
 <p>
 The definition of total applications enables us to define <dfn class="lint-ignore">interpretations with assignment</dfn>:
@@ -811,7 +811,7 @@ we define $I[A](x)$ as:</p>
         <ul>
           <li> $A_1(x)$ if $x ∈ dom(A)$ and $x$ is a <a>direct constituent</a> of $G$,
           <li> $(I[A](x_1) \ldots I[A](x_n))$ if $x=(x_1 \ldots x_n)$ is a <a>list</a>,
-          <li> $Q_I(A_2^t(x))$ if $x$ is a <a>graph term</a>, where $A_2^t$ represents the <a>total application</a> of $A_2$,
+          <li> $\Gamma_I(A_2^t(x))$ if $x$ is a <a>graph term</a>, where $A_2^t$ represents the <a>total application</a> of $A_2$,
           <li> $I(x)$ otherwise.
         </ul>
 
@@ -1195,6 +1195,78 @@ The previous definition allows us to introduce the notion of basic entailment:
     </p>
         </section>
 
+      </section>
+    </section>
+    <section class="appendix">
+      <h2>Proofs</h2>
+
+      <section id="proof_isomorphism">
+        <h2><a>Isomorphism</a> is an equivalence relation</h2>
+
+        <p>In this section, we prove that the <a>isomorphism</a> relation between N3 <a>graphs</a> is reflexive, symmetric and transitive. In all the following, $G_1$, $G_2$ and $G_3$ denote graphs. Given a set $S$, $Id_S$ is the identity mapping on $S$.</p>
+
+        <section><h3>Reflexivity</h3>
+
+        <p>Trivially, any graph $G$ containing no graph term is isomorphic to itself under $Id_{FV(G_1)}$.
+        Any graph term $&lt; H &gt;$ containing no graph term is therefore isomorphic to itself under $Id_{FV(H1)}$, chosing also the identity mapping for $P$.
+        By induction, we conclude that any graph $G$ (containing graph terms or not) is isomorphic to itself under $Id_{FV(G_1)}$, and therefore $G \simeq G$.
+        </section>
+
+        <section><h3>Symmetry</h3>
+
+        <p>Let us first prove by induction that if $G_1$ is isomorphic to $G_2$ under a bijection $M$,
+        then $G_2$ is isomorphic to $G_1$ under $M^{-1}$.
+        Let $G_1^N = (U_1, E_1, F_1)$ and $G_2^N = (U_2, E_2, F_2)$.
+        There must be a bijection $N$ from $F_1$ to $F_2$
+        that satifies the definition of <a>isomorphism</a> under $M$.
+
+        <p>If we assume that neither $G_1$ nor $G_2$ contain graph terms,
+        then trivially $G_2$ is isomorphic to $G_1$ under $M^{-1}$
+        by chosing $N^{-1}$ to map from $F_2$ to $F_1$.
+
+        <p>If $G_1$ contains graph terms,
+        then $N$ must map every graph term $&lt; H_1 &gt;$ occurring in $G_1$
+        to a graph term $&lt; H_2 &gt;$ occurring in $G_2$,
+        and for each such pair there must exist a bijection $P$
+        such that $H_1$ is isomorphic to $H_2$ under $M|_{FV(H_1)} \bullet P$.
+        Per our induction hypothesis, $H_2$ is isomorphic to $H_1$ under
+        $(M|_{FV(H_1)} \bullet P)^{-1} = M^{-1}|_{FV(H_1)} \bullet P^{-1}$,
+        and therefore $G_2$ is isomorphic to $G_1$ under $M^{-1}$.
+
+        <p>From the above, it follows that if $G_1 \simeq G_2$, then $G_2 \simeq G_1$.
+
+        </section>
+        <section><h3>Transitivity</h3>
+
+        <p>Let us first prove by induction that if $G_1$ is isomorphic to $G_2$ under $M_1$,
+        and $G_2$ is isomorphic to $G_3$ under $M_2$,
+        then $G_1$ is isomorphic to $G_3$ under $M_2 \circ M_1$.
+        Let $G_i^N = (U_i, E_i, F_i)$ for $i \in \{1, 2, 3\}$.
+        There must be a bijection $N_1$ from $F_1$ to $F_2$
+        and a bijection $N_2$ from $F_2$ to $F_3$
+        that satisfy the definition of
+        <a>isomorphism</a> under $M_1$ and $M_2$ respectively.
+
+        <p>If we assume that neither $G_1$, $G_2$ nor $G_3$ contain graph terms,
+        then trivially $G_1$ is isomorphic to $G_3$ under $M_2 \circ M_1$
+        by chosing $N_2 \circ N_1$ to map from $F_1$ to $F_3$.
+
+        <p>If $G_1$ contains graph terms,
+        then $N_1$ must map every graph term $&lt; H_1 &gt;$ occurring in $G_1$
+        to a graph term $&lt; H_2 &gt;$ occurring in $G_2$,
+        and for each such pair there must exist a bijection $P_1$
+        such that $H_1$ is isomorphic to $H_2$ under $M_1|_{FV(H_1)} \bullet P_1$.
+        Similarly $N_2$ must map every graph term $&lt; H_2 &gt;$ occurring in $G_2$
+        to a graph term $&lt; H_3 &gt;$ occurring in $G_3$,
+        and for each such pair there must exist a bijection $P_2$
+        such that $H_2$ is isomorphic to $H_3$ under $M_2|_{FV(H_2)} \bullet P_2$.
+        Per our induction hypothesis, $H_1$ is isomorphic to $H_3$ under
+        $(M_2|_{FV(H_2)} \bullet P_2)\circ(M_1|_{FV(H_1)} \bullet P_1) = (M_2 \circ M_1)|_{FV(H_1)} \bullet (P_2 \circ P_1)$,
+        and therefore $G_1$ is isomorphic to $G_3$ under $M_2 \circ M_1$.
+
+        <p>From the above, it follows that if $G_1 \simeq G_2$ and $G_2 \simeq G3$,
+        then $G_1 \simeq G_3$.
+        </section>
       </section>
     </section>
 <!--    <section>
